@@ -21,6 +21,9 @@ class Policy(pulumi.CustomResource):
                  document: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy_document: Optional[pulumi.Input[str]] = None,
+                 policy_name: Optional[pulumi.Input[str]] = None,
+                 rotate_strategy: Optional[pulumi.Input[str]] = None,
                  statements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -38,9 +41,12 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the RAM policy. This name can have a string of 1 to 1024 characters.
-        :param pulumi.Input[str] document: Document of the RAM policy. It is required when the `statement` is not specified.
+        :param pulumi.Input[str] document: It has been deprecated from provider version 1.114.0 and `policy_document` instead.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
-        :param pulumi.Input[str] name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] name: It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+        :param pulumi.Input[str] policy_document: Document of the RAM policy. It is required when the `statement` is not specified.
+        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] rotate_strategy: The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
         :param pulumi.Input[str] version: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
@@ -62,9 +68,18 @@ class Policy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
+            if document is not None and not opts.urn:
+                warnings.warn("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""", DeprecationWarning)
+                pulumi.log.warn("document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.")
             __props__['document'] = document
             __props__['force'] = force
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.")
             __props__['name'] = name
+            __props__['policy_document'] = policy_document
+            __props__['policy_name'] = policy_name
+            __props__['rotate_strategy'] = rotate_strategy
             if statements is not None and not opts.urn:
                 warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
                 pulumi.log.warn("statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
@@ -74,7 +89,9 @@ class Policy(pulumi.CustomResource):
                 pulumi.log.warn("version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
             __props__['version'] = version
             __props__['attachment_count'] = None
+            __props__['default_version'] = None
             __props__['type'] = None
+            __props__['version_id'] = None
         super(Policy, __self__).__init__(
             'alicloud:ram/policy:Policy',
             resource_name,
@@ -86,13 +103,18 @@ class Policy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             attachment_count: Optional[pulumi.Input[int]] = None,
+            default_version: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             document: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            policy_document: Optional[pulumi.Input[str]] = None,
+            policy_name: Optional[pulumi.Input[str]] = None,
+            rotate_strategy: Optional[pulumi.Input[str]] = None,
             statements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            version: Optional[pulumi.Input[str]] = None) -> 'Policy':
+            version: Optional[pulumi.Input[str]] = None,
+            version_id: Optional[pulumi.Input[str]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -101,26 +123,36 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] attachment_count: The policy attachment count.
+        :param pulumi.Input[str] default_version: The default version of policy.
         :param pulumi.Input[str] description: Description of the RAM policy. This name can have a string of 1 to 1024 characters.
-        :param pulumi.Input[str] document: Document of the RAM policy. It is required when the `statement` is not specified.
+        :param pulumi.Input[str] document: It has been deprecated from provider version 1.114.0 and `policy_document` instead.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
-        :param pulumi.Input[str] name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] name: It has been deprecated from provider version 1.114.0 and `policy_name` instead.
+        :param pulumi.Input[str] policy_document: Document of the RAM policy. It is required when the `statement` is not specified.
+        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] rotate_strategy: The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
         :param pulumi.Input[str] type: The policy type.
         :param pulumi.Input[str] version: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        :param pulumi.Input[str] version_id: The ID of default version policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
         __props__["attachment_count"] = attachment_count
+        __props__["default_version"] = default_version
         __props__["description"] = description
         __props__["document"] = document
         __props__["force"] = force
         __props__["name"] = name
+        __props__["policy_document"] = policy_document
+        __props__["policy_name"] = policy_name
+        __props__["rotate_strategy"] = rotate_strategy
         __props__["statements"] = statements
         __props__["type"] = type
         __props__["version"] = version
+        __props__["version_id"] = version_id
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -130,6 +162,14 @@ class Policy(pulumi.CustomResource):
         The policy attachment count.
         """
         return pulumi.get(self, "attachment_count")
+
+    @property
+    @pulumi.getter(name="defaultVersion")
+    def default_version(self) -> pulumi.Output[str]:
+        """
+        The default version of policy.
+        """
+        return pulumi.get(self, "default_version")
 
     @property
     @pulumi.getter
@@ -143,7 +183,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def document(self) -> pulumi.Output[str]:
         """
-        Document of the RAM policy. It is required when the `statement` is not specified.
+        It has been deprecated from provider version 1.114.0 and `policy_document` instead.
         """
         return pulumi.get(self, "document")
 
@@ -159,9 +199,33 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        It has been deprecated from provider version 1.114.0 and `policy_name` instead.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="policyDocument")
+    def policy_document(self) -> pulumi.Output[str]:
+        """
+        Document of the RAM policy. It is required when the `statement` is not specified.
+        """
+        return pulumi.get(self, "policy_document")
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> pulumi.Output[str]:
+        """
+        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "policy_name")
+
+    @property
+    @pulumi.getter(name="rotateStrategy")
+    def rotate_strategy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+        """
+        return pulumi.get(self, "rotate_strategy")
 
     @property
     @pulumi.getter
@@ -186,6 +250,14 @@ class Policy(pulumi.CustomResource):
         (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
         return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> pulumi.Output[str]:
+        """
+        The ID of default version policy.
+        """
+        return pulumi.get(self, "version_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

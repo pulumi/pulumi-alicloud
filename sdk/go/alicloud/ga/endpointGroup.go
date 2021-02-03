@@ -32,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+// 		exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
 // 			Duration:      pulumi.Int(1),
 // 			AutoUseCoupon: pulumi.Bool(true),
 // 			Spec:          pulumi.String("1"),
@@ -41,7 +41,7 @@ import (
 // 			return err
 // 		}
 // 		exampleListener, err := ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
-// 			AcceleratorId: pulumi.String("alicloud_ga_accelerator.example.id"),
+// 			AcceleratorId: exampleAccelerator.ID(),
 // 			PortRanges: ga.ListenerPortRangeArray{
 // 				&ga.ListenerPortRangeArgs{
 // 					FromPort: pulumi.Int(60),

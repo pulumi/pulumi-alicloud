@@ -92,6 +92,8 @@ type Cluster struct {
 
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
+	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+	CollectorStatus pulumi.StringOutput `pulumi:"collectorStatus"`
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
@@ -171,6 +173,8 @@ func GetCluster(ctx *pulumi.Context,
 type clusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+	CollectorStatus *string `pulumi:"collectorStatus"`
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString *string `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
@@ -213,6 +217,8 @@ type clusterState struct {
 type ClusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+	CollectorStatus pulumi.StringPtrInput
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
@@ -259,6 +265,8 @@ func (ClusterState) ElementType() reflect.Type {
 type clusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+	CollectorStatus *string `pulumi:"collectorStatus"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass string `pulumi:"dbNodeClass"`
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
@@ -300,6 +308,8 @@ type clusterArgs struct {
 type ClusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+	CollectorStatus pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringInput
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].

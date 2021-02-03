@@ -133,6 +133,10 @@ export interface GetTemplatesResult {
      */
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * (Available in v1.114.0+) A list of OOS Template names.
+     */
+    readonly names: string[];
     readonly outputFile?: string;
     readonly shareType?: string;
     readonly sortField?: string;

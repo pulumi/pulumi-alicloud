@@ -242,12 +242,21 @@ type GetPoliciesPolicy struct {
 	Description string `pulumi:"description"`
 	// Policy document of the policy.
 	Document string `pulumi:"document"`
+	Id       string `pulumi:"id"`
 	// Name of the policy.
 	Name string `pulumi:"name"`
+	// Policy document of the policy.
+	PolicyDocument string `pulumi:"policyDocument"`
+	// Name of the policy.
+	PolicyName string `pulumi:"policyName"`
 	// Filter results by a specific policy type. Valid values are `Custom` and `System`.
 	Type string `pulumi:"type"`
 	// Update date of the policy.
 	UpdateDate string `pulumi:"updateDate"`
+	// Filter results by a specific user name. Returned policies are attached to the specified user.
+	UserName string `pulumi:"userName"`
+	// The ID of default policy.
+	VersionId string `pulumi:"versionId"`
 }
 
 // GetPoliciesPolicyInput is an input type that accepts GetPoliciesPolicyArgs and GetPoliciesPolicyOutput values.
@@ -272,12 +281,21 @@ type GetPoliciesPolicyArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Policy document of the policy.
 	Document pulumi.StringInput `pulumi:"document"`
+	Id       pulumi.StringInput `pulumi:"id"`
 	// Name of the policy.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Policy document of the policy.
+	PolicyDocument pulumi.StringInput `pulumi:"policyDocument"`
+	// Name of the policy.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
 	// Filter results by a specific policy type. Valid values are `Custom` and `System`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Update date of the policy.
 	UpdateDate pulumi.StringInput `pulumi:"updateDate"`
+	// Filter results by a specific user name. Returned policies are attached to the specified user.
+	UserName pulumi.StringInput `pulumi:"userName"`
+	// The ID of default policy.
+	VersionId pulumi.StringInput `pulumi:"versionId"`
 }
 
 func (GetPoliciesPolicyArgs) ElementType() reflect.Type {
@@ -356,9 +374,23 @@ func (o GetPoliciesPolicyOutput) Document() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Document }).(pulumi.StringOutput)
 }
 
+func (o GetPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
 // Name of the policy.
 func (o GetPoliciesPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Policy document of the policy.
+func (o GetPoliciesPolicyOutput) PolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyDocument }).(pulumi.StringOutput)
+}
+
+// Name of the policy.
+func (o GetPoliciesPolicyOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 // Filter results by a specific policy type. Valid values are `Custom` and `System`.
@@ -369,6 +401,16 @@ func (o GetPoliciesPolicyOutput) Type() pulumi.StringOutput {
 // Update date of the policy.
 func (o GetPoliciesPolicyOutput) UpdateDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.UpdateDate }).(pulumi.StringOutput)
+}
+
+// Filter results by a specific user name. Returned policies are attached to the specified user.
+func (o GetPoliciesPolicyOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+// The ID of default policy.
+func (o GetPoliciesPolicyOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.VersionId }).(pulumi.StringOutput)
 }
 
 type GetPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -551,6 +593,148 @@ func (o GetRolesRoleArrayOutput) Index(i pulumi.IntInput) GetRolesRoleOutput {
 	}).(GetRolesRoleOutput)
 }
 
+type GetSamlProvidersProvider struct {
+	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	Arn string `pulumi:"arn"`
+	// The description of SAML Provider.
+	Description string `pulumi:"description"`
+	// The encodedsaml metadata document.
+	EncodedsamlMetadataDocument string `pulumi:"encodedsamlMetadataDocument"`
+	// The ID of the SAML Provider.
+	Id string `pulumi:"id"`
+	// The saml provider name.
+	SamlProviderName string `pulumi:"samlProviderName"`
+	// The update time.
+	UpdateDate string `pulumi:"updateDate"`
+}
+
+// GetSamlProvidersProviderInput is an input type that accepts GetSamlProvidersProviderArgs and GetSamlProvidersProviderOutput values.
+// You can construct a concrete instance of `GetSamlProvidersProviderInput` via:
+//
+//          GetSamlProvidersProviderArgs{...}
+type GetSamlProvidersProviderInput interface {
+	pulumi.Input
+
+	ToGetSamlProvidersProviderOutput() GetSamlProvidersProviderOutput
+	ToGetSamlProvidersProviderOutputWithContext(context.Context) GetSamlProvidersProviderOutput
+}
+
+type GetSamlProvidersProviderArgs struct {
+	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	Arn pulumi.StringInput `pulumi:"arn"`
+	// The description of SAML Provider.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The encodedsaml metadata document.
+	EncodedsamlMetadataDocument pulumi.StringInput `pulumi:"encodedsamlMetadataDocument"`
+	// The ID of the SAML Provider.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The saml provider name.
+	SamlProviderName pulumi.StringInput `pulumi:"samlProviderName"`
+	// The update time.
+	UpdateDate pulumi.StringInput `pulumi:"updateDate"`
+}
+
+func (GetSamlProvidersProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSamlProvidersProvider)(nil)).Elem()
+}
+
+func (i GetSamlProvidersProviderArgs) ToGetSamlProvidersProviderOutput() GetSamlProvidersProviderOutput {
+	return i.ToGetSamlProvidersProviderOutputWithContext(context.Background())
+}
+
+func (i GetSamlProvidersProviderArgs) ToGetSamlProvidersProviderOutputWithContext(ctx context.Context) GetSamlProvidersProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSamlProvidersProviderOutput)
+}
+
+// GetSamlProvidersProviderArrayInput is an input type that accepts GetSamlProvidersProviderArray and GetSamlProvidersProviderArrayOutput values.
+// You can construct a concrete instance of `GetSamlProvidersProviderArrayInput` via:
+//
+//          GetSamlProvidersProviderArray{ GetSamlProvidersProviderArgs{...} }
+type GetSamlProvidersProviderArrayInput interface {
+	pulumi.Input
+
+	ToGetSamlProvidersProviderArrayOutput() GetSamlProvidersProviderArrayOutput
+	ToGetSamlProvidersProviderArrayOutputWithContext(context.Context) GetSamlProvidersProviderArrayOutput
+}
+
+type GetSamlProvidersProviderArray []GetSamlProvidersProviderInput
+
+func (GetSamlProvidersProviderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSamlProvidersProvider)(nil)).Elem()
+}
+
+func (i GetSamlProvidersProviderArray) ToGetSamlProvidersProviderArrayOutput() GetSamlProvidersProviderArrayOutput {
+	return i.ToGetSamlProvidersProviderArrayOutputWithContext(context.Background())
+}
+
+func (i GetSamlProvidersProviderArray) ToGetSamlProvidersProviderArrayOutputWithContext(ctx context.Context) GetSamlProvidersProviderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSamlProvidersProviderArrayOutput)
+}
+
+type GetSamlProvidersProviderOutput struct{ *pulumi.OutputState }
+
+func (GetSamlProvidersProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSamlProvidersProvider)(nil)).Elem()
+}
+
+func (o GetSamlProvidersProviderOutput) ToGetSamlProvidersProviderOutput() GetSamlProvidersProviderOutput {
+	return o
+}
+
+func (o GetSamlProvidersProviderOutput) ToGetSamlProvidersProviderOutputWithContext(ctx context.Context) GetSamlProvidersProviderOutput {
+	return o
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the IdP.
+func (o GetSamlProvidersProviderOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSamlProvidersProvider) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The description of SAML Provider.
+func (o GetSamlProvidersProviderOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSamlProvidersProvider) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The encodedsaml metadata document.
+func (o GetSamlProvidersProviderOutput) EncodedsamlMetadataDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSamlProvidersProvider) string { return v.EncodedsamlMetadataDocument }).(pulumi.StringOutput)
+}
+
+// The ID of the SAML Provider.
+func (o GetSamlProvidersProviderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSamlProvidersProvider) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The saml provider name.
+func (o GetSamlProvidersProviderOutput) SamlProviderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSamlProvidersProvider) string { return v.SamlProviderName }).(pulumi.StringOutput)
+}
+
+// The update time.
+func (o GetSamlProvidersProviderOutput) UpdateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSamlProvidersProvider) string { return v.UpdateDate }).(pulumi.StringOutput)
+}
+
+type GetSamlProvidersProviderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSamlProvidersProviderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSamlProvidersProvider)(nil)).Elem()
+}
+
+func (o GetSamlProvidersProviderArrayOutput) ToGetSamlProvidersProviderArrayOutput() GetSamlProvidersProviderArrayOutput {
+	return o
+}
+
+func (o GetSamlProvidersProviderArrayOutput) ToGetSamlProvidersProviderArrayOutputWithContext(ctx context.Context) GetSamlProvidersProviderArrayOutput {
+	return o
+}
+
+func (o GetSamlProvidersProviderArrayOutput) Index(i pulumi.IntInput) GetSamlProvidersProviderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSamlProvidersProvider {
+		return vs[0].([]GetSamlProvidersProvider)[vs[1].(int)]
+	}).(GetSamlProvidersProviderOutput)
+}
+
 type GetUsersUser struct {
 	// Creation date of the user.
 	CreateDate string `pulumi:"createDate"`
@@ -684,6 +868,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetSamlProvidersProviderOutput{})
+	pulumi.RegisterOutputType(GetSamlProvidersProviderArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})
 	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

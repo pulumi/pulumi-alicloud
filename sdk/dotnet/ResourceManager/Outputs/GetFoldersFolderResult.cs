@@ -19,8 +19,13 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// The ID of the folder.
         /// * `folder_id`- The ID of the folder.
         /// * `folder_name`- The name of the folder.
+        /// * `parent_folder_id`- (Available in v1.114.0+)The ID of the parent folder.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the parent folder.
+        /// </summary>
+        public readonly string ParentFolderId;
 
         [OutputConstructor]
         private GetFoldersFolderResult(
@@ -28,11 +33,14 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
 
             string folderName,
 
-            string id)
+            string id,
+
+            string parentFolderId)
         {
             FolderId = folderId;
             FolderName = folderName;
             Id = id;
+            ParentFolderId = parentFolderId;
         }
     }
 }

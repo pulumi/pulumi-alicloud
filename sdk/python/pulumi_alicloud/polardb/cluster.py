@@ -18,6 +18,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 collector_status: Optional[pulumi.Input[str]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
@@ -84,6 +85,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
                **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -122,6 +124,7 @@ class Cluster(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['auto_renew_period'] = auto_renew_period
+            __props__['collector_status'] = collector_status
             if db_node_class is None and not opts.urn:
                 raise TypeError("Missing required property 'db_node_class'")
             __props__['db_node_class'] = db_node_class
@@ -156,6 +159,7 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
+            collector_status: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             db_node_class: Optional[pulumi.Input[str]] = None,
             db_node_count: Optional[pulumi.Input[int]] = None,
@@ -181,6 +185,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
@@ -207,6 +212,7 @@ class Cluster(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["auto_renew_period"] = auto_renew_period
+        __props__["collector_status"] = collector_status
         __props__["connection_string"] = connection_string
         __props__["db_node_class"] = db_node_class
         __props__["db_node_count"] = db_node_count
@@ -233,6 +239,14 @@ class Cluster(pulumi.CustomResource):
         Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         """
         return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="collectorStatus")
+    def collector_status(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+        """
+        return pulumi.get(self, "collector_status")
 
     @property
     @pulumi.getter(name="connectionString")

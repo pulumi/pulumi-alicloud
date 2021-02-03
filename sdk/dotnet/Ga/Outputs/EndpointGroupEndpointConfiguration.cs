@@ -22,14 +22,6 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// Probe Port.
-        /// </summary>
-        public readonly int? ProbePort;
-        /// <summary>
-        /// Probe Protocol.
-        /// </summary>
-        public readonly string? ProbeProtocol;
-        /// <summary>
         /// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
         /// </summary>
         public readonly string Type;
@@ -44,18 +36,12 @@ namespace Pulumi.AliCloud.Ga.Outputs
 
             string endpoint,
 
-            int? probePort,
-
-            string? probeProtocol,
-
             string type,
 
             int weight)
         {
             EnableClientipPreservation = enableClientipPreservation;
             Endpoint = endpoint;
-            ProbePort = probePort;
-            ProbeProtocol = probeProtocol;
             Type = type;
             Weight = weight;
         }

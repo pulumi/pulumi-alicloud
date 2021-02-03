@@ -13,25 +13,10 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class SwarmNode
     {
-        /// <summary>
-        /// The Elastic IP address of node.
-        /// </summary>
         public readonly string? Eip;
-        /// <summary>
-        /// ID of the node.
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// The container cluster's name. It is the only in one Alicloud account.
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// The private IP address of node.
-        /// </summary>
         public readonly string? PrivateIp;
-        /// <summary>
-        /// The node current status. It is different with instance status.
-        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

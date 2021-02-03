@@ -51,6 +51,12 @@ namespace Pulumi.AliCloud.ResourceManager
 
     public sealed class GetFoldersArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -78,6 +84,12 @@ namespace Pulumi.AliCloud.ResourceManager
         [Input("parentFolderId")]
         public string? ParentFolderId { get; set; }
 
+        /// <summary>
+        /// The query keyword.
+        /// </summary>
+        [Input("queryKeyword")]
+        public string? QueryKeyword { get; set; }
+
         public GetFoldersArgs()
         {
         }
@@ -87,6 +99,7 @@ namespace Pulumi.AliCloud.ResourceManager
     [OutputType]
     public sealed class GetFoldersResult
     {
+        public readonly bool? EnableDetails;
         /// <summary>
         /// A list of folders. Each element contains the following attributes:
         /// </summary>
@@ -106,9 +119,12 @@ namespace Pulumi.AliCloud.ResourceManager
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? ParentFolderId;
+        public readonly string? QueryKeyword;
 
         [OutputConstructor]
         private GetFoldersResult(
+            bool? enableDetails,
+
             ImmutableArray<Outputs.GetFoldersFolderResult> folders,
 
             string id,
@@ -121,8 +137,11 @@ namespace Pulumi.AliCloud.ResourceManager
 
             string? outputFile,
 
-            string? parentFolderId)
+            string? parentFolderId,
+
+            string? queryKeyword)
         {
+            EnableDetails = enableDetails;
             Folders = folders;
             Id = id;
             Ids = ids;
@@ -130,6 +149,7 @@ namespace Pulumi.AliCloud.ResourceManager
             Names = names;
             OutputFile = outputFile;
             ParentFolderId = parentFolderId;
+            QueryKeyword = queryKeyword;
         }
     }
 }

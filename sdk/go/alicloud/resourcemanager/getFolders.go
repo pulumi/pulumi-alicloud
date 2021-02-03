@@ -48,6 +48,8 @@ func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getFolders.
 type GetFoldersArgs struct {
+	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of resource manager folders IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by folder name.
@@ -55,10 +57,13 @@ type GetFoldersArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the parent folder.
 	ParentFolderId *string `pulumi:"parentFolderId"`
+	// The query keyword.
+	QueryKeyword *string `pulumi:"queryKeyword"`
 }
 
 // A collection of values returned by getFolders.
 type GetFoldersResult struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of folders. Each element contains the following attributes:
 	Folders []GetFoldersFolder `pulumi:"folders"`
 	// The provider-assigned unique ID for this managed resource.
@@ -70,4 +75,5 @@ type GetFoldersResult struct {
 	Names          []string `pulumi:"names"`
 	OutputFile     *string  `pulumi:"outputFile"`
 	ParentFolderId *string  `pulumi:"parentFolderId"`
+	QueryKeyword   *string  `pulumi:"queryKeyword"`
 }

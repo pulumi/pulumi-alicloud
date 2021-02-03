@@ -19,6 +19,7 @@ class ResourceGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,7 +37,9 @@ class ResourceGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.resourcemanager.ResourceGroup("example", display_name="testrd")
+        example = alicloud.resourcemanager.ResourceGroup("example",
+            display_name="testrd",
+            resource_group_name="testrd")
         ```
 
         ## Import
@@ -50,7 +53,7 @@ class ResourceGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
-        :param pulumi.Input[str] name: The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -72,9 +75,12 @@ class ResourceGroup(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.")
             __props__['name'] = name
+            __props__['resource_group_name'] = resource_group_name
             __props__['account_id'] = None
-            __props__['create_date'] = None
             __props__['region_statuses'] = None
             __props__['status'] = None
         super(ResourceGroup, __self__).__init__(
@@ -88,10 +94,10 @@ class ResourceGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            create_date: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupRegionStatusArgs']]]]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'ResourceGroup':
         """
         Get an existing ResourceGroup resource's state with the given name, id, and optional extra
@@ -101,10 +107,8 @@ class ResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the Alibaba Cloud account to which the resource group belongs.
-        :param pulumi.Input[str] create_date: The time when the resource group was created.
-               * `region_statuses` -The status of the resource group in all regions.
         :param pulumi.Input[str] display_name: The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
-        :param pulumi.Input[str] name: The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
         :param pulumi.Input[str] status: The status of the regional resource group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -112,10 +116,10 @@ class ResourceGroup(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["account_id"] = account_id
-        __props__["create_date"] = create_date
         __props__["display_name"] = display_name
         __props__["name"] = name
         __props__["region_statuses"] = region_statuses
+        __props__["resource_group_name"] = resource_group_name
         __props__["status"] = status
         return ResourceGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -126,15 +130,6 @@ class ResourceGroup(pulumi.CustomResource):
         The ID of the Alibaba Cloud account to which the resource group belongs.
         """
         return pulumi.get(self, "account_id")
-
-    @property
-    @pulumi.getter(name="createDate")
-    def create_date(self) -> pulumi.Output[str]:
-        """
-        The time when the resource group was created.
-        * `region_statuses` -The status of the resource group in all regions.
-        """
-        return pulumi.get(self, "create_date")
 
     @property
     @pulumi.getter(name="displayName")
@@ -148,7 +143,7 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -156,6 +151,11 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter(name="regionStatuses")
     def region_statuses(self) -> pulumi.Output[Sequence['outputs.ResourceGroupRegionStatus']]:
         return pulumi.get(self, "region_statuses")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "resource_group_name")
 
     @property
     @pulumi.getter

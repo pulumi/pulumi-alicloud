@@ -31,8 +31,10 @@ export function getHandshakes(args?: GetHandshakesArgs, opts?: pulumi.InvokeOpti
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:resourcemanager/getHandshakes:getHandshakes", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "outputFile": args.outputFile,
+        "status": args.status,
     }, opts);
 }
 
@@ -41,16 +43,25 @@ export function getHandshakes(args?: GetHandshakesArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetHandshakesArgs {
     /**
+     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
+    /**
      * A list of Resource Manager Handshake IDs.
      */
     readonly ids?: string[];
     readonly outputFile?: string;
+    /**
+     * The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
+     */
+    readonly status?: string;
 }
 
 /**
  * A collection of values returned by getHandshakes.
  */
 export interface GetHandshakesResult {
+    readonly enableDetails?: boolean;
     /**
      * A list of Resource Manager Handshakes. Each element contains the following attributes:
      */
@@ -64,4 +75,8 @@ export interface GetHandshakesResult {
      */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the invitation.
+     */
+    readonly status?: string;
 }

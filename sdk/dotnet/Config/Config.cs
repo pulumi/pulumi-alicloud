@@ -131,6 +131,7 @@ namespace Pulumi.AliCloud
                 public string? Ga { get; set; } = null!;
                 public string? Gpdb { get; set; } = null!;
                 public string? Hitsdb { get; set; } = null!;
+                public string? Ims { get; set; } = null!;
                 public string? Kms { get; set; } = null!;
                 public string? Kvstore { get; set; } = null!;
                 public string? Location { get; set; } = null!;

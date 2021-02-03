@@ -14,6 +14,7 @@ export * from "./getAccountAliases";
 export * from "./getGroups";
 export * from "./getPolicies";
 export * from "./getRoles";
+export * from "./getSamlProviders";
 export * from "./getUsers";
 export * from "./group";
 export * from "./groupMembership";
@@ -23,6 +24,7 @@ export * from "./policy";
 export * from "./role";
 export * from "./roleAttachment";
 export * from "./rolePolicyAttachment";
+export * from "./samlProvider";
 export * from "./user";
 export * from "./userPolicyAttachment";
 
@@ -39,6 +41,7 @@ import { Policy } from "./policy";
 import { Role } from "./role";
 import { RoleAttachment } from "./roleAttachment";
 import { RolePolicyAttachment } from "./rolePolicyAttachment";
+import { SamlProvider } from "./samlProvider";
 import { User } from "./user";
 import { UserPolicyAttachment } from "./userPolicyAttachment";
 
@@ -70,6 +73,8 @@ const _module = {
                 return new RoleAttachment(name, <any>undefined, { urn })
             case "alicloud:ram/rolePolicyAttachment:RolePolicyAttachment":
                 return new RolePolicyAttachment(name, <any>undefined, { urn })
+            case "alicloud:ram/samlProvider:SamlProvider":
+                return new SamlProvider(name, <any>undefined, { urn })
             case "alicloud:ram/user:User":
                 return new User(name, <any>undefined, { urn })
             case "alicloud:ram/userPolicyAttachment:UserPolicyAttachment":
@@ -91,5 +96,6 @@ pulumi.runtime.registerResourceModule("alicloud", "ram/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/role", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/roleAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/rolePolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ram/samlProvider", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/user", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/userPolicyAttachment", _module)

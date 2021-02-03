@@ -18,10 +18,6 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The time when the resource group was created.
-        /// </summary>
-        public readonly string CreateDate;
-        /// <summary>
         /// The display name of the resource group.
         /// </summary>
         public readonly string DisplayName;
@@ -33,8 +29,13 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// The unique identifier of the resource group.
         /// </summary>
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetResourceGroupsGroupRegionStatusResult> RegionStatuses;
         /// <summary>
-        /// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+        /// (Available in v1.114.0+) The unique identifier of the resource group.
+        /// </summary>
+        public readonly string ResourceGroupName;
+        /// <summary>
+        /// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
         /// </summary>
         public readonly string Status;
 
@@ -42,21 +43,24 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         private GetResourceGroupsGroupResult(
             string accountId,
 
-            string createDate,
-
             string displayName,
 
             string id,
 
             string name,
 
+            ImmutableArray<Outputs.GetResourceGroupsGroupRegionStatusResult> regionStatuses,
+
+            string resourceGroupName,
+
             string status)
         {
             AccountId = accountId;
-            CreateDate = createDate;
             DisplayName = displayName;
             Id = id;
             Name = name;
+            RegionStatuses = regionStatuses;
+            ResourceGroupName = resourceGroupName;
             Status = status;
         }
     }

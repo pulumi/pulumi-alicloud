@@ -34,7 +34,9 @@ export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions)
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:ram/getPolicies:getPolicies", {
+        "enableDetails": args.enableDetails,
         "groupName": args.groupName,
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "roleName": args.roleName,
@@ -48,9 +50,14 @@ export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetPoliciesArgs {
     /**
+     * Default to `true`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
+    /**
      * Filter results by a specific group name. Returned policies are attached to the specified group.
      */
     readonly groupName?: string;
+    readonly ids?: string[];
     /**
      * A regex string to filter resulting policies by name.
      */
@@ -74,11 +81,13 @@ export interface GetPoliciesArgs {
  * A collection of values returned by getPolicies.
  */
 export interface GetPoliciesResult {
+    readonly enableDetails?: boolean;
     readonly groupName?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ids: string[];
     readonly nameRegex?: string;
     /**
      * A list of ram group names.

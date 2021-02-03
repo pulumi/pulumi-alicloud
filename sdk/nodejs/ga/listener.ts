@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleAccelerator = new alicloud.ga.Accelerator("example", {
- *     autoUseCoupon: true,
+ * const exampleAccelerator = new alicloud.ga.Accelerator("exampleAccelerator", {
  *     duration: 1,
+ *     autoUseCoupon: true,
  *     spec: "1",
  * });
- * const exampleListener = new alicloud.ga.Listener("example", {
- *     acceleratorId: "alicloud_ga_accelerator.example.id",
+ * const exampleListener = new alicloud.ga.Listener("exampleListener", {
+ *     acceleratorId: exampleAccelerator.id,
  *     portRanges: [{
  *         fromPort: 60,
  *         toPort: 70,

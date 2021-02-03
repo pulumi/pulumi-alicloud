@@ -31,28 +31,28 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
-// 			AutoUseCoupon: pulumi.Bool(true),
+// 		exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
 // 			Duration:      pulumi.Int(1),
+// 			AutoUseCoupon: pulumi.Bool(true),
 // 			Spec:          pulumi.String("1"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
-// 			AutoPay:       pulumi.Bool(true),
+// 		exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
 // 			Bandwidth:     pulumi.Int(20),
+// 			Type:          pulumi.String("Basic"),
 // 			BandwidthType: pulumi.String("Basic"),
 // 			Duration:      pulumi.String("1"),
+// 			AutoPay:       pulumi.Bool(true),
 // 			Ratio:         pulumi.Int(30),
-// 			Type:          pulumi.String("Basic"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = ga.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-// 			AcceleratorId:      pulumi.String("alicloud_ga_accelerator.example.id"),
-// 			BandwidthPackageId: pulumi.String("alicloud_ga_bandwidth_package.example.id"),
+// 			AcceleratorId:      exampleAccelerator.ID(),
+// 			BandwidthPackageId: exampleBandwidthPackage.ID(),
 // 		})
 // 		if err != nil {
 // 			return err

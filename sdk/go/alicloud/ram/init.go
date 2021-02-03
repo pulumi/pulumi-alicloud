@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewRoleAttachment(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ram/rolePolicyAttachment:RolePolicyAttachment":
 		r, err = NewRolePolicyAttachment(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:ram/samlProvider:SamlProvider":
+		r, err = NewSamlProvider(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ram/user:User":
 		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ram/userPolicyAttachment:UserPolicyAttachment":
@@ -119,6 +121,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ram/rolePolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ram/samlProvider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

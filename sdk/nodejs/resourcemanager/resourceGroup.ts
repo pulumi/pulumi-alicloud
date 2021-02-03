@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *
  * const example = new alicloud.resourcemanager.ResourceGroup("example", {
  *     displayName: "testrd",
+ *     resourceGroupName: "testrd",
  * });
  * ```
  *
@@ -65,19 +66,17 @@ export class ResourceGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
     /**
-     * The time when the resource group was created.
-     * * `regionStatuses` -The status of the resource group in all regions.
-     */
-    public /*out*/ readonly createDate!: pulumi.Output<string>;
-    /**
      * The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+     * Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly regionStatuses!: pulumi.Output<outputs.resourcemanager.ResourceGroupRegionStatus[]>;
+    public readonly resourceGroupName!: pulumi.Output<string>;
     /**
      * The status of the regional resource group.
      */
@@ -96,10 +95,10 @@ export class ResourceGroup extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ResourceGroupState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["createDate"] = state ? state.createDate : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["regionStatuses"] = state ? state.regionStatuses : undefined;
+            inputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ResourceGroupArgs | undefined;
@@ -108,8 +107,8 @@ export class ResourceGroup extends pulumi.CustomResource {
             }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             inputs["accountId"] = undefined /*out*/;
-            inputs["createDate"] = undefined /*out*/;
             inputs["regionStatuses"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
@@ -133,19 +132,17 @@ export interface ResourceGroupState {
      */
     readonly accountId?: pulumi.Input<string>;
     /**
-     * The time when the resource group was created.
-     * * `regionStatuses` -The status of the resource group in all regions.
-     */
-    readonly createDate?: pulumi.Input<string>;
-    /**
      * The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+     * Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     readonly regionStatuses?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceGroupRegionStatus>[]>;
+    readonly resourceGroupName?: pulumi.Input<string>;
     /**
      * The status of the regional resource group.
      */
@@ -161,7 +158,10 @@ export interface ResourceGroupArgs {
      */
     readonly displayName: pulumi.Input<string>;
     /**
-     * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+     * Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    readonly resourceGroupName?: pulumi.Input<string>;
 }

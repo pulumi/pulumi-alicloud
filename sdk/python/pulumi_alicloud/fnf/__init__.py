@@ -6,6 +6,7 @@
 from .flow import *
 from .get_flows import *
 from .get_schedules import *
+from .get_service import *
 from .schedule import *
 from . import outputs
 

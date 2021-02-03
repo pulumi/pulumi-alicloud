@@ -35,10 +35,12 @@ export function getFolders(args?: GetFoldersArgs, opts?: pulumi.InvokeOptions): 
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:resourcemanager/getFolders:getFolders", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "parentFolderId": args.parentFolderId,
+        "queryKeyword": args.queryKeyword,
     }, opts);
 }
 
@@ -46,6 +48,10 @@ export function getFolders(args?: GetFoldersArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getFolders.
  */
 export interface GetFoldersArgs {
+    /**
+     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
     /**
      * A list of resource manager folders IDs.
      */
@@ -59,12 +65,17 @@ export interface GetFoldersArgs {
      * The ID of the parent folder.
      */
     readonly parentFolderId?: string;
+    /**
+     * The query keyword.
+     */
+    readonly queryKeyword?: string;
 }
 
 /**
  * A collection of values returned by getFolders.
  */
 export interface GetFoldersResult {
+    readonly enableDetails?: boolean;
     /**
      * A list of folders. Each element contains the following attributes:
      */
@@ -84,4 +95,5 @@ export interface GetFoldersResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly parentFolderId?: string;
+    readonly queryKeyword?: string;
 }

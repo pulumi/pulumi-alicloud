@@ -20,7 +20,7 @@ class GetTemplatesResult:
     """
     A collection of values returned by getTemplates.
     """
-    def __init__(__self__, category=None, created_by=None, created_date=None, created_date_after=None, has_trigger=None, id=None, ids=None, name_regex=None, output_file=None, share_type=None, sort_field=None, sort_order=None, tags=None, template_format=None, template_type=None, templates=None):
+    def __init__(__self__, category=None, created_by=None, created_date=None, created_date_after=None, has_trigger=None, id=None, ids=None, name_regex=None, names=None, output_file=None, share_type=None, sort_field=None, sort_order=None, tags=None, template_format=None, template_type=None, templates=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
@@ -45,6 +45,9 @@ class GetTemplatesResult:
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         pulumi.set(__self__, "name_regex", name_regex)
+        if names and not isinstance(names, list):
+            raise TypeError("Expected argument 'names' to be a list")
+        pulumi.set(__self__, "names", names)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
@@ -117,6 +120,14 @@ class GetTemplatesResult:
         return pulumi.get(self, "name_regex")
 
     @property
+    @pulumi.getter
+    def names(self) -> Sequence[str]:
+        """
+        (Available in v1.114.0+) A list of OOS Template names.
+        """
+        return pulumi.get(self, "names")
+
+    @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
@@ -174,6 +185,7 @@ class AwaitableGetTemplatesResult(GetTemplatesResult):
             id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
+            names=self.names,
             output_file=self.output_file,
             share_type=self.share_type,
             sort_field=self.sort_field,
@@ -265,6 +277,7 @@ def get_templates(category: Optional[str] = None,
         id=__ret__.id,
         ids=__ret__.ids,
         name_regex=__ret__.name_regex,
+        names=__ret__.names,
         output_file=__ret__.output_file,
         share_type=__ret__.share_type,
         sort_field=__ret__.sort_field,

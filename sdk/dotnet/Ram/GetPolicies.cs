@@ -51,10 +51,24 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GetPoliciesArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Default to `true`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
+        /// <summary>
         /// Filter results by a specific group name. Returned policies are attached to the specified group.
         /// </summary>
         [Input("groupName")]
         public string? GroupName { get; set; }
+
+        [Input("ids")]
+        private List<string>? _ids;
+        public List<string> Ids
+        {
+            get => _ids ?? (_ids = new List<string>());
+            set => _ids = value;
+        }
 
         /// <summary>
         /// A regex string to filter resulting policies by name.
@@ -92,11 +106,13 @@ namespace Pulumi.AliCloud.Ram
     [OutputType]
     public sealed class GetPoliciesResult
     {
+        public readonly bool? EnableDetails;
         public readonly string? GroupName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of ram group names.
@@ -116,9 +132,13 @@ namespace Pulumi.AliCloud.Ram
 
         [OutputConstructor]
         private GetPoliciesResult(
+            bool? enableDetails,
+
             string? groupName,
 
             string id,
+
+            ImmutableArray<string> ids,
 
             string? nameRegex,
 
@@ -134,8 +154,10 @@ namespace Pulumi.AliCloud.Ram
 
             string? userName)
         {
+            EnableDetails = enableDetails;
             GroupName = groupName;
             Id = id;
+            Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;

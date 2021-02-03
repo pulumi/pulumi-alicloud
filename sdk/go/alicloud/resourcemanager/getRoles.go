@@ -46,6 +46,8 @@ func GetRoles(ctx *pulumi.Context, args *GetRolesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getRoles.
 type GetRolesArgs struct {
+	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Resource Manager Role IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by role name.
@@ -55,6 +57,7 @@ type GetRolesArgs struct {
 
 // A collection of values returned by getRoles.
 type GetRolesResult struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of role IDs.

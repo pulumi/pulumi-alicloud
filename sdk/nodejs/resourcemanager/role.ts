@@ -76,16 +76,13 @@ export class Role extends pulumi.CustomResource {
 
     /**
      * The resource descriptor of the role.
+     * * `createDate` (Removed form v1.114.0) - Role creation time.
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
      * The content of the permissions strategy that plays a role.
      */
     public readonly assumeRolePolicyDocument!: pulumi.Output<string>;
-    /**
-     * Role creation time.
-     */
-    public /*out*/ readonly createDate!: pulumi.Output<string>;
     /**
      * The description of the Resource Manager role.
      */
@@ -118,7 +115,6 @@ export class Role extends pulumi.CustomResource {
             const state = argsOrState as RoleState | undefined;
             inputs["arn"] = state ? state.arn : undefined;
             inputs["assumeRolePolicyDocument"] = state ? state.assumeRolePolicyDocument : undefined;
-            inputs["createDate"] = state ? state.createDate : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["maxSessionDuration"] = state ? state.maxSessionDuration : undefined;
             inputs["roleId"] = state ? state.roleId : undefined;
@@ -137,7 +133,6 @@ export class Role extends pulumi.CustomResource {
             inputs["maxSessionDuration"] = args ? args.maxSessionDuration : undefined;
             inputs["roleName"] = args ? args.roleName : undefined;
             inputs["arn"] = undefined /*out*/;
-            inputs["createDate"] = undefined /*out*/;
             inputs["roleId"] = undefined /*out*/;
             inputs["updateDate"] = undefined /*out*/;
         }
@@ -158,16 +153,13 @@ export class Role extends pulumi.CustomResource {
 export interface RoleState {
     /**
      * The resource descriptor of the role.
+     * * `createDate` (Removed form v1.114.0) - Role creation time.
      */
     readonly arn?: pulumi.Input<string>;
     /**
      * The content of the permissions strategy that plays a role.
      */
     readonly assumeRolePolicyDocument?: pulumi.Input<string>;
-    /**
-     * Role creation time.
-     */
-    readonly createDate?: pulumi.Input<string>;
     /**
      * The description of the Resource Manager role.
      */

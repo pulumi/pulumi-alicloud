@@ -574,6 +574,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ram_user":                    {Tok: resource(ramMod, "User")},
 			"alicloud_ram_user_policy_attachment":  {Tok: resource(ramMod, "UserPolicyAttachment")},
 			"alicloud_ram_account_password_policy": {Tok: resource(ramMod, "AccountPasswordPolicy")},
+			"alicloud_ram_saml_provider":           {Tok: resource(ramMod, "SamlProvider")},
 
 			// ResourceManager
 			"alicloud_resource_manager_handshake":          {Tok: resource(resourceManagerMod, "Handshake")},
@@ -873,6 +874,7 @@ func Provider() tfbridge.ProviderInfo {
 			// FNF
 			"alicloud_fnf_schedules": {Tok: dataSource(fnfMod, "getSchedules")},
 			"alicloud_fnf_flows":     {Tok: dataSource(fnfMod, "getFlows")},
+			"alicloud_fnf_service":   {Tok: dataSource(fnfMod, "getService")},
 
 			// Ga
 			"alicloud_ga_listeners":          {Tok: dataSource(gaMod, "getListeners")},
@@ -975,6 +977,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Pvtr
 			"alicloud_pvtz_zone_records": {Tok: dataSource(pvtzMod, "getZoneRecords")},
 			"alicloud_pvtz_zones":        {Tok: dataSource(pvtzMod, "getZones")},
+			"alicloud_pvtz_service":      {Tok: dataSource(pvtzMod, "getService")},
 
 			// Ram
 			"alicloud_ram_account_alias":   {Tok: dataSource(ramMod, "getAccountAlias")},
@@ -983,6 +986,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ram_policies":        {Tok: dataSource(ramMod, "getPolicies")},
 			"alicloud_ram_roles":           {Tok: dataSource(ramMod, "getRoles")},
 			"alicloud_ram_users":           {Tok: dataSource(ramMod, "getUsers")},
+			"alicloud_ram_saml_providers":  {Tok: dataSource(ramMod, "getSamlProviders")},
 
 			// Rds
 			"alicloud_db_instances":        {Tok: dataSource(rdsMod, "getInstances")},

@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 export * from "./flow";
 export * from "./getFlows";
 export * from "./getSchedules";
+export * from "./getService";
 export * from "./schedule";
 
 // Import resources to register:

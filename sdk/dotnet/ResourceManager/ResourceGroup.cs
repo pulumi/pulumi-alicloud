@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///         var example = new AliCloud.ResourceManager.ResourceGroup("example", new AliCloud.ResourceManager.ResourceGroupArgs
     ///         {
     ///             DisplayName = "testrd",
+    ///             ResourceGroupName = "testrd",
     ///         });
     ///     }
     /// 
@@ -54,26 +55,22 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the resource group was created.
-        /// * `region_statuses` -The status of the resource group in all regions.
-        /// </summary>
-        [Output("createDate")]
-        public Output<string> CreateDate { get; private set; } = null!;
-
-        /// <summary>
         /// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        /// Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("regionStatuses")]
         public Output<ImmutableArray<Outputs.ResourceGroupRegionStatus>> RegionStatuses { get; private set; } = null!;
+
+        [Output("resourceGroupName")]
+        public Output<string> ResourceGroupName { get; private set; } = null!;
 
         /// <summary>
         /// The status of the regional resource group.
@@ -134,10 +131,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        /// Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("resourceGroupName")]
+        public Input<string>? ResourceGroupName { get; set; }
 
         public ResourceGroupArgs()
         {
@@ -153,20 +153,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The time when the resource group was created.
-        /// * `region_statuses` -The status of the resource group in all regions.
-        /// </summary>
-        [Input("createDate")]
-        public Input<string>? CreateDate { get; set; }
-
-        /// <summary>
         /// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        /// Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -178,6 +171,9 @@ namespace Pulumi.AliCloud.ResourceManager
             get => _regionStatuses ?? (_regionStatuses = new InputList<Inputs.ResourceGroupRegionStatusGetArgs>());
             set => _regionStatuses = value;
         }
+
+        [Input("resourceGroupName")]
+        public Input<string>? ResourceGroupName { get; set; }
 
         /// <summary>
         /// The status of the regional resource group.

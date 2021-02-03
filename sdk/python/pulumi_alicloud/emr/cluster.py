@@ -49,6 +49,14 @@ class Cluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        Aliclioud E-MapReduce cluster can be imported using the id e.g.
+
+        ```sh
+         $ pulumi import alicloud:emr/cluster:Cluster default C-B47FB8FE96C67XXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.

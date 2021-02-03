@@ -49,6 +49,12 @@ namespace Pulumi.AliCloud.ResourceManager
 
     public sealed class GetResourceGroupsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -71,7 +77,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+        /// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -85,6 +91,7 @@ namespace Pulumi.AliCloud.ResourceManager
     [OutputType]
     public sealed class GetResourceGroupsResult
     {
+        public readonly bool? EnableDetails;
         /// <summary>
         /// A list of resource groups. Each element contains the following attributes:
         /// </summary>
@@ -104,12 +111,14 @@ namespace Pulumi.AliCloud.ResourceManager
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+        /// The status of the regional resource group.
         /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]
         private GetResourceGroupsResult(
+            bool? enableDetails,
+
             ImmutableArray<Outputs.GetResourceGroupsGroupResult> groups,
 
             string id,
@@ -124,6 +133,7 @@ namespace Pulumi.AliCloud.ResourceManager
 
             string? status)
         {
+            EnableDetails = enableDetails;
             Groups = groups;
             Id = id;
             Ids = ids;

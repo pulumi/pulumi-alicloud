@@ -33,6 +33,7 @@ export function getResourceGroups(args?: GetResourceGroupsArgs, opts?: pulumi.In
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:resourcemanager/getResourceGroups:getResourceGroups", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -45,6 +46,10 @@ export function getResourceGroups(args?: GetResourceGroupsArgs, opts?: pulumi.In
  */
 export interface GetResourceGroupsArgs {
     /**
+     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
+    /**
      * A list of resource group IDs.
      */
     readonly ids?: string[];
@@ -54,7 +59,7 @@ export interface GetResourceGroupsArgs {
     readonly nameRegex?: string;
     readonly outputFile?: string;
     /**
-     * The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+     * The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
      */
     readonly status?: string;
 }
@@ -63,6 +68,7 @@ export interface GetResourceGroupsArgs {
  * A collection of values returned by getResourceGroups.
  */
 export interface GetResourceGroupsResult {
+    readonly enableDetails?: boolean;
     /**
      * A list of resource groups. Each element contains the following attributes:
      */
@@ -82,7 +88,7 @@ export interface GetResourceGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+     * The status of the regional resource group.
      */
     readonly status?: string;
 }

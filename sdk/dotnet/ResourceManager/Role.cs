@@ -65,6 +65,7 @@ namespace Pulumi.AliCloud.ResourceManager
     {
         /// <summary>
         /// The resource descriptor of the role.
+        /// * `create_date` (Removed form v1.114.0) - Role creation time.
         /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
@@ -74,12 +75,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Output("assumeRolePolicyDocument")]
         public Output<string> AssumeRolePolicyDocument { get; private set; } = null!;
-
-        /// <summary>
-        /// Role creation time.
-        /// </summary>
-        [Output("createDate")]
-        public Output<string> CreateDate { get; private set; } = null!;
 
         /// <summary>
         /// The description of the Resource Manager role.
@@ -187,6 +182,7 @@ namespace Pulumi.AliCloud.ResourceManager
     {
         /// <summary>
         /// The resource descriptor of the role.
+        /// * `create_date` (Removed form v1.114.0) - Role creation time.
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
@@ -196,12 +192,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Input("assumeRolePolicyDocument")]
         public Input<string>? AssumeRolePolicyDocument { get; set; }
-
-        /// <summary>
-        /// Role creation time.
-        /// </summary>
-        [Input("createDate")]
-        public Input<string>? CreateDate { get; set; }
 
         /// <summary>
         /// The description of the Resource Manager role.

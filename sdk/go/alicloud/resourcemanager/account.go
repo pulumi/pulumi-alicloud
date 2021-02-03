@@ -56,10 +56,12 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
+	// The name prefix of account.
+	AccountNamePrefix pulumi.StringPtrOutput `pulumi:"accountNamePrefix"`
 	// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The ID of the parent folder.
-	FolderId pulumi.StringPtrOutput `pulumi:"folderId"`
+	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// Ways for members to join the resource directory. Valid values: `invited`, `created`.
 	JoinMethod pulumi.StringOutput `pulumi:"joinMethod"`
 	// The time when the member joined the resource directory.
@@ -108,6 +110,8 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
+	// The name prefix of account.
+	AccountNamePrefix *string `pulumi:"accountNamePrefix"`
 	// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
 	DisplayName *string `pulumi:"displayName"`
 	// The ID of the parent folder.
@@ -129,6 +133,8 @@ type accountState struct {
 }
 
 type AccountState struct {
+	// The name prefix of account.
+	AccountNamePrefix pulumi.StringPtrInput
 	// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
 	DisplayName pulumi.StringPtrInput
 	// The ID of the parent folder.
@@ -154,6 +160,8 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
+	// The name prefix of account.
+	AccountNamePrefix *string `pulumi:"accountNamePrefix"`
 	// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the parent folder.
@@ -164,6 +172,8 @@ type accountArgs struct {
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
+	// The name prefix of account.
+	AccountNamePrefix pulumi.StringPtrInput
 	// Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
 	DisplayName pulumi.StringInput
 	// The ID of the parent folder.

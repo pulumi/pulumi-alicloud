@@ -20,7 +20,10 @@ class GetResourceGroupsResult:
     """
     A collection of values returned by getResourceGroups.
     """
-    def __init__(__self__, groups=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None):
+    def __init__(__self__, enable_details=None, groups=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None):
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if groups and not isinstance(groups, list):
             raise TypeError("Expected argument 'groups' to be a list")
         pulumi.set(__self__, "groups", groups)
@@ -42,6 +45,11 @@ class GetResourceGroupsResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -89,7 +97,7 @@ class GetResourceGroupsResult:
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+        The status of the regional resource group.
         """
         return pulumi.get(self, "status")
 
@@ -100,6 +108,7 @@ class AwaitableGetResourceGroupsResult(GetResourceGroupsResult):
         if False:
             yield self
         return GetResourceGroupsResult(
+            enable_details=self.enable_details,
             groups=self.groups,
             id=self.id,
             ids=self.ids,
@@ -109,7 +118,8 @@ class AwaitableGetResourceGroupsResult(GetResourceGroupsResult):
             status=self.status)
 
 
-def get_resource_groups(ids: Optional[Sequence[str]] = None,
+def get_resource_groups(enable_details: Optional[bool] = None,
+                        ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
                         status: Optional[str] = None,
@@ -130,11 +140,13 @@ def get_resource_groups(ids: Optional[Sequence[str]] = None,
     ```
 
 
+    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of resource group IDs.
     :param str name_regex: A regex string to filter results by resource group name.
-    :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+    :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -146,6 +158,7 @@ def get_resource_groups(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getResourceGroups:getResourceGroups', __args__, opts=opts, typ=GetResourceGroupsResult).value
 
     return AwaitableGetResourceGroupsResult(
+        enable_details=__ret__.enable_details,
         groups=__ret__.groups,
         id=__ret__.id,
         ids=__ret__.ids,

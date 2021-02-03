@@ -61,13 +61,17 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
+     * The name prefix of account.
+     */
+    public readonly accountNamePrefix!: pulumi.Output<string | undefined>;
+    /**
      * Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
      * The ID of the parent folder.
      */
-    public readonly folderId!: pulumi.Output<string | undefined>;
+    public readonly folderId!: pulumi.Output<string>;
     /**
      * Ways for members to join the resource directory. Valid values: `invited`, `created`.
      */
@@ -109,6 +113,7 @@ export class Account extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as AccountState | undefined;
+            inputs["accountNamePrefix"] = state ? state.accountNamePrefix : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["folderId"] = state ? state.folderId : undefined;
             inputs["joinMethod"] = state ? state.joinMethod : undefined;
@@ -123,6 +128,7 @@ export class Account extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
+            inputs["accountNamePrefix"] = args ? args.accountNamePrefix : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["folderId"] = args ? args.folderId : undefined;
             inputs["payerAccountId"] = args ? args.payerAccountId : undefined;
@@ -148,6 +154,10 @@ export class Account extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Account resources.
  */
 export interface AccountState {
+    /**
+     * The name prefix of account.
+     */
+    readonly accountNamePrefix?: pulumi.Input<string>;
     /**
      * Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
      */
@@ -190,6 +200,10 @@ export interface AccountState {
  * The set of arguments for constructing a Account resource.
  */
 export interface AccountArgs {
+    /**
+     * The name prefix of account.
+     */
+    readonly accountNamePrefix?: pulumi.Input<string>;
     /**
      * Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
      */

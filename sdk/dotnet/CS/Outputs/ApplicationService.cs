@@ -13,21 +13,9 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class ApplicationService
     {
-        /// <summary>
-        /// ID of the service.
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// The current status of service.
-        /// </summary>
         public readonly string? Status;
-        /// <summary>
-        /// The application deploying version. Each updating, it must be different with current. Default to "1.0"
-        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

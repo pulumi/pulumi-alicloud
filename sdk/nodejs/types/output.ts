@@ -91,6 +91,7 @@ export interface ProviderEndpoint {
     ga?: string;
     gpdb?: string;
     hitsdb?: string;
+    ims?: string;
     kms?: string;
     kvstore?: string;
     location?: string;
@@ -2317,6 +2318,7 @@ export namespace config {
         ga?: string;
         gpdb?: string;
         hitsdb?: string;
+        ims?: string;
         kms?: string;
         kvstore?: string;
         location?: string;
@@ -2453,21 +2455,9 @@ export namespace cr {
 
 export namespace cs {
     export interface ApplicationService {
-        /**
-         * ID of the service.
-         */
         id: string;
-        /**
-         * The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-         */
         name: string;
-        /**
-         * The current status of service.
-         */
         status: string;
-        /**
-         * The application deploying version. Each updating, it must be different with current. Default to "1.0"
-         */
         version: string;
     }
 
@@ -3430,25 +3420,10 @@ export namespace cs {
     }
 
     export interface SwarmNode {
-        /**
-         * The Elastic IP address of node.
-         */
         eip: string;
-        /**
-         * ID of the node.
-         */
         id: string;
-        /**
-         * The container cluster's name. It is the only in one Alicloud account.
-         */
         name: string;
-        /**
-         * The private IP address of node.
-         */
         privateIp: string;
-        /**
-         * The node current status. It is different with instance status.
-         */
         status: string;
     }
 }
@@ -7376,14 +7351,6 @@ export namespace ga {
          */
         endpoint: string;
         /**
-         * Probe Port.
-         */
-        probePort: number;
-        /**
-         * Probe Protocol.
-         */
-        probeProtocol: string;
-        /**
          * The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
          */
         type: string;
@@ -10501,10 +10468,19 @@ export namespace ram {
          * Policy document of the policy.
          */
         document: string;
+        id: string;
         /**
          * Name of the policy.
          */
         name: string;
+        /**
+         * Policy document of the policy.
+         */
+        policyDocument: string;
+        /**
+         * Name of the policy.
+         */
+        policyName: string;
         /**
          * Filter results by a specific policy type. Valid values are `Custom` and `System`.
          */
@@ -10513,6 +10489,14 @@ export namespace ram {
          * Update date of the policy.
          */
         updateDate: string;
+        /**
+         * Filter results by a specific user name. Returned policies are attached to the specified user.
+         */
+        userName: string;
+        /**
+         * The ID of default policy.
+         */
+        versionId: string;
     }
 
     export interface GetRolesRole {
@@ -10546,6 +10530,33 @@ export namespace ram {
         name: string;
         /**
          * Update date of the role.
+         */
+        updateDate: string;
+    }
+
+    export interface GetSamlProvidersProvider {
+        /**
+         * The Alibaba Cloud Resource Name (ARN) of the IdP.
+         */
+        arn: string;
+        /**
+         * The description of SAML Provider.
+         */
+        description: string;
+        /**
+         * The encodedsaml metadata document.
+         */
+        encodedsamlMetadataDocument: string;
+        /**
+         * The ID of the SAML Provider.
+         */
+        id: string;
+        /**
+         * The saml provider name.
+         */
+        samlProviderName: string;
+        /**
+         * The update time.
          */
         updateDate: string;
     }
@@ -10822,7 +10833,7 @@ export namespace resourcemanager {
          */
         resourceDirectoryId: string;
         /**
-         * The status of the member account.
+         * The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
          */
         status: string;
         /**
@@ -10838,8 +10849,13 @@ export namespace resourcemanager {
          * The ID of the folder.
          * * `folderId`- The ID of the folder.
          * * `folderName`- The name of the folder.
+         * * `parentFolderId`- (Available in v1.114.0+)The ID of the parent folder.
          */
         id: string;
+        /**
+         * The ID of the parent folder.
+         */
+        parentFolderId: string;
     }
 
     export interface GetHandshakesHandshake {
@@ -10854,6 +10870,10 @@ export namespace resourcemanager {
          */
         id: string;
         /**
+         * (Available in v1.114.0+) The real name of the invited account.
+         */
+        invitedAccountRealName: string;
+        /**
          * The ID of the master account of the resource directory.
          */
         masterAccountId: string;
@@ -10861,6 +10881,10 @@ export namespace resourcemanager {
          * The name of the master account of the resource directory.
          */
         masterAccountName: string;
+        /**
+         * (Available in v1.114.0+) The real name of the master account of the resource directory.
+         */
+        masterAccountRealName: string;
         /**
          * The time when the invitation was modified.
          */
@@ -10874,7 +10898,7 @@ export namespace resourcemanager {
          */
         resourceDirectoryId: string;
         /**
-         * The status of the invitation.
+         * The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
          */
         status: string;
         /**
@@ -10892,10 +10916,6 @@ export namespace resourcemanager {
          * The number of times the policy is referenced.
          */
         attachmentCount: number;
-        /**
-         * The time when the policy was created.
-         */
-        createDate: string;
         /**
          * The default version of the policy.
          */
@@ -10961,15 +10981,16 @@ export namespace resourcemanager {
     }
 
     export interface GetPolicyVersionsVersion {
-        createDate: string;
         /**
          * The ID of the resource, the value is `<policy_name>`:`<version_id>`.
          * * `versionId`- The ID of the policy version.
-         * * `createDate`- The time when the policy version was created.
+         * * `createDate`- (Removed form v1.114.0)The time when the policy version was created.
          * * `isDefaultVersion`- Indicates whether the policy version is the default version.
+         * * `policyDocument`- (Available in v1.114.0+) The policy document of the policy version.
          */
         id: string;
         isDefaultVersion: boolean;
+        policyDocument: string;
         versionId: string;
     }
 
@@ -10998,10 +11019,6 @@ export namespace resourcemanager {
          */
         accountId: string;
         /**
-         * The time when the resource group was created.
-         */
-        createDate: string;
-        /**
          * The display name of the resource group.
          */
         displayName: string;
@@ -11013,8 +11030,24 @@ export namespace resourcemanager {
          * The unique identifier of the resource group.
          */
         name: string;
+        regionStatuses: outputs.resourcemanager.GetResourceGroupsGroupRegionStatus[];
         /**
-         * The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+         * (Available in v1.114.0+) The unique identifier of the resource group.
+         */
+        resourceGroupName: string;
+        /**
+         * The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+         */
+        status: string;
+    }
+
+    export interface GetResourceGroupsGroupRegionStatus {
+        /**
+         * The region ID.
+         */
+        regionId: string;
+        /**
+         * The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
          */
         status: string;
     }
@@ -11044,17 +11077,18 @@ export namespace resourcemanager {
 
     export interface GetRolesRole {
         arn: string;
-        createDate: string;
+        assumeRolePolicyDocument: string;
         description: string;
         /**
          * The ID of the role.
          * * `roleId`- The ID of the role.
          * * `roleName`- The name of the role.
          * * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-         * * `createDate`- The time when the RAM role was created.
+         * * `createDate`- (Removed form v1.114.0) The time when the RAM role was created.
          * * `updateDate`- The time when the RAM role was updated.
          * * `description`- The description of the RAM role.
          * * `maxSessionDuration`- The maximum session duration of the RAM role.
+         * * `assumeRolePolicyDocument`- (Available in v1.114.0+) The assume role policy document.
          */
         id: string;
         maxSessionDuration: number;

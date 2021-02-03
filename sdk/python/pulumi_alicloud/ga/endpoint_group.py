@@ -55,7 +55,7 @@ class EndpointGroup(pulumi.CustomResource):
             auto_use_coupon=True,
             spec="1")
         example_listener = alicloud.ga.Listener("exampleListener",
-            accelerator_id="alicloud_ga_accelerator.example.id",
+            accelerator_id=example_accelerator.id,
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=60,
                 to_port=70,

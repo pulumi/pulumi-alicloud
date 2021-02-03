@@ -12,27 +12,15 @@ namespace Pulumi.AliCloud.CS.Inputs
 
     public sealed class ApplicationServiceArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// ID of the service.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The current status of service.
-        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
-        /// <summary>
-        /// The application deploying version. Each updating, it must be different with current. Default to "1.0"
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

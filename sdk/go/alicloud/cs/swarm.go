@@ -11,96 +11,28 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// > **DEPRECATED:** This resource manages swarm cluster, which is being deprecated and will be replaced by Kubernetes cluster.
-//
-// This resource will help you to manager a Swarm Cluster.
-//
-// > **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitchId`.
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewSwarm(ctx, "myCluster", &cs.SwarmArgs{
-// 			Password:     pulumi.String("Yourpassword1234"),
-// 			InstanceType: pulumi.String("ecs.n4.small"),
-// 			NodeNumber:   pulumi.Int(2),
-// 			DiskCategory: pulumi.String("cloud_efficiency"),
-// 			DiskSize:     pulumi.Int(20),
-// 			CidrBlock:    pulumi.String("172.18.0.0/24"),
-// 			ImageId:      pulumi.Any(_var.Image_id),
-// 			VswitchId:    pulumi.Any(_var.Vswitch_id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ## Import
-//
-// Swarm cluster can be imported using the id, e.g.
-//
-// ```sh
-//  $ pulumi import alicloud:cs/swarm:Swarm foo cf123456789
-// ```
 type Swarm struct {
 	pulumi.CustomResourceState
 
-	// The nodes agent version.
-	AgentVersion pulumi.StringOutput `pulumi:"agentVersion"`
-	// The CIDR block for the Container. It can not be same as the CIDR used by the VPC.
-	// Valid value:
-	// - 192.168.0.0/16
-	// - 172.19-30.0.0/16
-	// - 10.0.0.0/16
-	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
-	// The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	DiskCategory pulumi.StringPtrOutput `pulumi:"diskCategory"`
-	// The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
-	DiskSize pulumi.IntPtrOutput `pulumi:"diskSize"`
-	// The image ID of ECS instance node used. Default to System automate allocated.
-	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
-	// The type of ECS instance node.
-	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// Whether to use outdated instance type. Default to false.
-	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
-	// The container cluster's name. It is the only in one Alicloud account.
-	Name       pulumi.StringOutput    `pulumi:"name"`
-	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
-	NeedSlb pulumi.BoolPtrOutput `pulumi:"needSlb"`
-	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
-	NodeNumber pulumi.IntPtrOutput `pulumi:"nodeNumber"`
-	// List of cluster nodes. It contains several attributes to `Block Nodes`.
-	Nodes SwarmNodeArrayOutput `pulumi:"nodes"`
-	// The password of ECS instance node.
-	Password pulumi.StringOutput `pulumi:"password"`
-	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	ReleaseEip pulumi.BoolPtrOutput `pulumi:"releaseEip"`
-	// The ID of security group where the current cluster worker node is located.
-	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-	//
+	AgentVersion    pulumi.StringOutput    `pulumi:"agentVersion"`
+	CidrBlock       pulumi.StringOutput    `pulumi:"cidrBlock"`
+	DiskCategory    pulumi.StringPtrOutput `pulumi:"diskCategory"`
+	DiskSize        pulumi.IntPtrOutput    `pulumi:"diskSize"`
+	ImageId         pulumi.StringPtrOutput `pulumi:"imageId"`
+	InstanceType    pulumi.StringOutput    `pulumi:"instanceType"`
+	IsOutdated      pulumi.BoolPtrOutput   `pulumi:"isOutdated"`
+	Name            pulumi.StringOutput    `pulumi:"name"`
+	NamePrefix      pulumi.StringPtrOutput `pulumi:"namePrefix"`
+	NeedSlb         pulumi.BoolPtrOutput   `pulumi:"needSlb"`
+	NodeNumber      pulumi.IntPtrOutput    `pulumi:"nodeNumber"`
+	Nodes           SwarmNodeArrayOutput   `pulumi:"nodes"`
+	Password        pulumi.StringOutput    `pulumi:"password"`
+	ReleaseEip      pulumi.BoolPtrOutput   `pulumi:"releaseEip"`
+	SecurityGroupId pulumi.StringOutput    `pulumi:"securityGroupId"`
 	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-	Size pulumi.IntPtrOutput `pulumi:"size"`
-	// The ID of load balancer where the current cluster worker node is located.
-	SlbId pulumi.StringOutput `pulumi:"slbId"`
-	// The ID of VPC where the current cluster is located.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
+	Size      pulumi.IntPtrOutput `pulumi:"size"`
+	SlbId     pulumi.StringOutput `pulumi:"slbId"`
+	VpcId     pulumi.StringOutput `pulumi:"vpcId"`
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
 
@@ -145,94 +77,48 @@ func GetSwarm(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Swarm resources.
 type swarmState struct {
-	// The nodes agent version.
-	AgentVersion *string `pulumi:"agentVersion"`
-	// The CIDR block for the Container. It can not be same as the CIDR used by the VPC.
-	// Valid value:
-	// - 192.168.0.0/16
-	// - 172.19-30.0.0/16
-	// - 10.0.0.0/16
-	CidrBlock *string `pulumi:"cidrBlock"`
-	// The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	DiskCategory *string `pulumi:"diskCategory"`
-	// The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
-	DiskSize *int `pulumi:"diskSize"`
-	// The image ID of ECS instance node used. Default to System automate allocated.
-	ImageId *string `pulumi:"imageId"`
-	// The type of ECS instance node.
-	InstanceType *string `pulumi:"instanceType"`
-	// Whether to use outdated instance type. Default to false.
-	IsOutdated *bool `pulumi:"isOutdated"`
-	// The container cluster's name. It is the only in one Alicloud account.
-	Name       *string `pulumi:"name"`
-	NamePrefix *string `pulumi:"namePrefix"`
-	// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
-	NeedSlb *bool `pulumi:"needSlb"`
-	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
-	NodeNumber *int `pulumi:"nodeNumber"`
-	// List of cluster nodes. It contains several attributes to `Block Nodes`.
-	Nodes []SwarmNode `pulumi:"nodes"`
-	// The password of ECS instance node.
-	Password *string `pulumi:"password"`
-	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	ReleaseEip *bool `pulumi:"releaseEip"`
-	// The ID of security group where the current cluster worker node is located.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-	//
+	AgentVersion    *string     `pulumi:"agentVersion"`
+	CidrBlock       *string     `pulumi:"cidrBlock"`
+	DiskCategory    *string     `pulumi:"diskCategory"`
+	DiskSize        *int        `pulumi:"diskSize"`
+	ImageId         *string     `pulumi:"imageId"`
+	InstanceType    *string     `pulumi:"instanceType"`
+	IsOutdated      *bool       `pulumi:"isOutdated"`
+	Name            *string     `pulumi:"name"`
+	NamePrefix      *string     `pulumi:"namePrefix"`
+	NeedSlb         *bool       `pulumi:"needSlb"`
+	NodeNumber      *int        `pulumi:"nodeNumber"`
+	Nodes           []SwarmNode `pulumi:"nodes"`
+	Password        *string     `pulumi:"password"`
+	ReleaseEip      *bool       `pulumi:"releaseEip"`
+	SecurityGroupId *string     `pulumi:"securityGroupId"`
 	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-	Size *int `pulumi:"size"`
-	// The ID of load balancer where the current cluster worker node is located.
-	SlbId *string `pulumi:"slbId"`
-	// The ID of VPC where the current cluster is located.
-	VpcId *string `pulumi:"vpcId"`
-	// The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
+	Size      *int    `pulumi:"size"`
+	SlbId     *string `pulumi:"slbId"`
+	VpcId     *string `pulumi:"vpcId"`
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type SwarmState struct {
-	// The nodes agent version.
-	AgentVersion pulumi.StringPtrInput
-	// The CIDR block for the Container. It can not be same as the CIDR used by the VPC.
-	// Valid value:
-	// - 192.168.0.0/16
-	// - 172.19-30.0.0/16
-	// - 10.0.0.0/16
-	CidrBlock pulumi.StringPtrInput
-	// The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	DiskCategory pulumi.StringPtrInput
-	// The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
-	DiskSize pulumi.IntPtrInput
-	// The image ID of ECS instance node used. Default to System automate allocated.
-	ImageId pulumi.StringPtrInput
-	// The type of ECS instance node.
-	InstanceType pulumi.StringPtrInput
-	// Whether to use outdated instance type. Default to false.
-	IsOutdated pulumi.BoolPtrInput
-	// The container cluster's name. It is the only in one Alicloud account.
-	Name       pulumi.StringPtrInput
-	NamePrefix pulumi.StringPtrInput
-	// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
-	NeedSlb pulumi.BoolPtrInput
-	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
-	NodeNumber pulumi.IntPtrInput
-	// List of cluster nodes. It contains several attributes to `Block Nodes`.
-	Nodes SwarmNodeArrayInput
-	// The password of ECS instance node.
-	Password pulumi.StringPtrInput
-	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	ReleaseEip pulumi.BoolPtrInput
-	// The ID of security group where the current cluster worker node is located.
+	AgentVersion    pulumi.StringPtrInput
+	CidrBlock       pulumi.StringPtrInput
+	DiskCategory    pulumi.StringPtrInput
+	DiskSize        pulumi.IntPtrInput
+	ImageId         pulumi.StringPtrInput
+	InstanceType    pulumi.StringPtrInput
+	IsOutdated      pulumi.BoolPtrInput
+	Name            pulumi.StringPtrInput
+	NamePrefix      pulumi.StringPtrInput
+	NeedSlb         pulumi.BoolPtrInput
+	NodeNumber      pulumi.IntPtrInput
+	Nodes           SwarmNodeArrayInput
+	Password        pulumi.StringPtrInput
+	ReleaseEip      pulumi.BoolPtrInput
 	SecurityGroupId pulumi.StringPtrInput
-	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-	//
 	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-	Size pulumi.IntPtrInput
-	// The ID of load balancer where the current cluster worker node is located.
-	SlbId pulumi.StringPtrInput
-	// The ID of VPC where the current cluster is located.
-	VpcId pulumi.StringPtrInput
-	// The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
+	Size      pulumi.IntPtrInput
+	SlbId     pulumi.StringPtrInput
+	VpcId     pulumi.StringPtrInput
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -241,75 +127,39 @@ func (SwarmState) ElementType() reflect.Type {
 }
 
 type swarmArgs struct {
-	// The CIDR block for the Container. It can not be same as the CIDR used by the VPC.
-	// Valid value:
-	// - 192.168.0.0/16
-	// - 172.19-30.0.0/16
-	// - 10.0.0.0/16
-	CidrBlock string `pulumi:"cidrBlock"`
-	// The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	CidrBlock    string  `pulumi:"cidrBlock"`
 	DiskCategory *string `pulumi:"diskCategory"`
-	// The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
-	DiskSize *int `pulumi:"diskSize"`
-	// The image ID of ECS instance node used. Default to System automate allocated.
-	ImageId *string `pulumi:"imageId"`
-	// The type of ECS instance node.
-	InstanceType string `pulumi:"instanceType"`
-	// Whether to use outdated instance type. Default to false.
-	IsOutdated *bool `pulumi:"isOutdated"`
-	// The container cluster's name. It is the only in one Alicloud account.
-	Name       *string `pulumi:"name"`
-	NamePrefix *string `pulumi:"namePrefix"`
-	// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
-	NeedSlb *bool `pulumi:"needSlb"`
-	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
-	NodeNumber *int `pulumi:"nodeNumber"`
-	// The password of ECS instance node.
-	Password string `pulumi:"password"`
-	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	ReleaseEip *bool `pulumi:"releaseEip"`
-	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-	//
+	DiskSize     *int    `pulumi:"diskSize"`
+	ImageId      *string `pulumi:"imageId"`
+	InstanceType string  `pulumi:"instanceType"`
+	IsOutdated   *bool   `pulumi:"isOutdated"`
+	Name         *string `pulumi:"name"`
+	NamePrefix   *string `pulumi:"namePrefix"`
+	NeedSlb      *bool   `pulumi:"needSlb"`
+	NodeNumber   *int    `pulumi:"nodeNumber"`
+	Password     string  `pulumi:"password"`
+	ReleaseEip   *bool   `pulumi:"releaseEip"`
 	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-	Size *int `pulumi:"size"`
-	// The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
+	Size      *int   `pulumi:"size"`
 	VswitchId string `pulumi:"vswitchId"`
 }
 
 // The set of arguments for constructing a Swarm resource.
 type SwarmArgs struct {
-	// The CIDR block for the Container. It can not be same as the CIDR used by the VPC.
-	// Valid value:
-	// - 192.168.0.0/16
-	// - 172.19-30.0.0/16
-	// - 10.0.0.0/16
-	CidrBlock pulumi.StringInput
-	// The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	CidrBlock    pulumi.StringInput
 	DiskCategory pulumi.StringPtrInput
-	// The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
-	DiskSize pulumi.IntPtrInput
-	// The image ID of ECS instance node used. Default to System automate allocated.
-	ImageId pulumi.StringPtrInput
-	// The type of ECS instance node.
+	DiskSize     pulumi.IntPtrInput
+	ImageId      pulumi.StringPtrInput
 	InstanceType pulumi.StringInput
-	// Whether to use outdated instance type. Default to false.
-	IsOutdated pulumi.BoolPtrInput
-	// The container cluster's name. It is the only in one Alicloud account.
-	Name       pulumi.StringPtrInput
-	NamePrefix pulumi.StringPtrInput
-	// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
-	NeedSlb pulumi.BoolPtrInput
-	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
-	NodeNumber pulumi.IntPtrInput
-	// The password of ECS instance node.
-	Password pulumi.StringInput
-	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	ReleaseEip pulumi.BoolPtrInput
-	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-	//
+	IsOutdated   pulumi.BoolPtrInput
+	Name         pulumi.StringPtrInput
+	NamePrefix   pulumi.StringPtrInput
+	NeedSlb      pulumi.BoolPtrInput
+	NodeNumber   pulumi.IntPtrInput
+	Password     pulumi.StringInput
+	ReleaseEip   pulumi.BoolPtrInput
 	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-	Size pulumi.IntPtrInput
-	// The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
+	Size      pulumi.IntPtrInput
 	VswitchId pulumi.StringInput
 }
 

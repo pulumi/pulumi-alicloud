@@ -33,10 +33,19 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// Policy document of the policy.
         /// </summary>
         public readonly string Document;
+        public readonly string Id;
         /// <summary>
         /// Name of the policy.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Policy document of the policy.
+        /// </summary>
+        public readonly string PolicyDocument;
+        /// <summary>
+        /// Name of the policy.
+        /// </summary>
+        public readonly string PolicyName;
         /// <summary>
         /// Filter results by a specific policy type. Valid values are `Custom` and `System`.
         /// </summary>
@@ -45,6 +54,14 @@ namespace Pulumi.AliCloud.Ram.Outputs
         /// Update date of the policy.
         /// </summary>
         public readonly string UpdateDate;
+        /// <summary>
+        /// Filter results by a specific user name. Returned policies are attached to the specified user.
+        /// </summary>
+        public readonly string UserName;
+        /// <summary>
+        /// The ID of default policy.
+        /// </summary>
+        public readonly string VersionId;
 
         [OutputConstructor]
         private GetPoliciesPolicyResult(
@@ -58,20 +75,35 @@ namespace Pulumi.AliCloud.Ram.Outputs
 
             string document,
 
+            string id,
+
             string name,
+
+            string policyDocument,
+
+            string policyName,
 
             string type,
 
-            string updateDate)
+            string updateDate,
+
+            string userName,
+
+            string versionId)
         {
             AttachmentCount = attachmentCount;
             CreateDate = createDate;
             DefaultVersion = defaultVersion;
             Description = description;
             Document = document;
+            Id = id;
             Name = name;
+            PolicyDocument = policyDocument;
+            PolicyName = policyName;
             Type = type;
             UpdateDate = updateDate;
+            UserName = userName;
+            VersionId = versionId;
         }
     }
 }

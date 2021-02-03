@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
+from . import outputs
 
 __all__ = [
     'ResourceGroupRegionStatus',
@@ -18,6 +19,7 @@ __all__ = [
     'GetPolicyVersionsVersionResult',
     'GetResourceDirectoriesDirectoryResult',
     'GetResourceGroupsGroupResult',
+    'GetResourceGroupsGroupRegionStatusResult',
     'GetResourceSharesShareResult',
     'GetRolesRoleResult',
     'GetSharedResourcesResourceResult',
@@ -80,7 +82,7 @@ class GetAccountsAccountResult(dict):
         :param str join_time: The time when the member account joined the resource directory.
         :param str modify_time: The time when the member account was modified.
         :param str resource_directory_id: The ID of the resource directory.
-        :param str status: The status of the member account.
+        :param str status: The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
         :param str type: The type of the member account.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -158,7 +160,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the member account.
+        The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
         """
         return pulumi.get(self, "status")
 
@@ -176,15 +178,19 @@ class GetFoldersFolderResult(dict):
     def __init__(__self__, *,
                  folder_id: str,
                  folder_name: str,
-                 id: str):
+                 id: str,
+                 parent_folder_id: str):
         """
         :param str id: The ID of the folder.
                * `folder_id`- The ID of the folder.
                * `folder_name`- The name of the folder.
+               * `parent_folder_id`- (Available in v1.114.0+)The ID of the parent folder.
+        :param str parent_folder_id: The ID of the parent folder.
         """
         pulumi.set(__self__, "folder_id", folder_id)
         pulumi.set(__self__, "folder_name", folder_name)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "parent_folder_id", parent_folder_id)
 
     @property
     @pulumi.getter(name="folderId")
@@ -203,8 +209,17 @@ class GetFoldersFolderResult(dict):
         The ID of the folder.
         * `folder_id`- The ID of the folder.
         * `folder_name`- The name of the folder.
+        * `parent_folder_id`- (Available in v1.114.0+)The ID of the parent folder.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="parentFolderId")
+    def parent_folder_id(self) -> str:
+        """
+        The ID of the parent folder.
+        """
+        return pulumi.get(self, "parent_folder_id")
 
 
 @pulumi.output_type
@@ -213,8 +228,10 @@ class GetHandshakesHandshakeResult(dict):
                  expire_time: str,
                  handshake_id: str,
                  id: str,
+                 invited_account_real_name: str,
                  master_account_id: str,
                  master_account_name: str,
+                 master_account_real_name: str,
                  modify_time: str,
                  note: str,
                  resource_directory_id: str,
@@ -225,20 +242,24 @@ class GetHandshakesHandshakeResult(dict):
         :param str expire_time: The time when the invitation expires.
         :param str id: The ID of the resource.
                * `handshake_id`- The ID of the invitation.
+        :param str invited_account_real_name: (Available in v1.114.0+) The real name of the invited account.
         :param str master_account_id: The ID of the master account of the resource directory.
         :param str master_account_name: The name of the master account of the resource directory.
+        :param str master_account_real_name: (Available in v1.114.0+) The real name of the master account of the resource directory.
         :param str modify_time: The time when the invitation was modified.
         :param str note: The invitation note.
         :param str resource_directory_id: The ID of the resource directory.
-        :param str status: The status of the invitation.
+        :param str status: The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
         :param str target_entity: The ID or logon email address of the invited account.
         :param str target_type: The type of the invited account.
         """
         pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "handshake_id", handshake_id)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "invited_account_real_name", invited_account_real_name)
         pulumi.set(__self__, "master_account_id", master_account_id)
         pulumi.set(__self__, "master_account_name", master_account_name)
+        pulumi.set(__self__, "master_account_real_name", master_account_real_name)
         pulumi.set(__self__, "modify_time", modify_time)
         pulumi.set(__self__, "note", note)
         pulumi.set(__self__, "resource_directory_id", resource_directory_id)
@@ -269,6 +290,14 @@ class GetHandshakesHandshakeResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="invitedAccountRealName")
+    def invited_account_real_name(self) -> str:
+        """
+        (Available in v1.114.0+) The real name of the invited account.
+        """
+        return pulumi.get(self, "invited_account_real_name")
+
+    @property
     @pulumi.getter(name="masterAccountId")
     def master_account_id(self) -> str:
         """
@@ -283,6 +312,14 @@ class GetHandshakesHandshakeResult(dict):
         The name of the master account of the resource directory.
         """
         return pulumi.get(self, "master_account_name")
+
+    @property
+    @pulumi.getter(name="masterAccountRealName")
+    def master_account_real_name(self) -> str:
+        """
+        (Available in v1.114.0+) The real name of the master account of the resource directory.
+        """
+        return pulumi.get(self, "master_account_real_name")
 
     @property
     @pulumi.getter(name="modifyTime")
@@ -312,7 +349,7 @@ class GetHandshakesHandshakeResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the invitation.
+        The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
         """
         return pulumi.get(self, "status")
 
@@ -337,7 +374,6 @@ class GetHandshakesHandshakeResult(dict):
 class GetPoliciesPolicyResult(dict):
     def __init__(__self__, *,
                  attachment_count: int,
-                 create_date: str,
                  default_version: str,
                  description: str,
                  id: str,
@@ -346,7 +382,6 @@ class GetPoliciesPolicyResult(dict):
                  update_date: str):
         """
         :param int attachment_count: The number of times the policy is referenced.
-        :param str create_date: The time when the policy was created.
         :param str default_version: The default version of the policy.
         :param str description: The description of the policy.
         :param str id: The ID of the policy.
@@ -356,7 +391,6 @@ class GetPoliciesPolicyResult(dict):
         :param str update_date: The time when the policy was updated.
         """
         pulumi.set(__self__, "attachment_count", attachment_count)
-        pulumi.set(__self__, "create_date", create_date)
         pulumi.set(__self__, "default_version", default_version)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -371,14 +405,6 @@ class GetPoliciesPolicyResult(dict):
         The number of times the policy is referenced.
         """
         return pulumi.get(self, "attachment_count")
-
-    @property
-    @pulumi.getter(name="createDate")
-    def create_date(self) -> str:
-        """
-        The time when the policy was created.
-        """
-        return pulumi.get(self, "create_date")
 
     @property
     @pulumi.getter(name="defaultVersion")
@@ -534,25 +560,21 @@ class GetPolicyAttachmentsAttachmentResult(dict):
 @pulumi.output_type
 class GetPolicyVersionsVersionResult(dict):
     def __init__(__self__, *,
-                 create_date: str,
                  id: str,
                  is_default_version: bool,
+                 policy_document: str,
                  version_id: str):
         """
         :param str id: The ID of the resource, the value is `<policy_name>`:`<version_id>`.
                * `version_id`- The ID of the policy version.
-               * `create_date`- The time when the policy version was created.
+               * `create_date`- (Removed form v1.114.0)The time when the policy version was created.
                * `is_default_version`- Indicates whether the policy version is the default version.
+               * `policy_document`- (Available in v1.114.0+) The policy document of the policy version.
         """
-        pulumi.set(__self__, "create_date", create_date)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_default_version", is_default_version)
+        pulumi.set(__self__, "policy_document", policy_document)
         pulumi.set(__self__, "version_id", version_id)
-
-    @property
-    @pulumi.getter(name="createDate")
-    def create_date(self) -> str:
-        return pulumi.get(self, "create_date")
 
     @property
     @pulumi.getter
@@ -560,8 +582,9 @@ class GetPolicyVersionsVersionResult(dict):
         """
         The ID of the resource, the value is `<policy_name>`:`<version_id>`.
         * `version_id`- The ID of the policy version.
-        * `create_date`- The time when the policy version was created.
+        * `create_date`- (Removed form v1.114.0)The time when the policy version was created.
         * `is_default_version`- Indicates whether the policy version is the default version.
+        * `policy_document`- (Available in v1.114.0+) The policy document of the policy version.
         """
         return pulumi.get(self, "id")
 
@@ -569,6 +592,11 @@ class GetPolicyVersionsVersionResult(dict):
     @pulumi.getter(name="isDefaultVersion")
     def is_default_version(self) -> bool:
         return pulumi.get(self, "is_default_version")
+
+    @property
+    @pulumi.getter(name="policyDocument")
+    def policy_document(self) -> str:
+        return pulumi.get(self, "policy_document")
 
     @property
     @pulumi.getter(name="versionId")
@@ -638,24 +666,26 @@ class GetResourceDirectoriesDirectoryResult(dict):
 class GetResourceGroupsGroupResult(dict):
     def __init__(__self__, *,
                  account_id: str,
-                 create_date: str,
                  display_name: str,
                  id: str,
                  name: str,
+                 region_statuses: Sequence['outputs.GetResourceGroupsGroupRegionStatusResult'],
+                 resource_group_name: str,
                  status: str):
         """
         :param str account_id: The ID of the Alibaba Cloud account to which the resource group belongs.
-        :param str create_date: The time when the resource group was created.
         :param str display_name: The display name of the resource group.
         :param str id: The ID of the resource group.
         :param str name: The unique identifier of the resource group.
-        :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+        :param str resource_group_name: (Available in v1.114.0+) The unique identifier of the resource group.
+        :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "create_date", create_date)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region_statuses", region_statuses)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
         pulumi.set(__self__, "status", status)
 
     @property
@@ -665,14 +695,6 @@ class GetResourceGroupsGroupResult(dict):
         The ID of the Alibaba Cloud account to which the resource group belongs.
         """
         return pulumi.get(self, "account_id")
-
-    @property
-    @pulumi.getter(name="createDate")
-    def create_date(self) -> str:
-        """
-        The time when the resource group was created.
-        """
-        return pulumi.get(self, "create_date")
 
     @property
     @pulumi.getter(name="displayName")
@@ -699,10 +721,52 @@ class GetResourceGroupsGroupResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="regionStatuses")
+    def region_statuses(self) -> Sequence['outputs.GetResourceGroupsGroupRegionStatusResult']:
+        return pulumi.get(self, "region_statuses")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        (Available in v1.114.0+) The unique identifier of the resource group.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+        The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetResourceGroupsGroupRegionStatusResult(dict):
+    def __init__(__self__, *,
+                 region_id: str,
+                 status: str):
+        """
+        :param str region_id: The region ID.
+        :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+        """
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
         """
         return pulumi.get(self, "status")
 
@@ -773,7 +837,7 @@ class GetResourceSharesShareResult(dict):
 class GetRolesRoleResult(dict):
     def __init__(__self__, *,
                  arn: str,
-                 create_date: str,
+                 assume_role_policy_document: str,
                  description: str,
                  id: str,
                  max_session_duration: int,
@@ -785,13 +849,14 @@ class GetRolesRoleResult(dict):
                * `role_id`- The ID of the role.
                * `role_name`- The name of the role.
                * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-               * `create_date`- The time when the RAM role was created.
+               * `create_date`- (Removed form v1.114.0) The time when the RAM role was created.
                * `update_date`- The time when the RAM role was updated.
                * `description`- The description of the RAM role.
                * `max_session_duration`- The maximum session duration of the RAM role.
+               * `assume_role_policy_document`- (Available in v1.114.0+) The assume role policy document.
         """
         pulumi.set(__self__, "arn", arn)
-        pulumi.set(__self__, "create_date", create_date)
+        pulumi.set(__self__, "assume_role_policy_document", assume_role_policy_document)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "max_session_duration", max_session_duration)
@@ -805,9 +870,9 @@ class GetRolesRoleResult(dict):
         return pulumi.get(self, "arn")
 
     @property
-    @pulumi.getter(name="createDate")
-    def create_date(self) -> str:
-        return pulumi.get(self, "create_date")
+    @pulumi.getter(name="assumeRolePolicyDocument")
+    def assume_role_policy_document(self) -> str:
+        return pulumi.get(self, "assume_role_policy_document")
 
     @property
     @pulumi.getter
@@ -822,10 +887,11 @@ class GetRolesRoleResult(dict):
         * `role_id`- The ID of the role.
         * `role_name`- The name of the role.
         * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-        * `create_date`- The time when the RAM role was created.
+        * `create_date`- (Removed form v1.114.0) The time when the RAM role was created.
         * `update_date`- The time when the RAM role was updated.
         * `description`- The description of the RAM role.
         * `max_session_duration`- The maximum session duration of the RAM role.
+        * `assume_role_policy_document`- (Available in v1.114.0+) The assume role policy document.
         """
         return pulumi.get(self, "id")
 

@@ -93,8 +93,10 @@ type GetTemplatesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of OOS Template ids. Each element in the list is same as template_name.
-	Ids            []string               `pulumi:"ids"`
-	NameRegex      *string                `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// (Available in v1.114.0+) A list of OOS Template names.
+	Names          []string               `pulumi:"names"`
 	OutputFile     *string                `pulumi:"outputFile"`
 	ShareType      *string                `pulumi:"shareType"`
 	SortField      *string                `pulumi:"sortField"`

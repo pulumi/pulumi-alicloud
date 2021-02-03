@@ -177,6 +177,12 @@ namespace Pulumi.AliCloud.Oos
         public Output<string> StatusMessage { get; private set; } = null!;
 
         /// <summary>
+        /// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+        /// </summary>
+        [Output("templateContent")]
+        public Output<string?> TemplateContent { get; private set; } = null!;
+
+        /// <summary>
         /// The id of template.
         /// </summary>
         [Output("templateId")]
@@ -281,6 +287,12 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Input("safetyCheck")]
         public Input<string>? SafetyCheck { get; set; }
+
+        /// <summary>
+        /// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+        /// </summary>
+        [Input("templateContent")]
+        public Input<string>? TemplateContent { get; set; }
 
         /// <summary>
         /// The name of execution template.
@@ -396,6 +408,12 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Input("statusMessage")]
         public Input<string>? StatusMessage { get; set; }
+
+        /// <summary>
+        /// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+        /// </summary>
+        [Input("templateContent")]
+        public Input<string>? TemplateContent { get; set; }
 
         /// <summary>
         /// The id of template.

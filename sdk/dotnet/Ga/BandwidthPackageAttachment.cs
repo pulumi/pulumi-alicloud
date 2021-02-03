@@ -30,23 +30,23 @@ namespace Pulumi.AliCloud.Ga
     ///     {
     ///         var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new AliCloud.Ga.AcceleratorArgs
     ///         {
-    ///             AutoUseCoupon = true,
     ///             Duration = 1,
+    ///             AutoUseCoupon = true,
     ///             Spec = "1",
     ///         });
     ///         var exampleBandwidthPackage = new AliCloud.Ga.BandwidthPackage("exampleBandwidthPackage", new AliCloud.Ga.BandwidthPackageArgs
     ///         {
-    ///             AutoPay = true,
     ///             Bandwidth = 20,
+    ///             Type = "Basic",
     ///             BandwidthType = "Basic",
     ///             Duration = "1",
+    ///             AutoPay = true,
     ///             Ratio = 30,
-    ///             Type = "Basic",
     ///         });
     ///         var exampleBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new AliCloud.Ga.BandwidthPackageAttachmentArgs
     ///         {
-    ///             AcceleratorId = "alicloud_ga_accelerator.example.id",
-    ///             BandwidthPackageId = "alicloud_ga_bandwidth_package.example.id",
+    ///             AcceleratorId = exampleAccelerator.Id,
+    ///             BandwidthPackageId = exampleBandwidthPackage.Id,
     ///         });
     ///     }
     /// 
