@@ -108,6 +108,7 @@ export interface ProviderEndpoint {
     polardb?: string;
     privatelink?: string;
     pvtz?: string;
+    quotas?: string;
     rKvstore?: string;
     ram?: string;
     rds?: string;
@@ -2268,6 +2269,25 @@ export namespace cms {
         times?: number;
     }
 
+    export interface MonitorGroupInstancesInstance {
+        /**
+         * The category of instance.
+         */
+        category: string;
+        /**
+         * The id of instance.
+         */
+        instanceId: string;
+        /**
+         * The name of instance.
+         */
+        instanceName: string;
+        /**
+         * The region id of instance.
+         */
+        regionId: string;
+    }
+
     export interface SiteMonitorIspCity {
         city: string;
         isp: string;
@@ -2335,6 +2355,7 @@ export namespace config {
         polardb?: string;
         privatelink?: string;
         pvtz?: string;
+        quotas?: string;
         rKvstore?: string;
         ram?: string;
         rds?: string;
@@ -7781,6 +7802,60 @@ export namespace gpdb {
 }
 
 export namespace hbase {
+    export interface GetInstanceTypesCoreInstanceType {
+        /**
+         * Name of the category, single or cluster.
+         */
+        category: string;
+        /**
+         * Cpu size of the instance type.
+         */
+        cpuSize: number;
+        /**
+         * The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+         */
+        engine: string;
+        /**
+         * The hbase instance type of create hbase cluster instance.
+         */
+        instanceType: string;
+        /**
+         * Max count of the core instance nodes.
+         */
+        maxCoreCount: number;
+        /**
+         * Mem size of the instance type.
+         */
+        memSize: number;
+        /**
+         * Name of the storage type.
+         */
+        storageType: string;
+        /**
+         * The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+         */
+        version: string;
+        /**
+         * Name of zone id.
+         */
+        zone: string;
+    }
+
+    export interface GetInstanceTypesMasterInstanceType {
+        /**
+         * Cpu size of the instance type.
+         */
+        cpuSize: number;
+        /**
+         * The hbase instance type of create hbase cluster instance.
+         */
+        instanceType: string;
+        /**
+         * Mem size of the instance type.
+         */
+        memSize: number;
+    }
+
     export interface GetInstanceTypesType {
         /**
          * Cpu size of the instance type.
@@ -9001,7 +9076,7 @@ export namespace nas {
          */
         meteredSize: number;
         /**
-         * Filter results by a specific ProtocolType.
+         * Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
          */
         protocolType: string;
         /**
@@ -9009,7 +9084,7 @@ export namespace nas {
          */
         regionId: string;
         /**
-         * Filter results by a specific StorageType.
+         * Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
          */
         storageType: string;
     }
@@ -10432,6 +10507,174 @@ export namespace pvtz {
          * The Id of the vpc.
          */
         vpcId: string;
+    }
+}
+
+export namespace quotas {
+    export interface ApplicationInfoDimension {
+        /**
+         * The key of dimensions.
+         */
+        key?: string;
+        /**
+         * The value of dimensions.
+         */
+        value?: string;
+    }
+
+    export interface GetApplicationInfosDimension {
+        /**
+         * The key of dimensions.
+         */
+        key?: string;
+        /**
+         * The value of dimensions.
+         */
+        value?: string;
+    }
+
+    export interface GetApplicationInfosInfo {
+        /**
+         * The first ID of the resource.
+         */
+        applicationId: string;
+        /**
+         * The approve value.
+         */
+        approveValue: string;
+        /**
+         * The audit reason.
+         */
+        auditReason: string;
+        /**
+         * The desire value of the quota application.
+         */
+        desireValue: number;
+        /**
+         * The quota dimensions.
+         */
+        dimensions: outputs.quotas.GetApplicationInfosInfoDimension[];
+        /**
+         * The effective time.
+         */
+        effectiveTime: string;
+        /**
+         * The expire time.
+         */
+        expireTime: string;
+        /**
+         * The ID of the Application Info.
+         */
+        id: string;
+        /**
+         * The notice type.
+         */
+        noticeType: number;
+        /**
+         * The product code.
+         */
+        productCode: string;
+        /**
+         * The ID of quota action..
+         */
+        quotaActionCode: string;
+        /**
+         * The description of the quota.
+         */
+        quotaDescription: string;
+        /**
+         * The name of the quota.
+         */
+        quotaName: string;
+        /**
+         * The quota unit.
+         */
+        quotaUnit: string;
+        /**
+         * The reason of the quota application.
+         */
+        reason: string;
+        /**
+         * The status of the quota application.
+         */
+        status: string;
+    }
+
+    export interface GetApplicationInfosInfoDimension {
+        /**
+         * The key of dimensions.
+         */
+        key: string;
+        /**
+         * The value of dimensions.
+         */
+        value: string;
+    }
+
+    export interface GetQuotasDimension {
+        /**
+         * The key of dimensions.
+         */
+        key?: string;
+        /**
+         * The value of dimensions.
+         */
+        value?: string;
+    }
+
+    export interface GetQuotasQuota {
+        /**
+         * Is the quota adjustable.
+         */
+        adjustable: boolean;
+        /**
+         * The range of quota adjustment.
+         */
+        applicableRanges: string[];
+        /**
+         * The type of quota.
+         */
+        applicableType: string;
+        /**
+         * Show used quota.
+         */
+        consumable: boolean;
+        /**
+         * The ID of the Quota.
+         */
+        id: string;
+        /**
+         * The quota action code.
+         */
+        quotaActionCode: string;
+        /**
+         * The quota description.
+         */
+        quotaDescription: string;
+        /**
+         * The quota name.
+         */
+        quotaName: string;
+        /**
+         * The quota type.
+         */
+        quotaType: string;
+        /**
+         * The quota unit.
+         */
+        quotaUnit: string;
+        /**
+         * TotalQuota.
+         */
+        totalQuota: number;
+        /**
+         * The total of usage.
+         */
+        totalUsage: number;
+        /**
+         * The unadjustable detail.
+         */
+        unadjustableDetail: string;
     }
 }
 

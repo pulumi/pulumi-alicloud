@@ -64,6 +64,7 @@ export interface ProviderEndpoint {
     polardb?: pulumi.Input<string>;
     privatelink?: pulumi.Input<string>;
     pvtz?: pulumi.Input<string>;
+    quotas?: pulumi.Input<string>;
     rKvstore?: pulumi.Input<string>;
     ram?: pulumi.Input<string>;
     rds?: pulumi.Input<string>;
@@ -560,6 +561,25 @@ export namespace cms {
          * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: pulumi.Input<number>;
+    }
+
+    export interface MonitorGroupInstancesInstance {
+        /**
+         * The category of instance.
+         */
+        category: pulumi.Input<string>;
+        /**
+         * The id of instance.
+         */
+        instanceId: pulumi.Input<string>;
+        /**
+         * The name of instance.
+         */
+        instanceName: pulumi.Input<string>;
+        /**
+         * The region id of instance.
+         */
+        regionId: pulumi.Input<string>;
     }
 
     export interface SiteMonitorIspCity {
@@ -2213,6 +2233,42 @@ export namespace pvtz {
          */
         vpcId: pulumi.Input<string>;
     }
+}
+
+export namespace quotas {
+    export interface ApplicationInfoDimension {
+        /**
+         * The key of dimensions.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of dimensions.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GetApplicationInfosDimension {
+        /**
+         * The key of dimensions.
+         */
+        key?: string;
+        /**
+         * The value of dimensions.
+         */
+        value?: string;
+    }
+
+    export interface GetQuotasDimension {
+        /**
+         * The key of dimensions.
+         */
+        key?: string;
+        /**
+         * The value of dimensions.
+         */
+        value?: string;
+    }
+
 }
 
 export namespace ram {

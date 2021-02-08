@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides FileSystems available to the user.
  *
- * > NOTE: Available in 1.35.0+
+ * > **NOTE**: Available in 1.35.0+
  *
  * ## Example Usage
  *
@@ -56,11 +56,11 @@ export interface GetFileSystemsArgs {
     readonly ids?: string[];
     readonly outputFile?: string;
     /**
-     * Filter results by a specific ProtocolType.
+     * Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
      */
     readonly protocolType?: string;
     /**
-     * Filter results by a specific StorageType.
+     * Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
      */
     readonly storageType?: string;
 }

@@ -50,7 +50,7 @@ func GetProtocols(ctx *pulumi.Context, args *GetProtocolsArgs, opts ...pulumi.In
 // A collection of arguments for invoking getProtocols.
 type GetProtocolsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
-	// The file system type. Valid Values: Performance and Capacity.
+	// The file system type. Valid Values: `Performance` and `Capacity`.
 	Type string `pulumi:"type"`
 	// String to filter results by zone id.
 	ZoneId *string `pulumi:"zoneId"`

@@ -12,6 +12,8 @@ __all__ = [
     'InstanceSlbConnAddr',
     'InstanceUiProxyConnAddr',
     'InstanceZkConnAddr',
+    'GetInstanceTypesCoreInstanceTypeResult',
+    'GetInstanceTypesMasterInstanceTypeResult',
     'GetInstanceTypesTypeResult',
     'GetInstancesInstanceResult',
     'GetZonesZoneResult',
@@ -111,6 +113,152 @@ class InstanceZkConnAddr(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetInstanceTypesCoreInstanceTypeResult(dict):
+    def __init__(__self__, *,
+                 category: str,
+                 cpu_size: int,
+                 engine: str,
+                 instance_type: str,
+                 max_core_count: int,
+                 mem_size: int,
+                 storage_type: str,
+                 version: str,
+                 zone: str):
+        """
+        :param str category: Name of the category, single or cluster.
+        :param int cpu_size: Cpu size of the instance type.
+        :param str engine: The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+        :param str instance_type: The hbase instance type of create hbase cluster instance.
+        :param int max_core_count: Max count of the core instance nodes.
+        :param int mem_size: Mem size of the instance type.
+        :param str storage_type: Name of the storage type.
+        :param str version: The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+        :param str zone: Name of zone id.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "cpu_size", cpu_size)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "max_core_count", max_core_count)
+        pulumi.set(__self__, "mem_size", mem_size)
+        pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        """
+        Name of the category, single or cluster.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="cpuSize")
+    def cpu_size(self) -> int:
+        """
+        Cpu size of the instance type.
+        """
+        return pulumi.get(self, "cpu_size")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        """
+        The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+        """
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The hbase instance type of create hbase cluster instance.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="maxCoreCount")
+    def max_core_count(self) -> int:
+        """
+        Max count of the core instance nodes.
+        """
+        return pulumi.get(self, "max_core_count")
+
+    @property
+    @pulumi.getter(name="memSize")
+    def mem_size(self) -> int:
+        """
+        Mem size of the instance type.
+        """
+        return pulumi.get(self, "mem_size")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> str:
+        """
+        Name of the storage type.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+        """
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        Name of zone id.
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class GetInstanceTypesMasterInstanceTypeResult(dict):
+    def __init__(__self__, *,
+                 cpu_size: int,
+                 instance_type: str,
+                 mem_size: int):
+        """
+        :param int cpu_size: Cpu size of the instance type.
+        :param str instance_type: The hbase instance type of create hbase cluster instance.
+        :param int mem_size: Mem size of the instance type.
+        """
+        pulumi.set(__self__, "cpu_size", cpu_size)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "mem_size", mem_size)
+
+    @property
+    @pulumi.getter(name="cpuSize")
+    def cpu_size(self) -> int:
+        """
+        Cpu size of the instance type.
+        """
+        return pulumi.get(self, "cpu_size")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The hbase instance type of create hbase cluster instance.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="memSize")
+    def mem_size(self) -> int:
+        """
+        Mem size of the instance type.
+        """
+        return pulumi.get(self, "mem_size")
 
 
 @pulumi.output_type

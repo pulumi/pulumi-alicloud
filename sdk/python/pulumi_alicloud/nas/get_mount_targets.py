@@ -185,7 +185,7 @@ def get_mount_targets(access_group_name: Optional[str] = None,
     """
     This data source provides MountTargets available to the user.
 
-    > NOTE: Available in 1.35.0+
+    > **NOTE**: Available in 1.35.0+
 
     ## Example Usage
 

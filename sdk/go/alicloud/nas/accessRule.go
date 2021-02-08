@@ -32,14 +32,15 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		fooAccessGroup, err := nas.NewAccessGroup(ctx, "fooAccessGroup", &nas.AccessGroupArgs{
-// 			Type:        pulumi.String("Vpc"),
-// 			Description: pulumi.String("tf-testAccNasConfig"),
+// 			AccessGroupName: pulumi.String("tf-NasConfigName"),
+// 			AccessGroupType: pulumi.String("Vpc"),
+// 			Description:     pulumi.String("tf-testAccNasConfig"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = nas.NewAccessRule(ctx, "fooAccessRule", &nas.AccessRuleArgs{
-// 			AccessGroupName: fooAccessGroup.ID(),
+// 			AccessGroupName: fooAccessGroup.AccessGroupName,
 // 			SourceCidrIp:    pulumi.String("168.1.1.0/16"),
 // 			RwAccessType:    pulumi.String("RDWR"),
 // 			UserAccessType:  pulumi.String("no_squash"),
@@ -67,13 +68,13 @@ type AccessRule struct {
 	AccessGroupName pulumi.StringOutput `pulumi:"accessGroupName"`
 	// The nas access rule ID.
 	AccessRuleId pulumi.StringOutput `pulumi:"accessRuleId"`
-	// Priority level. Range: 1-100. Default value: 1.
+	// Priority level. Range: 1-100. Default value: `1`.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
-	// Read-write permission type: RDWR (default), RDONLY.
+	// Read-write permission type: `RDWR` (default), `RDONLY`.
 	RwAccessType pulumi.StringPtrOutput `pulumi:"rwAccessType"`
 	// Address or address segment.
 	SourceCidrIp pulumi.StringOutput `pulumi:"sourceCidrIp"`
-	// User permission type: noSquash (default), root_squash, all_squash.
+	// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
 	UserAccessType pulumi.StringPtrOutput `pulumi:"userAccessType"`
 }
 
@@ -116,13 +117,13 @@ type accessRuleState struct {
 	AccessGroupName *string `pulumi:"accessGroupName"`
 	// The nas access rule ID.
 	AccessRuleId *string `pulumi:"accessRuleId"`
-	// Priority level. Range: 1-100. Default value: 1.
+	// Priority level. Range: 1-100. Default value: `1`.
 	Priority *int `pulumi:"priority"`
-	// Read-write permission type: RDWR (default), RDONLY.
+	// Read-write permission type: `RDWR` (default), `RDONLY`.
 	RwAccessType *string `pulumi:"rwAccessType"`
 	// Address or address segment.
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
-	// User permission type: noSquash (default), root_squash, all_squash.
+	// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
 	UserAccessType *string `pulumi:"userAccessType"`
 }
 
@@ -131,13 +132,13 @@ type AccessRuleState struct {
 	AccessGroupName pulumi.StringPtrInput
 	// The nas access rule ID.
 	AccessRuleId pulumi.StringPtrInput
-	// Priority level. Range: 1-100. Default value: 1.
+	// Priority level. Range: 1-100. Default value: `1`.
 	Priority pulumi.IntPtrInput
-	// Read-write permission type: RDWR (default), RDONLY.
+	// Read-write permission type: `RDWR` (default), `RDONLY`.
 	RwAccessType pulumi.StringPtrInput
 	// Address or address segment.
 	SourceCidrIp pulumi.StringPtrInput
-	// User permission type: noSquash (default), root_squash, all_squash.
+	// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
 	UserAccessType pulumi.StringPtrInput
 }
 
@@ -148,13 +149,13 @@ func (AccessRuleState) ElementType() reflect.Type {
 type accessRuleArgs struct {
 	// Permission group name.
 	AccessGroupName string `pulumi:"accessGroupName"`
-	// Priority level. Range: 1-100. Default value: 1.
+	// Priority level. Range: 1-100. Default value: `1`.
 	Priority *int `pulumi:"priority"`
-	// Read-write permission type: RDWR (default), RDONLY.
+	// Read-write permission type: `RDWR` (default), `RDONLY`.
 	RwAccessType *string `pulumi:"rwAccessType"`
 	// Address or address segment.
 	SourceCidrIp string `pulumi:"sourceCidrIp"`
-	// User permission type: noSquash (default), root_squash, all_squash.
+	// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
 	UserAccessType *string `pulumi:"userAccessType"`
 }
 
@@ -162,13 +163,13 @@ type accessRuleArgs struct {
 type AccessRuleArgs struct {
 	// Permission group name.
 	AccessGroupName pulumi.StringInput
-	// Priority level. Range: 1-100. Default value: 1.
+	// Priority level. Range: 1-100. Default value: `1`.
 	Priority pulumi.IntPtrInput
-	// Read-write permission type: RDWR (default), RDONLY.
+	// Read-write permission type: `RDWR` (default), `RDONLY`.
 	RwAccessType pulumi.StringPtrInput
 	// Address or address segment.
 	SourceCidrIp pulumi.StringInput
-	// User permission type: noSquash (default), root_squash, all_squash.
+	// User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
 	UserAccessType pulumi.StringPtrInput
 }
 

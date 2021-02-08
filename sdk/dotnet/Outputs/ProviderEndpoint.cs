@@ -65,6 +65,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Polardb;
         public readonly string? Privatelink;
         public readonly string? Pvtz;
+        public readonly string? Quotas;
         public readonly string? RKvstore;
         public readonly string? Ram;
         public readonly string? Rds;
@@ -182,6 +183,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? pvtz,
 
+            string? quotas,
+
             string? rKvstore,
 
             string? ram,
@@ -254,6 +257,7 @@ namespace Pulumi.AliCloud.Outputs
             Polardb = polardb;
             Privatelink = privatelink;
             Pvtz = pvtz;
+            Quotas = quotas;
             RKvstore = rKvstore;
             Ram = ram;
             Rds = rds;

@@ -119,7 +119,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
-     * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
      */
     public readonly parameters!: pulumi.Output<outputs.polardb.ClusterParameter[]>;
     /**
@@ -276,7 +276,7 @@ export interface ClusterState {
      */
     readonly modifyType?: pulumi.Input<string>;
     /**
-     * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterParameter>[]>;
     /**
@@ -357,7 +357,7 @@ export interface ClusterArgs {
      */
     readonly modifyType?: pulumi.Input<string>;
     /**
-     * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterParameter>[]>;
     /**

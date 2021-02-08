@@ -15,6 +15,7 @@ export * from "./getMonitorGroups";
 export * from "./getService";
 export * from "./groupMetricRule";
 export * from "./monitorGroup";
+export * from "./monitorGroupInstances";
 export * from "./siteMonitor";
 
 // Import resources to register:
@@ -23,6 +24,7 @@ import { AlarmContact } from "./alarmContact";
 import { AlarmContactGroup } from "./alarmContactGroup";
 import { GroupMetricRule } from "./groupMetricRule";
 import { MonitorGroup } from "./monitorGroup";
+import { MonitorGroupInstances } from "./monitorGroupInstances";
 import { SiteMonitor } from "./siteMonitor";
 
 const _module = {
@@ -39,6 +41,8 @@ const _module = {
                 return new GroupMetricRule(name, <any>undefined, { urn })
             case "alicloud:cms/monitorGroup:MonitorGroup":
                 return new MonitorGroup(name, <any>undefined, { urn })
+            case "alicloud:cms/monitorGroupInstances:MonitorGroupInstances":
+                return new MonitorGroupInstances(name, <any>undefined, { urn })
             case "alicloud:cms/siteMonitor:SiteMonitor":
                 return new SiteMonitor(name, <any>undefined, { urn })
             default:
@@ -51,4 +55,5 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContactGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/groupMetricRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroupInstances", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/siteMonitor", _module)

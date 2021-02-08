@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides FileSystems available to the user.
         /// 
-        /// &gt; NOTE: Available in 1.35.0+
+        /// &gt; **NOTE**: Available in 1.35.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -72,13 +72,13 @@ namespace Pulumi.AliCloud.Nas
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific ProtocolType.
+        /// Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
         /// </summary>
         [Input("protocolType")]
         public string? ProtocolType { get; set; }
 
         /// <summary>
-        /// Filter results by a specific StorageType.
+        /// Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
         /// </summary>
         [Input("storageType")]
         public string? StorageType { get; set; }

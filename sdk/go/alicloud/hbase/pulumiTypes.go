@@ -328,6 +328,290 @@ func (o InstanceZkConnAddrArrayOutput) Index(i pulumi.IntInput) InstanceZkConnAd
 	}).(InstanceZkConnAddrOutput)
 }
 
+type GetInstanceTypesCoreInstanceType struct {
+	// Name of the category, single or cluster.
+	Category string `pulumi:"category"`
+	// Cpu size of the instance type.
+	CpuSize int `pulumi:"cpuSize"`
+	// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+	Engine string `pulumi:"engine"`
+	// The hbase instance type of create hbase cluster instance.
+	InstanceType string `pulumi:"instanceType"`
+	// Max count of the core instance nodes.
+	MaxCoreCount int `pulumi:"maxCoreCount"`
+	// Mem size of the instance type.
+	MemSize int `pulumi:"memSize"`
+	// Name of the storage type.
+	StorageType string `pulumi:"storageType"`
+	// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+	Version string `pulumi:"version"`
+	// Name of zone id.
+	Zone string `pulumi:"zone"`
+}
+
+// GetInstanceTypesCoreInstanceTypeInput is an input type that accepts GetInstanceTypesCoreInstanceTypeArgs and GetInstanceTypesCoreInstanceTypeOutput values.
+// You can construct a concrete instance of `GetInstanceTypesCoreInstanceTypeInput` via:
+//
+//          GetInstanceTypesCoreInstanceTypeArgs{...}
+type GetInstanceTypesCoreInstanceTypeInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesCoreInstanceTypeOutput() GetInstanceTypesCoreInstanceTypeOutput
+	ToGetInstanceTypesCoreInstanceTypeOutputWithContext(context.Context) GetInstanceTypesCoreInstanceTypeOutput
+}
+
+type GetInstanceTypesCoreInstanceTypeArgs struct {
+	// Name of the category, single or cluster.
+	Category pulumi.StringInput `pulumi:"category"`
+	// Cpu size of the instance type.
+	CpuSize pulumi.IntInput `pulumi:"cpuSize"`
+	// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The hbase instance type of create hbase cluster instance.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Max count of the core instance nodes.
+	MaxCoreCount pulumi.IntInput `pulumi:"maxCoreCount"`
+	// Mem size of the instance type.
+	MemSize pulumi.IntInput `pulumi:"memSize"`
+	// Name of the storage type.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+	// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+	Version pulumi.StringInput `pulumi:"version"`
+	// Name of zone id.
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (GetInstanceTypesCoreInstanceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesCoreInstanceType)(nil)).Elem()
+}
+
+func (i GetInstanceTypesCoreInstanceTypeArgs) ToGetInstanceTypesCoreInstanceTypeOutput() GetInstanceTypesCoreInstanceTypeOutput {
+	return i.ToGetInstanceTypesCoreInstanceTypeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesCoreInstanceTypeArgs) ToGetInstanceTypesCoreInstanceTypeOutputWithContext(ctx context.Context) GetInstanceTypesCoreInstanceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesCoreInstanceTypeOutput)
+}
+
+// GetInstanceTypesCoreInstanceTypeArrayInput is an input type that accepts GetInstanceTypesCoreInstanceTypeArray and GetInstanceTypesCoreInstanceTypeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesCoreInstanceTypeArrayInput` via:
+//
+//          GetInstanceTypesCoreInstanceTypeArray{ GetInstanceTypesCoreInstanceTypeArgs{...} }
+type GetInstanceTypesCoreInstanceTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesCoreInstanceTypeArrayOutput() GetInstanceTypesCoreInstanceTypeArrayOutput
+	ToGetInstanceTypesCoreInstanceTypeArrayOutputWithContext(context.Context) GetInstanceTypesCoreInstanceTypeArrayOutput
+}
+
+type GetInstanceTypesCoreInstanceTypeArray []GetInstanceTypesCoreInstanceTypeInput
+
+func (GetInstanceTypesCoreInstanceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesCoreInstanceType)(nil)).Elem()
+}
+
+func (i GetInstanceTypesCoreInstanceTypeArray) ToGetInstanceTypesCoreInstanceTypeArrayOutput() GetInstanceTypesCoreInstanceTypeArrayOutput {
+	return i.ToGetInstanceTypesCoreInstanceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesCoreInstanceTypeArray) ToGetInstanceTypesCoreInstanceTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesCoreInstanceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesCoreInstanceTypeArrayOutput)
+}
+
+type GetInstanceTypesCoreInstanceTypeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesCoreInstanceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesCoreInstanceType)(nil)).Elem()
+}
+
+func (o GetInstanceTypesCoreInstanceTypeOutput) ToGetInstanceTypesCoreInstanceTypeOutput() GetInstanceTypesCoreInstanceTypeOutput {
+	return o
+}
+
+func (o GetInstanceTypesCoreInstanceTypeOutput) ToGetInstanceTypesCoreInstanceTypeOutputWithContext(ctx context.Context) GetInstanceTypesCoreInstanceTypeOutput {
+	return o
+}
+
+// Name of the category, single or cluster.
+func (o GetInstanceTypesCoreInstanceTypeOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesCoreInstanceType) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// Cpu size of the instance type.
+func (o GetInstanceTypesCoreInstanceTypeOutput) CpuSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesCoreInstanceType) int { return v.CpuSize }).(pulumi.IntOutput)
+}
+
+// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+func (o GetInstanceTypesCoreInstanceTypeOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesCoreInstanceType) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The hbase instance type of create hbase cluster instance.
+func (o GetInstanceTypesCoreInstanceTypeOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesCoreInstanceType) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Max count of the core instance nodes.
+func (o GetInstanceTypesCoreInstanceTypeOutput) MaxCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesCoreInstanceType) int { return v.MaxCoreCount }).(pulumi.IntOutput)
+}
+
+// Mem size of the instance type.
+func (o GetInstanceTypesCoreInstanceTypeOutput) MemSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesCoreInstanceType) int { return v.MemSize }).(pulumi.IntOutput)
+}
+
+// Name of the storage type.
+func (o GetInstanceTypesCoreInstanceTypeOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesCoreInstanceType) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+func (o GetInstanceTypesCoreInstanceTypeOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesCoreInstanceType) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Name of zone id.
+func (o GetInstanceTypesCoreInstanceTypeOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesCoreInstanceType) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetInstanceTypesCoreInstanceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesCoreInstanceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesCoreInstanceType)(nil)).Elem()
+}
+
+func (o GetInstanceTypesCoreInstanceTypeArrayOutput) ToGetInstanceTypesCoreInstanceTypeArrayOutput() GetInstanceTypesCoreInstanceTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesCoreInstanceTypeArrayOutput) ToGetInstanceTypesCoreInstanceTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesCoreInstanceTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesCoreInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesCoreInstanceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesCoreInstanceType {
+		return vs[0].([]GetInstanceTypesCoreInstanceType)[vs[1].(int)]
+	}).(GetInstanceTypesCoreInstanceTypeOutput)
+}
+
+type GetInstanceTypesMasterInstanceType struct {
+	// Cpu size of the instance type.
+	CpuSize int `pulumi:"cpuSize"`
+	// The hbase instance type of create hbase cluster instance.
+	InstanceType string `pulumi:"instanceType"`
+	// Mem size of the instance type.
+	MemSize int `pulumi:"memSize"`
+}
+
+// GetInstanceTypesMasterInstanceTypeInput is an input type that accepts GetInstanceTypesMasterInstanceTypeArgs and GetInstanceTypesMasterInstanceTypeOutput values.
+// You can construct a concrete instance of `GetInstanceTypesMasterInstanceTypeInput` via:
+//
+//          GetInstanceTypesMasterInstanceTypeArgs{...}
+type GetInstanceTypesMasterInstanceTypeInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesMasterInstanceTypeOutput() GetInstanceTypesMasterInstanceTypeOutput
+	ToGetInstanceTypesMasterInstanceTypeOutputWithContext(context.Context) GetInstanceTypesMasterInstanceTypeOutput
+}
+
+type GetInstanceTypesMasterInstanceTypeArgs struct {
+	// Cpu size of the instance type.
+	CpuSize pulumi.IntInput `pulumi:"cpuSize"`
+	// The hbase instance type of create hbase cluster instance.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Mem size of the instance type.
+	MemSize pulumi.IntInput `pulumi:"memSize"`
+}
+
+func (GetInstanceTypesMasterInstanceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesMasterInstanceType)(nil)).Elem()
+}
+
+func (i GetInstanceTypesMasterInstanceTypeArgs) ToGetInstanceTypesMasterInstanceTypeOutput() GetInstanceTypesMasterInstanceTypeOutput {
+	return i.ToGetInstanceTypesMasterInstanceTypeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesMasterInstanceTypeArgs) ToGetInstanceTypesMasterInstanceTypeOutputWithContext(ctx context.Context) GetInstanceTypesMasterInstanceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesMasterInstanceTypeOutput)
+}
+
+// GetInstanceTypesMasterInstanceTypeArrayInput is an input type that accepts GetInstanceTypesMasterInstanceTypeArray and GetInstanceTypesMasterInstanceTypeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesMasterInstanceTypeArrayInput` via:
+//
+//          GetInstanceTypesMasterInstanceTypeArray{ GetInstanceTypesMasterInstanceTypeArgs{...} }
+type GetInstanceTypesMasterInstanceTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesMasterInstanceTypeArrayOutput() GetInstanceTypesMasterInstanceTypeArrayOutput
+	ToGetInstanceTypesMasterInstanceTypeArrayOutputWithContext(context.Context) GetInstanceTypesMasterInstanceTypeArrayOutput
+}
+
+type GetInstanceTypesMasterInstanceTypeArray []GetInstanceTypesMasterInstanceTypeInput
+
+func (GetInstanceTypesMasterInstanceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesMasterInstanceType)(nil)).Elem()
+}
+
+func (i GetInstanceTypesMasterInstanceTypeArray) ToGetInstanceTypesMasterInstanceTypeArrayOutput() GetInstanceTypesMasterInstanceTypeArrayOutput {
+	return i.ToGetInstanceTypesMasterInstanceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesMasterInstanceTypeArray) ToGetInstanceTypesMasterInstanceTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesMasterInstanceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesMasterInstanceTypeArrayOutput)
+}
+
+type GetInstanceTypesMasterInstanceTypeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesMasterInstanceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesMasterInstanceType)(nil)).Elem()
+}
+
+func (o GetInstanceTypesMasterInstanceTypeOutput) ToGetInstanceTypesMasterInstanceTypeOutput() GetInstanceTypesMasterInstanceTypeOutput {
+	return o
+}
+
+func (o GetInstanceTypesMasterInstanceTypeOutput) ToGetInstanceTypesMasterInstanceTypeOutputWithContext(ctx context.Context) GetInstanceTypesMasterInstanceTypeOutput {
+	return o
+}
+
+// Cpu size of the instance type.
+func (o GetInstanceTypesMasterInstanceTypeOutput) CpuSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesMasterInstanceType) int { return v.CpuSize }).(pulumi.IntOutput)
+}
+
+// The hbase instance type of create hbase cluster instance.
+func (o GetInstanceTypesMasterInstanceTypeOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesMasterInstanceType) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Mem size of the instance type.
+func (o GetInstanceTypesMasterInstanceTypeOutput) MemSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesMasterInstanceType) int { return v.MemSize }).(pulumi.IntOutput)
+}
+
+type GetInstanceTypesMasterInstanceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesMasterInstanceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesMasterInstanceType)(nil)).Elem()
+}
+
+func (o GetInstanceTypesMasterInstanceTypeArrayOutput) ToGetInstanceTypesMasterInstanceTypeArrayOutput() GetInstanceTypesMasterInstanceTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesMasterInstanceTypeArrayOutput) ToGetInstanceTypesMasterInstanceTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesMasterInstanceTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesMasterInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesMasterInstanceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesMasterInstanceType {
+		return vs[0].([]GetInstanceTypesMasterInstanceType)[vs[1].(int)]
+	}).(GetInstanceTypesMasterInstanceTypeOutput)
+}
+
 type GetInstanceTypesType struct {
 	// Cpu size of the instance type.
 	CpuSize int `pulumi:"cpuSize"`
@@ -842,6 +1126,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceUiProxyConnAddrArrayOutput{})
 	pulumi.RegisterOutputType(InstanceZkConnAddrOutput{})
 	pulumi.RegisterOutputType(InstanceZkConnAddrArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesCoreInstanceTypeOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesCoreInstanceTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesMasterInstanceTypeOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesMasterInstanceTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypesTypeOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypesTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})

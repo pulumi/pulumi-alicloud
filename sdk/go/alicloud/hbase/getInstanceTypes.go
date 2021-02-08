@@ -21,19 +21,44 @@ func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...p
 
 // A collection of arguments for invoking getInstanceTypes.
 type GetInstanceTypesArgs struct {
+	// The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
+	ChargeType *string `pulumi:"chargeType"`
+	// The disk type, `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`.
+	DiskType *string `pulumi:"diskType"`
+	// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+	Engine *string `pulumi:"engine"`
 	// The hbase instance type of create hbase cluster instance.
 	InstanceType *string `pulumi:"instanceType"`
 	OutputFile   *string `pulumi:"outputFile"`
+	// The dest region id, default client region.
+	RegionId *string `pulumi:"regionId"`
+	// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+	Version *string `pulumi:"version"`
+	// The zone id, belong to regionId.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getInstanceTypes.
 type GetInstanceTypesResult struct {
+	ChargeType *string `pulumi:"chargeType"`
+	// (Available in 1.115.0+) A list of core instance types. Each element contains the following attributes:
+	CoreInstanceTypes []GetInstanceTypesCoreInstanceType `pulumi:"coreInstanceTypes"`
+	DiskType          *string                            `pulumi:"diskType"`
+	// Name of the engine.
+	Engine *string `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of instance types type IDs.
-	Ids          []string `pulumi:"ids"`
-	InstanceType *string  `pulumi:"instanceType"`
-	OutputFile   *string  `pulumi:"outputFile"`
-	// A list of instance types. Each element contains the following attributes:
+	Ids []string `pulumi:"ids"`
+	// Name of the instance type.
+	InstanceType *string `pulumi:"instanceType"`
+	// (Available in 1.115.0+) A list of master instance types. Each element contains the following attributes:
+	MasterInstanceTypes []GetInstanceTypesMasterInstanceType `pulumi:"masterInstanceTypes"`
+	OutputFile          *string                              `pulumi:"outputFile"`
+	RegionId            *string                              `pulumi:"regionId"`
+	// (Deprecated) A list of instance types. Each element contains the following attributes:
 	Types []GetInstanceTypesType `pulumi:"types"`
+	// The version of the engine.
+	Version *string `pulumi:"version"`
+	ZoneId  *string `pulumi:"zoneId"`
 }

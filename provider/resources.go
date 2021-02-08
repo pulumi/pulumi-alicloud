@@ -67,6 +67,7 @@ const (
 	gaMod              = "Ga"
 	gpdbMod            = "Gpdb"
 	hbaseMod           = "Hbase"
+	iotMod             = "Iot"
 	kmsMod             = "Kms"
 	kvstoreMod         = "KVStore"
 	logMod             = "Log"
@@ -82,6 +83,7 @@ const (
 	polarDbMod         = "PolarDB"
 	privateLinkMod     = "PrivateLink"
 	pvtzMod            = "Pvtz"
+	quotasMod          = "Quotas"
 	ramMod             = "Ram"
 	resourceManagerMod = "ResourceManager"
 	rocketMqMod        = "RocketMQ"
@@ -276,8 +278,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cms_sitemonitor.markdown",
 				},
 			},
-			"alicloud_cms_group_metric_rule": {Tok: resource(cmsMod, "GroupMetricRule")},
-			"alicloud_cms_monitor_group":     {Tok: resource(cmsMod, "MonitorGroup")},
+			"alicloud_cms_group_metric_rule":       {Tok: resource(cmsMod, "GroupMetricRule")},
+			"alicloud_cms_monitor_group":           {Tok: resource(cmsMod, "MonitorGroup")},
+			"alicloud_cms_monitor_group_instances": {Tok: resource(cmsMod, "MonitorGroupInstances")},
 
 			// Config
 			"alicloud_config_configuration_recorder": {Tok: resource(cfgMod, "ConfigurationRecorder")},
@@ -552,6 +555,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_pvtz_zone_attachment": {Tok: resource(pvtzMod, "ZoneAttachment")},
 			"alicloud_pvtz_zone_record":     {Tok: resource(pvtzMod, "ZoneRecord")},
 
+			// Quotas
+			"alicloud_quotas_application_info": {Tok: resource(quotasMod, "ApplicationInfo")},
+
 			// Ram
 			"alicloud_ram_access_key": {Tok: resource(ramMod, "AccessKey")},
 			"alicloud_ram_account_alias": {
@@ -728,6 +734,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Brain
 			"alicloud_brain_industrial_pid_projects":      {Tok: dataSource(brainMod, "getIndustrialPidProjects")},
 			"alicloud_brain_industrial_pid_organizations": {Tok: dataSource(brainMod, "getIndustrialPidOrganizations")},
+			"alicloud_brain_industrial_service":           {Tok: dataSource(brainMod, "getIndustrialSerice")},
 
 			// Cas
 			"alicloud_cas_certificates": {Tok: dataSource(casMod, "getCertificates")},
@@ -762,6 +769,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cms_group_metric_rules":   {Tok: dataSource(cmsMod, "getGroupMetricRules")},
 			"alicloud_cms_service":              {Tok: dataSource(cmsMod, "getService")},
 			"alicloud_cms_monitor_groups":       {Tok: dataSource(cmsMod, "getMonitorGroups")},
+			//"alicloud_cms_monitor_group_instances": {Tok: dataSource(cmsMod, "getMonitorGroupInstances")},
 
 			// Config
 			"alicloud_config_configuration_recorders": {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
@@ -892,6 +900,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbase_zones":          {Tok: dataSource(hbaseMod, "getZones")},
 			"alicloud_hbase_instance_types": {Tok: dataSource(hbaseMod, "getInstanceTypes")},
 
+			// iot
+			"alicloud_iot_service": {Tok: dataSource(iotMod, "getService")},
+
 			// Kms
 			"alicloud_kms_ciphertext":      {Tok: dataSource(kmsMod, "getCiphertext")},
 			"alicloud_kms_plaintext":       {Tok: dataSource(kmsMod, "getPlaintext")},
@@ -978,6 +989,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_pvtz_zone_records": {Tok: dataSource(pvtzMod, "getZoneRecords")},
 			"alicloud_pvtz_zones":        {Tok: dataSource(pvtzMod, "getZones")},
 			"alicloud_pvtz_service":      {Tok: dataSource(pvtzMod, "getService")},
+
+			// quotas
+			"alicloud_quotas_quotas":            {Tok: dataSource(quotasMod, "getQuotas")},
+			"alicloud_quotas_application_infos": {Tok: dataSource(quotasMod, "getApplicationInfos")},
 
 			// Ram
 			"alicloud_ram_account_alias":   {Tok: dataSource(ramMod, "getAccountAlias")},

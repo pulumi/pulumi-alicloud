@@ -9,7 +9,7 @@ import (
 
 // This data source provides FileSystems available to the user.
 //
-// > NOTE: Available in 1.35.0+
+// > **NOTE**: Available in 1.35.0+
 //
 // ## Example Usage
 //
@@ -52,9 +52,9 @@ type GetFileSystemsArgs struct {
 	// A list of FileSystemId.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// Filter results by a specific ProtocolType.
+	// Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
 	ProtocolType *string `pulumi:"protocolType"`
-	// Filter results by a specific StorageType.
+	// Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
 	StorageType *string `pulumi:"storageType"`
 }
 

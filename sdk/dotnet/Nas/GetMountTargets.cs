@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides MountTargets available to the user.
         /// 
-        /// &gt; NOTE: Available in 1.35.0+
+        /// &gt; **NOTE**: Available in 1.35.0+
         /// 
         /// {{% examples %}}
         /// ## Example Usage

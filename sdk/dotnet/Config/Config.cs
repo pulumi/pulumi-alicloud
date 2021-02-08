@@ -148,6 +148,7 @@ namespace Pulumi.AliCloud
                 public string? Polardb { get; set; } = null!;
                 public string? Privatelink { get; set; } = null!;
                 public string? Pvtz { get; set; } = null!;
+                public string? Quotas { get; set; } = null!;
                 public string? RKvstore { get; set; } = null!;
                 public string? Ram { get; set; } = null!;
                 public string? Rds { get; set; } = null!;

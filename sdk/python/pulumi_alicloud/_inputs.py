@@ -120,6 +120,7 @@ class ProviderEndpointArgs:
                  polardb: Optional[pulumi.Input[str]] = None,
                  privatelink: Optional[pulumi.Input[str]] = None,
                  pvtz: Optional[pulumi.Input[str]] = None,
+                 quotas: Optional[pulumi.Input[str]] = None,
                  r_kvstore: Optional[pulumi.Input[str]] = None,
                  ram: Optional[pulumi.Input[str]] = None,
                  rds: Optional[pulumi.Input[str]] = None,
@@ -234,6 +235,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "privatelink", privatelink)
         if pvtz is not None:
             pulumi.set(__self__, "pvtz", pvtz)
+        if quotas is not None:
+            pulumi.set(__self__, "quotas", quotas)
         if r_kvstore is not None:
             pulumi.set(__self__, "r_kvstore", r_kvstore)
         if ram is not None:
@@ -722,6 +725,15 @@ class ProviderEndpointArgs:
     @pvtz.setter
     def pvtz(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pvtz", value)
+
+    @property
+    @pulumi.getter
+    def quotas(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "quotas")
+
+    @quotas.setter
+    def quotas(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quotas", value)
 
     @property
     @pulumi.getter(name="rKvstore")

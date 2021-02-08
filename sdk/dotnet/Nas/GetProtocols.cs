@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Nas
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The file system type. Valid Values: Performance and Capacity.
+        /// The file system type. Valid Values: `Performance` and `Capacity`.
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;

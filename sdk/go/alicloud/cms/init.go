@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewGroupMetricRule(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:cms/monitorGroup:MonitorGroup":
 		r, err = NewMonitorGroup(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:cms/monitorGroupInstances:MonitorGroupInstances":
+		r, err = NewMonitorGroupInstances(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:cms/siteMonitor:SiteMonitor":
 		r, err = NewSiteMonitor(ctx, name, nil, pulumi.URN_(urn))
 	default:
@@ -68,6 +70,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cms/monitorGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cms/monitorGroupInstances",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

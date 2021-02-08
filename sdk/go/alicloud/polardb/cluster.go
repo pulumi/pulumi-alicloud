@@ -111,7 +111,7 @@ type Cluster struct {
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
-	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
 	Parameters ClusterParameterArrayOutput `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType pulumi.StringPtrOutput `pulumi:"payType"`
@@ -192,7 +192,7 @@ type clusterState struct {
 	MaintainTime *string `pulumi:"maintainTime"`
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType *string `pulumi:"modifyType"`
-	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
 	Parameters []ClusterParameter `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType *string `pulumi:"payType"`
@@ -236,7 +236,7 @@ type ClusterState struct {
 	MaintainTime pulumi.StringPtrInput
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType pulumi.StringPtrInput
-	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
 	Parameters ClusterParameterArrayInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType pulumi.StringPtrInput
@@ -282,7 +282,7 @@ type clusterArgs struct {
 	MaintainTime *string `pulumi:"maintainTime"`
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType *string `pulumi:"modifyType"`
-	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
 	Parameters []ClusterParameter `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType *string `pulumi:"payType"`
@@ -325,7 +325,7 @@ type ClusterArgs struct {
 	MaintainTime pulumi.StringPtrInput
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
 	ModifyType pulumi.StringPtrInput
-	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
 	Parameters ClusterParameterArrayInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType pulumi.StringPtrInput

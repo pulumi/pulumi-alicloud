@@ -16,6 +16,7 @@ __all__ = [
     'GroupMetricRuleEscalationsCriticalArgs',
     'GroupMetricRuleEscalationsInfoArgs',
     'GroupMetricRuleEscalationsWarnArgs',
+    'MonitorGroupInstancesInstanceArgs',
     'SiteMonitorIspCityArgs',
 ]
 
@@ -498,6 +499,73 @@ class GroupMetricRuleEscalationsWarnArgs:
     @times.setter
     def times(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "times", value)
+
+
+@pulumi.input_type
+class MonitorGroupInstancesInstanceArgs:
+    def __init__(__self__, *,
+                 category: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 instance_name: pulumi.Input[str],
+                 region_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] category: The category of instance.
+        :param pulumi.Input[str] instance_id: The id of instance.
+        :param pulumi.Input[str] instance_name: The name of instance.
+        :param pulumi.Input[str] region_id: The region id of instance.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "region_id", region_id)
+
+    @property
+    @pulumi.getter
+    def category(self) -> pulumi.Input[str]:
+        """
+        The category of instance.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: pulumi.Input[str]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The id of instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Input[str]:
+        """
+        The name of instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Input[str]:
+        """
+        The region id of instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region_id", value)
 
 
 @pulumi.input_type

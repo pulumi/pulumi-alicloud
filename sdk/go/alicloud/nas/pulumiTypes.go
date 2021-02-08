@@ -303,11 +303,11 @@ type GetFileSystemsSystem struct {
 	Id string `pulumi:"id"`
 	// MeteredSize of the FileSystem.
 	MeteredSize int `pulumi:"meteredSize"`
-	// Filter results by a specific ProtocolType.
+	// Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
 	ProtocolType string `pulumi:"protocolType"`
 	// ID of the region where the FileSystem is located.
 	RegionId string `pulumi:"regionId"`
-	// Filter results by a specific StorageType.
+	// Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
 	StorageType string `pulumi:"storageType"`
 }
 
@@ -331,11 +331,11 @@ type GetFileSystemsSystemArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// MeteredSize of the FileSystem.
 	MeteredSize pulumi.IntInput `pulumi:"meteredSize"`
-	// Filter results by a specific ProtocolType.
+	// Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
 	ProtocolType pulumi.StringInput `pulumi:"protocolType"`
 	// ID of the region where the FileSystem is located.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Filter results by a specific StorageType.
+	// Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
 	StorageType pulumi.StringInput `pulumi:"storageType"`
 }
 
@@ -410,7 +410,7 @@ func (o GetFileSystemsSystemOutput) MeteredSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.MeteredSize }).(pulumi.IntOutput)
 }
 
-// Filter results by a specific ProtocolType.
+// Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
 func (o GetFileSystemsSystemOutput) ProtocolType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.ProtocolType }).(pulumi.StringOutput)
 }
@@ -420,7 +420,7 @@ func (o GetFileSystemsSystemOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Filter results by a specific StorageType.
+// Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
 func (o GetFileSystemsSystemOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.StorageType }).(pulumi.StringOutput)
 }

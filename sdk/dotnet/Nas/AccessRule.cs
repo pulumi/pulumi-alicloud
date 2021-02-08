@@ -30,12 +30,13 @@ namespace Pulumi.AliCloud.Nas
     ///     {
     ///         var fooAccessGroup = new AliCloud.Nas.AccessGroup("fooAccessGroup", new AliCloud.Nas.AccessGroupArgs
     ///         {
-    ///             Type = "Vpc",
+    ///             AccessGroupName = "tf-NasConfigName",
+    ///             AccessGroupType = "Vpc",
     ///             Description = "tf-testAccNasConfig",
     ///         });
     ///         var fooAccessRule = new AliCloud.Nas.AccessRule("fooAccessRule", new AliCloud.Nas.AccessRuleArgs
     ///         {
-    ///             AccessGroupName = fooAccessGroup.Id,
+    ///             AccessGroupName = fooAccessGroup.AccessGroupName,
     ///             SourceCidrIp = "168.1.1.0/16",
     ///             RwAccessType = "RDWR",
     ///             UserAccessType = "no_squash",
@@ -70,13 +71,13 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> AccessRuleId { get; private set; } = null!;
 
         /// <summary>
-        /// Priority level. Range: 1-100. Default value: 1.
+        /// Priority level. Range: 1-100. Default value: `1`.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// Read-write permission type: RDWR (default), RDONLY.
+        /// Read-write permission type: `RDWR` (default), `RDONLY`.
         /// </summary>
         [Output("rwAccessType")]
         public Output<string?> RwAccessType { get; private set; } = null!;
@@ -88,7 +89,7 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> SourceCidrIp { get; private set; } = null!;
 
         /// <summary>
-        /// User permission type: no_squash (default), root_squash, all_squash.
+        /// User permission type: `no_squash` (default), `root_squash`, `all_squash`.
         /// </summary>
         [Output("userAccessType")]
         public Output<string?> UserAccessType { get; private set; } = null!;
@@ -146,13 +147,13 @@ namespace Pulumi.AliCloud.Nas
         public Input<string> AccessGroupName { get; set; } = null!;
 
         /// <summary>
-        /// Priority level. Range: 1-100. Default value: 1.
+        /// Priority level. Range: 1-100. Default value: `1`.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// Read-write permission type: RDWR (default), RDONLY.
+        /// Read-write permission type: `RDWR` (default), `RDONLY`.
         /// </summary>
         [Input("rwAccessType")]
         public Input<string>? RwAccessType { get; set; }
@@ -164,7 +165,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string> SourceCidrIp { get; set; } = null!;
 
         /// <summary>
-        /// User permission type: no_squash (default), root_squash, all_squash.
+        /// User permission type: `no_squash` (default), `root_squash`, `all_squash`.
         /// </summary>
         [Input("userAccessType")]
         public Input<string>? UserAccessType { get; set; }
@@ -189,13 +190,13 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? AccessRuleId { get; set; }
 
         /// <summary>
-        /// Priority level. Range: 1-100. Default value: 1.
+        /// Priority level. Range: 1-100. Default value: `1`.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// Read-write permission type: RDWR (default), RDONLY.
+        /// Read-write permission type: `RDWR` (default), `RDONLY`.
         /// </summary>
         [Input("rwAccessType")]
         public Input<string>? RwAccessType { get; set; }
@@ -207,7 +208,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? SourceCidrIp { get; set; }
 
         /// <summary>
-        /// User permission type: no_squash (default), root_squash, all_squash.
+        /// User permission type: `no_squash` (default), `root_squash`, `all_squash`.
         /// </summary>
         [Input("userAccessType")]
         public Input<string>? UserAccessType { get; set; }

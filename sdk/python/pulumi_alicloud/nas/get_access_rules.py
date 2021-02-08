@@ -63,7 +63,7 @@ class GetAccessRulesResult:
     @pulumi.getter
     def ids(self) -> Sequence[str]:
         """
-        A list of rule IDs, Each element set to `access_rule_id` (Each element formats as `<access_group_name>:<access rule id>` before 1.53.0).
+        A list of rule IDs, Each element set to `access_rule_id` (Each element formats as `<access_group_name>:<access_rule_id>` before 1.53.0).
         """
         return pulumi.get(self, "ids")
 
@@ -131,7 +131,7 @@ def get_access_rules(access_group_name: Optional[str] = None,
     """
     This data source provides AccessRule available to the user.
 
-    > NOTE: Available in 1.35.0+
+    > **NOTE**: Available in 1.35.0+
 
 
     :param str access_group_name: Filter results by a specific AccessGroupName.

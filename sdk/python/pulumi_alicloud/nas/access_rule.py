@@ -39,10 +39,11 @@ class AccessRule(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         foo_access_group = alicloud.nas.AccessGroup("fooAccessGroup",
-            type="Vpc",
+            access_group_name="tf-NasConfigName",
+            access_group_type="Vpc",
             description="tf-testAccNasConfig")
         foo_access_rule = alicloud.nas.AccessRule("fooAccessRule",
-            access_group_name=foo_access_group.id,
+            access_group_name=foo_access_group.access_group_name,
             source_cidr_ip="168.1.1.0/16",
             rw_access_type="RDWR",
             user_access_type="no_squash",
@@ -60,10 +61,10 @@ class AccessRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: Permission group name.
-        :param pulumi.Input[int] priority: Priority level. Range: 1-100. Default value: 1.
-        :param pulumi.Input[str] rw_access_type: Read-write permission type: RDWR (default), RDONLY.
+        :param pulumi.Input[int] priority: Priority level. Range: 1-100. Default value: `1`.
+        :param pulumi.Input[str] rw_access_type: Read-write permission type: `RDWR` (default), `RDONLY`.
         :param pulumi.Input[str] source_cidr_ip: Address or address segment.
-        :param pulumi.Input[str] user_access_type: User permission type: no_squash (default), root_squash, all_squash.
+        :param pulumi.Input[str] user_access_type: User permission type: `no_squash` (default), `root_squash`, `all_squash`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,10 +118,10 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: Permission group name.
         :param pulumi.Input[str] access_rule_id: The nas access rule ID.
-        :param pulumi.Input[int] priority: Priority level. Range: 1-100. Default value: 1.
-        :param pulumi.Input[str] rw_access_type: Read-write permission type: RDWR (default), RDONLY.
+        :param pulumi.Input[int] priority: Priority level. Range: 1-100. Default value: `1`.
+        :param pulumi.Input[str] rw_access_type: Read-write permission type: `RDWR` (default), `RDONLY`.
         :param pulumi.Input[str] source_cidr_ip: Address or address segment.
-        :param pulumi.Input[str] user_access_type: User permission type: no_squash (default), root_squash, all_squash.
+        :param pulumi.Input[str] user_access_type: User permission type: `no_squash` (default), `root_squash`, `all_squash`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -154,7 +155,7 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[Optional[int]]:
         """
-        Priority level. Range: 1-100. Default value: 1.
+        Priority level. Range: 1-100. Default value: `1`.
         """
         return pulumi.get(self, "priority")
 
@@ -162,7 +163,7 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter(name="rwAccessType")
     def rw_access_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Read-write permission type: RDWR (default), RDONLY.
+        Read-write permission type: `RDWR` (default), `RDONLY`.
         """
         return pulumi.get(self, "rw_access_type")
 
@@ -178,7 +179,7 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter(name="userAccessType")
     def user_access_type(self) -> pulumi.Output[Optional[str]]:
         """
-        User permission type: no_squash (default), root_squash, all_squash.
+        User permission type: `no_squash` (default), `root_squash`, `all_squash`.
         """
         return pulumi.get(self, "user_access_type")
 
