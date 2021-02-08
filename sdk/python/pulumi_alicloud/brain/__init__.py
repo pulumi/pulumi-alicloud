@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .get_industrial_pid_organizations import *
 from .get_industrial_pid_projects import *
+from .get_industrial_serice import *
 from .industrial_pid_organization import *
 from .industrial_pid_project import *
 from . import outputs

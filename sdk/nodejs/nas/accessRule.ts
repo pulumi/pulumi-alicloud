@@ -20,11 +20,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const fooAccessGroup = new alicloud.nas.AccessGroup("fooAccessGroup", {
- *     type: "Vpc",
+ *     accessGroupName: "tf-NasConfigName",
+ *     accessGroupType: "Vpc",
  *     description: "tf-testAccNasConfig",
  * });
  * const fooAccessRule = new alicloud.nas.AccessRule("fooAccessRule", {
- *     accessGroupName: fooAccessGroup.id,
+ *     accessGroupName: fooAccessGroup.accessGroupName,
  *     sourceCidrIp: "168.1.1.0/16",
  *     rwAccessType: "RDWR",
  *     userAccessType: "no_squash",
@@ -77,11 +78,11 @@ export class AccessRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly accessRuleId!: pulumi.Output<string>;
     /**
-     * Priority level. Range: 1-100. Default value: 1.
+     * Priority level. Range: 1-100. Default value: `1`.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
-     * Read-write permission type: RDWR (default), RDONLY.
+     * Read-write permission type: `RDWR` (default), `RDONLY`.
      */
     public readonly rwAccessType!: pulumi.Output<string | undefined>;
     /**
@@ -89,7 +90,7 @@ export class AccessRule extends pulumi.CustomResource {
      */
     public readonly sourceCidrIp!: pulumi.Output<string>;
     /**
-     * User permission type: noSquash (default), root_squash, all_squash.
+     * User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
      */
     public readonly userAccessType!: pulumi.Output<string | undefined>;
 
@@ -150,11 +151,11 @@ export interface AccessRuleState {
      */
     readonly accessRuleId?: pulumi.Input<string>;
     /**
-     * Priority level. Range: 1-100. Default value: 1.
+     * Priority level. Range: 1-100. Default value: `1`.
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * Read-write permission type: RDWR (default), RDONLY.
+     * Read-write permission type: `RDWR` (default), `RDONLY`.
      */
     readonly rwAccessType?: pulumi.Input<string>;
     /**
@@ -162,7 +163,7 @@ export interface AccessRuleState {
      */
     readonly sourceCidrIp?: pulumi.Input<string>;
     /**
-     * User permission type: noSquash (default), root_squash, all_squash.
+     * User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
      */
     readonly userAccessType?: pulumi.Input<string>;
 }
@@ -176,11 +177,11 @@ export interface AccessRuleArgs {
      */
     readonly accessGroupName: pulumi.Input<string>;
     /**
-     * Priority level. Range: 1-100. Default value: 1.
+     * Priority level. Range: 1-100. Default value: `1`.
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * Read-write permission type: RDWR (default), RDONLY.
+     * Read-write permission type: `RDWR` (default), `RDONLY`.
      */
     readonly rwAccessType?: pulumi.Input<string>;
     /**
@@ -188,7 +189,7 @@ export interface AccessRuleArgs {
      */
     readonly sourceCidrIp: pulumi.Input<string>;
     /**
-     * User permission type: noSquash (default), root_squash, all_squash.
+     * User permission type: `noSquash` (default), `rootSquash`, `allSquash`.
      */
     readonly userAccessType?: pulumi.Input<string>;
 }

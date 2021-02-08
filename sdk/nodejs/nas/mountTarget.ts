@@ -8,11 +8,11 @@ import * as utilities from "../utilities";
  * Provides a NAS Mount Target resource.
  * For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
  *
- * > NOTE: Available in v1.34.0+.
+ * > **NOTE**: Available in v1.34.0+.
  *
- * > NOTE: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
+ * > **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
  *
- * > NOTE: You must grant NAS with specific RAM permissions when creating a classic mount targets,
+ * > **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
  * and it only can be achieved by creating a classic mount target mannually.
  * See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
  *
@@ -81,7 +81,7 @@ export class MountTarget extends pulumi.CustomResource {
     /**
      * The name of the permission group that applies to the mount target.
      */
-    public readonly accessGroupName!: pulumi.Output<string>;
+    public readonly accessGroupName!: pulumi.Output<string | undefined>;
     /**
      * The ID of the file system.
      */
@@ -118,9 +118,6 @@ export class MountTarget extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as MountTargetArgs | undefined;
-            if ((!args || args.accessGroupName === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'accessGroupName'");
-            }
             if ((!args || args.fileSystemId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
@@ -174,7 +171,7 @@ export interface MountTargetArgs {
     /**
      * The name of the permission group that applies to the mount target.
      */
-    readonly accessGroupName: pulumi.Input<string>;
+    readonly accessGroupName?: pulumi.Input<string>;
     /**
      * The ID of the file system.
      */

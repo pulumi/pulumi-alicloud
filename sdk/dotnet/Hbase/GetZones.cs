@@ -29,7 +29,6 @@ namespace Pulumi.AliCloud.Hbase
         ///     public MyStack()
         ///     {
         ///         var zonesIds = Output.Create(AliCloud.Hbase.GetZones.InvokeAsync());
-        ///         // Create an HBase instance with the first matched zone
         ///         var hbase = new AliCloud.Hbase.Instance("hbase", new AliCloud.Hbase.InstanceArgs
         ///         {
         ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones[0].Id),

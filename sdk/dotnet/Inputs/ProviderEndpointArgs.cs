@@ -168,6 +168,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("pvtz")]
         public Input<string>? Pvtz { get; set; }
 
+        [Input("quotas")]
+        public Input<string>? Quotas { get; set; }
+
         [Input("rKvstore")]
         public Input<string>? RKvstore { get; set; }
 

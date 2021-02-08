@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides MountTargets available to the user.
  *
- * > NOTE: Available in 1.35.0+
+ * > **NOTE**: Available in 1.35.0+
  *
  * ## Example Usage
  *

@@ -46,7 +46,7 @@ export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions
 export interface GetProtocolsArgs {
     readonly outputFile?: string;
     /**
-     * The file system type. Valid Values: Performance and Capacity.
+     * The file system type. Valid Values: `Performance` and `Capacity`.
      */
     readonly type: string;
     /**

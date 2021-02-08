@@ -47,6 +47,7 @@ import * as fnf from "./fnf";
 import * as ga from "./ga";
 import * as gpdb from "./gpdb";
 import * as hbase from "./hbase";
+import * as iot from "./iot";
 import * as kms from "./kms";
 import * as kvstore from "./kvstore";
 import * as log from "./log";
@@ -62,6 +63,7 @@ import * as ots from "./ots";
 import * as polardb from "./polardb";
 import * as privatelink from "./privatelink";
 import * as pvtz from "./pvtz";
+import * as quotas from "./quotas";
 import * as ram from "./ram";
 import * as rds from "./rds";
 import * as resourcemanager from "./resourcemanager";
@@ -111,6 +113,7 @@ export {
     ga,
     gpdb,
     hbase,
+    iot,
     kms,
     kvstore,
     log,
@@ -126,6 +129,7 @@ export {
     polardb,
     privatelink,
     pvtz,
+    quotas,
     ram,
     rds,
     resourcemanager,

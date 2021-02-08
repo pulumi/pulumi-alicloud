@@ -14,11 +14,11 @@ import (
 // Provides a NAS Mount Target resource.
 // For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
 //
-// > NOTE: Available in v1.34.0+.
+// > **NOTE**: Available in v1.34.0+.
 //
-// > NOTE: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
+// > **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
 //
-// > NOTE: You must grant NAS with specific RAM permissions when creating a classic mount targets,
+// > **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
 // and it only can be achieved by creating a classic mount target mannually.
 // See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
 //
@@ -77,7 +77,7 @@ type MountTarget struct {
 	pulumi.CustomResourceState
 
 	// The name of the permission group that applies to the mount target.
-	AccessGroupName pulumi.StringOutput `pulumi:"accessGroupName"`
+	AccessGroupName pulumi.StringPtrOutput `pulumi:"accessGroupName"`
 	// The ID of the file system.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
 	// The ID of security group.
@@ -95,9 +95,6 @@ func NewMountTarget(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccessGroupName == nil {
-		return nil, errors.New("invalid value for required argument 'AccessGroupName'")
-	}
 	if args.FileSystemId == nil {
 		return nil, errors.New("invalid value for required argument 'FileSystemId'")
 	}
@@ -154,7 +151,7 @@ func (MountTargetState) ElementType() reflect.Type {
 
 type mountTargetArgs struct {
 	// The name of the permission group that applies to the mount target.
-	AccessGroupName string `pulumi:"accessGroupName"`
+	AccessGroupName *string `pulumi:"accessGroupName"`
 	// The ID of the file system.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// The ID of security group.
@@ -168,7 +165,7 @@ type mountTargetArgs struct {
 // The set of arguments for constructing a MountTarget resource.
 type MountTargetArgs struct {
 	// The name of the permission group that applies to the mount target.
-	AccessGroupName pulumi.StringInput
+	AccessGroupName pulumi.StringPtrInput
 	// The ID of the file system.
 	FileSystemId pulumi.StringInput
 	// The ID of security group.

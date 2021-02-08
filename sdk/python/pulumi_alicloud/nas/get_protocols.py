@@ -103,7 +103,7 @@ def get_protocols(output_file: Optional[str] = None,
     ```
 
 
-    :param str type: The file system type. Valid Values: Performance and Capacity.
+    :param str type: The file system type. Valid Values: `Performance` and `Capacity`.
     :param str zone_id: String to filter results by zone id.
     """
     __args__ = dict()

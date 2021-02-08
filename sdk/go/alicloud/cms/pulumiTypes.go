@@ -1307,6 +1307,130 @@ func (o GroupMetricRuleEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type MonitorGroupInstancesInstance struct {
+	// The category of instance.
+	Category string `pulumi:"category"`
+	// The id of instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of instance.
+	InstanceName string `pulumi:"instanceName"`
+	// The region id of instance.
+	RegionId string `pulumi:"regionId"`
+}
+
+// MonitorGroupInstancesInstanceInput is an input type that accepts MonitorGroupInstancesInstanceArgs and MonitorGroupInstancesInstanceOutput values.
+// You can construct a concrete instance of `MonitorGroupInstancesInstanceInput` via:
+//
+//          MonitorGroupInstancesInstanceArgs{...}
+type MonitorGroupInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToMonitorGroupInstancesInstanceOutput() MonitorGroupInstancesInstanceOutput
+	ToMonitorGroupInstancesInstanceOutputWithContext(context.Context) MonitorGroupInstancesInstanceOutput
+}
+
+type MonitorGroupInstancesInstanceArgs struct {
+	// The category of instance.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The id of instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The region id of instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+}
+
+func (MonitorGroupInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorGroupInstancesInstance)(nil)).Elem()
+}
+
+func (i MonitorGroupInstancesInstanceArgs) ToMonitorGroupInstancesInstanceOutput() MonitorGroupInstancesInstanceOutput {
+	return i.ToMonitorGroupInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i MonitorGroupInstancesInstanceArgs) ToMonitorGroupInstancesInstanceOutputWithContext(ctx context.Context) MonitorGroupInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupInstancesInstanceOutput)
+}
+
+// MonitorGroupInstancesInstanceArrayInput is an input type that accepts MonitorGroupInstancesInstanceArray and MonitorGroupInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `MonitorGroupInstancesInstanceArrayInput` via:
+//
+//          MonitorGroupInstancesInstanceArray{ MonitorGroupInstancesInstanceArgs{...} }
+type MonitorGroupInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToMonitorGroupInstancesInstanceArrayOutput() MonitorGroupInstancesInstanceArrayOutput
+	ToMonitorGroupInstancesInstanceArrayOutputWithContext(context.Context) MonitorGroupInstancesInstanceArrayOutput
+}
+
+type MonitorGroupInstancesInstanceArray []MonitorGroupInstancesInstanceInput
+
+func (MonitorGroupInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorGroupInstancesInstance)(nil)).Elem()
+}
+
+func (i MonitorGroupInstancesInstanceArray) ToMonitorGroupInstancesInstanceArrayOutput() MonitorGroupInstancesInstanceArrayOutput {
+	return i.ToMonitorGroupInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i MonitorGroupInstancesInstanceArray) ToMonitorGroupInstancesInstanceArrayOutputWithContext(ctx context.Context) MonitorGroupInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupInstancesInstanceArrayOutput)
+}
+
+type MonitorGroupInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (MonitorGroupInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorGroupInstancesInstance)(nil)).Elem()
+}
+
+func (o MonitorGroupInstancesInstanceOutput) ToMonitorGroupInstancesInstanceOutput() MonitorGroupInstancesInstanceOutput {
+	return o
+}
+
+func (o MonitorGroupInstancesInstanceOutput) ToMonitorGroupInstancesInstanceOutputWithContext(ctx context.Context) MonitorGroupInstancesInstanceOutput {
+	return o
+}
+
+// The category of instance.
+func (o MonitorGroupInstancesInstanceOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorGroupInstancesInstance) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The id of instance.
+func (o MonitorGroupInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorGroupInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of instance.
+func (o MonitorGroupInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorGroupInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The region id of instance.
+func (o MonitorGroupInstancesInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorGroupInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+type MonitorGroupInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorGroupInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorGroupInstancesInstance)(nil)).Elem()
+}
+
+func (o MonitorGroupInstancesInstanceArrayOutput) ToMonitorGroupInstancesInstanceArrayOutput() MonitorGroupInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o MonitorGroupInstancesInstanceArrayOutput) ToMonitorGroupInstancesInstanceArrayOutputWithContext(ctx context.Context) MonitorGroupInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o MonitorGroupInstancesInstanceArrayOutput) Index(i pulumi.IntInput) MonitorGroupInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorGroupInstancesInstance {
+		return vs[0].([]MonitorGroupInstancesInstance)[vs[1].(int)]
+	}).(MonitorGroupInstancesInstanceOutput)
+}
+
 type SiteMonitorIspCity struct {
 	City string `pulumi:"city"`
 	Isp  string `pulumi:"isp"`
@@ -2701,6 +2825,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsInfoPtrOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsWarnOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsWarnPtrOutput{})
+	pulumi.RegisterOutputType(MonitorGroupInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(MonitorGroupInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactGroupsGroupOutput{})

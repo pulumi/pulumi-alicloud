@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const zonesIds = alicloud.hbase.getZones({});
- * // Create an HBase instance with the first matched zone
  * const hbase = new alicloud.hbase.Instance("hbase", {zoneId: zonesIds.then(zonesIds => zonesIds.zones[0].id)});
  * // Other properties...
  * ```

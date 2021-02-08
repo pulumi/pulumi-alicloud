@@ -130,6 +130,7 @@ type Endpoints struct {
 	Polardb         *string `pulumi:"polardb"`
 	Privatelink     *string `pulumi:"privatelink"`
 	Pvtz            *string `pulumi:"pvtz"`
+	Quotas          *string `pulumi:"quotas"`
 	RKvstore        *string `pulumi:"rKvstore"`
 	Ram             *string `pulumi:"ram"`
 	Rds             *string `pulumi:"rds"`
@@ -206,6 +207,7 @@ type EndpointsArgs struct {
 	Polardb         pulumi.StringPtrInput `pulumi:"polardb"`
 	Privatelink     pulumi.StringPtrInput `pulumi:"privatelink"`
 	Pvtz            pulumi.StringPtrInput `pulumi:"pvtz"`
+	Quotas          pulumi.StringPtrInput `pulumi:"quotas"`
 	RKvstore        pulumi.StringPtrInput `pulumi:"rKvstore"`
 	Ram             pulumi.StringPtrInput `pulumi:"ram"`
 	Rds             pulumi.StringPtrInput `pulumi:"rds"`
@@ -475,6 +477,10 @@ func (o EndpointsOutput) Privatelink() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Pvtz() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Pvtz }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Quotas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Quotas }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) RKvstore() pulumi.StringPtrOutput {

@@ -90,7 +90,6 @@ def get_zones(output_file: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     zones_ids = alicloud.hbase.get_zones()
-    # Create an HBase instance with the first matched zone
     hbase = alicloud.hbase.Instance("hbase", zone_id=zones_ids.zones[0].id)
     # Other properties...
     ```

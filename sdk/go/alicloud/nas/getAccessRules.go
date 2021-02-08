@@ -9,7 +9,7 @@ import (
 
 // This data source provides AccessRule available to the user.
 //
-// > NOTE: Available in 1.35.0+
+// > **NOTE**: Available in 1.35.0+
 func GetAccessRules(ctx *pulumi.Context, args *GetAccessRulesArgs, opts ...pulumi.InvokeOption) (*GetAccessRulesResult, error) {
 	var rv GetAccessRulesResult
 	err := ctx.Invoke("alicloud:nas/getAccessRules:getAccessRules", args, &rv, opts...)
@@ -39,7 +39,7 @@ type GetAccessRulesResult struct {
 	AccessGroupName string `pulumi:"accessGroupName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of rule IDs, Each element set to `accessRuleId` (Each element formats as `<access_group_name>:<access rule id>` before 1.53.0).
+	// A list of rule IDs, Each element set to `accessRuleId` (Each element formats as `<access_group_name>:<access_rule_id>` before 1.53.0).
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of AccessRules. Each element contains the following attributes:

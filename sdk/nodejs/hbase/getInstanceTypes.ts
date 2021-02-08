@@ -20,8 +20,14 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:hbase/getInstanceTypes:getInstanceTypes", {
+        "chargeType": args.chargeType,
+        "diskType": args.diskType,
+        "engine": args.engine,
         "instanceType": args.instanceType,
         "outputFile": args.outputFile,
+        "regionId": args.regionId,
+        "version": args.version,
+        "zoneId": args.zoneId,
     }, opts);
 }
 
@@ -30,16 +36,50 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
  */
 export interface GetInstanceTypesArgs {
     /**
+     * The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
+     */
+    readonly chargeType?: string;
+    /**
+     * The disk type, `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`.
+     */
+    readonly diskType?: string;
+    /**
+     * The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+     */
+    readonly engine?: string;
+    /**
      * The hbase instance type of create hbase cluster instance.
      */
     readonly instanceType?: string;
     readonly outputFile?: string;
+    /**
+     * The dest region id, default client region.
+     */
+    readonly regionId?: string;
+    /**
+     * The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+     */
+    readonly version?: string;
+    /**
+     * The zone id, belong to regionId.
+     */
+    readonly zoneId?: string;
 }
 
 /**
  * A collection of values returned by getInstanceTypes.
  */
 export interface GetInstanceTypesResult {
+    readonly chargeType?: string;
+    /**
+     * (Available in 1.115.0+) A list of core instance types. Each element contains the following attributes:
+     */
+    readonly coreInstanceTypes: outputs.hbase.GetInstanceTypesCoreInstanceType[];
+    readonly diskType?: string;
+    /**
+     * Name of the engine.
+     */
+    readonly engine?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -48,10 +88,23 @@ export interface GetInstanceTypesResult {
      * A list of instance types type IDs.
      */
     readonly ids: string[];
-    readonly instanceType?: string;
-    readonly outputFile?: string;
     /**
-     * A list of instance types. Each element contains the following attributes:
+     * Name of the instance type.
+     */
+    readonly instanceType?: string;
+    /**
+     * (Available in 1.115.0+) A list of master instance types. Each element contains the following attributes:
+     */
+    readonly masterInstanceTypes: outputs.hbase.GetInstanceTypesMasterInstanceType[];
+    readonly outputFile?: string;
+    readonly regionId?: string;
+    /**
+     * (Deprecated) A list of instance types. Each element contains the following attributes:
      */
     readonly types: outputs.hbase.GetInstanceTypesType[];
+    /**
+     * The version of the engine.
+     */
+    readonly version?: string;
+    readonly zoneId?: string;
 }

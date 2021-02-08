@@ -40,9 +40,11 @@ namespace Pulumi.AliCloud.Hbase
     ///             CoreDiskType = "cloud_efficiency",
     ///             CoreInstanceQuantity = 2,
     ///             CoreInstanceType = "hbase.sn1.large",
+    ///             Engine = "hbaseue",
     ///             EngineVersion = "2.0",
     ///             MasterInstanceType = "hbase.sn1.large",
     ///             PayType = "PostPaid",
+    ///             VswitchId = "vsw-123456",
     ///             ZoneId = "cn-shenzhen-b",
     ///         });
     ///     }
@@ -64,7 +66,7 @@ namespace Pulumi.AliCloud.Hbase
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// The account of the cluster web ui.
+        /// The account of the cluster web ui. Size [0-128].
         /// </summary>
         [Output("account")]
         public Output<string?> Account { get; private set; } = null!;
@@ -76,28 +78,28 @@ namespace Pulumi.AliCloud.Hbase
         public Output<bool> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// 0 or 800+. 0 means is_cold_storage = false. 800+ means is_cold_storage = true.
+        /// 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
         /// </summary>
         [Output("coldStorageSize")]
         public Output<int?> ColdStorageSize { get; private set; } = null!;
 
         /// <summary>
         /// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
-        /// - Custom storage space, value range: [20, 8000].
-        /// - Cluster min=400GB, 40-GB increments.
-        /// - Single min=20GB, 1-GB increments.
+        /// - Custom storage space, value range: [20, 64000].
+        /// - Cluster [400, 64000], step:40-GB increments.
+        /// - Single [20-500GB], step:1-GB increments.
         /// </summary>
         [Output("coreDiskSize")]
         public Output<int?> CoreDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, ``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
         /// </summary>
         [Output("coreDiskType")]
         public Output<string?> CoreDiskType { get; private set; } = null!;
 
         /// <summary>
-        /// Default=2. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        /// Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
         /// </summary>
         [Output("coreInstanceQuantity")]
         public Output<int?> CoreInstanceQuantity { get; private set; } = null!;
@@ -118,7 +120,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<int> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
+        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
         /// </summary>
         [Output("engine")]
         public Output<string?> Engine { get; private set; } = null!;
@@ -170,13 +172,13 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the cluster web ui account.
+        /// The password of the cluster web ui account. Size [0-128].
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
         /// </summary>
         [Output("payType")]
         public Output<string?> PayType { get; private set; } = null!;
@@ -206,7 +208,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableArray<Outputs.InstanceUiProxyConnAddr>> UiProxyConnAddrs { get; private set; } = null!;
 
         /// <summary>
-        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic.
+        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -270,7 +272,7 @@ namespace Pulumi.AliCloud.Hbase
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account of the cluster web ui.
+        /// The account of the cluster web ui. Size [0-128].
         /// </summary>
         [Input("account")]
         public Input<string>? Account { get; set; }
@@ -282,28 +284,28 @@ namespace Pulumi.AliCloud.Hbase
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// 0 or 800+. 0 means is_cold_storage = false. 800+ means is_cold_storage = true.
+        /// 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
         /// </summary>
         [Input("coldStorageSize")]
         public Input<int>? ColdStorageSize { get; set; }
 
         /// <summary>
         /// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
-        /// - Custom storage space, value range: [20, 8000].
-        /// - Cluster min=400GB, 40-GB increments.
-        /// - Single min=20GB, 1-GB increments.
+        /// - Custom storage space, value range: [20, 64000].
+        /// - Cluster [400, 64000], step:40-GB increments.
+        /// - Single [20-500GB], step:1-GB increments.
         /// </summary>
         [Input("coreDiskSize")]
         public Input<int>? CoreDiskSize { get; set; }
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, ``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
         /// </summary>
         [Input("coreDiskType")]
         public Input<string>? CoreDiskType { get; set; }
 
         /// <summary>
-        /// Default=2. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        /// Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
         /// </summary>
         [Input("coreInstanceQuantity")]
         public Input<int>? CoreInstanceQuantity { get; set; }
@@ -324,7 +326,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
+        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -370,13 +372,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The password of the cluster web ui account.
+        /// The password of the cluster web ui account. Size [0-128].
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
@@ -406,7 +408,7 @@ namespace Pulumi.AliCloud.Hbase
         }
 
         /// <summary>
-        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic.
+        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -425,7 +427,7 @@ namespace Pulumi.AliCloud.Hbase
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account of the cluster web ui.
+        /// The account of the cluster web ui. Size [0-128].
         /// </summary>
         [Input("account")]
         public Input<string>? Account { get; set; }
@@ -437,28 +439,28 @@ namespace Pulumi.AliCloud.Hbase
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// 0 or 800+. 0 means is_cold_storage = false. 800+ means is_cold_storage = true.
+        /// 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
         /// </summary>
         [Input("coldStorageSize")]
         public Input<int>? ColdStorageSize { get; set; }
 
         /// <summary>
         /// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
-        /// - Custom storage space, value range: [20, 8000].
-        /// - Cluster min=400GB, 40-GB increments.
-        /// - Single min=20GB, 1-GB increments.
+        /// - Custom storage space, value range: [20, 64000].
+        /// - Cluster [400, 64000], step:40-GB increments.
+        /// - Single [20-500GB], step:1-GB increments.
         /// </summary>
         [Input("coreDiskSize")]
         public Input<int>? CoreDiskSize { get; set; }
 
         /// <summary>
-        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，`-`, ``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+        /// Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
         /// </summary>
         [Input("coreDiskType")]
         public Input<string>? CoreDiskType { get; set; }
 
         /// <summary>
-        /// Default=2. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        /// Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
         /// </summary>
         [Input("coreInstanceQuantity")]
         public Input<int>? CoreInstanceQuantity { get; set; }
@@ -479,7 +481,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
+        /// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -531,13 +533,13 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The password of the cluster web ui account.
+        /// The password of the cluster web ui account. Size [0-128].
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
@@ -591,7 +593,7 @@ namespace Pulumi.AliCloud.Hbase
         }
 
         /// <summary>
-        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic.
+        /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

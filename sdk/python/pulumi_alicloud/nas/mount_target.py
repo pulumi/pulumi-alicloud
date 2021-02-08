@@ -27,11 +27,11 @@ class MountTarget(pulumi.CustomResource):
         Provides a NAS Mount Target resource.
         For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
 
-        > NOTE: Available in v1.34.0+.
+        > **NOTE**: Available in v1.34.0+.
 
-        > NOTE: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
+        > **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
 
-        > NOTE: You must grant NAS with specific RAM permissions when creating a classic mount targets,
+        > **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
         and it only can be achieved by creating a classic mount target mannually.
         See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
 
@@ -91,8 +91,6 @@ class MountTarget(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_group_name is None and not opts.urn:
-                raise TypeError("Missing required property 'access_group_name'")
             __props__['access_group_name'] = access_group_name
             if file_system_id is None and not opts.urn:
                 raise TypeError("Missing required property 'file_system_id'")
@@ -141,7 +139,7 @@ class MountTarget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessGroupName")
-    def access_group_name(self) -> pulumi.Output[str]:
+    def access_group_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the permission group that applies to the mount target.
         """

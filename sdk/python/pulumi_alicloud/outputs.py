@@ -109,6 +109,7 @@ class ProviderEndpoint(dict):
                  polardb: Optional[str] = None,
                  privatelink: Optional[str] = None,
                  pvtz: Optional[str] = None,
+                 quotas: Optional[str] = None,
                  r_kvstore: Optional[str] = None,
                  ram: Optional[str] = None,
                  rds: Optional[str] = None,
@@ -223,6 +224,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "privatelink", privatelink)
         if pvtz is not None:
             pulumi.set(__self__, "pvtz", pvtz)
+        if quotas is not None:
+            pulumi.set(__self__, "quotas", quotas)
         if r_kvstore is not None:
             pulumi.set(__self__, "r_kvstore", r_kvstore)
         if ram is not None:
@@ -503,6 +506,11 @@ class ProviderEndpoint(dict):
     @pulumi.getter
     def pvtz(self) -> Optional[str]:
         return pulumi.get(self, "pvtz")
+
+    @property
+    @pulumi.getter
+    def quotas(self) -> Optional[str]:
+        return pulumi.get(self, "quotas")
 
     @property
     @pulumi.getter(name="rKvstore")

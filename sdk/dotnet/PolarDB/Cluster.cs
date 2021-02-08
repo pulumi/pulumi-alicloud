@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ClusterParameter>> Parameters { get; private set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         /// </summary>
         public InputList<Inputs.ClusterParameterArgs> Parameters
         {
@@ -433,7 +433,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<Inputs.ClusterParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         /// </summary>
         public InputList<Inputs.ClusterParameterGetArgs> Parameters
         {

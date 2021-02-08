@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./getIndustrialPidOrganizations";
 export * from "./getIndustrialPidProjects";
+export * from "./getIndustrialSerice";
 export * from "./industrialPidOrganization";
 export * from "./industrialPidProject";
 

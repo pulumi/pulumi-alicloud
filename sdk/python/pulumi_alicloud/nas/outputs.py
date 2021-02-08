@@ -176,9 +176,9 @@ class GetFileSystemsSystemResult(dict):
         :param str description: Destription of the FileSystem.
         :param str id: ID of the FileSystem.
         :param int metered_size: MeteredSize of the FileSystem.
-        :param str protocol_type: Filter results by a specific ProtocolType.
+        :param str protocol_type: Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
         :param str region_id: ID of the region where the FileSystem is located.
-        :param str storage_type: Filter results by a specific StorageType.
+        :param str storage_type: Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
@@ -224,7 +224,7 @@ class GetFileSystemsSystemResult(dict):
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> str:
         """
-        Filter results by a specific ProtocolType.
+        Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
         """
         return pulumi.get(self, "protocol_type")
 
@@ -240,7 +240,7 @@ class GetFileSystemsSystemResult(dict):
     @pulumi.getter(name="storageType")
     def storage_type(self) -> str:
         """
-        Filter results by a specific StorageType.
+        Filter results by a specific StorageType. Valid values: `Capacity` and `Performance`.
         """
         return pulumi.get(self, "storage_type")
 

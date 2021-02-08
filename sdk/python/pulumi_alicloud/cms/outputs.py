@@ -17,6 +17,7 @@ __all__ = [
     'GroupMetricRuleEscalationsCritical',
     'GroupMetricRuleEscalationsInfo',
     'GroupMetricRuleEscalationsWarn',
+    'MonitorGroupInstancesInstance',
     'SiteMonitorIspCity',
     'GetAlarmContactGroupsGroupResult',
     'GetAlarmContactsContactResult',
@@ -417,6 +418,60 @@ class GroupMetricRuleEscalationsWarn(dict):
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MonitorGroupInstancesInstance(dict):
+    def __init__(__self__, *,
+                 category: str,
+                 instance_id: str,
+                 instance_name: str,
+                 region_id: str):
+        """
+        :param str category: The category of instance.
+        :param str instance_id: The id of instance.
+        :param str instance_name: The name of instance.
+        :param str region_id: The region id of instance.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "region_id", region_id)
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        """
+        The category of instance.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The id of instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region id of instance.
+        """
+        return pulumi.get(self, "region_id")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

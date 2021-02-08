@@ -13,11 +13,11 @@ namespace Pulumi.AliCloud.Nas
     /// Provides a NAS Mount Target resource.
     /// For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
     /// 
-    /// &gt; NOTE: Available in v1.34.0+.
+    /// &gt; **NOTE**: Available in v1.34.0+.
     /// 
-    /// &gt; NOTE: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
+    /// &gt; **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
     /// 
-    /// &gt; NOTE: You must grant NAS with specific RAM permissions when creating a classic mount targets,
+    /// &gt; **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
     /// and it only can be achieved by creating a classic mount target mannually.
     /// See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
     /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Nas
         /// The name of the permission group that applies to the mount target.
         /// </summary>
         [Output("accessGroupName")]
-        public Output<string> AccessGroupName { get; private set; } = null!;
+        public Output<string?> AccessGroupName { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the file system.
@@ -147,8 +147,8 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// The name of the permission group that applies to the mount target.
         /// </summary>
-        [Input("accessGroupName", required: true)]
-        public Input<string> AccessGroupName { get; set; } = null!;
+        [Input("accessGroupName")]
+        public Input<string>? AccessGroupName { get; set; }
 
         /// <summary>
         /// The ID of the file system.

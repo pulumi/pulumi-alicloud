@@ -31,9 +31,11 @@ import * as utilities from "../utilities";
  *     coreDiskType: "cloud_efficiency",
  *     coreInstanceQuantity: 2,
  *     coreInstanceType: "hbase.sn1.large",
+ *     engine: "hbaseue",
  *     engineVersion: "2.0",
  *     masterInstanceType: "hbase.sn1.large",
  *     payType: "PostPaid",
+ *     vswitchId: "vsw-123456",
  *     zoneId: "cn-shenzhen-b",
  * });
  * ```
@@ -77,7 +79,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The account of the cluster web ui.
+     * The account of the cluster web ui. Size [0-128].
      */
     public readonly account!: pulumi.Output<string | undefined>;
     /**
@@ -85,22 +87,22 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly autoRenew!: pulumi.Output<boolean>;
     /**
-     * 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
+     * 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
      */
     public readonly coldStorageSize!: pulumi.Output<number | undefined>;
     /**
      * User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
-     * - Custom storage space, value range: [20, 8000].
-     * - Cluster min=400GB, 40-GB increments.
-     * - Single min=20GB, 1-GB increments.
+     * - Custom storage space, value range: [20, 64000].
+     * - Cluster [400, 64000], step:40-GB increments.
+     * - Single [20-500GB], step:1-GB increments.
      */
     public readonly coreDiskSize!: pulumi.Output<number | undefined>;
     /**
-     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
+     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      */
     public readonly coreDiskType!: pulumi.Output<string | undefined>;
     /**
-     * Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
+     * Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
     public readonly coreInstanceQuantity!: pulumi.Output<number | undefined>;
     public readonly coreInstanceType!: pulumi.Output<string>;
@@ -113,7 +115,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly duration!: pulumi.Output<number>;
     /**
-     * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
+     * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
      */
     public readonly engine!: pulumi.Output<string | undefined>;
     /**
@@ -147,11 +149,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The password of the cluster web ui account.
+     * The password of the cluster web ui account. Size [0-128].
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
      */
     public readonly payType!: pulumi.Output<string | undefined>;
     /**
@@ -171,7 +173,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly uiProxyConnAddrs!: pulumi.Output<outputs.hbase.InstanceUiProxyConnAddr[]>;
     /**
-     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic.
+     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
@@ -277,7 +279,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The account of the cluster web ui.
+     * The account of the cluster web ui. Size [0-128].
      */
     readonly account?: pulumi.Input<string>;
     /**
@@ -285,22 +287,22 @@ export interface InstanceState {
      */
     readonly autoRenew?: pulumi.Input<boolean>;
     /**
-     * 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
+     * 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
      */
     readonly coldStorageSize?: pulumi.Input<number>;
     /**
      * User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
-     * - Custom storage space, value range: [20, 8000].
-     * - Cluster min=400GB, 40-GB increments.
-     * - Single min=20GB, 1-GB increments.
+     * - Custom storage space, value range: [20, 64000].
+     * - Cluster [400, 64000], step:40-GB increments.
+     * - Single [20-500GB], step:1-GB increments.
      */
     readonly coreDiskSize?: pulumi.Input<number>;
     /**
-     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
+     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      */
     readonly coreDiskType?: pulumi.Input<string>;
     /**
-     * Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
+     * Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
     readonly coreInstanceQuantity?: pulumi.Input<number>;
     readonly coreInstanceType?: pulumi.Input<string>;
@@ -313,7 +315,7 @@ export interface InstanceState {
      */
     readonly duration?: pulumi.Input<number>;
     /**
-     * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
+     * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
      */
     readonly engine?: pulumi.Input<string>;
     /**
@@ -347,11 +349,11 @@ export interface InstanceState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The password of the cluster web ui account.
+     * The password of the cluster web ui account. Size [0-128].
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
      */
     readonly payType?: pulumi.Input<string>;
     /**
@@ -371,7 +373,7 @@ export interface InstanceState {
      */
     readonly uiProxyConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceUiProxyConnAddr>[]>;
     /**
-     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic.
+     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
@@ -389,7 +391,7 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The account of the cluster web ui.
+     * The account of the cluster web ui. Size [0-128].
      */
     readonly account?: pulumi.Input<string>;
     /**
@@ -397,22 +399,22 @@ export interface InstanceArgs {
      */
     readonly autoRenew?: pulumi.Input<boolean>;
     /**
-     * 0 or 800+. 0 means isColdStorage = false. 800+ means isColdStorage = true.
+     * 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
      */
     readonly coldStorageSize?: pulumi.Input<number>;
     /**
      * User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
-     * - Custom storage space, value range: [20, 8000].
-     * - Cluster min=400GB, 40-GB increments.
-     * - Single min=20GB, 1-GB increments.
+     * - Custom storage space, value range: [20, 64000].
+     * - Cluster [400, 64000], step:40-GB increments.
+     * - Single [20-500GB], step:1-GB increments.
      */
     readonly coreDiskSize?: pulumi.Input<number>;
     /**
-     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，`-`, ``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
+     * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      */
     readonly coreDiskType?: pulumi.Input<string>;
     /**
-     * Default=2. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
+     * Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
     readonly coreInstanceQuantity?: pulumi.Input<number>;
     readonly coreInstanceType: pulumi.Input<string>;
@@ -425,7 +427,7 @@ export interface InstanceArgs {
      */
     readonly duration?: pulumi.Input<number>;
     /**
-     * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds `.
+     * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
      */
     readonly engine?: pulumi.Input<string>;
     /**
@@ -455,11 +457,11 @@ export interface InstanceArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The password of the cluster web ui account.
+     * The password of the cluster web ui account. Size [0-128].
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. Not support convert PrePaid to PostPaid.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
      */
     readonly payType?: pulumi.Input<string>;
     /**
@@ -471,7 +473,7 @@ export interface InstanceArgs {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic.
+     * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**

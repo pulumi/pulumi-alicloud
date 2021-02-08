@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides AccessRule available to the user.
  *
- * > NOTE: Available in 1.35.0+
+ * > **NOTE**: Available in 1.35.0+
  *
  * ## Example Usage
  *
@@ -81,7 +81,7 @@ export interface GetAccessRulesResult {
      */
     readonly id: string;
     /**
-     * A list of rule IDs, Each element set to `accessRuleId` (Each element formats as `<access_group_name>:<access rule id>` before 1.53.0).
+     * A list of rule IDs, Each element set to `accessRuleId` (Each element formats as `<access_group_name>:<access_rule_id>` before 1.53.0).
      */
     readonly ids: string[];
     readonly outputFile?: string;
