@@ -133,7 +133,8 @@ export class RouterInterface extends pulumi.CustomResource {
     constructor(name: string, args: RouterInterfaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterInterfaceArgs | RouterInterfaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
             inputs["accessPointId"] = state ? state.accessPointId : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -154,16 +155,16 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["specification"] = state ? state.specification : undefined;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
-            if ((!args || args.oppositeRegion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.oppositeRegion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oppositeRegion'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.routerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.routerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            if ((!args || args.routerType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.routerType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routerType'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -184,12 +185,8 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["oppositeRouterId"] = undefined /*out*/;
             inputs["oppositeRouterType"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RouterInterface.__pulumiType, name, inputs, opts);
     }

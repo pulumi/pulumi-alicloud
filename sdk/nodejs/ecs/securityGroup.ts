@@ -88,7 +88,8 @@ export class SecurityGroup extends pulumi.CustomResource {
     constructor(name: string, args?: SecurityGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityGroupArgs | SecurityGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SecurityGroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["innerAccess"] = state ? state.innerAccess : undefined;
@@ -109,12 +110,8 @@ export class SecurityGroup extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SecurityGroup.__pulumiType, name, inputs, opts);
     }

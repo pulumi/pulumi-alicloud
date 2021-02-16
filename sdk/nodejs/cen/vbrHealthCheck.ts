@@ -120,7 +120,8 @@ export class VbrHealthCheck extends pulumi.CustomResource {
     constructor(name: string, args: VbrHealthCheckArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VbrHealthCheckArgs | VbrHealthCheckState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VbrHealthCheckState | undefined;
             inputs["cenId"] = state ? state.cenId : undefined;
             inputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
@@ -132,16 +133,16 @@ export class VbrHealthCheck extends pulumi.CustomResource {
             inputs["vbrInstanceRegionId"] = state ? state.vbrInstanceRegionId : undefined;
         } else {
             const args = argsOrState as VbrHealthCheckArgs | undefined;
-            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cenId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.healthCheckTargetIp === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.healthCheckTargetIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'healthCheckTargetIp'");
             }
-            if ((!args || args.vbrInstanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vbrInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vbrInstanceId'");
             }
-            if ((!args || args.vbrInstanceRegionId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vbrInstanceRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vbrInstanceRegionId'");
             }
             inputs["cenId"] = args ? args.cenId : undefined;
@@ -153,12 +154,8 @@ export class VbrHealthCheck extends pulumi.CustomResource {
             inputs["vbrInstanceOwnerId"] = args ? args.vbrInstanceOwnerId : undefined;
             inputs["vbrInstanceRegionId"] = args ? args.vbrInstanceRegionId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VbrHealthCheck.__pulumiType, name, inputs, opts);
     }

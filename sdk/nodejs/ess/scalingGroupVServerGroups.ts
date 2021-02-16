@@ -147,29 +147,26 @@ export class ScalingGroupVServerGroups extends pulumi.CustomResource {
     constructor(name: string, args: ScalingGroupVServerGroupsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScalingGroupVServerGroupsArgs | ScalingGroupVServerGroupsState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ScalingGroupVServerGroupsState | undefined;
             inputs["force"] = state ? state.force : undefined;
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             inputs["vserverGroups"] = state ? state.vserverGroups : undefined;
         } else {
             const args = argsOrState as ScalingGroupVServerGroupsArgs | undefined;
-            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            if ((!args || args.vserverGroups === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vserverGroups === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vserverGroups'");
             }
             inputs["force"] = args ? args.force : undefined;
             inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
             inputs["vserverGroups"] = args ? args.vserverGroups : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ScalingGroupVServerGroups.__pulumiType, name, inputs, opts);
     }

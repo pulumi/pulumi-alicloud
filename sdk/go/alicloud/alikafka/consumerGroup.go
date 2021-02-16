@@ -27,7 +27,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/alikafka"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -201,6 +200,85 @@ func (i *ConsumerGroup) ToConsumerGroupOutputWithContext(ctx context.Context) Co
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupOutput)
 }
 
+func (i *ConsumerGroup) ToConsumerGroupPtrOutput() ConsumerGroupPtrOutput {
+	return i.ToConsumerGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ConsumerGroup) ToConsumerGroupPtrOutputWithContext(ctx context.Context) ConsumerGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupPtrOutput)
+}
+
+type ConsumerGroupPtrInput interface {
+	pulumi.Input
+
+	ToConsumerGroupPtrOutput() ConsumerGroupPtrOutput
+	ToConsumerGroupPtrOutputWithContext(ctx context.Context) ConsumerGroupPtrOutput
+}
+
+type consumerGroupPtrType ConsumerGroupArgs
+
+func (*consumerGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumerGroup)(nil))
+}
+
+func (i *consumerGroupPtrType) ToConsumerGroupPtrOutput() ConsumerGroupPtrOutput {
+	return i.ToConsumerGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *consumerGroupPtrType) ToConsumerGroupPtrOutputWithContext(ctx context.Context) ConsumerGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupPtrOutput)
+}
+
+// ConsumerGroupArrayInput is an input type that accepts ConsumerGroupArray and ConsumerGroupArrayOutput values.
+// You can construct a concrete instance of `ConsumerGroupArrayInput` via:
+//
+//          ConsumerGroupArray{ ConsumerGroupArgs{...} }
+type ConsumerGroupArrayInput interface {
+	pulumi.Input
+
+	ToConsumerGroupArrayOutput() ConsumerGroupArrayOutput
+	ToConsumerGroupArrayOutputWithContext(context.Context) ConsumerGroupArrayOutput
+}
+
+type ConsumerGroupArray []ConsumerGroupInput
+
+func (ConsumerGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ConsumerGroup)(nil))
+}
+
+func (i ConsumerGroupArray) ToConsumerGroupArrayOutput() ConsumerGroupArrayOutput {
+	return i.ToConsumerGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ConsumerGroupArray) ToConsumerGroupArrayOutputWithContext(ctx context.Context) ConsumerGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupArrayOutput)
+}
+
+// ConsumerGroupMapInput is an input type that accepts ConsumerGroupMap and ConsumerGroupMapOutput values.
+// You can construct a concrete instance of `ConsumerGroupMapInput` via:
+//
+//          ConsumerGroupMap{ "key": ConsumerGroupArgs{...} }
+type ConsumerGroupMapInput interface {
+	pulumi.Input
+
+	ToConsumerGroupMapOutput() ConsumerGroupMapOutput
+	ToConsumerGroupMapOutputWithContext(context.Context) ConsumerGroupMapOutput
+}
+
+type ConsumerGroupMap map[string]ConsumerGroupInput
+
+func (ConsumerGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ConsumerGroup)(nil))
+}
+
+func (i ConsumerGroupMap) ToConsumerGroupMapOutput() ConsumerGroupMapOutput {
+	return i.ToConsumerGroupMapOutputWithContext(context.Background())
+}
+
+func (i ConsumerGroupMap) ToConsumerGroupMapOutputWithContext(ctx context.Context) ConsumerGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupMapOutput)
+}
+
 type ConsumerGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -217,6 +295,75 @@ func (o ConsumerGroupOutput) ToConsumerGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ConsumerGroupOutput) ToConsumerGroupPtrOutput() ConsumerGroupPtrOutput {
+	return o.ToConsumerGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ConsumerGroupOutput) ToConsumerGroupPtrOutputWithContext(ctx context.Context) ConsumerGroupPtrOutput {
+	return o.ApplyT(func(v ConsumerGroup) *ConsumerGroup {
+		return &v
+	}).(ConsumerGroupPtrOutput)
+}
+
+type ConsumerGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConsumerGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumerGroup)(nil))
+}
+
+func (o ConsumerGroupPtrOutput) ToConsumerGroupPtrOutput() ConsumerGroupPtrOutput {
+	return o
+}
+
+func (o ConsumerGroupPtrOutput) ToConsumerGroupPtrOutputWithContext(ctx context.Context) ConsumerGroupPtrOutput {
+	return o
+}
+
+type ConsumerGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ConsumerGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConsumerGroup)(nil))
+}
+
+func (o ConsumerGroupArrayOutput) ToConsumerGroupArrayOutput() ConsumerGroupArrayOutput {
+	return o
+}
+
+func (o ConsumerGroupArrayOutput) ToConsumerGroupArrayOutputWithContext(ctx context.Context) ConsumerGroupArrayOutput {
+	return o
+}
+
+func (o ConsumerGroupArrayOutput) Index(i pulumi.IntInput) ConsumerGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsumerGroup {
+		return vs[0].([]ConsumerGroup)[vs[1].(int)]
+	}).(ConsumerGroupOutput)
+}
+
+type ConsumerGroupMapOutput struct{ *pulumi.OutputState }
+
+func (ConsumerGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ConsumerGroup)(nil))
+}
+
+func (o ConsumerGroupMapOutput) ToConsumerGroupMapOutput() ConsumerGroupMapOutput {
+	return o
+}
+
+func (o ConsumerGroupMapOutput) ToConsumerGroupMapOutputWithContext(ctx context.Context) ConsumerGroupMapOutput {
+	return o
+}
+
+func (o ConsumerGroupMapOutput) MapIndex(k pulumi.StringInput) ConsumerGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConsumerGroup {
+		return vs[0].(map[string]ConsumerGroup)[vs[1].(string)]
+	}).(ConsumerGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConsumerGroupOutput{})
+	pulumi.RegisterOutputType(ConsumerGroupPtrOutput{})
+	pulumi.RegisterOutputType(ConsumerGroupArrayOutput{})
+	pulumi.RegisterOutputType(ConsumerGroupMapOutput{})
 }

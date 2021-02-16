@@ -184,7 +184,8 @@ export class Execution extends pulumi.CustomResource {
     constructor(name: string, args: ExecutionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExecutionArgs | ExecutionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ExecutionState | undefined;
             inputs["counters"] = state ? state.counters : undefined;
             inputs["createDate"] = state ? state.createDate : undefined;
@@ -209,7 +210,7 @@ export class Execution extends pulumi.CustomResource {
             inputs["updateDate"] = state ? state.updateDate : undefined;
         } else {
             const args = argsOrState as ExecutionArgs | undefined;
-            if ((!args || args.templateName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -234,12 +235,8 @@ export class Execution extends pulumi.CustomResource {
             inputs["templateId"] = undefined /*out*/;
             inputs["updateDate"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Execution.__pulumiType, name, inputs, opts);
     }

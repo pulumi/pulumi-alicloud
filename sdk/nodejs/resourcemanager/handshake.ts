@@ -107,7 +107,8 @@ export class Handshake extends pulumi.CustomResource {
     constructor(name: string, args: HandshakeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HandshakeArgs | HandshakeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HandshakeState | undefined;
             inputs["expireTime"] = state ? state.expireTime : undefined;
             inputs["masterAccountId"] = state ? state.masterAccountId : undefined;
@@ -120,10 +121,10 @@ export class Handshake extends pulumi.CustomResource {
             inputs["targetType"] = state ? state.targetType : undefined;
         } else {
             const args = argsOrState as HandshakeArgs | undefined;
-            if ((!args || args.targetEntity === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetEntity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetEntity'");
             }
-            if ((!args || args.targetType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetType'");
             }
             inputs["note"] = args ? args.note : undefined;
@@ -136,12 +137,8 @@ export class Handshake extends pulumi.CustomResource {
             inputs["resourceDirectoryId"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Handshake.__pulumiType, name, inputs, opts);
     }

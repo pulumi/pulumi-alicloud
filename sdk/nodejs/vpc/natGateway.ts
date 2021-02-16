@@ -107,7 +107,8 @@ export class NatGateway extends pulumi.CustomResource {
     constructor(name: string, args: NatGatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NatGatewayArgs | NatGatewayState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NatGatewayState | undefined;
             inputs["bandwidthPackageIds"] = state ? state.bandwidthPackageIds : undefined;
             inputs["bandwidthPackages"] = state ? state.bandwidthPackages : undefined;
@@ -124,7 +125,7 @@ export class NatGateway extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as NatGatewayArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["bandwidthPackages"] = args ? args.bandwidthPackages : undefined;
@@ -141,12 +142,8 @@ export class NatGateway extends pulumi.CustomResource {
             inputs["forwardTableIds"] = undefined /*out*/;
             inputs["snatTableIds"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NatGateway.__pulumiType, name, inputs, opts);
     }

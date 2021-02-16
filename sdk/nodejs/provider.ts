@@ -36,9 +36,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
-            inputs["accessKey"] = (args ? args.accessKey : undefined) || utilities.getEnv("ALICLOUD_ACCESS_KEY");
-            inputs["accountId"] = (args ? args.accountId : undefined) || utilities.getEnv("ALICLOUD_ACCOUNT_ID");
+            inputs["accessKey"] = args ? args.accessKey : undefined;
+            inputs["accountId"] = args ? args.accountId : undefined;
             inputs["assumeRole"] = pulumi.output(args ? args.assumeRole : undefined).apply(JSON.stringify);
             inputs["configurationSource"] = args ? args.configurationSource : undefined;
             inputs["ecsRoleName"] = (args ? args.ecsRoleName : undefined) || utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
@@ -50,18 +51,14 @@ export class Provider extends pulumi.ProviderResource {
             inputs["profile"] = (args ? args.profile : undefined) || utilities.getEnv("ALICLOUD_PROFILE");
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("ALICLOUD_REGION");
-            inputs["secretKey"] = (args ? args.secretKey : undefined) || utilities.getEnv("ALICLOUD_SECRET_KEY");
-            inputs["securityToken"] = (args ? args.securityToken : undefined) || utilities.getEnv("ALICLOUD_SECURITY_TOKEN");
-            inputs["sharedCredentialsFile"] = (args ? args.sharedCredentialsFile : undefined) || utilities.getEnv("ALICLOUD_SHARED_CREDENTIALS_FILE");
+            inputs["secretKey"] = args ? args.secretKey : undefined;
+            inputs["securityToken"] = args ? args.securityToken : undefined;
+            inputs["sharedCredentialsFile"] = args ? args.sharedCredentialsFile : undefined;
             inputs["skipRegionValidation"] = pulumi.output(args ? args.skipRegionValidation : undefined).apply(JSON.stringify);
             inputs["sourceIp"] = args ? args.sourceIp : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

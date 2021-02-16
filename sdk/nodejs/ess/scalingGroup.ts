@@ -129,7 +129,8 @@ export class ScalingGroup extends pulumi.CustomResource {
     constructor(name: string, args: ScalingGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScalingGroupArgs | ScalingGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ScalingGroupState | undefined;
             inputs["dbInstanceIds"] = state ? state.dbInstanceIds : undefined;
             inputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
@@ -149,10 +150,10 @@ export class ScalingGroup extends pulumi.CustomResource {
             inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
         } else {
             const args = argsOrState as ScalingGroupArgs | undefined;
-            if ((!args || args.maxSize === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.maxSize === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'maxSize'");
             }
-            if ((!args || args.minSize === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.minSize === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'minSize'");
             }
             inputs["dbInstanceIds"] = args ? args.dbInstanceIds : undefined;
@@ -172,12 +173,8 @@ export class ScalingGroup extends pulumi.CustomResource {
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["vswitchIds"] = args ? args.vswitchIds : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ScalingGroup.__pulumiType, name, inputs, opts);
     }

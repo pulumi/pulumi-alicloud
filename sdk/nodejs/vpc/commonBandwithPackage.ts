@@ -80,7 +80,8 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
     constructor(name: string, args: CommonBandwithPackageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CommonBandwithPackageArgs | CommonBandwithPackageState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CommonBandwithPackageState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -91,7 +92,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
         } else {
             const args = argsOrState as CommonBandwithPackageArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
@@ -102,12 +103,8 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             inputs["ratio"] = args ? args.ratio : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CommonBandwithPackage.__pulumiType, name, inputs, opts);
     }

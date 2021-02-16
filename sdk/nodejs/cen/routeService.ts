@@ -117,7 +117,8 @@ export class RouteService extends pulumi.CustomResource {
     constructor(name: string, args: RouteServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteServiceArgs | RouteServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouteServiceState | undefined;
             inputs["accessRegionId"] = state ? state.accessRegionId : undefined;
             inputs["cenId"] = state ? state.cenId : undefined;
@@ -128,19 +129,19 @@ export class RouteService extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as RouteServiceArgs | undefined;
-            if ((!args || args.accessRegionId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accessRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessRegionId'");
             }
-            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cenId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.host === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.host === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            if ((!args || args.hostRegionId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hostRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostRegionId'");
             }
-            if ((!args || args.hostVpcId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hostVpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostVpcId'");
             }
             inputs["accessRegionId"] = args ? args.accessRegionId : undefined;
@@ -151,12 +152,8 @@ export class RouteService extends pulumi.CustomResource {
             inputs["hostVpcId"] = args ? args.hostVpcId : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RouteService.__pulumiType, name, inputs, opts);
     }

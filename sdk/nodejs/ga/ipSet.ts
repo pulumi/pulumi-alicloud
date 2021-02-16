@@ -116,7 +116,8 @@ export class IpSet extends pulumi.CustomResource {
     constructor(name: string, args: IpSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IpSetArgs | IpSetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IpSetState | undefined;
             inputs["accelerateRegionId"] = state ? state.accelerateRegionId : undefined;
             inputs["acceleratorId"] = state ? state.acceleratorId : undefined;
@@ -126,10 +127,10 @@ export class IpSet extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as IpSetArgs | undefined;
-            if ((!args || args.accelerateRegionId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accelerateRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accelerateRegionId'");
             }
-            if ((!args || args.acceleratorId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
             inputs["accelerateRegionId"] = args ? args.accelerateRegionId : undefined;
@@ -139,12 +140,8 @@ export class IpSet extends pulumi.CustomResource {
             inputs["ipAddressLists"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IpSet.__pulumiType, name, inputs, opts);
     }

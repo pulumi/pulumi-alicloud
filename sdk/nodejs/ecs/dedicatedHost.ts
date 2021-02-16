@@ -168,7 +168,8 @@ export class DedicatedHost extends pulumi.CustomResource {
     constructor(name: string, args: DedicatedHostArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DedicatedHostArgs | DedicatedHostState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DedicatedHostState | undefined;
             inputs["actionOnMaintenance"] = state ? state.actionOnMaintenance : undefined;
             inputs["autoPlacement"] = state ? state.autoPlacement : undefined;
@@ -190,7 +191,7 @@ export class DedicatedHost extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DedicatedHostArgs | undefined;
-            if ((!args || args.dedicatedHostType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dedicatedHostType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dedicatedHostType'");
             }
             inputs["actionOnMaintenance"] = args ? args.actionOnMaintenance : undefined;
@@ -212,12 +213,8 @@ export class DedicatedHost extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DedicatedHost.__pulumiType, name, inputs, opts);
     }

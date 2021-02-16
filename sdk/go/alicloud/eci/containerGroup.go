@@ -372,6 +372,85 @@ func (i *ContainerGroup) ToContainerGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupOutput)
 }
 
+func (i *ContainerGroup) ToContainerGroupPtrOutput() ContainerGroupPtrOutput {
+	return i.ToContainerGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ContainerGroup) ToContainerGroupPtrOutputWithContext(ctx context.Context) ContainerGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupPtrOutput)
+}
+
+type ContainerGroupPtrInput interface {
+	pulumi.Input
+
+	ToContainerGroupPtrOutput() ContainerGroupPtrOutput
+	ToContainerGroupPtrOutputWithContext(ctx context.Context) ContainerGroupPtrOutput
+}
+
+type containerGroupPtrType ContainerGroupArgs
+
+func (*containerGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerGroup)(nil))
+}
+
+func (i *containerGroupPtrType) ToContainerGroupPtrOutput() ContainerGroupPtrOutput {
+	return i.ToContainerGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *containerGroupPtrType) ToContainerGroupPtrOutputWithContext(ctx context.Context) ContainerGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupPtrOutput)
+}
+
+// ContainerGroupArrayInput is an input type that accepts ContainerGroupArray and ContainerGroupArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupArrayInput` via:
+//
+//          ContainerGroupArray{ ContainerGroupArgs{...} }
+type ContainerGroupArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupArrayOutput() ContainerGroupArrayOutput
+	ToContainerGroupArrayOutputWithContext(context.Context) ContainerGroupArrayOutput
+}
+
+type ContainerGroupArray []ContainerGroupInput
+
+func (ContainerGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ContainerGroup)(nil))
+}
+
+func (i ContainerGroupArray) ToContainerGroupArrayOutput() ContainerGroupArrayOutput {
+	return i.ToContainerGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupArray) ToContainerGroupArrayOutputWithContext(ctx context.Context) ContainerGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupArrayOutput)
+}
+
+// ContainerGroupMapInput is an input type that accepts ContainerGroupMap and ContainerGroupMapOutput values.
+// You can construct a concrete instance of `ContainerGroupMapInput` via:
+//
+//          ContainerGroupMap{ "key": ContainerGroupArgs{...} }
+type ContainerGroupMapInput interface {
+	pulumi.Input
+
+	ToContainerGroupMapOutput() ContainerGroupMapOutput
+	ToContainerGroupMapOutputWithContext(context.Context) ContainerGroupMapOutput
+}
+
+type ContainerGroupMap map[string]ContainerGroupInput
+
+func (ContainerGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ContainerGroup)(nil))
+}
+
+func (i ContainerGroupMap) ToContainerGroupMapOutput() ContainerGroupMapOutput {
+	return i.ToContainerGroupMapOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupMap) ToContainerGroupMapOutputWithContext(ctx context.Context) ContainerGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupMapOutput)
+}
+
 type ContainerGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -388,6 +467,75 @@ func (o ContainerGroupOutput) ToContainerGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ContainerGroupOutput) ToContainerGroupPtrOutput() ContainerGroupPtrOutput {
+	return o.ToContainerGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerGroupOutput) ToContainerGroupPtrOutputWithContext(ctx context.Context) ContainerGroupPtrOutput {
+	return o.ApplyT(func(v ContainerGroup) *ContainerGroup {
+		return &v
+	}).(ContainerGroupPtrOutput)
+}
+
+type ContainerGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerGroup)(nil))
+}
+
+func (o ContainerGroupPtrOutput) ToContainerGroupPtrOutput() ContainerGroupPtrOutput {
+	return o
+}
+
+func (o ContainerGroupPtrOutput) ToContainerGroupPtrOutputWithContext(ctx context.Context) ContainerGroupPtrOutput {
+	return o
+}
+
+type ContainerGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroup)(nil))
+}
+
+func (o ContainerGroupArrayOutput) ToContainerGroupArrayOutput() ContainerGroupArrayOutput {
+	return o
+}
+
+func (o ContainerGroupArrayOutput) ToContainerGroupArrayOutputWithContext(ctx context.Context) ContainerGroupArrayOutput {
+	return o
+}
+
+func (o ContainerGroupArrayOutput) Index(i pulumi.IntInput) ContainerGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroup {
+		return vs[0].([]ContainerGroup)[vs[1].(int)]
+	}).(ContainerGroupOutput)
+}
+
+type ContainerGroupMapOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ContainerGroup)(nil))
+}
+
+func (o ContainerGroupMapOutput) ToContainerGroupMapOutput() ContainerGroupMapOutput {
+	return o
+}
+
+func (o ContainerGroupMapOutput) ToContainerGroupMapOutputWithContext(ctx context.Context) ContainerGroupMapOutput {
+	return o
+}
+
+func (o ContainerGroupMapOutput) MapIndex(k pulumi.StringInput) ContainerGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ContainerGroup {
+		return vs[0].(map[string]ContainerGroup)[vs[1].(string)]
+	}).(ContainerGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContainerGroupOutput{})
+	pulumi.RegisterOutputType(ContainerGroupPtrOutput{})
+	pulumi.RegisterOutputType(ContainerGroupArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupMapOutput{})
 }

@@ -60,27 +60,24 @@ export class HAVipAttachment extends pulumi.CustomResource {
     constructor(name: string, args: HAVipAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HAVipAttachmentArgs | HAVipAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HAVipAttachmentState | undefined;
             inputs["havipId"] = state ? state.havipId : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as HAVipAttachmentArgs | undefined;
-            if ((!args || args.havipId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.havipId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'havipId'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["havipId"] = args ? args.havipId : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HAVipAttachment.__pulumiType, name, inputs, opts);
     }

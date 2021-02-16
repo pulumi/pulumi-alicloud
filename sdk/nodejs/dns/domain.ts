@@ -78,7 +78,8 @@ export class Domain extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("Domain is deprecated: This resource has been deprecated in favour of DnsDomain")
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainState | undefined;
             inputs["dnsServers"] = state ? state.dnsServers : undefined;
             inputs["domainId"] = state ? state.domainId : undefined;
@@ -93,12 +94,8 @@ export class Domain extends pulumi.CustomResource {
             inputs["dnsServers"] = undefined /*out*/;
             inputs["domainId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Domain.__pulumiType, name, inputs, opts);
     }

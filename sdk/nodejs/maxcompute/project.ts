@@ -87,7 +87,8 @@ export class Project extends pulumi.CustomResource {
     constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["orderType"] = state ? state.orderType : undefined;
@@ -95,10 +96,10 @@ export class Project extends pulumi.CustomResource {
             inputs["specificationType"] = state ? state.specificationType : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.orderType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.orderType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orderType'");
             }
-            if ((!args || args.specificationType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.specificationType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'specificationType'");
             }
             inputs["name"] = args ? args.name : undefined;
@@ -106,12 +107,8 @@ export class Project extends pulumi.CustomResource {
             inputs["projectName"] = args ? args.projectName : undefined;
             inputs["specificationType"] = args ? args.specificationType : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Project.__pulumiType, name, inputs, opts);
     }

@@ -152,7 +152,8 @@ export class ChangeSet extends pulumi.CustomResource {
     constructor(name: string, args: ChangeSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ChangeSetArgs | ChangeSetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ChangeSetState | undefined;
             inputs["changeSetName"] = state ? state.changeSetName : undefined;
             inputs["changeSetType"] = state ? state.changeSetType : undefined;
@@ -175,7 +176,7 @@ export class ChangeSet extends pulumi.CustomResource {
             inputs["usePreviousParameters"] = state ? state.usePreviousParameters : undefined;
         } else {
             const args = argsOrState as ChangeSetArgs | undefined;
-            if ((!args || args.changeSetName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.changeSetName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'changeSetName'");
             }
             inputs["changeSetName"] = args ? args.changeSetName : undefined;
@@ -198,12 +199,8 @@ export class ChangeSet extends pulumi.CustomResource {
             inputs["usePreviousParameters"] = args ? args.usePreviousParameters : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ChangeSet.__pulumiType, name, inputs, opts);
     }

@@ -104,7 +104,8 @@ export class Database extends pulumi.CustomResource {
     constructor(name: string, args: DatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
             inputs["characterSetName"] = state ? state.characterSetName : undefined;
             inputs["dbClusterId"] = state ? state.dbClusterId : undefined;
@@ -112,10 +113,10 @@ export class Database extends pulumi.CustomResource {
             inputs["dbName"] = state ? state.dbName : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if ((!args || args.dbName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbName'");
             }
             inputs["characterSetName"] = args ? args.characterSetName : undefined;
@@ -123,12 +124,8 @@ export class Database extends pulumi.CustomResource {
             inputs["dbDescription"] = args ? args.dbDescription : undefined;
             inputs["dbName"] = args ? args.dbName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Database.__pulumiType, name, inputs, opts);
     }

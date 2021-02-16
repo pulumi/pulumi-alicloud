@@ -114,7 +114,8 @@ export class AlidnsDomain extends pulumi.CustomResource {
     constructor(name: string, args: AlidnsDomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlidnsDomainArgs | AlidnsDomainState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AlidnsDomainState | undefined;
             inputs["dnsServers"] = state ? state.dnsServers : undefined;
             inputs["domainId"] = state ? state.domainId : undefined;
@@ -128,7 +129,7 @@ export class AlidnsDomain extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AlidnsDomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
             inputs["domainName"] = args ? args.domainName : undefined;
@@ -142,12 +143,8 @@ export class AlidnsDomain extends pulumi.CustomResource {
             inputs["groupName"] = undefined /*out*/;
             inputs["punyCode"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AlidnsDomain.__pulumiType, name, inputs, opts);
     }

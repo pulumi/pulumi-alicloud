@@ -150,6 +150,85 @@ func (i *MonitorGroup) ToMonitorGroupOutputWithContext(ctx context.Context) Moni
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupOutput)
 }
 
+func (i *MonitorGroup) ToMonitorGroupPtrOutput() MonitorGroupPtrOutput {
+	return i.ToMonitorGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *MonitorGroup) ToMonitorGroupPtrOutputWithContext(ctx context.Context) MonitorGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupPtrOutput)
+}
+
+type MonitorGroupPtrInput interface {
+	pulumi.Input
+
+	ToMonitorGroupPtrOutput() MonitorGroupPtrOutput
+	ToMonitorGroupPtrOutputWithContext(ctx context.Context) MonitorGroupPtrOutput
+}
+
+type monitorGroupPtrType MonitorGroupArgs
+
+func (*monitorGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorGroup)(nil))
+}
+
+func (i *monitorGroupPtrType) ToMonitorGroupPtrOutput() MonitorGroupPtrOutput {
+	return i.ToMonitorGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorGroupPtrType) ToMonitorGroupPtrOutputWithContext(ctx context.Context) MonitorGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupPtrOutput)
+}
+
+// MonitorGroupArrayInput is an input type that accepts MonitorGroupArray and MonitorGroupArrayOutput values.
+// You can construct a concrete instance of `MonitorGroupArrayInput` via:
+//
+//          MonitorGroupArray{ MonitorGroupArgs{...} }
+type MonitorGroupArrayInput interface {
+	pulumi.Input
+
+	ToMonitorGroupArrayOutput() MonitorGroupArrayOutput
+	ToMonitorGroupArrayOutputWithContext(context.Context) MonitorGroupArrayOutput
+}
+
+type MonitorGroupArray []MonitorGroupInput
+
+func (MonitorGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MonitorGroup)(nil))
+}
+
+func (i MonitorGroupArray) ToMonitorGroupArrayOutput() MonitorGroupArrayOutput {
+	return i.ToMonitorGroupArrayOutputWithContext(context.Background())
+}
+
+func (i MonitorGroupArray) ToMonitorGroupArrayOutputWithContext(ctx context.Context) MonitorGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupArrayOutput)
+}
+
+// MonitorGroupMapInput is an input type that accepts MonitorGroupMap and MonitorGroupMapOutput values.
+// You can construct a concrete instance of `MonitorGroupMapInput` via:
+//
+//          MonitorGroupMap{ "key": MonitorGroupArgs{...} }
+type MonitorGroupMapInput interface {
+	pulumi.Input
+
+	ToMonitorGroupMapOutput() MonitorGroupMapOutput
+	ToMonitorGroupMapOutputWithContext(context.Context) MonitorGroupMapOutput
+}
+
+type MonitorGroupMap map[string]MonitorGroupInput
+
+func (MonitorGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MonitorGroup)(nil))
+}
+
+func (i MonitorGroupMap) ToMonitorGroupMapOutput() MonitorGroupMapOutput {
+	return i.ToMonitorGroupMapOutputWithContext(context.Background())
+}
+
+func (i MonitorGroupMap) ToMonitorGroupMapOutputWithContext(ctx context.Context) MonitorGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorGroupMapOutput)
+}
+
 type MonitorGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -166,6 +245,75 @@ func (o MonitorGroupOutput) ToMonitorGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o MonitorGroupOutput) ToMonitorGroupPtrOutput() MonitorGroupPtrOutput {
+	return o.ToMonitorGroupPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorGroupOutput) ToMonitorGroupPtrOutputWithContext(ctx context.Context) MonitorGroupPtrOutput {
+	return o.ApplyT(func(v MonitorGroup) *MonitorGroup {
+		return &v
+	}).(MonitorGroupPtrOutput)
+}
+
+type MonitorGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MonitorGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorGroup)(nil))
+}
+
+func (o MonitorGroupPtrOutput) ToMonitorGroupPtrOutput() MonitorGroupPtrOutput {
+	return o
+}
+
+func (o MonitorGroupPtrOutput) ToMonitorGroupPtrOutputWithContext(ctx context.Context) MonitorGroupPtrOutput {
+	return o
+}
+
+type MonitorGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorGroup)(nil))
+}
+
+func (o MonitorGroupArrayOutput) ToMonitorGroupArrayOutput() MonitorGroupArrayOutput {
+	return o
+}
+
+func (o MonitorGroupArrayOutput) ToMonitorGroupArrayOutputWithContext(ctx context.Context) MonitorGroupArrayOutput {
+	return o
+}
+
+func (o MonitorGroupArrayOutput) Index(i pulumi.IntInput) MonitorGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorGroup {
+		return vs[0].([]MonitorGroup)[vs[1].(int)]
+	}).(MonitorGroupOutput)
+}
+
+type MonitorGroupMapOutput struct{ *pulumi.OutputState }
+
+func (MonitorGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MonitorGroup)(nil))
+}
+
+func (o MonitorGroupMapOutput) ToMonitorGroupMapOutput() MonitorGroupMapOutput {
+	return o
+}
+
+func (o MonitorGroupMapOutput) ToMonitorGroupMapOutputWithContext(ctx context.Context) MonitorGroupMapOutput {
+	return o
+}
+
+func (o MonitorGroupMapOutput) MapIndex(k pulumi.StringInput) MonitorGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MonitorGroup {
+		return vs[0].(map[string]MonitorGroup)[vs[1].(string)]
+	}).(MonitorGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MonitorGroupOutput{})
+	pulumi.RegisterOutputType(MonitorGroupPtrOutput{})
+	pulumi.RegisterOutputType(MonitorGroupArrayOutput{})
+	pulumi.RegisterOutputType(MonitorGroupMapOutput{})
 }

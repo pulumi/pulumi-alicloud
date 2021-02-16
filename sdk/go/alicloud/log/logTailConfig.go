@@ -176,6 +176,85 @@ func (i *LogTailConfig) ToLogTailConfigOutputWithContext(ctx context.Context) Lo
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigOutput)
 }
 
+func (i *LogTailConfig) ToLogTailConfigPtrOutput() LogTailConfigPtrOutput {
+	return i.ToLogTailConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *LogTailConfig) ToLogTailConfigPtrOutputWithContext(ctx context.Context) LogTailConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigPtrOutput)
+}
+
+type LogTailConfigPtrInput interface {
+	pulumi.Input
+
+	ToLogTailConfigPtrOutput() LogTailConfigPtrOutput
+	ToLogTailConfigPtrOutputWithContext(ctx context.Context) LogTailConfigPtrOutput
+}
+
+type logTailConfigPtrType LogTailConfigArgs
+
+func (*logTailConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogTailConfig)(nil))
+}
+
+func (i *logTailConfigPtrType) ToLogTailConfigPtrOutput() LogTailConfigPtrOutput {
+	return i.ToLogTailConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *logTailConfigPtrType) ToLogTailConfigPtrOutputWithContext(ctx context.Context) LogTailConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigPtrOutput)
+}
+
+// LogTailConfigArrayInput is an input type that accepts LogTailConfigArray and LogTailConfigArrayOutput values.
+// You can construct a concrete instance of `LogTailConfigArrayInput` via:
+//
+//          LogTailConfigArray{ LogTailConfigArgs{...} }
+type LogTailConfigArrayInput interface {
+	pulumi.Input
+
+	ToLogTailConfigArrayOutput() LogTailConfigArrayOutput
+	ToLogTailConfigArrayOutputWithContext(context.Context) LogTailConfigArrayOutput
+}
+
+type LogTailConfigArray []LogTailConfigInput
+
+func (LogTailConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*LogTailConfig)(nil))
+}
+
+func (i LogTailConfigArray) ToLogTailConfigArrayOutput() LogTailConfigArrayOutput {
+	return i.ToLogTailConfigArrayOutputWithContext(context.Background())
+}
+
+func (i LogTailConfigArray) ToLogTailConfigArrayOutputWithContext(ctx context.Context) LogTailConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigArrayOutput)
+}
+
+// LogTailConfigMapInput is an input type that accepts LogTailConfigMap and LogTailConfigMapOutput values.
+// You can construct a concrete instance of `LogTailConfigMapInput` via:
+//
+//          LogTailConfigMap{ "key": LogTailConfigArgs{...} }
+type LogTailConfigMapInput interface {
+	pulumi.Input
+
+	ToLogTailConfigMapOutput() LogTailConfigMapOutput
+	ToLogTailConfigMapOutputWithContext(context.Context) LogTailConfigMapOutput
+}
+
+type LogTailConfigMap map[string]LogTailConfigInput
+
+func (LogTailConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*LogTailConfig)(nil))
+}
+
+func (i LogTailConfigMap) ToLogTailConfigMapOutput() LogTailConfigMapOutput {
+	return i.ToLogTailConfigMapOutputWithContext(context.Background())
+}
+
+func (i LogTailConfigMap) ToLogTailConfigMapOutputWithContext(ctx context.Context) LogTailConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigMapOutput)
+}
+
 type LogTailConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -192,6 +271,75 @@ func (o LogTailConfigOutput) ToLogTailConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o LogTailConfigOutput) ToLogTailConfigPtrOutput() LogTailConfigPtrOutput {
+	return o.ToLogTailConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LogTailConfigOutput) ToLogTailConfigPtrOutputWithContext(ctx context.Context) LogTailConfigPtrOutput {
+	return o.ApplyT(func(v LogTailConfig) *LogTailConfig {
+		return &v
+	}).(LogTailConfigPtrOutput)
+}
+
+type LogTailConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogTailConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogTailConfig)(nil))
+}
+
+func (o LogTailConfigPtrOutput) ToLogTailConfigPtrOutput() LogTailConfigPtrOutput {
+	return o
+}
+
+func (o LogTailConfigPtrOutput) ToLogTailConfigPtrOutputWithContext(ctx context.Context) LogTailConfigPtrOutput {
+	return o
+}
+
+type LogTailConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (LogTailConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogTailConfig)(nil))
+}
+
+func (o LogTailConfigArrayOutput) ToLogTailConfigArrayOutput() LogTailConfigArrayOutput {
+	return o
+}
+
+func (o LogTailConfigArrayOutput) ToLogTailConfigArrayOutputWithContext(ctx context.Context) LogTailConfigArrayOutput {
+	return o
+}
+
+func (o LogTailConfigArrayOutput) Index(i pulumi.IntInput) LogTailConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogTailConfig {
+		return vs[0].([]LogTailConfig)[vs[1].(int)]
+	}).(LogTailConfigOutput)
+}
+
+type LogTailConfigMapOutput struct{ *pulumi.OutputState }
+
+func (LogTailConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LogTailConfig)(nil))
+}
+
+func (o LogTailConfigMapOutput) ToLogTailConfigMapOutput() LogTailConfigMapOutput {
+	return o
+}
+
+func (o LogTailConfigMapOutput) ToLogTailConfigMapOutputWithContext(ctx context.Context) LogTailConfigMapOutput {
+	return o
+}
+
+func (o LogTailConfigMapOutput) MapIndex(k pulumi.StringInput) LogTailConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LogTailConfig {
+		return vs[0].(map[string]LogTailConfig)[vs[1].(string)]
+	}).(LogTailConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogTailConfigOutput{})
+	pulumi.RegisterOutputType(LogTailConfigPtrOutput{})
+	pulumi.RegisterOutputType(LogTailConfigArrayOutput{})
+	pulumi.RegisterOutputType(LogTailConfigMapOutput{})
 }

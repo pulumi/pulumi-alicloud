@@ -101,7 +101,8 @@ export class SnapshotPolicy extends pulumi.CustomResource {
     constructor(name: string, args: SnapshotPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SnapshotPolicyArgs | SnapshotPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SnapshotPolicyState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["repeatWeekdays"] = state ? state.repeatWeekdays : undefined;
@@ -109,13 +110,13 @@ export class SnapshotPolicy extends pulumi.CustomResource {
             inputs["timePoints"] = state ? state.timePoints : undefined;
         } else {
             const args = argsOrState as SnapshotPolicyArgs | undefined;
-            if ((!args || args.repeatWeekdays === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.repeatWeekdays === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repeatWeekdays'");
             }
-            if ((!args || args.retentionDays === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.retentionDays === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'retentionDays'");
             }
-            if ((!args || args.timePoints === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.timePoints === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timePoints'");
             }
             inputs["name"] = args ? args.name : undefined;
@@ -123,12 +124,8 @@ export class SnapshotPolicy extends pulumi.CustomResource {
             inputs["retentionDays"] = args ? args.retentionDays : undefined;
             inputs["timePoints"] = args ? args.timePoints : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SnapshotPolicy.__pulumiType, name, inputs, opts);
     }

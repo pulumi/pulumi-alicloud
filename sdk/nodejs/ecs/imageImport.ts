@@ -115,7 +115,8 @@ export class ImageImport extends pulumi.CustomResource {
     constructor(name: string, args: ImageImportArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageImportArgs | ImageImportState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ImageImportState | undefined;
             inputs["architecture"] = state ? state.architecture : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -126,7 +127,7 @@ export class ImageImport extends pulumi.CustomResource {
             inputs["platform"] = state ? state.platform : undefined;
         } else {
             const args = argsOrState as ImageImportArgs | undefined;
-            if ((!args || args.diskDeviceMappings === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.diskDeviceMappings === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diskDeviceMappings'");
             }
             inputs["architecture"] = args ? args.architecture : undefined;
@@ -137,12 +138,8 @@ export class ImageImport extends pulumi.CustomResource {
             inputs["osType"] = args ? args.osType : undefined;
             inputs["platform"] = args ? args.platform : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ImageImport.__pulumiType, name, inputs, opts);
     }

@@ -339,7 +339,8 @@ export class Kubernetes extends pulumi.CustomResource {
     constructor(name: string, args: KubernetesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesArgs | KubernetesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as KubernetesState | undefined;
             inputs["addons"] = state ? state.addons : undefined;
             inputs["apiAudiences"] = state ? state.apiAudiences : undefined;
@@ -419,19 +420,19 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
         } else {
             const args = argsOrState as KubernetesArgs | undefined;
-            if ((!args || args.masterInstanceTypes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.masterInstanceTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'masterInstanceTypes'");
             }
-            if ((!args || args.masterVswitchIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.masterVswitchIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'masterVswitchIds'");
             }
-            if ((!args || args.workerInstanceTypes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.workerInstanceTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerInstanceTypes'");
             }
-            if ((!args || args.workerNumber === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.workerNumber === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerNumber'");
             }
-            if ((!args || args.workerVswitchIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.workerVswitchIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerVswitchIds'");
             }
             inputs["addons"] = args ? args.addons : undefined;
@@ -511,12 +512,8 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["workerNodes"] = undefined /*out*/;
             inputs["workerRamRoleName"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Kubernetes.__pulumiType, name, inputs, opts);
     }

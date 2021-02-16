@@ -176,7 +176,8 @@ export class Alarm extends pulumi.CustomResource {
     constructor(name: string, args: AlarmArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlarmArgs | AlarmState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AlarmState | undefined;
             inputs["contactGroups"] = state ? state.contactGroups : undefined;
             inputs["dimensions"] = state ? state.dimensions : undefined;
@@ -200,16 +201,16 @@ export class Alarm extends pulumi.CustomResource {
             inputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as AlarmArgs | undefined;
-            if ((!args || args.contactGroups === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.contactGroups === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'contactGroups'");
             }
-            if ((!args || args.dimensions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dimensions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dimensions'");
             }
-            if ((!args || args.metric === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.metric === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metric'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["contactGroups"] = args ? args.contactGroups : undefined;
@@ -233,12 +234,8 @@ export class Alarm extends pulumi.CustomResource {
             inputs["webhook"] = args ? args.webhook : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Alarm.__pulumiType, name, inputs, opts);
     }

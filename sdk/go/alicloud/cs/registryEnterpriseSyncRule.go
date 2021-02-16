@@ -257,6 +257,85 @@ func (i *RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRuleOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRuleOutput)
 }
 
+func (i *RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRulePtrOutput() RegistryEnterpriseSyncRulePtrOutput {
+	return i.ToRegistryEnterpriseSyncRulePtrOutputWithContext(context.Background())
+}
+
+func (i *RegistryEnterpriseSyncRule) ToRegistryEnterpriseSyncRulePtrOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRulePtrOutput)
+}
+
+type RegistryEnterpriseSyncRulePtrInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseSyncRulePtrOutput() RegistryEnterpriseSyncRulePtrOutput
+	ToRegistryEnterpriseSyncRulePtrOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRulePtrOutput
+}
+
+type registryEnterpriseSyncRulePtrType RegistryEnterpriseSyncRuleArgs
+
+func (*registryEnterpriseSyncRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEnterpriseSyncRule)(nil))
+}
+
+func (i *registryEnterpriseSyncRulePtrType) ToRegistryEnterpriseSyncRulePtrOutput() RegistryEnterpriseSyncRulePtrOutput {
+	return i.ToRegistryEnterpriseSyncRulePtrOutputWithContext(context.Background())
+}
+
+func (i *registryEnterpriseSyncRulePtrType) ToRegistryEnterpriseSyncRulePtrOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRulePtrOutput)
+}
+
+// RegistryEnterpriseSyncRuleArrayInput is an input type that accepts RegistryEnterpriseSyncRuleArray and RegistryEnterpriseSyncRuleArrayOutput values.
+// You can construct a concrete instance of `RegistryEnterpriseSyncRuleArrayInput` via:
+//
+//          RegistryEnterpriseSyncRuleArray{ RegistryEnterpriseSyncRuleArgs{...} }
+type RegistryEnterpriseSyncRuleArrayInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseSyncRuleArrayOutput() RegistryEnterpriseSyncRuleArrayOutput
+	ToRegistryEnterpriseSyncRuleArrayOutputWithContext(context.Context) RegistryEnterpriseSyncRuleArrayOutput
+}
+
+type RegistryEnterpriseSyncRuleArray []RegistryEnterpriseSyncRuleInput
+
+func (RegistryEnterpriseSyncRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegistryEnterpriseSyncRule)(nil))
+}
+
+func (i RegistryEnterpriseSyncRuleArray) ToRegistryEnterpriseSyncRuleArrayOutput() RegistryEnterpriseSyncRuleArrayOutput {
+	return i.ToRegistryEnterpriseSyncRuleArrayOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseSyncRuleArray) ToRegistryEnterpriseSyncRuleArrayOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRuleArrayOutput)
+}
+
+// RegistryEnterpriseSyncRuleMapInput is an input type that accepts RegistryEnterpriseSyncRuleMap and RegistryEnterpriseSyncRuleMapOutput values.
+// You can construct a concrete instance of `RegistryEnterpriseSyncRuleMapInput` via:
+//
+//          RegistryEnterpriseSyncRuleMap{ "key": RegistryEnterpriseSyncRuleArgs{...} }
+type RegistryEnterpriseSyncRuleMapInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseSyncRuleMapOutput() RegistryEnterpriseSyncRuleMapOutput
+	ToRegistryEnterpriseSyncRuleMapOutputWithContext(context.Context) RegistryEnterpriseSyncRuleMapOutput
+}
+
+type RegistryEnterpriseSyncRuleMap map[string]RegistryEnterpriseSyncRuleInput
+
+func (RegistryEnterpriseSyncRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegistryEnterpriseSyncRule)(nil))
+}
+
+func (i RegistryEnterpriseSyncRuleMap) ToRegistryEnterpriseSyncRuleMapOutput() RegistryEnterpriseSyncRuleMapOutput {
+	return i.ToRegistryEnterpriseSyncRuleMapOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseSyncRuleMap) ToRegistryEnterpriseSyncRuleMapOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRuleMapOutput)
+}
+
 type RegistryEnterpriseSyncRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -273,6 +352,75 @@ func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRuleOutputWith
 	return o
 }
 
+func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRulePtrOutput() RegistryEnterpriseSyncRulePtrOutput {
+	return o.ToRegistryEnterpriseSyncRulePtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRulePtrOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRulePtrOutput {
+	return o.ApplyT(func(v RegistryEnterpriseSyncRule) *RegistryEnterpriseSyncRule {
+		return &v
+	}).(RegistryEnterpriseSyncRulePtrOutput)
+}
+
+type RegistryEnterpriseSyncRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegistryEnterpriseSyncRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEnterpriseSyncRule)(nil))
+}
+
+func (o RegistryEnterpriseSyncRulePtrOutput) ToRegistryEnterpriseSyncRulePtrOutput() RegistryEnterpriseSyncRulePtrOutput {
+	return o
+}
+
+func (o RegistryEnterpriseSyncRulePtrOutput) ToRegistryEnterpriseSyncRulePtrOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRulePtrOutput {
+	return o
+}
+
+type RegistryEnterpriseSyncRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (RegistryEnterpriseSyncRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistryEnterpriseSyncRule)(nil))
+}
+
+func (o RegistryEnterpriseSyncRuleArrayOutput) ToRegistryEnterpriseSyncRuleArrayOutput() RegistryEnterpriseSyncRuleArrayOutput {
+	return o
+}
+
+func (o RegistryEnterpriseSyncRuleArrayOutput) ToRegistryEnterpriseSyncRuleArrayOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleArrayOutput {
+	return o
+}
+
+func (o RegistryEnterpriseSyncRuleArrayOutput) Index(i pulumi.IntInput) RegistryEnterpriseSyncRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryEnterpriseSyncRule {
+		return vs[0].([]RegistryEnterpriseSyncRule)[vs[1].(int)]
+	}).(RegistryEnterpriseSyncRuleOutput)
+}
+
+type RegistryEnterpriseSyncRuleMapOutput struct{ *pulumi.OutputState }
+
+func (RegistryEnterpriseSyncRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegistryEnterpriseSyncRule)(nil))
+}
+
+func (o RegistryEnterpriseSyncRuleMapOutput) ToRegistryEnterpriseSyncRuleMapOutput() RegistryEnterpriseSyncRuleMapOutput {
+	return o
+}
+
+func (o RegistryEnterpriseSyncRuleMapOutput) ToRegistryEnterpriseSyncRuleMapOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRuleMapOutput {
+	return o
+}
+
+func (o RegistryEnterpriseSyncRuleMapOutput) MapIndex(k pulumi.StringInput) RegistryEnterpriseSyncRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegistryEnterpriseSyncRule {
+		return vs[0].(map[string]RegistryEnterpriseSyncRule)[vs[1].(string)]
+	}).(RegistryEnterpriseSyncRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegistryEnterpriseSyncRuleOutput{})
+	pulumi.RegisterOutputType(RegistryEnterpriseSyncRulePtrOutput{})
+	pulumi.RegisterOutputType(RegistryEnterpriseSyncRuleArrayOutput{})
+	pulumi.RegisterOutputType(RegistryEnterpriseSyncRuleMapOutput{})
 }

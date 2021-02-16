@@ -79,7 +79,8 @@ export class TopicSubscription extends pulumi.CustomResource {
     constructor(name: string, args: TopicSubscriptionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicSubscriptionArgs | TopicSubscriptionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TopicSubscriptionState | undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
             inputs["filterTag"] = state ? state.filterTag : undefined;
@@ -89,10 +90,10 @@ export class TopicSubscription extends pulumi.CustomResource {
             inputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as TopicSubscriptionArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.endpoint === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.topicName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.topicName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
             inputs["endpoint"] = args ? args.endpoint : undefined;
@@ -102,12 +103,8 @@ export class TopicSubscription extends pulumi.CustomResource {
             inputs["notifyStrategy"] = args ? args.notifyStrategy : undefined;
             inputs["topicName"] = args ? args.topicName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TopicSubscription.__pulumiType, name, inputs, opts);
     }

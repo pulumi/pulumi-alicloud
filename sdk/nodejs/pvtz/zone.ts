@@ -93,7 +93,8 @@ export class Zone extends pulumi.CustomResource {
     constructor(name: string, args?: ZoneArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneArgs | ZoneState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
             inputs["isPtr"] = state ? state.isPtr : undefined;
             inputs["lang"] = state ? state.lang : undefined;
@@ -116,12 +117,8 @@ export class Zone extends pulumi.CustomResource {
             inputs["isPtr"] = undefined /*out*/;
             inputs["recordCount"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Zone.__pulumiType, name, inputs, opts);
     }

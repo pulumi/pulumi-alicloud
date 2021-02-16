@@ -93,7 +93,8 @@ export class VpcEndpointServiceConnection extends pulumi.CustomResource {
     constructor(name: string, args: VpcEndpointServiceConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcEndpointServiceConnectionArgs | VpcEndpointServiceConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VpcEndpointServiceConnectionState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["dryRun"] = state ? state.dryRun : undefined;
@@ -102,10 +103,10 @@ export class VpcEndpointServiceConnection extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as VpcEndpointServiceConnectionArgs | undefined;
-            if ((!args || args.endpointId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.endpointId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            if ((!args || args.serviceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
@@ -114,12 +115,8 @@ export class VpcEndpointServiceConnection extends pulumi.CustomResource {
             inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VpcEndpointServiceConnection.__pulumiType, name, inputs, opts);
     }

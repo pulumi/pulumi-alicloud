@@ -80,24 +80,21 @@ export class Folder extends pulumi.CustomResource {
     constructor(name: string, args: FolderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderArgs | FolderState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FolderState | undefined;
             inputs["folderName"] = state ? state.folderName : undefined;
             inputs["parentFolderId"] = state ? state.parentFolderId : undefined;
         } else {
             const args = argsOrState as FolderArgs | undefined;
-            if ((!args || args.folderName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.folderName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folderName'");
             }
             inputs["folderName"] = args ? args.folderName : undefined;
             inputs["parentFolderId"] = args ? args.parentFolderId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Folder.__pulumiType, name, inputs, opts);
     }

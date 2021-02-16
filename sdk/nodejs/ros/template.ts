@@ -95,7 +95,8 @@ export class Template extends pulumi.CustomResource {
     constructor(name: string, args: TemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TemplateArgs | TemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TemplateState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -104,7 +105,7 @@ export class Template extends pulumi.CustomResource {
             inputs["templateUrl"] = state ? state.templateUrl : undefined;
         } else {
             const args = argsOrState as TemplateArgs | undefined;
-            if ((!args || args.templateName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -113,12 +114,8 @@ export class Template extends pulumi.CustomResource {
             inputs["templateName"] = args ? args.templateName : undefined;
             inputs["templateUrl"] = args ? args.templateUrl : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Template.__pulumiType, name, inputs, opts);
     }

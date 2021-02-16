@@ -122,7 +122,8 @@ export class Dashboard extends pulumi.CustomResource {
     constructor(name: string, args: DashboardArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DashboardArgs | DashboardState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
             inputs["charList"] = state ? state.charList : undefined;
             inputs["dashboardName"] = state ? state.dashboardName : undefined;
@@ -130,13 +131,13 @@ export class Dashboard extends pulumi.CustomResource {
             inputs["projectName"] = state ? state.projectName : undefined;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
-            if ((!args || args.charList === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.charList === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'charList'");
             }
-            if ((!args || args.dashboardName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dashboardName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dashboardName'");
             }
-            if ((!args || args.projectName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
             inputs["charList"] = args ? args.charList : undefined;
@@ -144,12 +145,8 @@ export class Dashboard extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["projectName"] = args ? args.projectName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Dashboard.__pulumiType, name, inputs, opts);
     }

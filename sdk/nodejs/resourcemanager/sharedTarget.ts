@@ -70,29 +70,26 @@ export class SharedTarget extends pulumi.CustomResource {
     constructor(name: string, args: SharedTargetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SharedTargetArgs | SharedTargetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SharedTargetState | undefined;
             inputs["resourceShareId"] = state ? state.resourceShareId : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["targetId"] = state ? state.targetId : undefined;
         } else {
             const args = argsOrState as SharedTargetArgs | undefined;
-            if ((!args || args.resourceShareId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceShareId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceShareId'");
             }
-            if ((!args || args.targetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
             inputs["resourceShareId"] = args ? args.resourceShareId : undefined;
             inputs["targetId"] = args ? args.targetId : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SharedTarget.__pulumiType, name, inputs, opts);
     }

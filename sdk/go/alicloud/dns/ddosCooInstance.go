@@ -216,6 +216,85 @@ func (i *DdosCooInstance) ToDdosCooInstanceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstanceOutput)
 }
 
+func (i *DdosCooInstance) ToDdosCooInstancePtrOutput() DdosCooInstancePtrOutput {
+	return i.ToDdosCooInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *DdosCooInstance) ToDdosCooInstancePtrOutputWithContext(ctx context.Context) DdosCooInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstancePtrOutput)
+}
+
+type DdosCooInstancePtrInput interface {
+	pulumi.Input
+
+	ToDdosCooInstancePtrOutput() DdosCooInstancePtrOutput
+	ToDdosCooInstancePtrOutputWithContext(ctx context.Context) DdosCooInstancePtrOutput
+}
+
+type ddosCooInstancePtrType DdosCooInstanceArgs
+
+func (*ddosCooInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DdosCooInstance)(nil))
+}
+
+func (i *ddosCooInstancePtrType) ToDdosCooInstancePtrOutput() DdosCooInstancePtrOutput {
+	return i.ToDdosCooInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *ddosCooInstancePtrType) ToDdosCooInstancePtrOutputWithContext(ctx context.Context) DdosCooInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstancePtrOutput)
+}
+
+// DdosCooInstanceArrayInput is an input type that accepts DdosCooInstanceArray and DdosCooInstanceArrayOutput values.
+// You can construct a concrete instance of `DdosCooInstanceArrayInput` via:
+//
+//          DdosCooInstanceArray{ DdosCooInstanceArgs{...} }
+type DdosCooInstanceArrayInput interface {
+	pulumi.Input
+
+	ToDdosCooInstanceArrayOutput() DdosCooInstanceArrayOutput
+	ToDdosCooInstanceArrayOutputWithContext(context.Context) DdosCooInstanceArrayOutput
+}
+
+type DdosCooInstanceArray []DdosCooInstanceInput
+
+func (DdosCooInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DdosCooInstance)(nil))
+}
+
+func (i DdosCooInstanceArray) ToDdosCooInstanceArrayOutput() DdosCooInstanceArrayOutput {
+	return i.ToDdosCooInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i DdosCooInstanceArray) ToDdosCooInstanceArrayOutputWithContext(ctx context.Context) DdosCooInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstanceArrayOutput)
+}
+
+// DdosCooInstanceMapInput is an input type that accepts DdosCooInstanceMap and DdosCooInstanceMapOutput values.
+// You can construct a concrete instance of `DdosCooInstanceMapInput` via:
+//
+//          DdosCooInstanceMap{ "key": DdosCooInstanceArgs{...} }
+type DdosCooInstanceMapInput interface {
+	pulumi.Input
+
+	ToDdosCooInstanceMapOutput() DdosCooInstanceMapOutput
+	ToDdosCooInstanceMapOutputWithContext(context.Context) DdosCooInstanceMapOutput
+}
+
+type DdosCooInstanceMap map[string]DdosCooInstanceInput
+
+func (DdosCooInstanceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DdosCooInstance)(nil))
+}
+
+func (i DdosCooInstanceMap) ToDdosCooInstanceMapOutput() DdosCooInstanceMapOutput {
+	return i.ToDdosCooInstanceMapOutputWithContext(context.Background())
+}
+
+func (i DdosCooInstanceMap) ToDdosCooInstanceMapOutputWithContext(ctx context.Context) DdosCooInstanceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosCooInstanceMapOutput)
+}
+
 type DdosCooInstanceOutput struct {
 	*pulumi.OutputState
 }
@@ -232,6 +311,75 @@ func (o DdosCooInstanceOutput) ToDdosCooInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o DdosCooInstanceOutput) ToDdosCooInstancePtrOutput() DdosCooInstancePtrOutput {
+	return o.ToDdosCooInstancePtrOutputWithContext(context.Background())
+}
+
+func (o DdosCooInstanceOutput) ToDdosCooInstancePtrOutputWithContext(ctx context.Context) DdosCooInstancePtrOutput {
+	return o.ApplyT(func(v DdosCooInstance) *DdosCooInstance {
+		return &v
+	}).(DdosCooInstancePtrOutput)
+}
+
+type DdosCooInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DdosCooInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DdosCooInstance)(nil))
+}
+
+func (o DdosCooInstancePtrOutput) ToDdosCooInstancePtrOutput() DdosCooInstancePtrOutput {
+	return o
+}
+
+func (o DdosCooInstancePtrOutput) ToDdosCooInstancePtrOutputWithContext(ctx context.Context) DdosCooInstancePtrOutput {
+	return o
+}
+
+type DdosCooInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (DdosCooInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DdosCooInstance)(nil))
+}
+
+func (o DdosCooInstanceArrayOutput) ToDdosCooInstanceArrayOutput() DdosCooInstanceArrayOutput {
+	return o
+}
+
+func (o DdosCooInstanceArrayOutput) ToDdosCooInstanceArrayOutputWithContext(ctx context.Context) DdosCooInstanceArrayOutput {
+	return o
+}
+
+func (o DdosCooInstanceArrayOutput) Index(i pulumi.IntInput) DdosCooInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DdosCooInstance {
+		return vs[0].([]DdosCooInstance)[vs[1].(int)]
+	}).(DdosCooInstanceOutput)
+}
+
+type DdosCooInstanceMapOutput struct{ *pulumi.OutputState }
+
+func (DdosCooInstanceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DdosCooInstance)(nil))
+}
+
+func (o DdosCooInstanceMapOutput) ToDdosCooInstanceMapOutput() DdosCooInstanceMapOutput {
+	return o
+}
+
+func (o DdosCooInstanceMapOutput) ToDdosCooInstanceMapOutputWithContext(ctx context.Context) DdosCooInstanceMapOutput {
+	return o
+}
+
+func (o DdosCooInstanceMapOutput) MapIndex(k pulumi.StringInput) DdosCooInstanceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DdosCooInstance {
+		return vs[0].(map[string]DdosCooInstance)[vs[1].(string)]
+	}).(DdosCooInstanceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DdosCooInstanceOutput{})
+	pulumi.RegisterOutputType(DdosCooInstancePtrOutput{})
+	pulumi.RegisterOutputType(DdosCooInstanceArrayOutput{})
+	pulumi.RegisterOutputType(DdosCooInstanceMapOutput{})
 }

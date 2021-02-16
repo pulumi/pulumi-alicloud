@@ -156,7 +156,8 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["accountPassword"] = state ? state.accountPassword : undefined;
             inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
@@ -185,13 +186,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.dbInstanceClass === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbInstanceClass === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceClass'");
             }
-            if ((!args || args.dbInstanceStorage === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbInstanceStorage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceStorage'");
             }
-            if ((!args || args.engineVersion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.engineVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
             inputs["accountPassword"] = args ? args.accountPassword : undefined;
@@ -220,12 +221,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["retentionPeriod"] = undefined /*out*/;
             inputs["sslStatus"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }

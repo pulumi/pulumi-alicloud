@@ -122,7 +122,8 @@ export class Flow extends pulumi.CustomResource {
     constructor(name: string, args: FlowArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlowArgs | FlowState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FlowState | undefined;
             inputs["definition"] = state ? state.definition : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -133,13 +134,13 @@ export class Flow extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as FlowArgs | undefined;
-            if ((!args || args.definition === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.definition === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'definition'");
             }
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["definition"] = args ? args.definition : undefined;
@@ -150,12 +151,8 @@ export class Flow extends pulumi.CustomResource {
             inputs["flowId"] = undefined /*out*/;
             inputs["lastModifiedTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Flow.__pulumiType, name, inputs, opts);
     }

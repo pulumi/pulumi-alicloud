@@ -283,6 +283,85 @@ func (i *KubernetesAutoscaler) ToKubernetesAutoscalerOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerOutput)
 }
 
+func (i *KubernetesAutoscaler) ToKubernetesAutoscalerPtrOutput() KubernetesAutoscalerPtrOutput {
+	return i.ToKubernetesAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i *KubernetesAutoscaler) ToKubernetesAutoscalerPtrOutputWithContext(ctx context.Context) KubernetesAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerPtrOutput)
+}
+
+type KubernetesAutoscalerPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesAutoscalerPtrOutput() KubernetesAutoscalerPtrOutput
+	ToKubernetesAutoscalerPtrOutputWithContext(ctx context.Context) KubernetesAutoscalerPtrOutput
+}
+
+type kubernetesAutoscalerPtrType KubernetesAutoscalerArgs
+
+func (*kubernetesAutoscalerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesAutoscaler)(nil))
+}
+
+func (i *kubernetesAutoscalerPtrType) ToKubernetesAutoscalerPtrOutput() KubernetesAutoscalerPtrOutput {
+	return i.ToKubernetesAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesAutoscalerPtrType) ToKubernetesAutoscalerPtrOutputWithContext(ctx context.Context) KubernetesAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerPtrOutput)
+}
+
+// KubernetesAutoscalerArrayInput is an input type that accepts KubernetesAutoscalerArray and KubernetesAutoscalerArrayOutput values.
+// You can construct a concrete instance of `KubernetesAutoscalerArrayInput` via:
+//
+//          KubernetesAutoscalerArray{ KubernetesAutoscalerArgs{...} }
+type KubernetesAutoscalerArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesAutoscalerArrayOutput() KubernetesAutoscalerArrayOutput
+	ToKubernetesAutoscalerArrayOutputWithContext(context.Context) KubernetesAutoscalerArrayOutput
+}
+
+type KubernetesAutoscalerArray []KubernetesAutoscalerInput
+
+func (KubernetesAutoscalerArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*KubernetesAutoscaler)(nil))
+}
+
+func (i KubernetesAutoscalerArray) ToKubernetesAutoscalerArrayOutput() KubernetesAutoscalerArrayOutput {
+	return i.ToKubernetesAutoscalerArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesAutoscalerArray) ToKubernetesAutoscalerArrayOutputWithContext(ctx context.Context) KubernetesAutoscalerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerArrayOutput)
+}
+
+// KubernetesAutoscalerMapInput is an input type that accepts KubernetesAutoscalerMap and KubernetesAutoscalerMapOutput values.
+// You can construct a concrete instance of `KubernetesAutoscalerMapInput` via:
+//
+//          KubernetesAutoscalerMap{ "key": KubernetesAutoscalerArgs{...} }
+type KubernetesAutoscalerMapInput interface {
+	pulumi.Input
+
+	ToKubernetesAutoscalerMapOutput() KubernetesAutoscalerMapOutput
+	ToKubernetesAutoscalerMapOutputWithContext(context.Context) KubernetesAutoscalerMapOutput
+}
+
+type KubernetesAutoscalerMap map[string]KubernetesAutoscalerInput
+
+func (KubernetesAutoscalerMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*KubernetesAutoscaler)(nil))
+}
+
+func (i KubernetesAutoscalerMap) ToKubernetesAutoscalerMapOutput() KubernetesAutoscalerMapOutput {
+	return i.ToKubernetesAutoscalerMapOutputWithContext(context.Background())
+}
+
+func (i KubernetesAutoscalerMap) ToKubernetesAutoscalerMapOutputWithContext(ctx context.Context) KubernetesAutoscalerMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerMapOutput)
+}
+
 type KubernetesAutoscalerOutput struct {
 	*pulumi.OutputState
 }
@@ -299,6 +378,75 @@ func (o KubernetesAutoscalerOutput) ToKubernetesAutoscalerOutputWithContext(ctx 
 	return o
 }
 
+func (o KubernetesAutoscalerOutput) ToKubernetesAutoscalerPtrOutput() KubernetesAutoscalerPtrOutput {
+	return o.ToKubernetesAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesAutoscalerOutput) ToKubernetesAutoscalerPtrOutputWithContext(ctx context.Context) KubernetesAutoscalerPtrOutput {
+	return o.ApplyT(func(v KubernetesAutoscaler) *KubernetesAutoscaler {
+		return &v
+	}).(KubernetesAutoscalerPtrOutput)
+}
+
+type KubernetesAutoscalerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KubernetesAutoscalerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesAutoscaler)(nil))
+}
+
+func (o KubernetesAutoscalerPtrOutput) ToKubernetesAutoscalerPtrOutput() KubernetesAutoscalerPtrOutput {
+	return o
+}
+
+func (o KubernetesAutoscalerPtrOutput) ToKubernetesAutoscalerPtrOutputWithContext(ctx context.Context) KubernetesAutoscalerPtrOutput {
+	return o
+}
+
+type KubernetesAutoscalerArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesAutoscalerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesAutoscaler)(nil))
+}
+
+func (o KubernetesAutoscalerArrayOutput) ToKubernetesAutoscalerArrayOutput() KubernetesAutoscalerArrayOutput {
+	return o
+}
+
+func (o KubernetesAutoscalerArrayOutput) ToKubernetesAutoscalerArrayOutputWithContext(ctx context.Context) KubernetesAutoscalerArrayOutput {
+	return o
+}
+
+func (o KubernetesAutoscalerArrayOutput) Index(i pulumi.IntInput) KubernetesAutoscalerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesAutoscaler {
+		return vs[0].([]KubernetesAutoscaler)[vs[1].(int)]
+	}).(KubernetesAutoscalerOutput)
+}
+
+type KubernetesAutoscalerMapOutput struct{ *pulumi.OutputState }
+
+func (KubernetesAutoscalerMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]KubernetesAutoscaler)(nil))
+}
+
+func (o KubernetesAutoscalerMapOutput) ToKubernetesAutoscalerMapOutput() KubernetesAutoscalerMapOutput {
+	return o
+}
+
+func (o KubernetesAutoscalerMapOutput) ToKubernetesAutoscalerMapOutputWithContext(ctx context.Context) KubernetesAutoscalerMapOutput {
+	return o
+}
+
+func (o KubernetesAutoscalerMapOutput) MapIndex(k pulumi.StringInput) KubernetesAutoscalerOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KubernetesAutoscaler {
+		return vs[0].(map[string]KubernetesAutoscaler)[vs[1].(string)]
+	}).(KubernetesAutoscalerOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(KubernetesAutoscalerOutput{})
+	pulumi.RegisterOutputType(KubernetesAutoscalerPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesAutoscalerArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesAutoscalerMapOutput{})
 }

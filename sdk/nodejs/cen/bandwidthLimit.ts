@@ -128,32 +128,29 @@ export class BandwidthLimit extends pulumi.CustomResource {
     constructor(name: string, args: BandwidthLimitArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BandwidthLimitArgs | BandwidthLimitState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BandwidthLimitState | undefined;
             inputs["bandwidthLimit"] = state ? state.bandwidthLimit : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["regionIds"] = state ? state.regionIds : undefined;
         } else {
             const args = argsOrState as BandwidthLimitArgs | undefined;
-            if ((!args || args.bandwidthLimit === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bandwidthLimit === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthLimit'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.regionIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.regionIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionIds'");
             }
             inputs["bandwidthLimit"] = args ? args.bandwidthLimit : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["regionIds"] = args ? args.regionIds : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BandwidthLimit.__pulumiType, name, inputs, opts);
     }

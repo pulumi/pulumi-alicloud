@@ -112,7 +112,8 @@ export class DdosCooInstance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DdosCooInstanceArgs | DdosCooInstanceState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("DdosCooInstance is deprecated: alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance")
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DdosCooInstanceState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["baseBandwidth"] = state ? state.baseBandwidth : undefined;
@@ -123,19 +124,19 @@ export class DdosCooInstance extends pulumi.CustomResource {
             inputs["serviceBandwidth"] = state ? state.serviceBandwidth : undefined;
         } else {
             const args = argsOrState as DdosCooInstanceArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if ((!args || args.baseBandwidth === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.baseBandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'baseBandwidth'");
             }
-            if ((!args || args.domainCount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainCount'");
             }
-            if ((!args || args.portCount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.portCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'portCount'");
             }
-            if ((!args || args.serviceBandwidth === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceBandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceBandwidth'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
@@ -146,12 +147,8 @@ export class DdosCooInstance extends pulumi.CustomResource {
             inputs["portCount"] = args ? args.portCount : undefined;
             inputs["serviceBandwidth"] = args ? args.serviceBandwidth : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DdosCooInstance.__pulumiType, name, inputs, opts);
     }

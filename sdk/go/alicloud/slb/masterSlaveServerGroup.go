@@ -161,6 +161,85 @@ func (i *MasterSlaveServerGroup) ToMasterSlaveServerGroupOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupOutput)
 }
 
+func (i *MasterSlaveServerGroup) ToMasterSlaveServerGroupPtrOutput() MasterSlaveServerGroupPtrOutput {
+	return i.ToMasterSlaveServerGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *MasterSlaveServerGroup) ToMasterSlaveServerGroupPtrOutputWithContext(ctx context.Context) MasterSlaveServerGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupPtrOutput)
+}
+
+type MasterSlaveServerGroupPtrInput interface {
+	pulumi.Input
+
+	ToMasterSlaveServerGroupPtrOutput() MasterSlaveServerGroupPtrOutput
+	ToMasterSlaveServerGroupPtrOutputWithContext(ctx context.Context) MasterSlaveServerGroupPtrOutput
+}
+
+type masterSlaveServerGroupPtrType MasterSlaveServerGroupArgs
+
+func (*masterSlaveServerGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MasterSlaveServerGroup)(nil))
+}
+
+func (i *masterSlaveServerGroupPtrType) ToMasterSlaveServerGroupPtrOutput() MasterSlaveServerGroupPtrOutput {
+	return i.ToMasterSlaveServerGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *masterSlaveServerGroupPtrType) ToMasterSlaveServerGroupPtrOutputWithContext(ctx context.Context) MasterSlaveServerGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupPtrOutput)
+}
+
+// MasterSlaveServerGroupArrayInput is an input type that accepts MasterSlaveServerGroupArray and MasterSlaveServerGroupArrayOutput values.
+// You can construct a concrete instance of `MasterSlaveServerGroupArrayInput` via:
+//
+//          MasterSlaveServerGroupArray{ MasterSlaveServerGroupArgs{...} }
+type MasterSlaveServerGroupArrayInput interface {
+	pulumi.Input
+
+	ToMasterSlaveServerGroupArrayOutput() MasterSlaveServerGroupArrayOutput
+	ToMasterSlaveServerGroupArrayOutputWithContext(context.Context) MasterSlaveServerGroupArrayOutput
+}
+
+type MasterSlaveServerGroupArray []MasterSlaveServerGroupInput
+
+func (MasterSlaveServerGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MasterSlaveServerGroup)(nil))
+}
+
+func (i MasterSlaveServerGroupArray) ToMasterSlaveServerGroupArrayOutput() MasterSlaveServerGroupArrayOutput {
+	return i.ToMasterSlaveServerGroupArrayOutputWithContext(context.Background())
+}
+
+func (i MasterSlaveServerGroupArray) ToMasterSlaveServerGroupArrayOutputWithContext(ctx context.Context) MasterSlaveServerGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupArrayOutput)
+}
+
+// MasterSlaveServerGroupMapInput is an input type that accepts MasterSlaveServerGroupMap and MasterSlaveServerGroupMapOutput values.
+// You can construct a concrete instance of `MasterSlaveServerGroupMapInput` via:
+//
+//          MasterSlaveServerGroupMap{ "key": MasterSlaveServerGroupArgs{...} }
+type MasterSlaveServerGroupMapInput interface {
+	pulumi.Input
+
+	ToMasterSlaveServerGroupMapOutput() MasterSlaveServerGroupMapOutput
+	ToMasterSlaveServerGroupMapOutputWithContext(context.Context) MasterSlaveServerGroupMapOutput
+}
+
+type MasterSlaveServerGroupMap map[string]MasterSlaveServerGroupInput
+
+func (MasterSlaveServerGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MasterSlaveServerGroup)(nil))
+}
+
+func (i MasterSlaveServerGroupMap) ToMasterSlaveServerGroupMapOutput() MasterSlaveServerGroupMapOutput {
+	return i.ToMasterSlaveServerGroupMapOutputWithContext(context.Background())
+}
+
+func (i MasterSlaveServerGroupMap) ToMasterSlaveServerGroupMapOutputWithContext(ctx context.Context) MasterSlaveServerGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupMapOutput)
+}
+
 type MasterSlaveServerGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -177,6 +256,75 @@ func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupOutputWithContext(
 	return o
 }
 
+func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupPtrOutput() MasterSlaveServerGroupPtrOutput {
+	return o.ToMasterSlaveServerGroupPtrOutputWithContext(context.Background())
+}
+
+func (o MasterSlaveServerGroupOutput) ToMasterSlaveServerGroupPtrOutputWithContext(ctx context.Context) MasterSlaveServerGroupPtrOutput {
+	return o.ApplyT(func(v MasterSlaveServerGroup) *MasterSlaveServerGroup {
+		return &v
+	}).(MasterSlaveServerGroupPtrOutput)
+}
+
+type MasterSlaveServerGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MasterSlaveServerGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MasterSlaveServerGroup)(nil))
+}
+
+func (o MasterSlaveServerGroupPtrOutput) ToMasterSlaveServerGroupPtrOutput() MasterSlaveServerGroupPtrOutput {
+	return o
+}
+
+func (o MasterSlaveServerGroupPtrOutput) ToMasterSlaveServerGroupPtrOutputWithContext(ctx context.Context) MasterSlaveServerGroupPtrOutput {
+	return o
+}
+
+type MasterSlaveServerGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (MasterSlaveServerGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MasterSlaveServerGroup)(nil))
+}
+
+func (o MasterSlaveServerGroupArrayOutput) ToMasterSlaveServerGroupArrayOutput() MasterSlaveServerGroupArrayOutput {
+	return o
+}
+
+func (o MasterSlaveServerGroupArrayOutput) ToMasterSlaveServerGroupArrayOutputWithContext(ctx context.Context) MasterSlaveServerGroupArrayOutput {
+	return o
+}
+
+func (o MasterSlaveServerGroupArrayOutput) Index(i pulumi.IntInput) MasterSlaveServerGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MasterSlaveServerGroup {
+		return vs[0].([]MasterSlaveServerGroup)[vs[1].(int)]
+	}).(MasterSlaveServerGroupOutput)
+}
+
+type MasterSlaveServerGroupMapOutput struct{ *pulumi.OutputState }
+
+func (MasterSlaveServerGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MasterSlaveServerGroup)(nil))
+}
+
+func (o MasterSlaveServerGroupMapOutput) ToMasterSlaveServerGroupMapOutput() MasterSlaveServerGroupMapOutput {
+	return o
+}
+
+func (o MasterSlaveServerGroupMapOutput) ToMasterSlaveServerGroupMapOutputWithContext(ctx context.Context) MasterSlaveServerGroupMapOutput {
+	return o
+}
+
+func (o MasterSlaveServerGroupMapOutput) MapIndex(k pulumi.StringInput) MasterSlaveServerGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MasterSlaveServerGroup {
+		return vs[0].(map[string]MasterSlaveServerGroup)[vs[1].(string)]
+	}).(MasterSlaveServerGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MasterSlaveServerGroupOutput{})
+	pulumi.RegisterOutputType(MasterSlaveServerGroupPtrOutput{})
+	pulumi.RegisterOutputType(MasterSlaveServerGroupArrayOutput{})
+	pulumi.RegisterOutputType(MasterSlaveServerGroupMapOutput{})
 }

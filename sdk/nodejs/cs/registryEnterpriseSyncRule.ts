@@ -128,7 +128,8 @@ export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
     constructor(name: string, args: RegistryEnterpriseSyncRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryEnterpriseSyncRuleArgs | RegistryEnterpriseSyncRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RegistryEnterpriseSyncRuleState | undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -144,22 +145,22 @@ export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
             inputs["targetRepoName"] = state ? state.targetRepoName : undefined;
         } else {
             const args = argsOrState as RegistryEnterpriseSyncRuleArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.namespaceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.namespaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceName'");
             }
-            if ((!args || args.tagFilter === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tagFilter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagFilter'");
             }
-            if ((!args || args.targetInstanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetInstanceId'");
             }
-            if ((!args || args.targetNamespaceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetNamespaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetNamespaceName'");
             }
-            if ((!args || args.targetRegionId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetRegionId'");
             }
             inputs["instanceId"] = args ? args.instanceId : undefined;
@@ -175,12 +176,8 @@ export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
             inputs["syncDirection"] = undefined /*out*/;
             inputs["syncScope"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RegistryEnterpriseSyncRule.__pulumiType, name, inputs, opts);
     }

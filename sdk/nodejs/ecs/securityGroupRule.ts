@@ -88,7 +88,8 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     constructor(name: string, args: SecurityGroupRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityGroupRuleArgs | SecurityGroupRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SecurityGroupRuleState | undefined;
             inputs["cidrIp"] = state ? state.cidrIp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -103,13 +104,13 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as SecurityGroupRuleArgs | undefined;
-            if ((!args || args.ipProtocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ipProtocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if ((!args || args.securityGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["cidrIp"] = args ? args.cidrIp : undefined;
@@ -124,12 +125,8 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             inputs["sourceSecurityGroupId"] = args ? args.sourceSecurityGroupId : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SecurityGroupRule.__pulumiType, name, inputs, opts);
     }

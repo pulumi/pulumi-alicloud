@@ -157,7 +157,8 @@ export class Rule extends pulumi.CustomResource {
     constructor(name: string, args: RuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuleArgs | RuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RuleState | undefined;
             inputs["cookie"] = state ? state.cookie : undefined;
             inputs["cookieTimeout"] = state ? state.cookieTimeout : undefined;
@@ -183,13 +184,13 @@ export class Rule extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.frontendPort === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.frontendPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'frontendPort'");
             }
-            if ((!args || args.loadBalancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if ((!args || args.serverGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serverGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupId'");
             }
             inputs["cookie"] = args ? args.cookie : undefined;
@@ -215,12 +216,8 @@ export class Rule extends pulumi.CustomResource {
             inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
             inputs["url"] = args ? args.url : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Rule.__pulumiType, name, inputs, opts);
     }

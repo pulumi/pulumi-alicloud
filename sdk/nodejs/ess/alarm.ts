@@ -112,7 +112,8 @@ export class Alarm extends pulumi.CustomResource {
     constructor(name: string, args: AlarmArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlarmArgs | AlarmState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AlarmState | undefined;
             inputs["alarmActions"] = state ? state.alarmActions : undefined;
             inputs["cloudMonitorGroupId"] = state ? state.cloudMonitorGroupId : undefined;
@@ -131,16 +132,16 @@ export class Alarm extends pulumi.CustomResource {
             inputs["threshold"] = state ? state.threshold : undefined;
         } else {
             const args = argsOrState as AlarmArgs | undefined;
-            if ((!args || args.alarmActions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.alarmActions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'alarmActions'");
             }
-            if ((!args || args.metricName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.metricName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metricName'");
             }
-            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            if ((!args || args.threshold === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.threshold === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'threshold'");
             }
             inputs["alarmActions"] = args ? args.alarmActions : undefined;
@@ -159,12 +160,8 @@ export class Alarm extends pulumi.CustomResource {
             inputs["threshold"] = args ? args.threshold : undefined;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Alarm.__pulumiType, name, inputs, opts);
     }

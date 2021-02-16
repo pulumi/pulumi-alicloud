@@ -185,6 +185,85 @@ func (i *DomainConfig) ToDomainConfigOutputWithContext(ctx context.Context) Doma
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigOutput)
 }
 
+func (i *DomainConfig) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return i.ToDomainConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *DomainConfig) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigPtrOutput)
+}
+
+type DomainConfigPtrInput interface {
+	pulumi.Input
+
+	ToDomainConfigPtrOutput() DomainConfigPtrOutput
+	ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput
+}
+
+type domainConfigPtrType DomainConfigArgs
+
+func (*domainConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainConfig)(nil))
+}
+
+func (i *domainConfigPtrType) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return i.ToDomainConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *domainConfigPtrType) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigPtrOutput)
+}
+
+// DomainConfigArrayInput is an input type that accepts DomainConfigArray and DomainConfigArrayOutput values.
+// You can construct a concrete instance of `DomainConfigArrayInput` via:
+//
+//          DomainConfigArray{ DomainConfigArgs{...} }
+type DomainConfigArrayInput interface {
+	pulumi.Input
+
+	ToDomainConfigArrayOutput() DomainConfigArrayOutput
+	ToDomainConfigArrayOutputWithContext(context.Context) DomainConfigArrayOutput
+}
+
+type DomainConfigArray []DomainConfigInput
+
+func (DomainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DomainConfig)(nil))
+}
+
+func (i DomainConfigArray) ToDomainConfigArrayOutput() DomainConfigArrayOutput {
+	return i.ToDomainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DomainConfigArray) ToDomainConfigArrayOutputWithContext(ctx context.Context) DomainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigArrayOutput)
+}
+
+// DomainConfigMapInput is an input type that accepts DomainConfigMap and DomainConfigMapOutput values.
+// You can construct a concrete instance of `DomainConfigMapInput` via:
+//
+//          DomainConfigMap{ "key": DomainConfigArgs{...} }
+type DomainConfigMapInput interface {
+	pulumi.Input
+
+	ToDomainConfigMapOutput() DomainConfigMapOutput
+	ToDomainConfigMapOutputWithContext(context.Context) DomainConfigMapOutput
+}
+
+type DomainConfigMap map[string]DomainConfigInput
+
+func (DomainConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DomainConfig)(nil))
+}
+
+func (i DomainConfigMap) ToDomainConfigMapOutput() DomainConfigMapOutput {
+	return i.ToDomainConfigMapOutputWithContext(context.Background())
+}
+
+func (i DomainConfigMap) ToDomainConfigMapOutputWithContext(ctx context.Context) DomainConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigMapOutput)
+}
+
 type DomainConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -201,6 +280,75 @@ func (o DomainConfigOutput) ToDomainConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o DomainConfigOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return o.ToDomainConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DomainConfigOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return o.ApplyT(func(v DomainConfig) *DomainConfig {
+		return &v
+	}).(DomainConfigPtrOutput)
+}
+
+type DomainConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainConfig)(nil))
+}
+
+func (o DomainConfigPtrOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return o
+}
+
+func (o DomainConfigPtrOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return o
+}
+
+type DomainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DomainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainConfig)(nil))
+}
+
+func (o DomainConfigArrayOutput) ToDomainConfigArrayOutput() DomainConfigArrayOutput {
+	return o
+}
+
+func (o DomainConfigArrayOutput) ToDomainConfigArrayOutputWithContext(ctx context.Context) DomainConfigArrayOutput {
+	return o
+}
+
+func (o DomainConfigArrayOutput) Index(i pulumi.IntInput) DomainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainConfig {
+		return vs[0].([]DomainConfig)[vs[1].(int)]
+	}).(DomainConfigOutput)
+}
+
+type DomainConfigMapOutput struct{ *pulumi.OutputState }
+
+func (DomainConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DomainConfig)(nil))
+}
+
+func (o DomainConfigMapOutput) ToDomainConfigMapOutput() DomainConfigMapOutput {
+	return o
+}
+
+func (o DomainConfigMapOutput) ToDomainConfigMapOutputWithContext(ctx context.Context) DomainConfigMapOutput {
+	return o
+}
+
+func (o DomainConfigMapOutput) MapIndex(k pulumi.StringInput) DomainConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DomainConfig {
+		return vs[0].(map[string]DomainConfig)[vs[1].(string)]
+	}).(DomainConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainConfigOutput{})
+	pulumi.RegisterOutputType(DomainConfigPtrOutput{})
+	pulumi.RegisterOutputType(DomainConfigArrayOutput{})
+	pulumi.RegisterOutputType(DomainConfigMapOutput{})
 }

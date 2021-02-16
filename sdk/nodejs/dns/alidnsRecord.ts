@@ -119,7 +119,8 @@ export class AlidnsRecord extends pulumi.CustomResource {
     constructor(name: string, args: AlidnsRecordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlidnsRecordArgs | AlidnsRecordState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AlidnsRecordState | undefined;
             inputs["domainName"] = state ? state.domainName : undefined;
             inputs["lang"] = state ? state.lang : undefined;
@@ -134,16 +135,16 @@ export class AlidnsRecord extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as AlidnsRecordArgs | undefined;
-            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.rr === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.rr === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rr'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["domainName"] = args ? args.domainName : undefined;
@@ -158,12 +159,8 @@ export class AlidnsRecord extends pulumi.CustomResource {
             inputs["userClientIp"] = args ? args.userClientIp : undefined;
             inputs["value"] = args ? args.value : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AlidnsRecord.__pulumiType, name, inputs, opts);
     }

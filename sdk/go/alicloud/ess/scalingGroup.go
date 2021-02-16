@@ -322,6 +322,85 @@ func (i *ScalingGroup) ToScalingGroupOutputWithContext(ctx context.Context) Scal
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupOutput)
 }
 
+func (i *ScalingGroup) ToScalingGroupPtrOutput() ScalingGroupPtrOutput {
+	return i.ToScalingGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ScalingGroup) ToScalingGroupPtrOutputWithContext(ctx context.Context) ScalingGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupPtrOutput)
+}
+
+type ScalingGroupPtrInput interface {
+	pulumi.Input
+
+	ToScalingGroupPtrOutput() ScalingGroupPtrOutput
+	ToScalingGroupPtrOutputWithContext(ctx context.Context) ScalingGroupPtrOutput
+}
+
+type scalingGroupPtrType ScalingGroupArgs
+
+func (*scalingGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingGroup)(nil))
+}
+
+func (i *scalingGroupPtrType) ToScalingGroupPtrOutput() ScalingGroupPtrOutput {
+	return i.ToScalingGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *scalingGroupPtrType) ToScalingGroupPtrOutputWithContext(ctx context.Context) ScalingGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupPtrOutput)
+}
+
+// ScalingGroupArrayInput is an input type that accepts ScalingGroupArray and ScalingGroupArrayOutput values.
+// You can construct a concrete instance of `ScalingGroupArrayInput` via:
+//
+//          ScalingGroupArray{ ScalingGroupArgs{...} }
+type ScalingGroupArrayInput interface {
+	pulumi.Input
+
+	ToScalingGroupArrayOutput() ScalingGroupArrayOutput
+	ToScalingGroupArrayOutputWithContext(context.Context) ScalingGroupArrayOutput
+}
+
+type ScalingGroupArray []ScalingGroupInput
+
+func (ScalingGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ScalingGroup)(nil))
+}
+
+func (i ScalingGroupArray) ToScalingGroupArrayOutput() ScalingGroupArrayOutput {
+	return i.ToScalingGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingGroupArray) ToScalingGroupArrayOutputWithContext(ctx context.Context) ScalingGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupArrayOutput)
+}
+
+// ScalingGroupMapInput is an input type that accepts ScalingGroupMap and ScalingGroupMapOutput values.
+// You can construct a concrete instance of `ScalingGroupMapInput` via:
+//
+//          ScalingGroupMap{ "key": ScalingGroupArgs{...} }
+type ScalingGroupMapInput interface {
+	pulumi.Input
+
+	ToScalingGroupMapOutput() ScalingGroupMapOutput
+	ToScalingGroupMapOutputWithContext(context.Context) ScalingGroupMapOutput
+}
+
+type ScalingGroupMap map[string]ScalingGroupInput
+
+func (ScalingGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ScalingGroup)(nil))
+}
+
+func (i ScalingGroupMap) ToScalingGroupMapOutput() ScalingGroupMapOutput {
+	return i.ToScalingGroupMapOutputWithContext(context.Background())
+}
+
+func (i ScalingGroupMap) ToScalingGroupMapOutputWithContext(ctx context.Context) ScalingGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupMapOutput)
+}
+
 type ScalingGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -338,6 +417,75 @@ func (o ScalingGroupOutput) ToScalingGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ScalingGroupOutput) ToScalingGroupPtrOutput() ScalingGroupPtrOutput {
+	return o.ToScalingGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ScalingGroupOutput) ToScalingGroupPtrOutputWithContext(ctx context.Context) ScalingGroupPtrOutput {
+	return o.ApplyT(func(v ScalingGroup) *ScalingGroup {
+		return &v
+	}).(ScalingGroupPtrOutput)
+}
+
+type ScalingGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScalingGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingGroup)(nil))
+}
+
+func (o ScalingGroupPtrOutput) ToScalingGroupPtrOutput() ScalingGroupPtrOutput {
+	return o
+}
+
+func (o ScalingGroupPtrOutput) ToScalingGroupPtrOutputWithContext(ctx context.Context) ScalingGroupPtrOutput {
+	return o
+}
+
+type ScalingGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingGroup)(nil))
+}
+
+func (o ScalingGroupArrayOutput) ToScalingGroupArrayOutput() ScalingGroupArrayOutput {
+	return o
+}
+
+func (o ScalingGroupArrayOutput) ToScalingGroupArrayOutputWithContext(ctx context.Context) ScalingGroupArrayOutput {
+	return o
+}
+
+func (o ScalingGroupArrayOutput) Index(i pulumi.IntInput) ScalingGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingGroup {
+		return vs[0].([]ScalingGroup)[vs[1].(int)]
+	}).(ScalingGroupOutput)
+}
+
+type ScalingGroupMapOutput struct{ *pulumi.OutputState }
+
+func (ScalingGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScalingGroup)(nil))
+}
+
+func (o ScalingGroupMapOutput) ToScalingGroupMapOutput() ScalingGroupMapOutput {
+	return o
+}
+
+func (o ScalingGroupMapOutput) ToScalingGroupMapOutputWithContext(ctx context.Context) ScalingGroupMapOutput {
+	return o
+}
+
+func (o ScalingGroupMapOutput) MapIndex(k pulumi.StringInput) ScalingGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScalingGroup {
+		return vs[0].(map[string]ScalingGroup)[vs[1].(string)]
+	}).(ScalingGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ScalingGroupOutput{})
+	pulumi.RegisterOutputType(ScalingGroupPtrOutput{})
+	pulumi.RegisterOutputType(ScalingGroupArrayOutput{})
+	pulumi.RegisterOutputType(ScalingGroupMapOutput{})
 }

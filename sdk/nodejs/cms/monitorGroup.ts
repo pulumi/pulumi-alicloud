@@ -80,26 +80,23 @@ export class MonitorGroup extends pulumi.CustomResource {
     constructor(name: string, args: MonitorGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MonitorGroupArgs | MonitorGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MonitorGroupState | undefined;
             inputs["contactGroups"] = state ? state.contactGroups : undefined;
             inputs["monitorGroupName"] = state ? state.monitorGroupName : undefined;
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as MonitorGroupArgs | undefined;
-            if ((!args || args.monitorGroupName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.monitorGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'monitorGroupName'");
             }
             inputs["contactGroups"] = args ? args.contactGroups : undefined;
             inputs["monitorGroupName"] = args ? args.monitorGroupName : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MonitorGroup.__pulumiType, name, inputs, opts);
     }

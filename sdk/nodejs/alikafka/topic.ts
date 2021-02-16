@@ -124,7 +124,8 @@ export class Topic extends pulumi.CustomResource {
     constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TopicState | undefined;
             inputs["compactTopic"] = state ? state.compactTopic : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
@@ -135,13 +136,13 @@ export class Topic extends pulumi.CustomResource {
             inputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.remark === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.remark === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'remark'");
             }
-            if ((!args || args.topic === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.topic === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
             inputs["compactTopic"] = args ? args.compactTopic : undefined;
@@ -152,12 +153,8 @@ export class Topic extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["topic"] = args ? args.topic : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Topic.__pulumiType, name, inputs, opts);
     }

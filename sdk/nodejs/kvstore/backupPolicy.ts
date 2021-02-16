@@ -64,26 +64,23 @@ export class BackupPolicy extends pulumi.CustomResource {
     constructor(name: string, args: BackupPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackupPolicyArgs | BackupPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
             inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
             inputs["backupTime"] = state ? state.backupTime : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             inputs["backupTime"] = args ? args.backupTime : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BackupPolicy.__pulumiType, name, inputs, opts);
     }

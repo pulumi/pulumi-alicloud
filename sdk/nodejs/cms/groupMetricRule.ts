@@ -127,7 +127,8 @@ export class GroupMetricRule extends pulumi.CustomResource {
     constructor(name: string, args: GroupMetricRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupMetricRuleArgs | GroupMetricRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GroupMetricRuleState | undefined;
             inputs["category"] = state ? state.category : undefined;
             inputs["contactGroups"] = state ? state.contactGroups : undefined;
@@ -148,25 +149,25 @@ export class GroupMetricRule extends pulumi.CustomResource {
             inputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as GroupMetricRuleArgs | undefined;
-            if ((!args || args.category === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.category === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'category'");
             }
-            if ((!args || args.escalations === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.escalations === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'escalations'");
             }
-            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.groupMetricRuleName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupMetricRuleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupMetricRuleName'");
             }
-            if ((!args || args.metricName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.metricName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metricName'");
             }
-            if ((!args || args.namespace === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.namespace === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.ruleId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ruleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleId'");
             }
             inputs["category"] = args ? args.category : undefined;
@@ -187,12 +188,8 @@ export class GroupMetricRule extends pulumi.CustomResource {
             inputs["webhook"] = args ? args.webhook : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GroupMetricRule.__pulumiType, name, inputs, opts);
     }

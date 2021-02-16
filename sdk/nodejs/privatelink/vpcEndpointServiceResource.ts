@@ -89,7 +89,8 @@ export class VpcEndpointServiceResource extends pulumi.CustomResource {
     constructor(name: string, args: VpcEndpointServiceResourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcEndpointServiceResourceArgs | VpcEndpointServiceResourceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VpcEndpointServiceResourceState | undefined;
             inputs["dryRun"] = state ? state.dryRun : undefined;
             inputs["resourceId"] = state ? state.resourceId : undefined;
@@ -97,13 +98,13 @@ export class VpcEndpointServiceResource extends pulumi.CustomResource {
             inputs["serviceId"] = state ? state.serviceId : undefined;
         } else {
             const args = argsOrState as VpcEndpointServiceResourceArgs | undefined;
-            if ((!args || args.resourceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if ((!args || args.resourceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            if ((!args || args.serviceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
             inputs["dryRun"] = args ? args.dryRun : undefined;
@@ -111,12 +112,8 @@ export class VpcEndpointServiceResource extends pulumi.CustomResource {
             inputs["resourceType"] = args ? args.resourceType : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VpcEndpointServiceResource.__pulumiType, name, inputs, opts);
     }

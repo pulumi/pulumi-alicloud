@@ -315,6 +315,85 @@ func (i *ChangeSet) ToChangeSetOutputWithContext(ctx context.Context) ChangeSetO
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetOutput)
 }
 
+func (i *ChangeSet) ToChangeSetPtrOutput() ChangeSetPtrOutput {
+	return i.ToChangeSetPtrOutputWithContext(context.Background())
+}
+
+func (i *ChangeSet) ToChangeSetPtrOutputWithContext(ctx context.Context) ChangeSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetPtrOutput)
+}
+
+type ChangeSetPtrInput interface {
+	pulumi.Input
+
+	ToChangeSetPtrOutput() ChangeSetPtrOutput
+	ToChangeSetPtrOutputWithContext(ctx context.Context) ChangeSetPtrOutput
+}
+
+type changeSetPtrType ChangeSetArgs
+
+func (*changeSetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeSet)(nil))
+}
+
+func (i *changeSetPtrType) ToChangeSetPtrOutput() ChangeSetPtrOutput {
+	return i.ToChangeSetPtrOutputWithContext(context.Background())
+}
+
+func (i *changeSetPtrType) ToChangeSetPtrOutputWithContext(ctx context.Context) ChangeSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetPtrOutput)
+}
+
+// ChangeSetArrayInput is an input type that accepts ChangeSetArray and ChangeSetArrayOutput values.
+// You can construct a concrete instance of `ChangeSetArrayInput` via:
+//
+//          ChangeSetArray{ ChangeSetArgs{...} }
+type ChangeSetArrayInput interface {
+	pulumi.Input
+
+	ToChangeSetArrayOutput() ChangeSetArrayOutput
+	ToChangeSetArrayOutputWithContext(context.Context) ChangeSetArrayOutput
+}
+
+type ChangeSetArray []ChangeSetInput
+
+func (ChangeSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ChangeSet)(nil))
+}
+
+func (i ChangeSetArray) ToChangeSetArrayOutput() ChangeSetArrayOutput {
+	return i.ToChangeSetArrayOutputWithContext(context.Background())
+}
+
+func (i ChangeSetArray) ToChangeSetArrayOutputWithContext(ctx context.Context) ChangeSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetArrayOutput)
+}
+
+// ChangeSetMapInput is an input type that accepts ChangeSetMap and ChangeSetMapOutput values.
+// You can construct a concrete instance of `ChangeSetMapInput` via:
+//
+//          ChangeSetMap{ "key": ChangeSetArgs{...} }
+type ChangeSetMapInput interface {
+	pulumi.Input
+
+	ToChangeSetMapOutput() ChangeSetMapOutput
+	ToChangeSetMapOutputWithContext(context.Context) ChangeSetMapOutput
+}
+
+type ChangeSetMap map[string]ChangeSetInput
+
+func (ChangeSetMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ChangeSet)(nil))
+}
+
+func (i ChangeSetMap) ToChangeSetMapOutput() ChangeSetMapOutput {
+	return i.ToChangeSetMapOutputWithContext(context.Background())
+}
+
+func (i ChangeSetMap) ToChangeSetMapOutputWithContext(ctx context.Context) ChangeSetMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetMapOutput)
+}
+
 type ChangeSetOutput struct {
 	*pulumi.OutputState
 }
@@ -331,6 +410,75 @@ func (o ChangeSetOutput) ToChangeSetOutputWithContext(ctx context.Context) Chang
 	return o
 }
 
+func (o ChangeSetOutput) ToChangeSetPtrOutput() ChangeSetPtrOutput {
+	return o.ToChangeSetPtrOutputWithContext(context.Background())
+}
+
+func (o ChangeSetOutput) ToChangeSetPtrOutputWithContext(ctx context.Context) ChangeSetPtrOutput {
+	return o.ApplyT(func(v ChangeSet) *ChangeSet {
+		return &v
+	}).(ChangeSetPtrOutput)
+}
+
+type ChangeSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ChangeSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeSet)(nil))
+}
+
+func (o ChangeSetPtrOutput) ToChangeSetPtrOutput() ChangeSetPtrOutput {
+	return o
+}
+
+func (o ChangeSetPtrOutput) ToChangeSetPtrOutputWithContext(ctx context.Context) ChangeSetPtrOutput {
+	return o
+}
+
+type ChangeSetArrayOutput struct{ *pulumi.OutputState }
+
+func (ChangeSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChangeSet)(nil))
+}
+
+func (o ChangeSetArrayOutput) ToChangeSetArrayOutput() ChangeSetArrayOutput {
+	return o
+}
+
+func (o ChangeSetArrayOutput) ToChangeSetArrayOutputWithContext(ctx context.Context) ChangeSetArrayOutput {
+	return o
+}
+
+func (o ChangeSetArrayOutput) Index(i pulumi.IntInput) ChangeSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChangeSet {
+		return vs[0].([]ChangeSet)[vs[1].(int)]
+	}).(ChangeSetOutput)
+}
+
+type ChangeSetMapOutput struct{ *pulumi.OutputState }
+
+func (ChangeSetMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ChangeSet)(nil))
+}
+
+func (o ChangeSetMapOutput) ToChangeSetMapOutput() ChangeSetMapOutput {
+	return o
+}
+
+func (o ChangeSetMapOutput) ToChangeSetMapOutputWithContext(ctx context.Context) ChangeSetMapOutput {
+	return o
+}
+
+func (o ChangeSetMapOutput) MapIndex(k pulumi.StringInput) ChangeSetOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ChangeSet {
+		return vs[0].(map[string]ChangeSet)[vs[1].(string)]
+	}).(ChangeSetOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ChangeSetOutput{})
+	pulumi.RegisterOutputType(ChangeSetPtrOutput{})
+	pulumi.RegisterOutputType(ChangeSetArrayOutput{})
+	pulumi.RegisterOutputType(ChangeSetMapOutput{})
 }

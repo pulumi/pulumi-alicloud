@@ -103,7 +103,8 @@ export class Accelerator extends pulumi.CustomResource {
     constructor(name: string, args: AcceleratorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AcceleratorArgs | AcceleratorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AcceleratorState | undefined;
             inputs["acceleratorName"] = state ? state.acceleratorName : undefined;
             inputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
@@ -113,10 +114,10 @@ export class Accelerator extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AcceleratorArgs | undefined;
-            if ((!args || args.duration === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.duration === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'duration'");
             }
-            if ((!args || args.spec === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.spec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
             inputs["acceleratorName"] = args ? args.acceleratorName : undefined;
@@ -126,12 +127,8 @@ export class Accelerator extends pulumi.CustomResource {
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Accelerator.__pulumiType, name, inputs, opts);
     }

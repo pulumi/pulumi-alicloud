@@ -141,7 +141,8 @@ export class Disk extends pulumi.CustomResource {
     constructor(name: string, args: DiskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DiskArgs | DiskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DiskState | undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["category"] = state ? state.category : undefined;
@@ -160,10 +161,10 @@ export class Disk extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DiskArgs | undefined;
-            if ((!args || args.availabilityZone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
@@ -182,12 +183,8 @@ export class Disk extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Disk.__pulumiType, name, inputs, opts);
     }

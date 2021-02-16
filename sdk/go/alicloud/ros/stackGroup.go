@@ -260,6 +260,85 @@ func (i *StackGroup) ToStackGroupOutputWithContext(ctx context.Context) StackGro
 	return pulumi.ToOutputWithContext(ctx, i).(StackGroupOutput)
 }
 
+func (i *StackGroup) ToStackGroupPtrOutput() StackGroupPtrOutput {
+	return i.ToStackGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *StackGroup) ToStackGroupPtrOutputWithContext(ctx context.Context) StackGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackGroupPtrOutput)
+}
+
+type StackGroupPtrInput interface {
+	pulumi.Input
+
+	ToStackGroupPtrOutput() StackGroupPtrOutput
+	ToStackGroupPtrOutputWithContext(ctx context.Context) StackGroupPtrOutput
+}
+
+type stackGroupPtrType StackGroupArgs
+
+func (*stackGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackGroup)(nil))
+}
+
+func (i *stackGroupPtrType) ToStackGroupPtrOutput() StackGroupPtrOutput {
+	return i.ToStackGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *stackGroupPtrType) ToStackGroupPtrOutputWithContext(ctx context.Context) StackGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackGroupPtrOutput)
+}
+
+// StackGroupArrayInput is an input type that accepts StackGroupArray and StackGroupArrayOutput values.
+// You can construct a concrete instance of `StackGroupArrayInput` via:
+//
+//          StackGroupArray{ StackGroupArgs{...} }
+type StackGroupArrayInput interface {
+	pulumi.Input
+
+	ToStackGroupArrayOutput() StackGroupArrayOutput
+	ToStackGroupArrayOutputWithContext(context.Context) StackGroupArrayOutput
+}
+
+type StackGroupArray []StackGroupInput
+
+func (StackGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*StackGroup)(nil))
+}
+
+func (i StackGroupArray) ToStackGroupArrayOutput() StackGroupArrayOutput {
+	return i.ToStackGroupArrayOutputWithContext(context.Background())
+}
+
+func (i StackGroupArray) ToStackGroupArrayOutputWithContext(ctx context.Context) StackGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackGroupArrayOutput)
+}
+
+// StackGroupMapInput is an input type that accepts StackGroupMap and StackGroupMapOutput values.
+// You can construct a concrete instance of `StackGroupMapInput` via:
+//
+//          StackGroupMap{ "key": StackGroupArgs{...} }
+type StackGroupMapInput interface {
+	pulumi.Input
+
+	ToStackGroupMapOutput() StackGroupMapOutput
+	ToStackGroupMapOutputWithContext(context.Context) StackGroupMapOutput
+}
+
+type StackGroupMap map[string]StackGroupInput
+
+func (StackGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*StackGroup)(nil))
+}
+
+func (i StackGroupMap) ToStackGroupMapOutput() StackGroupMapOutput {
+	return i.ToStackGroupMapOutputWithContext(context.Background())
+}
+
+func (i StackGroupMap) ToStackGroupMapOutputWithContext(ctx context.Context) StackGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackGroupMapOutput)
+}
+
 type StackGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -276,6 +355,75 @@ func (o StackGroupOutput) ToStackGroupOutputWithContext(ctx context.Context) Sta
 	return o
 }
 
+func (o StackGroupOutput) ToStackGroupPtrOutput() StackGroupPtrOutput {
+	return o.ToStackGroupPtrOutputWithContext(context.Background())
+}
+
+func (o StackGroupOutput) ToStackGroupPtrOutputWithContext(ctx context.Context) StackGroupPtrOutput {
+	return o.ApplyT(func(v StackGroup) *StackGroup {
+		return &v
+	}).(StackGroupPtrOutput)
+}
+
+type StackGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StackGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackGroup)(nil))
+}
+
+func (o StackGroupPtrOutput) ToStackGroupPtrOutput() StackGroupPtrOutput {
+	return o
+}
+
+func (o StackGroupPtrOutput) ToStackGroupPtrOutputWithContext(ctx context.Context) StackGroupPtrOutput {
+	return o
+}
+
+type StackGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (StackGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackGroup)(nil))
+}
+
+func (o StackGroupArrayOutput) ToStackGroupArrayOutput() StackGroupArrayOutput {
+	return o
+}
+
+func (o StackGroupArrayOutput) ToStackGroupArrayOutputWithContext(ctx context.Context) StackGroupArrayOutput {
+	return o
+}
+
+func (o StackGroupArrayOutput) Index(i pulumi.IntInput) StackGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackGroup {
+		return vs[0].([]StackGroup)[vs[1].(int)]
+	}).(StackGroupOutput)
+}
+
+type StackGroupMapOutput struct{ *pulumi.OutputState }
+
+func (StackGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StackGroup)(nil))
+}
+
+func (o StackGroupMapOutput) ToStackGroupMapOutput() StackGroupMapOutput {
+	return o
+}
+
+func (o StackGroupMapOutput) ToStackGroupMapOutputWithContext(ctx context.Context) StackGroupMapOutput {
+	return o
+}
+
+func (o StackGroupMapOutput) MapIndex(k pulumi.StringInput) StackGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StackGroup {
+		return vs[0].(map[string]StackGroup)[vs[1].(string)]
+	}).(StackGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(StackGroupOutput{})
+	pulumi.RegisterOutputType(StackGroupPtrOutput{})
+	pulumi.RegisterOutputType(StackGroupArrayOutput{})
+	pulumi.RegisterOutputType(StackGroupMapOutput{})
 }

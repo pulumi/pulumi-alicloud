@@ -93,7 +93,8 @@ export class InstanceAttachment extends pulumi.CustomResource {
     constructor(name: string, args: InstanceAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceAttachmentArgs | InstanceAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceAttachmentState | undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
@@ -101,13 +102,13 @@ export class InstanceAttachment extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
-            if ((!args || args.instanceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.vpcName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vpcName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcName'");
             }
-            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["instanceName"] = args ? args.instanceName : undefined;
@@ -115,12 +116,8 @@ export class InstanceAttachment extends pulumi.CustomResource {
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["vpcId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceAttachment.__pulumiType, name, inputs, opts);
     }

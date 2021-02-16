@@ -249,6 +249,85 @@ func (i *Alarm) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmOutput)
 }
 
+func (i *Alarm) ToAlarmPtrOutput() AlarmPtrOutput {
+	return i.ToAlarmPtrOutputWithContext(context.Background())
+}
+
+func (i *Alarm) ToAlarmPtrOutputWithContext(ctx context.Context) AlarmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmPtrOutput)
+}
+
+type AlarmPtrInput interface {
+	pulumi.Input
+
+	ToAlarmPtrOutput() AlarmPtrOutput
+	ToAlarmPtrOutputWithContext(ctx context.Context) AlarmPtrOutput
+}
+
+type alarmPtrType AlarmArgs
+
+func (*alarmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Alarm)(nil))
+}
+
+func (i *alarmPtrType) ToAlarmPtrOutput() AlarmPtrOutput {
+	return i.ToAlarmPtrOutputWithContext(context.Background())
+}
+
+func (i *alarmPtrType) ToAlarmPtrOutputWithContext(ctx context.Context) AlarmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmPtrOutput)
+}
+
+// AlarmArrayInput is an input type that accepts AlarmArray and AlarmArrayOutput values.
+// You can construct a concrete instance of `AlarmArrayInput` via:
+//
+//          AlarmArray{ AlarmArgs{...} }
+type AlarmArrayInput interface {
+	pulumi.Input
+
+	ToAlarmArrayOutput() AlarmArrayOutput
+	ToAlarmArrayOutputWithContext(context.Context) AlarmArrayOutput
+}
+
+type AlarmArray []AlarmInput
+
+func (AlarmArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Alarm)(nil))
+}
+
+func (i AlarmArray) ToAlarmArrayOutput() AlarmArrayOutput {
+	return i.ToAlarmArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmArray) ToAlarmArrayOutputWithContext(ctx context.Context) AlarmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmArrayOutput)
+}
+
+// AlarmMapInput is an input type that accepts AlarmMap and AlarmMapOutput values.
+// You can construct a concrete instance of `AlarmMapInput` via:
+//
+//          AlarmMap{ "key": AlarmArgs{...} }
+type AlarmMapInput interface {
+	pulumi.Input
+
+	ToAlarmMapOutput() AlarmMapOutput
+	ToAlarmMapOutputWithContext(context.Context) AlarmMapOutput
+}
+
+type AlarmMap map[string]AlarmInput
+
+func (AlarmMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Alarm)(nil))
+}
+
+func (i AlarmMap) ToAlarmMapOutput() AlarmMapOutput {
+	return i.ToAlarmMapOutputWithContext(context.Background())
+}
+
+func (i AlarmMap) ToAlarmMapOutputWithContext(ctx context.Context) AlarmMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmMapOutput)
+}
+
 type AlarmOutput struct {
 	*pulumi.OutputState
 }
@@ -265,6 +344,75 @@ func (o AlarmOutput) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 	return o
 }
 
+func (o AlarmOutput) ToAlarmPtrOutput() AlarmPtrOutput {
+	return o.ToAlarmPtrOutputWithContext(context.Background())
+}
+
+func (o AlarmOutput) ToAlarmPtrOutputWithContext(ctx context.Context) AlarmPtrOutput {
+	return o.ApplyT(func(v Alarm) *Alarm {
+		return &v
+	}).(AlarmPtrOutput)
+}
+
+type AlarmPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlarmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Alarm)(nil))
+}
+
+func (o AlarmPtrOutput) ToAlarmPtrOutput() AlarmPtrOutput {
+	return o
+}
+
+func (o AlarmPtrOutput) ToAlarmPtrOutputWithContext(ctx context.Context) AlarmPtrOutput {
+	return o
+}
+
+type AlarmArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Alarm)(nil))
+}
+
+func (o AlarmArrayOutput) ToAlarmArrayOutput() AlarmArrayOutput {
+	return o
+}
+
+func (o AlarmArrayOutput) ToAlarmArrayOutputWithContext(ctx context.Context) AlarmArrayOutput {
+	return o
+}
+
+func (o AlarmArrayOutput) Index(i pulumi.IntInput) AlarmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Alarm {
+		return vs[0].([]Alarm)[vs[1].(int)]
+	}).(AlarmOutput)
+}
+
+type AlarmMapOutput struct{ *pulumi.OutputState }
+
+func (AlarmMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Alarm)(nil))
+}
+
+func (o AlarmMapOutput) ToAlarmMapOutput() AlarmMapOutput {
+	return o
+}
+
+func (o AlarmMapOutput) ToAlarmMapOutputWithContext(ctx context.Context) AlarmMapOutput {
+	return o
+}
+
+func (o AlarmMapOutput) MapIndex(k pulumi.StringInput) AlarmOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Alarm {
+		return vs[0].(map[string]Alarm)[vs[1].(string)]
+	}).(AlarmOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlarmOutput{})
+	pulumi.RegisterOutputType(AlarmPtrOutput{})
+	pulumi.RegisterOutputType(AlarmArrayOutput{})
+	pulumi.RegisterOutputType(AlarmMapOutput{})
 }

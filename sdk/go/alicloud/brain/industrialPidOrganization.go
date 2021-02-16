@@ -143,6 +143,85 @@ func (i *IndustrialPidOrganization) ToIndustrialPidOrganizationOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidOrganizationOutput)
 }
 
+func (i *IndustrialPidOrganization) ToIndustrialPidOrganizationPtrOutput() IndustrialPidOrganizationPtrOutput {
+	return i.ToIndustrialPidOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i *IndustrialPidOrganization) ToIndustrialPidOrganizationPtrOutputWithContext(ctx context.Context) IndustrialPidOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidOrganizationPtrOutput)
+}
+
+type IndustrialPidOrganizationPtrInput interface {
+	pulumi.Input
+
+	ToIndustrialPidOrganizationPtrOutput() IndustrialPidOrganizationPtrOutput
+	ToIndustrialPidOrganizationPtrOutputWithContext(ctx context.Context) IndustrialPidOrganizationPtrOutput
+}
+
+type industrialPidOrganizationPtrType IndustrialPidOrganizationArgs
+
+func (*industrialPidOrganizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndustrialPidOrganization)(nil))
+}
+
+func (i *industrialPidOrganizationPtrType) ToIndustrialPidOrganizationPtrOutput() IndustrialPidOrganizationPtrOutput {
+	return i.ToIndustrialPidOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i *industrialPidOrganizationPtrType) ToIndustrialPidOrganizationPtrOutputWithContext(ctx context.Context) IndustrialPidOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidOrganizationPtrOutput)
+}
+
+// IndustrialPidOrganizationArrayInput is an input type that accepts IndustrialPidOrganizationArray and IndustrialPidOrganizationArrayOutput values.
+// You can construct a concrete instance of `IndustrialPidOrganizationArrayInput` via:
+//
+//          IndustrialPidOrganizationArray{ IndustrialPidOrganizationArgs{...} }
+type IndustrialPidOrganizationArrayInput interface {
+	pulumi.Input
+
+	ToIndustrialPidOrganizationArrayOutput() IndustrialPidOrganizationArrayOutput
+	ToIndustrialPidOrganizationArrayOutputWithContext(context.Context) IndustrialPidOrganizationArrayOutput
+}
+
+type IndustrialPidOrganizationArray []IndustrialPidOrganizationInput
+
+func (IndustrialPidOrganizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*IndustrialPidOrganization)(nil))
+}
+
+func (i IndustrialPidOrganizationArray) ToIndustrialPidOrganizationArrayOutput() IndustrialPidOrganizationArrayOutput {
+	return i.ToIndustrialPidOrganizationArrayOutputWithContext(context.Background())
+}
+
+func (i IndustrialPidOrganizationArray) ToIndustrialPidOrganizationArrayOutputWithContext(ctx context.Context) IndustrialPidOrganizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidOrganizationArrayOutput)
+}
+
+// IndustrialPidOrganizationMapInput is an input type that accepts IndustrialPidOrganizationMap and IndustrialPidOrganizationMapOutput values.
+// You can construct a concrete instance of `IndustrialPidOrganizationMapInput` via:
+//
+//          IndustrialPidOrganizationMap{ "key": IndustrialPidOrganizationArgs{...} }
+type IndustrialPidOrganizationMapInput interface {
+	pulumi.Input
+
+	ToIndustrialPidOrganizationMapOutput() IndustrialPidOrganizationMapOutput
+	ToIndustrialPidOrganizationMapOutputWithContext(context.Context) IndustrialPidOrganizationMapOutput
+}
+
+type IndustrialPidOrganizationMap map[string]IndustrialPidOrganizationInput
+
+func (IndustrialPidOrganizationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*IndustrialPidOrganization)(nil))
+}
+
+func (i IndustrialPidOrganizationMap) ToIndustrialPidOrganizationMapOutput() IndustrialPidOrganizationMapOutput {
+	return i.ToIndustrialPidOrganizationMapOutputWithContext(context.Background())
+}
+
+func (i IndustrialPidOrganizationMap) ToIndustrialPidOrganizationMapOutputWithContext(ctx context.Context) IndustrialPidOrganizationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidOrganizationMapOutput)
+}
+
 type IndustrialPidOrganizationOutput struct {
 	*pulumi.OutputState
 }
@@ -159,6 +238,75 @@ func (o IndustrialPidOrganizationOutput) ToIndustrialPidOrganizationOutputWithCo
 	return o
 }
 
+func (o IndustrialPidOrganizationOutput) ToIndustrialPidOrganizationPtrOutput() IndustrialPidOrganizationPtrOutput {
+	return o.ToIndustrialPidOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (o IndustrialPidOrganizationOutput) ToIndustrialPidOrganizationPtrOutputWithContext(ctx context.Context) IndustrialPidOrganizationPtrOutput {
+	return o.ApplyT(func(v IndustrialPidOrganization) *IndustrialPidOrganization {
+		return &v
+	}).(IndustrialPidOrganizationPtrOutput)
+}
+
+type IndustrialPidOrganizationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IndustrialPidOrganizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndustrialPidOrganization)(nil))
+}
+
+func (o IndustrialPidOrganizationPtrOutput) ToIndustrialPidOrganizationPtrOutput() IndustrialPidOrganizationPtrOutput {
+	return o
+}
+
+func (o IndustrialPidOrganizationPtrOutput) ToIndustrialPidOrganizationPtrOutputWithContext(ctx context.Context) IndustrialPidOrganizationPtrOutput {
+	return o
+}
+
+type IndustrialPidOrganizationArrayOutput struct{ *pulumi.OutputState }
+
+func (IndustrialPidOrganizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IndustrialPidOrganization)(nil))
+}
+
+func (o IndustrialPidOrganizationArrayOutput) ToIndustrialPidOrganizationArrayOutput() IndustrialPidOrganizationArrayOutput {
+	return o
+}
+
+func (o IndustrialPidOrganizationArrayOutput) ToIndustrialPidOrganizationArrayOutputWithContext(ctx context.Context) IndustrialPidOrganizationArrayOutput {
+	return o
+}
+
+func (o IndustrialPidOrganizationArrayOutput) Index(i pulumi.IntInput) IndustrialPidOrganizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IndustrialPidOrganization {
+		return vs[0].([]IndustrialPidOrganization)[vs[1].(int)]
+	}).(IndustrialPidOrganizationOutput)
+}
+
+type IndustrialPidOrganizationMapOutput struct{ *pulumi.OutputState }
+
+func (IndustrialPidOrganizationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IndustrialPidOrganization)(nil))
+}
+
+func (o IndustrialPidOrganizationMapOutput) ToIndustrialPidOrganizationMapOutput() IndustrialPidOrganizationMapOutput {
+	return o
+}
+
+func (o IndustrialPidOrganizationMapOutput) ToIndustrialPidOrganizationMapOutputWithContext(ctx context.Context) IndustrialPidOrganizationMapOutput {
+	return o
+}
+
+func (o IndustrialPidOrganizationMapOutput) MapIndex(k pulumi.StringInput) IndustrialPidOrganizationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IndustrialPidOrganization {
+		return vs[0].(map[string]IndustrialPidOrganization)[vs[1].(string)]
+	}).(IndustrialPidOrganizationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(IndustrialPidOrganizationOutput{})
+	pulumi.RegisterOutputType(IndustrialPidOrganizationPtrOutput{})
+	pulumi.RegisterOutputType(IndustrialPidOrganizationArrayOutput{})
+	pulumi.RegisterOutputType(IndustrialPidOrganizationMapOutput{})
 }

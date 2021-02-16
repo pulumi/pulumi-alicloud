@@ -90,7 +90,8 @@ export class LoginProfile extends pulumi.CustomResource {
     constructor(name: string, args: LoginProfileArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoginProfileArgs | LoginProfileState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LoginProfileState | undefined;
             inputs["mfaBindRequired"] = state ? state.mfaBindRequired : undefined;
             inputs["password"] = state ? state.password : undefined;
@@ -98,10 +99,10 @@ export class LoginProfile extends pulumi.CustomResource {
             inputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as LoginProfileArgs | undefined;
-            if ((!args || args.password === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.password === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.userName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.userName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
             inputs["mfaBindRequired"] = args ? args.mfaBindRequired : undefined;
@@ -109,12 +110,8 @@ export class LoginProfile extends pulumi.CustomResource {
             inputs["passwordResetRequired"] = args ? args.passwordResetRequired : undefined;
             inputs["userName"] = args ? args.userName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LoginProfile.__pulumiType, name, inputs, opts);
     }

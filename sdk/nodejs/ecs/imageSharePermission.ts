@@ -87,27 +87,24 @@ export class ImageSharePermission extends pulumi.CustomResource {
     constructor(name: string, args: ImageSharePermissionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageSharePermissionArgs | ImageSharePermissionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ImageSharePermissionState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
         } else {
             const args = argsOrState as ImageSharePermissionArgs | undefined;
-            if ((!args || args.accountId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.imageId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.imageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ImageSharePermission.__pulumiType, name, inputs, opts);
     }

@@ -198,7 +198,8 @@ export class ContainerGroup extends pulumi.CustomResource {
     constructor(name: string, args: ContainerGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerGroupArgs | ContainerGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ContainerGroupState | undefined;
             inputs["containerGroupName"] = state ? state.containerGroupName : undefined;
             inputs["containers"] = state ? state.containers : undefined;
@@ -220,16 +221,16 @@ export class ContainerGroup extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ContainerGroupArgs | undefined;
-            if ((!args || args.containerGroupName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.containerGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'containerGroupName'");
             }
-            if ((!args || args.containers === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.containers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'containers'");
             }
-            if ((!args || args.securityGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["containerGroupName"] = args ? args.containerGroupName : undefined;
@@ -251,12 +252,8 @@ export class ContainerGroup extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ContainerGroup.__pulumiType, name, inputs, opts);
     }

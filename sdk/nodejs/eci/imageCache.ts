@@ -122,7 +122,8 @@ export class ImageCache extends pulumi.CustomResource {
     constructor(name: string, args: ImageCacheArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageCacheArgs | ImageCacheState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ImageCacheState | undefined;
             inputs["containerGroupId"] = state ? state.containerGroupId : undefined;
             inputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
@@ -138,16 +139,16 @@ export class ImageCache extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ImageCacheArgs | undefined;
-            if ((!args || args.imageCacheName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.imageCacheName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'imageCacheName'");
             }
-            if ((!args || args.images === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.images === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'images'");
             }
-            if ((!args || args.securityGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
@@ -163,12 +164,8 @@ export class ImageCache extends pulumi.CustomResource {
             inputs["containerGroupId"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ImageCache.__pulumiType, name, inputs, opts);
     }

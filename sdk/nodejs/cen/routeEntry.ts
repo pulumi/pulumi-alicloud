@@ -149,32 +149,29 @@ export class RouteEntry extends pulumi.CustomResource {
     constructor(name: string, args: RouteEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteEntryArgs | RouteEntryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouteEntryState | undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["routeTableId"] = state ? state.routeTableId : undefined;
         } else {
             const args = argsOrState as RouteEntryArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.routeTableId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.routeTableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["routeTableId"] = args ? args.routeTableId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RouteEntry.__pulumiType, name, inputs, opts);
     }

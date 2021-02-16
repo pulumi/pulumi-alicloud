@@ -246,6 +246,85 @@ func (i *QosCar) ToQosCarOutputWithContext(ctx context.Context) QosCarOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosCarOutput)
 }
 
+func (i *QosCar) ToQosCarPtrOutput() QosCarPtrOutput {
+	return i.ToQosCarPtrOutputWithContext(context.Background())
+}
+
+func (i *QosCar) ToQosCarPtrOutputWithContext(ctx context.Context) QosCarPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosCarPtrOutput)
+}
+
+type QosCarPtrInput interface {
+	pulumi.Input
+
+	ToQosCarPtrOutput() QosCarPtrOutput
+	ToQosCarPtrOutputWithContext(ctx context.Context) QosCarPtrOutput
+}
+
+type qosCarPtrType QosCarArgs
+
+func (*qosCarPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QosCar)(nil))
+}
+
+func (i *qosCarPtrType) ToQosCarPtrOutput() QosCarPtrOutput {
+	return i.ToQosCarPtrOutputWithContext(context.Background())
+}
+
+func (i *qosCarPtrType) ToQosCarPtrOutputWithContext(ctx context.Context) QosCarPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosCarPtrOutput)
+}
+
+// QosCarArrayInput is an input type that accepts QosCarArray and QosCarArrayOutput values.
+// You can construct a concrete instance of `QosCarArrayInput` via:
+//
+//          QosCarArray{ QosCarArgs{...} }
+type QosCarArrayInput interface {
+	pulumi.Input
+
+	ToQosCarArrayOutput() QosCarArrayOutput
+	ToQosCarArrayOutputWithContext(context.Context) QosCarArrayOutput
+}
+
+type QosCarArray []QosCarInput
+
+func (QosCarArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*QosCar)(nil))
+}
+
+func (i QosCarArray) ToQosCarArrayOutput() QosCarArrayOutput {
+	return i.ToQosCarArrayOutputWithContext(context.Background())
+}
+
+func (i QosCarArray) ToQosCarArrayOutputWithContext(ctx context.Context) QosCarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosCarArrayOutput)
+}
+
+// QosCarMapInput is an input type that accepts QosCarMap and QosCarMapOutput values.
+// You can construct a concrete instance of `QosCarMapInput` via:
+//
+//          QosCarMap{ "key": QosCarArgs{...} }
+type QosCarMapInput interface {
+	pulumi.Input
+
+	ToQosCarMapOutput() QosCarMapOutput
+	ToQosCarMapOutputWithContext(context.Context) QosCarMapOutput
+}
+
+type QosCarMap map[string]QosCarInput
+
+func (QosCarMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*QosCar)(nil))
+}
+
+func (i QosCarMap) ToQosCarMapOutput() QosCarMapOutput {
+	return i.ToQosCarMapOutputWithContext(context.Background())
+}
+
+func (i QosCarMap) ToQosCarMapOutputWithContext(ctx context.Context) QosCarMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosCarMapOutput)
+}
+
 type QosCarOutput struct {
 	*pulumi.OutputState
 }
@@ -262,6 +341,75 @@ func (o QosCarOutput) ToQosCarOutputWithContext(ctx context.Context) QosCarOutpu
 	return o
 }
 
+func (o QosCarOutput) ToQosCarPtrOutput() QosCarPtrOutput {
+	return o.ToQosCarPtrOutputWithContext(context.Background())
+}
+
+func (o QosCarOutput) ToQosCarPtrOutputWithContext(ctx context.Context) QosCarPtrOutput {
+	return o.ApplyT(func(v QosCar) *QosCar {
+		return &v
+	}).(QosCarPtrOutput)
+}
+
+type QosCarPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (QosCarPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QosCar)(nil))
+}
+
+func (o QosCarPtrOutput) ToQosCarPtrOutput() QosCarPtrOutput {
+	return o
+}
+
+func (o QosCarPtrOutput) ToQosCarPtrOutputWithContext(ctx context.Context) QosCarPtrOutput {
+	return o
+}
+
+type QosCarArrayOutput struct{ *pulumi.OutputState }
+
+func (QosCarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QosCar)(nil))
+}
+
+func (o QosCarArrayOutput) ToQosCarArrayOutput() QosCarArrayOutput {
+	return o
+}
+
+func (o QosCarArrayOutput) ToQosCarArrayOutputWithContext(ctx context.Context) QosCarArrayOutput {
+	return o
+}
+
+func (o QosCarArrayOutput) Index(i pulumi.IntInput) QosCarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QosCar {
+		return vs[0].([]QosCar)[vs[1].(int)]
+	}).(QosCarOutput)
+}
+
+type QosCarMapOutput struct{ *pulumi.OutputState }
+
+func (QosCarMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]QosCar)(nil))
+}
+
+func (o QosCarMapOutput) ToQosCarMapOutput() QosCarMapOutput {
+	return o
+}
+
+func (o QosCarMapOutput) ToQosCarMapOutputWithContext(ctx context.Context) QosCarMapOutput {
+	return o
+}
+
+func (o QosCarMapOutput) MapIndex(k pulumi.StringInput) QosCarOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QosCar {
+		return vs[0].(map[string]QosCar)[vs[1].(string)]
+	}).(QosCarOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(QosCarOutput{})
+	pulumi.RegisterOutputType(QosCarPtrOutput{})
+	pulumi.RegisterOutputType(QosCarArrayOutput{})
+	pulumi.RegisterOutputType(QosCarMapOutput{})
 }

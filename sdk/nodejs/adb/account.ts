@@ -116,7 +116,8 @@ export class Account extends pulumi.CustomResource {
     constructor(name: string, args: AccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccountState | undefined;
             inputs["accountDescription"] = state ? state.accountDescription : undefined;
             inputs["accountName"] = state ? state.accountName : undefined;
@@ -126,10 +127,10 @@ export class Account extends pulumi.CustomResource {
             inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accountName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
             inputs["accountDescription"] = args ? args.accountDescription : undefined;
@@ -139,12 +140,8 @@ export class Account extends pulumi.CustomResource {
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Account.__pulumiType, name, inputs, opts);
     }

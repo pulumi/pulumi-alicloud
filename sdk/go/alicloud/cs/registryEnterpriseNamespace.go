@@ -175,6 +175,85 @@ func (i *RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespaceOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseNamespaceOutput)
 }
 
+func (i *RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespacePtrOutput() RegistryEnterpriseNamespacePtrOutput {
+	return i.ToRegistryEnterpriseNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *RegistryEnterpriseNamespace) ToRegistryEnterpriseNamespacePtrOutputWithContext(ctx context.Context) RegistryEnterpriseNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseNamespacePtrOutput)
+}
+
+type RegistryEnterpriseNamespacePtrInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseNamespacePtrOutput() RegistryEnterpriseNamespacePtrOutput
+	ToRegistryEnterpriseNamespacePtrOutputWithContext(ctx context.Context) RegistryEnterpriseNamespacePtrOutput
+}
+
+type registryEnterpriseNamespacePtrType RegistryEnterpriseNamespaceArgs
+
+func (*registryEnterpriseNamespacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEnterpriseNamespace)(nil))
+}
+
+func (i *registryEnterpriseNamespacePtrType) ToRegistryEnterpriseNamespacePtrOutput() RegistryEnterpriseNamespacePtrOutput {
+	return i.ToRegistryEnterpriseNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *registryEnterpriseNamespacePtrType) ToRegistryEnterpriseNamespacePtrOutputWithContext(ctx context.Context) RegistryEnterpriseNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseNamespacePtrOutput)
+}
+
+// RegistryEnterpriseNamespaceArrayInput is an input type that accepts RegistryEnterpriseNamespaceArray and RegistryEnterpriseNamespaceArrayOutput values.
+// You can construct a concrete instance of `RegistryEnterpriseNamespaceArrayInput` via:
+//
+//          RegistryEnterpriseNamespaceArray{ RegistryEnterpriseNamespaceArgs{...} }
+type RegistryEnterpriseNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseNamespaceArrayOutput() RegistryEnterpriseNamespaceArrayOutput
+	ToRegistryEnterpriseNamespaceArrayOutputWithContext(context.Context) RegistryEnterpriseNamespaceArrayOutput
+}
+
+type RegistryEnterpriseNamespaceArray []RegistryEnterpriseNamespaceInput
+
+func (RegistryEnterpriseNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegistryEnterpriseNamespace)(nil))
+}
+
+func (i RegistryEnterpriseNamespaceArray) ToRegistryEnterpriseNamespaceArrayOutput() RegistryEnterpriseNamespaceArrayOutput {
+	return i.ToRegistryEnterpriseNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseNamespaceArray) ToRegistryEnterpriseNamespaceArrayOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseNamespaceArrayOutput)
+}
+
+// RegistryEnterpriseNamespaceMapInput is an input type that accepts RegistryEnterpriseNamespaceMap and RegistryEnterpriseNamespaceMapOutput values.
+// You can construct a concrete instance of `RegistryEnterpriseNamespaceMapInput` via:
+//
+//          RegistryEnterpriseNamespaceMap{ "key": RegistryEnterpriseNamespaceArgs{...} }
+type RegistryEnterpriseNamespaceMapInput interface {
+	pulumi.Input
+
+	ToRegistryEnterpriseNamespaceMapOutput() RegistryEnterpriseNamespaceMapOutput
+	ToRegistryEnterpriseNamespaceMapOutputWithContext(context.Context) RegistryEnterpriseNamespaceMapOutput
+}
+
+type RegistryEnterpriseNamespaceMap map[string]RegistryEnterpriseNamespaceInput
+
+func (RegistryEnterpriseNamespaceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegistryEnterpriseNamespace)(nil))
+}
+
+func (i RegistryEnterpriseNamespaceMap) ToRegistryEnterpriseNamespaceMapOutput() RegistryEnterpriseNamespaceMapOutput {
+	return i.ToRegistryEnterpriseNamespaceMapOutputWithContext(context.Background())
+}
+
+func (i RegistryEnterpriseNamespaceMap) ToRegistryEnterpriseNamespaceMapOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseNamespaceMapOutput)
+}
+
 type RegistryEnterpriseNamespaceOutput struct {
 	*pulumi.OutputState
 }
@@ -191,6 +270,75 @@ func (o RegistryEnterpriseNamespaceOutput) ToRegistryEnterpriseNamespaceOutputWi
 	return o
 }
 
+func (o RegistryEnterpriseNamespaceOutput) ToRegistryEnterpriseNamespacePtrOutput() RegistryEnterpriseNamespacePtrOutput {
+	return o.ToRegistryEnterpriseNamespacePtrOutputWithContext(context.Background())
+}
+
+func (o RegistryEnterpriseNamespaceOutput) ToRegistryEnterpriseNamespacePtrOutputWithContext(ctx context.Context) RegistryEnterpriseNamespacePtrOutput {
+	return o.ApplyT(func(v RegistryEnterpriseNamespace) *RegistryEnterpriseNamespace {
+		return &v
+	}).(RegistryEnterpriseNamespacePtrOutput)
+}
+
+type RegistryEnterpriseNamespacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegistryEnterpriseNamespacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryEnterpriseNamespace)(nil))
+}
+
+func (o RegistryEnterpriseNamespacePtrOutput) ToRegistryEnterpriseNamespacePtrOutput() RegistryEnterpriseNamespacePtrOutput {
+	return o
+}
+
+func (o RegistryEnterpriseNamespacePtrOutput) ToRegistryEnterpriseNamespacePtrOutputWithContext(ctx context.Context) RegistryEnterpriseNamespacePtrOutput {
+	return o
+}
+
+type RegistryEnterpriseNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (RegistryEnterpriseNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistryEnterpriseNamespace)(nil))
+}
+
+func (o RegistryEnterpriseNamespaceArrayOutput) ToRegistryEnterpriseNamespaceArrayOutput() RegistryEnterpriseNamespaceArrayOutput {
+	return o
+}
+
+func (o RegistryEnterpriseNamespaceArrayOutput) ToRegistryEnterpriseNamespaceArrayOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceArrayOutput {
+	return o
+}
+
+func (o RegistryEnterpriseNamespaceArrayOutput) Index(i pulumi.IntInput) RegistryEnterpriseNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryEnterpriseNamespace {
+		return vs[0].([]RegistryEnterpriseNamespace)[vs[1].(int)]
+	}).(RegistryEnterpriseNamespaceOutput)
+}
+
+type RegistryEnterpriseNamespaceMapOutput struct{ *pulumi.OutputState }
+
+func (RegistryEnterpriseNamespaceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegistryEnterpriseNamespace)(nil))
+}
+
+func (o RegistryEnterpriseNamespaceMapOutput) ToRegistryEnterpriseNamespaceMapOutput() RegistryEnterpriseNamespaceMapOutput {
+	return o
+}
+
+func (o RegistryEnterpriseNamespaceMapOutput) ToRegistryEnterpriseNamespaceMapOutputWithContext(ctx context.Context) RegistryEnterpriseNamespaceMapOutput {
+	return o
+}
+
+func (o RegistryEnterpriseNamespaceMapOutput) MapIndex(k pulumi.StringInput) RegistryEnterpriseNamespaceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegistryEnterpriseNamespace {
+		return vs[0].(map[string]RegistryEnterpriseNamespace)[vs[1].(string)]
+	}).(RegistryEnterpriseNamespaceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegistryEnterpriseNamespaceOutput{})
+	pulumi.RegisterOutputType(RegistryEnterpriseNamespacePtrOutput{})
+	pulumi.RegisterOutputType(RegistryEnterpriseNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(RegistryEnterpriseNamespaceMapOutput{})
 }

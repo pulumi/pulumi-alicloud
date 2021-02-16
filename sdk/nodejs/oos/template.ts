@@ -159,7 +159,8 @@ export class Template extends pulumi.CustomResource {
     constructor(name: string, args: TemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TemplateArgs | TemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TemplateState | undefined;
             inputs["autoDeleteExecutions"] = state ? state.autoDeleteExecutions : undefined;
             inputs["content"] = state ? state.content : undefined;
@@ -179,10 +180,10 @@ export class Template extends pulumi.CustomResource {
             inputs["versionName"] = state ? state.versionName : undefined;
         } else {
             const args = argsOrState as TemplateArgs | undefined;
-            if ((!args || args.content === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.content === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.templateName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
             inputs["autoDeleteExecutions"] = args ? args.autoDeleteExecutions : undefined;
@@ -202,12 +203,8 @@ export class Template extends pulumi.CustomResource {
             inputs["updatedBy"] = undefined /*out*/;
             inputs["updatedDate"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Template.__pulumiType, name, inputs, opts);
     }

@@ -143,6 +143,85 @@ func (i *ResourceDirectory) ToResourceDirectoryOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryOutput)
 }
 
+func (i *ResourceDirectory) ToResourceDirectoryPtrOutput() ResourceDirectoryPtrOutput {
+	return i.ToResourceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i *ResourceDirectory) ToResourceDirectoryPtrOutputWithContext(ctx context.Context) ResourceDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryPtrOutput)
+}
+
+type ResourceDirectoryPtrInput interface {
+	pulumi.Input
+
+	ToResourceDirectoryPtrOutput() ResourceDirectoryPtrOutput
+	ToResourceDirectoryPtrOutputWithContext(ctx context.Context) ResourceDirectoryPtrOutput
+}
+
+type resourceDirectoryPtrType ResourceDirectoryArgs
+
+func (*resourceDirectoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceDirectory)(nil))
+}
+
+func (i *resourceDirectoryPtrType) ToResourceDirectoryPtrOutput() ResourceDirectoryPtrOutput {
+	return i.ToResourceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceDirectoryPtrType) ToResourceDirectoryPtrOutputWithContext(ctx context.Context) ResourceDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryPtrOutput)
+}
+
+// ResourceDirectoryArrayInput is an input type that accepts ResourceDirectoryArray and ResourceDirectoryArrayOutput values.
+// You can construct a concrete instance of `ResourceDirectoryArrayInput` via:
+//
+//          ResourceDirectoryArray{ ResourceDirectoryArgs{...} }
+type ResourceDirectoryArrayInput interface {
+	pulumi.Input
+
+	ToResourceDirectoryArrayOutput() ResourceDirectoryArrayOutput
+	ToResourceDirectoryArrayOutputWithContext(context.Context) ResourceDirectoryArrayOutput
+}
+
+type ResourceDirectoryArray []ResourceDirectoryInput
+
+func (ResourceDirectoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ResourceDirectory)(nil))
+}
+
+func (i ResourceDirectoryArray) ToResourceDirectoryArrayOutput() ResourceDirectoryArrayOutput {
+	return i.ToResourceDirectoryArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceDirectoryArray) ToResourceDirectoryArrayOutputWithContext(ctx context.Context) ResourceDirectoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryArrayOutput)
+}
+
+// ResourceDirectoryMapInput is an input type that accepts ResourceDirectoryMap and ResourceDirectoryMapOutput values.
+// You can construct a concrete instance of `ResourceDirectoryMapInput` via:
+//
+//          ResourceDirectoryMap{ "key": ResourceDirectoryArgs{...} }
+type ResourceDirectoryMapInput interface {
+	pulumi.Input
+
+	ToResourceDirectoryMapOutput() ResourceDirectoryMapOutput
+	ToResourceDirectoryMapOutputWithContext(context.Context) ResourceDirectoryMapOutput
+}
+
+type ResourceDirectoryMap map[string]ResourceDirectoryInput
+
+func (ResourceDirectoryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ResourceDirectory)(nil))
+}
+
+func (i ResourceDirectoryMap) ToResourceDirectoryMapOutput() ResourceDirectoryMapOutput {
+	return i.ToResourceDirectoryMapOutputWithContext(context.Background())
+}
+
+func (i ResourceDirectoryMap) ToResourceDirectoryMapOutputWithContext(ctx context.Context) ResourceDirectoryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDirectoryMapOutput)
+}
+
 type ResourceDirectoryOutput struct {
 	*pulumi.OutputState
 }
@@ -159,6 +238,75 @@ func (o ResourceDirectoryOutput) ToResourceDirectoryOutputWithContext(ctx contex
 	return o
 }
 
+func (o ResourceDirectoryOutput) ToResourceDirectoryPtrOutput() ResourceDirectoryPtrOutput {
+	return o.ToResourceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceDirectoryOutput) ToResourceDirectoryPtrOutputWithContext(ctx context.Context) ResourceDirectoryPtrOutput {
+	return o.ApplyT(func(v ResourceDirectory) *ResourceDirectory {
+		return &v
+	}).(ResourceDirectoryPtrOutput)
+}
+
+type ResourceDirectoryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceDirectoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceDirectory)(nil))
+}
+
+func (o ResourceDirectoryPtrOutput) ToResourceDirectoryPtrOutput() ResourceDirectoryPtrOutput {
+	return o
+}
+
+func (o ResourceDirectoryPtrOutput) ToResourceDirectoryPtrOutputWithContext(ctx context.Context) ResourceDirectoryPtrOutput {
+	return o
+}
+
+type ResourceDirectoryArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceDirectoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceDirectory)(nil))
+}
+
+func (o ResourceDirectoryArrayOutput) ToResourceDirectoryArrayOutput() ResourceDirectoryArrayOutput {
+	return o
+}
+
+func (o ResourceDirectoryArrayOutput) ToResourceDirectoryArrayOutputWithContext(ctx context.Context) ResourceDirectoryArrayOutput {
+	return o
+}
+
+func (o ResourceDirectoryArrayOutput) Index(i pulumi.IntInput) ResourceDirectoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceDirectory {
+		return vs[0].([]ResourceDirectory)[vs[1].(int)]
+	}).(ResourceDirectoryOutput)
+}
+
+type ResourceDirectoryMapOutput struct{ *pulumi.OutputState }
+
+func (ResourceDirectoryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ResourceDirectory)(nil))
+}
+
+func (o ResourceDirectoryMapOutput) ToResourceDirectoryMapOutput() ResourceDirectoryMapOutput {
+	return o
+}
+
+func (o ResourceDirectoryMapOutput) ToResourceDirectoryMapOutputWithContext(ctx context.Context) ResourceDirectoryMapOutput {
+	return o
+}
+
+func (o ResourceDirectoryMapOutput) MapIndex(k pulumi.StringInput) ResourceDirectoryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourceDirectory {
+		return vs[0].(map[string]ResourceDirectory)[vs[1].(string)]
+	}).(ResourceDirectoryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceDirectoryOutput{})
+	pulumi.RegisterOutputType(ResourceDirectoryPtrOutput{})
+	pulumi.RegisterOutputType(ResourceDirectoryArrayOutput{})
+	pulumi.RegisterOutputType(ResourceDirectoryMapOutput{})
 }

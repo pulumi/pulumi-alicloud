@@ -150,7 +150,8 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["bigScreen"] = state ? state.bigScreen : undefined;
             inputs["exclusiveIpPackage"] = state ? state.exclusiveIpPackage : undefined;
@@ -170,34 +171,34 @@ export class Instance extends pulumi.CustomResource {
             inputs["wafLog"] = state ? state.wafLog : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.bigScreen === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bigScreen === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bigScreen'");
             }
-            if ((!args || args.exclusiveIpPackage === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.exclusiveIpPackage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'exclusiveIpPackage'");
             }
-            if ((!args || args.extBandwidth === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.extBandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'extBandwidth'");
             }
-            if ((!args || args.extDomainPackage === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.extDomainPackage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'extDomainPackage'");
             }
-            if ((!args || args.logStorage === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.logStorage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'logStorage'");
             }
-            if ((!args || args.logTime === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.logTime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'logTime'");
             }
-            if ((!args || args.packageCode === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.packageCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'packageCode'");
             }
-            if ((!args || args.prefessionalService === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.prefessionalService === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'prefessionalService'");
             }
-            if ((!args || args.subscriptionType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subscriptionType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionType'");
             }
-            if ((!args || args.wafLog === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.wafLog === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'wafLog'");
             }
             inputs["bigScreen"] = args ? args.bigScreen : undefined;
@@ -217,12 +218,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["wafLog"] = args ? args.wafLog : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }

@@ -124,7 +124,8 @@ export class NetworkInterface extends pulumi.CustomResource {
     constructor(name: string, args: NetworkInterfaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkInterfaceArgs | NetworkInterfaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NetworkInterfaceState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["mac"] = state ? state.mac : undefined;
@@ -138,10 +139,10 @@ export class NetworkInterface extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as NetworkInterfaceArgs | undefined;
-            if ((!args || args.securityGroups === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.securityGroups === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroups'");
             }
-            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -155,12 +156,8 @@ export class NetworkInterface extends pulumi.CustomResource {
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["mac"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NetworkInterface.__pulumiType, name, inputs, opts);
     }

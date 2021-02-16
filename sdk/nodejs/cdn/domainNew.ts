@@ -114,7 +114,8 @@ export class DomainNew extends pulumi.CustomResource {
     constructor(name: string, args: DomainNewArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainNewArgs | DomainNewState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainNewState | undefined;
             inputs["cdnType"] = state ? state.cdnType : undefined;
             inputs["certificateConfig"] = state ? state.certificateConfig : undefined;
@@ -126,13 +127,13 @@ export class DomainNew extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DomainNewArgs | undefined;
-            if ((!args || args.cdnType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cdnType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cdnType'");
             }
-            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.sources === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sources === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sources'");
             }
             inputs["cdnType"] = args ? args.cdnType : undefined;
@@ -144,12 +145,8 @@ export class DomainNew extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["cname"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DomainNew.__pulumiType, name, inputs, opts);
     }

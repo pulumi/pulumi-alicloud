@@ -180,6 +180,85 @@ func (i *BandwidthPackageAttachment) ToBandwidthPackageAttachmentOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentOutput)
 }
 
+func (i *BandwidthPackageAttachment) ToBandwidthPackageAttachmentPtrOutput() BandwidthPackageAttachmentPtrOutput {
+	return i.ToBandwidthPackageAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *BandwidthPackageAttachment) ToBandwidthPackageAttachmentPtrOutputWithContext(ctx context.Context) BandwidthPackageAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentPtrOutput)
+}
+
+type BandwidthPackageAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToBandwidthPackageAttachmentPtrOutput() BandwidthPackageAttachmentPtrOutput
+	ToBandwidthPackageAttachmentPtrOutputWithContext(ctx context.Context) BandwidthPackageAttachmentPtrOutput
+}
+
+type bandwidthPackageAttachmentPtrType BandwidthPackageAttachmentArgs
+
+func (*bandwidthPackageAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BandwidthPackageAttachment)(nil))
+}
+
+func (i *bandwidthPackageAttachmentPtrType) ToBandwidthPackageAttachmentPtrOutput() BandwidthPackageAttachmentPtrOutput {
+	return i.ToBandwidthPackageAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *bandwidthPackageAttachmentPtrType) ToBandwidthPackageAttachmentPtrOutputWithContext(ctx context.Context) BandwidthPackageAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentPtrOutput)
+}
+
+// BandwidthPackageAttachmentArrayInput is an input type that accepts BandwidthPackageAttachmentArray and BandwidthPackageAttachmentArrayOutput values.
+// You can construct a concrete instance of `BandwidthPackageAttachmentArrayInput` via:
+//
+//          BandwidthPackageAttachmentArray{ BandwidthPackageAttachmentArgs{...} }
+type BandwidthPackageAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToBandwidthPackageAttachmentArrayOutput() BandwidthPackageAttachmentArrayOutput
+	ToBandwidthPackageAttachmentArrayOutputWithContext(context.Context) BandwidthPackageAttachmentArrayOutput
+}
+
+type BandwidthPackageAttachmentArray []BandwidthPackageAttachmentInput
+
+func (BandwidthPackageAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*BandwidthPackageAttachment)(nil))
+}
+
+func (i BandwidthPackageAttachmentArray) ToBandwidthPackageAttachmentArrayOutput() BandwidthPackageAttachmentArrayOutput {
+	return i.ToBandwidthPackageAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i BandwidthPackageAttachmentArray) ToBandwidthPackageAttachmentArrayOutputWithContext(ctx context.Context) BandwidthPackageAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentArrayOutput)
+}
+
+// BandwidthPackageAttachmentMapInput is an input type that accepts BandwidthPackageAttachmentMap and BandwidthPackageAttachmentMapOutput values.
+// You can construct a concrete instance of `BandwidthPackageAttachmentMapInput` via:
+//
+//          BandwidthPackageAttachmentMap{ "key": BandwidthPackageAttachmentArgs{...} }
+type BandwidthPackageAttachmentMapInput interface {
+	pulumi.Input
+
+	ToBandwidthPackageAttachmentMapOutput() BandwidthPackageAttachmentMapOutput
+	ToBandwidthPackageAttachmentMapOutputWithContext(context.Context) BandwidthPackageAttachmentMapOutput
+}
+
+type BandwidthPackageAttachmentMap map[string]BandwidthPackageAttachmentInput
+
+func (BandwidthPackageAttachmentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*BandwidthPackageAttachment)(nil))
+}
+
+func (i BandwidthPackageAttachmentMap) ToBandwidthPackageAttachmentMapOutput() BandwidthPackageAttachmentMapOutput {
+	return i.ToBandwidthPackageAttachmentMapOutputWithContext(context.Background())
+}
+
+func (i BandwidthPackageAttachmentMap) ToBandwidthPackageAttachmentMapOutputWithContext(ctx context.Context) BandwidthPackageAttachmentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentMapOutput)
+}
+
 type BandwidthPackageAttachmentOutput struct {
 	*pulumi.OutputState
 }
@@ -196,6 +275,75 @@ func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentOutputWith
 	return o
 }
 
+func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentPtrOutput() BandwidthPackageAttachmentPtrOutput {
+	return o.ToBandwidthPackageAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentPtrOutputWithContext(ctx context.Context) BandwidthPackageAttachmentPtrOutput {
+	return o.ApplyT(func(v BandwidthPackageAttachment) *BandwidthPackageAttachment {
+		return &v
+	}).(BandwidthPackageAttachmentPtrOutput)
+}
+
+type BandwidthPackageAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BandwidthPackageAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BandwidthPackageAttachment)(nil))
+}
+
+func (o BandwidthPackageAttachmentPtrOutput) ToBandwidthPackageAttachmentPtrOutput() BandwidthPackageAttachmentPtrOutput {
+	return o
+}
+
+func (o BandwidthPackageAttachmentPtrOutput) ToBandwidthPackageAttachmentPtrOutputWithContext(ctx context.Context) BandwidthPackageAttachmentPtrOutput {
+	return o
+}
+
+type BandwidthPackageAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (BandwidthPackageAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BandwidthPackageAttachment)(nil))
+}
+
+func (o BandwidthPackageAttachmentArrayOutput) ToBandwidthPackageAttachmentArrayOutput() BandwidthPackageAttachmentArrayOutput {
+	return o
+}
+
+func (o BandwidthPackageAttachmentArrayOutput) ToBandwidthPackageAttachmentArrayOutputWithContext(ctx context.Context) BandwidthPackageAttachmentArrayOutput {
+	return o
+}
+
+func (o BandwidthPackageAttachmentArrayOutput) Index(i pulumi.IntInput) BandwidthPackageAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BandwidthPackageAttachment {
+		return vs[0].([]BandwidthPackageAttachment)[vs[1].(int)]
+	}).(BandwidthPackageAttachmentOutput)
+}
+
+type BandwidthPackageAttachmentMapOutput struct{ *pulumi.OutputState }
+
+func (BandwidthPackageAttachmentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BandwidthPackageAttachment)(nil))
+}
+
+func (o BandwidthPackageAttachmentMapOutput) ToBandwidthPackageAttachmentMapOutput() BandwidthPackageAttachmentMapOutput {
+	return o
+}
+
+func (o BandwidthPackageAttachmentMapOutput) ToBandwidthPackageAttachmentMapOutputWithContext(ctx context.Context) BandwidthPackageAttachmentMapOutput {
+	return o
+}
+
+func (o BandwidthPackageAttachmentMapOutput) MapIndex(k pulumi.StringInput) BandwidthPackageAttachmentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BandwidthPackageAttachment {
+		return vs[0].(map[string]BandwidthPackageAttachment)[vs[1].(string)]
+	}).(BandwidthPackageAttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BandwidthPackageAttachmentOutput{})
+	pulumi.RegisterOutputType(BandwidthPackageAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(BandwidthPackageAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(BandwidthPackageAttachmentMapOutput{})
 }

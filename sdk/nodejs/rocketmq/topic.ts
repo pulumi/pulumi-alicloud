@@ -110,7 +110,8 @@ export class Topic extends pulumi.CustomResource {
     constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TopicState | undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["messageType"] = state ? state.messageType : undefined;
@@ -121,10 +122,10 @@ export class Topic extends pulumi.CustomResource {
             inputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.messageType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.messageType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'messageType'");
             }
             inputs["instanceId"] = args ? args.instanceId : undefined;
@@ -135,12 +136,8 @@ export class Topic extends pulumi.CustomResource {
             inputs["topic"] = args ? args.topic : undefined;
             inputs["topicName"] = args ? args.topicName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Topic.__pulumiType, name, inputs, opts);
     }

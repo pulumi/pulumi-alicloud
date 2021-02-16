@@ -602,7 +602,8 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["bootstrapActions"] = state ? state.bootstrapActions : undefined;
             inputs["chargeType"] = state ? state.chargeType : undefined;
@@ -628,13 +629,13 @@ export class Cluster extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.clusterType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterType'");
             }
-            if ((!args || args.emrVer === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.emrVer === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'emrVer'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["bootstrapActions"] = args ? args.bootstrapActions : undefined;
@@ -660,12 +661,8 @@ export class Cluster extends pulumi.CustomResource {
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Cluster.__pulumiType, name, inputs, opts);
     }

@@ -98,7 +98,8 @@ export class SlbAttachment extends pulumi.CustomResource {
     constructor(name: string, args: SlbAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SlbAttachmentArgs | SlbAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SlbAttachmentState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
             inputs["listenerPort"] = state ? state.listenerPort : undefined;
@@ -110,16 +111,16 @@ export class SlbAttachment extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as SlbAttachmentArgs | undefined;
-            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.slbId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.slbId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'slbId'");
             }
-            if ((!args || args.slbIp === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.slbIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'slbIp'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["appId"] = args ? args.appId : undefined;
@@ -131,12 +132,8 @@ export class SlbAttachment extends pulumi.CustomResource {
             inputs["slbStatus"] = undefined /*out*/;
             inputs["vswitchId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SlbAttachment.__pulumiType, name, inputs, opts);
     }

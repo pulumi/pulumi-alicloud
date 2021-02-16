@@ -157,6 +157,85 @@ func (i *InstanceClusterAttachment) ToInstanceClusterAttachmentOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAttachmentOutput)
 }
 
+func (i *InstanceClusterAttachment) ToInstanceClusterAttachmentPtrOutput() InstanceClusterAttachmentPtrOutput {
+	return i.ToInstanceClusterAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *InstanceClusterAttachment) ToInstanceClusterAttachmentPtrOutputWithContext(ctx context.Context) InstanceClusterAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAttachmentPtrOutput)
+}
+
+type InstanceClusterAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToInstanceClusterAttachmentPtrOutput() InstanceClusterAttachmentPtrOutput
+	ToInstanceClusterAttachmentPtrOutputWithContext(ctx context.Context) InstanceClusterAttachmentPtrOutput
+}
+
+type instanceClusterAttachmentPtrType InstanceClusterAttachmentArgs
+
+func (*instanceClusterAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceClusterAttachment)(nil))
+}
+
+func (i *instanceClusterAttachmentPtrType) ToInstanceClusterAttachmentPtrOutput() InstanceClusterAttachmentPtrOutput {
+	return i.ToInstanceClusterAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceClusterAttachmentPtrType) ToInstanceClusterAttachmentPtrOutputWithContext(ctx context.Context) InstanceClusterAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAttachmentPtrOutput)
+}
+
+// InstanceClusterAttachmentArrayInput is an input type that accepts InstanceClusterAttachmentArray and InstanceClusterAttachmentArrayOutput values.
+// You can construct a concrete instance of `InstanceClusterAttachmentArrayInput` via:
+//
+//          InstanceClusterAttachmentArray{ InstanceClusterAttachmentArgs{...} }
+type InstanceClusterAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToInstanceClusterAttachmentArrayOutput() InstanceClusterAttachmentArrayOutput
+	ToInstanceClusterAttachmentArrayOutputWithContext(context.Context) InstanceClusterAttachmentArrayOutput
+}
+
+type InstanceClusterAttachmentArray []InstanceClusterAttachmentInput
+
+func (InstanceClusterAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*InstanceClusterAttachment)(nil))
+}
+
+func (i InstanceClusterAttachmentArray) ToInstanceClusterAttachmentArrayOutput() InstanceClusterAttachmentArrayOutput {
+	return i.ToInstanceClusterAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceClusterAttachmentArray) ToInstanceClusterAttachmentArrayOutputWithContext(ctx context.Context) InstanceClusterAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAttachmentArrayOutput)
+}
+
+// InstanceClusterAttachmentMapInput is an input type that accepts InstanceClusterAttachmentMap and InstanceClusterAttachmentMapOutput values.
+// You can construct a concrete instance of `InstanceClusterAttachmentMapInput` via:
+//
+//          InstanceClusterAttachmentMap{ "key": InstanceClusterAttachmentArgs{...} }
+type InstanceClusterAttachmentMapInput interface {
+	pulumi.Input
+
+	ToInstanceClusterAttachmentMapOutput() InstanceClusterAttachmentMapOutput
+	ToInstanceClusterAttachmentMapOutputWithContext(context.Context) InstanceClusterAttachmentMapOutput
+}
+
+type InstanceClusterAttachmentMap map[string]InstanceClusterAttachmentInput
+
+func (InstanceClusterAttachmentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*InstanceClusterAttachment)(nil))
+}
+
+func (i InstanceClusterAttachmentMap) ToInstanceClusterAttachmentMapOutput() InstanceClusterAttachmentMapOutput {
+	return i.ToInstanceClusterAttachmentMapOutputWithContext(context.Background())
+}
+
+func (i InstanceClusterAttachmentMap) ToInstanceClusterAttachmentMapOutputWithContext(ctx context.Context) InstanceClusterAttachmentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterAttachmentMapOutput)
+}
+
 type InstanceClusterAttachmentOutput struct {
 	*pulumi.OutputState
 }
@@ -173,6 +252,75 @@ func (o InstanceClusterAttachmentOutput) ToInstanceClusterAttachmentOutputWithCo
 	return o
 }
 
+func (o InstanceClusterAttachmentOutput) ToInstanceClusterAttachmentPtrOutput() InstanceClusterAttachmentPtrOutput {
+	return o.ToInstanceClusterAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceClusterAttachmentOutput) ToInstanceClusterAttachmentPtrOutputWithContext(ctx context.Context) InstanceClusterAttachmentPtrOutput {
+	return o.ApplyT(func(v InstanceClusterAttachment) *InstanceClusterAttachment {
+		return &v
+	}).(InstanceClusterAttachmentPtrOutput)
+}
+
+type InstanceClusterAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceClusterAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceClusterAttachment)(nil))
+}
+
+func (o InstanceClusterAttachmentPtrOutput) ToInstanceClusterAttachmentPtrOutput() InstanceClusterAttachmentPtrOutput {
+	return o
+}
+
+func (o InstanceClusterAttachmentPtrOutput) ToInstanceClusterAttachmentPtrOutputWithContext(ctx context.Context) InstanceClusterAttachmentPtrOutput {
+	return o
+}
+
+type InstanceClusterAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceClusterAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceClusterAttachment)(nil))
+}
+
+func (o InstanceClusterAttachmentArrayOutput) ToInstanceClusterAttachmentArrayOutput() InstanceClusterAttachmentArrayOutput {
+	return o
+}
+
+func (o InstanceClusterAttachmentArrayOutput) ToInstanceClusterAttachmentArrayOutputWithContext(ctx context.Context) InstanceClusterAttachmentArrayOutput {
+	return o
+}
+
+func (o InstanceClusterAttachmentArrayOutput) Index(i pulumi.IntInput) InstanceClusterAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceClusterAttachment {
+		return vs[0].([]InstanceClusterAttachment)[vs[1].(int)]
+	}).(InstanceClusterAttachmentOutput)
+}
+
+type InstanceClusterAttachmentMapOutput struct{ *pulumi.OutputState }
+
+func (InstanceClusterAttachmentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceClusterAttachment)(nil))
+}
+
+func (o InstanceClusterAttachmentMapOutput) ToInstanceClusterAttachmentMapOutput() InstanceClusterAttachmentMapOutput {
+	return o
+}
+
+func (o InstanceClusterAttachmentMapOutput) ToInstanceClusterAttachmentMapOutputWithContext(ctx context.Context) InstanceClusterAttachmentMapOutput {
+	return o
+}
+
+func (o InstanceClusterAttachmentMapOutput) MapIndex(k pulumi.StringInput) InstanceClusterAttachmentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceClusterAttachment {
+		return vs[0].(map[string]InstanceClusterAttachment)[vs[1].(string)]
+	}).(InstanceClusterAttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceClusterAttachmentOutput{})
+	pulumi.RegisterOutputType(InstanceClusterAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(InstanceClusterAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(InstanceClusterAttachmentMapOutput{})
 }

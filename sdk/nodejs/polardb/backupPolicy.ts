@@ -68,7 +68,8 @@ export class BackupPolicy extends pulumi.CustomResource {
     constructor(name: string, args: BackupPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackupPolicyArgs | BackupPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
             inputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
             inputs["dbClusterId"] = state ? state.dbClusterId : undefined;
@@ -76,7 +77,7 @@ export class BackupPolicy extends pulumi.CustomResource {
             inputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
             inputs["dbClusterId"] = args ? args.dbClusterId : undefined;
@@ -84,12 +85,8 @@ export class BackupPolicy extends pulumi.CustomResource {
             inputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
             inputs["backupRetentionPeriod"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BackupPolicy.__pulumiType, name, inputs, opts);
     }

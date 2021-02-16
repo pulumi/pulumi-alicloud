@@ -99,7 +99,8 @@ export class AnycastEipAddress extends pulumi.CustomResource {
     constructor(name: string, args: AnycastEipAddressArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AnycastEipAddressArgs | AnycastEipAddressState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AnycastEipAddressState | undefined;
             inputs["anycastEipAddressName"] = state ? state.anycastEipAddressName : undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
@@ -110,7 +111,7 @@ export class AnycastEipAddress extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AnycastEipAddressArgs | undefined;
-            if ((!args || args.serviceLocation === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceLocation === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceLocation'");
             }
             inputs["anycastEipAddressName"] = args ? args.anycastEipAddressName : undefined;
@@ -121,12 +122,8 @@ export class AnycastEipAddress extends pulumi.CustomResource {
             inputs["serviceLocation"] = args ? args.serviceLocation : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AnycastEipAddress.__pulumiType, name, inputs, opts);
     }

@@ -108,32 +108,29 @@ export class UserPolicyAttachment extends pulumi.CustomResource {
     constructor(name: string, args: UserPolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserPolicyAttachmentArgs | UserPolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as UserPolicyAttachmentState | undefined;
             inputs["policyName"] = state ? state.policyName : undefined;
             inputs["policyType"] = state ? state.policyType : undefined;
             inputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as UserPolicyAttachmentArgs | undefined;
-            if ((!args || args.policyName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if ((!args || args.policyType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
-            if ((!args || args.userName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.userName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
             inputs["policyName"] = args ? args.policyName : undefined;
             inputs["policyType"] = args ? args.policyType : undefined;
             inputs["userName"] = args ? args.userName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(UserPolicyAttachment.__pulumiType, name, inputs, opts);
     }

@@ -474,6 +474,85 @@ func (i *ScalingConfiguration) ToScalingConfigurationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationOutput)
 }
 
+func (i *ScalingConfiguration) ToScalingConfigurationPtrOutput() ScalingConfigurationPtrOutput {
+	return i.ToScalingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *ScalingConfiguration) ToScalingConfigurationPtrOutputWithContext(ctx context.Context) ScalingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationPtrOutput)
+}
+
+type ScalingConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationPtrOutput() ScalingConfigurationPtrOutput
+	ToScalingConfigurationPtrOutputWithContext(ctx context.Context) ScalingConfigurationPtrOutput
+}
+
+type scalingConfigurationPtrType ScalingConfigurationArgs
+
+func (*scalingConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingConfiguration)(nil))
+}
+
+func (i *scalingConfigurationPtrType) ToScalingConfigurationPtrOutput() ScalingConfigurationPtrOutput {
+	return i.ToScalingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *scalingConfigurationPtrType) ToScalingConfigurationPtrOutputWithContext(ctx context.Context) ScalingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationPtrOutput)
+}
+
+// ScalingConfigurationArrayInput is an input type that accepts ScalingConfigurationArray and ScalingConfigurationArrayOutput values.
+// You can construct a concrete instance of `ScalingConfigurationArrayInput` via:
+//
+//          ScalingConfigurationArray{ ScalingConfigurationArgs{...} }
+type ScalingConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationArrayOutput() ScalingConfigurationArrayOutput
+	ToScalingConfigurationArrayOutputWithContext(context.Context) ScalingConfigurationArrayOutput
+}
+
+type ScalingConfigurationArray []ScalingConfigurationInput
+
+func (ScalingConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ScalingConfiguration)(nil))
+}
+
+func (i ScalingConfigurationArray) ToScalingConfigurationArrayOutput() ScalingConfigurationArrayOutput {
+	return i.ToScalingConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationArray) ToScalingConfigurationArrayOutputWithContext(ctx context.Context) ScalingConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationArrayOutput)
+}
+
+// ScalingConfigurationMapInput is an input type that accepts ScalingConfigurationMap and ScalingConfigurationMapOutput values.
+// You can construct a concrete instance of `ScalingConfigurationMapInput` via:
+//
+//          ScalingConfigurationMap{ "key": ScalingConfigurationArgs{...} }
+type ScalingConfigurationMapInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationMapOutput() ScalingConfigurationMapOutput
+	ToScalingConfigurationMapOutputWithContext(context.Context) ScalingConfigurationMapOutput
+}
+
+type ScalingConfigurationMap map[string]ScalingConfigurationInput
+
+func (ScalingConfigurationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ScalingConfiguration)(nil))
+}
+
+func (i ScalingConfigurationMap) ToScalingConfigurationMapOutput() ScalingConfigurationMapOutput {
+	return i.ToScalingConfigurationMapOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationMap) ToScalingConfigurationMapOutputWithContext(ctx context.Context) ScalingConfigurationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationMapOutput)
+}
+
 type ScalingConfigurationOutput struct {
 	*pulumi.OutputState
 }
@@ -490,6 +569,75 @@ func (o ScalingConfigurationOutput) ToScalingConfigurationOutputWithContext(ctx 
 	return o
 }
 
+func (o ScalingConfigurationOutput) ToScalingConfigurationPtrOutput() ScalingConfigurationPtrOutput {
+	return o.ToScalingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ScalingConfigurationOutput) ToScalingConfigurationPtrOutputWithContext(ctx context.Context) ScalingConfigurationPtrOutput {
+	return o.ApplyT(func(v ScalingConfiguration) *ScalingConfiguration {
+		return &v
+	}).(ScalingConfigurationPtrOutput)
+}
+
+type ScalingConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScalingConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingConfiguration)(nil))
+}
+
+func (o ScalingConfigurationPtrOutput) ToScalingConfigurationPtrOutput() ScalingConfigurationPtrOutput {
+	return o
+}
+
+func (o ScalingConfigurationPtrOutput) ToScalingConfigurationPtrOutputWithContext(ctx context.Context) ScalingConfigurationPtrOutput {
+	return o
+}
+
+type ScalingConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfiguration)(nil))
+}
+
+func (o ScalingConfigurationArrayOutput) ToScalingConfigurationArrayOutput() ScalingConfigurationArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationArrayOutput) ToScalingConfigurationArrayOutputWithContext(ctx context.Context) ScalingConfigurationArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfiguration {
+		return vs[0].([]ScalingConfiguration)[vs[1].(int)]
+	}).(ScalingConfigurationOutput)
+}
+
+type ScalingConfigurationMapOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScalingConfiguration)(nil))
+}
+
+func (o ScalingConfigurationMapOutput) ToScalingConfigurationMapOutput() ScalingConfigurationMapOutput {
+	return o
+}
+
+func (o ScalingConfigurationMapOutput) ToScalingConfigurationMapOutputWithContext(ctx context.Context) ScalingConfigurationMapOutput {
+	return o
+}
+
+func (o ScalingConfigurationMapOutput) MapIndex(k pulumi.StringInput) ScalingConfigurationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScalingConfiguration {
+		return vs[0].(map[string]ScalingConfiguration)[vs[1].(string)]
+	}).(ScalingConfigurationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ScalingConfigurationOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationMapOutput{})
 }

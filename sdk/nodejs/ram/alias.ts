@@ -44,22 +44,19 @@ export class Alias extends pulumi.CustomResource {
     constructor(name: string, args: AliasArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AliasArgs | AliasState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AliasState | undefined;
             inputs["accountAlias"] = state ? state.accountAlias : undefined;
         } else {
             const args = argsOrState as AliasArgs | undefined;
-            if ((!args || args.accountAlias === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accountAlias === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountAlias'");
             }
             inputs["accountAlias"] = args ? args.accountAlias : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Alias.__pulumiType, name, inputs, opts);
     }

@@ -191,6 +191,85 @@ func (i *AnycastEipAddress) ToAnycastEipAddressOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressOutput)
 }
 
+func (i *AnycastEipAddress) ToAnycastEipAddressPtrOutput() AnycastEipAddressPtrOutput {
+	return i.ToAnycastEipAddressPtrOutputWithContext(context.Background())
+}
+
+func (i *AnycastEipAddress) ToAnycastEipAddressPtrOutputWithContext(ctx context.Context) AnycastEipAddressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressPtrOutput)
+}
+
+type AnycastEipAddressPtrInput interface {
+	pulumi.Input
+
+	ToAnycastEipAddressPtrOutput() AnycastEipAddressPtrOutput
+	ToAnycastEipAddressPtrOutputWithContext(ctx context.Context) AnycastEipAddressPtrOutput
+}
+
+type anycastEipAddressPtrType AnycastEipAddressArgs
+
+func (*anycastEipAddressPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnycastEipAddress)(nil))
+}
+
+func (i *anycastEipAddressPtrType) ToAnycastEipAddressPtrOutput() AnycastEipAddressPtrOutput {
+	return i.ToAnycastEipAddressPtrOutputWithContext(context.Background())
+}
+
+func (i *anycastEipAddressPtrType) ToAnycastEipAddressPtrOutputWithContext(ctx context.Context) AnycastEipAddressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressPtrOutput)
+}
+
+// AnycastEipAddressArrayInput is an input type that accepts AnycastEipAddressArray and AnycastEipAddressArrayOutput values.
+// You can construct a concrete instance of `AnycastEipAddressArrayInput` via:
+//
+//          AnycastEipAddressArray{ AnycastEipAddressArgs{...} }
+type AnycastEipAddressArrayInput interface {
+	pulumi.Input
+
+	ToAnycastEipAddressArrayOutput() AnycastEipAddressArrayOutput
+	ToAnycastEipAddressArrayOutputWithContext(context.Context) AnycastEipAddressArrayOutput
+}
+
+type AnycastEipAddressArray []AnycastEipAddressInput
+
+func (AnycastEipAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AnycastEipAddress)(nil))
+}
+
+func (i AnycastEipAddressArray) ToAnycastEipAddressArrayOutput() AnycastEipAddressArrayOutput {
+	return i.ToAnycastEipAddressArrayOutputWithContext(context.Background())
+}
+
+func (i AnycastEipAddressArray) ToAnycastEipAddressArrayOutputWithContext(ctx context.Context) AnycastEipAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressArrayOutput)
+}
+
+// AnycastEipAddressMapInput is an input type that accepts AnycastEipAddressMap and AnycastEipAddressMapOutput values.
+// You can construct a concrete instance of `AnycastEipAddressMapInput` via:
+//
+//          AnycastEipAddressMap{ "key": AnycastEipAddressArgs{...} }
+type AnycastEipAddressMapInput interface {
+	pulumi.Input
+
+	ToAnycastEipAddressMapOutput() AnycastEipAddressMapOutput
+	ToAnycastEipAddressMapOutputWithContext(context.Context) AnycastEipAddressMapOutput
+}
+
+type AnycastEipAddressMap map[string]AnycastEipAddressInput
+
+func (AnycastEipAddressMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AnycastEipAddress)(nil))
+}
+
+func (i AnycastEipAddressMap) ToAnycastEipAddressMapOutput() AnycastEipAddressMapOutput {
+	return i.ToAnycastEipAddressMapOutputWithContext(context.Background())
+}
+
+func (i AnycastEipAddressMap) ToAnycastEipAddressMapOutputWithContext(ctx context.Context) AnycastEipAddressMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressMapOutput)
+}
+
 type AnycastEipAddressOutput struct {
 	*pulumi.OutputState
 }
@@ -207,6 +286,75 @@ func (o AnycastEipAddressOutput) ToAnycastEipAddressOutputWithContext(ctx contex
 	return o
 }
 
+func (o AnycastEipAddressOutput) ToAnycastEipAddressPtrOutput() AnycastEipAddressPtrOutput {
+	return o.ToAnycastEipAddressPtrOutputWithContext(context.Background())
+}
+
+func (o AnycastEipAddressOutput) ToAnycastEipAddressPtrOutputWithContext(ctx context.Context) AnycastEipAddressPtrOutput {
+	return o.ApplyT(func(v AnycastEipAddress) *AnycastEipAddress {
+		return &v
+	}).(AnycastEipAddressPtrOutput)
+}
+
+type AnycastEipAddressPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnycastEipAddressPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnycastEipAddress)(nil))
+}
+
+func (o AnycastEipAddressPtrOutput) ToAnycastEipAddressPtrOutput() AnycastEipAddressPtrOutput {
+	return o
+}
+
+func (o AnycastEipAddressPtrOutput) ToAnycastEipAddressPtrOutputWithContext(ctx context.Context) AnycastEipAddressPtrOutput {
+	return o
+}
+
+type AnycastEipAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (AnycastEipAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AnycastEipAddress)(nil))
+}
+
+func (o AnycastEipAddressArrayOutput) ToAnycastEipAddressArrayOutput() AnycastEipAddressArrayOutput {
+	return o
+}
+
+func (o AnycastEipAddressArrayOutput) ToAnycastEipAddressArrayOutputWithContext(ctx context.Context) AnycastEipAddressArrayOutput {
+	return o
+}
+
+func (o AnycastEipAddressArrayOutput) Index(i pulumi.IntInput) AnycastEipAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AnycastEipAddress {
+		return vs[0].([]AnycastEipAddress)[vs[1].(int)]
+	}).(AnycastEipAddressOutput)
+}
+
+type AnycastEipAddressMapOutput struct{ *pulumi.OutputState }
+
+func (AnycastEipAddressMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AnycastEipAddress)(nil))
+}
+
+func (o AnycastEipAddressMapOutput) ToAnycastEipAddressMapOutput() AnycastEipAddressMapOutput {
+	return o
+}
+
+func (o AnycastEipAddressMapOutput) ToAnycastEipAddressMapOutputWithContext(ctx context.Context) AnycastEipAddressMapOutput {
+	return o
+}
+
+func (o AnycastEipAddressMapOutput) MapIndex(k pulumi.StringInput) AnycastEipAddressOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AnycastEipAddress {
+		return vs[0].(map[string]AnycastEipAddress)[vs[1].(string)]
+	}).(AnycastEipAddressOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AnycastEipAddressOutput{})
+	pulumi.RegisterOutputType(AnycastEipAddressPtrOutput{})
+	pulumi.RegisterOutputType(AnycastEipAddressArrayOutput{})
+	pulumi.RegisterOutputType(AnycastEipAddressMapOutput{})
 }

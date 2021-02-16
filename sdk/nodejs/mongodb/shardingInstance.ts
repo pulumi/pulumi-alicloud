@@ -127,7 +127,8 @@ export class ShardingInstance extends pulumi.CustomResource {
     constructor(name: string, args: ShardingInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ShardingInstanceArgs | ShardingInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ShardingInstanceState | undefined;
             inputs["accountPassword"] = state ? state.accountPassword : undefined;
             inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
@@ -150,13 +151,13 @@ export class ShardingInstance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ShardingInstanceArgs | undefined;
-            if ((!args || args.engineVersion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.engineVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.mongoLists === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.mongoLists === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mongoLists'");
             }
-            if ((!args || args.shardLists === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.shardLists === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shardLists'");
             }
             inputs["accountPassword"] = args ? args.accountPassword : undefined;
@@ -179,12 +180,8 @@ export class ShardingInstance extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["retentionPeriod"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ShardingInstance.__pulumiType, name, inputs, opts);
     }

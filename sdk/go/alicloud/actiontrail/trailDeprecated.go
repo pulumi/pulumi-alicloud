@@ -197,6 +197,85 @@ func (i *TrailDeprecated) ToTrailDeprecatedOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TrailDeprecatedOutput)
 }
 
+func (i *TrailDeprecated) ToTrailDeprecatedPtrOutput() TrailDeprecatedPtrOutput {
+	return i.ToTrailDeprecatedPtrOutputWithContext(context.Background())
+}
+
+func (i *TrailDeprecated) ToTrailDeprecatedPtrOutputWithContext(ctx context.Context) TrailDeprecatedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailDeprecatedPtrOutput)
+}
+
+type TrailDeprecatedPtrInput interface {
+	pulumi.Input
+
+	ToTrailDeprecatedPtrOutput() TrailDeprecatedPtrOutput
+	ToTrailDeprecatedPtrOutputWithContext(ctx context.Context) TrailDeprecatedPtrOutput
+}
+
+type trailDeprecatedPtrType TrailDeprecatedArgs
+
+func (*trailDeprecatedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrailDeprecated)(nil))
+}
+
+func (i *trailDeprecatedPtrType) ToTrailDeprecatedPtrOutput() TrailDeprecatedPtrOutput {
+	return i.ToTrailDeprecatedPtrOutputWithContext(context.Background())
+}
+
+func (i *trailDeprecatedPtrType) ToTrailDeprecatedPtrOutputWithContext(ctx context.Context) TrailDeprecatedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailDeprecatedPtrOutput)
+}
+
+// TrailDeprecatedArrayInput is an input type that accepts TrailDeprecatedArray and TrailDeprecatedArrayOutput values.
+// You can construct a concrete instance of `TrailDeprecatedArrayInput` via:
+//
+//          TrailDeprecatedArray{ TrailDeprecatedArgs{...} }
+type TrailDeprecatedArrayInput interface {
+	pulumi.Input
+
+	ToTrailDeprecatedArrayOutput() TrailDeprecatedArrayOutput
+	ToTrailDeprecatedArrayOutputWithContext(context.Context) TrailDeprecatedArrayOutput
+}
+
+type TrailDeprecatedArray []TrailDeprecatedInput
+
+func (TrailDeprecatedArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TrailDeprecated)(nil))
+}
+
+func (i TrailDeprecatedArray) ToTrailDeprecatedArrayOutput() TrailDeprecatedArrayOutput {
+	return i.ToTrailDeprecatedArrayOutputWithContext(context.Background())
+}
+
+func (i TrailDeprecatedArray) ToTrailDeprecatedArrayOutputWithContext(ctx context.Context) TrailDeprecatedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailDeprecatedArrayOutput)
+}
+
+// TrailDeprecatedMapInput is an input type that accepts TrailDeprecatedMap and TrailDeprecatedMapOutput values.
+// You can construct a concrete instance of `TrailDeprecatedMapInput` via:
+//
+//          TrailDeprecatedMap{ "key": TrailDeprecatedArgs{...} }
+type TrailDeprecatedMapInput interface {
+	pulumi.Input
+
+	ToTrailDeprecatedMapOutput() TrailDeprecatedMapOutput
+	ToTrailDeprecatedMapOutputWithContext(context.Context) TrailDeprecatedMapOutput
+}
+
+type TrailDeprecatedMap map[string]TrailDeprecatedInput
+
+func (TrailDeprecatedMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TrailDeprecated)(nil))
+}
+
+func (i TrailDeprecatedMap) ToTrailDeprecatedMapOutput() TrailDeprecatedMapOutput {
+	return i.ToTrailDeprecatedMapOutputWithContext(context.Background())
+}
+
+func (i TrailDeprecatedMap) ToTrailDeprecatedMapOutputWithContext(ctx context.Context) TrailDeprecatedMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailDeprecatedMapOutput)
+}
+
 type TrailDeprecatedOutput struct {
 	*pulumi.OutputState
 }
@@ -213,6 +292,75 @@ func (o TrailDeprecatedOutput) ToTrailDeprecatedOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o TrailDeprecatedOutput) ToTrailDeprecatedPtrOutput() TrailDeprecatedPtrOutput {
+	return o.ToTrailDeprecatedPtrOutputWithContext(context.Background())
+}
+
+func (o TrailDeprecatedOutput) ToTrailDeprecatedPtrOutputWithContext(ctx context.Context) TrailDeprecatedPtrOutput {
+	return o.ApplyT(func(v TrailDeprecated) *TrailDeprecated {
+		return &v
+	}).(TrailDeprecatedPtrOutput)
+}
+
+type TrailDeprecatedPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrailDeprecatedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrailDeprecated)(nil))
+}
+
+func (o TrailDeprecatedPtrOutput) ToTrailDeprecatedPtrOutput() TrailDeprecatedPtrOutput {
+	return o
+}
+
+func (o TrailDeprecatedPtrOutput) ToTrailDeprecatedPtrOutputWithContext(ctx context.Context) TrailDeprecatedPtrOutput {
+	return o
+}
+
+type TrailDeprecatedArrayOutput struct{ *pulumi.OutputState }
+
+func (TrailDeprecatedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrailDeprecated)(nil))
+}
+
+func (o TrailDeprecatedArrayOutput) ToTrailDeprecatedArrayOutput() TrailDeprecatedArrayOutput {
+	return o
+}
+
+func (o TrailDeprecatedArrayOutput) ToTrailDeprecatedArrayOutputWithContext(ctx context.Context) TrailDeprecatedArrayOutput {
+	return o
+}
+
+func (o TrailDeprecatedArrayOutput) Index(i pulumi.IntInput) TrailDeprecatedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrailDeprecated {
+		return vs[0].([]TrailDeprecated)[vs[1].(int)]
+	}).(TrailDeprecatedOutput)
+}
+
+type TrailDeprecatedMapOutput struct{ *pulumi.OutputState }
+
+func (TrailDeprecatedMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TrailDeprecated)(nil))
+}
+
+func (o TrailDeprecatedMapOutput) ToTrailDeprecatedMapOutput() TrailDeprecatedMapOutput {
+	return o
+}
+
+func (o TrailDeprecatedMapOutput) ToTrailDeprecatedMapOutputWithContext(ctx context.Context) TrailDeprecatedMapOutput {
+	return o
+}
+
+func (o TrailDeprecatedMapOutput) MapIndex(k pulumi.StringInput) TrailDeprecatedOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TrailDeprecated {
+		return vs[0].(map[string]TrailDeprecated)[vs[1].(string)]
+	}).(TrailDeprecatedOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TrailDeprecatedOutput{})
+	pulumi.RegisterOutputType(TrailDeprecatedPtrOutput{})
+	pulumi.RegisterOutputType(TrailDeprecatedArrayOutput{})
+	pulumi.RegisterOutputType(TrailDeprecatedMapOutput{})
 }

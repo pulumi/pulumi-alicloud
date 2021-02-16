@@ -212,6 +212,85 @@ func (i *ImageImport) ToImageImportOutputWithContext(ctx context.Context) ImageI
 	return pulumi.ToOutputWithContext(ctx, i).(ImageImportOutput)
 }
 
+func (i *ImageImport) ToImageImportPtrOutput() ImageImportPtrOutput {
+	return i.ToImageImportPtrOutputWithContext(context.Background())
+}
+
+func (i *ImageImport) ToImageImportPtrOutputWithContext(ctx context.Context) ImageImportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportPtrOutput)
+}
+
+type ImageImportPtrInput interface {
+	pulumi.Input
+
+	ToImageImportPtrOutput() ImageImportPtrOutput
+	ToImageImportPtrOutputWithContext(ctx context.Context) ImageImportPtrOutput
+}
+
+type imageImportPtrType ImageImportArgs
+
+func (*imageImportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImport)(nil))
+}
+
+func (i *imageImportPtrType) ToImageImportPtrOutput() ImageImportPtrOutput {
+	return i.ToImageImportPtrOutputWithContext(context.Background())
+}
+
+func (i *imageImportPtrType) ToImageImportPtrOutputWithContext(ctx context.Context) ImageImportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportPtrOutput)
+}
+
+// ImageImportArrayInput is an input type that accepts ImageImportArray and ImageImportArrayOutput values.
+// You can construct a concrete instance of `ImageImportArrayInput` via:
+//
+//          ImageImportArray{ ImageImportArgs{...} }
+type ImageImportArrayInput interface {
+	pulumi.Input
+
+	ToImageImportArrayOutput() ImageImportArrayOutput
+	ToImageImportArrayOutputWithContext(context.Context) ImageImportArrayOutput
+}
+
+type ImageImportArray []ImageImportInput
+
+func (ImageImportArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ImageImport)(nil))
+}
+
+func (i ImageImportArray) ToImageImportArrayOutput() ImageImportArrayOutput {
+	return i.ToImageImportArrayOutputWithContext(context.Background())
+}
+
+func (i ImageImportArray) ToImageImportArrayOutputWithContext(ctx context.Context) ImageImportArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportArrayOutput)
+}
+
+// ImageImportMapInput is an input type that accepts ImageImportMap and ImageImportMapOutput values.
+// You can construct a concrete instance of `ImageImportMapInput` via:
+//
+//          ImageImportMap{ "key": ImageImportArgs{...} }
+type ImageImportMapInput interface {
+	pulumi.Input
+
+	ToImageImportMapOutput() ImageImportMapOutput
+	ToImageImportMapOutputWithContext(context.Context) ImageImportMapOutput
+}
+
+type ImageImportMap map[string]ImageImportInput
+
+func (ImageImportMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ImageImport)(nil))
+}
+
+func (i ImageImportMap) ToImageImportMapOutput() ImageImportMapOutput {
+	return i.ToImageImportMapOutputWithContext(context.Background())
+}
+
+func (i ImageImportMap) ToImageImportMapOutputWithContext(ctx context.Context) ImageImportMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImportMapOutput)
+}
+
 type ImageImportOutput struct {
 	*pulumi.OutputState
 }
@@ -228,6 +307,75 @@ func (o ImageImportOutput) ToImageImportOutputWithContext(ctx context.Context) I
 	return o
 }
 
+func (o ImageImportOutput) ToImageImportPtrOutput() ImageImportPtrOutput {
+	return o.ToImageImportPtrOutputWithContext(context.Background())
+}
+
+func (o ImageImportOutput) ToImageImportPtrOutputWithContext(ctx context.Context) ImageImportPtrOutput {
+	return o.ApplyT(func(v ImageImport) *ImageImport {
+		return &v
+	}).(ImageImportPtrOutput)
+}
+
+type ImageImportPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageImportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImport)(nil))
+}
+
+func (o ImageImportPtrOutput) ToImageImportPtrOutput() ImageImportPtrOutput {
+	return o
+}
+
+func (o ImageImportPtrOutput) ToImageImportPtrOutputWithContext(ctx context.Context) ImageImportPtrOutput {
+	return o
+}
+
+type ImageImportArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageImportArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageImport)(nil))
+}
+
+func (o ImageImportArrayOutput) ToImageImportArrayOutput() ImageImportArrayOutput {
+	return o
+}
+
+func (o ImageImportArrayOutput) ToImageImportArrayOutputWithContext(ctx context.Context) ImageImportArrayOutput {
+	return o
+}
+
+func (o ImageImportArrayOutput) Index(i pulumi.IntInput) ImageImportOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageImport {
+		return vs[0].([]ImageImport)[vs[1].(int)]
+	}).(ImageImportOutput)
+}
+
+type ImageImportMapOutput struct{ *pulumi.OutputState }
+
+func (ImageImportMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ImageImport)(nil))
+}
+
+func (o ImageImportMapOutput) ToImageImportMapOutput() ImageImportMapOutput {
+	return o
+}
+
+func (o ImageImportMapOutput) ToImageImportMapOutputWithContext(ctx context.Context) ImageImportMapOutput {
+	return o
+}
+
+func (o ImageImportMapOutput) MapIndex(k pulumi.StringInput) ImageImportOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ImageImport {
+		return vs[0].(map[string]ImageImport)[vs[1].(string)]
+	}).(ImageImportOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ImageImportOutput{})
+	pulumi.RegisterOutputType(ImageImportPtrOutput{})
+	pulumi.RegisterOutputType(ImageImportArrayOutput{})
+	pulumi.RegisterOutputType(ImageImportMapOutput{})
 }

@@ -192,6 +192,85 @@ func (i *NetworkGrant) ToNetworkGrantOutputWithContext(ctx context.Context) Netw
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantOutput)
 }
 
+func (i *NetworkGrant) ToNetworkGrantPtrOutput() NetworkGrantPtrOutput {
+	return i.ToNetworkGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *NetworkGrant) ToNetworkGrantPtrOutputWithContext(ctx context.Context) NetworkGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantPtrOutput)
+}
+
+type NetworkGrantPtrInput interface {
+	pulumi.Input
+
+	ToNetworkGrantPtrOutput() NetworkGrantPtrOutput
+	ToNetworkGrantPtrOutputWithContext(ctx context.Context) NetworkGrantPtrOutput
+}
+
+type networkGrantPtrType NetworkGrantArgs
+
+func (*networkGrantPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkGrant)(nil))
+}
+
+func (i *networkGrantPtrType) ToNetworkGrantPtrOutput() NetworkGrantPtrOutput {
+	return i.ToNetworkGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *networkGrantPtrType) ToNetworkGrantPtrOutputWithContext(ctx context.Context) NetworkGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantPtrOutput)
+}
+
+// NetworkGrantArrayInput is an input type that accepts NetworkGrantArray and NetworkGrantArrayOutput values.
+// You can construct a concrete instance of `NetworkGrantArrayInput` via:
+//
+//          NetworkGrantArray{ NetworkGrantArgs{...} }
+type NetworkGrantArrayInput interface {
+	pulumi.Input
+
+	ToNetworkGrantArrayOutput() NetworkGrantArrayOutput
+	ToNetworkGrantArrayOutputWithContext(context.Context) NetworkGrantArrayOutput
+}
+
+type NetworkGrantArray []NetworkGrantInput
+
+func (NetworkGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NetworkGrant)(nil))
+}
+
+func (i NetworkGrantArray) ToNetworkGrantArrayOutput() NetworkGrantArrayOutput {
+	return i.ToNetworkGrantArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkGrantArray) ToNetworkGrantArrayOutputWithContext(ctx context.Context) NetworkGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantArrayOutput)
+}
+
+// NetworkGrantMapInput is an input type that accepts NetworkGrantMap and NetworkGrantMapOutput values.
+// You can construct a concrete instance of `NetworkGrantMapInput` via:
+//
+//          NetworkGrantMap{ "key": NetworkGrantArgs{...} }
+type NetworkGrantMapInput interface {
+	pulumi.Input
+
+	ToNetworkGrantMapOutput() NetworkGrantMapOutput
+	ToNetworkGrantMapOutputWithContext(context.Context) NetworkGrantMapOutput
+}
+
+type NetworkGrantMap map[string]NetworkGrantInput
+
+func (NetworkGrantMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NetworkGrant)(nil))
+}
+
+func (i NetworkGrantMap) ToNetworkGrantMapOutput() NetworkGrantMapOutput {
+	return i.ToNetworkGrantMapOutputWithContext(context.Background())
+}
+
+func (i NetworkGrantMap) ToNetworkGrantMapOutputWithContext(ctx context.Context) NetworkGrantMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantMapOutput)
+}
+
 type NetworkGrantOutput struct {
 	*pulumi.OutputState
 }
@@ -208,6 +287,75 @@ func (o NetworkGrantOutput) ToNetworkGrantOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o NetworkGrantOutput) ToNetworkGrantPtrOutput() NetworkGrantPtrOutput {
+	return o.ToNetworkGrantPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkGrantOutput) ToNetworkGrantPtrOutputWithContext(ctx context.Context) NetworkGrantPtrOutput {
+	return o.ApplyT(func(v NetworkGrant) *NetworkGrant {
+		return &v
+	}).(NetworkGrantPtrOutput)
+}
+
+type NetworkGrantPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkGrantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkGrant)(nil))
+}
+
+func (o NetworkGrantPtrOutput) ToNetworkGrantPtrOutput() NetworkGrantPtrOutput {
+	return o
+}
+
+func (o NetworkGrantPtrOutput) ToNetworkGrantPtrOutputWithContext(ctx context.Context) NetworkGrantPtrOutput {
+	return o
+}
+
+type NetworkGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkGrant)(nil))
+}
+
+func (o NetworkGrantArrayOutput) ToNetworkGrantArrayOutput() NetworkGrantArrayOutput {
+	return o
+}
+
+func (o NetworkGrantArrayOutput) ToNetworkGrantArrayOutputWithContext(ctx context.Context) NetworkGrantArrayOutput {
+	return o
+}
+
+func (o NetworkGrantArrayOutput) Index(i pulumi.IntInput) NetworkGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkGrant {
+		return vs[0].([]NetworkGrant)[vs[1].(int)]
+	}).(NetworkGrantOutput)
+}
+
+type NetworkGrantMapOutput struct{ *pulumi.OutputState }
+
+func (NetworkGrantMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworkGrant)(nil))
+}
+
+func (o NetworkGrantMapOutput) ToNetworkGrantMapOutput() NetworkGrantMapOutput {
+	return o
+}
+
+func (o NetworkGrantMapOutput) ToNetworkGrantMapOutputWithContext(ctx context.Context) NetworkGrantMapOutput {
+	return o
+}
+
+func (o NetworkGrantMapOutput) MapIndex(k pulumi.StringInput) NetworkGrantOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworkGrant {
+		return vs[0].(map[string]NetworkGrant)[vs[1].(string)]
+	}).(NetworkGrantOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkGrantOutput{})
+	pulumi.RegisterOutputType(NetworkGrantPtrOutput{})
+	pulumi.RegisterOutputType(NetworkGrantArrayOutput{})
+	pulumi.RegisterOutputType(NetworkGrantMapOutput{})
 }

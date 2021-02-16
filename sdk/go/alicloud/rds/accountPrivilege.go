@@ -20,7 +20,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -268,6 +267,85 @@ func (i *AccountPrivilege) ToAccountPrivilegeOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegeOutput)
 }
 
+func (i *AccountPrivilege) ToAccountPrivilegePtrOutput() AccountPrivilegePtrOutput {
+	return i.ToAccountPrivilegePtrOutputWithContext(context.Background())
+}
+
+func (i *AccountPrivilege) ToAccountPrivilegePtrOutputWithContext(ctx context.Context) AccountPrivilegePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegePtrOutput)
+}
+
+type AccountPrivilegePtrInput interface {
+	pulumi.Input
+
+	ToAccountPrivilegePtrOutput() AccountPrivilegePtrOutput
+	ToAccountPrivilegePtrOutputWithContext(ctx context.Context) AccountPrivilegePtrOutput
+}
+
+type accountPrivilegePtrType AccountPrivilegeArgs
+
+func (*accountPrivilegePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountPrivilege)(nil))
+}
+
+func (i *accountPrivilegePtrType) ToAccountPrivilegePtrOutput() AccountPrivilegePtrOutput {
+	return i.ToAccountPrivilegePtrOutputWithContext(context.Background())
+}
+
+func (i *accountPrivilegePtrType) ToAccountPrivilegePtrOutputWithContext(ctx context.Context) AccountPrivilegePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegePtrOutput)
+}
+
+// AccountPrivilegeArrayInput is an input type that accepts AccountPrivilegeArray and AccountPrivilegeArrayOutput values.
+// You can construct a concrete instance of `AccountPrivilegeArrayInput` via:
+//
+//          AccountPrivilegeArray{ AccountPrivilegeArgs{...} }
+type AccountPrivilegeArrayInput interface {
+	pulumi.Input
+
+	ToAccountPrivilegeArrayOutput() AccountPrivilegeArrayOutput
+	ToAccountPrivilegeArrayOutputWithContext(context.Context) AccountPrivilegeArrayOutput
+}
+
+type AccountPrivilegeArray []AccountPrivilegeInput
+
+func (AccountPrivilegeArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccountPrivilege)(nil))
+}
+
+func (i AccountPrivilegeArray) ToAccountPrivilegeArrayOutput() AccountPrivilegeArrayOutput {
+	return i.ToAccountPrivilegeArrayOutputWithContext(context.Background())
+}
+
+func (i AccountPrivilegeArray) ToAccountPrivilegeArrayOutputWithContext(ctx context.Context) AccountPrivilegeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegeArrayOutput)
+}
+
+// AccountPrivilegeMapInput is an input type that accepts AccountPrivilegeMap and AccountPrivilegeMapOutput values.
+// You can construct a concrete instance of `AccountPrivilegeMapInput` via:
+//
+//          AccountPrivilegeMap{ "key": AccountPrivilegeArgs{...} }
+type AccountPrivilegeMapInput interface {
+	pulumi.Input
+
+	ToAccountPrivilegeMapOutput() AccountPrivilegeMapOutput
+	ToAccountPrivilegeMapOutputWithContext(context.Context) AccountPrivilegeMapOutput
+}
+
+type AccountPrivilegeMap map[string]AccountPrivilegeInput
+
+func (AccountPrivilegeMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccountPrivilege)(nil))
+}
+
+func (i AccountPrivilegeMap) ToAccountPrivilegeMapOutput() AccountPrivilegeMapOutput {
+	return i.ToAccountPrivilegeMapOutputWithContext(context.Background())
+}
+
+func (i AccountPrivilegeMap) ToAccountPrivilegeMapOutputWithContext(ctx context.Context) AccountPrivilegeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegeMapOutput)
+}
+
 type AccountPrivilegeOutput struct {
 	*pulumi.OutputState
 }
@@ -284,6 +362,75 @@ func (o AccountPrivilegeOutput) ToAccountPrivilegeOutputWithContext(ctx context.
 	return o
 }
 
+func (o AccountPrivilegeOutput) ToAccountPrivilegePtrOutput() AccountPrivilegePtrOutput {
+	return o.ToAccountPrivilegePtrOutputWithContext(context.Background())
+}
+
+func (o AccountPrivilegeOutput) ToAccountPrivilegePtrOutputWithContext(ctx context.Context) AccountPrivilegePtrOutput {
+	return o.ApplyT(func(v AccountPrivilege) *AccountPrivilege {
+		return &v
+	}).(AccountPrivilegePtrOutput)
+}
+
+type AccountPrivilegePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountPrivilegePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountPrivilege)(nil))
+}
+
+func (o AccountPrivilegePtrOutput) ToAccountPrivilegePtrOutput() AccountPrivilegePtrOutput {
+	return o
+}
+
+func (o AccountPrivilegePtrOutput) ToAccountPrivilegePtrOutputWithContext(ctx context.Context) AccountPrivilegePtrOutput {
+	return o
+}
+
+type AccountPrivilegeArrayOutput struct{ *pulumi.OutputState }
+
+func (AccountPrivilegeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccountPrivilege)(nil))
+}
+
+func (o AccountPrivilegeArrayOutput) ToAccountPrivilegeArrayOutput() AccountPrivilegeArrayOutput {
+	return o
+}
+
+func (o AccountPrivilegeArrayOutput) ToAccountPrivilegeArrayOutputWithContext(ctx context.Context) AccountPrivilegeArrayOutput {
+	return o
+}
+
+func (o AccountPrivilegeArrayOutput) Index(i pulumi.IntInput) AccountPrivilegeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccountPrivilege {
+		return vs[0].([]AccountPrivilege)[vs[1].(int)]
+	}).(AccountPrivilegeOutput)
+}
+
+type AccountPrivilegeMapOutput struct{ *pulumi.OutputState }
+
+func (AccountPrivilegeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccountPrivilege)(nil))
+}
+
+func (o AccountPrivilegeMapOutput) ToAccountPrivilegeMapOutput() AccountPrivilegeMapOutput {
+	return o
+}
+
+func (o AccountPrivilegeMapOutput) ToAccountPrivilegeMapOutputWithContext(ctx context.Context) AccountPrivilegeMapOutput {
+	return o
+}
+
+func (o AccountPrivilegeMapOutput) MapIndex(k pulumi.StringInput) AccountPrivilegeOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccountPrivilege {
+		return vs[0].(map[string]AccountPrivilege)[vs[1].(string)]
+	}).(AccountPrivilegeOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccountPrivilegeOutput{})
+	pulumi.RegisterOutputType(AccountPrivilegePtrOutput{})
+	pulumi.RegisterOutputType(AccountPrivilegeArrayOutput{})
+	pulumi.RegisterOutputType(AccountPrivilegeMapOutput{})
 }

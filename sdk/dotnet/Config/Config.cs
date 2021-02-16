@@ -12,13 +12,13 @@ namespace Pulumi.AliCloud
         /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
         /// console.
         /// </summary>
-        public static string? AccessKey { get; set; } = __config.Get("accessKey") ?? Utilities.GetEnv("ALICLOUD_ACCESS_KEY");
+        public static string? AccessKey { get; set; } = __config.Get("accessKey");
 
         /// <summary>
         /// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
         /// Alibaba Cloud console.
         /// </summary>
-        public static string? AccountId { get; set; } = __config.Get("accountId") ?? Utilities.GetEnv("ALICLOUD_ACCOUNT_ID");
+        public static string? AccountId { get; set; } = __config.Get("accountId");
 
         public static Pulumi.AliCloud.Config.Types.AssumeRole? AssumeRole { get; set; } = __config.GetObject<Pulumi.AliCloud.Config.Types.AssumeRole>("assumeRole");
 
@@ -59,17 +59,17 @@ namespace Pulumi.AliCloud
         /// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
         /// console.
         /// </summary>
-        public static string? SecretKey { get; set; } = __config.Get("secretKey") ?? Utilities.GetEnv("ALICLOUD_SECRET_KEY");
+        public static string? SecretKey { get; set; } = __config.Get("secretKey");
 
         /// <summary>
         /// security token. A security token is only required if you are using Security Token Service.
         /// </summary>
-        public static string? SecurityToken { get; set; } = __config.Get("securityToken") ?? Utilities.GetEnv("ALICLOUD_SECURITY_TOKEN");
+        public static string? SecurityToken { get; set; } = __config.Get("securityToken");
 
         /// <summary>
         /// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
         /// </summary>
-        public static string? SharedCredentialsFile { get; set; } = __config.Get("sharedCredentialsFile") ?? Utilities.GetEnv("ALICLOUD_SHARED_CREDENTIALS_FILE");
+        public static string? SharedCredentialsFile { get; set; } = __config.Get("sharedCredentialsFile");
 
         /// <summary>
         /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions

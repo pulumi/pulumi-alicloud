@@ -127,7 +127,8 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     constructor(name: string, args: ServerlessKubernetesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerlessKubernetesArgs | ServerlessKubernetesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServerlessKubernetesState | undefined;
             inputs["addons"] = state ? state.addons : undefined;
             inputs["clientCert"] = state ? state.clientCert : undefined;
@@ -150,7 +151,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
         } else {
             const args = argsOrState as ServerlessKubernetesArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["addons"] = args ? args.addons : undefined;
@@ -173,12 +174,8 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["vswitchIds"] = args ? args.vswitchIds : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServerlessKubernetes.__pulumiType, name, inputs, opts);
     }

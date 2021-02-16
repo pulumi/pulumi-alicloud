@@ -108,7 +108,8 @@ export class EnterpriseUser extends pulumi.CustomResource {
     constructor(name: string, args: EnterpriseUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EnterpriseUserArgs | EnterpriseUserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EnterpriseUserState | undefined;
             inputs["maxExecuteCount"] = state ? state.maxExecuteCount : undefined;
             inputs["maxResultCount"] = state ? state.maxResultCount : undefined;
@@ -121,7 +122,7 @@ export class EnterpriseUser extends pulumi.CustomResource {
             inputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as EnterpriseUserArgs | undefined;
-            if ((!args || args.uid === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.uid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'uid'");
             }
             inputs["maxExecuteCount"] = args ? args.maxExecuteCount : undefined;
@@ -134,12 +135,8 @@ export class EnterpriseUser extends pulumi.CustomResource {
             inputs["uid"] = args ? args.uid : undefined;
             inputs["userName"] = args ? args.userName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EnterpriseUser.__pulumiType, name, inputs, opts);
     }

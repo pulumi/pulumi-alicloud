@@ -109,7 +109,8 @@ export class Connection extends pulumi.CustomResource {
     constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
             inputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
@@ -118,7 +119,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["port"] = state ? state.port : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
@@ -127,12 +128,8 @@ export class Connection extends pulumi.CustomResource {
             inputs["connectionString"] = undefined /*out*/;
             inputs["ipAddress"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Connection.__pulumiType, name, inputs, opts);
     }

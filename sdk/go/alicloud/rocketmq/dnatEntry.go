@@ -218,6 +218,85 @@ func (i *DnatEntry) ToDnatEntryOutputWithContext(ctx context.Context) DnatEntryO
 	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryOutput)
 }
 
+func (i *DnatEntry) ToDnatEntryPtrOutput() DnatEntryPtrOutput {
+	return i.ToDnatEntryPtrOutputWithContext(context.Background())
+}
+
+func (i *DnatEntry) ToDnatEntryPtrOutputWithContext(ctx context.Context) DnatEntryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryPtrOutput)
+}
+
+type DnatEntryPtrInput interface {
+	pulumi.Input
+
+	ToDnatEntryPtrOutput() DnatEntryPtrOutput
+	ToDnatEntryPtrOutputWithContext(ctx context.Context) DnatEntryPtrOutput
+}
+
+type dnatEntryPtrType DnatEntryArgs
+
+func (*dnatEntryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnatEntry)(nil))
+}
+
+func (i *dnatEntryPtrType) ToDnatEntryPtrOutput() DnatEntryPtrOutput {
+	return i.ToDnatEntryPtrOutputWithContext(context.Background())
+}
+
+func (i *dnatEntryPtrType) ToDnatEntryPtrOutputWithContext(ctx context.Context) DnatEntryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryPtrOutput)
+}
+
+// DnatEntryArrayInput is an input type that accepts DnatEntryArray and DnatEntryArrayOutput values.
+// You can construct a concrete instance of `DnatEntryArrayInput` via:
+//
+//          DnatEntryArray{ DnatEntryArgs{...} }
+type DnatEntryArrayInput interface {
+	pulumi.Input
+
+	ToDnatEntryArrayOutput() DnatEntryArrayOutput
+	ToDnatEntryArrayOutputWithContext(context.Context) DnatEntryArrayOutput
+}
+
+type DnatEntryArray []DnatEntryInput
+
+func (DnatEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DnatEntry)(nil))
+}
+
+func (i DnatEntryArray) ToDnatEntryArrayOutput() DnatEntryArrayOutput {
+	return i.ToDnatEntryArrayOutputWithContext(context.Background())
+}
+
+func (i DnatEntryArray) ToDnatEntryArrayOutputWithContext(ctx context.Context) DnatEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryArrayOutput)
+}
+
+// DnatEntryMapInput is an input type that accepts DnatEntryMap and DnatEntryMapOutput values.
+// You can construct a concrete instance of `DnatEntryMapInput` via:
+//
+//          DnatEntryMap{ "key": DnatEntryArgs{...} }
+type DnatEntryMapInput interface {
+	pulumi.Input
+
+	ToDnatEntryMapOutput() DnatEntryMapOutput
+	ToDnatEntryMapOutputWithContext(context.Context) DnatEntryMapOutput
+}
+
+type DnatEntryMap map[string]DnatEntryInput
+
+func (DnatEntryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DnatEntry)(nil))
+}
+
+func (i DnatEntryMap) ToDnatEntryMapOutput() DnatEntryMapOutput {
+	return i.ToDnatEntryMapOutputWithContext(context.Background())
+}
+
+func (i DnatEntryMap) ToDnatEntryMapOutputWithContext(ctx context.Context) DnatEntryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryMapOutput)
+}
+
 type DnatEntryOutput struct {
 	*pulumi.OutputState
 }
@@ -234,6 +313,75 @@ func (o DnatEntryOutput) ToDnatEntryOutputWithContext(ctx context.Context) DnatE
 	return o
 }
 
+func (o DnatEntryOutput) ToDnatEntryPtrOutput() DnatEntryPtrOutput {
+	return o.ToDnatEntryPtrOutputWithContext(context.Background())
+}
+
+func (o DnatEntryOutput) ToDnatEntryPtrOutputWithContext(ctx context.Context) DnatEntryPtrOutput {
+	return o.ApplyT(func(v DnatEntry) *DnatEntry {
+		return &v
+	}).(DnatEntryPtrOutput)
+}
+
+type DnatEntryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DnatEntryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnatEntry)(nil))
+}
+
+func (o DnatEntryPtrOutput) ToDnatEntryPtrOutput() DnatEntryPtrOutput {
+	return o
+}
+
+func (o DnatEntryPtrOutput) ToDnatEntryPtrOutputWithContext(ctx context.Context) DnatEntryPtrOutput {
+	return o
+}
+
+type DnatEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (DnatEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DnatEntry)(nil))
+}
+
+func (o DnatEntryArrayOutput) ToDnatEntryArrayOutput() DnatEntryArrayOutput {
+	return o
+}
+
+func (o DnatEntryArrayOutput) ToDnatEntryArrayOutputWithContext(ctx context.Context) DnatEntryArrayOutput {
+	return o
+}
+
+func (o DnatEntryArrayOutput) Index(i pulumi.IntInput) DnatEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnatEntry {
+		return vs[0].([]DnatEntry)[vs[1].(int)]
+	}).(DnatEntryOutput)
+}
+
+type DnatEntryMapOutput struct{ *pulumi.OutputState }
+
+func (DnatEntryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DnatEntry)(nil))
+}
+
+func (o DnatEntryMapOutput) ToDnatEntryMapOutput() DnatEntryMapOutput {
+	return o
+}
+
+func (o DnatEntryMapOutput) ToDnatEntryMapOutputWithContext(ctx context.Context) DnatEntryMapOutput {
+	return o
+}
+
+func (o DnatEntryMapOutput) MapIndex(k pulumi.StringInput) DnatEntryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DnatEntry {
+		return vs[0].(map[string]DnatEntry)[vs[1].(string)]
+	}).(DnatEntryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DnatEntryOutput{})
+	pulumi.RegisterOutputType(DnatEntryPtrOutput{})
+	pulumi.RegisterOutputType(DnatEntryArrayOutput{})
+	pulumi.RegisterOutputType(DnatEntryMapOutput{})
 }

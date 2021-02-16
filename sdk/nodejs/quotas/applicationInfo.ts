@@ -144,7 +144,8 @@ export class ApplicationInfo extends pulumi.CustomResource {
     constructor(name: string, args: ApplicationInfoArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationInfoArgs | ApplicationInfoState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApplicationInfoState | undefined;
             inputs["approveValue"] = state ? state.approveValue : undefined;
             inputs["auditMode"] = state ? state.auditMode : undefined;
@@ -164,16 +165,16 @@ export class ApplicationInfo extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ApplicationInfoArgs | undefined;
-            if ((!args || args.desireValue === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.desireValue === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'desireValue'");
             }
-            if ((!args || args.productCode === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.productCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productCode'");
             }
-            if ((!args || args.quotaActionCode === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.quotaActionCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'quotaActionCode'");
             }
-            if ((!args || args.reason === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.reason === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reason'");
             }
             inputs["auditMode"] = args ? args.auditMode : undefined;
@@ -193,12 +194,8 @@ export class ApplicationInfo extends pulumi.CustomResource {
             inputs["quotaUnit"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApplicationInfo.__pulumiType, name, inputs, opts);
     }

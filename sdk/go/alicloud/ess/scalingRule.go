@@ -237,6 +237,85 @@ func (i *ScalingRule) ToScalingRuleOutputWithContext(ctx context.Context) Scalin
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleOutput)
 }
 
+func (i *ScalingRule) ToScalingRulePtrOutput() ScalingRulePtrOutput {
+	return i.ToScalingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *ScalingRule) ToScalingRulePtrOutputWithContext(ctx context.Context) ScalingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRulePtrOutput)
+}
+
+type ScalingRulePtrInput interface {
+	pulumi.Input
+
+	ToScalingRulePtrOutput() ScalingRulePtrOutput
+	ToScalingRulePtrOutputWithContext(ctx context.Context) ScalingRulePtrOutput
+}
+
+type scalingRulePtrType ScalingRuleArgs
+
+func (*scalingRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingRule)(nil))
+}
+
+func (i *scalingRulePtrType) ToScalingRulePtrOutput() ScalingRulePtrOutput {
+	return i.ToScalingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *scalingRulePtrType) ToScalingRulePtrOutputWithContext(ctx context.Context) ScalingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRulePtrOutput)
+}
+
+// ScalingRuleArrayInput is an input type that accepts ScalingRuleArray and ScalingRuleArrayOutput values.
+// You can construct a concrete instance of `ScalingRuleArrayInput` via:
+//
+//          ScalingRuleArray{ ScalingRuleArgs{...} }
+type ScalingRuleArrayInput interface {
+	pulumi.Input
+
+	ToScalingRuleArrayOutput() ScalingRuleArrayOutput
+	ToScalingRuleArrayOutputWithContext(context.Context) ScalingRuleArrayOutput
+}
+
+type ScalingRuleArray []ScalingRuleInput
+
+func (ScalingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ScalingRule)(nil))
+}
+
+func (i ScalingRuleArray) ToScalingRuleArrayOutput() ScalingRuleArrayOutput {
+	return i.ToScalingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingRuleArray) ToScalingRuleArrayOutputWithContext(ctx context.Context) ScalingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleArrayOutput)
+}
+
+// ScalingRuleMapInput is an input type that accepts ScalingRuleMap and ScalingRuleMapOutput values.
+// You can construct a concrete instance of `ScalingRuleMapInput` via:
+//
+//          ScalingRuleMap{ "key": ScalingRuleArgs{...} }
+type ScalingRuleMapInput interface {
+	pulumi.Input
+
+	ToScalingRuleMapOutput() ScalingRuleMapOutput
+	ToScalingRuleMapOutputWithContext(context.Context) ScalingRuleMapOutput
+}
+
+type ScalingRuleMap map[string]ScalingRuleInput
+
+func (ScalingRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ScalingRule)(nil))
+}
+
+func (i ScalingRuleMap) ToScalingRuleMapOutput() ScalingRuleMapOutput {
+	return i.ToScalingRuleMapOutputWithContext(context.Background())
+}
+
+func (i ScalingRuleMap) ToScalingRuleMapOutputWithContext(ctx context.Context) ScalingRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleMapOutput)
+}
+
 type ScalingRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -253,6 +332,75 @@ func (o ScalingRuleOutput) ToScalingRuleOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o ScalingRuleOutput) ToScalingRulePtrOutput() ScalingRulePtrOutput {
+	return o.ToScalingRulePtrOutputWithContext(context.Background())
+}
+
+func (o ScalingRuleOutput) ToScalingRulePtrOutputWithContext(ctx context.Context) ScalingRulePtrOutput {
+	return o.ApplyT(func(v ScalingRule) *ScalingRule {
+		return &v
+	}).(ScalingRulePtrOutput)
+}
+
+type ScalingRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScalingRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingRule)(nil))
+}
+
+func (o ScalingRulePtrOutput) ToScalingRulePtrOutput() ScalingRulePtrOutput {
+	return o
+}
+
+func (o ScalingRulePtrOutput) ToScalingRulePtrOutputWithContext(ctx context.Context) ScalingRulePtrOutput {
+	return o
+}
+
+type ScalingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingRule)(nil))
+}
+
+func (o ScalingRuleArrayOutput) ToScalingRuleArrayOutput() ScalingRuleArrayOutput {
+	return o
+}
+
+func (o ScalingRuleArrayOutput) ToScalingRuleArrayOutputWithContext(ctx context.Context) ScalingRuleArrayOutput {
+	return o
+}
+
+func (o ScalingRuleArrayOutput) Index(i pulumi.IntInput) ScalingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingRule {
+		return vs[0].([]ScalingRule)[vs[1].(int)]
+	}).(ScalingRuleOutput)
+}
+
+type ScalingRuleMapOutput struct{ *pulumi.OutputState }
+
+func (ScalingRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScalingRule)(nil))
+}
+
+func (o ScalingRuleMapOutput) ToScalingRuleMapOutput() ScalingRuleMapOutput {
+	return o
+}
+
+func (o ScalingRuleMapOutput) ToScalingRuleMapOutputWithContext(ctx context.Context) ScalingRuleMapOutput {
+	return o
+}
+
+func (o ScalingRuleMapOutput) MapIndex(k pulumi.StringInput) ScalingRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScalingRule {
+		return vs[0].(map[string]ScalingRule)[vs[1].(string)]
+	}).(ScalingRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ScalingRuleOutput{})
+	pulumi.RegisterOutputType(ScalingRulePtrOutput{})
+	pulumi.RegisterOutputType(ScalingRuleArrayOutput{})
+	pulumi.RegisterOutputType(ScalingRuleMapOutput{})
 }

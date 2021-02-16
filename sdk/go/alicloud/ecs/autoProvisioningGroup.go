@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -403,6 +402,85 @@ func (i *AutoProvisioningGroup) ToAutoProvisioningGroupOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupOutput)
 }
 
+func (i *AutoProvisioningGroup) ToAutoProvisioningGroupPtrOutput() AutoProvisioningGroupPtrOutput {
+	return i.ToAutoProvisioningGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *AutoProvisioningGroup) ToAutoProvisioningGroupPtrOutputWithContext(ctx context.Context) AutoProvisioningGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupPtrOutput)
+}
+
+type AutoProvisioningGroupPtrInput interface {
+	pulumi.Input
+
+	ToAutoProvisioningGroupPtrOutput() AutoProvisioningGroupPtrOutput
+	ToAutoProvisioningGroupPtrOutputWithContext(ctx context.Context) AutoProvisioningGroupPtrOutput
+}
+
+type autoProvisioningGroupPtrType AutoProvisioningGroupArgs
+
+func (*autoProvisioningGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoProvisioningGroup)(nil))
+}
+
+func (i *autoProvisioningGroupPtrType) ToAutoProvisioningGroupPtrOutput() AutoProvisioningGroupPtrOutput {
+	return i.ToAutoProvisioningGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *autoProvisioningGroupPtrType) ToAutoProvisioningGroupPtrOutputWithContext(ctx context.Context) AutoProvisioningGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupPtrOutput)
+}
+
+// AutoProvisioningGroupArrayInput is an input type that accepts AutoProvisioningGroupArray and AutoProvisioningGroupArrayOutput values.
+// You can construct a concrete instance of `AutoProvisioningGroupArrayInput` via:
+//
+//          AutoProvisioningGroupArray{ AutoProvisioningGroupArgs{...} }
+type AutoProvisioningGroupArrayInput interface {
+	pulumi.Input
+
+	ToAutoProvisioningGroupArrayOutput() AutoProvisioningGroupArrayOutput
+	ToAutoProvisioningGroupArrayOutputWithContext(context.Context) AutoProvisioningGroupArrayOutput
+}
+
+type AutoProvisioningGroupArray []AutoProvisioningGroupInput
+
+func (AutoProvisioningGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AutoProvisioningGroup)(nil))
+}
+
+func (i AutoProvisioningGroupArray) ToAutoProvisioningGroupArrayOutput() AutoProvisioningGroupArrayOutput {
+	return i.ToAutoProvisioningGroupArrayOutputWithContext(context.Background())
+}
+
+func (i AutoProvisioningGroupArray) ToAutoProvisioningGroupArrayOutputWithContext(ctx context.Context) AutoProvisioningGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupArrayOutput)
+}
+
+// AutoProvisioningGroupMapInput is an input type that accepts AutoProvisioningGroupMap and AutoProvisioningGroupMapOutput values.
+// You can construct a concrete instance of `AutoProvisioningGroupMapInput` via:
+//
+//          AutoProvisioningGroupMap{ "key": AutoProvisioningGroupArgs{...} }
+type AutoProvisioningGroupMapInput interface {
+	pulumi.Input
+
+	ToAutoProvisioningGroupMapOutput() AutoProvisioningGroupMapOutput
+	ToAutoProvisioningGroupMapOutputWithContext(context.Context) AutoProvisioningGroupMapOutput
+}
+
+type AutoProvisioningGroupMap map[string]AutoProvisioningGroupInput
+
+func (AutoProvisioningGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AutoProvisioningGroup)(nil))
+}
+
+func (i AutoProvisioningGroupMap) ToAutoProvisioningGroupMapOutput() AutoProvisioningGroupMapOutput {
+	return i.ToAutoProvisioningGroupMapOutputWithContext(context.Background())
+}
+
+func (i AutoProvisioningGroupMap) ToAutoProvisioningGroupMapOutputWithContext(ctx context.Context) AutoProvisioningGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupMapOutput)
+}
+
 type AutoProvisioningGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -419,6 +497,75 @@ func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupOutputWithContext(ct
 	return o
 }
 
+func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupPtrOutput() AutoProvisioningGroupPtrOutput {
+	return o.ToAutoProvisioningGroupPtrOutputWithContext(context.Background())
+}
+
+func (o AutoProvisioningGroupOutput) ToAutoProvisioningGroupPtrOutputWithContext(ctx context.Context) AutoProvisioningGroupPtrOutput {
+	return o.ApplyT(func(v AutoProvisioningGroup) *AutoProvisioningGroup {
+		return &v
+	}).(AutoProvisioningGroupPtrOutput)
+}
+
+type AutoProvisioningGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AutoProvisioningGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoProvisioningGroup)(nil))
+}
+
+func (o AutoProvisioningGroupPtrOutput) ToAutoProvisioningGroupPtrOutput() AutoProvisioningGroupPtrOutput {
+	return o
+}
+
+func (o AutoProvisioningGroupPtrOutput) ToAutoProvisioningGroupPtrOutputWithContext(ctx context.Context) AutoProvisioningGroupPtrOutput {
+	return o
+}
+
+type AutoProvisioningGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoProvisioningGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProvisioningGroup)(nil))
+}
+
+func (o AutoProvisioningGroupArrayOutput) ToAutoProvisioningGroupArrayOutput() AutoProvisioningGroupArrayOutput {
+	return o
+}
+
+func (o AutoProvisioningGroupArrayOutput) ToAutoProvisioningGroupArrayOutputWithContext(ctx context.Context) AutoProvisioningGroupArrayOutput {
+	return o
+}
+
+func (o AutoProvisioningGroupArrayOutput) Index(i pulumi.IntInput) AutoProvisioningGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoProvisioningGroup {
+		return vs[0].([]AutoProvisioningGroup)[vs[1].(int)]
+	}).(AutoProvisioningGroupOutput)
+}
+
+type AutoProvisioningGroupMapOutput struct{ *pulumi.OutputState }
+
+func (AutoProvisioningGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutoProvisioningGroup)(nil))
+}
+
+func (o AutoProvisioningGroupMapOutput) ToAutoProvisioningGroupMapOutput() AutoProvisioningGroupMapOutput {
+	return o
+}
+
+func (o AutoProvisioningGroupMapOutput) ToAutoProvisioningGroupMapOutputWithContext(ctx context.Context) AutoProvisioningGroupMapOutput {
+	return o
+}
+
+func (o AutoProvisioningGroupMapOutput) MapIndex(k pulumi.StringInput) AutoProvisioningGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AutoProvisioningGroup {
+		return vs[0].(map[string]AutoProvisioningGroup)[vs[1].(string)]
+	}).(AutoProvisioningGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AutoProvisioningGroupOutput{})
+	pulumi.RegisterOutputType(AutoProvisioningGroupPtrOutput{})
+	pulumi.RegisterOutputType(AutoProvisioningGroupArrayOutput{})
+	pulumi.RegisterOutputType(AutoProvisioningGroupMapOutput{})
 }

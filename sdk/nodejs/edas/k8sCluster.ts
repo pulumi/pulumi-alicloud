@@ -101,7 +101,8 @@ export class K8sCluster extends pulumi.CustomResource {
     constructor(name: string, args: K8sClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: K8sClusterArgs | K8sClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as K8sClusterState | undefined;
             inputs["clusterImportStatus"] = state ? state.clusterImportStatus : undefined;
             inputs["clusterName"] = state ? state.clusterName : undefined;
@@ -112,7 +113,7 @@ export class K8sCluster extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as K8sClusterArgs | undefined;
-            if ((!args || args.csClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.csClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'csClusterId'");
             }
             inputs["csClusterId"] = args ? args.csClusterId : undefined;
@@ -123,12 +124,8 @@ export class K8sCluster extends pulumi.CustomResource {
             inputs["networkMode"] = undefined /*out*/;
             inputs["vpcId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(K8sCluster.__pulumiType, name, inputs, opts);
     }

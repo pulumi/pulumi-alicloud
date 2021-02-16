@@ -151,7 +151,8 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
     constructor(name: string, args: ReadOnlyInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReadOnlyInstanceArgs | ReadOnlyInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ReadOnlyInstanceState | undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["engine"] = state ? state.engine : undefined;
@@ -168,16 +169,16 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ReadOnlyInstanceArgs | undefined;
-            if ((!args || args.engineVersion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.engineVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.instanceStorage === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceStorage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceStorage'");
             }
-            if ((!args || args.instanceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.masterDbInstanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.masterDbInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'masterDbInstanceId'");
             }
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
@@ -194,12 +195,8 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             inputs["engine"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ReadOnlyInstance.__pulumiType, name, inputs, opts);
     }

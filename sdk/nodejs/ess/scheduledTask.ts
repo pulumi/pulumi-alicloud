@@ -116,7 +116,8 @@ export class ScheduledTask extends pulumi.CustomResource {
     constructor(name: string, args?: ScheduledTaskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScheduledTaskArgs | ScheduledTaskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ScheduledTaskState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
@@ -147,12 +148,8 @@ export class ScheduledTask extends pulumi.CustomResource {
             inputs["scheduledTaskName"] = args ? args.scheduledTaskName : undefined;
             inputs["taskEnabled"] = args ? args.taskEnabled : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ScheduledTask.__pulumiType, name, inputs, opts);
     }

@@ -59,7 +59,8 @@ export class AppAttachment extends pulumi.CustomResource {
     constructor(name: string, args: AppAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppAttachmentArgs | AppAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AppAttachmentState | undefined;
             inputs["apiId"] = state ? state.apiId : undefined;
             inputs["appId"] = state ? state.appId : undefined;
@@ -67,16 +68,16 @@ export class AppAttachment extends pulumi.CustomResource {
             inputs["stageName"] = state ? state.stageName : undefined;
         } else {
             const args = argsOrState as AppAttachmentArgs | undefined;
-            if ((!args || args.apiId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.apiId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiId'");
             }
-            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.stageName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.stageName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stageName'");
             }
             inputs["apiId"] = args ? args.apiId : undefined;
@@ -84,12 +85,8 @@ export class AppAttachment extends pulumi.CustomResource {
             inputs["groupId"] = args ? args.groupId : undefined;
             inputs["stageName"] = args ? args.stageName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AppAttachment.__pulumiType, name, inputs, opts);
     }

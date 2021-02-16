@@ -92,7 +92,8 @@ export class ResourceGroup extends pulumi.CustomResource {
     constructor(name: string, args: ResourceGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourceGroupArgs | ResourceGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ResourceGroupState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
@@ -102,7 +103,7 @@ export class ResourceGroup extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ResourceGroupArgs | undefined;
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -112,12 +113,8 @@ export class ResourceGroup extends pulumi.CustomResource {
             inputs["regionStatuses"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ResourceGroup.__pulumiType, name, inputs, opts);
     }

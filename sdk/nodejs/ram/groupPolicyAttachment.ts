@@ -105,32 +105,29 @@ export class GroupPolicyAttachment extends pulumi.CustomResource {
     constructor(name: string, args: GroupPolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupPolicyAttachmentArgs | GroupPolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GroupPolicyAttachmentState | undefined;
             inputs["groupName"] = state ? state.groupName : undefined;
             inputs["policyName"] = state ? state.policyName : undefined;
             inputs["policyType"] = state ? state.policyType : undefined;
         } else {
             const args = argsOrState as GroupPolicyAttachmentArgs | undefined;
-            if ((!args || args.groupName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if ((!args || args.policyName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if ((!args || args.policyType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
             inputs["groupName"] = args ? args.groupName : undefined;
             inputs["policyName"] = args ? args.policyName : undefined;
             inputs["policyType"] = args ? args.policyType : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GroupPolicyAttachment.__pulumiType, name, inputs, opts);
     }

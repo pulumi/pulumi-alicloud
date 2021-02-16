@@ -111,6 +111,85 @@ func (i *RoleAttachment) ToRoleAttachmentOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentOutput)
 }
 
+func (i *RoleAttachment) ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutput {
+	return i.ToRoleAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *RoleAttachment) ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentPtrOutput)
+}
+
+type RoleAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutput
+	ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput
+}
+
+type roleAttachmentPtrType RoleAttachmentArgs
+
+func (*roleAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleAttachment)(nil))
+}
+
+func (i *roleAttachmentPtrType) ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutput {
+	return i.ToRoleAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *roleAttachmentPtrType) ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentPtrOutput)
+}
+
+// RoleAttachmentArrayInput is an input type that accepts RoleAttachmentArray and RoleAttachmentArrayOutput values.
+// You can construct a concrete instance of `RoleAttachmentArrayInput` via:
+//
+//          RoleAttachmentArray{ RoleAttachmentArgs{...} }
+type RoleAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToRoleAttachmentArrayOutput() RoleAttachmentArrayOutput
+	ToRoleAttachmentArrayOutputWithContext(context.Context) RoleAttachmentArrayOutput
+}
+
+type RoleAttachmentArray []RoleAttachmentInput
+
+func (RoleAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RoleAttachment)(nil))
+}
+
+func (i RoleAttachmentArray) ToRoleAttachmentArrayOutput() RoleAttachmentArrayOutput {
+	return i.ToRoleAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i RoleAttachmentArray) ToRoleAttachmentArrayOutputWithContext(ctx context.Context) RoleAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentArrayOutput)
+}
+
+// RoleAttachmentMapInput is an input type that accepts RoleAttachmentMap and RoleAttachmentMapOutput values.
+// You can construct a concrete instance of `RoleAttachmentMapInput` via:
+//
+//          RoleAttachmentMap{ "key": RoleAttachmentArgs{...} }
+type RoleAttachmentMapInput interface {
+	pulumi.Input
+
+	ToRoleAttachmentMapOutput() RoleAttachmentMapOutput
+	ToRoleAttachmentMapOutputWithContext(context.Context) RoleAttachmentMapOutput
+}
+
+type RoleAttachmentMap map[string]RoleAttachmentInput
+
+func (RoleAttachmentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RoleAttachment)(nil))
+}
+
+func (i RoleAttachmentMap) ToRoleAttachmentMapOutput() RoleAttachmentMapOutput {
+	return i.ToRoleAttachmentMapOutputWithContext(context.Background())
+}
+
+func (i RoleAttachmentMap) ToRoleAttachmentMapOutputWithContext(ctx context.Context) RoleAttachmentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentMapOutput)
+}
+
 type RoleAttachmentOutput struct {
 	*pulumi.OutputState
 }
@@ -127,6 +206,75 @@ func (o RoleAttachmentOutput) ToRoleAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o RoleAttachmentOutput) ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutput {
+	return o.ToRoleAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o RoleAttachmentOutput) ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput {
+	return o.ApplyT(func(v RoleAttachment) *RoleAttachment {
+		return &v
+	}).(RoleAttachmentPtrOutput)
+}
+
+type RoleAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleAttachment)(nil))
+}
+
+func (o RoleAttachmentPtrOutput) ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutput {
+	return o
+}
+
+func (o RoleAttachmentPtrOutput) ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput {
+	return o
+}
+
+type RoleAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (RoleAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoleAttachment)(nil))
+}
+
+func (o RoleAttachmentArrayOutput) ToRoleAttachmentArrayOutput() RoleAttachmentArrayOutput {
+	return o
+}
+
+func (o RoleAttachmentArrayOutput) ToRoleAttachmentArrayOutputWithContext(ctx context.Context) RoleAttachmentArrayOutput {
+	return o
+}
+
+func (o RoleAttachmentArrayOutput) Index(i pulumi.IntInput) RoleAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoleAttachment {
+		return vs[0].([]RoleAttachment)[vs[1].(int)]
+	}).(RoleAttachmentOutput)
+}
+
+type RoleAttachmentMapOutput struct{ *pulumi.OutputState }
+
+func (RoleAttachmentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RoleAttachment)(nil))
+}
+
+func (o RoleAttachmentMapOutput) ToRoleAttachmentMapOutput() RoleAttachmentMapOutput {
+	return o
+}
+
+func (o RoleAttachmentMapOutput) ToRoleAttachmentMapOutputWithContext(ctx context.Context) RoleAttachmentMapOutput {
+	return o
+}
+
+func (o RoleAttachmentMapOutput) MapIndex(k pulumi.StringInput) RoleAttachmentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RoleAttachment {
+		return vs[0].(map[string]RoleAttachment)[vs[1].(string)]
+	}).(RoleAttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RoleAttachmentOutput{})
+	pulumi.RegisterOutputType(RoleAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(RoleAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(RoleAttachmentMapOutput{})
 }

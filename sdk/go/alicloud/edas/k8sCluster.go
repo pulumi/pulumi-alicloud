@@ -185,6 +185,85 @@ func (i *K8sCluster) ToK8sClusterOutputWithContext(ctx context.Context) K8sClust
 	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterOutput)
 }
 
+func (i *K8sCluster) ToK8sClusterPtrOutput() K8sClusterPtrOutput {
+	return i.ToK8sClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *K8sCluster) ToK8sClusterPtrOutputWithContext(ctx context.Context) K8sClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterPtrOutput)
+}
+
+type K8sClusterPtrInput interface {
+	pulumi.Input
+
+	ToK8sClusterPtrOutput() K8sClusterPtrOutput
+	ToK8sClusterPtrOutputWithContext(ctx context.Context) K8sClusterPtrOutput
+}
+
+type k8sClusterPtrType K8sClusterArgs
+
+func (*k8sClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sCluster)(nil))
+}
+
+func (i *k8sClusterPtrType) ToK8sClusterPtrOutput() K8sClusterPtrOutput {
+	return i.ToK8sClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *k8sClusterPtrType) ToK8sClusterPtrOutputWithContext(ctx context.Context) K8sClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterPtrOutput)
+}
+
+// K8sClusterArrayInput is an input type that accepts K8sClusterArray and K8sClusterArrayOutput values.
+// You can construct a concrete instance of `K8sClusterArrayInput` via:
+//
+//          K8sClusterArray{ K8sClusterArgs{...} }
+type K8sClusterArrayInput interface {
+	pulumi.Input
+
+	ToK8sClusterArrayOutput() K8sClusterArrayOutput
+	ToK8sClusterArrayOutputWithContext(context.Context) K8sClusterArrayOutput
+}
+
+type K8sClusterArray []K8sClusterInput
+
+func (K8sClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*K8sCluster)(nil))
+}
+
+func (i K8sClusterArray) ToK8sClusterArrayOutput() K8sClusterArrayOutput {
+	return i.ToK8sClusterArrayOutputWithContext(context.Background())
+}
+
+func (i K8sClusterArray) ToK8sClusterArrayOutputWithContext(ctx context.Context) K8sClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterArrayOutput)
+}
+
+// K8sClusterMapInput is an input type that accepts K8sClusterMap and K8sClusterMapOutput values.
+// You can construct a concrete instance of `K8sClusterMapInput` via:
+//
+//          K8sClusterMap{ "key": K8sClusterArgs{...} }
+type K8sClusterMapInput interface {
+	pulumi.Input
+
+	ToK8sClusterMapOutput() K8sClusterMapOutput
+	ToK8sClusterMapOutputWithContext(context.Context) K8sClusterMapOutput
+}
+
+type K8sClusterMap map[string]K8sClusterInput
+
+func (K8sClusterMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*K8sCluster)(nil))
+}
+
+func (i K8sClusterMap) ToK8sClusterMapOutput() K8sClusterMapOutput {
+	return i.ToK8sClusterMapOutputWithContext(context.Background())
+}
+
+func (i K8sClusterMap) ToK8sClusterMapOutputWithContext(ctx context.Context) K8sClusterMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterMapOutput)
+}
+
 type K8sClusterOutput struct {
 	*pulumi.OutputState
 }
@@ -201,6 +280,75 @@ func (o K8sClusterOutput) ToK8sClusterOutputWithContext(ctx context.Context) K8s
 	return o
 }
 
+func (o K8sClusterOutput) ToK8sClusterPtrOutput() K8sClusterPtrOutput {
+	return o.ToK8sClusterPtrOutputWithContext(context.Background())
+}
+
+func (o K8sClusterOutput) ToK8sClusterPtrOutputWithContext(ctx context.Context) K8sClusterPtrOutput {
+	return o.ApplyT(func(v K8sCluster) *K8sCluster {
+		return &v
+	}).(K8sClusterPtrOutput)
+}
+
+type K8sClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (K8sClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sCluster)(nil))
+}
+
+func (o K8sClusterPtrOutput) ToK8sClusterPtrOutput() K8sClusterPtrOutput {
+	return o
+}
+
+func (o K8sClusterPtrOutput) ToK8sClusterPtrOutputWithContext(ctx context.Context) K8sClusterPtrOutput {
+	return o
+}
+
+type K8sClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (K8sClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sCluster)(nil))
+}
+
+func (o K8sClusterArrayOutput) ToK8sClusterArrayOutput() K8sClusterArrayOutput {
+	return o
+}
+
+func (o K8sClusterArrayOutput) ToK8sClusterArrayOutputWithContext(ctx context.Context) K8sClusterArrayOutput {
+	return o
+}
+
+func (o K8sClusterArrayOutput) Index(i pulumi.IntInput) K8sClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sCluster {
+		return vs[0].([]K8sCluster)[vs[1].(int)]
+	}).(K8sClusterOutput)
+}
+
+type K8sClusterMapOutput struct{ *pulumi.OutputState }
+
+func (K8sClusterMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]K8sCluster)(nil))
+}
+
+func (o K8sClusterMapOutput) ToK8sClusterMapOutput() K8sClusterMapOutput {
+	return o
+}
+
+func (o K8sClusterMapOutput) ToK8sClusterMapOutputWithContext(ctx context.Context) K8sClusterMapOutput {
+	return o
+}
+
+func (o K8sClusterMapOutput) MapIndex(k pulumi.StringInput) K8sClusterOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) K8sCluster {
+		return vs[0].(map[string]K8sCluster)[vs[1].(string)]
+	}).(K8sClusterOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(K8sClusterOutput{})
+	pulumi.RegisterOutputType(K8sClusterPtrOutput{})
+	pulumi.RegisterOutputType(K8sClusterArrayOutput{})
+	pulumi.RegisterOutputType(K8sClusterMapOutput{})
 }

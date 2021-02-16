@@ -113,7 +113,8 @@ export class Api extends pulumi.CustomResource {
     constructor(name: string, args: ApiArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiArgs | ApiState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApiState | undefined;
             inputs["apiId"] = state ? state.apiId : undefined;
             inputs["authType"] = state ? state.authType : undefined;
@@ -132,19 +133,19 @@ export class Api extends pulumi.CustomResource {
             inputs["systemParameters"] = state ? state.systemParameters : undefined;
         } else {
             const args = argsOrState as ApiArgs | undefined;
-            if ((!args || args.authType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.authType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'authType'");
             }
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.requestConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.requestConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'requestConfig'");
             }
-            if ((!args || args.serviceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceType'");
             }
             inputs["authType"] = args ? args.authType : undefined;
@@ -163,12 +164,8 @@ export class Api extends pulumi.CustomResource {
             inputs["systemParameters"] = args ? args.systemParameters : undefined;
             inputs["apiId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Api.__pulumiType, name, inputs, opts);
     }

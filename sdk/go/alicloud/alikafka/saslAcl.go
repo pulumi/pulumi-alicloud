@@ -27,7 +27,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/alikafka"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -273,6 +272,85 @@ func (i *SaslAcl) ToSaslAclOutputWithContext(ctx context.Context) SaslAclOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SaslAclOutput)
 }
 
+func (i *SaslAcl) ToSaslAclPtrOutput() SaslAclPtrOutput {
+	return i.ToSaslAclPtrOutputWithContext(context.Background())
+}
+
+func (i *SaslAcl) ToSaslAclPtrOutputWithContext(ctx context.Context) SaslAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaslAclPtrOutput)
+}
+
+type SaslAclPtrInput interface {
+	pulumi.Input
+
+	ToSaslAclPtrOutput() SaslAclPtrOutput
+	ToSaslAclPtrOutputWithContext(ctx context.Context) SaslAclPtrOutput
+}
+
+type saslAclPtrType SaslAclArgs
+
+func (*saslAclPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SaslAcl)(nil))
+}
+
+func (i *saslAclPtrType) ToSaslAclPtrOutput() SaslAclPtrOutput {
+	return i.ToSaslAclPtrOutputWithContext(context.Background())
+}
+
+func (i *saslAclPtrType) ToSaslAclPtrOutputWithContext(ctx context.Context) SaslAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaslAclPtrOutput)
+}
+
+// SaslAclArrayInput is an input type that accepts SaslAclArray and SaslAclArrayOutput values.
+// You can construct a concrete instance of `SaslAclArrayInput` via:
+//
+//          SaslAclArray{ SaslAclArgs{...} }
+type SaslAclArrayInput interface {
+	pulumi.Input
+
+	ToSaslAclArrayOutput() SaslAclArrayOutput
+	ToSaslAclArrayOutputWithContext(context.Context) SaslAclArrayOutput
+}
+
+type SaslAclArray []SaslAclInput
+
+func (SaslAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SaslAcl)(nil))
+}
+
+func (i SaslAclArray) ToSaslAclArrayOutput() SaslAclArrayOutput {
+	return i.ToSaslAclArrayOutputWithContext(context.Background())
+}
+
+func (i SaslAclArray) ToSaslAclArrayOutputWithContext(ctx context.Context) SaslAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaslAclArrayOutput)
+}
+
+// SaslAclMapInput is an input type that accepts SaslAclMap and SaslAclMapOutput values.
+// You can construct a concrete instance of `SaslAclMapInput` via:
+//
+//          SaslAclMap{ "key": SaslAclArgs{...} }
+type SaslAclMapInput interface {
+	pulumi.Input
+
+	ToSaslAclMapOutput() SaslAclMapOutput
+	ToSaslAclMapOutputWithContext(context.Context) SaslAclMapOutput
+}
+
+type SaslAclMap map[string]SaslAclInput
+
+func (SaslAclMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SaslAcl)(nil))
+}
+
+func (i SaslAclMap) ToSaslAclMapOutput() SaslAclMapOutput {
+	return i.ToSaslAclMapOutputWithContext(context.Background())
+}
+
+func (i SaslAclMap) ToSaslAclMapOutputWithContext(ctx context.Context) SaslAclMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaslAclMapOutput)
+}
+
 type SaslAclOutput struct {
 	*pulumi.OutputState
 }
@@ -289,6 +367,75 @@ func (o SaslAclOutput) ToSaslAclOutputWithContext(ctx context.Context) SaslAclOu
 	return o
 }
 
+func (o SaslAclOutput) ToSaslAclPtrOutput() SaslAclPtrOutput {
+	return o.ToSaslAclPtrOutputWithContext(context.Background())
+}
+
+func (o SaslAclOutput) ToSaslAclPtrOutputWithContext(ctx context.Context) SaslAclPtrOutput {
+	return o.ApplyT(func(v SaslAcl) *SaslAcl {
+		return &v
+	}).(SaslAclPtrOutput)
+}
+
+type SaslAclPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SaslAclPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SaslAcl)(nil))
+}
+
+func (o SaslAclPtrOutput) ToSaslAclPtrOutput() SaslAclPtrOutput {
+	return o
+}
+
+func (o SaslAclPtrOutput) ToSaslAclPtrOutputWithContext(ctx context.Context) SaslAclPtrOutput {
+	return o
+}
+
+type SaslAclArrayOutput struct{ *pulumi.OutputState }
+
+func (SaslAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SaslAcl)(nil))
+}
+
+func (o SaslAclArrayOutput) ToSaslAclArrayOutput() SaslAclArrayOutput {
+	return o
+}
+
+func (o SaslAclArrayOutput) ToSaslAclArrayOutputWithContext(ctx context.Context) SaslAclArrayOutput {
+	return o
+}
+
+func (o SaslAclArrayOutput) Index(i pulumi.IntInput) SaslAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SaslAcl {
+		return vs[0].([]SaslAcl)[vs[1].(int)]
+	}).(SaslAclOutput)
+}
+
+type SaslAclMapOutput struct{ *pulumi.OutputState }
+
+func (SaslAclMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SaslAcl)(nil))
+}
+
+func (o SaslAclMapOutput) ToSaslAclMapOutput() SaslAclMapOutput {
+	return o
+}
+
+func (o SaslAclMapOutput) ToSaslAclMapOutputWithContext(ctx context.Context) SaslAclMapOutput {
+	return o
+}
+
+func (o SaslAclMapOutput) MapIndex(k pulumi.StringInput) SaslAclOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SaslAcl {
+		return vs[0].(map[string]SaslAcl)[vs[1].(string)]
+	}).(SaslAclOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SaslAclOutput{})
+	pulumi.RegisterOutputType(SaslAclPtrOutput{})
+	pulumi.RegisterOutputType(SaslAclArrayOutput{})
+	pulumi.RegisterOutputType(SaslAclMapOutput{})
 }

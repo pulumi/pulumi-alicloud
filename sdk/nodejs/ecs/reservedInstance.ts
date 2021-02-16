@@ -115,7 +115,8 @@ export class ReservedInstance extends pulumi.CustomResource {
     constructor(name: string, args: ReservedInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReservedInstanceArgs | ReservedInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ReservedInstanceState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["instanceAmount"] = state ? state.instanceAmount : undefined;
@@ -130,7 +131,7 @@ export class ReservedInstance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ReservedInstanceArgs | undefined;
-            if ((!args || args.instanceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -145,12 +146,8 @@ export class ReservedInstance extends pulumi.CustomResource {
             inputs["scope"] = args ? args.scope : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ReservedInstance.__pulumiType, name, inputs, opts);
     }

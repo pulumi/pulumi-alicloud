@@ -471,6 +471,85 @@ func (i *EdgeKubernetes) ToEdgeKubernetesOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesOutput)
 }
 
+func (i *EdgeKubernetes) ToEdgeKubernetesPtrOutput() EdgeKubernetesPtrOutput {
+	return i.ToEdgeKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (i *EdgeKubernetes) ToEdgeKubernetesPtrOutputWithContext(ctx context.Context) EdgeKubernetesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesPtrOutput)
+}
+
+type EdgeKubernetesPtrInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesPtrOutput() EdgeKubernetesPtrOutput
+	ToEdgeKubernetesPtrOutputWithContext(ctx context.Context) EdgeKubernetesPtrOutput
+}
+
+type edgeKubernetesPtrType EdgeKubernetesArgs
+
+func (*edgeKubernetesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeKubernetes)(nil))
+}
+
+func (i *edgeKubernetesPtrType) ToEdgeKubernetesPtrOutput() EdgeKubernetesPtrOutput {
+	return i.ToEdgeKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeKubernetesPtrType) ToEdgeKubernetesPtrOutputWithContext(ctx context.Context) EdgeKubernetesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesPtrOutput)
+}
+
+// EdgeKubernetesArrayInput is an input type that accepts EdgeKubernetesArray and EdgeKubernetesArrayOutput values.
+// You can construct a concrete instance of `EdgeKubernetesArrayInput` via:
+//
+//          EdgeKubernetesArray{ EdgeKubernetesArgs{...} }
+type EdgeKubernetesArrayInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesArrayOutput() EdgeKubernetesArrayOutput
+	ToEdgeKubernetesArrayOutputWithContext(context.Context) EdgeKubernetesArrayOutput
+}
+
+type EdgeKubernetesArray []EdgeKubernetesInput
+
+func (EdgeKubernetesArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*EdgeKubernetes)(nil))
+}
+
+func (i EdgeKubernetesArray) ToEdgeKubernetesArrayOutput() EdgeKubernetesArrayOutput {
+	return i.ToEdgeKubernetesArrayOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesArray) ToEdgeKubernetesArrayOutputWithContext(ctx context.Context) EdgeKubernetesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesArrayOutput)
+}
+
+// EdgeKubernetesMapInput is an input type that accepts EdgeKubernetesMap and EdgeKubernetesMapOutput values.
+// You can construct a concrete instance of `EdgeKubernetesMapInput` via:
+//
+//          EdgeKubernetesMap{ "key": EdgeKubernetesArgs{...} }
+type EdgeKubernetesMapInput interface {
+	pulumi.Input
+
+	ToEdgeKubernetesMapOutput() EdgeKubernetesMapOutput
+	ToEdgeKubernetesMapOutputWithContext(context.Context) EdgeKubernetesMapOutput
+}
+
+type EdgeKubernetesMap map[string]EdgeKubernetesInput
+
+func (EdgeKubernetesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*EdgeKubernetes)(nil))
+}
+
+func (i EdgeKubernetesMap) ToEdgeKubernetesMapOutput() EdgeKubernetesMapOutput {
+	return i.ToEdgeKubernetesMapOutputWithContext(context.Background())
+}
+
+func (i EdgeKubernetesMap) ToEdgeKubernetesMapOutputWithContext(ctx context.Context) EdgeKubernetesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeKubernetesMapOutput)
+}
+
 type EdgeKubernetesOutput struct {
 	*pulumi.OutputState
 }
@@ -487,6 +566,75 @@ func (o EdgeKubernetesOutput) ToEdgeKubernetesOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o EdgeKubernetesOutput) ToEdgeKubernetesPtrOutput() EdgeKubernetesPtrOutput {
+	return o.ToEdgeKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeKubernetesOutput) ToEdgeKubernetesPtrOutputWithContext(ctx context.Context) EdgeKubernetesPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetes) *EdgeKubernetes {
+		return &v
+	}).(EdgeKubernetesPtrOutput)
+}
+
+type EdgeKubernetesPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EdgeKubernetesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeKubernetes)(nil))
+}
+
+func (o EdgeKubernetesPtrOutput) ToEdgeKubernetesPtrOutput() EdgeKubernetesPtrOutput {
+	return o
+}
+
+func (o EdgeKubernetesPtrOutput) ToEdgeKubernetesPtrOutputWithContext(ctx context.Context) EdgeKubernetesPtrOutput {
+	return o
+}
+
+type EdgeKubernetesArrayOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeKubernetes)(nil))
+}
+
+func (o EdgeKubernetesArrayOutput) ToEdgeKubernetesArrayOutput() EdgeKubernetesArrayOutput {
+	return o
+}
+
+func (o EdgeKubernetesArrayOutput) ToEdgeKubernetesArrayOutputWithContext(ctx context.Context) EdgeKubernetesArrayOutput {
+	return o
+}
+
+func (o EdgeKubernetesArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeKubernetes {
+		return vs[0].([]EdgeKubernetes)[vs[1].(int)]
+	}).(EdgeKubernetesOutput)
+}
+
+type EdgeKubernetesMapOutput struct{ *pulumi.OutputState }
+
+func (EdgeKubernetesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EdgeKubernetes)(nil))
+}
+
+func (o EdgeKubernetesMapOutput) ToEdgeKubernetesMapOutput() EdgeKubernetesMapOutput {
+	return o
+}
+
+func (o EdgeKubernetesMapOutput) ToEdgeKubernetesMapOutputWithContext(ctx context.Context) EdgeKubernetesMapOutput {
+	return o
+}
+
+func (o EdgeKubernetesMapOutput) MapIndex(k pulumi.StringInput) EdgeKubernetesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EdgeKubernetes {
+		return vs[0].(map[string]EdgeKubernetes)[vs[1].(string)]
+	}).(EdgeKubernetesOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EdgeKubernetesOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesPtrOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesArrayOutput{})
+	pulumi.RegisterOutputType(EdgeKubernetesMapOutput{})
 }

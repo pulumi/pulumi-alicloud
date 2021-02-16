@@ -63,7 +63,8 @@ export class EipAssociation extends pulumi.CustomResource {
     constructor(name: string, args: EipAssociationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EipAssociationArgs | EipAssociationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EipAssociationState | undefined;
             inputs["allocationId"] = state ? state.allocationId : undefined;
             inputs["force"] = state ? state.force : undefined;
@@ -72,10 +73,10 @@ export class EipAssociation extends pulumi.CustomResource {
             inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
         } else {
             const args = argsOrState as EipAssociationArgs | undefined;
-            if ((!args || args.allocationId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.allocationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'allocationId'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["allocationId"] = args ? args.allocationId : undefined;
@@ -84,12 +85,8 @@ export class EipAssociation extends pulumi.CustomResource {
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EipAssociation.__pulumiType, name, inputs, opts);
     }

@@ -32,13 +32,13 @@ __all__ = [
 
 __config__ = pulumi.Config('alicloud')
 
-access_key = __config__.get('accessKey') or _utilities.get_env('ALICLOUD_ACCESS_KEY')
+access_key = __config__.get('accessKey')
 """
 The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
 console.
 """
 
-account_id = __config__.get('accountId') or _utilities.get_env('ALICLOUD_ACCOUNT_ID')
+account_id = __config__.get('accountId')
 """
 The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 Alibaba Cloud console.
@@ -79,18 +79,18 @@ region = __config__.get('region') or _utilities.get_env('ALICLOUD_REGION')
 The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
 """
 
-secret_key = __config__.get('secretKey') or _utilities.get_env('ALICLOUD_SECRET_KEY')
+secret_key = __config__.get('secretKey')
 """
 The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
 console.
 """
 
-security_token = __config__.get('securityToken') or _utilities.get_env('ALICLOUD_SECURITY_TOKEN')
+security_token = __config__.get('securityToken')
 """
 security token. A security token is only required if you are using Security Token Service.
 """
 
-shared_credentials_file = __config__.get('sharedCredentialsFile') or _utilities.get_env('ALICLOUD_SHARED_CREDENTIALS_FILE')
+shared_credentials_file = __config__.get('sharedCredentialsFile')
 """
 The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 """

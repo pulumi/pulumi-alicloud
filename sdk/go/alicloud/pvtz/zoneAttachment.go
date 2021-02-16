@@ -144,6 +144,85 @@ func (i *ZoneAttachment) ToZoneAttachmentOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentOutput)
 }
 
+func (i *ZoneAttachment) ToZoneAttachmentPtrOutput() ZoneAttachmentPtrOutput {
+	return i.ToZoneAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *ZoneAttachment) ToZoneAttachmentPtrOutputWithContext(ctx context.Context) ZoneAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentPtrOutput)
+}
+
+type ZoneAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToZoneAttachmentPtrOutput() ZoneAttachmentPtrOutput
+	ToZoneAttachmentPtrOutputWithContext(ctx context.Context) ZoneAttachmentPtrOutput
+}
+
+type zoneAttachmentPtrType ZoneAttachmentArgs
+
+func (*zoneAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneAttachment)(nil))
+}
+
+func (i *zoneAttachmentPtrType) ToZoneAttachmentPtrOutput() ZoneAttachmentPtrOutput {
+	return i.ToZoneAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneAttachmentPtrType) ToZoneAttachmentPtrOutputWithContext(ctx context.Context) ZoneAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentPtrOutput)
+}
+
+// ZoneAttachmentArrayInput is an input type that accepts ZoneAttachmentArray and ZoneAttachmentArrayOutput values.
+// You can construct a concrete instance of `ZoneAttachmentArrayInput` via:
+//
+//          ZoneAttachmentArray{ ZoneAttachmentArgs{...} }
+type ZoneAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToZoneAttachmentArrayOutput() ZoneAttachmentArrayOutput
+	ToZoneAttachmentArrayOutputWithContext(context.Context) ZoneAttachmentArrayOutput
+}
+
+type ZoneAttachmentArray []ZoneAttachmentInput
+
+func (ZoneAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ZoneAttachment)(nil))
+}
+
+func (i ZoneAttachmentArray) ToZoneAttachmentArrayOutput() ZoneAttachmentArrayOutput {
+	return i.ToZoneAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i ZoneAttachmentArray) ToZoneAttachmentArrayOutputWithContext(ctx context.Context) ZoneAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentArrayOutput)
+}
+
+// ZoneAttachmentMapInput is an input type that accepts ZoneAttachmentMap and ZoneAttachmentMapOutput values.
+// You can construct a concrete instance of `ZoneAttachmentMapInput` via:
+//
+//          ZoneAttachmentMap{ "key": ZoneAttachmentArgs{...} }
+type ZoneAttachmentMapInput interface {
+	pulumi.Input
+
+	ToZoneAttachmentMapOutput() ZoneAttachmentMapOutput
+	ToZoneAttachmentMapOutputWithContext(context.Context) ZoneAttachmentMapOutput
+}
+
+type ZoneAttachmentMap map[string]ZoneAttachmentInput
+
+func (ZoneAttachmentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ZoneAttachment)(nil))
+}
+
+func (i ZoneAttachmentMap) ToZoneAttachmentMapOutput() ZoneAttachmentMapOutput {
+	return i.ToZoneAttachmentMapOutputWithContext(context.Background())
+}
+
+func (i ZoneAttachmentMap) ToZoneAttachmentMapOutputWithContext(ctx context.Context) ZoneAttachmentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentMapOutput)
+}
+
 type ZoneAttachmentOutput struct {
 	*pulumi.OutputState
 }
@@ -160,6 +239,75 @@ func (o ZoneAttachmentOutput) ToZoneAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ZoneAttachmentOutput) ToZoneAttachmentPtrOutput() ZoneAttachmentPtrOutput {
+	return o.ToZoneAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneAttachmentOutput) ToZoneAttachmentPtrOutputWithContext(ctx context.Context) ZoneAttachmentPtrOutput {
+	return o.ApplyT(func(v ZoneAttachment) *ZoneAttachment {
+		return &v
+	}).(ZoneAttachmentPtrOutput)
+}
+
+type ZoneAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneAttachment)(nil))
+}
+
+func (o ZoneAttachmentPtrOutput) ToZoneAttachmentPtrOutput() ZoneAttachmentPtrOutput {
+	return o
+}
+
+func (o ZoneAttachmentPtrOutput) ToZoneAttachmentPtrOutputWithContext(ctx context.Context) ZoneAttachmentPtrOutput {
+	return o
+}
+
+type ZoneAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (ZoneAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneAttachment)(nil))
+}
+
+func (o ZoneAttachmentArrayOutput) ToZoneAttachmentArrayOutput() ZoneAttachmentArrayOutput {
+	return o
+}
+
+func (o ZoneAttachmentArrayOutput) ToZoneAttachmentArrayOutputWithContext(ctx context.Context) ZoneAttachmentArrayOutput {
+	return o
+}
+
+func (o ZoneAttachmentArrayOutput) Index(i pulumi.IntInput) ZoneAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneAttachment {
+		return vs[0].([]ZoneAttachment)[vs[1].(int)]
+	}).(ZoneAttachmentOutput)
+}
+
+type ZoneAttachmentMapOutput struct{ *pulumi.OutputState }
+
+func (ZoneAttachmentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ZoneAttachment)(nil))
+}
+
+func (o ZoneAttachmentMapOutput) ToZoneAttachmentMapOutput() ZoneAttachmentMapOutput {
+	return o
+}
+
+func (o ZoneAttachmentMapOutput) ToZoneAttachmentMapOutputWithContext(ctx context.Context) ZoneAttachmentMapOutput {
+	return o
+}
+
+func (o ZoneAttachmentMapOutput) MapIndex(k pulumi.StringInput) ZoneAttachmentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ZoneAttachment {
+		return vs[0].(map[string]ZoneAttachment)[vs[1].(string)]
+	}).(ZoneAttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ZoneAttachmentOutput{})
+	pulumi.RegisterOutputType(ZoneAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(ZoneAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(ZoneAttachmentMapOutput{})
 }

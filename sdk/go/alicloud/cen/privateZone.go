@@ -210,6 +210,85 @@ func (i *PrivateZone) ToPrivateZoneOutputWithContext(ctx context.Context) Privat
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateZoneOutput)
 }
 
+func (i *PrivateZone) ToPrivateZonePtrOutput() PrivateZonePtrOutput {
+	return i.ToPrivateZonePtrOutputWithContext(context.Background())
+}
+
+func (i *PrivateZone) ToPrivateZonePtrOutputWithContext(ctx context.Context) PrivateZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateZonePtrOutput)
+}
+
+type PrivateZonePtrInput interface {
+	pulumi.Input
+
+	ToPrivateZonePtrOutput() PrivateZonePtrOutput
+	ToPrivateZonePtrOutputWithContext(ctx context.Context) PrivateZonePtrOutput
+}
+
+type privateZonePtrType PrivateZoneArgs
+
+func (*privateZonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateZone)(nil))
+}
+
+func (i *privateZonePtrType) ToPrivateZonePtrOutput() PrivateZonePtrOutput {
+	return i.ToPrivateZonePtrOutputWithContext(context.Background())
+}
+
+func (i *privateZonePtrType) ToPrivateZonePtrOutputWithContext(ctx context.Context) PrivateZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateZonePtrOutput)
+}
+
+// PrivateZoneArrayInput is an input type that accepts PrivateZoneArray and PrivateZoneArrayOutput values.
+// You can construct a concrete instance of `PrivateZoneArrayInput` via:
+//
+//          PrivateZoneArray{ PrivateZoneArgs{...} }
+type PrivateZoneArrayInput interface {
+	pulumi.Input
+
+	ToPrivateZoneArrayOutput() PrivateZoneArrayOutput
+	ToPrivateZoneArrayOutputWithContext(context.Context) PrivateZoneArrayOutput
+}
+
+type PrivateZoneArray []PrivateZoneInput
+
+func (PrivateZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*PrivateZone)(nil))
+}
+
+func (i PrivateZoneArray) ToPrivateZoneArrayOutput() PrivateZoneArrayOutput {
+	return i.ToPrivateZoneArrayOutputWithContext(context.Background())
+}
+
+func (i PrivateZoneArray) ToPrivateZoneArrayOutputWithContext(ctx context.Context) PrivateZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateZoneArrayOutput)
+}
+
+// PrivateZoneMapInput is an input type that accepts PrivateZoneMap and PrivateZoneMapOutput values.
+// You can construct a concrete instance of `PrivateZoneMapInput` via:
+//
+//          PrivateZoneMap{ "key": PrivateZoneArgs{...} }
+type PrivateZoneMapInput interface {
+	pulumi.Input
+
+	ToPrivateZoneMapOutput() PrivateZoneMapOutput
+	ToPrivateZoneMapOutputWithContext(context.Context) PrivateZoneMapOutput
+}
+
+type PrivateZoneMap map[string]PrivateZoneInput
+
+func (PrivateZoneMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*PrivateZone)(nil))
+}
+
+func (i PrivateZoneMap) ToPrivateZoneMapOutput() PrivateZoneMapOutput {
+	return i.ToPrivateZoneMapOutputWithContext(context.Background())
+}
+
+func (i PrivateZoneMap) ToPrivateZoneMapOutputWithContext(ctx context.Context) PrivateZoneMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateZoneMapOutput)
+}
+
 type PrivateZoneOutput struct {
 	*pulumi.OutputState
 }
@@ -226,6 +305,75 @@ func (o PrivateZoneOutput) ToPrivateZoneOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o PrivateZoneOutput) ToPrivateZonePtrOutput() PrivateZonePtrOutput {
+	return o.ToPrivateZonePtrOutputWithContext(context.Background())
+}
+
+func (o PrivateZoneOutput) ToPrivateZonePtrOutputWithContext(ctx context.Context) PrivateZonePtrOutput {
+	return o.ApplyT(func(v PrivateZone) *PrivateZone {
+		return &v
+	}).(PrivateZonePtrOutput)
+}
+
+type PrivateZonePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PrivateZonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateZone)(nil))
+}
+
+func (o PrivateZonePtrOutput) ToPrivateZonePtrOutput() PrivateZonePtrOutput {
+	return o
+}
+
+func (o PrivateZonePtrOutput) ToPrivateZonePtrOutputWithContext(ctx context.Context) PrivateZonePtrOutput {
+	return o
+}
+
+type PrivateZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateZone)(nil))
+}
+
+func (o PrivateZoneArrayOutput) ToPrivateZoneArrayOutput() PrivateZoneArrayOutput {
+	return o
+}
+
+func (o PrivateZoneArrayOutput) ToPrivateZoneArrayOutputWithContext(ctx context.Context) PrivateZoneArrayOutput {
+	return o
+}
+
+func (o PrivateZoneArrayOutput) Index(i pulumi.IntInput) PrivateZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateZone {
+		return vs[0].([]PrivateZone)[vs[1].(int)]
+	}).(PrivateZoneOutput)
+}
+
+type PrivateZoneMapOutput struct{ *pulumi.OutputState }
+
+func (PrivateZoneMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PrivateZone)(nil))
+}
+
+func (o PrivateZoneMapOutput) ToPrivateZoneMapOutput() PrivateZoneMapOutput {
+	return o
+}
+
+func (o PrivateZoneMapOutput) ToPrivateZoneMapOutputWithContext(ctx context.Context) PrivateZoneMapOutput {
+	return o
+}
+
+func (o PrivateZoneMapOutput) MapIndex(k pulumi.StringInput) PrivateZoneOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PrivateZone {
+		return vs[0].(map[string]PrivateZone)[vs[1].(string)]
+	}).(PrivateZoneOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PrivateZoneOutput{})
+	pulumi.RegisterOutputType(PrivateZonePtrOutput{})
+	pulumi.RegisterOutputType(PrivateZoneArrayOutput{})
+	pulumi.RegisterOutputType(PrivateZoneMapOutput{})
 }

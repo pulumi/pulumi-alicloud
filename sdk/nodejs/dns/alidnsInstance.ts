@@ -106,7 +106,8 @@ export class AlidnsInstance extends pulumi.CustomResource {
     constructor(name: string, args: AlidnsInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlidnsInstanceArgs | AlidnsInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AlidnsInstanceState | undefined;
             inputs["dnsSecurity"] = state ? state.dnsSecurity : undefined;
             inputs["domainNumbers"] = state ? state.domainNumbers : undefined;
@@ -118,13 +119,13 @@ export class AlidnsInstance extends pulumi.CustomResource {
             inputs["versionName"] = state ? state.versionName : undefined;
         } else {
             const args = argsOrState as AlidnsInstanceArgs | undefined;
-            if ((!args || args.dnsSecurity === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dnsSecurity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dnsSecurity'");
             }
-            if ((!args || args.domainNumbers === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainNumbers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainNumbers'");
             }
-            if ((!args || args.versionCode === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.versionCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versionCode'");
             }
             inputs["dnsSecurity"] = args ? args.dnsSecurity : undefined;
@@ -136,12 +137,8 @@ export class AlidnsInstance extends pulumi.CustomResource {
             inputs["versionCode"] = args ? args.versionCode : undefined;
             inputs["versionName"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AlidnsInstance.__pulumiType, name, inputs, opts);
     }

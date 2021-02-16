@@ -124,7 +124,8 @@ export class ForwardEntry extends pulumi.CustomResource {
     constructor(name: string, args: ForwardEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ForwardEntryArgs | ForwardEntryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ForwardEntryState | undefined;
             inputs["externalIp"] = state ? state.externalIp : undefined;
             inputs["externalPort"] = state ? state.externalPort : undefined;
@@ -136,22 +137,22 @@ export class ForwardEntry extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ForwardEntryArgs | undefined;
-            if ((!args || args.externalIp === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.externalIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'externalIp'");
             }
-            if ((!args || args.externalPort === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.externalPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'externalPort'");
             }
-            if ((!args || args.forwardTableId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.forwardTableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'forwardTableId'");
             }
-            if ((!args || args.internalIp === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.internalIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'internalIp'");
             }
-            if ((!args || args.internalPort === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.internalPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'internalPort'");
             }
-            if ((!args || args.ipProtocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ipProtocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
             inputs["externalIp"] = args ? args.externalIp : undefined;
@@ -163,12 +164,8 @@ export class ForwardEntry extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["forwardEntryId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ForwardEntry.__pulumiType, name, inputs, opts);
     }

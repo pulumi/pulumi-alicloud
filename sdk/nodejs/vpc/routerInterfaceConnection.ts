@@ -128,7 +128,8 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
     constructor(name: string, args: RouterInterfaceConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterInterfaceConnectionArgs | RouterInterfaceConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouterInterfaceConnectionState | undefined;
             inputs["interfaceId"] = state ? state.interfaceId : undefined;
             inputs["oppositeInterfaceId"] = state ? state.oppositeInterfaceId : undefined;
@@ -137,10 +138,10 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
             inputs["oppositeRouterType"] = state ? state.oppositeRouterType : undefined;
         } else {
             const args = argsOrState as RouterInterfaceConnectionArgs | undefined;
-            if ((!args || args.interfaceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.interfaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'interfaceId'");
             }
-            if ((!args || args.oppositeInterfaceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.oppositeInterfaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oppositeInterfaceId'");
             }
             inputs["interfaceId"] = args ? args.interfaceId : undefined;
@@ -149,12 +150,8 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
             inputs["oppositeRouterId"] = args ? args.oppositeRouterId : undefined;
             inputs["oppositeRouterType"] = args ? args.oppositeRouterType : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RouterInterfaceConnection.__pulumiType, name, inputs, opts);
     }

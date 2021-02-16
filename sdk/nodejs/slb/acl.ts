@@ -127,7 +127,8 @@ export class Acl extends pulumi.CustomResource {
     constructor(name: string, args?: AclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclArgs | AclState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AclState | undefined;
             inputs["entryLists"] = state ? state.entryLists : undefined;
             inputs["ipVersion"] = state ? state.ipVersion : undefined;
@@ -142,12 +143,8 @@ export class Acl extends pulumi.CustomResource {
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Acl.__pulumiType, name, inputs, opts);
     }

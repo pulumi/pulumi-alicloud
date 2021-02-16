@@ -27,7 +27,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/alikafka"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -226,6 +225,85 @@ func (i *SaslUser) ToSaslUserOutputWithContext(ctx context.Context) SaslUserOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SaslUserOutput)
 }
 
+func (i *SaslUser) ToSaslUserPtrOutput() SaslUserPtrOutput {
+	return i.ToSaslUserPtrOutputWithContext(context.Background())
+}
+
+func (i *SaslUser) ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaslUserPtrOutput)
+}
+
+type SaslUserPtrInput interface {
+	pulumi.Input
+
+	ToSaslUserPtrOutput() SaslUserPtrOutput
+	ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput
+}
+
+type saslUserPtrType SaslUserArgs
+
+func (*saslUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SaslUser)(nil))
+}
+
+func (i *saslUserPtrType) ToSaslUserPtrOutput() SaslUserPtrOutput {
+	return i.ToSaslUserPtrOutputWithContext(context.Background())
+}
+
+func (i *saslUserPtrType) ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaslUserPtrOutput)
+}
+
+// SaslUserArrayInput is an input type that accepts SaslUserArray and SaslUserArrayOutput values.
+// You can construct a concrete instance of `SaslUserArrayInput` via:
+//
+//          SaslUserArray{ SaslUserArgs{...} }
+type SaslUserArrayInput interface {
+	pulumi.Input
+
+	ToSaslUserArrayOutput() SaslUserArrayOutput
+	ToSaslUserArrayOutputWithContext(context.Context) SaslUserArrayOutput
+}
+
+type SaslUserArray []SaslUserInput
+
+func (SaslUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SaslUser)(nil))
+}
+
+func (i SaslUserArray) ToSaslUserArrayOutput() SaslUserArrayOutput {
+	return i.ToSaslUserArrayOutputWithContext(context.Background())
+}
+
+func (i SaslUserArray) ToSaslUserArrayOutputWithContext(ctx context.Context) SaslUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaslUserArrayOutput)
+}
+
+// SaslUserMapInput is an input type that accepts SaslUserMap and SaslUserMapOutput values.
+// You can construct a concrete instance of `SaslUserMapInput` via:
+//
+//          SaslUserMap{ "key": SaslUserArgs{...} }
+type SaslUserMapInput interface {
+	pulumi.Input
+
+	ToSaslUserMapOutput() SaslUserMapOutput
+	ToSaslUserMapOutputWithContext(context.Context) SaslUserMapOutput
+}
+
+type SaslUserMap map[string]SaslUserInput
+
+func (SaslUserMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SaslUser)(nil))
+}
+
+func (i SaslUserMap) ToSaslUserMapOutput() SaslUserMapOutput {
+	return i.ToSaslUserMapOutputWithContext(context.Background())
+}
+
+func (i SaslUserMap) ToSaslUserMapOutputWithContext(ctx context.Context) SaslUserMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SaslUserMapOutput)
+}
+
 type SaslUserOutput struct {
 	*pulumi.OutputState
 }
@@ -242,6 +320,75 @@ func (o SaslUserOutput) ToSaslUserOutputWithContext(ctx context.Context) SaslUse
 	return o
 }
 
+func (o SaslUserOutput) ToSaslUserPtrOutput() SaslUserPtrOutput {
+	return o.ToSaslUserPtrOutputWithContext(context.Background())
+}
+
+func (o SaslUserOutput) ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput {
+	return o.ApplyT(func(v SaslUser) *SaslUser {
+		return &v
+	}).(SaslUserPtrOutput)
+}
+
+type SaslUserPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SaslUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SaslUser)(nil))
+}
+
+func (o SaslUserPtrOutput) ToSaslUserPtrOutput() SaslUserPtrOutput {
+	return o
+}
+
+func (o SaslUserPtrOutput) ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput {
+	return o
+}
+
+type SaslUserArrayOutput struct{ *pulumi.OutputState }
+
+func (SaslUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SaslUser)(nil))
+}
+
+func (o SaslUserArrayOutput) ToSaslUserArrayOutput() SaslUserArrayOutput {
+	return o
+}
+
+func (o SaslUserArrayOutput) ToSaslUserArrayOutputWithContext(ctx context.Context) SaslUserArrayOutput {
+	return o
+}
+
+func (o SaslUserArrayOutput) Index(i pulumi.IntInput) SaslUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SaslUser {
+		return vs[0].([]SaslUser)[vs[1].(int)]
+	}).(SaslUserOutput)
+}
+
+type SaslUserMapOutput struct{ *pulumi.OutputState }
+
+func (SaslUserMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SaslUser)(nil))
+}
+
+func (o SaslUserMapOutput) ToSaslUserMapOutput() SaslUserMapOutput {
+	return o
+}
+
+func (o SaslUserMapOutput) ToSaslUserMapOutputWithContext(ctx context.Context) SaslUserMapOutput {
+	return o
+}
+
+func (o SaslUserMapOutput) MapIndex(k pulumi.StringInput) SaslUserOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SaslUser {
+		return vs[0].(map[string]SaslUser)[vs[1].(string)]
+	}).(SaslUserOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SaslUserOutput{})
+	pulumi.RegisterOutputType(SaslUserPtrOutput{})
+	pulumi.RegisterOutputType(SaslUserArrayOutput{})
+	pulumi.RegisterOutputType(SaslUserMapOutput{})
 }

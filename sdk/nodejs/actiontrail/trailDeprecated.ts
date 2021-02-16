@@ -93,7 +93,8 @@ export class TrailDeprecated extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TrailDeprecatedArgs | TrailDeprecatedState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("TrailDeprecated is deprecated: Resource renamed to `Trail`")
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TrailDeprecatedState | undefined;
             inputs["eventRw"] = state ? state.eventRw : undefined;
             inputs["isOrganizationTrail"] = state ? state.isOrganizationTrail : undefined;
@@ -122,12 +123,8 @@ export class TrailDeprecated extends pulumi.CustomResource {
             inputs["trailName"] = args ? args.trailName : undefined;
             inputs["trailRegion"] = args ? args.trailRegion : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TrailDeprecated.__pulumiType, name, inputs, opts);
     }

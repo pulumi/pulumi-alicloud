@@ -321,7 +321,8 @@ export class Bucket extends pulumi.CustomResource {
     constructor(name: string, args?: BucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BucketArgs | BucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BucketState | undefined;
             inputs["acl"] = state ? state.acl : undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
@@ -366,12 +367,8 @@ export class Bucket extends pulumi.CustomResource {
             inputs["location"] = undefined /*out*/;
             inputs["owner"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Bucket.__pulumiType, name, inputs, opts);
     }

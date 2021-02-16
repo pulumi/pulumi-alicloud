@@ -93,7 +93,8 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["clusterName"] = state ? state.clusterName : undefined;
             inputs["clusterType"] = state ? state.clusterType : undefined;
@@ -102,13 +103,13 @@ export class Cluster extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.clusterName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.clusterType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterType'");
             }
-            if ((!args || args.networkMode === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.networkMode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkMode'");
             }
             inputs["clusterName"] = args ? args.clusterName : undefined;
@@ -117,12 +118,8 @@ export class Cluster extends pulumi.CustomResource {
             inputs["networkMode"] = args ? args.networkMode : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Cluster.__pulumiType, name, inputs, opts);
     }

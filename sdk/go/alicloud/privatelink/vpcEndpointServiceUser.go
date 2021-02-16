@@ -159,6 +159,85 @@ func (i *VpcEndpointServiceUser) ToVpcEndpointServiceUserOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceUserOutput)
 }
 
+func (i *VpcEndpointServiceUser) ToVpcEndpointServiceUserPtrOutput() VpcEndpointServiceUserPtrOutput {
+	return i.ToVpcEndpointServiceUserPtrOutputWithContext(context.Background())
+}
+
+func (i *VpcEndpointServiceUser) ToVpcEndpointServiceUserPtrOutputWithContext(ctx context.Context) VpcEndpointServiceUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceUserPtrOutput)
+}
+
+type VpcEndpointServiceUserPtrInput interface {
+	pulumi.Input
+
+	ToVpcEndpointServiceUserPtrOutput() VpcEndpointServiceUserPtrOutput
+	ToVpcEndpointServiceUserPtrOutputWithContext(ctx context.Context) VpcEndpointServiceUserPtrOutput
+}
+
+type vpcEndpointServiceUserPtrType VpcEndpointServiceUserArgs
+
+func (*vpcEndpointServiceUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcEndpointServiceUser)(nil))
+}
+
+func (i *vpcEndpointServiceUserPtrType) ToVpcEndpointServiceUserPtrOutput() VpcEndpointServiceUserPtrOutput {
+	return i.ToVpcEndpointServiceUserPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcEndpointServiceUserPtrType) ToVpcEndpointServiceUserPtrOutputWithContext(ctx context.Context) VpcEndpointServiceUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceUserPtrOutput)
+}
+
+// VpcEndpointServiceUserArrayInput is an input type that accepts VpcEndpointServiceUserArray and VpcEndpointServiceUserArrayOutput values.
+// You can construct a concrete instance of `VpcEndpointServiceUserArrayInput` via:
+//
+//          VpcEndpointServiceUserArray{ VpcEndpointServiceUserArgs{...} }
+type VpcEndpointServiceUserArrayInput interface {
+	pulumi.Input
+
+	ToVpcEndpointServiceUserArrayOutput() VpcEndpointServiceUserArrayOutput
+	ToVpcEndpointServiceUserArrayOutputWithContext(context.Context) VpcEndpointServiceUserArrayOutput
+}
+
+type VpcEndpointServiceUserArray []VpcEndpointServiceUserInput
+
+func (VpcEndpointServiceUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*VpcEndpointServiceUser)(nil))
+}
+
+func (i VpcEndpointServiceUserArray) ToVpcEndpointServiceUserArrayOutput() VpcEndpointServiceUserArrayOutput {
+	return i.ToVpcEndpointServiceUserArrayOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointServiceUserArray) ToVpcEndpointServiceUserArrayOutputWithContext(ctx context.Context) VpcEndpointServiceUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceUserArrayOutput)
+}
+
+// VpcEndpointServiceUserMapInput is an input type that accepts VpcEndpointServiceUserMap and VpcEndpointServiceUserMapOutput values.
+// You can construct a concrete instance of `VpcEndpointServiceUserMapInput` via:
+//
+//          VpcEndpointServiceUserMap{ "key": VpcEndpointServiceUserArgs{...} }
+type VpcEndpointServiceUserMapInput interface {
+	pulumi.Input
+
+	ToVpcEndpointServiceUserMapOutput() VpcEndpointServiceUserMapOutput
+	ToVpcEndpointServiceUserMapOutputWithContext(context.Context) VpcEndpointServiceUserMapOutput
+}
+
+type VpcEndpointServiceUserMap map[string]VpcEndpointServiceUserInput
+
+func (VpcEndpointServiceUserMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*VpcEndpointServiceUser)(nil))
+}
+
+func (i VpcEndpointServiceUserMap) ToVpcEndpointServiceUserMapOutput() VpcEndpointServiceUserMapOutput {
+	return i.ToVpcEndpointServiceUserMapOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointServiceUserMap) ToVpcEndpointServiceUserMapOutputWithContext(ctx context.Context) VpcEndpointServiceUserMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceUserMapOutput)
+}
+
 type VpcEndpointServiceUserOutput struct {
 	*pulumi.OutputState
 }
@@ -175,6 +254,75 @@ func (o VpcEndpointServiceUserOutput) ToVpcEndpointServiceUserOutputWithContext(
 	return o
 }
 
+func (o VpcEndpointServiceUserOutput) ToVpcEndpointServiceUserPtrOutput() VpcEndpointServiceUserPtrOutput {
+	return o.ToVpcEndpointServiceUserPtrOutputWithContext(context.Background())
+}
+
+func (o VpcEndpointServiceUserOutput) ToVpcEndpointServiceUserPtrOutputWithContext(ctx context.Context) VpcEndpointServiceUserPtrOutput {
+	return o.ApplyT(func(v VpcEndpointServiceUser) *VpcEndpointServiceUser {
+		return &v
+	}).(VpcEndpointServiceUserPtrOutput)
+}
+
+type VpcEndpointServiceUserPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointServiceUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcEndpointServiceUser)(nil))
+}
+
+func (o VpcEndpointServiceUserPtrOutput) ToVpcEndpointServiceUserPtrOutput() VpcEndpointServiceUserPtrOutput {
+	return o
+}
+
+func (o VpcEndpointServiceUserPtrOutput) ToVpcEndpointServiceUserPtrOutputWithContext(ctx context.Context) VpcEndpointServiceUserPtrOutput {
+	return o
+}
+
+type VpcEndpointServiceUserArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcEndpointServiceUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcEndpointServiceUser)(nil))
+}
+
+func (o VpcEndpointServiceUserArrayOutput) ToVpcEndpointServiceUserArrayOutput() VpcEndpointServiceUserArrayOutput {
+	return o
+}
+
+func (o VpcEndpointServiceUserArrayOutput) ToVpcEndpointServiceUserArrayOutputWithContext(ctx context.Context) VpcEndpointServiceUserArrayOutput {
+	return o
+}
+
+func (o VpcEndpointServiceUserArrayOutput) Index(i pulumi.IntInput) VpcEndpointServiceUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcEndpointServiceUser {
+		return vs[0].([]VpcEndpointServiceUser)[vs[1].(int)]
+	}).(VpcEndpointServiceUserOutput)
+}
+
+type VpcEndpointServiceUserMapOutput struct{ *pulumi.OutputState }
+
+func (VpcEndpointServiceUserMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VpcEndpointServiceUser)(nil))
+}
+
+func (o VpcEndpointServiceUserMapOutput) ToVpcEndpointServiceUserMapOutput() VpcEndpointServiceUserMapOutput {
+	return o
+}
+
+func (o VpcEndpointServiceUserMapOutput) ToVpcEndpointServiceUserMapOutputWithContext(ctx context.Context) VpcEndpointServiceUserMapOutput {
+	return o
+}
+
+func (o VpcEndpointServiceUserMapOutput) MapIndex(k pulumi.StringInput) VpcEndpointServiceUserOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VpcEndpointServiceUser {
+		return vs[0].(map[string]VpcEndpointServiceUser)[vs[1].(string)]
+	}).(VpcEndpointServiceUserOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcEndpointServiceUserOutput{})
+	pulumi.RegisterOutputType(VpcEndpointServiceUserPtrOutput{})
+	pulumi.RegisterOutputType(VpcEndpointServiceUserArrayOutput{})
+	pulumi.RegisterOutputType(VpcEndpointServiceUserMapOutput{})
 }

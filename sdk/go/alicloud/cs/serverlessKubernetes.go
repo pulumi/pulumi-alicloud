@@ -294,6 +294,85 @@ func (i *ServerlessKubernetes) ToServerlessKubernetesOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesOutput)
 }
 
+func (i *ServerlessKubernetes) ToServerlessKubernetesPtrOutput() ServerlessKubernetesPtrOutput {
+	return i.ToServerlessKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (i *ServerlessKubernetes) ToServerlessKubernetesPtrOutputWithContext(ctx context.Context) ServerlessKubernetesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesPtrOutput)
+}
+
+type ServerlessKubernetesPtrInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesPtrOutput() ServerlessKubernetesPtrOutput
+	ToServerlessKubernetesPtrOutputWithContext(ctx context.Context) ServerlessKubernetesPtrOutput
+}
+
+type serverlessKubernetesPtrType ServerlessKubernetesArgs
+
+func (*serverlessKubernetesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessKubernetes)(nil))
+}
+
+func (i *serverlessKubernetesPtrType) ToServerlessKubernetesPtrOutput() ServerlessKubernetesPtrOutput {
+	return i.ToServerlessKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (i *serverlessKubernetesPtrType) ToServerlessKubernetesPtrOutputWithContext(ctx context.Context) ServerlessKubernetesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesPtrOutput)
+}
+
+// ServerlessKubernetesArrayInput is an input type that accepts ServerlessKubernetesArray and ServerlessKubernetesArrayOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesArrayInput` via:
+//
+//          ServerlessKubernetesArray{ ServerlessKubernetesArgs{...} }
+type ServerlessKubernetesArrayInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesArrayOutput() ServerlessKubernetesArrayOutput
+	ToServerlessKubernetesArrayOutputWithContext(context.Context) ServerlessKubernetesArrayOutput
+}
+
+type ServerlessKubernetesArray []ServerlessKubernetesInput
+
+func (ServerlessKubernetesArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServerlessKubernetes)(nil))
+}
+
+func (i ServerlessKubernetesArray) ToServerlessKubernetesArrayOutput() ServerlessKubernetesArrayOutput {
+	return i.ToServerlessKubernetesArrayOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesArray) ToServerlessKubernetesArrayOutputWithContext(ctx context.Context) ServerlessKubernetesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesArrayOutput)
+}
+
+// ServerlessKubernetesMapInput is an input type that accepts ServerlessKubernetesMap and ServerlessKubernetesMapOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesMapInput` via:
+//
+//          ServerlessKubernetesMap{ "key": ServerlessKubernetesArgs{...} }
+type ServerlessKubernetesMapInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesMapOutput() ServerlessKubernetesMapOutput
+	ToServerlessKubernetesMapOutputWithContext(context.Context) ServerlessKubernetesMapOutput
+}
+
+type ServerlessKubernetesMap map[string]ServerlessKubernetesInput
+
+func (ServerlessKubernetesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServerlessKubernetes)(nil))
+}
+
+func (i ServerlessKubernetesMap) ToServerlessKubernetesMapOutput() ServerlessKubernetesMapOutput {
+	return i.ToServerlessKubernetesMapOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesMap) ToServerlessKubernetesMapOutputWithContext(ctx context.Context) ServerlessKubernetesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesMapOutput)
+}
+
 type ServerlessKubernetesOutput struct {
 	*pulumi.OutputState
 }
@@ -310,6 +389,75 @@ func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutputWithContext(ctx 
 	return o
 }
 
+func (o ServerlessKubernetesOutput) ToServerlessKubernetesPtrOutput() ServerlessKubernetesPtrOutput {
+	return o.ToServerlessKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessKubernetesOutput) ToServerlessKubernetesPtrOutputWithContext(ctx context.Context) ServerlessKubernetesPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetes) *ServerlessKubernetes {
+		return &v
+	}).(ServerlessKubernetesPtrOutput)
+}
+
+type ServerlessKubernetesPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerlessKubernetesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessKubernetes)(nil))
+}
+
+func (o ServerlessKubernetesPtrOutput) ToServerlessKubernetesPtrOutput() ServerlessKubernetesPtrOutput {
+	return o
+}
+
+func (o ServerlessKubernetesPtrOutput) ToServerlessKubernetesPtrOutputWithContext(ctx context.Context) ServerlessKubernetesPtrOutput {
+	return o
+}
+
+type ServerlessKubernetesArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerlessKubernetes)(nil))
+}
+
+func (o ServerlessKubernetesArrayOutput) ToServerlessKubernetesArrayOutput() ServerlessKubernetesArrayOutput {
+	return o
+}
+
+func (o ServerlessKubernetesArrayOutput) ToServerlessKubernetesArrayOutputWithContext(ctx context.Context) ServerlessKubernetesArrayOutput {
+	return o
+}
+
+func (o ServerlessKubernetesArrayOutput) Index(i pulumi.IntInput) ServerlessKubernetesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerlessKubernetes {
+		return vs[0].([]ServerlessKubernetes)[vs[1].(int)]
+	}).(ServerlessKubernetesOutput)
+}
+
+type ServerlessKubernetesMapOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServerlessKubernetes)(nil))
+}
+
+func (o ServerlessKubernetesMapOutput) ToServerlessKubernetesMapOutput() ServerlessKubernetesMapOutput {
+	return o
+}
+
+func (o ServerlessKubernetesMapOutput) ToServerlessKubernetesMapOutputWithContext(ctx context.Context) ServerlessKubernetesMapOutput {
+	return o
+}
+
+func (o ServerlessKubernetesMapOutput) MapIndex(k pulumi.StringInput) ServerlessKubernetesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServerlessKubernetes {
+		return vs[0].(map[string]ServerlessKubernetes)[vs[1].(string)]
+	}).(ServerlessKubernetesOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServerlessKubernetesOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesPtrOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesArrayOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesMapOutput{})
 }

@@ -152,29 +152,26 @@ export class Attachment extends pulumi.CustomResource {
     constructor(name: string, args: AttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AttachmentArgs | AttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AttachmentState | undefined;
             inputs["force"] = state ? state.force : undefined;
             inputs["instanceIds"] = state ? state.instanceIds : undefined;
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
         } else {
             const args = argsOrState as AttachmentArgs | undefined;
-            if ((!args || args.instanceIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
             inputs["force"] = args ? args.force : undefined;
             inputs["instanceIds"] = args ? args.instanceIds : undefined;
             inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Attachment.__pulumiType, name, inputs, opts);
     }

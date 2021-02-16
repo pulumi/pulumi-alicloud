@@ -139,7 +139,8 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
     constructor(name: string, args: FunctionAsyncInvokeConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionAsyncInvokeConfigArgs | FunctionAsyncInvokeConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FunctionAsyncInvokeConfigState | undefined;
             inputs["createdTime"] = state ? state.createdTime : undefined;
             inputs["destinationConfig"] = state ? state.destinationConfig : undefined;
@@ -151,10 +152,10 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
             inputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as FunctionAsyncInvokeConfigArgs | undefined;
-            if ((!args || args.functionName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.functionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["destinationConfig"] = args ? args.destinationConfig : undefined;
@@ -166,12 +167,8 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
             inputs["createdTime"] = undefined /*out*/;
             inputs["lastModifiedTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FunctionAsyncInvokeConfig.__pulumiType, name, inputs, opts);
     }

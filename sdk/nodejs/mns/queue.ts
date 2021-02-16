@@ -76,7 +76,8 @@ export class Queue extends pulumi.CustomResource {
     constructor(name: string, args?: QueueArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QueueArgs | QueueState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as QueueState | undefined;
             inputs["delaySeconds"] = state ? state.delaySeconds : undefined;
             inputs["maximumMessageSize"] = state ? state.maximumMessageSize : undefined;
@@ -93,12 +94,8 @@ export class Queue extends pulumi.CustomResource {
             inputs["pollingWaitSeconds"] = args ? args.pollingWaitSeconds : undefined;
             inputs["visibilityTimeout"] = args ? args.visibilityTimeout : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Queue.__pulumiType, name, inputs, opts);
     }

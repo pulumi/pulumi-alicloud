@@ -80,11 +80,7 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_key is None:
-                access_key = _utilities.get_env('ALICLOUD_ACCESS_KEY')
             __props__['access_key'] = access_key
-            if account_id is None:
-                account_id = _utilities.get_env('ALICLOUD_ACCOUNT_ID')
             __props__['account_id'] = account_id
             __props__['assume_role'] = pulumi.Output.from_input(assume_role).apply(pulumi.runtime.to_json) if assume_role is not None else None
             __props__['configuration_source'] = configuration_source
@@ -115,14 +111,8 @@ class Provider(pulumi.ProviderResource):
             if region is None:
                 region = _utilities.get_env('ALICLOUD_REGION')
             __props__['region'] = region
-            if secret_key is None:
-                secret_key = _utilities.get_env('ALICLOUD_SECRET_KEY')
             __props__['secret_key'] = secret_key
-            if security_token is None:
-                security_token = _utilities.get_env('ALICLOUD_SECURITY_TOKEN')
             __props__['security_token'] = security_token
-            if shared_credentials_file is None:
-                shared_credentials_file = _utilities.get_env('ALICLOUD_SHARED_CREDENTIALS_FILE')
             __props__['shared_credentials_file'] = shared_credentials_file
             __props__['skip_region_validation'] = pulumi.Output.from_input(skip_region_validation).apply(pulumi.runtime.to_json) if skip_region_validation is not None else None
             __props__['source_ip'] = source_ip

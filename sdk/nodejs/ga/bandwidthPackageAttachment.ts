@@ -101,7 +101,8 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
     constructor(name: string, args: BandwidthPackageAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BandwidthPackageAttachmentArgs | BandwidthPackageAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BandwidthPackageAttachmentState | undefined;
             inputs["acceleratorId"] = state ? state.acceleratorId : undefined;
             inputs["accelerators"] = state ? state.accelerators : undefined;
@@ -109,10 +110,10 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as BandwidthPackageAttachmentArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.bandwidthPackageId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bandwidthPackageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthPackageId'");
             }
             inputs["acceleratorId"] = args ? args.acceleratorId : undefined;
@@ -120,12 +121,8 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
             inputs["accelerators"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BandwidthPackageAttachment.__pulumiType, name, inputs, opts);
     }

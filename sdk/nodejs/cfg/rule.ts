@@ -132,7 +132,8 @@ export class Rule extends pulumi.CustomResource {
     constructor(name: string, args: RuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuleArgs | RuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RuleState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["inputParameters"] = state ? state.inputParameters : undefined;
@@ -148,22 +149,22 @@ export class Rule extends pulumi.CustomResource {
             inputs["sourceOwner"] = state ? state.sourceOwner : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.riskLevel === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.riskLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'riskLevel'");
             }
-            if ((!args || args.ruleName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ruleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            if ((!args || args.scopeComplianceResourceTypes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.scopeComplianceResourceTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopeComplianceResourceTypes'");
             }
-            if ((!args || args.sourceDetailMessageType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceDetailMessageType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceDetailMessageType'");
             }
-            if ((!args || args.sourceIdentifier === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceIdentifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceIdentifier'");
             }
-            if ((!args || args.sourceOwner === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceOwner === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceOwner'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -179,12 +180,8 @@ export class Rule extends pulumi.CustomResource {
             inputs["sourceMaximumExecutionFrequency"] = args ? args.sourceMaximumExecutionFrequency : undefined;
             inputs["sourceOwner"] = args ? args.sourceOwner : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Rule.__pulumiType, name, inputs, opts);
     }

@@ -249,6 +249,85 @@ func (i *CustomDomain) ToCustomDomainOutputWithContext(ctx context.Context) Cust
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainOutput)
 }
 
+func (i *CustomDomain) ToCustomDomainPtrOutput() CustomDomainPtrOutput {
+	return i.ToCustomDomainPtrOutputWithContext(context.Background())
+}
+
+func (i *CustomDomain) ToCustomDomainPtrOutputWithContext(ctx context.Context) CustomDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainPtrOutput)
+}
+
+type CustomDomainPtrInput interface {
+	pulumi.Input
+
+	ToCustomDomainPtrOutput() CustomDomainPtrOutput
+	ToCustomDomainPtrOutputWithContext(ctx context.Context) CustomDomainPtrOutput
+}
+
+type customDomainPtrType CustomDomainArgs
+
+func (*customDomainPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomain)(nil))
+}
+
+func (i *customDomainPtrType) ToCustomDomainPtrOutput() CustomDomainPtrOutput {
+	return i.ToCustomDomainPtrOutputWithContext(context.Background())
+}
+
+func (i *customDomainPtrType) ToCustomDomainPtrOutputWithContext(ctx context.Context) CustomDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainPtrOutput)
+}
+
+// CustomDomainArrayInput is an input type that accepts CustomDomainArray and CustomDomainArrayOutput values.
+// You can construct a concrete instance of `CustomDomainArrayInput` via:
+//
+//          CustomDomainArray{ CustomDomainArgs{...} }
+type CustomDomainArrayInput interface {
+	pulumi.Input
+
+	ToCustomDomainArrayOutput() CustomDomainArrayOutput
+	ToCustomDomainArrayOutputWithContext(context.Context) CustomDomainArrayOutput
+}
+
+type CustomDomainArray []CustomDomainInput
+
+func (CustomDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CustomDomain)(nil))
+}
+
+func (i CustomDomainArray) ToCustomDomainArrayOutput() CustomDomainArrayOutput {
+	return i.ToCustomDomainArrayOutputWithContext(context.Background())
+}
+
+func (i CustomDomainArray) ToCustomDomainArrayOutputWithContext(ctx context.Context) CustomDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainArrayOutput)
+}
+
+// CustomDomainMapInput is an input type that accepts CustomDomainMap and CustomDomainMapOutput values.
+// You can construct a concrete instance of `CustomDomainMapInput` via:
+//
+//          CustomDomainMap{ "key": CustomDomainArgs{...} }
+type CustomDomainMapInput interface {
+	pulumi.Input
+
+	ToCustomDomainMapOutput() CustomDomainMapOutput
+	ToCustomDomainMapOutputWithContext(context.Context) CustomDomainMapOutput
+}
+
+type CustomDomainMap map[string]CustomDomainInput
+
+func (CustomDomainMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CustomDomain)(nil))
+}
+
+func (i CustomDomainMap) ToCustomDomainMapOutput() CustomDomainMapOutput {
+	return i.ToCustomDomainMapOutputWithContext(context.Background())
+}
+
+func (i CustomDomainMap) ToCustomDomainMapOutputWithContext(ctx context.Context) CustomDomainMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainMapOutput)
+}
+
 type CustomDomainOutput struct {
 	*pulumi.OutputState
 }
@@ -265,6 +344,75 @@ func (o CustomDomainOutput) ToCustomDomainOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o CustomDomainOutput) ToCustomDomainPtrOutput() CustomDomainPtrOutput {
+	return o.ToCustomDomainPtrOutputWithContext(context.Background())
+}
+
+func (o CustomDomainOutput) ToCustomDomainPtrOutputWithContext(ctx context.Context) CustomDomainPtrOutput {
+	return o.ApplyT(func(v CustomDomain) *CustomDomain {
+		return &v
+	}).(CustomDomainPtrOutput)
+}
+
+type CustomDomainPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomDomainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomain)(nil))
+}
+
+func (o CustomDomainPtrOutput) ToCustomDomainPtrOutput() CustomDomainPtrOutput {
+	return o
+}
+
+func (o CustomDomainPtrOutput) ToCustomDomainPtrOutputWithContext(ctx context.Context) CustomDomainPtrOutput {
+	return o
+}
+
+type CustomDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDomain)(nil))
+}
+
+func (o CustomDomainArrayOutput) ToCustomDomainArrayOutput() CustomDomainArrayOutput {
+	return o
+}
+
+func (o CustomDomainArrayOutput) ToCustomDomainArrayOutputWithContext(ctx context.Context) CustomDomainArrayOutput {
+	return o
+}
+
+func (o CustomDomainArrayOutput) Index(i pulumi.IntInput) CustomDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomDomain {
+		return vs[0].([]CustomDomain)[vs[1].(int)]
+	}).(CustomDomainOutput)
+}
+
+type CustomDomainMapOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CustomDomain)(nil))
+}
+
+func (o CustomDomainMapOutput) ToCustomDomainMapOutput() CustomDomainMapOutput {
+	return o
+}
+
+func (o CustomDomainMapOutput) ToCustomDomainMapOutputWithContext(ctx context.Context) CustomDomainMapOutput {
+	return o
+}
+
+func (o CustomDomainMapOutput) MapIndex(k pulumi.StringInput) CustomDomainOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomDomain {
+		return vs[0].(map[string]CustomDomain)[vs[1].(string)]
+	}).(CustomDomainOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CustomDomainOutput{})
+	pulumi.RegisterOutputType(CustomDomainPtrOutput{})
+	pulumi.RegisterOutputType(CustomDomainArrayOutput{})
+	pulumi.RegisterOutputType(CustomDomainMapOutput{})
 }

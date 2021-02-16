@@ -216,6 +216,85 @@ func (i *DomainNew) ToDomainNewOutputWithContext(ctx context.Context) DomainNewO
 	return pulumi.ToOutputWithContext(ctx, i).(DomainNewOutput)
 }
 
+func (i *DomainNew) ToDomainNewPtrOutput() DomainNewPtrOutput {
+	return i.ToDomainNewPtrOutputWithContext(context.Background())
+}
+
+func (i *DomainNew) ToDomainNewPtrOutputWithContext(ctx context.Context) DomainNewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNewPtrOutput)
+}
+
+type DomainNewPtrInput interface {
+	pulumi.Input
+
+	ToDomainNewPtrOutput() DomainNewPtrOutput
+	ToDomainNewPtrOutputWithContext(ctx context.Context) DomainNewPtrOutput
+}
+
+type domainNewPtrType DomainNewArgs
+
+func (*domainNewPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainNew)(nil))
+}
+
+func (i *domainNewPtrType) ToDomainNewPtrOutput() DomainNewPtrOutput {
+	return i.ToDomainNewPtrOutputWithContext(context.Background())
+}
+
+func (i *domainNewPtrType) ToDomainNewPtrOutputWithContext(ctx context.Context) DomainNewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNewPtrOutput)
+}
+
+// DomainNewArrayInput is an input type that accepts DomainNewArray and DomainNewArrayOutput values.
+// You can construct a concrete instance of `DomainNewArrayInput` via:
+//
+//          DomainNewArray{ DomainNewArgs{...} }
+type DomainNewArrayInput interface {
+	pulumi.Input
+
+	ToDomainNewArrayOutput() DomainNewArrayOutput
+	ToDomainNewArrayOutputWithContext(context.Context) DomainNewArrayOutput
+}
+
+type DomainNewArray []DomainNewInput
+
+func (DomainNewArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DomainNew)(nil))
+}
+
+func (i DomainNewArray) ToDomainNewArrayOutput() DomainNewArrayOutput {
+	return i.ToDomainNewArrayOutputWithContext(context.Background())
+}
+
+func (i DomainNewArray) ToDomainNewArrayOutputWithContext(ctx context.Context) DomainNewArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNewArrayOutput)
+}
+
+// DomainNewMapInput is an input type that accepts DomainNewMap and DomainNewMapOutput values.
+// You can construct a concrete instance of `DomainNewMapInput` via:
+//
+//          DomainNewMap{ "key": DomainNewArgs{...} }
+type DomainNewMapInput interface {
+	pulumi.Input
+
+	ToDomainNewMapOutput() DomainNewMapOutput
+	ToDomainNewMapOutputWithContext(context.Context) DomainNewMapOutput
+}
+
+type DomainNewMap map[string]DomainNewInput
+
+func (DomainNewMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DomainNew)(nil))
+}
+
+func (i DomainNewMap) ToDomainNewMapOutput() DomainNewMapOutput {
+	return i.ToDomainNewMapOutputWithContext(context.Background())
+}
+
+func (i DomainNewMap) ToDomainNewMapOutputWithContext(ctx context.Context) DomainNewMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNewMapOutput)
+}
+
 type DomainNewOutput struct {
 	*pulumi.OutputState
 }
@@ -232,6 +311,75 @@ func (o DomainNewOutput) ToDomainNewOutputWithContext(ctx context.Context) Domai
 	return o
 }
 
+func (o DomainNewOutput) ToDomainNewPtrOutput() DomainNewPtrOutput {
+	return o.ToDomainNewPtrOutputWithContext(context.Background())
+}
+
+func (o DomainNewOutput) ToDomainNewPtrOutputWithContext(ctx context.Context) DomainNewPtrOutput {
+	return o.ApplyT(func(v DomainNew) *DomainNew {
+		return &v
+	}).(DomainNewPtrOutput)
+}
+
+type DomainNewPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainNewPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainNew)(nil))
+}
+
+func (o DomainNewPtrOutput) ToDomainNewPtrOutput() DomainNewPtrOutput {
+	return o
+}
+
+func (o DomainNewPtrOutput) ToDomainNewPtrOutputWithContext(ctx context.Context) DomainNewPtrOutput {
+	return o
+}
+
+type DomainNewArrayOutput struct{ *pulumi.OutputState }
+
+func (DomainNewArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainNew)(nil))
+}
+
+func (o DomainNewArrayOutput) ToDomainNewArrayOutput() DomainNewArrayOutput {
+	return o
+}
+
+func (o DomainNewArrayOutput) ToDomainNewArrayOutputWithContext(ctx context.Context) DomainNewArrayOutput {
+	return o
+}
+
+func (o DomainNewArrayOutput) Index(i pulumi.IntInput) DomainNewOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainNew {
+		return vs[0].([]DomainNew)[vs[1].(int)]
+	}).(DomainNewOutput)
+}
+
+type DomainNewMapOutput struct{ *pulumi.OutputState }
+
+func (DomainNewMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DomainNew)(nil))
+}
+
+func (o DomainNewMapOutput) ToDomainNewMapOutput() DomainNewMapOutput {
+	return o
+}
+
+func (o DomainNewMapOutput) ToDomainNewMapOutputWithContext(ctx context.Context) DomainNewMapOutput {
+	return o
+}
+
+func (o DomainNewMapOutput) MapIndex(k pulumi.StringInput) DomainNewOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DomainNew {
+		return vs[0].(map[string]DomainNew)[vs[1].(string)]
+	}).(DomainNewOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainNewOutput{})
+	pulumi.RegisterOutputType(DomainNewPtrOutput{})
+	pulumi.RegisterOutputType(DomainNewArrayOutput{})
+	pulumi.RegisterOutputType(DomainNewMapOutput{})
 }

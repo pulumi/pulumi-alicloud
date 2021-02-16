@@ -169,7 +169,8 @@ export class Stack extends pulumi.CustomResource {
     constructor(name: string, args: StackArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StackArgs | StackState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as StackState | undefined;
             inputs["createOption"] = state ? state.createOption : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
@@ -194,7 +195,7 @@ export class Stack extends pulumi.CustomResource {
             inputs["usePreviousParameters"] = state ? state.usePreviousParameters : undefined;
         } else {
             const args = argsOrState as StackArgs | undefined;
-            if ((!args || args.stackName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.stackName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stackName'");
             }
             inputs["createOption"] = args ? args.createOption : undefined;
@@ -219,12 +220,8 @@ export class Stack extends pulumi.CustomResource {
             inputs["usePreviousParameters"] = args ? args.usePreviousParameters : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Stack.__pulumiType, name, inputs, opts);
     }

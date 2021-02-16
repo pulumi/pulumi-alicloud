@@ -121,7 +121,8 @@ export class VpcEndpoint extends pulumi.CustomResource {
     constructor(name: string, args: VpcEndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcEndpointArgs | VpcEndpointState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VpcEndpointState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["connectionStatus"] = state ? state.connectionStatus : undefined;
@@ -137,10 +138,10 @@ export class VpcEndpoint extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as VpcEndpointArgs | undefined;
-            if ((!args || args.securityGroupIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.securityGroupIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupIds'");
             }
-            if ((!args || args.vpcId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["dryRun"] = args ? args.dryRun : undefined;
@@ -156,12 +157,8 @@ export class VpcEndpoint extends pulumi.CustomResource {
             inputs["endpointDomain"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VpcEndpoint.__pulumiType, name, inputs, opts);
     }

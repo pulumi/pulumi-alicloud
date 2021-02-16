@@ -132,7 +132,8 @@ export class StackGroup extends pulumi.CustomResource {
     constructor(name: string, args: StackGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StackGroupArgs | StackGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as StackGroupState | undefined;
             inputs["accountIds"] = state ? state.accountIds : undefined;
             inputs["administrationRoleName"] = state ? state.administrationRoleName : undefined;
@@ -150,7 +151,7 @@ export class StackGroup extends pulumi.CustomResource {
             inputs["templateVersion"] = state ? state.templateVersion : undefined;
         } else {
             const args = argsOrState as StackGroupArgs | undefined;
-            if ((!args || args.stackGroupName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.stackGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stackGroupName'");
             }
             inputs["accountIds"] = args ? args.accountIds : undefined;
@@ -168,12 +169,8 @@ export class StackGroup extends pulumi.CustomResource {
             inputs["stackGroupId"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(StackGroup.__pulumiType, name, inputs, opts);
     }

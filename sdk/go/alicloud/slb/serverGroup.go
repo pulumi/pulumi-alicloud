@@ -156,6 +156,85 @@ func (i *ServerGroup) ToServerGroupOutputWithContext(ctx context.Context) Server
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupOutput)
 }
 
+func (i *ServerGroup) ToServerGroupPtrOutput() ServerGroupPtrOutput {
+	return i.ToServerGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ServerGroup) ToServerGroupPtrOutputWithContext(ctx context.Context) ServerGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupPtrOutput)
+}
+
+type ServerGroupPtrInput interface {
+	pulumi.Input
+
+	ToServerGroupPtrOutput() ServerGroupPtrOutput
+	ToServerGroupPtrOutputWithContext(ctx context.Context) ServerGroupPtrOutput
+}
+
+type serverGroupPtrType ServerGroupArgs
+
+func (*serverGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroup)(nil))
+}
+
+func (i *serverGroupPtrType) ToServerGroupPtrOutput() ServerGroupPtrOutput {
+	return i.ToServerGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *serverGroupPtrType) ToServerGroupPtrOutputWithContext(ctx context.Context) ServerGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupPtrOutput)
+}
+
+// ServerGroupArrayInput is an input type that accepts ServerGroupArray and ServerGroupArrayOutput values.
+// You can construct a concrete instance of `ServerGroupArrayInput` via:
+//
+//          ServerGroupArray{ ServerGroupArgs{...} }
+type ServerGroupArrayInput interface {
+	pulumi.Input
+
+	ToServerGroupArrayOutput() ServerGroupArrayOutput
+	ToServerGroupArrayOutputWithContext(context.Context) ServerGroupArrayOutput
+}
+
+type ServerGroupArray []ServerGroupInput
+
+func (ServerGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServerGroup)(nil))
+}
+
+func (i ServerGroupArray) ToServerGroupArrayOutput() ServerGroupArrayOutput {
+	return i.ToServerGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ServerGroupArray) ToServerGroupArrayOutputWithContext(ctx context.Context) ServerGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupArrayOutput)
+}
+
+// ServerGroupMapInput is an input type that accepts ServerGroupMap and ServerGroupMapOutput values.
+// You can construct a concrete instance of `ServerGroupMapInput` via:
+//
+//          ServerGroupMap{ "key": ServerGroupArgs{...} }
+type ServerGroupMapInput interface {
+	pulumi.Input
+
+	ToServerGroupMapOutput() ServerGroupMapOutput
+	ToServerGroupMapOutputWithContext(context.Context) ServerGroupMapOutput
+}
+
+type ServerGroupMap map[string]ServerGroupInput
+
+func (ServerGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServerGroup)(nil))
+}
+
+func (i ServerGroupMap) ToServerGroupMapOutput() ServerGroupMapOutput {
+	return i.ToServerGroupMapOutputWithContext(context.Background())
+}
+
+func (i ServerGroupMap) ToServerGroupMapOutputWithContext(ctx context.Context) ServerGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupMapOutput)
+}
+
 type ServerGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -172,6 +251,75 @@ func (o ServerGroupOutput) ToServerGroupOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o ServerGroupOutput) ToServerGroupPtrOutput() ServerGroupPtrOutput {
+	return o.ToServerGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ServerGroupOutput) ToServerGroupPtrOutputWithContext(ctx context.Context) ServerGroupPtrOutput {
+	return o.ApplyT(func(v ServerGroup) *ServerGroup {
+		return &v
+	}).(ServerGroupPtrOutput)
+}
+
+type ServerGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroup)(nil))
+}
+
+func (o ServerGroupPtrOutput) ToServerGroupPtrOutput() ServerGroupPtrOutput {
+	return o
+}
+
+func (o ServerGroupPtrOutput) ToServerGroupPtrOutputWithContext(ctx context.Context) ServerGroupPtrOutput {
+	return o
+}
+
+type ServerGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerGroup)(nil))
+}
+
+func (o ServerGroupArrayOutput) ToServerGroupArrayOutput() ServerGroupArrayOutput {
+	return o
+}
+
+func (o ServerGroupArrayOutput) ToServerGroupArrayOutputWithContext(ctx context.Context) ServerGroupArrayOutput {
+	return o
+}
+
+func (o ServerGroupArrayOutput) Index(i pulumi.IntInput) ServerGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerGroup {
+		return vs[0].([]ServerGroup)[vs[1].(int)]
+	}).(ServerGroupOutput)
+}
+
+type ServerGroupMapOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServerGroup)(nil))
+}
+
+func (o ServerGroupMapOutput) ToServerGroupMapOutput() ServerGroupMapOutput {
+	return o
+}
+
+func (o ServerGroupMapOutput) ToServerGroupMapOutputWithContext(ctx context.Context) ServerGroupMapOutput {
+	return o
+}
+
+func (o ServerGroupMapOutput) MapIndex(k pulumi.StringInput) ServerGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServerGroup {
+		return vs[0].(map[string]ServerGroup)[vs[1].(string)]
+	}).(ServerGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServerGroupOutput{})
+	pulumi.RegisterOutputType(ServerGroupPtrOutput{})
+	pulumi.RegisterOutputType(ServerGroupArrayOutput{})
+	pulumi.RegisterOutputType(ServerGroupMapOutput{})
 }

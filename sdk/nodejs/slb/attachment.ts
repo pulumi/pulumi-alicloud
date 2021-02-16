@@ -76,7 +76,8 @@ export class Attachment extends pulumi.CustomResource {
     constructor(name: string, args: AttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AttachmentArgs | AttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AttachmentState | undefined;
             inputs["backendServers"] = state ? state.backendServers : undefined;
             inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
@@ -86,10 +87,10 @@ export class Attachment extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as AttachmentArgs | undefined;
-            if ((!args || args.instanceIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if ((!args || args.loadBalancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
             inputs["backendServers"] = args ? args.backendServers : undefined;
@@ -99,12 +100,8 @@ export class Attachment extends pulumi.CustomResource {
             inputs["serverType"] = args ? args.serverType : undefined;
             inputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Attachment.__pulumiType, name, inputs, opts);
     }

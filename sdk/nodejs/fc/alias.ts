@@ -99,7 +99,8 @@ export class Alias extends pulumi.CustomResource {
     constructor(name: string, args: AliasArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AliasArgs | AliasState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AliasState | undefined;
             inputs["aliasName"] = state ? state.aliasName : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -108,13 +109,13 @@ export class Alias extends pulumi.CustomResource {
             inputs["serviceVersion"] = state ? state.serviceVersion : undefined;
         } else {
             const args = argsOrState as AliasArgs | undefined;
-            if ((!args || args.aliasName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aliasName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aliasName'");
             }
-            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.serviceVersion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceVersion'");
             }
             inputs["aliasName"] = args ? args.aliasName : undefined;
@@ -123,12 +124,8 @@ export class Alias extends pulumi.CustomResource {
             inputs["serviceName"] = args ? args.serviceName : undefined;
             inputs["serviceVersion"] = args ? args.serviceVersion : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Alias.__pulumiType, name, inputs, opts);
     }

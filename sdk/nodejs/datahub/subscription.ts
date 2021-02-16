@@ -93,7 +93,8 @@ export class Subscription extends pulumi.CustomResource {
     constructor(name: string, args: SubscriptionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubscriptionArgs | SubscriptionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SubscriptionState | undefined;
             inputs["comment"] = state ? state.comment : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
@@ -103,10 +104,10 @@ export class Subscription extends pulumi.CustomResource {
             inputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
-            if ((!args || args.projectName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.topicName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.topicName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
             inputs["comment"] = args ? args.comment : undefined;
@@ -116,12 +117,8 @@ export class Subscription extends pulumi.CustomResource {
             inputs["lastModifyTime"] = undefined /*out*/;
             inputs["subId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Subscription.__pulumiType, name, inputs, opts);
     }

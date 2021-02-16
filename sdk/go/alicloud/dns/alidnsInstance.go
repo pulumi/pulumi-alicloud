@@ -210,6 +210,85 @@ func (i *AlidnsInstance) ToAlidnsInstanceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsInstanceOutput)
 }
 
+func (i *AlidnsInstance) ToAlidnsInstancePtrOutput() AlidnsInstancePtrOutput {
+	return i.ToAlidnsInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *AlidnsInstance) ToAlidnsInstancePtrOutputWithContext(ctx context.Context) AlidnsInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsInstancePtrOutput)
+}
+
+type AlidnsInstancePtrInput interface {
+	pulumi.Input
+
+	ToAlidnsInstancePtrOutput() AlidnsInstancePtrOutput
+	ToAlidnsInstancePtrOutputWithContext(ctx context.Context) AlidnsInstancePtrOutput
+}
+
+type alidnsInstancePtrType AlidnsInstanceArgs
+
+func (*alidnsInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlidnsInstance)(nil))
+}
+
+func (i *alidnsInstancePtrType) ToAlidnsInstancePtrOutput() AlidnsInstancePtrOutput {
+	return i.ToAlidnsInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *alidnsInstancePtrType) ToAlidnsInstancePtrOutputWithContext(ctx context.Context) AlidnsInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsInstancePtrOutput)
+}
+
+// AlidnsInstanceArrayInput is an input type that accepts AlidnsInstanceArray and AlidnsInstanceArrayOutput values.
+// You can construct a concrete instance of `AlidnsInstanceArrayInput` via:
+//
+//          AlidnsInstanceArray{ AlidnsInstanceArgs{...} }
+type AlidnsInstanceArrayInput interface {
+	pulumi.Input
+
+	ToAlidnsInstanceArrayOutput() AlidnsInstanceArrayOutput
+	ToAlidnsInstanceArrayOutputWithContext(context.Context) AlidnsInstanceArrayOutput
+}
+
+type AlidnsInstanceArray []AlidnsInstanceInput
+
+func (AlidnsInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AlidnsInstance)(nil))
+}
+
+func (i AlidnsInstanceArray) ToAlidnsInstanceArrayOutput() AlidnsInstanceArrayOutput {
+	return i.ToAlidnsInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i AlidnsInstanceArray) ToAlidnsInstanceArrayOutputWithContext(ctx context.Context) AlidnsInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsInstanceArrayOutput)
+}
+
+// AlidnsInstanceMapInput is an input type that accepts AlidnsInstanceMap and AlidnsInstanceMapOutput values.
+// You can construct a concrete instance of `AlidnsInstanceMapInput` via:
+//
+//          AlidnsInstanceMap{ "key": AlidnsInstanceArgs{...} }
+type AlidnsInstanceMapInput interface {
+	pulumi.Input
+
+	ToAlidnsInstanceMapOutput() AlidnsInstanceMapOutput
+	ToAlidnsInstanceMapOutputWithContext(context.Context) AlidnsInstanceMapOutput
+}
+
+type AlidnsInstanceMap map[string]AlidnsInstanceInput
+
+func (AlidnsInstanceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AlidnsInstance)(nil))
+}
+
+func (i AlidnsInstanceMap) ToAlidnsInstanceMapOutput() AlidnsInstanceMapOutput {
+	return i.ToAlidnsInstanceMapOutputWithContext(context.Background())
+}
+
+func (i AlidnsInstanceMap) ToAlidnsInstanceMapOutputWithContext(ctx context.Context) AlidnsInstanceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsInstanceMapOutput)
+}
+
 type AlidnsInstanceOutput struct {
 	*pulumi.OutputState
 }
@@ -226,6 +305,75 @@ func (o AlidnsInstanceOutput) ToAlidnsInstanceOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o AlidnsInstanceOutput) ToAlidnsInstancePtrOutput() AlidnsInstancePtrOutput {
+	return o.ToAlidnsInstancePtrOutputWithContext(context.Background())
+}
+
+func (o AlidnsInstanceOutput) ToAlidnsInstancePtrOutputWithContext(ctx context.Context) AlidnsInstancePtrOutput {
+	return o.ApplyT(func(v AlidnsInstance) *AlidnsInstance {
+		return &v
+	}).(AlidnsInstancePtrOutput)
+}
+
+type AlidnsInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlidnsInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlidnsInstance)(nil))
+}
+
+func (o AlidnsInstancePtrOutput) ToAlidnsInstancePtrOutput() AlidnsInstancePtrOutput {
+	return o
+}
+
+func (o AlidnsInstancePtrOutput) ToAlidnsInstancePtrOutputWithContext(ctx context.Context) AlidnsInstancePtrOutput {
+	return o
+}
+
+type AlidnsInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (AlidnsInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlidnsInstance)(nil))
+}
+
+func (o AlidnsInstanceArrayOutput) ToAlidnsInstanceArrayOutput() AlidnsInstanceArrayOutput {
+	return o
+}
+
+func (o AlidnsInstanceArrayOutput) ToAlidnsInstanceArrayOutputWithContext(ctx context.Context) AlidnsInstanceArrayOutput {
+	return o
+}
+
+func (o AlidnsInstanceArrayOutput) Index(i pulumi.IntInput) AlidnsInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlidnsInstance {
+		return vs[0].([]AlidnsInstance)[vs[1].(int)]
+	}).(AlidnsInstanceOutput)
+}
+
+type AlidnsInstanceMapOutput struct{ *pulumi.OutputState }
+
+func (AlidnsInstanceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlidnsInstance)(nil))
+}
+
+func (o AlidnsInstanceMapOutput) ToAlidnsInstanceMapOutput() AlidnsInstanceMapOutput {
+	return o
+}
+
+func (o AlidnsInstanceMapOutput) ToAlidnsInstanceMapOutputWithContext(ctx context.Context) AlidnsInstanceMapOutput {
+	return o
+}
+
+func (o AlidnsInstanceMapOutput) MapIndex(k pulumi.StringInput) AlidnsInstanceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlidnsInstance {
+		return vs[0].(map[string]AlidnsInstance)[vs[1].(string)]
+	}).(AlidnsInstanceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlidnsInstanceOutput{})
+	pulumi.RegisterOutputType(AlidnsInstancePtrOutput{})
+	pulumi.RegisterOutputType(AlidnsInstanceArrayOutput{})
+	pulumi.RegisterOutputType(AlidnsInstanceMapOutput{})
 }

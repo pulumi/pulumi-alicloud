@@ -154,7 +154,8 @@ export class DataCenter extends pulumi.CustomResource {
     constructor(name: string, args: DataCenterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DataCenterArgs | DataCenterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DataCenterState | undefined;
             inputs["autoRenew"] = state ? state.autoRenew : undefined;
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
@@ -175,19 +176,19 @@ export class DataCenter extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DataCenterArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.instanceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.nodeCount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.nodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            if ((!args || args.payType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.payType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'payType'");
             }
-            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["autoRenew"] = args ? args.autoRenew : undefined;
@@ -208,12 +209,8 @@ export class DataCenter extends pulumi.CustomResource {
             inputs["publicPoints"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DataCenter.__pulumiType, name, inputs, opts);
     }

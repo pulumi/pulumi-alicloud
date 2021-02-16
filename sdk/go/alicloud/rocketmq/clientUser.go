@@ -208,6 +208,85 @@ func (i *ClientUser) ToClientUserOutputWithContext(ctx context.Context) ClientUs
 	return pulumi.ToOutputWithContext(ctx, i).(ClientUserOutput)
 }
 
+func (i *ClientUser) ToClientUserPtrOutput() ClientUserPtrOutput {
+	return i.ToClientUserPtrOutputWithContext(context.Background())
+}
+
+func (i *ClientUser) ToClientUserPtrOutputWithContext(ctx context.Context) ClientUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientUserPtrOutput)
+}
+
+type ClientUserPtrInput interface {
+	pulumi.Input
+
+	ToClientUserPtrOutput() ClientUserPtrOutput
+	ToClientUserPtrOutputWithContext(ctx context.Context) ClientUserPtrOutput
+}
+
+type clientUserPtrType ClientUserArgs
+
+func (*clientUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientUser)(nil))
+}
+
+func (i *clientUserPtrType) ToClientUserPtrOutput() ClientUserPtrOutput {
+	return i.ToClientUserPtrOutputWithContext(context.Background())
+}
+
+func (i *clientUserPtrType) ToClientUserPtrOutputWithContext(ctx context.Context) ClientUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientUserPtrOutput)
+}
+
+// ClientUserArrayInput is an input type that accepts ClientUserArray and ClientUserArrayOutput values.
+// You can construct a concrete instance of `ClientUserArrayInput` via:
+//
+//          ClientUserArray{ ClientUserArgs{...} }
+type ClientUserArrayInput interface {
+	pulumi.Input
+
+	ToClientUserArrayOutput() ClientUserArrayOutput
+	ToClientUserArrayOutputWithContext(context.Context) ClientUserArrayOutput
+}
+
+type ClientUserArray []ClientUserInput
+
+func (ClientUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClientUser)(nil))
+}
+
+func (i ClientUserArray) ToClientUserArrayOutput() ClientUserArrayOutput {
+	return i.ToClientUserArrayOutputWithContext(context.Background())
+}
+
+func (i ClientUserArray) ToClientUserArrayOutputWithContext(ctx context.Context) ClientUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientUserArrayOutput)
+}
+
+// ClientUserMapInput is an input type that accepts ClientUserMap and ClientUserMapOutput values.
+// You can construct a concrete instance of `ClientUserMapInput` via:
+//
+//          ClientUserMap{ "key": ClientUserArgs{...} }
+type ClientUserMapInput interface {
+	pulumi.Input
+
+	ToClientUserMapOutput() ClientUserMapOutput
+	ToClientUserMapOutputWithContext(context.Context) ClientUserMapOutput
+}
+
+type ClientUserMap map[string]ClientUserInput
+
+func (ClientUserMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClientUser)(nil))
+}
+
+func (i ClientUserMap) ToClientUserMapOutput() ClientUserMapOutput {
+	return i.ToClientUserMapOutputWithContext(context.Background())
+}
+
+func (i ClientUserMap) ToClientUserMapOutputWithContext(ctx context.Context) ClientUserMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientUserMapOutput)
+}
+
 type ClientUserOutput struct {
 	*pulumi.OutputState
 }
@@ -224,6 +303,75 @@ func (o ClientUserOutput) ToClientUserOutputWithContext(ctx context.Context) Cli
 	return o
 }
 
+func (o ClientUserOutput) ToClientUserPtrOutput() ClientUserPtrOutput {
+	return o.ToClientUserPtrOutputWithContext(context.Background())
+}
+
+func (o ClientUserOutput) ToClientUserPtrOutputWithContext(ctx context.Context) ClientUserPtrOutput {
+	return o.ApplyT(func(v ClientUser) *ClientUser {
+		return &v
+	}).(ClientUserPtrOutput)
+}
+
+type ClientUserPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClientUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientUser)(nil))
+}
+
+func (o ClientUserPtrOutput) ToClientUserPtrOutput() ClientUserPtrOutput {
+	return o
+}
+
+func (o ClientUserPtrOutput) ToClientUserPtrOutputWithContext(ctx context.Context) ClientUserPtrOutput {
+	return o
+}
+
+type ClientUserArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientUser)(nil))
+}
+
+func (o ClientUserArrayOutput) ToClientUserArrayOutput() ClientUserArrayOutput {
+	return o
+}
+
+func (o ClientUserArrayOutput) ToClientUserArrayOutputWithContext(ctx context.Context) ClientUserArrayOutput {
+	return o
+}
+
+func (o ClientUserArrayOutput) Index(i pulumi.IntInput) ClientUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientUser {
+		return vs[0].([]ClientUser)[vs[1].(int)]
+	}).(ClientUserOutput)
+}
+
+type ClientUserMapOutput struct{ *pulumi.OutputState }
+
+func (ClientUserMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClientUser)(nil))
+}
+
+func (o ClientUserMapOutput) ToClientUserMapOutput() ClientUserMapOutput {
+	return o
+}
+
+func (o ClientUserMapOutput) ToClientUserMapOutputWithContext(ctx context.Context) ClientUserMapOutput {
+	return o
+}
+
+func (o ClientUserMapOutput) MapIndex(k pulumi.StringInput) ClientUserOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClientUser {
+		return vs[0].(map[string]ClientUser)[vs[1].(string)]
+	}).(ClientUserOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClientUserOutput{})
+	pulumi.RegisterOutputType(ClientUserPtrOutput{})
+	pulumi.RegisterOutputType(ClientUserArrayOutput{})
+	pulumi.RegisterOutputType(ClientUserMapOutput{})
 }

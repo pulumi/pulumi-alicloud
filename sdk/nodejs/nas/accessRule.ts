@@ -104,7 +104,8 @@ export class AccessRule extends pulumi.CustomResource {
     constructor(name: string, args: AccessRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessRuleArgs | AccessRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccessRuleState | undefined;
             inputs["accessGroupName"] = state ? state.accessGroupName : undefined;
             inputs["accessRuleId"] = state ? state.accessRuleId : undefined;
@@ -114,10 +115,10 @@ export class AccessRule extends pulumi.CustomResource {
             inputs["userAccessType"] = state ? state.userAccessType : undefined;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
-            if ((!args || args.accessGroupName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accessGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessGroupName'");
             }
-            if ((!args || args.sourceCidrIp === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceCidrIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceCidrIp'");
             }
             inputs["accessGroupName"] = args ? args.accessGroupName : undefined;
@@ -127,12 +128,8 @@ export class AccessRule extends pulumi.CustomResource {
             inputs["userAccessType"] = args ? args.userAccessType : undefined;
             inputs["accessRuleId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccessRule.__pulumiType, name, inputs, opts);
     }

@@ -115,7 +115,8 @@ export class Audit extends pulumi.CustomResource {
     constructor(name: string, args: AuditArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuditArgs | AuditState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AuditState | undefined;
             inputs["aliuid"] = state ? state.aliuid : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
@@ -123,10 +124,10 @@ export class Audit extends pulumi.CustomResource {
             inputs["variableMap"] = state ? state.variableMap : undefined;
         } else {
             const args = argsOrState as AuditArgs | undefined;
-            if ((!args || args.aliuid === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aliuid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aliuid'");
             }
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["aliuid"] = args ? args.aliuid : undefined;
@@ -134,12 +135,8 @@ export class Audit extends pulumi.CustomResource {
             inputs["multiAccounts"] = args ? args.multiAccounts : undefined;
             inputs["variableMap"] = args ? args.variableMap : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Audit.__pulumiType, name, inputs, opts);
     }
