@@ -104,7 +104,8 @@ export class ClientUser extends pulumi.CustomResource {
     constructor(name: string, args: ClientUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClientUserArgs | ClientUserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClientUserState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["clientIp"] = state ? state.clientIp : undefined;
@@ -116,13 +117,13 @@ export class ClientUser extends pulumi.CustomResource {
             inputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as ClientUserArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if ((!args || args.sagId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sagId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sagId'");
             }
-            if ((!args || args.userMail === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.userMail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userMail'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
@@ -134,12 +135,8 @@ export class ClientUser extends pulumi.CustomResource {
             inputs["userMail"] = args ? args.userMail : undefined;
             inputs["userName"] = args ? args.userName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ClientUser.__pulumiType, name, inputs, opts);
     }

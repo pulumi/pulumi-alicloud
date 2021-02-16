@@ -91,7 +91,8 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
     constructor(name: string, args: RegistryEnterpriseNamespaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryEnterpriseNamespaceArgs | RegistryEnterpriseNamespaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RegistryEnterpriseNamespaceState | undefined;
             inputs["autoCreate"] = state ? state.autoCreate : undefined;
             inputs["defaultVisibility"] = state ? state.defaultVisibility : undefined;
@@ -99,13 +100,13 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as RegistryEnterpriseNamespaceArgs | undefined;
-            if ((!args || args.autoCreate === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.autoCreate === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'autoCreate'");
             }
-            if ((!args || args.defaultVisibility === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.defaultVisibility === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'defaultVisibility'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["autoCreate"] = args ? args.autoCreate : undefined;
@@ -113,12 +114,8 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RegistryEnterpriseNamespace.__pulumiType, name, inputs, opts);
     }

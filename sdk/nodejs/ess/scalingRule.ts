@@ -104,7 +104,8 @@ export class ScalingRule extends pulumi.CustomResource {
     constructor(name: string, args: ScalingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScalingRuleArgs | ScalingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ScalingRuleState | undefined;
             inputs["adjustmentType"] = state ? state.adjustmentType : undefined;
             inputs["adjustmentValue"] = state ? state.adjustmentValue : undefined;
@@ -120,7 +121,7 @@ export class ScalingRule extends pulumi.CustomResource {
             inputs["targetValue"] = state ? state.targetValue : undefined;
         } else {
             const args = argsOrState as ScalingRuleArgs | undefined;
-            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
             inputs["adjustmentType"] = args ? args.adjustmentType : undefined;
@@ -136,12 +137,8 @@ export class ScalingRule extends pulumi.CustomResource {
             inputs["targetValue"] = args ? args.targetValue : undefined;
             inputs["ari"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ScalingRule.__pulumiType, name, inputs, opts);
     }

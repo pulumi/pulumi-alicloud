@@ -159,7 +159,8 @@ export class EndpointGroup extends pulumi.CustomResource {
     constructor(name: string, args: EndpointGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointGroupArgs | EndpointGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EndpointGroupState | undefined;
             inputs["acceleratorId"] = state ? state.acceleratorId : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -179,16 +180,16 @@ export class EndpointGroup extends pulumi.CustomResource {
             inputs["trafficPercentage"] = state ? state.trafficPercentage : undefined;
         } else {
             const args = argsOrState as EndpointGroupArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.endpointConfigurations === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.endpointConfigurations === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointConfigurations'");
             }
-            if ((!args || args.endpointGroupRegion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.endpointGroupRegion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointGroupRegion'");
             }
-            if ((!args || args.listenerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
             inputs["acceleratorId"] = args ? args.acceleratorId : undefined;
@@ -208,12 +209,8 @@ export class EndpointGroup extends pulumi.CustomResource {
             inputs["trafficPercentage"] = args ? args.trafficPercentage : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EndpointGroup.__pulumiType, name, inputs, opts);
     }

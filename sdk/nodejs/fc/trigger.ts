@@ -96,7 +96,8 @@ export class Trigger extends pulumi.CustomResource {
     constructor(name: string, args: TriggerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TriggerArgs | TriggerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["configMns"] = state ? state.configMns : undefined;
@@ -111,13 +112,13 @@ export class Trigger extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
-            if ((!args || args.function === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.function === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'function'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["config"] = args ? args.config : undefined;
@@ -132,12 +133,8 @@ export class Trigger extends pulumi.CustomResource {
             inputs["lastModified"] = undefined /*out*/;
             inputs["triggerId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Trigger.__pulumiType, name, inputs, opts);
     }

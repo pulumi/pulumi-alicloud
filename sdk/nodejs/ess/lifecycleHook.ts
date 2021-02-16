@@ -80,7 +80,8 @@ export class LifecycleHook extends pulumi.CustomResource {
     constructor(name: string, args: LifecycleHookArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LifecycleHookArgs | LifecycleHookState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LifecycleHookState | undefined;
             inputs["defaultResult"] = state ? state.defaultResult : undefined;
             inputs["heartbeatTimeout"] = state ? state.heartbeatTimeout : undefined;
@@ -91,10 +92,10 @@ export class LifecycleHook extends pulumi.CustomResource {
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
         } else {
             const args = argsOrState as LifecycleHookArgs | undefined;
-            if ((!args || args.lifecycleTransition === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.lifecycleTransition === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'lifecycleTransition'");
             }
-            if ((!args || args.scalingGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
             inputs["defaultResult"] = args ? args.defaultResult : undefined;
@@ -105,12 +106,8 @@ export class LifecycleHook extends pulumi.CustomResource {
             inputs["notificationMetadata"] = args ? args.notificationMetadata : undefined;
             inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LifecycleHook.__pulumiType, name, inputs, opts);
     }

@@ -104,32 +104,29 @@ export class NetworkGrant extends pulumi.CustomResource {
     constructor(name: string, args: NetworkGrantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkGrantArgs | NetworkGrantState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NetworkGrantState | undefined;
             inputs["ccnId"] = state ? state.ccnId : undefined;
             inputs["cenId"] = state ? state.cenId : undefined;
             inputs["cenUid"] = state ? state.cenUid : undefined;
         } else {
             const args = argsOrState as NetworkGrantArgs | undefined;
-            if ((!args || args.ccnId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ccnId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ccnId'");
             }
-            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cenId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.cenUid === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cenUid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenUid'");
             }
             inputs["ccnId"] = args ? args.ccnId : undefined;
             inputs["cenId"] = args ? args.cenId : undefined;
             inputs["cenUid"] = args ? args.cenUid : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NetworkGrant.__pulumiType, name, inputs, opts);
     }

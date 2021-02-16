@@ -100,7 +100,8 @@ export class DBAuditInstance extends pulumi.CustomResource {
     constructor(name: string, args: DBAuditInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DBAuditInstanceArgs | DBAuditInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DBAuditInstanceState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["period"] = state ? state.period : undefined;
@@ -110,13 +111,13 @@ export class DBAuditInstance extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as DBAuditInstanceArgs | undefined;
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.planCode === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.planCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'planCode'");
             }
-            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -126,12 +127,8 @@ export class DBAuditInstance extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DBAuditInstance.__pulumiType, name, inputs, opts);
     }

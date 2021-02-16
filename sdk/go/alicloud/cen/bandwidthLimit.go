@@ -243,6 +243,85 @@ func (i *BandwidthLimit) ToBandwidthLimitOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitOutput)
 }
 
+func (i *BandwidthLimit) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput {
+	return i.ToBandwidthLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *BandwidthLimit) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitPtrOutput)
+}
+
+type BandwidthLimitPtrInput interface {
+	pulumi.Input
+
+	ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput
+	ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput
+}
+
+type bandwidthLimitPtrType BandwidthLimitArgs
+
+func (*bandwidthLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BandwidthLimit)(nil))
+}
+
+func (i *bandwidthLimitPtrType) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput {
+	return i.ToBandwidthLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *bandwidthLimitPtrType) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitPtrOutput)
+}
+
+// BandwidthLimitArrayInput is an input type that accepts BandwidthLimitArray and BandwidthLimitArrayOutput values.
+// You can construct a concrete instance of `BandwidthLimitArrayInput` via:
+//
+//          BandwidthLimitArray{ BandwidthLimitArgs{...} }
+type BandwidthLimitArrayInput interface {
+	pulumi.Input
+
+	ToBandwidthLimitArrayOutput() BandwidthLimitArrayOutput
+	ToBandwidthLimitArrayOutputWithContext(context.Context) BandwidthLimitArrayOutput
+}
+
+type BandwidthLimitArray []BandwidthLimitInput
+
+func (BandwidthLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*BandwidthLimit)(nil))
+}
+
+func (i BandwidthLimitArray) ToBandwidthLimitArrayOutput() BandwidthLimitArrayOutput {
+	return i.ToBandwidthLimitArrayOutputWithContext(context.Background())
+}
+
+func (i BandwidthLimitArray) ToBandwidthLimitArrayOutputWithContext(ctx context.Context) BandwidthLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitArrayOutput)
+}
+
+// BandwidthLimitMapInput is an input type that accepts BandwidthLimitMap and BandwidthLimitMapOutput values.
+// You can construct a concrete instance of `BandwidthLimitMapInput` via:
+//
+//          BandwidthLimitMap{ "key": BandwidthLimitArgs{...} }
+type BandwidthLimitMapInput interface {
+	pulumi.Input
+
+	ToBandwidthLimitMapOutput() BandwidthLimitMapOutput
+	ToBandwidthLimitMapOutputWithContext(context.Context) BandwidthLimitMapOutput
+}
+
+type BandwidthLimitMap map[string]BandwidthLimitInput
+
+func (BandwidthLimitMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*BandwidthLimit)(nil))
+}
+
+func (i BandwidthLimitMap) ToBandwidthLimitMapOutput() BandwidthLimitMapOutput {
+	return i.ToBandwidthLimitMapOutputWithContext(context.Background())
+}
+
+func (i BandwidthLimitMap) ToBandwidthLimitMapOutputWithContext(ctx context.Context) BandwidthLimitMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BandwidthLimitMapOutput)
+}
+
 type BandwidthLimitOutput struct {
 	*pulumi.OutputState
 }
@@ -259,6 +338,75 @@ func (o BandwidthLimitOutput) ToBandwidthLimitOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o BandwidthLimitOutput) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput {
+	return o.ToBandwidthLimitPtrOutputWithContext(context.Background())
+}
+
+func (o BandwidthLimitOutput) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
+	return o.ApplyT(func(v BandwidthLimit) *BandwidthLimit {
+		return &v
+	}).(BandwidthLimitPtrOutput)
+}
+
+type BandwidthLimitPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BandwidthLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BandwidthLimit)(nil))
+}
+
+func (o BandwidthLimitPtrOutput) ToBandwidthLimitPtrOutput() BandwidthLimitPtrOutput {
+	return o
+}
+
+func (o BandwidthLimitPtrOutput) ToBandwidthLimitPtrOutputWithContext(ctx context.Context) BandwidthLimitPtrOutput {
+	return o
+}
+
+type BandwidthLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (BandwidthLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BandwidthLimit)(nil))
+}
+
+func (o BandwidthLimitArrayOutput) ToBandwidthLimitArrayOutput() BandwidthLimitArrayOutput {
+	return o
+}
+
+func (o BandwidthLimitArrayOutput) ToBandwidthLimitArrayOutputWithContext(ctx context.Context) BandwidthLimitArrayOutput {
+	return o
+}
+
+func (o BandwidthLimitArrayOutput) Index(i pulumi.IntInput) BandwidthLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BandwidthLimit {
+		return vs[0].([]BandwidthLimit)[vs[1].(int)]
+	}).(BandwidthLimitOutput)
+}
+
+type BandwidthLimitMapOutput struct{ *pulumi.OutputState }
+
+func (BandwidthLimitMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BandwidthLimit)(nil))
+}
+
+func (o BandwidthLimitMapOutput) ToBandwidthLimitMapOutput() BandwidthLimitMapOutput {
+	return o
+}
+
+func (o BandwidthLimitMapOutput) ToBandwidthLimitMapOutputWithContext(ctx context.Context) BandwidthLimitMapOutput {
+	return o
+}
+
+func (o BandwidthLimitMapOutput) MapIndex(k pulumi.StringInput) BandwidthLimitOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BandwidthLimit {
+		return vs[0].(map[string]BandwidthLimit)[vs[1].(string)]
+	}).(BandwidthLimitOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BandwidthLimitOutput{})
+	pulumi.RegisterOutputType(BandwidthLimitPtrOutput{})
+	pulumi.RegisterOutputType(BandwidthLimitArrayOutput{})
+	pulumi.RegisterOutputType(BandwidthLimitMapOutput{})
 }

@@ -139,7 +139,8 @@ export class Domain extends pulumi.CustomResource {
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainState | undefined;
             inputs["certName"] = state ? state.certName : undefined;
             inputs["certType"] = state ? state.certType : undefined;
@@ -157,10 +158,10 @@ export class Domain extends pulumi.CustomResource {
             inputs["topLevelDomain"] = state ? state.topLevelDomain : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.sources === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sources === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sources'");
             }
             inputs["certName"] = args ? args.certName : undefined;
@@ -178,12 +179,8 @@ export class Domain extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["topLevelDomain"] = args ? args.topLevelDomain : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Domain.__pulumiType, name, inputs, opts);
     }

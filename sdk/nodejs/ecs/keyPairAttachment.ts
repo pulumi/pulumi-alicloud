@@ -116,29 +116,26 @@ export class KeyPairAttachment extends pulumi.CustomResource {
     constructor(name: string, args: KeyPairAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyPairAttachmentArgs | KeyPairAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as KeyPairAttachmentState | undefined;
             inputs["force"] = state ? state.force : undefined;
             inputs["instanceIds"] = state ? state.instanceIds : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
         } else {
             const args = argsOrState as KeyPairAttachmentArgs | undefined;
-            if ((!args || args.instanceIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if ((!args || args.keyName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.keyName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyName'");
             }
             inputs["force"] = args ? args.force : undefined;
             inputs["instanceIds"] = args ? args.instanceIds : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(KeyPairAttachment.__pulumiType, name, inputs, opts);
     }

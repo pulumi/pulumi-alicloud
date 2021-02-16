@@ -84,29 +84,26 @@ export class ImageExport extends pulumi.CustomResource {
     constructor(name: string, args: ImageExportArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageExportArgs | ImageExportState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ImageExportState | undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["ossBucket"] = state ? state.ossBucket : undefined;
             inputs["ossPrefix"] = state ? state.ossPrefix : undefined;
         } else {
             const args = argsOrState as ImageExportArgs | undefined;
-            if ((!args || args.imageId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.imageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.ossBucket === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ossBucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ossBucket'");
             }
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["ossBucket"] = args ? args.ossBucket : undefined;
             inputs["ossPrefix"] = args ? args.ossPrefix : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ImageExport.__pulumiType, name, inputs, opts);
     }

@@ -77,7 +77,8 @@ export class PolicyAttachment extends pulumi.CustomResource {
     constructor(name: string, args: PolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyAttachmentArgs | PolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PolicyAttachmentState | undefined;
             inputs["policyName"] = state ? state.policyName : undefined;
             inputs["policyType"] = state ? state.policyType : undefined;
@@ -86,19 +87,19 @@ export class PolicyAttachment extends pulumi.CustomResource {
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
         } else {
             const args = argsOrState as PolicyAttachmentArgs | undefined;
-            if ((!args || args.policyName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if ((!args || args.policyType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
-            if ((!args || args.principalName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.principalName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'principalName'");
             }
-            if ((!args || args.principalType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.principalType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'principalType'");
             }
-            if ((!args || args.resourceGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupId'");
             }
             inputs["policyName"] = args ? args.policyName : undefined;
@@ -107,12 +108,8 @@ export class PolicyAttachment extends pulumi.CustomResource {
             inputs["principalType"] = args ? args.principalType : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PolicyAttachment.__pulumiType, name, inputs, opts);
     }

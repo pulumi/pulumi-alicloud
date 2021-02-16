@@ -189,6 +189,85 @@ func (i *DiskAttachment) ToDiskAttachmentOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DiskAttachmentOutput)
 }
 
+func (i *DiskAttachment) ToDiskAttachmentPtrOutput() DiskAttachmentPtrOutput {
+	return i.ToDiskAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *DiskAttachment) ToDiskAttachmentPtrOutputWithContext(ctx context.Context) DiskAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAttachmentPtrOutput)
+}
+
+type DiskAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToDiskAttachmentPtrOutput() DiskAttachmentPtrOutput
+	ToDiskAttachmentPtrOutputWithContext(ctx context.Context) DiskAttachmentPtrOutput
+}
+
+type diskAttachmentPtrType DiskAttachmentArgs
+
+func (*diskAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskAttachment)(nil))
+}
+
+func (i *diskAttachmentPtrType) ToDiskAttachmentPtrOutput() DiskAttachmentPtrOutput {
+	return i.ToDiskAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *diskAttachmentPtrType) ToDiskAttachmentPtrOutputWithContext(ctx context.Context) DiskAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAttachmentPtrOutput)
+}
+
+// DiskAttachmentArrayInput is an input type that accepts DiskAttachmentArray and DiskAttachmentArrayOutput values.
+// You can construct a concrete instance of `DiskAttachmentArrayInput` via:
+//
+//          DiskAttachmentArray{ DiskAttachmentArgs{...} }
+type DiskAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToDiskAttachmentArrayOutput() DiskAttachmentArrayOutput
+	ToDiskAttachmentArrayOutputWithContext(context.Context) DiskAttachmentArrayOutput
+}
+
+type DiskAttachmentArray []DiskAttachmentInput
+
+func (DiskAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DiskAttachment)(nil))
+}
+
+func (i DiskAttachmentArray) ToDiskAttachmentArrayOutput() DiskAttachmentArrayOutput {
+	return i.ToDiskAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i DiskAttachmentArray) ToDiskAttachmentArrayOutputWithContext(ctx context.Context) DiskAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAttachmentArrayOutput)
+}
+
+// DiskAttachmentMapInput is an input type that accepts DiskAttachmentMap and DiskAttachmentMapOutput values.
+// You can construct a concrete instance of `DiskAttachmentMapInput` via:
+//
+//          DiskAttachmentMap{ "key": DiskAttachmentArgs{...} }
+type DiskAttachmentMapInput interface {
+	pulumi.Input
+
+	ToDiskAttachmentMapOutput() DiskAttachmentMapOutput
+	ToDiskAttachmentMapOutputWithContext(context.Context) DiskAttachmentMapOutput
+}
+
+type DiskAttachmentMap map[string]DiskAttachmentInput
+
+func (DiskAttachmentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DiskAttachment)(nil))
+}
+
+func (i DiskAttachmentMap) ToDiskAttachmentMapOutput() DiskAttachmentMapOutput {
+	return i.ToDiskAttachmentMapOutputWithContext(context.Background())
+}
+
+func (i DiskAttachmentMap) ToDiskAttachmentMapOutputWithContext(ctx context.Context) DiskAttachmentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAttachmentMapOutput)
+}
+
 type DiskAttachmentOutput struct {
 	*pulumi.OutputState
 }
@@ -205,6 +284,75 @@ func (o DiskAttachmentOutput) ToDiskAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o DiskAttachmentOutput) ToDiskAttachmentPtrOutput() DiskAttachmentPtrOutput {
+	return o.ToDiskAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o DiskAttachmentOutput) ToDiskAttachmentPtrOutputWithContext(ctx context.Context) DiskAttachmentPtrOutput {
+	return o.ApplyT(func(v DiskAttachment) *DiskAttachment {
+		return &v
+	}).(DiskAttachmentPtrOutput)
+}
+
+type DiskAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DiskAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskAttachment)(nil))
+}
+
+func (o DiskAttachmentPtrOutput) ToDiskAttachmentPtrOutput() DiskAttachmentPtrOutput {
+	return o
+}
+
+func (o DiskAttachmentPtrOutput) ToDiskAttachmentPtrOutputWithContext(ctx context.Context) DiskAttachmentPtrOutput {
+	return o
+}
+
+type DiskAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (DiskAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiskAttachment)(nil))
+}
+
+func (o DiskAttachmentArrayOutput) ToDiskAttachmentArrayOutput() DiskAttachmentArrayOutput {
+	return o
+}
+
+func (o DiskAttachmentArrayOutput) ToDiskAttachmentArrayOutputWithContext(ctx context.Context) DiskAttachmentArrayOutput {
+	return o
+}
+
+func (o DiskAttachmentArrayOutput) Index(i pulumi.IntInput) DiskAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskAttachment {
+		return vs[0].([]DiskAttachment)[vs[1].(int)]
+	}).(DiskAttachmentOutput)
+}
+
+type DiskAttachmentMapOutput struct{ *pulumi.OutputState }
+
+func (DiskAttachmentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskAttachment)(nil))
+}
+
+func (o DiskAttachmentMapOutput) ToDiskAttachmentMapOutput() DiskAttachmentMapOutput {
+	return o
+}
+
+func (o DiskAttachmentMapOutput) ToDiskAttachmentMapOutputWithContext(ctx context.Context) DiskAttachmentMapOutput {
+	return o
+}
+
+func (o DiskAttachmentMapOutput) MapIndex(k pulumi.StringInput) DiskAttachmentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskAttachment {
+		return vs[0].(map[string]DiskAttachment)[vs[1].(string)]
+	}).(DiskAttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DiskAttachmentOutput{})
+	pulumi.RegisterOutputType(DiskAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(DiskAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(DiskAttachmentMapOutput{})
 }

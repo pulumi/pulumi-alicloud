@@ -84,29 +84,26 @@ export class VpcEndpointServiceUser extends pulumi.CustomResource {
     constructor(name: string, args: VpcEndpointServiceUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcEndpointServiceUserArgs | VpcEndpointServiceUserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VpcEndpointServiceUserState | undefined;
             inputs["dryRun"] = state ? state.dryRun : undefined;
             inputs["serviceId"] = state ? state.serviceId : undefined;
             inputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as VpcEndpointServiceUserArgs | undefined;
-            if ((!args || args.serviceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            if ((!args || args.userId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VpcEndpointServiceUser.__pulumiType, name, inputs, opts);
     }

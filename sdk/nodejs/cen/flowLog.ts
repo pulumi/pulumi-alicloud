@@ -111,7 +111,8 @@ export class FlowLog extends pulumi.CustomResource {
     constructor(name: string, args: FlowLogArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlowLogArgs | FlowLogState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FlowLogState | undefined;
             inputs["cenId"] = state ? state.cenId : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -121,13 +122,13 @@ export class FlowLog extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as FlowLogArgs | undefined;
-            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cenId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.logStoreName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.logStoreName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'logStoreName'");
             }
-            if ((!args || args.projectName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
             inputs["cenId"] = args ? args.cenId : undefined;
@@ -137,12 +138,8 @@ export class FlowLog extends pulumi.CustomResource {
             inputs["projectName"] = args ? args.projectName : undefined;
             inputs["status"] = args ? args.status : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FlowLog.__pulumiType, name, inputs, opts);
     }

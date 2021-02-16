@@ -93,7 +93,8 @@ export class SamlProvider extends pulumi.CustomResource {
     constructor(name: string, args: SamlProviderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SamlProviderArgs | SamlProviderState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SamlProviderState | undefined;
             inputs["arn"] = state ? state.arn : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -102,7 +103,7 @@ export class SamlProvider extends pulumi.CustomResource {
             inputs["updateDate"] = state ? state.updateDate : undefined;
         } else {
             const args = argsOrState as SamlProviderArgs | undefined;
-            if ((!args || args.samlProviderName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.samlProviderName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'samlProviderName'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -111,12 +112,8 @@ export class SamlProvider extends pulumi.CustomResource {
             inputs["arn"] = undefined /*out*/;
             inputs["updateDate"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SamlProvider.__pulumiType, name, inputs, opts);
     }

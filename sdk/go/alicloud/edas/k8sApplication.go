@@ -411,6 +411,85 @@ func (i *K8sApplication) ToK8sApplicationOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationOutput)
 }
 
+func (i *K8sApplication) ToK8sApplicationPtrOutput() K8sApplicationPtrOutput {
+	return i.ToK8sApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *K8sApplication) ToK8sApplicationPtrOutputWithContext(ctx context.Context) K8sApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationPtrOutput)
+}
+
+type K8sApplicationPtrInput interface {
+	pulumi.Input
+
+	ToK8sApplicationPtrOutput() K8sApplicationPtrOutput
+	ToK8sApplicationPtrOutputWithContext(ctx context.Context) K8sApplicationPtrOutput
+}
+
+type k8sApplicationPtrType K8sApplicationArgs
+
+func (*k8sApplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sApplication)(nil))
+}
+
+func (i *k8sApplicationPtrType) ToK8sApplicationPtrOutput() K8sApplicationPtrOutput {
+	return i.ToK8sApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *k8sApplicationPtrType) ToK8sApplicationPtrOutputWithContext(ctx context.Context) K8sApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationPtrOutput)
+}
+
+// K8sApplicationArrayInput is an input type that accepts K8sApplicationArray and K8sApplicationArrayOutput values.
+// You can construct a concrete instance of `K8sApplicationArrayInput` via:
+//
+//          K8sApplicationArray{ K8sApplicationArgs{...} }
+type K8sApplicationArrayInput interface {
+	pulumi.Input
+
+	ToK8sApplicationArrayOutput() K8sApplicationArrayOutput
+	ToK8sApplicationArrayOutputWithContext(context.Context) K8sApplicationArrayOutput
+}
+
+type K8sApplicationArray []K8sApplicationInput
+
+func (K8sApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*K8sApplication)(nil))
+}
+
+func (i K8sApplicationArray) ToK8sApplicationArrayOutput() K8sApplicationArrayOutput {
+	return i.ToK8sApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i K8sApplicationArray) ToK8sApplicationArrayOutputWithContext(ctx context.Context) K8sApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationArrayOutput)
+}
+
+// K8sApplicationMapInput is an input type that accepts K8sApplicationMap and K8sApplicationMapOutput values.
+// You can construct a concrete instance of `K8sApplicationMapInput` via:
+//
+//          K8sApplicationMap{ "key": K8sApplicationArgs{...} }
+type K8sApplicationMapInput interface {
+	pulumi.Input
+
+	ToK8sApplicationMapOutput() K8sApplicationMapOutput
+	ToK8sApplicationMapOutputWithContext(context.Context) K8sApplicationMapOutput
+}
+
+type K8sApplicationMap map[string]K8sApplicationInput
+
+func (K8sApplicationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*K8sApplication)(nil))
+}
+
+func (i K8sApplicationMap) ToK8sApplicationMapOutput() K8sApplicationMapOutput {
+	return i.ToK8sApplicationMapOutputWithContext(context.Background())
+}
+
+func (i K8sApplicationMap) ToK8sApplicationMapOutputWithContext(ctx context.Context) K8sApplicationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationMapOutput)
+}
+
 type K8sApplicationOutput struct {
 	*pulumi.OutputState
 }
@@ -427,6 +506,75 @@ func (o K8sApplicationOutput) ToK8sApplicationOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o K8sApplicationOutput) ToK8sApplicationPtrOutput() K8sApplicationPtrOutput {
+	return o.ToK8sApplicationPtrOutputWithContext(context.Background())
+}
+
+func (o K8sApplicationOutput) ToK8sApplicationPtrOutputWithContext(ctx context.Context) K8sApplicationPtrOutput {
+	return o.ApplyT(func(v K8sApplication) *K8sApplication {
+		return &v
+	}).(K8sApplicationPtrOutput)
+}
+
+type K8sApplicationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (K8sApplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**K8sApplication)(nil))
+}
+
+func (o K8sApplicationPtrOutput) ToK8sApplicationPtrOutput() K8sApplicationPtrOutput {
+	return o
+}
+
+func (o K8sApplicationPtrOutput) ToK8sApplicationPtrOutputWithContext(ctx context.Context) K8sApplicationPtrOutput {
+	return o
+}
+
+type K8sApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (K8sApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]K8sApplication)(nil))
+}
+
+func (o K8sApplicationArrayOutput) ToK8sApplicationArrayOutput() K8sApplicationArrayOutput {
+	return o
+}
+
+func (o K8sApplicationArrayOutput) ToK8sApplicationArrayOutputWithContext(ctx context.Context) K8sApplicationArrayOutput {
+	return o
+}
+
+func (o K8sApplicationArrayOutput) Index(i pulumi.IntInput) K8sApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sApplication {
+		return vs[0].([]K8sApplication)[vs[1].(int)]
+	}).(K8sApplicationOutput)
+}
+
+type K8sApplicationMapOutput struct{ *pulumi.OutputState }
+
+func (K8sApplicationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]K8sApplication)(nil))
+}
+
+func (o K8sApplicationMapOutput) ToK8sApplicationMapOutput() K8sApplicationMapOutput {
+	return o
+}
+
+func (o K8sApplicationMapOutput) ToK8sApplicationMapOutputWithContext(ctx context.Context) K8sApplicationMapOutput {
+	return o
+}
+
+func (o K8sApplicationMapOutput) MapIndex(k pulumi.StringInput) K8sApplicationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) K8sApplication {
+		return vs[0].(map[string]K8sApplication)[vs[1].(string)]
+	}).(K8sApplicationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(K8sApplicationOutput{})
+	pulumi.RegisterOutputType(K8sApplicationPtrOutput{})
+	pulumi.RegisterOutputType(K8sApplicationArrayOutput{})
+	pulumi.RegisterOutputType(K8sApplicationMapOutput{})
 }

@@ -173,6 +173,85 @@ func (i *LoginProfile) ToLoginProfileOutputWithContext(ctx context.Context) Logi
 	return pulumi.ToOutputWithContext(ctx, i).(LoginProfileOutput)
 }
 
+func (i *LoginProfile) ToLoginProfilePtrOutput() LoginProfilePtrOutput {
+	return i.ToLoginProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *LoginProfile) ToLoginProfilePtrOutputWithContext(ctx context.Context) LoginProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoginProfilePtrOutput)
+}
+
+type LoginProfilePtrInput interface {
+	pulumi.Input
+
+	ToLoginProfilePtrOutput() LoginProfilePtrOutput
+	ToLoginProfilePtrOutputWithContext(ctx context.Context) LoginProfilePtrOutput
+}
+
+type loginProfilePtrType LoginProfileArgs
+
+func (*loginProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoginProfile)(nil))
+}
+
+func (i *loginProfilePtrType) ToLoginProfilePtrOutput() LoginProfilePtrOutput {
+	return i.ToLoginProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *loginProfilePtrType) ToLoginProfilePtrOutputWithContext(ctx context.Context) LoginProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoginProfilePtrOutput)
+}
+
+// LoginProfileArrayInput is an input type that accepts LoginProfileArray and LoginProfileArrayOutput values.
+// You can construct a concrete instance of `LoginProfileArrayInput` via:
+//
+//          LoginProfileArray{ LoginProfileArgs{...} }
+type LoginProfileArrayInput interface {
+	pulumi.Input
+
+	ToLoginProfileArrayOutput() LoginProfileArrayOutput
+	ToLoginProfileArrayOutputWithContext(context.Context) LoginProfileArrayOutput
+}
+
+type LoginProfileArray []LoginProfileInput
+
+func (LoginProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*LoginProfile)(nil))
+}
+
+func (i LoginProfileArray) ToLoginProfileArrayOutput() LoginProfileArrayOutput {
+	return i.ToLoginProfileArrayOutputWithContext(context.Background())
+}
+
+func (i LoginProfileArray) ToLoginProfileArrayOutputWithContext(ctx context.Context) LoginProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoginProfileArrayOutput)
+}
+
+// LoginProfileMapInput is an input type that accepts LoginProfileMap and LoginProfileMapOutput values.
+// You can construct a concrete instance of `LoginProfileMapInput` via:
+//
+//          LoginProfileMap{ "key": LoginProfileArgs{...} }
+type LoginProfileMapInput interface {
+	pulumi.Input
+
+	ToLoginProfileMapOutput() LoginProfileMapOutput
+	ToLoginProfileMapOutputWithContext(context.Context) LoginProfileMapOutput
+}
+
+type LoginProfileMap map[string]LoginProfileInput
+
+func (LoginProfileMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*LoginProfile)(nil))
+}
+
+func (i LoginProfileMap) ToLoginProfileMapOutput() LoginProfileMapOutput {
+	return i.ToLoginProfileMapOutputWithContext(context.Background())
+}
+
+func (i LoginProfileMap) ToLoginProfileMapOutputWithContext(ctx context.Context) LoginProfileMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoginProfileMapOutput)
+}
+
 type LoginProfileOutput struct {
 	*pulumi.OutputState
 }
@@ -189,6 +268,75 @@ func (o LoginProfileOutput) ToLoginProfileOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o LoginProfileOutput) ToLoginProfilePtrOutput() LoginProfilePtrOutput {
+	return o.ToLoginProfilePtrOutputWithContext(context.Background())
+}
+
+func (o LoginProfileOutput) ToLoginProfilePtrOutputWithContext(ctx context.Context) LoginProfilePtrOutput {
+	return o.ApplyT(func(v LoginProfile) *LoginProfile {
+		return &v
+	}).(LoginProfilePtrOutput)
+}
+
+type LoginProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoginProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoginProfile)(nil))
+}
+
+func (o LoginProfilePtrOutput) ToLoginProfilePtrOutput() LoginProfilePtrOutput {
+	return o
+}
+
+func (o LoginProfilePtrOutput) ToLoginProfilePtrOutputWithContext(ctx context.Context) LoginProfilePtrOutput {
+	return o
+}
+
+type LoginProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (LoginProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoginProfile)(nil))
+}
+
+func (o LoginProfileArrayOutput) ToLoginProfileArrayOutput() LoginProfileArrayOutput {
+	return o
+}
+
+func (o LoginProfileArrayOutput) ToLoginProfileArrayOutputWithContext(ctx context.Context) LoginProfileArrayOutput {
+	return o
+}
+
+func (o LoginProfileArrayOutput) Index(i pulumi.IntInput) LoginProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoginProfile {
+		return vs[0].([]LoginProfile)[vs[1].(int)]
+	}).(LoginProfileOutput)
+}
+
+type LoginProfileMapOutput struct{ *pulumi.OutputState }
+
+func (LoginProfileMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LoginProfile)(nil))
+}
+
+func (o LoginProfileMapOutput) ToLoginProfileMapOutput() LoginProfileMapOutput {
+	return o
+}
+
+func (o LoginProfileMapOutput) ToLoginProfileMapOutputWithContext(ctx context.Context) LoginProfileMapOutput {
+	return o
+}
+
+func (o LoginProfileMapOutput) MapIndex(k pulumi.StringInput) LoginProfileOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LoginProfile {
+		return vs[0].(map[string]LoginProfile)[vs[1].(string)]
+	}).(LoginProfileOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LoginProfileOutput{})
+	pulumi.RegisterOutputType(LoginProfilePtrOutput{})
+	pulumi.RegisterOutputType(LoginProfileArrayOutput{})
+	pulumi.RegisterOutputType(LoginProfileMapOutput{})
 }

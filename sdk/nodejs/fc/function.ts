@@ -137,7 +137,8 @@ export class Function extends pulumi.CustomResource {
     constructor(name: string, args: FunctionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionArgs | FunctionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FunctionState | undefined;
             inputs["caPort"] = state ? state.caPort : undefined;
             inputs["codeChecksum"] = state ? state.codeChecksum : undefined;
@@ -162,13 +163,13 @@ export class Function extends pulumi.CustomResource {
             inputs["timeout"] = state ? state.timeout : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
-            if ((!args || args.handler === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.handler === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'handler'");
             }
-            if ((!args || args.runtime === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.runtime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["caPort"] = args ? args.caPort : undefined;
@@ -193,12 +194,8 @@ export class Function extends pulumi.CustomResource {
             inputs["functionId"] = undefined /*out*/;
             inputs["lastModified"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Function.__pulumiType, name, inputs, opts);
     }

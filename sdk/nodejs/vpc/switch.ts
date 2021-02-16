@@ -76,7 +76,8 @@ export class Switch extends pulumi.CustomResource {
     constructor(name: string, args: SwitchArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SwitchArgs | SwitchState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SwitchState | undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
@@ -86,13 +87,13 @@ export class Switch extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as SwitchArgs | undefined;
-            if ((!args || args.availabilityZone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if ((!args || args.cidrBlock === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if ((!args || args.vpcId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
@@ -102,12 +103,8 @@ export class Switch extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Switch.__pulumiType, name, inputs, opts);
     }

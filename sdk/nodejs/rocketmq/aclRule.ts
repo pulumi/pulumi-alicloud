@@ -123,7 +123,8 @@ export class AclRule extends pulumi.CustomResource {
     constructor(name: string, args: AclRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclRuleArgs | AclRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AclRuleState | undefined;
             inputs["aclId"] = state ? state.aclId : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -137,28 +138,28 @@ export class AclRule extends pulumi.CustomResource {
             inputs["sourcePortRange"] = state ? state.sourcePortRange : undefined;
         } else {
             const args = argsOrState as AclRuleArgs | undefined;
-            if ((!args || args.aclId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclId'");
             }
-            if ((!args || args.destCidr === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destCidr === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destCidr'");
             }
-            if ((!args || args.destPortRange === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destPortRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destPortRange'");
             }
-            if ((!args || args.direction === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.direction === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            if ((!args || args.ipProtocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ipProtocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if ((!args || args.policy === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            if ((!args || args.sourceCidr === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceCidr === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceCidr'");
             }
-            if ((!args || args.sourcePortRange === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourcePortRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourcePortRange'");
             }
             inputs["aclId"] = args ? args.aclId : undefined;
@@ -172,12 +173,8 @@ export class AclRule extends pulumi.CustomResource {
             inputs["sourceCidr"] = args ? args.sourceCidr : undefined;
             inputs["sourcePortRange"] = args ? args.sourcePortRange : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AclRule.__pulumiType, name, inputs, opts);
     }

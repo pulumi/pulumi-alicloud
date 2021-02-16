@@ -210,6 +210,85 @@ func (i *DdosBgpInstance) ToDdosBgpInstanceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstanceOutput)
 }
 
+func (i *DdosBgpInstance) ToDdosBgpInstancePtrOutput() DdosBgpInstancePtrOutput {
+	return i.ToDdosBgpInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *DdosBgpInstance) ToDdosBgpInstancePtrOutputWithContext(ctx context.Context) DdosBgpInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstancePtrOutput)
+}
+
+type DdosBgpInstancePtrInput interface {
+	pulumi.Input
+
+	ToDdosBgpInstancePtrOutput() DdosBgpInstancePtrOutput
+	ToDdosBgpInstancePtrOutputWithContext(ctx context.Context) DdosBgpInstancePtrOutput
+}
+
+type ddosBgpInstancePtrType DdosBgpInstanceArgs
+
+func (*ddosBgpInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DdosBgpInstance)(nil))
+}
+
+func (i *ddosBgpInstancePtrType) ToDdosBgpInstancePtrOutput() DdosBgpInstancePtrOutput {
+	return i.ToDdosBgpInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *ddosBgpInstancePtrType) ToDdosBgpInstancePtrOutputWithContext(ctx context.Context) DdosBgpInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstancePtrOutput)
+}
+
+// DdosBgpInstanceArrayInput is an input type that accepts DdosBgpInstanceArray and DdosBgpInstanceArrayOutput values.
+// You can construct a concrete instance of `DdosBgpInstanceArrayInput` via:
+//
+//          DdosBgpInstanceArray{ DdosBgpInstanceArgs{...} }
+type DdosBgpInstanceArrayInput interface {
+	pulumi.Input
+
+	ToDdosBgpInstanceArrayOutput() DdosBgpInstanceArrayOutput
+	ToDdosBgpInstanceArrayOutputWithContext(context.Context) DdosBgpInstanceArrayOutput
+}
+
+type DdosBgpInstanceArray []DdosBgpInstanceInput
+
+func (DdosBgpInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DdosBgpInstance)(nil))
+}
+
+func (i DdosBgpInstanceArray) ToDdosBgpInstanceArrayOutput() DdosBgpInstanceArrayOutput {
+	return i.ToDdosBgpInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i DdosBgpInstanceArray) ToDdosBgpInstanceArrayOutputWithContext(ctx context.Context) DdosBgpInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstanceArrayOutput)
+}
+
+// DdosBgpInstanceMapInput is an input type that accepts DdosBgpInstanceMap and DdosBgpInstanceMapOutput values.
+// You can construct a concrete instance of `DdosBgpInstanceMapInput` via:
+//
+//          DdosBgpInstanceMap{ "key": DdosBgpInstanceArgs{...} }
+type DdosBgpInstanceMapInput interface {
+	pulumi.Input
+
+	ToDdosBgpInstanceMapOutput() DdosBgpInstanceMapOutput
+	ToDdosBgpInstanceMapOutputWithContext(context.Context) DdosBgpInstanceMapOutput
+}
+
+type DdosBgpInstanceMap map[string]DdosBgpInstanceInput
+
+func (DdosBgpInstanceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DdosBgpInstance)(nil))
+}
+
+func (i DdosBgpInstanceMap) ToDdosBgpInstanceMapOutput() DdosBgpInstanceMapOutput {
+	return i.ToDdosBgpInstanceMapOutputWithContext(context.Background())
+}
+
+func (i DdosBgpInstanceMap) ToDdosBgpInstanceMapOutputWithContext(ctx context.Context) DdosBgpInstanceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstanceMapOutput)
+}
+
 type DdosBgpInstanceOutput struct {
 	*pulumi.OutputState
 }
@@ -226,6 +305,75 @@ func (o DdosBgpInstanceOutput) ToDdosBgpInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o DdosBgpInstanceOutput) ToDdosBgpInstancePtrOutput() DdosBgpInstancePtrOutput {
+	return o.ToDdosBgpInstancePtrOutputWithContext(context.Background())
+}
+
+func (o DdosBgpInstanceOutput) ToDdosBgpInstancePtrOutputWithContext(ctx context.Context) DdosBgpInstancePtrOutput {
+	return o.ApplyT(func(v DdosBgpInstance) *DdosBgpInstance {
+		return &v
+	}).(DdosBgpInstancePtrOutput)
+}
+
+type DdosBgpInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DdosBgpInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DdosBgpInstance)(nil))
+}
+
+func (o DdosBgpInstancePtrOutput) ToDdosBgpInstancePtrOutput() DdosBgpInstancePtrOutput {
+	return o
+}
+
+func (o DdosBgpInstancePtrOutput) ToDdosBgpInstancePtrOutputWithContext(ctx context.Context) DdosBgpInstancePtrOutput {
+	return o
+}
+
+type DdosBgpInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (DdosBgpInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DdosBgpInstance)(nil))
+}
+
+func (o DdosBgpInstanceArrayOutput) ToDdosBgpInstanceArrayOutput() DdosBgpInstanceArrayOutput {
+	return o
+}
+
+func (o DdosBgpInstanceArrayOutput) ToDdosBgpInstanceArrayOutputWithContext(ctx context.Context) DdosBgpInstanceArrayOutput {
+	return o
+}
+
+func (o DdosBgpInstanceArrayOutput) Index(i pulumi.IntInput) DdosBgpInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DdosBgpInstance {
+		return vs[0].([]DdosBgpInstance)[vs[1].(int)]
+	}).(DdosBgpInstanceOutput)
+}
+
+type DdosBgpInstanceMapOutput struct{ *pulumi.OutputState }
+
+func (DdosBgpInstanceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DdosBgpInstance)(nil))
+}
+
+func (o DdosBgpInstanceMapOutput) ToDdosBgpInstanceMapOutput() DdosBgpInstanceMapOutput {
+	return o
+}
+
+func (o DdosBgpInstanceMapOutput) ToDdosBgpInstanceMapOutputWithContext(ctx context.Context) DdosBgpInstanceMapOutput {
+	return o
+}
+
+func (o DdosBgpInstanceMapOutput) MapIndex(k pulumi.StringInput) DdosBgpInstanceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DdosBgpInstance {
+		return vs[0].(map[string]DdosBgpInstance)[vs[1].(string)]
+	}).(DdosBgpInstanceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DdosBgpInstanceOutput{})
+	pulumi.RegisterOutputType(DdosBgpInstancePtrOutput{})
+	pulumi.RegisterOutputType(DdosBgpInstanceArrayOutput{})
+	pulumi.RegisterOutputType(DdosBgpInstanceMapOutput{})
 }

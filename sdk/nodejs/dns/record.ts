@@ -85,7 +85,8 @@ export class Record extends pulumi.CustomResource {
     constructor(name: string, args: RecordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RecordArgs | RecordState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RecordState | undefined;
             inputs["hostRecord"] = state ? state.hostRecord : undefined;
             inputs["locked"] = state ? state.locked : undefined;
@@ -98,13 +99,13 @@ export class Record extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as RecordArgs | undefined;
-            if ((!args || args.hostRecord === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hostRecord === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostRecord'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["hostRecord"] = args ? args.hostRecord : undefined;
@@ -117,12 +118,8 @@ export class Record extends pulumi.CustomResource {
             inputs["locked"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Record.__pulumiType, name, inputs, opts);
     }

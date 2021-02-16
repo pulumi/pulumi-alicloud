@@ -239,7 +239,8 @@ export class RouteMap extends pulumi.CustomResource {
     constructor(name: string, args: RouteMapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteMapArgs | RouteMapState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouteMapState | undefined;
             inputs["asPathMatchMode"] = state ? state.asPathMatchMode : undefined;
             inputs["cenId"] = state ? state.cenId : undefined;
@@ -272,19 +273,19 @@ export class RouteMap extends pulumi.CustomResource {
             inputs["transmitDirection"] = state ? state.transmitDirection : undefined;
         } else {
             const args = argsOrState as RouteMapArgs | undefined;
-            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cenId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.cenRegionId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cenRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenRegionId'");
             }
-            if ((!args || args.mapResult === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.mapResult === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mapResult'");
             }
-            if ((!args || args.priority === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.priority === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.transmitDirection === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.transmitDirection === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transmitDirection'");
             }
             inputs["asPathMatchMode"] = args ? args.asPathMatchMode : undefined;
@@ -317,12 +318,8 @@ export class RouteMap extends pulumi.CustomResource {
             inputs["routeMapId"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RouteMap.__pulumiType, name, inputs, opts);
     }

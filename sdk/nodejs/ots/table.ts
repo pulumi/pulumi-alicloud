@@ -121,7 +121,8 @@ export class Table extends pulumi.CustomResource {
     constructor(name: string, args: TableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TableArgs | TableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TableState | undefined;
             inputs["deviationCellVersionInSec"] = state ? state.deviationCellVersionInSec : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
@@ -131,19 +132,19 @@ export class Table extends pulumi.CustomResource {
             inputs["timeToLive"] = state ? state.timeToLive : undefined;
         } else {
             const args = argsOrState as TableArgs | undefined;
-            if ((!args || args.instanceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.maxVersion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.maxVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'maxVersion'");
             }
-            if ((!args || args.primaryKeys === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.primaryKeys === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'primaryKeys'");
             }
-            if ((!args || args.tableName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tableName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableName'");
             }
-            if ((!args || args.timeToLive === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.timeToLive === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeToLive'");
             }
             inputs["deviationCellVersionInSec"] = args ? args.deviationCellVersionInSec : undefined;
@@ -153,12 +154,8 @@ export class Table extends pulumi.CustomResource {
             inputs["tableName"] = args ? args.tableName : undefined;
             inputs["timeToLive"] = args ? args.timeToLive : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Table.__pulumiType, name, inputs, opts);
     }

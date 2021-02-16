@@ -87,32 +87,29 @@ export class SnatEntry extends pulumi.CustomResource {
     constructor(name: string, args: SnatEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SnatEntryArgs | SnatEntryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SnatEntryState | undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["sagId"] = state ? state.sagId : undefined;
             inputs["snatIp"] = state ? state.snatIp : undefined;
         } else {
             const args = argsOrState as SnatEntryArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if ((!args || args.sagId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sagId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sagId'");
             }
-            if ((!args || args.snatIp === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.snatIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'snatIp'");
             }
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             inputs["sagId"] = args ? args.sagId : undefined;
             inputs["snatIp"] = args ? args.snatIp : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SnatEntry.__pulumiType, name, inputs, opts);
     }

@@ -105,7 +105,8 @@ export class VpcEndpointService extends pulumi.CustomResource {
     constructor(name: string, args?: VpcEndpointServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcEndpointServiceArgs | VpcEndpointServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VpcEndpointServiceState | undefined;
             inputs["autoAcceptConnection"] = state ? state.autoAcceptConnection : undefined;
             inputs["connectBandwidth"] = state ? state.connectBandwidth : undefined;
@@ -126,12 +127,8 @@ export class VpcEndpointService extends pulumi.CustomResource {
             inputs["serviceDomain"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VpcEndpointService.__pulumiType, name, inputs, opts);
     }

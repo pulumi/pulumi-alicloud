@@ -167,7 +167,8 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             inputs["collectorStatus"] = state ? state.collectorStatus : undefined;
@@ -190,13 +191,13 @@ export class Cluster extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.dbNodeClass === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbNodeClass === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbNodeClass'");
             }
-            if ((!args || args.dbType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbType'");
             }
-            if ((!args || args.dbVersion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbVersion'");
             }
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
@@ -219,12 +220,8 @@ export class Cluster extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["connectionString"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Cluster.__pulumiType, name, inputs, opts);
     }

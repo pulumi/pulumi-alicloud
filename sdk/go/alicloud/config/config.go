@@ -11,21 +11,13 @@ import (
 // The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
 // console.
 func GetAccessKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "alicloud:accessKey")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ALICLOUD_ACCESS_KEY").(string)
+	return config.Get(ctx, "alicloud:accessKey")
 }
 
 // The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 // Alibaba Cloud console.
 func GetAccountId(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "alicloud:accountId")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ALICLOUD_ACCOUNT_ID").(string)
+	return config.Get(ctx, "alicloud:accountId")
 }
 func GetAssumeRole(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:assumeRole")
@@ -93,29 +85,17 @@ func GetRegion(ctx *pulumi.Context) string {
 // The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
 // console.
 func GetSecretKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "alicloud:secretKey")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ALICLOUD_SECRET_KEY").(string)
+	return config.Get(ctx, "alicloud:secretKey")
 }
 
 // security token. A security token is only required if you are using Security Token Service.
 func GetSecurityToken(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "alicloud:securityToken")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ALICLOUD_SECURITY_TOKEN").(string)
+	return config.Get(ctx, "alicloud:securityToken")
 }
 
 // The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 func GetSharedCredentialsFile(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "alicloud:sharedCredentialsFile")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ALICLOUD_SHARED_CREDENTIALS_FILE").(string)
+	return config.Get(ctx, "alicloud:sharedCredentialsFile")
 }
 
 // Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions

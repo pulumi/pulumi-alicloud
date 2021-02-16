@@ -108,7 +108,8 @@ export class DdosBgpInstance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DdosBgpInstanceArgs | DdosBgpInstanceState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("DdosBgpInstance is deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance")
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DdosBgpInstanceState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["baseBandwidth"] = state ? state.baseBandwidth : undefined;
@@ -119,13 +120,13 @@ export class DdosBgpInstance extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DdosBgpInstanceArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if ((!args || args.ipCount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ipCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipCount'");
             }
-            if ((!args || args.ipType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ipType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipType'");
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
@@ -136,12 +137,8 @@ export class DdosBgpInstance extends pulumi.CustomResource {
             inputs["period"] = args ? args.period : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DdosBgpInstance.__pulumiType, name, inputs, opts);
     }

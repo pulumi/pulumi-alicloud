@@ -114,7 +114,8 @@ export class SaslUser extends pulumi.CustomResource {
     constructor(name: string, args: SaslUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SaslUserArgs | SaslUserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SaslUserState | undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
@@ -123,10 +124,10 @@ export class SaslUser extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as SaslUserArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.username === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             inputs["instanceId"] = args ? args.instanceId : undefined;
@@ -135,12 +136,8 @@ export class SaslUser extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["username"] = args ? args.username : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SaslUser.__pulumiType, name, inputs, opts);
     }

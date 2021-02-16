@@ -119,7 +119,8 @@ export class Trail extends pulumi.CustomResource {
     constructor(name: string, args?: TrailArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TrailArgs | TrailState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TrailState | undefined;
             inputs["eventRw"] = state ? state.eventRw : undefined;
             inputs["isOrganizationTrail"] = state ? state.isOrganizationTrail : undefined;
@@ -148,12 +149,8 @@ export class Trail extends pulumi.CustomResource {
             inputs["trailName"] = args ? args.trailName : undefined;
             inputs["trailRegion"] = args ? args.trailRegion : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Trail.__pulumiType, name, inputs, opts);
     }

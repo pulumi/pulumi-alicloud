@@ -267,6 +267,85 @@ func (i *SchedulerRule) ToSchedulerRuleOutputWithContext(ctx context.Context) Sc
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleOutput)
 }
 
+func (i *SchedulerRule) ToSchedulerRulePtrOutput() SchedulerRulePtrOutput {
+	return i.ToSchedulerRulePtrOutputWithContext(context.Background())
+}
+
+func (i *SchedulerRule) ToSchedulerRulePtrOutputWithContext(ctx context.Context) SchedulerRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRulePtrOutput)
+}
+
+type SchedulerRulePtrInput interface {
+	pulumi.Input
+
+	ToSchedulerRulePtrOutput() SchedulerRulePtrOutput
+	ToSchedulerRulePtrOutputWithContext(ctx context.Context) SchedulerRulePtrOutput
+}
+
+type schedulerRulePtrType SchedulerRuleArgs
+
+func (*schedulerRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulerRule)(nil))
+}
+
+func (i *schedulerRulePtrType) ToSchedulerRulePtrOutput() SchedulerRulePtrOutput {
+	return i.ToSchedulerRulePtrOutputWithContext(context.Background())
+}
+
+func (i *schedulerRulePtrType) ToSchedulerRulePtrOutputWithContext(ctx context.Context) SchedulerRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRulePtrOutput)
+}
+
+// SchedulerRuleArrayInput is an input type that accepts SchedulerRuleArray and SchedulerRuleArrayOutput values.
+// You can construct a concrete instance of `SchedulerRuleArrayInput` via:
+//
+//          SchedulerRuleArray{ SchedulerRuleArgs{...} }
+type SchedulerRuleArrayInput interface {
+	pulumi.Input
+
+	ToSchedulerRuleArrayOutput() SchedulerRuleArrayOutput
+	ToSchedulerRuleArrayOutputWithContext(context.Context) SchedulerRuleArrayOutput
+}
+
+type SchedulerRuleArray []SchedulerRuleInput
+
+func (SchedulerRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SchedulerRule)(nil))
+}
+
+func (i SchedulerRuleArray) ToSchedulerRuleArrayOutput() SchedulerRuleArrayOutput {
+	return i.ToSchedulerRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SchedulerRuleArray) ToSchedulerRuleArrayOutputWithContext(ctx context.Context) SchedulerRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleArrayOutput)
+}
+
+// SchedulerRuleMapInput is an input type that accepts SchedulerRuleMap and SchedulerRuleMapOutput values.
+// You can construct a concrete instance of `SchedulerRuleMapInput` via:
+//
+//          SchedulerRuleMap{ "key": SchedulerRuleArgs{...} }
+type SchedulerRuleMapInput interface {
+	pulumi.Input
+
+	ToSchedulerRuleMapOutput() SchedulerRuleMapOutput
+	ToSchedulerRuleMapOutputWithContext(context.Context) SchedulerRuleMapOutput
+}
+
+type SchedulerRuleMap map[string]SchedulerRuleInput
+
+func (SchedulerRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SchedulerRule)(nil))
+}
+
+func (i SchedulerRuleMap) ToSchedulerRuleMapOutput() SchedulerRuleMapOutput {
+	return i.ToSchedulerRuleMapOutputWithContext(context.Background())
+}
+
+func (i SchedulerRuleMap) ToSchedulerRuleMapOutputWithContext(ctx context.Context) SchedulerRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleMapOutput)
+}
+
 type SchedulerRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -283,6 +362,75 @@ func (o SchedulerRuleOutput) ToSchedulerRuleOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o SchedulerRuleOutput) ToSchedulerRulePtrOutput() SchedulerRulePtrOutput {
+	return o.ToSchedulerRulePtrOutputWithContext(context.Background())
+}
+
+func (o SchedulerRuleOutput) ToSchedulerRulePtrOutputWithContext(ctx context.Context) SchedulerRulePtrOutput {
+	return o.ApplyT(func(v SchedulerRule) *SchedulerRule {
+		return &v
+	}).(SchedulerRulePtrOutput)
+}
+
+type SchedulerRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SchedulerRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulerRule)(nil))
+}
+
+func (o SchedulerRulePtrOutput) ToSchedulerRulePtrOutput() SchedulerRulePtrOutput {
+	return o
+}
+
+func (o SchedulerRulePtrOutput) ToSchedulerRulePtrOutputWithContext(ctx context.Context) SchedulerRulePtrOutput {
+	return o
+}
+
+type SchedulerRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SchedulerRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchedulerRule)(nil))
+}
+
+func (o SchedulerRuleArrayOutput) ToSchedulerRuleArrayOutput() SchedulerRuleArrayOutput {
+	return o
+}
+
+func (o SchedulerRuleArrayOutput) ToSchedulerRuleArrayOutputWithContext(ctx context.Context) SchedulerRuleArrayOutput {
+	return o
+}
+
+func (o SchedulerRuleArrayOutput) Index(i pulumi.IntInput) SchedulerRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchedulerRule {
+		return vs[0].([]SchedulerRule)[vs[1].(int)]
+	}).(SchedulerRuleOutput)
+}
+
+type SchedulerRuleMapOutput struct{ *pulumi.OutputState }
+
+func (SchedulerRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SchedulerRule)(nil))
+}
+
+func (o SchedulerRuleMapOutput) ToSchedulerRuleMapOutput() SchedulerRuleMapOutput {
+	return o
+}
+
+func (o SchedulerRuleMapOutput) ToSchedulerRuleMapOutputWithContext(ctx context.Context) SchedulerRuleMapOutput {
+	return o
+}
+
+func (o SchedulerRuleMapOutput) MapIndex(k pulumi.StringInput) SchedulerRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SchedulerRule {
+		return vs[0].(map[string]SchedulerRule)[vs[1].(string)]
+	}).(SchedulerRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SchedulerRuleOutput{})
+	pulumi.RegisterOutputType(SchedulerRulePtrOutput{})
+	pulumi.RegisterOutputType(SchedulerRuleArrayOutput{})
+	pulumi.RegisterOutputType(SchedulerRuleMapOutput{})
 }

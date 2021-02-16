@@ -136,6 +136,85 @@ func (i *BackupPolicy) ToBackupPolicyOutputWithContext(ctx context.Context) Back
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyOutput)
 }
 
+func (i *BackupPolicy) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return i.ToBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *BackupPolicy) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyPtrOutput)
+}
+
+type BackupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBackupPolicyPtrOutput() BackupPolicyPtrOutput
+	ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput
+}
+
+type backupPolicyPtrType BackupPolicyArgs
+
+func (*backupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicy)(nil))
+}
+
+func (i *backupPolicyPtrType) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return i.ToBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPolicyPtrType) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyPtrOutput)
+}
+
+// BackupPolicyArrayInput is an input type that accepts BackupPolicyArray and BackupPolicyArrayOutput values.
+// You can construct a concrete instance of `BackupPolicyArrayInput` via:
+//
+//          BackupPolicyArray{ BackupPolicyArgs{...} }
+type BackupPolicyArrayInput interface {
+	pulumi.Input
+
+	ToBackupPolicyArrayOutput() BackupPolicyArrayOutput
+	ToBackupPolicyArrayOutputWithContext(context.Context) BackupPolicyArrayOutput
+}
+
+type BackupPolicyArray []BackupPolicyInput
+
+func (BackupPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*BackupPolicy)(nil))
+}
+
+func (i BackupPolicyArray) ToBackupPolicyArrayOutput() BackupPolicyArrayOutput {
+	return i.ToBackupPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyArray) ToBackupPolicyArrayOutputWithContext(ctx context.Context) BackupPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyArrayOutput)
+}
+
+// BackupPolicyMapInput is an input type that accepts BackupPolicyMap and BackupPolicyMapOutput values.
+// You can construct a concrete instance of `BackupPolicyMapInput` via:
+//
+//          BackupPolicyMap{ "key": BackupPolicyArgs{...} }
+type BackupPolicyMapInput interface {
+	pulumi.Input
+
+	ToBackupPolicyMapOutput() BackupPolicyMapOutput
+	ToBackupPolicyMapOutputWithContext(context.Context) BackupPolicyMapOutput
+}
+
+type BackupPolicyMap map[string]BackupPolicyInput
+
+func (BackupPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*BackupPolicy)(nil))
+}
+
+func (i BackupPolicyMap) ToBackupPolicyMapOutput() BackupPolicyMapOutput {
+	return i.ToBackupPolicyMapOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyMap) ToBackupPolicyMapOutputWithContext(ctx context.Context) BackupPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyMapOutput)
+}
+
 type BackupPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -152,6 +231,75 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o BackupPolicyOutput) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return o.ToBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return o.ApplyT(func(v BackupPolicy) *BackupPolicy {
+		return &v
+	}).(BackupPolicyPtrOutput)
+}
+
+type BackupPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicy)(nil))
+}
+
+func (o BackupPolicyPtrOutput) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return o
+}
+
+func (o BackupPolicyPtrOutput) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return o
+}
+
+type BackupPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPolicy)(nil))
+}
+
+func (o BackupPolicyArrayOutput) ToBackupPolicyArrayOutput() BackupPolicyArrayOutput {
+	return o
+}
+
+func (o BackupPolicyArrayOutput) ToBackupPolicyArrayOutputWithContext(ctx context.Context) BackupPolicyArrayOutput {
+	return o
+}
+
+func (o BackupPolicyArrayOutput) Index(i pulumi.IntInput) BackupPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupPolicy {
+		return vs[0].([]BackupPolicy)[vs[1].(int)]
+	}).(BackupPolicyOutput)
+}
+
+type BackupPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BackupPolicy)(nil))
+}
+
+func (o BackupPolicyMapOutput) ToBackupPolicyMapOutput() BackupPolicyMapOutput {
+	return o
+}
+
+func (o BackupPolicyMapOutput) ToBackupPolicyMapOutputWithContext(ctx context.Context) BackupPolicyMapOutput {
+	return o
+}
+
+func (o BackupPolicyMapOutput) MapIndex(k pulumi.StringInput) BackupPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BackupPolicy {
+		return vs[0].(map[string]BackupPolicy)[vs[1].(string)]
+	}).(BackupPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BackupPolicyOutput{})
+	pulumi.RegisterOutputType(BackupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackupPolicyArrayOutput{})
+	pulumi.RegisterOutputType(BackupPolicyMapOutput{})
 }

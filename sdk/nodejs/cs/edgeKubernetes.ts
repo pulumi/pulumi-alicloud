@@ -196,7 +196,8 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     constructor(name: string, args: EdgeKubernetesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EdgeKubernetesArgs | EdgeKubernetesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EdgeKubernetesState | undefined;
             inputs["addons"] = state ? state.addons : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
@@ -240,13 +241,13 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
         } else {
             const args = argsOrState as EdgeKubernetesArgs | undefined;
-            if ((!args || args.workerInstanceTypes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.workerInstanceTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerInstanceTypes'");
             }
-            if ((!args || args.workerNumber === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.workerNumber === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerNumber'");
             }
-            if ((!args || args.workerVswitchIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.workerVswitchIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerVswitchIds'");
             }
             inputs["addons"] = args ? args.addons : undefined;
@@ -290,12 +291,8 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["vpcId"] = undefined /*out*/;
             inputs["workerNodes"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EdgeKubernetes.__pulumiType, name, inputs, opts);
     }

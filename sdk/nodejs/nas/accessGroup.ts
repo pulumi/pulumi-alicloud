@@ -111,7 +111,8 @@ export class AccessGroup extends pulumi.CustomResource {
     constructor(name: string, args?: AccessGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessGroupArgs | AccessGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccessGroupState | undefined;
             inputs["accessGroupName"] = state ? state.accessGroupName : undefined;
             inputs["accessGroupType"] = state ? state.accessGroupType : undefined;
@@ -128,12 +129,8 @@ export class AccessGroup extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccessGroup.__pulumiType, name, inputs, opts);
     }

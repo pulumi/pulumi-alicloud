@@ -129,27 +129,24 @@ export class RoleAttachment extends pulumi.CustomResource {
     constructor(name: string, args: RoleAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleAttachmentArgs | RoleAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RoleAttachmentState | undefined;
             inputs["instanceIds"] = state ? state.instanceIds : undefined;
             inputs["roleName"] = state ? state.roleName : undefined;
         } else {
             const args = argsOrState as RoleAttachmentArgs | undefined;
-            if ((!args || args.instanceIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if ((!args || args.roleName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.roleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleName'");
             }
             inputs["instanceIds"] = args ? args.instanceIds : undefined;
             inputs["roleName"] = args ? args.roleName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RoleAttachment.__pulumiType, name, inputs, opts);
     }

@@ -64,26 +64,23 @@ export class HAVip extends pulumi.CustomResource {
     constructor(name: string, args: HAVipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HAVipArgs | HAVipState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HAVipState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as HAVipArgs | undefined;
-            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HAVip.__pulumiType, name, inputs, opts);
     }

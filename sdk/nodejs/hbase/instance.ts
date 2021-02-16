@@ -195,7 +195,8 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["account"] = state ? state.account : undefined;
             inputs["autoRenew"] = state ? state.autoRenew : undefined;
@@ -226,13 +227,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.coreInstanceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.coreInstanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'coreInstanceType'");
             }
-            if ((!args || args.engineVersion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.engineVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.masterInstanceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.masterInstanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'masterInstanceType'");
             }
             inputs["account"] = args ? args.account : undefined;
@@ -263,12 +264,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["uiProxyConnAddrs"] = undefined /*out*/;
             inputs["zkConnAddrs"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }

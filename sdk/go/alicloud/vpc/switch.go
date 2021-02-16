@@ -160,6 +160,85 @@ func (i *Switch) ToSwitchOutputWithContext(ctx context.Context) SwitchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SwitchOutput)
 }
 
+func (i *Switch) ToSwitchPtrOutput() SwitchPtrOutput {
+	return i.ToSwitchPtrOutputWithContext(context.Background())
+}
+
+func (i *Switch) ToSwitchPtrOutputWithContext(ctx context.Context) SwitchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchPtrOutput)
+}
+
+type SwitchPtrInput interface {
+	pulumi.Input
+
+	ToSwitchPtrOutput() SwitchPtrOutput
+	ToSwitchPtrOutputWithContext(ctx context.Context) SwitchPtrOutput
+}
+
+type switchPtrType SwitchArgs
+
+func (*switchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Switch)(nil))
+}
+
+func (i *switchPtrType) ToSwitchPtrOutput() SwitchPtrOutput {
+	return i.ToSwitchPtrOutputWithContext(context.Background())
+}
+
+func (i *switchPtrType) ToSwitchPtrOutputWithContext(ctx context.Context) SwitchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchPtrOutput)
+}
+
+// SwitchArrayInput is an input type that accepts SwitchArray and SwitchArrayOutput values.
+// You can construct a concrete instance of `SwitchArrayInput` via:
+//
+//          SwitchArray{ SwitchArgs{...} }
+type SwitchArrayInput interface {
+	pulumi.Input
+
+	ToSwitchArrayOutput() SwitchArrayOutput
+	ToSwitchArrayOutputWithContext(context.Context) SwitchArrayOutput
+}
+
+type SwitchArray []SwitchInput
+
+func (SwitchArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Switch)(nil))
+}
+
+func (i SwitchArray) ToSwitchArrayOutput() SwitchArrayOutput {
+	return i.ToSwitchArrayOutputWithContext(context.Background())
+}
+
+func (i SwitchArray) ToSwitchArrayOutputWithContext(ctx context.Context) SwitchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchArrayOutput)
+}
+
+// SwitchMapInput is an input type that accepts SwitchMap and SwitchMapOutput values.
+// You can construct a concrete instance of `SwitchMapInput` via:
+//
+//          SwitchMap{ "key": SwitchArgs{...} }
+type SwitchMapInput interface {
+	pulumi.Input
+
+	ToSwitchMapOutput() SwitchMapOutput
+	ToSwitchMapOutputWithContext(context.Context) SwitchMapOutput
+}
+
+type SwitchMap map[string]SwitchInput
+
+func (SwitchMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Switch)(nil))
+}
+
+func (i SwitchMap) ToSwitchMapOutput() SwitchMapOutput {
+	return i.ToSwitchMapOutputWithContext(context.Background())
+}
+
+func (i SwitchMap) ToSwitchMapOutputWithContext(ctx context.Context) SwitchMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchMapOutput)
+}
+
 type SwitchOutput struct {
 	*pulumi.OutputState
 }
@@ -176,6 +255,75 @@ func (o SwitchOutput) ToSwitchOutputWithContext(ctx context.Context) SwitchOutpu
 	return o
 }
 
+func (o SwitchOutput) ToSwitchPtrOutput() SwitchPtrOutput {
+	return o.ToSwitchPtrOutputWithContext(context.Background())
+}
+
+func (o SwitchOutput) ToSwitchPtrOutputWithContext(ctx context.Context) SwitchPtrOutput {
+	return o.ApplyT(func(v Switch) *Switch {
+		return &v
+	}).(SwitchPtrOutput)
+}
+
+type SwitchPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SwitchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Switch)(nil))
+}
+
+func (o SwitchPtrOutput) ToSwitchPtrOutput() SwitchPtrOutput {
+	return o
+}
+
+func (o SwitchPtrOutput) ToSwitchPtrOutputWithContext(ctx context.Context) SwitchPtrOutput {
+	return o
+}
+
+type SwitchArrayOutput struct{ *pulumi.OutputState }
+
+func (SwitchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Switch)(nil))
+}
+
+func (o SwitchArrayOutput) ToSwitchArrayOutput() SwitchArrayOutput {
+	return o
+}
+
+func (o SwitchArrayOutput) ToSwitchArrayOutputWithContext(ctx context.Context) SwitchArrayOutput {
+	return o
+}
+
+func (o SwitchArrayOutput) Index(i pulumi.IntInput) SwitchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Switch {
+		return vs[0].([]Switch)[vs[1].(int)]
+	}).(SwitchOutput)
+}
+
+type SwitchMapOutput struct{ *pulumi.OutputState }
+
+func (SwitchMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Switch)(nil))
+}
+
+func (o SwitchMapOutput) ToSwitchMapOutput() SwitchMapOutput {
+	return o
+}
+
+func (o SwitchMapOutput) ToSwitchMapOutputWithContext(ctx context.Context) SwitchMapOutput {
+	return o
+}
+
+func (o SwitchMapOutput) MapIndex(k pulumi.StringInput) SwitchOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Switch {
+		return vs[0].(map[string]Switch)[vs[1].(string)]
+	}).(SwitchOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SwitchOutput{})
+	pulumi.RegisterOutputType(SwitchPtrOutput{})
+	pulumi.RegisterOutputType(SwitchArrayOutput{})
+	pulumi.RegisterOutputType(SwitchMapOutput{})
 }

@@ -188,7 +188,8 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
     constructor(name: string, args: AutoProvisioningGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AutoProvisioningGroupArgs | AutoProvisioningGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AutoProvisioningGroupState | undefined;
             inputs["autoProvisioningGroupName"] = state ? state.autoProvisioningGroupName : undefined;
             inputs["autoProvisioningGroupType"] = state ? state.autoProvisioningGroupType : undefined;
@@ -212,13 +213,13 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
             inputs["validUntil"] = state ? state.validUntil : undefined;
         } else {
             const args = argsOrState as AutoProvisioningGroupArgs | undefined;
-            if ((!args || args.launchTemplateConfigs === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.launchTemplateConfigs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'launchTemplateConfigs'");
             }
-            if ((!args || args.launchTemplateId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.launchTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'launchTemplateId'");
             }
-            if ((!args || args.totalTargetCapacity === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.totalTargetCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'totalTargetCapacity'");
             }
             inputs["autoProvisioningGroupName"] = args ? args.autoProvisioningGroupName : undefined;
@@ -242,12 +243,8 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
             inputs["validFrom"] = args ? args.validFrom : undefined;
             inputs["validUntil"] = args ? args.validUntil : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AutoProvisioningGroup.__pulumiType, name, inputs, opts);
     }

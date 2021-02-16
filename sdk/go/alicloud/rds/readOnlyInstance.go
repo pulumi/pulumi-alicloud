@@ -22,7 +22,6 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -314,6 +313,85 @@ func (i *ReadOnlyInstance) ToReadOnlyInstanceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceOutput)
 }
 
+func (i *ReadOnlyInstance) ToReadOnlyInstancePtrOutput() ReadOnlyInstancePtrOutput {
+	return i.ToReadOnlyInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *ReadOnlyInstance) ToReadOnlyInstancePtrOutputWithContext(ctx context.Context) ReadOnlyInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstancePtrOutput)
+}
+
+type ReadOnlyInstancePtrInput interface {
+	pulumi.Input
+
+	ToReadOnlyInstancePtrOutput() ReadOnlyInstancePtrOutput
+	ToReadOnlyInstancePtrOutputWithContext(ctx context.Context) ReadOnlyInstancePtrOutput
+}
+
+type readOnlyInstancePtrType ReadOnlyInstanceArgs
+
+func (*readOnlyInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReadOnlyInstance)(nil))
+}
+
+func (i *readOnlyInstancePtrType) ToReadOnlyInstancePtrOutput() ReadOnlyInstancePtrOutput {
+	return i.ToReadOnlyInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *readOnlyInstancePtrType) ToReadOnlyInstancePtrOutputWithContext(ctx context.Context) ReadOnlyInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstancePtrOutput)
+}
+
+// ReadOnlyInstanceArrayInput is an input type that accepts ReadOnlyInstanceArray and ReadOnlyInstanceArrayOutput values.
+// You can construct a concrete instance of `ReadOnlyInstanceArrayInput` via:
+//
+//          ReadOnlyInstanceArray{ ReadOnlyInstanceArgs{...} }
+type ReadOnlyInstanceArrayInput interface {
+	pulumi.Input
+
+	ToReadOnlyInstanceArrayOutput() ReadOnlyInstanceArrayOutput
+	ToReadOnlyInstanceArrayOutputWithContext(context.Context) ReadOnlyInstanceArrayOutput
+}
+
+type ReadOnlyInstanceArray []ReadOnlyInstanceInput
+
+func (ReadOnlyInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ReadOnlyInstance)(nil))
+}
+
+func (i ReadOnlyInstanceArray) ToReadOnlyInstanceArrayOutput() ReadOnlyInstanceArrayOutput {
+	return i.ToReadOnlyInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i ReadOnlyInstanceArray) ToReadOnlyInstanceArrayOutputWithContext(ctx context.Context) ReadOnlyInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceArrayOutput)
+}
+
+// ReadOnlyInstanceMapInput is an input type that accepts ReadOnlyInstanceMap and ReadOnlyInstanceMapOutput values.
+// You can construct a concrete instance of `ReadOnlyInstanceMapInput` via:
+//
+//          ReadOnlyInstanceMap{ "key": ReadOnlyInstanceArgs{...} }
+type ReadOnlyInstanceMapInput interface {
+	pulumi.Input
+
+	ToReadOnlyInstanceMapOutput() ReadOnlyInstanceMapOutput
+	ToReadOnlyInstanceMapOutputWithContext(context.Context) ReadOnlyInstanceMapOutput
+}
+
+type ReadOnlyInstanceMap map[string]ReadOnlyInstanceInput
+
+func (ReadOnlyInstanceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ReadOnlyInstance)(nil))
+}
+
+func (i ReadOnlyInstanceMap) ToReadOnlyInstanceMapOutput() ReadOnlyInstanceMapOutput {
+	return i.ToReadOnlyInstanceMapOutputWithContext(context.Background())
+}
+
+func (i ReadOnlyInstanceMap) ToReadOnlyInstanceMapOutputWithContext(ctx context.Context) ReadOnlyInstanceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceMapOutput)
+}
+
 type ReadOnlyInstanceOutput struct {
 	*pulumi.OutputState
 }
@@ -330,6 +408,75 @@ func (o ReadOnlyInstanceOutput) ToReadOnlyInstanceOutputWithContext(ctx context.
 	return o
 }
 
+func (o ReadOnlyInstanceOutput) ToReadOnlyInstancePtrOutput() ReadOnlyInstancePtrOutput {
+	return o.ToReadOnlyInstancePtrOutputWithContext(context.Background())
+}
+
+func (o ReadOnlyInstanceOutput) ToReadOnlyInstancePtrOutputWithContext(ctx context.Context) ReadOnlyInstancePtrOutput {
+	return o.ApplyT(func(v ReadOnlyInstance) *ReadOnlyInstance {
+		return &v
+	}).(ReadOnlyInstancePtrOutput)
+}
+
+type ReadOnlyInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReadOnlyInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReadOnlyInstance)(nil))
+}
+
+func (o ReadOnlyInstancePtrOutput) ToReadOnlyInstancePtrOutput() ReadOnlyInstancePtrOutput {
+	return o
+}
+
+func (o ReadOnlyInstancePtrOutput) ToReadOnlyInstancePtrOutputWithContext(ctx context.Context) ReadOnlyInstancePtrOutput {
+	return o
+}
+
+type ReadOnlyInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (ReadOnlyInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReadOnlyInstance)(nil))
+}
+
+func (o ReadOnlyInstanceArrayOutput) ToReadOnlyInstanceArrayOutput() ReadOnlyInstanceArrayOutput {
+	return o
+}
+
+func (o ReadOnlyInstanceArrayOutput) ToReadOnlyInstanceArrayOutputWithContext(ctx context.Context) ReadOnlyInstanceArrayOutput {
+	return o
+}
+
+func (o ReadOnlyInstanceArrayOutput) Index(i pulumi.IntInput) ReadOnlyInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReadOnlyInstance {
+		return vs[0].([]ReadOnlyInstance)[vs[1].(int)]
+	}).(ReadOnlyInstanceOutput)
+}
+
+type ReadOnlyInstanceMapOutput struct{ *pulumi.OutputState }
+
+func (ReadOnlyInstanceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ReadOnlyInstance)(nil))
+}
+
+func (o ReadOnlyInstanceMapOutput) ToReadOnlyInstanceMapOutput() ReadOnlyInstanceMapOutput {
+	return o
+}
+
+func (o ReadOnlyInstanceMapOutput) ToReadOnlyInstanceMapOutputWithContext(ctx context.Context) ReadOnlyInstanceMapOutput {
+	return o
+}
+
+func (o ReadOnlyInstanceMapOutput) MapIndex(k pulumi.StringInput) ReadOnlyInstanceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ReadOnlyInstance {
+		return vs[0].(map[string]ReadOnlyInstance)[vs[1].(string)]
+	}).(ReadOnlyInstanceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReadOnlyInstanceOutput{})
+	pulumi.RegisterOutputType(ReadOnlyInstancePtrOutput{})
+	pulumi.RegisterOutputType(ReadOnlyInstanceArrayOutput{})
+	pulumi.RegisterOutputType(ReadOnlyInstanceMapOutput{})
 }

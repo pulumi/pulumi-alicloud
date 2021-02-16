@@ -87,7 +87,8 @@ export class ResourceDirectory extends pulumi.CustomResource {
     constructor(name: string, args?: ResourceDirectoryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourceDirectoryArgs | ResourceDirectoryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ResourceDirectoryState | undefined;
             inputs["masterAccountId"] = state ? state.masterAccountId : undefined;
             inputs["masterAccountName"] = state ? state.masterAccountName : undefined;
@@ -98,12 +99,8 @@ export class ResourceDirectory extends pulumi.CustomResource {
             inputs["masterAccountName"] = undefined /*out*/;
             inputs["rootFolderId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ResourceDirectory.__pulumiType, name, inputs, opts);
     }

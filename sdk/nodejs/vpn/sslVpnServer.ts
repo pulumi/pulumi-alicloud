@@ -96,7 +96,8 @@ export class SslVpnServer extends pulumi.CustomResource {
     constructor(name: string, args: SslVpnServerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SslVpnServerArgs | SslVpnServerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SslVpnServerState | undefined;
             inputs["cipher"] = state ? state.cipher : undefined;
             inputs["clientIpPool"] = state ? state.clientIpPool : undefined;
@@ -111,13 +112,13 @@ export class SslVpnServer extends pulumi.CustomResource {
             inputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
         } else {
             const args = argsOrState as SslVpnServerArgs | undefined;
-            if ((!args || args.clientIpPool === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clientIpPool === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clientIpPool'");
             }
-            if ((!args || args.localSubnet === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.localSubnet === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'localSubnet'");
             }
-            if ((!args || args.vpnGatewayId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vpnGatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
             inputs["cipher"] = args ? args.cipher : undefined;
@@ -132,12 +133,8 @@ export class SslVpnServer extends pulumi.CustomResource {
             inputs["internetIp"] = undefined /*out*/;
             inputs["maxConnections"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SslVpnServer.__pulumiType, name, inputs, opts);
     }

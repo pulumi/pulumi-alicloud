@@ -112,32 +112,29 @@ export class InstanceGrant extends pulumi.CustomResource {
     constructor(name: string, args: InstanceGrantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceGrantArgs | InstanceGrantState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceGrantState | undefined;
             inputs["cenId"] = state ? state.cenId : undefined;
             inputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
             inputs["childInstanceId"] = state ? state.childInstanceId : undefined;
         } else {
             const args = argsOrState as InstanceGrantArgs | undefined;
-            if ((!args || args.cenId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cenId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.cenOwnerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cenOwnerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenOwnerId'");
             }
-            if ((!args || args.childInstanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.childInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceId'");
             }
             inputs["cenId"] = args ? args.cenId : undefined;
             inputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
             inputs["childInstanceId"] = args ? args.childInstanceId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceGrant.__pulumiType, name, inputs, opts);
     }

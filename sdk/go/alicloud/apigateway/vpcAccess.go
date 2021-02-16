@@ -140,6 +140,85 @@ func (i *VpcAccess) ToVpcAccessOutputWithContext(ctx context.Context) VpcAccessO
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessOutput)
 }
 
+func (i *VpcAccess) ToVpcAccessPtrOutput() VpcAccessPtrOutput {
+	return i.ToVpcAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *VpcAccess) ToVpcAccessPtrOutputWithContext(ctx context.Context) VpcAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessPtrOutput)
+}
+
+type VpcAccessPtrInput interface {
+	pulumi.Input
+
+	ToVpcAccessPtrOutput() VpcAccessPtrOutput
+	ToVpcAccessPtrOutputWithContext(ctx context.Context) VpcAccessPtrOutput
+}
+
+type vpcAccessPtrType VpcAccessArgs
+
+func (*vpcAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcAccess)(nil))
+}
+
+func (i *vpcAccessPtrType) ToVpcAccessPtrOutput() VpcAccessPtrOutput {
+	return i.ToVpcAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcAccessPtrType) ToVpcAccessPtrOutputWithContext(ctx context.Context) VpcAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessPtrOutput)
+}
+
+// VpcAccessArrayInput is an input type that accepts VpcAccessArray and VpcAccessArrayOutput values.
+// You can construct a concrete instance of `VpcAccessArrayInput` via:
+//
+//          VpcAccessArray{ VpcAccessArgs{...} }
+type VpcAccessArrayInput interface {
+	pulumi.Input
+
+	ToVpcAccessArrayOutput() VpcAccessArrayOutput
+	ToVpcAccessArrayOutputWithContext(context.Context) VpcAccessArrayOutput
+}
+
+type VpcAccessArray []VpcAccessInput
+
+func (VpcAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*VpcAccess)(nil))
+}
+
+func (i VpcAccessArray) ToVpcAccessArrayOutput() VpcAccessArrayOutput {
+	return i.ToVpcAccessArrayOutputWithContext(context.Background())
+}
+
+func (i VpcAccessArray) ToVpcAccessArrayOutputWithContext(ctx context.Context) VpcAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessArrayOutput)
+}
+
+// VpcAccessMapInput is an input type that accepts VpcAccessMap and VpcAccessMapOutput values.
+// You can construct a concrete instance of `VpcAccessMapInput` via:
+//
+//          VpcAccessMap{ "key": VpcAccessArgs{...} }
+type VpcAccessMapInput interface {
+	pulumi.Input
+
+	ToVpcAccessMapOutput() VpcAccessMapOutput
+	ToVpcAccessMapOutputWithContext(context.Context) VpcAccessMapOutput
+}
+
+type VpcAccessMap map[string]VpcAccessInput
+
+func (VpcAccessMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*VpcAccess)(nil))
+}
+
+func (i VpcAccessMap) ToVpcAccessMapOutput() VpcAccessMapOutput {
+	return i.ToVpcAccessMapOutputWithContext(context.Background())
+}
+
+func (i VpcAccessMap) ToVpcAccessMapOutputWithContext(ctx context.Context) VpcAccessMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessMapOutput)
+}
+
 type VpcAccessOutput struct {
 	*pulumi.OutputState
 }
@@ -156,6 +235,75 @@ func (o VpcAccessOutput) ToVpcAccessOutputWithContext(ctx context.Context) VpcAc
 	return o
 }
 
+func (o VpcAccessOutput) ToVpcAccessPtrOutput() VpcAccessPtrOutput {
+	return o.ToVpcAccessPtrOutputWithContext(context.Background())
+}
+
+func (o VpcAccessOutput) ToVpcAccessPtrOutputWithContext(ctx context.Context) VpcAccessPtrOutput {
+	return o.ApplyT(func(v VpcAccess) *VpcAccess {
+		return &v
+	}).(VpcAccessPtrOutput)
+}
+
+type VpcAccessPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcAccess)(nil))
+}
+
+func (o VpcAccessPtrOutput) ToVpcAccessPtrOutput() VpcAccessPtrOutput {
+	return o
+}
+
+func (o VpcAccessPtrOutput) ToVpcAccessPtrOutputWithContext(ctx context.Context) VpcAccessPtrOutput {
+	return o
+}
+
+type VpcAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcAccess)(nil))
+}
+
+func (o VpcAccessArrayOutput) ToVpcAccessArrayOutput() VpcAccessArrayOutput {
+	return o
+}
+
+func (o VpcAccessArrayOutput) ToVpcAccessArrayOutputWithContext(ctx context.Context) VpcAccessArrayOutput {
+	return o
+}
+
+func (o VpcAccessArrayOutput) Index(i pulumi.IntInput) VpcAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcAccess {
+		return vs[0].([]VpcAccess)[vs[1].(int)]
+	}).(VpcAccessOutput)
+}
+
+type VpcAccessMapOutput struct{ *pulumi.OutputState }
+
+func (VpcAccessMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VpcAccess)(nil))
+}
+
+func (o VpcAccessMapOutput) ToVpcAccessMapOutput() VpcAccessMapOutput {
+	return o
+}
+
+func (o VpcAccessMapOutput) ToVpcAccessMapOutputWithContext(ctx context.Context) VpcAccessMapOutput {
+	return o
+}
+
+func (o VpcAccessMapOutput) MapIndex(k pulumi.StringInput) VpcAccessOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VpcAccess {
+		return vs[0].(map[string]VpcAccess)[vs[1].(string)]
+	}).(VpcAccessOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcAccessOutput{})
+	pulumi.RegisterOutputType(VpcAccessPtrOutput{})
+	pulumi.RegisterOutputType(VpcAccessArrayOutput{})
+	pulumi.RegisterOutputType(VpcAccessMapOutput{})
 }

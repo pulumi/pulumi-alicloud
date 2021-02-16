@@ -82,7 +82,8 @@ export class InstanceClusterAttachment extends pulumi.CustomResource {
     constructor(name: string, args: InstanceClusterAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceClusterAttachmentArgs | InstanceClusterAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceClusterAttachmentState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["clusterMemberIds"] = state ? state.clusterMemberIds : undefined;
@@ -91,10 +92,10 @@ export class InstanceClusterAttachment extends pulumi.CustomResource {
             inputs["statusMap"] = state ? state.statusMap : undefined;
         } else {
             const args = argsOrState as InstanceClusterAttachmentArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.instanceIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
@@ -103,12 +104,8 @@ export class InstanceClusterAttachment extends pulumi.CustomResource {
             inputs["ecuMap"] = undefined /*out*/;
             inputs["statusMap"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceClusterAttachment.__pulumiType, name, inputs, opts);
     }

@@ -149,7 +149,8 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["appKey"] = state ? state.appKey : undefined;
             inputs["diskCategory"] = state ? state.diskCategory : undefined;
@@ -164,16 +165,16 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.instanceClass === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceClass === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceClass'");
             }
-            if ((!args || args.instanceStorage === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceStorage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceStorage'");
             }
-            if ((!args || args.paymentType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.paymentType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.vswitchId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["appKey"] = args ? args.appKey : undefined;
@@ -188,12 +189,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }

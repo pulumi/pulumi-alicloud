@@ -176,6 +176,85 @@ func (i *VpcEndpointZone) ToVpcEndpointZoneOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZoneOutput)
 }
 
+func (i *VpcEndpointZone) ToVpcEndpointZonePtrOutput() VpcEndpointZonePtrOutput {
+	return i.ToVpcEndpointZonePtrOutputWithContext(context.Background())
+}
+
+func (i *VpcEndpointZone) ToVpcEndpointZonePtrOutputWithContext(ctx context.Context) VpcEndpointZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZonePtrOutput)
+}
+
+type VpcEndpointZonePtrInput interface {
+	pulumi.Input
+
+	ToVpcEndpointZonePtrOutput() VpcEndpointZonePtrOutput
+	ToVpcEndpointZonePtrOutputWithContext(ctx context.Context) VpcEndpointZonePtrOutput
+}
+
+type vpcEndpointZonePtrType VpcEndpointZoneArgs
+
+func (*vpcEndpointZonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcEndpointZone)(nil))
+}
+
+func (i *vpcEndpointZonePtrType) ToVpcEndpointZonePtrOutput() VpcEndpointZonePtrOutput {
+	return i.ToVpcEndpointZonePtrOutputWithContext(context.Background())
+}
+
+func (i *vpcEndpointZonePtrType) ToVpcEndpointZonePtrOutputWithContext(ctx context.Context) VpcEndpointZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZonePtrOutput)
+}
+
+// VpcEndpointZoneArrayInput is an input type that accepts VpcEndpointZoneArray and VpcEndpointZoneArrayOutput values.
+// You can construct a concrete instance of `VpcEndpointZoneArrayInput` via:
+//
+//          VpcEndpointZoneArray{ VpcEndpointZoneArgs{...} }
+type VpcEndpointZoneArrayInput interface {
+	pulumi.Input
+
+	ToVpcEndpointZoneArrayOutput() VpcEndpointZoneArrayOutput
+	ToVpcEndpointZoneArrayOutputWithContext(context.Context) VpcEndpointZoneArrayOutput
+}
+
+type VpcEndpointZoneArray []VpcEndpointZoneInput
+
+func (VpcEndpointZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*VpcEndpointZone)(nil))
+}
+
+func (i VpcEndpointZoneArray) ToVpcEndpointZoneArrayOutput() VpcEndpointZoneArrayOutput {
+	return i.ToVpcEndpointZoneArrayOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointZoneArray) ToVpcEndpointZoneArrayOutputWithContext(ctx context.Context) VpcEndpointZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZoneArrayOutput)
+}
+
+// VpcEndpointZoneMapInput is an input type that accepts VpcEndpointZoneMap and VpcEndpointZoneMapOutput values.
+// You can construct a concrete instance of `VpcEndpointZoneMapInput` via:
+//
+//          VpcEndpointZoneMap{ "key": VpcEndpointZoneArgs{...} }
+type VpcEndpointZoneMapInput interface {
+	pulumi.Input
+
+	ToVpcEndpointZoneMapOutput() VpcEndpointZoneMapOutput
+	ToVpcEndpointZoneMapOutputWithContext(context.Context) VpcEndpointZoneMapOutput
+}
+
+type VpcEndpointZoneMap map[string]VpcEndpointZoneInput
+
+func (VpcEndpointZoneMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*VpcEndpointZone)(nil))
+}
+
+func (i VpcEndpointZoneMap) ToVpcEndpointZoneMapOutput() VpcEndpointZoneMapOutput {
+	return i.ToVpcEndpointZoneMapOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointZoneMap) ToVpcEndpointZoneMapOutputWithContext(ctx context.Context) VpcEndpointZoneMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointZoneMapOutput)
+}
+
 type VpcEndpointZoneOutput struct {
 	*pulumi.OutputState
 }
@@ -192,6 +271,75 @@ func (o VpcEndpointZoneOutput) ToVpcEndpointZoneOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o VpcEndpointZoneOutput) ToVpcEndpointZonePtrOutput() VpcEndpointZonePtrOutput {
+	return o.ToVpcEndpointZonePtrOutputWithContext(context.Background())
+}
+
+func (o VpcEndpointZoneOutput) ToVpcEndpointZonePtrOutputWithContext(ctx context.Context) VpcEndpointZonePtrOutput {
+	return o.ApplyT(func(v VpcEndpointZone) *VpcEndpointZone {
+		return &v
+	}).(VpcEndpointZonePtrOutput)
+}
+
+type VpcEndpointZonePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointZonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcEndpointZone)(nil))
+}
+
+func (o VpcEndpointZonePtrOutput) ToVpcEndpointZonePtrOutput() VpcEndpointZonePtrOutput {
+	return o
+}
+
+func (o VpcEndpointZonePtrOutput) ToVpcEndpointZonePtrOutputWithContext(ctx context.Context) VpcEndpointZonePtrOutput {
+	return o
+}
+
+type VpcEndpointZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcEndpointZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcEndpointZone)(nil))
+}
+
+func (o VpcEndpointZoneArrayOutput) ToVpcEndpointZoneArrayOutput() VpcEndpointZoneArrayOutput {
+	return o
+}
+
+func (o VpcEndpointZoneArrayOutput) ToVpcEndpointZoneArrayOutputWithContext(ctx context.Context) VpcEndpointZoneArrayOutput {
+	return o
+}
+
+func (o VpcEndpointZoneArrayOutput) Index(i pulumi.IntInput) VpcEndpointZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcEndpointZone {
+		return vs[0].([]VpcEndpointZone)[vs[1].(int)]
+	}).(VpcEndpointZoneOutput)
+}
+
+type VpcEndpointZoneMapOutput struct{ *pulumi.OutputState }
+
+func (VpcEndpointZoneMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VpcEndpointZone)(nil))
+}
+
+func (o VpcEndpointZoneMapOutput) ToVpcEndpointZoneMapOutput() VpcEndpointZoneMapOutput {
+	return o
+}
+
+func (o VpcEndpointZoneMapOutput) ToVpcEndpointZoneMapOutputWithContext(ctx context.Context) VpcEndpointZoneMapOutput {
+	return o
+}
+
+func (o VpcEndpointZoneMapOutput) MapIndex(k pulumi.StringInput) VpcEndpointZoneOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VpcEndpointZone {
+		return vs[0].(map[string]VpcEndpointZone)[vs[1].(string)]
+	}).(VpcEndpointZoneOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcEndpointZoneOutput{})
+	pulumi.RegisterOutputType(VpcEndpointZonePtrOutput{})
+	pulumi.RegisterOutputType(VpcEndpointZoneArrayOutput{})
+	pulumi.RegisterOutputType(VpcEndpointZoneMapOutput{})
 }

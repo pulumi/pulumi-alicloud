@@ -87,7 +87,8 @@ export class Connection extends pulumi.CustomResource {
     constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
@@ -95,13 +96,13 @@ export class Connection extends pulumi.CustomResource {
             inputs["port"] = state ? state.port : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.connectionStringPrefix === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.connectionStringPrefix === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionStringPrefix'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
             inputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
@@ -109,12 +110,8 @@ export class Connection extends pulumi.CustomResource {
             inputs["port"] = args ? args.port : undefined;
             inputs["connectionString"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Connection.__pulumiType, name, inputs, opts);
     }

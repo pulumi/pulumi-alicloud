@@ -55,7 +55,8 @@ export class Application extends pulumi.CustomResource {
     constructor(name: string, args: ApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationArgs | ApplicationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
             inputs["blueGreen"] = state ? state.blueGreen : undefined;
             inputs["blueGreenConfirm"] = state ? state.blueGreenConfirm : undefined;
@@ -70,10 +71,10 @@ export class Application extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if ((!args || args.clusterName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.template === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.template === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
             inputs["blueGreen"] = args ? args.blueGreen : undefined;
@@ -88,12 +89,8 @@ export class Application extends pulumi.CustomResource {
             inputs["defaultDomain"] = undefined /*out*/;
             inputs["services"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Application.__pulumiType, name, inputs, opts);
     }

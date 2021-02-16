@@ -112,7 +112,8 @@ export class Endpoint extends pulumi.CustomResource {
     constructor(name: string, args: EndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointArgs | EndpointState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EndpointState | undefined;
             inputs["autoAddNewNodes"] = state ? state.autoAddNewNodes : undefined;
             inputs["dbClusterId"] = state ? state.dbClusterId : undefined;
@@ -122,10 +123,10 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["readWriteMode"] = state ? state.readWriteMode : undefined;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if ((!args || args.endpointType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.endpointType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointType'");
             }
             inputs["autoAddNewNodes"] = args ? args.autoAddNewNodes : undefined;
@@ -135,12 +136,8 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["nodes"] = args ? args.nodes : undefined;
             inputs["readWriteMode"] = args ? args.readWriteMode : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Endpoint.__pulumiType, name, inputs, opts);
     }

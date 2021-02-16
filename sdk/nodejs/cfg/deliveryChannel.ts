@@ -83,7 +83,8 @@ export class DeliveryChannel extends pulumi.CustomResource {
     constructor(name: string, args: DeliveryChannelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeliveryChannelArgs | DeliveryChannelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DeliveryChannelState | undefined;
             inputs["deliveryChannelAssumeRoleArn"] = state ? state.deliveryChannelAssumeRoleArn : undefined;
             inputs["deliveryChannelCondition"] = state ? state.deliveryChannelCondition : undefined;
@@ -94,13 +95,13 @@ export class DeliveryChannel extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DeliveryChannelArgs | undefined;
-            if ((!args || args.deliveryChannelAssumeRoleArn === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.deliveryChannelAssumeRoleArn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deliveryChannelAssumeRoleArn'");
             }
-            if ((!args || args.deliveryChannelTargetArn === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.deliveryChannelTargetArn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deliveryChannelTargetArn'");
             }
-            if ((!args || args.deliveryChannelType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.deliveryChannelType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deliveryChannelType'");
             }
             inputs["deliveryChannelAssumeRoleArn"] = args ? args.deliveryChannelAssumeRoleArn : undefined;
@@ -111,12 +112,8 @@ export class DeliveryChannel extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["status"] = args ? args.status : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DeliveryChannel.__pulumiType, name, inputs, opts);
     }

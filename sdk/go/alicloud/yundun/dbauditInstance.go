@@ -196,6 +196,85 @@ func (i *DBAuditInstance) ToDBAuditInstanceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstanceOutput)
 }
 
+func (i *DBAuditInstance) ToDBAuditInstancePtrOutput() DBAuditInstancePtrOutput {
+	return i.ToDBAuditInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *DBAuditInstance) ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstancePtrOutput)
+}
+
+type DBAuditInstancePtrInput interface {
+	pulumi.Input
+
+	ToDBAuditInstancePtrOutput() DBAuditInstancePtrOutput
+	ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput
+}
+
+type dbauditInstancePtrType DBAuditInstanceArgs
+
+func (*dbauditInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DBAuditInstance)(nil))
+}
+
+func (i *dbauditInstancePtrType) ToDBAuditInstancePtrOutput() DBAuditInstancePtrOutput {
+	return i.ToDBAuditInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *dbauditInstancePtrType) ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstancePtrOutput)
+}
+
+// DBAuditInstanceArrayInput is an input type that accepts DBAuditInstanceArray and DBAuditInstanceArrayOutput values.
+// You can construct a concrete instance of `DBAuditInstanceArrayInput` via:
+//
+//          DBAuditInstanceArray{ DBAuditInstanceArgs{...} }
+type DBAuditInstanceArrayInput interface {
+	pulumi.Input
+
+	ToDBAuditInstanceArrayOutput() DBAuditInstanceArrayOutput
+	ToDBAuditInstanceArrayOutputWithContext(context.Context) DBAuditInstanceArrayOutput
+}
+
+type DBAuditInstanceArray []DBAuditInstanceInput
+
+func (DBAuditInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DBAuditInstance)(nil))
+}
+
+func (i DBAuditInstanceArray) ToDBAuditInstanceArrayOutput() DBAuditInstanceArrayOutput {
+	return i.ToDBAuditInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i DBAuditInstanceArray) ToDBAuditInstanceArrayOutputWithContext(ctx context.Context) DBAuditInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstanceArrayOutput)
+}
+
+// DBAuditInstanceMapInput is an input type that accepts DBAuditInstanceMap and DBAuditInstanceMapOutput values.
+// You can construct a concrete instance of `DBAuditInstanceMapInput` via:
+//
+//          DBAuditInstanceMap{ "key": DBAuditInstanceArgs{...} }
+type DBAuditInstanceMapInput interface {
+	pulumi.Input
+
+	ToDBAuditInstanceMapOutput() DBAuditInstanceMapOutput
+	ToDBAuditInstanceMapOutputWithContext(context.Context) DBAuditInstanceMapOutput
+}
+
+type DBAuditInstanceMap map[string]DBAuditInstanceInput
+
+func (DBAuditInstanceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DBAuditInstance)(nil))
+}
+
+func (i DBAuditInstanceMap) ToDBAuditInstanceMapOutput() DBAuditInstanceMapOutput {
+	return i.ToDBAuditInstanceMapOutputWithContext(context.Background())
+}
+
+func (i DBAuditInstanceMap) ToDBAuditInstanceMapOutputWithContext(ctx context.Context) DBAuditInstanceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstanceMapOutput)
+}
+
 type DBAuditInstanceOutput struct {
 	*pulumi.OutputState
 }
@@ -212,6 +291,75 @@ func (o DBAuditInstanceOutput) ToDBAuditInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o DBAuditInstanceOutput) ToDBAuditInstancePtrOutput() DBAuditInstancePtrOutput {
+	return o.ToDBAuditInstancePtrOutputWithContext(context.Background())
+}
+
+func (o DBAuditInstanceOutput) ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput {
+	return o.ApplyT(func(v DBAuditInstance) *DBAuditInstance {
+		return &v
+	}).(DBAuditInstancePtrOutput)
+}
+
+type DBAuditInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DBAuditInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DBAuditInstance)(nil))
+}
+
+func (o DBAuditInstancePtrOutput) ToDBAuditInstancePtrOutput() DBAuditInstancePtrOutput {
+	return o
+}
+
+func (o DBAuditInstancePtrOutput) ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput {
+	return o
+}
+
+type DBAuditInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (DBAuditInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DBAuditInstance)(nil))
+}
+
+func (o DBAuditInstanceArrayOutput) ToDBAuditInstanceArrayOutput() DBAuditInstanceArrayOutput {
+	return o
+}
+
+func (o DBAuditInstanceArrayOutput) ToDBAuditInstanceArrayOutputWithContext(ctx context.Context) DBAuditInstanceArrayOutput {
+	return o
+}
+
+func (o DBAuditInstanceArrayOutput) Index(i pulumi.IntInput) DBAuditInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DBAuditInstance {
+		return vs[0].([]DBAuditInstance)[vs[1].(int)]
+	}).(DBAuditInstanceOutput)
+}
+
+type DBAuditInstanceMapOutput struct{ *pulumi.OutputState }
+
+func (DBAuditInstanceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DBAuditInstance)(nil))
+}
+
+func (o DBAuditInstanceMapOutput) ToDBAuditInstanceMapOutput() DBAuditInstanceMapOutput {
+	return o
+}
+
+func (o DBAuditInstanceMapOutput) ToDBAuditInstanceMapOutputWithContext(ctx context.Context) DBAuditInstanceMapOutput {
+	return o
+}
+
+func (o DBAuditInstanceMapOutput) MapIndex(k pulumi.StringInput) DBAuditInstanceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DBAuditInstance {
+		return vs[0].(map[string]DBAuditInstance)[vs[1].(string)]
+	}).(DBAuditInstanceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DBAuditInstanceOutput{})
+	pulumi.RegisterOutputType(DBAuditInstancePtrOutput{})
+	pulumi.RegisterOutputType(DBAuditInstanceArrayOutput{})
+	pulumi.RegisterOutputType(DBAuditInstanceMapOutput{})
 }

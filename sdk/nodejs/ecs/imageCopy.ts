@@ -122,7 +122,8 @@ export class ImageCopy extends pulumi.CustomResource {
     constructor(name: string, args: ImageCopyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageCopyArgs | ImageCopyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ImageCopyState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["encrypted"] = state ? state.encrypted : undefined;
@@ -135,10 +136,10 @@ export class ImageCopy extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ImageCopyArgs | undefined;
-            if ((!args || args.sourceImageId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceImageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceImageId'");
             }
-            if ((!args || args.sourceRegionId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceRegionId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -151,12 +152,8 @@ export class ImageCopy extends pulumi.CustomResource {
             inputs["sourceRegionId"] = args ? args.sourceRegionId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ImageCopy.__pulumiType, name, inputs, opts);
     }

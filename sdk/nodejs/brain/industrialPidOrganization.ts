@@ -77,24 +77,21 @@ export class IndustrialPidOrganization extends pulumi.CustomResource {
     constructor(name: string, args: IndustrialPidOrganizationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IndustrialPidOrganizationArgs | IndustrialPidOrganizationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IndustrialPidOrganizationState | undefined;
             inputs["parentPidOrganizationId"] = state ? state.parentPidOrganizationId : undefined;
             inputs["pidOrganizationName"] = state ? state.pidOrganizationName : undefined;
         } else {
             const args = argsOrState as IndustrialPidOrganizationArgs | undefined;
-            if ((!args || args.pidOrganizationName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.pidOrganizationName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pidOrganizationName'");
             }
             inputs["parentPidOrganizationId"] = args ? args.parentPidOrganizationId : undefined;
             inputs["pidOrganizationName"] = args ? args.pidOrganizationName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IndustrialPidOrganization.__pulumiType, name, inputs, opts);
     }

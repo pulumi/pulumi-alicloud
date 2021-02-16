@@ -145,14 +145,9 @@ namespace Pulumi.AliCloud
 
         public ProviderArgs()
         {
-            AccessKey = Utilities.GetEnv("ALICLOUD_ACCESS_KEY");
-            AccountId = Utilities.GetEnv("ALICLOUD_ACCOUNT_ID");
             EcsRoleName = Utilities.GetEnv("ALICLOUD_ECS_ROLE_NAME");
             Profile = Utilities.GetEnv("ALICLOUD_PROFILE");
             Region = Utilities.GetEnv("ALICLOUD_REGION");
-            SecretKey = Utilities.GetEnv("ALICLOUD_SECRET_KEY");
-            SecurityToken = Utilities.GetEnv("ALICLOUD_SECURITY_TOKEN");
-            SharedCredentialsFile = Utilities.GetEnv("ALICLOUD_SHARED_CREDENTIALS_FILE");
         }
     }
 }

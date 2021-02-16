@@ -131,6 +131,85 @@ func (i *Acl) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclOutput)
 }
 
+func (i *Acl) ToAclPtrOutput() AclPtrOutput {
+	return i.ToAclPtrOutputWithContext(context.Background())
+}
+
+func (i *Acl) ToAclPtrOutputWithContext(ctx context.Context) AclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclPtrOutput)
+}
+
+type AclPtrInput interface {
+	pulumi.Input
+
+	ToAclPtrOutput() AclPtrOutput
+	ToAclPtrOutputWithContext(ctx context.Context) AclPtrOutput
+}
+
+type aclPtrType AclArgs
+
+func (*aclPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Acl)(nil))
+}
+
+func (i *aclPtrType) ToAclPtrOutput() AclPtrOutput {
+	return i.ToAclPtrOutputWithContext(context.Background())
+}
+
+func (i *aclPtrType) ToAclPtrOutputWithContext(ctx context.Context) AclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclPtrOutput)
+}
+
+// AclArrayInput is an input type that accepts AclArray and AclArrayOutput values.
+// You can construct a concrete instance of `AclArrayInput` via:
+//
+//          AclArray{ AclArgs{...} }
+type AclArrayInput interface {
+	pulumi.Input
+
+	ToAclArrayOutput() AclArrayOutput
+	ToAclArrayOutputWithContext(context.Context) AclArrayOutput
+}
+
+type AclArray []AclInput
+
+func (AclArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Acl)(nil))
+}
+
+func (i AclArray) ToAclArrayOutput() AclArrayOutput {
+	return i.ToAclArrayOutputWithContext(context.Background())
+}
+
+func (i AclArray) ToAclArrayOutputWithContext(ctx context.Context) AclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclArrayOutput)
+}
+
+// AclMapInput is an input type that accepts AclMap and AclMapOutput values.
+// You can construct a concrete instance of `AclMapInput` via:
+//
+//          AclMap{ "key": AclArgs{...} }
+type AclMapInput interface {
+	pulumi.Input
+
+	ToAclMapOutput() AclMapOutput
+	ToAclMapOutputWithContext(context.Context) AclMapOutput
+}
+
+type AclMap map[string]AclInput
+
+func (AclMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Acl)(nil))
+}
+
+func (i AclMap) ToAclMapOutput() AclMapOutput {
+	return i.ToAclMapOutputWithContext(context.Background())
+}
+
+func (i AclMap) ToAclMapOutputWithContext(ctx context.Context) AclMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclMapOutput)
+}
+
 type AclOutput struct {
 	*pulumi.OutputState
 }
@@ -147,6 +226,75 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
+func (o AclOutput) ToAclPtrOutput() AclPtrOutput {
+	return o.ToAclPtrOutputWithContext(context.Background())
+}
+
+func (o AclOutput) ToAclPtrOutputWithContext(ctx context.Context) AclPtrOutput {
+	return o.ApplyT(func(v Acl) *Acl {
+		return &v
+	}).(AclPtrOutput)
+}
+
+type AclPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Acl)(nil))
+}
+
+func (o AclPtrOutput) ToAclPtrOutput() AclPtrOutput {
+	return o
+}
+
+func (o AclPtrOutput) ToAclPtrOutputWithContext(ctx context.Context) AclPtrOutput {
+	return o
+}
+
+type AclArrayOutput struct{ *pulumi.OutputState }
+
+func (AclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Acl)(nil))
+}
+
+func (o AclArrayOutput) ToAclArrayOutput() AclArrayOutput {
+	return o
+}
+
+func (o AclArrayOutput) ToAclArrayOutputWithContext(ctx context.Context) AclArrayOutput {
+	return o
+}
+
+func (o AclArrayOutput) Index(i pulumi.IntInput) AclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Acl {
+		return vs[0].([]Acl)[vs[1].(int)]
+	}).(AclOutput)
+}
+
+type AclMapOutput struct{ *pulumi.OutputState }
+
+func (AclMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Acl)(nil))
+}
+
+func (o AclMapOutput) ToAclMapOutput() AclMapOutput {
+	return o
+}
+
+func (o AclMapOutput) ToAclMapOutputWithContext(ctx context.Context) AclMapOutput {
+	return o
+}
+
+func (o AclMapOutput) MapIndex(k pulumi.StringInput) AclOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Acl {
+		return vs[0].(map[string]Acl)[vs[1].(string)]
+	}).(AclOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AclOutput{})
+	pulumi.RegisterOutputType(AclPtrOutput{})
+	pulumi.RegisterOutputType(AclArrayOutput{})
+	pulumi.RegisterOutputType(AclMapOutput{})
 }

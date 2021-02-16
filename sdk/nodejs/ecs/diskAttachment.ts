@@ -94,29 +94,26 @@ export class DiskAttachment extends pulumi.CustomResource {
     constructor(name: string, args: DiskAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DiskAttachmentArgs | DiskAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DiskAttachmentState | undefined;
             inputs["deviceName"] = state ? state.deviceName : undefined;
             inputs["diskId"] = state ? state.diskId : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as DiskAttachmentArgs | undefined;
-            if ((!args || args.diskId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.diskId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["deviceName"] = args ? args.deviceName : undefined;
             inputs["diskId"] = args ? args.diskId : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DiskAttachment.__pulumiType, name, inputs, opts);
     }

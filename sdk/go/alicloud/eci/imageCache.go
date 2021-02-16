@@ -252,6 +252,85 @@ func (i *ImageCache) ToImageCacheOutputWithContext(ctx context.Context) ImageCac
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheOutput)
 }
 
+func (i *ImageCache) ToImageCachePtrOutput() ImageCachePtrOutput {
+	return i.ToImageCachePtrOutputWithContext(context.Background())
+}
+
+func (i *ImageCache) ToImageCachePtrOutputWithContext(ctx context.Context) ImageCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageCachePtrOutput)
+}
+
+type ImageCachePtrInput interface {
+	pulumi.Input
+
+	ToImageCachePtrOutput() ImageCachePtrOutput
+	ToImageCachePtrOutputWithContext(ctx context.Context) ImageCachePtrOutput
+}
+
+type imageCachePtrType ImageCacheArgs
+
+func (*imageCachePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageCache)(nil))
+}
+
+func (i *imageCachePtrType) ToImageCachePtrOutput() ImageCachePtrOutput {
+	return i.ToImageCachePtrOutputWithContext(context.Background())
+}
+
+func (i *imageCachePtrType) ToImageCachePtrOutputWithContext(ctx context.Context) ImageCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageCachePtrOutput)
+}
+
+// ImageCacheArrayInput is an input type that accepts ImageCacheArray and ImageCacheArrayOutput values.
+// You can construct a concrete instance of `ImageCacheArrayInput` via:
+//
+//          ImageCacheArray{ ImageCacheArgs{...} }
+type ImageCacheArrayInput interface {
+	pulumi.Input
+
+	ToImageCacheArrayOutput() ImageCacheArrayOutput
+	ToImageCacheArrayOutputWithContext(context.Context) ImageCacheArrayOutput
+}
+
+type ImageCacheArray []ImageCacheInput
+
+func (ImageCacheArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ImageCache)(nil))
+}
+
+func (i ImageCacheArray) ToImageCacheArrayOutput() ImageCacheArrayOutput {
+	return i.ToImageCacheArrayOutputWithContext(context.Background())
+}
+
+func (i ImageCacheArray) ToImageCacheArrayOutputWithContext(ctx context.Context) ImageCacheArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheArrayOutput)
+}
+
+// ImageCacheMapInput is an input type that accepts ImageCacheMap and ImageCacheMapOutput values.
+// You can construct a concrete instance of `ImageCacheMapInput` via:
+//
+//          ImageCacheMap{ "key": ImageCacheArgs{...} }
+type ImageCacheMapInput interface {
+	pulumi.Input
+
+	ToImageCacheMapOutput() ImageCacheMapOutput
+	ToImageCacheMapOutputWithContext(context.Context) ImageCacheMapOutput
+}
+
+type ImageCacheMap map[string]ImageCacheInput
+
+func (ImageCacheMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ImageCache)(nil))
+}
+
+func (i ImageCacheMap) ToImageCacheMapOutput() ImageCacheMapOutput {
+	return i.ToImageCacheMapOutputWithContext(context.Background())
+}
+
+func (i ImageCacheMap) ToImageCacheMapOutputWithContext(ctx context.Context) ImageCacheMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheMapOutput)
+}
+
 type ImageCacheOutput struct {
 	*pulumi.OutputState
 }
@@ -268,6 +347,75 @@ func (o ImageCacheOutput) ToImageCacheOutputWithContext(ctx context.Context) Ima
 	return o
 }
 
+func (o ImageCacheOutput) ToImageCachePtrOutput() ImageCachePtrOutput {
+	return o.ToImageCachePtrOutputWithContext(context.Background())
+}
+
+func (o ImageCacheOutput) ToImageCachePtrOutputWithContext(ctx context.Context) ImageCachePtrOutput {
+	return o.ApplyT(func(v ImageCache) *ImageCache {
+		return &v
+	}).(ImageCachePtrOutput)
+}
+
+type ImageCachePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageCachePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageCache)(nil))
+}
+
+func (o ImageCachePtrOutput) ToImageCachePtrOutput() ImageCachePtrOutput {
+	return o
+}
+
+func (o ImageCachePtrOutput) ToImageCachePtrOutputWithContext(ctx context.Context) ImageCachePtrOutput {
+	return o
+}
+
+type ImageCacheArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageCacheArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageCache)(nil))
+}
+
+func (o ImageCacheArrayOutput) ToImageCacheArrayOutput() ImageCacheArrayOutput {
+	return o
+}
+
+func (o ImageCacheArrayOutput) ToImageCacheArrayOutputWithContext(ctx context.Context) ImageCacheArrayOutput {
+	return o
+}
+
+func (o ImageCacheArrayOutput) Index(i pulumi.IntInput) ImageCacheOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageCache {
+		return vs[0].([]ImageCache)[vs[1].(int)]
+	}).(ImageCacheOutput)
+}
+
+type ImageCacheMapOutput struct{ *pulumi.OutputState }
+
+func (ImageCacheMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ImageCache)(nil))
+}
+
+func (o ImageCacheMapOutput) ToImageCacheMapOutput() ImageCacheMapOutput {
+	return o
+}
+
+func (o ImageCacheMapOutput) ToImageCacheMapOutputWithContext(ctx context.Context) ImageCacheMapOutput {
+	return o
+}
+
+func (o ImageCacheMapOutput) MapIndex(k pulumi.StringInput) ImageCacheOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ImageCache {
+		return vs[0].(map[string]ImageCache)[vs[1].(string)]
+	}).(ImageCacheOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ImageCacheOutput{})
+	pulumi.RegisterOutputType(ImageCachePtrOutput{})
+	pulumi.RegisterOutputType(ImageCacheArrayOutput{})
+	pulumi.RegisterOutputType(ImageCacheMapOutput{})
 }

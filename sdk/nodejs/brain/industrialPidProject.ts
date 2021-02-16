@@ -82,29 +82,26 @@ export class IndustrialPidProject extends pulumi.CustomResource {
     constructor(name: string, args: IndustrialPidProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IndustrialPidProjectArgs | IndustrialPidProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IndustrialPidProjectState | undefined;
             inputs["pidOrganisationId"] = state ? state.pidOrganisationId : undefined;
             inputs["pidProjectDesc"] = state ? state.pidProjectDesc : undefined;
             inputs["pidProjectName"] = state ? state.pidProjectName : undefined;
         } else {
             const args = argsOrState as IndustrialPidProjectArgs | undefined;
-            if ((!args || args.pidOrganisationId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.pidOrganisationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pidOrganisationId'");
             }
-            if ((!args || args.pidProjectName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.pidProjectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pidProjectName'");
             }
             inputs["pidOrganisationId"] = args ? args.pidOrganisationId : undefined;
             inputs["pidProjectDesc"] = args ? args.pidProjectDesc : undefined;
             inputs["pidProjectName"] = args ? args.pidProjectName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IndustrialPidProject.__pulumiType, name, inputs, opts);
     }

@@ -190,7 +190,8 @@ export class EnterpriseInstance extends pulumi.CustomResource {
     constructor(name: string, args: EnterpriseInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EnterpriseInstanceArgs | EnterpriseInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EnterpriseInstanceState | undefined;
             inputs["dataLinkName"] = state ? state.dataLinkName : undefined;
             inputs["databasePassword"] = state ? state.databasePassword : undefined;
@@ -223,40 +224,40 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as EnterpriseInstanceArgs | undefined;
-            if ((!args || args.databasePassword === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.databasePassword === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databasePassword'");
             }
-            if ((!args || args.databaseUser === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.databaseUser === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databaseUser'");
             }
-            if ((!args || args.dbaUid === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbaUid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbaUid'");
             }
-            if ((!args || args.envType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.envType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'envType'");
             }
-            if ((!args || args.exportTimeout === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.exportTimeout === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'exportTimeout'");
             }
-            if ((!args || args.host === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.host === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            if ((!args || args.instanceSource === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceSource === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceSource'");
             }
-            if ((!args || args.instanceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.networkType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.networkType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkType'");
             }
-            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.queryTimeout === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.queryTimeout === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'queryTimeout'");
             }
-            if ((!args || args.safeRule === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.safeRule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'safeRule'");
             }
             inputs["dataLinkName"] = args ? args.dataLinkName : undefined;
@@ -289,12 +290,8 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             inputs["state"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EnterpriseInstance.__pulumiType, name, inputs, opts);
     }

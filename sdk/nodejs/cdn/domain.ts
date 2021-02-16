@@ -142,7 +142,8 @@ export class Domain extends pulumi.CustomResource {
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainState | undefined;
             inputs["authConfig"] = state ? state.authConfig : undefined;
             inputs["blockIps"] = state ? state.blockIps : undefined;
@@ -164,10 +165,10 @@ export class Domain extends pulumi.CustomResource {
             inputs["videoSeekEnable"] = state ? state.videoSeekEnable : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.cdnType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cdnType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cdnType'");
             }
-            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
             inputs["authConfig"] = args ? args.authConfig : undefined;
@@ -189,12 +190,8 @@ export class Domain extends pulumi.CustomResource {
             inputs["sources"] = args ? args.sources : undefined;
             inputs["videoSeekEnable"] = args ? args.videoSeekEnable : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Domain.__pulumiType, name, inputs, opts);
     }

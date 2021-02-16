@@ -808,6 +808,85 @@ func (i *Kubernetes) ToKubernetesOutputWithContext(ctx context.Context) Kubernet
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesOutput)
 }
 
+func (i *Kubernetes) ToKubernetesPtrOutput() KubernetesPtrOutput {
+	return i.ToKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (i *Kubernetes) ToKubernetesPtrOutputWithContext(ctx context.Context) KubernetesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPtrOutput)
+}
+
+type KubernetesPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesPtrOutput() KubernetesPtrOutput
+	ToKubernetesPtrOutputWithContext(ctx context.Context) KubernetesPtrOutput
+}
+
+type kubernetesPtrType KubernetesArgs
+
+func (*kubernetesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Kubernetes)(nil))
+}
+
+func (i *kubernetesPtrType) ToKubernetesPtrOutput() KubernetesPtrOutput {
+	return i.ToKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesPtrType) ToKubernetesPtrOutputWithContext(ctx context.Context) KubernetesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPtrOutput)
+}
+
+// KubernetesArrayInput is an input type that accepts KubernetesArray and KubernetesArrayOutput values.
+// You can construct a concrete instance of `KubernetesArrayInput` via:
+//
+//          KubernetesArray{ KubernetesArgs{...} }
+type KubernetesArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesArrayOutput() KubernetesArrayOutput
+	ToKubernetesArrayOutputWithContext(context.Context) KubernetesArrayOutput
+}
+
+type KubernetesArray []KubernetesInput
+
+func (KubernetesArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Kubernetes)(nil))
+}
+
+func (i KubernetesArray) ToKubernetesArrayOutput() KubernetesArrayOutput {
+	return i.ToKubernetesArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesArray) ToKubernetesArrayOutputWithContext(ctx context.Context) KubernetesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesArrayOutput)
+}
+
+// KubernetesMapInput is an input type that accepts KubernetesMap and KubernetesMapOutput values.
+// You can construct a concrete instance of `KubernetesMapInput` via:
+//
+//          KubernetesMap{ "key": KubernetesArgs{...} }
+type KubernetesMapInput interface {
+	pulumi.Input
+
+	ToKubernetesMapOutput() KubernetesMapOutput
+	ToKubernetesMapOutputWithContext(context.Context) KubernetesMapOutput
+}
+
+type KubernetesMap map[string]KubernetesInput
+
+func (KubernetesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Kubernetes)(nil))
+}
+
+func (i KubernetesMap) ToKubernetesMapOutput() KubernetesMapOutput {
+	return i.ToKubernetesMapOutputWithContext(context.Background())
+}
+
+func (i KubernetesMap) ToKubernetesMapOutputWithContext(ctx context.Context) KubernetesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesMapOutput)
+}
+
 type KubernetesOutput struct {
 	*pulumi.OutputState
 }
@@ -824,6 +903,75 @@ func (o KubernetesOutput) ToKubernetesOutputWithContext(ctx context.Context) Kub
 	return o
 }
 
+func (o KubernetesOutput) ToKubernetesPtrOutput() KubernetesPtrOutput {
+	return o.ToKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesOutput) ToKubernetesPtrOutputWithContext(ctx context.Context) KubernetesPtrOutput {
+	return o.ApplyT(func(v Kubernetes) *Kubernetes {
+		return &v
+	}).(KubernetesPtrOutput)
+}
+
+type KubernetesPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KubernetesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Kubernetes)(nil))
+}
+
+func (o KubernetesPtrOutput) ToKubernetesPtrOutput() KubernetesPtrOutput {
+	return o
+}
+
+func (o KubernetesPtrOutput) ToKubernetesPtrOutputWithContext(ctx context.Context) KubernetesPtrOutput {
+	return o
+}
+
+type KubernetesArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Kubernetes)(nil))
+}
+
+func (o KubernetesArrayOutput) ToKubernetesArrayOutput() KubernetesArrayOutput {
+	return o
+}
+
+func (o KubernetesArrayOutput) ToKubernetesArrayOutputWithContext(ctx context.Context) KubernetesArrayOutput {
+	return o
+}
+
+func (o KubernetesArrayOutput) Index(i pulumi.IntInput) KubernetesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Kubernetes {
+		return vs[0].([]Kubernetes)[vs[1].(int)]
+	}).(KubernetesOutput)
+}
+
+type KubernetesMapOutput struct{ *pulumi.OutputState }
+
+func (KubernetesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Kubernetes)(nil))
+}
+
+func (o KubernetesMapOutput) ToKubernetesMapOutput() KubernetesMapOutput {
+	return o
+}
+
+func (o KubernetesMapOutput) ToKubernetesMapOutputWithContext(ctx context.Context) KubernetesMapOutput {
+	return o
+}
+
+func (o KubernetesMapOutput) MapIndex(k pulumi.StringInput) KubernetesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Kubernetes {
+		return vs[0].(map[string]Kubernetes)[vs[1].(string)]
+	}).(KubernetesOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(KubernetesOutput{})
+	pulumi.RegisterOutputType(KubernetesPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesMapOutput{})
 }

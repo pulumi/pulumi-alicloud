@@ -131,7 +131,8 @@ export class ServerCertificate extends pulumi.CustomResource {
     constructor(name: string, args?: ServerCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerCertificateArgs | ServerCertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServerCertificateState | undefined;
             inputs["alicloudCertifacteId"] = state ? state.alicloudCertifacteId : undefined;
             inputs["alicloudCertifacteName"] = state ? state.alicloudCertifacteName : undefined;
@@ -156,12 +157,8 @@ export class ServerCertificate extends pulumi.CustomResource {
             inputs["serverCertificate"] = args ? args.serverCertificate : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServerCertificate.__pulumiType, name, inputs, opts);
     }

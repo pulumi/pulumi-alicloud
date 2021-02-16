@@ -24,7 +24,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/providers"
@@ -271,6 +270,85 @@ func (i *RouteEntry) ToRouteEntryOutputWithContext(ctx context.Context) RouteEnt
 	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryOutput)
 }
 
+func (i *RouteEntry) ToRouteEntryPtrOutput() RouteEntryPtrOutput {
+	return i.ToRouteEntryPtrOutputWithContext(context.Background())
+}
+
+func (i *RouteEntry) ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryPtrOutput)
+}
+
+type RouteEntryPtrInput interface {
+	pulumi.Input
+
+	ToRouteEntryPtrOutput() RouteEntryPtrOutput
+	ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput
+}
+
+type routeEntryPtrType RouteEntryArgs
+
+func (*routeEntryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteEntry)(nil))
+}
+
+func (i *routeEntryPtrType) ToRouteEntryPtrOutput() RouteEntryPtrOutput {
+	return i.ToRouteEntryPtrOutputWithContext(context.Background())
+}
+
+func (i *routeEntryPtrType) ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryPtrOutput)
+}
+
+// RouteEntryArrayInput is an input type that accepts RouteEntryArray and RouteEntryArrayOutput values.
+// You can construct a concrete instance of `RouteEntryArrayInput` via:
+//
+//          RouteEntryArray{ RouteEntryArgs{...} }
+type RouteEntryArrayInput interface {
+	pulumi.Input
+
+	ToRouteEntryArrayOutput() RouteEntryArrayOutput
+	ToRouteEntryArrayOutputWithContext(context.Context) RouteEntryArrayOutput
+}
+
+type RouteEntryArray []RouteEntryInput
+
+func (RouteEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RouteEntry)(nil))
+}
+
+func (i RouteEntryArray) ToRouteEntryArrayOutput() RouteEntryArrayOutput {
+	return i.ToRouteEntryArrayOutputWithContext(context.Background())
+}
+
+func (i RouteEntryArray) ToRouteEntryArrayOutputWithContext(ctx context.Context) RouteEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryArrayOutput)
+}
+
+// RouteEntryMapInput is an input type that accepts RouteEntryMap and RouteEntryMapOutput values.
+// You can construct a concrete instance of `RouteEntryMapInput` via:
+//
+//          RouteEntryMap{ "key": RouteEntryArgs{...} }
+type RouteEntryMapInput interface {
+	pulumi.Input
+
+	ToRouteEntryMapOutput() RouteEntryMapOutput
+	ToRouteEntryMapOutputWithContext(context.Context) RouteEntryMapOutput
+}
+
+type RouteEntryMap map[string]RouteEntryInput
+
+func (RouteEntryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RouteEntry)(nil))
+}
+
+func (i RouteEntryMap) ToRouteEntryMapOutput() RouteEntryMapOutput {
+	return i.ToRouteEntryMapOutputWithContext(context.Background())
+}
+
+func (i RouteEntryMap) ToRouteEntryMapOutputWithContext(ctx context.Context) RouteEntryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryMapOutput)
+}
+
 type RouteEntryOutput struct {
 	*pulumi.OutputState
 }
@@ -287,6 +365,75 @@ func (o RouteEntryOutput) ToRouteEntryOutputWithContext(ctx context.Context) Rou
 	return o
 }
 
+func (o RouteEntryOutput) ToRouteEntryPtrOutput() RouteEntryPtrOutput {
+	return o.ToRouteEntryPtrOutputWithContext(context.Background())
+}
+
+func (o RouteEntryOutput) ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput {
+	return o.ApplyT(func(v RouteEntry) *RouteEntry {
+		return &v
+	}).(RouteEntryPtrOutput)
+}
+
+type RouteEntryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteEntryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteEntry)(nil))
+}
+
+func (o RouteEntryPtrOutput) ToRouteEntryPtrOutput() RouteEntryPtrOutput {
+	return o
+}
+
+func (o RouteEntryPtrOutput) ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput {
+	return o
+}
+
+type RouteEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteEntry)(nil))
+}
+
+func (o RouteEntryArrayOutput) ToRouteEntryArrayOutput() RouteEntryArrayOutput {
+	return o
+}
+
+func (o RouteEntryArrayOutput) ToRouteEntryArrayOutputWithContext(ctx context.Context) RouteEntryArrayOutput {
+	return o
+}
+
+func (o RouteEntryArrayOutput) Index(i pulumi.IntInput) RouteEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteEntry {
+		return vs[0].([]RouteEntry)[vs[1].(int)]
+	}).(RouteEntryOutput)
+}
+
+type RouteEntryMapOutput struct{ *pulumi.OutputState }
+
+func (RouteEntryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RouteEntry)(nil))
+}
+
+func (o RouteEntryMapOutput) ToRouteEntryMapOutput() RouteEntryMapOutput {
+	return o
+}
+
+func (o RouteEntryMapOutput) ToRouteEntryMapOutputWithContext(ctx context.Context) RouteEntryMapOutput {
+	return o
+}
+
+func (o RouteEntryMapOutput) MapIndex(k pulumi.StringInput) RouteEntryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RouteEntry {
+		return vs[0].(map[string]RouteEntry)[vs[1].(string)]
+	}).(RouteEntryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RouteEntryOutput{})
+	pulumi.RegisterOutputType(RouteEntryPtrOutput{})
+	pulumi.RegisterOutputType(RouteEntryArrayOutput{})
+	pulumi.RegisterOutputType(RouteEntryMapOutput{})
 }

@@ -168,7 +168,8 @@ export class DomainExtension extends pulumi.CustomResource {
     constructor(name: string, args: DomainExtensionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainExtensionArgs | DomainExtensionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainExtensionState | undefined;
             inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
             inputs["domain"] = state ? state.domain : undefined;
@@ -177,16 +178,16 @@ export class DomainExtension extends pulumi.CustomResource {
             inputs["serverCertificateId"] = state ? state.serverCertificateId : undefined;
         } else {
             const args = argsOrState as DomainExtensionArgs | undefined;
-            if ((!args || args.domain === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domain === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.frontendPort === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.frontendPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'frontendPort'");
             }
-            if ((!args || args.loadBalancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if ((!args || args.serverCertificateId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serverCertificateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serverCertificateId'");
             }
             inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
@@ -195,12 +196,8 @@ export class DomainExtension extends pulumi.CustomResource {
             inputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
             inputs["serverCertificateId"] = args ? args.serverCertificateId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DomainExtension.__pulumiType, name, inputs, opts);
     }

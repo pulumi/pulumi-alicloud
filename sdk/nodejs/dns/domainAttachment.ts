@@ -60,27 +60,24 @@ export class DomainAttachment extends pulumi.CustomResource {
     constructor(name: string, args: DomainAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainAttachmentArgs | DomainAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainAttachmentState | undefined;
             inputs["domainNames"] = state ? state.domainNames : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as DomainAttachmentArgs | undefined;
-            if ((!args || args.domainNames === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainNames === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainNames'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["domainNames"] = args ? args.domainNames : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DomainAttachment.__pulumiType, name, inputs, opts);
     }

@@ -127,7 +127,8 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["aclEntryLists"] = state ? state.aclEntryLists : undefined;
             inputs["clusterAliasName"] = state ? state.clusterAliasName : undefined;
@@ -144,19 +145,19 @@ export class Cluster extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.clusterSpecification === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterSpecification === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterSpecification'");
             }
-            if ((!args || args.clusterType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterType'");
             }
-            if ((!args || args.clusterVersion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterVersion'");
             }
-            if ((!args || args.instanceCount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceCount'");
             }
-            if ((!args || args.netType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.netType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'netType'");
             }
             inputs["aclEntryLists"] = args ? args.aclEntryLists : undefined;
@@ -173,12 +174,8 @@ export class Cluster extends pulumi.CustomResource {
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Cluster.__pulumiType, name, inputs, opts);
     }

@@ -83,26 +83,23 @@ export class ResourceShare extends pulumi.CustomResource {
     constructor(name: string, args: ResourceShareArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourceShareArgs | ResourceShareState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ResourceShareState | undefined;
             inputs["resourceShareName"] = state ? state.resourceShareName : undefined;
             inputs["resourceShareOwner"] = state ? state.resourceShareOwner : undefined;
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ResourceShareArgs | undefined;
-            if ((!args || args.resourceShareName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceShareName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceShareName'");
             }
             inputs["resourceShareName"] = args ? args.resourceShareName : undefined;
             inputs["resourceShareOwner"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ResourceShare.__pulumiType, name, inputs, opts);
     }

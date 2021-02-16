@@ -124,6 +124,85 @@ func (i *HAVip) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipOutput)
 }
 
+func (i *HAVip) ToHAVipPtrOutput() HAVipPtrOutput {
+	return i.ToHAVipPtrOutputWithContext(context.Background())
+}
+
+func (i *HAVip) ToHAVipPtrOutputWithContext(ctx context.Context) HAVipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HAVipPtrOutput)
+}
+
+type HAVipPtrInput interface {
+	pulumi.Input
+
+	ToHAVipPtrOutput() HAVipPtrOutput
+	ToHAVipPtrOutputWithContext(ctx context.Context) HAVipPtrOutput
+}
+
+type havipPtrType HAVipArgs
+
+func (*havipPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HAVip)(nil))
+}
+
+func (i *havipPtrType) ToHAVipPtrOutput() HAVipPtrOutput {
+	return i.ToHAVipPtrOutputWithContext(context.Background())
+}
+
+func (i *havipPtrType) ToHAVipPtrOutputWithContext(ctx context.Context) HAVipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HAVipPtrOutput)
+}
+
+// HAVipArrayInput is an input type that accepts HAVipArray and HAVipArrayOutput values.
+// You can construct a concrete instance of `HAVipArrayInput` via:
+//
+//          HAVipArray{ HAVipArgs{...} }
+type HAVipArrayInput interface {
+	pulumi.Input
+
+	ToHAVipArrayOutput() HAVipArrayOutput
+	ToHAVipArrayOutputWithContext(context.Context) HAVipArrayOutput
+}
+
+type HAVipArray []HAVipInput
+
+func (HAVipArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*HAVip)(nil))
+}
+
+func (i HAVipArray) ToHAVipArrayOutput() HAVipArrayOutput {
+	return i.ToHAVipArrayOutputWithContext(context.Background())
+}
+
+func (i HAVipArray) ToHAVipArrayOutputWithContext(ctx context.Context) HAVipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HAVipArrayOutput)
+}
+
+// HAVipMapInput is an input type that accepts HAVipMap and HAVipMapOutput values.
+// You can construct a concrete instance of `HAVipMapInput` via:
+//
+//          HAVipMap{ "key": HAVipArgs{...} }
+type HAVipMapInput interface {
+	pulumi.Input
+
+	ToHAVipMapOutput() HAVipMapOutput
+	ToHAVipMapOutputWithContext(context.Context) HAVipMapOutput
+}
+
+type HAVipMap map[string]HAVipInput
+
+func (HAVipMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*HAVip)(nil))
+}
+
+func (i HAVipMap) ToHAVipMapOutput() HAVipMapOutput {
+	return i.ToHAVipMapOutputWithContext(context.Background())
+}
+
+func (i HAVipMap) ToHAVipMapOutputWithContext(ctx context.Context) HAVipMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HAVipMapOutput)
+}
+
 type HAVipOutput struct {
 	*pulumi.OutputState
 }
@@ -140,6 +219,75 @@ func (o HAVipOutput) ToHAVipOutputWithContext(ctx context.Context) HAVipOutput {
 	return o
 }
 
+func (o HAVipOutput) ToHAVipPtrOutput() HAVipPtrOutput {
+	return o.ToHAVipPtrOutputWithContext(context.Background())
+}
+
+func (o HAVipOutput) ToHAVipPtrOutputWithContext(ctx context.Context) HAVipPtrOutput {
+	return o.ApplyT(func(v HAVip) *HAVip {
+		return &v
+	}).(HAVipPtrOutput)
+}
+
+type HAVipPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HAVipPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HAVip)(nil))
+}
+
+func (o HAVipPtrOutput) ToHAVipPtrOutput() HAVipPtrOutput {
+	return o
+}
+
+func (o HAVipPtrOutput) ToHAVipPtrOutputWithContext(ctx context.Context) HAVipPtrOutput {
+	return o
+}
+
+type HAVipArrayOutput struct{ *pulumi.OutputState }
+
+func (HAVipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HAVip)(nil))
+}
+
+func (o HAVipArrayOutput) ToHAVipArrayOutput() HAVipArrayOutput {
+	return o
+}
+
+func (o HAVipArrayOutput) ToHAVipArrayOutputWithContext(ctx context.Context) HAVipArrayOutput {
+	return o
+}
+
+func (o HAVipArrayOutput) Index(i pulumi.IntInput) HAVipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HAVip {
+		return vs[0].([]HAVip)[vs[1].(int)]
+	}).(HAVipOutput)
+}
+
+type HAVipMapOutput struct{ *pulumi.OutputState }
+
+func (HAVipMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]HAVip)(nil))
+}
+
+func (o HAVipMapOutput) ToHAVipMapOutput() HAVipMapOutput {
+	return o
+}
+
+func (o HAVipMapOutput) ToHAVipMapOutputWithContext(ctx context.Context) HAVipMapOutput {
+	return o
+}
+
+func (o HAVipMapOutput) MapIndex(k pulumi.StringInput) HAVipOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HAVip {
+		return vs[0].(map[string]HAVip)[vs[1].(string)]
+	}).(HAVipOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(HAVipOutput{})
+	pulumi.RegisterOutputType(HAVipPtrOutput{})
+	pulumi.RegisterOutputType(HAVipArrayOutput{})
+	pulumi.RegisterOutputType(HAVipMapOutput{})
 }

@@ -313,7 +313,8 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     constructor(name: string, args: ManagedKubernetesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ManagedKubernetesArgs | ManagedKubernetesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ManagedKubernetesState | undefined;
             inputs["addons"] = state ? state.addons : undefined;
             inputs["apiAudiences"] = state ? state.apiAudiences : undefined;
@@ -386,7 +387,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
         } else {
             const args = argsOrState as ManagedKubernetesArgs | undefined;
-            if ((!args || args.workerVswitchIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.workerVswitchIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerVswitchIds'");
             }
             inputs["addons"] = args ? args.addons : undefined;
@@ -459,12 +460,8 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["workerNodes"] = undefined /*out*/;
             inputs["workerRamRoleName"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ManagedKubernetes.__pulumiType, name, inputs, opts);
     }

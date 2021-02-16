@@ -161,7 +161,8 @@ export class Domain extends pulumi.CustomResource {
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainState | undefined;
             inputs["clusterType"] = state ? state.clusterType : undefined;
             inputs["cname"] = state ? state.cname : undefined;
@@ -183,10 +184,10 @@ export class Domain extends pulumi.CustomResource {
             inputs["writeTime"] = state ? state.writeTime : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.isAccessProduct === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.isAccessProduct === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'isAccessProduct'");
             }
             inputs["clusterType"] = args ? args.clusterType : undefined;
@@ -208,12 +209,8 @@ export class Domain extends pulumi.CustomResource {
             inputs["writeTime"] = args ? args.writeTime : undefined;
             inputs["cname"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Domain.__pulumiType, name, inputs, opts);
     }

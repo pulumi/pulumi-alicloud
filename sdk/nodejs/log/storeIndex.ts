@@ -69,7 +69,8 @@ export class StoreIndex extends pulumi.CustomResource {
     constructor(name: string, args: StoreIndexArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StoreIndexArgs | StoreIndexState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as StoreIndexState | undefined;
             inputs["fieldSearches"] = state ? state.fieldSearches : undefined;
             inputs["fullText"] = state ? state.fullText : undefined;
@@ -77,10 +78,10 @@ export class StoreIndex extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as StoreIndexArgs | undefined;
-            if ((!args || args.logstore === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.logstore === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'logstore'");
             }
-            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["fieldSearches"] = args ? args.fieldSearches : undefined;
@@ -88,12 +89,8 @@ export class StoreIndex extends pulumi.CustomResource {
             inputs["logstore"] = args ? args.logstore : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(StoreIndex.__pulumiType, name, inputs, opts);
     }

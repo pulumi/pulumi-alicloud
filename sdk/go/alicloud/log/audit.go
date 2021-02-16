@@ -208,6 +208,85 @@ func (i *Audit) ToAuditOutputWithContext(ctx context.Context) AuditOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuditOutput)
 }
 
+func (i *Audit) ToAuditPtrOutput() AuditPtrOutput {
+	return i.ToAuditPtrOutputWithContext(context.Background())
+}
+
+func (i *Audit) ToAuditPtrOutputWithContext(ctx context.Context) AuditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditPtrOutput)
+}
+
+type AuditPtrInput interface {
+	pulumi.Input
+
+	ToAuditPtrOutput() AuditPtrOutput
+	ToAuditPtrOutputWithContext(ctx context.Context) AuditPtrOutput
+}
+
+type auditPtrType AuditArgs
+
+func (*auditPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Audit)(nil))
+}
+
+func (i *auditPtrType) ToAuditPtrOutput() AuditPtrOutput {
+	return i.ToAuditPtrOutputWithContext(context.Background())
+}
+
+func (i *auditPtrType) ToAuditPtrOutputWithContext(ctx context.Context) AuditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditPtrOutput)
+}
+
+// AuditArrayInput is an input type that accepts AuditArray and AuditArrayOutput values.
+// You can construct a concrete instance of `AuditArrayInput` via:
+//
+//          AuditArray{ AuditArgs{...} }
+type AuditArrayInput interface {
+	pulumi.Input
+
+	ToAuditArrayOutput() AuditArrayOutput
+	ToAuditArrayOutputWithContext(context.Context) AuditArrayOutput
+}
+
+type AuditArray []AuditInput
+
+func (AuditArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Audit)(nil))
+}
+
+func (i AuditArray) ToAuditArrayOutput() AuditArrayOutput {
+	return i.ToAuditArrayOutputWithContext(context.Background())
+}
+
+func (i AuditArray) ToAuditArrayOutputWithContext(ctx context.Context) AuditArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditArrayOutput)
+}
+
+// AuditMapInput is an input type that accepts AuditMap and AuditMapOutput values.
+// You can construct a concrete instance of `AuditMapInput` via:
+//
+//          AuditMap{ "key": AuditArgs{...} }
+type AuditMapInput interface {
+	pulumi.Input
+
+	ToAuditMapOutput() AuditMapOutput
+	ToAuditMapOutputWithContext(context.Context) AuditMapOutput
+}
+
+type AuditMap map[string]AuditInput
+
+func (AuditMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Audit)(nil))
+}
+
+func (i AuditMap) ToAuditMapOutput() AuditMapOutput {
+	return i.ToAuditMapOutputWithContext(context.Background())
+}
+
+func (i AuditMap) ToAuditMapOutputWithContext(ctx context.Context) AuditMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditMapOutput)
+}
+
 type AuditOutput struct {
 	*pulumi.OutputState
 }
@@ -224,6 +303,75 @@ func (o AuditOutput) ToAuditOutputWithContext(ctx context.Context) AuditOutput {
 	return o
 }
 
+func (o AuditOutput) ToAuditPtrOutput() AuditPtrOutput {
+	return o.ToAuditPtrOutputWithContext(context.Background())
+}
+
+func (o AuditOutput) ToAuditPtrOutputWithContext(ctx context.Context) AuditPtrOutput {
+	return o.ApplyT(func(v Audit) *Audit {
+		return &v
+	}).(AuditPtrOutput)
+}
+
+type AuditPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuditPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Audit)(nil))
+}
+
+func (o AuditPtrOutput) ToAuditPtrOutput() AuditPtrOutput {
+	return o
+}
+
+func (o AuditPtrOutput) ToAuditPtrOutputWithContext(ctx context.Context) AuditPtrOutput {
+	return o
+}
+
+type AuditArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Audit)(nil))
+}
+
+func (o AuditArrayOutput) ToAuditArrayOutput() AuditArrayOutput {
+	return o
+}
+
+func (o AuditArrayOutput) ToAuditArrayOutputWithContext(ctx context.Context) AuditArrayOutput {
+	return o
+}
+
+func (o AuditArrayOutput) Index(i pulumi.IntInput) AuditOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Audit {
+		return vs[0].([]Audit)[vs[1].(int)]
+	}).(AuditOutput)
+}
+
+type AuditMapOutput struct{ *pulumi.OutputState }
+
+func (AuditMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Audit)(nil))
+}
+
+func (o AuditMapOutput) ToAuditMapOutput() AuditMapOutput {
+	return o
+}
+
+func (o AuditMapOutput) ToAuditMapOutputWithContext(ctx context.Context) AuditMapOutput {
+	return o
+}
+
+func (o AuditMapOutput) MapIndex(k pulumi.StringInput) AuditOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Audit {
+		return vs[0].(map[string]Audit)[vs[1].(string)]
+	}).(AuditOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuditOutput{})
+	pulumi.RegisterOutputType(AuditPtrOutput{})
+	pulumi.RegisterOutputType(AuditArrayOutput{})
+	pulumi.RegisterOutputType(AuditMapOutput{})
 }

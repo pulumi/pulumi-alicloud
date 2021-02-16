@@ -68,7 +68,8 @@ export class Group extends pulumi.CustomResource {
     constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -76,7 +77,7 @@ export class Group extends pulumi.CustomResource {
             inputs["vpcDomain"] = state ? state.vpcDomain : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -84,12 +85,8 @@ export class Group extends pulumi.CustomResource {
             inputs["subDomain"] = undefined /*out*/;
             inputs["vpcDomain"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Group.__pulumiType, name, inputs, opts);
     }

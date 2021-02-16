@@ -142,7 +142,8 @@ export class NodePool extends pulumi.CustomResource {
     constructor(name: string, args: NodePoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodePoolArgs | NodePoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["dataDisks"] = state ? state.dataDisks : undefined;
@@ -168,13 +169,13 @@ export class NodePool extends pulumi.CustomResource {
             inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.instanceTypes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceTypes'");
             }
-            if ((!args || args.vswitchIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vswitchIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchIds'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
@@ -200,12 +201,8 @@ export class NodePool extends pulumi.CustomResource {
             inputs["scalingGroupId"] = undefined /*out*/;
             inputs["vpcId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NodePool.__pulumiType, name, inputs, opts);
     }

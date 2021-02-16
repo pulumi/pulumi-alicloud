@@ -135,7 +135,8 @@ export class SaslAcl extends pulumi.CustomResource {
     constructor(name: string, args: SaslAclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SaslAclArgs | SaslAclState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SaslAclState | undefined;
             inputs["aclOperationType"] = state ? state.aclOperationType : undefined;
             inputs["aclResourceName"] = state ? state.aclResourceName : undefined;
@@ -146,22 +147,22 @@ export class SaslAcl extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as SaslAclArgs | undefined;
-            if ((!args || args.aclOperationType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclOperationType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclOperationType'");
             }
-            if ((!args || args.aclResourceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclResourceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclResourceName'");
             }
-            if ((!args || args.aclResourcePatternType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclResourcePatternType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclResourcePatternType'");
             }
-            if ((!args || args.aclResourceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclResourceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclResourceType'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.username === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             inputs["aclOperationType"] = args ? args.aclOperationType : undefined;
@@ -172,12 +173,8 @@ export class SaslAcl extends pulumi.CustomResource {
             inputs["username"] = args ? args.username : undefined;
             inputs["host"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SaslAcl.__pulumiType, name, inputs, opts);
     }

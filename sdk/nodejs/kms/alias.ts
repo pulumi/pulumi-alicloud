@@ -79,27 +79,24 @@ export class Alias extends pulumi.CustomResource {
     constructor(name: string, args: AliasArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AliasArgs | AliasState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AliasState | undefined;
             inputs["aliasName"] = state ? state.aliasName : undefined;
             inputs["keyId"] = state ? state.keyId : undefined;
         } else {
             const args = argsOrState as AliasArgs | undefined;
-            if ((!args || args.aliasName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aliasName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aliasName'");
             }
-            if ((!args || args.keyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.keyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
             inputs["aliasName"] = args ? args.aliasName : undefined;
             inputs["keyId"] = args ? args.keyId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Alias.__pulumiType, name, inputs, opts);
     }

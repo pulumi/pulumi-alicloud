@@ -269,6 +269,85 @@ func (i *QosPolicy) ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyOutput)
 }
 
+func (i *QosPolicy) ToQosPolicyPtrOutput() QosPolicyPtrOutput {
+	return i.ToQosPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *QosPolicy) ToQosPolicyPtrOutputWithContext(ctx context.Context) QosPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyPtrOutput)
+}
+
+type QosPolicyPtrInput interface {
+	pulumi.Input
+
+	ToQosPolicyPtrOutput() QosPolicyPtrOutput
+	ToQosPolicyPtrOutputWithContext(ctx context.Context) QosPolicyPtrOutput
+}
+
+type qosPolicyPtrType QosPolicyArgs
+
+func (*qosPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QosPolicy)(nil))
+}
+
+func (i *qosPolicyPtrType) ToQosPolicyPtrOutput() QosPolicyPtrOutput {
+	return i.ToQosPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *qosPolicyPtrType) ToQosPolicyPtrOutputWithContext(ctx context.Context) QosPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyPtrOutput)
+}
+
+// QosPolicyArrayInput is an input type that accepts QosPolicyArray and QosPolicyArrayOutput values.
+// You can construct a concrete instance of `QosPolicyArrayInput` via:
+//
+//          QosPolicyArray{ QosPolicyArgs{...} }
+type QosPolicyArrayInput interface {
+	pulumi.Input
+
+	ToQosPolicyArrayOutput() QosPolicyArrayOutput
+	ToQosPolicyArrayOutputWithContext(context.Context) QosPolicyArrayOutput
+}
+
+type QosPolicyArray []QosPolicyInput
+
+func (QosPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*QosPolicy)(nil))
+}
+
+func (i QosPolicyArray) ToQosPolicyArrayOutput() QosPolicyArrayOutput {
+	return i.ToQosPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i QosPolicyArray) ToQosPolicyArrayOutputWithContext(ctx context.Context) QosPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyArrayOutput)
+}
+
+// QosPolicyMapInput is an input type that accepts QosPolicyMap and QosPolicyMapOutput values.
+// You can construct a concrete instance of `QosPolicyMapInput` via:
+//
+//          QosPolicyMap{ "key": QosPolicyArgs{...} }
+type QosPolicyMapInput interface {
+	pulumi.Input
+
+	ToQosPolicyMapOutput() QosPolicyMapOutput
+	ToQosPolicyMapOutputWithContext(context.Context) QosPolicyMapOutput
+}
+
+type QosPolicyMap map[string]QosPolicyInput
+
+func (QosPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*QosPolicy)(nil))
+}
+
+func (i QosPolicyMap) ToQosPolicyMapOutput() QosPolicyMapOutput {
+	return i.ToQosPolicyMapOutputWithContext(context.Background())
+}
+
+func (i QosPolicyMap) ToQosPolicyMapOutputWithContext(ctx context.Context) QosPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyMapOutput)
+}
+
 type QosPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -285,6 +364,75 @@ func (o QosPolicyOutput) ToQosPolicyOutputWithContext(ctx context.Context) QosPo
 	return o
 }
 
+func (o QosPolicyOutput) ToQosPolicyPtrOutput() QosPolicyPtrOutput {
+	return o.ToQosPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o QosPolicyOutput) ToQosPolicyPtrOutputWithContext(ctx context.Context) QosPolicyPtrOutput {
+	return o.ApplyT(func(v QosPolicy) *QosPolicy {
+		return &v
+	}).(QosPolicyPtrOutput)
+}
+
+type QosPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (QosPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QosPolicy)(nil))
+}
+
+func (o QosPolicyPtrOutput) ToQosPolicyPtrOutput() QosPolicyPtrOutput {
+	return o
+}
+
+func (o QosPolicyPtrOutput) ToQosPolicyPtrOutputWithContext(ctx context.Context) QosPolicyPtrOutput {
+	return o
+}
+
+type QosPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (QosPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QosPolicy)(nil))
+}
+
+func (o QosPolicyArrayOutput) ToQosPolicyArrayOutput() QosPolicyArrayOutput {
+	return o
+}
+
+func (o QosPolicyArrayOutput) ToQosPolicyArrayOutputWithContext(ctx context.Context) QosPolicyArrayOutput {
+	return o
+}
+
+func (o QosPolicyArrayOutput) Index(i pulumi.IntInput) QosPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QosPolicy {
+		return vs[0].([]QosPolicy)[vs[1].(int)]
+	}).(QosPolicyOutput)
+}
+
+type QosPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (QosPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]QosPolicy)(nil))
+}
+
+func (o QosPolicyMapOutput) ToQosPolicyMapOutput() QosPolicyMapOutput {
+	return o
+}
+
+func (o QosPolicyMapOutput) ToQosPolicyMapOutputWithContext(ctx context.Context) QosPolicyMapOutput {
+	return o
+}
+
+func (o QosPolicyMapOutput) MapIndex(k pulumi.StringInput) QosPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QosPolicy {
+		return vs[0].(map[string]QosPolicy)[vs[1].(string)]
+	}).(QosPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(QosPolicyOutput{})
+	pulumi.RegisterOutputType(QosPolicyPtrOutput{})
+	pulumi.RegisterOutputType(QosPolicyArrayOutput{})
+	pulumi.RegisterOutputType(QosPolicyMapOutput{})
 }

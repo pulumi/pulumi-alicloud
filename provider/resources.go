@@ -150,21 +150,6 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:   "aliyun",
 		Repository:  "https://github.com/pulumi/pulumi-alicloud",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"access_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"ALICLOUD_ACCESS_KEY"},
-				},
-			},
-			"secret_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"ALICLOUD_SECRET_KEY"},
-				},
-			},
-			"security_token": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"ALICLOUD_SECURITY_TOKEN"},
-				},
-			},
 			"ecs_role_name": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"ALICLOUD_ECS_ROLE_NAME"},
@@ -173,16 +158,6 @@ func Provider() tfbridge.ProviderInfo {
 			"region": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"ALICLOUD_REGION"},
-				},
-			},
-			"account_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"ALICLOUD_ACCOUNT_ID"},
-				},
-			},
-			"shared_credentials_file": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"ALICLOUD_SHARED_CREDENTIALS_FILE"},
 				},
 			},
 			"profile": {

@@ -60,27 +60,24 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
     constructor(name: string, args: CommonBandwithPackageAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CommonBandwithPackageAttachmentArgs | CommonBandwithPackageAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CommonBandwithPackageAttachmentState | undefined;
             inputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as CommonBandwithPackageAttachmentArgs | undefined;
-            if ((!args || args.bandwidthPackageId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bandwidthPackageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthPackageId'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CommonBandwithPackageAttachment.__pulumiType, name, inputs, opts);
     }

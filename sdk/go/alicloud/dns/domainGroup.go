@@ -157,6 +157,85 @@ func (i *DomainGroup) ToDomainGroupOutputWithContext(ctx context.Context) Domain
 	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupOutput)
 }
 
+func (i *DomainGroup) ToDomainGroupPtrOutput() DomainGroupPtrOutput {
+	return i.ToDomainGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *DomainGroup) ToDomainGroupPtrOutputWithContext(ctx context.Context) DomainGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupPtrOutput)
+}
+
+type DomainGroupPtrInput interface {
+	pulumi.Input
+
+	ToDomainGroupPtrOutput() DomainGroupPtrOutput
+	ToDomainGroupPtrOutputWithContext(ctx context.Context) DomainGroupPtrOutput
+}
+
+type domainGroupPtrType DomainGroupArgs
+
+func (*domainGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainGroup)(nil))
+}
+
+func (i *domainGroupPtrType) ToDomainGroupPtrOutput() DomainGroupPtrOutput {
+	return i.ToDomainGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *domainGroupPtrType) ToDomainGroupPtrOutputWithContext(ctx context.Context) DomainGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupPtrOutput)
+}
+
+// DomainGroupArrayInput is an input type that accepts DomainGroupArray and DomainGroupArrayOutput values.
+// You can construct a concrete instance of `DomainGroupArrayInput` via:
+//
+//          DomainGroupArray{ DomainGroupArgs{...} }
+type DomainGroupArrayInput interface {
+	pulumi.Input
+
+	ToDomainGroupArrayOutput() DomainGroupArrayOutput
+	ToDomainGroupArrayOutputWithContext(context.Context) DomainGroupArrayOutput
+}
+
+type DomainGroupArray []DomainGroupInput
+
+func (DomainGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DomainGroup)(nil))
+}
+
+func (i DomainGroupArray) ToDomainGroupArrayOutput() DomainGroupArrayOutput {
+	return i.ToDomainGroupArrayOutputWithContext(context.Background())
+}
+
+func (i DomainGroupArray) ToDomainGroupArrayOutputWithContext(ctx context.Context) DomainGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupArrayOutput)
+}
+
+// DomainGroupMapInput is an input type that accepts DomainGroupMap and DomainGroupMapOutput values.
+// You can construct a concrete instance of `DomainGroupMapInput` via:
+//
+//          DomainGroupMap{ "key": DomainGroupArgs{...} }
+type DomainGroupMapInput interface {
+	pulumi.Input
+
+	ToDomainGroupMapOutput() DomainGroupMapOutput
+	ToDomainGroupMapOutputWithContext(context.Context) DomainGroupMapOutput
+}
+
+type DomainGroupMap map[string]DomainGroupInput
+
+func (DomainGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DomainGroup)(nil))
+}
+
+func (i DomainGroupMap) ToDomainGroupMapOutput() DomainGroupMapOutput {
+	return i.ToDomainGroupMapOutputWithContext(context.Background())
+}
+
+func (i DomainGroupMap) ToDomainGroupMapOutputWithContext(ctx context.Context) DomainGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupMapOutput)
+}
+
 type DomainGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -173,6 +252,75 @@ func (o DomainGroupOutput) ToDomainGroupOutputWithContext(ctx context.Context) D
 	return o
 }
 
+func (o DomainGroupOutput) ToDomainGroupPtrOutput() DomainGroupPtrOutput {
+	return o.ToDomainGroupPtrOutputWithContext(context.Background())
+}
+
+func (o DomainGroupOutput) ToDomainGroupPtrOutputWithContext(ctx context.Context) DomainGroupPtrOutput {
+	return o.ApplyT(func(v DomainGroup) *DomainGroup {
+		return &v
+	}).(DomainGroupPtrOutput)
+}
+
+type DomainGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainGroup)(nil))
+}
+
+func (o DomainGroupPtrOutput) ToDomainGroupPtrOutput() DomainGroupPtrOutput {
+	return o
+}
+
+func (o DomainGroupPtrOutput) ToDomainGroupPtrOutputWithContext(ctx context.Context) DomainGroupPtrOutput {
+	return o
+}
+
+type DomainGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (DomainGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainGroup)(nil))
+}
+
+func (o DomainGroupArrayOutput) ToDomainGroupArrayOutput() DomainGroupArrayOutput {
+	return o
+}
+
+func (o DomainGroupArrayOutput) ToDomainGroupArrayOutputWithContext(ctx context.Context) DomainGroupArrayOutput {
+	return o
+}
+
+func (o DomainGroupArrayOutput) Index(i pulumi.IntInput) DomainGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainGroup {
+		return vs[0].([]DomainGroup)[vs[1].(int)]
+	}).(DomainGroupOutput)
+}
+
+type DomainGroupMapOutput struct{ *pulumi.OutputState }
+
+func (DomainGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DomainGroup)(nil))
+}
+
+func (o DomainGroupMapOutput) ToDomainGroupMapOutput() DomainGroupMapOutput {
+	return o
+}
+
+func (o DomainGroupMapOutput) ToDomainGroupMapOutputWithContext(ctx context.Context) DomainGroupMapOutput {
+	return o
+}
+
+func (o DomainGroupMapOutput) MapIndex(k pulumi.StringInput) DomainGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DomainGroup {
+		return vs[0].(map[string]DomainGroup)[vs[1].(string)]
+	}).(DomainGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainGroupOutput{})
+	pulumi.RegisterOutputType(DomainGroupPtrOutput{})
+	pulumi.RegisterOutputType(DomainGroupArrayOutput{})
+	pulumi.RegisterOutputType(DomainGroupMapOutput{})
 }

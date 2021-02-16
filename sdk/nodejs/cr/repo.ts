@@ -103,7 +103,8 @@ export class Repo extends pulumi.CustomResource {
     constructor(name: string, args: RepoArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RepoArgs | RepoState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RepoState | undefined;
             inputs["detail"] = state ? state.detail : undefined;
             inputs["domainList"] = state ? state.domainList : undefined;
@@ -113,13 +114,13 @@ export class Repo extends pulumi.CustomResource {
             inputs["summary"] = state ? state.summary : undefined;
         } else {
             const args = argsOrState as RepoArgs | undefined;
-            if ((!args || args.namespace === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.namespace === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.repoType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.repoType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repoType'");
             }
-            if ((!args || args.summary === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.summary === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'summary'");
             }
             inputs["detail"] = args ? args.detail : undefined;
@@ -129,12 +130,8 @@ export class Repo extends pulumi.CustomResource {
             inputs["summary"] = args ? args.summary : undefined;
             inputs["domainList"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Repo.__pulumiType, name, inputs, opts);
     }

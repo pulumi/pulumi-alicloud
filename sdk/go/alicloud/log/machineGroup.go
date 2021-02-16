@@ -147,6 +147,85 @@ func (i *MachineGroup) ToMachineGroupOutputWithContext(ctx context.Context) Mach
 	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupOutput)
 }
 
+func (i *MachineGroup) ToMachineGroupPtrOutput() MachineGroupPtrOutput {
+	return i.ToMachineGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *MachineGroup) ToMachineGroupPtrOutputWithContext(ctx context.Context) MachineGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupPtrOutput)
+}
+
+type MachineGroupPtrInput interface {
+	pulumi.Input
+
+	ToMachineGroupPtrOutput() MachineGroupPtrOutput
+	ToMachineGroupPtrOutputWithContext(ctx context.Context) MachineGroupPtrOutput
+}
+
+type machineGroupPtrType MachineGroupArgs
+
+func (*machineGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineGroup)(nil))
+}
+
+func (i *machineGroupPtrType) ToMachineGroupPtrOutput() MachineGroupPtrOutput {
+	return i.ToMachineGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *machineGroupPtrType) ToMachineGroupPtrOutputWithContext(ctx context.Context) MachineGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupPtrOutput)
+}
+
+// MachineGroupArrayInput is an input type that accepts MachineGroupArray and MachineGroupArrayOutput values.
+// You can construct a concrete instance of `MachineGroupArrayInput` via:
+//
+//          MachineGroupArray{ MachineGroupArgs{...} }
+type MachineGroupArrayInput interface {
+	pulumi.Input
+
+	ToMachineGroupArrayOutput() MachineGroupArrayOutput
+	ToMachineGroupArrayOutputWithContext(context.Context) MachineGroupArrayOutput
+}
+
+type MachineGroupArray []MachineGroupInput
+
+func (MachineGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MachineGroup)(nil))
+}
+
+func (i MachineGroupArray) ToMachineGroupArrayOutput() MachineGroupArrayOutput {
+	return i.ToMachineGroupArrayOutputWithContext(context.Background())
+}
+
+func (i MachineGroupArray) ToMachineGroupArrayOutputWithContext(ctx context.Context) MachineGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupArrayOutput)
+}
+
+// MachineGroupMapInput is an input type that accepts MachineGroupMap and MachineGroupMapOutput values.
+// You can construct a concrete instance of `MachineGroupMapInput` via:
+//
+//          MachineGroupMap{ "key": MachineGroupArgs{...} }
+type MachineGroupMapInput interface {
+	pulumi.Input
+
+	ToMachineGroupMapOutput() MachineGroupMapOutput
+	ToMachineGroupMapOutputWithContext(context.Context) MachineGroupMapOutput
+}
+
+type MachineGroupMap map[string]MachineGroupInput
+
+func (MachineGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MachineGroup)(nil))
+}
+
+func (i MachineGroupMap) ToMachineGroupMapOutput() MachineGroupMapOutput {
+	return i.ToMachineGroupMapOutputWithContext(context.Background())
+}
+
+func (i MachineGroupMap) ToMachineGroupMapOutputWithContext(ctx context.Context) MachineGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupMapOutput)
+}
+
 type MachineGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -163,6 +242,75 @@ func (o MachineGroupOutput) ToMachineGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o MachineGroupOutput) ToMachineGroupPtrOutput() MachineGroupPtrOutput {
+	return o.ToMachineGroupPtrOutputWithContext(context.Background())
+}
+
+func (o MachineGroupOutput) ToMachineGroupPtrOutputWithContext(ctx context.Context) MachineGroupPtrOutput {
+	return o.ApplyT(func(v MachineGroup) *MachineGroup {
+		return &v
+	}).(MachineGroupPtrOutput)
+}
+
+type MachineGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MachineGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineGroup)(nil))
+}
+
+func (o MachineGroupPtrOutput) ToMachineGroupPtrOutput() MachineGroupPtrOutput {
+	return o
+}
+
+func (o MachineGroupPtrOutput) ToMachineGroupPtrOutputWithContext(ctx context.Context) MachineGroupPtrOutput {
+	return o
+}
+
+type MachineGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (MachineGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MachineGroup)(nil))
+}
+
+func (o MachineGroupArrayOutput) ToMachineGroupArrayOutput() MachineGroupArrayOutput {
+	return o
+}
+
+func (o MachineGroupArrayOutput) ToMachineGroupArrayOutputWithContext(ctx context.Context) MachineGroupArrayOutput {
+	return o
+}
+
+func (o MachineGroupArrayOutput) Index(i pulumi.IntInput) MachineGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineGroup {
+		return vs[0].([]MachineGroup)[vs[1].(int)]
+	}).(MachineGroupOutput)
+}
+
+type MachineGroupMapOutput struct{ *pulumi.OutputState }
+
+func (MachineGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MachineGroup)(nil))
+}
+
+func (o MachineGroupMapOutput) ToMachineGroupMapOutput() MachineGroupMapOutput {
+	return o
+}
+
+func (o MachineGroupMapOutput) ToMachineGroupMapOutputWithContext(ctx context.Context) MachineGroupMapOutput {
+	return o
+}
+
+func (o MachineGroupMapOutput) MapIndex(k pulumi.StringInput) MachineGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MachineGroup {
+		return vs[0].(map[string]MachineGroup)[vs[1].(string)]
+	}).(MachineGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MachineGroupOutput{})
+	pulumi.RegisterOutputType(MachineGroupPtrOutput{})
+	pulumi.RegisterOutputType(MachineGroupArrayOutput{})
+	pulumi.RegisterOutputType(MachineGroupMapOutput{})
 }

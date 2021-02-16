@@ -100,7 +100,8 @@ export class CaCertificate extends pulumi.CustomResource {
     constructor(name: string, args: CaCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CaCertificateArgs | CaCertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CaCertificateState | undefined;
             inputs["caCertificate"] = state ? state.caCertificate : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -108,7 +109,7 @@ export class CaCertificate extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as CaCertificateArgs | undefined;
-            if ((!args || args.caCertificate === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.caCertificate === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'caCertificate'");
             }
             inputs["caCertificate"] = args ? args.caCertificate : undefined;
@@ -116,12 +117,8 @@ export class CaCertificate extends pulumi.CustomResource {
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CaCertificate.__pulumiType, name, inputs, opts);
     }

@@ -102,32 +102,29 @@ export class DomainConfig extends pulumi.CustomResource {
     constructor(name: string, args: DomainConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainConfigArgs | DomainConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainConfigState | undefined;
             inputs["domainName"] = state ? state.domainName : undefined;
             inputs["functionArgs"] = state ? state.functionArgs : undefined;
             inputs["functionName"] = state ? state.functionName : undefined;
         } else {
             const args = argsOrState as DomainConfigArgs | undefined;
-            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.functionArgs === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.functionArgs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'functionArgs'");
             }
-            if ((!args || args.functionName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.functionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
             inputs["domainName"] = args ? args.domainName : undefined;
             inputs["functionArgs"] = args ? args.functionArgs : undefined;
             inputs["functionName"] = args ? args.functionName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DomainConfig.__pulumiType, name, inputs, opts);
     }

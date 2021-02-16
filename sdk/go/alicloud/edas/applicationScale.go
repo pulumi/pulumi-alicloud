@@ -170,6 +170,85 @@ func (i *ApplicationScale) ToApplicationScaleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScaleOutput)
 }
 
+func (i *ApplicationScale) ToApplicationScalePtrOutput() ApplicationScalePtrOutput {
+	return i.ToApplicationScalePtrOutputWithContext(context.Background())
+}
+
+func (i *ApplicationScale) ToApplicationScalePtrOutputWithContext(ctx context.Context) ApplicationScalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalePtrOutput)
+}
+
+type ApplicationScalePtrInput interface {
+	pulumi.Input
+
+	ToApplicationScalePtrOutput() ApplicationScalePtrOutput
+	ToApplicationScalePtrOutputWithContext(ctx context.Context) ApplicationScalePtrOutput
+}
+
+type applicationScalePtrType ApplicationScaleArgs
+
+func (*applicationScalePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationScale)(nil))
+}
+
+func (i *applicationScalePtrType) ToApplicationScalePtrOutput() ApplicationScalePtrOutput {
+	return i.ToApplicationScalePtrOutputWithContext(context.Background())
+}
+
+func (i *applicationScalePtrType) ToApplicationScalePtrOutputWithContext(ctx context.Context) ApplicationScalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalePtrOutput)
+}
+
+// ApplicationScaleArrayInput is an input type that accepts ApplicationScaleArray and ApplicationScaleArrayOutput values.
+// You can construct a concrete instance of `ApplicationScaleArrayInput` via:
+//
+//          ApplicationScaleArray{ ApplicationScaleArgs{...} }
+type ApplicationScaleArrayInput interface {
+	pulumi.Input
+
+	ToApplicationScaleArrayOutput() ApplicationScaleArrayOutput
+	ToApplicationScaleArrayOutputWithContext(context.Context) ApplicationScaleArrayOutput
+}
+
+type ApplicationScaleArray []ApplicationScaleInput
+
+func (ApplicationScaleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ApplicationScale)(nil))
+}
+
+func (i ApplicationScaleArray) ToApplicationScaleArrayOutput() ApplicationScaleArrayOutput {
+	return i.ToApplicationScaleArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationScaleArray) ToApplicationScaleArrayOutputWithContext(ctx context.Context) ApplicationScaleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScaleArrayOutput)
+}
+
+// ApplicationScaleMapInput is an input type that accepts ApplicationScaleMap and ApplicationScaleMapOutput values.
+// You can construct a concrete instance of `ApplicationScaleMapInput` via:
+//
+//          ApplicationScaleMap{ "key": ApplicationScaleArgs{...} }
+type ApplicationScaleMapInput interface {
+	pulumi.Input
+
+	ToApplicationScaleMapOutput() ApplicationScaleMapOutput
+	ToApplicationScaleMapOutputWithContext(context.Context) ApplicationScaleMapOutput
+}
+
+type ApplicationScaleMap map[string]ApplicationScaleInput
+
+func (ApplicationScaleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ApplicationScale)(nil))
+}
+
+func (i ApplicationScaleMap) ToApplicationScaleMapOutput() ApplicationScaleMapOutput {
+	return i.ToApplicationScaleMapOutputWithContext(context.Background())
+}
+
+func (i ApplicationScaleMap) ToApplicationScaleMapOutputWithContext(ctx context.Context) ApplicationScaleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScaleMapOutput)
+}
+
 type ApplicationScaleOutput struct {
 	*pulumi.OutputState
 }
@@ -186,6 +265,75 @@ func (o ApplicationScaleOutput) ToApplicationScaleOutputWithContext(ctx context.
 	return o
 }
 
+func (o ApplicationScaleOutput) ToApplicationScalePtrOutput() ApplicationScalePtrOutput {
+	return o.ToApplicationScalePtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationScaleOutput) ToApplicationScalePtrOutputWithContext(ctx context.Context) ApplicationScalePtrOutput {
+	return o.ApplyT(func(v ApplicationScale) *ApplicationScale {
+		return &v
+	}).(ApplicationScalePtrOutput)
+}
+
+type ApplicationScalePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationScalePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationScale)(nil))
+}
+
+func (o ApplicationScalePtrOutput) ToApplicationScalePtrOutput() ApplicationScalePtrOutput {
+	return o
+}
+
+func (o ApplicationScalePtrOutput) ToApplicationScalePtrOutputWithContext(ctx context.Context) ApplicationScalePtrOutput {
+	return o
+}
+
+type ApplicationScaleArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScaleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationScale)(nil))
+}
+
+func (o ApplicationScaleArrayOutput) ToApplicationScaleArrayOutput() ApplicationScaleArrayOutput {
+	return o
+}
+
+func (o ApplicationScaleArrayOutput) ToApplicationScaleArrayOutputWithContext(ctx context.Context) ApplicationScaleArrayOutput {
+	return o
+}
+
+func (o ApplicationScaleArrayOutput) Index(i pulumi.IntInput) ApplicationScaleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationScale {
+		return vs[0].([]ApplicationScale)[vs[1].(int)]
+	}).(ApplicationScaleOutput)
+}
+
+type ApplicationScaleMapOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScaleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ApplicationScale)(nil))
+}
+
+func (o ApplicationScaleMapOutput) ToApplicationScaleMapOutput() ApplicationScaleMapOutput {
+	return o
+}
+
+func (o ApplicationScaleMapOutput) ToApplicationScaleMapOutputWithContext(ctx context.Context) ApplicationScaleMapOutput {
+	return o
+}
+
+func (o ApplicationScaleMapOutput) MapIndex(k pulumi.StringInput) ApplicationScaleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApplicationScale {
+		return vs[0].(map[string]ApplicationScale)[vs[1].(string)]
+	}).(ApplicationScaleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationScaleOutput{})
+	pulumi.RegisterOutputType(ApplicationScalePtrOutput{})
+	pulumi.RegisterOutputType(ApplicationScaleArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationScaleMapOutput{})
 }

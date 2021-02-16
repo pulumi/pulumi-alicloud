@@ -11,12 +11,12 @@ let __config = new pulumi.Config("alicloud");
  * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
  * console.
  */
-export let accessKey: string | undefined = __config.get("accessKey") || utilities.getEnv("ALICLOUD_ACCESS_KEY");
+export let accessKey: string | undefined = __config.get("accessKey");
 /**
  * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
  * Alibaba Cloud console.
  */
-export let accountId: string | undefined = __config.get("accountId") || utilities.getEnv("ALICLOUD_ACCOUNT_ID");
+export let accountId: string | undefined = __config.get("accountId");
 export let assumeRole: outputs.config.AssumeRole | undefined = __config.getObject<outputs.config.AssumeRole>("assumeRole");
 /**
  * Use this to mark a terraform configuration file source.
@@ -45,15 +45,15 @@ export let region: string | undefined = __config.get("region") || utilities.getE
  * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
  * console.
  */
-export let secretKey: string | undefined = __config.get("secretKey") || utilities.getEnv("ALICLOUD_SECRET_KEY");
+export let secretKey: string | undefined = __config.get("secretKey");
 /**
  * security token. A security token is only required if you are using Security Token Service.
  */
-export let securityToken: string | undefined = __config.get("securityToken") || utilities.getEnv("ALICLOUD_SECURITY_TOKEN");
+export let securityToken: string | undefined = __config.get("securityToken");
 /**
  * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
  */
-export let sharedCredentialsFile: string | undefined = __config.get("sharedCredentialsFile") || utilities.getEnv("ALICLOUD_SHARED_CREDENTIALS_FILE");
+export let sharedCredentialsFile: string | undefined = __config.get("sharedCredentialsFile");
 /**
  * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
  * that are not public (yet).

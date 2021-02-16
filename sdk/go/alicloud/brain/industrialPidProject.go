@@ -157,6 +157,85 @@ func (i *IndustrialPidProject) ToIndustrialPidProjectOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidProjectOutput)
 }
 
+func (i *IndustrialPidProject) ToIndustrialPidProjectPtrOutput() IndustrialPidProjectPtrOutput {
+	return i.ToIndustrialPidProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *IndustrialPidProject) ToIndustrialPidProjectPtrOutputWithContext(ctx context.Context) IndustrialPidProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidProjectPtrOutput)
+}
+
+type IndustrialPidProjectPtrInput interface {
+	pulumi.Input
+
+	ToIndustrialPidProjectPtrOutput() IndustrialPidProjectPtrOutput
+	ToIndustrialPidProjectPtrOutputWithContext(ctx context.Context) IndustrialPidProjectPtrOutput
+}
+
+type industrialPidProjectPtrType IndustrialPidProjectArgs
+
+func (*industrialPidProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndustrialPidProject)(nil))
+}
+
+func (i *industrialPidProjectPtrType) ToIndustrialPidProjectPtrOutput() IndustrialPidProjectPtrOutput {
+	return i.ToIndustrialPidProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *industrialPidProjectPtrType) ToIndustrialPidProjectPtrOutputWithContext(ctx context.Context) IndustrialPidProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidProjectPtrOutput)
+}
+
+// IndustrialPidProjectArrayInput is an input type that accepts IndustrialPidProjectArray and IndustrialPidProjectArrayOutput values.
+// You can construct a concrete instance of `IndustrialPidProjectArrayInput` via:
+//
+//          IndustrialPidProjectArray{ IndustrialPidProjectArgs{...} }
+type IndustrialPidProjectArrayInput interface {
+	pulumi.Input
+
+	ToIndustrialPidProjectArrayOutput() IndustrialPidProjectArrayOutput
+	ToIndustrialPidProjectArrayOutputWithContext(context.Context) IndustrialPidProjectArrayOutput
+}
+
+type IndustrialPidProjectArray []IndustrialPidProjectInput
+
+func (IndustrialPidProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*IndustrialPidProject)(nil))
+}
+
+func (i IndustrialPidProjectArray) ToIndustrialPidProjectArrayOutput() IndustrialPidProjectArrayOutput {
+	return i.ToIndustrialPidProjectArrayOutputWithContext(context.Background())
+}
+
+func (i IndustrialPidProjectArray) ToIndustrialPidProjectArrayOutputWithContext(ctx context.Context) IndustrialPidProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidProjectArrayOutput)
+}
+
+// IndustrialPidProjectMapInput is an input type that accepts IndustrialPidProjectMap and IndustrialPidProjectMapOutput values.
+// You can construct a concrete instance of `IndustrialPidProjectMapInput` via:
+//
+//          IndustrialPidProjectMap{ "key": IndustrialPidProjectArgs{...} }
+type IndustrialPidProjectMapInput interface {
+	pulumi.Input
+
+	ToIndustrialPidProjectMapOutput() IndustrialPidProjectMapOutput
+	ToIndustrialPidProjectMapOutputWithContext(context.Context) IndustrialPidProjectMapOutput
+}
+
+type IndustrialPidProjectMap map[string]IndustrialPidProjectInput
+
+func (IndustrialPidProjectMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*IndustrialPidProject)(nil))
+}
+
+func (i IndustrialPidProjectMap) ToIndustrialPidProjectMapOutput() IndustrialPidProjectMapOutput {
+	return i.ToIndustrialPidProjectMapOutputWithContext(context.Background())
+}
+
+func (i IndustrialPidProjectMap) ToIndustrialPidProjectMapOutputWithContext(ctx context.Context) IndustrialPidProjectMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidProjectMapOutput)
+}
+
 type IndustrialPidProjectOutput struct {
 	*pulumi.OutputState
 }
@@ -173,6 +252,75 @@ func (o IndustrialPidProjectOutput) ToIndustrialPidProjectOutputWithContext(ctx 
 	return o
 }
 
+func (o IndustrialPidProjectOutput) ToIndustrialPidProjectPtrOutput() IndustrialPidProjectPtrOutput {
+	return o.ToIndustrialPidProjectPtrOutputWithContext(context.Background())
+}
+
+func (o IndustrialPidProjectOutput) ToIndustrialPidProjectPtrOutputWithContext(ctx context.Context) IndustrialPidProjectPtrOutput {
+	return o.ApplyT(func(v IndustrialPidProject) *IndustrialPidProject {
+		return &v
+	}).(IndustrialPidProjectPtrOutput)
+}
+
+type IndustrialPidProjectPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IndustrialPidProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndustrialPidProject)(nil))
+}
+
+func (o IndustrialPidProjectPtrOutput) ToIndustrialPidProjectPtrOutput() IndustrialPidProjectPtrOutput {
+	return o
+}
+
+func (o IndustrialPidProjectPtrOutput) ToIndustrialPidProjectPtrOutputWithContext(ctx context.Context) IndustrialPidProjectPtrOutput {
+	return o
+}
+
+type IndustrialPidProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (IndustrialPidProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IndustrialPidProject)(nil))
+}
+
+func (o IndustrialPidProjectArrayOutput) ToIndustrialPidProjectArrayOutput() IndustrialPidProjectArrayOutput {
+	return o
+}
+
+func (o IndustrialPidProjectArrayOutput) ToIndustrialPidProjectArrayOutputWithContext(ctx context.Context) IndustrialPidProjectArrayOutput {
+	return o
+}
+
+func (o IndustrialPidProjectArrayOutput) Index(i pulumi.IntInput) IndustrialPidProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IndustrialPidProject {
+		return vs[0].([]IndustrialPidProject)[vs[1].(int)]
+	}).(IndustrialPidProjectOutput)
+}
+
+type IndustrialPidProjectMapOutput struct{ *pulumi.OutputState }
+
+func (IndustrialPidProjectMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IndustrialPidProject)(nil))
+}
+
+func (o IndustrialPidProjectMapOutput) ToIndustrialPidProjectMapOutput() IndustrialPidProjectMapOutput {
+	return o
+}
+
+func (o IndustrialPidProjectMapOutput) ToIndustrialPidProjectMapOutputWithContext(ctx context.Context) IndustrialPidProjectMapOutput {
+	return o
+}
+
+func (o IndustrialPidProjectMapOutput) MapIndex(k pulumi.StringInput) IndustrialPidProjectOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IndustrialPidProject {
+		return vs[0].(map[string]IndustrialPidProject)[vs[1].(string)]
+	}).(IndustrialPidProjectOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(IndustrialPidProjectOutput{})
+	pulumi.RegisterOutputType(IndustrialPidProjectPtrOutput{})
+	pulumi.RegisterOutputType(IndustrialPidProjectArrayOutput{})
+	pulumi.RegisterOutputType(IndustrialPidProjectMapOutput{})
 }

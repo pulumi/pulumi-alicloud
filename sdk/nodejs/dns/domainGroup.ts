@@ -82,7 +82,8 @@ export class DomainGroup extends pulumi.CustomResource {
     constructor(name: string, args?: DomainGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainGroupArgs | DomainGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainGroupState | undefined;
             inputs["domainGroupName"] = state ? state.domainGroupName : undefined;
             inputs["groupName"] = state ? state.groupName : undefined;
@@ -93,12 +94,8 @@ export class DomainGroup extends pulumi.CustomResource {
             inputs["groupName"] = args ? args.groupName : undefined;
             inputs["lang"] = args ? args.lang : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DomainGroup.__pulumiType, name, inputs, opts);
     }

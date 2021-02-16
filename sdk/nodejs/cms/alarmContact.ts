@@ -112,7 +112,8 @@ export class AlarmContact extends pulumi.CustomResource {
     constructor(name: string, args: AlarmContactArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlarmContactArgs | AlarmContactState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AlarmContactState | undefined;
             inputs["alarmContactName"] = state ? state.alarmContactName : undefined;
             inputs["channelsAliim"] = state ? state.channelsAliim : undefined;
@@ -123,10 +124,10 @@ export class AlarmContact extends pulumi.CustomResource {
             inputs["lang"] = state ? state.lang : undefined;
         } else {
             const args = argsOrState as AlarmContactArgs | undefined;
-            if ((!args || args.alarmContactName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.alarmContactName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'alarmContactName'");
             }
-            if ((!args || args.describe === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.describe === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'describe'");
             }
             inputs["alarmContactName"] = args ? args.alarmContactName : undefined;
@@ -137,12 +138,8 @@ export class AlarmContact extends pulumi.CustomResource {
             inputs["describe"] = args ? args.describe : undefined;
             inputs["lang"] = args ? args.lang : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AlarmContact.__pulumiType, name, inputs, opts);
     }

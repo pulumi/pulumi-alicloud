@@ -107,7 +107,8 @@ export class DnatEntry extends pulumi.CustomResource {
     constructor(name: string, args: DnatEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DnatEntryArgs | DnatEntryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DnatEntryState | undefined;
             inputs["externalIp"] = state ? state.externalIp : undefined;
             inputs["externalPort"] = state ? state.externalPort : undefined;
@@ -118,22 +119,22 @@ export class DnatEntry extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DnatEntryArgs | undefined;
-            if ((!args || args.externalPort === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.externalPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'externalPort'");
             }
-            if ((!args || args.internalIp === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.internalIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'internalIp'");
             }
-            if ((!args || args.internalPort === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.internalPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'internalPort'");
             }
-            if ((!args || args.ipProtocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ipProtocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if ((!args || args.sagId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sagId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sagId'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["externalIp"] = args ? args.externalIp : undefined;
@@ -144,12 +145,8 @@ export class DnatEntry extends pulumi.CustomResource {
             inputs["sagId"] = args ? args.sagId : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DnatEntry.__pulumiType, name, inputs, opts);
     }

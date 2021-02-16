@@ -91,7 +91,8 @@ export class ServerGroup extends pulumi.CustomResource {
     constructor(name: string, args: ServerGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerGroupArgs | ServerGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServerGroupState | undefined;
             inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
             inputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
@@ -99,7 +100,7 @@ export class ServerGroup extends pulumi.CustomResource {
             inputs["servers"] = state ? state.servers : undefined;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
-            if ((!args || args.loadBalancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
             inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
@@ -107,12 +108,8 @@ export class ServerGroup extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["servers"] = args ? args.servers : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServerGroup.__pulumiType, name, inputs, opts);
     }

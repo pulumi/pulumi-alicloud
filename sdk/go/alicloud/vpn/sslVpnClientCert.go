@@ -144,6 +144,85 @@ func (i *SslVpnClientCert) ToSslVpnClientCertOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SslVpnClientCertOutput)
 }
 
+func (i *SslVpnClientCert) ToSslVpnClientCertPtrOutput() SslVpnClientCertPtrOutput {
+	return i.ToSslVpnClientCertPtrOutputWithContext(context.Background())
+}
+
+func (i *SslVpnClientCert) ToSslVpnClientCertPtrOutputWithContext(ctx context.Context) SslVpnClientCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslVpnClientCertPtrOutput)
+}
+
+type SslVpnClientCertPtrInput interface {
+	pulumi.Input
+
+	ToSslVpnClientCertPtrOutput() SslVpnClientCertPtrOutput
+	ToSslVpnClientCertPtrOutputWithContext(ctx context.Context) SslVpnClientCertPtrOutput
+}
+
+type sslVpnClientCertPtrType SslVpnClientCertArgs
+
+func (*sslVpnClientCertPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslVpnClientCert)(nil))
+}
+
+func (i *sslVpnClientCertPtrType) ToSslVpnClientCertPtrOutput() SslVpnClientCertPtrOutput {
+	return i.ToSslVpnClientCertPtrOutputWithContext(context.Background())
+}
+
+func (i *sslVpnClientCertPtrType) ToSslVpnClientCertPtrOutputWithContext(ctx context.Context) SslVpnClientCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslVpnClientCertPtrOutput)
+}
+
+// SslVpnClientCertArrayInput is an input type that accepts SslVpnClientCertArray and SslVpnClientCertArrayOutput values.
+// You can construct a concrete instance of `SslVpnClientCertArrayInput` via:
+//
+//          SslVpnClientCertArray{ SslVpnClientCertArgs{...} }
+type SslVpnClientCertArrayInput interface {
+	pulumi.Input
+
+	ToSslVpnClientCertArrayOutput() SslVpnClientCertArrayOutput
+	ToSslVpnClientCertArrayOutputWithContext(context.Context) SslVpnClientCertArrayOutput
+}
+
+type SslVpnClientCertArray []SslVpnClientCertInput
+
+func (SslVpnClientCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SslVpnClientCert)(nil))
+}
+
+func (i SslVpnClientCertArray) ToSslVpnClientCertArrayOutput() SslVpnClientCertArrayOutput {
+	return i.ToSslVpnClientCertArrayOutputWithContext(context.Background())
+}
+
+func (i SslVpnClientCertArray) ToSslVpnClientCertArrayOutputWithContext(ctx context.Context) SslVpnClientCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslVpnClientCertArrayOutput)
+}
+
+// SslVpnClientCertMapInput is an input type that accepts SslVpnClientCertMap and SslVpnClientCertMapOutput values.
+// You can construct a concrete instance of `SslVpnClientCertMapInput` via:
+//
+//          SslVpnClientCertMap{ "key": SslVpnClientCertArgs{...} }
+type SslVpnClientCertMapInput interface {
+	pulumi.Input
+
+	ToSslVpnClientCertMapOutput() SslVpnClientCertMapOutput
+	ToSslVpnClientCertMapOutputWithContext(context.Context) SslVpnClientCertMapOutput
+}
+
+type SslVpnClientCertMap map[string]SslVpnClientCertInput
+
+func (SslVpnClientCertMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SslVpnClientCert)(nil))
+}
+
+func (i SslVpnClientCertMap) ToSslVpnClientCertMapOutput() SslVpnClientCertMapOutput {
+	return i.ToSslVpnClientCertMapOutputWithContext(context.Background())
+}
+
+func (i SslVpnClientCertMap) ToSslVpnClientCertMapOutputWithContext(ctx context.Context) SslVpnClientCertMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslVpnClientCertMapOutput)
+}
+
 type SslVpnClientCertOutput struct {
 	*pulumi.OutputState
 }
@@ -160,6 +239,75 @@ func (o SslVpnClientCertOutput) ToSslVpnClientCertOutputWithContext(ctx context.
 	return o
 }
 
+func (o SslVpnClientCertOutput) ToSslVpnClientCertPtrOutput() SslVpnClientCertPtrOutput {
+	return o.ToSslVpnClientCertPtrOutputWithContext(context.Background())
+}
+
+func (o SslVpnClientCertOutput) ToSslVpnClientCertPtrOutputWithContext(ctx context.Context) SslVpnClientCertPtrOutput {
+	return o.ApplyT(func(v SslVpnClientCert) *SslVpnClientCert {
+		return &v
+	}).(SslVpnClientCertPtrOutput)
+}
+
+type SslVpnClientCertPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SslVpnClientCertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslVpnClientCert)(nil))
+}
+
+func (o SslVpnClientCertPtrOutput) ToSslVpnClientCertPtrOutput() SslVpnClientCertPtrOutput {
+	return o
+}
+
+func (o SslVpnClientCertPtrOutput) ToSslVpnClientCertPtrOutputWithContext(ctx context.Context) SslVpnClientCertPtrOutput {
+	return o
+}
+
+type SslVpnClientCertArrayOutput struct{ *pulumi.OutputState }
+
+func (SslVpnClientCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SslVpnClientCert)(nil))
+}
+
+func (o SslVpnClientCertArrayOutput) ToSslVpnClientCertArrayOutput() SslVpnClientCertArrayOutput {
+	return o
+}
+
+func (o SslVpnClientCertArrayOutput) ToSslVpnClientCertArrayOutputWithContext(ctx context.Context) SslVpnClientCertArrayOutput {
+	return o
+}
+
+func (o SslVpnClientCertArrayOutput) Index(i pulumi.IntInput) SslVpnClientCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SslVpnClientCert {
+		return vs[0].([]SslVpnClientCert)[vs[1].(int)]
+	}).(SslVpnClientCertOutput)
+}
+
+type SslVpnClientCertMapOutput struct{ *pulumi.OutputState }
+
+func (SslVpnClientCertMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SslVpnClientCert)(nil))
+}
+
+func (o SslVpnClientCertMapOutput) ToSslVpnClientCertMapOutput() SslVpnClientCertMapOutput {
+	return o
+}
+
+func (o SslVpnClientCertMapOutput) ToSslVpnClientCertMapOutputWithContext(ctx context.Context) SslVpnClientCertMapOutput {
+	return o
+}
+
+func (o SslVpnClientCertMapOutput) MapIndex(k pulumi.StringInput) SslVpnClientCertOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SslVpnClientCert {
+		return vs[0].(map[string]SslVpnClientCert)[vs[1].(string)]
+	}).(SslVpnClientCertOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SslVpnClientCertOutput{})
+	pulumi.RegisterOutputType(SslVpnClientCertPtrOutput{})
+	pulumi.RegisterOutputType(SslVpnClientCertArrayOutput{})
+	pulumi.RegisterOutputType(SslVpnClientCertMapOutput{})
 }

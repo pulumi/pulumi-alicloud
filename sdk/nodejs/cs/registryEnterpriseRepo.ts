@@ -110,7 +110,8 @@ export class RegistryEnterpriseRepo extends pulumi.CustomResource {
     constructor(name: string, args: RegistryEnterpriseRepoArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryEnterpriseRepoArgs | RegistryEnterpriseRepoState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RegistryEnterpriseRepoState | undefined;
             inputs["detail"] = state ? state.detail : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
@@ -121,16 +122,16 @@ export class RegistryEnterpriseRepo extends pulumi.CustomResource {
             inputs["summary"] = state ? state.summary : undefined;
         } else {
             const args = argsOrState as RegistryEnterpriseRepoArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.namespace === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.namespace === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.repoType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.repoType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repoType'");
             }
-            if ((!args || args.summary === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.summary === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'summary'");
             }
             inputs["detail"] = args ? args.detail : undefined;
@@ -141,12 +142,8 @@ export class RegistryEnterpriseRepo extends pulumi.CustomResource {
             inputs["summary"] = args ? args.summary : undefined;
             inputs["repoId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RegistryEnterpriseRepo.__pulumiType, name, inputs, opts);
     }

@@ -109,7 +109,8 @@ export class SiteMonitor extends pulumi.CustomResource {
     constructor(name: string, args: SiteMonitorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SiteMonitorArgs | SiteMonitorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SiteMonitorState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["alertIds"] = state ? state.alertIds : undefined;
@@ -123,13 +124,13 @@ export class SiteMonitor extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as SiteMonitorArgs | undefined;
-            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.address === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.taskName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.taskName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'taskName'");
             }
-            if ((!args || args.taskType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.taskType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'taskType'");
             }
             inputs["address"] = args ? args.address : undefined;
@@ -143,12 +144,8 @@ export class SiteMonitor extends pulumi.CustomResource {
             inputs["taskState"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SiteMonitor.__pulumiType, name, inputs, opts);
     }

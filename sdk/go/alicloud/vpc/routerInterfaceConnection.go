@@ -233,6 +233,85 @@ func (i *RouterInterfaceConnection) ToRouterInterfaceConnectionOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceConnectionOutput)
 }
 
+func (i *RouterInterfaceConnection) ToRouterInterfaceConnectionPtrOutput() RouterInterfaceConnectionPtrOutput {
+	return i.ToRouterInterfaceConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *RouterInterfaceConnection) ToRouterInterfaceConnectionPtrOutputWithContext(ctx context.Context) RouterInterfaceConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceConnectionPtrOutput)
+}
+
+type RouterInterfaceConnectionPtrInput interface {
+	pulumi.Input
+
+	ToRouterInterfaceConnectionPtrOutput() RouterInterfaceConnectionPtrOutput
+	ToRouterInterfaceConnectionPtrOutputWithContext(ctx context.Context) RouterInterfaceConnectionPtrOutput
+}
+
+type routerInterfaceConnectionPtrType RouterInterfaceConnectionArgs
+
+func (*routerInterfaceConnectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterInterfaceConnection)(nil))
+}
+
+func (i *routerInterfaceConnectionPtrType) ToRouterInterfaceConnectionPtrOutput() RouterInterfaceConnectionPtrOutput {
+	return i.ToRouterInterfaceConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *routerInterfaceConnectionPtrType) ToRouterInterfaceConnectionPtrOutputWithContext(ctx context.Context) RouterInterfaceConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceConnectionPtrOutput)
+}
+
+// RouterInterfaceConnectionArrayInput is an input type that accepts RouterInterfaceConnectionArray and RouterInterfaceConnectionArrayOutput values.
+// You can construct a concrete instance of `RouterInterfaceConnectionArrayInput` via:
+//
+//          RouterInterfaceConnectionArray{ RouterInterfaceConnectionArgs{...} }
+type RouterInterfaceConnectionArrayInput interface {
+	pulumi.Input
+
+	ToRouterInterfaceConnectionArrayOutput() RouterInterfaceConnectionArrayOutput
+	ToRouterInterfaceConnectionArrayOutputWithContext(context.Context) RouterInterfaceConnectionArrayOutput
+}
+
+type RouterInterfaceConnectionArray []RouterInterfaceConnectionInput
+
+func (RouterInterfaceConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RouterInterfaceConnection)(nil))
+}
+
+func (i RouterInterfaceConnectionArray) ToRouterInterfaceConnectionArrayOutput() RouterInterfaceConnectionArrayOutput {
+	return i.ToRouterInterfaceConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i RouterInterfaceConnectionArray) ToRouterInterfaceConnectionArrayOutputWithContext(ctx context.Context) RouterInterfaceConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceConnectionArrayOutput)
+}
+
+// RouterInterfaceConnectionMapInput is an input type that accepts RouterInterfaceConnectionMap and RouterInterfaceConnectionMapOutput values.
+// You can construct a concrete instance of `RouterInterfaceConnectionMapInput` via:
+//
+//          RouterInterfaceConnectionMap{ "key": RouterInterfaceConnectionArgs{...} }
+type RouterInterfaceConnectionMapInput interface {
+	pulumi.Input
+
+	ToRouterInterfaceConnectionMapOutput() RouterInterfaceConnectionMapOutput
+	ToRouterInterfaceConnectionMapOutputWithContext(context.Context) RouterInterfaceConnectionMapOutput
+}
+
+type RouterInterfaceConnectionMap map[string]RouterInterfaceConnectionInput
+
+func (RouterInterfaceConnectionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RouterInterfaceConnection)(nil))
+}
+
+func (i RouterInterfaceConnectionMap) ToRouterInterfaceConnectionMapOutput() RouterInterfaceConnectionMapOutput {
+	return i.ToRouterInterfaceConnectionMapOutputWithContext(context.Background())
+}
+
+func (i RouterInterfaceConnectionMap) ToRouterInterfaceConnectionMapOutputWithContext(ctx context.Context) RouterInterfaceConnectionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceConnectionMapOutput)
+}
+
 type RouterInterfaceConnectionOutput struct {
 	*pulumi.OutputState
 }
@@ -249,6 +328,75 @@ func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionOutputWithCo
 	return o
 }
 
+func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionPtrOutput() RouterInterfaceConnectionPtrOutput {
+	return o.ToRouterInterfaceConnectionPtrOutputWithContext(context.Background())
+}
+
+func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionPtrOutputWithContext(ctx context.Context) RouterInterfaceConnectionPtrOutput {
+	return o.ApplyT(func(v RouterInterfaceConnection) *RouterInterfaceConnection {
+		return &v
+	}).(RouterInterfaceConnectionPtrOutput)
+}
+
+type RouterInterfaceConnectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouterInterfaceConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterInterfaceConnection)(nil))
+}
+
+func (o RouterInterfaceConnectionPtrOutput) ToRouterInterfaceConnectionPtrOutput() RouterInterfaceConnectionPtrOutput {
+	return o
+}
+
+func (o RouterInterfaceConnectionPtrOutput) ToRouterInterfaceConnectionPtrOutputWithContext(ctx context.Context) RouterInterfaceConnectionPtrOutput {
+	return o
+}
+
+type RouterInterfaceConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterInterfaceConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterInterfaceConnection)(nil))
+}
+
+func (o RouterInterfaceConnectionArrayOutput) ToRouterInterfaceConnectionArrayOutput() RouterInterfaceConnectionArrayOutput {
+	return o
+}
+
+func (o RouterInterfaceConnectionArrayOutput) ToRouterInterfaceConnectionArrayOutputWithContext(ctx context.Context) RouterInterfaceConnectionArrayOutput {
+	return o
+}
+
+func (o RouterInterfaceConnectionArrayOutput) Index(i pulumi.IntInput) RouterInterfaceConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterInterfaceConnection {
+		return vs[0].([]RouterInterfaceConnection)[vs[1].(int)]
+	}).(RouterInterfaceConnectionOutput)
+}
+
+type RouterInterfaceConnectionMapOutput struct{ *pulumi.OutputState }
+
+func (RouterInterfaceConnectionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RouterInterfaceConnection)(nil))
+}
+
+func (o RouterInterfaceConnectionMapOutput) ToRouterInterfaceConnectionMapOutput() RouterInterfaceConnectionMapOutput {
+	return o
+}
+
+func (o RouterInterfaceConnectionMapOutput) ToRouterInterfaceConnectionMapOutputWithContext(ctx context.Context) RouterInterfaceConnectionMapOutput {
+	return o
+}
+
+func (o RouterInterfaceConnectionMapOutput) MapIndex(k pulumi.StringInput) RouterInterfaceConnectionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RouterInterfaceConnection {
+		return vs[0].(map[string]RouterInterfaceConnection)[vs[1].(string)]
+	}).(RouterInterfaceConnectionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RouterInterfaceConnectionOutput{})
+	pulumi.RegisterOutputType(RouterInterfaceConnectionPtrOutput{})
+	pulumi.RegisterOutputType(RouterInterfaceConnectionArrayOutput{})
+	pulumi.RegisterOutputType(RouterInterfaceConnectionMapOutput{})
 }

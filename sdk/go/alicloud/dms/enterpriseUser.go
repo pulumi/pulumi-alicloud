@@ -226,6 +226,85 @@ func (i *EnterpriseUser) ToEnterpriseUserOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserOutput)
 }
 
+func (i *EnterpriseUser) ToEnterpriseUserPtrOutput() EnterpriseUserPtrOutput {
+	return i.ToEnterpriseUserPtrOutputWithContext(context.Background())
+}
+
+func (i *EnterpriseUser) ToEnterpriseUserPtrOutputWithContext(ctx context.Context) EnterpriseUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserPtrOutput)
+}
+
+type EnterpriseUserPtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseUserPtrOutput() EnterpriseUserPtrOutput
+	ToEnterpriseUserPtrOutputWithContext(ctx context.Context) EnterpriseUserPtrOutput
+}
+
+type enterpriseUserPtrType EnterpriseUserArgs
+
+func (*enterpriseUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseUser)(nil))
+}
+
+func (i *enterpriseUserPtrType) ToEnterpriseUserPtrOutput() EnterpriseUserPtrOutput {
+	return i.ToEnterpriseUserPtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseUserPtrType) ToEnterpriseUserPtrOutputWithContext(ctx context.Context) EnterpriseUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserPtrOutput)
+}
+
+// EnterpriseUserArrayInput is an input type that accepts EnterpriseUserArray and EnterpriseUserArrayOutput values.
+// You can construct a concrete instance of `EnterpriseUserArrayInput` via:
+//
+//          EnterpriseUserArray{ EnterpriseUserArgs{...} }
+type EnterpriseUserArrayInput interface {
+	pulumi.Input
+
+	ToEnterpriseUserArrayOutput() EnterpriseUserArrayOutput
+	ToEnterpriseUserArrayOutputWithContext(context.Context) EnterpriseUserArrayOutput
+}
+
+type EnterpriseUserArray []EnterpriseUserInput
+
+func (EnterpriseUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*EnterpriseUser)(nil))
+}
+
+func (i EnterpriseUserArray) ToEnterpriseUserArrayOutput() EnterpriseUserArrayOutput {
+	return i.ToEnterpriseUserArrayOutputWithContext(context.Background())
+}
+
+func (i EnterpriseUserArray) ToEnterpriseUserArrayOutputWithContext(ctx context.Context) EnterpriseUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserArrayOutput)
+}
+
+// EnterpriseUserMapInput is an input type that accepts EnterpriseUserMap and EnterpriseUserMapOutput values.
+// You can construct a concrete instance of `EnterpriseUserMapInput` via:
+//
+//          EnterpriseUserMap{ "key": EnterpriseUserArgs{...} }
+type EnterpriseUserMapInput interface {
+	pulumi.Input
+
+	ToEnterpriseUserMapOutput() EnterpriseUserMapOutput
+	ToEnterpriseUserMapOutputWithContext(context.Context) EnterpriseUserMapOutput
+}
+
+type EnterpriseUserMap map[string]EnterpriseUserInput
+
+func (EnterpriseUserMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*EnterpriseUser)(nil))
+}
+
+func (i EnterpriseUserMap) ToEnterpriseUserMapOutput() EnterpriseUserMapOutput {
+	return i.ToEnterpriseUserMapOutputWithContext(context.Background())
+}
+
+func (i EnterpriseUserMap) ToEnterpriseUserMapOutputWithContext(ctx context.Context) EnterpriseUserMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserMapOutput)
+}
+
 type EnterpriseUserOutput struct {
 	*pulumi.OutputState
 }
@@ -242,6 +321,75 @@ func (o EnterpriseUserOutput) ToEnterpriseUserOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o EnterpriseUserOutput) ToEnterpriseUserPtrOutput() EnterpriseUserPtrOutput {
+	return o.ToEnterpriseUserPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseUserOutput) ToEnterpriseUserPtrOutputWithContext(ctx context.Context) EnterpriseUserPtrOutput {
+	return o.ApplyT(func(v EnterpriseUser) *EnterpriseUser {
+		return &v
+	}).(EnterpriseUserPtrOutput)
+}
+
+type EnterpriseUserPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EnterpriseUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseUser)(nil))
+}
+
+func (o EnterpriseUserPtrOutput) ToEnterpriseUserPtrOutput() EnterpriseUserPtrOutput {
+	return o
+}
+
+func (o EnterpriseUserPtrOutput) ToEnterpriseUserPtrOutputWithContext(ctx context.Context) EnterpriseUserPtrOutput {
+	return o
+}
+
+type EnterpriseUserArrayOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnterpriseUser)(nil))
+}
+
+func (o EnterpriseUserArrayOutput) ToEnterpriseUserArrayOutput() EnterpriseUserArrayOutput {
+	return o
+}
+
+func (o EnterpriseUserArrayOutput) ToEnterpriseUserArrayOutputWithContext(ctx context.Context) EnterpriseUserArrayOutput {
+	return o
+}
+
+func (o EnterpriseUserArrayOutput) Index(i pulumi.IntInput) EnterpriseUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseUser {
+		return vs[0].([]EnterpriseUser)[vs[1].(int)]
+	}).(EnterpriseUserOutput)
+}
+
+type EnterpriseUserMapOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseUserMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EnterpriseUser)(nil))
+}
+
+func (o EnterpriseUserMapOutput) ToEnterpriseUserMapOutput() EnterpriseUserMapOutput {
+	return o
+}
+
+func (o EnterpriseUserMapOutput) ToEnterpriseUserMapOutputWithContext(ctx context.Context) EnterpriseUserMapOutput {
+	return o
+}
+
+func (o EnterpriseUserMapOutput) MapIndex(k pulumi.StringInput) EnterpriseUserOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EnterpriseUser {
+		return vs[0].(map[string]EnterpriseUser)[vs[1].(string)]
+	}).(EnterpriseUserOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EnterpriseUserOutput{})
+	pulumi.RegisterOutputType(EnterpriseUserPtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseUserArrayOutput{})
+	pulumi.RegisterOutputType(EnterpriseUserMapOutput{})
 }

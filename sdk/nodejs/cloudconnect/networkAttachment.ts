@@ -85,27 +85,24 @@ export class NetworkAttachment extends pulumi.CustomResource {
     constructor(name: string, args: NetworkAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkAttachmentArgs | NetworkAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NetworkAttachmentState | undefined;
             inputs["ccnId"] = state ? state.ccnId : undefined;
             inputs["sagId"] = state ? state.sagId : undefined;
         } else {
             const args = argsOrState as NetworkAttachmentArgs | undefined;
-            if ((!args || args.ccnId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ccnId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ccnId'");
             }
-            if ((!args || args.sagId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sagId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sagId'");
             }
             inputs["ccnId"] = args ? args.ccnId : undefined;
             inputs["sagId"] = args ? args.sagId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NetworkAttachment.__pulumiType, name, inputs, opts);
     }

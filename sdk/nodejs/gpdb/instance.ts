@@ -129,7 +129,8 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -143,10 +144,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.instanceClass === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceClass === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceClass'");
             }
-            if ((!args || args.instanceGroupCount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceGroupCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroupCount'");
             }
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
@@ -160,12 +161,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }

@@ -231,6 +231,85 @@ func (i *ZoneRecord) ToZoneRecordOutputWithContext(ctx context.Context) ZoneReco
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordOutput)
 }
 
+func (i *ZoneRecord) ToZoneRecordPtrOutput() ZoneRecordPtrOutput {
+	return i.ToZoneRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *ZoneRecord) ToZoneRecordPtrOutputWithContext(ctx context.Context) ZoneRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordPtrOutput)
+}
+
+type ZoneRecordPtrInput interface {
+	pulumi.Input
+
+	ToZoneRecordPtrOutput() ZoneRecordPtrOutput
+	ToZoneRecordPtrOutputWithContext(ctx context.Context) ZoneRecordPtrOutput
+}
+
+type zoneRecordPtrType ZoneRecordArgs
+
+func (*zoneRecordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneRecord)(nil))
+}
+
+func (i *zoneRecordPtrType) ToZoneRecordPtrOutput() ZoneRecordPtrOutput {
+	return i.ToZoneRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneRecordPtrType) ToZoneRecordPtrOutputWithContext(ctx context.Context) ZoneRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordPtrOutput)
+}
+
+// ZoneRecordArrayInput is an input type that accepts ZoneRecordArray and ZoneRecordArrayOutput values.
+// You can construct a concrete instance of `ZoneRecordArrayInput` via:
+//
+//          ZoneRecordArray{ ZoneRecordArgs{...} }
+type ZoneRecordArrayInput interface {
+	pulumi.Input
+
+	ToZoneRecordArrayOutput() ZoneRecordArrayOutput
+	ToZoneRecordArrayOutputWithContext(context.Context) ZoneRecordArrayOutput
+}
+
+type ZoneRecordArray []ZoneRecordInput
+
+func (ZoneRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ZoneRecord)(nil))
+}
+
+func (i ZoneRecordArray) ToZoneRecordArrayOutput() ZoneRecordArrayOutput {
+	return i.ToZoneRecordArrayOutputWithContext(context.Background())
+}
+
+func (i ZoneRecordArray) ToZoneRecordArrayOutputWithContext(ctx context.Context) ZoneRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordArrayOutput)
+}
+
+// ZoneRecordMapInput is an input type that accepts ZoneRecordMap and ZoneRecordMapOutput values.
+// You can construct a concrete instance of `ZoneRecordMapInput` via:
+//
+//          ZoneRecordMap{ "key": ZoneRecordArgs{...} }
+type ZoneRecordMapInput interface {
+	pulumi.Input
+
+	ToZoneRecordMapOutput() ZoneRecordMapOutput
+	ToZoneRecordMapOutputWithContext(context.Context) ZoneRecordMapOutput
+}
+
+type ZoneRecordMap map[string]ZoneRecordInput
+
+func (ZoneRecordMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ZoneRecord)(nil))
+}
+
+func (i ZoneRecordMap) ToZoneRecordMapOutput() ZoneRecordMapOutput {
+	return i.ToZoneRecordMapOutputWithContext(context.Background())
+}
+
+func (i ZoneRecordMap) ToZoneRecordMapOutputWithContext(ctx context.Context) ZoneRecordMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordMapOutput)
+}
+
 type ZoneRecordOutput struct {
 	*pulumi.OutputState
 }
@@ -247,6 +326,75 @@ func (o ZoneRecordOutput) ToZoneRecordOutputWithContext(ctx context.Context) Zon
 	return o
 }
 
+func (o ZoneRecordOutput) ToZoneRecordPtrOutput() ZoneRecordPtrOutput {
+	return o.ToZoneRecordPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneRecordOutput) ToZoneRecordPtrOutputWithContext(ctx context.Context) ZoneRecordPtrOutput {
+	return o.ApplyT(func(v ZoneRecord) *ZoneRecord {
+		return &v
+	}).(ZoneRecordPtrOutput)
+}
+
+type ZoneRecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneRecord)(nil))
+}
+
+func (o ZoneRecordPtrOutput) ToZoneRecordPtrOutput() ZoneRecordPtrOutput {
+	return o
+}
+
+func (o ZoneRecordPtrOutput) ToZoneRecordPtrOutputWithContext(ctx context.Context) ZoneRecordPtrOutput {
+	return o
+}
+
+type ZoneRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (ZoneRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneRecord)(nil))
+}
+
+func (o ZoneRecordArrayOutput) ToZoneRecordArrayOutput() ZoneRecordArrayOutput {
+	return o
+}
+
+func (o ZoneRecordArrayOutput) ToZoneRecordArrayOutputWithContext(ctx context.Context) ZoneRecordArrayOutput {
+	return o
+}
+
+func (o ZoneRecordArrayOutput) Index(i pulumi.IntInput) ZoneRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneRecord {
+		return vs[0].([]ZoneRecord)[vs[1].(int)]
+	}).(ZoneRecordOutput)
+}
+
+type ZoneRecordMapOutput struct{ *pulumi.OutputState }
+
+func (ZoneRecordMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ZoneRecord)(nil))
+}
+
+func (o ZoneRecordMapOutput) ToZoneRecordMapOutput() ZoneRecordMapOutput {
+	return o
+}
+
+func (o ZoneRecordMapOutput) ToZoneRecordMapOutputWithContext(ctx context.Context) ZoneRecordMapOutput {
+	return o
+}
+
+func (o ZoneRecordMapOutput) MapIndex(k pulumi.StringInput) ZoneRecordOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ZoneRecord {
+		return vs[0].(map[string]ZoneRecord)[vs[1].(string)]
+	}).(ZoneRecordOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ZoneRecordOutput{})
+	pulumi.RegisterOutputType(ZoneRecordPtrOutput{})
+	pulumi.RegisterOutputType(ZoneRecordArrayOutput{})
+	pulumi.RegisterOutputType(ZoneRecordMapOutput{})
 }

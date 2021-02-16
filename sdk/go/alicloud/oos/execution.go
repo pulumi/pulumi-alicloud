@@ -299,6 +299,85 @@ func (i *Execution) ToExecutionOutputWithContext(ctx context.Context) ExecutionO
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionOutput)
 }
 
+func (i *Execution) ToExecutionPtrOutput() ExecutionPtrOutput {
+	return i.ToExecutionPtrOutputWithContext(context.Background())
+}
+
+func (i *Execution) ToExecutionPtrOutputWithContext(ctx context.Context) ExecutionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionPtrOutput)
+}
+
+type ExecutionPtrInput interface {
+	pulumi.Input
+
+	ToExecutionPtrOutput() ExecutionPtrOutput
+	ToExecutionPtrOutputWithContext(ctx context.Context) ExecutionPtrOutput
+}
+
+type executionPtrType ExecutionArgs
+
+func (*executionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Execution)(nil))
+}
+
+func (i *executionPtrType) ToExecutionPtrOutput() ExecutionPtrOutput {
+	return i.ToExecutionPtrOutputWithContext(context.Background())
+}
+
+func (i *executionPtrType) ToExecutionPtrOutputWithContext(ctx context.Context) ExecutionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionPtrOutput)
+}
+
+// ExecutionArrayInput is an input type that accepts ExecutionArray and ExecutionArrayOutput values.
+// You can construct a concrete instance of `ExecutionArrayInput` via:
+//
+//          ExecutionArray{ ExecutionArgs{...} }
+type ExecutionArrayInput interface {
+	pulumi.Input
+
+	ToExecutionArrayOutput() ExecutionArrayOutput
+	ToExecutionArrayOutputWithContext(context.Context) ExecutionArrayOutput
+}
+
+type ExecutionArray []ExecutionInput
+
+func (ExecutionArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Execution)(nil))
+}
+
+func (i ExecutionArray) ToExecutionArrayOutput() ExecutionArrayOutput {
+	return i.ToExecutionArrayOutputWithContext(context.Background())
+}
+
+func (i ExecutionArray) ToExecutionArrayOutputWithContext(ctx context.Context) ExecutionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionArrayOutput)
+}
+
+// ExecutionMapInput is an input type that accepts ExecutionMap and ExecutionMapOutput values.
+// You can construct a concrete instance of `ExecutionMapInput` via:
+//
+//          ExecutionMap{ "key": ExecutionArgs{...} }
+type ExecutionMapInput interface {
+	pulumi.Input
+
+	ToExecutionMapOutput() ExecutionMapOutput
+	ToExecutionMapOutputWithContext(context.Context) ExecutionMapOutput
+}
+
+type ExecutionMap map[string]ExecutionInput
+
+func (ExecutionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Execution)(nil))
+}
+
+func (i ExecutionMap) ToExecutionMapOutput() ExecutionMapOutput {
+	return i.ToExecutionMapOutputWithContext(context.Background())
+}
+
+func (i ExecutionMap) ToExecutionMapOutputWithContext(ctx context.Context) ExecutionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionMapOutput)
+}
+
 type ExecutionOutput struct {
 	*pulumi.OutputState
 }
@@ -315,6 +394,75 @@ func (o ExecutionOutput) ToExecutionOutputWithContext(ctx context.Context) Execu
 	return o
 }
 
+func (o ExecutionOutput) ToExecutionPtrOutput() ExecutionPtrOutput {
+	return o.ToExecutionPtrOutputWithContext(context.Background())
+}
+
+func (o ExecutionOutput) ToExecutionPtrOutputWithContext(ctx context.Context) ExecutionPtrOutput {
+	return o.ApplyT(func(v Execution) *Execution {
+		return &v
+	}).(ExecutionPtrOutput)
+}
+
+type ExecutionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExecutionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Execution)(nil))
+}
+
+func (o ExecutionPtrOutput) ToExecutionPtrOutput() ExecutionPtrOutput {
+	return o
+}
+
+func (o ExecutionPtrOutput) ToExecutionPtrOutputWithContext(ctx context.Context) ExecutionPtrOutput {
+	return o
+}
+
+type ExecutionArrayOutput struct{ *pulumi.OutputState }
+
+func (ExecutionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Execution)(nil))
+}
+
+func (o ExecutionArrayOutput) ToExecutionArrayOutput() ExecutionArrayOutput {
+	return o
+}
+
+func (o ExecutionArrayOutput) ToExecutionArrayOutputWithContext(ctx context.Context) ExecutionArrayOutput {
+	return o
+}
+
+func (o ExecutionArrayOutput) Index(i pulumi.IntInput) ExecutionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Execution {
+		return vs[0].([]Execution)[vs[1].(int)]
+	}).(ExecutionOutput)
+}
+
+type ExecutionMapOutput struct{ *pulumi.OutputState }
+
+func (ExecutionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Execution)(nil))
+}
+
+func (o ExecutionMapOutput) ToExecutionMapOutput() ExecutionMapOutput {
+	return o
+}
+
+func (o ExecutionMapOutput) ToExecutionMapOutputWithContext(ctx context.Context) ExecutionMapOutput {
+	return o
+}
+
+func (o ExecutionMapOutput) MapIndex(k pulumi.StringInput) ExecutionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Execution {
+		return vs[0].(map[string]Execution)[vs[1].(string)]
+	}).(ExecutionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ExecutionOutput{})
+	pulumi.RegisterOutputType(ExecutionPtrOutput{})
+	pulumi.RegisterOutputType(ExecutionArrayOutput{})
+	pulumi.RegisterOutputType(ExecutionMapOutput{})
 }

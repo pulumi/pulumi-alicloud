@@ -205,6 +205,85 @@ func (i *Flow) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowOutput)
 }
 
+func (i *Flow) ToFlowPtrOutput() FlowPtrOutput {
+	return i.ToFlowPtrOutputWithContext(context.Background())
+}
+
+func (i *Flow) ToFlowPtrOutputWithContext(ctx context.Context) FlowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowPtrOutput)
+}
+
+type FlowPtrInput interface {
+	pulumi.Input
+
+	ToFlowPtrOutput() FlowPtrOutput
+	ToFlowPtrOutputWithContext(ctx context.Context) FlowPtrOutput
+}
+
+type flowPtrType FlowArgs
+
+func (*flowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Flow)(nil))
+}
+
+func (i *flowPtrType) ToFlowPtrOutput() FlowPtrOutput {
+	return i.ToFlowPtrOutputWithContext(context.Background())
+}
+
+func (i *flowPtrType) ToFlowPtrOutputWithContext(ctx context.Context) FlowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowPtrOutput)
+}
+
+// FlowArrayInput is an input type that accepts FlowArray and FlowArrayOutput values.
+// You can construct a concrete instance of `FlowArrayInput` via:
+//
+//          FlowArray{ FlowArgs{...} }
+type FlowArrayInput interface {
+	pulumi.Input
+
+	ToFlowArrayOutput() FlowArrayOutput
+	ToFlowArrayOutputWithContext(context.Context) FlowArrayOutput
+}
+
+type FlowArray []FlowInput
+
+func (FlowArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Flow)(nil))
+}
+
+func (i FlowArray) ToFlowArrayOutput() FlowArrayOutput {
+	return i.ToFlowArrayOutputWithContext(context.Background())
+}
+
+func (i FlowArray) ToFlowArrayOutputWithContext(ctx context.Context) FlowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowArrayOutput)
+}
+
+// FlowMapInput is an input type that accepts FlowMap and FlowMapOutput values.
+// You can construct a concrete instance of `FlowMapInput` via:
+//
+//          FlowMap{ "key": FlowArgs{...} }
+type FlowMapInput interface {
+	pulumi.Input
+
+	ToFlowMapOutput() FlowMapOutput
+	ToFlowMapOutputWithContext(context.Context) FlowMapOutput
+}
+
+type FlowMap map[string]FlowInput
+
+func (FlowMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Flow)(nil))
+}
+
+func (i FlowMap) ToFlowMapOutput() FlowMapOutput {
+	return i.ToFlowMapOutputWithContext(context.Background())
+}
+
+func (i FlowMap) ToFlowMapOutputWithContext(ctx context.Context) FlowMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowMapOutput)
+}
+
 type FlowOutput struct {
 	*pulumi.OutputState
 }
@@ -221,6 +300,75 @@ func (o FlowOutput) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return o
 }
 
+func (o FlowOutput) ToFlowPtrOutput() FlowPtrOutput {
+	return o.ToFlowPtrOutputWithContext(context.Background())
+}
+
+func (o FlowOutput) ToFlowPtrOutputWithContext(ctx context.Context) FlowPtrOutput {
+	return o.ApplyT(func(v Flow) *Flow {
+		return &v
+	}).(FlowPtrOutput)
+}
+
+type FlowPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FlowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Flow)(nil))
+}
+
+func (o FlowPtrOutput) ToFlowPtrOutput() FlowPtrOutput {
+	return o
+}
+
+func (o FlowPtrOutput) ToFlowPtrOutputWithContext(ctx context.Context) FlowPtrOutput {
+	return o
+}
+
+type FlowArrayOutput struct{ *pulumi.OutputState }
+
+func (FlowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Flow)(nil))
+}
+
+func (o FlowArrayOutput) ToFlowArrayOutput() FlowArrayOutput {
+	return o
+}
+
+func (o FlowArrayOutput) ToFlowArrayOutputWithContext(ctx context.Context) FlowArrayOutput {
+	return o
+}
+
+func (o FlowArrayOutput) Index(i pulumi.IntInput) FlowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Flow {
+		return vs[0].([]Flow)[vs[1].(int)]
+	}).(FlowOutput)
+}
+
+type FlowMapOutput struct{ *pulumi.OutputState }
+
+func (FlowMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Flow)(nil))
+}
+
+func (o FlowMapOutput) ToFlowMapOutput() FlowMapOutput {
+	return o
+}
+
+func (o FlowMapOutput) ToFlowMapOutputWithContext(ctx context.Context) FlowMapOutput {
+	return o
+}
+
+func (o FlowMapOutput) MapIndex(k pulumi.StringInput) FlowOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Flow {
+		return vs[0].(map[string]Flow)[vs[1].(string)]
+	}).(FlowOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FlowOutput{})
+	pulumi.RegisterOutputType(FlowPtrOutput{})
+	pulumi.RegisterOutputType(FlowArrayOutput{})
+	pulumi.RegisterOutputType(FlowMapOutput{})
 }

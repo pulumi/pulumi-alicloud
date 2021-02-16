@@ -78,29 +78,26 @@ export class Certificate extends pulumi.CustomResource {
     constructor(name: string, args: CertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificateArgs | CertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
             inputs["cert"] = state ? state.cert : undefined;
             inputs["key"] = state ? state.key : undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            if ((!args || args.cert === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cert === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cert'");
             }
-            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
             inputs["cert"] = args ? args.cert : undefined;
             inputs["key"] = args ? args.key : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Certificate.__pulumiType, name, inputs, opts);
     }

@@ -121,7 +121,8 @@ export class AccountPrivilege extends pulumi.CustomResource {
     constructor(name: string, args: AccountPrivilegeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountPrivilegeArgs | AccountPrivilegeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccountPrivilegeState | undefined;
             inputs["accountName"] = state ? state.accountName : undefined;
             inputs["dbNames"] = state ? state.dbNames : undefined;
@@ -129,13 +130,13 @@ export class AccountPrivilege extends pulumi.CustomResource {
             inputs["privilege"] = state ? state.privilege : undefined;
         } else {
             const args = argsOrState as AccountPrivilegeArgs | undefined;
-            if ((!args || args.accountName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accountName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.dbNames === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dbNames === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbNames'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["accountName"] = args ? args.accountName : undefined;
@@ -143,12 +144,8 @@ export class AccountPrivilege extends pulumi.CustomResource {
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["privilege"] = args ? args.privilege : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccountPrivilege.__pulumiType, name, inputs, opts);
     }

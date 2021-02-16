@@ -64,26 +64,23 @@ export class CustomerGateway extends pulumi.CustomResource {
     constructor(name: string, args: CustomerGatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomerGatewayArgs | CustomerGatewayState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CustomerGatewayState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as CustomerGatewayArgs | undefined;
-            if ((!args || args.ipAddress === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ipAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipAddress'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CustomerGateway.__pulumiType, name, inputs, opts);
     }

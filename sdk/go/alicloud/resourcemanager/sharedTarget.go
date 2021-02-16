@@ -129,6 +129,85 @@ func (i *SharedTarget) ToSharedTargetOutputWithContext(ctx context.Context) Shar
 	return pulumi.ToOutputWithContext(ctx, i).(SharedTargetOutput)
 }
 
+func (i *SharedTarget) ToSharedTargetPtrOutput() SharedTargetPtrOutput {
+	return i.ToSharedTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *SharedTarget) ToSharedTargetPtrOutputWithContext(ctx context.Context) SharedTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedTargetPtrOutput)
+}
+
+type SharedTargetPtrInput interface {
+	pulumi.Input
+
+	ToSharedTargetPtrOutput() SharedTargetPtrOutput
+	ToSharedTargetPtrOutputWithContext(ctx context.Context) SharedTargetPtrOutput
+}
+
+type sharedTargetPtrType SharedTargetArgs
+
+func (*sharedTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedTarget)(nil))
+}
+
+func (i *sharedTargetPtrType) ToSharedTargetPtrOutput() SharedTargetPtrOutput {
+	return i.ToSharedTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *sharedTargetPtrType) ToSharedTargetPtrOutputWithContext(ctx context.Context) SharedTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedTargetPtrOutput)
+}
+
+// SharedTargetArrayInput is an input type that accepts SharedTargetArray and SharedTargetArrayOutput values.
+// You can construct a concrete instance of `SharedTargetArrayInput` via:
+//
+//          SharedTargetArray{ SharedTargetArgs{...} }
+type SharedTargetArrayInput interface {
+	pulumi.Input
+
+	ToSharedTargetArrayOutput() SharedTargetArrayOutput
+	ToSharedTargetArrayOutputWithContext(context.Context) SharedTargetArrayOutput
+}
+
+type SharedTargetArray []SharedTargetInput
+
+func (SharedTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SharedTarget)(nil))
+}
+
+func (i SharedTargetArray) ToSharedTargetArrayOutput() SharedTargetArrayOutput {
+	return i.ToSharedTargetArrayOutputWithContext(context.Background())
+}
+
+func (i SharedTargetArray) ToSharedTargetArrayOutputWithContext(ctx context.Context) SharedTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedTargetArrayOutput)
+}
+
+// SharedTargetMapInput is an input type that accepts SharedTargetMap and SharedTargetMapOutput values.
+// You can construct a concrete instance of `SharedTargetMapInput` via:
+//
+//          SharedTargetMap{ "key": SharedTargetArgs{...} }
+type SharedTargetMapInput interface {
+	pulumi.Input
+
+	ToSharedTargetMapOutput() SharedTargetMapOutput
+	ToSharedTargetMapOutputWithContext(context.Context) SharedTargetMapOutput
+}
+
+type SharedTargetMap map[string]SharedTargetInput
+
+func (SharedTargetMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SharedTarget)(nil))
+}
+
+func (i SharedTargetMap) ToSharedTargetMapOutput() SharedTargetMapOutput {
+	return i.ToSharedTargetMapOutputWithContext(context.Background())
+}
+
+func (i SharedTargetMap) ToSharedTargetMapOutputWithContext(ctx context.Context) SharedTargetMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedTargetMapOutput)
+}
+
 type SharedTargetOutput struct {
 	*pulumi.OutputState
 }
@@ -145,6 +224,75 @@ func (o SharedTargetOutput) ToSharedTargetOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o SharedTargetOutput) ToSharedTargetPtrOutput() SharedTargetPtrOutput {
+	return o.ToSharedTargetPtrOutputWithContext(context.Background())
+}
+
+func (o SharedTargetOutput) ToSharedTargetPtrOutputWithContext(ctx context.Context) SharedTargetPtrOutput {
+	return o.ApplyT(func(v SharedTarget) *SharedTarget {
+		return &v
+	}).(SharedTargetPtrOutput)
+}
+
+type SharedTargetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedTarget)(nil))
+}
+
+func (o SharedTargetPtrOutput) ToSharedTargetPtrOutput() SharedTargetPtrOutput {
+	return o
+}
+
+func (o SharedTargetPtrOutput) ToSharedTargetPtrOutputWithContext(ctx context.Context) SharedTargetPtrOutput {
+	return o
+}
+
+type SharedTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (SharedTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SharedTarget)(nil))
+}
+
+func (o SharedTargetArrayOutput) ToSharedTargetArrayOutput() SharedTargetArrayOutput {
+	return o
+}
+
+func (o SharedTargetArrayOutput) ToSharedTargetArrayOutputWithContext(ctx context.Context) SharedTargetArrayOutput {
+	return o
+}
+
+func (o SharedTargetArrayOutput) Index(i pulumi.IntInput) SharedTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedTarget {
+		return vs[0].([]SharedTarget)[vs[1].(int)]
+	}).(SharedTargetOutput)
+}
+
+type SharedTargetMapOutput struct{ *pulumi.OutputState }
+
+func (SharedTargetMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SharedTarget)(nil))
+}
+
+func (o SharedTargetMapOutput) ToSharedTargetMapOutput() SharedTargetMapOutput {
+	return o
+}
+
+func (o SharedTargetMapOutput) ToSharedTargetMapOutputWithContext(ctx context.Context) SharedTargetMapOutput {
+	return o
+}
+
+func (o SharedTargetMapOutput) MapIndex(k pulumi.StringInput) SharedTargetOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SharedTarget {
+		return vs[0].(map[string]SharedTarget)[vs[1].(string)]
+	}).(SharedTargetOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SharedTargetOutput{})
+	pulumi.RegisterOutputType(SharedTargetPtrOutput{})
+	pulumi.RegisterOutputType(SharedTargetArrayOutput{})
+	pulumi.RegisterOutputType(SharedTargetMapOutput{})
 }

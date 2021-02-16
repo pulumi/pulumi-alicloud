@@ -225,7 +225,8 @@ export class K8sApplication extends pulumi.CustomResource {
     constructor(name: string, args: K8sApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: K8sApplicationArgs | K8sApplicationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as K8sApplicationState | undefined;
             inputs["applicationDescriotion"] = state ? state.applicationDescriotion : undefined;
             inputs["applicationName"] = state ? state.applicationName : undefined;
@@ -260,10 +261,10 @@ export class K8sApplication extends pulumi.CustomResource {
             inputs["webContainer"] = state ? state.webContainer : undefined;
         } else {
             const args = argsOrState as K8sApplicationArgs | undefined;
-            if ((!args || args.applicationName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.applicationName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationName'");
             }
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
             inputs["applicationDescriotion"] = args ? args.applicationDescriotion : undefined;
@@ -298,12 +299,8 @@ export class K8sApplication extends pulumi.CustomResource {
             inputs["requestsMem"] = args ? args.requestsMem : undefined;
             inputs["webContainer"] = args ? args.webContainer : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(K8sApplication.__pulumiType, name, inputs, opts);
     }

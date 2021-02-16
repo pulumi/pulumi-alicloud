@@ -142,6 +142,85 @@ func (i *SharedResource) ToSharedResourceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SharedResourceOutput)
 }
 
+func (i *SharedResource) ToSharedResourcePtrOutput() SharedResourcePtrOutput {
+	return i.ToSharedResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *SharedResource) ToSharedResourcePtrOutputWithContext(ctx context.Context) SharedResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedResourcePtrOutput)
+}
+
+type SharedResourcePtrInput interface {
+	pulumi.Input
+
+	ToSharedResourcePtrOutput() SharedResourcePtrOutput
+	ToSharedResourcePtrOutputWithContext(ctx context.Context) SharedResourcePtrOutput
+}
+
+type sharedResourcePtrType SharedResourceArgs
+
+func (*sharedResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedResource)(nil))
+}
+
+func (i *sharedResourcePtrType) ToSharedResourcePtrOutput() SharedResourcePtrOutput {
+	return i.ToSharedResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *sharedResourcePtrType) ToSharedResourcePtrOutputWithContext(ctx context.Context) SharedResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedResourcePtrOutput)
+}
+
+// SharedResourceArrayInput is an input type that accepts SharedResourceArray and SharedResourceArrayOutput values.
+// You can construct a concrete instance of `SharedResourceArrayInput` via:
+//
+//          SharedResourceArray{ SharedResourceArgs{...} }
+type SharedResourceArrayInput interface {
+	pulumi.Input
+
+	ToSharedResourceArrayOutput() SharedResourceArrayOutput
+	ToSharedResourceArrayOutputWithContext(context.Context) SharedResourceArrayOutput
+}
+
+type SharedResourceArray []SharedResourceInput
+
+func (SharedResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SharedResource)(nil))
+}
+
+func (i SharedResourceArray) ToSharedResourceArrayOutput() SharedResourceArrayOutput {
+	return i.ToSharedResourceArrayOutputWithContext(context.Background())
+}
+
+func (i SharedResourceArray) ToSharedResourceArrayOutputWithContext(ctx context.Context) SharedResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedResourceArrayOutput)
+}
+
+// SharedResourceMapInput is an input type that accepts SharedResourceMap and SharedResourceMapOutput values.
+// You can construct a concrete instance of `SharedResourceMapInput` via:
+//
+//          SharedResourceMap{ "key": SharedResourceArgs{...} }
+type SharedResourceMapInput interface {
+	pulumi.Input
+
+	ToSharedResourceMapOutput() SharedResourceMapOutput
+	ToSharedResourceMapOutputWithContext(context.Context) SharedResourceMapOutput
+}
+
+type SharedResourceMap map[string]SharedResourceInput
+
+func (SharedResourceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SharedResource)(nil))
+}
+
+func (i SharedResourceMap) ToSharedResourceMapOutput() SharedResourceMapOutput {
+	return i.ToSharedResourceMapOutputWithContext(context.Background())
+}
+
+func (i SharedResourceMap) ToSharedResourceMapOutputWithContext(ctx context.Context) SharedResourceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedResourceMapOutput)
+}
+
 type SharedResourceOutput struct {
 	*pulumi.OutputState
 }
@@ -158,6 +237,75 @@ func (o SharedResourceOutput) ToSharedResourceOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SharedResourceOutput) ToSharedResourcePtrOutput() SharedResourcePtrOutput {
+	return o.ToSharedResourcePtrOutputWithContext(context.Background())
+}
+
+func (o SharedResourceOutput) ToSharedResourcePtrOutputWithContext(ctx context.Context) SharedResourcePtrOutput {
+	return o.ApplyT(func(v SharedResource) *SharedResource {
+		return &v
+	}).(SharedResourcePtrOutput)
+}
+
+type SharedResourcePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedResource)(nil))
+}
+
+func (o SharedResourcePtrOutput) ToSharedResourcePtrOutput() SharedResourcePtrOutput {
+	return o
+}
+
+func (o SharedResourcePtrOutput) ToSharedResourcePtrOutputWithContext(ctx context.Context) SharedResourcePtrOutput {
+	return o
+}
+
+type SharedResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (SharedResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SharedResource)(nil))
+}
+
+func (o SharedResourceArrayOutput) ToSharedResourceArrayOutput() SharedResourceArrayOutput {
+	return o
+}
+
+func (o SharedResourceArrayOutput) ToSharedResourceArrayOutputWithContext(ctx context.Context) SharedResourceArrayOutput {
+	return o
+}
+
+func (o SharedResourceArrayOutput) Index(i pulumi.IntInput) SharedResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedResource {
+		return vs[0].([]SharedResource)[vs[1].(int)]
+	}).(SharedResourceOutput)
+}
+
+type SharedResourceMapOutput struct{ *pulumi.OutputState }
+
+func (SharedResourceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SharedResource)(nil))
+}
+
+func (o SharedResourceMapOutput) ToSharedResourceMapOutput() SharedResourceMapOutput {
+	return o
+}
+
+func (o SharedResourceMapOutput) ToSharedResourceMapOutputWithContext(ctx context.Context) SharedResourceMapOutput {
+	return o
+}
+
+func (o SharedResourceMapOutput) MapIndex(k pulumi.StringInput) SharedResourceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SharedResource {
+		return vs[0].(map[string]SharedResource)[vs[1].(string)]
+	}).(SharedResourceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SharedResourceOutput{})
+	pulumi.RegisterOutputType(SharedResourcePtrOutput{})
+	pulumi.RegisterOutputType(SharedResourceArrayOutput{})
+	pulumi.RegisterOutputType(SharedResourceMapOutput{})
 }

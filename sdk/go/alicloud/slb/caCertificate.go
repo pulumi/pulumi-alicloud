@@ -140,6 +140,85 @@ func (i *CaCertificate) ToCaCertificateOutputWithContext(ctx context.Context) Ca
 	return pulumi.ToOutputWithContext(ctx, i).(CaCertificateOutput)
 }
 
+func (i *CaCertificate) ToCaCertificatePtrOutput() CaCertificatePtrOutput {
+	return i.ToCaCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *CaCertificate) ToCaCertificatePtrOutputWithContext(ctx context.Context) CaCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaCertificatePtrOutput)
+}
+
+type CaCertificatePtrInput interface {
+	pulumi.Input
+
+	ToCaCertificatePtrOutput() CaCertificatePtrOutput
+	ToCaCertificatePtrOutputWithContext(ctx context.Context) CaCertificatePtrOutput
+}
+
+type caCertificatePtrType CaCertificateArgs
+
+func (*caCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaCertificate)(nil))
+}
+
+func (i *caCertificatePtrType) ToCaCertificatePtrOutput() CaCertificatePtrOutput {
+	return i.ToCaCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *caCertificatePtrType) ToCaCertificatePtrOutputWithContext(ctx context.Context) CaCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaCertificatePtrOutput)
+}
+
+// CaCertificateArrayInput is an input type that accepts CaCertificateArray and CaCertificateArrayOutput values.
+// You can construct a concrete instance of `CaCertificateArrayInput` via:
+//
+//          CaCertificateArray{ CaCertificateArgs{...} }
+type CaCertificateArrayInput interface {
+	pulumi.Input
+
+	ToCaCertificateArrayOutput() CaCertificateArrayOutput
+	ToCaCertificateArrayOutputWithContext(context.Context) CaCertificateArrayOutput
+}
+
+type CaCertificateArray []CaCertificateInput
+
+func (CaCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CaCertificate)(nil))
+}
+
+func (i CaCertificateArray) ToCaCertificateArrayOutput() CaCertificateArrayOutput {
+	return i.ToCaCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i CaCertificateArray) ToCaCertificateArrayOutputWithContext(ctx context.Context) CaCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaCertificateArrayOutput)
+}
+
+// CaCertificateMapInput is an input type that accepts CaCertificateMap and CaCertificateMapOutput values.
+// You can construct a concrete instance of `CaCertificateMapInput` via:
+//
+//          CaCertificateMap{ "key": CaCertificateArgs{...} }
+type CaCertificateMapInput interface {
+	pulumi.Input
+
+	ToCaCertificateMapOutput() CaCertificateMapOutput
+	ToCaCertificateMapOutputWithContext(context.Context) CaCertificateMapOutput
+}
+
+type CaCertificateMap map[string]CaCertificateInput
+
+func (CaCertificateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CaCertificate)(nil))
+}
+
+func (i CaCertificateMap) ToCaCertificateMapOutput() CaCertificateMapOutput {
+	return i.ToCaCertificateMapOutputWithContext(context.Background())
+}
+
+func (i CaCertificateMap) ToCaCertificateMapOutputWithContext(ctx context.Context) CaCertificateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaCertificateMapOutput)
+}
+
 type CaCertificateOutput struct {
 	*pulumi.OutputState
 }
@@ -156,6 +235,75 @@ func (o CaCertificateOutput) ToCaCertificateOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o CaCertificateOutput) ToCaCertificatePtrOutput() CaCertificatePtrOutput {
+	return o.ToCaCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o CaCertificateOutput) ToCaCertificatePtrOutputWithContext(ctx context.Context) CaCertificatePtrOutput {
+	return o.ApplyT(func(v CaCertificate) *CaCertificate {
+		return &v
+	}).(CaCertificatePtrOutput)
+}
+
+type CaCertificatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CaCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaCertificate)(nil))
+}
+
+func (o CaCertificatePtrOutput) ToCaCertificatePtrOutput() CaCertificatePtrOutput {
+	return o
+}
+
+func (o CaCertificatePtrOutput) ToCaCertificatePtrOutputWithContext(ctx context.Context) CaCertificatePtrOutput {
+	return o
+}
+
+type CaCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (CaCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CaCertificate)(nil))
+}
+
+func (o CaCertificateArrayOutput) ToCaCertificateArrayOutput() CaCertificateArrayOutput {
+	return o
+}
+
+func (o CaCertificateArrayOutput) ToCaCertificateArrayOutputWithContext(ctx context.Context) CaCertificateArrayOutput {
+	return o
+}
+
+func (o CaCertificateArrayOutput) Index(i pulumi.IntInput) CaCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CaCertificate {
+		return vs[0].([]CaCertificate)[vs[1].(int)]
+	}).(CaCertificateOutput)
+}
+
+type CaCertificateMapOutput struct{ *pulumi.OutputState }
+
+func (CaCertificateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CaCertificate)(nil))
+}
+
+func (o CaCertificateMapOutput) ToCaCertificateMapOutput() CaCertificateMapOutput {
+	return o
+}
+
+func (o CaCertificateMapOutput) ToCaCertificateMapOutputWithContext(ctx context.Context) CaCertificateMapOutput {
+	return o
+}
+
+func (o CaCertificateMapOutput) MapIndex(k pulumi.StringInput) CaCertificateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CaCertificate {
+		return vs[0].(map[string]CaCertificate)[vs[1].(string)]
+	}).(CaCertificateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CaCertificateOutput{})
+	pulumi.RegisterOutputType(CaCertificatePtrOutput{})
+	pulumi.RegisterOutputType(CaCertificateArrayOutput{})
+	pulumi.RegisterOutputType(CaCertificateMapOutput{})
 }

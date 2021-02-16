@@ -88,7 +88,8 @@ export class Network extends pulumi.CustomResource {
     constructor(name: string, args: NetworkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkArgs | NetworkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -101,7 +102,7 @@ export class Network extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
@@ -114,12 +115,8 @@ export class Network extends pulumi.CustomResource {
             inputs["routerId"] = undefined /*out*/;
             inputs["routerTableId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Network.__pulumiType, name, inputs, opts);
     }

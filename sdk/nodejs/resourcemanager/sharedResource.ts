@@ -74,7 +74,8 @@ export class SharedResource extends pulumi.CustomResource {
     constructor(name: string, args: SharedResourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SharedResourceArgs | SharedResourceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SharedResourceState | undefined;
             inputs["resourceId"] = state ? state.resourceId : undefined;
             inputs["resourceShareId"] = state ? state.resourceShareId : undefined;
@@ -82,13 +83,13 @@ export class SharedResource extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SharedResourceArgs | undefined;
-            if ((!args || args.resourceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if ((!args || args.resourceShareId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceShareId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceShareId'");
             }
-            if ((!args || args.resourceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
             inputs["resourceId"] = args ? args.resourceId : undefined;
@@ -96,12 +97,8 @@ export class SharedResource extends pulumi.CustomResource {
             inputs["resourceType"] = args ? args.resourceType : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SharedResource.__pulumiType, name, inputs, opts);
     }

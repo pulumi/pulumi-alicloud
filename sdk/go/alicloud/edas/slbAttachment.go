@@ -201,6 +201,85 @@ func (i *SlbAttachment) ToSlbAttachmentOutputWithContext(ctx context.Context) Sl
 	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentOutput)
 }
 
+func (i *SlbAttachment) ToSlbAttachmentPtrOutput() SlbAttachmentPtrOutput {
+	return i.ToSlbAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *SlbAttachment) ToSlbAttachmentPtrOutputWithContext(ctx context.Context) SlbAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentPtrOutput)
+}
+
+type SlbAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToSlbAttachmentPtrOutput() SlbAttachmentPtrOutput
+	ToSlbAttachmentPtrOutputWithContext(ctx context.Context) SlbAttachmentPtrOutput
+}
+
+type slbAttachmentPtrType SlbAttachmentArgs
+
+func (*slbAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlbAttachment)(nil))
+}
+
+func (i *slbAttachmentPtrType) ToSlbAttachmentPtrOutput() SlbAttachmentPtrOutput {
+	return i.ToSlbAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *slbAttachmentPtrType) ToSlbAttachmentPtrOutputWithContext(ctx context.Context) SlbAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentPtrOutput)
+}
+
+// SlbAttachmentArrayInput is an input type that accepts SlbAttachmentArray and SlbAttachmentArrayOutput values.
+// You can construct a concrete instance of `SlbAttachmentArrayInput` via:
+//
+//          SlbAttachmentArray{ SlbAttachmentArgs{...} }
+type SlbAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToSlbAttachmentArrayOutput() SlbAttachmentArrayOutput
+	ToSlbAttachmentArrayOutputWithContext(context.Context) SlbAttachmentArrayOutput
+}
+
+type SlbAttachmentArray []SlbAttachmentInput
+
+func (SlbAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SlbAttachment)(nil))
+}
+
+func (i SlbAttachmentArray) ToSlbAttachmentArrayOutput() SlbAttachmentArrayOutput {
+	return i.ToSlbAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i SlbAttachmentArray) ToSlbAttachmentArrayOutputWithContext(ctx context.Context) SlbAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentArrayOutput)
+}
+
+// SlbAttachmentMapInput is an input type that accepts SlbAttachmentMap and SlbAttachmentMapOutput values.
+// You can construct a concrete instance of `SlbAttachmentMapInput` via:
+//
+//          SlbAttachmentMap{ "key": SlbAttachmentArgs{...} }
+type SlbAttachmentMapInput interface {
+	pulumi.Input
+
+	ToSlbAttachmentMapOutput() SlbAttachmentMapOutput
+	ToSlbAttachmentMapOutputWithContext(context.Context) SlbAttachmentMapOutput
+}
+
+type SlbAttachmentMap map[string]SlbAttachmentInput
+
+func (SlbAttachmentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SlbAttachment)(nil))
+}
+
+func (i SlbAttachmentMap) ToSlbAttachmentMapOutput() SlbAttachmentMapOutput {
+	return i.ToSlbAttachmentMapOutputWithContext(context.Background())
+}
+
+func (i SlbAttachmentMap) ToSlbAttachmentMapOutputWithContext(ctx context.Context) SlbAttachmentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlbAttachmentMapOutput)
+}
+
 type SlbAttachmentOutput struct {
 	*pulumi.OutputState
 }
@@ -217,6 +296,75 @@ func (o SlbAttachmentOutput) ToSlbAttachmentOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o SlbAttachmentOutput) ToSlbAttachmentPtrOutput() SlbAttachmentPtrOutput {
+	return o.ToSlbAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o SlbAttachmentOutput) ToSlbAttachmentPtrOutputWithContext(ctx context.Context) SlbAttachmentPtrOutput {
+	return o.ApplyT(func(v SlbAttachment) *SlbAttachment {
+		return &v
+	}).(SlbAttachmentPtrOutput)
+}
+
+type SlbAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SlbAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlbAttachment)(nil))
+}
+
+func (o SlbAttachmentPtrOutput) ToSlbAttachmentPtrOutput() SlbAttachmentPtrOutput {
+	return o
+}
+
+func (o SlbAttachmentPtrOutput) ToSlbAttachmentPtrOutputWithContext(ctx context.Context) SlbAttachmentPtrOutput {
+	return o
+}
+
+type SlbAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (SlbAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlbAttachment)(nil))
+}
+
+func (o SlbAttachmentArrayOutput) ToSlbAttachmentArrayOutput() SlbAttachmentArrayOutput {
+	return o
+}
+
+func (o SlbAttachmentArrayOutput) ToSlbAttachmentArrayOutputWithContext(ctx context.Context) SlbAttachmentArrayOutput {
+	return o
+}
+
+func (o SlbAttachmentArrayOutput) Index(i pulumi.IntInput) SlbAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlbAttachment {
+		return vs[0].([]SlbAttachment)[vs[1].(int)]
+	}).(SlbAttachmentOutput)
+}
+
+type SlbAttachmentMapOutput struct{ *pulumi.OutputState }
+
+func (SlbAttachmentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SlbAttachment)(nil))
+}
+
+func (o SlbAttachmentMapOutput) ToSlbAttachmentMapOutput() SlbAttachmentMapOutput {
+	return o
+}
+
+func (o SlbAttachmentMapOutput) ToSlbAttachmentMapOutputWithContext(ctx context.Context) SlbAttachmentMapOutput {
+	return o
+}
+
+func (o SlbAttachmentMapOutput) MapIndex(k pulumi.StringInput) SlbAttachmentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SlbAttachment {
+		return vs[0].(map[string]SlbAttachment)[vs[1].(string)]
+	}).(SlbAttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SlbAttachmentOutput{})
+	pulumi.RegisterOutputType(SlbAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(SlbAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(SlbAttachmentMapOutput{})
 }

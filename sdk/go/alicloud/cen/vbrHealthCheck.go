@@ -238,6 +238,85 @@ func (i *VbrHealthCheck) ToVbrHealthCheckOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckOutput)
 }
 
+func (i *VbrHealthCheck) ToVbrHealthCheckPtrOutput() VbrHealthCheckPtrOutput {
+	return i.ToVbrHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *VbrHealthCheck) ToVbrHealthCheckPtrOutputWithContext(ctx context.Context) VbrHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckPtrOutput)
+}
+
+type VbrHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToVbrHealthCheckPtrOutput() VbrHealthCheckPtrOutput
+	ToVbrHealthCheckPtrOutputWithContext(ctx context.Context) VbrHealthCheckPtrOutput
+}
+
+type vbrHealthCheckPtrType VbrHealthCheckArgs
+
+func (*vbrHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VbrHealthCheck)(nil))
+}
+
+func (i *vbrHealthCheckPtrType) ToVbrHealthCheckPtrOutput() VbrHealthCheckPtrOutput {
+	return i.ToVbrHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *vbrHealthCheckPtrType) ToVbrHealthCheckPtrOutputWithContext(ctx context.Context) VbrHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckPtrOutput)
+}
+
+// VbrHealthCheckArrayInput is an input type that accepts VbrHealthCheckArray and VbrHealthCheckArrayOutput values.
+// You can construct a concrete instance of `VbrHealthCheckArrayInput` via:
+//
+//          VbrHealthCheckArray{ VbrHealthCheckArgs{...} }
+type VbrHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToVbrHealthCheckArrayOutput() VbrHealthCheckArrayOutput
+	ToVbrHealthCheckArrayOutputWithContext(context.Context) VbrHealthCheckArrayOutput
+}
+
+type VbrHealthCheckArray []VbrHealthCheckInput
+
+func (VbrHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*VbrHealthCheck)(nil))
+}
+
+func (i VbrHealthCheckArray) ToVbrHealthCheckArrayOutput() VbrHealthCheckArrayOutput {
+	return i.ToVbrHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i VbrHealthCheckArray) ToVbrHealthCheckArrayOutputWithContext(ctx context.Context) VbrHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckArrayOutput)
+}
+
+// VbrHealthCheckMapInput is an input type that accepts VbrHealthCheckMap and VbrHealthCheckMapOutput values.
+// You can construct a concrete instance of `VbrHealthCheckMapInput` via:
+//
+//          VbrHealthCheckMap{ "key": VbrHealthCheckArgs{...} }
+type VbrHealthCheckMapInput interface {
+	pulumi.Input
+
+	ToVbrHealthCheckMapOutput() VbrHealthCheckMapOutput
+	ToVbrHealthCheckMapOutputWithContext(context.Context) VbrHealthCheckMapOutput
+}
+
+type VbrHealthCheckMap map[string]VbrHealthCheckInput
+
+func (VbrHealthCheckMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*VbrHealthCheck)(nil))
+}
+
+func (i VbrHealthCheckMap) ToVbrHealthCheckMapOutput() VbrHealthCheckMapOutput {
+	return i.ToVbrHealthCheckMapOutputWithContext(context.Background())
+}
+
+func (i VbrHealthCheckMap) ToVbrHealthCheckMapOutputWithContext(ctx context.Context) VbrHealthCheckMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VbrHealthCheckMapOutput)
+}
+
 type VbrHealthCheckOutput struct {
 	*pulumi.OutputState
 }
@@ -254,6 +333,75 @@ func (o VbrHealthCheckOutput) ToVbrHealthCheckOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o VbrHealthCheckOutput) ToVbrHealthCheckPtrOutput() VbrHealthCheckPtrOutput {
+	return o.ToVbrHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o VbrHealthCheckOutput) ToVbrHealthCheckPtrOutputWithContext(ctx context.Context) VbrHealthCheckPtrOutput {
+	return o.ApplyT(func(v VbrHealthCheck) *VbrHealthCheck {
+		return &v
+	}).(VbrHealthCheckPtrOutput)
+}
+
+type VbrHealthCheckPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VbrHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VbrHealthCheck)(nil))
+}
+
+func (o VbrHealthCheckPtrOutput) ToVbrHealthCheckPtrOutput() VbrHealthCheckPtrOutput {
+	return o
+}
+
+func (o VbrHealthCheckPtrOutput) ToVbrHealthCheckPtrOutputWithContext(ctx context.Context) VbrHealthCheckPtrOutput {
+	return o
+}
+
+type VbrHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (VbrHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VbrHealthCheck)(nil))
+}
+
+func (o VbrHealthCheckArrayOutput) ToVbrHealthCheckArrayOutput() VbrHealthCheckArrayOutput {
+	return o
+}
+
+func (o VbrHealthCheckArrayOutput) ToVbrHealthCheckArrayOutputWithContext(ctx context.Context) VbrHealthCheckArrayOutput {
+	return o
+}
+
+func (o VbrHealthCheckArrayOutput) Index(i pulumi.IntInput) VbrHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VbrHealthCheck {
+		return vs[0].([]VbrHealthCheck)[vs[1].(int)]
+	}).(VbrHealthCheckOutput)
+}
+
+type VbrHealthCheckMapOutput struct{ *pulumi.OutputState }
+
+func (VbrHealthCheckMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VbrHealthCheck)(nil))
+}
+
+func (o VbrHealthCheckMapOutput) ToVbrHealthCheckMapOutput() VbrHealthCheckMapOutput {
+	return o
+}
+
+func (o VbrHealthCheckMapOutput) ToVbrHealthCheckMapOutputWithContext(ctx context.Context) VbrHealthCheckMapOutput {
+	return o
+}
+
+func (o VbrHealthCheckMapOutput) MapIndex(k pulumi.StringInput) VbrHealthCheckOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VbrHealthCheck {
+		return vs[0].(map[string]VbrHealthCheck)[vs[1].(string)]
+	}).(VbrHealthCheckOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VbrHealthCheckOutput{})
+	pulumi.RegisterOutputType(VbrHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(VbrHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(VbrHealthCheckMapOutput{})
 }

@@ -207,6 +207,85 @@ func (i *LogTailAttachment) ToLogTailAttachmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentOutput)
 }
 
+func (i *LogTailAttachment) ToLogTailAttachmentPtrOutput() LogTailAttachmentPtrOutput {
+	return i.ToLogTailAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *LogTailAttachment) ToLogTailAttachmentPtrOutputWithContext(ctx context.Context) LogTailAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentPtrOutput)
+}
+
+type LogTailAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToLogTailAttachmentPtrOutput() LogTailAttachmentPtrOutput
+	ToLogTailAttachmentPtrOutputWithContext(ctx context.Context) LogTailAttachmentPtrOutput
+}
+
+type logTailAttachmentPtrType LogTailAttachmentArgs
+
+func (*logTailAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogTailAttachment)(nil))
+}
+
+func (i *logTailAttachmentPtrType) ToLogTailAttachmentPtrOutput() LogTailAttachmentPtrOutput {
+	return i.ToLogTailAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *logTailAttachmentPtrType) ToLogTailAttachmentPtrOutputWithContext(ctx context.Context) LogTailAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentPtrOutput)
+}
+
+// LogTailAttachmentArrayInput is an input type that accepts LogTailAttachmentArray and LogTailAttachmentArrayOutput values.
+// You can construct a concrete instance of `LogTailAttachmentArrayInput` via:
+//
+//          LogTailAttachmentArray{ LogTailAttachmentArgs{...} }
+type LogTailAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToLogTailAttachmentArrayOutput() LogTailAttachmentArrayOutput
+	ToLogTailAttachmentArrayOutputWithContext(context.Context) LogTailAttachmentArrayOutput
+}
+
+type LogTailAttachmentArray []LogTailAttachmentInput
+
+func (LogTailAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*LogTailAttachment)(nil))
+}
+
+func (i LogTailAttachmentArray) ToLogTailAttachmentArrayOutput() LogTailAttachmentArrayOutput {
+	return i.ToLogTailAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i LogTailAttachmentArray) ToLogTailAttachmentArrayOutputWithContext(ctx context.Context) LogTailAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentArrayOutput)
+}
+
+// LogTailAttachmentMapInput is an input type that accepts LogTailAttachmentMap and LogTailAttachmentMapOutput values.
+// You can construct a concrete instance of `LogTailAttachmentMapInput` via:
+//
+//          LogTailAttachmentMap{ "key": LogTailAttachmentArgs{...} }
+type LogTailAttachmentMapInput interface {
+	pulumi.Input
+
+	ToLogTailAttachmentMapOutput() LogTailAttachmentMapOutput
+	ToLogTailAttachmentMapOutputWithContext(context.Context) LogTailAttachmentMapOutput
+}
+
+type LogTailAttachmentMap map[string]LogTailAttachmentInput
+
+func (LogTailAttachmentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*LogTailAttachment)(nil))
+}
+
+func (i LogTailAttachmentMap) ToLogTailAttachmentMapOutput() LogTailAttachmentMapOutput {
+	return i.ToLogTailAttachmentMapOutputWithContext(context.Background())
+}
+
+func (i LogTailAttachmentMap) ToLogTailAttachmentMapOutputWithContext(ctx context.Context) LogTailAttachmentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentMapOutput)
+}
+
 type LogTailAttachmentOutput struct {
 	*pulumi.OutputState
 }
@@ -223,6 +302,75 @@ func (o LogTailAttachmentOutput) ToLogTailAttachmentOutputWithContext(ctx contex
 	return o
 }
 
+func (o LogTailAttachmentOutput) ToLogTailAttachmentPtrOutput() LogTailAttachmentPtrOutput {
+	return o.ToLogTailAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o LogTailAttachmentOutput) ToLogTailAttachmentPtrOutputWithContext(ctx context.Context) LogTailAttachmentPtrOutput {
+	return o.ApplyT(func(v LogTailAttachment) *LogTailAttachment {
+		return &v
+	}).(LogTailAttachmentPtrOutput)
+}
+
+type LogTailAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogTailAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogTailAttachment)(nil))
+}
+
+func (o LogTailAttachmentPtrOutput) ToLogTailAttachmentPtrOutput() LogTailAttachmentPtrOutput {
+	return o
+}
+
+func (o LogTailAttachmentPtrOutput) ToLogTailAttachmentPtrOutputWithContext(ctx context.Context) LogTailAttachmentPtrOutput {
+	return o
+}
+
+type LogTailAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (LogTailAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogTailAttachment)(nil))
+}
+
+func (o LogTailAttachmentArrayOutput) ToLogTailAttachmentArrayOutput() LogTailAttachmentArrayOutput {
+	return o
+}
+
+func (o LogTailAttachmentArrayOutput) ToLogTailAttachmentArrayOutputWithContext(ctx context.Context) LogTailAttachmentArrayOutput {
+	return o
+}
+
+func (o LogTailAttachmentArrayOutput) Index(i pulumi.IntInput) LogTailAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogTailAttachment {
+		return vs[0].([]LogTailAttachment)[vs[1].(int)]
+	}).(LogTailAttachmentOutput)
+}
+
+type LogTailAttachmentMapOutput struct{ *pulumi.OutputState }
+
+func (LogTailAttachmentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LogTailAttachment)(nil))
+}
+
+func (o LogTailAttachmentMapOutput) ToLogTailAttachmentMapOutput() LogTailAttachmentMapOutput {
+	return o
+}
+
+func (o LogTailAttachmentMapOutput) ToLogTailAttachmentMapOutputWithContext(ctx context.Context) LogTailAttachmentMapOutput {
+	return o
+}
+
+func (o LogTailAttachmentMapOutput) MapIndex(k pulumi.StringInput) LogTailAttachmentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LogTailAttachment {
+		return vs[0].(map[string]LogTailAttachment)[vs[1].(string)]
+	}).(LogTailAttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogTailAttachmentOutput{})
+	pulumi.RegisterOutputType(LogTailAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(LogTailAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(LogTailAttachmentMapOutput{})
 }

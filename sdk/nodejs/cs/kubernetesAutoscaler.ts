@@ -140,7 +140,8 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
     constructor(name: string, args: KubernetesAutoscalerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesAutoscalerArgs | KubernetesAutoscalerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as KubernetesAutoscalerState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["coolDownDuration"] = state ? state.coolDownDuration : undefined;
@@ -150,16 +151,16 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
             inputs["utilization"] = state ? state.utilization : undefined;
         } else {
             const args = argsOrState as KubernetesAutoscalerArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.coolDownDuration === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.coolDownDuration === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'coolDownDuration'");
             }
-            if ((!args || args.deferScaleInDuration === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.deferScaleInDuration === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deferScaleInDuration'");
             }
-            if ((!args || args.utilization === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.utilization === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'utilization'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
@@ -169,12 +170,8 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
             inputs["useEcsRamRoleToken"] = args ? args.useEcsRamRoleToken : undefined;
             inputs["utilization"] = args ? args.utilization : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(KubernetesAutoscaler.__pulumiType, name, inputs, opts);
     }

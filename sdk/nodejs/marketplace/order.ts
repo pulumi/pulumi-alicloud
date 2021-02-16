@@ -84,7 +84,8 @@ export class Order extends pulumi.CustomResource {
     constructor(name: string, args: OrderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrderArgs | OrderState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OrderState | undefined;
             inputs["components"] = state ? state.components : undefined;
             inputs["couponId"] = state ? state.couponId : undefined;
@@ -96,13 +97,13 @@ export class Order extends pulumi.CustomResource {
             inputs["quantity"] = state ? state.quantity : undefined;
         } else {
             const args = argsOrState as OrderArgs | undefined;
-            if ((!args || args.packageVersion === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.packageVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'packageVersion'");
             }
-            if ((!args || args.pricingCycle === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.pricingCycle === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pricingCycle'");
             }
-            if ((!args || args.productCode === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.productCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productCode'");
             }
             inputs["components"] = args ? args.components : undefined;
@@ -114,12 +115,8 @@ export class Order extends pulumi.CustomResource {
             inputs["productCode"] = args ? args.productCode : undefined;
             inputs["quantity"] = args ? args.quantity : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Order.__pulumiType, name, inputs, opts);
     }

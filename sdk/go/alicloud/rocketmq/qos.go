@@ -131,6 +131,85 @@ func (i *Qos) ToQosOutputWithContext(ctx context.Context) QosOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosOutput)
 }
 
+func (i *Qos) ToQosPtrOutput() QosPtrOutput {
+	return i.ToQosPtrOutputWithContext(context.Background())
+}
+
+func (i *Qos) ToQosPtrOutputWithContext(ctx context.Context) QosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosPtrOutput)
+}
+
+type QosPtrInput interface {
+	pulumi.Input
+
+	ToQosPtrOutput() QosPtrOutput
+	ToQosPtrOutputWithContext(ctx context.Context) QosPtrOutput
+}
+
+type qosPtrType QosArgs
+
+func (*qosPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Qos)(nil))
+}
+
+func (i *qosPtrType) ToQosPtrOutput() QosPtrOutput {
+	return i.ToQosPtrOutputWithContext(context.Background())
+}
+
+func (i *qosPtrType) ToQosPtrOutputWithContext(ctx context.Context) QosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosPtrOutput)
+}
+
+// QosArrayInput is an input type that accepts QosArray and QosArrayOutput values.
+// You can construct a concrete instance of `QosArrayInput` via:
+//
+//          QosArray{ QosArgs{...} }
+type QosArrayInput interface {
+	pulumi.Input
+
+	ToQosArrayOutput() QosArrayOutput
+	ToQosArrayOutputWithContext(context.Context) QosArrayOutput
+}
+
+type QosArray []QosInput
+
+func (QosArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Qos)(nil))
+}
+
+func (i QosArray) ToQosArrayOutput() QosArrayOutput {
+	return i.ToQosArrayOutputWithContext(context.Background())
+}
+
+func (i QosArray) ToQosArrayOutputWithContext(ctx context.Context) QosArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosArrayOutput)
+}
+
+// QosMapInput is an input type that accepts QosMap and QosMapOutput values.
+// You can construct a concrete instance of `QosMapInput` via:
+//
+//          QosMap{ "key": QosArgs{...} }
+type QosMapInput interface {
+	pulumi.Input
+
+	ToQosMapOutput() QosMapOutput
+	ToQosMapOutputWithContext(context.Context) QosMapOutput
+}
+
+type QosMap map[string]QosInput
+
+func (QosMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Qos)(nil))
+}
+
+func (i QosMap) ToQosMapOutput() QosMapOutput {
+	return i.ToQosMapOutputWithContext(context.Background())
+}
+
+func (i QosMap) ToQosMapOutputWithContext(ctx context.Context) QosMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QosMapOutput)
+}
+
 type QosOutput struct {
 	*pulumi.OutputState
 }
@@ -147,6 +226,75 @@ func (o QosOutput) ToQosOutputWithContext(ctx context.Context) QosOutput {
 	return o
 }
 
+func (o QosOutput) ToQosPtrOutput() QosPtrOutput {
+	return o.ToQosPtrOutputWithContext(context.Background())
+}
+
+func (o QosOutput) ToQosPtrOutputWithContext(ctx context.Context) QosPtrOutput {
+	return o.ApplyT(func(v Qos) *Qos {
+		return &v
+	}).(QosPtrOutput)
+}
+
+type QosPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (QosPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Qos)(nil))
+}
+
+func (o QosPtrOutput) ToQosPtrOutput() QosPtrOutput {
+	return o
+}
+
+func (o QosPtrOutput) ToQosPtrOutputWithContext(ctx context.Context) QosPtrOutput {
+	return o
+}
+
+type QosArrayOutput struct{ *pulumi.OutputState }
+
+func (QosArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Qos)(nil))
+}
+
+func (o QosArrayOutput) ToQosArrayOutput() QosArrayOutput {
+	return o
+}
+
+func (o QosArrayOutput) ToQosArrayOutputWithContext(ctx context.Context) QosArrayOutput {
+	return o
+}
+
+func (o QosArrayOutput) Index(i pulumi.IntInput) QosOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Qos {
+		return vs[0].([]Qos)[vs[1].(int)]
+	}).(QosOutput)
+}
+
+type QosMapOutput struct{ *pulumi.OutputState }
+
+func (QosMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Qos)(nil))
+}
+
+func (o QosMapOutput) ToQosMapOutput() QosMapOutput {
+	return o
+}
+
+func (o QosMapOutput) ToQosMapOutputWithContext(ctx context.Context) QosMapOutput {
+	return o
+}
+
+func (o QosMapOutput) MapIndex(k pulumi.StringInput) QosOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Qos {
+		return vs[0].(map[string]Qos)[vs[1].(string)]
+	}).(QosOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(QosOutput{})
+	pulumi.RegisterOutputType(QosPtrOutput{})
+	pulumi.RegisterOutputType(QosArrayOutput{})
+	pulumi.RegisterOutputType(QosMapOutput{})
 }

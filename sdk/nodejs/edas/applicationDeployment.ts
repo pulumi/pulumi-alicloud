@@ -84,7 +84,8 @@ export class ApplicationDeployment extends pulumi.CustomResource {
     constructor(name: string, args: ApplicationDeploymentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationDeploymentArgs | ApplicationDeploymentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApplicationDeploymentState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
             inputs["groupId"] = state ? state.groupId : undefined;
@@ -93,13 +94,13 @@ export class ApplicationDeployment extends pulumi.CustomResource {
             inputs["warUrl"] = state ? state.warUrl : undefined;
         } else {
             const args = argsOrState as ApplicationDeploymentArgs | undefined;
-            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.warUrl === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.warUrl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'warUrl'");
             }
             inputs["appId"] = args ? args.appId : undefined;
@@ -108,12 +109,8 @@ export class ApplicationDeployment extends pulumi.CustomResource {
             inputs["warUrl"] = args ? args.warUrl : undefined;
             inputs["lastPackageVersion"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApplicationDeployment.__pulumiType, name, inputs, opts);
     }

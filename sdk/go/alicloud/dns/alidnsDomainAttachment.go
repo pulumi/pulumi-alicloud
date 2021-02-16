@@ -148,6 +148,85 @@ func (i *AlidnsDomainAttachment) ToAlidnsDomainAttachmentOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentOutput)
 }
 
+func (i *AlidnsDomainAttachment) ToAlidnsDomainAttachmentPtrOutput() AlidnsDomainAttachmentPtrOutput {
+	return i.ToAlidnsDomainAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *AlidnsDomainAttachment) ToAlidnsDomainAttachmentPtrOutputWithContext(ctx context.Context) AlidnsDomainAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentPtrOutput)
+}
+
+type AlidnsDomainAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToAlidnsDomainAttachmentPtrOutput() AlidnsDomainAttachmentPtrOutput
+	ToAlidnsDomainAttachmentPtrOutputWithContext(ctx context.Context) AlidnsDomainAttachmentPtrOutput
+}
+
+type alidnsDomainAttachmentPtrType AlidnsDomainAttachmentArgs
+
+func (*alidnsDomainAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlidnsDomainAttachment)(nil))
+}
+
+func (i *alidnsDomainAttachmentPtrType) ToAlidnsDomainAttachmentPtrOutput() AlidnsDomainAttachmentPtrOutput {
+	return i.ToAlidnsDomainAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *alidnsDomainAttachmentPtrType) ToAlidnsDomainAttachmentPtrOutputWithContext(ctx context.Context) AlidnsDomainAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentPtrOutput)
+}
+
+// AlidnsDomainAttachmentArrayInput is an input type that accepts AlidnsDomainAttachmentArray and AlidnsDomainAttachmentArrayOutput values.
+// You can construct a concrete instance of `AlidnsDomainAttachmentArrayInput` via:
+//
+//          AlidnsDomainAttachmentArray{ AlidnsDomainAttachmentArgs{...} }
+type AlidnsDomainAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToAlidnsDomainAttachmentArrayOutput() AlidnsDomainAttachmentArrayOutput
+	ToAlidnsDomainAttachmentArrayOutputWithContext(context.Context) AlidnsDomainAttachmentArrayOutput
+}
+
+type AlidnsDomainAttachmentArray []AlidnsDomainAttachmentInput
+
+func (AlidnsDomainAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AlidnsDomainAttachment)(nil))
+}
+
+func (i AlidnsDomainAttachmentArray) ToAlidnsDomainAttachmentArrayOutput() AlidnsDomainAttachmentArrayOutput {
+	return i.ToAlidnsDomainAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i AlidnsDomainAttachmentArray) ToAlidnsDomainAttachmentArrayOutputWithContext(ctx context.Context) AlidnsDomainAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentArrayOutput)
+}
+
+// AlidnsDomainAttachmentMapInput is an input type that accepts AlidnsDomainAttachmentMap and AlidnsDomainAttachmentMapOutput values.
+// You can construct a concrete instance of `AlidnsDomainAttachmentMapInput` via:
+//
+//          AlidnsDomainAttachmentMap{ "key": AlidnsDomainAttachmentArgs{...} }
+type AlidnsDomainAttachmentMapInput interface {
+	pulumi.Input
+
+	ToAlidnsDomainAttachmentMapOutput() AlidnsDomainAttachmentMapOutput
+	ToAlidnsDomainAttachmentMapOutputWithContext(context.Context) AlidnsDomainAttachmentMapOutput
+}
+
+type AlidnsDomainAttachmentMap map[string]AlidnsDomainAttachmentInput
+
+func (AlidnsDomainAttachmentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AlidnsDomainAttachment)(nil))
+}
+
+func (i AlidnsDomainAttachmentMap) ToAlidnsDomainAttachmentMapOutput() AlidnsDomainAttachmentMapOutput {
+	return i.ToAlidnsDomainAttachmentMapOutputWithContext(context.Background())
+}
+
+func (i AlidnsDomainAttachmentMap) ToAlidnsDomainAttachmentMapOutputWithContext(ctx context.Context) AlidnsDomainAttachmentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentMapOutput)
+}
+
 type AlidnsDomainAttachmentOutput struct {
 	*pulumi.OutputState
 }
@@ -164,6 +243,75 @@ func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentOutputWithContext(
 	return o
 }
 
+func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentPtrOutput() AlidnsDomainAttachmentPtrOutput {
+	return o.ToAlidnsDomainAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentPtrOutputWithContext(ctx context.Context) AlidnsDomainAttachmentPtrOutput {
+	return o.ApplyT(func(v AlidnsDomainAttachment) *AlidnsDomainAttachment {
+		return &v
+	}).(AlidnsDomainAttachmentPtrOutput)
+}
+
+type AlidnsDomainAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlidnsDomainAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlidnsDomainAttachment)(nil))
+}
+
+func (o AlidnsDomainAttachmentPtrOutput) ToAlidnsDomainAttachmentPtrOutput() AlidnsDomainAttachmentPtrOutput {
+	return o
+}
+
+func (o AlidnsDomainAttachmentPtrOutput) ToAlidnsDomainAttachmentPtrOutputWithContext(ctx context.Context) AlidnsDomainAttachmentPtrOutput {
+	return o
+}
+
+type AlidnsDomainAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (AlidnsDomainAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlidnsDomainAttachment)(nil))
+}
+
+func (o AlidnsDomainAttachmentArrayOutput) ToAlidnsDomainAttachmentArrayOutput() AlidnsDomainAttachmentArrayOutput {
+	return o
+}
+
+func (o AlidnsDomainAttachmentArrayOutput) ToAlidnsDomainAttachmentArrayOutputWithContext(ctx context.Context) AlidnsDomainAttachmentArrayOutput {
+	return o
+}
+
+func (o AlidnsDomainAttachmentArrayOutput) Index(i pulumi.IntInput) AlidnsDomainAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlidnsDomainAttachment {
+		return vs[0].([]AlidnsDomainAttachment)[vs[1].(int)]
+	}).(AlidnsDomainAttachmentOutput)
+}
+
+type AlidnsDomainAttachmentMapOutput struct{ *pulumi.OutputState }
+
+func (AlidnsDomainAttachmentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlidnsDomainAttachment)(nil))
+}
+
+func (o AlidnsDomainAttachmentMapOutput) ToAlidnsDomainAttachmentMapOutput() AlidnsDomainAttachmentMapOutput {
+	return o
+}
+
+func (o AlidnsDomainAttachmentMapOutput) ToAlidnsDomainAttachmentMapOutputWithContext(ctx context.Context) AlidnsDomainAttachmentMapOutput {
+	return o
+}
+
+func (o AlidnsDomainAttachmentMapOutput) MapIndex(k pulumi.StringInput) AlidnsDomainAttachmentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlidnsDomainAttachment {
+		return vs[0].(map[string]AlidnsDomainAttachment)[vs[1].(string)]
+	}).(AlidnsDomainAttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlidnsDomainAttachmentOutput{})
+	pulumi.RegisterOutputType(AlidnsDomainAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(AlidnsDomainAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(AlidnsDomainAttachmentMapOutput{})
 }

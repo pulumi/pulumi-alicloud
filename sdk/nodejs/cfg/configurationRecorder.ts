@@ -93,7 +93,8 @@ export class ConfigurationRecorder extends pulumi.CustomResource {
     constructor(name: string, args?: ConfigurationRecorderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConfigurationRecorderArgs | ConfigurationRecorderState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConfigurationRecorderState | undefined;
             inputs["enterpriseEdition"] = state ? state.enterpriseEdition : undefined;
             inputs["organizationEnableStatus"] = state ? state.organizationEnableStatus : undefined;
@@ -108,12 +109,8 @@ export class ConfigurationRecorder extends pulumi.CustomResource {
             inputs["organizationMasterId"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ConfigurationRecorder.__pulumiType, name, inputs, opts);
     }

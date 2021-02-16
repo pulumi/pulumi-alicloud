@@ -104,7 +104,8 @@ export class InstanceAttachment extends pulumi.CustomResource {
     constructor(name: string, args: InstanceAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceAttachmentArgs | InstanceAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceAttachmentState | undefined;
             inputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
             inputs["childInstanceId"] = state ? state.childInstanceId : undefined;
@@ -115,16 +116,16 @@ export class InstanceAttachment extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
-            if ((!args || args.childInstanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.childInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceId'");
             }
-            if ((!args || args.childInstanceRegionId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.childInstanceRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceRegionId'");
             }
-            if ((!args || args.childInstanceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.childInstanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceType'");
             }
-            if ((!args || args.instanceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             inputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
@@ -135,12 +136,8 @@ export class InstanceAttachment extends pulumi.CustomResource {
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceAttachment.__pulumiType, name, inputs, opts);
     }
