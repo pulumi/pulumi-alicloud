@@ -115,6 +115,7 @@ export interface ProviderEndpoint {
     resourcemanager?: string;
     resourcesharing?: string;
     ros?: string;
+    sgw?: string;
     slb?: string;
     sts?: string;
     vpc?: string;
@@ -1862,6 +1863,16 @@ export namespace cloudconnect {
     }
 }
 
+export namespace cloudstoragegateway {
+    export interface GetStorageBundlesBundle {
+        description: string;
+        id: string;
+        location: string;
+        storageBundleId: string;
+        storageBundleName: string;
+    }
+}
+
 export namespace cms {
     export interface AlarmEscalationsCritical {
         /**
@@ -2362,6 +2373,7 @@ export namespace config {
         resourcemanager?: string;
         resourcesharing?: string;
         ros?: string;
+        sgw?: string;
         slb?: string;
         sts?: string;
         vpc?: string;
@@ -5101,6 +5113,49 @@ export namespace ecs {
         udpTimeout?: number;
     }
 
+    export interface GetCommandsCommand {
+        /**
+         * The Base64-encoded content of the command.
+         */
+        commandContent: string;
+        /**
+         * The ID of the Command.
+         */
+        commandId: string;
+        /**
+         * The description of command.
+         */
+        description: string;
+        /**
+         * Specifies whether to use custom parameters in the command to be created.
+         */
+        enableParameter: boolean;
+        /**
+         * The ID of the Command.
+         */
+        id: string;
+        /**
+         * The name of the command
+         */
+        name: string;
+        /**
+         * A list of custom parameter names which are parsed from the command content specified when the command was being created.
+         */
+        parameterNames: string[];
+        /**
+         * The timeout period that is specified for the command to be run on ECS instances.
+         */
+        timeout: number;
+        /**
+         * The command type.
+         */
+        type: string;
+        /**
+         * The execution path of the command in the ECS instance.
+         */
+        workingDir: string;
+    }
+
     export interface GetDedicatedHostsHost {
         /**
          * The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online.
@@ -5311,6 +5366,25 @@ export namespace ecs {
          * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
          */
         status: string;
+    }
+
+    export interface GetHpcClustersCluster {
+        /**
+         * The description of ECS Hpc Cluster.
+         */
+        description: string;
+        /**
+         * The ID of the Hpc Cluster.
+         */
+        hpcClusterId: string;
+        /**
+         * The ID of the Hpc Cluster.
+         */
+        id: string;
+        /**
+         * The name of ECS Hpc Cluster.
+         */
+        name: string;
     }
 
     export interface GetImagesImage {
@@ -10611,6 +10685,67 @@ export namespace quotas {
         value: string;
     }
 
+    export interface GetQuotaAlarmsAlarm {
+        /**
+         * The first ID of the resource.
+         */
+        alarmId: string;
+        /**
+         * The ID of the Quota Alarm.
+         */
+        id: string;
+        /**
+         * The Product Code.
+         */
+        productCode: string;
+        /**
+         * The Quota Action Code.
+         */
+        quotaActionCode: string;
+        /**
+         * The name of Quota Alarm.
+         */
+        quotaAlarmName: string;
+        /**
+         * The Quota Dimensions.
+         */
+        quotaDimensions: outputs.quotas.GetQuotaAlarmsAlarmQuotaDimension[];
+        /**
+         * The threshold of Quota Alarm.
+         */
+        threshold: number;
+        /**
+         * The threshold percent of Quota Alarm.
+         */
+        thresholdPercent: number;
+        /**
+         * The WebHook of Quota Alarm.
+         */
+        webHook: string;
+    }
+
+    export interface GetQuotaAlarmsAlarmQuotaDimension {
+        /**
+         * The key of quota_dimensions.
+         */
+        key: string;
+        /**
+         * The value of quota_dimensions.
+         */
+        value: string;
+    }
+
+    export interface GetQuotaAlarmsQuotaDimension {
+        /**
+         * The key of quota_dimensions.
+         */
+        key?: string;
+        /**
+         * The value of quota_dimensions.
+         */
+        value?: string;
+    }
+
     export interface GetQuotasDimension {
         /**
          * The key of dimensions.
@@ -10675,6 +10810,17 @@ export namespace quotas {
          * The unadjustable detail.
          */
         unadjustableDetail: string;
+    }
+
+    export interface QuotaAlarmQuotaDimension {
+        /**
+         * The Key of quota_dimensions.
+         */
+        key?: string;
+        /**
+         * The Value of quota_dimensions.
+         */
+        value?: string;
     }
 }
 

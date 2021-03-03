@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .get_namespaces import *
 from .get_repos import *
+from .get_service import *
 from .namespace import *
 from .repo import *
 from ._inputs import *

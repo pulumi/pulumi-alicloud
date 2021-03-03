@@ -137,6 +137,7 @@ type Endpoints struct {
 	Resourcemanager *string `pulumi:"resourcemanager"`
 	Resourcesharing *string `pulumi:"resourcesharing"`
 	Ros             *string `pulumi:"ros"`
+	Sgw             *string `pulumi:"sgw"`
 	Slb             *string `pulumi:"slb"`
 	Sts             *string `pulumi:"sts"`
 	Vpc             *string `pulumi:"vpc"`
@@ -214,6 +215,7 @@ type EndpointsArgs struct {
 	Resourcemanager pulumi.StringPtrInput `pulumi:"resourcemanager"`
 	Resourcesharing pulumi.StringPtrInput `pulumi:"resourcesharing"`
 	Ros             pulumi.StringPtrInput `pulumi:"ros"`
+	Sgw             pulumi.StringPtrInput `pulumi:"sgw"`
 	Slb             pulumi.StringPtrInput `pulumi:"slb"`
 	Sts             pulumi.StringPtrInput `pulumi:"sts"`
 	Vpc             pulumi.StringPtrInput `pulumi:"vpc"`
@@ -505,6 +507,10 @@ func (o EndpointsOutput) Resourcesharing() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Ros() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Ros }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Sgw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Sgw }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Slb() pulumi.StringPtrOutput {

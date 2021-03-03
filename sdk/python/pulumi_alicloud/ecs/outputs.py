@@ -17,9 +17,11 @@ __all__ = [
     'InstanceDataDisk',
     'LaunchTemplateDataDisk',
     'LaunchTemplateNetworkInterfaces',
+    'GetCommandsCommandResult',
     'GetDedicatedHostsHostResult',
     'GetDisksDiskResult',
     'GetEipsEipResult',
+    'GetHpcClustersClusterResult',
     'GetImagesImageResult',
     'GetImagesImageDiskDeviceMappingResult',
     'GetInstanceTypeFamiliesFamilyResult',
@@ -590,6 +592,123 @@ class LaunchTemplateNetworkInterfaces(dict):
 
 
 @pulumi.output_type
+class GetCommandsCommandResult(dict):
+    def __init__(__self__, *,
+                 command_content: str,
+                 command_id: str,
+                 description: str,
+                 enable_parameter: bool,
+                 id: str,
+                 name: str,
+                 parameter_names: Sequence[str],
+                 timeout: int,
+                 type: str,
+                 working_dir: str):
+        """
+        :param str command_content: The Base64-encoded content of the command.
+        :param str command_id: The ID of the Command.
+        :param str description: The description of command.
+        :param bool enable_parameter: Specifies whether to use custom parameters in the command to be created.
+        :param str id: The ID of the Command.
+        :param str name: The name of the command
+        :param Sequence[str] parameter_names: A list of custom parameter names which are parsed from the command content specified when the command was being created.
+        :param int timeout: The timeout period that is specified for the command to be run on ECS instances.
+        :param str type: The command type.
+        :param str working_dir: The execution path of the command in the ECS instance.
+        """
+        pulumi.set(__self__, "command_content", command_content)
+        pulumi.set(__self__, "command_id", command_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enable_parameter", enable_parameter)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parameter_names", parameter_names)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter(name="commandContent")
+    def command_content(self) -> str:
+        """
+        The Base64-encoded content of the command.
+        """
+        return pulumi.get(self, "command_content")
+
+    @property
+    @pulumi.getter(name="commandId")
+    def command_id(self) -> str:
+        """
+        The ID of the Command.
+        """
+        return pulumi.get(self, "command_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of command.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableParameter")
+    def enable_parameter(self) -> bool:
+        """
+        Specifies whether to use custom parameters in the command to be created.
+        """
+        return pulumi.get(self, "enable_parameter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Command.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the command
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parameterNames")
+    def parameter_names(self) -> Sequence[str]:
+        """
+        A list of custom parameter names which are parsed from the command content specified when the command was being created.
+        """
+        return pulumi.get(self, "parameter_names")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> int:
+        """
+        The timeout period that is specified for the command to be run on ECS instances.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The command type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> str:
+        """
+        The execution path of the command in the ECS instance.
+        """
+        return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
 class GetDedicatedHostsHostResult(dict):
     def __init__(__self__, *,
                  action_on_maintenance: str,
@@ -1155,6 +1274,57 @@ class GetEipsEipResult(dict):
         EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetHpcClustersClusterResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 hpc_cluster_id: str,
+                 id: str,
+                 name: str):
+        """
+        :param str description: The description of ECS Hpc Cluster.
+        :param str hpc_cluster_id: The ID of the Hpc Cluster.
+        :param str id: The ID of the Hpc Cluster.
+        :param str name: The name of ECS Hpc Cluster.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of ECS Hpc Cluster.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="hpcClusterId")
+    def hpc_cluster_id(self) -> str:
+        """
+        The ID of the Hpc Cluster.
+        """
+        return pulumi.get(self, "hpc_cluster_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Hpc Cluster.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of ECS Hpc Cluster.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

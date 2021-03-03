@@ -7,10 +7,13 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./applicationInfo";
 export * from "./getApplicationInfos";
+export * from "./getQuotaAlarms";
 export * from "./getQuotas";
+export * from "./quotaAlarm";
 
 // Import resources to register:
 import { ApplicationInfo } from "./applicationInfo";
+import { QuotaAlarm } from "./quotaAlarm";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,9 +21,12 @@ const _module = {
         switch (type) {
             case "alicloud:quotas/applicationInfo:ApplicationInfo":
                 return new ApplicationInfo(name, <any>undefined, { urn })
+            case "alicloud:quotas/quotaAlarm:QuotaAlarm":
+                return new QuotaAlarm(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "quotas/applicationInfo", _module)
+pulumi.runtime.registerResourceModule("alicloud", "quotas/quotaAlarm", _module)

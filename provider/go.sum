@@ -135,6 +135,8 @@ github.com/alibabacloud-go/tea-rpc v1.1.6 h1:Vrv3gH23UQ2lZ0e6TdwLvK+HOWbKq9ZpiZd
 github.com/alibabacloud-go/tea-rpc v1.1.6/go.mod h1:FU//dNbNYv1jSz1BGj6Sc3Co0IrbWsCnPiB/e1YnvgQ=
 github.com/alibabacloud-go/tea-rpc-utils v1.1.1 h1:pthm/FnXIqXMNXXJhocvfEkbzUhHD8oWa10BlCHVKMw=
 github.com/alibabacloud-go/tea-rpc-utils v1.1.1/go.mod h1:V5HdNi6Xdn0JMpgVhQ19vsFAS51tydr7BqcJtuXH1Yw=
+github.com/alibabacloud-go/tea-rpc-utils v1.1.2 h1:ZTfFREnP2q9D49T2J/1jYYOndepGdrUOgm/JR8/bIQ0=
+github.com/alibabacloud-go/tea-rpc-utils v1.1.2/go.mod h1:V5HdNi6Xdn0JMpgVhQ19vsFAS51tydr7BqcJtuXH1Yw=
 github.com/alibabacloud-go/tea-utils v1.3.0/go.mod h1:EI/o33aBfj3hETm4RLiAxF/ThQdSngxrpF8rKUDJjPE=
 github.com/alibabacloud-go/tea-utils v1.3.4 h1:FDYnO9WVeslG5dcIXJdMNguT/ugLq/YaybzBJaPxvmQ=
 github.com/alibabacloud-go/tea-utils v1.3.4/go.mod h1:EI/o33aBfj3hETm4RLiAxF/ThQdSngxrpF8rKUDJjPE=
@@ -159,8 +161,8 @@ github.com/aliyun/credentials-go v1.1.2 h1:qU1vwGIBb3UJ8BwunHDRFtAhS6jnQLnde/yk0
 github.com/aliyun/credentials-go v1.1.2/go.mod h1:ozcZaMR5kLM7pwtCMEpVmQ242suV6qTJya2bDq4X1Tw=
 github.com/aliyun/fc-go-sdk v0.0.0-20200925033337-c013428cbe21 h1:0kcRapGFTtwZIgbGSaM+N1y+GrnLaY4Vz78FqPnt164=
 github.com/aliyun/fc-go-sdk v0.0.0-20200925033337-c013428cbe21/go.mod h1:X4Pc3TFz4LRXaQPhyzBU4Ec8pL/QvaJ36CFtLJsroIM=
-github.com/aliyun/terraform-provider-alicloud v1.115.1 h1:rUNkfDlQrO3ejIWppHoZbzA1TqFClszXocoFPlVVcx4=
-github.com/aliyun/terraform-provider-alicloud v1.115.1/go.mod h1:qLVo0vf2sWOHa6nnWafYnYoeBJeQ7O4O91LqQ3hTJvU=
+github.com/aliyun/terraform-provider-alicloud v1.116.0 h1:Jlak/5jqoK+hXCo2kOeu4T86QVNJGkrChkhGNZMiskU=
+github.com/aliyun/terraform-provider-alicloud v1.116.0/go.mod h1:brLMAo4H0Q8HTa2fJ42ZEYtz4qJob+6Sp91SdqzY6Bk=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239 h1:kFOfPq6dUM1hTo4JG6LR5AXSUEsOjtdm0kw0FtQtMJA=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239/go.mod h1:2FmKhYUyUczH0OGQWaF5ceTx0UBShxjsH6f8oGKYe2c=
 github.com/apache/thrift v0.12.0/go.mod h1:cp2SuWMxlEZw2r+iP2GNCdIi4C1qmUzdZFSVb+bacwQ=

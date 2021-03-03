@@ -56,7 +56,7 @@ type VpcEndpointService struct {
 	// Whether to automatically accept terminal node connections.
 	AutoAcceptConnection pulumi.BoolPtrOutput `pulumi:"autoAcceptConnection"`
 	// The connection bandwidth.
-	ConnectBandwidth pulumi.IntPtrOutput `pulumi:"connectBandwidth"`
+	ConnectBandwidth pulumi.IntOutput `pulumi:"connectBandwidth"`
 	// Whether to pre-check this request only. Default to: `false`
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.

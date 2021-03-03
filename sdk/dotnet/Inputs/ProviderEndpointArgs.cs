@@ -189,6 +189,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("ros")]
         public Input<string>? Ros { get; set; }
 
+        [Input("sgw")]
+        public Input<string>? Sgw { get; set; }
+
         [Input("slb")]
         public Input<string>? Slb { get; set; }
 

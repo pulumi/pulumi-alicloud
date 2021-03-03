@@ -55,7 +55,7 @@ type VpcEndpointServiceConnection struct {
 	pulumi.CustomResourceState
 
 	// The Bandwidth.
-	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
+	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the Vpc Endpoint.

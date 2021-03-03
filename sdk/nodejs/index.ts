@@ -24,6 +24,7 @@ import * as cdn from "./cdn";
 import * as cen from "./cen";
 import * as cfg from "./cfg";
 import * as cloudconnect from "./cloudconnect";
+import * as cloudstoragegateway from "./cloudstoragegateway";
 import * as cms from "./cms";
 import * as config from "./config";
 import * as cr from "./cr";
@@ -73,6 +74,7 @@ import * as sag from "./sag";
 import * as slb from "./slb";
 import * as tsdb from "./tsdb";
 import * as types from "./types";
+import * as videosurveillance from "./videosurveillance";
 import * as vpc from "./vpc";
 import * as vpn from "./vpn";
 import * as waf from "./waf";
@@ -90,6 +92,7 @@ export {
     cen,
     cfg,
     cloudconnect,
+    cloudstoragegateway,
     cms,
     config,
     cr,
@@ -139,6 +142,7 @@ export {
     slb,
     tsdb,
     types,
+    videosurveillance,
     vpc,
     vpn,
     waf,

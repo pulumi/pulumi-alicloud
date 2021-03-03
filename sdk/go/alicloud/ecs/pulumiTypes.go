@@ -1105,6 +1105,184 @@ func (o LaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetCommandsCommand struct {
+	// The Base64-encoded content of the command.
+	CommandContent string `pulumi:"commandContent"`
+	// The ID of the Command.
+	CommandId string `pulumi:"commandId"`
+	// The description of command.
+	Description string `pulumi:"description"`
+	// Specifies whether to use custom parameters in the command to be created.
+	EnableParameter bool `pulumi:"enableParameter"`
+	// The ID of the Command.
+	Id string `pulumi:"id"`
+	// The name of the command
+	Name string `pulumi:"name"`
+	// A list of custom parameter names which are parsed from the command content specified when the command was being created.
+	ParameterNames []string `pulumi:"parameterNames"`
+	// The timeout period that is specified for the command to be run on ECS instances.
+	Timeout int `pulumi:"timeout"`
+	// The command type.
+	Type string `pulumi:"type"`
+	// The execution path of the command in the ECS instance.
+	WorkingDir string `pulumi:"workingDir"`
+}
+
+// GetCommandsCommandInput is an input type that accepts GetCommandsCommandArgs and GetCommandsCommandOutput values.
+// You can construct a concrete instance of `GetCommandsCommandInput` via:
+//
+//          GetCommandsCommandArgs{...}
+type GetCommandsCommandInput interface {
+	pulumi.Input
+
+	ToGetCommandsCommandOutput() GetCommandsCommandOutput
+	ToGetCommandsCommandOutputWithContext(context.Context) GetCommandsCommandOutput
+}
+
+type GetCommandsCommandArgs struct {
+	// The Base64-encoded content of the command.
+	CommandContent pulumi.StringInput `pulumi:"commandContent"`
+	// The ID of the Command.
+	CommandId pulumi.StringInput `pulumi:"commandId"`
+	// The description of command.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Specifies whether to use custom parameters in the command to be created.
+	EnableParameter pulumi.BoolInput `pulumi:"enableParameter"`
+	// The ID of the Command.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the command
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of custom parameter names which are parsed from the command content specified when the command was being created.
+	ParameterNames pulumi.StringArrayInput `pulumi:"parameterNames"`
+	// The timeout period that is specified for the command to be run on ECS instances.
+	Timeout pulumi.IntInput `pulumi:"timeout"`
+	// The command type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The execution path of the command in the ECS instance.
+	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
+}
+
+func (GetCommandsCommandArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCommandsCommand)(nil)).Elem()
+}
+
+func (i GetCommandsCommandArgs) ToGetCommandsCommandOutput() GetCommandsCommandOutput {
+	return i.ToGetCommandsCommandOutputWithContext(context.Background())
+}
+
+func (i GetCommandsCommandArgs) ToGetCommandsCommandOutputWithContext(ctx context.Context) GetCommandsCommandOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCommandsCommandOutput)
+}
+
+// GetCommandsCommandArrayInput is an input type that accepts GetCommandsCommandArray and GetCommandsCommandArrayOutput values.
+// You can construct a concrete instance of `GetCommandsCommandArrayInput` via:
+//
+//          GetCommandsCommandArray{ GetCommandsCommandArgs{...} }
+type GetCommandsCommandArrayInput interface {
+	pulumi.Input
+
+	ToGetCommandsCommandArrayOutput() GetCommandsCommandArrayOutput
+	ToGetCommandsCommandArrayOutputWithContext(context.Context) GetCommandsCommandArrayOutput
+}
+
+type GetCommandsCommandArray []GetCommandsCommandInput
+
+func (GetCommandsCommandArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCommandsCommand)(nil)).Elem()
+}
+
+func (i GetCommandsCommandArray) ToGetCommandsCommandArrayOutput() GetCommandsCommandArrayOutput {
+	return i.ToGetCommandsCommandArrayOutputWithContext(context.Background())
+}
+
+func (i GetCommandsCommandArray) ToGetCommandsCommandArrayOutputWithContext(ctx context.Context) GetCommandsCommandArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCommandsCommandArrayOutput)
+}
+
+type GetCommandsCommandOutput struct{ *pulumi.OutputState }
+
+func (GetCommandsCommandOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCommandsCommand)(nil)).Elem()
+}
+
+func (o GetCommandsCommandOutput) ToGetCommandsCommandOutput() GetCommandsCommandOutput {
+	return o
+}
+
+func (o GetCommandsCommandOutput) ToGetCommandsCommandOutputWithContext(ctx context.Context) GetCommandsCommandOutput {
+	return o
+}
+
+// The Base64-encoded content of the command.
+func (o GetCommandsCommandOutput) CommandContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.CommandContent }).(pulumi.StringOutput)
+}
+
+// The ID of the Command.
+func (o GetCommandsCommandOutput) CommandId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.CommandId }).(pulumi.StringOutput)
+}
+
+// The description of command.
+func (o GetCommandsCommandOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Specifies whether to use custom parameters in the command to be created.
+func (o GetCommandsCommandOutput) EnableParameter() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCommandsCommand) bool { return v.EnableParameter }).(pulumi.BoolOutput)
+}
+
+// The ID of the Command.
+func (o GetCommandsCommandOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the command
+func (o GetCommandsCommandOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of custom parameter names which are parsed from the command content specified when the command was being created.
+func (o GetCommandsCommandOutput) ParameterNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCommandsCommand) []string { return v.ParameterNames }).(pulumi.StringArrayOutput)
+}
+
+// The timeout period that is specified for the command to be run on ECS instances.
+func (o GetCommandsCommandOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCommandsCommand) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// The command type.
+func (o GetCommandsCommandOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The execution path of the command in the ECS instance.
+func (o GetCommandsCommandOutput) WorkingDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.WorkingDir }).(pulumi.StringOutput)
+}
+
+type GetCommandsCommandArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCommandsCommandArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCommandsCommand)(nil)).Elem()
+}
+
+func (o GetCommandsCommandArrayOutput) ToGetCommandsCommandArrayOutput() GetCommandsCommandArrayOutput {
+	return o
+}
+
+func (o GetCommandsCommandArrayOutput) ToGetCommandsCommandArrayOutputWithContext(ctx context.Context) GetCommandsCommandArrayOutput {
+	return o
+}
+
+func (o GetCommandsCommandArrayOutput) Index(i pulumi.IntInput) GetCommandsCommandOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCommandsCommand {
+		return vs[0].([]GetCommandsCommand)[vs[1].(int)]
+	}).(GetCommandsCommandOutput)
+}
+
 type GetDedicatedHostsHost struct {
 	// The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online.
 	ActionOnMaintenance string `pulumi:"actionOnMaintenance"`
@@ -1868,6 +2046,130 @@ func (o GetEipsEipArrayOutput) Index(i pulumi.IntInput) GetEipsEipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEipsEip {
 		return vs[0].([]GetEipsEip)[vs[1].(int)]
 	}).(GetEipsEipOutput)
+}
+
+type GetHpcClustersCluster struct {
+	// The description of ECS Hpc Cluster.
+	Description string `pulumi:"description"`
+	// The ID of the Hpc Cluster.
+	HpcClusterId string `pulumi:"hpcClusterId"`
+	// The ID of the Hpc Cluster.
+	Id string `pulumi:"id"`
+	// The name of ECS Hpc Cluster.
+	Name string `pulumi:"name"`
+}
+
+// GetHpcClustersClusterInput is an input type that accepts GetHpcClustersClusterArgs and GetHpcClustersClusterOutput values.
+// You can construct a concrete instance of `GetHpcClustersClusterInput` via:
+//
+//          GetHpcClustersClusterArgs{...}
+type GetHpcClustersClusterInput interface {
+	pulumi.Input
+
+	ToGetHpcClustersClusterOutput() GetHpcClustersClusterOutput
+	ToGetHpcClustersClusterOutputWithContext(context.Context) GetHpcClustersClusterOutput
+}
+
+type GetHpcClustersClusterArgs struct {
+	// The description of ECS Hpc Cluster.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Hpc Cluster.
+	HpcClusterId pulumi.StringInput `pulumi:"hpcClusterId"`
+	// The ID of the Hpc Cluster.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of ECS Hpc Cluster.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetHpcClustersClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHpcClustersCluster)(nil)).Elem()
+}
+
+func (i GetHpcClustersClusterArgs) ToGetHpcClustersClusterOutput() GetHpcClustersClusterOutput {
+	return i.ToGetHpcClustersClusterOutputWithContext(context.Background())
+}
+
+func (i GetHpcClustersClusterArgs) ToGetHpcClustersClusterOutputWithContext(ctx context.Context) GetHpcClustersClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHpcClustersClusterOutput)
+}
+
+// GetHpcClustersClusterArrayInput is an input type that accepts GetHpcClustersClusterArray and GetHpcClustersClusterArrayOutput values.
+// You can construct a concrete instance of `GetHpcClustersClusterArrayInput` via:
+//
+//          GetHpcClustersClusterArray{ GetHpcClustersClusterArgs{...} }
+type GetHpcClustersClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetHpcClustersClusterArrayOutput() GetHpcClustersClusterArrayOutput
+	ToGetHpcClustersClusterArrayOutputWithContext(context.Context) GetHpcClustersClusterArrayOutput
+}
+
+type GetHpcClustersClusterArray []GetHpcClustersClusterInput
+
+func (GetHpcClustersClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHpcClustersCluster)(nil)).Elem()
+}
+
+func (i GetHpcClustersClusterArray) ToGetHpcClustersClusterArrayOutput() GetHpcClustersClusterArrayOutput {
+	return i.ToGetHpcClustersClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetHpcClustersClusterArray) ToGetHpcClustersClusterArrayOutputWithContext(ctx context.Context) GetHpcClustersClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHpcClustersClusterArrayOutput)
+}
+
+type GetHpcClustersClusterOutput struct{ *pulumi.OutputState }
+
+func (GetHpcClustersClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHpcClustersCluster)(nil)).Elem()
+}
+
+func (o GetHpcClustersClusterOutput) ToGetHpcClustersClusterOutput() GetHpcClustersClusterOutput {
+	return o
+}
+
+func (o GetHpcClustersClusterOutput) ToGetHpcClustersClusterOutputWithContext(ctx context.Context) GetHpcClustersClusterOutput {
+	return o
+}
+
+// The description of ECS Hpc Cluster.
+func (o GetHpcClustersClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHpcClustersCluster) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Hpc Cluster.
+func (o GetHpcClustersClusterOutput) HpcClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHpcClustersCluster) string { return v.HpcClusterId }).(pulumi.StringOutput)
+}
+
+// The ID of the Hpc Cluster.
+func (o GetHpcClustersClusterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHpcClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of ECS Hpc Cluster.
+func (o GetHpcClustersClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHpcClustersCluster) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetHpcClustersClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHpcClustersClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHpcClustersCluster)(nil)).Elem()
+}
+
+func (o GetHpcClustersClusterArrayOutput) ToGetHpcClustersClusterArrayOutput() GetHpcClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetHpcClustersClusterArrayOutput) ToGetHpcClustersClusterArrayOutputWithContext(ctx context.Context) GetHpcClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetHpcClustersClusterArrayOutput) Index(i pulumi.IntInput) GetHpcClustersClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHpcClustersCluster {
+		return vs[0].([]GetHpcClustersCluster)[vs[1].(int)]
+	}).(GetHpcClustersClusterOutput)
 }
 
 type GetImagesImage struct {
@@ -4512,12 +4814,16 @@ func init() {
 	pulumi.RegisterOutputType(LaunchTemplateDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesPtrOutput{})
+	pulumi.RegisterOutputType(GetCommandsCommandOutput{})
+	pulumi.RegisterOutputType(GetCommandsCommandArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostArrayOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetEipsEipOutput{})
 	pulumi.RegisterOutputType(GetEipsEipArrayOutput{})
+	pulumi.RegisterOutputType(GetHpcClustersClusterOutput{})
+	pulumi.RegisterOutputType(GetHpcClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
 	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageDiskDeviceMappingOutput{})

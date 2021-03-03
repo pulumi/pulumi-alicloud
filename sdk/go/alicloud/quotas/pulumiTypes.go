@@ -116,6 +116,112 @@ func (o ApplicationInfoDimensionArrayOutput) Index(i pulumi.IntInput) Applicatio
 	}).(ApplicationInfoDimensionOutput)
 }
 
+type QuotaAlarmQuotaDimension struct {
+	// The Key of quota_dimensions.
+	Key *string `pulumi:"key"`
+	// The Value of quota_dimensions.
+	Value *string `pulumi:"value"`
+}
+
+// QuotaAlarmQuotaDimensionInput is an input type that accepts QuotaAlarmQuotaDimensionArgs and QuotaAlarmQuotaDimensionOutput values.
+// You can construct a concrete instance of `QuotaAlarmQuotaDimensionInput` via:
+//
+//          QuotaAlarmQuotaDimensionArgs{...}
+type QuotaAlarmQuotaDimensionInput interface {
+	pulumi.Input
+
+	ToQuotaAlarmQuotaDimensionOutput() QuotaAlarmQuotaDimensionOutput
+	ToQuotaAlarmQuotaDimensionOutputWithContext(context.Context) QuotaAlarmQuotaDimensionOutput
+}
+
+type QuotaAlarmQuotaDimensionArgs struct {
+	// The Key of quota_dimensions.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The Value of quota_dimensions.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (QuotaAlarmQuotaDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaAlarmQuotaDimension)(nil)).Elem()
+}
+
+func (i QuotaAlarmQuotaDimensionArgs) ToQuotaAlarmQuotaDimensionOutput() QuotaAlarmQuotaDimensionOutput {
+	return i.ToQuotaAlarmQuotaDimensionOutputWithContext(context.Background())
+}
+
+func (i QuotaAlarmQuotaDimensionArgs) ToQuotaAlarmQuotaDimensionOutputWithContext(ctx context.Context) QuotaAlarmQuotaDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaAlarmQuotaDimensionOutput)
+}
+
+// QuotaAlarmQuotaDimensionArrayInput is an input type that accepts QuotaAlarmQuotaDimensionArray and QuotaAlarmQuotaDimensionArrayOutput values.
+// You can construct a concrete instance of `QuotaAlarmQuotaDimensionArrayInput` via:
+//
+//          QuotaAlarmQuotaDimensionArray{ QuotaAlarmQuotaDimensionArgs{...} }
+type QuotaAlarmQuotaDimensionArrayInput interface {
+	pulumi.Input
+
+	ToQuotaAlarmQuotaDimensionArrayOutput() QuotaAlarmQuotaDimensionArrayOutput
+	ToQuotaAlarmQuotaDimensionArrayOutputWithContext(context.Context) QuotaAlarmQuotaDimensionArrayOutput
+}
+
+type QuotaAlarmQuotaDimensionArray []QuotaAlarmQuotaDimensionInput
+
+func (QuotaAlarmQuotaDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaAlarmQuotaDimension)(nil)).Elem()
+}
+
+func (i QuotaAlarmQuotaDimensionArray) ToQuotaAlarmQuotaDimensionArrayOutput() QuotaAlarmQuotaDimensionArrayOutput {
+	return i.ToQuotaAlarmQuotaDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i QuotaAlarmQuotaDimensionArray) ToQuotaAlarmQuotaDimensionArrayOutputWithContext(ctx context.Context) QuotaAlarmQuotaDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaAlarmQuotaDimensionArrayOutput)
+}
+
+type QuotaAlarmQuotaDimensionOutput struct{ *pulumi.OutputState }
+
+func (QuotaAlarmQuotaDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaAlarmQuotaDimension)(nil)).Elem()
+}
+
+func (o QuotaAlarmQuotaDimensionOutput) ToQuotaAlarmQuotaDimensionOutput() QuotaAlarmQuotaDimensionOutput {
+	return o
+}
+
+func (o QuotaAlarmQuotaDimensionOutput) ToQuotaAlarmQuotaDimensionOutputWithContext(ctx context.Context) QuotaAlarmQuotaDimensionOutput {
+	return o
+}
+
+// The Key of quota_dimensions.
+func (o QuotaAlarmQuotaDimensionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuotaAlarmQuotaDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The Value of quota_dimensions.
+func (o QuotaAlarmQuotaDimensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuotaAlarmQuotaDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type QuotaAlarmQuotaDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (QuotaAlarmQuotaDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaAlarmQuotaDimension)(nil)).Elem()
+}
+
+func (o QuotaAlarmQuotaDimensionArrayOutput) ToQuotaAlarmQuotaDimensionArrayOutput() QuotaAlarmQuotaDimensionArrayOutput {
+	return o
+}
+
+func (o QuotaAlarmQuotaDimensionArrayOutput) ToQuotaAlarmQuotaDimensionArrayOutputWithContext(ctx context.Context) QuotaAlarmQuotaDimensionArrayOutput {
+	return o
+}
+
+func (o QuotaAlarmQuotaDimensionArrayOutput) Index(i pulumi.IntInput) QuotaAlarmQuotaDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QuotaAlarmQuotaDimension {
+		return vs[0].([]QuotaAlarmQuotaDimension)[vs[1].(int)]
+	}).(QuotaAlarmQuotaDimensionOutput)
+}
+
 type GetApplicationInfosDimension struct {
 	// The key of dimensions.
 	Key *string `pulumi:"key"`
@@ -560,6 +666,387 @@ func (o GetApplicationInfosInfoDimensionArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetApplicationInfosInfoDimensionOutput)
 }
 
+type GetQuotaAlarmsAlarm struct {
+	// The first ID of the resource.
+	AlarmId string `pulumi:"alarmId"`
+	// The ID of the Quota Alarm.
+	Id string `pulumi:"id"`
+	// The Product Code.
+	ProductCode string `pulumi:"productCode"`
+	// The Quota Action Code.
+	QuotaActionCode string `pulumi:"quotaActionCode"`
+	// The name of Quota Alarm.
+	QuotaAlarmName string `pulumi:"quotaAlarmName"`
+	// The Quota Dimensions.
+	QuotaDimensions []GetQuotaAlarmsAlarmQuotaDimension `pulumi:"quotaDimensions"`
+	// The threshold of Quota Alarm.
+	Threshold float64 `pulumi:"threshold"`
+	// The threshold percent of Quota Alarm.
+	ThresholdPercent float64 `pulumi:"thresholdPercent"`
+	// The WebHook of Quota Alarm.
+	WebHook string `pulumi:"webHook"`
+}
+
+// GetQuotaAlarmsAlarmInput is an input type that accepts GetQuotaAlarmsAlarmArgs and GetQuotaAlarmsAlarmOutput values.
+// You can construct a concrete instance of `GetQuotaAlarmsAlarmInput` via:
+//
+//          GetQuotaAlarmsAlarmArgs{...}
+type GetQuotaAlarmsAlarmInput interface {
+	pulumi.Input
+
+	ToGetQuotaAlarmsAlarmOutput() GetQuotaAlarmsAlarmOutput
+	ToGetQuotaAlarmsAlarmOutputWithContext(context.Context) GetQuotaAlarmsAlarmOutput
+}
+
+type GetQuotaAlarmsAlarmArgs struct {
+	// The first ID of the resource.
+	AlarmId pulumi.StringInput `pulumi:"alarmId"`
+	// The ID of the Quota Alarm.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Product Code.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// The Quota Action Code.
+	QuotaActionCode pulumi.StringInput `pulumi:"quotaActionCode"`
+	// The name of Quota Alarm.
+	QuotaAlarmName pulumi.StringInput `pulumi:"quotaAlarmName"`
+	// The Quota Dimensions.
+	QuotaDimensions GetQuotaAlarmsAlarmQuotaDimensionArrayInput `pulumi:"quotaDimensions"`
+	// The threshold of Quota Alarm.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// The threshold percent of Quota Alarm.
+	ThresholdPercent pulumi.Float64Input `pulumi:"thresholdPercent"`
+	// The WebHook of Quota Alarm.
+	WebHook pulumi.StringInput `pulumi:"webHook"`
+}
+
+func (GetQuotaAlarmsAlarmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaAlarmsAlarm)(nil)).Elem()
+}
+
+func (i GetQuotaAlarmsAlarmArgs) ToGetQuotaAlarmsAlarmOutput() GetQuotaAlarmsAlarmOutput {
+	return i.ToGetQuotaAlarmsAlarmOutputWithContext(context.Background())
+}
+
+func (i GetQuotaAlarmsAlarmArgs) ToGetQuotaAlarmsAlarmOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsAlarmOutput)
+}
+
+// GetQuotaAlarmsAlarmArrayInput is an input type that accepts GetQuotaAlarmsAlarmArray and GetQuotaAlarmsAlarmArrayOutput values.
+// You can construct a concrete instance of `GetQuotaAlarmsAlarmArrayInput` via:
+//
+//          GetQuotaAlarmsAlarmArray{ GetQuotaAlarmsAlarmArgs{...} }
+type GetQuotaAlarmsAlarmArrayInput interface {
+	pulumi.Input
+
+	ToGetQuotaAlarmsAlarmArrayOutput() GetQuotaAlarmsAlarmArrayOutput
+	ToGetQuotaAlarmsAlarmArrayOutputWithContext(context.Context) GetQuotaAlarmsAlarmArrayOutput
+}
+
+type GetQuotaAlarmsAlarmArray []GetQuotaAlarmsAlarmInput
+
+func (GetQuotaAlarmsAlarmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaAlarmsAlarm)(nil)).Elem()
+}
+
+func (i GetQuotaAlarmsAlarmArray) ToGetQuotaAlarmsAlarmArrayOutput() GetQuotaAlarmsAlarmArrayOutput {
+	return i.ToGetQuotaAlarmsAlarmArrayOutputWithContext(context.Background())
+}
+
+func (i GetQuotaAlarmsAlarmArray) ToGetQuotaAlarmsAlarmArrayOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsAlarmArrayOutput)
+}
+
+type GetQuotaAlarmsAlarmOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaAlarmsAlarmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaAlarmsAlarm)(nil)).Elem()
+}
+
+func (o GetQuotaAlarmsAlarmOutput) ToGetQuotaAlarmsAlarmOutput() GetQuotaAlarmsAlarmOutput {
+	return o
+}
+
+func (o GetQuotaAlarmsAlarmOutput) ToGetQuotaAlarmsAlarmOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetQuotaAlarmsAlarmOutput) AlarmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarm) string { return v.AlarmId }).(pulumi.StringOutput)
+}
+
+// The ID of the Quota Alarm.
+func (o GetQuotaAlarmsAlarmOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarm) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Product Code.
+func (o GetQuotaAlarmsAlarmOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarm) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// The Quota Action Code.
+func (o GetQuotaAlarmsAlarmOutput) QuotaActionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarm) string { return v.QuotaActionCode }).(pulumi.StringOutput)
+}
+
+// The name of Quota Alarm.
+func (o GetQuotaAlarmsAlarmOutput) QuotaAlarmName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarm) string { return v.QuotaAlarmName }).(pulumi.StringOutput)
+}
+
+// The Quota Dimensions.
+func (o GetQuotaAlarmsAlarmOutput) QuotaDimensions() GetQuotaAlarmsAlarmQuotaDimensionArrayOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarm) []GetQuotaAlarmsAlarmQuotaDimension { return v.QuotaDimensions }).(GetQuotaAlarmsAlarmQuotaDimensionArrayOutput)
+}
+
+// The threshold of Quota Alarm.
+func (o GetQuotaAlarmsAlarmOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarm) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// The threshold percent of Quota Alarm.
+func (o GetQuotaAlarmsAlarmOutput) ThresholdPercent() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarm) float64 { return v.ThresholdPercent }).(pulumi.Float64Output)
+}
+
+// The WebHook of Quota Alarm.
+func (o GetQuotaAlarmsAlarmOutput) WebHook() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarm) string { return v.WebHook }).(pulumi.StringOutput)
+}
+
+type GetQuotaAlarmsAlarmArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaAlarmsAlarmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaAlarmsAlarm)(nil)).Elem()
+}
+
+func (o GetQuotaAlarmsAlarmArrayOutput) ToGetQuotaAlarmsAlarmArrayOutput() GetQuotaAlarmsAlarmArrayOutput {
+	return o
+}
+
+func (o GetQuotaAlarmsAlarmArrayOutput) ToGetQuotaAlarmsAlarmArrayOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmArrayOutput {
+	return o
+}
+
+func (o GetQuotaAlarmsAlarmArrayOutput) Index(i pulumi.IntInput) GetQuotaAlarmsAlarmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQuotaAlarmsAlarm {
+		return vs[0].([]GetQuotaAlarmsAlarm)[vs[1].(int)]
+	}).(GetQuotaAlarmsAlarmOutput)
+}
+
+type GetQuotaAlarmsAlarmQuotaDimension struct {
+	// The key of quota_dimensions.
+	Key string `pulumi:"key"`
+	// The value of quota_dimensions.
+	Value string `pulumi:"value"`
+}
+
+// GetQuotaAlarmsAlarmQuotaDimensionInput is an input type that accepts GetQuotaAlarmsAlarmQuotaDimensionArgs and GetQuotaAlarmsAlarmQuotaDimensionOutput values.
+// You can construct a concrete instance of `GetQuotaAlarmsAlarmQuotaDimensionInput` via:
+//
+//          GetQuotaAlarmsAlarmQuotaDimensionArgs{...}
+type GetQuotaAlarmsAlarmQuotaDimensionInput interface {
+	pulumi.Input
+
+	ToGetQuotaAlarmsAlarmQuotaDimensionOutput() GetQuotaAlarmsAlarmQuotaDimensionOutput
+	ToGetQuotaAlarmsAlarmQuotaDimensionOutputWithContext(context.Context) GetQuotaAlarmsAlarmQuotaDimensionOutput
+}
+
+type GetQuotaAlarmsAlarmQuotaDimensionArgs struct {
+	// The key of quota_dimensions.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of quota_dimensions.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetQuotaAlarmsAlarmQuotaDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaAlarmsAlarmQuotaDimension)(nil)).Elem()
+}
+
+func (i GetQuotaAlarmsAlarmQuotaDimensionArgs) ToGetQuotaAlarmsAlarmQuotaDimensionOutput() GetQuotaAlarmsAlarmQuotaDimensionOutput {
+	return i.ToGetQuotaAlarmsAlarmQuotaDimensionOutputWithContext(context.Background())
+}
+
+func (i GetQuotaAlarmsAlarmQuotaDimensionArgs) ToGetQuotaAlarmsAlarmQuotaDimensionOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmQuotaDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsAlarmQuotaDimensionOutput)
+}
+
+// GetQuotaAlarmsAlarmQuotaDimensionArrayInput is an input type that accepts GetQuotaAlarmsAlarmQuotaDimensionArray and GetQuotaAlarmsAlarmQuotaDimensionArrayOutput values.
+// You can construct a concrete instance of `GetQuotaAlarmsAlarmQuotaDimensionArrayInput` via:
+//
+//          GetQuotaAlarmsAlarmQuotaDimensionArray{ GetQuotaAlarmsAlarmQuotaDimensionArgs{...} }
+type GetQuotaAlarmsAlarmQuotaDimensionArrayInput interface {
+	pulumi.Input
+
+	ToGetQuotaAlarmsAlarmQuotaDimensionArrayOutput() GetQuotaAlarmsAlarmQuotaDimensionArrayOutput
+	ToGetQuotaAlarmsAlarmQuotaDimensionArrayOutputWithContext(context.Context) GetQuotaAlarmsAlarmQuotaDimensionArrayOutput
+}
+
+type GetQuotaAlarmsAlarmQuotaDimensionArray []GetQuotaAlarmsAlarmQuotaDimensionInput
+
+func (GetQuotaAlarmsAlarmQuotaDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaAlarmsAlarmQuotaDimension)(nil)).Elem()
+}
+
+func (i GetQuotaAlarmsAlarmQuotaDimensionArray) ToGetQuotaAlarmsAlarmQuotaDimensionArrayOutput() GetQuotaAlarmsAlarmQuotaDimensionArrayOutput {
+	return i.ToGetQuotaAlarmsAlarmQuotaDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i GetQuotaAlarmsAlarmQuotaDimensionArray) ToGetQuotaAlarmsAlarmQuotaDimensionArrayOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmQuotaDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsAlarmQuotaDimensionArrayOutput)
+}
+
+type GetQuotaAlarmsAlarmQuotaDimensionOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaAlarmsAlarmQuotaDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaAlarmsAlarmQuotaDimension)(nil)).Elem()
+}
+
+func (o GetQuotaAlarmsAlarmQuotaDimensionOutput) ToGetQuotaAlarmsAlarmQuotaDimensionOutput() GetQuotaAlarmsAlarmQuotaDimensionOutput {
+	return o
+}
+
+func (o GetQuotaAlarmsAlarmQuotaDimensionOutput) ToGetQuotaAlarmsAlarmQuotaDimensionOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmQuotaDimensionOutput {
+	return o
+}
+
+// The key of quota_dimensions.
+func (o GetQuotaAlarmsAlarmQuotaDimensionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarmQuotaDimension) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of quota_dimensions.
+func (o GetQuotaAlarmsAlarmQuotaDimensionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsAlarmQuotaDimension) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetQuotaAlarmsAlarmQuotaDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaAlarmsAlarmQuotaDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaAlarmsAlarmQuotaDimension)(nil)).Elem()
+}
+
+func (o GetQuotaAlarmsAlarmQuotaDimensionArrayOutput) ToGetQuotaAlarmsAlarmQuotaDimensionArrayOutput() GetQuotaAlarmsAlarmQuotaDimensionArrayOutput {
+	return o
+}
+
+func (o GetQuotaAlarmsAlarmQuotaDimensionArrayOutput) ToGetQuotaAlarmsAlarmQuotaDimensionArrayOutputWithContext(ctx context.Context) GetQuotaAlarmsAlarmQuotaDimensionArrayOutput {
+	return o
+}
+
+func (o GetQuotaAlarmsAlarmQuotaDimensionArrayOutput) Index(i pulumi.IntInput) GetQuotaAlarmsAlarmQuotaDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQuotaAlarmsAlarmQuotaDimension {
+		return vs[0].([]GetQuotaAlarmsAlarmQuotaDimension)[vs[1].(int)]
+	}).(GetQuotaAlarmsAlarmQuotaDimensionOutput)
+}
+
+type GetQuotaAlarmsQuotaDimension struct {
+	// The key of quota_dimensions.
+	Key *string `pulumi:"key"`
+	// The value of quota_dimensions.
+	Value *string `pulumi:"value"`
+}
+
+// GetQuotaAlarmsQuotaDimensionInput is an input type that accepts GetQuotaAlarmsQuotaDimensionArgs and GetQuotaAlarmsQuotaDimensionOutput values.
+// You can construct a concrete instance of `GetQuotaAlarmsQuotaDimensionInput` via:
+//
+//          GetQuotaAlarmsQuotaDimensionArgs{...}
+type GetQuotaAlarmsQuotaDimensionInput interface {
+	pulumi.Input
+
+	ToGetQuotaAlarmsQuotaDimensionOutput() GetQuotaAlarmsQuotaDimensionOutput
+	ToGetQuotaAlarmsQuotaDimensionOutputWithContext(context.Context) GetQuotaAlarmsQuotaDimensionOutput
+}
+
+type GetQuotaAlarmsQuotaDimensionArgs struct {
+	// The key of quota_dimensions.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of quota_dimensions.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetQuotaAlarmsQuotaDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaAlarmsQuotaDimension)(nil)).Elem()
+}
+
+func (i GetQuotaAlarmsQuotaDimensionArgs) ToGetQuotaAlarmsQuotaDimensionOutput() GetQuotaAlarmsQuotaDimensionOutput {
+	return i.ToGetQuotaAlarmsQuotaDimensionOutputWithContext(context.Background())
+}
+
+func (i GetQuotaAlarmsQuotaDimensionArgs) ToGetQuotaAlarmsQuotaDimensionOutputWithContext(ctx context.Context) GetQuotaAlarmsQuotaDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsQuotaDimensionOutput)
+}
+
+// GetQuotaAlarmsQuotaDimensionArrayInput is an input type that accepts GetQuotaAlarmsQuotaDimensionArray and GetQuotaAlarmsQuotaDimensionArrayOutput values.
+// You can construct a concrete instance of `GetQuotaAlarmsQuotaDimensionArrayInput` via:
+//
+//          GetQuotaAlarmsQuotaDimensionArray{ GetQuotaAlarmsQuotaDimensionArgs{...} }
+type GetQuotaAlarmsQuotaDimensionArrayInput interface {
+	pulumi.Input
+
+	ToGetQuotaAlarmsQuotaDimensionArrayOutput() GetQuotaAlarmsQuotaDimensionArrayOutput
+	ToGetQuotaAlarmsQuotaDimensionArrayOutputWithContext(context.Context) GetQuotaAlarmsQuotaDimensionArrayOutput
+}
+
+type GetQuotaAlarmsQuotaDimensionArray []GetQuotaAlarmsQuotaDimensionInput
+
+func (GetQuotaAlarmsQuotaDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaAlarmsQuotaDimension)(nil)).Elem()
+}
+
+func (i GetQuotaAlarmsQuotaDimensionArray) ToGetQuotaAlarmsQuotaDimensionArrayOutput() GetQuotaAlarmsQuotaDimensionArrayOutput {
+	return i.ToGetQuotaAlarmsQuotaDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i GetQuotaAlarmsQuotaDimensionArray) ToGetQuotaAlarmsQuotaDimensionArrayOutputWithContext(ctx context.Context) GetQuotaAlarmsQuotaDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaAlarmsQuotaDimensionArrayOutput)
+}
+
+type GetQuotaAlarmsQuotaDimensionOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaAlarmsQuotaDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaAlarmsQuotaDimension)(nil)).Elem()
+}
+
+func (o GetQuotaAlarmsQuotaDimensionOutput) ToGetQuotaAlarmsQuotaDimensionOutput() GetQuotaAlarmsQuotaDimensionOutput {
+	return o
+}
+
+func (o GetQuotaAlarmsQuotaDimensionOutput) ToGetQuotaAlarmsQuotaDimensionOutputWithContext(ctx context.Context) GetQuotaAlarmsQuotaDimensionOutput {
+	return o
+}
+
+// The key of quota_dimensions.
+func (o GetQuotaAlarmsQuotaDimensionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsQuotaDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The value of quota_dimensions.
+func (o GetQuotaAlarmsQuotaDimensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetQuotaAlarmsQuotaDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetQuotaAlarmsQuotaDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaAlarmsQuotaDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaAlarmsQuotaDimension)(nil)).Elem()
+}
+
+func (o GetQuotaAlarmsQuotaDimensionArrayOutput) ToGetQuotaAlarmsQuotaDimensionArrayOutput() GetQuotaAlarmsQuotaDimensionArrayOutput {
+	return o
+}
+
+func (o GetQuotaAlarmsQuotaDimensionArrayOutput) ToGetQuotaAlarmsQuotaDimensionArrayOutputWithContext(ctx context.Context) GetQuotaAlarmsQuotaDimensionArrayOutput {
+	return o
+}
+
+func (o GetQuotaAlarmsQuotaDimensionArrayOutput) Index(i pulumi.IntInput) GetQuotaAlarmsQuotaDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQuotaAlarmsQuotaDimension {
+		return vs[0].([]GetQuotaAlarmsQuotaDimension)[vs[1].(int)]
+	}).(GetQuotaAlarmsQuotaDimensionOutput)
+}
+
 type GetQuotasDimension struct {
 	// The key of dimensions.
 	Key *string `pulumi:"key"`
@@ -874,12 +1361,20 @@ func (o GetQuotasQuotaArrayOutput) Index(i pulumi.IntInput) GetQuotasQuotaOutput
 func init() {
 	pulumi.RegisterOutputType(ApplicationInfoDimensionOutput{})
 	pulumi.RegisterOutputType(ApplicationInfoDimensionArrayOutput{})
+	pulumi.RegisterOutputType(QuotaAlarmQuotaDimensionOutput{})
+	pulumi.RegisterOutputType(QuotaAlarmQuotaDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosDimensionOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosInfoOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosInfoDimensionOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosInfoDimensionArrayOutput{})
+	pulumi.RegisterOutputType(GetQuotaAlarmsAlarmOutput{})
+	pulumi.RegisterOutputType(GetQuotaAlarmsAlarmArrayOutput{})
+	pulumi.RegisterOutputType(GetQuotaAlarmsAlarmQuotaDimensionOutput{})
+	pulumi.RegisterOutputType(GetQuotaAlarmsAlarmQuotaDimensionArrayOutput{})
+	pulumi.RegisterOutputType(GetQuotaAlarmsQuotaDimensionOutput{})
+	pulumi.RegisterOutputType(GetQuotaAlarmsQuotaDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetQuotasDimensionOutput{})
 	pulumi.RegisterOutputType(GetQuotasDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetQuotasQuotaOutput{})

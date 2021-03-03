@@ -71,6 +71,7 @@ export interface ProviderEndpoint {
     resourcemanager?: pulumi.Input<string>;
     resourcesharing?: pulumi.Input<string>;
     ros?: pulumi.Input<string>;
+    sgw?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
     sts?: pulumi.Input<string>;
     vpc?: pulumi.Input<string>;
@@ -431,6 +432,9 @@ export namespace cfg {
 }
 
 export namespace cloudconnect {
+}
+
+export namespace cloudstoragegateway {
 }
 
 export namespace cms {
@@ -2258,6 +2262,17 @@ export namespace quotas {
         value?: string;
     }
 
+    export interface GetQuotaAlarmsQuotaDimension {
+        /**
+         * The key of quota_dimensions.
+         */
+        key?: string;
+        /**
+         * The value of quota_dimensions.
+         */
+        value?: string;
+    }
+
     export interface GetQuotasDimension {
         /**
          * The key of dimensions.
@@ -2269,6 +2284,16 @@ export namespace quotas {
         value?: string;
     }
 
+    export interface QuotaAlarmQuotaDimension {
+        /**
+         * The Key of quota_dimensions.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The Value of quota_dimensions.
+         */
+        value?: pulumi.Input<string>;
+    }
 }
 
 export namespace ram {
