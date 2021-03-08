@@ -967,15 +967,15 @@ export namespace cs {
          */
         isBondEip?: pulumi.Input<boolean>;
         /**
-         * Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+         * Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
          */
         maxSize: pulumi.Input<number>;
         /**
-         * Max number of instances in a auto scaling group, its valid value range [0~1000].
+         * Min number of instances in a auto scaling group, its valid value range [0~1000].
          */
         minSize: pulumi.Input<number>;
         /**
-         * Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+         * Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
          */
         type?: pulumi.Input<string>;
     }
@@ -2241,24 +2241,12 @@ export namespace pvtz {
 
 export namespace quotas {
     export interface ApplicationInfoDimension {
-        /**
-         * The key of dimensions.
-         */
         key?: pulumi.Input<string>;
-        /**
-         * The value of dimensions.
-         */
         value?: pulumi.Input<string>;
     }
 
     export interface GetApplicationInfosDimension {
-        /**
-         * The key of dimensions.
-         */
         key?: string;
-        /**
-         * The value of dimensions.
-         */
         value?: string;
     }
 
@@ -2269,6 +2257,17 @@ export namespace quotas {
         key?: string;
         /**
          * The value of quota_dimensions.
+         */
+        value?: string;
+    }
+
+    export interface GetQuotaApplicationsDimension {
+        /**
+         * The key of dimensions.
+         */
+        key?: string;
+        /**
+         * The value of dimensions.
          */
         value?: string;
     }
@@ -2291,6 +2290,17 @@ export namespace quotas {
         key?: pulumi.Input<string>;
         /**
          * The Value of quota_dimensions.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface QuotaApplicationDimension {
+        /**
+         * The key of dimensions.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of dimensions.
          */
         value?: pulumi.Input<string>;
     }

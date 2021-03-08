@@ -30,7 +30,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := brain.NewIndustrialPidProject(ctx, "example", &brain.IndustrialPidProjectArgs{
-// 			PidOrganisationId: pulumi.String("3e74e684-cbb5-xxxx"),
+// 			PidOrganizationId: pulumi.String("3e74e684-cbb5-xxxx"),
 // 			PidProjectName:    pulumi.String("tf-testAcc"),
 // 		})
 // 		if err != nil {
@@ -51,8 +51,8 @@ import (
 type IndustrialPidProject struct {
 	pulumi.CustomResourceState
 
-	// The ID of Pid Organisation.
-	PidOrganisationId pulumi.StringOutput `pulumi:"pidOrganisationId"`
+	// The ID of Pid Organization.
+	PidOrganizationId pulumi.StringOutput `pulumi:"pidOrganizationId"`
 	// The description of Pid Project.
 	PidProjectDesc pulumi.StringPtrOutput `pulumi:"pidProjectDesc"`
 	// The name of Pid Project.
@@ -66,8 +66,8 @@ func NewIndustrialPidProject(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.PidOrganisationId == nil {
-		return nil, errors.New("invalid value for required argument 'PidOrganisationId'")
+	if args.PidOrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'PidOrganizationId'")
 	}
 	if args.PidProjectName == nil {
 		return nil, errors.New("invalid value for required argument 'PidProjectName'")
@@ -94,8 +94,8 @@ func GetIndustrialPidProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IndustrialPidProject resources.
 type industrialPidProjectState struct {
-	// The ID of Pid Organisation.
-	PidOrganisationId *string `pulumi:"pidOrganisationId"`
+	// The ID of Pid Organization.
+	PidOrganizationId *string `pulumi:"pidOrganizationId"`
 	// The description of Pid Project.
 	PidProjectDesc *string `pulumi:"pidProjectDesc"`
 	// The name of Pid Project.
@@ -103,8 +103,8 @@ type industrialPidProjectState struct {
 }
 
 type IndustrialPidProjectState struct {
-	// The ID of Pid Organisation.
-	PidOrganisationId pulumi.StringPtrInput
+	// The ID of Pid Organization.
+	PidOrganizationId pulumi.StringPtrInput
 	// The description of Pid Project.
 	PidProjectDesc pulumi.StringPtrInput
 	// The name of Pid Project.
@@ -116,8 +116,8 @@ func (IndustrialPidProjectState) ElementType() reflect.Type {
 }
 
 type industrialPidProjectArgs struct {
-	// The ID of Pid Organisation.
-	PidOrganisationId string `pulumi:"pidOrganisationId"`
+	// The ID of Pid Organization.
+	PidOrganizationId string `pulumi:"pidOrganizationId"`
 	// The description of Pid Project.
 	PidProjectDesc *string `pulumi:"pidProjectDesc"`
 	// The name of Pid Project.
@@ -126,8 +126,8 @@ type industrialPidProjectArgs struct {
 
 // The set of arguments for constructing a IndustrialPidProject resource.
 type IndustrialPidProjectArgs struct {
-	// The ID of Pid Organisation.
-	PidOrganisationId pulumi.StringInput
+	// The ID of Pid Organization.
+	PidOrganizationId pulumi.StringInput
 	// The description of Pid Project.
 	PidProjectDesc pulumi.StringPtrInput
 	// The name of Pid Project.

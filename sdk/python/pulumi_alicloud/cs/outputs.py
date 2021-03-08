@@ -1398,12 +1398,12 @@ class NodePoolScalingConfig(dict):
                  is_bond_eip: Optional[bool] = None,
                  type: Optional[str] = None):
         """
-        :param int max_size: Min number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
-        :param int min_size: Max number of instances in a auto scaling group, its valid value range [0~1000].
+        :param int max_size: Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        :param int min_size: Min number of instances in a auto scaling group, its valid value range [0~1000].
         :param int eip_bandwidth: Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
         :param str eip_internet_charge_type: EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
         :param bool is_bond_eip: Whether to bind EIP for an instance. Default: `false`.
-        :param str type: Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+        :param str type: Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
         """
         pulumi.set(__self__, "max_size", max_size)
         pulumi.set(__self__, "min_size", min_size)
@@ -1420,7 +1420,7 @@ class NodePoolScalingConfig(dict):
     @pulumi.getter(name="maxSize")
     def max_size(self) -> int:
         """
-        Min number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
         """
         return pulumi.get(self, "max_size")
 
@@ -1428,7 +1428,7 @@ class NodePoolScalingConfig(dict):
     @pulumi.getter(name="minSize")
     def min_size(self) -> int:
         """
-        Max number of instances in a auto scaling group, its valid value range [0~1000].
+        Min number of instances in a auto scaling group, its valid value range [0~1000].
         """
         return pulumi.get(self, "min_size")
 
@@ -1460,7 +1460,7 @@ class NodePoolScalingConfig(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+        Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
         """
         return pulumi.get(self, "type")
 

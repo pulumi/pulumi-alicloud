@@ -7,29 +7,25 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.Quotas.Outputs
+namespace Pulumi.AliCloud.Quotas.Inputs
 {
 
-    [OutputType]
-    public sealed class GetApplicationInfosInfoDimensionResult
+    public sealed class QuotaApplicationDimensionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of dimensions.
         /// </summary>
-        public readonly string Key;
+        [Input("key")]
+        public Input<string>? Key { get; set; }
+
         /// <summary>
         /// The value of dimensions.
         /// </summary>
-        public readonly string Value;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
-        [OutputConstructor]
-        private GetApplicationInfosInfoDimensionResult(
-            string key,
-
-            string value)
+        public QuotaApplicationDimensionArgs()
         {
-            Key = key;
-            Value = value;
         }
     }
 }

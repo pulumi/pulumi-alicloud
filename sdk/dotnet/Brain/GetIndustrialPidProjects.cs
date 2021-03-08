@@ -77,10 +77,10 @@ namespace Pulumi.AliCloud.Brain
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of Pid Organisation.
+        /// The ID of Pid Organization.
         /// </summary>
-        [Input("pidOrganisationId")]
-        public string? PidOrganisationId { get; set; }
+        [Input("pidOrganizationId")]
+        public string? PidOrganizationId { get; set; }
 
         /// <summary>
         /// The name of Pid Project.
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Brain
         public readonly string? NameRegex;
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        public readonly string? PidOrganisationId;
+        public readonly string? PidOrganizationId;
         public readonly string? PidProjectName;
         public readonly ImmutableArray<Outputs.GetIndustrialPidProjectsProjectResult> Projects;
 
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Brain
 
             string? outputFile,
 
-            string? pidOrganisationId,
+            string? pidOrganizationId,
 
             string? pidProjectName,
 
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Brain
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            PidOrganisationId = pidOrganisationId;
+            PidOrganizationId = pidOrganizationId;
             PidProjectName = pidProjectName;
             Projects = projects;
         }

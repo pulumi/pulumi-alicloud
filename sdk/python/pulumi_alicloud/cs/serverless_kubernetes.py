@@ -25,6 +25,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
+                 load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
@@ -59,6 +60,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
         :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
@@ -95,6 +97,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__['endpoint_public_access_enabled'] = endpoint_public_access_enabled
             __props__['force_update'] = force_update
             __props__['kube_config'] = kube_config
+            __props__['load_balancer_spec'] = load_balancer_spec
             __props__['name'] = name
             __props__['name_prefix'] = name_prefix
             __props__['new_nat_gateway'] = new_nat_gateway
@@ -129,6 +132,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
             force_update: Optional[pulumi.Input[bool]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
+            load_balancer_spec: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
@@ -156,6 +160,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
         :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
@@ -179,6 +184,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
         __props__["force_update"] = force_update
         __props__["kube_config"] = kube_config
+        __props__["load_balancer_spec"] = load_balancer_spec
         __props__["name"] = name
         __props__["name_prefix"] = name_prefix
         __props__["new_nat_gateway"] = new_nat_gateway
@@ -254,6 +260,14 @@ class ServerlessKubernetes(pulumi.CustomResource):
         The path of kube config, like `~/.kube/config`.
         """
         return pulumi.get(self, "kube_config")
+
+    @property
+    @pulumi.getter(name="loadBalancerSpec")
+    def load_balancer_spec(self) -> pulumi.Output[Optional[str]]:
+        """
+        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        """
+        return pulumi.get(self, "load_balancer_spec")
 
     @property
     @pulumi.getter

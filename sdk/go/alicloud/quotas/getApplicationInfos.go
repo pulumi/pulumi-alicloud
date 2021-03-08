@@ -7,38 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// This data source provides the Quotas Application Infos of the current Alibaba Cloud user.
-//
-// > **NOTE:** Available in v1.115.0+.
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/quotas"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := quotas.GetApplicationInfos(ctx, &quotas.GetApplicationInfosArgs{
-// 			ProductCode: "ess",
-// 			Ids: []string{
-// 				"4621F886-81E9-xxxx-xxxx",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstQuotasApplicationInfoId", example.Infos[0].Id)
-// 		return nil
-// 	})
-// }
-// ```
 func GetApplicationInfos(ctx *pulumi.Context, args *GetApplicationInfosArgs, opts ...pulumi.InvokeOption) (*GetApplicationInfosResult, error) {
 	var rv GetApplicationInfosResult
 	err := ctx.Invoke("alicloud:quotas/getApplicationInfos:getApplicationInfos", args, &rv, opts...)
@@ -50,34 +18,29 @@ func GetApplicationInfos(ctx *pulumi.Context, args *GetApplicationInfosArgs, opt
 
 // A collection of arguments for invoking getApplicationInfos.
 type GetApplicationInfosArgs struct {
-	// The quota dimensions.
-	Dimensions []GetApplicationInfosDimension `pulumi:"dimensions"`
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
-	EnableDetails *bool `pulumi:"enableDetails"`
-	// A list of Application Info IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
-	// The product code.
-	ProductCode string `pulumi:"productCode"`
-	// The ID of quota action..
-	QuotaActionCode *string `pulumi:"quotaActionCode"`
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
-	QuotaCategory *string `pulumi:"quotaCategory"`
-	// The status of the quota application.
-	Status *string `pulumi:"status"`
+	Dimensions      []GetApplicationInfosDimension `pulumi:"dimensions"`
+	EnableDetails   *bool                          `pulumi:"enableDetails"`
+	Ids             []string                       `pulumi:"ids"`
+	KeyWord         *string                        `pulumi:"keyWord"`
+	OutputFile      *string                        `pulumi:"outputFile"`
+	ProductCode     string                         `pulumi:"productCode"`
+	QuotaActionCode *string                        `pulumi:"quotaActionCode"`
+	QuotaCategory   *string                        `pulumi:"quotaCategory"`
+	Status          *string                        `pulumi:"status"`
 }
 
 // A collection of values returned by getApplicationInfos.
 type GetApplicationInfosResult struct {
-	Dimensions    []GetApplicationInfosDimension `pulumi:"dimensions"`
-	EnableDetails *bool                          `pulumi:"enableDetails"`
+	Applications  []GetApplicationInfosApplication `pulumi:"applications"`
+	Dimensions    []GetApplicationInfosDimension   `pulumi:"dimensions"`
+	EnableDetails *bool                            `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                    `pulumi:"id"`
-	Ids             []string                  `pulumi:"ids"`
-	Infos           []GetApplicationInfosInfo `pulumi:"infos"`
-	OutputFile      *string                   `pulumi:"outputFile"`
-	ProductCode     string                    `pulumi:"productCode"`
-	QuotaActionCode *string                   `pulumi:"quotaActionCode"`
-	QuotaCategory   *string                   `pulumi:"quotaCategory"`
-	Status          *string                   `pulumi:"status"`
+	Id              string   `pulumi:"id"`
+	Ids             []string `pulumi:"ids"`
+	KeyWord         *string  `pulumi:"keyWord"`
+	OutputFile      *string  `pulumi:"outputFile"`
+	ProductCode     string   `pulumi:"productCode"`
+	QuotaActionCode *string  `pulumi:"quotaActionCode"`
+	QuotaCategory   *string  `pulumi:"quotaCategory"`
+	Status          *string  `pulumi:"status"`
 }

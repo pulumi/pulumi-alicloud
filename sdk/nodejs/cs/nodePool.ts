@@ -5,17 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * This resource will help you to manager node pool in Kubernetes Cluster.
- *
- * > **NOTE:** Available in 1.97.0+.
- *
- * > **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
- *
- * > **NOTE:** From version 1.109.1, support remove node pool nodes.
- *
- * > **NOTE:** From version 1.111.0, support auto scaling node pool.
- */
 export class NodePool extends pulumi.CustomResource {
     /**
      * Get an existing NodePool resource's state with the given name, ID, and optional extra

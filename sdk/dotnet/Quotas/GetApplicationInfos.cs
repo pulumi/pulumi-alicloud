@@ -11,43 +11,6 @@ namespace Pulumi.AliCloud.Quotas
 {
     public static class GetApplicationInfos
     {
-        /// <summary>
-        /// This data source provides the Quotas Application Infos of the current Alibaba Cloud user.
-        /// 
-        /// &gt; **NOTE:** Available in v1.115.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(AliCloud.Quotas.GetApplicationInfos.InvokeAsync(new AliCloud.Quotas.GetApplicationInfosArgs
-        ///         {
-        ///             ProductCode = "ess",
-        ///             Ids = 
-        ///             {
-        ///                 "4621F886-81E9-xxxx-xxxx",
-        ///             },
-        ///         }));
-        ///         this.FirstQuotasApplicationInfoId = example.Apply(example =&gt; example.Infos[0].Id);
-        ///     }
-        /// 
-        ///     [Output("firstQuotasApplicationInfoId")]
-        ///     public Output&lt;string&gt; FirstQuotasApplicationInfoId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetApplicationInfosResult> InvokeAsync(GetApplicationInfosArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosArgs(), options.WithVersion());
     }
@@ -57,58 +20,38 @@ namespace Pulumi.AliCloud.Quotas
     {
         [Input("dimensions")]
         private List<Inputs.GetApplicationInfosDimensionArgs>? _dimensions;
-
-        /// <summary>
-        /// The quota dimensions.
-        /// </summary>
         public List<Inputs.GetApplicationInfosDimensionArgs> Dimensions
         {
             get => _dimensions ?? (_dimensions = new List<Inputs.GetApplicationInfosDimensionArgs>());
             set => _dimensions = value;
         }
 
-        /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
-        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
-
-        /// <summary>
-        /// A list of Application Info IDs.
-        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
 
+        [Input("keyWord")]
+        public string? KeyWord { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
-        /// <summary>
-        /// The product code.
-        /// </summary>
         [Input("productCode", required: true)]
         public string ProductCode { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of quota action..
-        /// </summary>
         [Input("quotaActionCode")]
         public string? QuotaActionCode { get; set; }
 
-        /// <summary>
-        /// The quota category. Valid values: `CommonQuota`, `FlowControl`.
-        /// </summary>
         [Input("quotaCategory")]
         public string? QuotaCategory { get; set; }
 
-        /// <summary>
-        /// The status of the quota application.
-        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
@@ -121,6 +64,7 @@ namespace Pulumi.AliCloud.Quotas
     [OutputType]
     public sealed class GetApplicationInfosResult
     {
+        public readonly ImmutableArray<Outputs.GetApplicationInfosApplicationResult> Applications;
         public readonly ImmutableArray<Outputs.GetApplicationInfosDimensionResult> Dimensions;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -128,7 +72,7 @@ namespace Pulumi.AliCloud.Quotas
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
-        public readonly ImmutableArray<Outputs.GetApplicationInfosInfoResult> Infos;
+        public readonly string? KeyWord;
         public readonly string? OutputFile;
         public readonly string ProductCode;
         public readonly string? QuotaActionCode;
@@ -137,6 +81,8 @@ namespace Pulumi.AliCloud.Quotas
 
         [OutputConstructor]
         private GetApplicationInfosResult(
+            ImmutableArray<Outputs.GetApplicationInfosApplicationResult> applications,
+
             ImmutableArray<Outputs.GetApplicationInfosDimensionResult> dimensions,
 
             bool? enableDetails,
@@ -145,7 +91,7 @@ namespace Pulumi.AliCloud.Quotas
 
             ImmutableArray<string> ids,
 
-            ImmutableArray<Outputs.GetApplicationInfosInfoResult> infos,
+            string? keyWord,
 
             string? outputFile,
 
@@ -157,11 +103,12 @@ namespace Pulumi.AliCloud.Quotas
 
             string? status)
         {
+            Applications = applications;
             Dimensions = dimensions;
             EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
-            Infos = infos;
+            KeyWord = keyWord;
             OutputFile = outputFile;
             ProductCode = productCode;
             QuotaActionCode = quotaActionCode;

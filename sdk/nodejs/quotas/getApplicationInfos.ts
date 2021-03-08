@@ -5,26 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * This data source provides the Quotas Application Infos of the current Alibaba Cloud user.
- *
- * > **NOTE:** Available in v1.115.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.quotas.getApplicationInfos({
- *     productCode: "ess",
- *     ids: ["4621F886-81E9-xxxx-xxxx"],
- * });
- * export const firstQuotasApplicationInfoId = example.then(example => example.infos[0].id);
- * ```
- */
 export function getApplicationInfos(args: GetApplicationInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationInfosResult> {
     if (!opts) {
         opts = {}
@@ -37,6 +17,7 @@ export function getApplicationInfos(args: GetApplicationInfosArgs, opts?: pulumi
         "dimensions": args.dimensions,
         "enableDetails": args.enableDetails,
         "ids": args.ids,
+        "keyWord": args.keyWord,
         "outputFile": args.outputFile,
         "productCode": args.productCode,
         "quotaActionCode": args.quotaActionCode,
@@ -49,34 +30,14 @@ export function getApplicationInfos(args: GetApplicationInfosArgs, opts?: pulumi
  * A collection of arguments for invoking getApplicationInfos.
  */
 export interface GetApplicationInfosArgs {
-    /**
-     * The quota dimensions.
-     */
     readonly dimensions?: inputs.quotas.GetApplicationInfosDimension[];
-    /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
-     */
     readonly enableDetails?: boolean;
-    /**
-     * A list of Application Info IDs.
-     */
     readonly ids?: string[];
+    readonly keyWord?: string;
     readonly outputFile?: string;
-    /**
-     * The product code.
-     */
     readonly productCode: string;
-    /**
-     * The ID of quota action..
-     */
     readonly quotaActionCode?: string;
-    /**
-     * The quota category. Valid values: `CommonQuota`, `FlowControl`.
-     */
     readonly quotaCategory?: string;
-    /**
-     * The status of the quota application.
-     */
     readonly status?: string;
 }
 
@@ -84,6 +45,7 @@ export interface GetApplicationInfosArgs {
  * A collection of values returned by getApplicationInfos.
  */
 export interface GetApplicationInfosResult {
+    readonly applications: outputs.quotas.GetApplicationInfosApplication[];
     readonly dimensions?: outputs.quotas.GetApplicationInfosDimension[];
     readonly enableDetails?: boolean;
     /**
@@ -91,7 +53,7 @@ export interface GetApplicationInfosResult {
      */
     readonly id: string;
     readonly ids: string[];
-    readonly infos: outputs.quotas.GetApplicationInfosInfo[];
+    readonly keyWord?: string;
     readonly outputFile?: string;
     readonly productCode: string;
     readonly quotaActionCode?: string;

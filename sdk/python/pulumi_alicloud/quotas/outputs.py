@@ -12,12 +12,16 @@ from . import outputs
 __all__ = [
     'ApplicationInfoDimension',
     'QuotaAlarmQuotaDimension',
+    'QuotaApplicationDimension',
+    'GetApplicationInfosApplicationResult',
+    'GetApplicationInfosApplicationDimensionResult',
     'GetApplicationInfosDimensionResult',
-    'GetApplicationInfosInfoResult',
-    'GetApplicationInfosInfoDimensionResult',
     'GetQuotaAlarmsAlarmResult',
     'GetQuotaAlarmsAlarmQuotaDimensionResult',
     'GetQuotaAlarmsQuotaDimensionResult',
+    'GetQuotaApplicationsApplicationResult',
+    'GetQuotaApplicationsApplicationDimensionResult',
+    'GetQuotaApplicationsDimensionResult',
     'GetQuotasDimensionResult',
     'GetQuotasQuotaResult',
 ]
@@ -27,10 +31,6 @@ class ApplicationInfoDimension(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
-        """
-        :param str key: The key of dimensions.
-        :param str value: The value of dimensions.
-        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -39,17 +39,11 @@ class ApplicationInfoDimension(dict):
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
-        """
-        The key of dimensions.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The value of dimensions.
-        """
         return pulumi.get(self, "value")
 
     def _translate_property(self, prop):
@@ -91,7 +85,7 @@ class QuotaAlarmQuotaDimension(dict):
 
 
 @pulumi.output_type
-class GetApplicationInfosDimensionResult(dict):
+class QuotaApplicationDimension(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
@@ -120,15 +114,18 @@ class GetApplicationInfosDimensionResult(dict):
         """
         return pulumi.get(self, "value")
 
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
-class GetApplicationInfosInfoResult(dict):
+class GetApplicationInfosApplicationResult(dict):
     def __init__(__self__, *,
                  application_id: str,
                  approve_value: str,
                  audit_reason: str,
                  desire_value: float,
-                 dimensions: Sequence['outputs.GetApplicationInfosInfoDimensionResult'],
+                 dimensions: Sequence['outputs.GetApplicationInfosApplicationDimensionResult'],
                  effective_time: str,
                  expire_time: str,
                  id: str,
@@ -140,24 +137,6 @@ class GetApplicationInfosInfoResult(dict):
                  quota_unit: str,
                  reason: str,
                  status: str):
-        """
-        :param str application_id: The first ID of the resource.
-        :param str approve_value: The approve value.
-        :param str audit_reason: The audit reason.
-        :param float desire_value: The desire value of the quota application.
-        :param Sequence['GetApplicationInfosInfoDimensionArgs'] dimensions: The quota dimensions.
-        :param str effective_time: The effective time.
-        :param str expire_time: The expire time.
-        :param str id: The ID of the Application Info.
-        :param int notice_type: The notice type.
-        :param str product_code: The product code.
-        :param str quota_action_code: The ID of quota action..
-        :param str quota_description: The description of the quota.
-        :param str quota_name: The name of the quota.
-        :param str quota_unit: The quota unit.
-        :param str reason: The reason of the quota application.
-        :param str status: The status of the quota application.
-        """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "approve_value", approve_value)
         pulumi.set(__self__, "audit_reason", audit_reason)
@@ -178,158 +157,121 @@ class GetApplicationInfosInfoResult(dict):
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
-        """
-        The first ID of the resource.
-        """
         return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="approveValue")
     def approve_value(self) -> str:
-        """
-        The approve value.
-        """
         return pulumi.get(self, "approve_value")
 
     @property
     @pulumi.getter(name="auditReason")
     def audit_reason(self) -> str:
-        """
-        The audit reason.
-        """
         return pulumi.get(self, "audit_reason")
 
     @property
     @pulumi.getter(name="desireValue")
     def desire_value(self) -> float:
-        """
-        The desire value of the quota application.
-        """
         return pulumi.get(self, "desire_value")
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Sequence['outputs.GetApplicationInfosInfoDimensionResult']:
-        """
-        The quota dimensions.
-        """
+    def dimensions(self) -> Sequence['outputs.GetApplicationInfosApplicationDimensionResult']:
         return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> str:
-        """
-        The effective time.
-        """
         return pulumi.get(self, "effective_time")
 
     @property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> str:
-        """
-        The expire time.
-        """
         return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the Application Info.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="noticeType")
     def notice_type(self) -> int:
-        """
-        The notice type.
-        """
         return pulumi.get(self, "notice_type")
 
     @property
     @pulumi.getter(name="productCode")
     def product_code(self) -> str:
-        """
-        The product code.
-        """
         return pulumi.get(self, "product_code")
 
     @property
     @pulumi.getter(name="quotaActionCode")
     def quota_action_code(self) -> str:
-        """
-        The ID of quota action..
-        """
         return pulumi.get(self, "quota_action_code")
 
     @property
     @pulumi.getter(name="quotaDescription")
     def quota_description(self) -> str:
-        """
-        The description of the quota.
-        """
         return pulumi.get(self, "quota_description")
 
     @property
     @pulumi.getter(name="quotaName")
     def quota_name(self) -> str:
-        """
-        The name of the quota.
-        """
         return pulumi.get(self, "quota_name")
 
     @property
     @pulumi.getter(name="quotaUnit")
     def quota_unit(self) -> str:
-        """
-        The quota unit.
-        """
         return pulumi.get(self, "quota_unit")
 
     @property
     @pulumi.getter
     def reason(self) -> str:
-        """
-        The reason of the quota application.
-        """
         return pulumi.get(self, "reason")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The status of the quota application.
-        """
         return pulumi.get(self, "status")
 
 
 @pulumi.output_type
-class GetApplicationInfosInfoDimensionResult(dict):
+class GetApplicationInfosApplicationDimensionResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        """
-        :param str key: The key of dimensions.
-        :param str value: The value of dimensions.
-        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
-        """
-        The key of dimensions.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        The value of dimensions.
-        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetApplicationInfosDimensionResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
 
 
@@ -495,6 +437,249 @@ class GetQuotaAlarmsQuotaDimensionResult(dict):
     def value(self) -> Optional[str]:
         """
         The value of quota_dimensions.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetQuotaApplicationsApplicationResult(dict):
+    def __init__(__self__, *,
+                 application_id: str,
+                 approve_value: str,
+                 audit_reason: str,
+                 desire_value: float,
+                 dimensions: Sequence['outputs.GetQuotaApplicationsApplicationDimensionResult'],
+                 effective_time: str,
+                 expire_time: str,
+                 id: str,
+                 notice_type: int,
+                 product_code: str,
+                 quota_action_code: str,
+                 quota_description: str,
+                 quota_name: str,
+                 quota_unit: str,
+                 reason: str,
+                 status: str):
+        """
+        :param str application_id: The first ID of the resource.
+        :param str approve_value: The approve value.
+        :param str audit_reason: The audit reason.
+        :param float desire_value: The desire value of the quota application.
+        :param Sequence['GetQuotaApplicationsApplicationDimensionArgs'] dimensions: The quota dimensions.
+        :param str effective_time: The effective time.
+        :param str expire_time: The expire time.
+        :param str id: The ID of the Application Info.
+        :param int notice_type: The notice type.
+        :param str product_code: The product code.
+        :param str quota_action_code: The ID of quota action..
+        :param str quota_description: The description of the quota.
+        :param str quota_name: The name of the quota.
+        :param str quota_unit: The quota unit.
+        :param str reason: The reason of the quota application.
+        :param str status: The status of the quota application.
+        """
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "approve_value", approve_value)
+        pulumi.set(__self__, "audit_reason", audit_reason)
+        pulumi.set(__self__, "desire_value", desire_value)
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "effective_time", effective_time)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "notice_type", notice_type)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "quota_action_code", quota_action_code)
+        pulumi.set(__self__, "quota_description", quota_description)
+        pulumi.set(__self__, "quota_name", quota_name)
+        pulumi.set(__self__, "quota_unit", quota_unit)
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="approveValue")
+    def approve_value(self) -> str:
+        """
+        The approve value.
+        """
+        return pulumi.get(self, "approve_value")
+
+    @property
+    @pulumi.getter(name="auditReason")
+    def audit_reason(self) -> str:
+        """
+        The audit reason.
+        """
+        return pulumi.get(self, "audit_reason")
+
+    @property
+    @pulumi.getter(name="desireValue")
+    def desire_value(self) -> float:
+        """
+        The desire value of the quota application.
+        """
+        return pulumi.get(self, "desire_value")
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Sequence['outputs.GetQuotaApplicationsApplicationDimensionResult']:
+        """
+        The quota dimensions.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> str:
+        """
+        The effective time.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        The expire time.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Application Info.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="noticeType")
+    def notice_type(self) -> int:
+        """
+        The notice type.
+        """
+        return pulumi.get(self, "notice_type")
+
+    @property
+    @pulumi.getter(name="productCode")
+    def product_code(self) -> str:
+        """
+        The product code.
+        """
+        return pulumi.get(self, "product_code")
+
+    @property
+    @pulumi.getter(name="quotaActionCode")
+    def quota_action_code(self) -> str:
+        """
+        The ID of quota action..
+        """
+        return pulumi.get(self, "quota_action_code")
+
+    @property
+    @pulumi.getter(name="quotaDescription")
+    def quota_description(self) -> str:
+        """
+        The description of the quota.
+        """
+        return pulumi.get(self, "quota_description")
+
+    @property
+    @pulumi.getter(name="quotaName")
+    def quota_name(self) -> str:
+        """
+        The name of the quota.
+        """
+        return pulumi.get(self, "quota_name")
+
+    @property
+    @pulumi.getter(name="quotaUnit")
+    def quota_unit(self) -> str:
+        """
+        The quota unit.
+        """
+        return pulumi.get(self, "quota_unit")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        The reason of the quota application.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the quota application.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetQuotaApplicationsApplicationDimensionResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: The key of dimensions.
+        :param str value: The value of dimensions.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of dimensions.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetQuotaApplicationsDimensionResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The key of dimensions.
+        :param str value: The value of dimensions.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key of dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of dimensions.
         """
         return pulumi.get(self, "value")
 

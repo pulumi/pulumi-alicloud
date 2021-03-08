@@ -5,13 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./getIndustrialPidLoops";
 export * from "./getIndustrialPidOrganizations";
 export * from "./getIndustrialPidProjects";
 export * from "./getIndustrialSerice";
+export * from "./industrialPidLoop";
 export * from "./industrialPidOrganization";
 export * from "./industrialPidProject";
 
 // Import resources to register:
+import { IndustrialPidLoop } from "./industrialPidLoop";
 import { IndustrialPidOrganization } from "./industrialPidOrganization";
 import { IndustrialPidProject } from "./industrialPidProject";
 
@@ -19,6 +22,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:brain/industrialPidLoop:IndustrialPidLoop":
+                return new IndustrialPidLoop(name, <any>undefined, { urn })
             case "alicloud:brain/industrialPidOrganization:IndustrialPidOrganization":
                 return new IndustrialPidOrganization(name, <any>undefined, { urn })
             case "alicloud:brain/industrialPidProject:IndustrialPidProject":
@@ -28,5 +33,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "brain/industrialPidLoop", _module)
 pulumi.runtime.registerResourceModule("alicloud", "brain/industrialPidOrganization", _module)
 pulumi.runtime.registerResourceModule("alicloud", "brain/industrialPidProject", _module)

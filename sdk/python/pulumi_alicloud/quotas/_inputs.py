@@ -11,8 +11,10 @@ from .. import _utilities, _tables
 __all__ = [
     'ApplicationInfoDimensionArgs',
     'QuotaAlarmQuotaDimensionArgs',
+    'QuotaApplicationDimensionArgs',
     'GetApplicationInfosDimensionArgs',
     'GetQuotaAlarmsQuotaDimensionArgs',
+    'GetQuotaApplicationsDimensionArgs',
     'GetQuotasDimensionArgs',
 ]
 
@@ -21,10 +23,6 @@ class ApplicationInfoDimensionArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] key: The key of dimensions.
-        :param pulumi.Input[str] value: The value of dimensions.
-        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -33,9 +31,6 @@ class ApplicationInfoDimensionArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The key of dimensions.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -45,9 +40,6 @@ class ApplicationInfoDimensionArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value of dimensions.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -95,13 +87,13 @@ class QuotaAlarmQuotaDimensionArgs:
 
 
 @pulumi.input_type
-class GetApplicationInfosDimensionArgs:
+class QuotaApplicationDimensionArgs:
     def __init__(__self__, *,
-                 key: Optional[str] = None,
-                 value: Optional[str] = None):
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
         """
-        :param str key: The key of dimensions.
-        :param str value: The value of dimensions.
+        :param pulumi.Input[str] key: The key of dimensions.
+        :param pulumi.Input[str] value: The value of dimensions.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -110,10 +102,42 @@ class GetApplicationInfosDimensionArgs:
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[str]:
+    def key(self) -> Optional[pulumi.Input[str]]:
         """
         The key of dimensions.
         """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of dimensions.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GetApplicationInfosDimensionArgs:
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
         return pulumi.get(self, "key")
 
     @key.setter
@@ -123,9 +147,6 @@ class GetApplicationInfosDimensionArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The value of dimensions.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -164,6 +185,45 @@ class GetQuotaAlarmsQuotaDimensionArgs:
     def value(self) -> Optional[str]:
         """
         The value of quota_dimensions.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GetQuotaApplicationsDimensionArgs:
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The key of dimensions.
+        :param str value: The value of dimensions.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key of dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of dimensions.
         """
         return pulumi.get(self, "value")
 

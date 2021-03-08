@@ -41,16 +41,7 @@ class NodePool(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        This resource will help you to manager node pool in Kubernetes Cluster.
-
-        > **NOTE:** Available in 1.97.0+.
-
-        > **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
-
-        > **NOTE:** From version 1.109.1, support remove node pool nodes.
-
-        > **NOTE:** From version 1.111.0, support auto scaling node pool.
-
+        Create a NodePool resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.

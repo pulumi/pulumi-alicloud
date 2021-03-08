@@ -38,7 +38,7 @@ export function getIndustrialPidProjects(args?: GetIndustrialPidProjectsArgs, op
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
-        "pidOrganisationId": args.pidOrganisationId,
+        "pidOrganizationId": args.pidOrganizationId,
         "pidProjectName": args.pidProjectName,
     }, opts);
 }
@@ -57,9 +57,9 @@ export interface GetIndustrialPidProjectsArgs {
     readonly nameRegex?: string;
     readonly outputFile?: string;
     /**
-     * The ID of Pid Organisation.
+     * The ID of Pid Organization.
      */
-    readonly pidOrganisationId?: string;
+    readonly pidOrganizationId?: string;
     /**
      * The name of Pid Project.
      */
@@ -78,7 +78,7 @@ export interface GetIndustrialPidProjectsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
-    readonly pidOrganisationId?: string;
+    readonly pidOrganizationId?: string;
     readonly pidProjectName?: string;
     readonly projects: outputs.brain.GetIndustrialPidProjectsProject[];
 }

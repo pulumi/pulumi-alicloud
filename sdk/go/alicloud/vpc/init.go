@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewCommonBandwithPackage(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment":
 		r, err = NewCommonBandwithPackageAttachment(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:vpc/flowLog:FlowLog":
+		r, err = NewFlowLog(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:vpc/forwardEntry:ForwardEntry":
 		r, err = NewForwardEntry(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:vpc/hAVip:HAVip":
@@ -81,6 +83,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/commonBandwithPackageAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/flowLog",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

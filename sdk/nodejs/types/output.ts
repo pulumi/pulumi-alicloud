@@ -772,6 +772,43 @@ export namespace apigateway {
 }
 
 export namespace brain {
+    export interface GetIndustrialPidLoopsLoop {
+        /**
+         * The ID of the Pid Loop.
+         */
+        id: string;
+        pidLoopConfiguration: string;
+        /**
+         * The dcs type of Pid Loop.
+         */
+        pidLoopDcsType: string;
+        pidLoopDesc: string;
+        /**
+         * The ID of the Pid Loop.
+         */
+        pidLoopId: string;
+        /**
+         * Whether is crucial Pid Loop.
+         */
+        pidLoopIsCrucial: boolean;
+        /**
+         * The name of Pid Loop.
+         */
+        pidLoopName: string;
+        /**
+         * The type of Pid Loop.
+         */
+        pidLoopType: string;
+        /**
+         * The pid project id.
+         */
+        pidProjectId: string;
+        /**
+         * The status of Pid Loop.
+         */
+        status: string;
+    }
+
     export interface GetIndustrialPidOrganizationsOrganization {
         /**
          * The ID of the Pid Organization.
@@ -801,9 +838,9 @@ export namespace brain {
          */
         id: string;
         /**
-         * The ID of Pid Organisation.
+         * The ID of Pid Organization.
          */
-        pidOrganisationId: string;
+        pidOrganizationId: string;
         /**
          * The description of Pid Project.
          */
@@ -3424,15 +3461,15 @@ export namespace cs {
          */
         isBondEip?: boolean;
         /**
-         * Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+         * Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
          */
         maxSize: number;
         /**
-         * Max number of instances in a auto scaling group, its valid value range [0~1000].
+         * Min number of instances in a auto scaling group, its valid value range [0~1000].
          */
         minSize: number;
         /**
-         * Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+         * Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
          */
         type?: string;
     }
@@ -5111,6 +5148,61 @@ export namespace ecs {
          * The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
          */
         udpTimeout?: number;
+    }
+
+    export interface GetAutoSnapshotPoliciesPolicy {
+        /**
+         * The ID of the Auto Snapshot Policy.
+         */
+        autoSnapshotPolicyId: string;
+        /**
+         * The retention period of the snapshot copied across regions.
+         */
+        copiedSnapshotsRetentionDays: number;
+        /**
+         * The number of disks to which the automatic snapshot policy is applied.
+         */
+        diskNums: number;
+        /**
+         * Specifies whether to enable the system to automatically copy snapshots across regions.
+         */
+        enableCrossRegionCopy: boolean;
+        /**
+         * The ID of the Auto Snapshot Policy.
+         */
+        id: string;
+        /**
+         * The snapshot policy name..
+         */
+        name: string;
+        /**
+         * The automatic snapshot repetition dates.
+         */
+        repeatWeekdays: string[];
+        /**
+         * The snapshot retention time, and the unit of measurement is day.
+         */
+        retentionDays: number;
+        /**
+         * The status of Auto Snapshot Policy.
+         */
+        status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The destination region to which the snapshot is copied.
+         */
+        targetCopyRegions: string[];
+        /**
+         * The automatic snapshot creation schedule, and the unit of measurement is hour.
+         */
+        timePoints: string[];
+        /**
+         * The number of extended volumes on which this policy is enabled.
+         */
+        volumeNums: number;
     }
 
     export interface GetCommandsCommand {
@@ -10586,103 +10678,37 @@ export namespace pvtz {
 
 export namespace quotas {
     export interface ApplicationInfoDimension {
-        /**
-         * The key of dimensions.
-         */
         key?: string;
-        /**
-         * The value of dimensions.
-         */
         value?: string;
     }
 
-    export interface GetApplicationInfosDimension {
-        /**
-         * The key of dimensions.
-         */
-        key?: string;
-        /**
-         * The value of dimensions.
-         */
-        value?: string;
-    }
-
-    export interface GetApplicationInfosInfo {
-        /**
-         * The first ID of the resource.
-         */
+    export interface GetApplicationInfosApplication {
         applicationId: string;
-        /**
-         * The approve value.
-         */
         approveValue: string;
-        /**
-         * The audit reason.
-         */
         auditReason: string;
-        /**
-         * The desire value of the quota application.
-         */
         desireValue: number;
-        /**
-         * The quota dimensions.
-         */
-        dimensions: outputs.quotas.GetApplicationInfosInfoDimension[];
-        /**
-         * The effective time.
-         */
+        dimensions: outputs.quotas.GetApplicationInfosApplicationDimension[];
         effectiveTime: string;
-        /**
-         * The expire time.
-         */
         expireTime: string;
-        /**
-         * The ID of the Application Info.
-         */
         id: string;
-        /**
-         * The notice type.
-         */
         noticeType: number;
-        /**
-         * The product code.
-         */
         productCode: string;
-        /**
-         * The ID of quota action..
-         */
         quotaActionCode: string;
-        /**
-         * The description of the quota.
-         */
         quotaDescription: string;
-        /**
-         * The name of the quota.
-         */
         quotaName: string;
-        /**
-         * The quota unit.
-         */
         quotaUnit: string;
-        /**
-         * The reason of the quota application.
-         */
         reason: string;
-        /**
-         * The status of the quota application.
-         */
         status: string;
     }
 
-    export interface GetApplicationInfosInfoDimension {
-        /**
-         * The key of dimensions.
-         */
+    export interface GetApplicationInfosApplicationDimension {
         key: string;
-        /**
-         * The value of dimensions.
-         */
         value: string;
+    }
+
+    export interface GetApplicationInfosDimension {
+        key?: string;
+        value?: string;
     }
 
     export interface GetQuotaAlarmsAlarm {
@@ -10742,6 +10768,95 @@ export namespace quotas {
         key?: string;
         /**
          * The value of quota_dimensions.
+         */
+        value?: string;
+    }
+
+    export interface GetQuotaApplicationsApplication {
+        /**
+         * The first ID of the resource.
+         */
+        applicationId: string;
+        /**
+         * The approve value.
+         */
+        approveValue: string;
+        /**
+         * The audit reason.
+         */
+        auditReason: string;
+        /**
+         * The desire value of the quota application.
+         */
+        desireValue: number;
+        /**
+         * The quota dimensions.
+         */
+        dimensions: outputs.quotas.GetQuotaApplicationsApplicationDimension[];
+        /**
+         * The effective time.
+         */
+        effectiveTime: string;
+        /**
+         * The expire time.
+         */
+        expireTime: string;
+        /**
+         * The ID of the Application Info.
+         */
+        id: string;
+        /**
+         * The notice type.
+         */
+        noticeType: number;
+        /**
+         * The product code.
+         */
+        productCode: string;
+        /**
+         * The ID of quota action..
+         */
+        quotaActionCode: string;
+        /**
+         * The description of the quota.
+         */
+        quotaDescription: string;
+        /**
+         * The name of the quota.
+         */
+        quotaName: string;
+        /**
+         * The quota unit.
+         */
+        quotaUnit: string;
+        /**
+         * The reason of the quota application.
+         */
+        reason: string;
+        /**
+         * The status of the quota application.
+         */
+        status: string;
+    }
+
+    export interface GetQuotaApplicationsApplicationDimension {
+        /**
+         * The key of dimensions.
+         */
+        key: string;
+        /**
+         * The value of dimensions.
+         */
+        value: string;
+    }
+
+    export interface GetQuotaApplicationsDimension {
+        /**
+         * The key of dimensions.
+         */
+        key?: string;
+        /**
+         * The value of dimensions.
          */
         value?: string;
     }
@@ -10819,6 +10934,17 @@ export namespace quotas {
         key?: string;
         /**
          * The Value of quota_dimensions.
+         */
+        value?: string;
+    }
+
+    export interface QuotaApplicationDimension {
+        /**
+         * The key of dimensions.
+         */
+        key?: string;
+        /**
+         * The value of dimensions.
          */
         value?: string;
     }

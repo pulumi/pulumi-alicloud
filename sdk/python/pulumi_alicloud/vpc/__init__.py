@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .common_bandwith_package import *
 from .common_bandwith_package_attachment import *
+from .flow_log import *
 from .forward_entry import *
 from .get_common_bandwidth_packages import *
 from .get_enhanced_nat_available_zones import *
@@ -54,6 +55,8 @@ def _register_module():
                 return CommonBandwithPackage(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment":
                 return CommonBandwithPackageAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:vpc/flowLog:FlowLog":
+                return FlowLog(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:vpc/forwardEntry:ForwardEntry":
                 return ForwardEntry(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:vpc/hAVip:HAVip":
@@ -97,6 +100,7 @@ def _register_module():
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "vpc/commonBandwithPackage", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/commonBandwithPackageAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "vpc/flowLog", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/forwardEntry", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/hAVip", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "vpc/hAVipAttachment", _module_instance)

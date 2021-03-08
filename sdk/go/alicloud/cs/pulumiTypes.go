@@ -3898,11 +3898,11 @@ type NodePoolScalingConfig struct {
 	EipInternetChargeType *string `pulumi:"eipInternetChargeType"`
 	// Whether to bind EIP for an instance. Default: `false`.
 	IsBondEip *bool `pulumi:"isBondEip"`
-	// Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+	// Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
 	MaxSize int `pulumi:"maxSize"`
-	// Max number of instances in a auto scaling group, its valid value range [0~1000].
+	// Min number of instances in a auto scaling group, its valid value range [0~1000].
 	MinSize int `pulumi:"minSize"`
-	// Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+	// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
 	Type *string `pulumi:"type"`
 }
 
@@ -3924,11 +3924,11 @@ type NodePoolScalingConfigArgs struct {
 	EipInternetChargeType pulumi.StringPtrInput `pulumi:"eipInternetChargeType"`
 	// Whether to bind EIP for an instance. Default: `false`.
 	IsBondEip pulumi.BoolPtrInput `pulumi:"isBondEip"`
-	// Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+	// Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
 	MaxSize pulumi.IntInput `pulumi:"maxSize"`
-	// Max number of instances in a auto scaling group, its valid value range [0~1000].
+	// Min number of instances in a auto scaling group, its valid value range [0~1000].
 	MinSize pulumi.IntInput `pulumi:"minSize"`
-	// Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+	// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -4024,17 +4024,17 @@ func (o NodePoolScalingConfigOutput) IsBondEip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolScalingConfig) *bool { return v.IsBondEip }).(pulumi.BoolPtrOutput)
 }
 
-// Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+// Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
 func (o NodePoolScalingConfigOutput) MaxSize() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolScalingConfig) int { return v.MaxSize }).(pulumi.IntOutput)
 }
 
-// Max number of instances in a auto scaling group, its valid value range [0~1000].
+// Min number of instances in a auto scaling group, its valid value range [0~1000].
 func (o NodePoolScalingConfigOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolScalingConfig) int { return v.MinSize }).(pulumi.IntOutput)
 }
 
-// Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
 func (o NodePoolScalingConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolScalingConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -4087,7 +4087,7 @@ func (o NodePoolScalingConfigPtrOutput) IsBondEip() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Min number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+// Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
 func (o NodePoolScalingConfigPtrOutput) MaxSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolScalingConfig) *int {
 		if v == nil {
@@ -4097,7 +4097,7 @@ func (o NodePoolScalingConfigPtrOutput) MaxSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Max number of instances in a auto scaling group, its valid value range [0~1000].
+// Min number of instances in a auto scaling group, its valid value range [0~1000].
 func (o NodePoolScalingConfigPtrOutput) MinSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolScalingConfig) *int {
 		if v == nil {
@@ -4107,7 +4107,7 @@ func (o NodePoolScalingConfigPtrOutput) MinSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
 func (o NodePoolScalingConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolScalingConfig) *string {
 		if v == nil {

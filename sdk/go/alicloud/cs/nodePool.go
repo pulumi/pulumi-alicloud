@@ -11,15 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// This resource will help you to manager node pool in Kubernetes Cluster.
-//
-// > **NOTE:** Available in 1.97.0+.
-//
-// > **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
-//
-// > **NOTE:** From version 1.109.1, support remove node pool nodes.
-//
-// > **NOTE:** From version 1.111.0, support auto scaling node pool.
 type NodePool struct {
 	pulumi.CustomResourceState
 

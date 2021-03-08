@@ -56,8 +56,8 @@ type GetIndustrialPidProjectsArgs struct {
 	// A regex string to filter results by Pid Project name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of Pid Organisation.
-	PidOrganisationId *string `pulumi:"pidOrganisationId"`
+	// The ID of Pid Organization.
+	PidOrganizationId *string `pulumi:"pidOrganizationId"`
 	// The name of Pid Project.
 	PidProjectName *string `pulumi:"pidProjectName"`
 }
@@ -70,7 +70,7 @@ type GetIndustrialPidProjectsResult struct {
 	NameRegex         *string                           `pulumi:"nameRegex"`
 	Names             []string                          `pulumi:"names"`
 	OutputFile        *string                           `pulumi:"outputFile"`
-	PidOrganisationId *string                           `pulumi:"pidOrganisationId"`
+	PidOrganizationId *string                           `pulumi:"pidOrganizationId"`
 	PidProjectName    *string                           `pulumi:"pidProjectName"`
 	Projects          []GetIndustrialPidProjectsProject `pulumi:"projects"`
 }

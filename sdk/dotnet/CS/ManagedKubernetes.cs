@@ -159,6 +159,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> KubeConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// </summary>
+        [Output("loadBalancerSpec")]
+        public Output<string?> LoadBalancerSpec { get; private set; } = null!;
+
+        /// <summary>
         /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
         /// </summary>
         [Output("maintenanceWindow")]
@@ -605,6 +611,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? KubeConfig { get; set; }
 
         /// <summary>
+        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// </summary>
+        [Input("loadBalancerSpec")]
+        public Input<string>? LoadBalancerSpec { get; set; }
+
+        /// <summary>
         /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
         /// </summary>
         [Input("maintenanceWindow")]
@@ -1026,6 +1038,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
+
+        /// <summary>
+        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// </summary>
+        [Input("loadBalancerSpec")]
+        public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
         /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.

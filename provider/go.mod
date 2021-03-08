@@ -5,7 +5,7 @@ go 1.14
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
 	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v0.0.0-20181010200618-458213699411
-	github.com/denverdino/aliyungo => github.com/denverdino/aliyungo v0.0.0-20201218084154-7630293abb83
+	github.com/denverdino/aliyungo => github.com/denverdino/aliyungo v0.0.0-20210222084345-ddfe3452f5e8
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	k8s.io/api => k8s.io/api v0.0.0-20190409021203-6e4e0e4f393b
@@ -13,7 +13,7 @@ replace (
 )
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.116.0
+	github.com/aliyun/terraform-provider-alicloud v1.117.0
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.19.0
 	github.com/pulumi/pulumi/sdk/v2 v2.20.1-0.20210212181059-f4b0fa86fedc

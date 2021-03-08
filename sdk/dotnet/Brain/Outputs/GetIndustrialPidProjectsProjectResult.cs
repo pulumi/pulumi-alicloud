@@ -18,9 +18,9 @@ namespace Pulumi.AliCloud.Brain.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of Pid Organisation.
+        /// The ID of Pid Organization.
         /// </summary>
-        public readonly string PidOrganisationId;
+        public readonly string PidOrganizationId;
         /// <summary>
         /// The description of Pid Project.
         /// </summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Brain.Outputs
         private GetIndustrialPidProjectsProjectResult(
             string id,
 
-            string pidOrganisationId,
+            string pidOrganizationId,
 
             string pidProjectDesc,
 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Brain.Outputs
             string pidProjectName)
         {
             Id = id;
-            PidOrganisationId = pidOrganisationId;
+            PidOrganizationId = pidOrganizationId;
             PidProjectDesc = pidProjectDesc;
             PidProjectId = pidProjectId;
             PidProjectName = pidProjectName;

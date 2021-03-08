@@ -10,43 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides an ECS snapshot policy resource.
-    /// 
-    /// For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-    /// 
-    /// &gt; **NOTE:** Available in 1.42.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var sp = new AliCloud.Ecs.SnapshotPolicy("sp", new AliCloud.Ecs.SnapshotPolicyArgs
-    ///         {
-    ///             RepeatWeekdays = 
-    ///             {
-    ///                 "1",
-    ///                 "2",
-    ///                 "3",
-    ///             },
-    ///             RetentionDays = -1,
-    ///             TimePoints = 
-    ///             {
-    ///                 "1",
-    ///                 "22",
-    ///                 "23",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Snapshot can be imported using the id, e.g.
@@ -58,6 +21,12 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/snapshotPolicy:SnapshotPolicy")]
     public partial class SnapshotPolicy : Pulumi.CustomResource
     {
+        [Output("copiedSnapshotsRetentionDays")]
+        public Output<int?> CopiedSnapshotsRetentionDays { get; private set; } = null!;
+
+        [Output("enableCrossRegionCopy")]
+        public Output<bool?> EnableCrossRegionCopy { get; private set; } = null!;
+
         /// <summary>
         /// The snapshot policy name.
         /// </summary>
@@ -79,6 +48,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("retentionDays")]
         public Output<int> RetentionDays { get; private set; } = null!;
+
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        [Output("targetCopyRegions")]
+        public Output<ImmutableArray<string>> TargetCopyRegions { get; private set; } = null!;
 
         /// <summary>
         /// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
@@ -134,6 +112,12 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotPolicyArgs : Pulumi.ResourceArgs
     {
+        [Input("copiedSnapshotsRetentionDays")]
+        public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
+
+        [Input("enableCrossRegionCopy")]
+        public Input<bool>? EnableCrossRegionCopy { get; set; }
+
         /// <summary>
         /// The snapshot policy name.
         /// </summary>
@@ -162,6 +146,22 @@ namespace Pulumi.AliCloud.Ecs
         [Input("retentionDays", required: true)]
         public Input<int> RetentionDays { get; set; } = null!;
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        [Input("targetCopyRegions")]
+        private InputList<string>? _targetCopyRegions;
+        public InputList<string> TargetCopyRegions
+        {
+            get => _targetCopyRegions ?? (_targetCopyRegions = new InputList<string>());
+            set => _targetCopyRegions = value;
+        }
+
         [Input("timePoints", required: true)]
         private InputList<string>? _timePoints;
 
@@ -183,6 +183,12 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotPolicyState : Pulumi.ResourceArgs
     {
+        [Input("copiedSnapshotsRetentionDays")]
+        public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
+
+        [Input("enableCrossRegionCopy")]
+        public Input<bool>? EnableCrossRegionCopy { get; set; }
+
         /// <summary>
         /// The snapshot policy name.
         /// </summary>
@@ -210,6 +216,25 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        [Input("targetCopyRegions")]
+        private InputList<string>? _targetCopyRegions;
+        public InputList<string> TargetCopyRegions
+        {
+            get => _targetCopyRegions ?? (_targetCopyRegions = new InputList<string>());
+            set => _targetCopyRegions = value;
+        }
 
         [Input("timePoints")]
         private InputList<string>? _timePoints;

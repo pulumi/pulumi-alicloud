@@ -68,6 +68,8 @@ type ManagedKubernetes struct {
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
+	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec pulumi.StringPtrOutput `pulumi:"loadBalancerSpec"`
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -238,6 +240,8 @@ type managedKubernetesState struct {
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
+	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
 	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -377,6 +381,8 @@ type ManagedKubernetesState struct {
 	KmsEncryptionContext pulumi.MapInput
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
+	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec pulumi.StringPtrInput
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -516,6 +522,8 @@ type managedKubernetesArgs struct {
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
+	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
 	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -639,6 +647,8 @@ type ManagedKubernetesArgs struct {
 	KmsEncryptionContext pulumi.MapInput
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
+	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec pulumi.StringPtrInput
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.

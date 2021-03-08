@@ -3,9 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .get_industrial_pid_loops import *
 from .get_industrial_pid_organizations import *
 from .get_industrial_pid_projects import *
 from .get_industrial_serice import *
+from .industrial_pid_loop import *
 from .industrial_pid_organization import *
 from .industrial_pid_project import *
 from . import outputs
@@ -22,7 +24,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:brain/industrialPidOrganization:IndustrialPidOrganization":
+            if typ == "alicloud:brain/industrialPidLoop:IndustrialPidLoop":
+                return IndustrialPidLoop(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:brain/industrialPidOrganization:IndustrialPidOrganization":
                 return IndustrialPidOrganization(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:brain/industrialPidProject:IndustrialPidProject":
                 return IndustrialPidProject(name, pulumi.ResourceOptions(urn=urn))
@@ -31,6 +35,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "brain/industrialPidLoop", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "brain/industrialPidOrganization", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "brain/industrialPidProject", _module_instance)
 
