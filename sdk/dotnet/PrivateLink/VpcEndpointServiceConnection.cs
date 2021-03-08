@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// The Bandwidth.
         /// </summary>
         [Output("bandwidth")]
-        public Output<int?> Bandwidth { get; private set; } = null!;
+        public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
         /// The dry run.

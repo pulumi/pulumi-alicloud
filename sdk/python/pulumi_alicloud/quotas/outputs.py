@@ -11,9 +11,13 @@ from . import outputs
 
 __all__ = [
     'ApplicationInfoDimension',
+    'QuotaAlarmQuotaDimension',
     'GetApplicationInfosDimensionResult',
     'GetApplicationInfosInfoResult',
     'GetApplicationInfosInfoDimensionResult',
+    'GetQuotaAlarmsAlarmResult',
+    'GetQuotaAlarmsAlarmQuotaDimensionResult',
+    'GetQuotaAlarmsQuotaDimensionResult',
     'GetQuotasDimensionResult',
     'GetQuotasQuotaResult',
 ]
@@ -45,6 +49,40 @@ class ApplicationInfoDimension(dict):
     def value(self) -> Optional[str]:
         """
         The value of dimensions.
+        """
+        return pulumi.get(self, "value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class QuotaAlarmQuotaDimension(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The Key of quota_dimensions.
+        :param str value: The Value of quota_dimensions.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The Key of quota_dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The Value of quota_dimensions.
         """
         return pulumi.get(self, "value")
 
@@ -291,6 +329,172 @@ class GetApplicationInfosInfoDimensionResult(dict):
     def value(self) -> str:
         """
         The value of dimensions.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetQuotaAlarmsAlarmResult(dict):
+    def __init__(__self__, *,
+                 alarm_id: str,
+                 id: str,
+                 product_code: str,
+                 quota_action_code: str,
+                 quota_alarm_name: str,
+                 quota_dimensions: Sequence['outputs.GetQuotaAlarmsAlarmQuotaDimensionResult'],
+                 threshold: float,
+                 threshold_percent: float,
+                 web_hook: str):
+        """
+        :param str alarm_id: The first ID of the resource.
+        :param str id: The ID of the Quota Alarm.
+        :param str product_code: The Product Code.
+        :param str quota_action_code: The Quota Action Code.
+        :param str quota_alarm_name: The name of Quota Alarm.
+        :param Sequence['GetQuotaAlarmsAlarmQuotaDimensionArgs'] quota_dimensions: The Quota Dimensions.
+        :param float threshold: The threshold of Quota Alarm.
+        :param float threshold_percent: The threshold percent of Quota Alarm.
+        :param str web_hook: The WebHook of Quota Alarm.
+        """
+        pulumi.set(__self__, "alarm_id", alarm_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "quota_action_code", quota_action_code)
+        pulumi.set(__self__, "quota_alarm_name", quota_alarm_name)
+        pulumi.set(__self__, "quota_dimensions", quota_dimensions)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "threshold_percent", threshold_percent)
+        pulumi.set(__self__, "web_hook", web_hook)
+
+    @property
+    @pulumi.getter(name="alarmId")
+    def alarm_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "alarm_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Quota Alarm.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="productCode")
+    def product_code(self) -> str:
+        """
+        The Product Code.
+        """
+        return pulumi.get(self, "product_code")
+
+    @property
+    @pulumi.getter(name="quotaActionCode")
+    def quota_action_code(self) -> str:
+        """
+        The Quota Action Code.
+        """
+        return pulumi.get(self, "quota_action_code")
+
+    @property
+    @pulumi.getter(name="quotaAlarmName")
+    def quota_alarm_name(self) -> str:
+        """
+        The name of Quota Alarm.
+        """
+        return pulumi.get(self, "quota_alarm_name")
+
+    @property
+    @pulumi.getter(name="quotaDimensions")
+    def quota_dimensions(self) -> Sequence['outputs.GetQuotaAlarmsAlarmQuotaDimensionResult']:
+        """
+        The Quota Dimensions.
+        """
+        return pulumi.get(self, "quota_dimensions")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> float:
+        """
+        The threshold of Quota Alarm.
+        """
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter(name="thresholdPercent")
+    def threshold_percent(self) -> float:
+        """
+        The threshold percent of Quota Alarm.
+        """
+        return pulumi.get(self, "threshold_percent")
+
+    @property
+    @pulumi.getter(name="webHook")
+    def web_hook(self) -> str:
+        """
+        The WebHook of Quota Alarm.
+        """
+        return pulumi.get(self, "web_hook")
+
+
+@pulumi.output_type
+class GetQuotaAlarmsAlarmQuotaDimensionResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: The key of quota_dimensions.
+        :param str value: The value of quota_dimensions.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of quota_dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of quota_dimensions.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetQuotaAlarmsQuotaDimensionResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The key of quota_dimensions.
+        :param str value: The value of quota_dimensions.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key of quota_dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of quota_dimensions.
         """
         return pulumi.get(self, "value")
 

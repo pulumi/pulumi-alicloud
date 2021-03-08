@@ -143,7 +143,7 @@ class VpcEndpointService(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectBandwidth")
-    def connect_bandwidth(self) -> pulumi.Output[Optional[int]]:
+    def connect_bandwidth(self) -> pulumi.Output[int]:
         """
         The connection bandwidth.
         """

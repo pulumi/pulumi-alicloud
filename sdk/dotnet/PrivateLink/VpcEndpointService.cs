@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// The connection bandwidth.
         /// </summary>
         [Output("connectBandwidth")]
-        public Output<int?> ConnectBandwidth { get; private set; } = null!;
+        public Output<int> ConnectBandwidth { get; private set; } = null!;
 
         /// <summary>
         /// Whether to pre-check this request only. Default to: `false`

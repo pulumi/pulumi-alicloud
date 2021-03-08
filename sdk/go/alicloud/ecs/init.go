@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup":
 		r, err = NewAutoProvisioningGroup(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:ecs/command:Command":
+		r, err = NewCommand(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ecs/copyImage:CopyImage":
 		r, err = NewCopyImage(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ecs/dedicatedHost:DedicatedHost":
@@ -35,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewEip(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ecs/eipAssociation:EipAssociation":
 		r, err = NewEipAssociation(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:ecs/hpcCluster:HpcCluster":
+		r, err = NewHpcCluster(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ecs/image:Image":
 		r, err = NewImage(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ecs/imageCopy:ImageCopy":
@@ -82,6 +86,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"ecs/command",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"ecs/copyImage",
 		&module{version},
 	)
@@ -108,6 +117,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/eipAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/hpcCluster",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

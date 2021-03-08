@@ -10,7 +10,9 @@ from .. import _utilities, _tables
 
 __all__ = [
     'ApplicationInfoDimensionArgs',
+    'QuotaAlarmQuotaDimensionArgs',
     'GetApplicationInfosDimensionArgs',
+    'GetQuotaAlarmsQuotaDimensionArgs',
     'GetQuotasDimensionArgs',
 ]
 
@@ -54,6 +56,45 @@ class ApplicationInfoDimensionArgs:
 
 
 @pulumi.input_type
+class QuotaAlarmQuotaDimensionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The Key of quota_dimensions.
+        :param pulumi.Input[str] value: The Value of quota_dimensions.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Key of quota_dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Value of quota_dimensions.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class GetApplicationInfosDimensionArgs:
     def __init__(__self__, *,
                  key: Optional[str] = None,
@@ -84,6 +125,45 @@ class GetApplicationInfosDimensionArgs:
     def value(self) -> Optional[str]:
         """
         The value of dimensions.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GetQuotaAlarmsQuotaDimensionArgs:
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The key of quota_dimensions.
+        :param str value: The value of quota_dimensions.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key of quota_dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of quota_dimensions.
         """
         return pulumi.get(self, "value")
 

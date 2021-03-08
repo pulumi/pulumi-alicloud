@@ -72,6 +72,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Resourcemanager;
         public readonly string? Resourcesharing;
         public readonly string? Ros;
+        public readonly string? Sgw;
         public readonly string? Slb;
         public readonly string? Sts;
         public readonly string? Vpc;
@@ -197,6 +198,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? ros,
 
+            string? sgw,
+
             string? slb,
 
             string? sts,
@@ -264,6 +267,7 @@ namespace Pulumi.AliCloud.Outputs
             Resourcemanager = resourcemanager;
             Resourcesharing = resourcesharing;
             Ros = ros;
+            Sgw = sgw;
             Slb = slb;
             Sts = sts;
             Vpc = vpc;

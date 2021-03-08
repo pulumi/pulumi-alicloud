@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:quotas/applicationInfo:ApplicationInfo":
 		r, err = NewApplicationInfo(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:quotas/quotaAlarm:QuotaAlarm":
+		r, err = NewQuotaAlarm(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,6 +40,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"quotas/applicationInfo",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"quotas/quotaAlarm",
 		&module{version},
 	)
 }

@@ -6,15 +6,18 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./autoProvisioningGroup";
+export * from "./command";
 export * from "./copyImage";
 export * from "./dedicatedHost";
 export * from "./disk";
 export * from "./diskAttachment";
 export * from "./eip";
 export * from "./eipAssociation";
+export * from "./getCommands";
 export * from "./getDedicatedHosts";
 export * from "./getDisks";
 export * from "./getEips";
+export * from "./getHpcClusters";
 export * from "./getImages";
 export * from "./getInstanceTypeFamilies";
 export * from "./getInstanceTypes";
@@ -24,6 +27,7 @@ export * from "./getNetworkInterfaces";
 export * from "./getSecurityGroupRules";
 export * from "./getSecurityGroups";
 export * from "./getSnapshots";
+export * from "./hpcCluster";
 export * from "./image";
 export * from "./imageCopy";
 export * from "./imageExport";
@@ -41,12 +45,14 @@ export * from "./snapshotPolicy";
 
 // Import resources to register:
 import { AutoProvisioningGroup } from "./autoProvisioningGroup";
+import { Command } from "./command";
 import { CopyImage } from "./copyImage";
 import { DedicatedHost } from "./dedicatedHost";
 import { Disk } from "./disk";
 import { DiskAttachment } from "./diskAttachment";
 import { Eip } from "./eip";
 import { EipAssociation } from "./eipAssociation";
+import { HpcCluster } from "./hpcCluster";
 import { Image } from "./image";
 import { ImageCopy } from "./imageCopy";
 import { ImageExport } from "./imageExport";
@@ -68,6 +74,8 @@ const _module = {
         switch (type) {
             case "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup":
                 return new AutoProvisioningGroup(name, <any>undefined, { urn })
+            case "alicloud:ecs/command:Command":
+                return new Command(name, <any>undefined, { urn })
             case "alicloud:ecs/copyImage:CopyImage":
                 return new CopyImage(name, <any>undefined, { urn })
             case "alicloud:ecs/dedicatedHost:DedicatedHost":
@@ -80,6 +88,8 @@ const _module = {
                 return new Eip(name, <any>undefined, { urn })
             case "alicloud:ecs/eipAssociation:EipAssociation":
                 return new EipAssociation(name, <any>undefined, { urn })
+            case "alicloud:ecs/hpcCluster:HpcCluster":
+                return new HpcCluster(name, <any>undefined, { urn })
             case "alicloud:ecs/image:Image":
                 return new Image(name, <any>undefined, { urn })
             case "alicloud:ecs/imageCopy:ImageCopy":
@@ -114,12 +124,14 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "ecs/autoProvisioningGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/command", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/copyImage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/dedicatedHost", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/disk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/diskAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAssociation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/hpcCluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/image", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/imageCopy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/imageExport", _module)

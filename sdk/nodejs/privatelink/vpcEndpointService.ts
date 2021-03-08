@@ -69,7 +69,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
     /**
      * The connection bandwidth.
      */
-    public readonly connectBandwidth!: pulumi.Output<number | undefined>;
+    public readonly connectBandwidth!: pulumi.Output<number>;
     /**
      * Whether to pre-check this request only. Default to: `false`
      */

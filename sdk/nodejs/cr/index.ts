@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./getNamespaces";
 export * from "./getRepos";
+export * from "./getService";
 export * from "./namespace";
 export * from "./repo";
 

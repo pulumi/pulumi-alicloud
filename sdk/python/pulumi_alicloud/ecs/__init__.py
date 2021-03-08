@@ -4,15 +4,18 @@
 
 # Export this package's modules as members:
 from .auto_provisioning_group import *
+from .command import *
 from .copy_image import *
 from .dedicated_host import *
 from .disk import *
 from .disk_attachment import *
 from .eip import *
 from .eip_association import *
+from .get_commands import *
 from .get_dedicated_hosts import *
 from .get_disks import *
 from .get_eips import *
+from .get_hpc_clusters import *
 from .get_images import *
 from .get_instance_type_families import *
 from .get_instance_types import *
@@ -22,6 +25,7 @@ from .get_network_interfaces import *
 from .get_security_group_rules import *
 from .get_security_groups import *
 from .get_snapshots import *
+from .hpc_cluster import *
 from .image import *
 from .image_copy import *
 from .image_export import *
@@ -53,6 +57,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup":
                 return AutoProvisioningGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/command:Command":
+                return Command(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/copyImage:CopyImage":
                 return CopyImage(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/dedicatedHost:DedicatedHost":
@@ -65,6 +71,8 @@ def _register_module():
                 return Eip(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/eipAssociation:EipAssociation":
                 return EipAssociation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/hpcCluster:HpcCluster":
+                return HpcCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/image:Image":
                 return Image(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/imageCopy:ImageCopy":
@@ -99,12 +107,14 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "ecs/autoProvisioningGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/command", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/copyImage", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/dedicatedHost", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/disk", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/diskAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/eip", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/eipAssociation", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/hpcCluster", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/image", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/imageCopy", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/imageExport", _module_instance)

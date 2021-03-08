@@ -33,69 +33,71 @@ const (
 	// packages:
 	alicloudPkg = "alicloud"
 	// modules:
-	alicloudMod        = "index"
-	actionTrailMod     = "ActionTrail"
-	adbMod             = "Adb"
-	aliKafaMod         = "AliKafka"
-	apiGatewayMod      = "ApiGateway"
-	brainMod           = "Brain"
-	casMod             = "Cas"
-	cassandraMod       = "Cassandra"
-	cdnMod             = "Cdn"
-	cenMod             = "Cen"
-	cloudConnectMod    = "CloudConnect"
-	cmsMod             = "Cms"
-	cfgMod             = "Cfg"
-	crMod              = "CR"
-	csMod              = "CS"
-	datahubMod         = "Datahub"
-	dcdnMod            = "Dcdn"
-	ddsMod             = "Dds"
-	ddosMod            = "Ddos"
-	dmsMod             = "Dms"
-	dnsMod             = "Dns"
-	drdsMod            = "Drds"
-	eciMod             = "Eci"
-	ecsMod             = "Ecs"
-	edasMod            = "Edas"
-	eipAnyCastMod      = "EipAnycast"
-	elasticsearchMod   = "ElasticSearch"
-	emrMod             = "Emr"
-	essMod             = "Ess"
-	fcMod              = "FC"
-	fnfMod             = "FNF"
-	gaMod              = "Ga"
-	gpdbMod            = "Gpdb"
-	hbaseMod           = "Hbase"
-	iotMod             = "Iot"
-	kmsMod             = "Kms"
-	kvstoreMod         = "KVStore"
-	logMod             = "Log"
-	marketPlaceMod     = "MarketPlace"
-	maxComputeMod      = "MaxCompute"
-	mongoDbMod         = "MongoDB"
-	mnsMod             = "Mns"
-	mseMod             = "Mse"
-	nasMod             = "Nas"
-	oosMod             = "Oos"
-	ossMod             = "Oss"
-	otsMod             = "Ots"
-	polarDbMod         = "PolarDB"
-	privateLinkMod     = "PrivateLink"
-	pvtzMod            = "Pvtz"
-	quotasMod          = "Quotas"
-	ramMod             = "Ram"
-	resourceManagerMod = "ResourceManager"
-	rocketMqMod        = "RocketMQ"
-	rosMod             = "Ros"
-	rdsMod             = "Rds"
-	sagMod             = "Sag"
-	slbMod             = "Slb"
-	tsdbMod            = "Tsdb"
-	vpcMod             = "Vpc"
-	vpnMod             = "Vpn"
-	wafMod             = "Waf"
-	yundunMod          = "Yundun"
+	alicloudMod            = "index"
+	actionTrailMod         = "ActionTrail"
+	adbMod                 = "Adb"
+	aliKafaMod             = "AliKafka"
+	apiGatewayMod          = "ApiGateway"
+	brainMod               = "Brain"
+	casMod                 = "Cas"
+	cassandraMod           = "Cassandra"
+	cdnMod                 = "Cdn"
+	cenMod                 = "Cen"
+	cloudConnectMod        = "CloudConnect"
+	cloudStorageGatewayMod = "CloudStorageGateway"
+	cmsMod                 = "Cms"
+	cfgMod                 = "Cfg"
+	crMod                  = "CR"
+	csMod                  = "CS"
+	datahubMod             = "Datahub"
+	dcdnMod                = "Dcdn"
+	ddsMod                 = "Dds"
+	ddosMod                = "Ddos"
+	dmsMod                 = "Dms"
+	dnsMod                 = "Dns"
+	drdsMod                = "Drds"
+	eciMod                 = "Eci"
+	ecsMod                 = "Ecs"
+	edasMod                = "Edas"
+	eipAnyCastMod          = "EipAnycast"
+	elasticsearchMod       = "ElasticSearch"
+	emrMod                 = "Emr"
+	essMod                 = "Ess"
+	fcMod                  = "FC"
+	fnfMod                 = "FNF"
+	gaMod                  = "Ga"
+	gpdbMod                = "Gpdb"
+	hbaseMod               = "Hbase"
+	iotMod                 = "Iot"
+	kmsMod                 = "Kms"
+	kvstoreMod             = "KVStore"
+	logMod                 = "Log"
+	marketPlaceMod         = "MarketPlace"
+	maxComputeMod          = "MaxCompute"
+	mongoDbMod             = "MongoDB"
+	mnsMod                 = "Mns"
+	mseMod                 = "Mse"
+	nasMod                 = "Nas"
+	oosMod                 = "Oos"
+	ossMod                 = "Oss"
+	otsMod                 = "Ots"
+	polarDbMod             = "PolarDB"
+	privateLinkMod         = "PrivateLink"
+	pvtzMod                = "Pvtz"
+	quotasMod              = "Quotas"
+	ramMod                 = "Ram"
+	resourceManagerMod     = "ResourceManager"
+	rocketMqMod            = "RocketMQ"
+	rosMod                 = "Ros"
+	rdsMod                 = "Rds"
+	sagMod                 = "Sag"
+	slbMod                 = "Slb"
+	tsdbMod                = "Tsdb"
+	vpcMod                 = "Vpc"
+	vsMod                  = "VideoSurveillance"
+	vpnMod                 = "Vpn"
+	wafMod                 = "Waf"
+	yundunMod              = "Yundun"
 )
 
 var namespaceMap = map[string]string{
@@ -243,6 +245,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cloud_connect_network_attachment": {Tok: resource(cloudConnectMod, "NetworkAttachment")},
 			"alicloud_cloud_connect_network_grant":      {Tok: resource(cloudConnectMod, "NetworkGrant")},
 
+			// CloudStorageGateway
+			"alicloud_cloud_storage_gateway_storage_bundle": {Tok: resource(cloudStorageGatewayMod, "StorageBundle")},
+
 			// CMS
 			"alicloud_cms_alarm":               {Tok: resource(cmsMod, "Alarm")},
 			"alicloud_cms_alarm_contact":       {Tok: resource(cmsMod, "AlarmContact")},
@@ -351,6 +356,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_copy_image":              {Tok: resource(ecsMod, "CopyImage")},
 			"alicloud_image_import":            {Tok: resource(ecsMod, "ImageImport")},
 			"alicloud_ecs_dedicated_host":      {Tok: resource(ecsMod, "DedicatedHost")},
+			"alicloud_ecs_hpc_cluster":         {Tok: resource(ecsMod, "HpcCluster")},
+			"alicloud_ecs_command":             {Tok: resource(ecsMod, "Command")},
 
 			// Edas
 			"alicloud_edas_application":                 {Tok: resource(edasMod, "Application")},
@@ -532,6 +539,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Quotas
 			"alicloud_quotas_application_info": {Tok: resource(quotasMod, "ApplicationInfo")},
+			"alicloud_quotas_quota_alarm":      {Tok: resource(quotasMod, "QuotaAlarm")},
 
 			// Ram
 			"alicloud_ram_access_key": {Tok: resource(ramMod, "AccessKey")},
@@ -738,6 +746,11 @@ func Provider() tfbridge.ProviderInfo {
 			// CloudConnect
 			"alicloud_cloud_connect_networks": {Tok: dataSource(cloudConnectMod, "getNetworks")},
 
+			// CloudStorageGateway
+			"alicloud_cloud_storage_gateway_storage_bundles": {
+				Tok: dataSource(cloudStorageGatewayMod, "getStorageBundles"),
+			},
+
 			// CMS
 			"alicloud_cms_alarm_contacts":       {Tok: dataSource(cmsMod, "getAlarmContacts")},
 			"alicloud_cms_alarm_contact_groups": {Tok: dataSource(cmsMod, "getAlarmContactGroups")},
@@ -754,6 +767,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Cr
 			"alicloud_cr_namespaces": {Tok: dataSource(crMod, "getNamespaces")},
 			"alicloud_cr_repos":      {Tok: dataSource(crMod, "getRepos")},
+			"alicloud_cr_service":    {Tok: dataSource(crMod, "getService")},
 
 			// Cs
 			"alicloud_cs_kubernetes_clusters":            {Tok: dataSource(csMod, "getKubernetesClusters")},
@@ -818,6 +832,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_network_interfaces":     {Tok: dataSource(ecsMod, "getNetworkInterfaces")},
 			"alicloud_snapshots":              {Tok: dataSource(ecsMod, "getSnapshots")},
 			"alicloud_ecs_dedicated_hosts":    {Tok: dataSource(ecsMod, "getDedicatedHosts")},
+			"alicloud_ecs_hpc_clusters":       {Tok: dataSource(ecsMod, "getHpcClusters")},
+			"alicloud_ecs_commands":           {Tok: dataSource(ecsMod, "getCommands")},
 
 			// Edas
 			"alicloud_edas_applications":  {Tok: dataSource(edasMod, "getApplications")},
@@ -968,6 +984,7 @@ func Provider() tfbridge.ProviderInfo {
 			// quotas
 			"alicloud_quotas_quotas":            {Tok: dataSource(quotasMod, "getQuotas")},
 			"alicloud_quotas_application_infos": {Tok: dataSource(quotasMod, "getApplicationInfos")},
+			"alicloud_quotas_quota_alarms":      {Tok: dataSource(quotasMod, "getQuotaAlarms")},
 
 			// Ram
 			"alicloud_ram_account_alias":   {Tok: dataSource(ramMod, "getAccountAlias")},
@@ -1045,6 +1062,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_snat_entries":                 {Tok: dataSource(vpcMod, "getSnatEntries")},
 			"alicloud_common_bandwidth_packages":    {Tok: dataSource(vpcMod, "getCommonBandwidthPackages")},
 			"alicloud_enhanced_nat_available_zones": {Tok: dataSource(vpcMod, "getEnhancedNatAvailableZones")},
+
+			// Video Surveillance
+			"alicloud_vs_service": {Tok: dataSource(vsMod, "getService")},
 
 			// Vpn
 			"alicloud_vpn_connections":       {Tok: dataSource(vpnMod, "getConnections")},
