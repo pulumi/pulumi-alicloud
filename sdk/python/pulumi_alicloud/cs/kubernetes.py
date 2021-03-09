@@ -36,6 +36,7 @@ class Kubernetes(pulumi.CustomResource):
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
+                 load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  master_auto_renew: Optional[pulumi.Input[bool]] = None,
                  master_auto_renew_period: Optional[pulumi.Input[int]] = None,
                  master_disk_category: Optional[pulumi.Input[str]] = None,
@@ -115,6 +116,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[bool] master_auto_renew: Enable master payment auto-renew, defaults to false.
         :param pulumi.Input[int] master_auto_renew_period: Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] master_disk_category: The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -196,6 +198,7 @@ class Kubernetes(pulumi.CustomResource):
             __props__['kms_encrypted_password'] = kms_encrypted_password
             __props__['kms_encryption_context'] = kms_encryption_context
             __props__['kube_config'] = kube_config
+            __props__['load_balancer_spec'] = load_balancer_spec
             __props__['master_auto_renew'] = master_auto_renew
             __props__['master_auto_renew_period'] = master_auto_renew_period
             __props__['master_disk_category'] = master_disk_category
@@ -297,6 +300,7 @@ class Kubernetes(pulumi.CustomResource):
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
+            load_balancer_spec: Optional[pulumi.Input[str]] = None,
             master_auto_renew: Optional[pulumi.Input[bool]] = None,
             master_auto_renew_period: Optional[pulumi.Input[int]] = None,
             master_disk_category: Optional[pulumi.Input[str]] = None,
@@ -379,6 +383,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[bool] master_auto_renew: Enable master payment auto-renew, defaults to false.
         :param pulumi.Input[int] master_auto_renew_period: Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] master_disk_category: The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -455,6 +460,7 @@ class Kubernetes(pulumi.CustomResource):
         __props__["kms_encrypted_password"] = kms_encrypted_password
         __props__["kms_encryption_context"] = kms_encryption_context
         __props__["kube_config"] = kube_config
+        __props__["load_balancer_spec"] = load_balancer_spec
         __props__["master_auto_renew"] = master_auto_renew
         __props__["master_auto_renew_period"] = master_auto_renew_period
         __props__["master_disk_category"] = master_disk_category
@@ -676,6 +682,14 @@ class Kubernetes(pulumi.CustomResource):
         The path of kube config, like `~/.kube/config`.
         """
         return pulumi.get(self, "kube_config")
+
+    @property
+    @pulumi.getter(name="loadBalancerSpec")
+    def load_balancer_spec(self) -> pulumi.Output[Optional[str]]:
+        """
+        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        """
+        return pulumi.get(self, "load_balancer_spec")
 
     @property
     @pulumi.getter(name="masterAutoRenew")

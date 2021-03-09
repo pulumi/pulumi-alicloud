@@ -62,6 +62,8 @@ type Kubernetes struct {
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
+	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec pulumi.StringPtrOutput `pulumi:"loadBalancerSpec"`
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew pulumi.BoolPtrOutput `pulumi:"masterAutoRenew"`
 	// Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
@@ -256,6 +258,8 @@ type kubernetesState struct {
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
+	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew *bool `pulumi:"masterAutoRenew"`
 	// Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
@@ -407,6 +411,8 @@ type KubernetesState struct {
 	KmsEncryptionContext pulumi.MapInput
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
+	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec pulumi.StringPtrInput
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew pulumi.BoolPtrInput
 	// Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
@@ -558,6 +564,8 @@ type kubernetesArgs struct {
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
+	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew *bool `pulumi:"masterAutoRenew"`
 	// Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
@@ -691,6 +699,8 @@ type KubernetesArgs struct {
 	KmsEncryptionContext pulumi.MapInput
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
+	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec pulumi.StringPtrInput
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew pulumi.BoolPtrInput
 	// Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.

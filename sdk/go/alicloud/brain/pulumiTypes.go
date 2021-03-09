@@ -10,6 +10,178 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type GetIndustrialPidLoopsLoop struct {
+	// The ID of the Pid Loop.
+	Id                   string `pulumi:"id"`
+	PidLoopConfiguration string `pulumi:"pidLoopConfiguration"`
+	// The dcs type of Pid Loop.
+	PidLoopDcsType string `pulumi:"pidLoopDcsType"`
+	PidLoopDesc    string `pulumi:"pidLoopDesc"`
+	// The ID of the Pid Loop.
+	PidLoopId string `pulumi:"pidLoopId"`
+	// Whether is crucial Pid Loop.
+	PidLoopIsCrucial bool `pulumi:"pidLoopIsCrucial"`
+	// The name of Pid Loop.
+	PidLoopName string `pulumi:"pidLoopName"`
+	// The type of Pid Loop.
+	PidLoopType string `pulumi:"pidLoopType"`
+	// The pid project id.
+	PidProjectId string `pulumi:"pidProjectId"`
+	// The status of Pid Loop.
+	Status string `pulumi:"status"`
+}
+
+// GetIndustrialPidLoopsLoopInput is an input type that accepts GetIndustrialPidLoopsLoopArgs and GetIndustrialPidLoopsLoopOutput values.
+// You can construct a concrete instance of `GetIndustrialPidLoopsLoopInput` via:
+//
+//          GetIndustrialPidLoopsLoopArgs{...}
+type GetIndustrialPidLoopsLoopInput interface {
+	pulumi.Input
+
+	ToGetIndustrialPidLoopsLoopOutput() GetIndustrialPidLoopsLoopOutput
+	ToGetIndustrialPidLoopsLoopOutputWithContext(context.Context) GetIndustrialPidLoopsLoopOutput
+}
+
+type GetIndustrialPidLoopsLoopArgs struct {
+	// The ID of the Pid Loop.
+	Id                   pulumi.StringInput `pulumi:"id"`
+	PidLoopConfiguration pulumi.StringInput `pulumi:"pidLoopConfiguration"`
+	// The dcs type of Pid Loop.
+	PidLoopDcsType pulumi.StringInput `pulumi:"pidLoopDcsType"`
+	PidLoopDesc    pulumi.StringInput `pulumi:"pidLoopDesc"`
+	// The ID of the Pid Loop.
+	PidLoopId pulumi.StringInput `pulumi:"pidLoopId"`
+	// Whether is crucial Pid Loop.
+	PidLoopIsCrucial pulumi.BoolInput `pulumi:"pidLoopIsCrucial"`
+	// The name of Pid Loop.
+	PidLoopName pulumi.StringInput `pulumi:"pidLoopName"`
+	// The type of Pid Loop.
+	PidLoopType pulumi.StringInput `pulumi:"pidLoopType"`
+	// The pid project id.
+	PidProjectId pulumi.StringInput `pulumi:"pidProjectId"`
+	// The status of Pid Loop.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetIndustrialPidLoopsLoopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndustrialPidLoopsLoop)(nil)).Elem()
+}
+
+func (i GetIndustrialPidLoopsLoopArgs) ToGetIndustrialPidLoopsLoopOutput() GetIndustrialPidLoopsLoopOutput {
+	return i.ToGetIndustrialPidLoopsLoopOutputWithContext(context.Background())
+}
+
+func (i GetIndustrialPidLoopsLoopArgs) ToGetIndustrialPidLoopsLoopOutputWithContext(ctx context.Context) GetIndustrialPidLoopsLoopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIndustrialPidLoopsLoopOutput)
+}
+
+// GetIndustrialPidLoopsLoopArrayInput is an input type that accepts GetIndustrialPidLoopsLoopArray and GetIndustrialPidLoopsLoopArrayOutput values.
+// You can construct a concrete instance of `GetIndustrialPidLoopsLoopArrayInput` via:
+//
+//          GetIndustrialPidLoopsLoopArray{ GetIndustrialPidLoopsLoopArgs{...} }
+type GetIndustrialPidLoopsLoopArrayInput interface {
+	pulumi.Input
+
+	ToGetIndustrialPidLoopsLoopArrayOutput() GetIndustrialPidLoopsLoopArrayOutput
+	ToGetIndustrialPidLoopsLoopArrayOutputWithContext(context.Context) GetIndustrialPidLoopsLoopArrayOutput
+}
+
+type GetIndustrialPidLoopsLoopArray []GetIndustrialPidLoopsLoopInput
+
+func (GetIndustrialPidLoopsLoopArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIndustrialPidLoopsLoop)(nil)).Elem()
+}
+
+func (i GetIndustrialPidLoopsLoopArray) ToGetIndustrialPidLoopsLoopArrayOutput() GetIndustrialPidLoopsLoopArrayOutput {
+	return i.ToGetIndustrialPidLoopsLoopArrayOutputWithContext(context.Background())
+}
+
+func (i GetIndustrialPidLoopsLoopArray) ToGetIndustrialPidLoopsLoopArrayOutputWithContext(ctx context.Context) GetIndustrialPidLoopsLoopArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIndustrialPidLoopsLoopArrayOutput)
+}
+
+type GetIndustrialPidLoopsLoopOutput struct{ *pulumi.OutputState }
+
+func (GetIndustrialPidLoopsLoopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndustrialPidLoopsLoop)(nil)).Elem()
+}
+
+func (o GetIndustrialPidLoopsLoopOutput) ToGetIndustrialPidLoopsLoopOutput() GetIndustrialPidLoopsLoopOutput {
+	return o
+}
+
+func (o GetIndustrialPidLoopsLoopOutput) ToGetIndustrialPidLoopsLoopOutputWithContext(ctx context.Context) GetIndustrialPidLoopsLoopOutput {
+	return o
+}
+
+// The ID of the Pid Loop.
+func (o GetIndustrialPidLoopsLoopOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetIndustrialPidLoopsLoopOutput) PidLoopConfiguration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.PidLoopConfiguration }).(pulumi.StringOutput)
+}
+
+// The dcs type of Pid Loop.
+func (o GetIndustrialPidLoopsLoopOutput) PidLoopDcsType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.PidLoopDcsType }).(pulumi.StringOutput)
+}
+
+func (o GetIndustrialPidLoopsLoopOutput) PidLoopDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.PidLoopDesc }).(pulumi.StringOutput)
+}
+
+// The ID of the Pid Loop.
+func (o GetIndustrialPidLoopsLoopOutput) PidLoopId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.PidLoopId }).(pulumi.StringOutput)
+}
+
+// Whether is crucial Pid Loop.
+func (o GetIndustrialPidLoopsLoopOutput) PidLoopIsCrucial() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) bool { return v.PidLoopIsCrucial }).(pulumi.BoolOutput)
+}
+
+// The name of Pid Loop.
+func (o GetIndustrialPidLoopsLoopOutput) PidLoopName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.PidLoopName }).(pulumi.StringOutput)
+}
+
+// The type of Pid Loop.
+func (o GetIndustrialPidLoopsLoopOutput) PidLoopType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.PidLoopType }).(pulumi.StringOutput)
+}
+
+// The pid project id.
+func (o GetIndustrialPidLoopsLoopOutput) PidProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.PidProjectId }).(pulumi.StringOutput)
+}
+
+// The status of Pid Loop.
+func (o GetIndustrialPidLoopsLoopOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetIndustrialPidLoopsLoopArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIndustrialPidLoopsLoopArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIndustrialPidLoopsLoop)(nil)).Elem()
+}
+
+func (o GetIndustrialPidLoopsLoopArrayOutput) ToGetIndustrialPidLoopsLoopArrayOutput() GetIndustrialPidLoopsLoopArrayOutput {
+	return o
+}
+
+func (o GetIndustrialPidLoopsLoopArrayOutput) ToGetIndustrialPidLoopsLoopArrayOutputWithContext(ctx context.Context) GetIndustrialPidLoopsLoopArrayOutput {
+	return o
+}
+
+func (o GetIndustrialPidLoopsLoopArrayOutput) Index(i pulumi.IntInput) GetIndustrialPidLoopsLoopOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIndustrialPidLoopsLoop {
+		return vs[0].([]GetIndustrialPidLoopsLoop)[vs[1].(int)]
+	}).(GetIndustrialPidLoopsLoopOutput)
+}
+
 type GetIndustrialPidOrganizationsOrganization struct {
 	// The ID of the Pid Organization.
 	Id string `pulumi:"id"`
@@ -146,8 +318,8 @@ func (o GetIndustrialPidOrganizationsOrganizationArrayOutput) Index(i pulumi.Int
 type GetIndustrialPidProjectsProject struct {
 	// The ID of the Pid Project.
 	Id string `pulumi:"id"`
-	// The ID of Pid Organisation.
-	PidOrganisationId string `pulumi:"pidOrganisationId"`
+	// The ID of Pid Organization.
+	PidOrganizationId string `pulumi:"pidOrganizationId"`
 	// The description of Pid Project.
 	PidProjectDesc string `pulumi:"pidProjectDesc"`
 	// The ID of Pid Project.
@@ -170,8 +342,8 @@ type GetIndustrialPidProjectsProjectInput interface {
 type GetIndustrialPidProjectsProjectArgs struct {
 	// The ID of the Pid Project.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of Pid Organisation.
-	PidOrganisationId pulumi.StringInput `pulumi:"pidOrganisationId"`
+	// The ID of Pid Organization.
+	PidOrganizationId pulumi.StringInput `pulumi:"pidOrganizationId"`
 	// The description of Pid Project.
 	PidProjectDesc pulumi.StringInput `pulumi:"pidProjectDesc"`
 	// The ID of Pid Project.
@@ -236,9 +408,9 @@ func (o GetIndustrialPidProjectsProjectOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIndustrialPidProjectsProject) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of Pid Organisation.
-func (o GetIndustrialPidProjectsProjectOutput) PidOrganisationId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIndustrialPidProjectsProject) string { return v.PidOrganisationId }).(pulumi.StringOutput)
+// The ID of Pid Organization.
+func (o GetIndustrialPidProjectsProjectOutput) PidOrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialPidProjectsProject) string { return v.PidOrganizationId }).(pulumi.StringOutput)
 }
 
 // The description of Pid Project.
@@ -277,6 +449,8 @@ func (o GetIndustrialPidProjectsProjectArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetIndustrialPidLoopsLoopOutput{})
+	pulumi.RegisterOutputType(GetIndustrialPidLoopsLoopArrayOutput{})
 	pulumi.RegisterOutputType(GetIndustrialPidOrganizationsOrganizationOutput{})
 	pulumi.RegisterOutputType(GetIndustrialPidOrganizationsOrganizationArrayOutput{})
 	pulumi.RegisterOutputType(GetIndustrialPidProjectsProjectOutput{})

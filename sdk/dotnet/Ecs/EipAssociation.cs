@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Elastic IP address can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example eip-abc12345678:i-abc12355
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:ecs/eipAssociation:EipAssociation")]
     public partial class EipAssociation : Pulumi.CustomResource
     {

@@ -38,6 +38,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
+                 load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -113,6 +114,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
@@ -189,6 +191,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['kms_encrypted_password'] = kms_encrypted_password
             __props__['kms_encryption_context'] = kms_encryption_context
             __props__['kube_config'] = kube_config
+            __props__['load_balancer_spec'] = load_balancer_spec
             __props__['maintenance_window'] = maintenance_window
             __props__['name'] = name
             __props__['name_prefix'] = name_prefix
@@ -272,6 +275,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
+            load_balancer_spec: Optional[pulumi.Input[str]] = None,
             maintenance_window: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
@@ -349,6 +353,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
@@ -419,6 +424,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["kms_encrypted_password"] = kms_encrypted_password
         __props__["kms_encryption_context"] = kms_encryption_context
         __props__["kube_config"] = kube_config
+        __props__["load_balancer_spec"] = load_balancer_spec
         __props__["maintenance_window"] = maintenance_window
         __props__["name"] = name
         __props__["name_prefix"] = name_prefix
@@ -649,6 +655,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         The path of kube config, like `~/.kube/config`.
         """
         return pulumi.get(self, "kube_config")
+
+    @property
+    @pulumi.getter(name="loadBalancerSpec")
+    def load_balancer_spec(self) -> pulumi.Output[Optional[str]]:
+        """
+        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        """
+        return pulumi.get(self, "load_balancer_spec")
 
     @property
     @pulumi.getter(name="maintenanceWindow")

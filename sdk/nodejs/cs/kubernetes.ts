@@ -124,6 +124,10 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    public readonly loadBalancerSpec!: pulumi.Output<string | undefined>;
+    /**
      * Enable master payment auto-renew, defaults to false.
      */
     public readonly masterAutoRenew!: pulumi.Output<boolean | undefined>;
@@ -363,6 +367,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
+            inputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
             inputs["masterAutoRenew"] = state ? state.masterAutoRenew : undefined;
             inputs["masterAutoRenewPeriod"] = state ? state.masterAutoRenewPeriod : undefined;
             inputs["masterDiskCategory"] = state ? state.masterDiskCategory : undefined;
@@ -454,6 +459,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             inputs["kubeConfig"] = args ? args.kubeConfig : undefined;
+            inputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
             inputs["masterAutoRenew"] = args ? args.masterAutoRenew : undefined;
             inputs["masterAutoRenewPeriod"] = args ? args.masterAutoRenewPeriod : undefined;
             inputs["masterDiskCategory"] = args ? args.masterDiskCategory : undefined;
@@ -604,6 +610,10 @@ export interface KubernetesState {
      * The path of kube config, like `~/.kube/config`.
      */
     readonly kubeConfig?: pulumi.Input<string>;
+    /**
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    readonly loadBalancerSpec?: pulumi.Input<string>;
     /**
      * Enable master payment auto-renew, defaults to false.
      */
@@ -888,6 +898,10 @@ export interface KubernetesArgs {
      * The path of kube config, like `~/.kube/config`.
      */
     readonly kubeConfig?: pulumi.Input<string>;
+    /**
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    readonly loadBalancerSpec?: pulumi.Input<string>;
     /**
      * Enable master payment auto-renew, defaults to false.
      */

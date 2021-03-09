@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./autoProvisioningGroup";
+export * from "./autoSnapshotPolicy";
 export * from "./command";
 export * from "./copyImage";
 export * from "./dedicatedHost";
@@ -13,6 +14,7 @@ export * from "./disk";
 export * from "./diskAttachment";
 export * from "./eip";
 export * from "./eipAssociation";
+export * from "./getAutoSnapshotPolicies";
 export * from "./getCommands";
 export * from "./getDedicatedHosts";
 export * from "./getDisks";
@@ -45,6 +47,7 @@ export * from "./snapshotPolicy";
 
 // Import resources to register:
 import { AutoProvisioningGroup } from "./autoProvisioningGroup";
+import { AutoSnapshotPolicy } from "./autoSnapshotPolicy";
 import { Command } from "./command";
 import { CopyImage } from "./copyImage";
 import { DedicatedHost } from "./dedicatedHost";
@@ -74,6 +77,8 @@ const _module = {
         switch (type) {
             case "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup":
                 return new AutoProvisioningGroup(name, <any>undefined, { urn })
+            case "alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy":
+                return new AutoSnapshotPolicy(name, <any>undefined, { urn })
             case "alicloud:ecs/command:Command":
                 return new Command(name, <any>undefined, { urn })
             case "alicloud:ecs/copyImage:CopyImage":
@@ -124,6 +129,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "ecs/autoProvisioningGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/autoSnapshotPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/command", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/copyImage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/dedicatedHost", _module)

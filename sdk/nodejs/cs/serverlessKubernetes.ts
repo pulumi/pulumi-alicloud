@@ -74,6 +74,10 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    public readonly loadBalancerSpec!: pulumi.Output<string | undefined>;
+    /**
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
     public readonly name!: pulumi.Output<string>;
@@ -138,6 +142,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["endpointPublicAccessEnabled"] = state ? state.endpointPublicAccessEnabled : undefined;
             inputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
+            inputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
             inputs["newNatGateway"] = state ? state.newNatGateway : undefined;
@@ -162,6 +167,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["endpointPublicAccessEnabled"] = args ? args.endpointPublicAccessEnabled : undefined;
             inputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             inputs["kubeConfig"] = args ? args.kubeConfig : undefined;
+            inputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["newNatGateway"] = args ? args.newNatGateway : undefined;
@@ -216,6 +222,10 @@ export interface ServerlessKubernetesState {
      * The path of kube config, like `~/.kube/config`.
      */
     readonly kubeConfig?: pulumi.Input<string>;
+    /**
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    readonly loadBalancerSpec?: pulumi.Input<string>;
     /**
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
@@ -296,6 +306,10 @@ export interface ServerlessKubernetesArgs {
      * The path of kube config, like `~/.kube/config`.
      */
     readonly kubeConfig?: pulumi.Input<string>;
+    /**
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    readonly loadBalancerSpec?: pulumi.Input<string>;
     /**
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */

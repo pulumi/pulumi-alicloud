@@ -206,6 +206,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Brain
 			"alicloud_brain_industrial_pid_project":      {Tok: resource(brainMod, "IndustrialPidProject")},
 			"alicloud_brain_industrial_pid_organization": {Tok: resource(brainMod, "IndustrialPidOrganization")},
+			"alicloud_brain_industrial_pid_loop":         {Tok: resource(brainMod, "IndustrialPidLoop")},
 
 			// Cas
 			"alicloud_cas_certificate": {Tok: resource(casMod, "Certificate")},
@@ -335,29 +336,30 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_eci_container_group":     {Tok: resource(eciMod, "ContainerGroup")},
 
 			// ECS
-			"alicloud_auto_provisioning_group": {Tok: resource(ecsMod, "AutoProvisioningGroup")},
-			"alicloud_disk":                    {Tok: resource(ecsMod, "Disk")},
-			"alicloud_disk_attachment":         {Tok: resource(ecsMod, "DiskAttachment")},
-			"alicloud_launch_template":         {Tok: resource(ecsMod, "LaunchTemplate")},
-			"alicloud_eip":                     {Tok: resource(ecsMod, "Eip")},
-			"alicloud_eip_association":         {Tok: resource(ecsMod, "EipAssociation")},
-			"alicloud_instance":                {Tok: resource(ecsMod, "Instance")},
-			"alicloud_key_pair":                {Tok: resource(ecsMod, "KeyPair")},
-			"alicloud_key_pair_attachment":     {Tok: resource(ecsMod, "KeyPairAttachment")},
-			"alicloud_image":                   {Tok: resource(ecsMod, "Image")},
-			"alicloud_image_copy":              {Tok: resource(ecsMod, "ImageCopy")},
-			"alicloud_image_export":            {Tok: resource(ecsMod, "ImageExport")},
-			"alicloud_image_share_permission":  {Tok: resource(ecsMod, "ImageSharePermission")},
-			"alicloud_security_group":          {Tok: resource(ecsMod, "SecurityGroup")},
-			"alicloud_security_group_rule":     {Tok: resource(ecsMod, "SecurityGroupRule")},
-			"alicloud_reserved_instance":       {Tok: resource(ecsMod, "ReservedInstance")},
-			"alicloud_snapshot":                {Tok: resource(ecsMod, "Snapshot")},
-			"alicloud_snapshot_policy":         {Tok: resource(ecsMod, "SnapshotPolicy")},
-			"alicloud_copy_image":              {Tok: resource(ecsMod, "CopyImage")},
-			"alicloud_image_import":            {Tok: resource(ecsMod, "ImageImport")},
-			"alicloud_ecs_dedicated_host":      {Tok: resource(ecsMod, "DedicatedHost")},
-			"alicloud_ecs_hpc_cluster":         {Tok: resource(ecsMod, "HpcCluster")},
-			"alicloud_ecs_command":             {Tok: resource(ecsMod, "Command")},
+			"alicloud_auto_provisioning_group":  {Tok: resource(ecsMod, "AutoProvisioningGroup")},
+			"alicloud_disk":                     {Tok: resource(ecsMod, "Disk")},
+			"alicloud_disk_attachment":          {Tok: resource(ecsMod, "DiskAttachment")},
+			"alicloud_launch_template":          {Tok: resource(ecsMod, "LaunchTemplate")},
+			"alicloud_eip":                      {Tok: resource(ecsMod, "Eip")},
+			"alicloud_eip_association":          {Tok: resource(ecsMod, "EipAssociation")},
+			"alicloud_instance":                 {Tok: resource(ecsMod, "Instance")},
+			"alicloud_key_pair":                 {Tok: resource(ecsMod, "KeyPair")},
+			"alicloud_key_pair_attachment":      {Tok: resource(ecsMod, "KeyPairAttachment")},
+			"alicloud_image":                    {Tok: resource(ecsMod, "Image")},
+			"alicloud_image_copy":               {Tok: resource(ecsMod, "ImageCopy")},
+			"alicloud_image_export":             {Tok: resource(ecsMod, "ImageExport")},
+			"alicloud_image_share_permission":   {Tok: resource(ecsMod, "ImageSharePermission")},
+			"alicloud_security_group":           {Tok: resource(ecsMod, "SecurityGroup")},
+			"alicloud_security_group_rule":      {Tok: resource(ecsMod, "SecurityGroupRule")},
+			"alicloud_reserved_instance":        {Tok: resource(ecsMod, "ReservedInstance")},
+			"alicloud_snapshot":                 {Tok: resource(ecsMod, "Snapshot")},
+			"alicloud_snapshot_policy":          {Tok: resource(ecsMod, "SnapshotPolicy")},
+			"alicloud_copy_image":               {Tok: resource(ecsMod, "CopyImage")},
+			"alicloud_image_import":             {Tok: resource(ecsMod, "ImageImport")},
+			"alicloud_ecs_dedicated_host":       {Tok: resource(ecsMod, "DedicatedHost")},
+			"alicloud_ecs_hpc_cluster":          {Tok: resource(ecsMod, "HpcCluster")},
+			"alicloud_ecs_command":              {Tok: resource(ecsMod, "Command")},
+			"alicloud_ecs_auto_snapshot_policy": {Tok: resource(ecsMod, "AutoSnapshotPolicy")},
 
 			// Edas
 			"alicloud_edas_application":                 {Tok: resource(edasMod, "Application")},
@@ -538,8 +540,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_pvtz_zone_record":     {Tok: resource(pvtzMod, "ZoneRecord")},
 
 			// Quotas
-			"alicloud_quotas_application_info": {Tok: resource(quotasMod, "ApplicationInfo")},
-			"alicloud_quotas_quota_alarm":      {Tok: resource(quotasMod, "QuotaAlarm")},
+			"alicloud_quotas_application_info":  {Tok: resource(quotasMod, "ApplicationInfo")},
+			"alicloud_quotas_quota_alarm":       {Tok: resource(quotasMod, "QuotaAlarm")},
+			"alicloud_quotas_quota_application": {Tok: resource(quotasMod, "QuotaApplication")},
 
 			// Ram
 			"alicloud_ram_access_key": {Tok: resource(ramMod, "AccessKey")},
@@ -663,6 +666,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_havip_attachment":                    {Tok: resource(vpcMod, "HAVipAttachment")},
 			"alicloud_common_bandwidth_package":            {Tok: resource(vpcMod, "CommonBandwithPackage")},
 			"alicloud_common_bandwidth_package_attachment": {Tok: resource(vpcMod, "CommonBandwithPackageAttachment")},
+			"alicloud_vpc_flow_log":                        {Tok: resource(vpcMod, "FlowLog")},
 
 			// VPN
 			"alicloud_ssl_vpn_client_cert":  {Tok: resource(vpnMod, "SslVpnClientCert")},
@@ -718,6 +722,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_brain_industrial_pid_projects":      {Tok: dataSource(brainMod, "getIndustrialPidProjects")},
 			"alicloud_brain_industrial_pid_organizations": {Tok: dataSource(brainMod, "getIndustrialPidOrganizations")},
 			"alicloud_brain_industrial_service":           {Tok: dataSource(brainMod, "getIndustrialSerice")},
+			"alicloud_brain_industrial_pid_loops":         {Tok: dataSource(brainMod, "getIndustrialPidLoops")},
 
 			// Cas
 			"alicloud_cas_certificates": {Tok: dataSource(casMod, "getCertificates")},
@@ -750,6 +755,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cloud_storage_gateway_storage_bundles": {
 				Tok: dataSource(cloudStorageGatewayMod, "getStorageBundles"),
 			},
+			"alicloud_cloud_storage_gateway_service": {Tok: dataSource(cloudStorageGatewayMod, "getService")},
 
 			// CMS
 			"alicloud_cms_alarm_contacts":       {Tok: dataSource(cmsMod, "getAlarmContacts")},
@@ -820,20 +826,21 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_eci_container_groups": {Tok: dataSource(eciMod, "getContainerGroups")},
 
 			// Ecs
-			"alicloud_images":                 {Tok: dataSource(ecsMod, "getImages")},
-			"alicloud_instance_types":         {Tok: dataSource(ecsMod, "getInstanceTypes")},
-			"alicloud_instances":              {Tok: dataSource(ecsMod, "getInstances")},
-			"alicloud_key_pairs":              {Tok: dataSource(ecsMod, "getKeyPairs")},
-			"alicloud_security_group_rules":   {Tok: dataSource(ecsMod, "getSecurityGroupRules")},
-			"alicloud_security_groups":        {Tok: dataSource(ecsMod, "getSecurityGroups")},
-			"alicloud_disks":                  {Tok: dataSource(ecsMod, "getDisks")},
-			"alicloud_eips":                   {Tok: dataSource(ecsMod, "getEips")},
-			"alicloud_instance_type_families": {Tok: dataSource(ecsMod, "getInstanceTypeFamilies")},
-			"alicloud_network_interfaces":     {Tok: dataSource(ecsMod, "getNetworkInterfaces")},
-			"alicloud_snapshots":              {Tok: dataSource(ecsMod, "getSnapshots")},
-			"alicloud_ecs_dedicated_hosts":    {Tok: dataSource(ecsMod, "getDedicatedHosts")},
-			"alicloud_ecs_hpc_clusters":       {Tok: dataSource(ecsMod, "getHpcClusters")},
-			"alicloud_ecs_commands":           {Tok: dataSource(ecsMod, "getCommands")},
+			"alicloud_images":                     {Tok: dataSource(ecsMod, "getImages")},
+			"alicloud_instance_types":             {Tok: dataSource(ecsMod, "getInstanceTypes")},
+			"alicloud_instances":                  {Tok: dataSource(ecsMod, "getInstances")},
+			"alicloud_key_pairs":                  {Tok: dataSource(ecsMod, "getKeyPairs")},
+			"alicloud_security_group_rules":       {Tok: dataSource(ecsMod, "getSecurityGroupRules")},
+			"alicloud_security_groups":            {Tok: dataSource(ecsMod, "getSecurityGroups")},
+			"alicloud_disks":                      {Tok: dataSource(ecsMod, "getDisks")},
+			"alicloud_eips":                       {Tok: dataSource(ecsMod, "getEips")},
+			"alicloud_instance_type_families":     {Tok: dataSource(ecsMod, "getInstanceTypeFamilies")},
+			"alicloud_network_interfaces":         {Tok: dataSource(ecsMod, "getNetworkInterfaces")},
+			"alicloud_snapshots":                  {Tok: dataSource(ecsMod, "getSnapshots")},
+			"alicloud_ecs_dedicated_hosts":        {Tok: dataSource(ecsMod, "getDedicatedHosts")},
+			"alicloud_ecs_hpc_clusters":           {Tok: dataSource(ecsMod, "getHpcClusters")},
+			"alicloud_ecs_commands":               {Tok: dataSource(ecsMod, "getCommands")},
+			"alicloud_ecs_auto_snapshot_policies": {Tok: dataSource(ecsMod, "getAutoSnapshotPolicies")},
 
 			// Edas
 			"alicloud_edas_applications":  {Tok: dataSource(edasMod, "getApplications")},
@@ -919,6 +926,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_market_products": {Tok: dataSource(marketPlaceMod, "getProducts")},
 			"alicloud_market_product":  {Tok: dataSource(marketPlaceMod, "getProduct")},
 
+			// MaxCompute
+			"alicloud_maxcompute_service": {Tok: dataSource(maxComputeMod, "getService")},
+
 			// Mns
 			"alicloud_mns_queues":              {Tok: dataSource(mnsMod, "getQueues")},
 			"alicloud_mns_topic_subscriptions": {Tok: dataSource(mnsMod, "getTopicSubscriptions")},
@@ -982,9 +992,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_pvtz_service":      {Tok: dataSource(pvtzMod, "getService")},
 
 			// quotas
-			"alicloud_quotas_quotas":            {Tok: dataSource(quotasMod, "getQuotas")},
-			"alicloud_quotas_application_infos": {Tok: dataSource(quotasMod, "getApplicationInfos")},
-			"alicloud_quotas_quota_alarms":      {Tok: dataSource(quotasMod, "getQuotaAlarms")},
+			"alicloud_quotas_quotas":             {Tok: dataSource(quotasMod, "getQuotas")},
+			"alicloud_quotas_application_infos":  {Tok: dataSource(quotasMod, "getApplicationInfos")},
+			"alicloud_quotas_quota_alarms":       {Tok: dataSource(quotasMod, "getQuotaAlarms")},
+			"alicloud_quotas_quota_applications": {Tok: dataSource(quotasMod, "getQuotaApplications")},
 
 			// Ram
 			"alicloud_ram_account_alias":   {Tok: dataSource(ramMod, "getAccountAlias")},

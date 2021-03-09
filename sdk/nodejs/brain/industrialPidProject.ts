@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.brain.IndustrialPidProject("example", {
- *     pidOrganisationId: "3e74e684-cbb5-xxxx",
+ *     pidOrganizationId: "3e74e684-cbb5-xxxx",
  *     pidProjectName: "tf-testAcc",
  * });
  * ```
@@ -60,9 +60,9 @@ export class IndustrialPidProject extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of Pid Organisation.
+     * The ID of Pid Organization.
      */
-    public readonly pidOrganisationId!: pulumi.Output<string>;
+    public readonly pidOrganizationId!: pulumi.Output<string>;
     /**
      * The description of Pid Project.
      */
@@ -85,18 +85,18 @@ export class IndustrialPidProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IndustrialPidProjectState | undefined;
-            inputs["pidOrganisationId"] = state ? state.pidOrganisationId : undefined;
+            inputs["pidOrganizationId"] = state ? state.pidOrganizationId : undefined;
             inputs["pidProjectDesc"] = state ? state.pidProjectDesc : undefined;
             inputs["pidProjectName"] = state ? state.pidProjectName : undefined;
         } else {
             const args = argsOrState as IndustrialPidProjectArgs | undefined;
-            if ((!args || args.pidOrganisationId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'pidOrganisationId'");
+            if ((!args || args.pidOrganizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'pidOrganizationId'");
             }
             if ((!args || args.pidProjectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pidProjectName'");
             }
-            inputs["pidOrganisationId"] = args ? args.pidOrganisationId : undefined;
+            inputs["pidOrganizationId"] = args ? args.pidOrganizationId : undefined;
             inputs["pidProjectDesc"] = args ? args.pidProjectDesc : undefined;
             inputs["pidProjectName"] = args ? args.pidProjectName : undefined;
         }
@@ -112,9 +112,9 @@ export class IndustrialPidProject extends pulumi.CustomResource {
  */
 export interface IndustrialPidProjectState {
     /**
-     * The ID of Pid Organisation.
+     * The ID of Pid Organization.
      */
-    readonly pidOrganisationId?: pulumi.Input<string>;
+    readonly pidOrganizationId?: pulumi.Input<string>;
     /**
      * The description of Pid Project.
      */
@@ -130,9 +130,9 @@ export interface IndustrialPidProjectState {
  */
 export interface IndustrialPidProjectArgs {
     /**
-     * The ID of Pid Organisation.
+     * The ID of Pid Organization.
      */
-    readonly pidOrganisationId: pulumi.Input<string>;
+    readonly pidOrganizationId: pulumi.Input<string>;
     /**
      * The description of Pid Project.
      */

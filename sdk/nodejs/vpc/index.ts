@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./commonBandwithPackage";
 export * from "./commonBandwithPackageAttachment";
+export * from "./flowLog";
 export * from "./forwardEntry";
 export * from "./getCommonBandwidthPackages";
 export * from "./getEnhancedNatAvailableZones";
@@ -41,6 +42,7 @@ export * from "./switch";
 // Import resources to register:
 import { CommonBandwithPackage } from "./commonBandwithPackage";
 import { CommonBandwithPackageAttachment } from "./commonBandwithPackageAttachment";
+import { FlowLog } from "./flowLog";
 import { ForwardEntry } from "./forwardEntry";
 import { HAVip } from "./havip";
 import { HAVipAttachment } from "./havipAttachment";
@@ -68,6 +70,8 @@ const _module = {
                 return new CommonBandwithPackage(name, <any>undefined, { urn })
             case "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment":
                 return new CommonBandwithPackageAttachment(name, <any>undefined, { urn })
+            case "alicloud:vpc/flowLog:FlowLog":
+                return new FlowLog(name, <any>undefined, { urn })
             case "alicloud:vpc/forwardEntry:ForwardEntry":
                 return new ForwardEntry(name, <any>undefined, { urn })
             case "alicloud:vpc/hAVip:HAVip":
@@ -111,6 +115,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "vpc/commonBandwithPackage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/commonBandwithPackageAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/flowLog", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/forwardEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVipAttachment", _module)

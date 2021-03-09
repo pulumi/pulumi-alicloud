@@ -134,6 +134,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    public readonly loadBalancerSpec!: pulumi.Output<string | undefined>;
+    /**
      * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
      */
     public readonly maintenanceWindow!: pulumi.Output<outputs.cs.ManagedKubernetesMaintenanceWindow>;
@@ -339,6 +343,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
+            inputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
             inputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
@@ -411,6 +416,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             inputs["kubeConfig"] = args ? args.kubeConfig : undefined;
+            inputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
             inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
@@ -562,6 +568,10 @@ export interface ManagedKubernetesState {
      * The path of kube config, like `~/.kube/config`.
      */
     readonly kubeConfig?: pulumi.Input<string>;
+    /**
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    readonly loadBalancerSpec?: pulumi.Input<string>;
     /**
      * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
      */
@@ -820,6 +830,10 @@ export interface ManagedKubernetesArgs {
      * The path of kube config, like `~/.kube/config`.
      */
     readonly kubeConfig?: pulumi.Input<string>;
+    /**
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     */
+    readonly loadBalancerSpec?: pulumi.Input<string>;
     /**
      * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
      */

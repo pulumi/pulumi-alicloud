@@ -15,7 +15,7 @@ class IndustrialPidProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pid_organisation_id: Optional[pulumi.Input[str]] = None,
+                 pid_organization_id: Optional[pulumi.Input[str]] = None,
                  pid_project_desc: Optional[pulumi.Input[str]] = None,
                  pid_project_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -35,7 +35,7 @@ class IndustrialPidProject(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.brain.IndustrialPidProject("example",
-            pid_organisation_id="3e74e684-cbb5-xxxx",
+            pid_organization_id="3e74e684-cbb5-xxxx",
             pid_project_name="tf-testAcc")
         ```
 
@@ -49,7 +49,7 @@ class IndustrialPidProject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] pid_organisation_id: The ID of Pid Organisation.
+        :param pulumi.Input[str] pid_organization_id: The ID of Pid Organization.
         :param pulumi.Input[str] pid_project_desc: The description of Pid Project.
         :param pulumi.Input[str] pid_project_name: The name of Pid Project.
         """
@@ -70,9 +70,9 @@ class IndustrialPidProject(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if pid_organisation_id is None and not opts.urn:
-                raise TypeError("Missing required property 'pid_organisation_id'")
-            __props__['pid_organisation_id'] = pid_organisation_id
+            if pid_organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'pid_organization_id'")
+            __props__['pid_organization_id'] = pid_organization_id
             __props__['pid_project_desc'] = pid_project_desc
             if pid_project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'pid_project_name'")
@@ -87,7 +87,7 @@ class IndustrialPidProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            pid_organisation_id: Optional[pulumi.Input[str]] = None,
+            pid_organization_id: Optional[pulumi.Input[str]] = None,
             pid_project_desc: Optional[pulumi.Input[str]] = None,
             pid_project_name: Optional[pulumi.Input[str]] = None) -> 'IndustrialPidProject':
         """
@@ -97,7 +97,7 @@ class IndustrialPidProject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] pid_organisation_id: The ID of Pid Organisation.
+        :param pulumi.Input[str] pid_organization_id: The ID of Pid Organization.
         :param pulumi.Input[str] pid_project_desc: The description of Pid Project.
         :param pulumi.Input[str] pid_project_name: The name of Pid Project.
         """
@@ -105,18 +105,18 @@ class IndustrialPidProject(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["pid_organisation_id"] = pid_organisation_id
+        __props__["pid_organization_id"] = pid_organization_id
         __props__["pid_project_desc"] = pid_project_desc
         __props__["pid_project_name"] = pid_project_name
         return IndustrialPidProject(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="pidOrganisationId")
-    def pid_organisation_id(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="pidOrganizationId")
+    def pid_organization_id(self) -> pulumi.Output[str]:
         """
-        The ID of Pid Organisation.
+        The ID of Pid Organization.
         """
-        return pulumi.get(self, "pid_organisation_id")
+        return pulumi.get(self, "pid_organization_id")
 
     @property
     @pulumi.getter(name="pidProjectDesc")

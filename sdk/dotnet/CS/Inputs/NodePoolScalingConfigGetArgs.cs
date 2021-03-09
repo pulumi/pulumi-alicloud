@@ -31,19 +31,19 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<bool>? IsBondEip { get; set; }
 
         /// <summary>
-        /// Min number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        /// Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
         /// </summary>
         [Input("maxSize", required: true)]
         public Input<int> MaxSize { get; set; } = null!;
 
         /// <summary>
-        /// Max number of instances in a auto scaling group, its valid value range [0~1000].
+        /// Min number of instances in a auto scaling group, its valid value range [0~1000].
         /// </summary>
         [Input("minSize", required: true)]
         public Input<int> MinSize { get; set; } = null!;
 
         /// <summary>
-        /// Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+        /// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

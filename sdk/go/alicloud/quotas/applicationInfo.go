@@ -11,89 +11,25 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Quotas Application Info resource.
-//
-// For information about Quotas Application Info and how to use it, see [What is Application Info](https://help.aliyun.com/document_detail/171289.html).
-//
-// > **NOTE:** Available in v1.115.0+.
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/quotas"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := quotas.NewApplicationInfo(ctx, "example", &quotas.ApplicationInfoArgs{
-// 			DesireValue: pulumi.Float64(100),
-// 			Dimensions: quotas.ApplicationInfoDimensionArray{
-// 				&quotas.ApplicationInfoDimensionArgs{
-// 					Key:   pulumi.String("regionId"),
-// 					Value: pulumi.String("cn-hangzhou"),
-// 				},
-// 			},
-// 			NoticeType:      pulumi.Int(0),
-// 			ProductCode:     pulumi.String("ess"),
-// 			QuotaActionCode: pulumi.String("q_db_instance"),
-// 			Reason:          pulumi.String("For Terraform Test"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ## Import
-//
-// Quotas Application Info can be imported using the id, e.g.
-//
-// ```sh
-//  $ pulumi import alicloud:quotas/applicationInfo:ApplicationInfo example <id>
-// ```
 type ApplicationInfo struct {
 	pulumi.CustomResourceState
 
-	// The approve value of the quota application.
-	ApproveValue pulumi.StringOutput `pulumi:"approveValue"`
-	// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
-	AuditMode pulumi.StringPtrOutput `pulumi:"auditMode"`
-	// The audit reason.
-	AuditReason pulumi.StringOutput `pulumi:"auditReason"`
-	// The desire value of the quota application.
-	DesireValue pulumi.Float64Output `pulumi:"desireValue"`
-	// The quota dimensions.
-	Dimensions ApplicationInfoDimensionArrayOutput `pulumi:"dimensions"`
-	// The effective time of the quota application.
-	EffectiveTime pulumi.StringOutput `pulumi:"effectiveTime"`
-	// The expire time of the quota application.
-	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
-	// The notice type. Valid values: `0`, `1`, `2`, `3`.
-	NoticeType pulumi.IntPtrOutput `pulumi:"noticeType"`
-	// The product code.
-	ProductCode pulumi.StringOutput `pulumi:"productCode"`
-	// The ID of quota action.
-	QuotaActionCode pulumi.StringOutput `pulumi:"quotaActionCode"`
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
-	QuotaCategory pulumi.StringPtrOutput `pulumi:"quotaCategory"`
-	// The description of the quota application.
-	QuotaDescription pulumi.StringOutput `pulumi:"quotaDescription"`
-	// The name of the quota application.
-	QuotaName pulumi.StringOutput `pulumi:"quotaName"`
-	// The unit of the quota application.
-	QuotaUnit pulumi.StringOutput `pulumi:"quotaUnit"`
-	// The reason of the quota application.
-	Reason pulumi.StringOutput `pulumi:"reason"`
-	// The status of the quota application.
-	Status pulumi.StringOutput `pulumi:"status"`
+	ApproveValue     pulumi.StringOutput                 `pulumi:"approveValue"`
+	AuditMode        pulumi.StringPtrOutput              `pulumi:"auditMode"`
+	AuditReason      pulumi.StringOutput                 `pulumi:"auditReason"`
+	DesireValue      pulumi.Float64Output                `pulumi:"desireValue"`
+	Dimensions       ApplicationInfoDimensionArrayOutput `pulumi:"dimensions"`
+	EffectiveTime    pulumi.StringOutput                 `pulumi:"effectiveTime"`
+	ExpireTime       pulumi.StringOutput                 `pulumi:"expireTime"`
+	NoticeType       pulumi.IntPtrOutput                 `pulumi:"noticeType"`
+	ProductCode      pulumi.StringOutput                 `pulumi:"productCode"`
+	QuotaActionCode  pulumi.StringOutput                 `pulumi:"quotaActionCode"`
+	QuotaCategory    pulumi.StringPtrOutput              `pulumi:"quotaCategory"`
+	QuotaDescription pulumi.StringOutput                 `pulumi:"quotaDescription"`
+	QuotaName        pulumi.StringOutput                 `pulumi:"quotaName"`
+	QuotaUnit        pulumi.StringOutput                 `pulumi:"quotaUnit"`
+	Reason           pulumi.StringOutput                 `pulumi:"reason"`
+	Status           pulumi.StringOutput                 `pulumi:"status"`
 }
 
 // NewApplicationInfo registers a new resource with the given unique name, arguments, and options.
@@ -137,73 +73,41 @@ func GetApplicationInfo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationInfo resources.
 type applicationInfoState struct {
-	// The approve value of the quota application.
-	ApproveValue *string `pulumi:"approveValue"`
-	// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
-	AuditMode *string `pulumi:"auditMode"`
-	// The audit reason.
-	AuditReason *string `pulumi:"auditReason"`
-	// The desire value of the quota application.
-	DesireValue *float64 `pulumi:"desireValue"`
-	// The quota dimensions.
-	Dimensions []ApplicationInfoDimension `pulumi:"dimensions"`
-	// The effective time of the quota application.
-	EffectiveTime *string `pulumi:"effectiveTime"`
-	// The expire time of the quota application.
-	ExpireTime *string `pulumi:"expireTime"`
-	// The notice type. Valid values: `0`, `1`, `2`, `3`.
-	NoticeType *int `pulumi:"noticeType"`
-	// The product code.
-	ProductCode *string `pulumi:"productCode"`
-	// The ID of quota action.
-	QuotaActionCode *string `pulumi:"quotaActionCode"`
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
-	QuotaCategory *string `pulumi:"quotaCategory"`
-	// The description of the quota application.
-	QuotaDescription *string `pulumi:"quotaDescription"`
-	// The name of the quota application.
-	QuotaName *string `pulumi:"quotaName"`
-	// The unit of the quota application.
-	QuotaUnit *string `pulumi:"quotaUnit"`
-	// The reason of the quota application.
-	Reason *string `pulumi:"reason"`
-	// The status of the quota application.
-	Status *string `pulumi:"status"`
+	ApproveValue     *string                    `pulumi:"approveValue"`
+	AuditMode        *string                    `pulumi:"auditMode"`
+	AuditReason      *string                    `pulumi:"auditReason"`
+	DesireValue      *float64                   `pulumi:"desireValue"`
+	Dimensions       []ApplicationInfoDimension `pulumi:"dimensions"`
+	EffectiveTime    *string                    `pulumi:"effectiveTime"`
+	ExpireTime       *string                    `pulumi:"expireTime"`
+	NoticeType       *int                       `pulumi:"noticeType"`
+	ProductCode      *string                    `pulumi:"productCode"`
+	QuotaActionCode  *string                    `pulumi:"quotaActionCode"`
+	QuotaCategory    *string                    `pulumi:"quotaCategory"`
+	QuotaDescription *string                    `pulumi:"quotaDescription"`
+	QuotaName        *string                    `pulumi:"quotaName"`
+	QuotaUnit        *string                    `pulumi:"quotaUnit"`
+	Reason           *string                    `pulumi:"reason"`
+	Status           *string                    `pulumi:"status"`
 }
 
 type ApplicationInfoState struct {
-	// The approve value of the quota application.
-	ApproveValue pulumi.StringPtrInput
-	// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
-	AuditMode pulumi.StringPtrInput
-	// The audit reason.
-	AuditReason pulumi.StringPtrInput
-	// The desire value of the quota application.
-	DesireValue pulumi.Float64PtrInput
-	// The quota dimensions.
-	Dimensions ApplicationInfoDimensionArrayInput
-	// The effective time of the quota application.
-	EffectiveTime pulumi.StringPtrInput
-	// The expire time of the quota application.
-	ExpireTime pulumi.StringPtrInput
-	// The notice type. Valid values: `0`, `1`, `2`, `3`.
-	NoticeType pulumi.IntPtrInput
-	// The product code.
-	ProductCode pulumi.StringPtrInput
-	// The ID of quota action.
-	QuotaActionCode pulumi.StringPtrInput
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
-	QuotaCategory pulumi.StringPtrInput
-	// The description of the quota application.
+	ApproveValue     pulumi.StringPtrInput
+	AuditMode        pulumi.StringPtrInput
+	AuditReason      pulumi.StringPtrInput
+	DesireValue      pulumi.Float64PtrInput
+	Dimensions       ApplicationInfoDimensionArrayInput
+	EffectiveTime    pulumi.StringPtrInput
+	ExpireTime       pulumi.StringPtrInput
+	NoticeType       pulumi.IntPtrInput
+	ProductCode      pulumi.StringPtrInput
+	QuotaActionCode  pulumi.StringPtrInput
+	QuotaCategory    pulumi.StringPtrInput
 	QuotaDescription pulumi.StringPtrInput
-	// The name of the quota application.
-	QuotaName pulumi.StringPtrInput
-	// The unit of the quota application.
-	QuotaUnit pulumi.StringPtrInput
-	// The reason of the quota application.
-	Reason pulumi.StringPtrInput
-	// The status of the quota application.
-	Status pulumi.StringPtrInput
+	QuotaName        pulumi.StringPtrInput
+	QuotaUnit        pulumi.StringPtrInput
+	Reason           pulumi.StringPtrInput
+	Status           pulumi.StringPtrInput
 }
 
 func (ApplicationInfoState) ElementType() reflect.Type {
@@ -211,42 +115,26 @@ func (ApplicationInfoState) ElementType() reflect.Type {
 }
 
 type applicationInfoArgs struct {
-	// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
-	AuditMode *string `pulumi:"auditMode"`
-	// The desire value of the quota application.
-	DesireValue float64 `pulumi:"desireValue"`
-	// The quota dimensions.
-	Dimensions []ApplicationInfoDimension `pulumi:"dimensions"`
-	// The notice type. Valid values: `0`, `1`, `2`, `3`.
-	NoticeType *int `pulumi:"noticeType"`
-	// The product code.
-	ProductCode string `pulumi:"productCode"`
-	// The ID of quota action.
-	QuotaActionCode string `pulumi:"quotaActionCode"`
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
-	QuotaCategory *string `pulumi:"quotaCategory"`
-	// The reason of the quota application.
-	Reason string `pulumi:"reason"`
+	AuditMode       *string                    `pulumi:"auditMode"`
+	DesireValue     float64                    `pulumi:"desireValue"`
+	Dimensions      []ApplicationInfoDimension `pulumi:"dimensions"`
+	NoticeType      *int                       `pulumi:"noticeType"`
+	ProductCode     string                     `pulumi:"productCode"`
+	QuotaActionCode string                     `pulumi:"quotaActionCode"`
+	QuotaCategory   *string                    `pulumi:"quotaCategory"`
+	Reason          string                     `pulumi:"reason"`
 }
 
 // The set of arguments for constructing a ApplicationInfo resource.
 type ApplicationInfoArgs struct {
-	// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
-	AuditMode pulumi.StringPtrInput
-	// The desire value of the quota application.
-	DesireValue pulumi.Float64Input
-	// The quota dimensions.
-	Dimensions ApplicationInfoDimensionArrayInput
-	// The notice type. Valid values: `0`, `1`, `2`, `3`.
-	NoticeType pulumi.IntPtrInput
-	// The product code.
-	ProductCode pulumi.StringInput
-	// The ID of quota action.
+	AuditMode       pulumi.StringPtrInput
+	DesireValue     pulumi.Float64Input
+	Dimensions      ApplicationInfoDimensionArrayInput
+	NoticeType      pulumi.IntPtrInput
+	ProductCode     pulumi.StringInput
 	QuotaActionCode pulumi.StringInput
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
-	QuotaCategory pulumi.StringPtrInput
-	// The reason of the quota application.
-	Reason pulumi.StringInput
+	QuotaCategory   pulumi.StringPtrInput
+	Reason          pulumi.StringInput
 }
 
 func (ApplicationInfoArgs) ElementType() reflect.Type {

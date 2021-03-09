@@ -17,6 +17,7 @@ __all__ = [
     'InstanceDataDisk',
     'LaunchTemplateDataDisk',
     'LaunchTemplateNetworkInterfaces',
+    'GetAutoSnapshotPoliciesPolicyResult',
     'GetCommandsCommandResult',
     'GetDedicatedHostsHostResult',
     'GetDisksDiskResult',
@@ -589,6 +590,156 @@ class LaunchTemplateNetworkInterfaces(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetAutoSnapshotPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 auto_snapshot_policy_id: str,
+                 copied_snapshots_retention_days: int,
+                 disk_nums: int,
+                 enable_cross_region_copy: bool,
+                 id: str,
+                 name: str,
+                 repeat_weekdays: Sequence[str],
+                 retention_days: int,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 target_copy_regions: Sequence[str],
+                 time_points: Sequence[str],
+                 volume_nums: int):
+        """
+        :param str auto_snapshot_policy_id: The ID of the Auto Snapshot Policy.
+        :param int copied_snapshots_retention_days: The retention period of the snapshot copied across regions.
+        :param int disk_nums: The number of disks to which the automatic snapshot policy is applied.
+        :param bool enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
+        :param str id: The ID of the Auto Snapshot Policy.
+        :param str name: The snapshot policy name..
+        :param Sequence[str] repeat_weekdays: The automatic snapshot repetition dates.
+        :param int retention_days: The snapshot retention time, and the unit of measurement is day.
+        :param str status: The status of Auto Snapshot Policy.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Sequence[str] target_copy_regions: The destination region to which the snapshot is copied.
+        :param Sequence[str] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour.
+        :param int volume_nums: The number of extended volumes on which this policy is enabled.
+        """
+        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        pulumi.set(__self__, "copied_snapshots_retention_days", copied_snapshots_retention_days)
+        pulumi.set(__self__, "disk_nums", disk_nums)
+        pulumi.set(__self__, "enable_cross_region_copy", enable_cross_region_copy)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "target_copy_regions", target_copy_regions)
+        pulumi.set(__self__, "time_points", time_points)
+        pulumi.set(__self__, "volume_nums", volume_nums)
+
+    @property
+    @pulumi.getter(name="autoSnapshotPolicyId")
+    def auto_snapshot_policy_id(self) -> str:
+        """
+        The ID of the Auto Snapshot Policy.
+        """
+        return pulumi.get(self, "auto_snapshot_policy_id")
+
+    @property
+    @pulumi.getter(name="copiedSnapshotsRetentionDays")
+    def copied_snapshots_retention_days(self) -> int:
+        """
+        The retention period of the snapshot copied across regions.
+        """
+        return pulumi.get(self, "copied_snapshots_retention_days")
+
+    @property
+    @pulumi.getter(name="diskNums")
+    def disk_nums(self) -> int:
+        """
+        The number of disks to which the automatic snapshot policy is applied.
+        """
+        return pulumi.get(self, "disk_nums")
+
+    @property
+    @pulumi.getter(name="enableCrossRegionCopy")
+    def enable_cross_region_copy(self) -> bool:
+        """
+        Specifies whether to enable the system to automatically copy snapshots across regions.
+        """
+        return pulumi.get(self, "enable_cross_region_copy")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Auto Snapshot Policy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The snapshot policy name..
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="repeatWeekdays")
+    def repeat_weekdays(self) -> Sequence[str]:
+        """
+        The automatic snapshot repetition dates.
+        """
+        return pulumi.get(self, "repeat_weekdays")
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> int:
+        """
+        The snapshot retention time, and the unit of measurement is day.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of Auto Snapshot Policy.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="targetCopyRegions")
+    def target_copy_regions(self) -> Sequence[str]:
+        """
+        The destination region to which the snapshot is copied.
+        """
+        return pulumi.get(self, "target_copy_regions")
+
+    @property
+    @pulumi.getter(name="timePoints")
+    def time_points(self) -> Sequence[str]:
+        """
+        The automatic snapshot creation schedule, and the unit of measurement is hour.
+        """
+        return pulumi.get(self, "time_points")
+
+    @property
+    @pulumi.getter(name="volumeNums")
+    def volume_nums(self) -> int:
+        """
+        The number of extended volumes on which this policy is enabled.
+        """
+        return pulumi.get(self, "volume_nums")
 
 
 @pulumi.output_type

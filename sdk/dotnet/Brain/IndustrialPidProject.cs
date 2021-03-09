@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Brain
     ///     {
     ///         var example = new AliCloud.Brain.IndustrialPidProject("example", new AliCloud.Brain.IndustrialPidProjectArgs
     ///         {
-    ///             PidOrganisationId = "3e74e684-cbb5-xxxx",
+    ///             PidOrganizationId = "3e74e684-cbb5-xxxx",
     ///             PidProjectName = "tf-testAcc",
     ///         });
     ///     }
@@ -48,10 +48,10 @@ namespace Pulumi.AliCloud.Brain
     public partial class IndustrialPidProject : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of Pid Organisation.
+        /// The ID of Pid Organization.
         /// </summary>
-        [Output("pidOrganisationId")]
-        public Output<string> PidOrganisationId { get; private set; } = null!;
+        [Output("pidOrganizationId")]
+        public Output<string> PidOrganizationId { get; private set; } = null!;
 
         /// <summary>
         /// The description of Pid Project.
@@ -112,10 +112,10 @@ namespace Pulumi.AliCloud.Brain
     public sealed class IndustrialPidProjectArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of Pid Organisation.
+        /// The ID of Pid Organization.
         /// </summary>
-        [Input("pidOrganisationId", required: true)]
-        public Input<string> PidOrganisationId { get; set; } = null!;
+        [Input("pidOrganizationId", required: true)]
+        public Input<string> PidOrganizationId { get; set; } = null!;
 
         /// <summary>
         /// The description of Pid Project.
@@ -137,10 +137,10 @@ namespace Pulumi.AliCloud.Brain
     public sealed class IndustrialPidProjectState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of Pid Organisation.
+        /// The ID of Pid Organization.
         /// </summary>
-        [Input("pidOrganisationId")]
-        public Input<string>? PidOrganisationId { get; set; }
+        [Input("pidOrganizationId")]
+        public Input<string>? PidOrganizationId { get; set; }
 
         /// <summary>
         /// The description of Pid Project.

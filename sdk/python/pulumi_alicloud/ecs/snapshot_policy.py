@@ -15,40 +15,18 @@ class SnapshotPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+                 enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        Provides an ECS snapshot policy resource.
-
-        For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-
-        > **NOTE:** Available in 1.42.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        sp = alicloud.ecs.SnapshotPolicy("sp",
-            repeat_weekdays=[
-                "1",
-                "2",
-                "3",
-            ],
-            retention_days=-1,
-            time_points=[
-                "1",
-                "22",
-                "23",
-            ])
-        ```
-
         ## Import
 
         Snapshot can be imported using the id, e.g.
@@ -87,6 +65,8 @@ class SnapshotPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['copied_snapshots_retention_days'] = copied_snapshots_retention_days
+            __props__['enable_cross_region_copy'] = enable_cross_region_copy
             __props__['name'] = name
             if repeat_weekdays is None and not opts.urn:
                 raise TypeError("Missing required property 'repeat_weekdays'")
@@ -94,9 +74,12 @@ class SnapshotPolicy(pulumi.CustomResource):
             if retention_days is None and not opts.urn:
                 raise TypeError("Missing required property 'retention_days'")
             __props__['retention_days'] = retention_days
+            __props__['tags'] = tags
+            __props__['target_copy_regions'] = target_copy_regions
             if time_points is None and not opts.urn:
                 raise TypeError("Missing required property 'time_points'")
             __props__['time_points'] = time_points
+            __props__['status'] = None
         super(SnapshotPolicy, __self__).__init__(
             'alicloud:ecs/snapshotPolicy:SnapshotPolicy',
             resource_name,
@@ -107,9 +90,14 @@ class SnapshotPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+            enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             retention_days: Optional[pulumi.Input[int]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'SnapshotPolicy':
         """
         Get an existing SnapshotPolicy resource's state with the given name, id, and optional extra
@@ -133,11 +121,26 @@ class SnapshotPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["copied_snapshots_retention_days"] = copied_snapshots_retention_days
+        __props__["enable_cross_region_copy"] = enable_cross_region_copy
         __props__["name"] = name
         __props__["repeat_weekdays"] = repeat_weekdays
         __props__["retention_days"] = retention_days
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["target_copy_regions"] = target_copy_regions
         __props__["time_points"] = time_points
         return SnapshotPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="copiedSnapshotsRetentionDays")
+    def copied_snapshots_retention_days(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "copied_snapshots_retention_days")
+
+    @property
+    @pulumi.getter(name="enableCrossRegionCopy")
+    def enable_cross_region_copy(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "enable_cross_region_copy")
 
     @property
     @pulumi.getter
@@ -166,6 +169,21 @@ class SnapshotPolicy(pulumi.CustomResource):
         - [1, 65536]: The number of days retained.
         """
         return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="targetCopyRegions")
+    def target_copy_regions(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "target_copy_regions")
 
     @property
     @pulumi.getter(name="timePoints")

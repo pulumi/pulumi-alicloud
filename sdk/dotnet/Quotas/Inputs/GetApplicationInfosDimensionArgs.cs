@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.Quotas.Inputs
 
     public sealed class GetApplicationInfosDimensionArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The key of dimensions.
-        /// </summary>
         [Input("key")]
         public string? Key { get; set; }
 
-        /// <summary>
-        /// The value of dimensions.
-        /// </summary>
         [Input("value")]
         public string? Value { get; set; }
 

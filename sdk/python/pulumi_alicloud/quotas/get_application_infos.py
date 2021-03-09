@@ -21,7 +21,10 @@ class GetApplicationInfosResult:
     """
     A collection of values returned by getApplicationInfos.
     """
-    def __init__(__self__, dimensions=None, enable_details=None, id=None, ids=None, infos=None, output_file=None, product_code=None, quota_action_code=None, quota_category=None, status=None):
+    def __init__(__self__, applications=None, dimensions=None, enable_details=None, id=None, ids=None, key_word=None, output_file=None, product_code=None, quota_action_code=None, quota_category=None, status=None):
+        if applications and not isinstance(applications, list):
+            raise TypeError("Expected argument 'applications' to be a list")
+        pulumi.set(__self__, "applications", applications)
         if dimensions and not isinstance(dimensions, list):
             raise TypeError("Expected argument 'dimensions' to be a list")
         pulumi.set(__self__, "dimensions", dimensions)
@@ -34,9 +37,9 @@ class GetApplicationInfosResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
-        if infos and not isinstance(infos, list):
-            raise TypeError("Expected argument 'infos' to be a list")
-        pulumi.set(__self__, "infos", infos)
+        if key_word and not isinstance(key_word, str):
+            raise TypeError("Expected argument 'key_word' to be a str")
+        pulumi.set(__self__, "key_word", key_word)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
@@ -52,6 +55,11 @@ class GetApplicationInfosResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def applications(self) -> Sequence['outputs.GetApplicationInfosApplicationResult']:
+        return pulumi.get(self, "applications")
 
     @property
     @pulumi.getter
@@ -77,9 +85,9 @@ class GetApplicationInfosResult:
         return pulumi.get(self, "ids")
 
     @property
-    @pulumi.getter
-    def infos(self) -> Sequence['outputs.GetApplicationInfosInfoResult']:
-        return pulumi.get(self, "infos")
+    @pulumi.getter(name="keyWord")
+    def key_word(self) -> Optional[str]:
+        return pulumi.get(self, "key_word")
 
     @property
     @pulumi.getter(name="outputFile")
@@ -113,11 +121,12 @@ class AwaitableGetApplicationInfosResult(GetApplicationInfosResult):
         if False:
             yield self
         return GetApplicationInfosResult(
+            applications=self.applications,
             dimensions=self.dimensions,
             enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
-            infos=self.infos,
+            key_word=self.key_word,
             output_file=self.output_file,
             product_code=self.product_code,
             quota_action_code=self.quota_action_code,
@@ -128,6 +137,7 @@ class AwaitableGetApplicationInfosResult(GetApplicationInfosResult):
 def get_application_infos(dimensions: Optional[Sequence[pulumi.InputType['GetApplicationInfosDimensionArgs']]] = None,
                           enable_details: Optional[bool] = None,
                           ids: Optional[Sequence[str]] = None,
+                          key_word: Optional[str] = None,
                           output_file: Optional[str] = None,
                           product_code: Optional[str] = None,
                           quota_action_code: Optional[str] = None,
@@ -135,36 +145,13 @@ def get_application_infos(dimensions: Optional[Sequence[pulumi.InputType['GetApp
                           status: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationInfosResult:
     """
-    This data source provides the Quotas Application Infos of the current Alibaba Cloud user.
-
-    > **NOTE:** Available in v1.115.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    example = alicloud.quotas.get_application_infos(product_code="ess",
-        ids=["4621F886-81E9-xxxx-xxxx"])
-    pulumi.export("firstQuotasApplicationInfoId", example.infos[0].id)
-    ```
-
-
-    :param Sequence[pulumi.InputType['GetApplicationInfosDimensionArgs']] dimensions: The quota dimensions.
-    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param Sequence[str] ids: A list of Application Info IDs.
-    :param str product_code: The product code.
-    :param str quota_action_code: The ID of quota action..
-    :param str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`.
-    :param str status: The status of the quota application.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['dimensions'] = dimensions
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
+    __args__['keyWord'] = key_word
     __args__['outputFile'] = output_file
     __args__['productCode'] = product_code
     __args__['quotaActionCode'] = quota_action_code
@@ -177,11 +164,12 @@ def get_application_infos(dimensions: Optional[Sequence[pulumi.InputType['GetApp
     __ret__ = pulumi.runtime.invoke('alicloud:quotas/getApplicationInfos:getApplicationInfos', __args__, opts=opts, typ=GetApplicationInfosResult).value
 
     return AwaitableGetApplicationInfosResult(
+        applications=__ret__.applications,
         dimensions=__ret__.dimensions,
         enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
-        infos=__ret__.infos,
+        key_word=__ret__.key_word,
         output_file=__ret__.output_file,
         product_code=__ret__.product_code,
         quota_action_code=__ret__.quota_action_code,

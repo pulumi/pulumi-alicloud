@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Elastic IP address can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example eip-abc12345678:i-abc12355
+ * ```
+ */
 export class EipAssociation extends pulumi.CustomResource {
     /**
      * Get an existing EipAssociation resource's state with the given name, ID, and optional extra

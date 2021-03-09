@@ -26,15 +26,15 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly bool? IsBondEip;
         /// <summary>
-        /// Min number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        /// Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
         /// </summary>
         public readonly int MaxSize;
         /// <summary>
-        /// Max number of instances in a auto scaling group, its valid value range [0~1000].
+        /// Min number of instances in a auto scaling group, its valid value range [0~1000].
         /// </summary>
         public readonly int MinSize;
         /// <summary>
-        /// Auto scaling of instance types within a group. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`.
+        /// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
         /// </summary>
         public readonly string? Type;
 

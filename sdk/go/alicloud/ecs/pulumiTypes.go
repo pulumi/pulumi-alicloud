@@ -1105,6 +1105,211 @@ func (o LaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAutoSnapshotPoliciesPolicy struct {
+	// The ID of the Auto Snapshot Policy.
+	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
+	// The retention period of the snapshot copied across regions.
+	CopiedSnapshotsRetentionDays int `pulumi:"copiedSnapshotsRetentionDays"`
+	// The number of disks to which the automatic snapshot policy is applied.
+	DiskNums int `pulumi:"diskNums"`
+	// Specifies whether to enable the system to automatically copy snapshots across regions.
+	EnableCrossRegionCopy bool `pulumi:"enableCrossRegionCopy"`
+	// The ID of the Auto Snapshot Policy.
+	Id string `pulumi:"id"`
+	// The snapshot policy name..
+	Name string `pulumi:"name"`
+	// The automatic snapshot repetition dates.
+	RepeatWeekdays []string `pulumi:"repeatWeekdays"`
+	// The snapshot retention time, and the unit of measurement is day.
+	RetentionDays int `pulumi:"retentionDays"`
+	// The status of Auto Snapshot Policy.
+	Status string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The destination region to which the snapshot is copied.
+	TargetCopyRegions []string `pulumi:"targetCopyRegions"`
+	// The automatic snapshot creation schedule, and the unit of measurement is hour.
+	TimePoints []string `pulumi:"timePoints"`
+	// The number of extended volumes on which this policy is enabled.
+	VolumeNums int `pulumi:"volumeNums"`
+}
+
+// GetAutoSnapshotPoliciesPolicyInput is an input type that accepts GetAutoSnapshotPoliciesPolicyArgs and GetAutoSnapshotPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetAutoSnapshotPoliciesPolicyInput` via:
+//
+//          GetAutoSnapshotPoliciesPolicyArgs{...}
+type GetAutoSnapshotPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetAutoSnapshotPoliciesPolicyOutput() GetAutoSnapshotPoliciesPolicyOutput
+	ToGetAutoSnapshotPoliciesPolicyOutputWithContext(context.Context) GetAutoSnapshotPoliciesPolicyOutput
+}
+
+type GetAutoSnapshotPoliciesPolicyArgs struct {
+	// The ID of the Auto Snapshot Policy.
+	AutoSnapshotPolicyId pulumi.StringInput `pulumi:"autoSnapshotPolicyId"`
+	// The retention period of the snapshot copied across regions.
+	CopiedSnapshotsRetentionDays pulumi.IntInput `pulumi:"copiedSnapshotsRetentionDays"`
+	// The number of disks to which the automatic snapshot policy is applied.
+	DiskNums pulumi.IntInput `pulumi:"diskNums"`
+	// Specifies whether to enable the system to automatically copy snapshots across regions.
+	EnableCrossRegionCopy pulumi.BoolInput `pulumi:"enableCrossRegionCopy"`
+	// The ID of the Auto Snapshot Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The snapshot policy name..
+	Name pulumi.StringInput `pulumi:"name"`
+	// The automatic snapshot repetition dates.
+	RepeatWeekdays pulumi.StringArrayInput `pulumi:"repeatWeekdays"`
+	// The snapshot retention time, and the unit of measurement is day.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// The status of Auto Snapshot Policy.
+	Status pulumi.StringInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The destination region to which the snapshot is copied.
+	TargetCopyRegions pulumi.StringArrayInput `pulumi:"targetCopyRegions"`
+	// The automatic snapshot creation schedule, and the unit of measurement is hour.
+	TimePoints pulumi.StringArrayInput `pulumi:"timePoints"`
+	// The number of extended volumes on which this policy is enabled.
+	VolumeNums pulumi.IntInput `pulumi:"volumeNums"`
+}
+
+func (GetAutoSnapshotPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoSnapshotPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetAutoSnapshotPoliciesPolicyArgs) ToGetAutoSnapshotPoliciesPolicyOutput() GetAutoSnapshotPoliciesPolicyOutput {
+	return i.ToGetAutoSnapshotPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetAutoSnapshotPoliciesPolicyArgs) ToGetAutoSnapshotPoliciesPolicyOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutoSnapshotPoliciesPolicyOutput)
+}
+
+// GetAutoSnapshotPoliciesPolicyArrayInput is an input type that accepts GetAutoSnapshotPoliciesPolicyArray and GetAutoSnapshotPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetAutoSnapshotPoliciesPolicyArrayInput` via:
+//
+//          GetAutoSnapshotPoliciesPolicyArray{ GetAutoSnapshotPoliciesPolicyArgs{...} }
+type GetAutoSnapshotPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetAutoSnapshotPoliciesPolicyArrayOutput() GetAutoSnapshotPoliciesPolicyArrayOutput
+	ToGetAutoSnapshotPoliciesPolicyArrayOutputWithContext(context.Context) GetAutoSnapshotPoliciesPolicyArrayOutput
+}
+
+type GetAutoSnapshotPoliciesPolicyArray []GetAutoSnapshotPoliciesPolicyInput
+
+func (GetAutoSnapshotPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutoSnapshotPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetAutoSnapshotPoliciesPolicyArray) ToGetAutoSnapshotPoliciesPolicyArrayOutput() GetAutoSnapshotPoliciesPolicyArrayOutput {
+	return i.ToGetAutoSnapshotPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetAutoSnapshotPoliciesPolicyArray) ToGetAutoSnapshotPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutoSnapshotPoliciesPolicyArrayOutput)
+}
+
+type GetAutoSnapshotPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetAutoSnapshotPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoSnapshotPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetAutoSnapshotPoliciesPolicyOutput) ToGetAutoSnapshotPoliciesPolicyOutput() GetAutoSnapshotPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetAutoSnapshotPoliciesPolicyOutput) ToGetAutoSnapshotPoliciesPolicyOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyOutput {
+	return o
+}
+
+// The ID of the Auto Snapshot Policy.
+func (o GetAutoSnapshotPoliciesPolicyOutput) AutoSnapshotPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.AutoSnapshotPolicyId }).(pulumi.StringOutput)
+}
+
+// The retention period of the snapshot copied across regions.
+func (o GetAutoSnapshotPoliciesPolicyOutput) CopiedSnapshotsRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) int { return v.CopiedSnapshotsRetentionDays }).(pulumi.IntOutput)
+}
+
+// The number of disks to which the automatic snapshot policy is applied.
+func (o GetAutoSnapshotPoliciesPolicyOutput) DiskNums() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) int { return v.DiskNums }).(pulumi.IntOutput)
+}
+
+// Specifies whether to enable the system to automatically copy snapshots across regions.
+func (o GetAutoSnapshotPoliciesPolicyOutput) EnableCrossRegionCopy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) bool { return v.EnableCrossRegionCopy }).(pulumi.BoolOutput)
+}
+
+// The ID of the Auto Snapshot Policy.
+func (o GetAutoSnapshotPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The snapshot policy name..
+func (o GetAutoSnapshotPoliciesPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The automatic snapshot repetition dates.
+func (o GetAutoSnapshotPoliciesPolicyOutput) RepeatWeekdays() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) []string { return v.RepeatWeekdays }).(pulumi.StringArrayOutput)
+}
+
+// The snapshot retention time, and the unit of measurement is day.
+func (o GetAutoSnapshotPoliciesPolicyOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// The status of Auto Snapshot Policy.
+func (o GetAutoSnapshotPoliciesPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetAutoSnapshotPoliciesPolicyOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The destination region to which the snapshot is copied.
+func (o GetAutoSnapshotPoliciesPolicyOutput) TargetCopyRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) []string { return v.TargetCopyRegions }).(pulumi.StringArrayOutput)
+}
+
+// The automatic snapshot creation schedule, and the unit of measurement is hour.
+func (o GetAutoSnapshotPoliciesPolicyOutput) TimePoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) []string { return v.TimePoints }).(pulumi.StringArrayOutput)
+}
+
+// The number of extended volumes on which this policy is enabled.
+func (o GetAutoSnapshotPoliciesPolicyOutput) VolumeNums() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) int { return v.VolumeNums }).(pulumi.IntOutput)
+}
+
+type GetAutoSnapshotPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAutoSnapshotPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutoSnapshotPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetAutoSnapshotPoliciesPolicyArrayOutput) ToGetAutoSnapshotPoliciesPolicyArrayOutput() GetAutoSnapshotPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetAutoSnapshotPoliciesPolicyArrayOutput) ToGetAutoSnapshotPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetAutoSnapshotPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetAutoSnapshotPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutoSnapshotPoliciesPolicy {
+		return vs[0].([]GetAutoSnapshotPoliciesPolicy)[vs[1].(int)]
+	}).(GetAutoSnapshotPoliciesPolicyOutput)
+}
+
 type GetCommandsCommand struct {
 	// The Base64-encoded content of the command.
 	CommandContent string `pulumi:"commandContent"`
@@ -4814,6 +5019,8 @@ func init() {
 	pulumi.RegisterOutputType(LaunchTemplateDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesPtrOutput{})
+	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostOutput{})

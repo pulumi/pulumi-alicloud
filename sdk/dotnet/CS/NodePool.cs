@@ -9,17 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CS
 {
-    /// <summary>
-    /// This resource will help you to manager node pool in Kubernetes Cluster.
-    /// 
-    /// &gt; **NOTE:** Available in 1.97.0+.
-    /// 
-    /// &gt; **NOTE:** From version 1.109.1, support managed node pools, but only for the professional managed clusters.
-    /// 
-    /// &gt; **NOTE:** From version 1.109.1, support remove node pool nodes.
-    /// 
-    /// &gt; **NOTE:** From version 1.111.0, support auto scaling node pool.
-    /// </summary>
     [AliCloudResourceType("alicloud:cs/nodePool:NodePool")]
     public partial class NodePool : Pulumi.CustomResource
     {

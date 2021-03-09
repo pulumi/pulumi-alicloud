@@ -6,8 +6,10 @@
 from .application_info import *
 from .get_application_infos import *
 from .get_quota_alarms import *
+from .get_quota_applications import *
 from .get_quotas import *
 from .quota_alarm import *
+from .quota_application import *
 from ._inputs import *
 from . import outputs
 
@@ -27,6 +29,8 @@ def _register_module():
                 return ApplicationInfo(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:quotas/quotaAlarm:QuotaAlarm":
                 return QuotaAlarm(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:quotas/quotaApplication:QuotaApplication":
+                return QuotaApplication(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -34,5 +38,6 @@ def _register_module():
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "quotas/applicationInfo", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "quotas/quotaAlarm", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "quotas/quotaApplication", _module_instance)
 
 _register_module()

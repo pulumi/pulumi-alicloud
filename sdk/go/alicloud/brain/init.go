@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:brain/industrialPidLoop:IndustrialPidLoop":
+		r, err = NewIndustrialPidLoop(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:brain/industrialPidOrganization:IndustrialPidOrganization":
 		r, err = NewIndustrialPidOrganization(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:brain/industrialPidProject:IndustrialPidProject":
@@ -37,6 +39,11 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"brain/industrialPidLoop",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"brain/industrialPidOrganization",

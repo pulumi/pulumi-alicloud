@@ -5,33 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ECS snapshot policy resource.
- *
- * For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
- *
- * > **NOTE:** Available in 1.42.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const sp = new alicloud.ecs.SnapshotPolicy("sp", {
- *     repeatWeekdays: [
- *         "1",
- *         "2",
- *         "3",
- *     ],
- *     retentionDays: -1,
- *     timePoints: [
- *         "1",
- *         "22",
- *         "23",
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Snapshot can be imported using the id, e.g.
@@ -68,6 +41,8 @@ export class SnapshotPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === SnapshotPolicy.__pulumiType;
     }
 
+    public readonly copiedSnapshotsRetentionDays!: pulumi.Output<number | undefined>;
+    public readonly enableCrossRegionCopy!: pulumi.Output<boolean | undefined>;
     /**
      * The snapshot policy name.
      */
@@ -84,6 +59,9 @@ export class SnapshotPolicy extends pulumi.CustomResource {
      * - [1, 65536]: The number of days retained.
      */
     public readonly retentionDays!: pulumi.Output<number>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly targetCopyRegions!: pulumi.Output<string[] | undefined>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
      * - A maximum of 24 time points can be selected.
@@ -104,9 +82,14 @@ export class SnapshotPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotPolicyState | undefined;
+            inputs["copiedSnapshotsRetentionDays"] = state ? state.copiedSnapshotsRetentionDays : undefined;
+            inputs["enableCrossRegionCopy"] = state ? state.enableCrossRegionCopy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["repeatWeekdays"] = state ? state.repeatWeekdays : undefined;
             inputs["retentionDays"] = state ? state.retentionDays : undefined;
+            inputs["status"] = state ? state.status : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
+            inputs["targetCopyRegions"] = state ? state.targetCopyRegions : undefined;
             inputs["timePoints"] = state ? state.timePoints : undefined;
         } else {
             const args = argsOrState as SnapshotPolicyArgs | undefined;
@@ -119,10 +102,15 @@ export class SnapshotPolicy extends pulumi.CustomResource {
             if ((!args || args.timePoints === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timePoints'");
             }
+            inputs["copiedSnapshotsRetentionDays"] = args ? args.copiedSnapshotsRetentionDays : undefined;
+            inputs["enableCrossRegionCopy"] = args ? args.enableCrossRegionCopy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["repeatWeekdays"] = args ? args.repeatWeekdays : undefined;
             inputs["retentionDays"] = args ? args.retentionDays : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
+            inputs["targetCopyRegions"] = args ? args.targetCopyRegions : undefined;
             inputs["timePoints"] = args ? args.timePoints : undefined;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -135,6 +123,8 @@ export class SnapshotPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnapshotPolicy resources.
  */
 export interface SnapshotPolicyState {
+    readonly copiedSnapshotsRetentionDays?: pulumi.Input<number>;
+    readonly enableCrossRegionCopy?: pulumi.Input<boolean>;
     /**
      * The snapshot policy name.
      */
@@ -151,6 +141,9 @@ export interface SnapshotPolicyState {
      * - [1, 65536]: The number of days retained.
      */
     readonly retentionDays?: pulumi.Input<number>;
+    readonly status?: pulumi.Input<string>;
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly targetCopyRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
      * - A maximum of 24 time points can be selected.
@@ -163,6 +156,8 @@ export interface SnapshotPolicyState {
  * The set of arguments for constructing a SnapshotPolicy resource.
  */
 export interface SnapshotPolicyArgs {
+    readonly copiedSnapshotsRetentionDays?: pulumi.Input<number>;
+    readonly enableCrossRegionCopy?: pulumi.Input<boolean>;
     /**
      * The snapshot policy name.
      */
@@ -179,6 +174,8 @@ export interface SnapshotPolicyArgs {
      * - [1, 65536]: The number of days retained.
      */
     readonly retentionDays: pulumi.Input<number>;
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly targetCopyRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
      * - A maximum of 24 time points can be selected.

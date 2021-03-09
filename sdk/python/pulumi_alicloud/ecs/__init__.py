@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .auto_provisioning_group import *
+from .auto_snapshot_policy import *
 from .command import *
 from .copy_image import *
 from .dedicated_host import *
@@ -11,6 +12,7 @@ from .disk import *
 from .disk_attachment import *
 from .eip import *
 from .eip_association import *
+from .get_auto_snapshot_policies import *
 from .get_commands import *
 from .get_dedicated_hosts import *
 from .get_disks import *
@@ -57,6 +59,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup":
                 return AutoProvisioningGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy":
+                return AutoSnapshotPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/command:Command":
                 return Command(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/copyImage:CopyImage":
@@ -107,6 +111,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "ecs/autoProvisioningGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/autoSnapshotPolicy", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/command", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/copyImage", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/dedicatedHost", _module_instance)

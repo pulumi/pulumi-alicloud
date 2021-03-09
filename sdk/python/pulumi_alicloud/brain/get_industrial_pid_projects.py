@@ -20,7 +20,7 @@ class GetIndustrialPidProjectsResult:
     """
     A collection of values returned by getIndustrialPidProjects.
     """
-    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, pid_organisation_id=None, pid_project_name=None, projects=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, pid_organization_id=None, pid_project_name=None, projects=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -36,9 +36,9 @@ class GetIndustrialPidProjectsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
-        if pid_organisation_id and not isinstance(pid_organisation_id, str):
-            raise TypeError("Expected argument 'pid_organisation_id' to be a str")
-        pulumi.set(__self__, "pid_organisation_id", pid_organisation_id)
+        if pid_organization_id and not isinstance(pid_organization_id, str):
+            raise TypeError("Expected argument 'pid_organization_id' to be a str")
+        pulumi.set(__self__, "pid_organization_id", pid_organization_id)
         if pid_project_name and not isinstance(pid_project_name, str):
             raise TypeError("Expected argument 'pid_project_name' to be a str")
         pulumi.set(__self__, "pid_project_name", pid_project_name)
@@ -75,9 +75,9 @@ class GetIndustrialPidProjectsResult:
         return pulumi.get(self, "output_file")
 
     @property
-    @pulumi.getter(name="pidOrganisationId")
-    def pid_organisation_id(self) -> Optional[str]:
-        return pulumi.get(self, "pid_organisation_id")
+    @pulumi.getter(name="pidOrganizationId")
+    def pid_organization_id(self) -> Optional[str]:
+        return pulumi.get(self, "pid_organization_id")
 
     @property
     @pulumi.getter(name="pidProjectName")
@@ -101,7 +101,7 @@ class AwaitableGetIndustrialPidProjectsResult(GetIndustrialPidProjectsResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            pid_organisation_id=self.pid_organisation_id,
+            pid_organization_id=self.pid_organization_id,
             pid_project_name=self.pid_project_name,
             projects=self.projects)
 
@@ -109,7 +109,7 @@ class AwaitableGetIndustrialPidProjectsResult(GetIndustrialPidProjectsResult):
 def get_industrial_pid_projects(ids: Optional[Sequence[str]] = None,
                                 name_regex: Optional[str] = None,
                                 output_file: Optional[str] = None,
-                                pid_organisation_id: Optional[str] = None,
+                                pid_organization_id: Optional[str] = None,
                                 pid_project_name: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIndustrialPidProjectsResult:
     """
@@ -133,14 +133,14 @@ def get_industrial_pid_projects(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Pid Project IDs.
     :param str name_regex: A regex string to filter results by Pid Project name.
-    :param str pid_organisation_id: The ID of Pid Organisation.
+    :param str pid_organization_id: The ID of Pid Organization.
     :param str pid_project_name: The name of Pid Project.
     """
     __args__ = dict()
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    __args__['pidOrganisationId'] = pid_organisation_id
+    __args__['pidOrganizationId'] = pid_organization_id
     __args__['pidProjectName'] = pid_project_name
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -154,6 +154,6 @@ def get_industrial_pid_projects(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
-        pid_organisation_id=__ret__.pid_organisation_id,
+        pid_organization_id=__ret__.pid_organization_id,
         pid_project_name=__ret__.pid_project_name,
         projects=__ret__.projects)

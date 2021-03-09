@@ -11,9 +11,7 @@ import (
 )
 
 type ApplicationInfoDimension struct {
-	// The key of dimensions.
-	Key *string `pulumi:"key"`
-	// The value of dimensions.
+	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
 }
 
@@ -29,9 +27,7 @@ type ApplicationInfoDimensionInput interface {
 }
 
 type ApplicationInfoDimensionArgs struct {
-	// The key of dimensions.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of dimensions.
+	Key   pulumi.StringPtrInput `pulumi:"key"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -86,12 +82,10 @@ func (o ApplicationInfoDimensionOutput) ToApplicationInfoDimensionOutputWithCont
 	return o
 }
 
-// The key of dimensions.
 func (o ApplicationInfoDimensionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationInfoDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of dimensions.
 func (o ApplicationInfoDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationInfoDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -222,10 +216,398 @@ func (o QuotaAlarmQuotaDimensionArrayOutput) Index(i pulumi.IntInput) QuotaAlarm
 	}).(QuotaAlarmQuotaDimensionOutput)
 }
 
-type GetApplicationInfosDimension struct {
+type QuotaApplicationDimension struct {
 	// The key of dimensions.
 	Key *string `pulumi:"key"`
 	// The value of dimensions.
+	Value *string `pulumi:"value"`
+}
+
+// QuotaApplicationDimensionInput is an input type that accepts QuotaApplicationDimensionArgs and QuotaApplicationDimensionOutput values.
+// You can construct a concrete instance of `QuotaApplicationDimensionInput` via:
+//
+//          QuotaApplicationDimensionArgs{...}
+type QuotaApplicationDimensionInput interface {
+	pulumi.Input
+
+	ToQuotaApplicationDimensionOutput() QuotaApplicationDimensionOutput
+	ToQuotaApplicationDimensionOutputWithContext(context.Context) QuotaApplicationDimensionOutput
+}
+
+type QuotaApplicationDimensionArgs struct {
+	// The key of dimensions.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of dimensions.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (QuotaApplicationDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaApplicationDimension)(nil)).Elem()
+}
+
+func (i QuotaApplicationDimensionArgs) ToQuotaApplicationDimensionOutput() QuotaApplicationDimensionOutput {
+	return i.ToQuotaApplicationDimensionOutputWithContext(context.Background())
+}
+
+func (i QuotaApplicationDimensionArgs) ToQuotaApplicationDimensionOutputWithContext(ctx context.Context) QuotaApplicationDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaApplicationDimensionOutput)
+}
+
+// QuotaApplicationDimensionArrayInput is an input type that accepts QuotaApplicationDimensionArray and QuotaApplicationDimensionArrayOutput values.
+// You can construct a concrete instance of `QuotaApplicationDimensionArrayInput` via:
+//
+//          QuotaApplicationDimensionArray{ QuotaApplicationDimensionArgs{...} }
+type QuotaApplicationDimensionArrayInput interface {
+	pulumi.Input
+
+	ToQuotaApplicationDimensionArrayOutput() QuotaApplicationDimensionArrayOutput
+	ToQuotaApplicationDimensionArrayOutputWithContext(context.Context) QuotaApplicationDimensionArrayOutput
+}
+
+type QuotaApplicationDimensionArray []QuotaApplicationDimensionInput
+
+func (QuotaApplicationDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaApplicationDimension)(nil)).Elem()
+}
+
+func (i QuotaApplicationDimensionArray) ToQuotaApplicationDimensionArrayOutput() QuotaApplicationDimensionArrayOutput {
+	return i.ToQuotaApplicationDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i QuotaApplicationDimensionArray) ToQuotaApplicationDimensionArrayOutputWithContext(ctx context.Context) QuotaApplicationDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaApplicationDimensionArrayOutput)
+}
+
+type QuotaApplicationDimensionOutput struct{ *pulumi.OutputState }
+
+func (QuotaApplicationDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaApplicationDimension)(nil)).Elem()
+}
+
+func (o QuotaApplicationDimensionOutput) ToQuotaApplicationDimensionOutput() QuotaApplicationDimensionOutput {
+	return o
+}
+
+func (o QuotaApplicationDimensionOutput) ToQuotaApplicationDimensionOutputWithContext(ctx context.Context) QuotaApplicationDimensionOutput {
+	return o
+}
+
+// The key of dimensions.
+func (o QuotaApplicationDimensionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuotaApplicationDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The value of dimensions.
+func (o QuotaApplicationDimensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuotaApplicationDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type QuotaApplicationDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (QuotaApplicationDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaApplicationDimension)(nil)).Elem()
+}
+
+func (o QuotaApplicationDimensionArrayOutput) ToQuotaApplicationDimensionArrayOutput() QuotaApplicationDimensionArrayOutput {
+	return o
+}
+
+func (o QuotaApplicationDimensionArrayOutput) ToQuotaApplicationDimensionArrayOutputWithContext(ctx context.Context) QuotaApplicationDimensionArrayOutput {
+	return o
+}
+
+func (o QuotaApplicationDimensionArrayOutput) Index(i pulumi.IntInput) QuotaApplicationDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QuotaApplicationDimension {
+		return vs[0].([]QuotaApplicationDimension)[vs[1].(int)]
+	}).(QuotaApplicationDimensionOutput)
+}
+
+type GetApplicationInfosApplication struct {
+	ApplicationId    string                                    `pulumi:"applicationId"`
+	ApproveValue     string                                    `pulumi:"approveValue"`
+	AuditReason      string                                    `pulumi:"auditReason"`
+	DesireValue      float64                                   `pulumi:"desireValue"`
+	Dimensions       []GetApplicationInfosApplicationDimension `pulumi:"dimensions"`
+	EffectiveTime    string                                    `pulumi:"effectiveTime"`
+	ExpireTime       string                                    `pulumi:"expireTime"`
+	Id               string                                    `pulumi:"id"`
+	NoticeType       int                                       `pulumi:"noticeType"`
+	ProductCode      string                                    `pulumi:"productCode"`
+	QuotaActionCode  string                                    `pulumi:"quotaActionCode"`
+	QuotaDescription string                                    `pulumi:"quotaDescription"`
+	QuotaName        string                                    `pulumi:"quotaName"`
+	QuotaUnit        string                                    `pulumi:"quotaUnit"`
+	Reason           string                                    `pulumi:"reason"`
+	Status           string                                    `pulumi:"status"`
+}
+
+// GetApplicationInfosApplicationInput is an input type that accepts GetApplicationInfosApplicationArgs and GetApplicationInfosApplicationOutput values.
+// You can construct a concrete instance of `GetApplicationInfosApplicationInput` via:
+//
+//          GetApplicationInfosApplicationArgs{...}
+type GetApplicationInfosApplicationInput interface {
+	pulumi.Input
+
+	ToGetApplicationInfosApplicationOutput() GetApplicationInfosApplicationOutput
+	ToGetApplicationInfosApplicationOutputWithContext(context.Context) GetApplicationInfosApplicationOutput
+}
+
+type GetApplicationInfosApplicationArgs struct {
+	ApplicationId    pulumi.StringInput                                `pulumi:"applicationId"`
+	ApproveValue     pulumi.StringInput                                `pulumi:"approveValue"`
+	AuditReason      pulumi.StringInput                                `pulumi:"auditReason"`
+	DesireValue      pulumi.Float64Input                               `pulumi:"desireValue"`
+	Dimensions       GetApplicationInfosApplicationDimensionArrayInput `pulumi:"dimensions"`
+	EffectiveTime    pulumi.StringInput                                `pulumi:"effectiveTime"`
+	ExpireTime       pulumi.StringInput                                `pulumi:"expireTime"`
+	Id               pulumi.StringInput                                `pulumi:"id"`
+	NoticeType       pulumi.IntInput                                   `pulumi:"noticeType"`
+	ProductCode      pulumi.StringInput                                `pulumi:"productCode"`
+	QuotaActionCode  pulumi.StringInput                                `pulumi:"quotaActionCode"`
+	QuotaDescription pulumi.StringInput                                `pulumi:"quotaDescription"`
+	QuotaName        pulumi.StringInput                                `pulumi:"quotaName"`
+	QuotaUnit        pulumi.StringInput                                `pulumi:"quotaUnit"`
+	Reason           pulumi.StringInput                                `pulumi:"reason"`
+	Status           pulumi.StringInput                                `pulumi:"status"`
+}
+
+func (GetApplicationInfosApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationInfosApplication)(nil)).Elem()
+}
+
+func (i GetApplicationInfosApplicationArgs) ToGetApplicationInfosApplicationOutput() GetApplicationInfosApplicationOutput {
+	return i.ToGetApplicationInfosApplicationOutputWithContext(context.Background())
+}
+
+func (i GetApplicationInfosApplicationArgs) ToGetApplicationInfosApplicationOutputWithContext(ctx context.Context) GetApplicationInfosApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosApplicationOutput)
+}
+
+// GetApplicationInfosApplicationArrayInput is an input type that accepts GetApplicationInfosApplicationArray and GetApplicationInfosApplicationArrayOutput values.
+// You can construct a concrete instance of `GetApplicationInfosApplicationArrayInput` via:
+//
+//          GetApplicationInfosApplicationArray{ GetApplicationInfosApplicationArgs{...} }
+type GetApplicationInfosApplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationInfosApplicationArrayOutput() GetApplicationInfosApplicationArrayOutput
+	ToGetApplicationInfosApplicationArrayOutputWithContext(context.Context) GetApplicationInfosApplicationArrayOutput
+}
+
+type GetApplicationInfosApplicationArray []GetApplicationInfosApplicationInput
+
+func (GetApplicationInfosApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationInfosApplication)(nil)).Elem()
+}
+
+func (i GetApplicationInfosApplicationArray) ToGetApplicationInfosApplicationArrayOutput() GetApplicationInfosApplicationArrayOutput {
+	return i.ToGetApplicationInfosApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationInfosApplicationArray) ToGetApplicationInfosApplicationArrayOutputWithContext(ctx context.Context) GetApplicationInfosApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosApplicationArrayOutput)
+}
+
+type GetApplicationInfosApplicationOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationInfosApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationInfosApplication)(nil)).Elem()
+}
+
+func (o GetApplicationInfosApplicationOutput) ToGetApplicationInfosApplicationOutput() GetApplicationInfosApplicationOutput {
+	return o
+}
+
+func (o GetApplicationInfosApplicationOutput) ToGetApplicationInfosApplicationOutputWithContext(ctx context.Context) GetApplicationInfosApplicationOutput {
+	return o
+}
+
+func (o GetApplicationInfosApplicationOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) ApproveValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.ApproveValue }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) AuditReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.AuditReason }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) DesireValue() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApplicationInfosApplication) float64 { return v.DesireValue }).(pulumi.Float64Output)
+}
+
+func (o GetApplicationInfosApplicationOutput) Dimensions() GetApplicationInfosApplicationDimensionArrayOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) []GetApplicationInfosApplicationDimension { return v.Dimensions }).(GetApplicationInfosApplicationDimensionArrayOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) NoticeType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) int { return v.NoticeType }).(pulumi.IntOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) QuotaActionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.QuotaActionCode }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) QuotaDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.QuotaDescription }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) QuotaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.QuotaName }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) QuotaUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.QuotaUnit }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetApplicationInfosApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationInfosApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationInfosApplication)(nil)).Elem()
+}
+
+func (o GetApplicationInfosApplicationArrayOutput) ToGetApplicationInfosApplicationArrayOutput() GetApplicationInfosApplicationArrayOutput {
+	return o
+}
+
+func (o GetApplicationInfosApplicationArrayOutput) ToGetApplicationInfosApplicationArrayOutputWithContext(ctx context.Context) GetApplicationInfosApplicationArrayOutput {
+	return o
+}
+
+func (o GetApplicationInfosApplicationArrayOutput) Index(i pulumi.IntInput) GetApplicationInfosApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationInfosApplication {
+		return vs[0].([]GetApplicationInfosApplication)[vs[1].(int)]
+	}).(GetApplicationInfosApplicationOutput)
+}
+
+type GetApplicationInfosApplicationDimension struct {
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
+}
+
+// GetApplicationInfosApplicationDimensionInput is an input type that accepts GetApplicationInfosApplicationDimensionArgs and GetApplicationInfosApplicationDimensionOutput values.
+// You can construct a concrete instance of `GetApplicationInfosApplicationDimensionInput` via:
+//
+//          GetApplicationInfosApplicationDimensionArgs{...}
+type GetApplicationInfosApplicationDimensionInput interface {
+	pulumi.Input
+
+	ToGetApplicationInfosApplicationDimensionOutput() GetApplicationInfosApplicationDimensionOutput
+	ToGetApplicationInfosApplicationDimensionOutputWithContext(context.Context) GetApplicationInfosApplicationDimensionOutput
+}
+
+type GetApplicationInfosApplicationDimensionArgs struct {
+	Key   pulumi.StringInput `pulumi:"key"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetApplicationInfosApplicationDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationInfosApplicationDimension)(nil)).Elem()
+}
+
+func (i GetApplicationInfosApplicationDimensionArgs) ToGetApplicationInfosApplicationDimensionOutput() GetApplicationInfosApplicationDimensionOutput {
+	return i.ToGetApplicationInfosApplicationDimensionOutputWithContext(context.Background())
+}
+
+func (i GetApplicationInfosApplicationDimensionArgs) ToGetApplicationInfosApplicationDimensionOutputWithContext(ctx context.Context) GetApplicationInfosApplicationDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosApplicationDimensionOutput)
+}
+
+// GetApplicationInfosApplicationDimensionArrayInput is an input type that accepts GetApplicationInfosApplicationDimensionArray and GetApplicationInfosApplicationDimensionArrayOutput values.
+// You can construct a concrete instance of `GetApplicationInfosApplicationDimensionArrayInput` via:
+//
+//          GetApplicationInfosApplicationDimensionArray{ GetApplicationInfosApplicationDimensionArgs{...} }
+type GetApplicationInfosApplicationDimensionArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationInfosApplicationDimensionArrayOutput() GetApplicationInfosApplicationDimensionArrayOutput
+	ToGetApplicationInfosApplicationDimensionArrayOutputWithContext(context.Context) GetApplicationInfosApplicationDimensionArrayOutput
+}
+
+type GetApplicationInfosApplicationDimensionArray []GetApplicationInfosApplicationDimensionInput
+
+func (GetApplicationInfosApplicationDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationInfosApplicationDimension)(nil)).Elem()
+}
+
+func (i GetApplicationInfosApplicationDimensionArray) ToGetApplicationInfosApplicationDimensionArrayOutput() GetApplicationInfosApplicationDimensionArrayOutput {
+	return i.ToGetApplicationInfosApplicationDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationInfosApplicationDimensionArray) ToGetApplicationInfosApplicationDimensionArrayOutputWithContext(ctx context.Context) GetApplicationInfosApplicationDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosApplicationDimensionArrayOutput)
+}
+
+type GetApplicationInfosApplicationDimensionOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationInfosApplicationDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationInfosApplicationDimension)(nil)).Elem()
+}
+
+func (o GetApplicationInfosApplicationDimensionOutput) ToGetApplicationInfosApplicationDimensionOutput() GetApplicationInfosApplicationDimensionOutput {
+	return o
+}
+
+func (o GetApplicationInfosApplicationDimensionOutput) ToGetApplicationInfosApplicationDimensionOutputWithContext(ctx context.Context) GetApplicationInfosApplicationDimensionOutput {
+	return o
+}
+
+func (o GetApplicationInfosApplicationDimensionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplicationDimension) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetApplicationInfosApplicationDimensionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationInfosApplicationDimension) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetApplicationInfosApplicationDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationInfosApplicationDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationInfosApplicationDimension)(nil)).Elem()
+}
+
+func (o GetApplicationInfosApplicationDimensionArrayOutput) ToGetApplicationInfosApplicationDimensionArrayOutput() GetApplicationInfosApplicationDimensionArrayOutput {
+	return o
+}
+
+func (o GetApplicationInfosApplicationDimensionArrayOutput) ToGetApplicationInfosApplicationDimensionArrayOutputWithContext(ctx context.Context) GetApplicationInfosApplicationDimensionArrayOutput {
+	return o
+}
+
+func (o GetApplicationInfosApplicationDimensionArrayOutput) Index(i pulumi.IntInput) GetApplicationInfosApplicationDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationInfosApplicationDimension {
+		return vs[0].([]GetApplicationInfosApplicationDimension)[vs[1].(int)]
+	}).(GetApplicationInfosApplicationDimensionOutput)
+}
+
+type GetApplicationInfosDimension struct {
+	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
 }
 
@@ -241,9 +623,7 @@ type GetApplicationInfosDimensionInput interface {
 }
 
 type GetApplicationInfosDimensionArgs struct {
-	// The key of dimensions.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of dimensions.
+	Key   pulumi.StringPtrInput `pulumi:"key"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -298,12 +678,10 @@ func (o GetApplicationInfosDimensionOutput) ToGetApplicationInfosDimensionOutput
 	return o
 }
 
-// The key of dimensions.
 func (o GetApplicationInfosDimensionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationInfosDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of dimensions.
 func (o GetApplicationInfosDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationInfosDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -326,344 +704,6 @@ func (o GetApplicationInfosDimensionArrayOutput) Index(i pulumi.IntInput) GetApp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationInfosDimension {
 		return vs[0].([]GetApplicationInfosDimension)[vs[1].(int)]
 	}).(GetApplicationInfosDimensionOutput)
-}
-
-type GetApplicationInfosInfo struct {
-	// The first ID of the resource.
-	ApplicationId string `pulumi:"applicationId"`
-	// The approve value.
-	ApproveValue string `pulumi:"approveValue"`
-	// The audit reason.
-	AuditReason string `pulumi:"auditReason"`
-	// The desire value of the quota application.
-	DesireValue float64 `pulumi:"desireValue"`
-	// The quota dimensions.
-	Dimensions []GetApplicationInfosInfoDimension `pulumi:"dimensions"`
-	// The effective time.
-	EffectiveTime string `pulumi:"effectiveTime"`
-	// The expire time.
-	ExpireTime string `pulumi:"expireTime"`
-	// The ID of the Application Info.
-	Id string `pulumi:"id"`
-	// The notice type.
-	NoticeType int `pulumi:"noticeType"`
-	// The product code.
-	ProductCode string `pulumi:"productCode"`
-	// The ID of quota action..
-	QuotaActionCode string `pulumi:"quotaActionCode"`
-	// The description of the quota.
-	QuotaDescription string `pulumi:"quotaDescription"`
-	// The name of the quota.
-	QuotaName string `pulumi:"quotaName"`
-	// The quota unit.
-	QuotaUnit string `pulumi:"quotaUnit"`
-	// The reason of the quota application.
-	Reason string `pulumi:"reason"`
-	// The status of the quota application.
-	Status string `pulumi:"status"`
-}
-
-// GetApplicationInfosInfoInput is an input type that accepts GetApplicationInfosInfoArgs and GetApplicationInfosInfoOutput values.
-// You can construct a concrete instance of `GetApplicationInfosInfoInput` via:
-//
-//          GetApplicationInfosInfoArgs{...}
-type GetApplicationInfosInfoInput interface {
-	pulumi.Input
-
-	ToGetApplicationInfosInfoOutput() GetApplicationInfosInfoOutput
-	ToGetApplicationInfosInfoOutputWithContext(context.Context) GetApplicationInfosInfoOutput
-}
-
-type GetApplicationInfosInfoArgs struct {
-	// The first ID of the resource.
-	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
-	// The approve value.
-	ApproveValue pulumi.StringInput `pulumi:"approveValue"`
-	// The audit reason.
-	AuditReason pulumi.StringInput `pulumi:"auditReason"`
-	// The desire value of the quota application.
-	DesireValue pulumi.Float64Input `pulumi:"desireValue"`
-	// The quota dimensions.
-	Dimensions GetApplicationInfosInfoDimensionArrayInput `pulumi:"dimensions"`
-	// The effective time.
-	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
-	// The expire time.
-	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
-	// The ID of the Application Info.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The notice type.
-	NoticeType pulumi.IntInput `pulumi:"noticeType"`
-	// The product code.
-	ProductCode pulumi.StringInput `pulumi:"productCode"`
-	// The ID of quota action..
-	QuotaActionCode pulumi.StringInput `pulumi:"quotaActionCode"`
-	// The description of the quota.
-	QuotaDescription pulumi.StringInput `pulumi:"quotaDescription"`
-	// The name of the quota.
-	QuotaName pulumi.StringInput `pulumi:"quotaName"`
-	// The quota unit.
-	QuotaUnit pulumi.StringInput `pulumi:"quotaUnit"`
-	// The reason of the quota application.
-	Reason pulumi.StringInput `pulumi:"reason"`
-	// The status of the quota application.
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (GetApplicationInfosInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationInfosInfo)(nil)).Elem()
-}
-
-func (i GetApplicationInfosInfoArgs) ToGetApplicationInfosInfoOutput() GetApplicationInfosInfoOutput {
-	return i.ToGetApplicationInfosInfoOutputWithContext(context.Background())
-}
-
-func (i GetApplicationInfosInfoArgs) ToGetApplicationInfosInfoOutputWithContext(ctx context.Context) GetApplicationInfosInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosInfoOutput)
-}
-
-// GetApplicationInfosInfoArrayInput is an input type that accepts GetApplicationInfosInfoArray and GetApplicationInfosInfoArrayOutput values.
-// You can construct a concrete instance of `GetApplicationInfosInfoArrayInput` via:
-//
-//          GetApplicationInfosInfoArray{ GetApplicationInfosInfoArgs{...} }
-type GetApplicationInfosInfoArrayInput interface {
-	pulumi.Input
-
-	ToGetApplicationInfosInfoArrayOutput() GetApplicationInfosInfoArrayOutput
-	ToGetApplicationInfosInfoArrayOutputWithContext(context.Context) GetApplicationInfosInfoArrayOutput
-}
-
-type GetApplicationInfosInfoArray []GetApplicationInfosInfoInput
-
-func (GetApplicationInfosInfoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationInfosInfo)(nil)).Elem()
-}
-
-func (i GetApplicationInfosInfoArray) ToGetApplicationInfosInfoArrayOutput() GetApplicationInfosInfoArrayOutput {
-	return i.ToGetApplicationInfosInfoArrayOutputWithContext(context.Background())
-}
-
-func (i GetApplicationInfosInfoArray) ToGetApplicationInfosInfoArrayOutputWithContext(ctx context.Context) GetApplicationInfosInfoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosInfoArrayOutput)
-}
-
-type GetApplicationInfosInfoOutput struct{ *pulumi.OutputState }
-
-func (GetApplicationInfosInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationInfosInfo)(nil)).Elem()
-}
-
-func (o GetApplicationInfosInfoOutput) ToGetApplicationInfosInfoOutput() GetApplicationInfosInfoOutput {
-	return o
-}
-
-func (o GetApplicationInfosInfoOutput) ToGetApplicationInfosInfoOutputWithContext(ctx context.Context) GetApplicationInfosInfoOutput {
-	return o
-}
-
-// The first ID of the resource.
-func (o GetApplicationInfosInfoOutput) ApplicationId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.ApplicationId }).(pulumi.StringOutput)
-}
-
-// The approve value.
-func (o GetApplicationInfosInfoOutput) ApproveValue() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.ApproveValue }).(pulumi.StringOutput)
-}
-
-// The audit reason.
-func (o GetApplicationInfosInfoOutput) AuditReason() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.AuditReason }).(pulumi.StringOutput)
-}
-
-// The desire value of the quota application.
-func (o GetApplicationInfosInfoOutput) DesireValue() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApplicationInfosInfo) float64 { return v.DesireValue }).(pulumi.Float64Output)
-}
-
-// The quota dimensions.
-func (o GetApplicationInfosInfoOutput) Dimensions() GetApplicationInfosInfoDimensionArrayOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) []GetApplicationInfosInfoDimension { return v.Dimensions }).(GetApplicationInfosInfoDimensionArrayOutput)
-}
-
-// The effective time.
-func (o GetApplicationInfosInfoOutput) EffectiveTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.EffectiveTime }).(pulumi.StringOutput)
-}
-
-// The expire time.
-func (o GetApplicationInfosInfoOutput) ExpireTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.ExpireTime }).(pulumi.StringOutput)
-}
-
-// The ID of the Application Info.
-func (o GetApplicationInfosInfoOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The notice type.
-func (o GetApplicationInfosInfoOutput) NoticeType() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) int { return v.NoticeType }).(pulumi.IntOutput)
-}
-
-// The product code.
-func (o GetApplicationInfosInfoOutput) ProductCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.ProductCode }).(pulumi.StringOutput)
-}
-
-// The ID of quota action..
-func (o GetApplicationInfosInfoOutput) QuotaActionCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.QuotaActionCode }).(pulumi.StringOutput)
-}
-
-// The description of the quota.
-func (o GetApplicationInfosInfoOutput) QuotaDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.QuotaDescription }).(pulumi.StringOutput)
-}
-
-// The name of the quota.
-func (o GetApplicationInfosInfoOutput) QuotaName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.QuotaName }).(pulumi.StringOutput)
-}
-
-// The quota unit.
-func (o GetApplicationInfosInfoOutput) QuotaUnit() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.QuotaUnit }).(pulumi.StringOutput)
-}
-
-// The reason of the quota application.
-func (o GetApplicationInfosInfoOutput) Reason() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.Reason }).(pulumi.StringOutput)
-}
-
-// The status of the quota application.
-func (o GetApplicationInfosInfoOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfo) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type GetApplicationInfosInfoArrayOutput struct{ *pulumi.OutputState }
-
-func (GetApplicationInfosInfoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationInfosInfo)(nil)).Elem()
-}
-
-func (o GetApplicationInfosInfoArrayOutput) ToGetApplicationInfosInfoArrayOutput() GetApplicationInfosInfoArrayOutput {
-	return o
-}
-
-func (o GetApplicationInfosInfoArrayOutput) ToGetApplicationInfosInfoArrayOutputWithContext(ctx context.Context) GetApplicationInfosInfoArrayOutput {
-	return o
-}
-
-func (o GetApplicationInfosInfoArrayOutput) Index(i pulumi.IntInput) GetApplicationInfosInfoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationInfosInfo {
-		return vs[0].([]GetApplicationInfosInfo)[vs[1].(int)]
-	}).(GetApplicationInfosInfoOutput)
-}
-
-type GetApplicationInfosInfoDimension struct {
-	// The key of dimensions.
-	Key string `pulumi:"key"`
-	// The value of dimensions.
-	Value string `pulumi:"value"`
-}
-
-// GetApplicationInfosInfoDimensionInput is an input type that accepts GetApplicationInfosInfoDimensionArgs and GetApplicationInfosInfoDimensionOutput values.
-// You can construct a concrete instance of `GetApplicationInfosInfoDimensionInput` via:
-//
-//          GetApplicationInfosInfoDimensionArgs{...}
-type GetApplicationInfosInfoDimensionInput interface {
-	pulumi.Input
-
-	ToGetApplicationInfosInfoDimensionOutput() GetApplicationInfosInfoDimensionOutput
-	ToGetApplicationInfosInfoDimensionOutputWithContext(context.Context) GetApplicationInfosInfoDimensionOutput
-}
-
-type GetApplicationInfosInfoDimensionArgs struct {
-	// The key of dimensions.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The value of dimensions.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GetApplicationInfosInfoDimensionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationInfosInfoDimension)(nil)).Elem()
-}
-
-func (i GetApplicationInfosInfoDimensionArgs) ToGetApplicationInfosInfoDimensionOutput() GetApplicationInfosInfoDimensionOutput {
-	return i.ToGetApplicationInfosInfoDimensionOutputWithContext(context.Background())
-}
-
-func (i GetApplicationInfosInfoDimensionArgs) ToGetApplicationInfosInfoDimensionOutputWithContext(ctx context.Context) GetApplicationInfosInfoDimensionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosInfoDimensionOutput)
-}
-
-// GetApplicationInfosInfoDimensionArrayInput is an input type that accepts GetApplicationInfosInfoDimensionArray and GetApplicationInfosInfoDimensionArrayOutput values.
-// You can construct a concrete instance of `GetApplicationInfosInfoDimensionArrayInput` via:
-//
-//          GetApplicationInfosInfoDimensionArray{ GetApplicationInfosInfoDimensionArgs{...} }
-type GetApplicationInfosInfoDimensionArrayInput interface {
-	pulumi.Input
-
-	ToGetApplicationInfosInfoDimensionArrayOutput() GetApplicationInfosInfoDimensionArrayOutput
-	ToGetApplicationInfosInfoDimensionArrayOutputWithContext(context.Context) GetApplicationInfosInfoDimensionArrayOutput
-}
-
-type GetApplicationInfosInfoDimensionArray []GetApplicationInfosInfoDimensionInput
-
-func (GetApplicationInfosInfoDimensionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationInfosInfoDimension)(nil)).Elem()
-}
-
-func (i GetApplicationInfosInfoDimensionArray) ToGetApplicationInfosInfoDimensionArrayOutput() GetApplicationInfosInfoDimensionArrayOutput {
-	return i.ToGetApplicationInfosInfoDimensionArrayOutputWithContext(context.Background())
-}
-
-func (i GetApplicationInfosInfoDimensionArray) ToGetApplicationInfosInfoDimensionArrayOutputWithContext(ctx context.Context) GetApplicationInfosInfoDimensionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationInfosInfoDimensionArrayOutput)
-}
-
-type GetApplicationInfosInfoDimensionOutput struct{ *pulumi.OutputState }
-
-func (GetApplicationInfosInfoDimensionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationInfosInfoDimension)(nil)).Elem()
-}
-
-func (o GetApplicationInfosInfoDimensionOutput) ToGetApplicationInfosInfoDimensionOutput() GetApplicationInfosInfoDimensionOutput {
-	return o
-}
-
-func (o GetApplicationInfosInfoDimensionOutput) ToGetApplicationInfosInfoDimensionOutputWithContext(ctx context.Context) GetApplicationInfosInfoDimensionOutput {
-	return o
-}
-
-// The key of dimensions.
-func (o GetApplicationInfosInfoDimensionOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfoDimension) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// The value of dimensions.
-func (o GetApplicationInfosInfoDimensionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationInfosInfoDimension) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetApplicationInfosInfoDimensionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetApplicationInfosInfoDimensionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationInfosInfoDimension)(nil)).Elem()
-}
-
-func (o GetApplicationInfosInfoDimensionArrayOutput) ToGetApplicationInfosInfoDimensionArrayOutput() GetApplicationInfosInfoDimensionArrayOutput {
-	return o
-}
-
-func (o GetApplicationInfosInfoDimensionArrayOutput) ToGetApplicationInfosInfoDimensionArrayOutputWithContext(ctx context.Context) GetApplicationInfosInfoDimensionArrayOutput {
-	return o
-}
-
-func (o GetApplicationInfosInfoDimensionArrayOutput) Index(i pulumi.IntInput) GetApplicationInfosInfoDimensionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationInfosInfoDimension {
-		return vs[0].([]GetApplicationInfosInfoDimension)[vs[1].(int)]
-	}).(GetApplicationInfosInfoDimensionOutput)
 }
 
 type GetQuotaAlarmsAlarm struct {
@@ -1047,6 +1087,452 @@ func (o GetQuotaAlarmsQuotaDimensionArrayOutput) Index(i pulumi.IntInput) GetQuo
 	}).(GetQuotaAlarmsQuotaDimensionOutput)
 }
 
+type GetQuotaApplicationsApplication struct {
+	// The first ID of the resource.
+	ApplicationId string `pulumi:"applicationId"`
+	// The approve value.
+	ApproveValue string `pulumi:"approveValue"`
+	// The audit reason.
+	AuditReason string `pulumi:"auditReason"`
+	// The desire value of the quota application.
+	DesireValue float64 `pulumi:"desireValue"`
+	// The quota dimensions.
+	Dimensions []GetQuotaApplicationsApplicationDimension `pulumi:"dimensions"`
+	// The effective time.
+	EffectiveTime string `pulumi:"effectiveTime"`
+	// The expire time.
+	ExpireTime string `pulumi:"expireTime"`
+	// The ID of the Application Info.
+	Id string `pulumi:"id"`
+	// The notice type.
+	NoticeType int `pulumi:"noticeType"`
+	// The product code.
+	ProductCode string `pulumi:"productCode"`
+	// The ID of quota action..
+	QuotaActionCode string `pulumi:"quotaActionCode"`
+	// The description of the quota.
+	QuotaDescription string `pulumi:"quotaDescription"`
+	// The name of the quota.
+	QuotaName string `pulumi:"quotaName"`
+	// The quota unit.
+	QuotaUnit string `pulumi:"quotaUnit"`
+	// The reason of the quota application.
+	Reason string `pulumi:"reason"`
+	// The status of the quota application.
+	Status string `pulumi:"status"`
+}
+
+// GetQuotaApplicationsApplicationInput is an input type that accepts GetQuotaApplicationsApplicationArgs and GetQuotaApplicationsApplicationOutput values.
+// You can construct a concrete instance of `GetQuotaApplicationsApplicationInput` via:
+//
+//          GetQuotaApplicationsApplicationArgs{...}
+type GetQuotaApplicationsApplicationInput interface {
+	pulumi.Input
+
+	ToGetQuotaApplicationsApplicationOutput() GetQuotaApplicationsApplicationOutput
+	ToGetQuotaApplicationsApplicationOutputWithContext(context.Context) GetQuotaApplicationsApplicationOutput
+}
+
+type GetQuotaApplicationsApplicationArgs struct {
+	// The first ID of the resource.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The approve value.
+	ApproveValue pulumi.StringInput `pulumi:"approveValue"`
+	// The audit reason.
+	AuditReason pulumi.StringInput `pulumi:"auditReason"`
+	// The desire value of the quota application.
+	DesireValue pulumi.Float64Input `pulumi:"desireValue"`
+	// The quota dimensions.
+	Dimensions GetQuotaApplicationsApplicationDimensionArrayInput `pulumi:"dimensions"`
+	// The effective time.
+	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
+	// The expire time.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The ID of the Application Info.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The notice type.
+	NoticeType pulumi.IntInput `pulumi:"noticeType"`
+	// The product code.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// The ID of quota action..
+	QuotaActionCode pulumi.StringInput `pulumi:"quotaActionCode"`
+	// The description of the quota.
+	QuotaDescription pulumi.StringInput `pulumi:"quotaDescription"`
+	// The name of the quota.
+	QuotaName pulumi.StringInput `pulumi:"quotaName"`
+	// The quota unit.
+	QuotaUnit pulumi.StringInput `pulumi:"quotaUnit"`
+	// The reason of the quota application.
+	Reason pulumi.StringInput `pulumi:"reason"`
+	// The status of the quota application.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetQuotaApplicationsApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaApplicationsApplication)(nil)).Elem()
+}
+
+func (i GetQuotaApplicationsApplicationArgs) ToGetQuotaApplicationsApplicationOutput() GetQuotaApplicationsApplicationOutput {
+	return i.ToGetQuotaApplicationsApplicationOutputWithContext(context.Background())
+}
+
+func (i GetQuotaApplicationsApplicationArgs) ToGetQuotaApplicationsApplicationOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsApplicationOutput)
+}
+
+// GetQuotaApplicationsApplicationArrayInput is an input type that accepts GetQuotaApplicationsApplicationArray and GetQuotaApplicationsApplicationArrayOutput values.
+// You can construct a concrete instance of `GetQuotaApplicationsApplicationArrayInput` via:
+//
+//          GetQuotaApplicationsApplicationArray{ GetQuotaApplicationsApplicationArgs{...} }
+type GetQuotaApplicationsApplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetQuotaApplicationsApplicationArrayOutput() GetQuotaApplicationsApplicationArrayOutput
+	ToGetQuotaApplicationsApplicationArrayOutputWithContext(context.Context) GetQuotaApplicationsApplicationArrayOutput
+}
+
+type GetQuotaApplicationsApplicationArray []GetQuotaApplicationsApplicationInput
+
+func (GetQuotaApplicationsApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaApplicationsApplication)(nil)).Elem()
+}
+
+func (i GetQuotaApplicationsApplicationArray) ToGetQuotaApplicationsApplicationArrayOutput() GetQuotaApplicationsApplicationArrayOutput {
+	return i.ToGetQuotaApplicationsApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetQuotaApplicationsApplicationArray) ToGetQuotaApplicationsApplicationArrayOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsApplicationArrayOutput)
+}
+
+type GetQuotaApplicationsApplicationOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaApplicationsApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaApplicationsApplication)(nil)).Elem()
+}
+
+func (o GetQuotaApplicationsApplicationOutput) ToGetQuotaApplicationsApplicationOutput() GetQuotaApplicationsApplicationOutput {
+	return o
+}
+
+func (o GetQuotaApplicationsApplicationOutput) ToGetQuotaApplicationsApplicationOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetQuotaApplicationsApplicationOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The approve value.
+func (o GetQuotaApplicationsApplicationOutput) ApproveValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.ApproveValue }).(pulumi.StringOutput)
+}
+
+// The audit reason.
+func (o GetQuotaApplicationsApplicationOutput) AuditReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.AuditReason }).(pulumi.StringOutput)
+}
+
+// The desire value of the quota application.
+func (o GetQuotaApplicationsApplicationOutput) DesireValue() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) float64 { return v.DesireValue }).(pulumi.Float64Output)
+}
+
+// The quota dimensions.
+func (o GetQuotaApplicationsApplicationOutput) Dimensions() GetQuotaApplicationsApplicationDimensionArrayOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) []GetQuotaApplicationsApplicationDimension {
+		return v.Dimensions
+	}).(GetQuotaApplicationsApplicationDimensionArrayOutput)
+}
+
+// The effective time.
+func (o GetQuotaApplicationsApplicationOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+// The expire time.
+func (o GetQuotaApplicationsApplicationOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Application Info.
+func (o GetQuotaApplicationsApplicationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The notice type.
+func (o GetQuotaApplicationsApplicationOutput) NoticeType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) int { return v.NoticeType }).(pulumi.IntOutput)
+}
+
+// The product code.
+func (o GetQuotaApplicationsApplicationOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// The ID of quota action..
+func (o GetQuotaApplicationsApplicationOutput) QuotaActionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.QuotaActionCode }).(pulumi.StringOutput)
+}
+
+// The description of the quota.
+func (o GetQuotaApplicationsApplicationOutput) QuotaDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.QuotaDescription }).(pulumi.StringOutput)
+}
+
+// The name of the quota.
+func (o GetQuotaApplicationsApplicationOutput) QuotaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.QuotaName }).(pulumi.StringOutput)
+}
+
+// The quota unit.
+func (o GetQuotaApplicationsApplicationOutput) QuotaUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.QuotaUnit }).(pulumi.StringOutput)
+}
+
+// The reason of the quota application.
+func (o GetQuotaApplicationsApplicationOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+// The status of the quota application.
+func (o GetQuotaApplicationsApplicationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetQuotaApplicationsApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaApplicationsApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaApplicationsApplication)(nil)).Elem()
+}
+
+func (o GetQuotaApplicationsApplicationArrayOutput) ToGetQuotaApplicationsApplicationArrayOutput() GetQuotaApplicationsApplicationArrayOutput {
+	return o
+}
+
+func (o GetQuotaApplicationsApplicationArrayOutput) ToGetQuotaApplicationsApplicationArrayOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationArrayOutput {
+	return o
+}
+
+func (o GetQuotaApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetQuotaApplicationsApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQuotaApplicationsApplication {
+		return vs[0].([]GetQuotaApplicationsApplication)[vs[1].(int)]
+	}).(GetQuotaApplicationsApplicationOutput)
+}
+
+type GetQuotaApplicationsApplicationDimension struct {
+	// The key of dimensions.
+	Key string `pulumi:"key"`
+	// The value of dimensions.
+	Value string `pulumi:"value"`
+}
+
+// GetQuotaApplicationsApplicationDimensionInput is an input type that accepts GetQuotaApplicationsApplicationDimensionArgs and GetQuotaApplicationsApplicationDimensionOutput values.
+// You can construct a concrete instance of `GetQuotaApplicationsApplicationDimensionInput` via:
+//
+//          GetQuotaApplicationsApplicationDimensionArgs{...}
+type GetQuotaApplicationsApplicationDimensionInput interface {
+	pulumi.Input
+
+	ToGetQuotaApplicationsApplicationDimensionOutput() GetQuotaApplicationsApplicationDimensionOutput
+	ToGetQuotaApplicationsApplicationDimensionOutputWithContext(context.Context) GetQuotaApplicationsApplicationDimensionOutput
+}
+
+type GetQuotaApplicationsApplicationDimensionArgs struct {
+	// The key of dimensions.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of dimensions.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetQuotaApplicationsApplicationDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaApplicationsApplicationDimension)(nil)).Elem()
+}
+
+func (i GetQuotaApplicationsApplicationDimensionArgs) ToGetQuotaApplicationsApplicationDimensionOutput() GetQuotaApplicationsApplicationDimensionOutput {
+	return i.ToGetQuotaApplicationsApplicationDimensionOutputWithContext(context.Background())
+}
+
+func (i GetQuotaApplicationsApplicationDimensionArgs) ToGetQuotaApplicationsApplicationDimensionOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsApplicationDimensionOutput)
+}
+
+// GetQuotaApplicationsApplicationDimensionArrayInput is an input type that accepts GetQuotaApplicationsApplicationDimensionArray and GetQuotaApplicationsApplicationDimensionArrayOutput values.
+// You can construct a concrete instance of `GetQuotaApplicationsApplicationDimensionArrayInput` via:
+//
+//          GetQuotaApplicationsApplicationDimensionArray{ GetQuotaApplicationsApplicationDimensionArgs{...} }
+type GetQuotaApplicationsApplicationDimensionArrayInput interface {
+	pulumi.Input
+
+	ToGetQuotaApplicationsApplicationDimensionArrayOutput() GetQuotaApplicationsApplicationDimensionArrayOutput
+	ToGetQuotaApplicationsApplicationDimensionArrayOutputWithContext(context.Context) GetQuotaApplicationsApplicationDimensionArrayOutput
+}
+
+type GetQuotaApplicationsApplicationDimensionArray []GetQuotaApplicationsApplicationDimensionInput
+
+func (GetQuotaApplicationsApplicationDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaApplicationsApplicationDimension)(nil)).Elem()
+}
+
+func (i GetQuotaApplicationsApplicationDimensionArray) ToGetQuotaApplicationsApplicationDimensionArrayOutput() GetQuotaApplicationsApplicationDimensionArrayOutput {
+	return i.ToGetQuotaApplicationsApplicationDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i GetQuotaApplicationsApplicationDimensionArray) ToGetQuotaApplicationsApplicationDimensionArrayOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsApplicationDimensionArrayOutput)
+}
+
+type GetQuotaApplicationsApplicationDimensionOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaApplicationsApplicationDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaApplicationsApplicationDimension)(nil)).Elem()
+}
+
+func (o GetQuotaApplicationsApplicationDimensionOutput) ToGetQuotaApplicationsApplicationDimensionOutput() GetQuotaApplicationsApplicationDimensionOutput {
+	return o
+}
+
+func (o GetQuotaApplicationsApplicationDimensionOutput) ToGetQuotaApplicationsApplicationDimensionOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationDimensionOutput {
+	return o
+}
+
+// The key of dimensions.
+func (o GetQuotaApplicationsApplicationDimensionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplicationDimension) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of dimensions.
+func (o GetQuotaApplicationsApplicationDimensionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsApplicationDimension) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetQuotaApplicationsApplicationDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaApplicationsApplicationDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaApplicationsApplicationDimension)(nil)).Elem()
+}
+
+func (o GetQuotaApplicationsApplicationDimensionArrayOutput) ToGetQuotaApplicationsApplicationDimensionArrayOutput() GetQuotaApplicationsApplicationDimensionArrayOutput {
+	return o
+}
+
+func (o GetQuotaApplicationsApplicationDimensionArrayOutput) ToGetQuotaApplicationsApplicationDimensionArrayOutputWithContext(ctx context.Context) GetQuotaApplicationsApplicationDimensionArrayOutput {
+	return o
+}
+
+func (o GetQuotaApplicationsApplicationDimensionArrayOutput) Index(i pulumi.IntInput) GetQuotaApplicationsApplicationDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQuotaApplicationsApplicationDimension {
+		return vs[0].([]GetQuotaApplicationsApplicationDimension)[vs[1].(int)]
+	}).(GetQuotaApplicationsApplicationDimensionOutput)
+}
+
+type GetQuotaApplicationsDimension struct {
+	// The key of dimensions.
+	Key *string `pulumi:"key"`
+	// The value of dimensions.
+	Value *string `pulumi:"value"`
+}
+
+// GetQuotaApplicationsDimensionInput is an input type that accepts GetQuotaApplicationsDimensionArgs and GetQuotaApplicationsDimensionOutput values.
+// You can construct a concrete instance of `GetQuotaApplicationsDimensionInput` via:
+//
+//          GetQuotaApplicationsDimensionArgs{...}
+type GetQuotaApplicationsDimensionInput interface {
+	pulumi.Input
+
+	ToGetQuotaApplicationsDimensionOutput() GetQuotaApplicationsDimensionOutput
+	ToGetQuotaApplicationsDimensionOutputWithContext(context.Context) GetQuotaApplicationsDimensionOutput
+}
+
+type GetQuotaApplicationsDimensionArgs struct {
+	// The key of dimensions.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of dimensions.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetQuotaApplicationsDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaApplicationsDimension)(nil)).Elem()
+}
+
+func (i GetQuotaApplicationsDimensionArgs) ToGetQuotaApplicationsDimensionOutput() GetQuotaApplicationsDimensionOutput {
+	return i.ToGetQuotaApplicationsDimensionOutputWithContext(context.Background())
+}
+
+func (i GetQuotaApplicationsDimensionArgs) ToGetQuotaApplicationsDimensionOutputWithContext(ctx context.Context) GetQuotaApplicationsDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsDimensionOutput)
+}
+
+// GetQuotaApplicationsDimensionArrayInput is an input type that accepts GetQuotaApplicationsDimensionArray and GetQuotaApplicationsDimensionArrayOutput values.
+// You can construct a concrete instance of `GetQuotaApplicationsDimensionArrayInput` via:
+//
+//          GetQuotaApplicationsDimensionArray{ GetQuotaApplicationsDimensionArgs{...} }
+type GetQuotaApplicationsDimensionArrayInput interface {
+	pulumi.Input
+
+	ToGetQuotaApplicationsDimensionArrayOutput() GetQuotaApplicationsDimensionArrayOutput
+	ToGetQuotaApplicationsDimensionArrayOutputWithContext(context.Context) GetQuotaApplicationsDimensionArrayOutput
+}
+
+type GetQuotaApplicationsDimensionArray []GetQuotaApplicationsDimensionInput
+
+func (GetQuotaApplicationsDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaApplicationsDimension)(nil)).Elem()
+}
+
+func (i GetQuotaApplicationsDimensionArray) ToGetQuotaApplicationsDimensionArrayOutput() GetQuotaApplicationsDimensionArrayOutput {
+	return i.ToGetQuotaApplicationsDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i GetQuotaApplicationsDimensionArray) ToGetQuotaApplicationsDimensionArrayOutputWithContext(ctx context.Context) GetQuotaApplicationsDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQuotaApplicationsDimensionArrayOutput)
+}
+
+type GetQuotaApplicationsDimensionOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaApplicationsDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQuotaApplicationsDimension)(nil)).Elem()
+}
+
+func (o GetQuotaApplicationsDimensionOutput) ToGetQuotaApplicationsDimensionOutput() GetQuotaApplicationsDimensionOutput {
+	return o
+}
+
+func (o GetQuotaApplicationsDimensionOutput) ToGetQuotaApplicationsDimensionOutputWithContext(ctx context.Context) GetQuotaApplicationsDimensionOutput {
+	return o
+}
+
+// The key of dimensions.
+func (o GetQuotaApplicationsDimensionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The value of dimensions.
+func (o GetQuotaApplicationsDimensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetQuotaApplicationsDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetQuotaApplicationsDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQuotaApplicationsDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQuotaApplicationsDimension)(nil)).Elem()
+}
+
+func (o GetQuotaApplicationsDimensionArrayOutput) ToGetQuotaApplicationsDimensionArrayOutput() GetQuotaApplicationsDimensionArrayOutput {
+	return o
+}
+
+func (o GetQuotaApplicationsDimensionArrayOutput) ToGetQuotaApplicationsDimensionArrayOutputWithContext(ctx context.Context) GetQuotaApplicationsDimensionArrayOutput {
+	return o
+}
+
+func (o GetQuotaApplicationsDimensionArrayOutput) Index(i pulumi.IntInput) GetQuotaApplicationsDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQuotaApplicationsDimension {
+		return vs[0].([]GetQuotaApplicationsDimension)[vs[1].(int)]
+	}).(GetQuotaApplicationsDimensionOutput)
+}
+
 type GetQuotasDimension struct {
 	// The key of dimensions.
 	Key *string `pulumi:"key"`
@@ -1363,18 +1849,26 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationInfoDimensionArrayOutput{})
 	pulumi.RegisterOutputType(QuotaAlarmQuotaDimensionOutput{})
 	pulumi.RegisterOutputType(QuotaAlarmQuotaDimensionArrayOutput{})
+	pulumi.RegisterOutputType(QuotaApplicationDimensionOutput{})
+	pulumi.RegisterOutputType(QuotaApplicationDimensionArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationInfosApplicationOutput{})
+	pulumi.RegisterOutputType(GetApplicationInfosApplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationInfosApplicationDimensionOutput{})
+	pulumi.RegisterOutputType(GetApplicationInfosApplicationDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosDimensionOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosDimensionArrayOutput{})
-	pulumi.RegisterOutputType(GetApplicationInfosInfoOutput{})
-	pulumi.RegisterOutputType(GetApplicationInfosInfoArrayOutput{})
-	pulumi.RegisterOutputType(GetApplicationInfosInfoDimensionOutput{})
-	pulumi.RegisterOutputType(GetApplicationInfosInfoDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetQuotaAlarmsAlarmOutput{})
 	pulumi.RegisterOutputType(GetQuotaAlarmsAlarmArrayOutput{})
 	pulumi.RegisterOutputType(GetQuotaAlarmsAlarmQuotaDimensionOutput{})
 	pulumi.RegisterOutputType(GetQuotaAlarmsAlarmQuotaDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetQuotaAlarmsQuotaDimensionOutput{})
 	pulumi.RegisterOutputType(GetQuotaAlarmsQuotaDimensionArrayOutput{})
+	pulumi.RegisterOutputType(GetQuotaApplicationsApplicationOutput{})
+	pulumi.RegisterOutputType(GetQuotaApplicationsApplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetQuotaApplicationsApplicationDimensionOutput{})
+	pulumi.RegisterOutputType(GetQuotaApplicationsApplicationDimensionArrayOutput{})
+	pulumi.RegisterOutputType(GetQuotaApplicationsDimensionOutput{})
+	pulumi.RegisterOutputType(GetQuotaApplicationsDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetQuotasDimensionOutput{})
 	pulumi.RegisterOutputType(GetQuotasDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetQuotasQuotaOutput{})

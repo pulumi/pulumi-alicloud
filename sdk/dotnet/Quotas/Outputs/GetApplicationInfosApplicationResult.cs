@@ -11,75 +11,27 @@ namespace Pulumi.AliCloud.Quotas.Outputs
 {
 
     [OutputType]
-    public sealed class GetApplicationInfosInfoResult
+    public sealed class GetApplicationInfosApplicationResult
     {
-        /// <summary>
-        /// The first ID of the resource.
-        /// </summary>
         public readonly string ApplicationId;
-        /// <summary>
-        /// The approve value.
-        /// </summary>
         public readonly string ApproveValue;
-        /// <summary>
-        /// The audit reason.
-        /// </summary>
         public readonly string AuditReason;
-        /// <summary>
-        /// The desire value of the quota application.
-        /// </summary>
         public readonly double DesireValue;
-        /// <summary>
-        /// The quota dimensions.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetApplicationInfosInfoDimensionResult> Dimensions;
-        /// <summary>
-        /// The effective time.
-        /// </summary>
+        public readonly ImmutableArray<Outputs.GetApplicationInfosApplicationDimensionResult> Dimensions;
         public readonly string EffectiveTime;
-        /// <summary>
-        /// The expire time.
-        /// </summary>
         public readonly string ExpireTime;
-        /// <summary>
-        /// The ID of the Application Info.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The notice type.
-        /// </summary>
         public readonly int NoticeType;
-        /// <summary>
-        /// The product code.
-        /// </summary>
         public readonly string ProductCode;
-        /// <summary>
-        /// The ID of quota action..
-        /// </summary>
         public readonly string QuotaActionCode;
-        /// <summary>
-        /// The description of the quota.
-        /// </summary>
         public readonly string QuotaDescription;
-        /// <summary>
-        /// The name of the quota.
-        /// </summary>
         public readonly string QuotaName;
-        /// <summary>
-        /// The quota unit.
-        /// </summary>
         public readonly string QuotaUnit;
-        /// <summary>
-        /// The reason of the quota application.
-        /// </summary>
         public readonly string Reason;
-        /// <summary>
-        /// The status of the quota application.
-        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]
-        private GetApplicationInfosInfoResult(
+        private GetApplicationInfosApplicationResult(
             string applicationId,
 
             string approveValue,
@@ -88,7 +40,7 @@ namespace Pulumi.AliCloud.Quotas.Outputs
 
             double desireValue,
 
-            ImmutableArray<Outputs.GetApplicationInfosInfoDimensionResult> dimensions,
+            ImmutableArray<Outputs.GetApplicationInfosApplicationDimensionResult> dimensions,
 
             string effectiveTime,
 

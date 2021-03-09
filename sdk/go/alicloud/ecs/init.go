@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup":
 		r, err = NewAutoProvisioningGroup(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy":
+		r, err = NewAutoSnapshotPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ecs/command:Command":
 		r, err = NewCommand(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ecs/copyImage:CopyImage":
@@ -82,6 +84,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/autoProvisioningGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/autoSnapshotPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
