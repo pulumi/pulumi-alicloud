@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.21.0
-* Release macOS arm64 binary
+_(none)_
 
 ---
+
+## 2.37.0 (2021-03-16)
+* Upgrade to pulumi-terraform-bridge v2.21.0
+* Release macOS arm64 binary
 
 ## 2.36.0 (2021-03-10)
 * Upgrade to v1.117.0 of the AliCloud Terraform Provider
