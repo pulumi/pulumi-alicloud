@@ -87,7 +87,7 @@ class EnterpriseUser(pulumi.CustomResource):
             __props__['mobile'] = mobile
             if nick_name is not None and not opts.urn:
                 warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.")
+                pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
             __props__['nick_name'] = nick_name
             __props__['role_names'] = role_names
             __props__['status'] = status

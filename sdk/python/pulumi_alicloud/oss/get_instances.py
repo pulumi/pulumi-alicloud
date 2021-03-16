@@ -144,7 +144,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
            })
            ```
     """
-    pulumi.log.warn("get_instances is deprecated: alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances")
+    pulumi.log.warn("""get_instances is deprecated: alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances""")
     __args__ = dict()
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex

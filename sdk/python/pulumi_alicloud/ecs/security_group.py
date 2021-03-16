@@ -68,7 +68,7 @@ class SecurityGroup(pulumi.CustomResource):
             __props__['description'] = description
             if inner_access is not None and not opts.urn:
                 warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
-                pulumi.log.warn("inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.")
+                pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
             __props__['inner_access'] = inner_access
             __props__['inner_access_policy'] = inner_access_policy
             __props__['name'] = name

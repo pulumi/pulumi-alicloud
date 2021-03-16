@@ -34,7 +34,7 @@ class GetEipsResult:
             raise TypeError("Expected argument 'in_use' to be a bool")
         if in_use is not None:
             warnings.warn("""Field 'in_use' has been deprecated from provider version 1.8.0.""", DeprecationWarning)
-            pulumi.log.warn("in_use is deprecated: Field 'in_use' has been deprecated from provider version 1.8.0.")
+            pulumi.log.warn("""in_use is deprecated: Field 'in_use' has been deprecated from provider version 1.8.0.""")
 
         pulumi.set(__self__, "in_use", in_use)
         if ip_addresses and not isinstance(ip_addresses, list):

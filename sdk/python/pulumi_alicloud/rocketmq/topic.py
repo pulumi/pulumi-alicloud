@@ -103,7 +103,7 @@ class Topic(pulumi.CustomResource):
             __props__['tags'] = tags
             if topic is not None and not opts.urn:
                 warnings.warn("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.")
+                pulumi.log.warn("""topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""")
             __props__['topic'] = topic
             __props__['topic_name'] = topic_name
         super(Topic, __self__).__init__(

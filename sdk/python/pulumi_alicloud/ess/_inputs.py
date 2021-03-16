@@ -38,7 +38,7 @@ class ScalingConfigurationDataDiskArgs:
             pulumi.set(__self__, "description", description)
         if device is not None:
             warnings.warn("""Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
-            pulumi.log.warn("device is deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.")
+            pulumi.log.warn("""device is deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.""")
         if device is not None:
             pulumi.set(__self__, "device", device)
         if encrypted is not None:

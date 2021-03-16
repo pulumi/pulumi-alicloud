@@ -69,7 +69,7 @@ class DdosBgpInstance(pulumi.CustomResource):
         :param pulumi.Input[int] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] type: Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
         """
-        pulumi.log.warn("DdosBgpInstance is deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance")
+        pulumi.log.warn("""DdosBgpInstance is deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

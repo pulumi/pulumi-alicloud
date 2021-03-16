@@ -77,7 +77,7 @@ class ResourceGroup(pulumi.CustomResource):
             __props__['display_name'] = display_name
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.")
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.""")
             __props__['name'] = name
             __props__['resource_group_name'] = resource_group_name
             __props__['account_id'] = None

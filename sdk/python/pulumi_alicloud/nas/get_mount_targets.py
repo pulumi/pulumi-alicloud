@@ -37,7 +37,7 @@ class GetMountTargetsResult:
             raise TypeError("Expected argument 'mount_target_domain' to be a str")
         if mount_target_domain is not None:
             warnings.warn("""Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("mount_target_domain is deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.")
+            pulumi.log.warn("""mount_target_domain is deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.""")
 
         pulumi.set(__self__, "mount_target_domain", mount_target_domain)
         if network_type and not isinstance(network_type, str):
@@ -56,7 +56,7 @@ class GetMountTargetsResult:
             raise TypeError("Expected argument 'type' to be a str")
         if type is not None:
             warnings.warn("""Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("type is deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.")
+            pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.""")
 
         pulumi.set(__self__, "type", type)
         if vpc_id and not isinstance(vpc_id, str):

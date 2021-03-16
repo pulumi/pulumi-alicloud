@@ -25,7 +25,7 @@ class GetApisResult:
             raise TypeError("Expected argument 'api_id' to be a str")
         if api_id is not None:
             warnings.warn("""Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("api_id is deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.")
+            pulumi.log.warn("""api_id is deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.""")
 
         pulumi.set(__self__, "api_id", api_id)
         if apis and not isinstance(apis, list):

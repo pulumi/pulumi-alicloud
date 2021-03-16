@@ -27,7 +27,7 @@ class GetTrailsDeprecatedResult:
             raise TypeError("Expected argument 'actiontrails' to be a list")
         if actiontrails is not None:
             warnings.warn("""Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""", DeprecationWarning)
-            pulumi.log.warn("actiontrails is deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.")
+            pulumi.log.warn("""actiontrails is deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""")
 
         pulumi.set(__self__, "actiontrails", actiontrails)
         if id and not isinstance(id, str):
@@ -148,7 +148,7 @@ def get_trails_deprecated(ids: Optional[Sequence[str]] = None,
 
     :param str name_regex: A regex string to filter results action trail name.
     """
-    pulumi.log.warn("get_trails_deprecated is deprecated: DataSource has been renamed to `getTrails`")
+    pulumi.log.warn("""get_trails_deprecated is deprecated: DataSource has been renamed to `getTrails`""")
     __args__ = dict()
     __args__['ids'] = ids
     __args__['includeOrganizationTrail'] = include_organization_trail

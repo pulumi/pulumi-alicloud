@@ -138,7 +138,7 @@ def get_tables(ids: Optional[Sequence[str]] = None,
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by table name.
     """
-    pulumi.log.warn("get_tables is deprecated: alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables")
+    pulumi.log.warn("""get_tables is deprecated: alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables""")
     __args__ = dict()
     __args__['ids'] = ids
     __args__['instanceName'] = instance_name

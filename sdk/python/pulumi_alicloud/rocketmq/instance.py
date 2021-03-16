@@ -81,7 +81,7 @@ class Instance(pulumi.CustomResource):
             __props__['instance_name'] = instance_name
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.")
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""")
             __props__['name'] = name
             __props__['remark'] = remark
             __props__['tags'] = tags

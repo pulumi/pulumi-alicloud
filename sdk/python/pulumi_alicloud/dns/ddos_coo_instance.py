@@ -73,7 +73,7 @@ class DdosCooInstance(pulumi.CustomResource):
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
-        pulumi.log.warn("DdosCooInstance is deprecated: alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance")
+        pulumi.log.warn("""DdosCooInstance is deprecated: alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

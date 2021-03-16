@@ -70,15 +70,15 @@ class Role(pulumi.CustomResource):
             __props__['name'] = name
             if ram_users is not None and not opts.urn:
                 warnings.warn("""Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-                pulumi.log.warn("ram_users is deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
+                pulumi.log.warn("""ram_users is deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
             __props__['ram_users'] = ram_users
             if services is not None and not opts.urn:
                 warnings.warn("""Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-                pulumi.log.warn("services is deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
+                pulumi.log.warn("""services is deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
             __props__['services'] = services
             if version is not None and not opts.urn:
                 warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-                pulumi.log.warn("version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
+                pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
             __props__['version'] = version
             __props__['arn'] = None
             __props__['role_id'] = None
