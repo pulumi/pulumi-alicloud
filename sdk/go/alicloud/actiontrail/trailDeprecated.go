@@ -25,7 +25,8 @@ type TrailDeprecated struct {
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 	EventRw             pulumi.StringPtrOutput `pulumi:"eventRw"`
 	IsOrganizationTrail pulumi.BoolPtrOutput   `pulumi:"isOrganizationTrail"`
-	MnsTopicArn         pulumi.StringPtrOutput `pulumi:"mnsTopicArn"`
+	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
+	MnsTopicArn pulumi.StringPtrOutput `pulumi:"mnsTopicArn"`
 	// The name of the trail to be created, which must be unique for an account.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
@@ -33,8 +34,11 @@ type TrailDeprecated struct {
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName pulumi.StringPtrOutput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
-	OssKeyPrefix pulumi.StringPtrOutput `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix    pulumi.StringPtrOutput `pulumi:"ossKeyPrefix"`
+	OssWriteRoleArn pulumi.StringPtrOutput `pulumi:"ossWriteRoleArn"`
 	// The RAM role in ActionTrail permitted by the user.
+	//
+	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrOutput `pulumi:"slsProjectArn"`
@@ -77,7 +81,8 @@ type trailDeprecatedState struct {
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 	EventRw             *string `pulumi:"eventRw"`
 	IsOrganizationTrail *bool   `pulumi:"isOrganizationTrail"`
-	MnsTopicArn         *string `pulumi:"mnsTopicArn"`
+	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
+	MnsTopicArn *string `pulumi:"mnsTopicArn"`
 	// The name of the trail to be created, which must be unique for an account.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
@@ -85,8 +90,11 @@ type trailDeprecatedState struct {
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName *string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
-	OssKeyPrefix *string `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix    *string `pulumi:"ossKeyPrefix"`
+	OssWriteRoleArn *string `pulumi:"ossWriteRoleArn"`
 	// The RAM role in ActionTrail permitted by the user.
+	//
+	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName *string `pulumi:"roleName"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn *string `pulumi:"slsProjectArn"`
@@ -101,7 +109,8 @@ type TrailDeprecatedState struct {
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 	EventRw             pulumi.StringPtrInput
 	IsOrganizationTrail pulumi.BoolPtrInput
-	MnsTopicArn         pulumi.StringPtrInput
+	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
+	MnsTopicArn pulumi.StringPtrInput
 	// The name of the trail to be created, which must be unique for an account.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
@@ -109,8 +118,11 @@ type TrailDeprecatedState struct {
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName pulumi.StringPtrInput
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
-	OssKeyPrefix pulumi.StringPtrInput
+	OssKeyPrefix    pulumi.StringPtrInput
+	OssWriteRoleArn pulumi.StringPtrInput
 	// The RAM role in ActionTrail permitted by the user.
+	//
+	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName pulumi.StringPtrInput
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrInput
@@ -129,7 +141,8 @@ type trailDeprecatedArgs struct {
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 	EventRw             *string `pulumi:"eventRw"`
 	IsOrganizationTrail *bool   `pulumi:"isOrganizationTrail"`
-	MnsTopicArn         *string `pulumi:"mnsTopicArn"`
+	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
+	MnsTopicArn *string `pulumi:"mnsTopicArn"`
 	// The name of the trail to be created, which must be unique for an account.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
@@ -137,8 +150,11 @@ type trailDeprecatedArgs struct {
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName *string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
-	OssKeyPrefix *string `pulumi:"ossKeyPrefix"`
+	OssKeyPrefix    *string `pulumi:"ossKeyPrefix"`
+	OssWriteRoleArn *string `pulumi:"ossWriteRoleArn"`
 	// The RAM role in ActionTrail permitted by the user.
+	//
+	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName *string `pulumi:"roleName"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn *string `pulumi:"slsProjectArn"`
@@ -154,7 +170,8 @@ type TrailDeprecatedArgs struct {
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 	EventRw             pulumi.StringPtrInput
 	IsOrganizationTrail pulumi.BoolPtrInput
-	MnsTopicArn         pulumi.StringPtrInput
+	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
+	MnsTopicArn pulumi.StringPtrInput
 	// The name of the trail to be created, which must be unique for an account.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
@@ -162,8 +179,11 @@ type TrailDeprecatedArgs struct {
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName pulumi.StringPtrInput
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
-	OssKeyPrefix pulumi.StringPtrInput
+	OssKeyPrefix    pulumi.StringPtrInput
+	OssWriteRoleArn pulumi.StringPtrInput
 	// The RAM role in ActionTrail permitted by the user.
+	//
+	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName pulumi.StringPtrInput
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrInput

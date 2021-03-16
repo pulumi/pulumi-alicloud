@@ -363,7 +363,7 @@ export namespace cdn {
         serverCertificateStatus?: pulumi.Input<string>;
     }
 
-    export interface DomainNewSources {
+    export interface DomainNewSource {
         /**
          * The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
          */

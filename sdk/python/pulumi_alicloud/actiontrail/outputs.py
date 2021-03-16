@@ -426,10 +426,10 @@ class GetTrailsActiontrailResult(dict):
     def __init__(__self__, *,
                  event_rw: str,
                  id: str,
-                 mns_topic_arn: str,
+                 is_organization_trail: bool,
                  oss_bucket_name: str,
                  oss_key_prefix: str,
-                 role_name: str,
+                 oss_write_role_arn: str,
                  sls_project_arn: str,
                  sls_write_role_arn: str,
                  status: str,
@@ -438,10 +438,8 @@ class GetTrailsActiontrailResult(dict):
         """
         :param str event_rw: Indicates whether the event is a read or a write event.
         :param str id: The id of the ActionTrail Trail. It is the same as trail name.
-        :param str mns_topic_arn: The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
         :param str oss_bucket_name: The name of the specified OSS bucket.
         :param str oss_key_prefix: The prefix of the specified OSS bucket name.
-        :param str role_name: The role in ActionTrail Trail.
         :param str sls_project_arn: The unique ARN of the Log Service project.
         :param str sls_write_role_arn: The unique ARN of the Log Service role.
         :param str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
@@ -450,10 +448,10 @@ class GetTrailsActiontrailResult(dict):
         """
         pulumi.set(__self__, "event_rw", event_rw)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
+        pulumi.set(__self__, "is_organization_trail", is_organization_trail)
         pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
-        pulumi.set(__self__, "role_name", role_name)
+        pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
         pulumi.set(__self__, "sls_project_arn", sls_project_arn)
         pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
         pulumi.set(__self__, "status", status)
@@ -477,12 +475,9 @@ class GetTrailsActiontrailResult(dict):
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="mnsTopicArn")
-    def mns_topic_arn(self) -> str:
-        """
-        The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
-        """
-        return pulumi.get(self, "mns_topic_arn")
+    @pulumi.getter(name="isOrganizationTrail")
+    def is_organization_trail(self) -> bool:
+        return pulumi.get(self, "is_organization_trail")
 
     @property
     @pulumi.getter(name="ossBucketName")
@@ -501,12 +496,9 @@ class GetTrailsActiontrailResult(dict):
         return pulumi.get(self, "oss_key_prefix")
 
     @property
-    @pulumi.getter(name="roleName")
-    def role_name(self) -> str:
-        """
-        The role in ActionTrail Trail.
-        """
-        return pulumi.get(self, "role_name")
+    @pulumi.getter(name="ossWriteRoleArn")
+    def oss_write_role_arn(self) -> str:
+        return pulumi.get(self, "oss_write_role_arn")
 
     @property
     @pulumi.getter(name="slsProjectArn")
@@ -554,10 +546,10 @@ class GetTrailsDeprecatedActiontrailResult(dict):
     def __init__(__self__, *,
                  event_rw: str,
                  id: str,
-                 mns_topic_arn: str,
+                 is_organization_trail: bool,
                  oss_bucket_name: str,
                  oss_key_prefix: str,
-                 role_name: str,
+                 oss_write_role_arn: str,
                  sls_project_arn: str,
                  sls_write_role_arn: str,
                  status: str,
@@ -567,16 +559,15 @@ class GetTrailsDeprecatedActiontrailResult(dict):
         :param str event_rw: Indicates whether the event is a read or a write event.
         :param str oss_bucket_name: The name of the specified OSS bucket.
         :param str oss_key_prefix: The prefix of the specified OSS bucket name.
-        :param str role_name: The role in ActionTrail.
         :param str sls_project_arn: The unique ARN of the Log Service project.
         :param str sls_write_role_arn: The unique ARN of the Log Service role.
         """
         pulumi.set(__self__, "event_rw", event_rw)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
+        pulumi.set(__self__, "is_organization_trail", is_organization_trail)
         pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
-        pulumi.set(__self__, "role_name", role_name)
+        pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
         pulumi.set(__self__, "sls_project_arn", sls_project_arn)
         pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
         pulumi.set(__self__, "status", status)
@@ -597,9 +588,9 @@ class GetTrailsDeprecatedActiontrailResult(dict):
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="mnsTopicArn")
-    def mns_topic_arn(self) -> str:
-        return pulumi.get(self, "mns_topic_arn")
+    @pulumi.getter(name="isOrganizationTrail")
+    def is_organization_trail(self) -> bool:
+        return pulumi.get(self, "is_organization_trail")
 
     @property
     @pulumi.getter(name="ossBucketName")
@@ -618,12 +609,9 @@ class GetTrailsDeprecatedActiontrailResult(dict):
         return pulumi.get(self, "oss_key_prefix")
 
     @property
-    @pulumi.getter(name="roleName")
-    def role_name(self) -> str:
-        """
-        The role in ActionTrail.
-        """
-        return pulumi.get(self, "role_name")
+    @pulumi.getter(name="ossWriteRoleArn")
+    def oss_write_role_arn(self) -> str:
+        return pulumi.get(self, "oss_write_role_arn")
 
     @property
     @pulumi.getter(name="slsProjectArn")
@@ -662,10 +650,10 @@ class GetTrailsDeprecatedTrailResult(dict):
     def __init__(__self__, *,
                  event_rw: str,
                  id: str,
-                 mns_topic_arn: str,
+                 is_organization_trail: bool,
                  oss_bucket_name: str,
                  oss_key_prefix: str,
-                 role_name: str,
+                 oss_write_role_arn: str,
                  sls_project_arn: str,
                  sls_write_role_arn: str,
                  status: str,
@@ -675,16 +663,15 @@ class GetTrailsDeprecatedTrailResult(dict):
         :param str event_rw: Indicates whether the event is a read or a write event.
         :param str oss_bucket_name: The name of the specified OSS bucket.
         :param str oss_key_prefix: The prefix of the specified OSS bucket name.
-        :param str role_name: The role in ActionTrail.
         :param str sls_project_arn: The unique ARN of the Log Service project.
         :param str sls_write_role_arn: The unique ARN of the Log Service role.
         """
         pulumi.set(__self__, "event_rw", event_rw)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
+        pulumi.set(__self__, "is_organization_trail", is_organization_trail)
         pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
-        pulumi.set(__self__, "role_name", role_name)
+        pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
         pulumi.set(__self__, "sls_project_arn", sls_project_arn)
         pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
         pulumi.set(__self__, "status", status)
@@ -705,9 +692,9 @@ class GetTrailsDeprecatedTrailResult(dict):
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="mnsTopicArn")
-    def mns_topic_arn(self) -> str:
-        return pulumi.get(self, "mns_topic_arn")
+    @pulumi.getter(name="isOrganizationTrail")
+    def is_organization_trail(self) -> bool:
+        return pulumi.get(self, "is_organization_trail")
 
     @property
     @pulumi.getter(name="ossBucketName")
@@ -726,12 +713,9 @@ class GetTrailsDeprecatedTrailResult(dict):
         return pulumi.get(self, "oss_key_prefix")
 
     @property
-    @pulumi.getter(name="roleName")
-    def role_name(self) -> str:
-        """
-        The role in ActionTrail.
-        """
-        return pulumi.get(self, "role_name")
+    @pulumi.getter(name="ossWriteRoleArn")
+    def oss_write_role_arn(self) -> str:
+        return pulumi.get(self, "oss_write_role_arn")
 
     @property
     @pulumi.getter(name="slsProjectArn")
@@ -770,10 +754,10 @@ class GetTrailsTrailResult(dict):
     def __init__(__self__, *,
                  event_rw: str,
                  id: str,
-                 mns_topic_arn: str,
+                 is_organization_trail: bool,
                  oss_bucket_name: str,
                  oss_key_prefix: str,
-                 role_name: str,
+                 oss_write_role_arn: str,
                  sls_project_arn: str,
                  sls_write_role_arn: str,
                  status: str,
@@ -782,10 +766,8 @@ class GetTrailsTrailResult(dict):
         """
         :param str event_rw: Indicates whether the event is a read or a write event.
         :param str id: The id of the ActionTrail Trail. It is the same as trail name.
-        :param str mns_topic_arn: The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
         :param str oss_bucket_name: The name of the specified OSS bucket.
         :param str oss_key_prefix: The prefix of the specified OSS bucket name.
-        :param str role_name: The role in ActionTrail Trail.
         :param str sls_project_arn: The unique ARN of the Log Service project.
         :param str sls_write_role_arn: The unique ARN of the Log Service role.
         :param str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
@@ -794,10 +776,10 @@ class GetTrailsTrailResult(dict):
         """
         pulumi.set(__self__, "event_rw", event_rw)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
+        pulumi.set(__self__, "is_organization_trail", is_organization_trail)
         pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
         pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
-        pulumi.set(__self__, "role_name", role_name)
+        pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
         pulumi.set(__self__, "sls_project_arn", sls_project_arn)
         pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
         pulumi.set(__self__, "status", status)
@@ -821,12 +803,9 @@ class GetTrailsTrailResult(dict):
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="mnsTopicArn")
-    def mns_topic_arn(self) -> str:
-        """
-        The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
-        """
-        return pulumi.get(self, "mns_topic_arn")
+    @pulumi.getter(name="isOrganizationTrail")
+    def is_organization_trail(self) -> bool:
+        return pulumi.get(self, "is_organization_trail")
 
     @property
     @pulumi.getter(name="ossBucketName")
@@ -845,12 +824,9 @@ class GetTrailsTrailResult(dict):
         return pulumi.get(self, "oss_key_prefix")
 
     @property
-    @pulumi.getter(name="roleName")
-    def role_name(self) -> str:
-        """
-        The role in ActionTrail Trail.
-        """
-        return pulumi.get(self, "role_name")
+    @pulumi.getter(name="ossWriteRoleArn")
+    def oss_write_role_arn(self) -> str:
+        return pulumi.get(self, "oss_write_role_arn")
 
     @property
     @pulumi.getter(name="slsProjectArn")

@@ -49,6 +49,9 @@ export class TrailDeprecated extends pulumi.CustomResource {
      */
     public readonly eventRw!: pulumi.Output<string | undefined>;
     public readonly isOrganizationTrail!: pulumi.Output<boolean | undefined>;
+    /**
+     * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
+     */
     public readonly mnsTopicArn!: pulumi.Output<string | undefined>;
     /**
      * The name of the trail to be created, which must be unique for an account.
@@ -64,8 +67,11 @@ export class TrailDeprecated extends pulumi.CustomResource {
      * The prefix of the specified OSS bucket name. This parameter can be left empty.
      */
     public readonly ossKeyPrefix!: pulumi.Output<string | undefined>;
+    public readonly ossWriteRoleArn!: pulumi.Output<string | undefined>;
     /**
      * The RAM role in ActionTrail permitted by the user.
+     *
+     * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
     public readonly roleName!: pulumi.Output<string>;
     /**
@@ -102,6 +108,7 @@ export class TrailDeprecated extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["ossBucketName"] = state ? state.ossBucketName : undefined;
             inputs["ossKeyPrefix"] = state ? state.ossKeyPrefix : undefined;
+            inputs["ossWriteRoleArn"] = state ? state.ossWriteRoleArn : undefined;
             inputs["roleName"] = state ? state.roleName : undefined;
             inputs["slsProjectArn"] = state ? state.slsProjectArn : undefined;
             inputs["slsWriteRoleArn"] = state ? state.slsWriteRoleArn : undefined;
@@ -116,6 +123,7 @@ export class TrailDeprecated extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["ossBucketName"] = args ? args.ossBucketName : undefined;
             inputs["ossKeyPrefix"] = args ? args.ossKeyPrefix : undefined;
+            inputs["ossWriteRoleArn"] = args ? args.ossWriteRoleArn : undefined;
             inputs["roleName"] = args ? args.roleName : undefined;
             inputs["slsProjectArn"] = args ? args.slsProjectArn : undefined;
             inputs["slsWriteRoleArn"] = args ? args.slsWriteRoleArn : undefined;
@@ -139,6 +147,9 @@ export interface TrailDeprecatedState {
      */
     readonly eventRw?: pulumi.Input<string>;
     readonly isOrganizationTrail?: pulumi.Input<boolean>;
+    /**
+     * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
+     */
     readonly mnsTopicArn?: pulumi.Input<string>;
     /**
      * The name of the trail to be created, which must be unique for an account.
@@ -154,8 +165,11 @@ export interface TrailDeprecatedState {
      * The prefix of the specified OSS bucket name. This parameter can be left empty.
      */
     readonly ossKeyPrefix?: pulumi.Input<string>;
+    readonly ossWriteRoleArn?: pulumi.Input<string>;
     /**
      * The RAM role in ActionTrail permitted by the user.
+     *
+     * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
     readonly roleName?: pulumi.Input<string>;
     /**
@@ -180,6 +194,9 @@ export interface TrailDeprecatedArgs {
      */
     readonly eventRw?: pulumi.Input<string>;
     readonly isOrganizationTrail?: pulumi.Input<boolean>;
+    /**
+     * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
+     */
     readonly mnsTopicArn?: pulumi.Input<string>;
     /**
      * The name of the trail to be created, which must be unique for an account.
@@ -195,8 +212,11 @@ export interface TrailDeprecatedArgs {
      * The prefix of the specified OSS bucket name. This parameter can be left empty.
      */
     readonly ossKeyPrefix?: pulumi.Input<string>;
+    readonly ossWriteRoleArn?: pulumi.Input<string>;
     /**
      * The RAM role in ActionTrail permitted by the user.
+     *
+     * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
     readonly roleName?: pulumi.Input<string>;
     /**

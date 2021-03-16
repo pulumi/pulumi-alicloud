@@ -87,7 +87,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
 
         ```sh
-         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster-id
+         $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -148,8 +148,8 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
-        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
+        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
         """
@@ -390,9 +390,9 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes.
-        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
@@ -965,7 +965,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerInstanceTypes")
     def worker_instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         """
         return pulumi.get(self, "worker_instance_types")
 
@@ -981,7 +981,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerNumber")
     def worker_number(self) -> pulumi.Output[Optional[int]]:
         """
-        The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         """
         return pulumi.get(self, "worker_number")
 

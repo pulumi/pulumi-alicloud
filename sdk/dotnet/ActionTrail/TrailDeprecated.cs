@@ -52,6 +52,9 @@ namespace Pulumi.AliCloud.ActionTrail
         [Output("ossKeyPrefix")]
         public Output<string?> OssKeyPrefix { get; private set; } = null!;
 
+        [Output("ossWriteRoleArn")]
+        public Output<string?> OssWriteRoleArn { get; private set; } = null!;
+
         /// <summary>
         /// The RAM role in ActionTrail permitted by the user.
         /// </summary>
@@ -155,6 +158,9 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("ossKeyPrefix")]
         public Input<string>? OssKeyPrefix { get; set; }
 
+        [Input("ossWriteRoleArn")]
+        public Input<string>? OssWriteRoleArn { get; set; }
+
         /// <summary>
         /// The RAM role in ActionTrail permitted by the user.
         /// </summary>
@@ -218,6 +224,9 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         [Input("ossKeyPrefix")]
         public Input<string>? OssKeyPrefix { get; set; }
+
+        [Input("ossWriteRoleArn")]
+        public Input<string>? OssWriteRoleArn { get; set; }
 
         /// <summary>
         /// The RAM role in ActionTrail permitted by the user.

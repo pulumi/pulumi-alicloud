@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
+//
+// ```sh
+//  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_node_pool.custom_nodepool cluster_id:nodepool_id
+// ```
 type NodePool struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +33,8 @@ type NodePool struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+	// * key: The label key.
+	// * value: The label value.
 	Labels NodePoolLabelArrayOutput `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management NodePoolManagementPtrOutput `pulumi:"management"`
@@ -111,6 +120,8 @@ type nodePoolState struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+	// * key: The label key.
+	// * value: The label value.
 	Labels []NodePoolLabel `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management *NodePoolManagement `pulumi:"management"`
@@ -159,6 +170,8 @@ type NodePoolState struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+	// * key: The label key.
+	// * value: The label value.
 	Labels NodePoolLabelArrayInput
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management NodePoolManagementPtrInput
@@ -211,6 +224,8 @@ type nodePoolArgs struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+	// * key: The label key.
+	// * value: The label value.
 	Labels []NodePoolLabel `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management *NodePoolManagement `pulumi:"management"`
@@ -256,6 +271,8 @@ type NodePoolArgs struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+	// * key: The label key.
+	// * value: The label value.
 	Labels NodePoolLabelArrayInput
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management NodePoolManagementPtrInput

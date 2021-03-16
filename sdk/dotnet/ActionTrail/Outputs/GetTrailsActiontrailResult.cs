@@ -21,10 +21,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The id of the ActionTrail Trail. It is the same as trail name.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
-        /// </summary>
-        public readonly string MnsTopicArn;
+        public readonly bool IsOrganizationTrail;
         /// <summary>
         /// The name of the specified OSS bucket.
         /// </summary>
@@ -33,10 +30,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The prefix of the specified OSS bucket name.
         /// </summary>
         public readonly string OssKeyPrefix;
-        /// <summary>
-        /// The role in ActionTrail Trail.
-        /// </summary>
-        public readonly string RoleName;
+        public readonly string OssWriteRoleArn;
         /// <summary>
         /// The unique ARN of the Log Service project.
         /// </summary>
@@ -64,13 +58,13 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string id,
 
-            string mnsTopicArn,
+            bool isOrganizationTrail,
 
             string ossBucketName,
 
             string ossKeyPrefix,
 
-            string roleName,
+            string ossWriteRoleArn,
 
             string slsProjectArn,
 
@@ -84,10 +78,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         {
             EventRw = eventRw;
             Id = id;
-            MnsTopicArn = mnsTopicArn;
+            IsOrganizationTrail = isOrganizationTrail;
             OssBucketName = ossBucketName;
             OssKeyPrefix = ossKeyPrefix;
-            RoleName = roleName;
+            OssWriteRoleArn = ossWriteRoleArn;
             SlsProjectArn = slsProjectArn;
             SlsWriteRoleArn = slsWriteRoleArn;
             Status = status;

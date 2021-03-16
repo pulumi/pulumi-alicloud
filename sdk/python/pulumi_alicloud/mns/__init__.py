@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .get_queues import *
+from .get_service import *
 from .get_topic_subscriptions import *
 from .get_topics import *
 from .queue import *

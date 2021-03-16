@@ -41,7 +41,14 @@ class NodePool(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a NodePool resource with the given unique name, props, and options.
+        ## Import
+
+        Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
+
+        ```sh
+         $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_node_pool.custom_nodepool cluster_id:nodepool_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
@@ -50,6 +57,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+               * key: The label key.
+               * value: The label value.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
@@ -156,6 +165,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+               * key: The label key.
+               * value: The label value.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
@@ -252,6 +263,8 @@ class NodePool(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolLabel']]]:
         """
         A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        * key: The label key.
+        * value: The label value.
         """
         return pulumi.get(self, "labels")
 

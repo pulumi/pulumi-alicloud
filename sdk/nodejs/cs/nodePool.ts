@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_node_pool.custom_nodepool cluster_id:nodepool_id
+ * ```
+ */
 export class NodePool extends pulumi.CustomResource {
     /**
      * Get an existing NodePool resource's state with the given name, ID, and optional extra
@@ -56,6 +65,8 @@ export class NodePool extends pulumi.CustomResource {
     public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
     /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+     * * key: The label key.
+     * * value: The label value.
      */
     public readonly labels!: pulumi.Output<outputs.cs.NodePoolLabel[] | undefined>;
     /**
@@ -224,6 +235,8 @@ export interface NodePoolState {
     readonly kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+     * * key: The label key.
+     * * value: The label value.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
     /**
@@ -317,6 +330,8 @@ export interface NodePoolArgs {
     readonly kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+     * * key: The label key.
+     * * value: The label value.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
     /**

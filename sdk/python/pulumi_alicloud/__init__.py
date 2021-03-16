@@ -31,6 +31,7 @@ from . import (
     cr,
     cs,
     datahub,
+    dataworks,
     dcdn,
     ddos,
     dds,

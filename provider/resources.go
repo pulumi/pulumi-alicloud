@@ -50,6 +50,7 @@ const (
 	crMod                  = "CR"
 	csMod                  = "CS"
 	datahubMod             = "Datahub"
+	dataWorksMod           = "DataWorks"
 	dcdnMod                = "Dcdn"
 	ddsMod                 = "Dds"
 	ddosMod                = "Ddos"
@@ -758,12 +759,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cloud_storage_gateway_service": {Tok: dataSource(cloudStorageGatewayMod, "getService")},
 
 			// CMS
-			"alicloud_cms_alarm_contacts":       {Tok: dataSource(cmsMod, "getAlarmContacts")},
-			"alicloud_cms_alarm_contact_groups": {Tok: dataSource(cmsMod, "getAlarmContactGroups")},
-			"alicloud_cms_group_metric_rules":   {Tok: dataSource(cmsMod, "getGroupMetricRules")},
-			"alicloud_cms_service":              {Tok: dataSource(cmsMod, "getService")},
-			"alicloud_cms_monitor_groups":       {Tok: dataSource(cmsMod, "getMonitorGroups")},
-			//"alicloud_cms_monitor_group_instances": {Tok: dataSource(cmsMod, "getMonitorGroupInstances")},
+			"alicloud_cms_alarm_contacts":            {Tok: dataSource(cmsMod, "getAlarmContacts")},
+			"alicloud_cms_alarm_contact_groups":      {Tok: dataSource(cmsMod, "getAlarmContactGroups")},
+			"alicloud_cms_group_metric_rules":        {Tok: dataSource(cmsMod, "getGroupMetricRules")},
+			"alicloud_cms_service":                   {Tok: dataSource(cmsMod, "getService")},
+			"alicloud_cms_monitor_groups":            {Tok: dataSource(cmsMod, "getMonitorGroups")},
+			"alicloud_cms_monitor_group_instanceses": {Tok: dataSource(cmsMod, "getMonitorGroupInstances")},
 
 			// Config
 			"alicloud_config_configuration_recorders": {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
@@ -788,6 +789,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Datahub
 			"alicloud_datahub_service": {Tok: dataSource(datahubMod, "getService")},
+
+			// DataWorks
+			"alicloud_dataworks_service": {Tok: dataSource(dataWorksMod, "getService")},
 
 			// Dcdn
 			"alicloud_dcdn_domains": {Tok: dataSource(dcdnMod, "getDomains")},
@@ -933,6 +937,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_mns_queues":              {Tok: dataSource(mnsMod, "getQueues")},
 			"alicloud_mns_topic_subscriptions": {Tok: dataSource(mnsMod, "getTopicSubscriptions")},
 			"alicloud_mns_topics":              {Tok: dataSource(mnsMod, "getTopics")},
+			"alicloud_mns_service":             {Tok: dataSource(mnsMod, "getService")},
 
 			// Mongo
 			"alicloud_mongodb_instances": {Tok: dataSource(mongoDbMod, "getInstances")},

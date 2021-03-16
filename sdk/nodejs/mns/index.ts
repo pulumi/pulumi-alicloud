@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./getQueues";
+export * from "./getService";
 export * from "./getTopicSubscriptions";
 export * from "./getTopics";
 export * from "./queue";

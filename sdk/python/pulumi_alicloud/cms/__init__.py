@@ -9,6 +9,7 @@ from .alarm_contact_group import *
 from .get_alarm_contact_groups import *
 from .get_alarm_contacts import *
 from .get_group_metric_rules import *
+from .get_monitor_group_instances import *
 from .get_monitor_groups import *
 from .get_service import *
 from .group_metric_rule import *

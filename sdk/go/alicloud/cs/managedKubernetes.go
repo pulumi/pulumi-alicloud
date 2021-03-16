@@ -16,7 +16,7 @@ import (
 // Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
 //
 // ```sh
-//  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster-id
+//  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
 // ```
 type ManagedKubernetes struct {
 	pulumi.CustomResourceState
@@ -146,11 +146,11 @@ type ManagedKubernetes struct {
 	WorkerDiskSize pulumi.IntPtrOutput `pulumi:"workerDiskSize"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
 	WorkerInstanceTypes pulumi.StringArrayOutput `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes.
 	WorkerNodes ManagedKubernetesWorkerNodeArrayOutput `pulumi:"workerNodes"`
-	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
 	WorkerNumber pulumi.IntPtrOutput `pulumi:"workerNumber"`
 	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod pulumi.IntPtrOutput `pulumi:"workerPeriod"`
@@ -318,11 +318,11 @@ type managedKubernetesState struct {
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes.
 	WorkerNodes []ManagedKubernetesWorkerNode `pulumi:"workerNodes"`
-	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
 	WorkerNumber *int `pulumi:"workerNumber"`
 	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
@@ -459,11 +459,11 @@ type ManagedKubernetesState struct {
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrInput
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
 	WorkerInstanceTypes pulumi.StringArrayInput
 	// List of cluster worker nodes.
 	WorkerNodes ManagedKubernetesWorkerNodeArrayInput
-	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
 	WorkerNumber pulumi.IntPtrInput
 	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod pulumi.IntPtrInput
@@ -591,9 +591,9 @@ type managedKubernetesArgs struct {
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
-	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
 	WorkerNumber *int `pulumi:"workerNumber"`
 	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
@@ -716,9 +716,9 @@ type ManagedKubernetesArgs struct {
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrInput
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
 	WorkerInstanceTypes pulumi.StringArrayInput
-	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
 	WorkerNumber pulumi.IntPtrInput
 	// Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
 	WorkerPeriod pulumi.IntPtrInput

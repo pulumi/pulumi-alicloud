@@ -25,13 +25,13 @@ import * as utilities from "../utilities";
  *     domainName: `tf-testacc%d.xiaozhu.com`,
  *     cdnType: "web",
  *     scope: "overseas",
- *     sources: {
+ *     sources: [{
  *         content: "1.1.1.1",
  *         type: "ipaddr",
  *         priority: "20",
  *         port: 80,
  *         weight: "15",
- *     },
+ *     }],
  * });
  * const config = new alicloud.cdn.DomainConfig("config", {
  *     domainName: domain.domainName,

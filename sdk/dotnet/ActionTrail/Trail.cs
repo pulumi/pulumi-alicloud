@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.ActionTrail
     ///         {
     ///             EventRw = "All",
     ///             OssBucketName = "bucket_name",
-    ///             RoleName = "aliyunserviceroleforactiontrail",
+    ///             OssWriteRoleArn = "acs:ram::1182725xxxxxxxxxxx",
     ///             TrailName = "action-trail",
     ///             TrailRegion = "cn-hangzhou",
     ///         });
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Output<bool?> IsOrganizationTrail { get; private set; } = null!;
 
         /// <summary>
-        /// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        /// Field `mns_topic_arn` has been deprecated from version 1.118.0.
         /// </summary>
         [Output("mnsTopicArn")]
         public Output<string?> MnsTopicArn { get; private set; } = null!;
@@ -83,7 +83,13 @@ namespace Pulumi.AliCloud.ActionTrail
         public Output<string?> OssKeyPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The RAM role in ActionTrail permitted by the user.
+        /// The unique ARN of the Oss role.
+        /// </summary>
+        [Output("ossWriteRoleArn")]
+        public Output<string?> OssWriteRoleArn { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `name` has been deprecated from version 1.118.0.
         /// </summary>
         [Output("roleName")]
         public Output<string> RoleName { get; private set; } = null!;
@@ -174,7 +180,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<bool>? IsOrganizationTrail { get; set; }
 
         /// <summary>
-        /// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        /// Field `mns_topic_arn` has been deprecated from version 1.118.0.
         /// </summary>
         [Input("mnsTopicArn")]
         public Input<string>? MnsTopicArn { get; set; }
@@ -198,7 +204,13 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? OssKeyPrefix { get; set; }
 
         /// <summary>
-        /// The RAM role in ActionTrail permitted by the user.
+        /// The unique ARN of the Oss role.
+        /// </summary>
+        [Input("ossWriteRoleArn")]
+        public Input<string>? OssWriteRoleArn { get; set; }
+
+        /// <summary>
+        /// Field `name` has been deprecated from version 1.118.0.
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
@@ -250,7 +262,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<bool>? IsOrganizationTrail { get; set; }
 
         /// <summary>
-        /// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        /// Field `mns_topic_arn` has been deprecated from version 1.118.0.
         /// </summary>
         [Input("mnsTopicArn")]
         public Input<string>? MnsTopicArn { get; set; }
@@ -274,7 +286,13 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? OssKeyPrefix { get; set; }
 
         /// <summary>
-        /// The RAM role in ActionTrail permitted by the user.
+        /// The unique ARN of the Oss role.
+        /// </summary>
+        [Input("ossWriteRoleArn")]
+        public Input<string>? OssWriteRoleArn { get; set; }
+
+        /// <summary>
+        /// Field `name` has been deprecated from version 1.118.0.
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }

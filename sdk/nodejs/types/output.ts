@@ -279,10 +279,7 @@ export namespace actiontrail {
          * The id of the ActionTrail Trail. It is the same as trail name.
          */
         id: string;
-        /**
-         * The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
-         */
-        mnsTopicArn: string;
+        isOrganizationTrail: boolean;
         /**
          * The name of the specified OSS bucket.
          */
@@ -291,10 +288,7 @@ export namespace actiontrail {
          * The prefix of the specified OSS bucket name.
          */
         ossKeyPrefix: string;
-        /**
-         * The role in ActionTrail Trail.
-         */
-        roleName: string;
+        ossWriteRoleArn: string;
         /**
          * The unique ARN of the Log Service project.
          */
@@ -323,7 +317,7 @@ export namespace actiontrail {
          */
         eventRw: string;
         id: string;
-        mnsTopicArn: string;
+        isOrganizationTrail: boolean;
         /**
          * The name of the specified OSS bucket.
          */
@@ -332,10 +326,7 @@ export namespace actiontrail {
          * The prefix of the specified OSS bucket name.
          */
         ossKeyPrefix: string;
-        /**
-         * The role in ActionTrail.
-         */
-        roleName: string;
+        ossWriteRoleArn: string;
         /**
          * The unique ARN of the Log Service project.
          */
@@ -355,7 +346,7 @@ export namespace actiontrail {
          */
         eventRw: string;
         id: string;
-        mnsTopicArn: string;
+        isOrganizationTrail: boolean;
         /**
          * The name of the specified OSS bucket.
          */
@@ -364,10 +355,7 @@ export namespace actiontrail {
          * The prefix of the specified OSS bucket name.
          */
         ossKeyPrefix: string;
-        /**
-         * The role in ActionTrail.
-         */
-        roleName: string;
+        ossWriteRoleArn: string;
         /**
          * The unique ARN of the Log Service project.
          */
@@ -390,10 +378,7 @@ export namespace actiontrail {
          * The id of the ActionTrail Trail. It is the same as trail name.
          */
         id: string;
-        /**
-         * The ARN of the Message Service (MNS) topic to which ActionTrail sends messages.
-         */
-        mnsTopicArn: string;
+        isOrganizationTrail: boolean;
         /**
          * The name of the specified OSS bucket.
          */
@@ -402,10 +387,7 @@ export namespace actiontrail {
          * The prefix of the specified OSS bucket name.
          */
         ossKeyPrefix: string;
-        /**
-         * The role in ActionTrail Trail.
-         */
-        roleName: string;
+        ossWriteRoleArn: string;
         /**
          * The unique ARN of the Log Service project.
          */
@@ -1147,7 +1129,7 @@ export namespace cdn {
         serverCertificateStatus?: string;
     }
 
-    export interface DomainNewSources {
+    export interface DomainNewSource {
         /**
          * The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
          */
@@ -2192,6 +2174,32 @@ export namespace cms {
          * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times: number;
+    }
+
+    export interface GetMonitorGroupInstancesInstancese {
+        /**
+         * Instance information added to the Cms Group.
+         */
+        instances: outputs.cms.GetMonitorGroupInstancesInstanceseInstance[];
+    }
+
+    export interface GetMonitorGroupInstancesInstanceseInstance {
+        /**
+         * The category of instance.
+         */
+        category: string;
+        /**
+         * The id of instance.
+         */
+        instanceId: string;
+        /**
+         * The name of instance.
+         */
+        instanceName: string;
+        /**
+         * The region id of instance.
+         */
+        regionId: string;
     }
 
     export interface GetMonitorGroupsGroup {

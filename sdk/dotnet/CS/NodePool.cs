@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CS
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_node_pool.custom_nodepool cluster_id:nodepool_id
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:cs/nodePool:NodePool")]
     public partial class NodePool : Pulumi.CustomResource
     {
@@ -47,6 +56,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        /// * key: The label key.
+        /// * value: The label value.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.NodePoolLabel>> Labels { get; private set; } = null!;
@@ -238,6 +249,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        /// * key: The label key.
+        /// * value: The label value.
         /// </summary>
         public InputList<Inputs.NodePoolLabelArgs> Labels
         {
@@ -399,6 +412,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        /// * key: The label key.
+        /// * value: The label value.
         /// </summary>
         public InputList<Inputs.NodePoolLabelGetArgs> Labels
         {

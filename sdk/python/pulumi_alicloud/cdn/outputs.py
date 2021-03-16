@@ -15,7 +15,7 @@ __all__ = [
     'DomainConfigFunctionArg',
     'DomainHttpHeaderConfig',
     'DomainNewCertificateConfig',
-    'DomainNewSources',
+    'DomainNewSource',
     'DomainPage404Config',
     'DomainParameterFilterConfig',
     'DomainReferConfig',
@@ -343,7 +343,7 @@ class DomainNewCertificateConfig(dict):
 
 
 @pulumi.output_type
-class DomainNewSources(dict):
+class DomainNewSource(dict):
     def __init__(__self__, *,
                  content: str,
                  type: str,

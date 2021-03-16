@@ -34,13 +34,16 @@ namespace Pulumi.AliCloud.Cdn
     ///             DomainName = "tf-testacc%d.xiaozhu.com",
     ///             CdnType = "web",
     ///             Scope = "overseas",
-    ///             Sources = new AliCloud.Cdn.Inputs.DomainNewSourcesArgs
+    ///             Sources = 
     ///             {
-    ///                 Content = "1.1.1.1",
-    ///                 Type = "ipaddr",
-    ///                 Priority = 20,
-    ///                 Port = 80,
-    ///                 Weight = 15,
+    ///                 new AliCloud.Cdn.Inputs.DomainNewSourceArgs
+    ///                 {
+    ///                     Content = "1.1.1.1",
+    ///                     Type = "ipaddr",
+    ///                     Priority = 20,
+    ///                     Port = 80,
+    ///                     Weight = 15,
+    ///                 },
     ///             },
     ///         });
     ///         var config = new AliCloud.Cdn.DomainConfig("config", new AliCloud.Cdn.DomainConfigArgs
