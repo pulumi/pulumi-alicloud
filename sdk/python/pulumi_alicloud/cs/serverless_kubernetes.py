@@ -111,7 +111,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__['vpc_id'] = vpc_id
             if vswitch_id is not None and not opts.urn:
                 warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
-                pulumi.log.warn("vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.")
+                pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
             __props__['vswitch_id'] = vswitch_id
             __props__['vswitch_ids'] = vswitch_ids
         super(ServerlessKubernetes, __self__).__init__(

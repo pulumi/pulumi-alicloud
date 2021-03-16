@@ -40,7 +40,7 @@ class GetInstancesResult:
             raise TypeError("Expected argument 'name_regex' to be a str")
         if name_regex is not None:
             warnings.warn("""Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.""", DeprecationWarning)
-            pulumi.log.warn("name_regex is deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.")
+            pulumi.log.warn("""name_regex is deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.""")
 
         pulumi.set(__self__, "name_regex", name_regex)
         if output_file and not isinstance(output_file, str):

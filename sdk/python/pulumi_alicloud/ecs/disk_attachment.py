@@ -80,7 +80,7 @@ class DiskAttachment(pulumi.CustomResource):
 
             if device_name is not None and not opts.urn:
                 warnings.warn("""Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
-                pulumi.log.warn("device_name is deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.")
+                pulumi.log.warn("""device_name is deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""")
             __props__['device_name'] = device_name
             if disk_id is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_id'")

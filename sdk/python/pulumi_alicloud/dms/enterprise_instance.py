@@ -149,7 +149,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             __props__['host'] = host
             if instance_alias is not None and not opts.urn:
                 warnings.warn("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.")
+                pulumi.log.warn("""instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""")
             __props__['instance_alias'] = instance_alias
             __props__['instance_id'] = instance_id
             __props__['instance_name'] = instance_name

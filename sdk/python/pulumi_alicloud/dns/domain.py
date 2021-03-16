@@ -40,7 +40,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the dns belongs.
         """
-        pulumi.log.warn("Domain is deprecated: This resource has been deprecated in favour of DnsDomain")
+        pulumi.log.warn("""Domain is deprecated: This resource has been deprecated in favour of DnsDomain""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

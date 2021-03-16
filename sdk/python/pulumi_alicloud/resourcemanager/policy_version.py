@@ -55,7 +55,7 @@ class PolicyVersion(pulumi.CustomResource):
 
             if is_default_version is not None and not opts.urn:
                 warnings.warn("""Field 'is_default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
-                pulumi.log.warn("is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0")
+                pulumi.log.warn("""is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0""")
             __props__['is_default_version'] = is_default_version
             if policy_document is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_document'")

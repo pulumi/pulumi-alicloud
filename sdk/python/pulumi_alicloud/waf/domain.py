@@ -120,7 +120,7 @@ class Domain(pulumi.CustomResource):
             __props__['connection_time'] = connection_time
             if domain is not None and not opts.urn:
                 warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.")
+                pulumi.log.warn("""domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
             __props__['domain'] = domain
             __props__['domain_name'] = domain_name
             __props__['http2_ports'] = http2_ports

@@ -53,7 +53,7 @@ class TrailDeprecated(pulumi.CustomResource):
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         """
-        pulumi.log.warn("TrailDeprecated is deprecated: Resource renamed to `Trail`")
+        pulumi.log.warn("""TrailDeprecated is deprecated: Resource renamed to `Trail`""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -76,7 +76,7 @@ class TrailDeprecated(pulumi.CustomResource):
             __props__['mns_topic_arn'] = mns_topic_arn
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.")
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
             __props__['name'] = name
             __props__['oss_bucket_name'] = oss_bucket_name
             __props__['oss_key_prefix'] = oss_key_prefix

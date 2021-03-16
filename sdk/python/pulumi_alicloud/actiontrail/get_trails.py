@@ -25,7 +25,7 @@ class GetTrailsResult:
             raise TypeError("Expected argument 'actiontrails' to be a list")
         if actiontrails is not None:
             warnings.warn("""Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""", DeprecationWarning)
-            pulumi.log.warn("actiontrails is deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.")
+            pulumi.log.warn("""actiontrails is deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""")
 
         pulumi.set(__self__, "actiontrails", actiontrails)
         if id and not isinstance(id, str):

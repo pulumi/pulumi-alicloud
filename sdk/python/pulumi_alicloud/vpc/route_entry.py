@@ -68,7 +68,7 @@ class RouteEntry(pulumi.CustomResource):
             __props__['route_table_id'] = route_table_id
             if router_id is not None and not opts.urn:
                 warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
-                pulumi.log.warn("router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.")
+                pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
             __props__['router_id'] = router_id
         super(RouteEntry, __self__).__init__(
             'alicloud:vpc/routeEntry:RouteEntry',

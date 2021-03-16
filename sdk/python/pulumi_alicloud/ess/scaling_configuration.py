@@ -130,7 +130,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__['image_name'] = image_name
             if instance_ids is not None and not opts.urn:
                 warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
-                pulumi.log.warn("instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.")
+                pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
             __props__['instance_ids'] = instance_ids
             __props__['instance_name'] = instance_name
             __props__['instance_type'] = instance_type
@@ -140,7 +140,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__['internet_max_bandwidth_out'] = internet_max_bandwidth_out
             if io_optimized is not None and not opts.urn:
                 warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
-                pulumi.log.warn("io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.")
+                pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
             __props__['io_optimized'] = io_optimized
             __props__['is_outdated'] = is_outdated
             __props__['key_name'] = key_name

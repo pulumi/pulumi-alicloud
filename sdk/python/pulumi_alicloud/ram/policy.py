@@ -70,23 +70,23 @@ class Policy(pulumi.CustomResource):
             __props__['description'] = description
             if document is not None and not opts.urn:
                 warnings.warn("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""", DeprecationWarning)
-                pulumi.log.warn("document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.")
+                pulumi.log.warn("""document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
             __props__['document'] = document
             __props__['force'] = force
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.")
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
             __props__['name'] = name
             __props__['policy_document'] = policy_document
             __props__['policy_name'] = policy_name
             __props__['rotate_strategy'] = rotate_strategy
             if statements is not None and not opts.urn:
                 warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-                pulumi.log.warn("statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
+                pulumi.log.warn("""statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
             __props__['statements'] = statements
             if version is not None and not opts.urn:
                 warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-                pulumi.log.warn("version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. ")
+                pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
             __props__['version'] = version
             __props__['attachment_count'] = None
             __props__['default_version'] = None

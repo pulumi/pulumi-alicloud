@@ -273,15 +273,15 @@ class Listener(pulumi.CustomResource):
             __props__['idle_timeout'] = idle_timeout
             if instance_port is not None and not opts.urn:
                 warnings.warn("""Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""", DeprecationWarning)
-                pulumi.log.warn("instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.")
+                pulumi.log.warn("""instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""")
             __props__['instance_port'] = instance_port
             if lb_port is not None and not opts.urn:
                 warnings.warn("""Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""", DeprecationWarning)
-                pulumi.log.warn("lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.")
+                pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""")
             __props__['lb_port'] = lb_port
             if lb_protocol is not None and not opts.urn:
                 warnings.warn("""Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""", DeprecationWarning)
-                pulumi.log.warn("lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.")
+                pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""")
             __props__['lb_protocol'] = lb_protocol
             __props__['listener_forward'] = listener_forward
             if load_balancer_id is None and not opts.urn:
@@ -298,7 +298,7 @@ class Listener(pulumi.CustomResource):
             __props__['server_group_id'] = server_group_id
             if ssl_certificate_id is not None and not opts.urn:
                 warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
-                pulumi.log.warn("ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.")
+                pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
             __props__['ssl_certificate_id'] = ssl_certificate_id
             __props__['sticky_session'] = sticky_session
             __props__['sticky_session_type'] = sticky_session_type

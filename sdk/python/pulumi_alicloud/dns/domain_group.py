@@ -70,7 +70,7 @@ class DomainGroup(pulumi.CustomResource):
             __props__['domain_group_name'] = domain_group_name
             if group_name is not None and not opts.urn:
                 warnings.warn("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.")
+                pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
             __props__['group_name'] = group_name
             __props__['lang'] = lang
         super(DomainGroup, __self__).__init__(

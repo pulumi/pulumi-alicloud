@@ -167,7 +167,7 @@ class Instance(pulumi.CustomResource):
 
             if allocate_public_ip is not None and not opts.urn:
                 warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
-                pulumi.log.warn("allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.")
+                pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
             __props__['allocate_public_ip'] = allocate_public_ip
             __props__['auto_release_time'] = auto_release_time
             __props__['auto_renew_period'] = auto_renew_period
@@ -193,7 +193,7 @@ class Instance(pulumi.CustomResource):
             __props__['internet_max_bandwidth_out'] = internet_max_bandwidth_out
             if io_optimized is not None and not opts.urn:
                 warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
-                pulumi.log.warn("io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.")
+                pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
             __props__['io_optimized'] = io_optimized
             __props__['is_outdated'] = is_outdated
             __props__['key_name'] = key_name
