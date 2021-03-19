@@ -33,6 +33,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
         ///         {
         ///             CidrBlock = "192.168.0.0/24",
+        ///             VpcName = name,
         ///         });
         ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
         ///         {
@@ -43,6 +44,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
         ///             CidrBlock = "192.168.0.0/24",
         ///             VpcId = vpc.Id,
+        ///             VswitchName = name,
         ///         });
         ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
         ///         {

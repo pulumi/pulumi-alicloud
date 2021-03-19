@@ -36,10 +36,12 @@ namespace Pulumi.AliCloud.Vpc
     ///         var name = config.Get("name") ?? "alicloudRouterInterfaceConnectionBasic";
     ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = name,
     ///             CidrBlock = "172.16.0.0/12",
     ///         });
     ///         var barNetwork = new AliCloud.Vpc.Network("barNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = name,
     ///             CidrBlock = "192.168.0.0/16",
     ///         }, new CustomResourceOptions
     ///         {

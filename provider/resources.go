@@ -301,6 +301,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_db_instance":                        {Tok: resource(rdsMod, "Instance")},
 			"alicloud_db_read_write_splitting_connection": {Tok: resource(rdsMod, "ReadWriteSplittingConnection")},
 			"alicloud_db_readonly_instance":               {Tok: resource(rdsMod, "ReadOnlyInstance")},
+			"alicloud_rds_parameter_group":                {Tok: resource(rdsMod, "RdsParameterGroup")},
 
 			// DCDN
 			"alicloud_dcdn_domain": {Tok: resource(dcdnMod, "Domain")},
@@ -1012,10 +1013,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ram_saml_providers":  {Tok: dataSource(ramMod, "getSamlProviders")},
 
 			// Rds
-			"alicloud_db_instances":        {Tok: dataSource(rdsMod, "getInstances")},
-			"alicloud_db_instance_classes": {Tok: dataSource(rdsMod, "getInstanceClasses")},
-			"alicloud_db_instance_engines": {Tok: dataSource(rdsMod, "getInstanceEngines")},
-			"alicloud_db_zones":            {Tok: dataSource(rdsMod, "getZones")},
+			"alicloud_db_instances":         {Tok: dataSource(rdsMod, "getInstances")},
+			"alicloud_db_instance_classes":  {Tok: dataSource(rdsMod, "getInstanceClasses")},
+			"alicloud_db_instance_engines":  {Tok: dataSource(rdsMod, "getInstanceEngines")},
+			"alicloud_db_zones":             {Tok: dataSource(rdsMod, "getZones")},
+			"alicloud_rds_parameter_groups": {Tok: dataSource(rdsMod, "getRdsParameterGroups")},
 
 			// ResourceManager
 			"alicloud_resource_manager_folders":          {Tok: dataSource(resourceManagerMod, "getFolders")},

@@ -94,6 +94,7 @@ namespace Pulumi.AliCloud.Emr
     ///             vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new AliCloud.Vpc.SwitchArgs
     ///             {
     ///                 AvailabilityZone = @var.Availability_zone == "" ? defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.Types[0].ZoneId) : @var.Availability_zone,
+    ///                 VswitchName = @var.Vswitch_name,
     ///                 CidrBlock = @var.Vswitch_cidr,
     ///                 VpcId = @var.Vpc_id == "" ? vpc.Id : @var.Vpc_id,
     ///             }));
@@ -294,6 +295,7 @@ namespace Pulumi.AliCloud.Emr
     ///             vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new AliCloud.Vpc.SwitchArgs
     ///             {
     ///                 AvailabilityZone = @var.Availability_zone == "" ? defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.Types[0].ZoneId) : @var.Availability_zone,
+    ///                 VswitchName = @var.Vswitch_name,
     ///                 CidrBlock = @var.Vswitch_cidr,
     ///                 VpcId = @var.Vpc_id == "" ? vpc.Id : @var.Vpc_id,
     ///             }));
@@ -490,6 +492,7 @@ namespace Pulumi.AliCloud.Emr
     ///             vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new AliCloud.Vpc.SwitchArgs
     ///             {
     ///                 AvailabilityZone = @var.Availability_zone == "" ? defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.Types[0].ZoneId) : @var.Availability_zone,
+    ///                 VswitchName = @var.Vswitch_name,
     ///                 CidrBlock = @var.Vswitch_cidr,
     ///                 VpcId = @var.Vpc_id == "" ? vpc.Id : @var.Vpc_id,
     ///             }));
@@ -680,6 +683,7 @@ namespace Pulumi.AliCloud.Emr
     ///             vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new AliCloud.Vpc.SwitchArgs
     ///             {
     ///                 AvailabilityZone = @var.Availability_zone == "" ? defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.Types[0].ZoneId) : @var.Availability_zone,
+    ///                 VswitchName = @var.Vswitch_name,
     ///                 CidrBlock = @var.Vswitch_cidr,
     ///                 VpcId = @var.Vpc_id == "" ? vpc.Id : @var.Vpc_id,
     ///             }));

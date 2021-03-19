@@ -49,12 +49,15 @@ class RouteEntry(pulumi.CustomResource):
         default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        vpc = alicloud.vpc.Network("vpc", cidr_block="172.16.0.0/12",
-        opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12",
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=vpc.id,
             cidr_block="172.16.0.0/21",
             availability_zone=default_zones.zones[0].id,
+            vswitch_name=name,
             opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
             description="foo",

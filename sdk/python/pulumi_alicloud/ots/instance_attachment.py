@@ -42,6 +42,7 @@ class InstanceAttachment(pulumi.CustomResource):
         foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/16")
         foo_switch = alicloud.vpc.Switch("fooSwitch",
             vpc_id=foo_network.id,
+            vswitch_name="for-ots-instance",
             cidr_block="172.16.1.0/24",
             availability_zone=foo_zones.zones[0].id)
         foo_instance_attachment = alicloud.ots.InstanceAttachment("fooInstanceAttachment",

@@ -108,7 +108,8 @@ type Kubernetes struct {
 	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayOutput `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
-	ProxyMode    pulumi.StringPtrOutput   `pulumi:"proxyMode"`
+	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -304,7 +305,8 @@ type kubernetesState struct {
 	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
-	ProxyMode    *string  `pulumi:"proxyMode"`
+	ProxyMode *string `pulumi:"proxyMode"`
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -457,7 +459,8 @@ type KubernetesState struct {
 	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
-	ProxyMode    pulumi.StringPtrInput
+	ProxyMode pulumi.StringPtrInput
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -606,7 +609,8 @@ type kubernetesArgs struct {
 	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
-	ProxyMode    *string  `pulumi:"proxyMode"`
+	ProxyMode *string `pulumi:"proxyMode"`
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -741,7 +745,8 @@ type KubernetesArgs struct {
 	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
-	ProxyMode    pulumi.StringPtrInput
+	ProxyMode pulumi.StringPtrInput
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput

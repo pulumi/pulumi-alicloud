@@ -11,15 +11,12 @@ namespace Pulumi.AliCloud.Cms.Outputs
 {
 
     [OutputType]
-    public sealed class GetMonitorGroupInstancesInstanceseResult
+    public sealed class GetMonitorGroupInstancesInstanceResult
     {
-        /// <summary>
-        /// Instance information added to the Cms Group.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetMonitorGroupInstancesInstanceseInstanceResult> Instances;
+        public readonly ImmutableArray<Outputs.GetMonitorGroupInstancesInstanceInstanceResult> Instances;
 
         [OutputConstructor]
-        private GetMonitorGroupInstancesInstanceseResult(ImmutableArray<Outputs.GetMonitorGroupInstancesInstanceseInstanceResult> instances)
+        private GetMonitorGroupInstancesInstanceResult(ImmutableArray<Outputs.GetMonitorGroupInstancesInstanceInstanceResult> instances)
         {
             Instances = instances;
         }

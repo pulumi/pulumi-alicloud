@@ -71,6 +71,7 @@ import (
 // 			name = param
 // 		}
 // 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// 			VpcName:   pulumi.String(name),
 // 			CidrBlock: pulumi.String("10.1.0.0/21"),
 // 		})
 // 		if err != nil {
@@ -80,6 +81,7 @@ import (
 // 			VpcId:            vpc.ID(),
 // 			CidrBlock:        pulumi.String("10.1.1.0/24"),
 // 			AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+// 			VswitchName:      pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err

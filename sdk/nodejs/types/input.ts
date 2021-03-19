@@ -2329,6 +2329,17 @@ export namespace rds {
         value: pulumi.Input<string>;
     }
 
+    export interface RdsParameterGroupParamDetail {
+        /**
+         * The name of a parameter.
+         */
+        paramName: pulumi.Input<string>;
+        /**
+         * The value of a parameter.
+         */
+        paramValue: pulumi.Input<string>;
+    }
+
     export interface ReadOnlyInstanceParameter {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;

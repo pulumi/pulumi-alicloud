@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     vswitchName: name,
  * });
  * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
  *     specification: "slb.s2.small",

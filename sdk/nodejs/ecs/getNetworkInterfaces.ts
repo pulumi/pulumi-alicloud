@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "192.168.0.0/24",
+ *     vpcName: name,
  * });
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
@@ -29,6 +30,7 @@ import * as utilities from "../utilities";
  *     availabilityZone: defaultZones.zones[0].id,
  *     cidrBlock: "192.168.0.0/24",
  *     vpcId: vpc.id,
+ *     vswitchName: name,
  * });
  * const group = new alicloud.ecs.SecurityGroup("group", {
  *     vpcId: vpc.id,

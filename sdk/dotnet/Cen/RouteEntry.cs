@@ -52,6 +52,7 @@ namespace Pulumi.AliCloud.Cen
     ///         }));
     ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = name,
     ///             CidrBlock = "172.16.0.0/12",
     ///         }, new CustomResourceOptions
     ///         {
@@ -62,6 +63,7 @@ namespace Pulumi.AliCloud.Cen
     ///             VpcId = vpc.Id,
     ///             CidrBlock = "172.16.0.0/21",
     ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             VswitchName = name,
     ///         }, new CustomResourceOptions
     ///         {
     ///             Provider = alicloud.Hz,

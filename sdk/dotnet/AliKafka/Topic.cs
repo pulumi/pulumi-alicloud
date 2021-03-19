@@ -70,11 +70,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     /// ## Import
     /// 
-    /// ALIKAFKA TOPIC can be imported using the id, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
-    /// ```
+    /// ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/topic:Topic")]
     public partial class Topic : Pulumi.CustomResource

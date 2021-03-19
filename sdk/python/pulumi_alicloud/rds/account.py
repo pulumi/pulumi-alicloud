@@ -42,11 +42,14 @@ class Account(pulumi.CustomResource):
         if name is None:
             name = "dbaccountmysql"
         default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id)
+            availability_zone=default_zones.zones[0].id,
+            vswitch_name=name)
         instance = alicloud.rds.Instance("instance",
             engine="MySQL",
             engine_version="5.6",

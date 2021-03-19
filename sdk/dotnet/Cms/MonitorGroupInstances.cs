@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.Cms
     ///     {
     ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = "tf-testacc-vpcname",
     ///             CidrBlock = "192.168.0.0/16",
     ///         });
     ///         var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("defaultMonitorGroup", new AliCloud.Cms.MonitorGroupArgs

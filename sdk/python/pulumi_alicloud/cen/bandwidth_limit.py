@@ -43,8 +43,10 @@ class BandwidthLimit(pulumi.CustomResource):
             name = "tf-testAccCenBandwidthLimitConfig"
         fra = pulumi.providers.Alicloud("fra", region="eu-central-1")
         sh = pulumi.providers.Alicloud("sh", region="cn-shanghai")
-        vpc1 = alicloud.vpc.Network("vpc1", cidr_block="192.168.0.0/16",
-        opts=pulumi.ResourceOptions(provider=alicloud["fra"]))
+        vpc1 = alicloud.vpc.Network("vpc1",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider=alicloud["fra"]))
         vpc2 = alicloud.vpc.Network("vpc2", cidr_block="172.16.0.0/12",
         opts=pulumi.ResourceOptions(provider=alicloud["sh"]))
         cen = alicloud.cen.Instance("cen", description="tf-testAccCenBandwidthLimitConfigDescription")

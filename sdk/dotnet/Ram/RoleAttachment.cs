@@ -40,8 +40,11 @@ namespace Pulumi.AliCloud.Ram
     ///             MostRecent = true,
     ///             Owners = "system",
     ///         }));
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "ecsInstanceVPCExample";
     ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = name,
     ///             CidrBlock = "172.16.0.0/16",
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
@@ -65,8 +68,6 @@ namespace Pulumi.AliCloud.Ram
     ///             SecurityGroupId = defaultSecurityGroup.Id,
     ///             CidrIp = "172.16.0.0/24",
     ///         });
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "ecsInstanceVPCExample";
     ///         var foo = new AliCloud.Ecs.Instance("foo", new AliCloud.Ecs.InstanceArgs
     ///         {
     ///             VswitchId = defaultSwitch.Id,

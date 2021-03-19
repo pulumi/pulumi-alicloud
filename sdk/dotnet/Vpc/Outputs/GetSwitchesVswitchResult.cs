@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class GetSwitchesVswitchResult
     {
         /// <summary>
+        /// The available ip address count of the VSwitch.
+        /// </summary>
+        public readonly int AvailableIpAddressCount;
+        /// <summary>
         /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
         /// </summary>
         public readonly string CidrBlock;
@@ -30,10 +34,6 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// List of ECS instance IDs in the specified VSwitch.
-        /// </summary>
-        public readonly ImmutableArray<string> InstanceIds;
-        /// <summary>
         /// Indicate whether the VSwitch is created by the system.
         /// </summary>
         public readonly bool IsDefault;
@@ -42,9 +42,33 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The Id of resource group which VSWitch belongs.
+        /// </summary>
+        public readonly string ResourceGroupId;
+        /// <summary>
+        /// The route table ID of the VSwitch.
+        /// </summary>
+        public readonly string RouteTableId;
+        /// <summary>
+        /// The status of the VSwitch. Valid values: `Available` and `Pending`.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Tags;
+        /// <summary>
         /// ID of the VPC that owns the VSwitch.
         /// </summary>
         public readonly string VpcId;
+        /// <summary>
+        /// ID of the VSwitch.
+        /// </summary>
+        public readonly string VswitchId;
+        /// <summary>
+        /// The name of the VSwitch.
+        /// </summary>
+        public readonly string VswitchName;
         /// <summary>
         /// The availability zone of the VSwitch.
         /// </summary>
@@ -52,6 +76,8 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
         [OutputConstructor]
         private GetSwitchesVswitchResult(
+            int availableIpAddressCount,
+
             string cidrBlock,
 
             string creationTime,
@@ -60,24 +86,40 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string id,
 
-            ImmutableArray<string> instanceIds,
-
             bool isDefault,
 
             string name,
 
+            string resourceGroupId,
+
+            string routeTableId,
+
+            string status,
+
+            ImmutableDictionary<string, object> tags,
+
             string vpcId,
+
+            string vswitchId,
+
+            string vswitchName,
 
             string zoneId)
         {
+            AvailableIpAddressCount = availableIpAddressCount;
             CidrBlock = cidrBlock;
             CreationTime = creationTime;
             Description = description;
             Id = id;
-            InstanceIds = instanceIds;
             IsDefault = isDefault;
             Name = name;
+            ResourceGroupId = resourceGroupId;
+            RouteTableId = routeTableId;
+            Status = status;
+            Tags = tags;
             VpcId = vpcId;
+            VswitchId = vswitchId;
+            VswitchName = vswitchName;
             ZoneId = zoneId;
         }
     }

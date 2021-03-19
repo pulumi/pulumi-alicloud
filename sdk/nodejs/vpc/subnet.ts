@@ -32,12 +32,21 @@ export class Subnet extends pulumi.CustomResource {
         return obj['__pulumiType'] === Subnet.__pulumiType;
     }
 
+    /**
+     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+     */
     public readonly availabilityZone!: pulumi.Output<string>;
     public readonly cidrBlock!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+     */
     public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly vpcId!: pulumi.Output<string>;
+    public readonly vswitchName!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Subnet resource with the given unique name, arguments, and options.
@@ -56,13 +65,13 @@ export class Subnet extends pulumi.CustomResource {
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
+            inputs["vswitchName"] = state ? state.vswitchName : undefined;
+            inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SubnetArgs | undefined;
-            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'availabilityZone'");
-            }
             if ((!args || args.cidrBlock === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
@@ -75,6 +84,9 @@ export class Subnet extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
+            inputs["vswitchName"] = args ? args.vswitchName : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -87,22 +99,39 @@ export class Subnet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Subnet resources.
  */
 export interface SubnetState {
+    /**
+     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+     */
     readonly availabilityZone?: pulumi.Input<string>;
     readonly cidrBlock?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+     */
     readonly name?: pulumi.Input<string>;
+    readonly status?: pulumi.Input<string>;
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     readonly vpcId?: pulumi.Input<string>;
+    readonly vswitchName?: pulumi.Input<string>;
+    readonly zoneId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Subnet resource.
  */
 export interface SubnetArgs {
-    readonly availabilityZone: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+     */
+    readonly availabilityZone?: pulumi.Input<string>;
     readonly cidrBlock: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+     */
     readonly name?: pulumi.Input<string>;
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     readonly vpcId: pulumi.Input<string>;
+    readonly vswitchName?: pulumi.Input<string>;
+    readonly zoneId?: pulumi.Input<string>;
 }

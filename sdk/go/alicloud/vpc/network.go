@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -21,11 +20,19 @@ import (
 type Network struct {
 	pulumi.CustomResourceState
 
-	// The CIDR block for the VPC.
-	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
+	// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
+	CidrBlock pulumi.StringPtrOutput `pulumi:"cidrBlock"`
 	// The VPC description. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the VPC. Defaults to null.
+	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
+	// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+	Ipv6CidrBlock pulumi.StringOutput `pulumi:"ipv6CidrBlock"`
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Id of resource group which the VPC belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -37,20 +44,22 @@ type Network struct {
 	RouterTableId pulumi.StringOutput `pulumi:"routerTableId"`
 	// The secondary CIDR blocks for the VPC.
 	SecondaryCidrBlocks pulumi.StringArrayOutput `pulumi:"secondaryCidrBlocks"`
+	Status              pulumi.StringOutput      `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The user cidrs of the VPC.
+	UserCidrs pulumi.StringArrayOutput `pulumi:"userCidrs"`
+	// The name of the VPC. Defaults to null.
+	VpcName pulumi.StringOutput `pulumi:"vpcName"`
 }
 
 // NewNetwork registers a new resource with the given unique name, arguments, and options.
 func NewNetwork(ctx *pulumi.Context,
 	name string, args *NetworkArgs, opts ...pulumi.ResourceOption) (*Network, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &NetworkArgs{}
 	}
 
-	if args.CidrBlock == nil {
-		return nil, errors.New("invalid value for required argument 'CidrBlock'")
-	}
 	var resource Network
 	err := ctx.RegisterResource("alicloud:vpc/network:Network", name, args, &resource, opts...)
 	if err != nil {
@@ -73,11 +82,19 @@ func GetNetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Network resources.
 type networkState struct {
-	// The CIDR block for the VPC.
+	// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The VPC description. Defaults to null.
 	Description *string `pulumi:"description"`
-	// The name of the VPC. Defaults to null.
+	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	DryRun *bool `pulumi:"dryRun"`
+	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name *string `pulumi:"name"`
 	// The Id of resource group which the VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -89,16 +106,29 @@ type networkState struct {
 	RouterTableId *string `pulumi:"routerTableId"`
 	// The secondary CIDR blocks for the VPC.
 	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
+	Status              *string  `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The user cidrs of the VPC.
+	UserCidrs []string `pulumi:"userCidrs"`
+	// The name of the VPC. Defaults to null.
+	VpcName *string `pulumi:"vpcName"`
 }
 
 type NetworkState struct {
-	// The CIDR block for the VPC.
+	// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
 	CidrBlock pulumi.StringPtrInput
 	// The VPC description. Defaults to null.
 	Description pulumi.StringPtrInput
-	// The name of the VPC. Defaults to null.
+	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	DryRun pulumi.BoolPtrInput
+	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+	EnableIpv6 pulumi.BoolPtrInput
+	// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+	Ipv6CidrBlock pulumi.StringPtrInput
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringPtrInput
 	// The Id of resource group which the VPC belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -110,8 +140,13 @@ type NetworkState struct {
 	RouterTableId pulumi.StringPtrInput
 	// The secondary CIDR blocks for the VPC.
 	SecondaryCidrBlocks pulumi.StringArrayInput
+	Status              pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
+	// The user cidrs of the VPC.
+	UserCidrs pulumi.StringArrayInput
+	// The name of the VPC. Defaults to null.
+	VpcName pulumi.StringPtrInput
 }
 
 func (NetworkState) ElementType() reflect.Type {
@@ -119,11 +154,17 @@ func (NetworkState) ElementType() reflect.Type {
 }
 
 type networkArgs struct {
-	// The CIDR block for the VPC.
-	CidrBlock string `pulumi:"cidrBlock"`
+	// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
+	CidrBlock *string `pulumi:"cidrBlock"`
 	// The VPC description. Defaults to null.
 	Description *string `pulumi:"description"`
-	// The name of the VPC. Defaults to null.
+	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	DryRun *bool `pulumi:"dryRun"`
+	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name *string `pulumi:"name"`
 	// The Id of resource group which the VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -131,15 +172,25 @@ type networkArgs struct {
 	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The user cidrs of the VPC.
+	UserCidrs []string `pulumi:"userCidrs"`
+	// The name of the VPC. Defaults to null.
+	VpcName *string `pulumi:"vpcName"`
 }
 
 // The set of arguments for constructing a Network resource.
 type NetworkArgs struct {
-	// The CIDR block for the VPC.
-	CidrBlock pulumi.StringInput
+	// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
+	CidrBlock pulumi.StringPtrInput
 	// The VPC description. Defaults to null.
 	Description pulumi.StringPtrInput
-	// The name of the VPC. Defaults to null.
+	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	DryRun pulumi.BoolPtrInput
+	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+	EnableIpv6 pulumi.BoolPtrInput
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringPtrInput
 	// The Id of resource group which the VPC belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -147,6 +198,10 @@ type NetworkArgs struct {
 	SecondaryCidrBlocks pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
+	// The user cidrs of the VPC.
+	UserCidrs pulumi.StringArrayInput
+	// The name of the VPC. Defaults to null.
+	VpcName pulumi.StringPtrInput
 }
 
 func (NetworkArgs) ElementType() reflect.Type {

@@ -140,7 +140,8 @@ def get_rules(frontend_port: Optional[int] = None,
     default_switch = alicloud.vpc.Switch("defaultSwitch",
         vpc_id=default_network.id,
         cidr_block="172.16.0.0/16",
-        availability_zone=default_zones.zones[0].id)
+        availability_zone=default_zones.zones[0].id,
+        vswitch_name=name)
     default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
     default_listener = alicloud.slb.Listener("defaultListener",
         load_balancer_id=default_load_balancer.id,

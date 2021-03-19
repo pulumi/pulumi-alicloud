@@ -22,11 +22,15 @@ import * as utilities from "../utilities";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: creation,
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     vswitchName: name,
  * });
  * const instance = new alicloud.rds.Instance("instance", {
  *     engine: "MySQL",

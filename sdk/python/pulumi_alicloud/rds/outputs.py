@@ -11,6 +11,7 @@ from . import outputs
 
 __all__ = [
     'InstanceParameter',
+    'RdsParameterGroupParamDetail',
     'ReadOnlyInstanceParameter',
     'GetInstanceClassesInstanceClassResult',
     'GetInstanceClassesInstanceClassStorageRangeResult',
@@ -18,6 +19,8 @@ __all__ = [
     'GetInstanceEnginesInstanceEngineResult',
     'GetInstanceEnginesInstanceEngineZoneIdResult',
     'GetInstancesInstanceResult',
+    'GetRdsParameterGroupsGroupResult',
+    'GetRdsParameterGroupsGroupParamDetailResult',
     'GetZonesZoneResult',
 ]
 
@@ -38,6 +41,38 @@ class InstanceParameter(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RdsParameterGroupParamDetail(dict):
+    def __init__(__self__, *,
+                 param_name: str,
+                 param_value: str):
+        """
+        :param str param_name: The name of a parameter.
+        :param str param_value: The value of a parameter.
+        """
+        pulumi.set(__self__, "param_name", param_name)
+        pulumi.set(__self__, "param_value", param_value)
+
+    @property
+    @pulumi.getter(name="paramName")
+    def param_name(self) -> str:
+        """
+        The name of a parameter.
+        """
+        return pulumi.get(self, "param_name")
+
+    @property
+    @pulumi.getter(name="paramValue")
+    def param_value(self) -> str:
+        """
+        The value of a parameter.
+        """
+        return pulumi.get(self, "param_value")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -563,6 +598,100 @@ class GetInstancesInstanceResult(dict):
         (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         return pulumi.get(self, "zone_id_slave_b")
+
+
+@pulumi.output_type
+class GetRdsParameterGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 engine: str,
+                 engine_version: str,
+                 force_restart: int,
+                 id: str,
+                 param_counts: int,
+                 param_details: Sequence['outputs.GetRdsParameterGroupsGroupParamDetailResult'],
+                 parameter_group_desc: str,
+                 parameter_group_id: str,
+                 parameter_group_name: str,
+                 parameter_group_type: int):
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "force_restart", force_restart)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "param_counts", param_counts)
+        pulumi.set(__self__, "param_details", param_details)
+        pulumi.set(__self__, "parameter_group_desc", parameter_group_desc)
+        pulumi.set(__self__, "parameter_group_id", parameter_group_id)
+        pulumi.set(__self__, "parameter_group_name", parameter_group_name)
+        pulumi.set(__self__, "parameter_group_type", parameter_group_type)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> str:
+        return pulumi.get(self, "engine_version")
+
+    @property
+    @pulumi.getter(name="forceRestart")
+    def force_restart(self) -> int:
+        return pulumi.get(self, "force_restart")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="paramCounts")
+    def param_counts(self) -> int:
+        return pulumi.get(self, "param_counts")
+
+    @property
+    @pulumi.getter(name="paramDetails")
+    def param_details(self) -> Sequence['outputs.GetRdsParameterGroupsGroupParamDetailResult']:
+        return pulumi.get(self, "param_details")
+
+    @property
+    @pulumi.getter(name="parameterGroupDesc")
+    def parameter_group_desc(self) -> str:
+        return pulumi.get(self, "parameter_group_desc")
+
+    @property
+    @pulumi.getter(name="parameterGroupId")
+    def parameter_group_id(self) -> str:
+        return pulumi.get(self, "parameter_group_id")
+
+    @property
+    @pulumi.getter(name="parameterGroupName")
+    def parameter_group_name(self) -> str:
+        return pulumi.get(self, "parameter_group_name")
+
+    @property
+    @pulumi.getter(name="parameterGroupType")
+    def parameter_group_type(self) -> int:
+        return pulumi.get(self, "parameter_group_type")
+
+
+@pulumi.output_type
+class GetRdsParameterGroupsGroupParamDetailResult(dict):
+    def __init__(__self__, *,
+                 param_name: str,
+                 param_value: str):
+        pulumi.set(__self__, "param_name", param_name)
+        pulumi.set(__self__, "param_value", param_value)
+
+    @property
+    @pulumi.getter(name="paramName")
+    def param_name(self) -> str:
+        return pulumi.get(self, "param_name")
+
+    @property
+    @pulumi.getter(name="paramValue")
+    def param_value(self) -> str:
+        return pulumi.get(self, "param_value")
 
 
 @pulumi.output_type

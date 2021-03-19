@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/16"});
  * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
  *     vpcId: fooNetwork.id,
+ *     vswitchName: "for-ots-instance",
  *     cidrBlock: "172.16.1.0/24",
  *     availabilityZone: fooZones.then(fooZones => fooZones.zones[0].id),
  * });

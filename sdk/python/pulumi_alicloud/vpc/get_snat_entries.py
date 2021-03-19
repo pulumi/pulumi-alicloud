@@ -133,20 +133,21 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
     default = alicloud.get_zones(available_resource_creation="VSwitch")
     foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
     foo_switch = alicloud.vpc.Switch("fooSwitch",
-        availability_zone=default.zones[0].id,
+        vpc_id=foo_network.id,
         cidr_block="172.16.0.0/21",
-        vpc_id=foo_network.id)
+        availability_zone=default.zones[0].id,
+        vswitch_name=name)
     foo_nat_gateway = alicloud.vpc.NatGateway("fooNatGateway",
-        specification="Small",
-        vpc_id=foo_network.id)
+        vpc_id=foo_network.id,
+        specification="Small")
     foo_eip = alicloud.ecs.Eip("fooEip")
     foo_eip_association = alicloud.ecs.EipAssociation("fooEipAssociation",
         allocation_id=foo_eip.id,
         instance_id=foo_nat_gateway.id)
     foo_snat_entry = alicloud.vpc.SnatEntry("fooSnatEntry",
-        snat_ip=foo_eip.ip_address,
         snat_table_id=foo_nat_gateway.snat_table_ids,
-        source_vswitch_id=foo_switch.id)
+        source_vswitch_id=foo_switch.id,
+        snat_ip=foo_eip.ip_address)
     foo_snat_entries = foo_snat_entry.snat_table_id.apply(lambda snat_table_id: alicloud.vpc.get_snat_entries(snat_table_id=snat_table_id))
     ```
 

@@ -245,6 +245,9 @@ namespace Pulumi.AliCloud.CS
         [Output("proxyMode")]
         public Output<string?> ProxyMode { get; private set; } = null!;
 
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
         [Output("rdsInstances")]
         public Output<ImmutableArray<string>> RdsInstances { get; private set; } = null!;
 
@@ -699,6 +702,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("rdsInstances")]
         private InputList<string>? _rdsInstances;
+
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
         public InputList<string> RdsInstances
         {
             get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
@@ -1134,6 +1141,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("rdsInstances")]
         private InputList<string>? _rdsInstances;
+
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
         public InputList<string> RdsInstances
         {
             get => _rdsInstances ?? (_rdsInstances = new InputList<string>());

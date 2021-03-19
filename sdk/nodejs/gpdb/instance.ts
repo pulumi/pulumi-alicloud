@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
+ *     vswitchName: "vpc-123456",
  * });
  * const example = new alicloud.gpdb.Instance("example", {
  *     description: "tf-gpdb-test",

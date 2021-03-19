@@ -26,8 +26,8 @@ __all__ = [
     'GetGroupMetricRulesRuleEscalationCriticalResult',
     'GetGroupMetricRulesRuleEscalationInfoResult',
     'GetGroupMetricRulesRuleEscalationWarnResult',
-    'GetMonitorGroupInstancesInstanceseResult',
-    'GetMonitorGroupInstancesInstanceseInstanceResult',
+    'GetMonitorGroupInstancesInstanceResult',
+    'GetMonitorGroupInstancesInstanceInstanceResult',
     'GetMonitorGroupsGroupResult',
 ]
 
@@ -1119,36 +1119,24 @@ class GetGroupMetricRulesRuleEscalationWarnResult(dict):
 
 
 @pulumi.output_type
-class GetMonitorGroupInstancesInstanceseResult(dict):
+class GetMonitorGroupInstancesInstanceResult(dict):
     def __init__(__self__, *,
-                 instances: Sequence['outputs.GetMonitorGroupInstancesInstanceseInstanceResult']):
-        """
-        :param Sequence['GetMonitorGroupInstancesInstanceseInstanceArgs'] instances: Instance information added to the Cms Group.
-        """
+                 instances: Sequence['outputs.GetMonitorGroupInstancesInstanceInstanceResult']):
         pulumi.set(__self__, "instances", instances)
 
     @property
     @pulumi.getter
-    def instances(self) -> Sequence['outputs.GetMonitorGroupInstancesInstanceseInstanceResult']:
-        """
-        Instance information added to the Cms Group.
-        """
+    def instances(self) -> Sequence['outputs.GetMonitorGroupInstancesInstanceInstanceResult']:
         return pulumi.get(self, "instances")
 
 
 @pulumi.output_type
-class GetMonitorGroupInstancesInstanceseInstanceResult(dict):
+class GetMonitorGroupInstancesInstanceInstanceResult(dict):
     def __init__(__self__, *,
                  category: str,
                  instance_id: str,
                  instance_name: str,
                  region_id: str):
-        """
-        :param str category: The category of instance.
-        :param str instance_id: The id of instance.
-        :param str instance_name: The name of instance.
-        :param str region_id: The region id of instance.
-        """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "instance_name", instance_name)
@@ -1157,33 +1145,21 @@ class GetMonitorGroupInstancesInstanceseInstanceResult(dict):
     @property
     @pulumi.getter
     def category(self) -> str:
-        """
-        The category of instance.
-        """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
-        """
-        The id of instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> str:
-        """
-        The name of instance.
-        """
         return pulumi.get(self, "instance_name")
 
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> str:
-        """
-        The region id of instance.
-        """
         return pulumi.get(self, "region_id")
 
 

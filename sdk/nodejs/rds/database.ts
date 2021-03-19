@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     vswitchName: name,
  * });
  * const instance = new alicloud.rds.Instance("instance", {
  *     engine: "MySQL",

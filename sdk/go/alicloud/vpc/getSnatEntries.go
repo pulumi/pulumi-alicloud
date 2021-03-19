@@ -45,16 +45,17 @@ import (
 // 			return err
 // 		}
 // 		fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
 // 			VpcId:            fooNetwork.ID(),
+// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
+// 			AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+// 			VswitchName:      pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		fooNatGateway, err := vpc.NewNatGateway(ctx, "fooNatGateway", &vpc.NatGatewayArgs{
-// 			Specification: pulumi.String("Small"),
 // 			VpcId:         fooNetwork.ID(),
+// 			Specification: pulumi.String("Small"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -71,9 +72,9 @@ import (
 // 			return err
 // 		}
 // 		fooSnatEntry, err := vpc.NewSnatEntry(ctx, "fooSnatEntry", &vpc.SnatEntryArgs{
-// 			SnatIp:          fooEip.IpAddress,
 // 			SnatTableId:     fooNatGateway.SnatTableIds,
 // 			SourceVswitchId: fooSwitch.ID(),
+// 			SnatIp:          fooEip.IpAddress,
 // 		})
 // 		if err != nil {
 // 			return err

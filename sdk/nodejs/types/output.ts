@@ -2176,29 +2176,14 @@ export namespace cms {
         times: number;
     }
 
-    export interface GetMonitorGroupInstancesInstancese {
-        /**
-         * Instance information added to the Cms Group.
-         */
-        instances: outputs.cms.GetMonitorGroupInstancesInstanceseInstance[];
+    export interface GetMonitorGroupInstancesInstance {
+        instances: outputs.cms.GetMonitorGroupInstancesInstanceInstance[];
     }
 
-    export interface GetMonitorGroupInstancesInstanceseInstance {
-        /**
-         * The category of instance.
-         */
+    export interface GetMonitorGroupInstancesInstanceInstance {
         category: string;
-        /**
-         * The id of instance.
-         */
         instanceId: string;
-        /**
-         * The name of instance.
-         */
         instanceName: string;
-        /**
-         * The region id of instance.
-         */
         regionId: string;
     }
 
@@ -11303,6 +11288,24 @@ export namespace rds {
         zoneIdSlaveB: string;
     }
 
+    export interface GetRdsParameterGroupsGroup {
+        engine: string;
+        engineVersion: string;
+        forceRestart: number;
+        id: string;
+        paramCounts: number;
+        paramDetails: outputs.rds.GetRdsParameterGroupsGroupParamDetail[];
+        parameterGroupDesc: string;
+        parameterGroupId: string;
+        parameterGroupName: string;
+        parameterGroupType: number;
+    }
+
+    export interface GetRdsParameterGroupsGroupParamDetail {
+        paramName: string;
+        paramValue: string;
+    }
+
     export interface GetZonesZone {
         /**
          * ID of the zone.
@@ -11317,6 +11320,17 @@ export namespace rds {
     export interface InstanceParameter {
         name: string;
         value: string;
+    }
+
+    export interface RdsParameterGroupParamDetail {
+        /**
+         * The name of a parameter.
+         */
+        paramName: string;
+        /**
+         * The value of a parameter.
+         */
+        paramValue: string;
     }
 
     export interface ReadOnlyInstanceParameter {
@@ -12909,6 +12923,10 @@ export namespace vpc {
          */
         id: string;
         /**
+         * The IPv6 CIDR block of the VPC.
+         */
+        ipv6CidrBlock: string;
+        /**
          * Indicate whether the VPC is the default one in the specified region.
          */
         isDefault: boolean;
@@ -12917,9 +12935,21 @@ export namespace vpc {
          */
         regionId: string;
         /**
+         * The Id of resource group which VPC belongs.
+         */
+        resourceGroupId: string;
+        /**
          * Route table ID of the VRouter.
          */
         routeTableId: string;
+        /**
+         * The ID of the VRouter.
+         */
+        routerId: string;
+        /**
+         * A list of secondary IPv4 CIDR blocks of the VPC.
+         */
+        secondaryCidrBlocks: string[];
         /**
          * Filter results by a specific status. Valid value are `Pending` and `Available`.
          */
@@ -12929,7 +12959,15 @@ export namespace vpc {
          */
         tags: {[key: string]: any};
         /**
-         * Name of the VPC.
+         * A list of user CIDRs.
+         */
+        userCidrs: string[];
+        /**
+         * ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The name of the VPC.
          */
         vpcName: string;
         /**
@@ -13175,6 +13213,10 @@ export namespace vpc {
 
     export interface GetSwitchesVswitch {
         /**
+         * The available ip address count of the VSwitch.
+         */
+        availableIpAddressCount: number;
+        /**
          * Filter results by a specific CIDR block. For example: "172.16.0.0/12".
          */
         cidrBlock: string;
@@ -13191,10 +13233,6 @@ export namespace vpc {
          */
         id: string;
         /**
-         * List of ECS instance IDs in the specified VSwitch.
-         */
-        instanceIds: string[];
-        /**
          * Indicate whether the VSwitch is created by the system.
          */
         isDefault: boolean;
@@ -13203,9 +13241,33 @@ export namespace vpc {
          */
         name: string;
         /**
+         * The Id of resource group which VSWitch belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * The route table ID of the VSwitch.
+         */
+        routeTableId: string;
+        /**
+         * The status of the VSwitch. Valid values: `Available` and `Pending`.
+         */
+        status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
          * ID of the VPC that owns the VSwitch.
          */
         vpcId: string;
+        /**
+         * ID of the VSwitch.
+         */
+        vswitchId: string;
+        /**
+         * The name of the VSwitch.
+         */
+        vswitchName: string;
         /**
          * The availability zone of the VSwitch.
          */

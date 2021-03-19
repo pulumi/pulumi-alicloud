@@ -57,11 +57,14 @@ class AutoProvisioningGroup(pulumi.CustomResource):
             name = "auto_provisioning_group"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id)
+            availability_zone=default_zones.zones[0].id,
+            vswitch_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,

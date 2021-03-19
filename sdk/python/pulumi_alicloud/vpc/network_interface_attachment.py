@@ -43,6 +43,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/24")
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         vswitch = alicloud.vpc.Switch("vswitch",
+            vswitch_name=name,
             cidr_block="192.168.0.0/24",
             availability_zone=default_zones.zones[0].id,
             vpc_id=vpc.id)

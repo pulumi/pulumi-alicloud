@@ -40,11 +40,14 @@ class Notification(pulumi.CustomResource):
         default_account = alicloud.get_account()
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id)
+            availability_zone=default_zones.zones[0].id,
+            vswitch_name=name)
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,

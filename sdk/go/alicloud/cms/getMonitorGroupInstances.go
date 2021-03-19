@@ -7,9 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
-//
-// > **NOTE:** Available in v1.115.0+.
 func LookupMonitorGroupInstances(ctx *pulumi.Context, args *LookupMonitorGroupInstancesArgs, opts ...pulumi.InvokeOption) (*LookupMonitorGroupInstancesResult, error) {
 	var rv LookupMonitorGroupInstancesResult
 	err := ctx.Invoke("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args, &rv, opts...)
@@ -21,9 +18,7 @@ func LookupMonitorGroupInstances(ctx *pulumi.Context, args *LookupMonitorGroupIn
 
 // A collection of arguments for invoking getMonitorGroupInstances.
 type LookupMonitorGroupInstancesArgs struct {
-	// A list of Monitor Group Instances IDs.
-	Ids string `pulumi:"ids"`
-	// The keyword.
+	Ids        string  `pulumi:"ids"`
 	Keyword    *string `pulumi:"keyword"`
 	OutputFile *string `pulumi:"outputFile"`
 }
@@ -31,9 +26,9 @@ type LookupMonitorGroupInstancesArgs struct {
 // A collection of values returned by getMonitorGroupInstances.
 type LookupMonitorGroupInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                               `pulumi:"id"`
-	Ids         string                               `pulumi:"ids"`
-	Instanceses []GetMonitorGroupInstancesInstancese `pulumi:"instanceses"`
-	Keyword     *string                              `pulumi:"keyword"`
-	OutputFile  *string                              `pulumi:"outputFile"`
+	Id         string                             `pulumi:"id"`
+	Ids        string                             `pulumi:"ids"`
+	Instances  []GetMonitorGroupInstancesInstance `pulumi:"instances"`
+	Keyword    *string                            `pulumi:"keyword"`
+	OutputFile *string                            `pulumi:"outputFile"`
 }

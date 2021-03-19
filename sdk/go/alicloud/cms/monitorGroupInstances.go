@@ -33,6 +33,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			VpcName:   pulumi.String("tf-testacc-vpcname"),
 // 			CidrBlock: pulumi.String("192.168.0.0/16"),
 // 		})
 // 		if err != nil {

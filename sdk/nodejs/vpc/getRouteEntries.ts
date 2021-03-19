@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     availabilityZone: defaultZones.zones[0].id,
  *     cidrBlock: "10.1.1.0/24",
  *     vpcId: fooNetwork.id,
+ *     vswitchName: name,
  * });
  * const tfTestFoo = new alicloud.ecs.SecurityGroup("tf_test_foo", {
  *     description: "foo",

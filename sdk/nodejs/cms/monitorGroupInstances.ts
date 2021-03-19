@@ -20,7 +20,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "192.168.0.0/16"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "tf-testacc-vpcname",
+ *     cidrBlock: "192.168.0.0/16",
+ * });
  * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("defaultMonitorGroup", {monitorGroupName: "tf-testaccmonitorgroup"});
  * const example = new alicloud.cms.MonitorGroupInstances("example", {
  *     groupId: defaultMonitorGroup.id,

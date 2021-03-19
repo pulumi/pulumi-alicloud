@@ -44,6 +44,7 @@ namespace Pulumi.AliCloud.Gpdb
     ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
+    ///             VswitchName = "vpc-123456",
     ///         });
     ///         var example = new AliCloud.Gpdb.Instance("example", new AliCloud.Gpdb.InstanceArgs
     ///         {

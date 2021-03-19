@@ -10,6 +10,7 @@ from .. import _utilities, _tables
 
 __all__ = [
     'InstanceParameterArgs',
+    'RdsParameterGroupParamDetailArgs',
     'ReadOnlyInstanceParameterArgs',
 ]
 
@@ -38,6 +39,43 @@ class InstanceParameterArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class RdsParameterGroupParamDetailArgs:
+    def __init__(__self__, *,
+                 param_name: pulumi.Input[str],
+                 param_value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] param_name: The name of a parameter.
+        :param pulumi.Input[str] param_value: The value of a parameter.
+        """
+        pulumi.set(__self__, "param_name", param_name)
+        pulumi.set(__self__, "param_value", param_value)
+
+    @property
+    @pulumi.getter(name="paramName")
+    def param_name(self) -> pulumi.Input[str]:
+        """
+        The name of a parameter.
+        """
+        return pulumi.get(self, "param_name")
+
+    @param_name.setter
+    def param_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "param_name", value)
+
+    @property
+    @pulumi.getter(name="paramValue")
+    def param_value(self) -> pulumi.Input[str]:
+        """
+        The value of a parameter.
+        """
+        return pulumi.get(self, "param_value")
+
+    @param_value.setter
+    def param_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "param_value", value)
 
 
 @pulumi.input_type

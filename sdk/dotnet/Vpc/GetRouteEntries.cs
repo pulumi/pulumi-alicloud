@@ -55,6 +55,7 @@ namespace Pulumi.AliCloud.Vpc
         ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
         ///             CidrBlock = "10.1.1.0/24",
         ///             VpcId = fooNetwork.Id,
+        ///             VswitchName = name,
         ///         });
         ///         var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tfTestFoo", new AliCloud.Ecs.SecurityGroupArgs
         ///         {

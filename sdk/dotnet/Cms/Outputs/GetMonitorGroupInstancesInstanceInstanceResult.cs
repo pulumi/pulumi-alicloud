@@ -11,27 +11,15 @@ namespace Pulumi.AliCloud.Cms.Outputs
 {
 
     [OutputType]
-    public sealed class GetMonitorGroupInstancesInstanceseInstanceResult
+    public sealed class GetMonitorGroupInstancesInstanceInstanceResult
     {
-        /// <summary>
-        /// The category of instance.
-        /// </summary>
         public readonly string Category;
-        /// <summary>
-        /// The id of instance.
-        /// </summary>
         public readonly string InstanceId;
-        /// <summary>
-        /// The name of instance.
-        /// </summary>
         public readonly string InstanceName;
-        /// <summary>
-        /// The region id of instance.
-        /// </summary>
         public readonly string RegionId;
 
         [OutputConstructor]
-        private GetMonitorGroupInstancesInstanceseInstanceResult(
+        private GetMonitorGroupInstancesInstanceInstanceResult(
             string category,
 
             string instanceId,

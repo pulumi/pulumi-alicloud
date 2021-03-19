@@ -11,11 +11,6 @@ namespace Pulumi.AliCloud.Cms
 {
     public static class GetMonitorGroupInstances
     {
-        /// <summary>
-        /// This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
-        /// 
-        /// &gt; **NOTE:** Available in v1.115.0+.
-        /// </summary>
         public static Task<GetMonitorGroupInstancesResult> InvokeAsync(GetMonitorGroupInstancesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesArgs(), options.WithVersion());
     }
@@ -23,15 +18,9 @@ namespace Pulumi.AliCloud.Cms
 
     public sealed class GetMonitorGroupInstancesArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// A list of Monitor Group Instances IDs.
-        /// </summary>
         [Input("ids", required: true)]
         public string Ids { get; set; } = null!;
 
-        /// <summary>
-        /// The keyword.
-        /// </summary>
         [Input("keyword")]
         public string? Keyword { get; set; }
 
@@ -52,7 +41,7 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public readonly string Id;
         public readonly string Ids;
-        public readonly ImmutableArray<Outputs.GetMonitorGroupInstancesInstanceseResult> Instanceses;
+        public readonly ImmutableArray<Outputs.GetMonitorGroupInstancesInstanceResult> Instances;
         public readonly string? Keyword;
         public readonly string? OutputFile;
 
@@ -62,7 +51,7 @@ namespace Pulumi.AliCloud.Cms
 
             string ids,
 
-            ImmutableArray<Outputs.GetMonitorGroupInstancesInstanceseResult> instanceses,
+            ImmutableArray<Outputs.GetMonitorGroupInstancesInstanceResult> instances,
 
             string? keyword,
 
@@ -70,7 +59,7 @@ namespace Pulumi.AliCloud.Cms
         {
             Id = id;
             Ids = ids;
-            Instanceses = instanceses;
+            Instances = instances;
             Keyword = keyword;
             OutputFile = outputFile;
         }

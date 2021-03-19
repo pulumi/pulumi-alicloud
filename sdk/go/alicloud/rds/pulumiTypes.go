@@ -110,6 +110,112 @@ func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameter
 	}).(InstanceParameterOutput)
 }
 
+type RdsParameterGroupParamDetail struct {
+	// The name of a parameter.
+	ParamName string `pulumi:"paramName"`
+	// The value of a parameter.
+	ParamValue string `pulumi:"paramValue"`
+}
+
+// RdsParameterGroupParamDetailInput is an input type that accepts RdsParameterGroupParamDetailArgs and RdsParameterGroupParamDetailOutput values.
+// You can construct a concrete instance of `RdsParameterGroupParamDetailInput` via:
+//
+//          RdsParameterGroupParamDetailArgs{...}
+type RdsParameterGroupParamDetailInput interface {
+	pulumi.Input
+
+	ToRdsParameterGroupParamDetailOutput() RdsParameterGroupParamDetailOutput
+	ToRdsParameterGroupParamDetailOutputWithContext(context.Context) RdsParameterGroupParamDetailOutput
+}
+
+type RdsParameterGroupParamDetailArgs struct {
+	// The name of a parameter.
+	ParamName pulumi.StringInput `pulumi:"paramName"`
+	// The value of a parameter.
+	ParamValue pulumi.StringInput `pulumi:"paramValue"`
+}
+
+func (RdsParameterGroupParamDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsParameterGroupParamDetail)(nil)).Elem()
+}
+
+func (i RdsParameterGroupParamDetailArgs) ToRdsParameterGroupParamDetailOutput() RdsParameterGroupParamDetailOutput {
+	return i.ToRdsParameterGroupParamDetailOutputWithContext(context.Background())
+}
+
+func (i RdsParameterGroupParamDetailArgs) ToRdsParameterGroupParamDetailOutputWithContext(ctx context.Context) RdsParameterGroupParamDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsParameterGroupParamDetailOutput)
+}
+
+// RdsParameterGroupParamDetailArrayInput is an input type that accepts RdsParameterGroupParamDetailArray and RdsParameterGroupParamDetailArrayOutput values.
+// You can construct a concrete instance of `RdsParameterGroupParamDetailArrayInput` via:
+//
+//          RdsParameterGroupParamDetailArray{ RdsParameterGroupParamDetailArgs{...} }
+type RdsParameterGroupParamDetailArrayInput interface {
+	pulumi.Input
+
+	ToRdsParameterGroupParamDetailArrayOutput() RdsParameterGroupParamDetailArrayOutput
+	ToRdsParameterGroupParamDetailArrayOutputWithContext(context.Context) RdsParameterGroupParamDetailArrayOutput
+}
+
+type RdsParameterGroupParamDetailArray []RdsParameterGroupParamDetailInput
+
+func (RdsParameterGroupParamDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsParameterGroupParamDetail)(nil)).Elem()
+}
+
+func (i RdsParameterGroupParamDetailArray) ToRdsParameterGroupParamDetailArrayOutput() RdsParameterGroupParamDetailArrayOutput {
+	return i.ToRdsParameterGroupParamDetailArrayOutputWithContext(context.Background())
+}
+
+func (i RdsParameterGroupParamDetailArray) ToRdsParameterGroupParamDetailArrayOutputWithContext(ctx context.Context) RdsParameterGroupParamDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsParameterGroupParamDetailArrayOutput)
+}
+
+type RdsParameterGroupParamDetailOutput struct{ *pulumi.OutputState }
+
+func (RdsParameterGroupParamDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsParameterGroupParamDetail)(nil)).Elem()
+}
+
+func (o RdsParameterGroupParamDetailOutput) ToRdsParameterGroupParamDetailOutput() RdsParameterGroupParamDetailOutput {
+	return o
+}
+
+func (o RdsParameterGroupParamDetailOutput) ToRdsParameterGroupParamDetailOutputWithContext(ctx context.Context) RdsParameterGroupParamDetailOutput {
+	return o
+}
+
+// The name of a parameter.
+func (o RdsParameterGroupParamDetailOutput) ParamName() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsParameterGroupParamDetail) string { return v.ParamName }).(pulumi.StringOutput)
+}
+
+// The value of a parameter.
+func (o RdsParameterGroupParamDetailOutput) ParamValue() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsParameterGroupParamDetail) string { return v.ParamValue }).(pulumi.StringOutput)
+}
+
+type RdsParameterGroupParamDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (RdsParameterGroupParamDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsParameterGroupParamDetail)(nil)).Elem()
+}
+
+func (o RdsParameterGroupParamDetailArrayOutput) ToRdsParameterGroupParamDetailArrayOutput() RdsParameterGroupParamDetailArrayOutput {
+	return o
+}
+
+func (o RdsParameterGroupParamDetailArrayOutput) ToRdsParameterGroupParamDetailArrayOutputWithContext(ctx context.Context) RdsParameterGroupParamDetailArrayOutput {
+	return o
+}
+
+func (o RdsParameterGroupParamDetailArrayOutput) Index(i pulumi.IntInput) RdsParameterGroupParamDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsParameterGroupParamDetail {
+		return vs[0].([]RdsParameterGroupParamDetail)[vs[1].(int)]
+	}).(RdsParameterGroupParamDetailOutput)
+}
+
 type ReadOnlyInstanceParameter struct {
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
@@ -1070,6 +1176,254 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	}).(GetInstancesInstanceOutput)
 }
 
+type GetRdsParameterGroupsGroup struct {
+	Engine             string                                  `pulumi:"engine"`
+	EngineVersion      string                                  `pulumi:"engineVersion"`
+	ForceRestart       int                                     `pulumi:"forceRestart"`
+	Id                 string                                  `pulumi:"id"`
+	ParamCounts        int                                     `pulumi:"paramCounts"`
+	ParamDetails       []GetRdsParameterGroupsGroupParamDetail `pulumi:"paramDetails"`
+	ParameterGroupDesc string                                  `pulumi:"parameterGroupDesc"`
+	ParameterGroupId   string                                  `pulumi:"parameterGroupId"`
+	ParameterGroupName string                                  `pulumi:"parameterGroupName"`
+	ParameterGroupType int                                     `pulumi:"parameterGroupType"`
+}
+
+// GetRdsParameterGroupsGroupInput is an input type that accepts GetRdsParameterGroupsGroupArgs and GetRdsParameterGroupsGroupOutput values.
+// You can construct a concrete instance of `GetRdsParameterGroupsGroupInput` via:
+//
+//          GetRdsParameterGroupsGroupArgs{...}
+type GetRdsParameterGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetRdsParameterGroupsGroupOutput() GetRdsParameterGroupsGroupOutput
+	ToGetRdsParameterGroupsGroupOutputWithContext(context.Context) GetRdsParameterGroupsGroupOutput
+}
+
+type GetRdsParameterGroupsGroupArgs struct {
+	Engine             pulumi.StringInput                              `pulumi:"engine"`
+	EngineVersion      pulumi.StringInput                              `pulumi:"engineVersion"`
+	ForceRestart       pulumi.IntInput                                 `pulumi:"forceRestart"`
+	Id                 pulumi.StringInput                              `pulumi:"id"`
+	ParamCounts        pulumi.IntInput                                 `pulumi:"paramCounts"`
+	ParamDetails       GetRdsParameterGroupsGroupParamDetailArrayInput `pulumi:"paramDetails"`
+	ParameterGroupDesc pulumi.StringInput                              `pulumi:"parameterGroupDesc"`
+	ParameterGroupId   pulumi.StringInput                              `pulumi:"parameterGroupId"`
+	ParameterGroupName pulumi.StringInput                              `pulumi:"parameterGroupName"`
+	ParameterGroupType pulumi.IntInput                                 `pulumi:"parameterGroupType"`
+}
+
+func (GetRdsParameterGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRdsParameterGroupsGroup)(nil)).Elem()
+}
+
+func (i GetRdsParameterGroupsGroupArgs) ToGetRdsParameterGroupsGroupOutput() GetRdsParameterGroupsGroupOutput {
+	return i.ToGetRdsParameterGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetRdsParameterGroupsGroupArgs) ToGetRdsParameterGroupsGroupOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRdsParameterGroupsGroupOutput)
+}
+
+// GetRdsParameterGroupsGroupArrayInput is an input type that accepts GetRdsParameterGroupsGroupArray and GetRdsParameterGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetRdsParameterGroupsGroupArrayInput` via:
+//
+//          GetRdsParameterGroupsGroupArray{ GetRdsParameterGroupsGroupArgs{...} }
+type GetRdsParameterGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetRdsParameterGroupsGroupArrayOutput() GetRdsParameterGroupsGroupArrayOutput
+	ToGetRdsParameterGroupsGroupArrayOutputWithContext(context.Context) GetRdsParameterGroupsGroupArrayOutput
+}
+
+type GetRdsParameterGroupsGroupArray []GetRdsParameterGroupsGroupInput
+
+func (GetRdsParameterGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRdsParameterGroupsGroup)(nil)).Elem()
+}
+
+func (i GetRdsParameterGroupsGroupArray) ToGetRdsParameterGroupsGroupArrayOutput() GetRdsParameterGroupsGroupArrayOutput {
+	return i.ToGetRdsParameterGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetRdsParameterGroupsGroupArray) ToGetRdsParameterGroupsGroupArrayOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRdsParameterGroupsGroupArrayOutput)
+}
+
+type GetRdsParameterGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetRdsParameterGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRdsParameterGroupsGroup)(nil)).Elem()
+}
+
+func (o GetRdsParameterGroupsGroupOutput) ToGetRdsParameterGroupsGroupOutput() GetRdsParameterGroupsGroupOutput {
+	return o
+}
+
+func (o GetRdsParameterGroupsGroupOutput) ToGetRdsParameterGroupsGroupOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupOutput {
+	return o
+}
+
+func (o GetRdsParameterGroupsGroupOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+func (o GetRdsParameterGroupsGroupOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+func (o GetRdsParameterGroupsGroupOutput) ForceRestart() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroup) int { return v.ForceRestart }).(pulumi.IntOutput)
+}
+
+func (o GetRdsParameterGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRdsParameterGroupsGroupOutput) ParamCounts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroup) int { return v.ParamCounts }).(pulumi.IntOutput)
+}
+
+func (o GetRdsParameterGroupsGroupOutput) ParamDetails() GetRdsParameterGroupsGroupParamDetailArrayOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroup) []GetRdsParameterGroupsGroupParamDetail { return v.ParamDetails }).(GetRdsParameterGroupsGroupParamDetailArrayOutput)
+}
+
+func (o GetRdsParameterGroupsGroupOutput) ParameterGroupDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.ParameterGroupDesc }).(pulumi.StringOutput)
+}
+
+func (o GetRdsParameterGroupsGroupOutput) ParameterGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.ParameterGroupId }).(pulumi.StringOutput)
+}
+
+func (o GetRdsParameterGroupsGroupOutput) ParameterGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroup) string { return v.ParameterGroupName }).(pulumi.StringOutput)
+}
+
+func (o GetRdsParameterGroupsGroupOutput) ParameterGroupType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroup) int { return v.ParameterGroupType }).(pulumi.IntOutput)
+}
+
+type GetRdsParameterGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRdsParameterGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRdsParameterGroupsGroup)(nil)).Elem()
+}
+
+func (o GetRdsParameterGroupsGroupArrayOutput) ToGetRdsParameterGroupsGroupArrayOutput() GetRdsParameterGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetRdsParameterGroupsGroupArrayOutput) ToGetRdsParameterGroupsGroupArrayOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetRdsParameterGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetRdsParameterGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRdsParameterGroupsGroup {
+		return vs[0].([]GetRdsParameterGroupsGroup)[vs[1].(int)]
+	}).(GetRdsParameterGroupsGroupOutput)
+}
+
+type GetRdsParameterGroupsGroupParamDetail struct {
+	ParamName  string `pulumi:"paramName"`
+	ParamValue string `pulumi:"paramValue"`
+}
+
+// GetRdsParameterGroupsGroupParamDetailInput is an input type that accepts GetRdsParameterGroupsGroupParamDetailArgs and GetRdsParameterGroupsGroupParamDetailOutput values.
+// You can construct a concrete instance of `GetRdsParameterGroupsGroupParamDetailInput` via:
+//
+//          GetRdsParameterGroupsGroupParamDetailArgs{...}
+type GetRdsParameterGroupsGroupParamDetailInput interface {
+	pulumi.Input
+
+	ToGetRdsParameterGroupsGroupParamDetailOutput() GetRdsParameterGroupsGroupParamDetailOutput
+	ToGetRdsParameterGroupsGroupParamDetailOutputWithContext(context.Context) GetRdsParameterGroupsGroupParamDetailOutput
+}
+
+type GetRdsParameterGroupsGroupParamDetailArgs struct {
+	ParamName  pulumi.StringInput `pulumi:"paramName"`
+	ParamValue pulumi.StringInput `pulumi:"paramValue"`
+}
+
+func (GetRdsParameterGroupsGroupParamDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRdsParameterGroupsGroupParamDetail)(nil)).Elem()
+}
+
+func (i GetRdsParameterGroupsGroupParamDetailArgs) ToGetRdsParameterGroupsGroupParamDetailOutput() GetRdsParameterGroupsGroupParamDetailOutput {
+	return i.ToGetRdsParameterGroupsGroupParamDetailOutputWithContext(context.Background())
+}
+
+func (i GetRdsParameterGroupsGroupParamDetailArgs) ToGetRdsParameterGroupsGroupParamDetailOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupParamDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRdsParameterGroupsGroupParamDetailOutput)
+}
+
+// GetRdsParameterGroupsGroupParamDetailArrayInput is an input type that accepts GetRdsParameterGroupsGroupParamDetailArray and GetRdsParameterGroupsGroupParamDetailArrayOutput values.
+// You can construct a concrete instance of `GetRdsParameterGroupsGroupParamDetailArrayInput` via:
+//
+//          GetRdsParameterGroupsGroupParamDetailArray{ GetRdsParameterGroupsGroupParamDetailArgs{...} }
+type GetRdsParameterGroupsGroupParamDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetRdsParameterGroupsGroupParamDetailArrayOutput() GetRdsParameterGroupsGroupParamDetailArrayOutput
+	ToGetRdsParameterGroupsGroupParamDetailArrayOutputWithContext(context.Context) GetRdsParameterGroupsGroupParamDetailArrayOutput
+}
+
+type GetRdsParameterGroupsGroupParamDetailArray []GetRdsParameterGroupsGroupParamDetailInput
+
+func (GetRdsParameterGroupsGroupParamDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRdsParameterGroupsGroupParamDetail)(nil)).Elem()
+}
+
+func (i GetRdsParameterGroupsGroupParamDetailArray) ToGetRdsParameterGroupsGroupParamDetailArrayOutput() GetRdsParameterGroupsGroupParamDetailArrayOutput {
+	return i.ToGetRdsParameterGroupsGroupParamDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetRdsParameterGroupsGroupParamDetailArray) ToGetRdsParameterGroupsGroupParamDetailArrayOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupParamDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRdsParameterGroupsGroupParamDetailArrayOutput)
+}
+
+type GetRdsParameterGroupsGroupParamDetailOutput struct{ *pulumi.OutputState }
+
+func (GetRdsParameterGroupsGroupParamDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRdsParameterGroupsGroupParamDetail)(nil)).Elem()
+}
+
+func (o GetRdsParameterGroupsGroupParamDetailOutput) ToGetRdsParameterGroupsGroupParamDetailOutput() GetRdsParameterGroupsGroupParamDetailOutput {
+	return o
+}
+
+func (o GetRdsParameterGroupsGroupParamDetailOutput) ToGetRdsParameterGroupsGroupParamDetailOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupParamDetailOutput {
+	return o
+}
+
+func (o GetRdsParameterGroupsGroupParamDetailOutput) ParamName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroupParamDetail) string { return v.ParamName }).(pulumi.StringOutput)
+}
+
+func (o GetRdsParameterGroupsGroupParamDetailOutput) ParamValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsParameterGroupsGroupParamDetail) string { return v.ParamValue }).(pulumi.StringOutput)
+}
+
+type GetRdsParameterGroupsGroupParamDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRdsParameterGroupsGroupParamDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRdsParameterGroupsGroupParamDetail)(nil)).Elem()
+}
+
+func (o GetRdsParameterGroupsGroupParamDetailArrayOutput) ToGetRdsParameterGroupsGroupParamDetailArrayOutput() GetRdsParameterGroupsGroupParamDetailArrayOutput {
+	return o
+}
+
+func (o GetRdsParameterGroupsGroupParamDetailArrayOutput) ToGetRdsParameterGroupsGroupParamDetailArrayOutputWithContext(ctx context.Context) GetRdsParameterGroupsGroupParamDetailArrayOutput {
+	return o
+}
+
+func (o GetRdsParameterGroupsGroupParamDetailArrayOutput) Index(i pulumi.IntInput) GetRdsParameterGroupsGroupParamDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRdsParameterGroupsGroupParamDetail {
+		return vs[0].([]GetRdsParameterGroupsGroupParamDetail)[vs[1].(int)]
+	}).(GetRdsParameterGroupsGroupParamDetailOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -1179,6 +1533,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterOutputType(InstanceParameterOutput{})
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(RdsParameterGroupParamDetailOutput{})
+	pulumi.RegisterOutputType(RdsParameterGroupParamDetailArrayOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceParameterOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassOutput{})
@@ -1192,6 +1548,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceEnginesInstanceEngineZoneIdArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupParamDetailOutput{})
+	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupParamDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

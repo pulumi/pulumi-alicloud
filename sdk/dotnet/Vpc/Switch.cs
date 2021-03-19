@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class Switch : Pulumi.CustomResource
     {
         /// <summary>
-        /// The AZ for the switch.
+        /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
@@ -40,10 +40,16 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the switch. Defaults to null.
+        /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.119.0+) The status of the switch.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -56,6 +62,18 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the switch. Defaults to null.
+        /// </summary>
+        [Output("vswitchName")]
+        public Output<string> VswitchName { get; private set; } = null!;
+
+        /// <summary>
+        /// The AZ for the switch.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -104,10 +122,10 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SwitchArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AZ for the switch.
+        /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         /// </summary>
-        [Input("availabilityZone", required: true)]
-        public Input<string> AvailabilityZone { get; set; } = null!;
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
         /// The CIDR block for the switch.
@@ -122,7 +140,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the switch. Defaults to null.
+        /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -145,6 +163,18 @@ namespace Pulumi.AliCloud.Vpc
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the switch. Defaults to null.
+        /// </summary>
+        [Input("vswitchName")]
+        public Input<string>? VswitchName { get; set; }
+
+        /// <summary>
+        /// The AZ for the switch.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public SwitchArgs()
         {
         }
@@ -153,7 +183,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SwitchState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AZ for the switch.
+        /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -171,10 +201,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the switch. Defaults to null.
+        /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (Available in 1.119.0+) The status of the switch.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -193,6 +229,18 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The name of the switch. Defaults to null.
+        /// </summary>
+        [Input("vswitchName")]
+        public Input<string>? VswitchName { get; set; }
+
+        /// <summary>
+        /// The AZ for the switch.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public SwitchState()
         {

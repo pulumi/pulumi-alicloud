@@ -33,11 +33,15 @@ import * as utilities from "../utilities";
  * });
  * const config = new pulumi.Config();
  * const name = config.get("name") || "keyPairAttachmentName";
- * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "10.1.0.0/21"});
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: name,
+ *     cidrBlock: "10.1.0.0/21",
+ * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
  *     vpcId: vpc.id,
  *     cidrBlock: "10.1.1.0/24",
  *     availabilityZone: _default.then(_default => _default.zones[0].id),
+ *     vswitchName: name,
  * });
  * const group = new alicloud.ecs.SecurityGroup("group", {
  *     description: "New security group",

@@ -43,6 +43,14 @@ export class NodePool extends pulumi.CustomResource {
     }
 
     /**
+     * Enable Node payment auto-renew, default is `false`.
+     */
+    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    /**
+     * Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+     */
+    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    /**
      * The id of kubernetes cluster.
      */
     public readonly clusterId!: pulumi.Output<string>;
@@ -51,6 +59,14 @@ export class NodePool extends pulumi.CustomResource {
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     public readonly imageId!: pulumi.Output<string>;
+    /**
+     * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+     */
+    public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
+    /**
+     * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+     */
+    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
      * The instance type of worker node.
      */
@@ -90,6 +106,14 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
+     * Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+     */
+    public readonly period!: pulumi.Output<number | undefined>;
+    /**
+     * Node payment period unit, valid value: `Month`. Default is `Month`.
+     */
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`.
      */
     public readonly scalingConfig!: pulumi.Output<outputs.cs.NodePoolScalingConfig>;
@@ -120,6 +144,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly taints!: pulumi.Output<outputs.cs.NodePoolTaint[] | undefined>;
     /**
+     * Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+     */
+    public readonly unschedulable!: pulumi.Output<boolean | undefined>;
+    /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
@@ -145,9 +173,13 @@ export class NodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
+            inputs["autoRenew"] = state ? state.autoRenew : undefined;
+            inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["dataDisks"] = state ? state.dataDisks : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
+            inputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
+            inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
@@ -157,6 +189,8 @@ export class NodePool extends pulumi.CustomResource {
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
             inputs["nodeNameMode"] = state ? state.nodeNameMode : undefined;
             inputs["password"] = state ? state.password : undefined;
+            inputs["period"] = state ? state.period : undefined;
+            inputs["periodUnit"] = state ? state.periodUnit : undefined;
             inputs["scalingConfig"] = state ? state.scalingConfig : undefined;
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
@@ -164,6 +198,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["taints"] = state ? state.taints : undefined;
+            inputs["unschedulable"] = state ? state.unschedulable : undefined;
             inputs["userData"] = state ? state.userData : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
@@ -178,9 +213,13 @@ export class NodePool extends pulumi.CustomResource {
             if ((!args || args.vswitchIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchIds'");
             }
+            inputs["autoRenew"] = args ? args.autoRenew : undefined;
+            inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["dataDisks"] = args ? args.dataDisks : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
+            inputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
+            inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
@@ -190,12 +229,15 @@ export class NodePool extends pulumi.CustomResource {
             inputs["nodeCount"] = args ? args.nodeCount : undefined;
             inputs["nodeNameMode"] = args ? args.nodeNameMode : undefined;
             inputs["password"] = args ? args.password : undefined;
+            inputs["period"] = args ? args.period : undefined;
+            inputs["periodUnit"] = args ? args.periodUnit : undefined;
             inputs["scalingConfig"] = args ? args.scalingConfig : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             inputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["taints"] = args ? args.taints : undefined;
+            inputs["unschedulable"] = args ? args.unschedulable : undefined;
             inputs["userData"] = args ? args.userData : undefined;
             inputs["vswitchIds"] = args ? args.vswitchIds : undefined;
             inputs["scalingGroupId"] = undefined /*out*/;
@@ -213,6 +255,14 @@ export class NodePool extends pulumi.CustomResource {
  */
 export interface NodePoolState {
     /**
+     * Enable Node payment auto-renew, default is `false`.
+     */
+    readonly autoRenew?: pulumi.Input<boolean>;
+    /**
+     * Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+     */
+    readonly autoRenewPeriod?: pulumi.Input<number>;
+    /**
      * The id of kubernetes cluster.
      */
     readonly clusterId?: pulumi.Input<string>;
@@ -221,6 +271,14 @@ export interface NodePoolState {
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     readonly imageId?: pulumi.Input<string>;
+    /**
+     * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+     */
+    readonly installCloudMonitor?: pulumi.Input<boolean>;
+    /**
+     * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+     */
+    readonly instanceChargeType?: pulumi.Input<string>;
     /**
      * The instance type of worker node.
      */
@@ -260,6 +318,14 @@ export interface NodePoolState {
      */
     readonly password?: pulumi.Input<string>;
     /**
+     * Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+     */
+    readonly period?: pulumi.Input<number>;
+    /**
+     * Node payment period unit, valid value: `Month`. Default is `Month`.
+     */
+    readonly periodUnit?: pulumi.Input<string>;
+    /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`.
      */
     readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
@@ -290,6 +356,10 @@ export interface NodePoolState {
      */
     readonly taints?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolTaint>[]>;
     /**
+     * Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+     */
+    readonly unschedulable?: pulumi.Input<boolean>;
+    /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
     readonly userData?: pulumi.Input<string>;
@@ -308,6 +378,14 @@ export interface NodePoolState {
  */
 export interface NodePoolArgs {
     /**
+     * Enable Node payment auto-renew, default is `false`.
+     */
+    readonly autoRenew?: pulumi.Input<boolean>;
+    /**
+     * Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+     */
+    readonly autoRenewPeriod?: pulumi.Input<number>;
+    /**
      * The id of kubernetes cluster.
      */
     readonly clusterId: pulumi.Input<string>;
@@ -316,6 +394,14 @@ export interface NodePoolArgs {
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     readonly imageId?: pulumi.Input<string>;
+    /**
+     * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+     */
+    readonly installCloudMonitor?: pulumi.Input<boolean>;
+    /**
+     * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+     */
+    readonly instanceChargeType?: pulumi.Input<string>;
     /**
      * The instance type of worker node.
      */
@@ -355,6 +441,14 @@ export interface NodePoolArgs {
      */
     readonly password?: pulumi.Input<string>;
     /**
+     * Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+     */
+    readonly period?: pulumi.Input<number>;
+    /**
+     * Node payment period unit, valid value: `Month`. Default is `Month`.
+     */
+    readonly periodUnit?: pulumi.Input<string>;
+    /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`.
      */
     readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
@@ -380,6 +474,10 @@ export interface NodePoolArgs {
      * A List of Kubernetes taints to assign to the nodes.
      */
     readonly taints?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolTaint>[]>;
+    /**
+     * Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+     */
+    readonly unschedulable?: pulumi.Input<boolean>;
     /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */

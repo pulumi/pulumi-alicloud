@@ -21,11 +21,19 @@ import (
 type NodePool struct {
 	pulumi.CustomResourceState
 
+	// Enable Node payment auto-renew, default is `false`.
+	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
+	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringOutput         `pulumi:"clusterId"`
 	DataDisks NodePoolDataDiskArrayOutput `pulumi:"dataDisks"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
+	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
+	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
@@ -46,6 +54,10 @@ type NodePool struct {
 	NodeNameMode pulumi.StringOutput `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
+	// Node payment period unit, valid value: `Month`. Default is `Month`.
+	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig NodePoolScalingConfigOutput `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
@@ -62,6 +74,8 @@ type NodePool struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints NodePoolTaintArrayOutput `pulumi:"taints"`
+	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The ID of VPC where the current cluster is located.
@@ -108,11 +122,19 @@ func GetNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodePool resources.
 type nodePoolState struct {
+	// Enable Node payment auto-renew, default is `false`.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The id of kubernetes cluster.
 	ClusterId *string            `pulumi:"clusterId"`
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
+	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
+	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The instance type of worker node.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
@@ -133,6 +155,10 @@ type nodePoolState struct {
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
+	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+	Period *int `pulumi:"period"`
+	// Node payment period unit, valid value: `Month`. Default is `Month`.
+	PeriodUnit *string `pulumi:"periodUnit"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
@@ -149,6 +175,8 @@ type nodePoolState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints []NodePoolTaint `pulumi:"taints"`
+	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+	Unschedulable *bool `pulumi:"unschedulable"`
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData *string `pulumi:"userData"`
 	// The ID of VPC where the current cluster is located.
@@ -158,11 +186,19 @@ type nodePoolState struct {
 }
 
 type NodePoolState struct {
+	// Enable Node payment auto-renew, default is `false`.
+	AutoRenew pulumi.BoolPtrInput
+	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+	AutoRenewPeriod pulumi.IntPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringPtrInput
 	DataDisks NodePoolDataDiskArrayInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
+	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+	InstallCloudMonitor pulumi.BoolPtrInput
+	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+	InstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayInput
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
@@ -183,6 +219,10 @@ type NodePoolState struct {
 	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
+	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+	Period pulumi.IntPtrInput
+	// Node payment period unit, valid value: `Month`. Default is `Month`.
+	PeriodUnit pulumi.StringPtrInput
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig NodePoolScalingConfigPtrInput
 	// (Available in 1.105.0+) Id of the Scaling Group.
@@ -199,6 +239,8 @@ type NodePoolState struct {
 	Tags pulumi.MapInput
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints NodePoolTaintArrayInput
+	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+	Unschedulable pulumi.BoolPtrInput
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData pulumi.StringPtrInput
 	// The ID of VPC where the current cluster is located.
@@ -212,11 +254,19 @@ func (NodePoolState) ElementType() reflect.Type {
 }
 
 type nodePoolArgs struct {
+	// Enable Node payment auto-renew, default is `false`.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The id of kubernetes cluster.
 	ClusterId string             `pulumi:"clusterId"`
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
+	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
+	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The instance type of worker node.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
@@ -237,6 +287,10 @@ type nodePoolArgs struct {
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
+	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+	Period *int `pulumi:"period"`
+	// Node payment period unit, valid value: `Month`. Default is `Month`.
+	PeriodUnit *string `pulumi:"periodUnit"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// The system disk size of worker node.
@@ -251,6 +305,8 @@ type nodePoolArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints []NodePoolTaint `pulumi:"taints"`
+	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+	Unschedulable *bool `pulumi:"unschedulable"`
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData *string `pulumi:"userData"`
 	// The vswitches used by node pool workers.
@@ -259,11 +315,19 @@ type nodePoolArgs struct {
 
 // The set of arguments for constructing a NodePool resource.
 type NodePoolArgs struct {
+	// Enable Node payment auto-renew, default is `false`.
+	AutoRenew pulumi.BoolPtrInput
+	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+	AutoRenewPeriod pulumi.IntPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput
 	DataDisks NodePoolDataDiskArrayInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
+	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+	InstallCloudMonitor pulumi.BoolPtrInput
+	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+	InstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayInput
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
@@ -284,6 +348,10 @@ type NodePoolArgs struct {
 	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
+	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+	Period pulumi.IntPtrInput
+	// Node payment period unit, valid value: `Month`. Default is `Month`.
+	PeriodUnit pulumi.StringPtrInput
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig NodePoolScalingConfigPtrInput
 	// The system disk size of worker node.
@@ -298,6 +366,8 @@ type NodePoolArgs struct {
 	Tags pulumi.MapInput
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints NodePoolTaintArrayInput
+	// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+	Unschedulable pulumi.BoolPtrInput
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData pulumi.StringPtrInput
 	// The vswitches used by node pool workers.

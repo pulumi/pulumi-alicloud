@@ -2614,227 +2614,212 @@ func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) Index(i pulumi.IntInpu
 	}).(GetGroupMetricRulesRuleEscalationWarnOutput)
 }
 
-type GetMonitorGroupInstancesInstancese struct {
-	// Instance information added to the Cms Group.
-	Instances []GetMonitorGroupInstancesInstanceseInstance `pulumi:"instances"`
+type GetMonitorGroupInstancesInstance struct {
+	Instances []GetMonitorGroupInstancesInstanceInstance `pulumi:"instances"`
 }
 
-// GetMonitorGroupInstancesInstanceseInput is an input type that accepts GetMonitorGroupInstancesInstanceseArgs and GetMonitorGroupInstancesInstanceseOutput values.
-// You can construct a concrete instance of `GetMonitorGroupInstancesInstanceseInput` via:
+// GetMonitorGroupInstancesInstanceInput is an input type that accepts GetMonitorGroupInstancesInstanceArgs and GetMonitorGroupInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetMonitorGroupInstancesInstanceInput` via:
 //
-//          GetMonitorGroupInstancesInstanceseArgs{...}
-type GetMonitorGroupInstancesInstanceseInput interface {
+//          GetMonitorGroupInstancesInstanceArgs{...}
+type GetMonitorGroupInstancesInstanceInput interface {
 	pulumi.Input
 
-	ToGetMonitorGroupInstancesInstanceseOutput() GetMonitorGroupInstancesInstanceseOutput
-	ToGetMonitorGroupInstancesInstanceseOutputWithContext(context.Context) GetMonitorGroupInstancesInstanceseOutput
+	ToGetMonitorGroupInstancesInstanceOutput() GetMonitorGroupInstancesInstanceOutput
+	ToGetMonitorGroupInstancesInstanceOutputWithContext(context.Context) GetMonitorGroupInstancesInstanceOutput
 }
 
-type GetMonitorGroupInstancesInstanceseArgs struct {
-	// Instance information added to the Cms Group.
-	Instances GetMonitorGroupInstancesInstanceseInstanceArrayInput `pulumi:"instances"`
+type GetMonitorGroupInstancesInstanceArgs struct {
+	Instances GetMonitorGroupInstancesInstanceInstanceArrayInput `pulumi:"instances"`
 }
 
-func (GetMonitorGroupInstancesInstanceseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorGroupInstancesInstancese)(nil)).Elem()
+func (GetMonitorGroupInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorGroupInstancesInstance)(nil)).Elem()
 }
 
-func (i GetMonitorGroupInstancesInstanceseArgs) ToGetMonitorGroupInstancesInstanceseOutput() GetMonitorGroupInstancesInstanceseOutput {
-	return i.ToGetMonitorGroupInstancesInstanceseOutputWithContext(context.Background())
+func (i GetMonitorGroupInstancesInstanceArgs) ToGetMonitorGroupInstancesInstanceOutput() GetMonitorGroupInstancesInstanceOutput {
+	return i.ToGetMonitorGroupInstancesInstanceOutputWithContext(context.Background())
 }
 
-func (i GetMonitorGroupInstancesInstanceseArgs) ToGetMonitorGroupInstancesInstanceseOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceseOutput)
+func (i GetMonitorGroupInstancesInstanceArgs) ToGetMonitorGroupInstancesInstanceOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceOutput)
 }
 
-// GetMonitorGroupInstancesInstanceseArrayInput is an input type that accepts GetMonitorGroupInstancesInstanceseArray and GetMonitorGroupInstancesInstanceseArrayOutput values.
-// You can construct a concrete instance of `GetMonitorGroupInstancesInstanceseArrayInput` via:
+// GetMonitorGroupInstancesInstanceArrayInput is an input type that accepts GetMonitorGroupInstancesInstanceArray and GetMonitorGroupInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetMonitorGroupInstancesInstanceArrayInput` via:
 //
-//          GetMonitorGroupInstancesInstanceseArray{ GetMonitorGroupInstancesInstanceseArgs{...} }
-type GetMonitorGroupInstancesInstanceseArrayInput interface {
+//          GetMonitorGroupInstancesInstanceArray{ GetMonitorGroupInstancesInstanceArgs{...} }
+type GetMonitorGroupInstancesInstanceArrayInput interface {
 	pulumi.Input
 
-	ToGetMonitorGroupInstancesInstanceseArrayOutput() GetMonitorGroupInstancesInstanceseArrayOutput
-	ToGetMonitorGroupInstancesInstanceseArrayOutputWithContext(context.Context) GetMonitorGroupInstancesInstanceseArrayOutput
+	ToGetMonitorGroupInstancesInstanceArrayOutput() GetMonitorGroupInstancesInstanceArrayOutput
+	ToGetMonitorGroupInstancesInstanceArrayOutputWithContext(context.Context) GetMonitorGroupInstancesInstanceArrayOutput
 }
 
-type GetMonitorGroupInstancesInstanceseArray []GetMonitorGroupInstancesInstanceseInput
+type GetMonitorGroupInstancesInstanceArray []GetMonitorGroupInstancesInstanceInput
 
-func (GetMonitorGroupInstancesInstanceseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorGroupInstancesInstancese)(nil)).Elem()
+func (GetMonitorGroupInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorGroupInstancesInstance)(nil)).Elem()
 }
 
-func (i GetMonitorGroupInstancesInstanceseArray) ToGetMonitorGroupInstancesInstanceseArrayOutput() GetMonitorGroupInstancesInstanceseArrayOutput {
-	return i.ToGetMonitorGroupInstancesInstanceseArrayOutputWithContext(context.Background())
+func (i GetMonitorGroupInstancesInstanceArray) ToGetMonitorGroupInstancesInstanceArrayOutput() GetMonitorGroupInstancesInstanceArrayOutput {
+	return i.ToGetMonitorGroupInstancesInstanceArrayOutputWithContext(context.Background())
 }
 
-func (i GetMonitorGroupInstancesInstanceseArray) ToGetMonitorGroupInstancesInstanceseArrayOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceseArrayOutput)
+func (i GetMonitorGroupInstancesInstanceArray) ToGetMonitorGroupInstancesInstanceArrayOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceArrayOutput)
 }
 
-type GetMonitorGroupInstancesInstanceseOutput struct{ *pulumi.OutputState }
+type GetMonitorGroupInstancesInstanceOutput struct{ *pulumi.OutputState }
 
-func (GetMonitorGroupInstancesInstanceseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorGroupInstancesInstancese)(nil)).Elem()
+func (GetMonitorGroupInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorGroupInstancesInstance)(nil)).Elem()
 }
 
-func (o GetMonitorGroupInstancesInstanceseOutput) ToGetMonitorGroupInstancesInstanceseOutput() GetMonitorGroupInstancesInstanceseOutput {
+func (o GetMonitorGroupInstancesInstanceOutput) ToGetMonitorGroupInstancesInstanceOutput() GetMonitorGroupInstancesInstanceOutput {
 	return o
 }
 
-func (o GetMonitorGroupInstancesInstanceseOutput) ToGetMonitorGroupInstancesInstanceseOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceseOutput {
+func (o GetMonitorGroupInstancesInstanceOutput) ToGetMonitorGroupInstancesInstanceOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceOutput {
 	return o
 }
 
-// Instance information added to the Cms Group.
-func (o GetMonitorGroupInstancesInstanceseOutput) Instances() GetMonitorGroupInstancesInstanceseInstanceArrayOutput {
-	return o.ApplyT(func(v GetMonitorGroupInstancesInstancese) []GetMonitorGroupInstancesInstanceseInstance {
+func (o GetMonitorGroupInstancesInstanceOutput) Instances() GetMonitorGroupInstancesInstanceInstanceArrayOutput {
+	return o.ApplyT(func(v GetMonitorGroupInstancesInstance) []GetMonitorGroupInstancesInstanceInstance {
 		return v.Instances
-	}).(GetMonitorGroupInstancesInstanceseInstanceArrayOutput)
+	}).(GetMonitorGroupInstancesInstanceInstanceArrayOutput)
 }
 
-type GetMonitorGroupInstancesInstanceseArrayOutput struct{ *pulumi.OutputState }
+type GetMonitorGroupInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
-func (GetMonitorGroupInstancesInstanceseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorGroupInstancesInstancese)(nil)).Elem()
+func (GetMonitorGroupInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorGroupInstancesInstance)(nil)).Elem()
 }
 
-func (o GetMonitorGroupInstancesInstanceseArrayOutput) ToGetMonitorGroupInstancesInstanceseArrayOutput() GetMonitorGroupInstancesInstanceseArrayOutput {
+func (o GetMonitorGroupInstancesInstanceArrayOutput) ToGetMonitorGroupInstancesInstanceArrayOutput() GetMonitorGroupInstancesInstanceArrayOutput {
 	return o
 }
 
-func (o GetMonitorGroupInstancesInstanceseArrayOutput) ToGetMonitorGroupInstancesInstanceseArrayOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceseArrayOutput {
+func (o GetMonitorGroupInstancesInstanceArrayOutput) ToGetMonitorGroupInstancesInstanceArrayOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceArrayOutput {
 	return o
 }
 
-func (o GetMonitorGroupInstancesInstanceseArrayOutput) Index(i pulumi.IntInput) GetMonitorGroupInstancesInstanceseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorGroupInstancesInstancese {
-		return vs[0].([]GetMonitorGroupInstancesInstancese)[vs[1].(int)]
-	}).(GetMonitorGroupInstancesInstanceseOutput)
+func (o GetMonitorGroupInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetMonitorGroupInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorGroupInstancesInstance {
+		return vs[0].([]GetMonitorGroupInstancesInstance)[vs[1].(int)]
+	}).(GetMonitorGroupInstancesInstanceOutput)
 }
 
-type GetMonitorGroupInstancesInstanceseInstance struct {
-	// The category of instance.
-	Category string `pulumi:"category"`
-	// The id of instance.
-	InstanceId string `pulumi:"instanceId"`
-	// The name of instance.
+type GetMonitorGroupInstancesInstanceInstance struct {
+	Category     string `pulumi:"category"`
+	InstanceId   string `pulumi:"instanceId"`
 	InstanceName string `pulumi:"instanceName"`
-	// The region id of instance.
-	RegionId string `pulumi:"regionId"`
+	RegionId     string `pulumi:"regionId"`
 }
 
-// GetMonitorGroupInstancesInstanceseInstanceInput is an input type that accepts GetMonitorGroupInstancesInstanceseInstanceArgs and GetMonitorGroupInstancesInstanceseInstanceOutput values.
-// You can construct a concrete instance of `GetMonitorGroupInstancesInstanceseInstanceInput` via:
+// GetMonitorGroupInstancesInstanceInstanceInput is an input type that accepts GetMonitorGroupInstancesInstanceInstanceArgs and GetMonitorGroupInstancesInstanceInstanceOutput values.
+// You can construct a concrete instance of `GetMonitorGroupInstancesInstanceInstanceInput` via:
 //
-//          GetMonitorGroupInstancesInstanceseInstanceArgs{...}
-type GetMonitorGroupInstancesInstanceseInstanceInput interface {
+//          GetMonitorGroupInstancesInstanceInstanceArgs{...}
+type GetMonitorGroupInstancesInstanceInstanceInput interface {
 	pulumi.Input
 
-	ToGetMonitorGroupInstancesInstanceseInstanceOutput() GetMonitorGroupInstancesInstanceseInstanceOutput
-	ToGetMonitorGroupInstancesInstanceseInstanceOutputWithContext(context.Context) GetMonitorGroupInstancesInstanceseInstanceOutput
+	ToGetMonitorGroupInstancesInstanceInstanceOutput() GetMonitorGroupInstancesInstanceInstanceOutput
+	ToGetMonitorGroupInstancesInstanceInstanceOutputWithContext(context.Context) GetMonitorGroupInstancesInstanceInstanceOutput
 }
 
-type GetMonitorGroupInstancesInstanceseInstanceArgs struct {
-	// The category of instance.
-	Category pulumi.StringInput `pulumi:"category"`
-	// The id of instance.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// The name of instance.
+type GetMonitorGroupInstancesInstanceInstanceArgs struct {
+	Category     pulumi.StringInput `pulumi:"category"`
+	InstanceId   pulumi.StringInput `pulumi:"instanceId"`
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
-	// The region id of instance.
-	RegionId pulumi.StringInput `pulumi:"regionId"`
+	RegionId     pulumi.StringInput `pulumi:"regionId"`
 }
 
-func (GetMonitorGroupInstancesInstanceseInstanceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorGroupInstancesInstanceseInstance)(nil)).Elem()
+func (GetMonitorGroupInstancesInstanceInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorGroupInstancesInstanceInstance)(nil)).Elem()
 }
 
-func (i GetMonitorGroupInstancesInstanceseInstanceArgs) ToGetMonitorGroupInstancesInstanceseInstanceOutput() GetMonitorGroupInstancesInstanceseInstanceOutput {
-	return i.ToGetMonitorGroupInstancesInstanceseInstanceOutputWithContext(context.Background())
+func (i GetMonitorGroupInstancesInstanceInstanceArgs) ToGetMonitorGroupInstancesInstanceInstanceOutput() GetMonitorGroupInstancesInstanceInstanceOutput {
+	return i.ToGetMonitorGroupInstancesInstanceInstanceOutputWithContext(context.Background())
 }
 
-func (i GetMonitorGroupInstancesInstanceseInstanceArgs) ToGetMonitorGroupInstancesInstanceseInstanceOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceseInstanceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceseInstanceOutput)
+func (i GetMonitorGroupInstancesInstanceInstanceArgs) ToGetMonitorGroupInstancesInstanceInstanceOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceInstanceOutput)
 }
 
-// GetMonitorGroupInstancesInstanceseInstanceArrayInput is an input type that accepts GetMonitorGroupInstancesInstanceseInstanceArray and GetMonitorGroupInstancesInstanceseInstanceArrayOutput values.
-// You can construct a concrete instance of `GetMonitorGroupInstancesInstanceseInstanceArrayInput` via:
+// GetMonitorGroupInstancesInstanceInstanceArrayInput is an input type that accepts GetMonitorGroupInstancesInstanceInstanceArray and GetMonitorGroupInstancesInstanceInstanceArrayOutput values.
+// You can construct a concrete instance of `GetMonitorGroupInstancesInstanceInstanceArrayInput` via:
 //
-//          GetMonitorGroupInstancesInstanceseInstanceArray{ GetMonitorGroupInstancesInstanceseInstanceArgs{...} }
-type GetMonitorGroupInstancesInstanceseInstanceArrayInput interface {
+//          GetMonitorGroupInstancesInstanceInstanceArray{ GetMonitorGroupInstancesInstanceInstanceArgs{...} }
+type GetMonitorGroupInstancesInstanceInstanceArrayInput interface {
 	pulumi.Input
 
-	ToGetMonitorGroupInstancesInstanceseInstanceArrayOutput() GetMonitorGroupInstancesInstanceseInstanceArrayOutput
-	ToGetMonitorGroupInstancesInstanceseInstanceArrayOutputWithContext(context.Context) GetMonitorGroupInstancesInstanceseInstanceArrayOutput
+	ToGetMonitorGroupInstancesInstanceInstanceArrayOutput() GetMonitorGroupInstancesInstanceInstanceArrayOutput
+	ToGetMonitorGroupInstancesInstanceInstanceArrayOutputWithContext(context.Context) GetMonitorGroupInstancesInstanceInstanceArrayOutput
 }
 
-type GetMonitorGroupInstancesInstanceseInstanceArray []GetMonitorGroupInstancesInstanceseInstanceInput
+type GetMonitorGroupInstancesInstanceInstanceArray []GetMonitorGroupInstancesInstanceInstanceInput
 
-func (GetMonitorGroupInstancesInstanceseInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorGroupInstancesInstanceseInstance)(nil)).Elem()
+func (GetMonitorGroupInstancesInstanceInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorGroupInstancesInstanceInstance)(nil)).Elem()
 }
 
-func (i GetMonitorGroupInstancesInstanceseInstanceArray) ToGetMonitorGroupInstancesInstanceseInstanceArrayOutput() GetMonitorGroupInstancesInstanceseInstanceArrayOutput {
-	return i.ToGetMonitorGroupInstancesInstanceseInstanceArrayOutputWithContext(context.Background())
+func (i GetMonitorGroupInstancesInstanceInstanceArray) ToGetMonitorGroupInstancesInstanceInstanceArrayOutput() GetMonitorGroupInstancesInstanceInstanceArrayOutput {
+	return i.ToGetMonitorGroupInstancesInstanceInstanceArrayOutputWithContext(context.Background())
 }
 
-func (i GetMonitorGroupInstancesInstanceseInstanceArray) ToGetMonitorGroupInstancesInstanceseInstanceArrayOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceseInstanceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceseInstanceArrayOutput)
+func (i GetMonitorGroupInstancesInstanceInstanceArray) ToGetMonitorGroupInstancesInstanceInstanceArrayOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorGroupInstancesInstanceInstanceArrayOutput)
 }
 
-type GetMonitorGroupInstancesInstanceseInstanceOutput struct{ *pulumi.OutputState }
+type GetMonitorGroupInstancesInstanceInstanceOutput struct{ *pulumi.OutputState }
 
-func (GetMonitorGroupInstancesInstanceseInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorGroupInstancesInstanceseInstance)(nil)).Elem()
+func (GetMonitorGroupInstancesInstanceInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorGroupInstancesInstanceInstance)(nil)).Elem()
 }
 
-func (o GetMonitorGroupInstancesInstanceseInstanceOutput) ToGetMonitorGroupInstancesInstanceseInstanceOutput() GetMonitorGroupInstancesInstanceseInstanceOutput {
+func (o GetMonitorGroupInstancesInstanceInstanceOutput) ToGetMonitorGroupInstancesInstanceInstanceOutput() GetMonitorGroupInstancesInstanceInstanceOutput {
 	return o
 }
 
-func (o GetMonitorGroupInstancesInstanceseInstanceOutput) ToGetMonitorGroupInstancesInstanceseInstanceOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceseInstanceOutput {
+func (o GetMonitorGroupInstancesInstanceInstanceOutput) ToGetMonitorGroupInstancesInstanceInstanceOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceInstanceOutput {
 	return o
 }
 
-// The category of instance.
-func (o GetMonitorGroupInstancesInstanceseInstanceOutput) Category() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceseInstance) string { return v.Category }).(pulumi.StringOutput)
+func (o GetMonitorGroupInstancesInstanceInstanceOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.Category }).(pulumi.StringOutput)
 }
 
-// The id of instance.
-func (o GetMonitorGroupInstancesInstanceseInstanceOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceseInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+func (o GetMonitorGroupInstancesInstanceInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The name of instance.
-func (o GetMonitorGroupInstancesInstanceseInstanceOutput) InstanceName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceseInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+func (o GetMonitorGroupInstancesInstanceInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// The region id of instance.
-func (o GetMonitorGroupInstancesInstanceseInstanceOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceseInstance) string { return v.RegionId }).(pulumi.StringOutput)
+func (o GetMonitorGroupInstancesInstanceInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-type GetMonitorGroupInstancesInstanceseInstanceArrayOutput struct{ *pulumi.OutputState }
+type GetMonitorGroupInstancesInstanceInstanceArrayOutput struct{ *pulumi.OutputState }
 
-func (GetMonitorGroupInstancesInstanceseInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorGroupInstancesInstanceseInstance)(nil)).Elem()
+func (GetMonitorGroupInstancesInstanceInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorGroupInstancesInstanceInstance)(nil)).Elem()
 }
 
-func (o GetMonitorGroupInstancesInstanceseInstanceArrayOutput) ToGetMonitorGroupInstancesInstanceseInstanceArrayOutput() GetMonitorGroupInstancesInstanceseInstanceArrayOutput {
+func (o GetMonitorGroupInstancesInstanceInstanceArrayOutput) ToGetMonitorGroupInstancesInstanceInstanceArrayOutput() GetMonitorGroupInstancesInstanceInstanceArrayOutput {
 	return o
 }
 
-func (o GetMonitorGroupInstancesInstanceseInstanceArrayOutput) ToGetMonitorGroupInstancesInstanceseInstanceArrayOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceseInstanceArrayOutput {
+func (o GetMonitorGroupInstancesInstanceInstanceArrayOutput) ToGetMonitorGroupInstancesInstanceInstanceArrayOutputWithContext(ctx context.Context) GetMonitorGroupInstancesInstanceInstanceArrayOutput {
 	return o
 }
 
-func (o GetMonitorGroupInstancesInstanceseInstanceArrayOutput) Index(i pulumi.IntInput) GetMonitorGroupInstancesInstanceseInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorGroupInstancesInstanceseInstance {
-		return vs[0].([]GetMonitorGroupInstancesInstanceseInstance)[vs[1].(int)]
-	}).(GetMonitorGroupInstancesInstanceseInstanceOutput)
+func (o GetMonitorGroupInstancesInstanceInstanceArrayOutput) Index(i pulumi.IntInput) GetMonitorGroupInstancesInstanceInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorGroupInstancesInstanceInstance {
+		return vs[0].([]GetMonitorGroupInstancesInstanceInstance)[vs[1].(int)]
+	}).(GetMonitorGroupInstancesInstanceInstanceOutput)
 }
 
 type GetMonitorGroupsGroup struct {
@@ -3066,10 +3051,10 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationWarnOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationWarnArrayOutput{})
-	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceseOutput{})
-	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceseArrayOutput{})
-	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceseInstanceOutput{})
-	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceseInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceInstanceOutput{})
+	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetMonitorGroupsGroupArrayOutput{})
 }

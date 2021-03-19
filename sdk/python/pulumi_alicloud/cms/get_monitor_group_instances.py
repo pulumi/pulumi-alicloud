@@ -20,16 +20,16 @@ class GetMonitorGroupInstancesResult:
     """
     A collection of values returned by getMonitorGroupInstances.
     """
-    def __init__(__self__, id=None, ids=None, instanceses=None, keyword=None, output_file=None):
+    def __init__(__self__, id=None, ids=None, instances=None, keyword=None, output_file=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, str):
             raise TypeError("Expected argument 'ids' to be a str")
         pulumi.set(__self__, "ids", ids)
-        if instanceses and not isinstance(instanceses, list):
-            raise TypeError("Expected argument 'instanceses' to be a list")
-        pulumi.set(__self__, "instanceses", instanceses)
+        if instances and not isinstance(instances, list):
+            raise TypeError("Expected argument 'instances' to be a list")
+        pulumi.set(__self__, "instances", instances)
         if keyword and not isinstance(keyword, str):
             raise TypeError("Expected argument 'keyword' to be a str")
         pulumi.set(__self__, "keyword", keyword)
@@ -52,8 +52,8 @@ class GetMonitorGroupInstancesResult:
 
     @property
     @pulumi.getter
-    def instanceses(self) -> Sequence['outputs.GetMonitorGroupInstancesInstanceseResult']:
-        return pulumi.get(self, "instanceses")
+    def instances(self) -> Sequence['outputs.GetMonitorGroupInstancesInstanceResult']:
+        return pulumi.get(self, "instances")
 
     @property
     @pulumi.getter
@@ -74,7 +74,7 @@ class AwaitableGetMonitorGroupInstancesResult(GetMonitorGroupInstancesResult):
         return GetMonitorGroupInstancesResult(
             id=self.id,
             ids=self.ids,
-            instanceses=self.instanceses,
+            instances=self.instances,
             keyword=self.keyword,
             output_file=self.output_file)
 
@@ -84,13 +84,7 @@ def get_monitor_group_instances(ids: Optional[str] = None,
                                 output_file: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMonitorGroupInstancesResult:
     """
-    This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
-
-    > **NOTE:** Available in v1.115.0+.
-
-
-    :param str ids: A list of Monitor Group Instances IDs.
-    :param str keyword: The keyword.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -105,6 +99,6 @@ def get_monitor_group_instances(ids: Optional[str] = None,
     return AwaitableGetMonitorGroupInstancesResult(
         id=__ret__.id,
         ids=__ret__.ids,
-        instanceses=__ret__.instanceses,
+        instances=__ret__.instances,
         keyword=__ret__.keyword,
         output_file=__ret__.output_file)

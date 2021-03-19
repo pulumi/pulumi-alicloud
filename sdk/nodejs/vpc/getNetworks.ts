@@ -34,6 +34,9 @@ export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions)
     }
     return pulumi.runtime.invoke("alicloud:vpc/getNetworks:getNetworks", {
         "cidrBlock": args.cidrBlock,
+        "dhcpOptionsSetId": args.dhcpOptionsSetId,
+        "dryRun": args.dryRun,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "isDefault": args.isDefault,
         "nameRegex": args.nameRegex,
@@ -41,6 +44,8 @@ export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions)
         "resourceGroupId": args.resourceGroupId,
         "status": args.status,
         "tags": args.tags,
+        "vpcName": args.vpcName,
+        "vpcOwnerId": args.vpcOwnerId,
         "vswitchId": args.vswitchId,
     }, opts);
 }
@@ -53,6 +58,18 @@ export interface GetNetworksArgs {
      * Filter results by a specific CIDR block. For example: "172.16.0.0/12".
      */
     readonly cidrBlock?: string;
+    /**
+     * The ID of dhcp options set.
+     */
+    readonly dhcpOptionsSetId?: string;
+    /**
+     * Indicates whether to check this request only. Valid values: `true` and `false`.
+     */
+    readonly dryRun?: boolean;
+    /**
+     * -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `routeTableId`.
+     */
+    readonly enableDetails?: boolean;
     /**
      * A list of VPC IDs.
      */
@@ -79,6 +96,14 @@ export interface GetNetworksArgs {
      */
     readonly tags?: {[key: string]: any};
     /**
+     * The name of the VPC.
+     */
+    readonly vpcName?: string;
+    /**
+     * The owner ID of VPC.
+     */
+    readonly vpcOwnerId?: number;
+    /**
      * Filter results by the specified VSwitch.
      */
     readonly vswitchId?: string;
@@ -92,6 +117,9 @@ export interface GetNetworksResult {
      * CIDR block of the VPC.
      */
     readonly cidrBlock?: string;
+    readonly dhcpOptionsSetId?: string;
+    readonly dryRun?: boolean;
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -119,6 +147,11 @@ export interface GetNetworksResult {
      * A map of tags assigned to the VPC.
      */
     readonly tags?: {[key: string]: any};
+    /**
+     * Name of the VPC.
+     */
+    readonly vpcName?: string;
+    readonly vpcOwnerId?: number;
     /**
      * A list of VPCs. Each element contains the following attributes:
      */

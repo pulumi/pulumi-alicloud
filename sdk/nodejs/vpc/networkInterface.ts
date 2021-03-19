@@ -19,7 +19,10 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "networkInterfaceName";
- * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "192.168.0.0/24"});
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/24",
+ * });
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });

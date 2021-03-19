@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     availabilityZone: defaultZones.zones[0].id,
  *     cidrBlock: "172.16.0.0/21",
  *     vpcId: defaultNetwork.id,
+ *     vswitchName: name,
  * });
  * const defaultNatGateway = new alicloud.vpc.NatGateway("default", {
  *     specification: "Small",

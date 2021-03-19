@@ -216,6 +216,9 @@ export class Kubernetes extends pulumi.CustomResource {
      * Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
      */
     public readonly proxyMode!: pulumi.Output<string | undefined>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
     public readonly rdsInstances!: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -703,6 +706,9 @@ export interface KubernetesState {
      * Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
     readonly rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -983,6 +989,9 @@ export interface KubernetesArgs {
      * Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
     readonly rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.

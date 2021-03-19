@@ -13,8 +13,10 @@ export * from "./database";
 export * from "./getInstanceClasses";
 export * from "./getInstanceEngines";
 export * from "./getInstances";
+export * from "./getRdsParameterGroups";
 export * from "./getZones";
 export * from "./instance";
+export * from "./rdsParameterGroup";
 export * from "./readOnlyInstance";
 export * from "./readWriteSplittingConnection";
 
@@ -25,6 +27,7 @@ import { BackupPolicy } from "./backupPolicy";
 import { Connection } from "./connection";
 import { Database } from "./database";
 import { Instance } from "./instance";
+import { RdsParameterGroup } from "./rdsParameterGroup";
 import { ReadOnlyInstance } from "./readOnlyInstance";
 import { ReadWriteSplittingConnection } from "./readWriteSplittingConnection";
 
@@ -44,6 +47,8 @@ const _module = {
                 return new Database(name, <any>undefined, { urn })
             case "alicloud:rds/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:rds/rdsParameterGroup:RdsParameterGroup":
+                return new RdsParameterGroup(name, <any>undefined, { urn })
             case "alicloud:rds/readOnlyInstance:ReadOnlyInstance":
                 return new ReadOnlyInstance(name, <any>undefined, { urn })
             case "alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection":
@@ -59,5 +64,6 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/rdsParameterGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/readOnlyInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/readWriteSplittingConnection", _module)

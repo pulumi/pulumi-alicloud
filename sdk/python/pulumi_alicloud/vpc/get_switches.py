@@ -20,10 +20,13 @@ class GetSwitchesResult:
     """
     A collection of values returned by getSwitches.
     """
-    def __init__(__self__, cidr_block=None, id=None, ids=None, is_default=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tags=None, vpc_id=None, vswitches=None, zone_id=None):
+    def __init__(__self__, cidr_block=None, dry_run=None, id=None, ids=None, is_default=None, name_regex=None, names=None, output_file=None, resource_group_id=None, route_table_id=None, status=None, tags=None, vpc_id=None, vswitch_name=None, vswitch_owner_id=None, vswitches=None, zone_id=None):
         if cidr_block and not isinstance(cidr_block, str):
             raise TypeError("Expected argument 'cidr_block' to be a str")
         pulumi.set(__self__, "cidr_block", cidr_block)
+        if dry_run and not isinstance(dry_run, bool):
+            raise TypeError("Expected argument 'dry_run' to be a bool")
+        pulumi.set(__self__, "dry_run", dry_run)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -45,12 +48,24 @@ class GetSwitchesResult:
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
         pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if route_table_id and not isinstance(route_table_id, str):
+            raise TypeError("Expected argument 'route_table_id' to be a str")
+        pulumi.set(__self__, "route_table_id", route_table_id)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_name and not isinstance(vswitch_name, str):
+            raise TypeError("Expected argument 'vswitch_name' to be a str")
+        pulumi.set(__self__, "vswitch_name", vswitch_name)
+        if vswitch_owner_id and not isinstance(vswitch_owner_id, int):
+            raise TypeError("Expected argument 'vswitch_owner_id' to be a int")
+        pulumi.set(__self__, "vswitch_owner_id", vswitch_owner_id)
         if vswitches and not isinstance(vswitches, list):
             raise TypeError("Expected argument 'vswitches' to be a list")
         pulumi.set(__self__, "vswitches", vswitches)
@@ -65,6 +80,11 @@ class GetSwitchesResult:
         CIDR block of the VSwitch.
         """
         return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[bool]:
+        return pulumi.get(self, "dry_run")
 
     @property
     @pulumi.getter
@@ -111,11 +131,33 @@ class GetSwitchesResult:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
+        """
+        The resource group ID of the VSwitch.
+        """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> Optional[str]:
+        """
+        The route table ID of the VSwitch.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The status of the VSwitch.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The Tags of the VSwitch.
+        """
         return pulumi.get(self, "tags")
 
     @property
@@ -125,6 +167,19 @@ class GetSwitchesResult:
         ID of the VPC that owns the VSwitch.
         """
         return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchName")
+    def vswitch_name(self) -> Optional[str]:
+        """
+        Name of the VSwitch.
+        """
+        return pulumi.get(self, "vswitch_name")
+
+    @property
+    @pulumi.getter(name="vswitchOwnerId")
+    def vswitch_owner_id(self) -> Optional[int]:
+        return pulumi.get(self, "vswitch_owner_id")
 
     @property
     @pulumi.getter
@@ -150,6 +205,7 @@ class AwaitableGetSwitchesResult(GetSwitchesResult):
             yield self
         return GetSwitchesResult(
             cidr_block=self.cidr_block,
+            dry_run=self.dry_run,
             id=self.id,
             ids=self.ids,
             is_default=self.is_default,
@@ -157,20 +213,29 @@ class AwaitableGetSwitchesResult(GetSwitchesResult):
             names=self.names,
             output_file=self.output_file,
             resource_group_id=self.resource_group_id,
+            route_table_id=self.route_table_id,
+            status=self.status,
             tags=self.tags,
             vpc_id=self.vpc_id,
+            vswitch_name=self.vswitch_name,
+            vswitch_owner_id=self.vswitch_owner_id,
             vswitches=self.vswitches,
             zone_id=self.zone_id)
 
 
 def get_switches(cidr_block: Optional[str] = None,
+                 dry_run: Optional[bool] = None,
                  ids: Optional[Sequence[str]] = None,
                  is_default: Optional[bool] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
                  resource_group_id: Optional[str] = None,
+                 route_table_id: Optional[str] = None,
+                 status: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  vpc_id: Optional[str] = None,
+                 vswitch_name: Optional[str] = None,
+                 vswitch_owner_id: Optional[int] = None,
                  zone_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSwitchesResult:
     """
@@ -187,33 +252,46 @@ def get_switches(cidr_block: Optional[str] = None,
     if name is None:
         name = "vswitchDatasourceName"
     default_zones = alicloud.get_zones()
-    vpc = alicloud.vpc.Network("vpc", cidr_block="172.16.0.0/16")
+    vpc = alicloud.vpc.Network("vpc",
+        cidr_block="172.16.0.0/16",
+        vpc_name=name)
     vswitch = alicloud.vpc.Switch("vswitch",
         availability_zone=default_zones.zones[0].id,
         cidr_block="172.16.0.0/24",
-        vpc_id=vpc.id)
-    default_switches = vswitch.name.apply(lambda name: alicloud.vpc.get_switches(name_regex=name))
+        vpc_id=vpc.id,
+        vswitch_name=name)
+    default_switches = vswitch.vswitch_name.apply(lambda vswitch_name: alicloud.vpc.get_switches(name_regex=vswitch_name))
     ```
 
 
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
+    :param bool dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
     :param Sequence[str] ids: A list of VSwitch IDs.
     :param bool is_default: Indicate whether the VSwitch is created by the system.
     :param str name_regex: A regex string to filter results by name.
     :param str resource_group_id: The Id of resource group which VSWitch belongs.
+    :param str route_table_id: The route table ID of the VSwitch.
+    :param str status: The status of the VSwitch. Valid values: `Available` and `Pending`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: ID of the VPC that owns the VSwitch.
+    :param str vswitch_name: The name of the VSwitch.
+    :param int vswitch_owner_id: The VSwitch owner id.
     :param str zone_id: The availability zone of the VSwitch.
     """
     __args__ = dict()
     __args__['cidrBlock'] = cidr_block
+    __args__['dryRun'] = dry_run
     __args__['ids'] = ids
     __args__['isDefault'] = is_default
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
+    __args__['routeTableId'] = route_table_id
+    __args__['status'] = status
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
+    __args__['vswitchName'] = vswitch_name
+    __args__['vswitchOwnerId'] = vswitch_owner_id
     __args__['zoneId'] = zone_id
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -223,6 +301,7 @@ def get_switches(cidr_block: Optional[str] = None,
 
     return AwaitableGetSwitchesResult(
         cidr_block=__ret__.cidr_block,
+        dry_run=__ret__.dry_run,
         id=__ret__.id,
         ids=__ret__.ids,
         is_default=__ret__.is_default,
@@ -230,7 +309,11 @@ def get_switches(cidr_block: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         resource_group_id=__ret__.resource_group_id,
+        route_table_id=__ret__.route_table_id,
+        status=__ret__.status,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id,
+        vswitch_name=__ret__.vswitch_name,
+        vswitch_owner_id=__ret__.vswitch_owner_id,
         vswitches=__ret__.vswitches,
         zone_id=__ret__.zone_id)

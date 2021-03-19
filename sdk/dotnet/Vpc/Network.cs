@@ -22,10 +22,10 @@ namespace Pulumi.AliCloud.Vpc
     public partial class Network : Pulumi.CustomResource
     {
         /// <summary>
-        /// The CIDR block for the VPC.
+        /// The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         /// </summary>
         [Output("cidrBlock")]
-        public Output<string> CidrBlock { get; private set; } = null!;
+        public Output<string?> CidrBlock { get; private set; } = null!;
 
         /// <summary>
         /// The VPC description. Defaults to null.
@@ -34,7 +34,25 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the VPC. Defaults to null.
+        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// </summary>
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+        /// </summary>
+        [Output("enableIpv6")]
+        public Output<bool?> EnableIpv6 { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+        /// </summary>
+        [Output("ipv6CidrBlock")]
+        public Output<string> Ipv6CidrBlock { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -66,11 +84,26 @@ namespace Pulumi.AliCloud.Vpc
         [Output("secondaryCidrBlocks")]
         public Output<ImmutableArray<string>> SecondaryCidrBlocks { get; private set; } = null!;
 
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The user cidrs of the VPC.
+        /// </summary>
+        [Output("userCidrs")]
+        public Output<ImmutableArray<string>> UserCidrs { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the VPC. Defaults to null.
+        /// </summary>
+        [Output("vpcName")]
+        public Output<string> VpcName { get; private set; } = null!;
 
 
         /// <summary>
@@ -80,7 +113,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Network(string name, NetworkArgs args, CustomResourceOptions? options = null)
+        public Network(string name, NetworkArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:vpc/network:Network", name, args ?? new NetworkArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -119,10 +152,10 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NetworkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The CIDR block for the VPC.
+        /// The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         /// </summary>
-        [Input("cidrBlock", required: true)]
-        public Input<string> CidrBlock { get; set; } = null!;
+        [Input("cidrBlock")]
+        public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
         /// The VPC description. Defaults to null.
@@ -131,7 +164,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the VPC. Defaults to null.
+        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+        /// </summary>
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -166,6 +211,24 @@ namespace Pulumi.AliCloud.Vpc
             set => _tags = value;
         }
 
+        [Input("userCidrs")]
+        private InputList<string>? _userCidrs;
+
+        /// <summary>
+        /// The user cidrs of the VPC.
+        /// </summary>
+        public InputList<string> UserCidrs
+        {
+            get => _userCidrs ?? (_userCidrs = new InputList<string>());
+            set => _userCidrs = value;
+        }
+
+        /// <summary>
+        /// The name of the VPC. Defaults to null.
+        /// </summary>
+        [Input("vpcName")]
+        public Input<string>? VpcName { get; set; }
+
         public NetworkArgs()
         {
         }
@@ -174,7 +237,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NetworkState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The CIDR block for the VPC.
+        /// The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
@@ -186,7 +249,25 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the VPC. Defaults to null.
+        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+        /// </summary>
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
+        /// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+        /// </summary>
+        [Input("ipv6CidrBlock")]
+        public Input<string>? Ipv6CidrBlock { get; set; }
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -224,6 +305,9 @@ namespace Pulumi.AliCloud.Vpc
             set => _secondaryCidrBlocks = value;
         }
 
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -235,6 +319,24 @@ namespace Pulumi.AliCloud.Vpc
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        [Input("userCidrs")]
+        private InputList<string>? _userCidrs;
+
+        /// <summary>
+        /// The user cidrs of the VPC.
+        /// </summary>
+        public InputList<string> UserCidrs
+        {
+            get => _userCidrs ?? (_userCidrs = new InputList<string>());
+            set => _userCidrs = value;
+        }
+
+        /// <summary>
+        /// The name of the VPC. Defaults to null.
+        /// </summary>
+        [Input("vpcName")]
+        public Input<string>? VpcName { get; set; }
 
         public NetworkState()
         {
