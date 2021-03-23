@@ -48,9 +48,13 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "alicloudRouterInterfaceConnectionBasic"
-        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
-        bar_network = alicloud.vpc.Network("barNetwork", cidr_block="192.168.0.0/16",
-        opts=pulumi.ResourceOptions(provider=alicloud))
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        bar_network = alicloud.vpc.Network("barNetwork",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider=alicloud))
         initiate = alicloud.vpc.RouterInterface("initiate",
             opposite_region=region,
             router_type="VRouter",

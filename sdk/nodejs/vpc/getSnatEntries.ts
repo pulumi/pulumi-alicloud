@@ -18,35 +18,33 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "snat-entry-example-name";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const fooNetwork = new alicloud.vpc.Network("foo", {
- *     cidrBlock: "172.16.0.0/12",
  * });
- * const fooSwitch = new alicloud.vpc.Switch("foo", {
- *     availabilityZone: defaultZones.zones[0].id,
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vpcId: fooNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     vpcId: fooNetwork.id,
+ *     availabilityZone: _default.then(_default => _default.zones[0].id),
+ *     vswitchName: name,
  * });
- * const fooNatGateway = new alicloud.vpc.NatGateway("foo", {
+ * const fooNatGateway = new alicloud.vpc.NatGateway("fooNatGateway", {
+ *     vpcId: fooNetwork.id,
  *     specification: "Small",
- *     vpcId: fooNetwork.id,
  * });
- * const fooEip = new alicloud.ecs.Eip("foo", {});
- * const fooEipAssociation = new alicloud.ecs.EipAssociation("foo", {
+ * const fooEip = new alicloud.ecs.Eip("fooEip", {});
+ * const fooEipAssociation = new alicloud.ecs.EipAssociation("fooEipAssociation", {
  *     allocationId: fooEip.id,
  *     instanceId: fooNatGateway.id,
  * });
- * const fooSnatEntry = new alicloud.vpc.SnatEntry("foo", {
- *     snatIp: fooEip.ipAddress,
+ * const fooSnatEntry = new alicloud.vpc.SnatEntry("fooSnatEntry", {
  *     snatTableId: fooNatGateway.snatTableIds,
  *     sourceVswitchId: fooSwitch.id,
+ *     snatIp: fooEip.ipAddress,
  * });
  * const fooSnatEntries = fooSnatEntry.snatTableId.apply(snatTableId => alicloud.vpc.getSnatEntries({
  *     snatTableId: snatTableId,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSnatEntries(args: GetSnatEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetSnatEntriesResult> {

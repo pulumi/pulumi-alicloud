@@ -46,11 +46,14 @@ class KeyPairAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "keyPairAttachmentName"
-        vpc = alicloud.vpc.Network("vpc", cidr_block="10.1.0.0/21")
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
         vswitch = alicloud.vpc.Switch("vswitch",
             vpc_id=vpc.id,
             cidr_block="10.1.1.0/24",
-            availability_zone=default.zones[0].id)
+            availability_zone=default.zones[0].id,
+            vswitch_name=name)
         group = alicloud.ecs.SecurityGroup("group",
             description="New security group",
             vpc_id=vpc.id)

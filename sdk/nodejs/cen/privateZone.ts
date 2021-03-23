@@ -23,7 +23,10 @@ import * as utilities from "../utilities";
  *
  * // Create a cen Private Zone resource and use it.
  * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "test_name",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
  * const defaultInstanceAttachment = new alicloud.cen.InstanceAttachment("defaultInstanceAttachment", {
  *     instanceId: defaultInstance.id,
  *     childInstanceId: defaultNetwork.id,

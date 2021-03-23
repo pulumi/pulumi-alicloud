@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.CS
     /// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster-id
+    ///  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/managedKubernetes:ManagedKubernetes")]
@@ -245,6 +245,9 @@ namespace Pulumi.AliCloud.CS
         [Output("proxyMode")]
         public Output<string?> ProxyMode { get; private set; } = null!;
 
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
         [Output("rdsInstances")]
         public Output<ImmutableArray<string>> RdsInstances { get; private set; } = null!;
 
@@ -384,7 +387,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> WorkerInstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         /// </summary>
         [Output("workerInstanceTypes")]
         public Output<ImmutableArray<string>> WorkerInstanceTypes { get; private set; } = null!;
@@ -396,7 +399,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.ManagedKubernetesWorkerNode>> WorkerNodes { get; private set; } = null!;
 
         /// <summary>
-        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         /// </summary>
         [Output("workerNumber")]
         public Output<int?> WorkerNumber { get; private set; } = null!;
@@ -699,6 +702,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("rdsInstances")]
         private InputList<string>? _rdsInstances;
+
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
         public InputList<string> RdsInstances
         {
             get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
@@ -844,7 +851,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerInstanceTypes;
 
         /// <summary>
-        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         /// </summary>
         public InputList<string> WorkerInstanceTypes
         {
@@ -853,7 +860,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         /// </summary>
         [Input("workerNumber")]
         public Input<int>? WorkerNumber { get; set; }
@@ -1134,6 +1141,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("rdsInstances")]
         private InputList<string>? _rdsInstances;
+
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
         public InputList<string> RdsInstances
         {
             get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
@@ -1297,7 +1308,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerInstanceTypes;
 
         /// <summary>
-        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         /// </summary>
         public InputList<string> WorkerInstanceTypes
         {
@@ -1318,7 +1329,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+        /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
         /// </summary>
         [Input("workerNumber")]
         public Input<int>? WorkerNumber { get; set; }

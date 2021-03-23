@@ -56,6 +56,7 @@ import * as utilities from "../utilities";
  * for (const range = {value: 0}; range.value < (_var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
  *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
  *         availabilityZone: _var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : _var.availability_zone,
+ *         vswitchName: _var.vswitch_name,
  *         cidrBlock: _var.vswitch_cidr,
  *         vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id,
  *     }));
@@ -183,6 +184,7 @@ import * as utilities from "../utilities";
  * for (const range = {value: 0}; range.value < (_var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
  *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
  *         availabilityZone: _var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : _var.availability_zone,
+ *         vswitchName: _var.vswitch_name,
  *         cidrBlock: _var.vswitch_cidr,
  *         vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id,
  *     }));
@@ -306,6 +308,7 @@ import * as utilities from "../utilities";
  * for (const range = {value: 0}; range.value < (_var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
  *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
  *         availabilityZone: _var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : _var.availability_zone,
+ *         vswitchName: _var.vswitch_name,
  *         cidrBlock: _var.vswitch_cidr,
  *         vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id,
  *     }));
@@ -421,6 +424,7 @@ import * as utilities from "../utilities";
  * for (const range = {value: 0}; range.value < (_var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
  *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
  *         availabilityZone: _var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : _var.availability_zone,
+ *         vswitchName: _var.vswitch_name,
  *         cidrBlock: _var.vswitch_cidr,
  *         vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id,
  *     }));

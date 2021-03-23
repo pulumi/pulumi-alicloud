@@ -34,6 +34,7 @@ import (
 // 		}
 // 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 			VpcName:   pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -42,6 +43,7 @@ import (
 // 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // 			CidrBlock:        pulumi.String("172.16.0.0/24"),
 // 			VpcId:            vpc.ID(),
+// 			VswitchName:      pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -63,6 +65,8 @@ func GetSwitches(ctx *pulumi.Context, args *GetSwitchesArgs, opts ...pulumi.Invo
 type GetSwitchesArgs struct {
 	// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
 	CidrBlock *string `pulumi:"cidrBlock"`
+	// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+	DryRun *bool `pulumi:"dryRun"`
 	// A list of VSwitch IDs.
 	Ids []string `pulumi:"ids"`
 	// Indicate whether the VSwitch is created by the system.
@@ -72,10 +76,18 @@ type GetSwitchesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which VSWitch belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The route table ID of the VSwitch.
+	RouteTableId *string `pulumi:"routeTableId"`
+	// The status of the VSwitch. Valid values: `Available` and `Pending`.
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC that owns the VSwitch.
 	VpcId *string `pulumi:"vpcId"`
+	// The name of the VSwitch.
+	VswitchName *string `pulumi:"vswitchName"`
+	// The VSwitch owner id.
+	VswitchOwnerId *int `pulumi:"vswitchOwnerId"`
 	// The availability zone of the VSwitch.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -84,6 +96,7 @@ type GetSwitchesArgs struct {
 type GetSwitchesResult struct {
 	// CIDR block of the VSwitch.
 	CidrBlock *string `pulumi:"cidrBlock"`
+	DryRun    *bool   `pulumi:"dryRun"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of VSwitch IDs.
@@ -92,12 +105,21 @@ type GetSwitchesResult struct {
 	IsDefault *bool   `pulumi:"isDefault"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of VSwitch names.
-	Names           []string               `pulumi:"names"`
-	OutputFile      *string                `pulumi:"outputFile"`
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The resource group ID of the VSwitch.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The route table ID of the VSwitch.
+	RouteTableId *string `pulumi:"routeTableId"`
+	// The status of the VSwitch.
+	Status *string `pulumi:"status"`
+	// The Tags of the VSwitch.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC that owns the VSwitch.
 	VpcId *string `pulumi:"vpcId"`
+	// Name of the VSwitch.
+	VswitchName    *string `pulumi:"vswitchName"`
+	VswitchOwnerId *int    `pulumi:"vswitchOwnerId"`
 	// A list of VSwitches. Each element contains the following attributes:
 	Vswitches []GetSwitchesVswitch `pulumi:"vswitches"`
 	// ID of the availability zone where the VSwitch is located.

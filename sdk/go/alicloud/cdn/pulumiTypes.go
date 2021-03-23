@@ -941,7 +941,7 @@ func (o DomainNewCertificateConfigPtrOutput) ServerCertificateStatus() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-type DomainNewSources struct {
+type DomainNewSource struct {
 	// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
 	Content string `pulumi:"content"`
 	// The port of source. Valid values are `443` and `80`. Default value is `80`.
@@ -954,18 +954,18 @@ type DomainNewSources struct {
 	Weight *int `pulumi:"weight"`
 }
 
-// DomainNewSourcesInput is an input type that accepts DomainNewSourcesArgs and DomainNewSourcesOutput values.
-// You can construct a concrete instance of `DomainNewSourcesInput` via:
+// DomainNewSourceInput is an input type that accepts DomainNewSourceArgs and DomainNewSourceOutput values.
+// You can construct a concrete instance of `DomainNewSourceInput` via:
 //
-//          DomainNewSourcesArgs{...}
-type DomainNewSourcesInput interface {
+//          DomainNewSourceArgs{...}
+type DomainNewSourceInput interface {
 	pulumi.Input
 
-	ToDomainNewSourcesOutput() DomainNewSourcesOutput
-	ToDomainNewSourcesOutputWithContext(context.Context) DomainNewSourcesOutput
+	ToDomainNewSourceOutput() DomainNewSourceOutput
+	ToDomainNewSourceOutputWithContext(context.Context) DomainNewSourceOutput
 }
 
-type DomainNewSourcesArgs struct {
+type DomainNewSourceArgs struct {
 	// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
 	Content pulumi.StringInput `pulumi:"content"`
 	// The port of source. Valid values are `443` and `80`. Default value is `80`.
@@ -978,174 +978,100 @@ type DomainNewSourcesArgs struct {
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
-func (DomainNewSourcesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainNewSources)(nil)).Elem()
+func (DomainNewSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainNewSource)(nil)).Elem()
 }
 
-func (i DomainNewSourcesArgs) ToDomainNewSourcesOutput() DomainNewSourcesOutput {
-	return i.ToDomainNewSourcesOutputWithContext(context.Background())
+func (i DomainNewSourceArgs) ToDomainNewSourceOutput() DomainNewSourceOutput {
+	return i.ToDomainNewSourceOutputWithContext(context.Background())
 }
 
-func (i DomainNewSourcesArgs) ToDomainNewSourcesOutputWithContext(ctx context.Context) DomainNewSourcesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNewSourcesOutput)
+func (i DomainNewSourceArgs) ToDomainNewSourceOutputWithContext(ctx context.Context) DomainNewSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNewSourceOutput)
 }
 
-func (i DomainNewSourcesArgs) ToDomainNewSourcesPtrOutput() DomainNewSourcesPtrOutput {
-	return i.ToDomainNewSourcesPtrOutputWithContext(context.Background())
-}
-
-func (i DomainNewSourcesArgs) ToDomainNewSourcesPtrOutputWithContext(ctx context.Context) DomainNewSourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNewSourcesOutput).ToDomainNewSourcesPtrOutputWithContext(ctx)
-}
-
-// DomainNewSourcesPtrInput is an input type that accepts DomainNewSourcesArgs, DomainNewSourcesPtr and DomainNewSourcesPtrOutput values.
-// You can construct a concrete instance of `DomainNewSourcesPtrInput` via:
+// DomainNewSourceArrayInput is an input type that accepts DomainNewSourceArray and DomainNewSourceArrayOutput values.
+// You can construct a concrete instance of `DomainNewSourceArrayInput` via:
 //
-//          DomainNewSourcesArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainNewSourcesPtrInput interface {
+//          DomainNewSourceArray{ DomainNewSourceArgs{...} }
+type DomainNewSourceArrayInput interface {
 	pulumi.Input
 
-	ToDomainNewSourcesPtrOutput() DomainNewSourcesPtrOutput
-	ToDomainNewSourcesPtrOutputWithContext(context.Context) DomainNewSourcesPtrOutput
+	ToDomainNewSourceArrayOutput() DomainNewSourceArrayOutput
+	ToDomainNewSourceArrayOutputWithContext(context.Context) DomainNewSourceArrayOutput
 }
 
-type domainNewSourcesPtrType DomainNewSourcesArgs
+type DomainNewSourceArray []DomainNewSourceInput
 
-func DomainNewSourcesPtr(v *DomainNewSourcesArgs) DomainNewSourcesPtrInput {
-	return (*domainNewSourcesPtrType)(v)
+func (DomainNewSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainNewSource)(nil)).Elem()
 }
 
-func (*domainNewSourcesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainNewSources)(nil)).Elem()
+func (i DomainNewSourceArray) ToDomainNewSourceArrayOutput() DomainNewSourceArrayOutput {
+	return i.ToDomainNewSourceArrayOutputWithContext(context.Background())
 }
 
-func (i *domainNewSourcesPtrType) ToDomainNewSourcesPtrOutput() DomainNewSourcesPtrOutput {
-	return i.ToDomainNewSourcesPtrOutputWithContext(context.Background())
+func (i DomainNewSourceArray) ToDomainNewSourceArrayOutputWithContext(ctx context.Context) DomainNewSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNewSourceArrayOutput)
 }
 
-func (i *domainNewSourcesPtrType) ToDomainNewSourcesPtrOutputWithContext(ctx context.Context) DomainNewSourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNewSourcesPtrOutput)
+type DomainNewSourceOutput struct{ *pulumi.OutputState }
+
+func (DomainNewSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainNewSource)(nil)).Elem()
 }
 
-type DomainNewSourcesOutput struct{ *pulumi.OutputState }
-
-func (DomainNewSourcesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainNewSources)(nil)).Elem()
-}
-
-func (o DomainNewSourcesOutput) ToDomainNewSourcesOutput() DomainNewSourcesOutput {
+func (o DomainNewSourceOutput) ToDomainNewSourceOutput() DomainNewSourceOutput {
 	return o
 }
 
-func (o DomainNewSourcesOutput) ToDomainNewSourcesOutputWithContext(ctx context.Context) DomainNewSourcesOutput {
+func (o DomainNewSourceOutput) ToDomainNewSourceOutputWithContext(ctx context.Context) DomainNewSourceOutput {
 	return o
-}
-
-func (o DomainNewSourcesOutput) ToDomainNewSourcesPtrOutput() DomainNewSourcesPtrOutput {
-	return o.ToDomainNewSourcesPtrOutputWithContext(context.Background())
-}
-
-func (o DomainNewSourcesOutput) ToDomainNewSourcesPtrOutputWithContext(ctx context.Context) DomainNewSourcesPtrOutput {
-	return o.ApplyT(func(v DomainNewSources) *DomainNewSources {
-		return &v
-	}).(DomainNewSourcesPtrOutput)
 }
 
 // The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
-func (o DomainNewSourcesOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func(v DomainNewSources) string { return v.Content }).(pulumi.StringOutput)
+func (o DomainNewSourceOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainNewSource) string { return v.Content }).(pulumi.StringOutput)
 }
 
 // The port of source. Valid values are `443` and `80`. Default value is `80`.
-func (o DomainNewSourcesOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DomainNewSources) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o DomainNewSourceOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DomainNewSource) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // Priority of the source. Valid values are `0` and `100`. Default value is `20`.
-func (o DomainNewSourcesOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DomainNewSources) *int { return v.Priority }).(pulumi.IntPtrOutput)
+func (o DomainNewSourceOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DomainNewSource) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
 // The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
-func (o DomainNewSourcesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v DomainNewSources) string { return v.Type }).(pulumi.StringOutput)
+func (o DomainNewSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainNewSource) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
-func (o DomainNewSourcesOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DomainNewSources) *int { return v.Weight }).(pulumi.IntPtrOutput)
+func (o DomainNewSourceOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DomainNewSource) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
 
-type DomainNewSourcesPtrOutput struct{ *pulumi.OutputState }
+type DomainNewSourceArrayOutput struct{ *pulumi.OutputState }
 
-func (DomainNewSourcesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainNewSources)(nil)).Elem()
+func (DomainNewSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainNewSource)(nil)).Elem()
 }
 
-func (o DomainNewSourcesPtrOutput) ToDomainNewSourcesPtrOutput() DomainNewSourcesPtrOutput {
+func (o DomainNewSourceArrayOutput) ToDomainNewSourceArrayOutput() DomainNewSourceArrayOutput {
 	return o
 }
 
-func (o DomainNewSourcesPtrOutput) ToDomainNewSourcesPtrOutputWithContext(ctx context.Context) DomainNewSourcesPtrOutput {
+func (o DomainNewSourceArrayOutput) ToDomainNewSourceArrayOutputWithContext(ctx context.Context) DomainNewSourceArrayOutput {
 	return o
 }
 
-func (o DomainNewSourcesPtrOutput) Elem() DomainNewSourcesOutput {
-	return o.ApplyT(func(v *DomainNewSources) DomainNewSources { return *v }).(DomainNewSourcesOutput)
-}
-
-// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
-func (o DomainNewSourcesPtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainNewSources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Content
-	}).(pulumi.StringPtrOutput)
-}
-
-// The port of source. Valid values are `443` and `80`. Default value is `80`.
-func (o DomainNewSourcesPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DomainNewSources) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Priority of the source. Valid values are `0` and `100`. Default value is `20`.
-func (o DomainNewSourcesPtrOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DomainNewSources) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Priority
-	}).(pulumi.IntPtrOutput)
-}
-
-// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
-func (o DomainNewSourcesPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainNewSources) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
-func (o DomainNewSourcesPtrOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DomainNewSources) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Weight
-	}).(pulumi.IntPtrOutput)
+func (o DomainNewSourceArrayOutput) Index(i pulumi.IntInput) DomainNewSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainNewSource {
+		return vs[0].([]DomainNewSource)[vs[1].(int)]
+	}).(DomainNewSourceOutput)
 }
 
 type DomainPage404Config struct {
@@ -1645,8 +1571,8 @@ func init() {
 	pulumi.RegisterOutputType(DomainHttpHeaderConfigArrayOutput{})
 	pulumi.RegisterOutputType(DomainNewCertificateConfigOutput{})
 	pulumi.RegisterOutputType(DomainNewCertificateConfigPtrOutput{})
-	pulumi.RegisterOutputType(DomainNewSourcesOutput{})
-	pulumi.RegisterOutputType(DomainNewSourcesPtrOutput{})
+	pulumi.RegisterOutputType(DomainNewSourceOutput{})
+	pulumi.RegisterOutputType(DomainNewSourceArrayOutput{})
 	pulumi.RegisterOutputType(DomainPage404ConfigOutput{})
 	pulumi.RegisterOutputType(DomainPage404ConfigPtrOutput{})
 	pulumi.RegisterOutputType(DomainParameterFilterConfigOutput{})

@@ -43,13 +43,13 @@ class DomainConfig(pulumi.CustomResource):
             domain_name="tf-testacc%d.xiaozhu.com",
             cdn_type="web",
             scope="overseas",
-            sources=alicloud.cdn.DomainNewSourcesArgs(
+            sources=[alicloud.cdn.DomainNewSourceArgs(
                 content="1.1.1.1",
                 type="ipaddr",
                 priority=20,
                 port=80,
                 weight=15,
-            ))
+            )])
         config = alicloud.cdn.DomainConfig("config",
             domain_name=domain.domain_name,
             function_name="ip_allow_list_set",

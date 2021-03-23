@@ -20,14 +20,16 @@ import * as utilities from "../utilities";
  * const defaultZones = pulumi.output(alicloud.getZones({ async: true }));
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "172.16.0.0/16",
+ *     vpcName: name,
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
  *     availabilityZone: defaultZones.zones[0].id,
  *     cidrBlock: "172.16.0.0/24",
  *     vpcId: vpc.id,
+ *     vswitchName: name,
  * });
- * const defaultSwitches = vswitch.name.apply(name => alicloud.vpc.getSwitches({
- *     nameRegex: name,
+ * const defaultSwitches = vswitch.vswitchName.apply(vswitchName => alicloud.vpc.getSwitches({
+ *     nameRegex: vswitchName,
  * }, { async: true }));
  * ```
  */
@@ -42,13 +44,18 @@ export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions)
     }
     return pulumi.runtime.invoke("alicloud:vpc/getSwitches:getSwitches", {
         "cidrBlock": args.cidrBlock,
+        "dryRun": args.dryRun,
         "ids": args.ids,
         "isDefault": args.isDefault,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "resourceGroupId": args.resourceGroupId,
+        "routeTableId": args.routeTableId,
+        "status": args.status,
         "tags": args.tags,
         "vpcId": args.vpcId,
+        "vswitchName": args.vswitchName,
+        "vswitchOwnerId": args.vswitchOwnerId,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -61,6 +68,10 @@ export interface GetSwitchesArgs {
      * Filter results by a specific CIDR block. For example: "172.16.0.0/12".
      */
     readonly cidrBlock?: string;
+    /**
+     * Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     */
+    readonly dryRun?: boolean;
     /**
      * A list of VSwitch IDs.
      */
@@ -79,6 +90,14 @@ export interface GetSwitchesArgs {
      */
     readonly resourceGroupId?: string;
     /**
+     * The route table ID of the VSwitch.
+     */
+    readonly routeTableId?: string;
+    /**
+     * The status of the VSwitch. Valid values: `Available` and `Pending`.
+     */
+    readonly status?: string;
+    /**
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
@@ -86,6 +105,14 @@ export interface GetSwitchesArgs {
      * ID of the VPC that owns the VSwitch.
      */
     readonly vpcId?: string;
+    /**
+     * The name of the VSwitch.
+     */
+    readonly vswitchName?: string;
+    /**
+     * The VSwitch owner id.
+     */
+    readonly vswitchOwnerId?: number;
     /**
      * The availability zone of the VSwitch.
      */
@@ -100,6 +127,7 @@ export interface GetSwitchesResult {
      * CIDR block of the VSwitch.
      */
     readonly cidrBlock?: string;
+    readonly dryRun?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -118,12 +146,31 @@ export interface GetSwitchesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The resource group ID of the VSwitch.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The route table ID of the VSwitch.
+     */
+    readonly routeTableId?: string;
+    /**
+     * The status of the VSwitch.
+     */
+    readonly status?: string;
+    /**
+     * The Tags of the VSwitch.
+     */
     readonly tags?: {[key: string]: any};
     /**
      * ID of the VPC that owns the VSwitch.
      */
     readonly vpcId?: string;
+    /**
+     * Name of the VSwitch.
+     */
+    readonly vswitchName?: string;
+    readonly vswitchOwnerId?: number;
     /**
      * A list of VSwitches. Each element contains the following attributes:
      */

@@ -42,15 +42,29 @@ export class Network extends pulumi.CustomResource {
     }
 
     /**
-     * The CIDR block for the VPC.
+     * The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    public readonly cidrBlock!: pulumi.Output<string | undefined>;
     /**
      * The VPC description. Defaults to null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the VPC. Defaults to null.
+     * Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     */
+    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
+     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+     */
+    public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
+    /**
+     * (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+     */
+    public /*out*/ readonly ipv6CidrBlock!: pulumi.Output<string>;
+    /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -73,10 +87,19 @@ export class Network extends pulumi.CustomResource {
      * The secondary CIDR blocks for the VPC.
      */
     public readonly secondaryCidrBlocks!: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The user cidrs of the VPC.
+     */
+    public readonly userCidrs!: pulumi.Output<string[] | undefined>;
+    /**
+     * The name of the VPC. Defaults to null.
+     */
+    public readonly vpcName!: pulumi.Output<string>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -85,7 +108,7 @@ export class Network extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NetworkArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: NetworkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkArgs | NetworkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -93,27 +116,36 @@ export class Network extends pulumi.CustomResource {
             const state = argsOrState as NetworkState | undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["dryRun"] = state ? state.dryRun : undefined;
+            inputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
+            inputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["routeTableId"] = state ? state.routeTableId : undefined;
             inputs["routerId"] = state ? state.routerId : undefined;
             inputs["routerTableId"] = state ? state.routerTableId : undefined;
             inputs["secondaryCidrBlocks"] = state ? state.secondaryCidrBlocks : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["userCidrs"] = state ? state.userCidrs : undefined;
+            inputs["vpcName"] = state ? state.vpcName : undefined;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cidrBlock'");
-            }
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["dryRun"] = args ? args.dryRun : undefined;
+            inputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["secondaryCidrBlocks"] = args ? args.secondaryCidrBlocks : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["userCidrs"] = args ? args.userCidrs : undefined;
+            inputs["vpcName"] = args ? args.vpcName : undefined;
+            inputs["ipv6CidrBlock"] = undefined /*out*/;
             inputs["routeTableId"] = undefined /*out*/;
             inputs["routerId"] = undefined /*out*/;
             inputs["routerTableId"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -127,7 +159,7 @@ export class Network extends pulumi.CustomResource {
  */
 export interface NetworkState {
     /**
-     * The CIDR block for the VPC.
+     * The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
      */
     readonly cidrBlock?: pulumi.Input<string>;
     /**
@@ -135,7 +167,21 @@ export interface NetworkState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the VPC. Defaults to null.
+     * Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     */
+    readonly dryRun?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+     */
+    readonly enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+     */
+    readonly ipv6CidrBlock?: pulumi.Input<string>;
+    /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -158,10 +204,19 @@ export interface NetworkState {
      * The secondary CIDR blocks for the VPC.
      */
     readonly secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The user cidrs of the VPC.
+     */
+    readonly userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the VPC. Defaults to null.
+     */
+    readonly vpcName?: pulumi.Input<string>;
 }
 
 /**
@@ -169,15 +224,25 @@ export interface NetworkState {
  */
 export interface NetworkArgs {
     /**
-     * The CIDR block for the VPC.
+     * The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
      */
-    readonly cidrBlock: pulumi.Input<string>;
+    readonly cidrBlock?: pulumi.Input<string>;
     /**
      * The VPC description. Defaults to null.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the VPC. Defaults to null.
+     * Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     */
+    readonly dryRun?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+     */
+    readonly enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -192,4 +257,12 @@ export interface NetworkArgs {
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The user cidrs of the VPC.
+     */
+    readonly userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the VPC. Defaults to null.
+     */
+    readonly vpcName?: pulumi.Input<string>;
 }

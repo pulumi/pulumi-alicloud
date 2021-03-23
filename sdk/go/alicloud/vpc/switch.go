@@ -21,18 +21,28 @@ import (
 type Switch struct {
 	pulumi.CustomResourceState
 
-	// The AZ for the switch.
+	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+	//
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The CIDR block for the switch.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
 	// The switch description. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the switch. Defaults to null.
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Available in 1.119.0+) The status of the switch.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// The name of the switch. Defaults to null.
+	VswitchName pulumi.StringOutput `pulumi:"vswitchName"`
+	// The AZ for the switch.
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewSwitch registers a new resource with the given unique name, arguments, and options.
@@ -42,9 +52,6 @@ func NewSwitch(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AvailabilityZone == nil {
-		return nil, errors.New("invalid value for required argument 'AvailabilityZone'")
-	}
 	if args.CidrBlock == nil {
 		return nil, errors.New("invalid value for required argument 'CidrBlock'")
 	}
@@ -73,33 +80,53 @@ func GetSwitch(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Switch resources.
 type switchState struct {
-	// The AZ for the switch.
+	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+	//
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The CIDR block for the switch.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The switch description. Defaults to null.
 	Description *string `pulumi:"description"`
-	// The name of the switch. Defaults to null.
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name *string `pulumi:"name"`
+	// (Available in 1.119.0+) The status of the switch.
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
+	// The name of the switch. Defaults to null.
+	VswitchName *string `pulumi:"vswitchName"`
+	// The AZ for the switch.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type SwitchState struct {
-	// The AZ for the switch.
+	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+	//
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
 	// The CIDR block for the switch.
 	CidrBlock pulumi.StringPtrInput
 	// The switch description. Defaults to null.
 	Description pulumi.StringPtrInput
-	// The name of the switch. Defaults to null.
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringPtrInput
+	// (Available in 1.119.0+) The status of the switch.
+	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
+	// The name of the switch. Defaults to null.
+	VswitchName pulumi.StringPtrInput
+	// The AZ for the switch.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (SwitchState) ElementType() reflect.Type {
@@ -107,34 +134,50 @@ func (SwitchState) ElementType() reflect.Type {
 }
 
 type switchArgs struct {
-	// The AZ for the switch.
-	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+	//
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The CIDR block for the switch.
 	CidrBlock string `pulumi:"cidrBlock"`
 	// The switch description. Defaults to null.
 	Description *string `pulumi:"description"`
-	// The name of the switch. Defaults to null.
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name *string `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
+	// The name of the switch. Defaults to null.
+	VswitchName *string `pulumi:"vswitchName"`
+	// The AZ for the switch.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Switch resource.
 type SwitchArgs struct {
-	// The AZ for the switch.
-	AvailabilityZone pulumi.StringInput
+	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+	//
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	AvailabilityZone pulumi.StringPtrInput
 	// The CIDR block for the switch.
 	CidrBlock pulumi.StringInput
 	// The switch description. Defaults to null.
 	Description pulumi.StringPtrInput
-	// The name of the switch. Defaults to null.
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The VPC ID.
 	VpcId pulumi.StringInput
+	// The name of the switch. Defaults to null.
+	VswitchName pulumi.StringPtrInput
+	// The AZ for the switch.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (SwitchArgs) ElementType() reflect.Type {

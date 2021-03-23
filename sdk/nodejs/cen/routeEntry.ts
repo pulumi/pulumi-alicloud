@@ -35,13 +35,17 @@ import * as utilities from "../utilities";
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "172.16.0.0/12"}, {
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * }, {
  *     provider: alicloud.hz,
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/21",
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     vswitchName: name,
  * }, {
  *     provider: alicloud.hz,
  * });

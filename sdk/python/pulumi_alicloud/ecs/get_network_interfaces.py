@@ -208,12 +208,15 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
     name = config.get("name")
     if name is None:
         name = "networkInterfacesName"
-    vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/24")
+    vpc = alicloud.vpc.Network("vpc",
+        cidr_block="192.168.0.0/24",
+        vpc_name=name)
     default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
     vswitch = alicloud.vpc.Switch("vswitch",
         availability_zone=default_zones.zones[0].id,
         cidr_block="192.168.0.0/24",
-        vpc_id=vpc.id)
+        vpc_id=vpc.id,
+        vswitch_name=name)
     group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
     interface = alicloud.vpc.NetworkInterface("interface",
         description="Basic test",

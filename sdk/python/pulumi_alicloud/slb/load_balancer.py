@@ -57,7 +57,8 @@ class LoadBalancer(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            availability_zone=default_zones.zones[0].id)
+            availability_zone=default_zones.zones[0].id,
+            vswitch_name=name)
         default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
             specification="slb.s2.small",
             vswitch_id=default_switch.id,

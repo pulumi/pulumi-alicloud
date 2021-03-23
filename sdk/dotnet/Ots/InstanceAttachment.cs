@@ -44,6 +44,7 @@ namespace Pulumi.AliCloud.Ots
     ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
     ///             VpcId = fooNetwork.Id,
+    ///             VswitchName = "for-ots-instance",
     ///             CidrBlock = "172.16.1.0/24",
     ///             AvailabilityZone = fooZones.Apply(fooZones =&gt; fooZones.Zones[0].Id),
     ///         });

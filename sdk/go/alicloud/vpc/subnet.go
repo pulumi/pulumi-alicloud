@@ -14,12 +14,17 @@ import (
 type Subnet struct {
 	pulumi.CustomResourceState
 
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringOutput    `pulumi:"availabilityZone"`
 	CidrBlock        pulumi.StringOutput    `pulumi:"cidrBlock"`
 	Description      pulumi.StringPtrOutput `pulumi:"description"`
-	Name             pulumi.StringOutput    `pulumi:"name"`
-	Tags             pulumi.MapOutput       `pulumi:"tags"`
-	VpcId            pulumi.StringOutput    `pulumi:"vpcId"`
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	Name        pulumi.StringOutput `pulumi:"name"`
+	Status      pulumi.StringOutput `pulumi:"status"`
+	Tags        pulumi.MapOutput    `pulumi:"tags"`
+	VpcId       pulumi.StringOutput `pulumi:"vpcId"`
+	VswitchName pulumi.StringOutput `pulumi:"vswitchName"`
+	ZoneId      pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewSubnet registers a new resource with the given unique name, arguments, and options.
@@ -29,9 +34,6 @@ func NewSubnet(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AvailabilityZone == nil {
-		return nil, errors.New("invalid value for required argument 'AvailabilityZone'")
-	}
 	if args.CidrBlock == nil {
 		return nil, errors.New("invalid value for required argument 'CidrBlock'")
 	}
@@ -60,21 +62,31 @@ func GetSubnet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subnet resources.
 type subnetState struct {
-	AvailabilityZone *string                `pulumi:"availabilityZone"`
-	CidrBlock        *string                `pulumi:"cidrBlock"`
-	Description      *string                `pulumi:"description"`
-	Name             *string                `pulumi:"name"`
-	Tags             map[string]interface{} `pulumi:"tags"`
-	VpcId            *string                `pulumi:"vpcId"`
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	CidrBlock        *string `pulumi:"cidrBlock"`
+	Description      *string `pulumi:"description"`
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	Name        *string                `pulumi:"name"`
+	Status      *string                `pulumi:"status"`
+	Tags        map[string]interface{} `pulumi:"tags"`
+	VpcId       *string                `pulumi:"vpcId"`
+	VswitchName *string                `pulumi:"vswitchName"`
+	ZoneId      *string                `pulumi:"zoneId"`
 }
 
 type SubnetState struct {
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
 	CidrBlock        pulumi.StringPtrInput
 	Description      pulumi.StringPtrInput
-	Name             pulumi.StringPtrInput
-	Tags             pulumi.MapInput
-	VpcId            pulumi.StringPtrInput
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	Name        pulumi.StringPtrInput
+	Status      pulumi.StringPtrInput
+	Tags        pulumi.MapInput
+	VpcId       pulumi.StringPtrInput
+	VswitchName pulumi.StringPtrInput
+	ZoneId      pulumi.StringPtrInput
 }
 
 func (SubnetState) ElementType() reflect.Type {
@@ -82,22 +94,30 @@ func (SubnetState) ElementType() reflect.Type {
 }
 
 type subnetArgs struct {
-	AvailabilityZone string                 `pulumi:"availabilityZone"`
-	CidrBlock        string                 `pulumi:"cidrBlock"`
-	Description      *string                `pulumi:"description"`
-	Name             *string                `pulumi:"name"`
-	Tags             map[string]interface{} `pulumi:"tags"`
-	VpcId            string                 `pulumi:"vpcId"`
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	CidrBlock        string  `pulumi:"cidrBlock"`
+	Description      *string `pulumi:"description"`
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	Name        *string                `pulumi:"name"`
+	Tags        map[string]interface{} `pulumi:"tags"`
+	VpcId       string                 `pulumi:"vpcId"`
+	VswitchName *string                `pulumi:"vswitchName"`
+	ZoneId      *string                `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Subnet resource.
 type SubnetArgs struct {
-	AvailabilityZone pulumi.StringInput
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	AvailabilityZone pulumi.StringPtrInput
 	CidrBlock        pulumi.StringInput
 	Description      pulumi.StringPtrInput
-	Name             pulumi.StringPtrInput
-	Tags             pulumi.MapInput
-	VpcId            pulumi.StringInput
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	Name        pulumi.StringPtrInput
+	Tags        pulumi.MapInput
+	VpcId       pulumi.StringInput
+	VswitchName pulumi.StringPtrInput
+	ZoneId      pulumi.StringPtrInput
 }
 
 func (SubnetArgs) ElementType() reflect.Type {

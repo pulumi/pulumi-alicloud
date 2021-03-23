@@ -24,11 +24,20 @@ namespace Pulumi.AliCloud.Vpc
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
+
+        [Output("vswitchName")]
+        public Output<string> VswitchName { get; private set; } = null!;
+
+        [Output("zoneId")]
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -76,8 +85,8 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class SubnetArgs : Pulumi.ResourceArgs
     {
-        [Input("availabilityZone", required: true)]
-        public Input<string> AvailabilityZone { get; set; } = null!;
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
 
         [Input("cidrBlock", required: true)]
         public Input<string> CidrBlock { get; set; } = null!;
@@ -99,6 +108,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
+        [Input("vswitchName")]
+        public Input<string>? VswitchName { get; set; }
+
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public SubnetArgs()
         {
         }
@@ -118,6 +133,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
         public InputMap<object> Tags
@@ -128,6 +146,12 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
+
+        [Input("vswitchName")]
+        public Input<string>? VswitchName { get; set; }
+
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public SubnetState()
         {

@@ -662,11 +662,17 @@ class GetNetworksVpcResult(dict):
                  creation_time: str,
                  description: str,
                  id: str,
+                 ipv6_cidr_block: str,
                  is_default: bool,
                  region_id: str,
+                 resource_group_id: str,
                  route_table_id: str,
+                 router_id: str,
+                 secondary_cidr_blocks: Sequence[str],
                  status: str,
                  tags: Mapping[str, Any],
+                 user_cidrs: Sequence[str],
+                 vpc_id: str,
                  vpc_name: str,
                  vrouter_id: str,
                  vswitch_ids: Sequence[str]):
@@ -675,12 +681,18 @@ class GetNetworksVpcResult(dict):
         :param str creation_time: Time of creation.
         :param str description: Description of the VPC
         :param str id: ID of the VPC.
+        :param str ipv6_cidr_block: The IPv6 CIDR block of the VPC.
         :param bool is_default: Indicate whether the VPC is the default one in the specified region.
         :param str region_id: ID of the region where the VPC is located.
+        :param str resource_group_id: The Id of resource group which VPC belongs.
         :param str route_table_id: Route table ID of the VRouter.
+        :param str router_id: The ID of the VRouter.
+        :param Sequence[str] secondary_cidr_blocks: A list of secondary IPv4 CIDR blocks of the VPC.
         :param str status: Filter results by a specific status. Valid value are `Pending` and `Available`.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-        :param str vpc_name: Name of the VPC.
+        :param Sequence[str] user_cidrs: A list of user CIDRs.
+        :param str vpc_id: ID of the VPC.
+        :param str vpc_name: The name of the VPC.
         :param str vrouter_id: ID of the VRouter.
         :param Sequence[str] vswitch_ids: List of VSwitch IDs in the specified VPC
         """
@@ -688,11 +700,17 @@ class GetNetworksVpcResult(dict):
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
         pulumi.set(__self__, "is_default", is_default)
         pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "route_table_id", route_table_id)
+        pulumi.set(__self__, "router_id", router_id)
+        pulumi.set(__self__, "secondary_cidr_blocks", secondary_cidr_blocks)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "user_cidrs", user_cidrs)
+        pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vpc_name", vpc_name)
         pulumi.set(__self__, "vrouter_id", vrouter_id)
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
@@ -730,6 +748,14 @@ class GetNetworksVpcResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="ipv6CidrBlock")
+    def ipv6_cidr_block(self) -> str:
+        """
+        The IPv6 CIDR block of the VPC.
+        """
+        return pulumi.get(self, "ipv6_cidr_block")
+
+    @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> bool:
         """
@@ -746,12 +772,36 @@ class GetNetworksVpcResult(dict):
         return pulumi.get(self, "region_id")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The Id of resource group which VPC belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> str:
         """
         Route table ID of the VRouter.
         """
         return pulumi.get(self, "route_table_id")
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> str:
+        """
+        The ID of the VRouter.
+        """
+        return pulumi.get(self, "router_id")
+
+    @property
+    @pulumi.getter(name="secondaryCidrBlocks")
+    def secondary_cidr_blocks(self) -> Sequence[str]:
+        """
+        A list of secondary IPv4 CIDR blocks of the VPC.
+        """
+        return pulumi.get(self, "secondary_cidr_blocks")
 
     @property
     @pulumi.getter
@@ -770,10 +820,26 @@ class GetNetworksVpcResult(dict):
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="userCidrs")
+    def user_cidrs(self) -> Sequence[str]:
+        """
+        A list of user CIDRs.
+        """
+        return pulumi.get(self, "user_cidrs")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> str:
         """
-        Name of the VPC.
+        The name of the VPC.
         """
         return pulumi.get(self, "vpc_name")
 
@@ -1424,35 +1490,61 @@ class GetSslVpnServersServerResult(dict):
 @pulumi.output_type
 class GetSwitchesVswitchResult(dict):
     def __init__(__self__, *,
+                 available_ip_address_count: int,
                  cidr_block: str,
                  creation_time: str,
                  description: str,
                  id: str,
-                 instance_ids: Sequence[str],
                  is_default: bool,
                  name: str,
+                 resource_group_id: str,
+                 route_table_id: str,
+                 status: str,
+                 tags: Mapping[str, Any],
                  vpc_id: str,
+                 vswitch_id: str,
+                 vswitch_name: str,
                  zone_id: str):
         """
+        :param int available_ip_address_count: The available ip address count of the VSwitch.
         :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
         :param str creation_time: Time of creation.
         :param str description: Description of the VSwitch.
         :param str id: ID of the VSwitch.
-        :param Sequence[str] instance_ids: List of ECS instance IDs in the specified VSwitch.
         :param bool is_default: Indicate whether the VSwitch is created by the system.
         :param str name: Name of the VSwitch.
+        :param str resource_group_id: The Id of resource group which VSWitch belongs.
+        :param str route_table_id: The route table ID of the VSwitch.
+        :param str status: The status of the VSwitch. Valid values: `Available` and `Pending`.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str vpc_id: ID of the VPC that owns the VSwitch.
+        :param str vswitch_id: ID of the VSwitch.
+        :param str vswitch_name: The name of the VSwitch.
         :param str zone_id: The availability zone of the VSwitch.
         """
+        pulumi.set(__self__, "available_ip_address_count", available_ip_address_count)
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_ids", instance_ids)
         pulumi.set(__self__, "is_default", is_default)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "route_table_id", route_table_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "vswitch_name", vswitch_name)
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="availableIpAddressCount")
+    def available_ip_address_count(self) -> int:
+        """
+        The available ip address count of the VSwitch.
+        """
+        return pulumi.get(self, "available_ip_address_count")
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -1487,14 +1579,6 @@ class GetSwitchesVswitchResult(dict):
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Sequence[str]:
-        """
-        List of ECS instance IDs in the specified VSwitch.
-        """
-        return pulumi.get(self, "instance_ids")
-
-    @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> bool:
         """
@@ -1511,12 +1595,60 @@ class GetSwitchesVswitchResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The Id of resource group which VSWitch belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> str:
+        """
+        The route table ID of the VSwitch.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the VSwitch. Valid values: `Available` and `Pending`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
         """
         ID of the VPC that owns the VSwitch.
         """
         return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        ID of the VSwitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="vswitchName")
+    def vswitch_name(self) -> str:
+        """
+        The name of the VSwitch.
+        """
+        return pulumi.get(self, "vswitch_name")
 
     @property
     @pulumi.getter(name="zoneId")

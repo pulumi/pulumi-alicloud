@@ -37,12 +37,14 @@ import (
 // 			DomainName: pulumi.String(fmt.Sprintf("%v%v%v", "tf-testacc", "%", "d.xiaozhu.com")),
 // 			CdnType:    pulumi.String("web"),
 // 			Scope:      pulumi.String("overseas"),
-// 			Sources: &cdn.DomainNewSourcesArgs{
-// 				Content:  pulumi.String("1.1.1.1"),
-// 				Type:     pulumi.String("ipaddr"),
-// 				Priority: pulumi.Int(20),
-// 				Port:     pulumi.Int(80),
-// 				Weight:   pulumi.Int(15),
+// 			Sources: cdn.DomainNewSourceArray{
+// 				&cdn.DomainNewSourceArgs{
+// 					Content:  pulumi.String("1.1.1.1"),
+// 					Type:     pulumi.String("ipaddr"),
+// 					Priority: pulumi.Int(20),
+// 					Port:     pulumi.Int(80),
+// 					Weight:   pulumi.Int(15),
+// 				},
 // 			},
 // 		})
 // 		if err != nil {

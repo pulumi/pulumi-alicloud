@@ -35,12 +35,14 @@ import (
 // 			CdnType:    pulumi.String("web"),
 // 			DomainName: pulumi.String("terraform.test.com"),
 // 			Scope:      pulumi.String("overseas"),
-// 			Sources: &cdn.DomainNewSourcesArgs{
-// 				Content:  pulumi.String("1.1.1.1"),
-// 				Port:     pulumi.Int(80),
-// 				Priority: pulumi.Int(20),
-// 				Type:     pulumi.String("ipaddr"),
-// 				Weight:   pulumi.Int(10),
+// 			Sources: cdn.DomainNewSourceArray{
+// 				&cdn.DomainNewSourceArgs{
+// 					Content:  pulumi.String("1.1.1.1"),
+// 					Port:     pulumi.Int(80),
+// 					Priority: pulumi.Int(20),
+// 					Type:     pulumi.String("ipaddr"),
+// 					Weight:   pulumi.Int(10),
+// 				},
 // 			},
 // 		})
 // 		if err != nil {
@@ -74,7 +76,7 @@ type DomainNew struct {
 	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
-	Sources DomainNewSourcesOutput `pulumi:"sources"`
+	Sources DomainNewSourceArrayOutput `pulumi:"sources"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
@@ -130,7 +132,7 @@ type domainNewState struct {
 	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
 	Scope *string `pulumi:"scope"`
 	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
-	Sources *DomainNewSources `pulumi:"sources"`
+	Sources []DomainNewSource `pulumi:"sources"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -149,7 +151,7 @@ type DomainNewState struct {
 	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
 	Scope pulumi.StringPtrInput
 	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
-	Sources DomainNewSourcesPtrInput
+	Sources DomainNewSourceArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -170,7 +172,7 @@ type domainNewArgs struct {
 	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
 	Scope *string `pulumi:"scope"`
 	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
-	Sources DomainNewSources `pulumi:"sources"`
+	Sources []DomainNewSource `pulumi:"sources"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -188,7 +190,7 @@ type DomainNewArgs struct {
 	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
 	Scope pulumi.StringPtrInput
 	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
-	Sources DomainNewSourcesInput
+	Sources DomainNewSourceArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

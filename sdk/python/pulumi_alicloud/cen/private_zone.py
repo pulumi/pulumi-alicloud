@@ -41,7 +41,9 @@ class PrivateZone(pulumi.CustomResource):
 
         # Create a cen Private Zone resource and use it.
         default_instance = alicloud.cen.Instance("defaultInstance")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="test_name",
+            cidr_block="172.16.0.0/12")
         default_instance_attachment = alicloud.cen.InstanceAttachment("defaultInstanceAttachment",
             instance_id=default_instance.id,
             child_instance_id=default_network.id,

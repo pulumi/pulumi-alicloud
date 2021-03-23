@@ -15,7 +15,7 @@ __all__ = [
     'DomainConfigFunctionArgArgs',
     'DomainHttpHeaderConfigArgs',
     'DomainNewCertificateConfigArgs',
-    'DomainNewSourcesArgs',
+    'DomainNewSourceArgs',
     'DomainPage404ConfigArgs',
     'DomainParameterFilterConfigArgs',
     'DomainReferConfigArgs',
@@ -417,7 +417,7 @@ class DomainNewCertificateConfigArgs:
 
 
 @pulumi.input_type
-class DomainNewSourcesArgs:
+class DomainNewSourceArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str],
                  type: pulumi.Input[str],

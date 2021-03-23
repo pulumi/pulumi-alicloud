@@ -30,6 +30,10 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The IPv6 CIDR block of the VPC.
+        /// </summary>
+        public readonly string Ipv6CidrBlock;
+        /// <summary>
         /// Indicate whether the VPC is the default one in the specified region.
         /// </summary>
         public readonly bool IsDefault;
@@ -38,9 +42,21 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string RegionId;
         /// <summary>
+        /// The Id of resource group which VPC belongs.
+        /// </summary>
+        public readonly string ResourceGroupId;
+        /// <summary>
         /// Route table ID of the VRouter.
         /// </summary>
         public readonly string RouteTableId;
+        /// <summary>
+        /// The ID of the VRouter.
+        /// </summary>
+        public readonly string RouterId;
+        /// <summary>
+        /// A list of secondary IPv4 CIDR blocks of the VPC.
+        /// </summary>
+        public readonly ImmutableArray<string> SecondaryCidrBlocks;
         /// <summary>
         /// Filter results by a specific status. Valid value are `Pending` and `Available`.
         /// </summary>
@@ -50,7 +66,15 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
         /// <summary>
-        /// Name of the VPC.
+        /// A list of user CIDRs.
+        /// </summary>
+        public readonly ImmutableArray<string> UserCidrs;
+        /// <summary>
+        /// ID of the VPC.
+        /// </summary>
+        public readonly string VpcId;
+        /// <summary>
+        /// The name of the VPC.
         /// </summary>
         public readonly string VpcName;
         /// <summary>
@@ -72,15 +96,27 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string id,
 
+            string ipv6CidrBlock,
+
             bool isDefault,
 
             string regionId,
 
+            string resourceGroupId,
+
             string routeTableId,
+
+            string routerId,
+
+            ImmutableArray<string> secondaryCidrBlocks,
 
             string status,
 
             ImmutableDictionary<string, object> tags,
+
+            ImmutableArray<string> userCidrs,
+
+            string vpcId,
 
             string vpcName,
 
@@ -92,11 +128,17 @@ namespace Pulumi.AliCloud.Vpc.Outputs
             CreationTime = creationTime;
             Description = description;
             Id = id;
+            Ipv6CidrBlock = ipv6CidrBlock;
             IsDefault = isDefault;
             RegionId = regionId;
+            ResourceGroupId = resourceGroupId;
             RouteTableId = routeTableId;
+            RouterId = routerId;
+            SecondaryCidrBlocks = secondaryCidrBlocks;
             Status = status;
             Tags = tags;
+            UserCidrs = userCidrs;
+            VpcId = vpcId;
             VpcName = vpcName;
             VrouterId = vrouterId;
             VswitchIds = vswitchIds;

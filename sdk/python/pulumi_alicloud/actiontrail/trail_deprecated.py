@@ -25,6 +25,7 @@ class TrailDeprecated(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  oss_bucket_name: Optional[pulumi.Input[str]] = None,
                  oss_key_prefix: Optional[pulumi.Input[str]] = None,
+                 oss_write_role_arn: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  sls_project_arn: Optional[pulumi.Input[str]] = None,
                  sls_write_role_arn: Optional[pulumi.Input[str]] = None,
@@ -73,6 +74,9 @@ class TrailDeprecated(pulumi.CustomResource):
 
             __props__['event_rw'] = event_rw
             __props__['is_organization_trail'] = is_organization_trail
+            if mns_topic_arn is not None and not opts.urn:
+                warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
+                pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
             __props__['mns_topic_arn'] = mns_topic_arn
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
@@ -80,6 +84,10 @@ class TrailDeprecated(pulumi.CustomResource):
             __props__['name'] = name
             __props__['oss_bucket_name'] = oss_bucket_name
             __props__['oss_key_prefix'] = oss_key_prefix
+            __props__['oss_write_role_arn'] = oss_write_role_arn
+            if role_name is not None and not opts.urn:
+                warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
+                pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
             __props__['role_name'] = role_name
             __props__['sls_project_arn'] = sls_project_arn
             __props__['sls_write_role_arn'] = sls_write_role_arn
@@ -102,6 +110,7 @@ class TrailDeprecated(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             oss_bucket_name: Optional[pulumi.Input[str]] = None,
             oss_key_prefix: Optional[pulumi.Input[str]] = None,
+            oss_write_role_arn: Optional[pulumi.Input[str]] = None,
             role_name: Optional[pulumi.Input[str]] = None,
             sls_project_arn: Optional[pulumi.Input[str]] = None,
             sls_write_role_arn: Optional[pulumi.Input[str]] = None,
@@ -133,6 +142,7 @@ class TrailDeprecated(pulumi.CustomResource):
         __props__["name"] = name
         __props__["oss_bucket_name"] = oss_bucket_name
         __props__["oss_key_prefix"] = oss_key_prefix
+        __props__["oss_write_role_arn"] = oss_write_role_arn
         __props__["role_name"] = role_name
         __props__["sls_project_arn"] = sls_project_arn
         __props__["sls_write_role_arn"] = sls_write_role_arn
@@ -182,6 +192,11 @@ class TrailDeprecated(pulumi.CustomResource):
         The prefix of the specified OSS bucket name. This parameter can be left empty.
         """
         return pulumi.get(self, "oss_key_prefix")
+
+    @property
+    @pulumi.getter(name="ossWriteRoleArn")
+    def oss_write_role_arn(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "oss_write_role_arn")
 
     @property
     @pulumi.getter(name="roleName")

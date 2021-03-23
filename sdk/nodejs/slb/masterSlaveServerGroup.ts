@@ -49,6 +49,7 @@ import * as utilities from "../utilities";
  *     vpcId: mainNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     vswitchName: name,
  * });
  * const groupSecurityGroup = new alicloud.ecs.SecurityGroup("groupSecurityGroup", {vpcId: mainNetwork.id});
  * const instanceInstance: alicloud.ecs.Instance[];

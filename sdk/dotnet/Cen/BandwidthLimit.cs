@@ -40,6 +40,7 @@ namespace Pulumi.AliCloud.Cen
     ///         });
     ///         var vpc1 = new AliCloud.Vpc.Network("vpc1", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = name,
     ///             CidrBlock = "192.168.0.0/16",
     ///         }, new CustomResourceOptions
     ///         {

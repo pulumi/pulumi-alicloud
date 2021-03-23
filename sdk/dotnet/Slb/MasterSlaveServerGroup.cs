@@ -66,6 +66,7 @@ namespace Pulumi.AliCloud.Slb
     ///             VpcId = mainNetwork.Id,
     ///             CidrBlock = "172.16.0.0/16",
     ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             VswitchName = name,
     ///         });
     ///         var groupSecurityGroup = new AliCloud.Ecs.SecurityGroup("groupSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
     ///         {

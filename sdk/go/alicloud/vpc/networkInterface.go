@@ -38,6 +38,7 @@ import (
 // 			name = param
 // 		}
 // 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// 			VpcName:   pulumi.String(name),
 // 			CidrBlock: pulumi.String("192.168.0.0/24"),
 // 		})
 // 		if err != nil {

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const defaultTrail = new alicloud.actiontrail.Trail("default", {
  *     eventRw: "All",
  *     ossBucketName: "bucket_name",
- *     roleName: "aliyunserviceroleforactiontrail",
+ *     ossWriteRoleArn: "acs:ram::1182725xxxxxxxxxxx",
  *     trailName: "action-trail",
  *     trailRegion: "cn-hangzhou",
  * });
@@ -67,7 +67,9 @@ export class Trail extends pulumi.CustomResource {
     public readonly eventRw!: pulumi.Output<string | undefined>;
     public readonly isOrganizationTrail!: pulumi.Output<boolean | undefined>;
     /**
-     * The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+     * Field `mnsTopicArn` has been deprecated from version 1.118.0.
+     *
+     * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
      */
     public readonly mnsTopicArn!: pulumi.Output<string | undefined>;
     /**
@@ -85,7 +87,13 @@ export class Trail extends pulumi.CustomResource {
      */
     public readonly ossKeyPrefix!: pulumi.Output<string | undefined>;
     /**
-     * The RAM role in ActionTrail permitted by the user.
+     * The unique ARN of the Oss role.
+     */
+    public readonly ossWriteRoleArn!: pulumi.Output<string | undefined>;
+    /**
+     * Field `name` has been deprecated from version 1.118.0.
+     *
+     * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
     public readonly roleName!: pulumi.Output<string>;
     /**
@@ -128,6 +136,7 @@ export class Trail extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["ossBucketName"] = state ? state.ossBucketName : undefined;
             inputs["ossKeyPrefix"] = state ? state.ossKeyPrefix : undefined;
+            inputs["ossWriteRoleArn"] = state ? state.ossWriteRoleArn : undefined;
             inputs["roleName"] = state ? state.roleName : undefined;
             inputs["slsProjectArn"] = state ? state.slsProjectArn : undefined;
             inputs["slsWriteRoleArn"] = state ? state.slsWriteRoleArn : undefined;
@@ -142,6 +151,7 @@ export class Trail extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["ossBucketName"] = args ? args.ossBucketName : undefined;
             inputs["ossKeyPrefix"] = args ? args.ossKeyPrefix : undefined;
+            inputs["ossWriteRoleArn"] = args ? args.ossWriteRoleArn : undefined;
             inputs["roleName"] = args ? args.roleName : undefined;
             inputs["slsProjectArn"] = args ? args.slsProjectArn : undefined;
             inputs["slsWriteRoleArn"] = args ? args.slsWriteRoleArn : undefined;
@@ -166,7 +176,9 @@ export interface TrailState {
     readonly eventRw?: pulumi.Input<string>;
     readonly isOrganizationTrail?: pulumi.Input<boolean>;
     /**
-     * The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+     * Field `mnsTopicArn` has been deprecated from version 1.118.0.
+     *
+     * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
      */
     readonly mnsTopicArn?: pulumi.Input<string>;
     /**
@@ -184,7 +196,13 @@ export interface TrailState {
      */
     readonly ossKeyPrefix?: pulumi.Input<string>;
     /**
-     * The RAM role in ActionTrail permitted by the user.
+     * The unique ARN of the Oss role.
+     */
+    readonly ossWriteRoleArn?: pulumi.Input<string>;
+    /**
+     * Field `name` has been deprecated from version 1.118.0.
+     *
+     * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
     readonly roleName?: pulumi.Input<string>;
     /**
@@ -219,7 +237,9 @@ export interface TrailArgs {
     readonly eventRw?: pulumi.Input<string>;
     readonly isOrganizationTrail?: pulumi.Input<boolean>;
     /**
-     * The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+     * Field `mnsTopicArn` has been deprecated from version 1.118.0.
+     *
+     * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
      */
     readonly mnsTopicArn?: pulumi.Input<string>;
     /**
@@ -237,7 +257,13 @@ export interface TrailArgs {
      */
     readonly ossKeyPrefix?: pulumi.Input<string>;
     /**
-     * The RAM role in ActionTrail permitted by the user.
+     * The unique ARN of the Oss role.
+     */
+    readonly ossWriteRoleArn?: pulumi.Input<string>;
+    /**
+     * Field `name` has been deprecated from version 1.118.0.
+     *
+     * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
     readonly roleName?: pulumi.Input<string>;
     /**

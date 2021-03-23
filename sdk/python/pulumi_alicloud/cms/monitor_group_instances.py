@@ -37,7 +37,9 @@ class MonitorGroupInstances(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="192.168.0.0/16")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="tf-testacc-vpcname",
+            cidr_block="192.168.0.0/16")
         default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup", monitor_group_name="tf-testaccmonitorgroup")
         example = alicloud.cms.MonitorGroupInstances("example",
             group_id=default_monitor_group.id,

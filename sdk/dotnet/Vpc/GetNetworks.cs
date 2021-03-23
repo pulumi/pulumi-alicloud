@@ -55,6 +55,24 @@ namespace Pulumi.AliCloud.Vpc
         [Input("cidrBlock")]
         public string? CidrBlock { get; set; }
 
+        /// <summary>
+        /// The ID of dhcp options set.
+        /// </summary>
+        [Input("dhcpOptionsSetId")]
+        public string? DhcpOptionsSetId { get; set; }
+
+        /// <summary>
+        /// Indicates whether to check this request only. Valid values: `true` and `false`.
+        /// </summary>
+        [Input("dryRun")]
+        public bool? DryRun { get; set; }
+
+        /// <summary>
+        /// -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `route_table_id`.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -107,6 +125,18 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
+        /// The name of the VPC.
+        /// </summary>
+        [Input("vpcName")]
+        public string? VpcName { get; set; }
+
+        /// <summary>
+        /// The owner ID of VPC.
+        /// </summary>
+        [Input("vpcOwnerId")]
+        public int? VpcOwnerId { get; set; }
+
+        /// <summary>
         /// Filter results by the specified VSwitch.
         /// </summary>
         [Input("vswitchId")]
@@ -125,6 +155,9 @@ namespace Pulumi.AliCloud.Vpc
         /// CIDR block of the VPC.
         /// </summary>
         public readonly string? CidrBlock;
+        public readonly string? DhcpOptionsSetId;
+        public readonly bool? DryRun;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -153,6 +186,11 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
+        /// Name of the VPC.
+        /// </summary>
+        public readonly string? VpcName;
+        public readonly int? VpcOwnerId;
+        /// <summary>
         /// A list of VPCs. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworksVpcResult> Vpcs;
@@ -161,6 +199,12 @@ namespace Pulumi.AliCloud.Vpc
         [OutputConstructor]
         private GetNetworksResult(
             string? cidrBlock,
+
+            string? dhcpOptionsSetId,
+
+            bool? dryRun,
+
+            bool? enableDetails,
 
             string id,
 
@@ -180,11 +224,18 @@ namespace Pulumi.AliCloud.Vpc
 
             ImmutableDictionary<string, object>? tags,
 
+            string? vpcName,
+
+            int? vpcOwnerId,
+
             ImmutableArray<Outputs.GetNetworksVpcResult> vpcs,
 
             string? vswitchId)
         {
             CidrBlock = cidrBlock;
+            DhcpOptionsSetId = dhcpOptionsSetId;
+            DryRun = dryRun;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             IsDefault = isDefault;
@@ -194,6 +245,8 @@ namespace Pulumi.AliCloud.Vpc
             ResourceGroupId = resourceGroupId;
             Status = status;
             Tags = tags;
+            VpcName = vpcName;
+            VpcOwnerId = vpcOwnerId;
             Vpcs = vpcs;
             VswitchId = vswitchId;
         }

@@ -52,6 +52,7 @@ import (
 // 			return err
 // 		}
 // 		vpc1, err := vpc.NewNetwork(ctx, "vpc1", &vpc.NetworkArgs{
+// 			VpcName:   pulumi.String(name),
 // 			CidrBlock: pulumi.String("192.168.0.0/16"),
 // 		}, pulumi.Provider(alicloud.Fra))
 // 		if err != nil {

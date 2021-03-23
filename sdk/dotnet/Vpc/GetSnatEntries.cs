@@ -40,14 +40,15 @@ namespace Pulumi.AliCloud.Vpc
         ///         });
         ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
         ///         {
-        ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Zones[0].Id),
-        ///             CidrBlock = "172.16.0.0/21",
         ///             VpcId = fooNetwork.Id,
+        ///             CidrBlock = "172.16.0.0/21",
+        ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Zones[0].Id),
+        ///             VswitchName = name,
         ///         });
         ///         var fooNatGateway = new AliCloud.Vpc.NatGateway("fooNatGateway", new AliCloud.Vpc.NatGatewayArgs
         ///         {
-        ///             Specification = "Small",
         ///             VpcId = fooNetwork.Id,
+        ///             Specification = "Small",
         ///         });
         ///         var fooEip = new AliCloud.Ecs.Eip("fooEip", new AliCloud.Ecs.EipArgs
         ///         {
@@ -59,9 +60,9 @@ namespace Pulumi.AliCloud.Vpc
         ///         });
         ///         var fooSnatEntry = new AliCloud.Vpc.SnatEntry("fooSnatEntry", new AliCloud.Vpc.SnatEntryArgs
         ///         {
-        ///             SnatIp = fooEip.IpAddress,
         ///             SnatTableId = fooNatGateway.SnatTableIds,
         ///             SourceVswitchId = fooSwitch.Id,
+        ///             SnatIp = fooEip.IpAddress,
         ///         });
         ///         var fooSnatEntries = fooSnatEntry.SnatTableId.Apply(snatTableId =&gt; AliCloud.Vpc.GetSnatEntries.InvokeAsync(new AliCloud.Vpc.GetSnatEntriesArgs
         ///         {

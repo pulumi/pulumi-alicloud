@@ -36,6 +36,7 @@ namespace Pulumi.AliCloud.Cen
     ///         });
     ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = "test_name",
     ///             CidrBlock = "172.16.0.0/12",
     ///         });
     ///         var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs

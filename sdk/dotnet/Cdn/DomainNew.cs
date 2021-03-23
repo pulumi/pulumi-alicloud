@@ -34,13 +34,16 @@ namespace Pulumi.AliCloud.Cdn
     ///             CdnType = "web",
     ///             DomainName = "terraform.test.com",
     ///             Scope = "overseas",
-    ///             Sources = new AliCloud.Cdn.Inputs.DomainNewSourcesArgs
+    ///             Sources = 
     ///             {
-    ///                 Content = "1.1.1.1",
-    ///                 Port = 80,
-    ///                 Priority = 20,
-    ///                 Type = "ipaddr",
-    ///                 Weight = 10,
+    ///                 new AliCloud.Cdn.Inputs.DomainNewSourceArgs
+    ///                 {
+    ///                     Content = "1.1.1.1",
+    ///                     Port = 80,
+    ///                     Priority = 20,
+    ///                     Type = "ipaddr",
+    ///                     Weight = 10,
+    ///                 },
     ///             },
     ///         });
     ///     }
@@ -99,7 +102,7 @@ namespace Pulumi.AliCloud.Cdn
         /// The source address list of the accelerated domain. Defaults to null. See Block Sources.
         /// </summary>
         [Output("sources")]
-        public Output<Outputs.DomainNewSources> Sources { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DomainNewSource>> Sources { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -183,11 +186,17 @@ namespace Pulumi.AliCloud.Cdn
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
+        [Input("sources", required: true)]
+        private InputList<Inputs.DomainNewSourceArgs>? _sources;
+
         /// <summary>
         /// The source address list of the accelerated domain. Defaults to null. See Block Sources.
         /// </summary>
-        [Input("sources", required: true)]
-        public Input<Inputs.DomainNewSourcesArgs> Sources { get; set; } = null!;
+        public InputList<Inputs.DomainNewSourceArgs> Sources
+        {
+            get => _sources ?? (_sources = new InputList<Inputs.DomainNewSourceArgs>());
+            set => _sources = value;
+        }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -244,11 +253,17 @@ namespace Pulumi.AliCloud.Cdn
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
+        [Input("sources")]
+        private InputList<Inputs.DomainNewSourceGetArgs>? _sources;
+
         /// <summary>
         /// The source address list of the accelerated domain. Defaults to null. See Block Sources.
         /// </summary>
-        [Input("sources")]
-        public Input<Inputs.DomainNewSourcesGetArgs>? Sources { get; set; }
+        public InputList<Inputs.DomainNewSourceGetArgs> Sources
+        {
+            get => _sources ?? (_sources = new InputList<Inputs.DomainNewSourceGetArgs>());
+            set => _sources = value;
+        }
 
         [Input("tags")]
         private InputMap<object>? _tags;

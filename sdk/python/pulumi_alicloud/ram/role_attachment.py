@@ -37,7 +37,13 @@ class RoleAttachment(pulumi.CustomResource):
         default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "ecsInstanceVPCExample"
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
@@ -52,10 +58,6 @@ class RoleAttachment(pulumi.CustomResource):
             priority=1,
             security_group_id=default_security_group.id,
             cidr_ip="172.16.0.0/24")
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "ecsInstanceVPCExample"
         foo = alicloud.ecs.Instance("foo",
             vswitch_id=default_switch.id,
             image_id=default_images.images[0].id,

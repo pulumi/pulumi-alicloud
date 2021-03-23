@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
  *
  * ```sh
- *  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster-id
+ *  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes alicloud_cs_managed_kubernetes.main cluster_id
  * ```
  */
 export class ManagedKubernetes extends pulumi.CustomResource {
@@ -190,6 +190,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     public readonly proxyMode!: pulumi.Output<string | undefined>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
     public readonly rdsInstances!: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -282,7 +285,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly workerInstanceChargeType!: pulumi.Output<string | undefined>;
     /**
-     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
      */
     public readonly workerInstanceTypes!: pulumi.Output<string[] | undefined>;
     /**
@@ -290,7 +293,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly workerNodes!: pulumi.Output<outputs.cs.ManagedKubernetesWorkerNode[]>;
     /**
-     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
      */
     public readonly workerNumber!: pulumi.Output<number | undefined>;
     /**
@@ -625,6 +628,9 @@ export interface ManagedKubernetesState {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
     readonly rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -717,7 +723,7 @@ export interface ManagedKubernetesState {
      */
     readonly workerInstanceChargeType?: pulumi.Input<string>;
     /**
-     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
      */
     readonly workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -725,7 +731,7 @@ export interface ManagedKubernetesState {
      */
     readonly workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesWorkerNode>[]>;
     /**
-     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
      */
     readonly workerNumber?: pulumi.Input<number>;
     /**
@@ -883,6 +889,9 @@ export interface ManagedKubernetesArgs {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
     readonly rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -962,11 +971,11 @@ export interface ManagedKubernetesArgs {
      */
     readonly workerInstanceChargeType?: pulumi.Input<string>;
     /**
-     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
      */
     readonly workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+     * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
      */
     readonly workerNumber?: pulumi.Input<number>;
     /**

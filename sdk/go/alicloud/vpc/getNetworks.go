@@ -50,6 +50,12 @@ func GetNetworks(ctx *pulumi.Context, args *GetNetworksArgs, opts ...pulumi.Invo
 type GetNetworksArgs struct {
 	// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
 	CidrBlock *string `pulumi:"cidrBlock"`
+	// The ID of dhcp options set.
+	DhcpOptionsSetId *string `pulumi:"dhcpOptionsSetId"`
+	// Indicates whether to check this request only. Valid values: `true` and `false`.
+	DryRun *bool `pulumi:"dryRun"`
+	// -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `routeTableId`.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of VPC IDs.
 	Ids []string `pulumi:"ids"`
 	// Indicate whether the VPC is the default one in the specified region.
@@ -63,6 +69,10 @@ type GetNetworksArgs struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The name of the VPC.
+	VpcName *string `pulumi:"vpcName"`
+	// The owner ID of VPC.
+	VpcOwnerId *int `pulumi:"vpcOwnerId"`
 	// Filter results by the specified VSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -70,7 +80,10 @@ type GetNetworksArgs struct {
 // A collection of values returned by getNetworks.
 type GetNetworksResult struct {
 	// CIDR block of the VPC.
-	CidrBlock *string `pulumi:"cidrBlock"`
+	CidrBlock        *string `pulumi:"cidrBlock"`
+	DhcpOptionsSetId *string `pulumi:"dhcpOptionsSetId"`
+	DryRun           *bool   `pulumi:"dryRun"`
+	EnableDetails    *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of VPC IDs.
@@ -86,6 +99,9 @@ type GetNetworksResult struct {
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the VPC.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// Name of the VPC.
+	VpcName    *string `pulumi:"vpcName"`
+	VpcOwnerId *int    `pulumi:"vpcOwnerId"`
 	// A list of VPCs. Each element contains the following attributes:
 	Vpcs      []GetNetworksVpc `pulumi:"vpcs"`
 	VswitchId *string          `pulumi:"vswitchId"`

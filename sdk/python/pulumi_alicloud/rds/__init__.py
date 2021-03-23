@@ -11,8 +11,10 @@ from .database import *
 from .get_instance_classes import *
 from .get_instance_engines import *
 from .get_instances import *
+from .get_rds_parameter_groups import *
 from .get_zones import *
 from .instance import *
+from .rds_parameter_group import *
 from .read_only_instance import *
 from .read_write_splitting_connection import *
 from ._inputs import *
@@ -42,6 +44,8 @@ def _register_module():
                 return Database(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:rds/instance:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:rds/rdsParameterGroup:RdsParameterGroup":
+                return RdsParameterGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:rds/readOnlyInstance:ReadOnlyInstance":
                 return ReadOnlyInstance(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection":
@@ -57,6 +61,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "rds/connection", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "rds/database", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "rds/instance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "rds/rdsParameterGroup", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "rds/readOnlyInstance", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "rds/readWriteSplittingConnection", _module_instance)
 

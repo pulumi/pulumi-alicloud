@@ -25,8 +25,14 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "alicloudRouterInterfaceConnectionBasic";
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
- * const barNetwork = new alicloud.vpc.Network("barNetwork", {cidrBlock: "192.168.0.0/16"}, {
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const barNetwork = new alicloud.vpc.Network("barNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * }, {
  *     provider: alicloud,
  * });
  * const initiate = new alicloud.vpc.RouterInterface("initiate", {

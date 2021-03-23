@@ -47,12 +47,14 @@ import (
 // 			name = param
 // 		}
 // 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+// 			VpcName:   pulumi.String(name),
 // 			CidrBlock: pulumi.String("172.16.0.0/12"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		barNetwork, err := vpc.NewNetwork(ctx, "barNetwork", &vpc.NetworkArgs{
+// 			VpcName:   pulumi.String(name),
 // 			CidrBlock: pulumi.String("192.168.0.0/16"),
 // 		}, pulumi.Provider(alicloud))
 // 		if err != nil {

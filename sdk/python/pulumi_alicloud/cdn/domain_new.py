@@ -22,7 +22,7 @@ class DomainNew(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[pulumi.InputType['DomainNewSourcesArgs']]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None,
                  __name__=None,
@@ -47,13 +47,13 @@ class DomainNew(pulumi.CustomResource):
             cdn_type="web",
             domain_name="terraform.test.com",
             scope="overseas",
-            sources=alicloud.cdn.DomainNewSourcesArgs(
+            sources=[alicloud.cdn.DomainNewSourceArgs(
                 content="1.1.1.1",
                 port=80,
                 priority=20,
                 type="ipaddr",
                 weight=10,
-            ))
+            )])
         ```
 
         ## Import
@@ -71,7 +71,7 @@ class DomainNew(pulumi.CustomResource):
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        :param pulumi.Input[pulumi.InputType['DomainNewSourcesArgs']] sources: The source address list of the accelerated domain. Defaults to null. See Block Sources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]] sources: The source address list of the accelerated domain. Defaults to null. See Block Sources.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if __name__ is not None:
@@ -121,7 +121,7 @@ class DomainNew(pulumi.CustomResource):
             domain_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
-            sources: Optional[pulumi.Input[pulumi.InputType['DomainNewSourcesArgs']]] = None,
+            sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'DomainNew':
         """
         Get an existing DomainNew resource's state with the given name, id, and optional extra
@@ -136,7 +136,7 @@ class DomainNew(pulumi.CustomResource):
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        :param pulumi.Input[pulumi.InputType['DomainNewSourcesArgs']] sources: The source address list of the accelerated domain. Defaults to null. See Block Sources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]] sources: The source address list of the accelerated domain. Defaults to null. See Block Sources.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -203,7 +203,7 @@ class DomainNew(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def sources(self) -> pulumi.Output['outputs.DomainNewSources']:
+    def sources(self) -> pulumi.Output[Sequence['outputs.DomainNewSource']]:
         """
         The source address list of the accelerated domain. Defaults to null. See Block Sources.
         """

@@ -43,6 +43,7 @@ namespace Pulumi.AliCloud.Vpc
         ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
         ///             CidrBlock = "172.16.0.0/21",
         ///             VpcId = defaultNetwork.Id,
+        ///             VswitchName = name,
         ///         });
         ///         var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new AliCloud.Vpc.NatGatewayArgs
         ///         {

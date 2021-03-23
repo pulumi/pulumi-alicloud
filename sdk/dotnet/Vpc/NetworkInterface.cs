@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         var name = config.Get("name") ?? "networkInterfaceName";
     ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = name,
     ///             CidrBlock = "192.168.0.0/24",
     ///         });
     ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs

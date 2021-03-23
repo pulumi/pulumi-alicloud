@@ -51,7 +51,8 @@ class Instance(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             availability_zone=default_zones.zones[0].id,
             vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24")
+            cidr_block="172.16.0.0/24",
+            vswitch_name="vpc-123456")
         example = alicloud.gpdb.Instance("example",
             description="tf-gpdb-test",
             engine="gpdb",

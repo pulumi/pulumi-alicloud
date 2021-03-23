@@ -21,6 +21,7 @@ class Trail(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  oss_bucket_name: Optional[pulumi.Input[str]] = None,
                  oss_key_prefix: Optional[pulumi.Input[str]] = None,
+                 oss_write_role_arn: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  sls_project_arn: Optional[pulumi.Input[str]] = None,
                  sls_write_role_arn: Optional[pulumi.Input[str]] = None,
@@ -45,7 +46,7 @@ class Trail(pulumi.CustomResource):
         default = alicloud.actiontrail.Trail("default",
             event_rw="All",
             oss_bucket_name="bucket_name",
-            role_name="aliyunserviceroleforactiontrail",
+            oss_write_role_arn="acs:ram::1182725xxxxxxxxxxx",
             trail_name="action-trail",
             trail_region="cn-hangzhou")
         ```
@@ -61,11 +62,12 @@ class Trail(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
-        :param pulumi.Input[str] mns_topic_arn: The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        :param pulumi.Input[str] mns_topic_arn: Field `mns_topic_arn` has been deprecated from version 1.118.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         :param pulumi.Input[str] oss_bucket_name: The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
         :param pulumi.Input[str] oss_key_prefix: The prefix of the specified OSS bucket name. This parameter can be left empty.
-        :param pulumi.Input[str] role_name: The RAM role in ActionTrail permitted by the user.
+        :param pulumi.Input[str] oss_write_role_arn: The unique ARN of the Oss role.
+        :param pulumi.Input[str] role_name: Field `name` has been deprecated from version 1.118.0.
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
@@ -91,6 +93,9 @@ class Trail(pulumi.CustomResource):
 
             __props__['event_rw'] = event_rw
             __props__['is_organization_trail'] = is_organization_trail
+            if mns_topic_arn is not None and not opts.urn:
+                warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
+                pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
             __props__['mns_topic_arn'] = mns_topic_arn
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
@@ -98,6 +103,10 @@ class Trail(pulumi.CustomResource):
             __props__['name'] = name
             __props__['oss_bucket_name'] = oss_bucket_name
             __props__['oss_key_prefix'] = oss_key_prefix
+            __props__['oss_write_role_arn'] = oss_write_role_arn
+            if role_name is not None and not opts.urn:
+                warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
+                pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
             __props__['role_name'] = role_name
             __props__['sls_project_arn'] = sls_project_arn
             __props__['sls_write_role_arn'] = sls_write_role_arn
@@ -120,6 +129,7 @@ class Trail(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             oss_bucket_name: Optional[pulumi.Input[str]] = None,
             oss_key_prefix: Optional[pulumi.Input[str]] = None,
+            oss_write_role_arn: Optional[pulumi.Input[str]] = None,
             role_name: Optional[pulumi.Input[str]] = None,
             sls_project_arn: Optional[pulumi.Input[str]] = None,
             sls_write_role_arn: Optional[pulumi.Input[str]] = None,
@@ -134,11 +144,12 @@ class Trail(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
-        :param pulumi.Input[str] mns_topic_arn: The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        :param pulumi.Input[str] mns_topic_arn: Field `mns_topic_arn` has been deprecated from version 1.118.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         :param pulumi.Input[str] oss_bucket_name: The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
         :param pulumi.Input[str] oss_key_prefix: The prefix of the specified OSS bucket name. This parameter can be left empty.
-        :param pulumi.Input[str] role_name: The RAM role in ActionTrail permitted by the user.
+        :param pulumi.Input[str] oss_write_role_arn: The unique ARN of the Oss role.
+        :param pulumi.Input[str] role_name: Field `name` has been deprecated from version 1.118.0.
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
@@ -155,6 +166,7 @@ class Trail(pulumi.CustomResource):
         __props__["name"] = name
         __props__["oss_bucket_name"] = oss_bucket_name
         __props__["oss_key_prefix"] = oss_key_prefix
+        __props__["oss_write_role_arn"] = oss_write_role_arn
         __props__["role_name"] = role_name
         __props__["sls_project_arn"] = sls_project_arn
         __props__["sls_write_role_arn"] = sls_write_role_arn
@@ -180,7 +192,7 @@ class Trail(pulumi.CustomResource):
     @pulumi.getter(name="mnsTopicArn")
     def mns_topic_arn(self) -> pulumi.Output[Optional[str]]:
         """
-        The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+        Field `mns_topic_arn` has been deprecated from version 1.118.0.
         """
         return pulumi.get(self, "mns_topic_arn")
 
@@ -209,10 +221,18 @@ class Trail(pulumi.CustomResource):
         return pulumi.get(self, "oss_key_prefix")
 
     @property
+    @pulumi.getter(name="ossWriteRoleArn")
+    def oss_write_role_arn(self) -> pulumi.Output[Optional[str]]:
+        """
+        The unique ARN of the Oss role.
+        """
+        return pulumi.get(self, "oss_write_role_arn")
+
+    @property
     @pulumi.getter(name="roleName")
     def role_name(self) -> pulumi.Output[str]:
         """
-        The RAM role in ActionTrail permitted by the user.
+        Field `name` has been deprecated from version 1.118.0.
         """
         return pulumi.get(self, "role_name")
 

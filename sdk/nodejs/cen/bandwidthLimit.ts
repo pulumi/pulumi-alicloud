@@ -23,7 +23,10 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf-testAccCenBandwidthLimitConfig";
  * const fra = new alicloud.Provider("fra", {region: "eu-central-1"});
  * const sh = new alicloud.Provider("sh", {region: "cn-shanghai"});
- * const vpc1 = new alicloud.vpc.Network("vpc1", {cidrBlock: "192.168.0.0/16"}, {
+ * const vpc1 = new alicloud.vpc.Network("vpc1", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * }, {
  *     provider: alicloud.fra,
  * });
  * const vpc2 = new alicloud.vpc.Network("vpc2", {cidrBlock: "172.16.0.0/12"}, {

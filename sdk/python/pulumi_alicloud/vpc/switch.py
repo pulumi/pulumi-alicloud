@@ -21,6 +21,8 @@ class Switch(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_name: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -35,12 +37,14 @@ class Switch(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: The AZ for the switch.
+        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         :param pulumi.Input[str] cidr_block: The CIDR block for the switch.
         :param pulumi.Input[str] description: The switch description. Defaults to null.
-        :param pulumi.Input[str] name: The name of the switch. Defaults to null.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
+        :param pulumi.Input[str] zone_id: The AZ for the switch.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -59,18 +63,25 @@ class Switch(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if availability_zone is None and not opts.urn:
-                raise TypeError("Missing required property 'availability_zone'")
+            if availability_zone is not None and not opts.urn:
+                warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
+                pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
             __props__['availability_zone'] = availability_zone
             if cidr_block is None and not opts.urn:
                 raise TypeError("Missing required property 'cidr_block'")
             __props__['cidr_block'] = cidr_block
             __props__['description'] = description
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
             __props__['name'] = name
             __props__['tags'] = tags
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
+            __props__['vswitch_name'] = vswitch_name
+            __props__['zone_id'] = zone_id
+            __props__['status'] = None
         super(Switch, __self__).__init__(
             'alicloud:vpc/switch:Switch',
             resource_name,
@@ -85,8 +96,11 @@ class Switch(pulumi.CustomResource):
             cidr_block: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            vpc_id: Optional[pulumi.Input[str]] = None) -> 'Switch':
+            vpc_id: Optional[pulumi.Input[str]] = None,
+            vswitch_name: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'Switch':
         """
         Get an existing Switch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -94,12 +108,15 @@ class Switch(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: The AZ for the switch.
+        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         :param pulumi.Input[str] cidr_block: The CIDR block for the switch.
         :param pulumi.Input[str] description: The switch description. Defaults to null.
-        :param pulumi.Input[str] name: The name of the switch. Defaults to null.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+        :param pulumi.Input[str] status: (Available in 1.119.0+) The status of the switch.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
+        :param pulumi.Input[str] zone_id: The AZ for the switch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -109,15 +126,18 @@ class Switch(pulumi.CustomResource):
         __props__["cidr_block"] = cidr_block
         __props__["description"] = description
         __props__["name"] = name
+        __props__["status"] = status
         __props__["tags"] = tags
         __props__["vpc_id"] = vpc_id
+        __props__["vswitch_name"] = vswitch_name
+        __props__["zone_id"] = zone_id
         return Switch(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[str]:
         """
-        The AZ for the switch.
+        Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -141,9 +161,17 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the switch. Defaults to null.
+        Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.119.0+) The status of the switch.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
@@ -160,6 +188,22 @@ class Switch(pulumi.CustomResource):
         The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchName")
+    def vswitch_name(self) -> pulumi.Output[str]:
+        """
+        The name of the switch. Defaults to null.
+        """
+        return pulumi.get(self, "vswitch_name")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[str]:
+        """
+        The AZ for the switch.
+        """
+        return pulumi.get(self, "zone_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

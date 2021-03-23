@@ -11,6 +11,7 @@ export * from "./alarmContactGroup";
 export * from "./getAlarmContactGroups";
 export * from "./getAlarmContacts";
 export * from "./getGroupMetricRules";
+export * from "./getMonitorGroupInstances";
 export * from "./getMonitorGroups";
 export * from "./getService";
 export * from "./groupMetricRule";

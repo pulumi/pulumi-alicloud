@@ -26,6 +26,8 @@ __all__ = [
     'GetGroupMetricRulesRuleEscalationCriticalResult',
     'GetGroupMetricRulesRuleEscalationInfoResult',
     'GetGroupMetricRulesRuleEscalationWarnResult',
+    'GetMonitorGroupInstancesInstanceResult',
+    'GetMonitorGroupInstancesInstanceInstanceResult',
     'GetMonitorGroupsGroupResult',
 ]
 
@@ -1114,6 +1116,51 @@ class GetGroupMetricRulesRuleEscalationWarnResult(dict):
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class GetMonitorGroupInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 instances: Sequence['outputs.GetMonitorGroupInstancesInstanceInstanceResult']):
+        pulumi.set(__self__, "instances", instances)
+
+    @property
+    @pulumi.getter
+    def instances(self) -> Sequence['outputs.GetMonitorGroupInstancesInstanceInstanceResult']:
+        return pulumi.get(self, "instances")
+
+
+@pulumi.output_type
+class GetMonitorGroupInstancesInstanceInstanceResult(dict):
+    def __init__(__self__, *,
+                 category: str,
+                 instance_id: str,
+                 instance_name: str,
+                 region_id: str):
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "region_id", region_id)
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        return pulumi.get(self, "region_id")
 
 
 @pulumi.output_type

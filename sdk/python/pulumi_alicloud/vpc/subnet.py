@@ -21,6 +21,8 @@ class Subnet(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_name: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -46,18 +48,25 @@ class Subnet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if availability_zone is None and not opts.urn:
-                raise TypeError("Missing required property 'availability_zone'")
+            if availability_zone is not None and not opts.urn:
+                warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
+                pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
             __props__['availability_zone'] = availability_zone
             if cidr_block is None and not opts.urn:
                 raise TypeError("Missing required property 'cidr_block'")
             __props__['cidr_block'] = cidr_block
             __props__['description'] = description
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
             __props__['name'] = name
             __props__['tags'] = tags
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
+            __props__['vswitch_name'] = vswitch_name
+            __props__['zone_id'] = zone_id
+            __props__['status'] = None
         super(Subnet, __self__).__init__(
             'alicloud:vpc/subnet:Subnet',
             resource_name,
@@ -72,8 +81,11 @@ class Subnet(pulumi.CustomResource):
             cidr_block: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            vpc_id: Optional[pulumi.Input[str]] = None) -> 'Subnet':
+            vpc_id: Optional[pulumi.Input[str]] = None,
+            vswitch_name: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'Subnet':
         """
         Get an existing Subnet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -90,8 +102,11 @@ class Subnet(pulumi.CustomResource):
         __props__["cidr_block"] = cidr_block
         __props__["description"] = description
         __props__["name"] = name
+        __props__["status"] = status
         __props__["tags"] = tags
         __props__["vpc_id"] = vpc_id
+        __props__["vswitch_name"] = vswitch_name
+        __props__["zone_id"] = zone_id
         return Subnet(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -116,6 +131,11 @@ class Subnet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         return pulumi.get(self, "tags")
 
@@ -123,6 +143,16 @@ class Subnet(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchName")
+    def vswitch_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "vswitch_name")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "zone_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

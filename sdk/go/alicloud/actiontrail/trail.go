@@ -27,11 +27,11 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := actiontrail.NewTrail(ctx, "_default", &actiontrail.TrailArgs{
-// 			EventRw:       pulumi.String("All"),
-// 			OssBucketName: pulumi.String("bucket_name"),
-// 			RoleName:      pulumi.String("aliyunserviceroleforactiontrail"),
-// 			TrailName:     pulumi.String("action-trail"),
-// 			TrailRegion:   pulumi.String("cn-hangzhou"),
+// 			EventRw:         pulumi.String("All"),
+// 			OssBucketName:   pulumi.String("bucket_name"),
+// 			OssWriteRoleArn: pulumi.String("acs:ram::1182725xxxxxxxxxxx"),
+// 			TrailName:       pulumi.String("action-trail"),
+// 			TrailRegion:     pulumi.String("cn-hangzhou"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -54,7 +54,9 @@ type Trail struct {
 	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
 	EventRw             pulumi.StringPtrOutput `pulumi:"eventRw"`
 	IsOrganizationTrail pulumi.BoolPtrOutput   `pulumi:"isOrganizationTrail"`
-	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+	// Field `mnsTopicArn` has been deprecated from version 1.118.0.
+	//
+	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
 	MnsTopicArn pulumi.StringPtrOutput `pulumi:"mnsTopicArn"`
 	// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
 	//
@@ -64,7 +66,11 @@ type Trail struct {
 	OssBucketName pulumi.StringPtrOutput `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
 	OssKeyPrefix pulumi.StringPtrOutput `pulumi:"ossKeyPrefix"`
-	// The RAM role in ActionTrail permitted by the user.
+	// The unique ARN of the Oss role.
+	OssWriteRoleArn pulumi.StringPtrOutput `pulumi:"ossWriteRoleArn"`
+	// Field `name` has been deprecated from version 1.118.0.
+	//
+	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrOutput `pulumi:"slsProjectArn"`
@@ -110,7 +116,9 @@ type trailState struct {
 	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
 	EventRw             *string `pulumi:"eventRw"`
 	IsOrganizationTrail *bool   `pulumi:"isOrganizationTrail"`
-	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+	// Field `mnsTopicArn` has been deprecated from version 1.118.0.
+	//
+	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
 	MnsTopicArn *string `pulumi:"mnsTopicArn"`
 	// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
 	//
@@ -120,7 +128,11 @@ type trailState struct {
 	OssBucketName *string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
 	OssKeyPrefix *string `pulumi:"ossKeyPrefix"`
-	// The RAM role in ActionTrail permitted by the user.
+	// The unique ARN of the Oss role.
+	OssWriteRoleArn *string `pulumi:"ossWriteRoleArn"`
+	// Field `name` has been deprecated from version 1.118.0.
+	//
+	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName *string `pulumi:"roleName"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn *string `pulumi:"slsProjectArn"`
@@ -138,7 +150,9 @@ type TrailState struct {
 	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
 	EventRw             pulumi.StringPtrInput
 	IsOrganizationTrail pulumi.BoolPtrInput
-	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+	// Field `mnsTopicArn` has been deprecated from version 1.118.0.
+	//
+	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
 	MnsTopicArn pulumi.StringPtrInput
 	// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
 	//
@@ -148,7 +162,11 @@ type TrailState struct {
 	OssBucketName pulumi.StringPtrInput
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
 	OssKeyPrefix pulumi.StringPtrInput
-	// The RAM role in ActionTrail permitted by the user.
+	// The unique ARN of the Oss role.
+	OssWriteRoleArn pulumi.StringPtrInput
+	// Field `name` has been deprecated from version 1.118.0.
+	//
+	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName pulumi.StringPtrInput
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrInput
@@ -170,7 +188,9 @@ type trailArgs struct {
 	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
 	EventRw             *string `pulumi:"eventRw"`
 	IsOrganizationTrail *bool   `pulumi:"isOrganizationTrail"`
-	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+	// Field `mnsTopicArn` has been deprecated from version 1.118.0.
+	//
+	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
 	MnsTopicArn *string `pulumi:"mnsTopicArn"`
 	// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
 	//
@@ -180,7 +200,11 @@ type trailArgs struct {
 	OssBucketName *string `pulumi:"ossBucketName"`
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
 	OssKeyPrefix *string `pulumi:"ossKeyPrefix"`
-	// The RAM role in ActionTrail permitted by the user.
+	// The unique ARN of the Oss role.
+	OssWriteRoleArn *string `pulumi:"ossWriteRoleArn"`
+	// Field `name` has been deprecated from version 1.118.0.
+	//
+	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName *string `pulumi:"roleName"`
 	// The unique ARN of the Log Service project.
 	SlsProjectArn *string `pulumi:"slsProjectArn"`
@@ -199,7 +223,9 @@ type TrailArgs struct {
 	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
 	EventRw             pulumi.StringPtrInput
 	IsOrganizationTrail pulumi.BoolPtrInput
-	// The ARN of the Message Service (MNS) topic to which ActionTrail sends messages. If the ARN is specified, a message is generated and delivered to the MNS topic whenever an event is delivered to OSS.
+	// Field `mnsTopicArn` has been deprecated from version 1.118.0.
+	//
+	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
 	MnsTopicArn pulumi.StringPtrInput
 	// Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
 	//
@@ -209,7 +235,11 @@ type TrailArgs struct {
 	OssBucketName pulumi.StringPtrInput
 	// The prefix of the specified OSS bucket name. This parameter can be left empty.
 	OssKeyPrefix pulumi.StringPtrInput
-	// The RAM role in ActionTrail permitted by the user.
+	// The unique ARN of the Oss role.
+	OssWriteRoleArn pulumi.StringPtrInput
+	// Field `name` has been deprecated from version 1.118.0.
+	//
+	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName pulumi.StringPtrInput
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrInput

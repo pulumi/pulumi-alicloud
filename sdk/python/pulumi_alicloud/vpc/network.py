@@ -17,10 +17,14 @@ class Network(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpc_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -35,12 +39,16 @@ class Network(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr_block: The CIDR block for the VPC.
+        :param pulumi.Input[str] cidr_block: The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
-        :param pulumi.Input[str] name: The name of the VPC. Defaults to null.
+        :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: The secondary CIDR blocks for the VPC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidrs of the VPC.
+        :param pulumi.Input[str] vpc_name: The name of the VPC. Defaults to null.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -59,17 +67,24 @@ class Network(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cidr_block is None and not opts.urn:
-                raise TypeError("Missing required property 'cidr_block'")
             __props__['cidr_block'] = cidr_block
             __props__['description'] = description
+            __props__['dry_run'] = dry_run
+            __props__['enable_ipv6'] = enable_ipv6
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""")
             __props__['name'] = name
             __props__['resource_group_id'] = resource_group_id
             __props__['secondary_cidr_blocks'] = secondary_cidr_blocks
             __props__['tags'] = tags
+            __props__['user_cidrs'] = user_cidrs
+            __props__['vpc_name'] = vpc_name
+            __props__['ipv6_cidr_block'] = None
             __props__['route_table_id'] = None
             __props__['router_id'] = None
             __props__['router_table_id'] = None
+            __props__['status'] = None
         super(Network, __self__).__init__(
             'alicloud:vpc/network:Network',
             resource_name,
@@ -82,13 +97,19 @@ class Network(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cidr_block: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            dry_run: Optional[pulumi.Input[bool]] = None,
+            enable_ipv6: Optional[pulumi.Input[bool]] = None,
+            ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             route_table_id: Optional[pulumi.Input[str]] = None,
             router_id: Optional[pulumi.Input[str]] = None,
             router_table_id: Optional[pulumi.Input[str]] = None,
             secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Network':
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            vpc_name: Optional[pulumi.Input[str]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -96,14 +117,19 @@ class Network(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr_block: The CIDR block for the VPC.
+        :param pulumi.Input[str] cidr_block: The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
-        :param pulumi.Input[str] name: The name of the VPC. Defaults to null.
+        :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+        :param pulumi.Input[str] ipv6_cidr_block: (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: The secondary CIDR blocks for the VPC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidrs of the VPC.
+        :param pulumi.Input[str] vpc_name: The name of the VPC. Defaults to null.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -111,20 +137,26 @@ class Network(pulumi.CustomResource):
 
         __props__["cidr_block"] = cidr_block
         __props__["description"] = description
+        __props__["dry_run"] = dry_run
+        __props__["enable_ipv6"] = enable_ipv6
+        __props__["ipv6_cidr_block"] = ipv6_cidr_block
         __props__["name"] = name
         __props__["resource_group_id"] = resource_group_id
         __props__["route_table_id"] = route_table_id
         __props__["router_id"] = router_id
         __props__["router_table_id"] = router_table_id
         __props__["secondary_cidr_blocks"] = secondary_cidr_blocks
+        __props__["status"] = status
         __props__["tags"] = tags
+        __props__["user_cidrs"] = user_cidrs
+        __props__["vpc_name"] = vpc_name
         return Network(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> pulumi.Output[str]:
+    def cidr_block(self) -> pulumi.Output[Optional[str]]:
         """
-        The CIDR block for the VPC.
+        The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -137,10 +169,34 @@ class Network(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+        """
+        return pulumi.get(self, "enable_ipv6")
+
+    @property
+    @pulumi.getter(name="ipv6CidrBlock")
+    def ipv6_cidr_block(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+        """
+        return pulumi.get(self, "ipv6_cidr_block")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the VPC. Defaults to null.
+        Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -183,11 +239,32 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="userCidrs")
+    def user_cidrs(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The user cidrs of the VPC.
+        """
+        return pulumi.get(self, "user_cidrs")
+
+    @property
+    @pulumi.getter(name="vpcName")
+    def vpc_name(self) -> pulumi.Output[str]:
+        """
+        The name of the VPC. Defaults to null.
+        """
+        return pulumi.get(self, "vpc_name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

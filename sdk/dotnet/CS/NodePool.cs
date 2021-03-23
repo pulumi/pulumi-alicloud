@@ -9,9 +9,30 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CS
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_node_pool.custom_nodepool cluster_id:nodepool_id
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:cs/nodePool:NodePool")]
     public partial class NodePool : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Enable Node payment auto-renew, default is `false`.
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+        /// </summary>
+        [Output("autoRenewPeriod")]
+        public Output<int?> AutoRenewPeriod { get; private set; } = null!;
+
         /// <summary>
         /// The id of kubernetes cluster.
         /// </summary>
@@ -26,6 +47,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
+
+        /// <summary>
+        /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+        /// </summary>
+        [Output("installCloudMonitor")]
+        public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
+
+        /// <summary>
+        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        /// </summary>
+        [Output("instanceChargeType")]
+        public Output<string?> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
         /// The instance type of worker node.
@@ -47,6 +80,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        /// * key: The label key.
+        /// * value: The label value.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.NodePoolLabel>> Labels { get; private set; } = null!;
@@ -80,6 +115,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        /// </summary>
+        [Output("period")]
+        public Output<int?> Period { get; private set; } = null!;
+
+        /// <summary>
+        /// Node payment period unit, valid value: `Month`. Default is `Month`.
+        /// </summary>
+        [Output("periodUnit")]
+        public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
         /// Auto scaling node pool configuration. For more details, see `scaling_config`.
@@ -124,6 +171,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.NodePoolTaint>> Taints { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+        /// </summary>
+        [Output("unschedulable")]
+        public Output<bool?> Unschedulable { get; private set; } = null!;
 
         /// <summary>
         /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
@@ -190,6 +243,18 @@ namespace Pulumi.AliCloud.CS
     public sealed class NodePoolArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable Node payment auto-renew, default is `false`.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
         /// The id of kubernetes cluster.
         /// </summary>
         [Input("clusterId", required: true)]
@@ -208,6 +273,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+        /// </summary>
+        [Input("installCloudMonitor")]
+        public Input<bool>? InstallCloudMonitor { get; set; }
+
+        /// <summary>
+        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
 
         [Input("instanceTypes", required: true)]
         private InputList<string>? _instanceTypes;
@@ -238,6 +315,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        /// * key: The label key.
+        /// * value: The label value.
         /// </summary>
         public InputList<Inputs.NodePoolLabelArgs> Labels
         {
@@ -274,6 +353,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// Node payment period unit, valid value: `Month`. Default is `Month`.
+        /// </summary>
+        [Input("periodUnit")]
+        public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
         /// Auto scaling node pool configuration. For more details, see `scaling_config`.
@@ -326,6 +417,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+        /// </summary>
+        [Input("unschedulable")]
+        public Input<bool>? Unschedulable { get; set; }
+
+        /// <summary>
         /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         /// </summary>
         [Input("userData")]
@@ -351,6 +448,18 @@ namespace Pulumi.AliCloud.CS
     public sealed class NodePoolState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable Node payment auto-renew, default is `false`.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
         /// The id of kubernetes cluster.
         /// </summary>
         [Input("clusterId")]
@@ -369,6 +478,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+        /// </summary>
+        [Input("installCloudMonitor")]
+        public Input<bool>? InstallCloudMonitor { get; set; }
+
+        /// <summary>
+        /// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
@@ -399,6 +520,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        /// * key: The label key.
+        /// * value: The label value.
         /// </summary>
         public InputList<Inputs.NodePoolLabelGetArgs> Labels
         {
@@ -435,6 +558,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// Node payment period unit, valid value: `Month`. Default is `Month`.
+        /// </summary>
+        [Input("periodUnit")]
+        public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
         /// Auto scaling node pool configuration. For more details, see `scaling_config`.
@@ -491,6 +626,12 @@ namespace Pulumi.AliCloud.CS
             get => _taints ?? (_taints = new InputList<Inputs.NodePoolTaintGetArgs>());
             set => _taints = value;
         }
+
+        /// <summary>
+        /// Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+        /// </summary>
+        [Input("unschedulable")]
+        public Input<bool>? Unschedulable { get; set; }
 
         /// <summary>
         /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.

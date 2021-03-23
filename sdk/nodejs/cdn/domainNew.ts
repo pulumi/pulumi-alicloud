@@ -25,13 +25,13 @@ import * as utilities from "../utilities";
  *     cdnType: "web",
  *     domainName: "terraform.test.com",
  *     scope: "overseas",
- *     sources: {
+ *     sources: [{
  *         content: "1.1.1.1",
  *         port: 80,
  *         priority: 20,
  *         type: "ipaddr",
  *         weight: 10,
- *     },
+ *     }],
  * });
  * ```
  *
@@ -98,7 +98,7 @@ export class DomainNew extends pulumi.CustomResource {
     /**
      * The source address list of the accelerated domain. Defaults to null. See Block Sources.
      */
-    public readonly sources!: pulumi.Output<outputs.cdn.DomainNewSources>;
+    public readonly sources!: pulumi.Output<outputs.cdn.DomainNewSource[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -183,7 +183,7 @@ export interface DomainNewState {
     /**
      * The source address list of the accelerated domain. Defaults to null. See Block Sources.
      */
-    readonly sources?: pulumi.Input<inputs.cdn.DomainNewSources>;
+    readonly sources?: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -217,7 +217,7 @@ export interface DomainNewArgs {
     /**
      * The source address list of the accelerated domain. Defaults to null. See Block Sources.
      */
-    readonly sources: pulumi.Input<inputs.cdn.DomainNewSources>;
+    readonly sources: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */

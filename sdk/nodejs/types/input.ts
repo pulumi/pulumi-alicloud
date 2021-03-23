@@ -363,7 +363,7 @@ export namespace cdn {
         serverCertificateStatus?: pulumi.Input<string>;
     }
 
-    export interface DomainNewSources {
+    export interface DomainNewSource {
         /**
          * The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
          */
@@ -2327,6 +2327,17 @@ export namespace rds {
     export interface InstanceParameter {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
+    }
+
+    export interface RdsParameterGroupParamDetail {
+        /**
+         * The name of a parameter.
+         */
+        paramName: pulumi.Input<string>;
+        /**
+         * The value of a parameter.
+         */
+        paramValue: pulumi.Input<string>;
     }
 
     export interface ReadOnlyInstanceParameter {

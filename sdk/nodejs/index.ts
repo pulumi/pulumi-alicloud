@@ -30,6 +30,7 @@ import * as config from "./config";
 import * as cr from "./cr";
 import * as cs from "./cs";
 import * as datahub from "./datahub";
+import * as dataworks from "./dataworks";
 import * as dcdn from "./dcdn";
 import * as ddos from "./ddos";
 import * as dds from "./dds";
@@ -98,6 +99,7 @@ export {
     cr,
     cs,
     datahub,
+    dataworks,
     dcdn,
     ddos,
     dds,

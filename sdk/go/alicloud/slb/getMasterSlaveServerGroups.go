@@ -74,6 +74,7 @@ import (
 // 		mainSwitch, err := vpc.NewSwitch(ctx, "mainSwitch", &vpc.SwitchArgs{
 // 			VpcId:            mainNetwork.ID(),
 // 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			VswitchName:      pulumi.String(name),
 // 			CidrBlock:        pulumi.String("172.16.0.0/16"),
 // 		})
 // 		if err != nil {
