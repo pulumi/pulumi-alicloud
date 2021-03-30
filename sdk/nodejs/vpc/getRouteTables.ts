@@ -21,9 +21,11 @@ import * as utilities from "../utilities";
  *
  * const fooNetwork = new alicloud.vpc.Network("foo", {
  *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
  * });
  * const fooRouteTable = new alicloud.vpc.RouteTable("foo", {
  *     description: name,
+ *     routeTableName: name,
  *     vpcId: fooNetwork.id,
  * });
  * const fooRouteTables = fooRouteTable.id.apply(id => alicloud.vpc.getRouteTables({
@@ -47,6 +49,10 @@ export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOp
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "resourceGroupId": args.resourceGroupId,
+        "routeTableName": args.routeTableName,
+        "routerId": args.routerId,
+        "routerType": args.routerType,
+        "status": args.status,
         "tags": args.tags,
         "vpcId": args.vpcId,
     }, opts);
@@ -69,6 +75,22 @@ export interface GetRouteTablesArgs {
      * The Id of resource group which route tables belongs.
      */
     readonly resourceGroupId?: string;
+    /**
+     * The route table name.
+     */
+    readonly routeTableName?: string;
+    /**
+     * The router ID.
+     */
+    readonly routerId?: string;
+    /**
+     * The route type of route table. Valid values: `VRouter` and `VBR`.
+     */
+    readonly routerType?: string;
+    /**
+     * The status of resource. Valid values: `Available` and `Pending`.
+     */
+    readonly status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -102,9 +124,28 @@ export interface GetRouteTablesResult {
      */
     readonly resourceGroupId?: string;
     /**
+     * The route table name.
+     */
+    readonly routeTableName?: string;
+    /**
+     * Router Id of the route table.
+     */
+    readonly routerId?: string;
+    /**
+     * The route type.
+     */
+    readonly routerType?: string;
+    /**
+     * The status of route table.
+     */
+    readonly status?: string;
+    /**
      * A list of Route Tables. Each element contains the following attributes:
      */
     readonly tables: outputs.vpc.GetRouteTablesTable[];
     readonly tags?: {[key: string]: any};
+    /**
+     * The VPC ID.
+     */
     readonly vpcId?: string;
 }

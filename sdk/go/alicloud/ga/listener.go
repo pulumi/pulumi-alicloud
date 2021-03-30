@@ -39,6 +39,24 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		deBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "deBandwidthPackage", &ga.BandwidthPackageArgs{
+// 			Bandwidth:     pulumi.Int(100),
+// 			Type:          pulumi.String("Basic"),
+// 			BandwidthType: pulumi.String("Basic"),
+// 			PaymentType:   pulumi.String("PayAsYouGo"),
+// 			BillingType:   pulumi.String("PayBy95"),
+// 			Ratio:         pulumi.Int(30),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		deBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "deBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+// 			AcceleratorId:      exampleAccelerator.ID(),
+// 			BandwidthPackageId: deBandwidthPackage.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		_, err = ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
 // 			AcceleratorId: exampleAccelerator.ID(),
 // 			PortRanges: ga.ListenerPortRangeArray{
@@ -47,7 +65,9 @@ import (
 // 					ToPort:   pulumi.Int(70),
 // 				},
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			deBandwidthPackageAttachment,
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -80,9 +100,11 @@ type Listener struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The portRanges of the listener.
 	PortRanges ListenerPortRangeArrayOutput `pulumi:"portRanges"`
-	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
-	// The proxy protocol of the listener.
+	// The proxy protocol of the listener. Default value is `false`. Valid value:
+	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol pulumi.BoolPtrOutput `pulumi:"proxyProtocol"`
 	// The status of the listener.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -137,9 +159,11 @@ type listenerState struct {
 	Name *string `pulumi:"name"`
 	// The portRanges of the listener.
 	PortRanges []ListenerPortRange `pulumi:"portRanges"`
-	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 	Protocol *string `pulumi:"protocol"`
-	// The proxy protocol of the listener.
+	// The proxy protocol of the listener. Default value is `false`. Valid value:
+	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
 	// The status of the listener.
 	Status *string `pulumi:"status"`
@@ -160,9 +184,11 @@ type ListenerState struct {
 	Name pulumi.StringPtrInput
 	// The portRanges of the listener.
 	PortRanges ListenerPortRangeArrayInput
-	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 	Protocol pulumi.StringPtrInput
-	// The proxy protocol of the listener.
+	// The proxy protocol of the listener. Default value is `false`. Valid value:
+	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol pulumi.BoolPtrInput
 	// The status of the listener.
 	Status pulumi.StringPtrInput
@@ -187,9 +213,11 @@ type listenerArgs struct {
 	Name *string `pulumi:"name"`
 	// The portRanges of the listener.
 	PortRanges []ListenerPortRange `pulumi:"portRanges"`
-	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 	Protocol *string `pulumi:"protocol"`
-	// The proxy protocol of the listener.
+	// The proxy protocol of the listener. Default value is `false`. Valid value:
+	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
 }
 
@@ -209,9 +237,11 @@ type ListenerArgs struct {
 	Name pulumi.StringPtrInput
 	// The portRanges of the listener.
 	PortRanges ListenerPortRangeArrayInput
-	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 	Protocol pulumi.StringPtrInput
-	// The proxy protocol of the listener.
+	// The proxy protocol of the listener. Default value is `false`. Valid value:
+	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol pulumi.BoolPtrInput
 }
 

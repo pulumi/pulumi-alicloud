@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The weight of Endpoint N in the endpoint group.
+        /// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
         /// </summary>
         public readonly int Weight;
 

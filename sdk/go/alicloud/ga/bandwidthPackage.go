@@ -57,9 +57,11 @@ import (
 type BandwidthPackage struct {
 	pulumi.CustomResourceState
 
-	// The auto pay. Valid values: `false`, `true`.
+	// Whether to pay automatically. Valid values:
+	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// `true`: Enable automatic payment, automatic payment order.
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
-	// The auto use coupon. Valid values: `false`, `true`.
+	// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// The bandwidth value of bandwidth packet.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
@@ -122,9 +124,11 @@ func GetBandwidthPackage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BandwidthPackage resources.
 type bandwidthPackageState struct {
-	// The auto pay. Valid values: `false`, `true`.
+	// Whether to pay automatically. Valid values:
+	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// `true`: Enable automatic payment, automatic payment order.
 	AutoPay *bool `pulumi:"autoPay"`
-	// The auto use coupon. Valid values: `false`, `true`.
+	// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth value of bandwidth packet.
 	Bandwidth *int `pulumi:"bandwidth"`
@@ -153,9 +157,11 @@ type bandwidthPackageState struct {
 }
 
 type BandwidthPackageState struct {
-	// The auto pay. Valid values: `false`, `true`.
+	// Whether to pay automatically. Valid values:
+	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// `true`: Enable automatic payment, automatic payment order.
 	AutoPay pulumi.BoolPtrInput
-	// The auto use coupon. Valid values: `false`, `true`.
+	// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth value of bandwidth packet.
 	Bandwidth pulumi.IntPtrInput
@@ -188,9 +194,11 @@ func (BandwidthPackageState) ElementType() reflect.Type {
 }
 
 type bandwidthPackageArgs struct {
-	// The auto pay. Valid values: `false`, `true`.
+	// Whether to pay automatically. Valid values:
+	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// `true`: Enable automatic payment, automatic payment order.
 	AutoPay *bool `pulumi:"autoPay"`
-	// The auto use coupon. Valid values: `false`, `true`.
+	// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth value of bandwidth packet.
 	Bandwidth int `pulumi:"bandwidth"`
@@ -218,9 +226,11 @@ type bandwidthPackageArgs struct {
 
 // The set of arguments for constructing a BandwidthPackage resource.
 type BandwidthPackageArgs struct {
-	// The auto pay. Valid values: `false`, `true`.
+	// Whether to pay automatically. Valid values:
+	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// `true`: Enable automatic payment, automatic payment order.
 	AutoPay pulumi.BoolPtrInput
-	// The auto use coupon. Valid values: `false`, `true`.
+	// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth value of bandwidth packet.
 	Bandwidth pulumi.IntInput

@@ -67,7 +67,7 @@ export class Accelerator extends pulumi.CustomResource {
      */
     public readonly acceleratorName!: pulumi.Output<string | undefined>;
     /**
-     * The auto use coupon.
+     * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
      */
     public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
     /**
@@ -143,7 +143,7 @@ export interface AcceleratorState {
      */
     readonly acceleratorName?: pulumi.Input<string>;
     /**
-     * The auto use coupon.
+     * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
      */
     readonly autoUseCoupon?: pulumi.Input<boolean>;
     /**
@@ -179,7 +179,7 @@ export interface AcceleratorArgs {
      */
     readonly acceleratorName?: pulumi.Input<string>;
     /**
-     * The auto use coupon.
+     * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
      */
     readonly autoUseCoupon?: pulumi.Input<boolean>;
     /**

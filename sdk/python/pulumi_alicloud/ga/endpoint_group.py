@@ -54,17 +54,28 @@ class EndpointGroup(pulumi.CustomResource):
             duration=1,
             auto_use_coupon=True,
             spec="1")
+        de_bandwidth_package = alicloud.ga.BandwidthPackage("deBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        de_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment",
+            accelerator_id=example_accelerator.id,
+            bandwidth_package_id=de_bandwidth_package.id)
         example_listener = alicloud.ga.Listener("exampleListener",
             accelerator_id=example_accelerator.id,
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=60,
                 to_port=70,
-            )])
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[de_bandwidth_package_attachment]))
         example_eip = alicloud.ecs.Eip("exampleEip",
             bandwidth=10,
             internet_charge_type="PayByBandwidth")
         example_endpoint_group = alicloud.ga.EndpointGroup("exampleEndpointGroup",
-            accelerator_id=alicloud_ga_accelerators["example"]["id"],
+            accelerator_id=example_accelerator.id,
             endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
                 endpoint=example_eip.ip_address,
                 type="PublicIp",
@@ -89,7 +100,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol.
+        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
@@ -179,7 +190,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol.
+        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
@@ -257,7 +268,7 @@ class EndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="endpointRequestProtocol")
     def endpoint_request_protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        The endpoint request protocol.
+        The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "endpoint_request_protocol")
 

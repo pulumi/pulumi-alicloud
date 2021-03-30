@@ -35,6 +35,8 @@ type SnatEntry struct {
 	SourceCidr pulumi.StringPtrOutput `pulumi:"sourceCidr"`
 	// The vswitch ID.
 	SourceVswitchId pulumi.StringPtrOutput `pulumi:"sourceVswitchId"`
+	// (Available in 1.119.1+) The status of snat entry.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewSnatEntry registers a new resource with the given unique name, arguments, and options.
@@ -84,6 +86,8 @@ type snatEntryState struct {
 	SourceCidr *string `pulumi:"sourceCidr"`
 	// The vswitch ID.
 	SourceVswitchId *string `pulumi:"sourceVswitchId"`
+	// (Available in 1.119.1+) The status of snat entry.
+	Status *string `pulumi:"status"`
 }
 
 type SnatEntryState struct {
@@ -99,6 +103,8 @@ type SnatEntryState struct {
 	SourceCidr pulumi.StringPtrInput
 	// The vswitch ID.
 	SourceVswitchId pulumi.StringPtrInput
+	// (Available in 1.119.1+) The status of snat entry.
+	Status pulumi.StringPtrInput
 }
 
 func (SnatEntryState) ElementType() reflect.Type {

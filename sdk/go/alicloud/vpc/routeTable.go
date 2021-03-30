@@ -23,8 +23,14 @@ type RouteTable struct {
 
 	// The description of the route table instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the route table.
+	// Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the route table.
+	RouteTableName pulumi.StringOutput `pulumi:"routeTableName"`
+	// (Available in v1.120.0+) The status of the route table.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The vpcId of the route table, the field can't be changed.
@@ -65,8 +71,14 @@ func GetRouteTable(ctx *pulumi.Context,
 type routeTableState struct {
 	// The description of the route table instance.
 	Description *string `pulumi:"description"`
-	// The name of the route table.
+	// Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
 	Name *string `pulumi:"name"`
+	// The name of the route table.
+	RouteTableName *string `pulumi:"routeTableName"`
+	// (Available in v1.120.0+) The status of the route table.
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The vpcId of the route table, the field can't be changed.
@@ -76,8 +88,14 @@ type routeTableState struct {
 type RouteTableState struct {
 	// The description of the route table instance.
 	Description pulumi.StringPtrInput
-	// The name of the route table.
+	// Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
 	Name pulumi.StringPtrInput
+	// The name of the route table.
+	RouteTableName pulumi.StringPtrInput
+	// (Available in v1.120.0+) The status of the route table.
+	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The vpcId of the route table, the field can't be changed.
@@ -91,8 +109,12 @@ func (RouteTableState) ElementType() reflect.Type {
 type routeTableArgs struct {
 	// The description of the route table instance.
 	Description *string `pulumi:"description"`
-	// The name of the route table.
+	// Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
 	Name *string `pulumi:"name"`
+	// The name of the route table.
+	RouteTableName *string `pulumi:"routeTableName"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The vpcId of the route table, the field can't be changed.
@@ -103,8 +125,12 @@ type routeTableArgs struct {
 type RouteTableArgs struct {
 	// The description of the route table instance.
 	Description pulumi.StringPtrInput
-	// The name of the route table.
+	// Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
 	Name pulumi.StringPtrInput
+	// The name of the route table.
+	RouteTableName pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The vpcId of the route table, the field can't be changed.

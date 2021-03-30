@@ -25,19 +25,33 @@ import * as utilities from "../utilities";
  *     autoUseCoupon: true,
  *     spec: "1",
  * });
+ * const deBandwidthPackage = new alicloud.ga.BandwidthPackage("deBandwidthPackage", {
+ *     bandwidth: "100",
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     paymentType: "PayAsYouGo",
+ *     billingType: "PayBy95",
+ *     ratio: 30,
+ * });
+ * const deBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", {
+ *     acceleratorId: exampleAccelerator.id,
+ *     bandwidthPackageId: deBandwidthPackage.id,
+ * });
  * const exampleListener = new alicloud.ga.Listener("exampleListener", {
  *     acceleratorId: exampleAccelerator.id,
  *     portRanges: [{
  *         fromPort: 60,
  *         toPort: 70,
  *     }],
+ * }, {
+ *     dependsOn: [deBandwidthPackageAttachment],
  * });
  * const exampleEip = new alicloud.ecs.Eip("exampleEip", {
  *     bandwidth: "10",
  *     internetChargeType: "PayByBandwidth",
  * });
  * const exampleEndpointGroup = new alicloud.ga.EndpointGroup("exampleEndpointGroup", {
- *     acceleratorId: alicloud_ga_accelerators.example.id,
+ *     acceleratorId: exampleAccelerator.id,
  *     endpointConfigurations: [{
  *         endpoint: exampleEip.ipAddress,
  *         type: "PublicIp",
@@ -105,7 +119,7 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     public readonly endpointGroupType!: pulumi.Output<string | undefined>;
     /**
-     * The endpoint request protocol.
+     * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
      */
     public readonly endpointRequestProtocol!: pulumi.Output<string | undefined>;
     /**
@@ -241,7 +255,7 @@ export interface EndpointGroupState {
      */
     readonly endpointGroupType?: pulumi.Input<string>;
     /**
-     * The endpoint request protocol.
+     * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
      */
     readonly endpointRequestProtocol?: pulumi.Input<string>;
     /**
@@ -311,7 +325,7 @@ export interface EndpointGroupArgs {
      */
     readonly endpointGroupType?: pulumi.Input<string>;
     /**
-     * The endpoint request protocol.
+     * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
      */
     readonly endpointRequestProtocol?: pulumi.Input<string>;
     /**

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Elastic IP address can be imported using the id, e.g.
+ * Elastic IP address association can be imported using the id, e.g.
  *
  * ```sh
  *  $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example eip-abc12345678:i-abc12355
@@ -50,11 +50,11 @@ export class EipAssociation extends pulumi.CustomResource {
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the ECS or SLB instance or Nat Gateway.
+     * The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The type of cloud product that the eip instance to bind.
+     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -114,11 +114,11 @@ export interface EipAssociationState {
      */
     readonly force?: pulumi.Input<boolean>;
     /**
-     * The ID of the ECS or SLB instance or Nat Gateway.
+     * The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
-     * The type of cloud product that the eip instance to bind.
+     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
@@ -140,11 +140,11 @@ export interface EipAssociationArgs {
      */
     readonly force?: pulumi.Input<boolean>;
     /**
-     * The ID of the ECS or SLB instance or Nat Gateway.
+     * The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * The type of cloud product that the eip instance to bind.
+     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
      */
     readonly instanceType?: pulumi.Input<string>;
     /**

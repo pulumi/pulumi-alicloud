@@ -20,11 +20,15 @@ import * as utilities from "../utilities";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     vswitchName: name,
  * });
  * const defaultNatGateway = new alicloud.vpc.NatGateway("defaultNatGateway", {
  *     vpcId: defaultNetwork.id,
@@ -94,6 +98,10 @@ export class ForwardEntry extends pulumi.CustomResource {
      */
     public /*out*/ readonly forwardEntryId!: pulumi.Output<string>;
     /**
+     * The name of forward entry.
+     */
+    public readonly forwardEntryName!: pulumi.Output<string>;
+    /**
      * The value can get from `alicloud.vpc.NatGateway` Attributes "forwardTableIds".
      */
     public readonly forwardTableId!: pulumi.Output<string>;
@@ -110,9 +118,19 @@ export class ForwardEntry extends pulumi.CustomResource {
      */
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
-     * The name of forward entry.
+     * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Specifies whether to remove limits on the port range. Default value is `false`.
+     */
+    public readonly portBreak!: pulumi.Output<boolean | undefined>;
+    /**
+     * (Available in 1.119.1+) The status of forward entry.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a ForwardEntry resource with the given unique name, arguments, and options.
@@ -130,11 +148,14 @@ export class ForwardEntry extends pulumi.CustomResource {
             inputs["externalIp"] = state ? state.externalIp : undefined;
             inputs["externalPort"] = state ? state.externalPort : undefined;
             inputs["forwardEntryId"] = state ? state.forwardEntryId : undefined;
+            inputs["forwardEntryName"] = state ? state.forwardEntryName : undefined;
             inputs["forwardTableId"] = state ? state.forwardTableId : undefined;
             inputs["internalIp"] = state ? state.internalIp : undefined;
             inputs["internalPort"] = state ? state.internalPort : undefined;
             inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["portBreak"] = state ? state.portBreak : undefined;
+            inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ForwardEntryArgs | undefined;
             if ((!args || args.externalIp === undefined) && !opts.urn) {
@@ -157,12 +178,15 @@ export class ForwardEntry extends pulumi.CustomResource {
             }
             inputs["externalIp"] = args ? args.externalIp : undefined;
             inputs["externalPort"] = args ? args.externalPort : undefined;
+            inputs["forwardEntryName"] = args ? args.forwardEntryName : undefined;
             inputs["forwardTableId"] = args ? args.forwardTableId : undefined;
             inputs["internalIp"] = args ? args.internalIp : undefined;
             inputs["internalPort"] = args ? args.internalPort : undefined;
             inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["portBreak"] = args ? args.portBreak : undefined;
             inputs["forwardEntryId"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -188,6 +212,10 @@ export interface ForwardEntryState {
      */
     readonly forwardEntryId?: pulumi.Input<string>;
     /**
+     * The name of forward entry.
+     */
+    readonly forwardEntryName?: pulumi.Input<string>;
+    /**
      * The value can get from `alicloud.vpc.NatGateway` Attributes "forwardTableIds".
      */
     readonly forwardTableId?: pulumi.Input<string>;
@@ -204,9 +232,19 @@ export interface ForwardEntryState {
      */
     readonly ipProtocol?: pulumi.Input<string>;
     /**
-     * The name of forward entry.
+     * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Specifies whether to remove limits on the port range. Default value is `false`.
+     */
+    readonly portBreak?: pulumi.Input<boolean>;
+    /**
+     * (Available in 1.119.1+) The status of forward entry.
+     */
+    readonly status?: pulumi.Input<string>;
 }
 
 /**
@@ -221,6 +259,10 @@ export interface ForwardEntryArgs {
      * The external port, valid value is 1~65535|any.
      */
     readonly externalPort: pulumi.Input<string>;
+    /**
+     * The name of forward entry.
+     */
+    readonly forwardEntryName?: pulumi.Input<string>;
     /**
      * The value can get from `alicloud.vpc.NatGateway` Attributes "forwardTableIds".
      */
@@ -238,7 +280,13 @@ export interface ForwardEntryArgs {
      */
     readonly ipProtocol: pulumi.Input<string>;
     /**
-     * The name of forward entry.
+     * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Specifies whether to remove limits on the port range. Default value is `false`.
+     */
+    readonly portBreak?: pulumi.Input<boolean>;
 }

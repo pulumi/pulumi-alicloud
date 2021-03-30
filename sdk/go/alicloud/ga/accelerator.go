@@ -56,7 +56,7 @@ type Accelerator struct {
 
 	// The Name of the GA instance.
 	AcceleratorName pulumi.StringPtrOutput `pulumi:"acceleratorName"`
-	// The auto use coupon.
+	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -111,7 +111,7 @@ func GetAccelerator(ctx *pulumi.Context,
 type acceleratorState struct {
 	// The Name of the GA instance.
 	AcceleratorName *string `pulumi:"acceleratorName"`
-	// The auto use coupon.
+	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
@@ -132,7 +132,7 @@ type acceleratorState struct {
 type AcceleratorState struct {
 	// The Name of the GA instance.
 	AcceleratorName pulumi.StringPtrInput
-	// The auto use coupon.
+	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon pulumi.BoolPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
@@ -157,7 +157,7 @@ func (AcceleratorState) ElementType() reflect.Type {
 type acceleratorArgs struct {
 	// The Name of the GA instance.
 	AcceleratorName *string `pulumi:"acceleratorName"`
-	// The auto use coupon.
+	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
@@ -177,7 +177,7 @@ type acceleratorArgs struct {
 type AcceleratorArgs struct {
 	// The Name of the GA instance.
 	AcceleratorName pulumi.StringPtrInput
-	// The auto use coupon.
+	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon pulumi.BoolPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput

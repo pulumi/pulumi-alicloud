@@ -17,7 +17,7 @@ type EndpointGroupEndpointConfiguration struct {
 	Endpoint string `pulumi:"endpoint"`
 	// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
 	Type string `pulumi:"type"`
-	// The weight of Endpoint N in the endpoint group.
+	// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
 	Weight int `pulumi:"weight"`
 }
 
@@ -39,7 +39,7 @@ type EndpointGroupEndpointConfigurationArgs struct {
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The weight of Endpoint N in the endpoint group.
+	// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
@@ -109,7 +109,7 @@ func (o EndpointGroupEndpointConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The weight of Endpoint N in the endpoint group.
+// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
 func (o EndpointGroupEndpointConfigurationOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) int { return v.Weight }).(pulumi.IntOutput)
 }

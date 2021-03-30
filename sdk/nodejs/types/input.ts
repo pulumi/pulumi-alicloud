@@ -1824,7 +1824,7 @@ export namespace ga {
          */
         type: pulumi.Input<string>;
         /**
-         * The weight of Endpoint N in the endpoint group.
+         * The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
          */
         weight: pulumi.Input<number>;
     }

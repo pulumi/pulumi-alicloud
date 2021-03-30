@@ -95,14 +95,22 @@ func GetSnatEntries(ctx *pulumi.Context, args *GetSnatEntriesArgs, opts ...pulum
 // A collection of arguments for invoking getSnatEntries.
 type GetSnatEntriesArgs struct {
 	// A list of Snat Entries IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// A regex string to filter results by the resource name.
+	NameRegex  *string `pulumi:"nameRegex"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The name of snat entry.
+	SnatEntryName *string `pulumi:"snatEntryName"`
 	// The public IP of the Snat Entry.
 	SnatIp *string `pulumi:"snatIp"`
 	// The ID of the Snat table.
 	SnatTableId string `pulumi:"snatTableId"`
 	// The source CIDR block of the Snat Entry.
 	SourceCidr *string `pulumi:"sourceCidr"`
+	// The source vswitch ID.
+	SourceVswitchId *string `pulumi:"sourceVswitchId"`
+	// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getSnatEntries.
@@ -113,10 +121,18 @@ type GetSnatEntriesResult struct {
 	Id string `pulumi:"id"`
 	// (Optional) A list of Snat Entries IDs.
 	Ids        []string `pulumi:"ids"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// The name of snat entry.
+	SnatEntryName *string `pulumi:"snatEntryName"`
 	// The public IP of the Snat Entry.
 	SnatIp      *string `pulumi:"snatIp"`
 	SnatTableId string  `pulumi:"snatTableId"`
 	// The source CIDR block of the Snat Entry.
 	SourceCidr *string `pulumi:"sourceCidr"`
+	// The source vswitch ID.
+	SourceVswitchId *string `pulumi:"sourceVswitchId"`
+	// The status of the Snat Entry.
+	Status *string `pulumi:"status"`
 }

@@ -63,6 +63,14 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The disk attachment can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:ecs/diskAttachment:DiskAttachment example d-abc12345678:i-abc12355
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/diskAttachment:DiskAttachment")]
     public partial class DiskAttachment : Pulumi.CustomResource

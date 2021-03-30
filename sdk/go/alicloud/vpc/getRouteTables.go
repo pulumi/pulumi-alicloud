@@ -28,6 +28,14 @@ type GetRouteTablesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which route tables belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The route table name.
+	RouteTableName *string `pulumi:"routeTableName"`
+	// The router ID.
+	RouterId *string `pulumi:"routerId"`
+	// The route type of route table. Valid values: `VRouter` and `VBR`.
+	RouterType *string `pulumi:"routerType"`
+	// The status of resource. Valid values: `Available` and `Pending`.
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Vpc id of the route table.
@@ -46,8 +54,17 @@ type GetRouteTablesResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// The Id of resource group which route tables belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The route table name.
+	RouteTableName *string `pulumi:"routeTableName"`
+	// Router Id of the route table.
+	RouterId *string `pulumi:"routerId"`
+	// The route type.
+	RouterType *string `pulumi:"routerType"`
+	// The status of route table.
+	Status *string `pulumi:"status"`
 	// A list of Route Tables. Each element contains the following attributes:
 	Tables []GetRouteTablesTable  `pulumi:"tables"`
 	Tags   map[string]interface{} `pulumi:"tags"`
-	VpcId  *string                `pulumi:"vpcId"`
+	// The VPC ID.
+	VpcId *string `pulumi:"vpcId"`
 }

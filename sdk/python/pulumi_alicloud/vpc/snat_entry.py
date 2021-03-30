@@ -69,6 +69,7 @@ class SnatEntry(pulumi.CustomResource):
             __props__['source_cidr'] = source_cidr
             __props__['source_vswitch_id'] = source_vswitch_id
             __props__['snat_entry_id'] = None
+            __props__['status'] = None
         super(SnatEntry, __self__).__init__(
             'alicloud:vpc/snatEntry:SnatEntry',
             resource_name,
@@ -84,7 +85,8 @@ class SnatEntry(pulumi.CustomResource):
             snat_ip: Optional[pulumi.Input[str]] = None,
             snat_table_id: Optional[pulumi.Input[str]] = None,
             source_cidr: Optional[pulumi.Input[str]] = None,
-            source_vswitch_id: Optional[pulumi.Input[str]] = None) -> 'SnatEntry':
+            source_vswitch_id: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None) -> 'SnatEntry':
         """
         Get an existing SnatEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -98,6 +100,7 @@ class SnatEntry(pulumi.CustomResource):
         :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
         :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
+        :param pulumi.Input[str] status: (Available in 1.119.1+) The status of snat entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -109,6 +112,7 @@ class SnatEntry(pulumi.CustomResource):
         __props__["snat_table_id"] = snat_table_id
         __props__["source_cidr"] = source_cidr
         __props__["source_vswitch_id"] = source_vswitch_id
+        __props__["status"] = status
         return SnatEntry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -158,6 +162,14 @@ class SnatEntry(pulumi.CustomResource):
         The vswitch ID.
         """
         return pulumi.get(self, "source_vswitch_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.119.1+) The status of snat entry.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

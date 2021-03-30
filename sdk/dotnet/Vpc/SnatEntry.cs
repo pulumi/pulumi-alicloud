@@ -59,6 +59,12 @@ namespace Pulumi.AliCloud.Vpc
         [Output("sourceVswitchId")]
         public Output<string?> SourceVswitchId { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available in 1.119.1+) The status of snat entry.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a SnatEntry resource with the given unique name, arguments, and options.
@@ -177,6 +183,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("sourceVswitchId")]
         public Input<string>? SourceVswitchId { get; set; }
+
+        /// <summary>
+        /// (Available in 1.119.1+) The status of snat entry.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public SnatEntryState()
         {

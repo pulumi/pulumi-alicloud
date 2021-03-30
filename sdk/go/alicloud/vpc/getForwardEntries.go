@@ -40,15 +40,16 @@ import (
 // 		}
 // 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 			VpcName:   pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
-// 			VpcId:            defaultNetwork.ID(),
-// 			VswitchName:      pulumi.String(name),
+// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
+// 			VpcId:       defaultNetwork.ID(),
+// 			VswitchName: pulumi.String(name),
+// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -99,17 +100,25 @@ func GetForwardEntries(ctx *pulumi.Context, args *GetForwardEntriesArgs, opts ..
 type GetForwardEntriesArgs struct {
 	// The public IP address.
 	ExternalIp *string `pulumi:"externalIp"`
+	// The public port.
+	ExternalPort *string `pulumi:"externalPort"`
+	// The name of forward entry.
+	ForwardEntryName *string `pulumi:"forwardEntryName"`
 	// The ID of the Forward table.
 	ForwardTableId string `pulumi:"forwardTableId"`
 	// A list of Forward Entries IDs.
 	Ids []string `pulumi:"ids"`
 	// The private IP address.
 	InternalIp *string `pulumi:"internalIp"`
+	// The internal port.
+	InternalPort *string `pulumi:"internalPort"`
+	// The ip protocol. Valid values: `any`,`tcp` and `udp`.
+	IpProtocol *string `pulumi:"ipProtocol"`
 	// A regex string to filter results by forward entry name.
-	NameRegex *string `pulumi:"nameRegex"`
-	// A list of Forward Entries names.
-	Names      []string `pulumi:"names"`
-	OutputFile *string  `pulumi:"outputFile"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getForwardEntries.
@@ -117,16 +126,26 @@ type GetForwardEntriesResult struct {
 	// A list of Forward Entries. Each element contains the following attributes:
 	Entries []GetForwardEntriesEntry `pulumi:"entries"`
 	// The public IP address.
-	ExternalIp     *string `pulumi:"externalIp"`
-	ForwardTableId string  `pulumi:"forwardTableId"`
+	ExternalIp *string `pulumi:"externalIp"`
+	// The public port.
+	ExternalPort *string `pulumi:"externalPort"`
+	// The name of forward entry.
+	ForwardEntryName *string `pulumi:"forwardEntryName"`
+	ForwardTableId   string  `pulumi:"forwardTableId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Forward Entries IDs.
 	Ids []string `pulumi:"ids"`
 	// The private IP address.
 	InternalIp *string `pulumi:"internalIp"`
+	// The private port.
+	InternalPort *string `pulumi:"internalPort"`
+	// The protocol type.
+	IpProtocol *string `pulumi:"ipProtocol"`
 	NameRegex  *string `pulumi:"nameRegex"`
 	// A list of Forward Entries names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// The status of forward entry.
+	Status *string `pulumi:"status"`
 }

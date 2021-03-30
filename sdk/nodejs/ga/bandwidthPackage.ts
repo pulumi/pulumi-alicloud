@@ -66,11 +66,13 @@ export class BandwidthPackage extends pulumi.CustomResource {
     }
 
     /**
-     * The auto pay. Valid values: `false`, `true`.
+     * Whether to pay automatically. Valid values:
+     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * `true`: Enable automatic payment, automatic payment order.
      */
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
     /**
-     * The auto use coupon. Valid values: `false`, `true`.
+     * Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
      */
     public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
     /**
@@ -184,11 +186,13 @@ export class BandwidthPackage extends pulumi.CustomResource {
  */
 export interface BandwidthPackageState {
     /**
-     * The auto pay. Valid values: `false`, `true`.
+     * Whether to pay automatically. Valid values:
+     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * `true`: Enable automatic payment, automatic payment order.
      */
     readonly autoPay?: pulumi.Input<boolean>;
     /**
-     * The auto use coupon. Valid values: `false`, `true`.
+     * Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
      */
     readonly autoUseCoupon?: pulumi.Input<boolean>;
     /**
@@ -246,11 +250,13 @@ export interface BandwidthPackageState {
  */
 export interface BandwidthPackageArgs {
     /**
-     * The auto pay. Valid values: `false`, `true`.
+     * Whether to pay automatically. Valid values:
+     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * `true`: Enable automatic payment, automatic payment order.
      */
     readonly autoPay?: pulumi.Input<boolean>;
     /**
-     * The auto use coupon. Valid values: `false`, `true`.
+     * Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
      */
     readonly autoUseCoupon?: pulumi.Input<boolean>;
     /**

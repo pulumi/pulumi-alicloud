@@ -24,12 +24,13 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
  *     cidrBlock: "172.16.0.0/21",
  *     vpcId: defaultNetwork.id,
  *     vswitchName: name,
+ *     zoneId: defaultZones.zones[0].id,
  * });
  * const defaultNatGateway = new alicloud.vpc.NatGateway("default", {
  *     specification: "Small",
@@ -63,12 +64,16 @@ export function getForwardEntries(args: GetForwardEntriesArgs, opts?: pulumi.Inv
     }
     return pulumi.runtime.invoke("alicloud:vpc/getForwardEntries:getForwardEntries", {
         "externalIp": args.externalIp,
+        "externalPort": args.externalPort,
+        "forwardEntryName": args.forwardEntryName,
         "forwardTableId": args.forwardTableId,
         "ids": args.ids,
         "internalIp": args.internalIp,
+        "internalPort": args.internalPort,
+        "ipProtocol": args.ipProtocol,
         "nameRegex": args.nameRegex,
-        "names": args.names,
         "outputFile": args.outputFile,
+        "status": args.status,
     }, opts);
 }
 
@@ -80,6 +85,14 @@ export interface GetForwardEntriesArgs {
      * The public IP address.
      */
     readonly externalIp?: string;
+    /**
+     * The public port.
+     */
+    readonly externalPort?: string;
+    /**
+     * The name of forward entry.
+     */
+    readonly forwardEntryName?: string;
     /**
      * The ID of the Forward table.
      */
@@ -93,14 +106,22 @@ export interface GetForwardEntriesArgs {
      */
     readonly internalIp?: string;
     /**
+     * The internal port.
+     */
+    readonly internalPort?: string;
+    /**
+     * The ip protocol. Valid values: `any`,`tcp` and `udp`.
+     */
+    readonly ipProtocol?: string;
+    /**
      * A regex string to filter results by forward entry name.
      */
     readonly nameRegex?: string;
-    /**
-     * A list of Forward Entries names.
-     */
-    readonly names?: string[];
     readonly outputFile?: string;
+    /**
+     * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+     */
+    readonly status?: string;
 }
 
 /**
@@ -115,6 +136,14 @@ export interface GetForwardEntriesResult {
      * The public IP address.
      */
     readonly externalIp?: string;
+    /**
+     * The public port.
+     */
+    readonly externalPort?: string;
+    /**
+     * The name of forward entry.
+     */
+    readonly forwardEntryName?: string;
     readonly forwardTableId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -128,10 +157,22 @@ export interface GetForwardEntriesResult {
      * The private IP address.
      */
     readonly internalIp?: string;
+    /**
+     * The private port.
+     */
+    readonly internalPort?: string;
+    /**
+     * The protocol type.
+     */
+    readonly ipProtocol?: string;
     readonly nameRegex?: string;
     /**
      * A list of Forward Entries names.
      */
-    readonly names?: string[];
+    readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of forward entry.
+     */
+    readonly status?: string;
 }

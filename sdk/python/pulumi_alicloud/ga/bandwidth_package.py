@@ -65,8 +65,10 @@ class BandwidthPackage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_pay: The auto pay. Valid values: `false`, `true`.
-        :param pulumi.Input[bool] auto_use_coupon: The auto use coupon. Valid values: `false`, `true`.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
+               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+               `true`: Enable automatic payment, automatic payment order.
+        :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
@@ -145,8 +147,10 @@ class BandwidthPackage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_pay: The auto pay. Valid values: `false`, `true`.
-        :param pulumi.Input[bool] auto_use_coupon: The auto use coupon. Valid values: `false`, `true`.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
+               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+               `true`: Enable automatic payment, automatic payment order.
+        :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
@@ -184,7 +188,9 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[bool]]:
         """
-        The auto pay. Valid values: `false`, `true`.
+        Whether to pay automatically. Valid values:
+        `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        `true`: Enable automatic payment, automatic payment order.
         """
         return pulumi.get(self, "auto_pay")
 
@@ -192,7 +198,7 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter(name="autoUseCoupon")
     def auto_use_coupon(self) -> pulumi.Output[Optional[bool]]:
         """
-        The auto use coupon. Valid values: `false`, `true`.
+        Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         """
         return pulumi.get(self, "auto_use_coupon")
 

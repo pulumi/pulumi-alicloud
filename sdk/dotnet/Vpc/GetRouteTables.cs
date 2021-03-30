@@ -33,10 +33,12 @@ namespace Pulumi.AliCloud.Vpc
         ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
         ///         {
         ///             CidrBlock = "172.16.0.0/12",
+        ///             VpcName = name,
         ///         });
         ///         var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new AliCloud.Vpc.RouteTableArgs
         ///         {
         ///             Description = name,
+        ///             RouteTableName = name,
         ///             VpcId = fooNetwork.Id,
         ///         });
         ///         var fooRouteTables = fooRouteTable.Id.Apply(id =&gt; AliCloud.Vpc.GetRouteTables.InvokeAsync(new AliCloud.Vpc.GetRouteTablesArgs
@@ -90,6 +92,30 @@ namespace Pulumi.AliCloud.Vpc
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The route table name.
+        /// </summary>
+        [Input("routeTableName")]
+        public string? RouteTableName { get; set; }
+
+        /// <summary>
+        /// The router ID.
+        /// </summary>
+        [Input("routerId")]
+        public string? RouterId { get; set; }
+
+        /// <summary>
+        /// The route type of route table. Valid values: `VRouter` and `VBR`.
+        /// </summary>
+        [Input("routerType")]
+        public string? RouterType { get; set; }
+
+        /// <summary>
+        /// The status of resource. Valid values: `Available` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
         [Input("tags")]
         private Dictionary<string, object>? _tags;
 
@@ -136,10 +162,29 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly string? ResourceGroupId;
         /// <summary>
+        /// The route table name.
+        /// </summary>
+        public readonly string? RouteTableName;
+        /// <summary>
+        /// Router Id of the route table.
+        /// </summary>
+        public readonly string? RouterId;
+        /// <summary>
+        /// The route type.
+        /// </summary>
+        public readonly string? RouterType;
+        /// <summary>
+        /// The status of route table.
+        /// </summary>
+        public readonly string? Status;
+        /// <summary>
         /// A list of Route Tables. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRouteTablesTableResult> Tables;
         public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
+        /// The VPC ID.
+        /// </summary>
         public readonly string? VpcId;
 
         [OutputConstructor]
@@ -156,6 +201,14 @@ namespace Pulumi.AliCloud.Vpc
 
             string? resourceGroupId,
 
+            string? routeTableName,
+
+            string? routerId,
+
+            string? routerType,
+
+            string? status,
+
             ImmutableArray<Outputs.GetRouteTablesTableResult> tables,
 
             ImmutableDictionary<string, object>? tags,
@@ -168,6 +221,10 @@ namespace Pulumi.AliCloud.Vpc
             Names = names;
             OutputFile = outputFile;
             ResourceGroupId = resourceGroupId;
+            RouteTableName = routeTableName;
+            RouterId = routerId;
+            RouterType = routerType;
+            Status = status;
             Tables = tables;
             Tags = tags;
             VpcId = vpcId;
