@@ -57,10 +57,14 @@ export function getSnatEntries(args: GetSnatEntriesArgs, opts?: pulumi.InvokeOpt
     }
     return pulumi.runtime.invoke("alicloud:vpc/getSnatEntries:getSnatEntries", {
         "ids": args.ids,
+        "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "snatEntryName": args.snatEntryName,
         "snatIp": args.snatIp,
         "snatTableId": args.snatTableId,
         "sourceCidr": args.sourceCidr,
+        "sourceVswitchId": args.sourceVswitchId,
+        "status": args.status,
     }, opts);
 }
 
@@ -72,7 +76,15 @@ export interface GetSnatEntriesArgs {
      * A list of Snat Entries IDs.
      */
     readonly ids?: string[];
+    /**
+     * A regex string to filter results by the resource name.
+     */
+    readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * The name of snat entry.
+     */
+    readonly snatEntryName?: string;
     /**
      * The public IP of the Snat Entry.
      */
@@ -85,6 +97,14 @@ export interface GetSnatEntriesArgs {
      * The source CIDR block of the Snat Entry.
      */
     readonly sourceCidr?: string;
+    /**
+     * The source vswitch ID.
+     */
+    readonly sourceVswitchId?: string;
+    /**
+     * The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
+     */
+    readonly status?: string;
 }
 
 /**
@@ -103,7 +123,13 @@ export interface GetSnatEntriesResult {
      * (Optional) A list of Snat Entries IDs.
      */
     readonly ids: string[];
+    readonly nameRegex?: string;
+    readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The name of snat entry.
+     */
+    readonly snatEntryName?: string;
     /**
      * The public IP of the Snat Entry.
      */
@@ -113,4 +139,12 @@ export interface GetSnatEntriesResult {
      * The source CIDR block of the Snat Entry.
      */
     readonly sourceCidr?: string;
+    /**
+     * The source vswitch ID.
+     */
+    readonly sourceVswitchId?: string;
+    /**
+     * The status of the Snat Entry.
+     */
+    readonly status?: string;
 }

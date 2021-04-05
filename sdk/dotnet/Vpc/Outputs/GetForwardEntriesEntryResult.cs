@@ -22,6 +22,14 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string ExternalPort;
         /// <summary>
+        /// The forward entry ID.
+        /// </summary>
+        public readonly string ForwardEntryId;
+        /// <summary>
+        /// The name of forward entry.
+        /// </summary>
+        public readonly string ForwardEntryName;
+        /// <summary>
         /// The ID of the Forward Entry.
         /// </summary>
         public readonly string Id;
@@ -30,11 +38,11 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string InternalIp;
         /// <summary>
-        /// The private port.
+        /// The internal port.
         /// </summary>
         public readonly string InternalPort;
         /// <summary>
-        /// The protocol type.
+        /// The ip protocol. Valid values: `any`,`tcp` and `udp`.
         /// </summary>
         public readonly string IpProtocol;
         /// <summary>
@@ -42,7 +50,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The status of the Forward Entry.
+        /// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
         /// </summary>
         public readonly string Status;
 
@@ -51,6 +59,10 @@ namespace Pulumi.AliCloud.Vpc.Outputs
             string externalIp,
 
             string externalPort,
+
+            string forwardEntryId,
+
+            string forwardEntryName,
 
             string id,
 
@@ -66,6 +78,8 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         {
             ExternalIp = externalIp;
             ExternalPort = externalPort;
+            ForwardEntryId = forwardEntryId;
+            ForwardEntryName = forwardEntryName;
             Id = id;
             InternalIp = internalIp;
             InternalPort = internalPort;

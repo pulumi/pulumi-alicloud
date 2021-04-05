@@ -32,13 +32,15 @@ namespace Pulumi.AliCloud.Vpc
     ///         }));
     ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = name,
     ///             CidrBlock = "172.16.0.0/12",
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/21",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             VswitchName = name,
     ///         });
     ///         var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new AliCloud.Vpc.NatGatewayArgs
     ///         {
@@ -97,6 +99,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ForwardEntryId { get; private set; } = null!;
 
         /// <summary>
+        /// The name of forward entry.
+        /// </summary>
+        [Output("forwardEntryName")]
+        public Output<string> ForwardEntryName { get; private set; } = null!;
+
+        /// <summary>
         /// The value can get from `alicloud.vpc.NatGateway` Attributes "forward_table_ids".
         /// </summary>
         [Output("forwardTableId")]
@@ -121,10 +129,22 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> IpProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The name of forward entry.
+        /// Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to remove limits on the port range. Default value is `false`.
+        /// </summary>
+        [Output("portBreak")]
+        public Output<bool?> PortBreak { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.119.1+) The status of forward entry.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -185,6 +205,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> ExternalPort { get; set; } = null!;
 
         /// <summary>
+        /// The name of forward entry.
+        /// </summary>
+        [Input("forwardEntryName")]
+        public Input<string>? ForwardEntryName { get; set; }
+
+        /// <summary>
         /// The value can get from `alicloud.vpc.NatGateway` Attributes "forward_table_ids".
         /// </summary>
         [Input("forwardTableId", required: true)]
@@ -209,10 +235,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> IpProtocol { get; set; } = null!;
 
         /// <summary>
-        /// The name of forward entry.
+        /// Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Specifies whether to remove limits on the port range. Default value is `false`.
+        /// </summary>
+        [Input("portBreak")]
+        public Input<bool>? PortBreak { get; set; }
 
         public ForwardEntryArgs()
         {
@@ -240,6 +272,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ForwardEntryId { get; set; }
 
         /// <summary>
+        /// The name of forward entry.
+        /// </summary>
+        [Input("forwardEntryName")]
+        public Input<string>? ForwardEntryName { get; set; }
+
+        /// <summary>
         /// The value can get from `alicloud.vpc.NatGateway` Attributes "forward_table_ids".
         /// </summary>
         [Input("forwardTableId")]
@@ -264,10 +302,22 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// The name of forward entry.
+        /// Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Specifies whether to remove limits on the port range. Default value is `false`.
+        /// </summary>
+        [Input("portBreak")]
+        public Input<bool>? PortBreak { get; set; }
+
+        /// <summary>
+        /// (Available in 1.119.1+) The status of forward entry.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public ForwardEntryState()
         {

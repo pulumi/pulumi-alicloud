@@ -28,10 +28,22 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the route table.
+        /// Field `name` has been deprecated from provider version 1.120.0. New field `route_table_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the route table.
+        /// </summary>
+        [Output("routeTableName")]
+        public Output<string> RouteTableName { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.120.0+) The status of the route table.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -98,10 +110,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the route table.
+        /// Field `name` has been deprecated from provider version 1.120.0. New field `route_table_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The name of the route table.
+        /// </summary>
+        [Input("routeTableName")]
+        public Input<string>? RouteTableName { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -135,10 +153,22 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the route table.
+        /// Field `name` has been deprecated from provider version 1.120.0. New field `route_table_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The name of the route table.
+        /// </summary>
+        [Input("routeTableName")]
+        public Input<string>? RouteTableName { get; set; }
+
+        /// <summary>
+        /// (Available in v1.120.0+) The status of the route table.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

@@ -55,7 +55,7 @@ class Accelerator(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
-        :param pulumi.Input[bool] auto_use_coupon: The auto use coupon.
+        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The duration. The value range is 1-9.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
@@ -117,7 +117,7 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
-        :param pulumi.Input[bool] auto_use_coupon: The auto use coupon.
+        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The duration. The value range is 1-9.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
@@ -153,7 +153,7 @@ class Accelerator(pulumi.CustomResource):
     @pulumi.getter(name="autoUseCoupon")
     def auto_use_coupon(self) -> pulumi.Output[Optional[bool]]:
         """
-        The auto use coupon.
+        Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         """
         return pulumi.get(self, "auto_use_coupon")
 

@@ -20,7 +20,7 @@ class GetRouteTablesResult:
     """
     A collection of values returned by getRouteTables.
     """
-    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tables=None, tags=None, vpc_id=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, resource_group_id=None, route_table_name=None, router_id=None, router_type=None, status=None, tables=None, tags=None, vpc_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +39,18 @@ class GetRouteTablesResult:
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
         pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if route_table_name and not isinstance(route_table_name, str):
+            raise TypeError("Expected argument 'route_table_name' to be a str")
+        pulumi.set(__self__, "route_table_name", route_table_name)
+        if router_id and not isinstance(router_id, str):
+            raise TypeError("Expected argument 'router_id' to be a str")
+        pulumi.set(__self__, "router_id", router_id)
+        if router_type and not isinstance(router_type, str):
+            raise TypeError("Expected argument 'router_type' to be a str")
+        pulumi.set(__self__, "router_type", router_type)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if tables and not isinstance(tables, list):
             raise TypeError("Expected argument 'tables' to be a list")
         pulumi.set(__self__, "tables", tables)
@@ -92,6 +104,38 @@ class GetRouteTablesResult:
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="routeTableName")
+    def route_table_name(self) -> Optional[str]:
+        """
+        The route table name.
+        """
+        return pulumi.get(self, "route_table_name")
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> Optional[str]:
+        """
+        Router Id of the route table.
+        """
+        return pulumi.get(self, "router_id")
+
+    @property
+    @pulumi.getter(name="routerType")
+    def router_type(self) -> Optional[str]:
+        """
+        The route type.
+        """
+        return pulumi.get(self, "router_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The status of route table.
+        """
+        return pulumi.get(self, "status")
+
+    @property
     @pulumi.getter
     def tables(self) -> Sequence['outputs.GetRouteTablesTableResult']:
         """
@@ -107,6 +151,9 @@ class GetRouteTablesResult:
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
+        """
+        The VPC ID.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -122,6 +169,10 @@ class AwaitableGetRouteTablesResult(GetRouteTablesResult):
             names=self.names,
             output_file=self.output_file,
             resource_group_id=self.resource_group_id,
+            route_table_name=self.route_table_name,
+            router_id=self.router_id,
+            router_type=self.router_type,
+            status=self.status,
             tables=self.tables,
             tags=self.tags,
             vpc_id=self.vpc_id)
@@ -131,6 +182,10 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
                      name_regex: Optional[str] = None,
                      output_file: Optional[str] = None,
                      resource_group_id: Optional[str] = None,
+                     route_table_name: Optional[str] = None,
+                     router_id: Optional[str] = None,
+                     router_type: Optional[str] = None,
+                     status: Optional[str] = None,
                      tags: Optional[Mapping[str, Any]] = None,
                      vpc_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTablesResult:
@@ -149,9 +204,12 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
     name = config.get("name")
     if name is None:
         name = "route-tables-datasource-example-name"
-    foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+    foo_network = alicloud.vpc.Network("fooNetwork",
+        cidr_block="172.16.0.0/12",
+        vpc_name=name)
     foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
         description=name,
+        route_table_name=name,
         vpc_id=foo_network.id)
     foo_route_tables = foo_route_table.id.apply(lambda id: alicloud.vpc.get_route_tables(ids=[id]))
     pulumi.export("routeTableIds", foo_route_tables.ids)
@@ -161,6 +219,10 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Route Tables IDs.
     :param str name_regex: A regex string to filter route tables by name.
     :param str resource_group_id: The Id of resource group which route tables belongs.
+    :param str route_table_name: The route table name.
+    :param str router_id: The router ID.
+    :param str router_type: The route type of route table. Valid values: `VRouter` and `VBR`.
+    :param str status: The status of resource. Valid values: `Available` and `Pending`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: Vpc id of the route table.
     """
@@ -169,6 +231,10 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
+    __args__['routeTableName'] = route_table_name
+    __args__['routerId'] = router_id
+    __args__['routerType'] = router_type
+    __args__['status'] = status
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
     if opts is None:
@@ -184,6 +250,10 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         resource_group_id=__ret__.resource_group_id,
+        route_table_name=__ret__.route_table_name,
+        router_id=__ret__.router_id,
+        router_type=__ret__.router_type,
+        status=__ret__.status,
         tables=__ret__.tables,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)

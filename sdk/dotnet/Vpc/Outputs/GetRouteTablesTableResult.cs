@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class GetRouteTablesTableResult
     {
         /// <summary>
-        /// Time of creation.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
         /// The description of the route table instance.
         /// </summary>
         public readonly string Description;
@@ -30,34 +26,87 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The Id of resource group which route tables belongs.
+        /// </summary>
+        public readonly string ResourceGroupId;
+        /// <summary>
+        /// The route table id.
+        /// </summary>
+        public readonly string RouteTableId;
+        /// <summary>
+        /// The route table name.
+        /// </summary>
+        public readonly string RouteTableName;
+        /// <summary>
         /// The type of route table.
         /// </summary>
         public readonly string RouteTableType;
         /// <summary>
-        /// Router Id of the route table.
+        /// The router ID.
         /// </summary>
         public readonly string RouterId;
+        /// <summary>
+        /// The route type of route table. Valid values: `VRouter` and `VBR`.
+        /// </summary>
+        public readonly string RouterType;
+        /// <summary>
+        /// The status of resource. Valid values: `Available` and `Pending`.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Tags;
+        /// <summary>
+        /// Vpc id of the route table.
+        /// </summary>
+        public readonly string VpcId;
+        /// <summary>
+        /// A list of vswitch id.
+        /// </summary>
+        public readonly ImmutableArray<string> VswitchIds;
 
         [OutputConstructor]
         private GetRouteTablesTableResult(
-            string creationTime,
-
             string description,
 
             string id,
 
             string name,
 
+            string resourceGroupId,
+
+            string routeTableId,
+
+            string routeTableName,
+
             string routeTableType,
 
-            string routerId)
+            string routerId,
+
+            string routerType,
+
+            string status,
+
+            ImmutableDictionary<string, object> tags,
+
+            string vpcId,
+
+            ImmutableArray<string> vswitchIds)
         {
-            CreationTime = creationTime;
             Description = description;
             Id = id;
             Name = name;
+            ResourceGroupId = resourceGroupId;
+            RouteTableId = routeTableId;
+            RouteTableName = routeTableName;
             RouteTableType = routeTableType;
             RouterId = routerId;
+            RouterType = routerType;
+            Status = status;
+            Tags = tags;
+            VpcId = vpcId;
+            VswitchIds = vswitchIds;
         }
     }
 }

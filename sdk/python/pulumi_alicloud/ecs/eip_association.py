@@ -26,7 +26,7 @@ class EipAssociation(pulumi.CustomResource):
         """
         ## Import
 
-        Elastic IP address can be imported using the id, e.g.
+        Elastic IP address association can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example eip-abc12345678:i-abc12355
@@ -36,8 +36,8 @@ class EipAssociation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] allocation_id: The allocation EIP ID.
         :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
-        :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway.
-        :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind.
+        :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
+        :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
         :param pulumi.Input[str] private_ip_address: The private IP address in the network segment of the vswitch which has been assigned.
         """
         if __name__ is not None:
@@ -90,8 +90,8 @@ class EipAssociation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] allocation_id: The allocation EIP ID.
         :param pulumi.Input[bool] force: When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
-        :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway.
-        :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind.
+        :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
+        :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
         :param pulumi.Input[str] private_ip_address: The private IP address in the network segment of the vswitch which has been assigned.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -125,7 +125,7 @@ class EipAssociation(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The ID of the ECS or SLB instance or Nat Gateway.
+        The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
         """
         return pulumi.get(self, "instance_id")
 
@@ -133,7 +133,7 @@ class EipAssociation(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        The type of cloud product that the eip instance to bind.
+        The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
         """
         return pulumi.get(self, "instance_type")
 

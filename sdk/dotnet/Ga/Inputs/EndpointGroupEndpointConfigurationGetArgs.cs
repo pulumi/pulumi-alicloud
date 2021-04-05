@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The weight of Endpoint N in the endpoint group.
+        /// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
         /// </summary>
         [Input("weight", required: true)]
         public Input<int> Weight { get; set; } = null!;

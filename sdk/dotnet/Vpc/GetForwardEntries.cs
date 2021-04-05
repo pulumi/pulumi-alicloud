@@ -37,13 +37,14 @@ namespace Pulumi.AliCloud.Vpc
         ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
         ///         {
         ///             CidrBlock = "172.16.0.0/12",
+        ///             VpcName = name,
         ///         });
         ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
         ///         {
-        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
         ///             CidrBlock = "172.16.0.0/21",
         ///             VpcId = defaultNetwork.Id,
         ///             VswitchName = name,
+        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
         ///         });
         ///         var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new AliCloud.Vpc.NatGatewayArgs
         ///         {
@@ -92,6 +93,18 @@ namespace Pulumi.AliCloud.Vpc
         public string? ExternalIp { get; set; }
 
         /// <summary>
+        /// The public port.
+        /// </summary>
+        [Input("externalPort")]
+        public string? ExternalPort { get; set; }
+
+        /// <summary>
+        /// The name of forward entry.
+        /// </summary>
+        [Input("forwardEntryName")]
+        public string? ForwardEntryName { get; set; }
+
+        /// <summary>
         /// The ID of the Forward table.
         /// </summary>
         [Input("forwardTableId", required: true)]
@@ -116,25 +129,31 @@ namespace Pulumi.AliCloud.Vpc
         public string? InternalIp { get; set; }
 
         /// <summary>
+        /// The internal port.
+        /// </summary>
+        [Input("internalPort")]
+        public string? InternalPort { get; set; }
+
+        /// <summary>
+        /// The ip protocol. Valid values: `any`,`tcp` and `udp`.
+        /// </summary>
+        [Input("ipProtocol")]
+        public string? IpProtocol { get; set; }
+
+        /// <summary>
         /// A regex string to filter results by forward entry name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
-        [Input("names")]
-        private List<string>? _names;
-
-        /// <summary>
-        /// A list of Forward Entries names.
-        /// </summary>
-        public List<string> Names
-        {
-            get => _names ?? (_names = new List<string>());
-            set => _names = value;
-        }
-
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
 
         public GetForwardEntriesArgs()
         {
@@ -153,6 +172,14 @@ namespace Pulumi.AliCloud.Vpc
         /// The public IP address.
         /// </summary>
         public readonly string? ExternalIp;
+        /// <summary>
+        /// The public port.
+        /// </summary>
+        public readonly string? ExternalPort;
+        /// <summary>
+        /// The name of forward entry.
+        /// </summary>
+        public readonly string? ForwardEntryName;
         public readonly string ForwardTableId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -166,18 +193,34 @@ namespace Pulumi.AliCloud.Vpc
         /// The private IP address.
         /// </summary>
         public readonly string? InternalIp;
+        /// <summary>
+        /// The private port.
+        /// </summary>
+        public readonly string? InternalPort;
+        /// <summary>
+        /// The protocol type.
+        /// </summary>
+        public readonly string? IpProtocol;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of Forward Entries names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of forward entry.
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
         private GetForwardEntriesResult(
             ImmutableArray<Outputs.GetForwardEntriesEntryResult> entries,
 
             string? externalIp,
+
+            string? externalPort,
+
+            string? forwardEntryName,
 
             string forwardTableId,
 
@@ -187,21 +230,32 @@ namespace Pulumi.AliCloud.Vpc
 
             string? internalIp,
 
+            string? internalPort,
+
+            string? ipProtocol,
+
             string? nameRegex,
 
             ImmutableArray<string> names,
 
-            string? outputFile)
+            string? outputFile,
+
+            string? status)
         {
             Entries = entries;
             ExternalIp = externalIp;
+            ExternalPort = externalPort;
+            ForwardEntryName = forwardEntryName;
             ForwardTableId = forwardTableId;
             Id = id;
             Ids = ids;
             InternalIp = internalIp;
+            InternalPort = internalPort;
+            IpProtocol = ipProtocol;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Status = status;
         }
     }
 }

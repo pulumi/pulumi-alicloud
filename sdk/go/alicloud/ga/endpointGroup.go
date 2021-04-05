@@ -40,6 +40,24 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		deBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "deBandwidthPackage", &ga.BandwidthPackageArgs{
+// 			Bandwidth:     pulumi.Int(100),
+// 			Type:          pulumi.String("Basic"),
+// 			BandwidthType: pulumi.String("Basic"),
+// 			PaymentType:   pulumi.String("PayAsYouGo"),
+// 			BillingType:   pulumi.String("PayBy95"),
+// 			Ratio:         pulumi.Int(30),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		deBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "deBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+// 			AcceleratorId:      exampleAccelerator.ID(),
+// 			BandwidthPackageId: deBandwidthPackage.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		exampleListener, err := ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
 // 			AcceleratorId: exampleAccelerator.ID(),
 // 			PortRanges: ga.ListenerPortRangeArray{
@@ -48,7 +66,9 @@ import (
 // 					ToPort:   pulumi.Int(70),
 // 				},
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			deBandwidthPackageAttachment,
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -60,7 +80,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = ga.NewEndpointGroup(ctx, "exampleEndpointGroup", &ga.EndpointGroupArgs{
-// 			AcceleratorId: pulumi.Any(alicloud_ga_accelerators.Example.Id),
+// 			AcceleratorId: exampleAccelerator.ID(),
 // 			EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
 // 				&ga.EndpointGroupEndpointConfigurationArgs{
 // 					Endpoint: exampleEip.IpAddress,
@@ -99,7 +119,7 @@ type EndpointGroup struct {
 	EndpointGroupRegion pulumi.StringOutput `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
 	EndpointGroupType pulumi.StringPtrOutput `pulumi:"endpointGroupType"`
-	// The endpoint request protocol.
+	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
 	EndpointRequestProtocol pulumi.StringPtrOutput `pulumi:"endpointRequestProtocol"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds pulumi.IntPtrOutput `pulumi:"healthCheckIntervalSeconds"`
@@ -174,7 +194,7 @@ type endpointGroupState struct {
 	EndpointGroupRegion *string `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
 	EndpointGroupType *string `pulumi:"endpointGroupType"`
-	// The endpoint request protocol.
+	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
 	EndpointRequestProtocol *string `pulumi:"endpointRequestProtocol"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds *int `pulumi:"healthCheckIntervalSeconds"`
@@ -209,7 +229,7 @@ type EndpointGroupState struct {
 	EndpointGroupRegion pulumi.StringPtrInput
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
 	EndpointGroupType pulumi.StringPtrInput
-	// The endpoint request protocol.
+	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
 	EndpointRequestProtocol pulumi.StringPtrInput
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds pulumi.IntPtrInput
@@ -248,7 +268,7 @@ type endpointGroupArgs struct {
 	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
 	EndpointGroupType *string `pulumi:"endpointGroupType"`
-	// The endpoint request protocol.
+	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
 	EndpointRequestProtocol *string `pulumi:"endpointRequestProtocol"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds *int `pulumi:"healthCheckIntervalSeconds"`
@@ -282,7 +302,7 @@ type EndpointGroupArgs struct {
 	EndpointGroupRegion pulumi.StringInput
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
 	EndpointGroupType pulumi.StringPtrInput
-	// The endpoint request protocol.
+	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
 	EndpointRequestProtocol pulumi.StringPtrInput
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds pulumi.IntPtrInput

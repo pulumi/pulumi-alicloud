@@ -67,6 +67,10 @@ export class SnatEntry extends pulumi.CustomResource {
      * The vswitch ID.
      */
     public readonly sourceVswitchId!: pulumi.Output<string | undefined>;
+    /**
+     * (Available in 1.119.1+) The status of snat entry.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a SnatEntry resource with the given unique name, arguments, and options.
@@ -87,6 +91,7 @@ export class SnatEntry extends pulumi.CustomResource {
             inputs["snatTableId"] = state ? state.snatTableId : undefined;
             inputs["sourceCidr"] = state ? state.sourceCidr : undefined;
             inputs["sourceVswitchId"] = state ? state.sourceVswitchId : undefined;
+            inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SnatEntryArgs | undefined;
             if ((!args || args.snatIp === undefined) && !opts.urn) {
@@ -101,6 +106,7 @@ export class SnatEntry extends pulumi.CustomResource {
             inputs["sourceCidr"] = args ? args.sourceCidr : undefined;
             inputs["sourceVswitchId"] = args ? args.sourceVswitchId : undefined;
             inputs["snatEntryId"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -137,6 +143,10 @@ export interface SnatEntryState {
      * The vswitch ID.
      */
     readonly sourceVswitchId?: pulumi.Input<string>;
+    /**
+     * (Available in 1.119.1+) The status of snat entry.
+     */
+    readonly status?: pulumi.Input<string>;
 }
 
 /**

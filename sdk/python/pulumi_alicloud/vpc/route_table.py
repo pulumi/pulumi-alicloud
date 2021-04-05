@@ -17,6 +17,7 @@ class RouteTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 route_table_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -34,7 +35,8 @@ class RouteTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the route table instance.
-        :param pulumi.Input[str] name: The name of the route table.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `route_table_name` instead.
+        :param pulumi.Input[str] route_table_name: The name of the route table.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The vpc_id of the route table, the field can't be changed.
         """
@@ -56,11 +58,16 @@ class RouteTable(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.""")
             __props__['name'] = name
+            __props__['route_table_name'] = route_table_name
             __props__['tags'] = tags
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
+            __props__['status'] = None
         super(RouteTable, __self__).__init__(
             'alicloud:vpc/routeTable:RouteTable',
             resource_name,
@@ -73,6 +80,8 @@ class RouteTable(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            route_table_name: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'RouteTable':
         """
@@ -83,7 +92,9 @@ class RouteTable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the route table instance.
-        :param pulumi.Input[str] name: The name of the route table.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `route_table_name` instead.
+        :param pulumi.Input[str] route_table_name: The name of the route table.
+        :param pulumi.Input[str] status: (Available in v1.120.0+) The status of the route table.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The vpc_id of the route table, the field can't be changed.
         """
@@ -93,6 +104,8 @@ class RouteTable(pulumi.CustomResource):
 
         __props__["description"] = description
         __props__["name"] = name
+        __props__["route_table_name"] = route_table_name
+        __props__["status"] = status
         __props__["tags"] = tags
         __props__["vpc_id"] = vpc_id
         return RouteTable(resource_name, opts=opts, __props__=__props__)
@@ -109,9 +122,25 @@ class RouteTable(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the route table.
+        Field `name` has been deprecated from provider version 1.120.0. New field `route_table_name` instead.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="routeTableName")
+    def route_table_name(self) -> pulumi.Output[str]:
+        """
+        The name of the route table.
+        """
+        return pulumi.get(self, "route_table_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.120.0+) The status of the route table.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter

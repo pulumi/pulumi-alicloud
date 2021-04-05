@@ -94,8 +94,20 @@ namespace Pulumi.AliCloud.Vpc
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by the resource name.
+        /// </summary>
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        /// <summary>
+        /// The name of snat entry.
+        /// </summary>
+        [Input("snatEntryName")]
+        public string? SnatEntryName { get; set; }
 
         /// <summary>
         /// The public IP of the Snat Entry.
@@ -114,6 +126,18 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("sourceCidr")]
         public string? SourceCidr { get; set; }
+
+        /// <summary>
+        /// The source vswitch ID.
+        /// </summary>
+        [Input("sourceVswitchId")]
+        public string? SourceVswitchId { get; set; }
+
+        /// <summary>
+        /// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
 
         public GetSnatEntriesArgs()
         {
@@ -136,7 +160,13 @@ namespace Pulumi.AliCloud.Vpc
         /// (Optional) A list of Snat Entries IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly string? NameRegex;
+        public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of snat entry.
+        /// </summary>
+        public readonly string? SnatEntryName;
         /// <summary>
         /// The public IP of the Snat Entry.
         /// </summary>
@@ -146,6 +176,14 @@ namespace Pulumi.AliCloud.Vpc
         /// The source CIDR block of the Snat Entry.
         /// </summary>
         public readonly string? SourceCidr;
+        /// <summary>
+        /// The source vswitch ID.
+        /// </summary>
+        public readonly string? SourceVswitchId;
+        /// <summary>
+        /// The status of the Snat Entry.
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
         private GetSnatEntriesResult(
@@ -155,21 +193,36 @@ namespace Pulumi.AliCloud.Vpc
 
             ImmutableArray<string> ids,
 
+            string? nameRegex,
+
+            ImmutableArray<string> names,
+
             string? outputFile,
+
+            string? snatEntryName,
 
             string? snatIp,
 
             string snatTableId,
 
-            string? sourceCidr)
+            string? sourceCidr,
+
+            string? sourceVswitchId,
+
+            string? status)
         {
             Entries = entries;
             Id = id;
             Ids = ids;
+            NameRegex = nameRegex;
+            Names = names;
             OutputFile = outputFile;
+            SnatEntryName = snatEntryName;
             SnatIp = snatIp;
             SnatTableId = snatTableId;
             SourceCidr = sourceCidr;
+            SourceVswitchId = sourceVswitchId;
+            Status = status;
         }
     }
 }

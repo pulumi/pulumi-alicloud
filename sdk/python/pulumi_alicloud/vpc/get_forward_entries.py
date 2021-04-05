@@ -20,13 +20,19 @@ class GetForwardEntriesResult:
     """
     A collection of values returned by getForwardEntries.
     """
-    def __init__(__self__, entries=None, external_ip=None, forward_table_id=None, id=None, ids=None, internal_ip=None, name_regex=None, names=None, output_file=None):
+    def __init__(__self__, entries=None, external_ip=None, external_port=None, forward_entry_name=None, forward_table_id=None, id=None, ids=None, internal_ip=None, internal_port=None, ip_protocol=None, name_regex=None, names=None, output_file=None, status=None):
         if entries and not isinstance(entries, list):
             raise TypeError("Expected argument 'entries' to be a list")
         pulumi.set(__self__, "entries", entries)
         if external_ip and not isinstance(external_ip, str):
             raise TypeError("Expected argument 'external_ip' to be a str")
         pulumi.set(__self__, "external_ip", external_ip)
+        if external_port and not isinstance(external_port, str):
+            raise TypeError("Expected argument 'external_port' to be a str")
+        pulumi.set(__self__, "external_port", external_port)
+        if forward_entry_name and not isinstance(forward_entry_name, str):
+            raise TypeError("Expected argument 'forward_entry_name' to be a str")
+        pulumi.set(__self__, "forward_entry_name", forward_entry_name)
         if forward_table_id and not isinstance(forward_table_id, str):
             raise TypeError("Expected argument 'forward_table_id' to be a str")
         pulumi.set(__self__, "forward_table_id", forward_table_id)
@@ -39,6 +45,12 @@ class GetForwardEntriesResult:
         if internal_ip and not isinstance(internal_ip, str):
             raise TypeError("Expected argument 'internal_ip' to be a str")
         pulumi.set(__self__, "internal_ip", internal_ip)
+        if internal_port and not isinstance(internal_port, str):
+            raise TypeError("Expected argument 'internal_port' to be a str")
+        pulumi.set(__self__, "internal_port", internal_port)
+        if ip_protocol and not isinstance(ip_protocol, str):
+            raise TypeError("Expected argument 'ip_protocol' to be a str")
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         pulumi.set(__self__, "name_regex", name_regex)
@@ -48,6 +60,9 @@ class GetForwardEntriesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -64,6 +79,22 @@ class GetForwardEntriesResult:
         The public IP address.
         """
         return pulumi.get(self, "external_ip")
+
+    @property
+    @pulumi.getter(name="externalPort")
+    def external_port(self) -> Optional[str]:
+        """
+        The public port.
+        """
+        return pulumi.get(self, "external_port")
+
+    @property
+    @pulumi.getter(name="forwardEntryName")
+    def forward_entry_name(self) -> Optional[str]:
+        """
+        The name of forward entry.
+        """
+        return pulumi.get(self, "forward_entry_name")
 
     @property
     @pulumi.getter(name="forwardTableId")
@@ -95,13 +126,29 @@ class GetForwardEntriesResult:
         return pulumi.get(self, "internal_ip")
 
     @property
+    @pulumi.getter(name="internalPort")
+    def internal_port(self) -> Optional[str]:
+        """
+        The private port.
+        """
+        return pulumi.get(self, "internal_port")
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[str]:
+        """
+        The protocol type.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
     @pulumi.getter(name="nameRegex")
     def name_regex(self) -> Optional[str]:
         return pulumi.get(self, "name_regex")
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[Sequence[str]]:
+    def names(self) -> Sequence[str]:
         """
         A list of Forward Entries names.
         """
@@ -112,6 +159,14 @@ class GetForwardEntriesResult:
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
 
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The status of forward entry.
+        """
+        return pulumi.get(self, "status")
+
 
 class AwaitableGetForwardEntriesResult(GetForwardEntriesResult):
     # pylint: disable=using-constant-test
@@ -121,22 +176,31 @@ class AwaitableGetForwardEntriesResult(GetForwardEntriesResult):
         return GetForwardEntriesResult(
             entries=self.entries,
             external_ip=self.external_ip,
+            external_port=self.external_port,
+            forward_entry_name=self.forward_entry_name,
             forward_table_id=self.forward_table_id,
             id=self.id,
             ids=self.ids,
             internal_ip=self.internal_ip,
+            internal_port=self.internal_port,
+            ip_protocol=self.ip_protocol,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file)
+            output_file=self.output_file,
+            status=self.status)
 
 
 def get_forward_entries(external_ip: Optional[str] = None,
+                        external_port: Optional[str] = None,
+                        forward_entry_name: Optional[str] = None,
                         forward_table_id: Optional[str] = None,
                         ids: Optional[Sequence[str]] = None,
                         internal_ip: Optional[str] = None,
+                        internal_port: Optional[str] = None,
+                        ip_protocol: Optional[str] = None,
                         name_regex: Optional[str] = None,
-                        names: Optional[Sequence[str]] = None,
                         output_file: Optional[str] = None,
+                        status: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetForwardEntriesResult:
     """
     This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
@@ -154,12 +218,14 @@ def get_forward_entries(external_ip: Optional[str] = None,
     if name is None:
         name = "forward-entry-config-example-name"
     default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+    default_network = alicloud.vpc.Network("defaultNetwork",
+        cidr_block="172.16.0.0/12",
+        vpc_name=name)
     default_switch = alicloud.vpc.Switch("defaultSwitch",
-        availability_zone=default_zones.zones[0].id,
         cidr_block="172.16.0.0/21",
         vpc_id=default_network.id,
-        vswitch_name=name)
+        vswitch_name=name,
+        zone_id=default_zones.zones[0].id)
     default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
         specification="Small",
         vpc_id=default_network.id)
@@ -179,20 +245,28 @@ def get_forward_entries(external_ip: Optional[str] = None,
 
 
     :param str external_ip: The public IP address.
+    :param str external_port: The public port.
+    :param str forward_entry_name: The name of forward entry.
     :param str forward_table_id: The ID of the Forward table.
     :param Sequence[str] ids: A list of Forward Entries IDs.
     :param str internal_ip: The private IP address.
+    :param str internal_port: The internal port.
+    :param str ip_protocol: The ip protocol. Valid values: `any`,`tcp` and `udp`.
     :param str name_regex: A regex string to filter results by forward entry name.
-    :param Sequence[str] names: A list of Forward Entries names.
+    :param str status: The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
     """
     __args__ = dict()
     __args__['externalIp'] = external_ip
+    __args__['externalPort'] = external_port
+    __args__['forwardEntryName'] = forward_entry_name
     __args__['forwardTableId'] = forward_table_id
     __args__['ids'] = ids
     __args__['internalIp'] = internal_ip
+    __args__['internalPort'] = internal_port
+    __args__['ipProtocol'] = ip_protocol
     __args__['nameRegex'] = name_regex
-    __args__['names'] = names
     __args__['outputFile'] = output_file
+    __args__['status'] = status
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -202,10 +276,15 @@ def get_forward_entries(external_ip: Optional[str] = None,
     return AwaitableGetForwardEntriesResult(
         entries=__ret__.entries,
         external_ip=__ret__.external_ip,
+        external_port=__ret__.external_port,
+        forward_entry_name=__ret__.forward_entry_name,
         forward_table_id=__ret__.forward_table_id,
         id=__ret__.id,
         ids=__ret__.ids,
         internal_ip=__ret__.internal_ip,
+        internal_port=__ret__.internal_port,
+        ip_protocol=__ret__.ip_protocol,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
-        output_file=__ret__.output_file)
+        output_file=__ret__.output_file,
+        status=__ret__.status)

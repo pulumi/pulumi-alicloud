@@ -34,6 +34,20 @@ namespace Pulumi.AliCloud.Ga
     ///             AutoUseCoupon = true,
     ///             Spec = "1",
     ///         });
+    ///         var deBandwidthPackage = new AliCloud.Ga.BandwidthPackage("deBandwidthPackage", new AliCloud.Ga.BandwidthPackageArgs
+    ///         {
+    ///             Bandwidth = 100,
+    ///             Type = "Basic",
+    ///             BandwidthType = "Basic",
+    ///             PaymentType = "PayAsYouGo",
+    ///             BillingType = "PayBy95",
+    ///             Ratio = 30,
+    ///         });
+    ///         var deBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", new AliCloud.Ga.BandwidthPackageAttachmentArgs
+    ///         {
+    ///             AcceleratorId = exampleAccelerator.Id,
+    ///             BandwidthPackageId = deBandwidthPackage.Id,
+    ///         });
     ///         var exampleListener = new AliCloud.Ga.Listener("exampleListener", new AliCloud.Ga.ListenerArgs
     ///         {
     ///             AcceleratorId = exampleAccelerator.Id,
@@ -45,6 +59,12 @@ namespace Pulumi.AliCloud.Ga
     ///                     ToPort = 70,
     ///                 },
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 deBandwidthPackageAttachment,
+    ///             },
     ///         });
     ///         var exampleEip = new AliCloud.Ecs.Eip("exampleEip", new AliCloud.Ecs.EipArgs
     ///         {
@@ -53,7 +73,7 @@ namespace Pulumi.AliCloud.Ga
     ///         });
     ///         var exampleEndpointGroup = new AliCloud.Ga.EndpointGroup("exampleEndpointGroup", new AliCloud.Ga.EndpointGroupArgs
     ///         {
-    ///             AcceleratorId = alicloud_ga_accelerators.Example.Id,
+    ///             AcceleratorId = exampleAccelerator.Id,
     ///             EndpointConfigurations = 
     ///             {
     ///                 new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
@@ -113,7 +133,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> EndpointGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint request protocol.
+        /// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
         /// </summary>
         [Output("endpointRequestProtocol")]
         public Output<string?> EndpointRequestProtocol { get; private set; } = null!;
@@ -261,7 +281,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? EndpointGroupType { get; set; }
 
         /// <summary>
-        /// The endpoint request protocol.
+        /// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
         /// </summary>
         [Input("endpointRequestProtocol")]
         public Input<string>? EndpointRequestProtocol { get; set; }
@@ -364,7 +384,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? EndpointGroupType { get; set; }
 
         /// <summary>
-        /// The endpoint request protocol.
+        /// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
         /// </summary>
         [Input("endpointRequestProtocol")]
         public Input<string>? EndpointRequestProtocol { get; set; }

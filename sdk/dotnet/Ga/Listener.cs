@@ -34,6 +34,20 @@ namespace Pulumi.AliCloud.Ga
     ///             AutoUseCoupon = true,
     ///             Spec = "1",
     ///         });
+    ///         var deBandwidthPackage = new AliCloud.Ga.BandwidthPackage("deBandwidthPackage", new AliCloud.Ga.BandwidthPackageArgs
+    ///         {
+    ///             Bandwidth = 100,
+    ///             Type = "Basic",
+    ///             BandwidthType = "Basic",
+    ///             PaymentType = "PayAsYouGo",
+    ///             BillingType = "PayBy95",
+    ///             Ratio = 30,
+    ///         });
+    ///         var deBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", new AliCloud.Ga.BandwidthPackageAttachmentArgs
+    ///         {
+    ///             AcceleratorId = exampleAccelerator.Id,
+    ///             BandwidthPackageId = deBandwidthPackage.Id,
+    ///         });
     ///         var exampleListener = new AliCloud.Ga.Listener("exampleListener", new AliCloud.Ga.ListenerArgs
     ///         {
     ///             AcceleratorId = exampleAccelerator.Id,
@@ -44,6 +58,12 @@ namespace Pulumi.AliCloud.Ga
     ///                     FromPort = 60,
     ///                     ToPort = 70,
     ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 deBandwidthPackageAttachment,
     ///             },
     ///         });
     ///     }
@@ -101,13 +121,15 @@ namespace Pulumi.AliCloud.Ga
         public Output<ImmutableArray<Outputs.ListenerPortRange>> PortRanges { get; private set; } = null!;
 
         /// <summary>
-        /// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+        /// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Output("protocol")]
         public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The proxy protocol of the listener.
+        /// The proxy protocol of the listener. Default value is `false`. Valid value:
+        /// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+        /// `false`: keep client source IP function is not turned on.
         /// </summary>
         [Output("proxyProtocol")]
         public Output<bool?> ProxyProtocol { get; private set; } = null!;
@@ -215,13 +237,15 @@ namespace Pulumi.AliCloud.Ga
         }
 
         /// <summary>
-        /// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+        /// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The proxy protocol of the listener.
+        /// The proxy protocol of the listener. Default value is `false`. Valid value:
+        /// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+        /// `false`: keep client source IP function is not turned on.
         /// </summary>
         [Input("proxyProtocol")]
         public Input<bool>? ProxyProtocol { get; set; }
@@ -284,13 +308,15 @@ namespace Pulumi.AliCloud.Ga
         }
 
         /// <summary>
-        /// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+        /// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The proxy protocol of the listener.
+        /// The proxy protocol of the listener. Default value is `false`. Valid value:
+        /// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+        /// `false`: keep client source IP function is not turned on.
         /// </summary>
         [Input("proxyProtocol")]
         public Input<bool>? ProxyProtocol { get; set; }

@@ -17,11 +17,13 @@ class ForwardEntry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  external_ip: Optional[pulumi.Input[str]] = None,
                  external_port: Optional[pulumi.Input[str]] = None,
+                 forward_entry_name: Optional[pulumi.Input[str]] = None,
                  forward_table_id: Optional[pulumi.Input[str]] = None,
                  internal_ip: Optional[pulumi.Input[str]] = None,
                  internal_port: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 port_break: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -41,11 +43,14 @@ class ForwardEntry(pulumi.CustomResource):
         if name is None:
             name = "forward-entry-example-name"
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            availability_zone=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
         default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
             vpc_id=default_network.id,
             specification="Small")
@@ -74,11 +79,13 @@ class ForwardEntry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] external_ip: The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
         :param pulumi.Input[str] external_port: The external port, valid value is 1~65535|any.
+        :param pulumi.Input[str] forward_entry_name: The name of forward entry.
         :param pulumi.Input[str] forward_table_id: The value can get from `vpc.NatGateway` Attributes "forward_table_ids".
         :param pulumi.Input[str] internal_ip: The internal ip, must a private ip.
         :param pulumi.Input[str] internal_port: The internal port, valid value is 1~65535|any.
         :param pulumi.Input[str] ip_protocol: The ip protocal, valid value is tcp|udp|any.
-        :param pulumi.Input[str] name: The name of forward entry.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
+        :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,6 +110,7 @@ class ForwardEntry(pulumi.CustomResource):
             if external_port is None and not opts.urn:
                 raise TypeError("Missing required property 'external_port'")
             __props__['external_port'] = external_port
+            __props__['forward_entry_name'] = forward_entry_name
             if forward_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'forward_table_id'")
             __props__['forward_table_id'] = forward_table_id
@@ -115,8 +123,13 @@ class ForwardEntry(pulumi.CustomResource):
             if ip_protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_protocol'")
             __props__['ip_protocol'] = ip_protocol
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
             __props__['name'] = name
+            __props__['port_break'] = port_break
             __props__['forward_entry_id'] = None
+            __props__['status'] = None
         super(ForwardEntry, __self__).__init__(
             'alicloud:vpc/forwardEntry:ForwardEntry',
             resource_name,
@@ -130,11 +143,14 @@ class ForwardEntry(pulumi.CustomResource):
             external_ip: Optional[pulumi.Input[str]] = None,
             external_port: Optional[pulumi.Input[str]] = None,
             forward_entry_id: Optional[pulumi.Input[str]] = None,
+            forward_entry_name: Optional[pulumi.Input[str]] = None,
             forward_table_id: Optional[pulumi.Input[str]] = None,
             internal_ip: Optional[pulumi.Input[str]] = None,
             internal_port: Optional[pulumi.Input[str]] = None,
             ip_protocol: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'ForwardEntry':
+            name: Optional[pulumi.Input[str]] = None,
+            port_break: Optional[pulumi.Input[bool]] = None,
+            status: Optional[pulumi.Input[str]] = None) -> 'ForwardEntry':
         """
         Get an existing ForwardEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -145,11 +161,14 @@ class ForwardEntry(pulumi.CustomResource):
         :param pulumi.Input[str] external_ip: The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
         :param pulumi.Input[str] external_port: The external port, valid value is 1~65535|any.
         :param pulumi.Input[str] forward_entry_id: The id of the forward entry on the server.
+        :param pulumi.Input[str] forward_entry_name: The name of forward entry.
         :param pulumi.Input[str] forward_table_id: The value can get from `vpc.NatGateway` Attributes "forward_table_ids".
         :param pulumi.Input[str] internal_ip: The internal ip, must a private ip.
         :param pulumi.Input[str] internal_port: The internal port, valid value is 1~65535|any.
         :param pulumi.Input[str] ip_protocol: The ip protocal, valid value is tcp|udp|any.
-        :param pulumi.Input[str] name: The name of forward entry.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
+        :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
+        :param pulumi.Input[str] status: (Available in 1.119.1+) The status of forward entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -158,11 +177,14 @@ class ForwardEntry(pulumi.CustomResource):
         __props__["external_ip"] = external_ip
         __props__["external_port"] = external_port
         __props__["forward_entry_id"] = forward_entry_id
+        __props__["forward_entry_name"] = forward_entry_name
         __props__["forward_table_id"] = forward_table_id
         __props__["internal_ip"] = internal_ip
         __props__["internal_port"] = internal_port
         __props__["ip_protocol"] = ip_protocol
         __props__["name"] = name
+        __props__["port_break"] = port_break
+        __props__["status"] = status
         return ForwardEntry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -188,6 +210,14 @@ class ForwardEntry(pulumi.CustomResource):
         The id of the forward entry on the server.
         """
         return pulumi.get(self, "forward_entry_id")
+
+    @property
+    @pulumi.getter(name="forwardEntryName")
+    def forward_entry_name(self) -> pulumi.Output[str]:
+        """
+        The name of forward entry.
+        """
+        return pulumi.get(self, "forward_entry_name")
 
     @property
     @pulumi.getter(name="forwardTableId")
@@ -225,9 +255,25 @@ class ForwardEntry(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of forward entry.
+        Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="portBreak")
+    def port_break(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to remove limits on the port range. Default value is `false`.
+        """
+        return pulumi.get(self, "port_break")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.119.1+) The status of forward entry.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

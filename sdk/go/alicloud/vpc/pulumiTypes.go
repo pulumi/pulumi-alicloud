@@ -915,17 +915,21 @@ type GetForwardEntriesEntry struct {
 	ExternalIp string `pulumi:"externalIp"`
 	// The public port.
 	ExternalPort string `pulumi:"externalPort"`
+	// The forward entry ID.
+	ForwardEntryId string `pulumi:"forwardEntryId"`
+	// The name of forward entry.
+	ForwardEntryName string `pulumi:"forwardEntryName"`
 	// The ID of the Forward Entry.
 	Id string `pulumi:"id"`
 	// The private IP address.
 	InternalIp string `pulumi:"internalIp"`
-	// The private port.
+	// The internal port.
 	InternalPort string `pulumi:"internalPort"`
-	// The protocol type.
+	// The ip protocol. Valid values: `any`,`tcp` and `udp`.
 	IpProtocol string `pulumi:"ipProtocol"`
 	// The forward entry name.
 	Name string `pulumi:"name"`
-	// The status of the Forward Entry.
+	// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
 	Status string `pulumi:"status"`
 }
 
@@ -945,17 +949,21 @@ type GetForwardEntriesEntryArgs struct {
 	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
 	// The public port.
 	ExternalPort pulumi.StringInput `pulumi:"externalPort"`
+	// The forward entry ID.
+	ForwardEntryId pulumi.StringInput `pulumi:"forwardEntryId"`
+	// The name of forward entry.
+	ForwardEntryName pulumi.StringInput `pulumi:"forwardEntryName"`
 	// The ID of the Forward Entry.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The private IP address.
 	InternalIp pulumi.StringInput `pulumi:"internalIp"`
-	// The private port.
+	// The internal port.
 	InternalPort pulumi.StringInput `pulumi:"internalPort"`
-	// The protocol type.
+	// The ip protocol. Valid values: `any`,`tcp` and `udp`.
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
 	// The forward entry name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The status of the Forward Entry.
+	// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -1020,6 +1028,16 @@ func (o GetForwardEntriesEntryOutput) ExternalPort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.ExternalPort }).(pulumi.StringOutput)
 }
 
+// The forward entry ID.
+func (o GetForwardEntriesEntryOutput) ForwardEntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.ForwardEntryId }).(pulumi.StringOutput)
+}
+
+// The name of forward entry.
+func (o GetForwardEntriesEntryOutput) ForwardEntryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.ForwardEntryName }).(pulumi.StringOutput)
+}
+
 // The ID of the Forward Entry.
 func (o GetForwardEntriesEntryOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.Id }).(pulumi.StringOutput)
@@ -1030,12 +1048,12 @@ func (o GetForwardEntriesEntryOutput) InternalIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.InternalIp }).(pulumi.StringOutput)
 }
 
-// The private port.
+// The internal port.
 func (o GetForwardEntriesEntryOutput) InternalPort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.InternalPort }).(pulumi.StringOutput)
 }
 
-// The protocol type.
+// The ip protocol. Valid values: `any`,`tcp` and `udp`.
 func (o GetForwardEntriesEntryOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
@@ -1045,7 +1063,7 @@ func (o GetForwardEntriesEntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The status of the Forward Entry.
+// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
 func (o GetForwardEntriesEntryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardEntriesEntry) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1641,18 +1659,32 @@ func (o GetRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetRouteEntrie
 }
 
 type GetRouteTablesTable struct {
-	// Time of creation.
-	CreationTime string `pulumi:"creationTime"`
 	// The description of the route table instance.
 	Description string `pulumi:"description"`
 	// ID of the Route Table.
 	Id string `pulumi:"id"`
 	// Name of the route table.
 	Name string `pulumi:"name"`
+	// The Id of resource group which route tables belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The route table id.
+	RouteTableId string `pulumi:"routeTableId"`
+	// The route table name.
+	RouteTableName string `pulumi:"routeTableName"`
 	// The type of route table.
 	RouteTableType string `pulumi:"routeTableType"`
-	// Router Id of the route table.
+	// The router ID.
 	RouterId string `pulumi:"routerId"`
+	// The route type of route table. Valid values: `VRouter` and `VBR`.
+	RouterType string `pulumi:"routerType"`
+	// The status of resource. Valid values: `Available` and `Pending`.
+	Status string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Vpc id of the route table.
+	VpcId string `pulumi:"vpcId"`
+	// A list of vswitch id.
+	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
 // GetRouteTablesTableInput is an input type that accepts GetRouteTablesTableArgs and GetRouteTablesTableOutput values.
@@ -1667,18 +1699,32 @@ type GetRouteTablesTableInput interface {
 }
 
 type GetRouteTablesTableArgs struct {
-	// Time of creation.
-	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// The description of the route table instance.
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the Route Table.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the route table.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The Id of resource group which route tables belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The route table id.
+	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
+	// The route table name.
+	RouteTableName pulumi.StringInput `pulumi:"routeTableName"`
 	// The type of route table.
 	RouteTableType pulumi.StringInput `pulumi:"routeTableType"`
-	// Router Id of the route table.
+	// The router ID.
 	RouterId pulumi.StringInput `pulumi:"routerId"`
+	// The route type of route table. Valid values: `VRouter` and `VBR`.
+	RouterType pulumi.StringInput `pulumi:"routerType"`
+	// The status of resource. Valid values: `Available` and `Pending`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Vpc id of the route table.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// A list of vswitch id.
+	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 }
 
 func (GetRouteTablesTableArgs) ElementType() reflect.Type {
@@ -1732,11 +1778,6 @@ func (o GetRouteTablesTableOutput) ToGetRouteTablesTableOutputWithContext(ctx co
 	return o
 }
 
-// Time of creation.
-func (o GetRouteTablesTableOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRouteTablesTable) string { return v.CreationTime }).(pulumi.StringOutput)
-}
-
 // The description of the route table instance.
 func (o GetRouteTablesTableOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesTable) string { return v.Description }).(pulumi.StringOutput)
@@ -1752,14 +1793,54 @@ func (o GetRouteTablesTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesTable) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Id of resource group which route tables belongs.
+func (o GetRouteTablesTableOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTablesTable) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The route table id.
+func (o GetRouteTablesTableOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTablesTable) string { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+// The route table name.
+func (o GetRouteTablesTableOutput) RouteTableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTablesTable) string { return v.RouteTableName }).(pulumi.StringOutput)
+}
+
 // The type of route table.
 func (o GetRouteTablesTableOutput) RouteTableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesTable) string { return v.RouteTableType }).(pulumi.StringOutput)
 }
 
-// Router Id of the route table.
+// The router ID.
 func (o GetRouteTablesTableOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesTable) string { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// The route type of route table. Valid values: `VRouter` and `VBR`.
+func (o GetRouteTablesTableOutput) RouterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTablesTable) string { return v.RouterType }).(pulumi.StringOutput)
+}
+
+// The status of resource. Valid values: `Available` and `Pending`.
+func (o GetRouteTablesTableOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTablesTable) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetRouteTablesTableOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetRouteTablesTable) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Vpc id of the route table.
+func (o GetRouteTablesTableOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTablesTable) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// A list of vswitch id.
+func (o GetRouteTablesTableOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteTablesTable) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
 type GetRouteTablesTableArrayOutput struct{ *pulumi.OutputState }
@@ -2038,11 +2119,17 @@ func (o GetRouterInterfacesInterfaceArrayOutput) Index(i pulumi.IntInput) GetRou
 type GetSnatEntriesEntry struct {
 	// The ID of the Snat Entry.
 	Id string `pulumi:"id"`
+	// The ID of snat entry.
+	SnatEntryId string `pulumi:"snatEntryId"`
+	// The name of snat entry.
+	SnatEntryName string `pulumi:"snatEntryName"`
 	// The public IP of the Snat Entry.
 	SnatIp string `pulumi:"snatIp"`
 	// The source CIDR block of the Snat Entry.
 	SourceCidr string `pulumi:"sourceCidr"`
-	// The status of the Snat Entry.
+	// The source vswitch ID.
+	SourceVswitchId string `pulumi:"sourceVswitchId"`
+	// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
 	Status string `pulumi:"status"`
 }
 
@@ -2060,11 +2147,17 @@ type GetSnatEntriesEntryInput interface {
 type GetSnatEntriesEntryArgs struct {
 	// The ID of the Snat Entry.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of snat entry.
+	SnatEntryId pulumi.StringInput `pulumi:"snatEntryId"`
+	// The name of snat entry.
+	SnatEntryName pulumi.StringInput `pulumi:"snatEntryName"`
 	// The public IP of the Snat Entry.
 	SnatIp pulumi.StringInput `pulumi:"snatIp"`
 	// The source CIDR block of the Snat Entry.
 	SourceCidr pulumi.StringInput `pulumi:"sourceCidr"`
-	// The status of the Snat Entry.
+	// The source vswitch ID.
+	SourceVswitchId pulumi.StringInput `pulumi:"sourceVswitchId"`
+	// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2124,6 +2217,16 @@ func (o GetSnatEntriesEntryOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnatEntriesEntry) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ID of snat entry.
+func (o GetSnatEntriesEntryOutput) SnatEntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnatEntriesEntry) string { return v.SnatEntryId }).(pulumi.StringOutput)
+}
+
+// The name of snat entry.
+func (o GetSnatEntriesEntryOutput) SnatEntryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnatEntriesEntry) string { return v.SnatEntryName }).(pulumi.StringOutput)
+}
+
 // The public IP of the Snat Entry.
 func (o GetSnatEntriesEntryOutput) SnatIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnatEntriesEntry) string { return v.SnatIp }).(pulumi.StringOutput)
@@ -2134,7 +2237,12 @@ func (o GetSnatEntriesEntryOutput) SourceCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnatEntriesEntry) string { return v.SourceCidr }).(pulumi.StringOutput)
 }
 
-// The status of the Snat Entry.
+// The source vswitch ID.
+func (o GetSnatEntriesEntryOutput) SourceVswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnatEntriesEntry) string { return v.SourceVswitchId }).(pulumi.StringOutput)
+}
+
+// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
 func (o GetSnatEntriesEntryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnatEntriesEntry) string { return v.Status }).(pulumi.StringOutput)
 }

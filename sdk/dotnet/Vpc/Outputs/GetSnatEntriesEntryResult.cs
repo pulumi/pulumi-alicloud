@@ -18,6 +18,14 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The ID of snat entry.
+        /// </summary>
+        public readonly string SnatEntryId;
+        /// <summary>
+        /// The name of snat entry.
+        /// </summary>
+        public readonly string SnatEntryName;
+        /// <summary>
         /// The public IP of the Snat Entry.
         /// </summary>
         public readonly string SnatIp;
@@ -26,7 +34,11 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string SourceCidr;
         /// <summary>
-        /// The status of the Snat Entry.
+        /// The source vswitch ID.
+        /// </summary>
+        public readonly string SourceVswitchId;
+        /// <summary>
+        /// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
         /// </summary>
         public readonly string Status;
 
@@ -34,15 +46,24 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         private GetSnatEntriesEntryResult(
             string id,
 
+            string snatEntryId,
+
+            string snatEntryName,
+
             string snatIp,
 
             string sourceCidr,
 
+            string sourceVswitchId,
+
             string status)
         {
             Id = id;
+            SnatEntryId = snatEntryId;
+            SnatEntryName = snatEntryName;
             SnatIp = snatIp;
             SourceCidr = sourceCidr;
+            SourceVswitchId = sourceVswitchId;
             Status = status;
         }
     }

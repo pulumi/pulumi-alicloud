@@ -46,9 +46,19 @@ export class RouteTable extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the route table.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The name of the route table.
+     */
+    public readonly routeTableName!: pulumi.Output<string>;
+    /**
+     * (Available in v1.120.0+) The status of the route table.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -73,6 +83,8 @@ export class RouteTable extends pulumi.CustomResource {
             const state = argsOrState as RouteTableState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["routeTableName"] = state ? state.routeTableName : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
@@ -82,8 +94,10 @@ export class RouteTable extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["routeTableName"] = args ? args.routeTableName : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -101,9 +115,19 @@ export interface RouteTableState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the route table.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The name of the route table.
+     */
+    readonly routeTableName?: pulumi.Input<string>;
+    /**
+     * (Available in v1.120.0+) The status of the route table.
+     */
+    readonly status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -123,9 +147,15 @@ export interface RouteTableArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the route table.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The name of the route table.
+     */
+    readonly routeTableName?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

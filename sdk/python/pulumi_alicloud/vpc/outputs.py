@@ -448,6 +448,8 @@ class GetForwardEntriesEntryResult(dict):
     def __init__(__self__, *,
                  external_ip: str,
                  external_port: str,
+                 forward_entry_id: str,
+                 forward_entry_name: str,
                  id: str,
                  internal_ip: str,
                  internal_port: str,
@@ -457,15 +459,19 @@ class GetForwardEntriesEntryResult(dict):
         """
         :param str external_ip: The public IP address.
         :param str external_port: The public port.
+        :param str forward_entry_id: The forward entry ID.
+        :param str forward_entry_name: The name of forward entry.
         :param str id: The ID of the Forward Entry.
         :param str internal_ip: The private IP address.
-        :param str internal_port: The private port.
-        :param str ip_protocol: The protocol type.
+        :param str internal_port: The internal port.
+        :param str ip_protocol: The ip protocol. Valid values: `any`,`tcp` and `udp`.
         :param str name: The forward entry name.
-        :param str status: The status of the Forward Entry.
+        :param str status: The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
         """
         pulumi.set(__self__, "external_ip", external_ip)
         pulumi.set(__self__, "external_port", external_port)
+        pulumi.set(__self__, "forward_entry_id", forward_entry_id)
+        pulumi.set(__self__, "forward_entry_name", forward_entry_name)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "internal_ip", internal_ip)
         pulumi.set(__self__, "internal_port", internal_port)
@@ -490,6 +496,22 @@ class GetForwardEntriesEntryResult(dict):
         return pulumi.get(self, "external_port")
 
     @property
+    @pulumi.getter(name="forwardEntryId")
+    def forward_entry_id(self) -> str:
+        """
+        The forward entry ID.
+        """
+        return pulumi.get(self, "forward_entry_id")
+
+    @property
+    @pulumi.getter(name="forwardEntryName")
+    def forward_entry_name(self) -> str:
+        """
+        The name of forward entry.
+        """
+        return pulumi.get(self, "forward_entry_name")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -509,7 +531,7 @@ class GetForwardEntriesEntryResult(dict):
     @pulumi.getter(name="internalPort")
     def internal_port(self) -> str:
         """
-        The private port.
+        The internal port.
         """
         return pulumi.get(self, "internal_port")
 
@@ -517,7 +539,7 @@ class GetForwardEntriesEntryResult(dict):
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> str:
         """
-        The protocol type.
+        The ip protocol. Valid values: `any`,`tcp` and `udp`.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -533,7 +555,7 @@ class GetForwardEntriesEntryResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the Forward Entry.
+        The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
         """
         return pulumi.get(self, "status")
 
@@ -936,34 +958,47 @@ class GetRouteEntriesEntryResult(dict):
 @pulumi.output_type
 class GetRouteTablesTableResult(dict):
     def __init__(__self__, *,
-                 creation_time: str,
                  description: str,
                  id: str,
                  name: str,
+                 resource_group_id: str,
+                 route_table_id: str,
+                 route_table_name: str,
                  route_table_type: str,
-                 router_id: str):
+                 router_id: str,
+                 router_type: str,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 vpc_id: str,
+                 vswitch_ids: Sequence[str]):
         """
-        :param str creation_time: Time of creation.
         :param str description: The description of the route table instance.
         :param str id: ID of the Route Table.
         :param str name: Name of the route table.
+        :param str resource_group_id: The Id of resource group which route tables belongs.
+        :param str route_table_id: The route table id.
+        :param str route_table_name: The route table name.
         :param str route_table_type: The type of route table.
-        :param str router_id: Router Id of the route table.
+        :param str router_id: The router ID.
+        :param str router_type: The route type of route table. Valid values: `VRouter` and `VBR`.
+        :param str status: The status of resource. Valid values: `Available` and `Pending`.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param str vpc_id: Vpc id of the route table.
+        :param Sequence[str] vswitch_ids: A list of vswitch id.
         """
-        pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "route_table_id", route_table_id)
+        pulumi.set(__self__, "route_table_name", route_table_name)
         pulumi.set(__self__, "route_table_type", route_table_type)
         pulumi.set(__self__, "router_id", router_id)
-
-    @property
-    @pulumi.getter(name="creationTime")
-    def creation_time(self) -> str:
-        """
-        Time of creation.
-        """
-        return pulumi.get(self, "creation_time")
+        pulumi.set(__self__, "router_type", router_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter
@@ -990,6 +1025,30 @@ class GetRouteTablesTableResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The Id of resource group which route tables belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> str:
+        """
+        The route table id.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @property
+    @pulumi.getter(name="routeTableName")
+    def route_table_name(self) -> str:
+        """
+        The route table name.
+        """
+        return pulumi.get(self, "route_table_name")
+
+    @property
     @pulumi.getter(name="routeTableType")
     def route_table_type(self) -> str:
         """
@@ -1001,9 +1060,49 @@ class GetRouteTablesTableResult(dict):
     @pulumi.getter(name="routerId")
     def router_id(self) -> str:
         """
-        Router Id of the route table.
+        The router ID.
         """
         return pulumi.get(self, "router_id")
+
+    @property
+    @pulumi.getter(name="routerType")
+    def router_type(self) -> str:
+        """
+        The route type of route table. Valid values: `VRouter` and `VBR`.
+        """
+        return pulumi.get(self, "router_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of resource. Valid values: `Available` and `Pending`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        Vpc id of the route table.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Sequence[str]:
+        """
+        A list of vswitch id.
+        """
+        return pulumi.get(self, "vswitch_ids")
 
 
 @pulumi.output_type
@@ -1217,18 +1316,27 @@ class GetRouterInterfacesInterfaceResult(dict):
 class GetSnatEntriesEntryResult(dict):
     def __init__(__self__, *,
                  id: str,
+                 snat_entry_id: str,
+                 snat_entry_name: str,
                  snat_ip: str,
                  source_cidr: str,
+                 source_vswitch_id: str,
                  status: str):
         """
         :param str id: The ID of the Snat Entry.
+        :param str snat_entry_id: The ID of snat entry.
+        :param str snat_entry_name: The name of snat entry.
         :param str snat_ip: The public IP of the Snat Entry.
         :param str source_cidr: The source CIDR block of the Snat Entry.
-        :param str status: The status of the Snat Entry.
+        :param str source_vswitch_id: The source vswitch ID.
+        :param str status: The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
         """
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "snat_entry_id", snat_entry_id)
+        pulumi.set(__self__, "snat_entry_name", snat_entry_name)
         pulumi.set(__self__, "snat_ip", snat_ip)
         pulumi.set(__self__, "source_cidr", source_cidr)
+        pulumi.set(__self__, "source_vswitch_id", source_vswitch_id)
         pulumi.set(__self__, "status", status)
 
     @property
@@ -1238,6 +1346,22 @@ class GetSnatEntriesEntryResult(dict):
         The ID of the Snat Entry.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="snatEntryId")
+    def snat_entry_id(self) -> str:
+        """
+        The ID of snat entry.
+        """
+        return pulumi.get(self, "snat_entry_id")
+
+    @property
+    @pulumi.getter(name="snatEntryName")
+    def snat_entry_name(self) -> str:
+        """
+        The name of snat entry.
+        """
+        return pulumi.get(self, "snat_entry_name")
 
     @property
     @pulumi.getter(name="snatIp")
@@ -1256,10 +1380,18 @@ class GetSnatEntriesEntryResult(dict):
         return pulumi.get(self, "source_cidr")
 
     @property
+    @pulumi.getter(name="sourceVswitchId")
+    def source_vswitch_id(self) -> str:
+        """
+        The source vswitch ID.
+        """
+        return pulumi.get(self, "source_vswitch_id")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the Snat Entry.
+        The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
         """
         return pulumi.get(self, "status")
 

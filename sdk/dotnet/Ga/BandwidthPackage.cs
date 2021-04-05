@@ -54,13 +54,15 @@ namespace Pulumi.AliCloud.Ga
     public partial class BandwidthPackage : Pulumi.CustomResource
     {
         /// <summary>
-        /// The auto pay. Valid values: `false`, `true`.
+        /// Whether to pay automatically. Valid values:
+        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        /// `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// The auto use coupon. Valid values: `false`, `true`.
+        /// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
@@ -184,13 +186,15 @@ namespace Pulumi.AliCloud.Ga
     public sealed class BandwidthPackageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The auto pay. Valid values: `false`, `true`.
+        /// Whether to pay automatically. Valid values:
+        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        /// `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// The auto use coupon. Valid values: `false`, `true`.
+        /// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -269,13 +273,15 @@ namespace Pulumi.AliCloud.Ga
     public sealed class BandwidthPackageState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The auto pay. Valid values: `false`, `true`.
+        /// Whether to pay automatically. Valid values:
+        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        /// `true`: Enable automatic payment, automatic payment order.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// The auto use coupon. Valid values: `false`, `true`.
+        /// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }

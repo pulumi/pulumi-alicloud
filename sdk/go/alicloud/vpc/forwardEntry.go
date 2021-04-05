@@ -43,15 +43,17 @@ import (
 // 			return err
 // 		}
 // 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			VpcName:   pulumi.String(name),
 // 			CidrBlock: pulumi.String("172.16.0.0/12"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:            defaultNetwork.ID(),
-// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			VpcId:       defaultNetwork.ID(),
+// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
+// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+// 			VswitchName: pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -106,6 +108,8 @@ type ForwardEntry struct {
 	ExternalPort pulumi.StringOutput `pulumi:"externalPort"`
 	// The id of the forward entry on the server.
 	ForwardEntryId pulumi.StringOutput `pulumi:"forwardEntryId"`
+	// The name of forward entry.
+	ForwardEntryName pulumi.StringOutput `pulumi:"forwardEntryName"`
 	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
 	ForwardTableId pulumi.StringOutput `pulumi:"forwardTableId"`
 	// The internal ip, must a private ip.
@@ -114,8 +118,14 @@ type ForwardEntry struct {
 	InternalPort pulumi.StringOutput `pulumi:"internalPort"`
 	// The ip protocal, valid value is tcp|udp|any.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
-	// The name of forward entry.
+	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Specifies whether to remove limits on the port range. Default value is `false`.
+	PortBreak pulumi.BoolPtrOutput `pulumi:"portBreak"`
+	// (Available in 1.119.1+) The status of forward entry.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewForwardEntry registers a new resource with the given unique name, arguments, and options.
@@ -171,6 +181,8 @@ type forwardEntryState struct {
 	ExternalPort *string `pulumi:"externalPort"`
 	// The id of the forward entry on the server.
 	ForwardEntryId *string `pulumi:"forwardEntryId"`
+	// The name of forward entry.
+	ForwardEntryName *string `pulumi:"forwardEntryName"`
 	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
 	ForwardTableId *string `pulumi:"forwardTableId"`
 	// The internal ip, must a private ip.
@@ -179,8 +191,14 @@ type forwardEntryState struct {
 	InternalPort *string `pulumi:"internalPort"`
 	// The ip protocal, valid value is tcp|udp|any.
 	IpProtocol *string `pulumi:"ipProtocol"`
-	// The name of forward entry.
+	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
 	Name *string `pulumi:"name"`
+	// Specifies whether to remove limits on the port range. Default value is `false`.
+	PortBreak *bool `pulumi:"portBreak"`
+	// (Available in 1.119.1+) The status of forward entry.
+	Status *string `pulumi:"status"`
 }
 
 type ForwardEntryState struct {
@@ -190,6 +208,8 @@ type ForwardEntryState struct {
 	ExternalPort pulumi.StringPtrInput
 	// The id of the forward entry on the server.
 	ForwardEntryId pulumi.StringPtrInput
+	// The name of forward entry.
+	ForwardEntryName pulumi.StringPtrInput
 	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
 	ForwardTableId pulumi.StringPtrInput
 	// The internal ip, must a private ip.
@@ -198,8 +218,14 @@ type ForwardEntryState struct {
 	InternalPort pulumi.StringPtrInput
 	// The ip protocal, valid value is tcp|udp|any.
 	IpProtocol pulumi.StringPtrInput
-	// The name of forward entry.
+	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
 	Name pulumi.StringPtrInput
+	// Specifies whether to remove limits on the port range. Default value is `false`.
+	PortBreak pulumi.BoolPtrInput
+	// (Available in 1.119.1+) The status of forward entry.
+	Status pulumi.StringPtrInput
 }
 
 func (ForwardEntryState) ElementType() reflect.Type {
@@ -211,6 +237,8 @@ type forwardEntryArgs struct {
 	ExternalIp string `pulumi:"externalIp"`
 	// The external port, valid value is 1~65535|any.
 	ExternalPort string `pulumi:"externalPort"`
+	// The name of forward entry.
+	ForwardEntryName *string `pulumi:"forwardEntryName"`
 	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
 	ForwardTableId string `pulumi:"forwardTableId"`
 	// The internal ip, must a private ip.
@@ -219,8 +247,12 @@ type forwardEntryArgs struct {
 	InternalPort string `pulumi:"internalPort"`
 	// The ip protocal, valid value is tcp|udp|any.
 	IpProtocol string `pulumi:"ipProtocol"`
-	// The name of forward entry.
+	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
 	Name *string `pulumi:"name"`
+	// Specifies whether to remove limits on the port range. Default value is `false`.
+	PortBreak *bool `pulumi:"portBreak"`
 }
 
 // The set of arguments for constructing a ForwardEntry resource.
@@ -229,6 +261,8 @@ type ForwardEntryArgs struct {
 	ExternalIp pulumi.StringInput
 	// The external port, valid value is 1~65535|any.
 	ExternalPort pulumi.StringInput
+	// The name of forward entry.
+	ForwardEntryName pulumi.StringPtrInput
 	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
 	ForwardTableId pulumi.StringInput
 	// The internal ip, must a private ip.
@@ -237,8 +271,12 @@ type ForwardEntryArgs struct {
 	InternalPort pulumi.StringInput
 	// The ip protocal, valid value is tcp|udp|any.
 	IpProtocol pulumi.StringInput
-	// The name of forward entry.
+	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
 	Name pulumi.StringPtrInput
+	// Specifies whether to remove limits on the port range. Default value is `false`.
+	PortBreak pulumi.BoolPtrInput
 }
 
 func (ForwardEntryArgs) ElementType() reflect.Type {

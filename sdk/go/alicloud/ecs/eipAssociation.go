@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// Elastic IP address can be imported using the id, e.g.
+// Elastic IP address association can be imported using the id, e.g.
 //
 // ```sh
 //  $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example eip-abc12345678:i-abc12355
@@ -25,9 +25,9 @@ type EipAssociation struct {
 	AllocationId pulumi.StringOutput `pulumi:"allocationId"`
 	// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// The ID of the ECS or SLB instance or Nat Gateway.
+	// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The type of cloud product that the eip instance to bind.
+	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The private IP address in the network segment of the vswitch which has been assigned.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
@@ -72,9 +72,9 @@ type eipAssociationState struct {
 	AllocationId *string `pulumi:"allocationId"`
 	// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
 	Force *bool `pulumi:"force"`
-	// The ID of the ECS or SLB instance or Nat Gateway.
+	// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
 	InstanceId *string `pulumi:"instanceId"`
-	// The type of cloud product that the eip instance to bind.
+	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The private IP address in the network segment of the vswitch which has been assigned.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
@@ -85,9 +85,9 @@ type EipAssociationState struct {
 	AllocationId pulumi.StringPtrInput
 	// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
 	Force pulumi.BoolPtrInput
-	// The ID of the ECS or SLB instance or Nat Gateway.
+	// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
 	InstanceId pulumi.StringPtrInput
-	// The type of cloud product that the eip instance to bind.
+	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
 	InstanceType pulumi.StringPtrInput
 	// The private IP address in the network segment of the vswitch which has been assigned.
 	PrivateIpAddress pulumi.StringPtrInput
@@ -102,9 +102,9 @@ type eipAssociationArgs struct {
 	AllocationId string `pulumi:"allocationId"`
 	// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
 	Force *bool `pulumi:"force"`
-	// The ID of the ECS or SLB instance or Nat Gateway.
+	// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
 	InstanceId string `pulumi:"instanceId"`
-	// The type of cloud product that the eip instance to bind.
+	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The private IP address in the network segment of the vswitch which has been assigned.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
@@ -116,9 +116,9 @@ type EipAssociationArgs struct {
 	AllocationId pulumi.StringInput
 	// When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
 	Force pulumi.BoolPtrInput
-	// The ID of the ECS or SLB instance or Nat Gateway.
+	// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
 	InstanceId pulumi.StringInput
-	// The type of cloud product that the eip instance to bind.
+	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
 	InstanceType pulumi.StringPtrInput
 	// The private IP address in the network segment of the vswitch which has been assigned.
 	PrivateIpAddress pulumi.StringPtrInput

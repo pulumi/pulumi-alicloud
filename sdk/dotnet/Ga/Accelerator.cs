@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> AcceleratorName { get; private set; } = null!;
 
         /// <summary>
-        /// The auto use coupon.
+        /// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? AcceleratorName { get; set; }
 
         /// <summary>
-        /// The auto use coupon.
+        /// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? AcceleratorName { get; set; }
 
         /// <summary>
-        /// The auto use coupon.
+        /// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }

@@ -20,7 +20,7 @@ class GetSnatEntriesResult:
     """
     A collection of values returned by getSnatEntries.
     """
-    def __init__(__self__, entries=None, id=None, ids=None, output_file=None, snat_ip=None, snat_table_id=None, source_cidr=None):
+    def __init__(__self__, entries=None, id=None, ids=None, name_regex=None, names=None, output_file=None, snat_entry_name=None, snat_ip=None, snat_table_id=None, source_cidr=None, source_vswitch_id=None, status=None):
         if entries and not isinstance(entries, list):
             raise TypeError("Expected argument 'entries' to be a list")
         pulumi.set(__self__, "entries", entries)
@@ -30,9 +30,18 @@ class GetSnatEntriesResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if name_regex and not isinstance(name_regex, str):
+            raise TypeError("Expected argument 'name_regex' to be a str")
+        pulumi.set(__self__, "name_regex", name_regex)
+        if names and not isinstance(names, list):
+            raise TypeError("Expected argument 'names' to be a list")
+        pulumi.set(__self__, "names", names)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if snat_entry_name and not isinstance(snat_entry_name, str):
+            raise TypeError("Expected argument 'snat_entry_name' to be a str")
+        pulumi.set(__self__, "snat_entry_name", snat_entry_name)
         if snat_ip and not isinstance(snat_ip, str):
             raise TypeError("Expected argument 'snat_ip' to be a str")
         pulumi.set(__self__, "snat_ip", snat_ip)
@@ -42,6 +51,12 @@ class GetSnatEntriesResult:
         if source_cidr and not isinstance(source_cidr, str):
             raise TypeError("Expected argument 'source_cidr' to be a str")
         pulumi.set(__self__, "source_cidr", source_cidr)
+        if source_vswitch_id and not isinstance(source_vswitch_id, str):
+            raise TypeError("Expected argument 'source_vswitch_id' to be a str")
+        pulumi.set(__self__, "source_vswitch_id", source_vswitch_id)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -68,9 +83,27 @@ class GetSnatEntriesResult:
         return pulumi.get(self, "ids")
 
     @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        return pulumi.get(self, "name_regex")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Sequence[str]:
+        return pulumi.get(self, "names")
+
+    @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
+
+    @property
+    @pulumi.getter(name="snatEntryName")
+    def snat_entry_name(self) -> Optional[str]:
+        """
+        The name of snat entry.
+        """
+        return pulumi.get(self, "snat_entry_name")
 
     @property
     @pulumi.getter(name="snatIp")
@@ -93,6 +126,22 @@ class GetSnatEntriesResult:
         """
         return pulumi.get(self, "source_cidr")
 
+    @property
+    @pulumi.getter(name="sourceVswitchId")
+    def source_vswitch_id(self) -> Optional[str]:
+        """
+        The source vswitch ID.
+        """
+        return pulumi.get(self, "source_vswitch_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The status of the Snat Entry.
+        """
+        return pulumi.get(self, "status")
+
 
 class AwaitableGetSnatEntriesResult(GetSnatEntriesResult):
     # pylint: disable=using-constant-test
@@ -103,17 +152,26 @@ class AwaitableGetSnatEntriesResult(GetSnatEntriesResult):
             entries=self.entries,
             id=self.id,
             ids=self.ids,
+            name_regex=self.name_regex,
+            names=self.names,
             output_file=self.output_file,
+            snat_entry_name=self.snat_entry_name,
             snat_ip=self.snat_ip,
             snat_table_id=self.snat_table_id,
-            source_cidr=self.source_cidr)
+            source_cidr=self.source_cidr,
+            source_vswitch_id=self.source_vswitch_id,
+            status=self.status)
 
 
 def get_snat_entries(ids: Optional[Sequence[str]] = None,
+                     name_regex: Optional[str] = None,
                      output_file: Optional[str] = None,
+                     snat_entry_name: Optional[str] = None,
                      snat_ip: Optional[str] = None,
                      snat_table_id: Optional[str] = None,
                      source_cidr: Optional[str] = None,
+                     source_vswitch_id: Optional[str] = None,
+                     status: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnatEntriesResult:
     """
     This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
@@ -153,16 +211,24 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Snat Entries IDs.
+    :param str name_regex: A regex string to filter results by the resource name.
+    :param str snat_entry_name: The name of snat entry.
     :param str snat_ip: The public IP of the Snat Entry.
     :param str snat_table_id: The ID of the Snat table.
     :param str source_cidr: The source CIDR block of the Snat Entry.
+    :param str source_vswitch_id: The source vswitch ID.
+    :param str status: The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['snatEntryName'] = snat_entry_name
     __args__['snatIp'] = snat_ip
     __args__['snatTableId'] = snat_table_id
     __args__['sourceCidr'] = source_cidr
+    __args__['sourceVswitchId'] = source_vswitch_id
+    __args__['status'] = status
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -173,7 +239,12 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
         entries=__ret__.entries,
         id=__ret__.id,
         ids=__ret__.ids,
+        name_regex=__ret__.name_regex,
+        names=__ret__.names,
         output_file=__ret__.output_file,
+        snat_entry_name=__ret__.snat_entry_name,
         snat_ip=__ret__.snat_ip,
         snat_table_id=__ret__.snat_table_id,
-        source_cidr=__ret__.source_cidr)
+        source_cidr=__ret__.source_cidr,
+        source_vswitch_id=__ret__.source_vswitch_id,
+        status=__ret__.status)

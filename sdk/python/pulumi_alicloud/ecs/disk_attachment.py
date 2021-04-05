@@ -55,6 +55,14 @@ class DiskAttachment(pulumi.CustomResource):
             instance_id=ecs_instance.id)
         ```
 
+        ## Import
+
+        The disk attachment can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/diskAttachment:DiskAttachment example d-abc12345678:i-abc12355
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_name: The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.

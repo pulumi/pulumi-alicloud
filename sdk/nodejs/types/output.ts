@@ -7535,7 +7535,7 @@ export namespace ga {
          */
         type: string;
         /**
-         * The weight of Endpoint N in the endpoint group.
+         * The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
          */
         weight: number;
     }
@@ -12837,6 +12837,14 @@ export namespace vpc {
          */
         externalPort: string;
         /**
+         * The forward entry ID.
+         */
+        forwardEntryId: string;
+        /**
+         * The name of forward entry.
+         */
+        forwardEntryName: string;
+        /**
          * The ID of the Forward Entry.
          */
         id: string;
@@ -12845,11 +12853,11 @@ export namespace vpc {
          */
         internalIp: string;
         /**
-         * The private port.
+         * The internal port.
          */
         internalPort: string;
         /**
-         * The protocol type.
+         * The ip protocol. Valid values: `any`,`tcp` and `udp`.
          */
         ipProtocol: string;
         /**
@@ -12857,7 +12865,7 @@ export namespace vpc {
          */
         name: string;
         /**
-         * The status of the Forward Entry.
+         * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
          */
         status: string;
     }
@@ -13009,10 +13017,6 @@ export namespace vpc {
 
     export interface GetRouteTablesTable {
         /**
-         * Time of creation.
-         */
-        creationTime: string;
-        /**
          * The description of the route table instance.
          */
         description: string;
@@ -13025,13 +13029,45 @@ export namespace vpc {
          */
         name: string;
         /**
+         * The Id of resource group which route tables belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * The route table id.
+         */
+        routeTableId: string;
+        /**
+         * The route table name.
+         */
+        routeTableName: string;
+        /**
          * The type of route table.
          */
         routeTableType: string;
         /**
-         * Router Id of the route table.
+         * The router ID.
          */
         routerId: string;
+        /**
+         * The route type of route table. Valid values: `VRouter` and `VBR`.
+         */
+        routerType: string;
+        /**
+         * The status of resource. Valid values: `Available` and `Pending`.
+         */
+        status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * Vpc id of the route table.
+         */
+        vpcId: string;
+        /**
+         * A list of vswitch id.
+         */
+        vswitchIds: string[];
     }
 
     export interface GetRouterInterfacesInterface {
@@ -13116,6 +13152,14 @@ export namespace vpc {
          */
         id: string;
         /**
+         * The ID of snat entry.
+         */
+        snatEntryId: string;
+        /**
+         * The name of snat entry.
+         */
+        snatEntryName: string;
+        /**
          * The public IP of the Snat Entry.
          */
         snatIp: string;
@@ -13124,7 +13168,11 @@ export namespace vpc {
          */
         sourceCidr: string;
         /**
-         * The status of the Snat Entry.
+         * The source vswitch ID.
+         */
+        sourceVswitchId: string;
+        /**
+         * The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
          */
         status: string;
     }

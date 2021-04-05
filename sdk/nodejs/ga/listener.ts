@@ -25,12 +25,26 @@ import * as utilities from "../utilities";
  *     autoUseCoupon: true,
  *     spec: "1",
  * });
+ * const deBandwidthPackage = new alicloud.ga.BandwidthPackage("deBandwidthPackage", {
+ *     bandwidth: "100",
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     paymentType: "PayAsYouGo",
+ *     billingType: "PayBy95",
+ *     ratio: 30,
+ * });
+ * const deBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", {
+ *     acceleratorId: exampleAccelerator.id,
+ *     bandwidthPackageId: deBandwidthPackage.id,
+ * });
  * const exampleListener = new alicloud.ga.Listener("exampleListener", {
  *     acceleratorId: exampleAccelerator.id,
  *     portRanges: [{
  *         fromPort: 60,
  *         toPort: 70,
  *     }],
+ * }, {
+ *     dependsOn: [deBandwidthPackageAttachment],
  * });
  * ```
  *
@@ -97,11 +111,13 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly portRanges!: pulumi.Output<outputs.ga.ListenerPortRange[]>;
     /**
-     * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+     * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
-     * The proxy protocol of the listener.
+     * The proxy protocol of the listener. Default value is `false`. Valid value:
+     * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+     * `false`: keep client source IP function is not turned on.
      */
     public readonly proxyProtocol!: pulumi.Output<boolean | undefined>;
     /**
@@ -187,11 +203,13 @@ export interface ListenerState {
      */
     readonly portRanges?: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[]>;
     /**
-     * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+     * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * The proxy protocol of the listener.
+     * The proxy protocol of the listener. Default value is `false`. Valid value:
+     * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+     * `false`: keep client source IP function is not turned on.
      */
     readonly proxyProtocol?: pulumi.Input<boolean>;
     /**
@@ -231,11 +249,13 @@ export interface ListenerArgs {
      */
     readonly portRanges: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[]>;
     /**
-     * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`.
+     * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * The proxy protocol of the listener.
+     * The proxy protocol of the listener. Default value is `false`. Valid value:
+     * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+     * `false`: keep client source IP function is not turned on.
      */
     readonly proxyProtocol?: pulumi.Input<boolean>;
 }

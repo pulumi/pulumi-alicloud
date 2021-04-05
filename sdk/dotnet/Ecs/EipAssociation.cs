@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ecs
     /// <summary>
     /// ## Import
     /// 
-    /// Elastic IP address can be imported using the id, e.g.
+    /// Elastic IP address association can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example eip-abc12345678:i-abc12355
@@ -34,13 +34,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the ECS or SLB instance or Nat Gateway.
+        /// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of cloud product that the eip instance to bind.
+        /// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -110,13 +110,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The ID of the ECS or SLB instance or Nat Gateway.
+        /// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The type of cloud product that the eip instance to bind.
+        /// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -147,13 +147,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The ID of the ECS or SLB instance or Nat Gateway.
+        /// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The type of cloud product that the eip instance to bind.
+        /// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
