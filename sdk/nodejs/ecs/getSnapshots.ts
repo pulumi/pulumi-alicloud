@@ -5,53 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
- *
- * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
- *
- * > **NOTE:**  Available in 1.40.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const snapshots = pulumi.output(alicloud.ecs.getSnapshots({
- *     ids: ["s-123456890abcdef"],
- *     nameRegex: "tf-testAcc-snapshot",
- * }, { async: true }));
- * ```
- * ## Argument Reference
- *
- * The following arguments are supported:
- *
- * * `instanceId` - (Optional) The specified instance ID.
- * * `diskId` - (Optional) The specified disk ID.
- * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
- * * `ids` - (Optional)  A list of snapshot IDs.
- * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
- * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
- *   * progressing: The snapshots are being created.
- *   * accomplished: The snapshots are ready to use.
- *   * failed: The snapshot creation failed.
- *   * all: All status.
- * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
- *   * auto: Auto snapshots.
- *   * user: Manual snapshots.
- *   * all: Auto and manual snapshots.
- * * `sourceDiskType` - (Optional) The type of source disk:
- *   * System: The snapshots are created for system disks.
- *   * Data: The snapshots are created for data disks.
- * * `usage` - (Optional) The usage of the snapshot:
- *   * image: The snapshots are used to create custom images.
- *   * disk: The snapshots are used to CreateDisk.
- *   * mage_disk: The snapshots are used to create custom images and data disks.
- *   * none: The snapshots are not used yet.
- * * `tags` - (Optional) A map of tags assigned to snapshots.
- * * `outputFile` - (Optional) The name of output file that saves the filter results.
- */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
     if (!opts) {
@@ -62,12 +15,17 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:ecs/getSnapshots:getSnapshots", {
-        "diskId": args.diskId,
+        "category": args.category,
+        "dryRun": args.dryRun,
         "encrypted": args.encrypted,
         "ids": args.ids,
-        "instanceId": args.instanceId,
+        "kmsKeyId": args.kmsKeyId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "snapshotLinkId": args.snapshotLinkId,
+        "snapshotName": args.snapshotName,
+        "snapshotType": args.snapshotType,
         "sourceDiskType": args.sourceDiskType,
         "status": args.status,
         "tags": args.tags,
@@ -80,7 +38,8 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getSnapshots.
  */
 export interface GetSnapshotsArgs {
-    readonly diskId?: string;
+    readonly category?: string;
+    readonly dryRun?: boolean;
     /**
      * Whether the snapshot is encrypted or not.
      */
@@ -89,9 +48,13 @@ export interface GetSnapshotsArgs {
      * A list of snapshot IDs.
      */
     readonly ids?: string[];
-    readonly instanceId?: string;
+    readonly kmsKeyId?: string;
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    readonly resourceGroupId?: string;
+    readonly snapshotLinkId?: string;
+    readonly snapshotName?: string;
+    readonly snapshotType?: string;
     /**
      * Source disk attribute. Value range: `System`,`Data`.
      */
@@ -115,7 +78,8 @@ export interface GetSnapshotsArgs {
  * A collection of values returned by getSnapshots.
  */
 export interface GetSnapshotsResult {
-    readonly diskId?: string;
+    readonly category?: string;
+    readonly dryRun?: boolean;
     /**
      * Whether the snapshot is encrypted or not.
      */
@@ -128,13 +92,17 @@ export interface GetSnapshotsResult {
      * A list of snapshot IDs.
      */
     readonly ids: string[];
-    readonly instanceId?: string;
+    readonly kmsKeyId?: string;
     readonly nameRegex?: string;
     /**
      * A list of snapshots names.
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly resourceGroupId?: string;
+    readonly snapshotLinkId?: string;
+    readonly snapshotName?: string;
+    readonly snapshotType?: string;
     /**
      * A list of snapshots. Each element contains the following attributes:
      */

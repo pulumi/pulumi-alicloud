@@ -29,6 +29,10 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// The ID of the root folder.
         /// </summary>
         public readonly string RootFolderId;
+        /// <summary>
+        /// (Available in 1.120.0+.) The status of the control policy.
+        /// </summary>
+        public readonly string Status;
 
         [OutputConstructor]
         private GetResourceDirectoriesDirectoryResult(
@@ -40,13 +44,16 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
 
             string resourceDirectoryId,
 
-            string rootFolderId)
+            string rootFolderId,
+
+            string status)
         {
             Id = id;
             MasterAccountId = masterAccountId;
             MasterAccountName = masterAccountName;
             ResourceDirectoryId = resourceDirectoryId;
             RootFolderId = rootFolderId;
+            Status = status;
         }
     }
 }

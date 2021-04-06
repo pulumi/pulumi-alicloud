@@ -24,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "fooCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
-// 			Bandwidth:   pulumi.Int(2),
+// 			Bandwidth:   pulumi.String("2"),
 // 			Description: pulumi.String("tf-testAcc-CommonBandwidthPackage"),
 // 		})
 // 		if err != nil {
@@ -40,6 +40,7 @@ import (
 //
 //   * `ipAddress`   - The address of the EIP.
 //   * `allocationId` - The ID of the EIP instance.
+//   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
 func GetCommonBandwidthPackages(ctx *pulumi.Context, args *GetCommonBandwidthPackagesArgs, opts ...pulumi.InvokeOption) (*GetCommonBandwidthPackagesResult, error) {
 	var rv GetCommonBandwidthPackagesResult
 	err := ctx.Invoke("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args, &rv, opts...)
@@ -51,22 +52,34 @@ func GetCommonBandwidthPackages(ctx *pulumi.Context, args *GetCommonBandwidthPac
 
 // A collection of arguments for invoking getCommonBandwidthPackages.
 type GetCommonBandwidthPackagesArgs struct {
+	// The name of bandwidth package.
+	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
+	// Specifies whether to precheck only the request.
+	DryRun *bool `pulumi:"dryRun"`
 	// A list of Common Bandwidth Packages IDs.
 	Ids []string `pulumi:"ids"`
+	// Specifies whether to return data of orders that have not taken effect.
+	IncludeReservationData *bool `pulumi:"includeReservationData"`
 	// A regex string to filter results by name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of bandwidth package. Valid values: `Available` and `Pending`.
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getCommonBandwidthPackages.
 type GetCommonBandwidthPackagesResult struct {
+	// The name of bandwidth package.
+	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
+	DryRun               *bool   `pulumi:"dryRun"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of Common Bandwidth Packages IDs.
-	Ids       []string `pulumi:"ids"`
-	NameRegex *string  `pulumi:"nameRegex"`
+	Ids                    []string `pulumi:"ids"`
+	IncludeReservationData *bool    `pulumi:"includeReservationData"`
+	NameRegex              *string  `pulumi:"nameRegex"`
 	// A list of Common Bandwidth Packages names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -74,4 +87,6 @@ type GetCommonBandwidthPackagesResult struct {
 	Packages []GetCommonBandwidthPackagesPackage `pulumi:"packages"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Status of the Common Bandwidth Package.
+	Status *string `pulumi:"status"`
 }

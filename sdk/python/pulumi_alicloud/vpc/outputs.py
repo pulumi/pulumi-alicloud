@@ -18,6 +18,7 @@ __all__ = [
     'GetCommonBandwidthPackagesPackagePublicIpAddressResult',
     'GetEnhancedNatAvailableZonesZoneResult',
     'GetForwardEntriesEntryResult',
+    'GetHavipsHavipResult',
     'GetNatGatewaysGatewayResult',
     'GetNetworksVpcResult',
     'GetRouteEntriesEntryResult',
@@ -291,38 +292,73 @@ class NetworkAclEntriesIngress(dict):
 class GetCommonBandwidthPackagesPackageResult(dict):
     def __init__(__self__, *,
                  bandwidth: str,
+                 bandwidth_package_id: str,
+                 bandwidth_package_name: str,
                  business_status: str,
-                 creation_time: str,
+                 deletion_protection: bool,
                  description: str,
+                 expired_time: str,
+                 has_reservation_data: bool,
                  id: str,
+                 internet_charge_type: str,
                  isp: str,
                  name: str,
+                 payment_type: str,
                  public_ip_addresses: Sequence['outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult'],
-                 status: str,
-                 resource_group_id: Optional[str] = None):
+                 ratio: int,
+                 reservation_active_time: str,
+                 reservation_bandwidth: str,
+                 reservation_internet_charge_type: str,
+                 reservation_order_type: str,
+                 resource_group_id: str,
+                 service_managed: int,
+                 status: str):
         """
         :param str bandwidth: The peak bandwidth of the Internet Shared Bandwidth instance.
+        :param str bandwidth_package_id: The resource ID of bandwidth package.
+        :param str bandwidth_package_name: The name of bandwidth package.
         :param str business_status: The business status of the Common Bandwidth Package instance.
-        :param str creation_time: Time of creation.
+        :param bool deletion_protection: The deletion protection of bandwidth package.
         :param str description: The description of the Common Bandwidth Package instance.
+        :param str expired_time: The expired time of bandwidth package.
+        :param bool has_reservation_data: Is has reservation data.
         :param str id: ID of the Common Bandwidth Package.
+        :param str internet_charge_type: The internet charge type of bandwidth package.
         :param str isp: ISP of the Common Bandwidth Package.
         :param str name: Name of the Common Bandwidth Package.
+        :param str payment_type: The payment type of bandwidth package.
         :param Sequence['GetCommonBandwidthPackagesPackagePublicIpAddressArgs'] public_ip_addresses: Public ip addresses that in the Common Bandwidth Pakcage.
-        :param str status: Status of the Common Bandwidth Package.
+        :param int ratio: The ratio of bandwidth package.
+        :param str reservation_active_time: The active time of reservation.
+        :param str reservation_bandwidth: The bandwidth of reservation.
+        :param str reservation_internet_charge_type: The charge type of reservation internet.
+        :param str reservation_order_type: The type of reservation order.
         :param str resource_group_id: The Id of resource group which the common bandwidth package belongs.
+        :param int service_managed: The service managed.
+        :param str status: The status of bandwidth package. Valid values: `Available` and `Pending`.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
         pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         pulumi.set(__self__, "isp", isp)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "public_ip_addresses", public_ip_addresses)
+        pulumi.set(__self__, "ratio", ratio)
+        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
+        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "service_managed", service_managed)
         pulumi.set(__self__, "status", status)
-        if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter
@@ -333,6 +369,22 @@ class GetCommonBandwidthPackagesPackageResult(dict):
         return pulumi.get(self, "bandwidth")
 
     @property
+    @pulumi.getter(name="bandwidthPackageId")
+    def bandwidth_package_id(self) -> str:
+        """
+        The resource ID of bandwidth package.
+        """
+        return pulumi.get(self, "bandwidth_package_id")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageName")
+    def bandwidth_package_name(self) -> str:
+        """
+        The name of bandwidth package.
+        """
+        return pulumi.get(self, "bandwidth_package_name")
+
+    @property
     @pulumi.getter(name="businessStatus")
     def business_status(self) -> str:
         """
@@ -341,12 +393,12 @@ class GetCommonBandwidthPackagesPackageResult(dict):
         return pulumi.get(self, "business_status")
 
     @property
-    @pulumi.getter(name="creationTime")
-    def creation_time(self) -> str:
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
         """
-        Time of creation.
+        The deletion protection of bandwidth package.
         """
-        return pulumi.get(self, "creation_time")
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -357,12 +409,36 @@ class GetCommonBandwidthPackagesPackageResult(dict):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        The expired time of bandwidth package.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="hasReservationData")
+    def has_reservation_data(self) -> bool:
+        """
+        Is has reservation data.
+        """
+        return pulumi.get(self, "has_reservation_data")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
         ID of the Common Bandwidth Package.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        """
+        The internet charge type of bandwidth package.
+        """
+        return pulumi.get(self, "internet_charge_type")
 
     @property
     @pulumi.getter
@@ -381,6 +457,14 @@ class GetCommonBandwidthPackagesPackageResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of bandwidth package.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
     @pulumi.getter(name="publicIpAddresses")
     def public_ip_addresses(self) -> Sequence['outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult']:
         """
@@ -390,33 +474,88 @@ class GetCommonBandwidthPackagesPackageResult(dict):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def ratio(self) -> int:
         """
-        Status of the Common Bandwidth Package.
+        The ratio of bandwidth package.
         """
-        return pulumi.get(self, "status")
+        return pulumi.get(self, "ratio")
+
+    @property
+    @pulumi.getter(name="reservationActiveTime")
+    def reservation_active_time(self) -> str:
+        """
+        The active time of reservation.
+        """
+        return pulumi.get(self, "reservation_active_time")
+
+    @property
+    @pulumi.getter(name="reservationBandwidth")
+    def reservation_bandwidth(self) -> str:
+        """
+        The bandwidth of reservation.
+        """
+        return pulumi.get(self, "reservation_bandwidth")
+
+    @property
+    @pulumi.getter(name="reservationInternetChargeType")
+    def reservation_internet_charge_type(self) -> str:
+        """
+        The charge type of reservation internet.
+        """
+        return pulumi.get(self, "reservation_internet_charge_type")
+
+    @property
+    @pulumi.getter(name="reservationOrderType")
+    def reservation_order_type(self) -> str:
+        """
+        The type of reservation order.
+        """
+        return pulumi.get(self, "reservation_order_type")
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[str]:
+    def resource_group_id(self) -> str:
         """
         The Id of resource group which the common bandwidth package belongs.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="serviceManaged")
+    def service_managed(self) -> int:
+        """
+        The service managed.
+        """
+        return pulumi.get(self, "service_managed")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of bandwidth package. Valid values: `Available` and `Pending`.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
 class GetCommonBandwidthPackagesPackagePublicIpAddressResult(dict):
     def __init__(__self__, *,
                  allocation_id: str,
+                 bandwidth_package_ip_relation_status: str,
                  ip_address: str):
         pulumi.set(__self__, "allocation_id", allocation_id)
+        pulumi.set(__self__, "bandwidth_package_ip_relation_status", bandwidth_package_ip_relation_status)
         pulumi.set(__self__, "ip_address", ip_address)
 
     @property
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> str:
         return pulumi.get(self, "allocation_id")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageIpRelationStatus")
+    def bandwidth_package_ip_relation_status(self) -> str:
+        return pulumi.get(self, "bandwidth_package_ip_relation_status")
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -558,6 +697,134 @@ class GetForwardEntriesEntryResult(dict):
         The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetHavipsHavipResult(dict):
+    def __init__(__self__, *,
+                 associated_eip_addresses: Sequence[str],
+                 associated_instances: Sequence[str],
+                 description: str,
+                 havip_id: str,
+                 havip_name: str,
+                 id: str,
+                 ip_address: str,
+                 master_instance_id: str,
+                 status: str,
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param Sequence[str] associated_eip_addresses: EIP bound to HaVip.
+        :param Sequence[str] associated_instances: An ECS instance that is bound to HaVip.
+        :param str description: Dependence of a HaVip instance.
+        :param str havip_id: The  ID of the resource.
+        :param str havip_name: The name of the HaVip instance.
+        :param str id: The ID of the Ha Vip.
+        :param str ip_address: IP address of private network.
+        :param str master_instance_id: The primary instance ID bound to HaVip.
+        :param str status: The status.
+        :param str vpc_id: The VPC ID to which the HaVip instance belongs.
+        :param str vswitch_id: The vswitch id.
+        """
+        pulumi.set(__self__, "associated_eip_addresses", associated_eip_addresses)
+        pulumi.set(__self__, "associated_instances", associated_instances)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "havip_id", havip_id)
+        pulumi.set(__self__, "havip_name", havip_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "master_instance_id", master_instance_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="associatedEipAddresses")
+    def associated_eip_addresses(self) -> Sequence[str]:
+        """
+        EIP bound to HaVip.
+        """
+        return pulumi.get(self, "associated_eip_addresses")
+
+    @property
+    @pulumi.getter(name="associatedInstances")
+    def associated_instances(self) -> Sequence[str]:
+        """
+        An ECS instance that is bound to HaVip.
+        """
+        return pulumi.get(self, "associated_instances")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Dependence of a HaVip instance.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="havipId")
+    def havip_id(self) -> str:
+        """
+        The  ID of the resource.
+        """
+        return pulumi.get(self, "havip_id")
+
+    @property
+    @pulumi.getter(name="havipName")
+    def havip_name(self) -> str:
+        """
+        The name of the HaVip instance.
+        """
+        return pulumi.get(self, "havip_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ha Vip.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        IP address of private network.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="masterInstanceId")
+    def master_instance_id(self) -> str:
+        """
+        The primary instance ID bound to HaVip.
+        """
+        return pulumi.get(self, "master_instance_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The VPC ID to which the HaVip instance belongs.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
 
 
 @pulumi.output_type

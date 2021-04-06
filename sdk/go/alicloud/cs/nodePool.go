@@ -26,11 +26,12 @@ type NodePool struct {
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
 	// The id of kubernetes cluster.
-	ClusterId pulumi.StringOutput         `pulumi:"clusterId"`
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayOutput `pulumi:"dataDisks"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
-	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
@@ -41,8 +42,6 @@ type NodePool struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-	// * key: The label key.
-	// * value: The label value.
 	Labels NodePoolLabelArrayOutput `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management NodePoolManagementPtrOutput `pulumi:"management"`
@@ -65,12 +64,11 @@ type NodePool struct {
 	// The system disk size of worker node.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
+	SystemDiskCategory         pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
+	SystemDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
-	// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-	// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-	// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints NodePoolTaintArrayOutput `pulumi:"taints"`
@@ -78,8 +76,7 @@ type NodePool struct {
 	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
-	// The ID of VPC where the current cluster is located.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	VpcId    pulumi.StringOutput    `pulumi:"vpcId"`
 	// The vswitches used by node pool workers.
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 }
@@ -127,11 +124,12 @@ type nodePoolState struct {
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The id of kubernetes cluster.
-	ClusterId *string            `pulumi:"clusterId"`
+	ClusterId *string `pulumi:"clusterId"`
+	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
-	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -142,8 +140,6 @@ type nodePoolState struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-	// * key: The label key.
-	// * value: The label value.
 	Labels []NodePoolLabel `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management *NodePoolManagement `pulumi:"management"`
@@ -166,12 +162,11 @@ type nodePoolState struct {
 	// The system disk size of worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	SystemDiskCategory         *string `pulumi:"systemDiskCategory"`
+	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
-	// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-	// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-	// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints []NodePoolTaint `pulumi:"taints"`
@@ -179,8 +174,7 @@ type nodePoolState struct {
 	Unschedulable *bool `pulumi:"unschedulable"`
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData *string `pulumi:"userData"`
-	// The ID of VPC where the current cluster is located.
-	VpcId *string `pulumi:"vpcId"`
+	VpcId    *string `pulumi:"vpcId"`
 	// The vswitches used by node pool workers.
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
@@ -192,10 +186,11 @@ type NodePoolState struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringPtrInput
+	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
-	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 	InstanceChargeType pulumi.StringPtrInput
@@ -206,8 +201,6 @@ type NodePoolState struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-	// * key: The label key.
-	// * value: The label value.
 	Labels NodePoolLabelArrayInput
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management NodePoolManagementPtrInput
@@ -230,12 +223,11 @@ type NodePoolState struct {
 	// The system disk size of worker node.
 	SecurityGroupId pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	SystemDiskCategory pulumi.StringPtrInput
+	SystemDiskCategory         pulumi.StringPtrInput
+	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrInput
-	// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-	// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-	// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
 	Tags pulumi.MapInput
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints NodePoolTaintArrayInput
@@ -243,8 +235,7 @@ type NodePoolState struct {
 	Unschedulable pulumi.BoolPtrInput
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData pulumi.StringPtrInput
-	// The ID of VPC where the current cluster is located.
-	VpcId pulumi.StringPtrInput
+	VpcId    pulumi.StringPtrInput
 	// The vswitches used by node pool workers.
 	VswitchIds pulumi.StringArrayInput
 }
@@ -259,11 +250,12 @@ type nodePoolArgs struct {
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The id of kubernetes cluster.
-	ClusterId string             `pulumi:"clusterId"`
+	ClusterId string `pulumi:"clusterId"`
+	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
-	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -274,8 +266,6 @@ type nodePoolArgs struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-	// * key: The label key.
-	// * value: The label value.
 	Labels []NodePoolLabel `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management *NodePoolManagement `pulumi:"management"`
@@ -296,12 +286,11 @@ type nodePoolArgs struct {
 	// The system disk size of worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	SystemDiskCategory         *string `pulumi:"systemDiskCategory"`
+	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
-	// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-	// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-	// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints []NodePoolTaint `pulumi:"taints"`
@@ -321,10 +310,11 @@ type NodePoolArgs struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput
+	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
-	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
 	InstanceChargeType pulumi.StringPtrInput
@@ -335,8 +325,6 @@ type NodePoolArgs struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-	// * key: The label key.
-	// * value: The label value.
 	Labels NodePoolLabelArrayInput
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
 	Management NodePoolManagementPtrInput
@@ -357,12 +345,11 @@ type NodePoolArgs struct {
 	// The system disk size of worker node.
 	SecurityGroupId pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	SystemDiskCategory pulumi.StringPtrInput
+	SystemDiskCategory         pulumi.StringPtrInput
+	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrInput
-	// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-	// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-	// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
 	Tags pulumi.MapInput
 	// A List of Kubernetes taints to assign to the nodes.
 	Taints NodePoolTaintArrayInput

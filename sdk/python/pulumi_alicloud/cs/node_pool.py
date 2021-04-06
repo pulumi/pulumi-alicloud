@@ -38,6 +38,7 @@ class NodePool(pulumi.CustomResource):
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
+                 system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
@@ -61,15 +62,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
-        :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+        :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-               * key: The label key.
-               * value: The label value.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
@@ -81,9 +81,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: The system disk size of worker node.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A List of tags to assign to the resource. It will be applied for ECS instances finally.
-               * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-               * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes.
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
@@ -131,6 +129,7 @@ class NodePool(pulumi.CustomResource):
             __props__['scaling_config'] = scaling_config
             __props__['security_group_id'] = security_group_id
             __props__['system_disk_category'] = system_disk_category
+            __props__['system_disk_performance_level'] = system_disk_performance_level
             __props__['system_disk_size'] = system_disk_size
             __props__['tags'] = tags
             __props__['taints'] = taints
@@ -173,6 +172,7 @@ class NodePool(pulumi.CustomResource):
             scaling_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
+            system_disk_performance_level: Optional[pulumi.Input[str]] = None,
             system_disk_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
@@ -190,15 +190,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
-        :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+        :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-               * key: The label key.
-               * value: The label value.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
@@ -211,13 +210,10 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: The system disk size of worker node.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A List of tags to assign to the resource. It will be applied for ECS instances finally.
-               * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-               * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes.
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
-        :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -246,6 +242,7 @@ class NodePool(pulumi.CustomResource):
         __props__["scaling_group_id"] = scaling_group_id
         __props__["security_group_id"] = security_group_id
         __props__["system_disk_category"] = system_disk_category
+        __props__["system_disk_performance_level"] = system_disk_performance_level
         __props__["system_disk_size"] = system_disk_size
         __props__["tags"] = tags
         __props__["taints"] = taints
@@ -282,6 +279,9 @@ class NodePool(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolDataDisk']]]:
+        """
+        The data disk configurations of worker nodes, such as the disk type and disk size.
+        """
         return pulumi.get(self, "data_disks")
 
     @property
@@ -296,7 +296,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="installCloudMonitor")
     def install_cloud_monitor(self) -> pulumi.Output[Optional[bool]]:
         """
-        Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+        Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         """
         return pulumi.get(self, "install_cloud_monitor")
 
@@ -337,8 +337,6 @@ class NodePool(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolLabel']]]:
         """
         A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-        * key: The label key.
-        * value: The label value.
         """
         return pulumi.get(self, "labels")
 
@@ -431,6 +429,11 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "system_disk_category")
 
     @property
+    @pulumi.getter(name="systemDiskPerformanceLevel")
+    def system_disk_performance_level(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "system_disk_performance_level")
+
+    @property
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
@@ -442,9 +445,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        A List of tags to assign to the resource. It will be applied for ECS instances finally.
-        * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-        * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        A Map of tags to assign to the resource. It will be applied for ECS instances finally.
         """
         return pulumi.get(self, "tags")
 
@@ -475,9 +476,6 @@ class NodePool(pulumi.CustomResource):
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
-        """
-        The ID of VPC where the current cluster is located.
-        """
         return pulumi.get(self, "vpc_id")
 
     @property

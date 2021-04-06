@@ -128,6 +128,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("spotStrategy")]
         public string? SpotStrategy { get; set; }
 
+        /// <summary>
+        /// Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`. Default to `cloud_efficiency`.
+        /// </summary>
+        [Input("systemDiskCategory")]
+        public string? SystemDiskCategory { get; set; }
+
         public GetInstanceTypesArgs()
         {
         }
@@ -172,6 +178,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string? OutputFile;
         public readonly string? SortedBy;
         public readonly string? SpotStrategy;
+        public readonly string? SystemDiskCategory;
 
         [OutputConstructor]
         private GetInstanceTypesResult(
@@ -207,7 +214,9 @@ namespace Pulumi.AliCloud.Ecs
 
             string? sortedBy,
 
-            string? spotStrategy)
+            string? spotStrategy,
+
+            string? systemDiskCategory)
         {
             AvailabilityZone = availabilityZone;
             CpuCoreCount = cpuCoreCount;
@@ -226,6 +235,7 @@ namespace Pulumi.AliCloud.Ecs
             OutputFile = outputFile;
             SortedBy = sortedBy;
             SpotStrategy = spotStrategy;
+            SystemDiskCategory = systemDiskCategory;
         }
     }
 }

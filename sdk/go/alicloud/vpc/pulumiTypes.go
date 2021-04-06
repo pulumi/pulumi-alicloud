@@ -533,23 +533,47 @@ func (o NetworkAclEntriesIngressArrayOutput) Index(i pulumi.IntInput) NetworkAcl
 type GetCommonBandwidthPackagesPackage struct {
 	// The peak bandwidth of the Internet Shared Bandwidth instance.
 	Bandwidth string `pulumi:"bandwidth"`
+	// The resource ID of bandwidth package.
+	BandwidthPackageId string `pulumi:"bandwidthPackageId"`
+	// The name of bandwidth package.
+	BandwidthPackageName string `pulumi:"bandwidthPackageName"`
 	// The business status of the Common Bandwidth Package instance.
 	BusinessStatus string `pulumi:"businessStatus"`
-	// Time of creation.
-	CreationTime string `pulumi:"creationTime"`
+	// The deletion protection of bandwidth package.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// The description of the Common Bandwidth Package instance.
 	Description string `pulumi:"description"`
+	// The expired time of bandwidth package.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// Is has reservation data.
+	HasReservationData bool `pulumi:"hasReservationData"`
 	// ID of the Common Bandwidth Package.
 	Id string `pulumi:"id"`
+	// The internet charge type of bandwidth package.
+	InternetChargeType string `pulumi:"internetChargeType"`
 	// ISP of the Common Bandwidth Package.
 	Isp string `pulumi:"isp"`
 	// Name of the Common Bandwidth Package.
 	Name string `pulumi:"name"`
+	// The payment type of bandwidth package.
+	PaymentType string `pulumi:"paymentType"`
 	// Public ip addresses that in the Common Bandwidth Pakcage.
 	PublicIpAddresses []GetCommonBandwidthPackagesPackagePublicIpAddress `pulumi:"publicIpAddresses"`
+	// The ratio of bandwidth package.
+	Ratio int `pulumi:"ratio"`
+	// The active time of reservation.
+	ReservationActiveTime string `pulumi:"reservationActiveTime"`
+	// The bandwidth of reservation.
+	ReservationBandwidth string `pulumi:"reservationBandwidth"`
+	// The charge type of reservation internet.
+	ReservationInternetChargeType string `pulumi:"reservationInternetChargeType"`
+	// The type of reservation order.
+	ReservationOrderType string `pulumi:"reservationOrderType"`
 	// The Id of resource group which the common bandwidth package belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Status of the Common Bandwidth Package.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The service managed.
+	ServiceManaged int `pulumi:"serviceManaged"`
+	// The status of bandwidth package. Valid values: `Available` and `Pending`.
 	Status string `pulumi:"status"`
 }
 
@@ -567,23 +591,47 @@ type GetCommonBandwidthPackagesPackageInput interface {
 type GetCommonBandwidthPackagesPackageArgs struct {
 	// The peak bandwidth of the Internet Shared Bandwidth instance.
 	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
+	// The resource ID of bandwidth package.
+	BandwidthPackageId pulumi.StringInput `pulumi:"bandwidthPackageId"`
+	// The name of bandwidth package.
+	BandwidthPackageName pulumi.StringInput `pulumi:"bandwidthPackageName"`
 	// The business status of the Common Bandwidth Package instance.
 	BusinessStatus pulumi.StringInput `pulumi:"businessStatus"`
-	// Time of creation.
-	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// The deletion protection of bandwidth package.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// The description of the Common Bandwidth Package instance.
 	Description pulumi.StringInput `pulumi:"description"`
+	// The expired time of bandwidth package.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// Is has reservation data.
+	HasReservationData pulumi.BoolInput `pulumi:"hasReservationData"`
 	// ID of the Common Bandwidth Package.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The internet charge type of bandwidth package.
+	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
 	// ISP of the Common Bandwidth Package.
 	Isp pulumi.StringInput `pulumi:"isp"`
 	// Name of the Common Bandwidth Package.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The payment type of bandwidth package.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// Public ip addresses that in the Common Bandwidth Pakcage.
 	PublicIpAddresses GetCommonBandwidthPackagesPackagePublicIpAddressArrayInput `pulumi:"publicIpAddresses"`
+	// The ratio of bandwidth package.
+	Ratio pulumi.IntInput `pulumi:"ratio"`
+	// The active time of reservation.
+	ReservationActiveTime pulumi.StringInput `pulumi:"reservationActiveTime"`
+	// The bandwidth of reservation.
+	ReservationBandwidth pulumi.StringInput `pulumi:"reservationBandwidth"`
+	// The charge type of reservation internet.
+	ReservationInternetChargeType pulumi.StringInput `pulumi:"reservationInternetChargeType"`
+	// The type of reservation order.
+	ReservationOrderType pulumi.StringInput `pulumi:"reservationOrderType"`
 	// The Id of resource group which the common bandwidth package belongs.
-	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// Status of the Common Bandwidth Package.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The service managed.
+	ServiceManaged pulumi.IntInput `pulumi:"serviceManaged"`
+	// The status of bandwidth package. Valid values: `Available` and `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -643,14 +691,24 @@ func (o GetCommonBandwidthPackagesPackageOutput) Bandwidth() pulumi.StringOutput
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
+// The resource ID of bandwidth package.
+func (o GetCommonBandwidthPackagesPackageOutput) BandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.BandwidthPackageId }).(pulumi.StringOutput)
+}
+
+// The name of bandwidth package.
+func (o GetCommonBandwidthPackagesPackageOutput) BandwidthPackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.BandwidthPackageName }).(pulumi.StringOutput)
+}
+
 // The business status of the Common Bandwidth Package instance.
 func (o GetCommonBandwidthPackagesPackageOutput) BusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.BusinessStatus }).(pulumi.StringOutput)
 }
 
-// Time of creation.
-func (o GetCommonBandwidthPackagesPackageOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.CreationTime }).(pulumi.StringOutput)
+// The deletion protection of bandwidth package.
+func (o GetCommonBandwidthPackagesPackageOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // The description of the Common Bandwidth Package instance.
@@ -658,9 +716,24 @@ func (o GetCommonBandwidthPackagesPackageOutput) Description() pulumi.StringOutp
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The expired time of bandwidth package.
+func (o GetCommonBandwidthPackagesPackageOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// Is has reservation data.
+func (o GetCommonBandwidthPackagesPackageOutput) HasReservationData() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) bool { return v.HasReservationData }).(pulumi.BoolOutput)
+}
+
 // ID of the Common Bandwidth Package.
 func (o GetCommonBandwidthPackagesPackageOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The internet charge type of bandwidth package.
+func (o GetCommonBandwidthPackagesPackageOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
 // ISP of the Common Bandwidth Package.
@@ -673,6 +746,11 @@ func (o GetCommonBandwidthPackagesPackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The payment type of bandwidth package.
+func (o GetCommonBandwidthPackagesPackageOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
 // Public ip addresses that in the Common Bandwidth Pakcage.
 func (o GetCommonBandwidthPackagesPackageOutput) PublicIpAddresses() GetCommonBandwidthPackagesPackagePublicIpAddressArrayOutput {
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) []GetCommonBandwidthPackagesPackagePublicIpAddress {
@@ -680,12 +758,42 @@ func (o GetCommonBandwidthPackagesPackageOutput) PublicIpAddresses() GetCommonBa
 	}).(GetCommonBandwidthPackagesPackagePublicIpAddressArrayOutput)
 }
 
-// The Id of resource group which the common bandwidth package belongs.
-func (o GetCommonBandwidthPackagesPackageOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+// The ratio of bandwidth package.
+func (o GetCommonBandwidthPackagesPackageOutput) Ratio() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) int { return v.Ratio }).(pulumi.IntOutput)
 }
 
-// Status of the Common Bandwidth Package.
+// The active time of reservation.
+func (o GetCommonBandwidthPackagesPackageOutput) ReservationActiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.ReservationActiveTime }).(pulumi.StringOutput)
+}
+
+// The bandwidth of reservation.
+func (o GetCommonBandwidthPackagesPackageOutput) ReservationBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.ReservationBandwidth }).(pulumi.StringOutput)
+}
+
+// The charge type of reservation internet.
+func (o GetCommonBandwidthPackagesPackageOutput) ReservationInternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.ReservationInternetChargeType }).(pulumi.StringOutput)
+}
+
+// The type of reservation order.
+func (o GetCommonBandwidthPackagesPackageOutput) ReservationOrderType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.ReservationOrderType }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the common bandwidth package belongs.
+func (o GetCommonBandwidthPackagesPackageOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The service managed.
+func (o GetCommonBandwidthPackagesPackageOutput) ServiceManaged() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) int { return v.ServiceManaged }).(pulumi.IntOutput)
+}
+
+// The status of bandwidth package. Valid values: `Available` and `Pending`.
 func (o GetCommonBandwidthPackagesPackageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -711,8 +819,9 @@ func (o GetCommonBandwidthPackagesPackageArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetCommonBandwidthPackagesPackagePublicIpAddress struct {
-	AllocationId string `pulumi:"allocationId"`
-	IpAddress    string `pulumi:"ipAddress"`
+	AllocationId                     string `pulumi:"allocationId"`
+	BandwidthPackageIpRelationStatus string `pulumi:"bandwidthPackageIpRelationStatus"`
+	IpAddress                        string `pulumi:"ipAddress"`
 }
 
 // GetCommonBandwidthPackagesPackagePublicIpAddressInput is an input type that accepts GetCommonBandwidthPackagesPackagePublicIpAddressArgs and GetCommonBandwidthPackagesPackagePublicIpAddressOutput values.
@@ -727,8 +836,9 @@ type GetCommonBandwidthPackagesPackagePublicIpAddressInput interface {
 }
 
 type GetCommonBandwidthPackagesPackagePublicIpAddressArgs struct {
-	AllocationId pulumi.StringInput `pulumi:"allocationId"`
-	IpAddress    pulumi.StringInput `pulumi:"ipAddress"`
+	AllocationId                     pulumi.StringInput `pulumi:"allocationId"`
+	BandwidthPackageIpRelationStatus pulumi.StringInput `pulumi:"bandwidthPackageIpRelationStatus"`
+	IpAddress                        pulumi.StringInput `pulumi:"ipAddress"`
 }
 
 func (GetCommonBandwidthPackagesPackagePublicIpAddressArgs) ElementType() reflect.Type {
@@ -784,6 +894,12 @@ func (o GetCommonBandwidthPackagesPackagePublicIpAddressOutput) ToGetCommonBandw
 
 func (o GetCommonBandwidthPackagesPackagePublicIpAddressOutput) AllocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackagePublicIpAddress) string { return v.AllocationId }).(pulumi.StringOutput)
+}
+
+func (o GetCommonBandwidthPackagesPackagePublicIpAddressOutput) BandwidthPackageIpRelationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommonBandwidthPackagesPackagePublicIpAddress) string {
+		return v.BandwidthPackageIpRelationStatus
+	}).(pulumi.StringOutput)
 }
 
 func (o GetCommonBandwidthPackagesPackagePublicIpAddressOutput) IpAddress() pulumi.StringOutput {
@@ -1086,6 +1202,193 @@ func (o GetForwardEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetForwardEn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardEntriesEntry {
 		return vs[0].([]GetForwardEntriesEntry)[vs[1].(int)]
 	}).(GetForwardEntriesEntryOutput)
+}
+
+type GetHavipsHavip struct {
+	// EIP bound to HaVip.
+	AssociatedEipAddresses []string `pulumi:"associatedEipAddresses"`
+	// An ECS instance that is bound to HaVip.
+	AssociatedInstances []string `pulumi:"associatedInstances"`
+	// Dependence of a HaVip instance.
+	Description string `pulumi:"description"`
+	// The  ID of the resource.
+	HavipId string `pulumi:"havipId"`
+	// The name of the HaVip instance.
+	HavipName string `pulumi:"havipName"`
+	// The ID of the Ha Vip.
+	Id string `pulumi:"id"`
+	// IP address of private network.
+	IpAddress string `pulumi:"ipAddress"`
+	// The primary instance ID bound to HaVip.
+	MasterInstanceId string `pulumi:"masterInstanceId"`
+	// The status.
+	Status string `pulumi:"status"`
+	// The VPC ID to which the HaVip instance belongs.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetHavipsHavipInput is an input type that accepts GetHavipsHavipArgs and GetHavipsHavipOutput values.
+// You can construct a concrete instance of `GetHavipsHavipInput` via:
+//
+//          GetHavipsHavipArgs{...}
+type GetHavipsHavipInput interface {
+	pulumi.Input
+
+	ToGetHavipsHavipOutput() GetHavipsHavipOutput
+	ToGetHavipsHavipOutputWithContext(context.Context) GetHavipsHavipOutput
+}
+
+type GetHavipsHavipArgs struct {
+	// EIP bound to HaVip.
+	AssociatedEipAddresses pulumi.StringArrayInput `pulumi:"associatedEipAddresses"`
+	// An ECS instance that is bound to HaVip.
+	AssociatedInstances pulumi.StringArrayInput `pulumi:"associatedInstances"`
+	// Dependence of a HaVip instance.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The  ID of the resource.
+	HavipId pulumi.StringInput `pulumi:"havipId"`
+	// The name of the HaVip instance.
+	HavipName pulumi.StringInput `pulumi:"havipName"`
+	// The ID of the Ha Vip.
+	Id pulumi.StringInput `pulumi:"id"`
+	// IP address of private network.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The primary instance ID bound to HaVip.
+	MasterInstanceId pulumi.StringInput `pulumi:"masterInstanceId"`
+	// The status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The VPC ID to which the HaVip instance belongs.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetHavipsHavipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHavipsHavip)(nil)).Elem()
+}
+
+func (i GetHavipsHavipArgs) ToGetHavipsHavipOutput() GetHavipsHavipOutput {
+	return i.ToGetHavipsHavipOutputWithContext(context.Background())
+}
+
+func (i GetHavipsHavipArgs) ToGetHavipsHavipOutputWithContext(ctx context.Context) GetHavipsHavipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHavipsHavipOutput)
+}
+
+// GetHavipsHavipArrayInput is an input type that accepts GetHavipsHavipArray and GetHavipsHavipArrayOutput values.
+// You can construct a concrete instance of `GetHavipsHavipArrayInput` via:
+//
+//          GetHavipsHavipArray{ GetHavipsHavipArgs{...} }
+type GetHavipsHavipArrayInput interface {
+	pulumi.Input
+
+	ToGetHavipsHavipArrayOutput() GetHavipsHavipArrayOutput
+	ToGetHavipsHavipArrayOutputWithContext(context.Context) GetHavipsHavipArrayOutput
+}
+
+type GetHavipsHavipArray []GetHavipsHavipInput
+
+func (GetHavipsHavipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHavipsHavip)(nil)).Elem()
+}
+
+func (i GetHavipsHavipArray) ToGetHavipsHavipArrayOutput() GetHavipsHavipArrayOutput {
+	return i.ToGetHavipsHavipArrayOutputWithContext(context.Background())
+}
+
+func (i GetHavipsHavipArray) ToGetHavipsHavipArrayOutputWithContext(ctx context.Context) GetHavipsHavipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHavipsHavipArrayOutput)
+}
+
+type GetHavipsHavipOutput struct{ *pulumi.OutputState }
+
+func (GetHavipsHavipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHavipsHavip)(nil)).Elem()
+}
+
+func (o GetHavipsHavipOutput) ToGetHavipsHavipOutput() GetHavipsHavipOutput {
+	return o
+}
+
+func (o GetHavipsHavipOutput) ToGetHavipsHavipOutputWithContext(ctx context.Context) GetHavipsHavipOutput {
+	return o
+}
+
+// EIP bound to HaVip.
+func (o GetHavipsHavipOutput) AssociatedEipAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHavipsHavip) []string { return v.AssociatedEipAddresses }).(pulumi.StringArrayOutput)
+}
+
+// An ECS instance that is bound to HaVip.
+func (o GetHavipsHavipOutput) AssociatedInstances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHavipsHavip) []string { return v.AssociatedInstances }).(pulumi.StringArrayOutput)
+}
+
+// Dependence of a HaVip instance.
+func (o GetHavipsHavipOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHavipsHavip) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The  ID of the resource.
+func (o GetHavipsHavipOutput) HavipId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHavipsHavip) string { return v.HavipId }).(pulumi.StringOutput)
+}
+
+// The name of the HaVip instance.
+func (o GetHavipsHavipOutput) HavipName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHavipsHavip) string { return v.HavipName }).(pulumi.StringOutput)
+}
+
+// The ID of the Ha Vip.
+func (o GetHavipsHavipOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHavipsHavip) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IP address of private network.
+func (o GetHavipsHavipOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHavipsHavip) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The primary instance ID bound to HaVip.
+func (o GetHavipsHavipOutput) MasterInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHavipsHavip) string { return v.MasterInstanceId }).(pulumi.StringOutput)
+}
+
+// The status.
+func (o GetHavipsHavipOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHavipsHavip) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The VPC ID to which the HaVip instance belongs.
+func (o GetHavipsHavipOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHavipsHavip) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetHavipsHavipOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHavipsHavip) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetHavipsHavipArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHavipsHavipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHavipsHavip)(nil)).Elem()
+}
+
+func (o GetHavipsHavipArrayOutput) ToGetHavipsHavipArrayOutput() GetHavipsHavipArrayOutput {
+	return o
+}
+
+func (o GetHavipsHavipArrayOutput) ToGetHavipsHavipArrayOutputWithContext(ctx context.Context) GetHavipsHavipArrayOutput {
+	return o
+}
+
+func (o GetHavipsHavipArrayOutput) Index(i pulumi.IntInput) GetHavipsHavipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHavipsHavip {
+		return vs[0].([]GetHavipsHavip)[vs[1].(int)]
+	}).(GetHavipsHavipOutput)
 }
 
 type GetNatGatewaysGateway struct {
@@ -2854,6 +3157,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEnhancedNatAvailableZonesZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetForwardEntriesEntryOutput{})
 	pulumi.RegisterOutputType(GetForwardEntriesEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetHavipsHavipOutput{})
+	pulumi.RegisterOutputType(GetHavipsHavipArrayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworksVpcOutput{})

@@ -54,13 +54,16 @@ export class NodePool extends pulumi.CustomResource {
      * The id of kubernetes cluster.
      */
     public readonly clusterId!: pulumi.Output<string>;
+    /**
+     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     */
     public readonly dataDisks!: pulumi.Output<outputs.cs.NodePoolDataDisk[] | undefined>;
     /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
-     * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+     * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
      */
     public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
     /**
@@ -81,8 +84,6 @@ export class NodePool extends pulumi.CustomResource {
     public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
     /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-     * * key: The label key.
-     * * value: The label value.
      */
     public readonly labels!: pulumi.Output<outputs.cs.NodePoolLabel[] | undefined>;
     /**
@@ -129,14 +130,13 @@ export class NodePool extends pulumi.CustomResource {
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
+    public readonly systemDiskPerformanceLevel!: pulumi.Output<string | undefined>;
     /**
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
     public readonly systemDiskSize!: pulumi.Output<number | undefined>;
     /**
-     * A List of tags to assign to the resource. It will be applied for ECS instances finally.
-     * * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-     * * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+     * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -151,9 +151,6 @@ export class NodePool extends pulumi.CustomResource {
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of VPC where the current cluster is located.
-     */
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
      * The vswitches used by node pool workers.
@@ -195,6 +192,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
+            inputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
             inputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["taints"] = state ? state.taints : undefined;
@@ -234,6 +232,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["scalingConfig"] = args ? args.scalingConfig : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
+            inputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
             inputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["taints"] = args ? args.taints : undefined;
@@ -266,13 +265,16 @@ export interface NodePoolState {
      * The id of kubernetes cluster.
      */
     readonly clusterId?: pulumi.Input<string>;
+    /**
+     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     */
     readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolDataDisk>[]>;
     /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     readonly imageId?: pulumi.Input<string>;
     /**
-     * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+     * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
      */
     readonly installCloudMonitor?: pulumi.Input<boolean>;
     /**
@@ -293,8 +295,6 @@ export interface NodePoolState {
     readonly kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-     * * key: The label key.
-     * * value: The label value.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
     /**
@@ -341,14 +341,13 @@ export interface NodePoolState {
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
+    readonly systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
     readonly systemDiskSize?: pulumi.Input<number>;
     /**
-     * A List of tags to assign to the resource. It will be applied for ECS instances finally.
-     * * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-     * * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+     * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -363,9 +362,6 @@ export interface NodePoolState {
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
     readonly userData?: pulumi.Input<string>;
-    /**
-     * The ID of VPC where the current cluster is located.
-     */
     readonly vpcId?: pulumi.Input<string>;
     /**
      * The vswitches used by node pool workers.
@@ -389,13 +385,16 @@ export interface NodePoolArgs {
      * The id of kubernetes cluster.
      */
     readonly clusterId: pulumi.Input<string>;
+    /**
+     * The data disk configurations of worker nodes, such as the disk type and disk size.
+     */
     readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolDataDisk>[]>;
     /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     readonly imageId?: pulumi.Input<string>;
     /**
-     * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+     * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
      */
     readonly installCloudMonitor?: pulumi.Input<boolean>;
     /**
@@ -416,8 +415,6 @@ export interface NodePoolArgs {
     readonly kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-     * * key: The label key.
-     * * value: The label value.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
     /**
@@ -460,14 +457,13 @@ export interface NodePoolArgs {
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
+    readonly systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
     readonly systemDiskSize?: pulumi.Input<number>;
     /**
-     * A List of tags to assign to the resource. It will be applied for ECS instances finally.
-     * * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-     * * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+     * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**

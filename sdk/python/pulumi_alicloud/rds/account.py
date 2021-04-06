@@ -15,6 +15,11 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_description: Optional[pulumi.Input[str]] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 account_password: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
+                 db_instance_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -26,42 +31,6 @@ class Account(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides an RDS account resource and used to manage databases.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
-        name = config.get("name")
-        if name is None:
-            name = "dbaccountmysql"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id,
-            vswitch_name=name)
-        instance = alicloud.rds.Instance("instance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
-            vswitch_id=default_switch.id,
-            instance_name=name)
-        account = alicloud.rds.Account("account",
-            instance_id=instance.id,
-            password="Test12345")
-        ```
-
         ## Import
 
         RDS account can be imported using the id, e.g.
@@ -99,15 +68,34 @@ class Account(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['account_description'] = account_description
+            __props__['account_name'] = account_name
+            __props__['account_password'] = account_password
+            __props__['account_type'] = account_type
+            __props__['db_instance_id'] = db_instance_id
+            if description is not None and not opts.urn:
+                warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
+                pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
             __props__['description'] = description
-            if instance_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_id'")
+            if instance_id is not None and not opts.urn:
+                warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+                pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.""")
             __props__['instance_id'] = instance_id
             __props__['kms_encrypted_password'] = kms_encrypted_password
             __props__['kms_encryption_context'] = kms_encryption_context
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
             __props__['name'] = name
+            if password is not None and not opts.urn:
+                warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
+                pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
             __props__['password'] = password
+            if type is not None and not opts.urn:
+                warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
+                pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
             __props__['type'] = type
+            __props__['status'] = None
         super(Account, __self__).__init__(
             'alicloud:rds/account:Account',
             resource_name,
@@ -118,12 +106,18 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_description: Optional[pulumi.Input[str]] = None,
+            account_name: Optional[pulumi.Input[str]] = None,
+            account_password: Optional[pulumi.Input[str]] = None,
+            account_type: Optional[pulumi.Input[str]] = None,
+            db_instance_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
@@ -146,18 +140,49 @@ class Account(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["account_description"] = account_description
+        __props__["account_name"] = account_name
+        __props__["account_password"] = account_password
+        __props__["account_type"] = account_type
+        __props__["db_instance_id"] = db_instance_id
         __props__["description"] = description
         __props__["instance_id"] = instance_id
         __props__["kms_encrypted_password"] = kms_encrypted_password
         __props__["kms_encryption_context"] = kms_encryption_context
         __props__["name"] = name
         __props__["password"] = password
+        __props__["status"] = status
         __props__["type"] = type
         return Account(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="accountDescription")
+    def account_description(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "account_description")
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="accountPassword")
+    def account_password(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "account_password")
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "account_type")
+
+    @property
+    @pulumi.getter(name="dbInstanceId")
+    def db_instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "db_instance_id")
+
+    @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
         Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         """
@@ -197,11 +222,16 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> pulumi.Output[Optional[str]]:
+    def password(self) -> pulumi.Output[str]:
         """
         Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter

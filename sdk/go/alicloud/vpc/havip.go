@@ -23,8 +23,12 @@ type HAVip struct {
 
 	// The description of the HaVip instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The name of the HaVip instance.
+	HavipName pulumi.StringPtrOutput `pulumi:"havipName"`
 	// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
+	// (Available in v1.120.0+) The status of the HaVip instance.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The vswitchId of the HaVip, the field can't be changed.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
@@ -63,8 +67,12 @@ func GetHAVip(ctx *pulumi.Context,
 type havipState struct {
 	// The description of the HaVip instance.
 	Description *string `pulumi:"description"`
+	// The name of the HaVip instance.
+	HavipName *string `pulumi:"havipName"`
 	// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
 	IpAddress *string `pulumi:"ipAddress"`
+	// (Available in v1.120.0+) The status of the HaVip instance.
+	Status *string `pulumi:"status"`
 	// The vswitchId of the HaVip, the field can't be changed.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -72,8 +80,12 @@ type havipState struct {
 type HAVipState struct {
 	// The description of the HaVip instance.
 	Description pulumi.StringPtrInput
+	// The name of the HaVip instance.
+	HavipName pulumi.StringPtrInput
 	// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
 	IpAddress pulumi.StringPtrInput
+	// (Available in v1.120.0+) The status of the HaVip instance.
+	Status pulumi.StringPtrInput
 	// The vswitchId of the HaVip, the field can't be changed.
 	VswitchId pulumi.StringPtrInput
 }
@@ -85,6 +97,8 @@ func (HAVipState) ElementType() reflect.Type {
 type havipArgs struct {
 	// The description of the HaVip instance.
 	Description *string `pulumi:"description"`
+	// The name of the HaVip instance.
+	HavipName *string `pulumi:"havipName"`
 	// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The vswitchId of the HaVip, the field can't be changed.
@@ -95,6 +109,8 @@ type havipArgs struct {
 type HAVipArgs struct {
 	// The description of the HaVip instance.
 	Description pulumi.StringPtrInput
+	// The name of the HaVip instance.
+	HavipName pulumi.StringPtrInput
 	// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
 	IpAddress pulumi.StringPtrInput
 	// The vswitchId of the HaVip, the field can't be changed.

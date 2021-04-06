@@ -2569,15 +2569,31 @@ export namespace cs {
     }
 
     export interface EdgeKubernetesWorkerDataDisk {
+        /**
+         * Worker node data disk auto snapshot policy.
+         */
         autoSnapshotPolicyId?: string;
+        /**
+         * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+         */
         category?: string;
         device?: string;
+        /**
+         * Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
+         */
         encrypted?: string;
         kmsKeyId?: string;
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: string;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         */
+        performanceLevel?: string;
+        /**
+         * The size of a data disk, at least 40. Unit: GiB.
+         */
         size?: string;
         snapshotId?: string;
     }
@@ -3262,15 +3278,31 @@ export namespace cs {
     }
 
     export interface KubernetesWorkerDataDisk {
+        /**
+         * Worker node data disk auto snapshot policy.
+         */
         autoSnapshotPolicyId?: string;
+        /**
+         * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+         */
         category?: string;
         device?: string;
+        /**
+         * Specifies whether to encrypt data disks. Valid values: true and false.
+         */
         encrypted?: string;
         kmsKeyId?: string;
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: string;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         */
+        performanceLevel?: string;
+        /**
+         * The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
+         */
         size?: string;
         snapshotId?: string;
     }
@@ -3370,15 +3402,31 @@ export namespace cs {
     }
 
     export interface ManagedKubernetesWorkerDataDisk {
+        /**
+         * Worker node data disk auto snapshot policy.
+         */
         autoSnapshotPolicyId?: string;
+        /**
+         * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+         */
         category?: string;
         device?: string;
+        /**
+         * Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+         */
         encrypted?: string;
         kmsKeyId?: string;
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: string;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         */
+        performanceLevel?: string;
+        /**
+         * The size of a data disk, at least 40. Unit: GiB.
+         */
         size?: string;
         snapshotId?: string;
     }
@@ -3400,20 +3448,39 @@ export namespace cs {
 
     export interface NodePoolDataDisk {
         autoSnapshotPolicyId?: string;
+        /**
+         * The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
+         */
         category?: string;
         device?: string;
+        /**
+         * Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+         */
         encrypted?: string;
         kmsKeyId?: string;
         /**
          * The name of node pool.
          */
         name?: string;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         */
+        performanceLevel?: string;
+        /**
+         * The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+         */
         size?: number;
         snapshotId?: string;
     }
 
     export interface NodePoolLabel {
+        /**
+         * The label key.
+         */
         key: string;
+        /**
+         * The label value.
+         */
         value?: string;
     }
 
@@ -3469,7 +3536,13 @@ export namespace cs {
 
     export interface NodePoolTaint {
         effect?: string;
+        /**
+         * The label key.
+         */
         key: string;
+        /**
+         * The label value.
+         */
         value?: string;
     }
 
@@ -5143,6 +5216,95 @@ export namespace ecs {
         udpTimeout?: number;
     }
 
+    export interface EcsLaunchTemplateDataDisk {
+        /**
+         * The category of the disk.
+         */
+        category?: string;
+        /**
+         * Indicates whether the data disk is released with the instance.
+         */
+        deleteWithInstance?: boolean;
+        /**
+         * The description of the data disk.
+         */
+        description?: string;
+        /**
+         * Encrypted the data in this disk.
+         */
+        encrypted?: boolean;
+        /**
+         * The name of the data disk.
+         */
+        name?: string;
+        /**
+         * The performance level of the ESSD used as the data disk.
+         */
+        performanceLevel?: string;
+        /**
+         * The size of the data disk.
+         */
+        size?: number;
+        /**
+         * The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+         */
+        snapshotId?: string;
+    }
+
+    export interface EcsLaunchTemplateNetworkInterfaces {
+        /**
+         * The description of the data disk.
+         */
+        description?: string;
+        /**
+         * The name of the data disk.
+         */
+        name?: string;
+        /**
+         * The primary private IP address of the ENI.
+         */
+        primaryIp?: string;
+        /**
+         * The security group ID must be one in the same VPC.
+         */
+        securityGroupId?: string;
+        /**
+         * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+         */
+        vswitchId?: string;
+    }
+
+    export interface EcsLaunchTemplateSystemDisk {
+        /**
+         * The category of the disk.
+         */
+        category: string;
+        /**
+         * Indicates whether the data disk is released with the instance.
+         */
+        deleteWithInstance?: boolean;
+        /**
+         * The description of the data disk.
+         */
+        description: string;
+        /**
+         * The Iops.
+         */
+        iops?: string;
+        /**
+         * The name of the data disk.
+         */
+        name: string;
+        /**
+         * The performance level of the ESSD used as the data disk.
+         */
+        performanceLevel?: string;
+        /**
+         * The size of the data disk.
+         */
+        size: number;
+    }
+
     export interface GetAutoSnapshotPoliciesPolicy {
         /**
          * The ID of the Auto Snapshot Policy.
@@ -5416,6 +5578,365 @@ export namespace ecs {
          * Disk type. Possible values: `system` and `data`.
          */
         type: string;
+    }
+
+    export interface GetEcsLaunchTemplatesTemplate {
+        /**
+         * Instance auto release time.
+         */
+        autoReleaseTime: string;
+        /**
+         * CreatedBy.
+         */
+        createdBy: string;
+        /**
+         * The list of data disks created with instance.
+         */
+        dataDisks: outputs.ecs.GetEcsLaunchTemplatesTemplateDataDisk[];
+        /**
+         * The Default Version Number.
+         */
+        defaultVersionNumber: number;
+        /**
+         * The Deployment Set Id.
+         */
+        deploymentSetId: string;
+        /**
+         * System disk description.
+         */
+        description: string;
+        /**
+         * Whether to enable the instance operating system configuration.
+         */
+        enableVmOsConfig: boolean;
+        /**
+         * Instance host name.
+         */
+        hostName: string;
+        /**
+         * The ID of the Launch Template.
+         */
+        id: string;
+        /**
+         * The Image Id.
+         */
+        imageId: string;
+        /**
+         * Mirror source.
+         */
+        imageOwnerAlias: string;
+        /**
+         * Internet bandwidth billing method.
+         */
+        instanceChargeType: string;
+        /**
+         * The Instance Name.
+         */
+        instanceName: string;
+        /**
+         * Instance type.
+         */
+        instanceType: string;
+        /**
+         * Internet bandwidth billing method.
+         */
+        internetChargeType: string;
+        /**
+         * The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+         */
+        internetMaxBandwidthIn: number;
+        /**
+         * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+         */
+        internetMaxBandwidthOut: number;
+        /**
+         * Whether it is an I/O-optimized instance or not.
+         */
+        ioOptimized: string;
+        /**
+         * The name of the key pair.
+         */
+        keyPairName: string;
+        /**
+         * The Latest Version Number.
+         */
+        latestVersionNumber: number;
+        /**
+         * The ID of the Launch Template.
+         */
+        launchTemplateId: string;
+        /**
+         * The Launch Template Name.
+         */
+        launchTemplateName: string;
+        /**
+         * The Modified Time.
+         */
+        modifiedTime: string;
+        /**
+         * The list of network interfaces created with instance.
+         */
+        networkInterfaces: outputs.ecs.GetEcsLaunchTemplatesTemplateNetworkInterface[];
+        /**
+         * Network type of the instance.
+         */
+        networkType: string;
+        /**
+         * Whether to use the password preset by the mirror.
+         */
+        passwordInherit: boolean;
+        /**
+         * The subscription period of the instance.
+         */
+        period: number;
+        /**
+         * The private IP address of the instance.
+         */
+        privateIpAddress: string;
+        /**
+         * The RAM role name of the instance.
+         */
+        ramRoleName: string;
+        /**
+         * The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
+         */
+        resourceGroupId: string;
+        /**
+         * Whether or not to activate the security enhancement feature and install network security software free of charge.
+         */
+        securityEnhancementStrategy: string;
+        /**
+         * The security group ID.
+         */
+        securityGroupId: string;
+        /**
+         * The security group IDs.
+         */
+        securityGroupIds: string[];
+        /**
+         * The protection period of the preemptible instance.
+         */
+        spotDuration: string;
+        /**
+         * Sets the maximum hourly instance price.
+         */
+        spotPriceLimit: number;
+        /**
+         * The spot strategy for a Pay-As-You-Go instance.
+         */
+        spotStrategy: string;
+        /**
+         * The System Disk.
+         */
+        systemDisks: outputs.ecs.GetEcsLaunchTemplatesTemplateSystemDisk[];
+        /**
+         * The template tags.
+         */
+        templateTags: {[key: string]: any};
+        /**
+         * The User Data.
+         */
+        userData: string;
+        /**
+         * The Version Description.
+         */
+        versionDescription: string;
+        /**
+         * VpcId.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * The Zone Id.
+         */
+        zoneId: string;
+    }
+
+    export interface GetEcsLaunchTemplatesTemplateDataDisk {
+        /**
+         * The category of the system disk.
+         */
+        category: string;
+        /**
+         * Specifies whether to release the system disk when the instance is released.
+         */
+        deleteWithInstance: boolean;
+        /**
+         * System disk description.
+         */
+        description: string;
+        /**
+         * Encrypted the data in this disk.
+         */
+        encrypted: boolean;
+        /**
+         * System disk name.
+         */
+        name: string;
+        /**
+         * The performance level of the ESSD used as the system disk.
+         */
+        performanceLevel: string;
+        /**
+         * Size of the system disk, measured in GB.
+         */
+        size: number;
+        /**
+         * The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+         */
+        snapshotId: string;
+    }
+
+    export interface GetEcsLaunchTemplatesTemplateNetworkInterface {
+        /**
+         * System disk description.
+         */
+        description: string;
+        /**
+         * System disk name.
+         */
+        name: string;
+        /**
+         * The primary private IP address of the ENI.
+         */
+        primaryIp: string;
+        /**
+         * The security group ID.
+         */
+        securityGroupId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetEcsLaunchTemplatesTemplateSystemDisk {
+        /**
+         * The category of the system disk.
+         */
+        category: string;
+        /**
+         * Specifies whether to release the system disk when the instance is released.
+         */
+        deleteWithInstance: boolean;
+        /**
+         * System disk description.
+         */
+        description: string;
+        /**
+         * The Iops.
+         */
+        iops: string;
+        /**
+         * System disk name.
+         */
+        name: string;
+        /**
+         * The performance level of the ESSD used as the system disk.
+         */
+        performanceLevel: string;
+        /**
+         * Size of the system disk, measured in GB.
+         */
+        size: number;
+    }
+
+    export interface GetEcsSnapshotsSnapshot {
+        /**
+         * The category of the snapshot.
+         */
+        category: string;
+        creationTime: string;
+        /**
+         * The description of the snapshot.
+         */
+        description: string;
+        /**
+         * The source disk id.
+         */
+        diskId: string;
+        /**
+         * Whether the snapshot is encrypted.
+         */
+        encrypted: boolean;
+        /**
+         * The ID of the Snapshot.
+         */
+        id: string;
+        /**
+         * Whether snapshot speed availability is enabled.
+         */
+        instantAccess: boolean;
+        /**
+         * Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+         */
+        instantAccessRetentionDays: number;
+        name: string;
+        /**
+         * The product number inherited from the mirror market.
+         */
+        productCode: string;
+        /**
+         * Snapshot creation progress, in percentage.
+         */
+        progress: string;
+        /**
+         * Remaining completion time for the snapshot being created.
+         */
+        remainTime: number;
+        /**
+         * The resource group id.
+         */
+        resourceGroupId: string;
+        /**
+         * Automatic snapshot retention days.
+         */
+        retentionDays: number;
+        /**
+         * The snapshot id.
+         */
+        snapshotId: string;
+        /**
+         * Snapshot Display Name.
+         */
+        snapshotName: string;
+        /**
+         * The serial number of the snapshot.
+         */
+        snapshotSn: string;
+        /**
+         * Snapshot creation type.
+         */
+        snapshotType: string;
+        sourceDiskId: string;
+        /**
+         * Source disk capacity.
+         */
+        sourceDiskSize: string;
+        /**
+         * Source disk attributes.
+         */
+        sourceDiskType: string;
+        /**
+         * Original disk type.
+         */
+        sourceStorageType: string;
+        /**
+         * The status of the snapshot.
+         */
+        status: string;
+        /**
+         * The tags.
+         */
+        tags: {[key: string]: any};
+        type: string;
+        /**
+         * A resource type that has a reference relationship.
+         */
+        usage: string;
     }
 
     export interface GetEipsEip {
@@ -6033,6 +6554,7 @@ export namespace ecs {
     }
 
     export interface GetSnapshotsSnapshot {
+        category: string;
         /**
          * Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
          */
@@ -6041,6 +6563,7 @@ export namespace ecs {
          * Description of the snapshot.
          */
         description: string;
+        diskId: string;
         /**
          * Whether the snapshot is encrypted or not.
          */
@@ -6049,6 +6572,8 @@ export namespace ecs {
          * ID of the snapshot.
          */
         id: string;
+        instantAccess: boolean;
+        instantAccessRetentionDays: number;
         /**
          * Name of the snapshot.
          */
@@ -6065,10 +6590,15 @@ export namespace ecs {
          * The remaining time of a snapshot creation task, in seconds.
          */
         remainTime: number;
+        resourceGroupId: string;
         /**
          * The number of days that an automatic snapshot retains in the console for your instance.
          */
         retentionDays: number;
+        snapshotId: string;
+        snapshotName: string;
+        snapshotSn: string;
+        snapshotType: string;
         /**
          * Source disk ID, which is retained after the source disk of the snapshot is deleted.
          */
@@ -6081,6 +6611,7 @@ export namespace ecs {
          * Source disk attribute. Value range: `System`,`Data`.
          */
         sourceDiskType: string;
+        sourceStorageType: string;
         /**
          * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
          */
@@ -6088,7 +6619,8 @@ export namespace ecs {
         /**
          * A map of tags assigned to the snapshot.
          */
-        tags?: {[key: string]: any};
+        tags: {[key: string]: any};
+        type: string;
         /**
          * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
          */
@@ -6222,6 +6754,7 @@ export namespace ecs {
          * The name of the data disk.
          */
         name?: string;
+        performanceLevel?: string;
         /**
          * The size of the data disk.
          * - cloud：[5, 2000]
@@ -6258,6 +6791,41 @@ export namespace ecs {
          * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
          */
         vswitchId?: string;
+    }
+
+    export interface LaunchTemplateSystemDisk {
+        /**
+         * The category of the disk:
+         * - cloud: Basic cloud disk.
+         * - cloud_efficiency: Ultra cloud disk.
+         * - cloud_ssd: SSD cloud Disks.
+         * - ephemeral_ssd: local SSD Disks
+         * - cloud_essd: ESSD cloud Disks.
+         */
+        category: string;
+        /**
+         * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+         */
+        deleteWithInstance?: boolean;
+        /**
+         * The description of the data disk.
+         */
+        description: string;
+        iops?: string;
+        /**
+         * The name of the data disk.
+         */
+        name: string;
+        performanceLevel?: string;
+        /**
+         * The size of the data disk.
+         * - cloud：[5, 2000]
+         * - cloud_efficiency：[20, 32768]
+         * - cloud_ssd：[20, 32768]
+         * - cloud_essd：[20, 32768]
+         * - ephemeral_ssd: [5, 800]
+         */
+        size: number;
     }
 }
 
@@ -7551,6 +8119,64 @@ export namespace ga {
         listenerPort?: number;
     }
 
+    export interface ForwardingRuleRuleAction {
+        /**
+         * Forwarding configuration.
+         */
+        forwardGroupConfig: outputs.ga.ForwardingRuleRuleActionForwardGroupConfig;
+        /**
+         * Forwarding priority.
+         */
+        order: number;
+        /**
+         * Forward action type. Default: forwardgroup.
+         */
+        ruleActionType: string;
+    }
+
+    export interface ForwardingRuleRuleActionForwardGroupConfig {
+        /**
+         * Terminal node group configuration.
+         */
+        serverGroupTuples: outputs.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple[];
+    }
+
+    export interface ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
+        /**
+         * Terminal node group ID.
+         */
+        endpointGroupId: string;
+    }
+
+    export interface ForwardingRuleRuleCondition {
+        /**
+         * Domain name configuration information.
+         */
+        hostConfigs?: outputs.ga.ForwardingRuleRuleConditionHostConfig[];
+        /**
+         * Path configuration information.
+         */
+        pathConfig?: outputs.ga.ForwardingRuleRuleConditionPathConfig;
+        /**
+         * Forwarding condition type. Valid value: `Host`, `Path`.
+         */
+        ruleConditionType: string;
+    }
+
+    export interface ForwardingRuleRuleConditionHostConfig {
+        /**
+         * The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+         */
+        values?: string[];
+    }
+
+    export interface ForwardingRuleRuleConditionPathConfig {
+        /**
+         * The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+         */
+        values?: string[];
+    }
+
     export interface GetAcceleratorsAccelerator {
         /**
          * The ID of the GA instance to query.
@@ -7786,6 +8412,76 @@ export namespace ga {
          * Listener port.
          */
         listenerPort: number;
+    }
+
+    export interface GetForwardingRulesForwardingRule {
+        /**
+         * Forwarding Policy ID.
+         */
+        forwardingRuleId: string;
+        /**
+         * Forwarding policy name. The length of the name is 2-128 English or Chinese characters.
+         */
+        forwardingRuleName: string;
+        /**
+         * Forwarding Policy Status.
+         */
+        forwardingRuleStatus: string;
+        id: string;
+        /**
+         * The ID of the listener.
+         */
+        listenerId: string;
+        /**
+         * Forwarding policy priority.
+         */
+        priority: number;
+        /**
+         * The IP protocol used by the GA instance.
+         * `order` - Forwarding priority.
+         * `ruleActionType` - Forward action type.
+         * `forwardGroupConfig` - Forwarding configuration.
+         * `serverGroupTuples` - Terminal node group configuration.
+         * `endpointGroupId` - Terminal node group ID.
+         */
+        ruleActions: outputs.ga.GetForwardingRulesForwardingRuleRuleAction[];
+        /**
+         * Forward action.
+         * `ruleConditionType` - Forwarding condition type.
+         * `pathConfig` - Path configuration information.
+         * `values` - The length of the path is 1-128 characters.
+         * `hostConfig` - Domain name configuration information.
+         * `values` - The domain name is 3-128 characters long.
+         */
+        ruleConditions: outputs.ga.GetForwardingRulesForwardingRuleRuleCondition[];
+    }
+
+    export interface GetForwardingRulesForwardingRuleRuleAction {
+        forwardGroupConfigs: outputs.ga.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig[];
+        order: number;
+        ruleActionType: string;
+    }
+
+    export interface GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig {
+        serverGroupTuples: outputs.ga.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple[];
+    }
+
+    export interface GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
+        endpointGroupId: string;
+    }
+
+    export interface GetForwardingRulesForwardingRuleRuleCondition {
+        hostConfigs: outputs.ga.GetForwardingRulesForwardingRuleRuleConditionHostConfig[];
+        pathConfigs: outputs.ga.GetForwardingRulesForwardingRuleRuleConditionPathConfig[];
+        ruleConditionType: string;
+    }
+
+    export interface GetForwardingRulesForwardingRuleRuleConditionHostConfig {
+        values: string[];
+    }
+
+    export interface GetForwardingRulesForwardingRuleRuleConditionPathConfig {
+        values: string[];
     }
 
     export interface GetIpSetsSet {
@@ -8600,6 +9296,49 @@ export namespace log {
          * default Custom. No need to configure this parameter.
          */
         timeSpanType?: string;
+    }
+
+    export interface EtlEtlSink {
+        /**
+         * Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+         */
+        accessKeyId?: string;
+        /**
+         * Delivery target logstore access key secret.
+         */
+        accessKeySecret?: string;
+        /**
+         * Delivery target logstore region.
+         */
+        endpoint: string;
+        /**
+         * An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
+         */
+        kmsEncryptedAccessKeyId?: string;
+        /**
+         * An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
+         */
+        kmsEncryptedAccessKeySecret?: string;
+        /**
+         * Delivery target logstore.
+         */
+        logstore: string;
+        /**
+         * Delivery target name.
+         */
+        name: string;
+        /**
+         * The project where the target logstore is delivered.
+         */
+        project: string;
+        /**
+         * Sts role info.
+         */
+        roleArn?: string;
+        /**
+         * ETL sinks type, the default value is AliyunLOG.
+         */
+        type?: string;
     }
 
     export interface StoreIndexFieldSearch {
@@ -11105,6 +11844,52 @@ export namespace ram {
 }
 
 export namespace rds {
+    export interface GetAccountsAccount {
+        /**
+         * Database description.
+         */
+        accountDescription: string;
+        /**
+         * Name of database account.
+         */
+        accountName: string;
+        /**
+         * Privilege type of account.
+         */
+        accountType: string;
+        /**
+         * A list of database permissions the account has.
+         */
+        databasePrivileges: outputs.rds.GetAccountsAccountDatabasePrivilege[];
+        /**
+         * The ID of the Account.
+         */
+        id: string;
+        /**
+         * Whether the maximum number of databases managed by the account is exceeded.
+         */
+        privExceeded: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
+    export interface GetAccountsAccountDatabasePrivilege {
+        /**
+         * The type of permission for the account.
+         */
+        accountPrivilege: string;
+        /**
+         * The specific permissions corresponding to the type of account permissions.
+         */
+        accountPrivilegeDetail: string;
+        /**
+         * Database name.
+         */
+        dbName: string;
+    }
+
     export interface GetInstanceClassesInstanceClass {
         /**
          * DB Instance available class.
@@ -11379,6 +12164,68 @@ export namespace resourcemanager {
         type: string;
     }
 
+    export interface GetControlPoliciesPolicy {
+        /**
+         * The count of policy attachment.
+         */
+        attachmentCount: number;
+        /**
+         * The name of policy.
+         */
+        controlPolicyName: string;
+        /**
+         * The description of policy.
+         */
+        description: string;
+        /**
+         * The effect scope.
+         */
+        effectScope: string;
+        /**
+         * The ID of the Control Policy.
+         */
+        id: string;
+        /**
+         * The policy document.
+         */
+        policyDocument: string;
+        /**
+         * The ID of policy.
+         */
+        policyId: string;
+        /**
+         * The type of policy.
+         */
+        policyType: string;
+    }
+
+    export interface GetControlPolicyAttachmentsAttachment {
+        /**
+         * The attach date.
+         */
+        attachDate: string;
+        /**
+         * The description of policy.
+         */
+        description: string;
+        /**
+         * The ID of the Control Policy Attachment.
+         */
+        id: string;
+        /**
+         * The ID of policy.
+         */
+        policyId: string;
+        /**
+         * The name of policy.
+         */
+        policyName: string;
+        /**
+         * The type of policy.
+         */
+        policyType: string;
+    }
+
     export interface GetFoldersFolder {
         folderId: string;
         folderName: string;
@@ -11548,6 +12395,10 @@ export namespace resourcemanager {
          * The ID of the root folder.
          */
         rootFolderId: string;
+        /**
+         * (Available in 1.120.0+.) The status of the control policy.
+         */
+        status: string;
     }
 
     export interface GetResourceGroupsGroup {
@@ -12780,21 +13631,41 @@ export namespace vpc {
          */
         bandwidth: string;
         /**
+         * The resource ID of bandwidth package.
+         */
+        bandwidthPackageId: string;
+        /**
+         * The name of bandwidth package.
+         */
+        bandwidthPackageName: string;
+        /**
          * The business status of the Common Bandwidth Package instance.
          */
         businessStatus: string;
         /**
-         * Time of creation.
+         * The deletion protection of bandwidth package.
          */
-        creationTime: string;
+        deletionProtection: boolean;
         /**
          * The description of the Common Bandwidth Package instance.
          */
         description: string;
         /**
+         * The expired time of bandwidth package.
+         */
+        expiredTime: string;
+        /**
+         * Is has reservation data.
+         */
+        hasReservationData: boolean;
+        /**
          * ID of the Common Bandwidth Package.
          */
         id: string;
+        /**
+         * The internet charge type of bandwidth package.
+         */
+        internetChargeType: string;
         /**
          * ISP of the Common Bandwidth Package.
          */
@@ -12804,21 +13675,50 @@ export namespace vpc {
          */
         name: string;
         /**
+         * The payment type of bandwidth package.
+         */
+        paymentType: string;
+        /**
          * Public ip addresses that in the Common Bandwidth Pakcage.
          */
         publicIpAddresses: outputs.vpc.GetCommonBandwidthPackagesPackagePublicIpAddress[];
         /**
+         * The ratio of bandwidth package.
+         */
+        ratio: number;
+        /**
+         * The active time of reservation.
+         */
+        reservationActiveTime: string;
+        /**
+         * The bandwidth of reservation.
+         */
+        reservationBandwidth: string;
+        /**
+         * The charge type of reservation internet.
+         */
+        reservationInternetChargeType: string;
+        /**
+         * The type of reservation order.
+         */
+        reservationOrderType: string;
+        /**
          * The Id of resource group which the common bandwidth package belongs.
          */
-        resourceGroupId?: string;
+        resourceGroupId: string;
         /**
-         * Status of the Common Bandwidth Package.
+         * The service managed.
+         */
+        serviceManaged: number;
+        /**
+         * The status of bandwidth package. Valid values: `Available` and `Pending`.
          */
         status: string;
     }
 
     export interface GetCommonBandwidthPackagesPackagePublicIpAddress {
         allocationId: string;
+        bandwidthPackageIpRelationStatus: string;
         ipAddress: string;
     }
 
@@ -12868,6 +13768,53 @@ export namespace vpc {
          * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
          */
         status: string;
+    }
+
+    export interface GetHavipsHavip {
+        /**
+         * EIP bound to HaVip.
+         */
+        associatedEipAddresses: string[];
+        /**
+         * An ECS instance that is bound to HaVip.
+         */
+        associatedInstances: string[];
+        /**
+         * Dependence of a HaVip instance.
+         */
+        description: string;
+        /**
+         * The  ID of the resource.
+         */
+        havipId: string;
+        /**
+         * The name of the HaVip instance.
+         */
+        havipName: string;
+        /**
+         * The ID of the Ha Vip.
+         */
+        id: string;
+        /**
+         * IP address of private network.
+         */
+        ipAddress: string;
+        /**
+         * The primary instance ID bound to HaVip.
+         */
+        masterInstanceId: string;
+        /**
+         * The status.
+         */
+        status: string;
+        /**
+         * The VPC ID to which the HaVip instance belongs.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
     }
 
     export interface GetNatGatewaysGateway {

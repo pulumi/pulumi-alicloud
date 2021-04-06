@@ -5,19 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## 
- *
- * ***
- * subcategory: "VPC"
- * layout: "alicloud"
- * page_title: "Alicloud: alicloud.vpc.FlowLog"
- * sidebar_current: "docs-alicloud-resource-vpc-flow-log"
- * description: |-
- *   Provides a Alicloud VPC Flow Log resource.
- * ---
- *
- * # alicloud\_vpc\_flow\_log
- *
  * Provides a VPC Flow Log resource.
  *
  * For information about VPC Flow log and how to use it, see [Flow log overview](https://www.alibabacloud.com/help/doc-detail/127150.htm).

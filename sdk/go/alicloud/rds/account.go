@@ -7,82 +7,9 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an RDS account resource and used to manage databases.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		creation := "Rds"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		name := "dbaccountmysql"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:            defaultNetwork.ID(),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName:      pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
-// 			Engine:          pulumi.String("MySQL"),
-// 			EngineVersion:   pulumi.String("5.6"),
-// 			InstanceType:    pulumi.String("rds.mysql.s1.small"),
-// 			InstanceStorage: pulumi.Int(10),
-// 			VswitchId:       defaultSwitch.ID(),
-// 			InstanceName:    pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = rds.NewAccount(ctx, "account", &rds.AccountArgs{
-// 			InstanceId: instance.ID(),
-// 			Password:   pulumi.String("Test12345"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // RDS account can be imported using the id, e.g.
@@ -93,21 +20,37 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
+	AccountDescription pulumi.StringOutput `pulumi:"accountDescription"`
+	AccountName        pulumi.StringOutput `pulumi:"accountName"`
+	AccountPassword    pulumi.StringOutput `pulumi:"accountPassword"`
+	AccountType        pulumi.StringOutput `pulumi:"accountType"`
+	DbInstanceId       pulumi.StringOutput `pulumi:"dbInstanceId"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	//
+	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The Id of instance in which account belongs.
+	//
+	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
-	Password pulumi.StringPtrOutput `pulumi:"password"`
+	//
+	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
+	Password pulumi.StringOutput `pulumi:"password"`
+	Status   pulumi.StringOutput `pulumi:"status"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -115,12 +58,9 @@ type Account struct {
 func NewAccount(ctx *pulumi.Context,
 	name string, args *AccountArgs, opts ...pulumi.ResourceOption) (*Account, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AccountArgs{}
 	}
 
-	if args.InstanceId == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceId'")
-	}
 	var resource Account
 	err := ctx.RegisterResource("alicloud:rds/account:Account", name, args, &resource, opts...)
 	if err != nil {
@@ -143,40 +83,72 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
+	AccountDescription *string `pulumi:"accountDescription"`
+	AccountName        *string `pulumi:"accountName"`
+	AccountPassword    *string `pulumi:"accountPassword"`
+	AccountType        *string `pulumi:"accountType"`
+	DbInstanceId       *string `pulumi:"dbInstanceId"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	//
+	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description *string `pulumi:"description"`
 	// The Id of instance in which account belongs.
+	//
+	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
 	InstanceId *string `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name *string `pulumi:"name"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	//
+	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password *string `pulumi:"password"`
+	Status   *string `pulumi:"status"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type *string `pulumi:"type"`
 }
 
 type AccountState struct {
+	AccountDescription pulumi.StringPtrInput
+	AccountName        pulumi.StringPtrInput
+	AccountPassword    pulumi.StringPtrInput
+	AccountType        pulumi.StringPtrInput
+	DbInstanceId       pulumi.StringPtrInput
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	//
+	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description pulumi.StringPtrInput
 	// The Id of instance in which account belongs.
+	//
+	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringPtrInput
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	//
+	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password pulumi.StringPtrInput
+	Status   pulumi.StringPtrInput
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringPtrInput
 }
 
@@ -185,41 +157,71 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
+	AccountDescription *string `pulumi:"accountDescription"`
+	AccountName        *string `pulumi:"accountName"`
+	AccountPassword    *string `pulumi:"accountPassword"`
+	AccountType        *string `pulumi:"accountType"`
+	DbInstanceId       *string `pulumi:"dbInstanceId"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	//
+	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description *string `pulumi:"description"`
 	// The Id of instance in which account belongs.
-	InstanceId string `pulumi:"instanceId"`
+	//
+	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+	InstanceId *string `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name *string `pulumi:"name"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	//
+	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password *string `pulumi:"password"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
+	AccountDescription pulumi.StringPtrInput
+	AccountName        pulumi.StringPtrInput
+	AccountPassword    pulumi.StringPtrInput
+	AccountType        pulumi.StringPtrInput
+	DbInstanceId       pulumi.StringPtrInput
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	//
+	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description pulumi.StringPtrInput
 	// The Id of instance in which account belongs.
-	InstanceId pulumi.StringInput
+	//
+	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+	InstanceId pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringPtrInput
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	//
+	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password pulumi.StringPtrInput
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringPtrInput
 }
 

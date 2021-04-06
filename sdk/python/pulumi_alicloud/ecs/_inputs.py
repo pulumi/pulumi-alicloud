@@ -11,11 +11,15 @@ from .. import _utilities, _tables
 __all__ = [
     'AutoProvisioningGroupLaunchTemplateConfigArgs',
     'DedicatedHostNetworkAttributeArgs',
+    'EcsLaunchTemplateDataDiskArgs',
+    'EcsLaunchTemplateNetworkInterfacesArgs',
+    'EcsLaunchTemplateSystemDiskArgs',
     'ImageDiskDeviceMappingArgs',
     'ImageImportDiskDeviceMappingArgs',
     'InstanceDataDiskArgs',
     'LaunchTemplateDataDiskArgs',
     'LaunchTemplateNetworkInterfacesArgs',
+    'LaunchTemplateSystemDiskArgs',
 ]
 
 @pulumi.input_type
@@ -117,6 +121,347 @@ class DedicatedHostNetworkAttributeArgs:
     @udp_timeout.setter
     def udp_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "udp_timeout", value)
+
+
+@pulumi.input_type
+class EcsLaunchTemplateDataDiskArgs:
+    def __init__(__self__, *,
+                 category: Optional[pulumi.Input[str]] = None,
+                 delete_with_instance: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] category: The category of the disk.
+        :param pulumi.Input[bool] delete_with_instance: Indicates whether the data disk is released with the instance.
+        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[bool] encrypted: Encrypted the data in this disk.
+        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] performance_level: The performance level of the ESSD used as the data disk.
+        :param pulumi.Input[int] size: The size of the data disk.
+        :param pulumi.Input[str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The category of the disk.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the data disk is released with the instance.
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @delete_with_instance.setter
+    def delete_with_instance(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_with_instance", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the data disk.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Encrypted the data in this disk.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the data disk.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The performance level of the ESSD used as the data disk.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the data disk.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+
+@pulumi.input_type
+class EcsLaunchTemplateNetworkInterfacesArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 primary_ip: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] primary_ip: The primary private IP address of the ENI.
+        :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if primary_ip is not None:
+            pulumi.set(__self__, "primary_ip", primary_ip)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the data disk.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the data disk.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="primaryIp")
+    def primary_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary private IP address of the ENI.
+        """
+        return pulumi.get(self, "primary_ip")
+
+    @primary_ip.setter
+    def primary_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_ip", value)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security group ID must be one in the same VPC.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+
+@pulumi.input_type
+class EcsLaunchTemplateSystemDiskArgs:
+    def __init__(__self__, *,
+                 category: Optional[pulumi.Input[str]] = None,
+                 delete_with_instance: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 iops: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] category: The category of the disk.
+        :param pulumi.Input[bool] delete_with_instance: Indicates whether the data disk is released with the instance.
+        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] iops: The Iops.
+        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] performance_level: The performance level of the ESSD used as the data disk.
+        :param pulumi.Input[int] size: The size of the data disk.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The category of the disk.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the data disk is released with the instance.
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @delete_with_instance.setter
+    def delete_with_instance(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_with_instance", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the data disk.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Iops.
+        """
+        return pulumi.get(self, "iops")
+
+    @iops.setter
+    def iops(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iops", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the data disk.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The performance level of the ESSD used as the data disk.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the data disk.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
 
 
 @pulumi.input_type
@@ -483,6 +828,7 @@ class LaunchTemplateDataDiskArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
@@ -514,6 +860,8 @@ class LaunchTemplateDataDiskArgs:
             pulumi.set(__self__, "encrypted", encrypted)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -583,6 +931,15 @@ class LaunchTemplateDataDiskArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_level", value)
 
     @property
     @pulumi.getter
@@ -699,5 +1056,136 @@ class LaunchTemplateNetworkInterfacesArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vswitch_id", value)
+
+
+@pulumi.input_type
+class LaunchTemplateSystemDiskArgs:
+    def __init__(__self__, *,
+                 category: Optional[pulumi.Input[str]] = None,
+                 delete_with_instance: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 iops: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] category: The category of the disk:
+               - cloud: Basic cloud disk.
+               - cloud_efficiency: Ultra cloud disk.
+               - cloud_ssd: SSD cloud Disks.
+               - ephemeral_ssd: local SSD Disks
+               - cloud_essd: ESSD cloud Disks.
+        :param pulumi.Input[bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[int] size: The size of the data disk.
+               - cloud：[5, 2000]
+               - cloud_efficiency：[20, 32768]
+               - cloud_ssd：[20, 32768]
+               - cloud_essd：[20, 32768]
+               - ephemeral_ssd: [5, 800]
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The category of the disk:
+        - cloud: Basic cloud disk.
+        - cloud_efficiency: Ultra cloud disk.
+        - cloud_ssd: SSD cloud Disks.
+        - ephemeral_ssd: local SSD Disks
+        - cloud_essd: ESSD cloud Disks.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @delete_with_instance.setter
+    def delete_with_instance(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_with_instance", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the data disk.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "iops")
+
+    @iops.setter
+    def iops(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iops", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the data disk.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the data disk.
+        - cloud：[5, 2000]
+        - cloud_efficiency：[20, 32768]
+        - cloud_ssd：[20, 32768]
+        - cloud_essd：[20, 32768]
+        - ephemeral_ssd: [5, 800]
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
 
 

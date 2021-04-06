@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.120.0. New field `route_table_name` instead.
+        /// Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouteTableName { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.120.0+) The status of the route table.
+        /// (Available in v1.119.1+) The status of the route table.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.120.0. New field `route_table_name` instead.
+        /// Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.120.0. New field `route_table_name` instead.
+        /// Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? RouteTableName { get; set; }
 
         /// <summary>
-        /// (Available in v1.120.0+) The status of the route table.
+        /// (Available in v1.119.1+) The status of the route table.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

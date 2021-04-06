@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Ecs
     ///             MostRecent = true,
     ///             Owners = "system",
     ///         }));
-    ///         var template = new AliCloud.Ecs.LaunchTemplate("template", new AliCloud.Ecs.LaunchTemplateArgs
+    ///         var template = new AliCloud.Ecs.EcsLaunchTemplate("template", new AliCloud.Ecs.EcsLaunchTemplateArgs
     ///         {
     ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
     ///             InstanceType = "ecs.n1.tiny",

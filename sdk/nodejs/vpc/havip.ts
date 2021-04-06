@@ -46,9 +46,17 @@ export class HAVip extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The name of the HaVip instance.
+     */
+    public readonly havipName!: pulumi.Output<string | undefined>;
+    /**
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
     public readonly ipAddress!: pulumi.Output<string>;
+    /**
+     * (Available in v1.120.0+) The status of the HaVip instance.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
      */
@@ -68,7 +76,9 @@ export class HAVip extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as HAVipState | undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["havipName"] = state ? state.havipName : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as HAVipArgs | undefined;
@@ -76,8 +86,10 @@ export class HAVip extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["description"] = args ? args.description : undefined;
+            inputs["havipName"] = args ? args.havipName : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -95,9 +107,17 @@ export interface HAVipState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * The name of the HaVip instance.
+     */
+    readonly havipName?: pulumi.Input<string>;
+    /**
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
     readonly ipAddress?: pulumi.Input<string>;
+    /**
+     * (Available in v1.120.0+) The status of the HaVip instance.
+     */
+    readonly status?: pulumi.Input<string>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
      */
@@ -112,6 +132,10 @@ export interface HAVipArgs {
      * The description of the HaVip instance.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The name of the HaVip instance.
+     */
+    readonly havipName?: pulumi.Input<string>;
     /**
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */

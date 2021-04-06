@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewBandwidthPackageAttachment(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ga/endpointGroup:EndpointGroup":
 		r, err = NewEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:ga/forwardingRule:ForwardingRule":
+		r, err = NewForwardingRule(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ga/ipSet:IpSet":
 		r, err = NewIpSet(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ga/listener:Listener":
@@ -63,6 +65,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ga/endpointGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/forwardingRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

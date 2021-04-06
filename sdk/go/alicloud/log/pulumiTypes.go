@@ -285,6 +285,184 @@ func (o AlertQueryListArrayOutput) Index(i pulumi.IntInput) AlertQueryListOutput
 	}).(AlertQueryListOutput)
 }
 
+type EtlEtlSink struct {
+	// Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+	AccessKeyId *string `pulumi:"accessKeyId"`
+	// Delivery target logstore access key secret.
+	AccessKeySecret *string `pulumi:"accessKeySecret"`
+	// Delivery target logstore region.
+	Endpoint string `pulumi:"endpoint"`
+	// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
+	KmsEncryptedAccessKeyId *string `pulumi:"kmsEncryptedAccessKeyId"`
+	// An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
+	KmsEncryptedAccessKeySecret *string `pulumi:"kmsEncryptedAccessKeySecret"`
+	// Delivery target logstore.
+	Logstore string `pulumi:"logstore"`
+	// Delivery target name.
+	Name string `pulumi:"name"`
+	// The project where the target logstore is delivered.
+	Project string `pulumi:"project"`
+	// Sts role info.
+	RoleArn *string `pulumi:"roleArn"`
+	// ETL sinks type, the default value is AliyunLOG.
+	Type *string `pulumi:"type"`
+}
+
+// EtlEtlSinkInput is an input type that accepts EtlEtlSinkArgs and EtlEtlSinkOutput values.
+// You can construct a concrete instance of `EtlEtlSinkInput` via:
+//
+//          EtlEtlSinkArgs{...}
+type EtlEtlSinkInput interface {
+	pulumi.Input
+
+	ToEtlEtlSinkOutput() EtlEtlSinkOutput
+	ToEtlEtlSinkOutputWithContext(context.Context) EtlEtlSinkOutput
+}
+
+type EtlEtlSinkArgs struct {
+	// Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
+	// Delivery target logstore access key secret.
+	AccessKeySecret pulumi.StringPtrInput `pulumi:"accessKeySecret"`
+	// Delivery target logstore region.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
+	KmsEncryptedAccessKeyId pulumi.StringPtrInput `pulumi:"kmsEncryptedAccessKeyId"`
+	// An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
+	KmsEncryptedAccessKeySecret pulumi.StringPtrInput `pulumi:"kmsEncryptedAccessKeySecret"`
+	// Delivery target logstore.
+	Logstore pulumi.StringInput `pulumi:"logstore"`
+	// Delivery target name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project where the target logstore is delivered.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Sts role info.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// ETL sinks type, the default value is AliyunLOG.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (EtlEtlSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EtlEtlSink)(nil)).Elem()
+}
+
+func (i EtlEtlSinkArgs) ToEtlEtlSinkOutput() EtlEtlSinkOutput {
+	return i.ToEtlEtlSinkOutputWithContext(context.Background())
+}
+
+func (i EtlEtlSinkArgs) ToEtlEtlSinkOutputWithContext(ctx context.Context) EtlEtlSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtlEtlSinkOutput)
+}
+
+// EtlEtlSinkArrayInput is an input type that accepts EtlEtlSinkArray and EtlEtlSinkArrayOutput values.
+// You can construct a concrete instance of `EtlEtlSinkArrayInput` via:
+//
+//          EtlEtlSinkArray{ EtlEtlSinkArgs{...} }
+type EtlEtlSinkArrayInput interface {
+	pulumi.Input
+
+	ToEtlEtlSinkArrayOutput() EtlEtlSinkArrayOutput
+	ToEtlEtlSinkArrayOutputWithContext(context.Context) EtlEtlSinkArrayOutput
+}
+
+type EtlEtlSinkArray []EtlEtlSinkInput
+
+func (EtlEtlSinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EtlEtlSink)(nil)).Elem()
+}
+
+func (i EtlEtlSinkArray) ToEtlEtlSinkArrayOutput() EtlEtlSinkArrayOutput {
+	return i.ToEtlEtlSinkArrayOutputWithContext(context.Background())
+}
+
+func (i EtlEtlSinkArray) ToEtlEtlSinkArrayOutputWithContext(ctx context.Context) EtlEtlSinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EtlEtlSinkArrayOutput)
+}
+
+type EtlEtlSinkOutput struct{ *pulumi.OutputState }
+
+func (EtlEtlSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EtlEtlSink)(nil)).Elem()
+}
+
+func (o EtlEtlSinkOutput) ToEtlEtlSinkOutput() EtlEtlSinkOutput {
+	return o
+}
+
+func (o EtlEtlSinkOutput) ToEtlEtlSinkOutputWithContext(ctx context.Context) EtlEtlSinkOutput {
+	return o
+}
+
+// Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+func (o EtlEtlSinkOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EtlEtlSink) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Delivery target logstore access key secret.
+func (o EtlEtlSinkOutput) AccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EtlEtlSink) *string { return v.AccessKeySecret }).(pulumi.StringPtrOutput)
+}
+
+// Delivery target logstore region.
+func (o EtlEtlSinkOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlEtlSink) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
+func (o EtlEtlSinkOutput) KmsEncryptedAccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EtlEtlSink) *string { return v.KmsEncryptedAccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+// An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
+func (o EtlEtlSinkOutput) KmsEncryptedAccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EtlEtlSink) *string { return v.KmsEncryptedAccessKeySecret }).(pulumi.StringPtrOutput)
+}
+
+// Delivery target logstore.
+func (o EtlEtlSinkOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlEtlSink) string { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// Delivery target name.
+func (o EtlEtlSinkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlEtlSink) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project where the target logstore is delivered.
+func (o EtlEtlSinkOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v EtlEtlSink) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Sts role info.
+func (o EtlEtlSinkOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EtlEtlSink) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// ETL sinks type, the default value is AliyunLOG.
+func (o EtlEtlSinkOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EtlEtlSink) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type EtlEtlSinkArrayOutput struct{ *pulumi.OutputState }
+
+func (EtlEtlSinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EtlEtlSink)(nil)).Elem()
+}
+
+func (o EtlEtlSinkArrayOutput) ToEtlEtlSinkArrayOutput() EtlEtlSinkArrayOutput {
+	return o
+}
+
+func (o EtlEtlSinkArrayOutput) ToEtlEtlSinkArrayOutputWithContext(ctx context.Context) EtlEtlSinkArrayOutput {
+	return o
+}
+
+func (o EtlEtlSinkArrayOutput) Index(i pulumi.IntInput) EtlEtlSinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EtlEtlSink {
+		return vs[0].([]EtlEtlSink)[vs[1].(int)]
+	}).(EtlEtlSinkOutput)
+}
+
 type StoreIndexFieldSearch struct {
 	// The alias of one field.
 	Alias *string `pulumi:"alias"`
@@ -858,6 +1036,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertNotificationListArrayOutput{})
 	pulumi.RegisterOutputType(AlertQueryListOutput{})
 	pulumi.RegisterOutputType(AlertQueryListArrayOutput{})
+	pulumi.RegisterOutputType(EtlEtlSinkOutput{})
+	pulumi.RegisterOutputType(EtlEtlSinkArrayOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchArrayOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchJsonKeyOutput{})

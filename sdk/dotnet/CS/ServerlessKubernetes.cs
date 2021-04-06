@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster .
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -278,7 +278,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster .
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -418,7 +418,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster .
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
         public InputMap<object> Tags
         {

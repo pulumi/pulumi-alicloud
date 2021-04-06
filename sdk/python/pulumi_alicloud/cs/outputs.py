@@ -307,10 +307,16 @@ class EdgeKubernetesWorkerDataDisk(dict):
                  encrypted: Optional[str] = None,
                  kms_key_id: Optional[str] = None,
                  name: Optional[str] = None,
+                 performance_level: Optional[str] = None,
                  size: Optional[str] = None,
                  snapshot_id: Optional[str] = None):
         """
+        :param str auto_snapshot_policy_id: Worker node data disk auto snapshot policy.
+        :param str category: The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
         :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param str size: The size of a data disk, at least 40. Unit: GiB.
         """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -324,6 +330,8 @@ class EdgeKubernetesWorkerDataDisk(dict):
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -332,11 +340,17 @@ class EdgeKubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[str]:
+        """
+        Worker node data disk auto snapshot policy.
+        """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @property
     @pulumi.getter
     def category(self) -> Optional[str]:
+        """
+        The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        """
         return pulumi.get(self, "category")
 
     @property
@@ -347,6 +361,9 @@ class EdgeKubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[str]:
+        """
+        Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
+        """
         return pulumi.get(self, "encrypted")
 
     @property
@@ -363,8 +380,19 @@ class EdgeKubernetesWorkerDataDisk(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        """
+        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
     @pulumi.getter
     def size(self) -> Optional[str]:
+        """
+        The size of a data disk, at least 40. Unit: GiB.
+        """
         return pulumi.get(self, "size")
 
     @property
@@ -717,10 +745,16 @@ class KubernetesWorkerDataDisk(dict):
                  encrypted: Optional[str] = None,
                  kms_key_id: Optional[str] = None,
                  name: Optional[str] = None,
+                 performance_level: Optional[str] = None,
                  size: Optional[str] = None,
                  snapshot_id: Optional[str] = None):
         """
+        :param str auto_snapshot_policy_id: Worker node data disk auto snapshot policy.
+        :param str category: The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false.
         :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param str size: The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
         """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -734,6 +768,8 @@ class KubernetesWorkerDataDisk(dict):
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -742,11 +778,17 @@ class KubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[str]:
+        """
+        Worker node data disk auto snapshot policy.
+        """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @property
     @pulumi.getter
     def category(self) -> Optional[str]:
+        """
+        The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        """
         return pulumi.get(self, "category")
 
     @property
@@ -757,6 +799,9 @@ class KubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[str]:
+        """
+        Specifies whether to encrypt data disks. Valid values: true and false.
+        """
         return pulumi.get(self, "encrypted")
 
     @property
@@ -773,8 +818,19 @@ class KubernetesWorkerDataDisk(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        """
+        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
     @pulumi.getter
     def size(self) -> Optional[str]:
+        """
+        The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
+        """
         return pulumi.get(self, "size")
 
     @property
@@ -1103,10 +1159,16 @@ class ManagedKubernetesWorkerDataDisk(dict):
                  encrypted: Optional[str] = None,
                  kms_key_id: Optional[str] = None,
                  name: Optional[str] = None,
+                 performance_level: Optional[str] = None,
                  size: Optional[str] = None,
                  snapshot_id: Optional[str] = None):
         """
+        :param str auto_snapshot_policy_id: Worker node data disk auto snapshot policy.
+        :param str category: The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param str size: The size of a data disk, at least 40. Unit: GiB.
         """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -1120,6 +1182,8 @@ class ManagedKubernetesWorkerDataDisk(dict):
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -1128,11 +1192,17 @@ class ManagedKubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[str]:
+        """
+        Worker node data disk auto snapshot policy.
+        """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @property
     @pulumi.getter
     def category(self) -> Optional[str]:
+        """
+        The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        """
         return pulumi.get(self, "category")
 
     @property
@@ -1143,6 +1213,9 @@ class ManagedKubernetesWorkerDataDisk(dict):
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[str]:
+        """
+        Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        """
         return pulumi.get(self, "encrypted")
 
     @property
@@ -1159,8 +1232,19 @@ class ManagedKubernetesWorkerDataDisk(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        """
+        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
     @pulumi.getter
     def size(self) -> Optional[str]:
+        """
+        The size of a data disk, at least 40. Unit: GiB.
+        """
         return pulumi.get(self, "size")
 
     @property
@@ -1227,10 +1311,15 @@ class NodePoolDataDisk(dict):
                  encrypted: Optional[str] = None,
                  kms_key_id: Optional[str] = None,
                  name: Optional[str] = None,
+                 performance_level: Optional[str] = None,
                  size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         """
+        :param str category: The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+        :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         :param str name: The name of node pool.
+        :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param int size: The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
         """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -1244,6 +1333,8 @@ class NodePoolDataDisk(dict):
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -1257,6 +1348,9 @@ class NodePoolDataDisk(dict):
     @property
     @pulumi.getter
     def category(self) -> Optional[str]:
+        """
+        The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+        """
         return pulumi.get(self, "category")
 
     @property
@@ -1267,6 +1361,9 @@ class NodePoolDataDisk(dict):
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[str]:
+        """
+        Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        """
         return pulumi.get(self, "encrypted")
 
     @property
@@ -1283,8 +1380,19 @@ class NodePoolDataDisk(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        """
+        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
     @pulumi.getter
     def size(self) -> Optional[int]:
+        """
+        The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+        """
         return pulumi.get(self, "size")
 
     @property
@@ -1301,6 +1409,10 @@ class NodePoolLabel(dict):
     def __init__(__self__, *,
                  key: str,
                  value: Optional[str] = None):
+        """
+        :param str key: The label key.
+        :param str value: The label value.
+        """
         pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -1308,11 +1420,17 @@ class NodePoolLabel(dict):
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The label key.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The label value.
+        """
         return pulumi.get(self, "value")
 
     def _translate_property(self, prop):
@@ -1474,6 +1592,10 @@ class NodePoolTaint(dict):
                  key: str,
                  effect: Optional[str] = None,
                  value: Optional[str] = None):
+        """
+        :param str key: The label key.
+        :param str value: The label value.
+        """
         pulumi.set(__self__, "key", key)
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -1483,6 +1605,9 @@ class NodePoolTaint(dict):
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The label key.
+        """
         return pulumi.get(self, "key")
 
     @property
@@ -1493,6 +1618,9 @@ class NodePoolTaint(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The label value.
+        """
         return pulumi.get(self, "value")
 
     def _translate_property(self, prop):

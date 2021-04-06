@@ -73,6 +73,8 @@ type EdgeKubernetes struct {
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringOutput `pulumi:"slbIntranet"`
+	// Default nil, A map of tags assigned to the kubernetes cluster and work node.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
@@ -80,19 +82,16 @@ type EdgeKubernetes struct {
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud : basic disks.
-	// * cloudEfficiency : ultra disks.
-	// * cloudSsd : SSDs.
-	// * cloudEssd : ESSDs.
-	// * `size`: the size of a data disk, at least 40. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks EdgeKubernetesWorkerDataDiskArrayOutput `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrOutput `pulumi:"workerDiskCategory"`
+	// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	WorkerDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"workerDiskPerformanceLevel"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
-	WorkerDiskSize           pulumi.IntPtrOutput    `pulumi:"workerDiskSize"`
-	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
+	WorkerDiskSize pulumi.IntPtrOutput `pulumi:"workerDiskSize"`
+	// Worker node system disk auto snapshot policy.
+	WorkerDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"workerDiskSnapshotPolicyId"`
+	WorkerInstanceChargeType   pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
 	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
 	WorkerInstanceTypes pulumi.StringArrayOutput `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes.
@@ -192,6 +191,8 @@ type edgeKubernetesState struct {
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet *string `pulumi:"slbIntranet"`
+	// Default nil, A map of tags assigned to the kubernetes cluster and work node.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData *string `pulumi:"userData"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
@@ -199,19 +200,16 @@ type edgeKubernetesState struct {
 	// The ID of VPC where the current cluster is located.
 	VpcId *string `pulumi:"vpcId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud : basic disks.
-	// * cloudEfficiency : ultra disks.
-	// * cloudSsd : SSDs.
-	// * cloudEssd : ESSDs.
-	// * `size`: the size of a data disk, at least 40. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []EdgeKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
+	// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	WorkerDiskPerformanceLevel *string `pulumi:"workerDiskPerformanceLevel"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
-	WorkerDiskSize           *int    `pulumi:"workerDiskSize"`
-	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
+	WorkerDiskSize *int `pulumi:"workerDiskSize"`
+	// Worker node system disk auto snapshot policy.
+	WorkerDiskSnapshotPolicyId *string `pulumi:"workerDiskSnapshotPolicyId"`
+	WorkerInstanceChargeType   *string `pulumi:"workerInstanceChargeType"`
 	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes.
@@ -274,6 +272,8 @@ type EdgeKubernetesState struct {
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringPtrInput
+	// Default nil, A map of tags assigned to the kubernetes cluster and work node.
+	Tags pulumi.MapInput
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
@@ -281,19 +281,16 @@ type EdgeKubernetesState struct {
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud : basic disks.
-	// * cloudEfficiency : ultra disks.
-	// * cloudSsd : SSDs.
-	// * cloudEssd : ESSDs.
-	// * `size`: the size of a data disk, at least 40. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks EdgeKubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
+	// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	WorkerDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
-	WorkerDiskSize           pulumi.IntPtrInput
-	WorkerInstanceChargeType pulumi.StringPtrInput
+	WorkerDiskSize pulumi.IntPtrInput
+	// Worker node system disk auto snapshot policy.
+	WorkerDiskSnapshotPolicyId pulumi.StringPtrInput
+	WorkerInstanceChargeType   pulumi.StringPtrInput
 	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
 	WorkerInstanceTypes pulumi.StringArrayInput
 	// List of cluster worker nodes.
@@ -352,24 +349,23 @@ type edgeKubernetesArgs struct {
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
+	// Default nil, A map of tags assigned to the kubernetes cluster and work node.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData *string `pulumi:"userData"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version *string `pulumi:"version"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud : basic disks.
-	// * cloudEfficiency : ultra disks.
-	// * cloudSsd : SSDs.
-	// * cloudEssd : ESSDs.
-	// * `size`: the size of a data disk, at least 40. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []EdgeKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
+	// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	WorkerDiskPerformanceLevel *string `pulumi:"workerDiskPerformanceLevel"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
-	WorkerDiskSize           *int    `pulumi:"workerDiskSize"`
-	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
+	WorkerDiskSize *int `pulumi:"workerDiskSize"`
+	// Worker node system disk auto snapshot policy.
+	WorkerDiskSnapshotPolicyId *string `pulumi:"workerDiskSnapshotPolicyId"`
+	WorkerInstanceChargeType   *string `pulumi:"workerInstanceChargeType"`
 	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
@@ -423,24 +419,23 @@ type EdgeKubernetesArgs struct {
 	ServiceCidr pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled pulumi.BoolPtrInput
+	// Default nil, A map of tags assigned to the kubernetes cluster and work node.
+	Tags pulumi.MapInput
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values:
-	// * cloud : basic disks.
-	// * cloudEfficiency : ultra disks.
-	// * cloudSsd : SSDs.
-	// * cloudEssd : ESSDs.
-	// * `size`: the size of a data disk, at least 40. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks EdgeKubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
+	// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	WorkerDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
-	WorkerDiskSize           pulumi.IntPtrInput
-	WorkerInstanceChargeType pulumi.StringPtrInput
+	WorkerDiskSize pulumi.IntPtrInput
+	// Worker node system disk auto snapshot policy.
+	WorkerDiskSnapshotPolicyId pulumi.StringPtrInput
+	WorkerInstanceChargeType   pulumi.StringPtrInput
 	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
 	WorkerInstanceTypes pulumi.StringArrayInput
 	// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.

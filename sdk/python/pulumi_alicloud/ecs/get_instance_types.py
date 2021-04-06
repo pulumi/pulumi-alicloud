@@ -20,7 +20,7 @@ class GetInstanceTypesResult:
     """
     A collection of values returned by getInstanceTypes.
     """
-    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, id=None, ids=None, instance_charge_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None):
+    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, id=None, ids=None, instance_charge_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None, system_disk_category=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -72,6 +72,9 @@ class GetInstanceTypesResult:
         if spot_strategy and not isinstance(spot_strategy, str):
             raise TypeError("Expected argument 'spot_strategy' to be a str")
         pulumi.set(__self__, "spot_strategy", spot_strategy)
+        if system_disk_category and not isinstance(system_disk_category, str):
+            raise TypeError("Expected argument 'system_disk_category' to be a str")
+        pulumi.set(__self__, "system_disk_category", system_disk_category)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -176,6 +179,11 @@ class GetInstanceTypesResult:
     def spot_strategy(self) -> Optional[str]:
         return pulumi.get(self, "spot_strategy")
 
+    @property
+    @pulumi.getter(name="systemDiskCategory")
+    def system_disk_category(self) -> Optional[str]:
+        return pulumi.get(self, "system_disk_category")
+
 
 class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
     # pylint: disable=using-constant-test
@@ -199,7 +207,8 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             network_type=self.network_type,
             output_file=self.output_file,
             sorted_by=self.sorted_by,
-            spot_strategy=self.spot_strategy)
+            spot_strategy=self.spot_strategy,
+            system_disk_category=self.system_disk_category)
 
 
 def get_instance_types(availability_zone: Optional[str] = None,
@@ -216,6 +225,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
                        output_file: Optional[str] = None,
                        sorted_by: Optional[str] = None,
                        spot_strategy: Optional[str] = None,
+                       system_disk_category: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTypesResult:
     """
     This data source provides the ECS instance types of Alibaba Cloud.
@@ -247,6 +257,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
     :param float memory_size: Filter the results to a specific memory size in GB.
     :param str network_type: Filter the results by network type. Valid values: `Classic` and `Vpc`.
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+    :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`. Default to `cloud_efficiency`.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -263,6 +274,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
     __args__['outputFile'] = output_file
     __args__['sortedBy'] = sorted_by
     __args__['spotStrategy'] = spot_strategy
+    __args__['systemDiskCategory'] = system_disk_category
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -286,4 +298,5 @@ def get_instance_types(availability_zone: Optional[str] = None,
         network_type=__ret__.network_type,
         output_file=__ret__.output_file,
         sorted_by=__ret__.sorted_by,
-        spot_strategy=__ret__.spot_strategy)
+        spot_strategy=__ret__.spot_strategy,
+        system_disk_category=__ret__.system_disk_category)

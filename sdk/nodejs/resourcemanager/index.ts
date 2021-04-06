@@ -6,8 +6,12 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./account";
+export * from "./controlPolicy";
+export * from "./controlPolicyAttachment";
 export * from "./folder";
 export * from "./getAccounts";
+export * from "./getControlPolicies";
+export * from "./getControlPolicyAttachments";
 export * from "./getFolders";
 export * from "./getHandshakes";
 export * from "./getPolicies";
@@ -32,6 +36,8 @@ export * from "./sharedTarget";
 
 // Import resources to register:
 import { Account } from "./account";
+import { ControlPolicy } from "./controlPolicy";
+import { ControlPolicyAttachment } from "./controlPolicyAttachment";
 import { Folder } from "./folder";
 import { Handshake } from "./handshake";
 import { Policy } from "./policy";
@@ -50,6 +56,10 @@ const _module = {
         switch (type) {
             case "alicloud:resourcemanager/account:Account":
                 return new Account(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/controlPolicy:ControlPolicy":
+                return new ControlPolicy(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment":
+                return new ControlPolicyAttachment(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/handshake:Handshake":
@@ -78,6 +88,8 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/account", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/controlPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/controlPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/folder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/handshake", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policy", _module)

@@ -284,6 +284,617 @@ func (o EndpointGroupPortOverridesPtrOutput) ListenerPort() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+type ForwardingRuleRuleAction struct {
+	// Forwarding configuration.
+	ForwardGroupConfig ForwardingRuleRuleActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
+	// Forwarding priority.
+	Order int `pulumi:"order"`
+	// Forward action type. Default: forwardgroup.
+	RuleActionType string `pulumi:"ruleActionType"`
+}
+
+// ForwardingRuleRuleActionInput is an input type that accepts ForwardingRuleRuleActionArgs and ForwardingRuleRuleActionOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleActionInput` via:
+//
+//          ForwardingRuleRuleActionArgs{...}
+type ForwardingRuleRuleActionInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleActionOutput() ForwardingRuleRuleActionOutput
+	ToForwardingRuleRuleActionOutputWithContext(context.Context) ForwardingRuleRuleActionOutput
+}
+
+type ForwardingRuleRuleActionArgs struct {
+	// Forwarding configuration.
+	ForwardGroupConfig ForwardingRuleRuleActionForwardGroupConfigInput `pulumi:"forwardGroupConfig"`
+	// Forwarding priority.
+	Order pulumi.IntInput `pulumi:"order"`
+	// Forward action type. Default: forwardgroup.
+	RuleActionType pulumi.StringInput `pulumi:"ruleActionType"`
+}
+
+func (ForwardingRuleRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleAction)(nil)).Elem()
+}
+
+func (i ForwardingRuleRuleActionArgs) ToForwardingRuleRuleActionOutput() ForwardingRuleRuleActionOutput {
+	return i.ToForwardingRuleRuleActionOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleActionArgs) ToForwardingRuleRuleActionOutputWithContext(ctx context.Context) ForwardingRuleRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleActionOutput)
+}
+
+// ForwardingRuleRuleActionArrayInput is an input type that accepts ForwardingRuleRuleActionArray and ForwardingRuleRuleActionArrayOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleActionArrayInput` via:
+//
+//          ForwardingRuleRuleActionArray{ ForwardingRuleRuleActionArgs{...} }
+type ForwardingRuleRuleActionArrayInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleActionArrayOutput() ForwardingRuleRuleActionArrayOutput
+	ToForwardingRuleRuleActionArrayOutputWithContext(context.Context) ForwardingRuleRuleActionArrayOutput
+}
+
+type ForwardingRuleRuleActionArray []ForwardingRuleRuleActionInput
+
+func (ForwardingRuleRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRuleRuleAction)(nil)).Elem()
+}
+
+func (i ForwardingRuleRuleActionArray) ToForwardingRuleRuleActionArrayOutput() ForwardingRuleRuleActionArrayOutput {
+	return i.ToForwardingRuleRuleActionArrayOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleActionArray) ToForwardingRuleRuleActionArrayOutputWithContext(ctx context.Context) ForwardingRuleRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleActionArrayOutput)
+}
+
+type ForwardingRuleRuleActionOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleAction)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleActionOutput) ToForwardingRuleRuleActionOutput() ForwardingRuleRuleActionOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleActionOutput) ToForwardingRuleRuleActionOutputWithContext(ctx context.Context) ForwardingRuleRuleActionOutput {
+	return o
+}
+
+// Forwarding configuration.
+func (o ForwardingRuleRuleActionOutput) ForwardGroupConfig() ForwardingRuleRuleActionForwardGroupConfigOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleAction) ForwardingRuleRuleActionForwardGroupConfig {
+		return v.ForwardGroupConfig
+	}).(ForwardingRuleRuleActionForwardGroupConfigOutput)
+}
+
+// Forwarding priority.
+func (o ForwardingRuleRuleActionOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleAction) int { return v.Order }).(pulumi.IntOutput)
+}
+
+// Forward action type. Default: forwardgroup.
+func (o ForwardingRuleRuleActionOutput) RuleActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleAction) string { return v.RuleActionType }).(pulumi.StringOutput)
+}
+
+type ForwardingRuleRuleActionArrayOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRuleRuleAction)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleActionArrayOutput) ToForwardingRuleRuleActionArrayOutput() ForwardingRuleRuleActionArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleActionArrayOutput) ToForwardingRuleRuleActionArrayOutputWithContext(ctx context.Context) ForwardingRuleRuleActionArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleActionArrayOutput) Index(i pulumi.IntInput) ForwardingRuleRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ForwardingRuleRuleAction {
+		return vs[0].([]ForwardingRuleRuleAction)[vs[1].(int)]
+	}).(ForwardingRuleRuleActionOutput)
+}
+
+type ForwardingRuleRuleActionForwardGroupConfig struct {
+	// Terminal node group configuration.
+	ServerGroupTuples []ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
+}
+
+// ForwardingRuleRuleActionForwardGroupConfigInput is an input type that accepts ForwardingRuleRuleActionForwardGroupConfigArgs and ForwardingRuleRuleActionForwardGroupConfigOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleActionForwardGroupConfigInput` via:
+//
+//          ForwardingRuleRuleActionForwardGroupConfigArgs{...}
+type ForwardingRuleRuleActionForwardGroupConfigInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleActionForwardGroupConfigOutput() ForwardingRuleRuleActionForwardGroupConfigOutput
+	ToForwardingRuleRuleActionForwardGroupConfigOutputWithContext(context.Context) ForwardingRuleRuleActionForwardGroupConfigOutput
+}
+
+type ForwardingRuleRuleActionForwardGroupConfigArgs struct {
+	// Terminal node group configuration.
+	ServerGroupTuples ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
+}
+
+func (ForwardingRuleRuleActionForwardGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i ForwardingRuleRuleActionForwardGroupConfigArgs) ToForwardingRuleRuleActionForwardGroupConfigOutput() ForwardingRuleRuleActionForwardGroupConfigOutput {
+	return i.ToForwardingRuleRuleActionForwardGroupConfigOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleActionForwardGroupConfigArgs) ToForwardingRuleRuleActionForwardGroupConfigOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleActionForwardGroupConfigOutput)
+}
+
+type ForwardingRuleRuleActionForwardGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleActionForwardGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigOutput) ToForwardingRuleRuleActionForwardGroupConfigOutput() ForwardingRuleRuleActionForwardGroupConfigOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigOutput) ToForwardingRuleRuleActionForwardGroupConfigOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigOutput {
+	return o
+}
+
+// Terminal node group configuration.
+func (o ForwardingRuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleActionForwardGroupConfig) []ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
+		return v.ServerGroupTuples
+	}).(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple struct {
+	// Terminal node group ID.
+	EndpointGroupId string `pulumi:"endpointGroupId"`
+}
+
+// ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput is an input type that accepts ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs and ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput` via:
+//
+//          ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...}
+type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput
+	ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Context) ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput
+}
+
+type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
+	// Terminal node group ID.
+	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
+}
+
+func (ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return i.ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+// ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput is an input type that accepts ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray and ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput` via:
+//
+//          ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray{ ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...} }
+type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput
+	ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Context) ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput
+}
+
+type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray []ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput
+
+func (ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray) ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return i.ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray) ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+// Terminal node group ID.
+func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) EndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple) string { return v.EndpointGroupId }).(pulumi.StringOutput)
+}
+
+type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ToForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) Index(i pulumi.IntInput) ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
+		return vs[0].([]ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple)[vs[1].(int)]
+	}).(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+type ForwardingRuleRuleCondition struct {
+	// Domain name configuration information.
+	HostConfigs []ForwardingRuleRuleConditionHostConfig `pulumi:"hostConfigs"`
+	// Path configuration information.
+	PathConfig *ForwardingRuleRuleConditionPathConfig `pulumi:"pathConfig"`
+	// Forwarding condition type. Valid value: `Host`, `Path`.
+	RuleConditionType string `pulumi:"ruleConditionType"`
+}
+
+// ForwardingRuleRuleConditionInput is an input type that accepts ForwardingRuleRuleConditionArgs and ForwardingRuleRuleConditionOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleConditionInput` via:
+//
+//          ForwardingRuleRuleConditionArgs{...}
+type ForwardingRuleRuleConditionInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleConditionOutput() ForwardingRuleRuleConditionOutput
+	ToForwardingRuleRuleConditionOutputWithContext(context.Context) ForwardingRuleRuleConditionOutput
+}
+
+type ForwardingRuleRuleConditionArgs struct {
+	// Domain name configuration information.
+	HostConfigs ForwardingRuleRuleConditionHostConfigArrayInput `pulumi:"hostConfigs"`
+	// Path configuration information.
+	PathConfig ForwardingRuleRuleConditionPathConfigPtrInput `pulumi:"pathConfig"`
+	// Forwarding condition type. Valid value: `Host`, `Path`.
+	RuleConditionType pulumi.StringInput `pulumi:"ruleConditionType"`
+}
+
+func (ForwardingRuleRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleCondition)(nil)).Elem()
+}
+
+func (i ForwardingRuleRuleConditionArgs) ToForwardingRuleRuleConditionOutput() ForwardingRuleRuleConditionOutput {
+	return i.ToForwardingRuleRuleConditionOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleConditionArgs) ToForwardingRuleRuleConditionOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleConditionOutput)
+}
+
+// ForwardingRuleRuleConditionArrayInput is an input type that accepts ForwardingRuleRuleConditionArray and ForwardingRuleRuleConditionArrayOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleConditionArrayInput` via:
+//
+//          ForwardingRuleRuleConditionArray{ ForwardingRuleRuleConditionArgs{...} }
+type ForwardingRuleRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleConditionArrayOutput() ForwardingRuleRuleConditionArrayOutput
+	ToForwardingRuleRuleConditionArrayOutputWithContext(context.Context) ForwardingRuleRuleConditionArrayOutput
+}
+
+type ForwardingRuleRuleConditionArray []ForwardingRuleRuleConditionInput
+
+func (ForwardingRuleRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRuleRuleCondition)(nil)).Elem()
+}
+
+func (i ForwardingRuleRuleConditionArray) ToForwardingRuleRuleConditionArrayOutput() ForwardingRuleRuleConditionArrayOutput {
+	return i.ToForwardingRuleRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleConditionArray) ToForwardingRuleRuleConditionArrayOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleConditionArrayOutput)
+}
+
+type ForwardingRuleRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleCondition)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleConditionOutput) ToForwardingRuleRuleConditionOutput() ForwardingRuleRuleConditionOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleConditionOutput) ToForwardingRuleRuleConditionOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionOutput {
+	return o
+}
+
+// Domain name configuration information.
+func (o ForwardingRuleRuleConditionOutput) HostConfigs() ForwardingRuleRuleConditionHostConfigArrayOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleCondition) []ForwardingRuleRuleConditionHostConfig { return v.HostConfigs }).(ForwardingRuleRuleConditionHostConfigArrayOutput)
+}
+
+// Path configuration information.
+func (o ForwardingRuleRuleConditionOutput) PathConfig() ForwardingRuleRuleConditionPathConfigPtrOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleCondition) *ForwardingRuleRuleConditionPathConfig { return v.PathConfig }).(ForwardingRuleRuleConditionPathConfigPtrOutput)
+}
+
+// Forwarding condition type. Valid value: `Host`, `Path`.
+func (o ForwardingRuleRuleConditionOutput) RuleConditionType() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleCondition) string { return v.RuleConditionType }).(pulumi.StringOutput)
+}
+
+type ForwardingRuleRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRuleRuleCondition)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleConditionArrayOutput) ToForwardingRuleRuleConditionArrayOutput() ForwardingRuleRuleConditionArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleConditionArrayOutput) ToForwardingRuleRuleConditionArrayOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleConditionArrayOutput) Index(i pulumi.IntInput) ForwardingRuleRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ForwardingRuleRuleCondition {
+		return vs[0].([]ForwardingRuleRuleCondition)[vs[1].(int)]
+	}).(ForwardingRuleRuleConditionOutput)
+}
+
+type ForwardingRuleRuleConditionHostConfig struct {
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+	Values []string `pulumi:"values"`
+}
+
+// ForwardingRuleRuleConditionHostConfigInput is an input type that accepts ForwardingRuleRuleConditionHostConfigArgs and ForwardingRuleRuleConditionHostConfigOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleConditionHostConfigInput` via:
+//
+//          ForwardingRuleRuleConditionHostConfigArgs{...}
+type ForwardingRuleRuleConditionHostConfigInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleConditionHostConfigOutput() ForwardingRuleRuleConditionHostConfigOutput
+	ToForwardingRuleRuleConditionHostConfigOutputWithContext(context.Context) ForwardingRuleRuleConditionHostConfigOutput
+}
+
+type ForwardingRuleRuleConditionHostConfigArgs struct {
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ForwardingRuleRuleConditionHostConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (i ForwardingRuleRuleConditionHostConfigArgs) ToForwardingRuleRuleConditionHostConfigOutput() ForwardingRuleRuleConditionHostConfigOutput {
+	return i.ToForwardingRuleRuleConditionHostConfigOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleConditionHostConfigArgs) ToForwardingRuleRuleConditionHostConfigOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionHostConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleConditionHostConfigOutput)
+}
+
+// ForwardingRuleRuleConditionHostConfigArrayInput is an input type that accepts ForwardingRuleRuleConditionHostConfigArray and ForwardingRuleRuleConditionHostConfigArrayOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleConditionHostConfigArrayInput` via:
+//
+//          ForwardingRuleRuleConditionHostConfigArray{ ForwardingRuleRuleConditionHostConfigArgs{...} }
+type ForwardingRuleRuleConditionHostConfigArrayInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleConditionHostConfigArrayOutput() ForwardingRuleRuleConditionHostConfigArrayOutput
+	ToForwardingRuleRuleConditionHostConfigArrayOutputWithContext(context.Context) ForwardingRuleRuleConditionHostConfigArrayOutput
+}
+
+type ForwardingRuleRuleConditionHostConfigArray []ForwardingRuleRuleConditionHostConfigInput
+
+func (ForwardingRuleRuleConditionHostConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (i ForwardingRuleRuleConditionHostConfigArray) ToForwardingRuleRuleConditionHostConfigArrayOutput() ForwardingRuleRuleConditionHostConfigArrayOutput {
+	return i.ToForwardingRuleRuleConditionHostConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleConditionHostConfigArray) ToForwardingRuleRuleConditionHostConfigArrayOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionHostConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleConditionHostConfigArrayOutput)
+}
+
+type ForwardingRuleRuleConditionHostConfigOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleConditionHostConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleConditionHostConfigOutput) ToForwardingRuleRuleConditionHostConfigOutput() ForwardingRuleRuleConditionHostConfigOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleConditionHostConfigOutput) ToForwardingRuleRuleConditionHostConfigOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionHostConfigOutput {
+	return o
+}
+
+// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+func (o ForwardingRuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ForwardingRuleRuleConditionHostConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleConditionHostConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleConditionHostConfigArrayOutput) ToForwardingRuleRuleConditionHostConfigArrayOutput() ForwardingRuleRuleConditionHostConfigArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleConditionHostConfigArrayOutput) ToForwardingRuleRuleConditionHostConfigArrayOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionHostConfigArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleConditionHostConfigArrayOutput) Index(i pulumi.IntInput) ForwardingRuleRuleConditionHostConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ForwardingRuleRuleConditionHostConfig {
+		return vs[0].([]ForwardingRuleRuleConditionHostConfig)[vs[1].(int)]
+	}).(ForwardingRuleRuleConditionHostConfigOutput)
+}
+
+type ForwardingRuleRuleConditionPathConfig struct {
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+	Values []string `pulumi:"values"`
+}
+
+// ForwardingRuleRuleConditionPathConfigInput is an input type that accepts ForwardingRuleRuleConditionPathConfigArgs and ForwardingRuleRuleConditionPathConfigOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleConditionPathConfigInput` via:
+//
+//          ForwardingRuleRuleConditionPathConfigArgs{...}
+type ForwardingRuleRuleConditionPathConfigInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleConditionPathConfigOutput() ForwardingRuleRuleConditionPathConfigOutput
+	ToForwardingRuleRuleConditionPathConfigOutputWithContext(context.Context) ForwardingRuleRuleConditionPathConfigOutput
+}
+
+type ForwardingRuleRuleConditionPathConfigArgs struct {
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ForwardingRuleRuleConditionPathConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (i ForwardingRuleRuleConditionPathConfigArgs) ToForwardingRuleRuleConditionPathConfigOutput() ForwardingRuleRuleConditionPathConfigOutput {
+	return i.ToForwardingRuleRuleConditionPathConfigOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleConditionPathConfigArgs) ToForwardingRuleRuleConditionPathConfigOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionPathConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleConditionPathConfigOutput)
+}
+
+func (i ForwardingRuleRuleConditionPathConfigArgs) ToForwardingRuleRuleConditionPathConfigPtrOutput() ForwardingRuleRuleConditionPathConfigPtrOutput {
+	return i.ToForwardingRuleRuleConditionPathConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleConditionPathConfigArgs) ToForwardingRuleRuleConditionPathConfigPtrOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionPathConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleConditionPathConfigOutput).ToForwardingRuleRuleConditionPathConfigPtrOutputWithContext(ctx)
+}
+
+// ForwardingRuleRuleConditionPathConfigPtrInput is an input type that accepts ForwardingRuleRuleConditionPathConfigArgs, ForwardingRuleRuleConditionPathConfigPtr and ForwardingRuleRuleConditionPathConfigPtrOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleConditionPathConfigPtrInput` via:
+//
+//          ForwardingRuleRuleConditionPathConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ForwardingRuleRuleConditionPathConfigPtrInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleConditionPathConfigPtrOutput() ForwardingRuleRuleConditionPathConfigPtrOutput
+	ToForwardingRuleRuleConditionPathConfigPtrOutputWithContext(context.Context) ForwardingRuleRuleConditionPathConfigPtrOutput
+}
+
+type forwardingRuleRuleConditionPathConfigPtrType ForwardingRuleRuleConditionPathConfigArgs
+
+func ForwardingRuleRuleConditionPathConfigPtr(v *ForwardingRuleRuleConditionPathConfigArgs) ForwardingRuleRuleConditionPathConfigPtrInput {
+	return (*forwardingRuleRuleConditionPathConfigPtrType)(v)
+}
+
+func (*forwardingRuleRuleConditionPathConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardingRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (i *forwardingRuleRuleConditionPathConfigPtrType) ToForwardingRuleRuleConditionPathConfigPtrOutput() ForwardingRuleRuleConditionPathConfigPtrOutput {
+	return i.ToForwardingRuleRuleConditionPathConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *forwardingRuleRuleConditionPathConfigPtrType) ToForwardingRuleRuleConditionPathConfigPtrOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionPathConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleConditionPathConfigPtrOutput)
+}
+
+type ForwardingRuleRuleConditionPathConfigOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleConditionPathConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleConditionPathConfigOutput) ToForwardingRuleRuleConditionPathConfigOutput() ForwardingRuleRuleConditionPathConfigOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleConditionPathConfigOutput) ToForwardingRuleRuleConditionPathConfigOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionPathConfigOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleConditionPathConfigOutput) ToForwardingRuleRuleConditionPathConfigPtrOutput() ForwardingRuleRuleConditionPathConfigPtrOutput {
+	return o.ToForwardingRuleRuleConditionPathConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ForwardingRuleRuleConditionPathConfigOutput) ToForwardingRuleRuleConditionPathConfigPtrOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionPathConfigPtrOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleConditionPathConfig) *ForwardingRuleRuleConditionPathConfig {
+		return &v
+	}).(ForwardingRuleRuleConditionPathConfigPtrOutput)
+}
+
+// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+func (o ForwardingRuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ForwardingRuleRuleConditionPathConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleConditionPathConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardingRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleConditionPathConfigPtrOutput) ToForwardingRuleRuleConditionPathConfigPtrOutput() ForwardingRuleRuleConditionPathConfigPtrOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleConditionPathConfigPtrOutput) ToForwardingRuleRuleConditionPathConfigPtrOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionPathConfigPtrOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleConditionPathConfigPtrOutput) Elem() ForwardingRuleRuleConditionPathConfigOutput {
+	return o.ApplyT(func(v *ForwardingRuleRuleConditionPathConfig) ForwardingRuleRuleConditionPathConfig { return *v }).(ForwardingRuleRuleConditionPathConfigOutput)
+}
+
+// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+func (o ForwardingRuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ForwardingRuleRuleConditionPathConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 type ListenerCertificate struct {
 	// The id of the certificate.
 	Id *string `pulumi:"id"`
@@ -1595,6 +2206,795 @@ func (o GetEndpointGroupsGroupPortOverrideArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetEndpointGroupsGroupPortOverrideOutput)
 }
 
+type GetForwardingRulesForwardingRule struct {
+	// Forwarding Policy ID.
+	ForwardingRuleId string `pulumi:"forwardingRuleId"`
+	// Forwarding policy name. The length of the name is 2-128 English or Chinese characters.
+	ForwardingRuleName string `pulumi:"forwardingRuleName"`
+	// Forwarding Policy Status.
+	ForwardingRuleStatus string `pulumi:"forwardingRuleStatus"`
+	Id                   string `pulumi:"id"`
+	// The ID of the listener.
+	ListenerId string `pulumi:"listenerId"`
+	// Forwarding policy priority.
+	Priority int `pulumi:"priority"`
+	// The IP protocol used by the GA instance.
+	// `order` - Forwarding priority.
+	// `ruleActionType` - Forward action type.
+	// `forwardGroupConfig` - Forwarding configuration.
+	// `serverGroupTuples` - Terminal node group configuration.
+	// `endpointGroupId` - Terminal node group ID.
+	RuleActions []GetForwardingRulesForwardingRuleRuleAction `pulumi:"ruleActions"`
+	// Forward action.
+	// `ruleConditionType` - Forwarding condition type.
+	// `pathConfig` - Path configuration information.
+	// `values` - The length of the path is 1-128 characters.
+	// `hostConfig` - Domain name configuration information.
+	// `values` - The domain name is 3-128 characters long.
+	RuleConditions []GetForwardingRulesForwardingRuleRuleCondition `pulumi:"ruleConditions"`
+}
+
+// GetForwardingRulesForwardingRuleInput is an input type that accepts GetForwardingRulesForwardingRuleArgs and GetForwardingRulesForwardingRuleOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleInput` via:
+//
+//          GetForwardingRulesForwardingRuleArgs{...}
+type GetForwardingRulesForwardingRuleInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleOutput() GetForwardingRulesForwardingRuleOutput
+	ToGetForwardingRulesForwardingRuleOutputWithContext(context.Context) GetForwardingRulesForwardingRuleOutput
+}
+
+type GetForwardingRulesForwardingRuleArgs struct {
+	// Forwarding Policy ID.
+	ForwardingRuleId pulumi.StringInput `pulumi:"forwardingRuleId"`
+	// Forwarding policy name. The length of the name is 2-128 English or Chinese characters.
+	ForwardingRuleName pulumi.StringInput `pulumi:"forwardingRuleName"`
+	// Forwarding Policy Status.
+	ForwardingRuleStatus pulumi.StringInput `pulumi:"forwardingRuleStatus"`
+	Id                   pulumi.StringInput `pulumi:"id"`
+	// The ID of the listener.
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// Forwarding policy priority.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The IP protocol used by the GA instance.
+	// `order` - Forwarding priority.
+	// `ruleActionType` - Forward action type.
+	// `forwardGroupConfig` - Forwarding configuration.
+	// `serverGroupTuples` - Terminal node group configuration.
+	// `endpointGroupId` - Terminal node group ID.
+	RuleActions GetForwardingRulesForwardingRuleRuleActionArrayInput `pulumi:"ruleActions"`
+	// Forward action.
+	// `ruleConditionType` - Forwarding condition type.
+	// `pathConfig` - Path configuration information.
+	// `values` - The length of the path is 1-128 characters.
+	// `hostConfig` - Domain name configuration information.
+	// `values` - The domain name is 3-128 characters long.
+	RuleConditions GetForwardingRulesForwardingRuleRuleConditionArrayInput `pulumi:"ruleConditions"`
+}
+
+func (GetForwardingRulesForwardingRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRule)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleArgs) ToGetForwardingRulesForwardingRuleOutput() GetForwardingRulesForwardingRuleOutput {
+	return i.ToGetForwardingRulesForwardingRuleOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleArgs) ToGetForwardingRulesForwardingRuleOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleOutput)
+}
+
+// GetForwardingRulesForwardingRuleArrayInput is an input type that accepts GetForwardingRulesForwardingRuleArray and GetForwardingRulesForwardingRuleArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleArrayInput` via:
+//
+//          GetForwardingRulesForwardingRuleArray{ GetForwardingRulesForwardingRuleArgs{...} }
+type GetForwardingRulesForwardingRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleArrayOutput() GetForwardingRulesForwardingRuleArrayOutput
+	ToGetForwardingRulesForwardingRuleArrayOutputWithContext(context.Context) GetForwardingRulesForwardingRuleArrayOutput
+}
+
+type GetForwardingRulesForwardingRuleArray []GetForwardingRulesForwardingRuleInput
+
+func (GetForwardingRulesForwardingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRule)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleArray) ToGetForwardingRulesForwardingRuleArrayOutput() GetForwardingRulesForwardingRuleArrayOutput {
+	return i.ToGetForwardingRulesForwardingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleArray) ToGetForwardingRulesForwardingRuleArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRule)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleOutput) ToGetForwardingRulesForwardingRuleOutput() GetForwardingRulesForwardingRuleOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleOutput) ToGetForwardingRulesForwardingRuleOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleOutput {
+	return o
+}
+
+// Forwarding Policy ID.
+func (o GetForwardingRulesForwardingRuleOutput) ForwardingRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRule) string { return v.ForwardingRuleId }).(pulumi.StringOutput)
+}
+
+// Forwarding policy name. The length of the name is 2-128 English or Chinese characters.
+func (o GetForwardingRulesForwardingRuleOutput) ForwardingRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRule) string { return v.ForwardingRuleName }).(pulumi.StringOutput)
+}
+
+// Forwarding Policy Status.
+func (o GetForwardingRulesForwardingRuleOutput) ForwardingRuleStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRule) string { return v.ForwardingRuleStatus }).(pulumi.StringOutput)
+}
+
+func (o GetForwardingRulesForwardingRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the listener.
+func (o GetForwardingRulesForwardingRuleOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRule) string { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// Forwarding policy priority.
+func (o GetForwardingRulesForwardingRuleOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRule) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The IP protocol used by the GA instance.
+// `order` - Forwarding priority.
+// `ruleActionType` - Forward action type.
+// `forwardGroupConfig` - Forwarding configuration.
+// `serverGroupTuples` - Terminal node group configuration.
+// `endpointGroupId` - Terminal node group ID.
+func (o GetForwardingRulesForwardingRuleOutput) RuleActions() GetForwardingRulesForwardingRuleRuleActionArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRule) []GetForwardingRulesForwardingRuleRuleAction {
+		return v.RuleActions
+	}).(GetForwardingRulesForwardingRuleRuleActionArrayOutput)
+}
+
+// Forward action.
+// `ruleConditionType` - Forwarding condition type.
+// `pathConfig` - Path configuration information.
+// `values` - The length of the path is 1-128 characters.
+// `hostConfig` - Domain name configuration information.
+// `values` - The domain name is 3-128 characters long.
+func (o GetForwardingRulesForwardingRuleOutput) RuleConditions() GetForwardingRulesForwardingRuleRuleConditionArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRule) []GetForwardingRulesForwardingRuleRuleCondition {
+		return v.RuleConditions
+	}).(GetForwardingRulesForwardingRuleRuleConditionArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRule)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleArrayOutput) ToGetForwardingRulesForwardingRuleArrayOutput() GetForwardingRulesForwardingRuleArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleArrayOutput) ToGetForwardingRulesForwardingRuleArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesForwardingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesForwardingRule {
+		return vs[0].([]GetForwardingRulesForwardingRule)[vs[1].(int)]
+	}).(GetForwardingRulesForwardingRuleOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleAction struct {
+	ForwardGroupConfigs []GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig `pulumi:"forwardGroupConfigs"`
+	Order               int                                                            `pulumi:"order"`
+	RuleActionType      string                                                         `pulumi:"ruleActionType"`
+}
+
+// GetForwardingRulesForwardingRuleRuleActionInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionArgs and GetForwardingRulesForwardingRuleRuleActionOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleActionArgs{...}
+type GetForwardingRulesForwardingRuleRuleActionInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleActionOutput() GetForwardingRulesForwardingRuleRuleActionOutput
+	ToGetForwardingRulesForwardingRuleRuleActionOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleActionOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleActionArgs struct {
+	ForwardGroupConfigs GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayInput `pulumi:"forwardGroupConfigs"`
+	Order               pulumi.IntInput                                                        `pulumi:"order"`
+	RuleActionType      pulumi.StringInput                                                     `pulumi:"ruleActionType"`
+}
+
+func (GetForwardingRulesForwardingRuleRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleAction)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionArgs) ToGetForwardingRulesForwardingRuleRuleActionOutput() GetForwardingRulesForwardingRuleRuleActionOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleActionOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionArgs) ToGetForwardingRulesForwardingRuleRuleActionOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleActionOutput)
+}
+
+// GetForwardingRulesForwardingRuleRuleActionArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionArray and GetForwardingRulesForwardingRuleRuleActionArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionArrayInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleActionArray{ GetForwardingRulesForwardingRuleRuleActionArgs{...} }
+type GetForwardingRulesForwardingRuleRuleActionArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleActionArrayOutput() GetForwardingRulesForwardingRuleRuleActionArrayOutput
+	ToGetForwardingRulesForwardingRuleRuleActionArrayOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleActionArrayOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleActionArray []GetForwardingRulesForwardingRuleRuleActionInput
+
+func (GetForwardingRulesForwardingRuleRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleAction)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionArray) ToGetForwardingRulesForwardingRuleRuleActionArrayOutput() GetForwardingRulesForwardingRuleRuleActionArrayOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionArray) ToGetForwardingRulesForwardingRuleRuleActionArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleActionArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleActionOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleAction)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionOutput) ToGetForwardingRulesForwardingRuleRuleActionOutput() GetForwardingRulesForwardingRuleRuleActionOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionOutput) ToGetForwardingRulesForwardingRuleRuleActionOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionOutput) ForwardGroupConfigs() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleAction) []GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig {
+		return v.ForwardGroupConfigs
+	}).(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput)
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleAction) int { return v.Order }).(pulumi.IntOutput)
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionOutput) RuleActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleAction) string { return v.RuleActionType }).(pulumi.StringOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleAction)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionArrayOutput) ToGetForwardingRulesForwardingRuleRuleActionArrayOutput() GetForwardingRulesForwardingRuleRuleActionArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionArrayOutput) ToGetForwardingRulesForwardingRuleRuleActionArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesForwardingRuleRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesForwardingRuleRuleAction {
+		return vs[0].([]GetForwardingRulesForwardingRuleRuleAction)[vs[1].(int)]
+	}).(GetForwardingRulesForwardingRuleRuleActionOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig struct {
+	ServerGroupTuples []GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
+}
+
+// GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs and GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs{...}
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput
+	ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs struct {
+	ServerGroupTuples GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
+}
+
+func (GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput)
+}
+
+// GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArray and GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArray{ GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs{...} }
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput
+	ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArray []GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigInput
+
+func (GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArray) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArray) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig) []GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
+		return v.ServerGroupTuples
+	}).(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig {
+		return vs[0].([]GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig)[vs[1].(int)]
+	}).(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple struct {
+	EndpointGroupId string `pulumi:"endpointGroupId"`
+}
+
+// GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs and GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...}
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput
+	ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
+	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
+}
+
+func (GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+// GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray and GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray{ GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{...} }
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput
+	ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray []GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput
+
+func (GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) EndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple) string {
+		return v.EndpointGroupId
+	}).(pulumi.StringOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput() GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) ToGetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
+		return vs[0].([]GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple)[vs[1].(int)]
+	}).(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleCondition struct {
+	HostConfigs       []GetForwardingRulesForwardingRuleRuleConditionHostConfig `pulumi:"hostConfigs"`
+	PathConfigs       []GetForwardingRulesForwardingRuleRuleConditionPathConfig `pulumi:"pathConfigs"`
+	RuleConditionType string                                                    `pulumi:"ruleConditionType"`
+}
+
+// GetForwardingRulesForwardingRuleRuleConditionInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionArgs and GetForwardingRulesForwardingRuleRuleConditionOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleConditionArgs{...}
+type GetForwardingRulesForwardingRuleRuleConditionInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleConditionOutput() GetForwardingRulesForwardingRuleRuleConditionOutput
+	ToGetForwardingRulesForwardingRuleRuleConditionOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleConditionOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionArgs struct {
+	HostConfigs       GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayInput `pulumi:"hostConfigs"`
+	PathConfigs       GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayInput `pulumi:"pathConfigs"`
+	RuleConditionType pulumi.StringInput                                                `pulumi:"ruleConditionType"`
+}
+
+func (GetForwardingRulesForwardingRuleRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleCondition)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionArgs) ToGetForwardingRulesForwardingRuleRuleConditionOutput() GetForwardingRulesForwardingRuleRuleConditionOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleConditionOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionArgs) ToGetForwardingRulesForwardingRuleRuleConditionOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleConditionOutput)
+}
+
+// GetForwardingRulesForwardingRuleRuleConditionArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionArray and GetForwardingRulesForwardingRuleRuleConditionArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionArrayInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleConditionArray{ GetForwardingRulesForwardingRuleRuleConditionArgs{...} }
+type GetForwardingRulesForwardingRuleRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleConditionArrayOutput() GetForwardingRulesForwardingRuleRuleConditionArrayOutput
+	ToGetForwardingRulesForwardingRuleRuleConditionArrayOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleConditionArrayOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionArray []GetForwardingRulesForwardingRuleRuleConditionInput
+
+func (GetForwardingRulesForwardingRuleRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleCondition)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionArray) ToGetForwardingRulesForwardingRuleRuleConditionArrayOutput() GetForwardingRulesForwardingRuleRuleConditionArrayOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionArray) ToGetForwardingRulesForwardingRuleRuleConditionArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleConditionArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleCondition)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionOutput) ToGetForwardingRulesForwardingRuleRuleConditionOutput() GetForwardingRulesForwardingRuleRuleConditionOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionOutput) ToGetForwardingRulesForwardingRuleRuleConditionOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionOutput) HostConfigs() GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleCondition) []GetForwardingRulesForwardingRuleRuleConditionHostConfig {
+		return v.HostConfigs
+	}).(GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput)
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionOutput) PathConfigs() GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleCondition) []GetForwardingRulesForwardingRuleRuleConditionPathConfig {
+		return v.PathConfigs
+	}).(GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput)
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionOutput) RuleConditionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleCondition) string { return v.RuleConditionType }).(pulumi.StringOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleCondition)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionArrayOutput) ToGetForwardingRulesForwardingRuleRuleConditionArrayOutput() GetForwardingRulesForwardingRuleRuleConditionArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionArrayOutput) ToGetForwardingRulesForwardingRuleRuleConditionArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesForwardingRuleRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesForwardingRuleRuleCondition {
+		return vs[0].([]GetForwardingRulesForwardingRuleRuleCondition)[vs[1].(int)]
+	}).(GetForwardingRulesForwardingRuleRuleConditionOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionHostConfig struct {
+	Values []string `pulumi:"values"`
+}
+
+// GetForwardingRulesForwardingRuleRuleConditionHostConfigInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs and GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionHostConfigInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs{...}
+type GetForwardingRulesForwardingRuleRuleConditionHostConfigInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleConditionHostConfigOutput() GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput
+	ToGetForwardingRulesForwardingRuleRuleConditionHostConfigOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs struct {
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs) ToGetForwardingRulesForwardingRuleRuleConditionHostConfigOutput() GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleConditionHostConfigOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs) ToGetForwardingRulesForwardingRuleRuleConditionHostConfigOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput)
+}
+
+// GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionHostConfigArray and GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleConditionHostConfigArray{ GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs{...} }
+type GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput() GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput
+	ToGetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionHostConfigArray []GetForwardingRulesForwardingRuleRuleConditionHostConfigInput
+
+func (GetForwardingRulesForwardingRuleRuleConditionHostConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionHostConfigArray) ToGetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput() GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionHostConfigArray) ToGetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput) ToGetForwardingRulesForwardingRuleRuleConditionHostConfigOutput() GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput) ToGetForwardingRulesForwardingRuleRuleConditionHostConfigOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleConditionHostConfig)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput) ToGetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput() GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput) ToGetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesForwardingRuleRuleConditionHostConfig {
+		return vs[0].([]GetForwardingRulesForwardingRuleRuleConditionHostConfig)[vs[1].(int)]
+	}).(GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionPathConfig struct {
+	Values []string `pulumi:"values"`
+}
+
+// GetForwardingRulesForwardingRuleRuleConditionPathConfigInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs and GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionPathConfigInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs{...}
+type GetForwardingRulesForwardingRuleRuleConditionPathConfigInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleConditionPathConfigOutput() GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput
+	ToGetForwardingRulesForwardingRuleRuleConditionPathConfigOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs struct {
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs) ToGetForwardingRulesForwardingRuleRuleConditionPathConfigOutput() GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleConditionPathConfigOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs) ToGetForwardingRulesForwardingRuleRuleConditionPathConfigOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput)
+}
+
+// GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayInput is an input type that accepts GetForwardingRulesForwardingRuleRuleConditionPathConfigArray and GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayInput` via:
+//
+//          GetForwardingRulesForwardingRuleRuleConditionPathConfigArray{ GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs{...} }
+type GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput() GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput
+	ToGetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutputWithContext(context.Context) GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionPathConfigArray []GetForwardingRulesForwardingRuleRuleConditionPathConfigInput
+
+func (GetForwardingRulesForwardingRuleRuleConditionPathConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionPathConfigArray) ToGetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput() GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput {
+	return i.ToGetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesForwardingRuleRuleConditionPathConfigArray) ToGetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput) ToGetForwardingRulesForwardingRuleRuleConditionPathConfigOutput() GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput) ToGetForwardingRulesForwardingRuleRuleConditionPathConfigOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesForwardingRuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesForwardingRuleRuleConditionPathConfig)(nil)).Elem()
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput) ToGetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput() GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput) ToGetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutputWithContext(ctx context.Context) GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesForwardingRuleRuleConditionPathConfig {
+		return vs[0].([]GetForwardingRulesForwardingRuleRuleConditionPathConfig)[vs[1].(int)]
+	}).(GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput)
+}
+
 type GetIpSetsSet struct {
 	// The ID of an acceleration region.
 	AccelerateRegionId string `pulumi:"accelerateRegionId"`
@@ -2132,6 +3532,17 @@ func init() {
 	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(EndpointGroupPortOverridesOutput{})
 	pulumi.RegisterOutputType(EndpointGroupPortOverridesPtrOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleActionOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleActionForwardGroupConfigOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleConditionOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleConditionHostConfigOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleConditionHostConfigArrayOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleConditionPathConfigOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleConditionPathConfigPtrOutput{})
 	pulumi.RegisterOutputType(ListenerCertificateOutput{})
 	pulumi.RegisterOutputType(ListenerCertificateArrayOutput{})
 	pulumi.RegisterOutputType(ListenerPortRangeOutput{})
@@ -2150,6 +3561,20 @@ func init() {
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupEndpointConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupPortOverrideOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupPortOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleActionOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleConditionOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleConditionHostConfigOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleConditionPathConfigOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetIpSetsSetOutput{})
 	pulumi.RegisterOutputType(GetIpSetsSetArrayOutput{})
 	pulumi.RegisterOutputType(GetListenersListenerOutput{})

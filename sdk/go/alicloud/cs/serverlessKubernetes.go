@@ -51,7 +51,7 @@ type ServerlessKubernetes struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// Default nil, A map of tags assigned to the kubernetes cluster .
+	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -127,7 +127,7 @@ type serverlessKubernetesState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Default nil, A map of tags assigned to the kubernetes cluster .
+	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version *string `pulumi:"version"`
@@ -172,7 +172,7 @@ type ServerlessKubernetesState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
-	// Default nil, A map of tags assigned to the kubernetes cluster .
+	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags pulumi.MapInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version pulumi.StringPtrInput
@@ -221,7 +221,7 @@ type serverlessKubernetesArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Default nil, A map of tags assigned to the kubernetes cluster .
+	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version *string `pulumi:"version"`
@@ -267,7 +267,7 @@ type ServerlessKubernetesArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
-	// Default nil, A map of tags assigned to the kubernetes cluster .
+	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags pulumi.MapInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version pulumi.StringPtrInput

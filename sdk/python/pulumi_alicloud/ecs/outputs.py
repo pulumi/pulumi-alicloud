@@ -12,15 +12,24 @@ from . import outputs
 __all__ = [
     'AutoProvisioningGroupLaunchTemplateConfig',
     'DedicatedHostNetworkAttribute',
+    'EcsLaunchTemplateDataDisk',
+    'EcsLaunchTemplateNetworkInterfaces',
+    'EcsLaunchTemplateSystemDisk',
     'ImageDiskDeviceMapping',
     'ImageImportDiskDeviceMapping',
     'InstanceDataDisk',
     'LaunchTemplateDataDisk',
     'LaunchTemplateNetworkInterfaces',
+    'LaunchTemplateSystemDisk',
     'GetAutoSnapshotPoliciesPolicyResult',
     'GetCommandsCommandResult',
     'GetDedicatedHostsHostResult',
     'GetDisksDiskResult',
+    'GetEcsLaunchTemplatesTemplateResult',
+    'GetEcsLaunchTemplatesTemplateDataDiskResult',
+    'GetEcsLaunchTemplatesTemplateNetworkInterfaceResult',
+    'GetEcsLaunchTemplatesTemplateSystemDiskResult',
+    'GetEcsSnapshotsSnapshotResult',
     'GetEipsEipResult',
     'GetHpcClustersClusterResult',
     'GetImagesImageResult',
@@ -114,6 +123,276 @@ class DedicatedHostNetworkAttribute(dict):
         The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
         """
         return pulumi.get(self, "udp_timeout")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EcsLaunchTemplateDataDisk(dict):
+    def __init__(__self__, *,
+                 category: Optional[str] = None,
+                 delete_with_instance: Optional[bool] = None,
+                 description: Optional[str] = None,
+                 encrypted: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 performance_level: Optional[str] = None,
+                 size: Optional[int] = None,
+                 snapshot_id: Optional[str] = None):
+        """
+        :param str category: The category of the disk.
+        :param bool delete_with_instance: Indicates whether the data disk is released with the instance.
+        :param str description: The description of the data disk.
+        :param bool encrypted: Encrypted the data in this disk.
+        :param str name: The name of the data disk.
+        :param str performance_level: The performance level of the ESSD used as the data disk.
+        :param int size: The size of the data disk.
+        :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        """
+        The category of the disk.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> Optional[bool]:
+        """
+        Indicates whether the data disk is released with the instance.
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the data disk.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[bool]:
+        """
+        Encrypted the data in this disk.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the data disk.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        """
+        The performance level of the ESSD used as the data disk.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        """
+        The size of the data disk.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[str]:
+        """
+        The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EcsLaunchTemplateNetworkInterfaces(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 name: Optional[str] = None,
+                 primary_ip: Optional[str] = None,
+                 security_group_id: Optional[str] = None,
+                 vswitch_id: Optional[str] = None):
+        """
+        :param str description: The description of the data disk.
+        :param str name: The name of the data disk.
+        :param str primary_ip: The primary private IP address of the ENI.
+        :param str security_group_id: The security group ID must be one in the same VPC.
+        :param str vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if primary_ip is not None:
+            pulumi.set(__self__, "primary_ip", primary_ip)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the data disk.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the data disk.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="primaryIp")
+    def primary_ip(self) -> Optional[str]:
+        """
+        The primary private IP address of the ENI.
+        """
+        return pulumi.get(self, "primary_ip")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[str]:
+        """
+        The security group ID must be one in the same VPC.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[str]:
+        """
+        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EcsLaunchTemplateSystemDisk(dict):
+    def __init__(__self__, *,
+                 category: Optional[str] = None,
+                 delete_with_instance: Optional[bool] = None,
+                 description: Optional[str] = None,
+                 iops: Optional[str] = None,
+                 name: Optional[str] = None,
+                 performance_level: Optional[str] = None,
+                 size: Optional[int] = None):
+        """
+        :param str category: The category of the disk.
+        :param bool delete_with_instance: Indicates whether the data disk is released with the instance.
+        :param str description: The description of the data disk.
+        :param str iops: The Iops.
+        :param str name: The name of the data disk.
+        :param str performance_level: The performance level of the ESSD used as the data disk.
+        :param int size: The size of the data disk.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        """
+        The category of the disk.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> Optional[bool]:
+        """
+        Indicates whether the data disk is released with the instance.
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the data disk.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[str]:
+        """
+        The Iops.
+        """
+        return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the data disk.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        """
+        The performance level of the ESSD used as the data disk.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        """
+        The size of the data disk.
+        """
+        return pulumi.get(self, "size")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -416,6 +695,7 @@ class LaunchTemplateDataDisk(dict):
                  description: Optional[str] = None,
                  encrypted: Optional[bool] = None,
                  name: Optional[str] = None,
+                 performance_level: Optional[str] = None,
                  size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         """
@@ -447,6 +727,8 @@ class LaunchTemplateDataDisk(dict):
             pulumi.set(__self__, "encrypted", encrypted)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -496,6 +778,11 @@ class LaunchTemplateDataDisk(dict):
         The name of the data disk.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        return pulumi.get(self, "performance_level")
 
     @property
     @pulumi.getter
@@ -587,6 +874,112 @@ class LaunchTemplateNetworkInterfaces(dict):
         The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
         return pulumi.get(self, "vswitch_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class LaunchTemplateSystemDisk(dict):
+    def __init__(__self__, *,
+                 category: Optional[str] = None,
+                 delete_with_instance: Optional[bool] = None,
+                 description: Optional[str] = None,
+                 iops: Optional[str] = None,
+                 name: Optional[str] = None,
+                 performance_level: Optional[str] = None,
+                 size: Optional[int] = None):
+        """
+        :param str category: The category of the disk:
+               - cloud: Basic cloud disk.
+               - cloud_efficiency: Ultra cloud disk.
+               - cloud_ssd: SSD cloud Disks.
+               - ephemeral_ssd: local SSD Disks
+               - cloud_essd: ESSD cloud Disks.
+        :param bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+        :param str description: The description of the data disk.
+        :param str name: The name of the data disk.
+        :param int size: The size of the data disk.
+               - cloud：[5, 2000]
+               - cloud_efficiency：[20, 32768]
+               - cloud_ssd：[20, 32768]
+               - cloud_essd：[20, 32768]
+               - ephemeral_ssd: [5, 800]
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        """
+        The category of the disk:
+        - cloud: Basic cloud disk.
+        - cloud_efficiency: Ultra cloud disk.
+        - cloud_ssd: SSD cloud Disks.
+        - ephemeral_ssd: local SSD Disks
+        - cloud_essd: ESSD cloud Disks.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> Optional[bool]:
+        """
+        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the data disk.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[str]:
+        return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the data disk.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        """
+        The size of the data disk.
+        - cloud：[5, 2000]
+        - cloud_efficiency：[20, 32768]
+        - cloud_ssd：[20, 32768]
+        - cloud_essd：[20, 32768]
+        - ephemeral_ssd: [5, 800]
+        """
+        return pulumi.get(self, "size")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1330,6 +1723,1004 @@ class GetDisksDiskResult(dict):
         ```
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetEcsLaunchTemplatesTemplateResult(dict):
+    def __init__(__self__, *,
+                 auto_release_time: str,
+                 created_by: str,
+                 data_disks: Sequence['outputs.GetEcsLaunchTemplatesTemplateDataDiskResult'],
+                 default_version_number: int,
+                 deployment_set_id: str,
+                 description: str,
+                 enable_vm_os_config: bool,
+                 host_name: str,
+                 id: str,
+                 image_id: str,
+                 image_owner_alias: str,
+                 instance_charge_type: str,
+                 instance_name: str,
+                 instance_type: str,
+                 internet_charge_type: str,
+                 internet_max_bandwidth_in: int,
+                 internet_max_bandwidth_out: int,
+                 io_optimized: str,
+                 key_pair_name: str,
+                 latest_version_number: int,
+                 launch_template_id: str,
+                 launch_template_name: str,
+                 modified_time: str,
+                 network_interfaces: Sequence['outputs.GetEcsLaunchTemplatesTemplateNetworkInterfaceResult'],
+                 network_type: str,
+                 password_inherit: bool,
+                 period: int,
+                 private_ip_address: str,
+                 ram_role_name: str,
+                 resource_group_id: str,
+                 security_enhancement_strategy: str,
+                 security_group_id: str,
+                 security_group_ids: Sequence[str],
+                 spot_duration: str,
+                 spot_price_limit: float,
+                 spot_strategy: str,
+                 system_disks: Sequence['outputs.GetEcsLaunchTemplatesTemplateSystemDiskResult'],
+                 template_tags: Mapping[str, Any],
+                 user_data: str,
+                 version_description: str,
+                 vpc_id: str,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param str auto_release_time: Instance auto release time.
+        :param str created_by: CreatedBy.
+        :param Sequence['GetEcsLaunchTemplatesTemplateDataDiskArgs'] data_disks: The list of data disks created with instance.
+        :param int default_version_number: The Default Version Number.
+        :param str deployment_set_id: The Deployment Set Id.
+        :param str description: System disk description.
+        :param bool enable_vm_os_config: Whether to enable the instance operating system configuration.
+        :param str host_name: Instance host name.
+        :param str id: The ID of the Launch Template.
+        :param str image_id: The Image Id.
+        :param str image_owner_alias: Mirror source.
+        :param str instance_charge_type: Internet bandwidth billing method.
+        :param str instance_name: The Instance Name.
+        :param str instance_type: Instance type.
+        :param str internet_charge_type: Internet bandwidth billing method.
+        :param int internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+        :param int internet_max_bandwidth_out: Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+        :param str io_optimized: Whether it is an I/O-optimized instance or not.
+        :param str key_pair_name: The name of the key pair.
+        :param int latest_version_number: The Latest Version Number.
+        :param str launch_template_id: The ID of the Launch Template.
+        :param str launch_template_name: The Launch Template Name.
+        :param str modified_time: The Modified Time.
+        :param Sequence['GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs'] network_interfaces: The list of network interfaces created with instance.
+        :param str network_type: Network type of the instance.
+        :param bool password_inherit: Whether to use the password preset by the mirror.
+        :param int period: The subscription period of the instance.
+        :param str private_ip_address: The private IP address of the instance.
+        :param str ram_role_name: The RAM role name of the instance.
+        :param str resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
+        :param str security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge.
+        :param str security_group_id: The security group ID.
+        :param Sequence[str] security_group_ids: The security group IDs.
+        :param str spot_duration: The protection period of the preemptible instance.
+        :param float spot_price_limit: Sets the maximum hourly instance price.
+        :param str spot_strategy: The spot strategy for a Pay-As-You-Go instance.
+        :param Sequence['GetEcsLaunchTemplatesTemplateSystemDiskArgs'] system_disks: The System Disk.
+        :param Mapping[str, Any] template_tags: The template tags.
+        :param str user_data: The User Data.
+        :param str version_description: The Version Description.
+        :param str vpc_id: VpcId.
+        :param str vswitch_id: The vswitch id.
+        :param str zone_id: The Zone Id.
+        """
+        pulumi.set(__self__, "auto_release_time", auto_release_time)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "data_disks", data_disks)
+        pulumi.set(__self__, "default_version_number", default_version_number)
+        pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enable_vm_os_config", enable_vm_os_config)
+        pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "image_owner_alias", image_owner_alias)
+        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
+        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+        pulumi.set(__self__, "io_optimized", io_optimized)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "latest_version_number", latest_version_number)
+        pulumi.set(__self__, "launch_template_id", launch_template_id)
+        pulumi.set(__self__, "launch_template_name", launch_template_name)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "password_inherit", password_inherit)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "private_ip_address", private_ip_address)
+        pulumi.set(__self__, "ram_role_name", ram_role_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "spot_duration", spot_duration)
+        pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+        pulumi.set(__self__, "spot_strategy", spot_strategy)
+        pulumi.set(__self__, "system_disks", system_disks)
+        pulumi.set(__self__, "template_tags", template_tags)
+        pulumi.set(__self__, "user_data", user_data)
+        pulumi.set(__self__, "version_description", version_description)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="autoReleaseTime")
+    def auto_release_time(self) -> str:
+        """
+        Instance auto release time.
+        """
+        return pulumi.get(self, "auto_release_time")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        CreatedBy.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> Sequence['outputs.GetEcsLaunchTemplatesTemplateDataDiskResult']:
+        """
+        The list of data disks created with instance.
+        """
+        return pulumi.get(self, "data_disks")
+
+    @property
+    @pulumi.getter(name="defaultVersionNumber")
+    def default_version_number(self) -> int:
+        """
+        The Default Version Number.
+        """
+        return pulumi.get(self, "default_version_number")
+
+    @property
+    @pulumi.getter(name="deploymentSetId")
+    def deployment_set_id(self) -> str:
+        """
+        The Deployment Set Id.
+        """
+        return pulumi.get(self, "deployment_set_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        System disk description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableVmOsConfig")
+    def enable_vm_os_config(self) -> bool:
+        """
+        Whether to enable the instance operating system configuration.
+        """
+        return pulumi.get(self, "enable_vm_os_config")
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> str:
+        """
+        Instance host name.
+        """
+        return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Launch Template.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        """
+        The Image Id.
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="imageOwnerAlias")
+    def image_owner_alias(self) -> str:
+        """
+        Mirror source.
+        """
+        return pulumi.get(self, "image_owner_alias")
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> str:
+        """
+        Internet bandwidth billing method.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The Instance Name.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        Instance type.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        """
+        Internet bandwidth billing method.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="internetMaxBandwidthIn")
+    def internet_max_bandwidth_in(self) -> int:
+        """
+        The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+        """
+        return pulumi.get(self, "internet_max_bandwidth_in")
+
+    @property
+    @pulumi.getter(name="internetMaxBandwidthOut")
+    def internet_max_bandwidth_out(self) -> int:
+        """
+        Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+        """
+        return pulumi.get(self, "internet_max_bandwidth_out")
+
+    @property
+    @pulumi.getter(name="ioOptimized")
+    def io_optimized(self) -> str:
+        """
+        Whether it is an I/O-optimized instance or not.
+        """
+        return pulumi.get(self, "io_optimized")
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> str:
+        """
+        The name of the key pair.
+        """
+        return pulumi.get(self, "key_pair_name")
+
+    @property
+    @pulumi.getter(name="latestVersionNumber")
+    def latest_version_number(self) -> int:
+        """
+        The Latest Version Number.
+        """
+        return pulumi.get(self, "latest_version_number")
+
+    @property
+    @pulumi.getter(name="launchTemplateId")
+    def launch_template_id(self) -> str:
+        """
+        The ID of the Launch Template.
+        """
+        return pulumi.get(self, "launch_template_id")
+
+    @property
+    @pulumi.getter(name="launchTemplateName")
+    def launch_template_name(self) -> str:
+        """
+        The Launch Template Name.
+        """
+        return pulumi.get(self, "launch_template_name")
+
+    @property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> str:
+        """
+        The Modified Time.
+        """
+        return pulumi.get(self, "modified_time")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Sequence['outputs.GetEcsLaunchTemplatesTemplateNetworkInterfaceResult']:
+        """
+        The list of network interfaces created with instance.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        Network type of the instance.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="passwordInherit")
+    def password_inherit(self) -> bool:
+        """
+        Whether to use the password preset by the mirror.
+        """
+        return pulumi.get(self, "password_inherit")
+
+    @property
+    @pulumi.getter
+    def period(self) -> int:
+        """
+        The subscription period of the instance.
+        """
+        return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> str:
+        """
+        The private IP address of the instance.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> str:
+        """
+        The RAM role name of the instance.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityEnhancementStrategy")
+    def security_enhancement_strategy(self) -> str:
+        """
+        Whether or not to activate the security enhancement feature and install network security software free of charge.
+        """
+        return pulumi.get(self, "security_enhancement_strategy")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The security group ID.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Sequence[str]:
+        """
+        The security group IDs.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="spotDuration")
+    def spot_duration(self) -> str:
+        """
+        The protection period of the preemptible instance.
+        """
+        return pulumi.get(self, "spot_duration")
+
+    @property
+    @pulumi.getter(name="spotPriceLimit")
+    def spot_price_limit(self) -> float:
+        """
+        Sets the maximum hourly instance price.
+        """
+        return pulumi.get(self, "spot_price_limit")
+
+    @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> str:
+        """
+        The spot strategy for a Pay-As-You-Go instance.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @property
+    @pulumi.getter(name="systemDisks")
+    def system_disks(self) -> Sequence['outputs.GetEcsLaunchTemplatesTemplateSystemDiskResult']:
+        """
+        The System Disk.
+        """
+        return pulumi.get(self, "system_disks")
+
+    @property
+    @pulumi.getter(name="templateTags")
+    def template_tags(self) -> Mapping[str, Any]:
+        """
+        The template tags.
+        """
+        return pulumi.get(self, "template_tags")
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> str:
+        """
+        The User Data.
+        """
+        return pulumi.get(self, "user_data")
+
+    @property
+    @pulumi.getter(name="versionDescription")
+    def version_description(self) -> str:
+        """
+        The Version Description.
+        """
+        return pulumi.get(self, "version_description")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        VpcId.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The Zone Id.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
+    def __init__(__self__, *,
+                 category: str,
+                 delete_with_instance: bool,
+                 description: str,
+                 encrypted: bool,
+                 name: str,
+                 performance_level: str,
+                 size: int,
+                 snapshot_id: str):
+        """
+        :param str category: The category of the system disk.
+        :param bool delete_with_instance: Specifies whether to release the system disk when the instance is released.
+        :param str description: System disk description.
+        :param bool encrypted: Encrypted the data in this disk.
+        :param str name: System disk name.
+        :param str performance_level: The performance level of the ESSD used as the system disk.
+        :param int size: Size of the system disk, measured in GB.
+        :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        """
+        The category of the system disk.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> bool:
+        """
+        Specifies whether to release the system disk when the instance is released.
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        System disk description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> bool:
+        """
+        Encrypted the data in this disk.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        System disk name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> str:
+        """
+        The performance level of the ESSD used as the system disk.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        Size of the system disk, measured in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
+        """
+        The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 name: str,
+                 primary_ip: str,
+                 security_group_id: str,
+                 vswitch_id: str):
+        """
+        :param str description: System disk description.
+        :param str name: System disk name.
+        :param str primary_ip: The primary private IP address of the ENI.
+        :param str security_group_id: The security group ID.
+        :param str vswitch_id: The vswitch id.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "primary_ip", primary_ip)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        System disk description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        System disk name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="primaryIp")
+    def primary_ip(self) -> str:
+        """
+        The primary private IP address of the ENI.
+        """
+        return pulumi.get(self, "primary_ip")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The security group ID.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetEcsLaunchTemplatesTemplateSystemDiskResult(dict):
+    def __init__(__self__, *,
+                 category: str,
+                 delete_with_instance: bool,
+                 description: str,
+                 iops: str,
+                 name: str,
+                 performance_level: str,
+                 size: int):
+        """
+        :param str category: The category of the system disk.
+        :param bool delete_with_instance: Specifies whether to release the system disk when the instance is released.
+        :param str description: System disk description.
+        :param str iops: The Iops.
+        :param str name: System disk name.
+        :param str performance_level: The performance level of the ESSD used as the system disk.
+        :param int size: Size of the system disk, measured in GB.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "iops", iops)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        """
+        The category of the system disk.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> bool:
+        """
+        Specifies whether to release the system disk when the instance is released.
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        System disk description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def iops(self) -> str:
+        """
+        The Iops.
+        """
+        return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        System disk name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> str:
+        """
+        The performance level of the ESSD used as the system disk.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        Size of the system disk, measured in GB.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetEcsSnapshotsSnapshotResult(dict):
+    def __init__(__self__, *,
+                 category: str,
+                 creation_time: str,
+                 description: str,
+                 disk_id: str,
+                 encrypted: bool,
+                 id: str,
+                 instant_access: bool,
+                 instant_access_retention_days: int,
+                 name: str,
+                 product_code: str,
+                 progress: str,
+                 remain_time: int,
+                 resource_group_id: str,
+                 retention_days: int,
+                 snapshot_id: str,
+                 snapshot_name: str,
+                 snapshot_sn: str,
+                 snapshot_type: str,
+                 source_disk_id: str,
+                 source_disk_size: str,
+                 source_disk_type: str,
+                 source_storage_type: str,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 type: str,
+                 usage: str):
+        """
+        :param str category: The category of the snapshot.
+        :param str description: The description of the snapshot.
+        :param str disk_id: The source disk id.
+        :param bool encrypted: Whether the snapshot is encrypted.
+        :param str id: The ID of the Snapshot.
+        :param bool instant_access: Whether snapshot speed availability is enabled.
+        :param int instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        :param str product_code: The product number inherited from the mirror market.
+        :param str progress: Snapshot creation progress, in percentage.
+        :param int remain_time: Remaining completion time for the snapshot being created.
+        :param str resource_group_id: The resource group id.
+        :param int retention_days: Automatic snapshot retention days.
+        :param str snapshot_id: The snapshot id.
+        :param str snapshot_name: Snapshot Display Name.
+        :param str snapshot_sn: The serial number of the snapshot.
+        :param str snapshot_type: Snapshot creation type.
+        :param str source_disk_size: Source disk capacity.
+        :param str source_disk_type: Source disk attributes.
+        :param str source_storage_type: Original disk type.
+        :param str status: The status of the snapshot.
+        :param Mapping[str, Any] tags: The tags.
+        :param str usage: A resource type that has a reference relationship.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instant_access", instant_access)
+        pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "remain_time", remain_time)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        pulumi.set(__self__, "snapshot_sn", snapshot_sn)
+        pulumi.set(__self__, "snapshot_type", snapshot_type)
+        pulumi.set(__self__, "source_disk_id", source_disk_id)
+        pulumi.set(__self__, "source_disk_size", source_disk_size)
+        pulumi.set(__self__, "source_disk_type", source_disk_type)
+        pulumi.set(__self__, "source_storage_type", source_storage_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "usage", usage)
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        """
+        The category of the snapshot.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> str:
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the snapshot.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        """
+        The source disk id.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> bool:
+        """
+        Whether the snapshot is encrypted.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Snapshot.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instantAccess")
+    def instant_access(self) -> bool:
+        """
+        Whether snapshot speed availability is enabled.
+        """
+        return pulumi.get(self, "instant_access")
+
+    @property
+    @pulumi.getter(name="instantAccessRetentionDays")
+    def instant_access_retention_days(self) -> int:
+        """
+        Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        """
+        return pulumi.get(self, "instant_access_retention_days")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="productCode")
+    def product_code(self) -> str:
+        """
+        The product number inherited from the mirror market.
+        """
+        return pulumi.get(self, "product_code")
+
+    @property
+    @pulumi.getter
+    def progress(self) -> str:
+        """
+        Snapshot creation progress, in percentage.
+        """
+        return pulumi.get(self, "progress")
+
+    @property
+    @pulumi.getter(name="remainTime")
+    def remain_time(self) -> int:
+        """
+        Remaining completion time for the snapshot being created.
+        """
+        return pulumi.get(self, "remain_time")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The resource group id.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> int:
+        """
+        Automatic snapshot retention days.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
+        """
+        The snapshot id.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> str:
+        """
+        Snapshot Display Name.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="snapshotSn")
+    def snapshot_sn(self) -> str:
+        """
+        The serial number of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_sn")
+
+    @property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> str:
+        """
+        Snapshot creation type.
+        """
+        return pulumi.get(self, "snapshot_type")
+
+    @property
+    @pulumi.getter(name="sourceDiskId")
+    def source_disk_id(self) -> str:
+        return pulumi.get(self, "source_disk_id")
+
+    @property
+    @pulumi.getter(name="sourceDiskSize")
+    def source_disk_size(self) -> str:
+        """
+        Source disk capacity.
+        """
+        return pulumi.get(self, "source_disk_size")
+
+    @property
+    @pulumi.getter(name="sourceDiskType")
+    def source_disk_type(self) -> str:
+        """
+        Source disk attributes.
+        """
+        return pulumi.get(self, "source_disk_type")
+
+    @property
+    @pulumi.getter(name="sourceStorageType")
+    def source_storage_type(self) -> str:
+        """
+        Original disk type.
+        """
+        return pulumi.get(self, "source_storage_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the snapshot.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def usage(self) -> str:
+        """
+        A resource type that has a reference relationship.
+        """
+        return pulumi.get(self, "usage")
 
 
 @pulumi.output_type
@@ -3029,21 +4420,32 @@ class GetSecurityGroupsGroupResult(dict):
 @pulumi.output_type
 class GetSnapshotsSnapshotResult(dict):
     def __init__(__self__, *,
+                 category: str,
                  creation_time: str,
                  description: str,
+                 disk_id: str,
                  encrypted: bool,
                  id: str,
+                 instant_access: bool,
+                 instant_access_retention_days: int,
                  name: str,
                  product_code: str,
                  progress: str,
                  remain_time: int,
+                 resource_group_id: str,
                  retention_days: int,
+                 snapshot_id: str,
+                 snapshot_name: str,
+                 snapshot_sn: str,
+                 snapshot_type: str,
                  source_disk_id: str,
                  source_disk_size: str,
                  source_disk_type: str,
+                 source_storage_type: str,
                  status: str,
-                 usage: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Mapping[str, Any],
+                 type: str,
+                 usage: str):
         """
         :param str creation_time: Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
         :param str description: Description of the snapshot.
@@ -3058,25 +4460,40 @@ class GetSnapshotsSnapshotResult(dict):
         :param str source_disk_size: Size of the source disk, measured in GB.
         :param str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
         :param str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
-        :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
         :param Mapping[str, Any] tags: A map of tags assigned to the snapshot.
+        :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
         """
+        pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_id", disk_id)
         pulumi.set(__self__, "encrypted", encrypted)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instant_access", instant_access)
+        pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "product_code", product_code)
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "remain_time", remain_time)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        pulumi.set(__self__, "snapshot_sn", snapshot_sn)
+        pulumi.set(__self__, "snapshot_type", snapshot_type)
         pulumi.set(__self__, "source_disk_id", source_disk_id)
         pulumi.set(__self__, "source_disk_size", source_disk_size)
         pulumi.set(__self__, "source_disk_type", source_disk_type)
+        pulumi.set(__self__, "source_storage_type", source_storage_type)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "usage", usage)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        return pulumi.get(self, "category")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -3095,6 +4512,11 @@ class GetSnapshotsSnapshotResult(dict):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        return pulumi.get(self, "disk_id")
+
+    @property
     @pulumi.getter
     def encrypted(self) -> bool:
         """
@@ -3109,6 +4531,16 @@ class GetSnapshotsSnapshotResult(dict):
         ID of the snapshot.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instantAccess")
+    def instant_access(self) -> bool:
+        return pulumi.get(self, "instant_access")
+
+    @property
+    @pulumi.getter(name="instantAccessRetentionDays")
+    def instant_access_retention_days(self) -> int:
+        return pulumi.get(self, "instant_access_retention_days")
 
     @property
     @pulumi.getter
@@ -3143,12 +4575,37 @@ class GetSnapshotsSnapshotResult(dict):
         return pulumi.get(self, "remain_time")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        return pulumi.get(self, "resource_group_id")
+
+    @property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> int:
         """
         The number of days that an automatic snapshot retains in the console for your instance.
         """
         return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> str:
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="snapshotSn")
+    def snapshot_sn(self) -> str:
+        return pulumi.get(self, "snapshot_sn")
+
+    @property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> str:
+        return pulumi.get(self, "snapshot_type")
 
     @property
     @pulumi.getter(name="sourceDiskId")
@@ -3175,6 +4632,11 @@ class GetSnapshotsSnapshotResult(dict):
         return pulumi.get(self, "source_disk_type")
 
     @property
+    @pulumi.getter(name="sourceStorageType")
+    def source_storage_type(self) -> str:
+        return pulumi.get(self, "source_storage_type")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
@@ -3184,18 +4646,23 @@ class GetSnapshotsSnapshotResult(dict):
 
     @property
     @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the snapshot.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
     def usage(self) -> str:
         """
         Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
         """
         return pulumi.get(self, "usage")
-
-    @property
-    @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
-        """
-        A map of tags assigned to the snapshot.
-        """
-        return pulumi.get(self, "tags")
 
 

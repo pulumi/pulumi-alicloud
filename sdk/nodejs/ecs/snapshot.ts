@@ -5,25 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ECS snapshot resource.
- *
- * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const snapshot = new alicloud.ecs.Snapshot("snapshot", {
- *     diskId: alicloud_disk_attachment["instance-attachment"].disk_id,
- *     description: "this snapshot is created for testing",
- *     tags: {
- *         version: "1.2",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Snapshot can be imported using the id, e.g.
@@ -60,6 +41,7 @@ export class Snapshot extends pulumi.CustomResource {
         return obj['__pulumiType'] === Snapshot.__pulumiType;
     }
 
+    public readonly category!: pulumi.Output<string | undefined>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
@@ -68,15 +50,23 @@ export class Snapshot extends pulumi.CustomResource {
      * The source disk ID.
      */
     public readonly diskId!: pulumi.Output<string>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
+    public readonly instantAccess!: pulumi.Output<boolean | undefined>;
+    public readonly instantAccessRetentionDays!: pulumi.Output<number | undefined>;
     /**
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly retentionDays!: pulumi.Output<number | undefined>;
+    public readonly snapshotName!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -95,21 +85,35 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
+            inputs["category"] = state ? state.category : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["diskId"] = state ? state.diskId : undefined;
+            inputs["force"] = state ? state.force : undefined;
+            inputs["instantAccess"] = state ? state.instantAccess : undefined;
+            inputs["instantAccessRetentionDays"] = state ? state.instantAccessRetentionDays : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["retentionDays"] = state ? state.retentionDays : undefined;
+            inputs["snapshotName"] = state ? state.snapshotName : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
             if ((!args || args.diskId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
+            inputs["category"] = args ? args.category : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["diskId"] = args ? args.diskId : undefined;
+            inputs["force"] = args ? args.force : undefined;
+            inputs["instantAccess"] = args ? args.instantAccess : undefined;
+            inputs["instantAccessRetentionDays"] = args ? args.instantAccessRetentionDays : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["retentionDays"] = args ? args.retentionDays : undefined;
+            inputs["snapshotName"] = args ? args.snapshotName : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -122,6 +126,7 @@ export class Snapshot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Snapshot resources.
  */
 export interface SnapshotState {
+    readonly category?: pulumi.Input<string>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
@@ -130,15 +135,23 @@ export interface SnapshotState {
      * The source disk ID.
      */
     readonly diskId?: pulumi.Input<string>;
+    readonly force?: pulumi.Input<boolean>;
+    readonly instantAccess?: pulumi.Input<boolean>;
+    readonly instantAccessRetentionDays?: pulumi.Input<number>;
     /**
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    readonly retentionDays?: pulumi.Input<number>;
+    readonly snapshotName?: pulumi.Input<string>;
+    readonly status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -149,6 +162,7 @@ export interface SnapshotState {
  * The set of arguments for constructing a Snapshot resource.
  */
 export interface SnapshotArgs {
+    readonly category?: pulumi.Input<string>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
@@ -157,15 +171,22 @@ export interface SnapshotArgs {
      * The source disk ID.
      */
     readonly diskId: pulumi.Input<string>;
+    readonly force?: pulumi.Input<boolean>;
+    readonly instantAccess?: pulumi.Input<boolean>;
+    readonly instantAccessRetentionDays?: pulumi.Input<number>;
     /**
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    readonly retentionDays?: pulumi.Input<number>;
+    readonly snapshotName?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

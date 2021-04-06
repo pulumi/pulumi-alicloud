@@ -70,8 +70,12 @@ type Kubernetes struct {
 	MasterAutoRenewPeriod pulumi.IntPtrOutput `pulumi:"masterAutoRenewPeriod"`
 	// The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	MasterDiskCategory pulumi.StringPtrOutput `pulumi:"masterDiskCategory"`
+	// Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	MasterDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"masterDiskPerformanceLevel"`
 	// The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
 	MasterDiskSize pulumi.IntPtrOutput `pulumi:"masterDiskSize"`
+	// Master node system disk auto snapshot policy.
+	MasterDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"masterDiskSnapshotPolicyId"`
 	// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
 	MasterInstanceChargeType pulumi.StringPtrOutput `pulumi:"masterInstanceChargeType"`
 	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -128,7 +132,7 @@ type Kubernetes struct {
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringOutput `pulumi:"slbIntranet"`
-	// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints KubernetesTaintArrayOutput `pulumi:"taints"`
@@ -149,14 +153,15 @@ type Kubernetes struct {
 	WorkerDataDiskCategory pulumi.StringPtrOutput `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     pulumi.IntPtrOutput    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-	// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks KubernetesWorkerDataDiskArrayOutput `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrOutput `pulumi:"workerDiskCategory"`
+	// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	WorkerDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"workerDiskPerformanceLevel"`
 	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrOutput `pulumi:"workerDiskSize"`
+	// Worker node system disk auto snapshot policy.
+	WorkerDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"workerDiskSnapshotPolicyId"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -267,8 +272,12 @@ type kubernetesState struct {
 	MasterAutoRenewPeriod *int `pulumi:"masterAutoRenewPeriod"`
 	// The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	MasterDiskCategory *string `pulumi:"masterDiskCategory"`
+	// Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	MasterDiskPerformanceLevel *string `pulumi:"masterDiskPerformanceLevel"`
 	// The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
 	MasterDiskSize *int `pulumi:"masterDiskSize"`
+	// Master node system disk auto snapshot policy.
+	MasterDiskSnapshotPolicyId *string `pulumi:"masterDiskSnapshotPolicyId"`
 	// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
 	MasterInstanceChargeType *string `pulumi:"masterInstanceChargeType"`
 	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -325,7 +334,7 @@ type kubernetesState struct {
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet *string `pulumi:"slbIntranet"`
-	// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints []KubernetesTaint `pulumi:"taints"`
@@ -346,14 +355,15 @@ type kubernetesState struct {
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-	// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []KubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
+	// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	WorkerDiskPerformanceLevel *string `pulumi:"workerDiskPerformanceLevel"`
 	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
+	// Worker node system disk auto snapshot policy.
+	WorkerDiskSnapshotPolicyId *string `pulumi:"workerDiskSnapshotPolicyId"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -421,8 +431,12 @@ type KubernetesState struct {
 	MasterAutoRenewPeriod pulumi.IntPtrInput
 	// The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	MasterDiskCategory pulumi.StringPtrInput
+	// Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	MasterDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
 	MasterDiskSize pulumi.IntPtrInput
+	// Master node system disk auto snapshot policy.
+	MasterDiskSnapshotPolicyId pulumi.StringPtrInput
 	// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
 	MasterInstanceChargeType pulumi.StringPtrInput
 	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -479,7 +493,7 @@ type KubernetesState struct {
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringPtrInput
-	// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
 	Tags pulumi.MapInput
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints KubernetesTaintArrayInput
@@ -500,14 +514,15 @@ type KubernetesState struct {
 	WorkerDataDiskCategory pulumi.StringPtrInput
 	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-	// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks KubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
+	// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	WorkerDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrInput
+	// Worker node system disk auto snapshot policy.
+	WorkerDiskSnapshotPolicyId pulumi.StringPtrInput
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -575,8 +590,12 @@ type kubernetesArgs struct {
 	MasterAutoRenewPeriod *int `pulumi:"masterAutoRenewPeriod"`
 	// The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	MasterDiskCategory *string `pulumi:"masterDiskCategory"`
+	// Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	MasterDiskPerformanceLevel *string `pulumi:"masterDiskPerformanceLevel"`
 	// The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
 	MasterDiskSize *int `pulumi:"masterDiskSize"`
+	// Master node system disk auto snapshot policy.
+	MasterDiskSnapshotPolicyId *string `pulumi:"masterDiskSnapshotPolicyId"`
 	// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
 	MasterInstanceChargeType *string `pulumi:"masterInstanceChargeType"`
 	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -624,7 +643,7 @@ type kubernetesArgs struct {
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
-	// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints []KubernetesTaint `pulumi:"taints"`
@@ -643,14 +662,15 @@ type kubernetesArgs struct {
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-	// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks []KubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
+	// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	WorkerDiskPerformanceLevel *string `pulumi:"workerDiskPerformanceLevel"`
 	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
+	// Worker node system disk auto snapshot policy.
+	WorkerDiskSnapshotPolicyId *string `pulumi:"workerDiskSnapshotPolicyId"`
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -711,8 +731,12 @@ type KubernetesArgs struct {
 	MasterAutoRenewPeriod pulumi.IntPtrInput
 	// The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	MasterDiskCategory pulumi.StringPtrInput
+	// Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	MasterDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
 	MasterDiskSize pulumi.IntPtrInput
+	// Master node system disk auto snapshot policy.
+	MasterDiskSnapshotPolicyId pulumi.StringPtrInput
 	// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
 	MasterInstanceChargeType pulumi.StringPtrInput
 	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -760,7 +784,7 @@ type KubernetesArgs struct {
 	ServiceCidr pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled pulumi.BoolPtrInput
-	// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
 	Tags pulumi.MapInput
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints KubernetesTaintArrayInput
@@ -779,14 +803,15 @@ type KubernetesArgs struct {
 	WorkerDataDiskCategory pulumi.StringPtrInput
 	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
-	// * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-	// * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-	// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
 	WorkerDataDisks KubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
+	// Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	WorkerDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrInput
+	// Worker node system disk auto snapshot policy.
+	WorkerDiskSnapshotPolicyId pulumi.StringPtrInput
 	// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
 	WorkerInstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.

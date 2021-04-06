@@ -25,7 +25,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.resourcemanager.ResourceDirectory("example", {});
+ * const example = new alicloud.resourcemanager.ResourceDirectory("example", {
+ *     // Enable the control policy
+ *     status: "Enabled",
+ * });
  * ```
  *
  * ## Import
@@ -76,6 +79,10 @@ export class ResourceDirectory extends pulumi.CustomResource {
      * The ID of the root folder.
      */
     public /*out*/ readonly rootFolderId!: pulumi.Output<string>;
+    /**
+     * The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+     */
+    public readonly status!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ResourceDirectory resource with the given unique name, arguments, and options.
@@ -93,8 +100,10 @@ export class ResourceDirectory extends pulumi.CustomResource {
             inputs["masterAccountId"] = state ? state.masterAccountId : undefined;
             inputs["masterAccountName"] = state ? state.masterAccountName : undefined;
             inputs["rootFolderId"] = state ? state.rootFolderId : undefined;
+            inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ResourceDirectoryArgs | undefined;
+            inputs["status"] = args ? args.status : undefined;
             inputs["masterAccountId"] = undefined /*out*/;
             inputs["masterAccountName"] = undefined /*out*/;
             inputs["rootFolderId"] = undefined /*out*/;
@@ -122,10 +131,18 @@ export interface ResourceDirectoryState {
      * The ID of the root folder.
      */
     readonly rootFolderId?: pulumi.Input<string>;
+    /**
+     * The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+     */
+    readonly status?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ResourceDirectory resource.
  */
 export interface ResourceDirectoryArgs {
+    /**
+     * The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+     */
+    readonly status?: pulumi.Input<string>;
 }

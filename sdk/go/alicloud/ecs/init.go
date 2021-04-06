@@ -35,6 +35,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewDisk(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ecs/diskAttachment:DiskAttachment":
 		r, err = NewDiskAttachment(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate":
+		r, err = NewEcsLaunchTemplate(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:ecs/ecsSnapshot:EcsSnapshot":
+		r, err = NewEcsSnapshot(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ecs/eip:Eip":
 		r, err = NewEip(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:ecs/eipAssociation:EipAssociation":
@@ -114,6 +118,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/diskAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/ecsLaunchTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/ecsSnapshot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

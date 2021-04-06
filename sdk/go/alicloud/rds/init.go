@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:rds/instance:Instance":
 		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:rds/rdsAccount:RdsAccount":
+		r, err = NewRdsAccount(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:rds/rdsParameterGroup:RdsParameterGroup":
 		r, err = NewRdsParameterGroup(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:rds/readOnlyInstance:ReadOnlyInstance":
@@ -79,6 +81,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"rds/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rds/rdsAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

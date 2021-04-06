@@ -831,13 +831,19 @@ func (o EdgeKubernetesLogConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type EdgeKubernetesWorkerDataDisk struct {
+	// Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	Category             *string `pulumi:"category"`
-	Device               *string `pulumi:"device"`
-	Encrypted            *string `pulumi:"encrypted"`
-	KmsKeyId             *string `pulumi:"kmsKeyId"`
+	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	Category *string `pulumi:"category"`
+	Device   *string `pulumi:"device"`
+	// Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
+	Encrypted *string `pulumi:"encrypted"`
+	KmsKeyId  *string `pulumi:"kmsKeyId"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The size of a data disk, at least 40. Unit: GiB.
 	Size       *string `pulumi:"size"`
 	SnapshotId *string `pulumi:"snapshotId"`
 }
@@ -854,13 +860,19 @@ type EdgeKubernetesWorkerDataDiskInput interface {
 }
 
 type EdgeKubernetesWorkerDataDiskArgs struct {
+	// Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	Category             pulumi.StringPtrInput `pulumi:"category"`
-	Device               pulumi.StringPtrInput `pulumi:"device"`
-	Encrypted            pulumi.StringPtrInput `pulumi:"encrypted"`
-	KmsKeyId             pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	Device   pulumi.StringPtrInput `pulumi:"device"`
+	// Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
+	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
+	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The size of a data disk, at least 40. Unit: GiB.
 	Size       pulumi.StringPtrInput `pulumi:"size"`
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
@@ -916,10 +928,12 @@ func (o EdgeKubernetesWorkerDataDiskOutput) ToEdgeKubernetesWorkerDataDiskOutput
 	return o
 }
 
+// Worker node data disk auto snapshot policy.
 func (o EdgeKubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 func (o EdgeKubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -928,6 +942,7 @@ func (o EdgeKubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
 func (o EdgeKubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
@@ -941,6 +956,12 @@ func (o EdgeKubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+func (o EdgeKubernetesWorkerDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of a data disk, at least 40. Unit: GiB.
 func (o EdgeKubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
@@ -2028,13 +2049,19 @@ func (o KubernetesTaintArrayOutput) Index(i pulumi.IntInput) KubernetesTaintOutp
 }
 
 type KubernetesWorkerDataDisk struct {
+	// Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	Category             *string `pulumi:"category"`
-	Device               *string `pulumi:"device"`
-	Encrypted            *string `pulumi:"encrypted"`
-	KmsKeyId             *string `pulumi:"kmsKeyId"`
+	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	Category *string `pulumi:"category"`
+	Device   *string `pulumi:"device"`
+	// Specifies whether to encrypt data disks. Valid values: true and false.
+	Encrypted *string `pulumi:"encrypted"`
+	KmsKeyId  *string `pulumi:"kmsKeyId"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
 	Size       *string `pulumi:"size"`
 	SnapshotId *string `pulumi:"snapshotId"`
 }
@@ -2051,13 +2078,19 @@ type KubernetesWorkerDataDiskInput interface {
 }
 
 type KubernetesWorkerDataDiskArgs struct {
+	// Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	Category             pulumi.StringPtrInput `pulumi:"category"`
-	Device               pulumi.StringPtrInput `pulumi:"device"`
-	Encrypted            pulumi.StringPtrInput `pulumi:"encrypted"`
-	KmsKeyId             pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	Device   pulumi.StringPtrInput `pulumi:"device"`
+	// Specifies whether to encrypt data disks. Valid values: true and false.
+	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
+	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
 	Size       pulumi.StringPtrInput `pulumi:"size"`
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
@@ -2113,10 +2146,12 @@ func (o KubernetesWorkerDataDiskOutput) ToKubernetesWorkerDataDiskOutputWithCont
 	return o
 }
 
+// Worker node data disk auto snapshot policy.
 func (o KubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 func (o KubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -2125,6 +2160,7 @@ func (o KubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to encrypt data disks. Valid values: true and false.
 func (o KubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
@@ -2138,6 +2174,12 @@ func (o KubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+func (o KubernetesWorkerDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
 func (o KubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
@@ -3192,13 +3234,19 @@ func (o ManagedKubernetesTaintArrayOutput) Index(i pulumi.IntInput) ManagedKuber
 }
 
 type ManagedKubernetesWorkerDataDisk struct {
+	// Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	Category             *string `pulumi:"category"`
-	Device               *string `pulumi:"device"`
-	Encrypted            *string `pulumi:"encrypted"`
-	KmsKeyId             *string `pulumi:"kmsKeyId"`
+	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	Category *string `pulumi:"category"`
+	Device   *string `pulumi:"device"`
+	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+	Encrypted *string `pulumi:"encrypted"`
+	KmsKeyId  *string `pulumi:"kmsKeyId"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The size of a data disk, at least 40. Unit: GiB.
 	Size       *string `pulumi:"size"`
 	SnapshotId *string `pulumi:"snapshotId"`
 }
@@ -3215,13 +3263,19 @@ type ManagedKubernetesWorkerDataDiskInput interface {
 }
 
 type ManagedKubernetesWorkerDataDiskArgs struct {
+	// Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	Category             pulumi.StringPtrInput `pulumi:"category"`
-	Device               pulumi.StringPtrInput `pulumi:"device"`
-	Encrypted            pulumi.StringPtrInput `pulumi:"encrypted"`
-	KmsKeyId             pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	Device   pulumi.StringPtrInput `pulumi:"device"`
+	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
+	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The size of a data disk, at least 40. Unit: GiB.
 	Size       pulumi.StringPtrInput `pulumi:"size"`
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
@@ -3277,10 +3331,12 @@ func (o ManagedKubernetesWorkerDataDiskOutput) ToManagedKubernetesWorkerDataDisk
 	return o
 }
 
+// Worker node data disk auto snapshot policy.
 func (o ManagedKubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 func (o ManagedKubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -3289,6 +3345,7 @@ func (o ManagedKubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 func (o ManagedKubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
@@ -3302,6 +3359,12 @@ func (o ManagedKubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+func (o ManagedKubernetesWorkerDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of a data disk, at least 40. Unit: GiB.
 func (o ManagedKubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
@@ -3447,12 +3510,17 @@ func (o ManagedKubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) Managed
 
 type NodePoolDataDisk struct {
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	Category             *string `pulumi:"category"`
-	Device               *string `pulumi:"device"`
-	Encrypted            *string `pulumi:"encrypted"`
-	KmsKeyId             *string `pulumi:"kmsKeyId"`
+	// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
+	Category *string `pulumi:"category"`
+	Device   *string `pulumi:"device"`
+	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+	Encrypted *string `pulumi:"encrypted"`
+	KmsKeyId  *string `pulumi:"kmsKeyId"`
 	// The name of node pool.
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
 	Size       *int    `pulumi:"size"`
 	SnapshotId *string `pulumi:"snapshotId"`
 }
@@ -3470,12 +3538,17 @@ type NodePoolDataDiskInput interface {
 
 type NodePoolDataDiskArgs struct {
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	Category             pulumi.StringPtrInput `pulumi:"category"`
-	Device               pulumi.StringPtrInput `pulumi:"device"`
-	Encrypted            pulumi.StringPtrInput `pulumi:"encrypted"`
-	KmsKeyId             pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	Device   pulumi.StringPtrInput `pulumi:"device"`
+	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
+	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The name of node pool.
-	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
 	Size       pulumi.IntPtrInput    `pulumi:"size"`
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
@@ -3535,6 +3608,7 @@ func (o NodePoolDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
 func (o NodePoolDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -3543,6 +3617,7 @@ func (o NodePoolDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 func (o NodePoolDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
@@ -3556,6 +3631,12 @@ func (o NodePoolDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+func (o NodePoolDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
 func (o NodePoolDataDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -3585,7 +3666,9 @@ func (o NodePoolDataDiskArrayOutput) Index(i pulumi.IntInput) NodePoolDataDiskOu
 }
 
 type NodePoolLabel struct {
-	Key   string  `pulumi:"key"`
+	// The label key.
+	Key string `pulumi:"key"`
+	// The label value.
 	Value *string `pulumi:"value"`
 }
 
@@ -3601,7 +3684,9 @@ type NodePoolLabelInput interface {
 }
 
 type NodePoolLabelArgs struct {
-	Key   pulumi.StringInput    `pulumi:"key"`
+	// The label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The label value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -3656,10 +3741,12 @@ func (o NodePoolLabelOutput) ToNodePoolLabelOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The label key.
 func (o NodePoolLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The label value.
 func (o NodePoolLabelOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -4119,8 +4206,10 @@ func (o NodePoolScalingConfigPtrOutput) Type() pulumi.StringPtrOutput {
 
 type NodePoolTaint struct {
 	Effect *string `pulumi:"effect"`
-	Key    string  `pulumi:"key"`
-	Value  *string `pulumi:"value"`
+	// The label key.
+	Key string `pulumi:"key"`
+	// The label value.
+	Value *string `pulumi:"value"`
 }
 
 // NodePoolTaintInput is an input type that accepts NodePoolTaintArgs and NodePoolTaintOutput values.
@@ -4136,8 +4225,10 @@ type NodePoolTaintInput interface {
 
 type NodePoolTaintArgs struct {
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
-	Key    pulumi.StringInput    `pulumi:"key"`
-	Value  pulumi.StringPtrInput `pulumi:"value"`
+	// The label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The label value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (NodePoolTaintArgs) ElementType() reflect.Type {
@@ -4195,10 +4286,12 @@ func (o NodePoolTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
+// The label key.
 func (o NodePoolTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The label value.
 func (o NodePoolTaintOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

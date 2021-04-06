@@ -46,9 +46,9 @@ export class RouteTable extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+     * Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -56,7 +56,7 @@ export class RouteTable extends pulumi.CustomResource {
      */
     public readonly routeTableName!: pulumi.Output<string>;
     /**
-     * (Available in v1.120.0+) The status of the route table.
+     * (Available in v1.119.1+) The status of the route table.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -115,9 +115,9 @@ export interface RouteTableState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+     * Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -125,7 +125,7 @@ export interface RouteTableState {
      */
     readonly routeTableName?: pulumi.Input<string>;
     /**
-     * (Available in v1.120.0+) The status of the route table.
+     * (Available in v1.119.1+) The status of the route table.
      */
     readonly status?: pulumi.Input<string>;
     /**
@@ -147,9 +147,9 @@ export interface RouteTableArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Field `name` has been deprecated from provider version 1.120.0. New field `routeTableName` instead.
+     * Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'route_table_name' instead.
+     * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**

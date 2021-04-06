@@ -4,8 +4,12 @@
 
 # Export this package's modules as members:
 from .account import *
+from .control_policy import *
+from .control_policy_attachment import *
 from .folder import *
 from .get_accounts import *
+from .get_control_policies import *
+from .get_control_policy_attachments import *
 from .get_folders import *
 from .get_handshakes import *
 from .get_policies import *
@@ -44,6 +48,10 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:resourcemanager/account:Account":
                 return Account(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/controlPolicy:ControlPolicy":
+                return ControlPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment":
+                return ControlPolicyAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:resourcemanager/folder:Folder":
                 return Folder(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:resourcemanager/handshake:Handshake":
@@ -72,6 +80,8 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "resourcemanager/account", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/controlPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "resourcemanager/controlPolicyAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "resourcemanager/folder", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "resourcemanager/handshake", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "resourcemanager/policy", _module_instance)

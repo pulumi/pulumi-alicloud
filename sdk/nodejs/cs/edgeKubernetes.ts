@@ -141,6 +141,10 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly slbIntranet!: pulumi.Output<string>;
     /**
+     * Default nil, A map of tags assigned to the kubernetes cluster and work node.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
@@ -154,13 +158,6 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values:
-     * * cloud : basic disks.
-     * * cloudEfficiency : ultra disks.
-     * * cloudSsd : SSDs.
-     * * cloudEssd : ESSDs.
-     * * `size`: the size of a data disk, at least 40. Unit: GiB.
-     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     public readonly workerDataDisks!: pulumi.Output<outputs.cs.EdgeKubernetesWorkerDataDisk[] | undefined>;
     /**
@@ -168,9 +165,17 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public readonly workerDiskCategory!: pulumi.Output<string | undefined>;
     /**
+     * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     */
+    public readonly workerDiskPerformanceLevel!: pulumi.Output<string | undefined>;
+    /**
      * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
     public readonly workerDiskSize!: pulumi.Output<number | undefined>;
+    /**
+     * Worker node system disk auto snapshot policy.
+     */
+    public readonly workerDiskSnapshotPolicyId!: pulumi.Output<string | undefined>;
     public readonly workerInstanceChargeType!: pulumi.Output<string | undefined>;
     /**
      * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
@@ -228,12 +233,15 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["slbInternet"] = state ? state.slbInternet : undefined;
             inputs["slbInternetEnabled"] = state ? state.slbInternetEnabled : undefined;
             inputs["slbIntranet"] = state ? state.slbIntranet : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
             inputs["version"] = state ? state.version : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["workerDataDisks"] = state ? state.workerDataDisks : undefined;
             inputs["workerDiskCategory"] = state ? state.workerDiskCategory : undefined;
+            inputs["workerDiskPerformanceLevel"] = state ? state.workerDiskPerformanceLevel : undefined;
             inputs["workerDiskSize"] = state ? state.workerDiskSize : undefined;
+            inputs["workerDiskSnapshotPolicyId"] = state ? state.workerDiskSnapshotPolicyId : undefined;
             inputs["workerInstanceChargeType"] = state ? state.workerInstanceChargeType : undefined;
             inputs["workerInstanceTypes"] = state ? state.workerInstanceTypes : undefined;
             inputs["workerNodes"] = state ? state.workerNodes : undefined;
@@ -274,11 +282,14 @@ export class EdgeKubernetes extends pulumi.CustomResource {
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             inputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["workerDataDisks"] = args ? args.workerDataDisks : undefined;
             inputs["workerDiskCategory"] = args ? args.workerDiskCategory : undefined;
+            inputs["workerDiskPerformanceLevel"] = args ? args.workerDiskPerformanceLevel : undefined;
             inputs["workerDiskSize"] = args ? args.workerDiskSize : undefined;
+            inputs["workerDiskSnapshotPolicyId"] = args ? args.workerDiskSnapshotPolicyId : undefined;
             inputs["workerInstanceChargeType"] = args ? args.workerInstanceChargeType : undefined;
             inputs["workerInstanceTypes"] = args ? args.workerInstanceTypes : undefined;
             inputs["workerNumber"] = args ? args.workerNumber : undefined;
@@ -401,6 +412,10 @@ export interface EdgeKubernetesState {
      */
     readonly slbIntranet?: pulumi.Input<string>;
     /**
+     * Default nil, A map of tags assigned to the kubernetes cluster and work node.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
     readonly userData?: pulumi.Input<string>;
@@ -414,13 +429,6 @@ export interface EdgeKubernetesState {
     readonly vpcId?: pulumi.Input<string>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values:
-     * * cloud : basic disks.
-     * * cloudEfficiency : ultra disks.
-     * * cloudSsd : SSDs.
-     * * cloudEssd : ESSDs.
-     * * `size`: the size of a data disk, at least 40. Unit: GiB.
-     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
     /**
@@ -428,9 +436,17 @@ export interface EdgeKubernetesState {
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
+     * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     */
+    readonly workerDiskPerformanceLevel?: pulumi.Input<string>;
+    /**
      * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
     readonly workerDiskSize?: pulumi.Input<number>;
+    /**
+     * Worker node system disk auto snapshot policy.
+     */
+    readonly workerDiskSnapshotPolicyId?: pulumi.Input<string>;
     readonly workerInstanceChargeType?: pulumi.Input<string>;
     /**
      * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
@@ -536,6 +552,10 @@ export interface EdgeKubernetesArgs {
      */
     readonly slbInternetEnabled?: pulumi.Input<boolean>;
     /**
+     * Default nil, A map of tags assigned to the kubernetes cluster and work node.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
     readonly userData?: pulumi.Input<string>;
@@ -545,13 +565,6 @@ export interface EdgeKubernetesArgs {
     readonly version?: pulumi.Input<string>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values:
-     * * cloud : basic disks.
-     * * cloudEfficiency : ultra disks.
-     * * cloudSsd : SSDs.
-     * * cloudEssd : ESSDs.
-     * * `size`: the size of a data disk, at least 40. Unit: GiB.
-     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
     /**
@@ -559,9 +572,17 @@ export interface EdgeKubernetesArgs {
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
+     * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     */
+    readonly workerDiskPerformanceLevel?: pulumi.Input<string>;
+    /**
      * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
     readonly workerDiskSize?: pulumi.Input<number>;
+    /**
+     * Worker node system disk auto snapshot policy.
+     */
+    readonly workerDiskSnapshotPolicyId?: pulumi.Input<string>;
     readonly workerInstanceChargeType?: pulumi.Input<string>;
     /**
      * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type

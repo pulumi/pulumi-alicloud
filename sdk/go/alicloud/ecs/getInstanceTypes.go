@@ -80,6 +80,8 @@ type GetInstanceTypesArgs struct {
 	SortedBy    *string `pulumi:"sortedBy"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
+	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`. Default to `cloudEfficiency`.
+	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 }
 
 // A collection of values returned by getInstanceTypes.
@@ -102,9 +104,10 @@ type GetInstanceTypesResult struct {
 	IsOutdated         *bool                          `pulumi:"isOutdated"`
 	KubernetesNodeRole *string                        `pulumi:"kubernetesNodeRole"`
 	// Size of memory, measured in GB.
-	MemorySize   *float64 `pulumi:"memorySize"`
-	NetworkType  *string  `pulumi:"networkType"`
-	OutputFile   *string  `pulumi:"outputFile"`
-	SortedBy     *string  `pulumi:"sortedBy"`
-	SpotStrategy *string  `pulumi:"spotStrategy"`
+	MemorySize         *float64 `pulumi:"memorySize"`
+	NetworkType        *string  `pulumi:"networkType"`
+	OutputFile         *string  `pulumi:"outputFile"`
+	SortedBy           *string  `pulumi:"sortedBy"`
+	SpotStrategy       *string  `pulumi:"spotStrategy"`
+	SystemDiskCategory *string  `pulumi:"systemDiskCategory"`
 }

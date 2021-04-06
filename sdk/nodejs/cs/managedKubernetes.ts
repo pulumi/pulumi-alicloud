@@ -228,7 +228,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly slbIntranet!: pulumi.Output<string>;
     /**
-     * Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+     * Default nil, A map of tags assigned to the kubernetes cluster and work nodes . Detailed below.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -267,9 +267,6 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public readonly workerDataDiskSize!: pulumi.Output<number | undefined>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-     * * `size`: the size of a data disk, at least 40. Unit: GiB.
-     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
      */
     public readonly workerDataDisks!: pulumi.Output<outputs.cs.ManagedKubernetesWorkerDataDisk[] | undefined>;
     /**
@@ -277,9 +274,17 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly workerDiskCategory!: pulumi.Output<string | undefined>;
     /**
+     * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     */
+    public readonly workerDiskPerformanceLevel!: pulumi.Output<string | undefined>;
+    /**
      * The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
      */
     public readonly workerDiskSize!: pulumi.Output<number | undefined>;
+    /**
+     * Worker node system disk auto snapshot policy.
+     */
+    public readonly workerDiskSnapshotPolicyId!: pulumi.Output<string | undefined>;
     /**
      * Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
      */
@@ -384,7 +389,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["workerDataDiskSize"] = state ? state.workerDataDiskSize : undefined;
             inputs["workerDataDisks"] = state ? state.workerDataDisks : undefined;
             inputs["workerDiskCategory"] = state ? state.workerDiskCategory : undefined;
+            inputs["workerDiskPerformanceLevel"] = state ? state.workerDiskPerformanceLevel : undefined;
             inputs["workerDiskSize"] = state ? state.workerDiskSize : undefined;
+            inputs["workerDiskSnapshotPolicyId"] = state ? state.workerDiskSnapshotPolicyId : undefined;
             inputs["workerInstanceChargeType"] = state ? state.workerInstanceChargeType : undefined;
             inputs["workerInstanceTypes"] = state ? state.workerInstanceTypes : undefined;
             inputs["workerNodes"] = state ? state.workerNodes : undefined;
@@ -452,7 +459,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["workerDataDiskSize"] = args ? args.workerDataDiskSize : undefined;
             inputs["workerDataDisks"] = args ? args.workerDataDisks : undefined;
             inputs["workerDiskCategory"] = args ? args.workerDiskCategory : undefined;
+            inputs["workerDiskPerformanceLevel"] = args ? args.workerDiskPerformanceLevel : undefined;
             inputs["workerDiskSize"] = args ? args.workerDiskSize : undefined;
+            inputs["workerDiskSnapshotPolicyId"] = args ? args.workerDiskSnapshotPolicyId : undefined;
             inputs["workerInstanceChargeType"] = args ? args.workerInstanceChargeType : undefined;
             inputs["workerInstanceTypes"] = args ? args.workerInstanceTypes : undefined;
             inputs["workerNumber"] = args ? args.workerNumber : undefined;
@@ -666,7 +675,7 @@ export interface ManagedKubernetesState {
      */
     readonly slbIntranet?: pulumi.Input<string>;
     /**
-     * Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+     * Default nil, A map of tags assigned to the kubernetes cluster and work nodes . Detailed below.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -705,9 +714,6 @@ export interface ManagedKubernetesState {
     readonly workerDataDiskSize?: pulumi.Input<number>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-     * * `size`: the size of a data disk, at least 40. Unit: GiB.
-     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesWorkerDataDisk>[]>;
     /**
@@ -715,9 +721,17 @@ export interface ManagedKubernetesState {
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
+     * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     */
+    readonly workerDiskPerformanceLevel?: pulumi.Input<string>;
+    /**
      * The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
      */
     readonly workerDiskSize?: pulumi.Input<number>;
+    /**
+     * Worker node system disk auto snapshot policy.
+     */
+    readonly workerDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
      * Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
      */
@@ -918,7 +932,7 @@ export interface ManagedKubernetesArgs {
      */
     readonly slbInternetEnabled?: pulumi.Input<boolean>;
     /**
-     * Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+     * Default nil, A map of tags assigned to the kubernetes cluster and work nodes . Detailed below.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -953,9 +967,6 @@ export interface ManagedKubernetesArgs {
     readonly workerDataDiskSize?: pulumi.Input<number>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
-     * * `category`: the type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-     * * `size`: the size of a data disk, at least 40. Unit: GiB.
-     * * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
      */
     readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesWorkerDataDisk>[]>;
     /**
@@ -963,9 +974,17 @@ export interface ManagedKubernetesArgs {
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
+     * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     */
+    readonly workerDiskPerformanceLevel?: pulumi.Input<string>;
+    /**
      * The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
      */
     readonly workerDiskSize?: pulumi.Input<number>;
+    /**
+     * Worker node system disk auto snapshot policy.
+     */
+    readonly workerDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
      * Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew` and `workerAutoRenewPeriod` are required.
      */

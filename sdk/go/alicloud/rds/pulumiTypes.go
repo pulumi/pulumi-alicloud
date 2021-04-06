@@ -316,6 +316,272 @@ func (o ReadOnlyInstanceParameterArrayOutput) Index(i pulumi.IntInput) ReadOnlyI
 	}).(ReadOnlyInstanceParameterOutput)
 }
 
+type GetAccountsAccount struct {
+	// Database description.
+	AccountDescription string `pulumi:"accountDescription"`
+	// Name of database account.
+	AccountName string `pulumi:"accountName"`
+	// Privilege type of account.
+	AccountType string `pulumi:"accountType"`
+	// A list of database permissions the account has.
+	DatabasePrivileges []GetAccountsAccountDatabasePrivilege `pulumi:"databasePrivileges"`
+	// The ID of the Account.
+	Id string `pulumi:"id"`
+	// Whether the maximum number of databases managed by the account is exceeded.
+	PrivExceeded string `pulumi:"privExceeded"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetAccountsAccountInput is an input type that accepts GetAccountsAccountArgs and GetAccountsAccountOutput values.
+// You can construct a concrete instance of `GetAccountsAccountInput` via:
+//
+//          GetAccountsAccountArgs{...}
+type GetAccountsAccountInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountOutput() GetAccountsAccountOutput
+	ToGetAccountsAccountOutputWithContext(context.Context) GetAccountsAccountOutput
+}
+
+type GetAccountsAccountArgs struct {
+	// Database description.
+	AccountDescription pulumi.StringInput `pulumi:"accountDescription"`
+	// Name of database account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// Privilege type of account.
+	AccountType pulumi.StringInput `pulumi:"accountType"`
+	// A list of database permissions the account has.
+	DatabasePrivileges GetAccountsAccountDatabasePrivilegeArrayInput `pulumi:"databasePrivileges"`
+	// The ID of the Account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether the maximum number of databases managed by the account is exceeded.
+	PrivExceeded pulumi.StringInput `pulumi:"privExceeded"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAccountsAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
+}
+
+func (i GetAccountsAccountArgs) ToGetAccountsAccountOutput() GetAccountsAccountOutput {
+	return i.ToGetAccountsAccountOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountOutput)
+}
+
+// GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
+// You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
+//
+//          GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
+type GetAccountsAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput
+	ToGetAccountsAccountArrayOutputWithContext(context.Context) GetAccountsAccountArrayOutput
+}
+
+type GetAccountsAccountArray []GetAccountsAccountInput
+
+func (GetAccountsAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
+}
+
+func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput {
+	return i.ToGetAccountsAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountArrayOutput)
+}
+
+type GetAccountsAccountOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
+}
+
+func (o GetAccountsAccountOutput) ToGetAccountsAccountOutput() GetAccountsAccountOutput {
+	return o
+}
+
+func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
+	return o
+}
+
+// Database description.
+func (o GetAccountsAccountOutput) AccountDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountDescription }).(pulumi.StringOutput)
+}
+
+// Name of database account.
+func (o GetAccountsAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// Privilege type of account.
+func (o GetAccountsAccountOutput) AccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountType }).(pulumi.StringOutput)
+}
+
+// A list of database permissions the account has.
+func (o GetAccountsAccountOutput) DatabasePrivileges() GetAccountsAccountDatabasePrivilegeArrayOutput {
+	return o.ApplyT(func(v GetAccountsAccount) []GetAccountsAccountDatabasePrivilege { return v.DatabasePrivileges }).(GetAccountsAccountDatabasePrivilegeArrayOutput)
+}
+
+// The ID of the Account.
+func (o GetAccountsAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the maximum number of databases managed by the account is exceeded.
+func (o GetAccountsAccountOutput) PrivExceeded() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.PrivExceeded }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetAccountsAccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAccountsAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
+}
+
+func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
+		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
+	}).(GetAccountsAccountOutput)
+}
+
+type GetAccountsAccountDatabasePrivilege struct {
+	// The type of permission for the account.
+	AccountPrivilege string `pulumi:"accountPrivilege"`
+	// The specific permissions corresponding to the type of account permissions.
+	AccountPrivilegeDetail string `pulumi:"accountPrivilegeDetail"`
+	// Database name.
+	DbName string `pulumi:"dbName"`
+}
+
+// GetAccountsAccountDatabasePrivilegeInput is an input type that accepts GetAccountsAccountDatabasePrivilegeArgs and GetAccountsAccountDatabasePrivilegeOutput values.
+// You can construct a concrete instance of `GetAccountsAccountDatabasePrivilegeInput` via:
+//
+//          GetAccountsAccountDatabasePrivilegeArgs{...}
+type GetAccountsAccountDatabasePrivilegeInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountDatabasePrivilegeOutput() GetAccountsAccountDatabasePrivilegeOutput
+	ToGetAccountsAccountDatabasePrivilegeOutputWithContext(context.Context) GetAccountsAccountDatabasePrivilegeOutput
+}
+
+type GetAccountsAccountDatabasePrivilegeArgs struct {
+	// The type of permission for the account.
+	AccountPrivilege pulumi.StringInput `pulumi:"accountPrivilege"`
+	// The specific permissions corresponding to the type of account permissions.
+	AccountPrivilegeDetail pulumi.StringInput `pulumi:"accountPrivilegeDetail"`
+	// Database name.
+	DbName pulumi.StringInput `pulumi:"dbName"`
+}
+
+func (GetAccountsAccountDatabasePrivilegeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccountDatabasePrivilege)(nil)).Elem()
+}
+
+func (i GetAccountsAccountDatabasePrivilegeArgs) ToGetAccountsAccountDatabasePrivilegeOutput() GetAccountsAccountDatabasePrivilegeOutput {
+	return i.ToGetAccountsAccountDatabasePrivilegeOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountDatabasePrivilegeArgs) ToGetAccountsAccountDatabasePrivilegeOutputWithContext(ctx context.Context) GetAccountsAccountDatabasePrivilegeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountDatabasePrivilegeOutput)
+}
+
+// GetAccountsAccountDatabasePrivilegeArrayInput is an input type that accepts GetAccountsAccountDatabasePrivilegeArray and GetAccountsAccountDatabasePrivilegeArrayOutput values.
+// You can construct a concrete instance of `GetAccountsAccountDatabasePrivilegeArrayInput` via:
+//
+//          GetAccountsAccountDatabasePrivilegeArray{ GetAccountsAccountDatabasePrivilegeArgs{...} }
+type GetAccountsAccountDatabasePrivilegeArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountDatabasePrivilegeArrayOutput() GetAccountsAccountDatabasePrivilegeArrayOutput
+	ToGetAccountsAccountDatabasePrivilegeArrayOutputWithContext(context.Context) GetAccountsAccountDatabasePrivilegeArrayOutput
+}
+
+type GetAccountsAccountDatabasePrivilegeArray []GetAccountsAccountDatabasePrivilegeInput
+
+func (GetAccountsAccountDatabasePrivilegeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccountDatabasePrivilege)(nil)).Elem()
+}
+
+func (i GetAccountsAccountDatabasePrivilegeArray) ToGetAccountsAccountDatabasePrivilegeArrayOutput() GetAccountsAccountDatabasePrivilegeArrayOutput {
+	return i.ToGetAccountsAccountDatabasePrivilegeArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountDatabasePrivilegeArray) ToGetAccountsAccountDatabasePrivilegeArrayOutputWithContext(ctx context.Context) GetAccountsAccountDatabasePrivilegeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountDatabasePrivilegeArrayOutput)
+}
+
+type GetAccountsAccountDatabasePrivilegeOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountDatabasePrivilegeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccountDatabasePrivilege)(nil)).Elem()
+}
+
+func (o GetAccountsAccountDatabasePrivilegeOutput) ToGetAccountsAccountDatabasePrivilegeOutput() GetAccountsAccountDatabasePrivilegeOutput {
+	return o
+}
+
+func (o GetAccountsAccountDatabasePrivilegeOutput) ToGetAccountsAccountDatabasePrivilegeOutputWithContext(ctx context.Context) GetAccountsAccountDatabasePrivilegeOutput {
+	return o
+}
+
+// The type of permission for the account.
+func (o GetAccountsAccountDatabasePrivilegeOutput) AccountPrivilege() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccountDatabasePrivilege) string { return v.AccountPrivilege }).(pulumi.StringOutput)
+}
+
+// The specific permissions corresponding to the type of account permissions.
+func (o GetAccountsAccountDatabasePrivilegeOutput) AccountPrivilegeDetail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccountDatabasePrivilege) string { return v.AccountPrivilegeDetail }).(pulumi.StringOutput)
+}
+
+// Database name.
+func (o GetAccountsAccountDatabasePrivilegeOutput) DbName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccountDatabasePrivilege) string { return v.DbName }).(pulumi.StringOutput)
+}
+
+type GetAccountsAccountDatabasePrivilegeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountDatabasePrivilegeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccountDatabasePrivilege)(nil)).Elem()
+}
+
+func (o GetAccountsAccountDatabasePrivilegeArrayOutput) ToGetAccountsAccountDatabasePrivilegeArrayOutput() GetAccountsAccountDatabasePrivilegeArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountDatabasePrivilegeArrayOutput) ToGetAccountsAccountDatabasePrivilegeArrayOutputWithContext(ctx context.Context) GetAccountsAccountDatabasePrivilegeArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountDatabasePrivilegeArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountDatabasePrivilegeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccountDatabasePrivilege {
+		return vs[0].([]GetAccountsAccountDatabasePrivilege)[vs[1].(int)]
+	}).(GetAccountsAccountDatabasePrivilegeOutput)
+}
+
 type GetInstanceClassesInstanceClass struct {
 	// DB Instance available class.
 	InstanceClass string `pulumi:"instanceClass"`
@@ -1537,6 +1803,10 @@ func init() {
 	pulumi.RegisterOutputType(RdsParameterGroupParamDetailArrayOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceParameterOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountDatabasePrivilegeOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountDatabasePrivilegeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClassesInstanceClassStorageRangeOutput{})

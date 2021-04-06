@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewAudit(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:log/dashboard:Dashboard":
 		r, err = NewDashboard(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:log/etl:Etl":
+		r, err = NewEtl(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:log/logTailAttachment:LogTailAttachment":
 		r, err = NewLogTailAttachment(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:log/logTailConfig:LogTailConfig":
@@ -64,6 +66,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"log/dashboard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"log/etl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

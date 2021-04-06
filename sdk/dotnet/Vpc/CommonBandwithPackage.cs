@@ -25,7 +25,13 @@ namespace Pulumi.AliCloud.Vpc
         /// The bandwidth of the common bandwidth package, in Mbps.
         /// </summary>
         [Output("bandwidth")]
-        public Output<int> Bandwidth { get; private set; } = null!;
+        public Output<string> Bandwidth { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the common bandwidth package.
+        /// </summary>
+        [Output("bandwidthPackageName")]
+        public Output<string> BandwidthPackageName { get; private set; } = null!;
 
         /// <summary>
         /// The description of the common bandwidth package instance.
@@ -33,26 +39,29 @@ namespace Pulumi.AliCloud.Vpc
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("force")]
+        public Output<string?> Force { get; private set; } = null!;
+
         /// <summary>
-        /// The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
+        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Internet Service Provider. Default to `BGP`.
+        /// The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
         /// </summary>
         [Output("isp")]
         public Output<string?> Isp { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the common bandwidth package.
+        /// Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+        /// Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
         /// </summary>
         [Output("ratio")]
         public Output<int?> Ratio { get; private set; } = null!;
@@ -62,6 +71,18 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.120.0+) The status of bandwidth package.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone of bandwidth package.
+        /// </summary>
+        [Output("zone")]
+        public Output<string?> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -113,7 +134,13 @@ namespace Pulumi.AliCloud.Vpc
         /// The bandwidth of the common bandwidth package, in Mbps.
         /// </summary>
         [Input("bandwidth", required: true)]
-        public Input<int> Bandwidth { get; set; } = null!;
+        public Input<string> Bandwidth { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the common bandwidth package.
+        /// </summary>
+        [Input("bandwidthPackageName")]
+        public Input<string>? BandwidthPackageName { get; set; }
 
         /// <summary>
         /// The description of the common bandwidth package instance.
@@ -121,26 +148,29 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("force")]
+        public Input<string>? Force { get; set; }
+
         /// <summary>
-        /// The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
+        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The type of the Internet Service Provider. Default to `BGP`.
+        /// The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
 
         /// <summary>
-        /// The name of the common bandwidth package.
+        /// Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+        /// Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
@@ -150,6 +180,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The zone of bandwidth package.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public CommonBandwithPackageArgs()
         {
@@ -162,7 +198,13 @@ namespace Pulumi.AliCloud.Vpc
         /// The bandwidth of the common bandwidth package, in Mbps.
         /// </summary>
         [Input("bandwidth")]
-        public Input<int>? Bandwidth { get; set; }
+        public Input<string>? Bandwidth { get; set; }
+
+        /// <summary>
+        /// The name of the common bandwidth package.
+        /// </summary>
+        [Input("bandwidthPackageName")]
+        public Input<string>? BandwidthPackageName { get; set; }
 
         /// <summary>
         /// The description of the common bandwidth package instance.
@@ -170,26 +212,29 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("force")]
+        public Input<string>? Force { get; set; }
+
         /// <summary>
-        /// The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
+        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The type of the Internet Service Provider. Default to `BGP`.
+        /// The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
 
         /// <summary>
-        /// The name of the common bandwidth package.
+        /// Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+        /// Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
@@ -199,6 +244,18 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// (Available in 1.120.0+) The status of bandwidth package.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The zone of bandwidth package.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public CommonBandwithPackageState()
         {

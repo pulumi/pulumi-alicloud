@@ -72,6 +72,7 @@ from . import (
     resourcemanager,
     rocketmq,
     ros,
+    sae,
     sag,
     slb,
     tsdb,

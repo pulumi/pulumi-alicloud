@@ -40,7 +40,9 @@ class Kubernetes(pulumi.CustomResource):
                  master_auto_renew: Optional[pulumi.Input[bool]] = None,
                  master_auto_renew_period: Optional[pulumi.Input[int]] = None,
                  master_disk_category: Optional[pulumi.Input[str]] = None,
+                 master_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  master_disk_size: Optional[pulumi.Input[int]] = None,
+                 master_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  master_instance_charge_type: Optional[pulumi.Input[str]] = None,
                  master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  master_period: Optional[pulumi.Input[int]] = None,
@@ -77,7 +79,9 @@ class Kubernetes(pulumi.CustomResource):
                  worker_data_disk_size: Optional[pulumi.Input[int]] = None,
                  worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]]] = None,
                  worker_disk_category: Optional[pulumi.Input[str]] = None,
+                 worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  worker_disk_size: Optional[pulumi.Input[int]] = None,
+                 worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
                  worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  worker_number: Optional[pulumi.Input[int]] = None,
@@ -120,7 +124,9 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] master_auto_renew: Enable master payment auto-renew, defaults to false.
         :param pulumi.Input[int] master_auto_renew_period: Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] master_disk_category: The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] master_disk_performance_level: Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] master_disk_size: The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
+        :param pulumi.Input[str] master_disk_snapshot_policy_id: Master node system disk auto snapshot policy.
         :param pulumi.Input[str] master_instance_charge_type: Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[int] master_period: Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
@@ -143,7 +149,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
-        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesTaintArgs']]]] taints: Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -152,11 +158,10 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
         :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-               * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-               * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-               * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] worker_disk_performance_level: Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
+        :param pulumi.Input[str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
@@ -203,7 +208,9 @@ class Kubernetes(pulumi.CustomResource):
             __props__['master_auto_renew'] = master_auto_renew
             __props__['master_auto_renew_period'] = master_auto_renew_period
             __props__['master_disk_category'] = master_disk_category
+            __props__['master_disk_performance_level'] = master_disk_performance_level
             __props__['master_disk_size'] = master_disk_size
+            __props__['master_disk_snapshot_policy_id'] = master_disk_snapshot_policy_id
             __props__['master_instance_charge_type'] = master_instance_charge_type
             if master_instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'master_instance_types'")
@@ -247,7 +254,9 @@ class Kubernetes(pulumi.CustomResource):
             __props__['worker_data_disk_size'] = worker_data_disk_size
             __props__['worker_data_disks'] = worker_data_disks
             __props__['worker_disk_category'] = worker_disk_category
+            __props__['worker_disk_performance_level'] = worker_disk_performance_level
             __props__['worker_disk_size'] = worker_disk_size
+            __props__['worker_disk_snapshot_policy_id'] = worker_disk_snapshot_policy_id
             __props__['worker_instance_charge_type'] = worker_instance_charge_type
             if worker_instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_instance_types'")
@@ -305,7 +314,9 @@ class Kubernetes(pulumi.CustomResource):
             master_auto_renew: Optional[pulumi.Input[bool]] = None,
             master_auto_renew_period: Optional[pulumi.Input[int]] = None,
             master_disk_category: Optional[pulumi.Input[str]] = None,
+            master_disk_performance_level: Optional[pulumi.Input[str]] = None,
             master_disk_size: Optional[pulumi.Input[int]] = None,
+            master_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             master_instance_charge_type: Optional[pulumi.Input[str]] = None,
             master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             master_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesMasterNodeArgs']]]]] = None,
@@ -348,7 +359,9 @@ class Kubernetes(pulumi.CustomResource):
             worker_data_disk_size: Optional[pulumi.Input[int]] = None,
             worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]]] = None,
             worker_disk_category: Optional[pulumi.Input[str]] = None,
+            worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
             worker_disk_size: Optional[pulumi.Input[int]] = None,
+            worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
             worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             worker_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerNodeArgs']]]]] = None,
@@ -388,7 +401,9 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] master_auto_renew: Enable master payment auto-renew, defaults to false.
         :param pulumi.Input[int] master_auto_renew_period: Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] master_disk_category: The system disk category of master node. Its valid value are `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] master_disk_performance_level: Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] master_disk_size: The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
+        :param pulumi.Input[str] master_disk_snapshot_policy_id: Master node system disk auto snapshot policy.
         :param pulumi.Input[str] master_instance_charge_type: Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesMasterNodeArgs']]]] master_nodes: List of cluster master nodes.
@@ -414,7 +429,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
-        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesTaintArgs']]]] taints: Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -424,11 +439,10 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
         :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-               * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-               * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-               * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] worker_disk_performance_level: Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
+        :param pulumi.Input[str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes.
@@ -466,7 +480,9 @@ class Kubernetes(pulumi.CustomResource):
         __props__["master_auto_renew"] = master_auto_renew
         __props__["master_auto_renew_period"] = master_auto_renew_period
         __props__["master_disk_category"] = master_disk_category
+        __props__["master_disk_performance_level"] = master_disk_performance_level
         __props__["master_disk_size"] = master_disk_size
+        __props__["master_disk_snapshot_policy_id"] = master_disk_snapshot_policy_id
         __props__["master_instance_charge_type"] = master_instance_charge_type
         __props__["master_instance_types"] = master_instance_types
         __props__["master_nodes"] = master_nodes
@@ -509,7 +525,9 @@ class Kubernetes(pulumi.CustomResource):
         __props__["worker_data_disk_size"] = worker_data_disk_size
         __props__["worker_data_disks"] = worker_data_disks
         __props__["worker_disk_category"] = worker_disk_category
+        __props__["worker_disk_performance_level"] = worker_disk_performance_level
         __props__["worker_disk_size"] = worker_disk_size
+        __props__["worker_disk_snapshot_policy_id"] = worker_disk_snapshot_policy_id
         __props__["worker_instance_charge_type"] = worker_instance_charge_type
         __props__["worker_instance_types"] = worker_instance_types
         __props__["worker_nodes"] = worker_nodes
@@ -718,12 +736,28 @@ class Kubernetes(pulumi.CustomResource):
         return pulumi.get(self, "master_disk_category")
 
     @property
+    @pulumi.getter(name="masterDiskPerformanceLevel")
+    def master_disk_performance_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Master node system disk performance level. When `master_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        """
+        return pulumi.get(self, "master_disk_performance_level")
+
+    @property
     @pulumi.getter(name="masterDiskSize")
     def master_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
         """
         return pulumi.get(self, "master_disk_size")
+
+    @property
+    @pulumi.getter(name="masterDiskSnapshotPolicyId")
+    def master_disk_snapshot_policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Master node system disk auto snapshot policy.
+        """
+        return pulumi.get(self, "master_disk_snapshot_policy_id")
 
     @property
     @pulumi.getter(name="masterInstanceChargeType")
@@ -949,7 +983,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+        Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
         """
         return pulumi.get(self, "tags")
 
@@ -1032,9 +1066,6 @@ class Kubernetes(pulumi.CustomResource):
     def worker_data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesWorkerDataDisk']]]:
         """
         The data disk configurations of worker nodes, such as the disk type and disk size.
-        * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-        * `size`: the size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-        * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         """
         return pulumi.get(self, "worker_data_disks")
 
@@ -1047,12 +1078,28 @@ class Kubernetes(pulumi.CustomResource):
         return pulumi.get(self, "worker_disk_category")
 
     @property
+    @pulumi.getter(name="workerDiskPerformanceLevel")
+    def worker_disk_performance_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        """
+        return pulumi.get(self, "worker_disk_performance_level")
+
+    @property
     @pulumi.getter(name="workerDiskSize")
     def worker_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         """
         return pulumi.get(self, "worker_disk_size")
+
+    @property
+    @pulumi.getter(name="workerDiskSnapshotPolicyId")
+    def worker_disk_snapshot_policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Worker node system disk auto snapshot policy.
+        """
+        return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
     @property
     @pulumi.getter(name="workerInstanceChargeType")

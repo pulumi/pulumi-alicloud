@@ -52,6 +52,7 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
         "outputFile": args.outputFile,
         "sortedBy": args.sortedBy,
         "spotStrategy": args.spotStrategy,
+        "systemDiskCategory": args.systemDiskCategory,
     }, opts);
 }
 
@@ -106,6 +107,10 @@ export interface GetInstanceTypesArgs {
      * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
     readonly spotStrategy?: string;
+    /**
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`. Default to `cloudEfficiency`.
+     */
+    readonly systemDiskCategory?: string;
 }
 
 /**
@@ -147,4 +152,5 @@ export interface GetInstanceTypesResult {
     readonly outputFile?: string;
     readonly sortedBy?: string;
     readonly spotStrategy?: string;
+    readonly systemDiskCategory?: string;
 }
