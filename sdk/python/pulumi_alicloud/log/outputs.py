@@ -12,6 +12,7 @@ from . import outputs
 __all__ = [
     'AlertNotificationList',
     'AlertQueryList',
+    'EtlEtlSink',
     'StoreIndexFieldSearch',
     'StoreIndexFieldSearchJsonKey',
     'StoreIndexFullText',
@@ -158,6 +159,132 @@ class AlertQueryList(dict):
         default Custom. No need to configure this parameter.
         """
         return pulumi.get(self, "time_span_type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EtlEtlSink(dict):
+    def __init__(__self__, *,
+                 endpoint: str,
+                 logstore: str,
+                 name: str,
+                 project: str,
+                 access_key_id: Optional[str] = None,
+                 access_key_secret: Optional[str] = None,
+                 kms_encrypted_access_key_id: Optional[str] = None,
+                 kms_encrypted_access_key_secret: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str endpoint: Delivery target logstore region.
+        :param str logstore: Delivery target logstore.
+        :param str name: Delivery target name.
+        :param str project: The project where the target logstore is delivered.
+        :param str access_key_id: Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        :param str access_key_secret: Delivery target logstore access key secret.
+        :param str kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+        :param str kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+        :param str role_arn: Sts role info.
+        :param str type: ETL sinks type, the default value is AliyunLOG.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        if access_key_id is not None:
+            pulumi.set(__self__, "access_key_id", access_key_id)
+        if access_key_secret is not None:
+            pulumi.set(__self__, "access_key_secret", access_key_secret)
+        if kms_encrypted_access_key_id is not None:
+            pulumi.set(__self__, "kms_encrypted_access_key_id", kms_encrypted_access_key_id)
+        if kms_encrypted_access_key_secret is not None:
+            pulumi.set(__self__, "kms_encrypted_access_key_secret", kms_encrypted_access_key_secret)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        Delivery target logstore region.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def logstore(self) -> str:
+        """
+        Delivery target logstore.
+        """
+        return pulumi.get(self, "logstore")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Delivery target name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project where the target logstore is delivered.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> Optional[str]:
+        """
+        Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @property
+    @pulumi.getter(name="accessKeySecret")
+    def access_key_secret(self) -> Optional[str]:
+        """
+        Delivery target logstore access key secret.
+        """
+        return pulumi.get(self, "access_key_secret")
+
+    @property
+    @pulumi.getter(name="kmsEncryptedAccessKeyId")
+    def kms_encrypted_access_key_id(self) -> Optional[str]:
+        """
+        An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_access_key_id")
+
+    @property
+    @pulumi.getter(name="kmsEncryptedAccessKeySecret")
+    def kms_encrypted_access_key_secret(self) -> Optional[str]:
+        """
+        An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_access_key_secret")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        Sts role info.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        ETL sinks type, the default value is AliyunLOG.
+        """
+        return pulumi.get(self, "type")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

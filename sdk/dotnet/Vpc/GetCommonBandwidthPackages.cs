@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Vpc
         ///     {
         ///         var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new AliCloud.Vpc.CommonBandwithPackageArgs
         ///         {
-        ///             Bandwidth = 2,
+        ///             Bandwidth = "2",
         ///             Description = "tf-testAcc-CommonBandwidthPackage",
         ///         });
         ///         var fooCommonBandwidthPackages = fooCommonBandwithPackage.Id.Apply(id =&gt; AliCloud.Vpc.GetCommonBandwidthPackages.InvokeAsync(new AliCloud.Vpc.GetCommonBandwidthPackagesArgs
@@ -53,6 +53,7 @@ namespace Pulumi.AliCloud.Vpc
         ///   
         ///   * `ip_address`   - The address of the EIP.
         ///   * `allocation_id` - The ID of the EIP instance.
+        ///   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
         /// </summary>
         public static Task<GetCommonBandwidthPackagesResult> InvokeAsync(GetCommonBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesArgs(), options.WithVersion());
@@ -61,6 +62,18 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class GetCommonBandwidthPackagesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of bandwidth package.
+        /// </summary>
+        [Input("bandwidthPackageName")]
+        public string? BandwidthPackageName { get; set; }
+
+        /// <summary>
+        /// Specifies whether to precheck only the request.
+        /// </summary>
+        [Input("dryRun")]
+        public bool? DryRun { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -72,6 +85,12 @@ namespace Pulumi.AliCloud.Vpc
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
+
+        /// <summary>
+        /// Specifies whether to return data of orders that have not taken effect.
+        /// </summary>
+        [Input("includeReservationData")]
+        public bool? IncludeReservationData { get; set; }
 
         /// <summary>
         /// A regex string to filter results by name.
@@ -88,6 +107,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The status of bandwidth package. Valid values: `Available` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
         public GetCommonBandwidthPackagesArgs()
         {
         }
@@ -98,6 +123,11 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetCommonBandwidthPackagesResult
     {
         /// <summary>
+        /// The name of bandwidth package.
+        /// </summary>
+        public readonly string? BandwidthPackageName;
+        public readonly bool? DryRun;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -105,6 +135,7 @@ namespace Pulumi.AliCloud.Vpc
         /// (Optional) A list of Common Bandwidth Packages IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly bool? IncludeReservationData;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of Common Bandwidth Packages names.
@@ -119,12 +150,22 @@ namespace Pulumi.AliCloud.Vpc
         /// The Id of resource group which the common bandwidth package belongs.
         /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// Status of the Common Bandwidth Package.
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
         private GetCommonBandwidthPackagesResult(
+            string? bandwidthPackageName,
+
+            bool? dryRun,
+
             string id,
 
             ImmutableArray<string> ids,
+
+            bool? includeReservationData,
 
             string? nameRegex,
 
@@ -134,15 +175,21 @@ namespace Pulumi.AliCloud.Vpc
 
             ImmutableArray<Outputs.GetCommonBandwidthPackagesPackageResult> packages,
 
-            string? resourceGroupId)
+            string? resourceGroupId,
+
+            string? status)
         {
+            BandwidthPackageName = bandwidthPackageName;
+            DryRun = dryRun;
             Id = id;
             Ids = ids;
+            IncludeReservationData = includeReservationData;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Packages = packages;
             ResourceGroupId = resourceGroupId;
+            Status = status;
         }
     }
 }

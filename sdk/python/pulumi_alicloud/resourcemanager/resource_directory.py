@@ -15,6 +15,7 @@ class ResourceDirectory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,7 +40,7 @@ class ResourceDirectory(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.resourcemanager.ResourceDirectory("example")
+        example = alicloud.resourcemanager.ResourceDirectory("example", status="Enabled")
         ```
 
         ## Import
@@ -52,6 +53,7 @@ class ResourceDirectory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -70,6 +72,7 @@ class ResourceDirectory(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['status'] = status
             __props__['master_account_id'] = None
             __props__['master_account_name'] = None
             __props__['root_folder_id'] = None
@@ -85,7 +88,8 @@ class ResourceDirectory(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             master_account_id: Optional[pulumi.Input[str]] = None,
             master_account_name: Optional[pulumi.Input[str]] = None,
-            root_folder_id: Optional[pulumi.Input[str]] = None) -> 'ResourceDirectory':
+            root_folder_id: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None) -> 'ResourceDirectory':
         """
         Get an existing ResourceDirectory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -96,6 +100,7 @@ class ResourceDirectory(pulumi.CustomResource):
         :param pulumi.Input[str] master_account_id: The ID of the master account.
         :param pulumi.Input[str] master_account_name: The name of the master account.
         :param pulumi.Input[str] root_folder_id: The ID of the root folder.
+        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -104,6 +109,7 @@ class ResourceDirectory(pulumi.CustomResource):
         __props__["master_account_id"] = master_account_id
         __props__["master_account_name"] = master_account_name
         __props__["root_folder_id"] = root_folder_id
+        __props__["status"] = status
         return ResourceDirectory(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -129,6 +135,14 @@ class ResourceDirectory(pulumi.CustomResource):
         The ID of the root folder.
         """
         return pulumi.get(self, "root_folder_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[Optional[str]]:
+        """
+        The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

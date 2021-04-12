@@ -14,7 +14,13 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class NodePoolTaint
     {
         public readonly string? Effect;
+        /// <summary>
+        /// The label key.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The label value.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

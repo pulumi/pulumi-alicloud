@@ -234,6 +234,618 @@ func (o DedicatedHostNetworkAttributeArrayOutput) Index(i pulumi.IntInput) Dedic
 	}).(DedicatedHostNetworkAttributeOutput)
 }
 
+type EcsLaunchTemplateDataDisk struct {
+	// The category of the disk.
+	Category *string `pulumi:"category"`
+	// Indicates whether the data disk is released with the instance.
+	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
+	// The description of the data disk.
+	Description *string `pulumi:"description"`
+	// Encrypted the data in this disk.
+	Encrypted *bool `pulumi:"encrypted"`
+	// The name of the data disk.
+	Name *string `pulumi:"name"`
+	// The performance level of the ESSD used as the data disk.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The size of the data disk.
+	Size *int `pulumi:"size"`
+	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+	SnapshotId *string `pulumi:"snapshotId"`
+}
+
+// EcsLaunchTemplateDataDiskInput is an input type that accepts EcsLaunchTemplateDataDiskArgs and EcsLaunchTemplateDataDiskOutput values.
+// You can construct a concrete instance of `EcsLaunchTemplateDataDiskInput` via:
+//
+//          EcsLaunchTemplateDataDiskArgs{...}
+type EcsLaunchTemplateDataDiskInput interface {
+	pulumi.Input
+
+	ToEcsLaunchTemplateDataDiskOutput() EcsLaunchTemplateDataDiskOutput
+	ToEcsLaunchTemplateDataDiskOutputWithContext(context.Context) EcsLaunchTemplateDataDiskOutput
+}
+
+type EcsLaunchTemplateDataDiskArgs struct {
+	// The category of the disk.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Indicates whether the data disk is released with the instance.
+	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
+	// The description of the data disk.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Encrypted the data in this disk.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// The name of the data disk.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The performance level of the ESSD used as the data disk.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The size of the data disk.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+}
+
+func (EcsLaunchTemplateDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsLaunchTemplateDataDisk)(nil)).Elem()
+}
+
+func (i EcsLaunchTemplateDataDiskArgs) ToEcsLaunchTemplateDataDiskOutput() EcsLaunchTemplateDataDiskOutput {
+	return i.ToEcsLaunchTemplateDataDiskOutputWithContext(context.Background())
+}
+
+func (i EcsLaunchTemplateDataDiskArgs) ToEcsLaunchTemplateDataDiskOutputWithContext(ctx context.Context) EcsLaunchTemplateDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateDataDiskOutput)
+}
+
+// EcsLaunchTemplateDataDiskArrayInput is an input type that accepts EcsLaunchTemplateDataDiskArray and EcsLaunchTemplateDataDiskArrayOutput values.
+// You can construct a concrete instance of `EcsLaunchTemplateDataDiskArrayInput` via:
+//
+//          EcsLaunchTemplateDataDiskArray{ EcsLaunchTemplateDataDiskArgs{...} }
+type EcsLaunchTemplateDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToEcsLaunchTemplateDataDiskArrayOutput() EcsLaunchTemplateDataDiskArrayOutput
+	ToEcsLaunchTemplateDataDiskArrayOutputWithContext(context.Context) EcsLaunchTemplateDataDiskArrayOutput
+}
+
+type EcsLaunchTemplateDataDiskArray []EcsLaunchTemplateDataDiskInput
+
+func (EcsLaunchTemplateDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EcsLaunchTemplateDataDisk)(nil)).Elem()
+}
+
+func (i EcsLaunchTemplateDataDiskArray) ToEcsLaunchTemplateDataDiskArrayOutput() EcsLaunchTemplateDataDiskArrayOutput {
+	return i.ToEcsLaunchTemplateDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i EcsLaunchTemplateDataDiskArray) ToEcsLaunchTemplateDataDiskArrayOutputWithContext(ctx context.Context) EcsLaunchTemplateDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateDataDiskArrayOutput)
+}
+
+type EcsLaunchTemplateDataDiskOutput struct{ *pulumi.OutputState }
+
+func (EcsLaunchTemplateDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsLaunchTemplateDataDisk)(nil)).Elem()
+}
+
+func (o EcsLaunchTemplateDataDiskOutput) ToEcsLaunchTemplateDataDiskOutput() EcsLaunchTemplateDataDiskOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateDataDiskOutput) ToEcsLaunchTemplateDataDiskOutputWithContext(ctx context.Context) EcsLaunchTemplateDataDiskOutput {
+	return o
+}
+
+// The category of the disk.
+func (o EcsLaunchTemplateDataDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the data disk is released with the instance.
+func (o EcsLaunchTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+}
+
+// The description of the data disk.
+func (o EcsLaunchTemplateDataDiskOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Encrypted the data in this disk.
+func (o EcsLaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the data disk.
+func (o EcsLaunchTemplateDataDiskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The performance level of the ESSD used as the data disk.
+func (o EcsLaunchTemplateDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the data disk.
+func (o EcsLaunchTemplateDataDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+func (o EcsLaunchTemplateDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+type EcsLaunchTemplateDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (EcsLaunchTemplateDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EcsLaunchTemplateDataDisk)(nil)).Elem()
+}
+
+func (o EcsLaunchTemplateDataDiskArrayOutput) ToEcsLaunchTemplateDataDiskArrayOutput() EcsLaunchTemplateDataDiskArrayOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateDataDiskArrayOutput) ToEcsLaunchTemplateDataDiskArrayOutputWithContext(ctx context.Context) EcsLaunchTemplateDataDiskArrayOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateDataDiskArrayOutput) Index(i pulumi.IntInput) EcsLaunchTemplateDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcsLaunchTemplateDataDisk {
+		return vs[0].([]EcsLaunchTemplateDataDisk)[vs[1].(int)]
+	}).(EcsLaunchTemplateDataDiskOutput)
+}
+
+type EcsLaunchTemplateNetworkInterfaces struct {
+	// The description of the data disk.
+	Description *string `pulumi:"description"`
+	// The name of the data disk.
+	Name *string `pulumi:"name"`
+	// The primary private IP address of the ENI.
+	PrimaryIp *string `pulumi:"primaryIp"`
+	// The security group ID must be one in the same VPC.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// EcsLaunchTemplateNetworkInterfacesInput is an input type that accepts EcsLaunchTemplateNetworkInterfacesArgs and EcsLaunchTemplateNetworkInterfacesOutput values.
+// You can construct a concrete instance of `EcsLaunchTemplateNetworkInterfacesInput` via:
+//
+//          EcsLaunchTemplateNetworkInterfacesArgs{...}
+type EcsLaunchTemplateNetworkInterfacesInput interface {
+	pulumi.Input
+
+	ToEcsLaunchTemplateNetworkInterfacesOutput() EcsLaunchTemplateNetworkInterfacesOutput
+	ToEcsLaunchTemplateNetworkInterfacesOutputWithContext(context.Context) EcsLaunchTemplateNetworkInterfacesOutput
+}
+
+type EcsLaunchTemplateNetworkInterfacesArgs struct {
+	// The description of the data disk.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name of the data disk.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The primary private IP address of the ENI.
+	PrimaryIp pulumi.StringPtrInput `pulumi:"primaryIp"`
+	// The security group ID must be one in the same VPC.
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (EcsLaunchTemplateNetworkInterfacesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsLaunchTemplateNetworkInterfaces)(nil)).Elem()
+}
+
+func (i EcsLaunchTemplateNetworkInterfacesArgs) ToEcsLaunchTemplateNetworkInterfacesOutput() EcsLaunchTemplateNetworkInterfacesOutput {
+	return i.ToEcsLaunchTemplateNetworkInterfacesOutputWithContext(context.Background())
+}
+
+func (i EcsLaunchTemplateNetworkInterfacesArgs) ToEcsLaunchTemplateNetworkInterfacesOutputWithContext(ctx context.Context) EcsLaunchTemplateNetworkInterfacesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateNetworkInterfacesOutput)
+}
+
+func (i EcsLaunchTemplateNetworkInterfacesArgs) ToEcsLaunchTemplateNetworkInterfacesPtrOutput() EcsLaunchTemplateNetworkInterfacesPtrOutput {
+	return i.ToEcsLaunchTemplateNetworkInterfacesPtrOutputWithContext(context.Background())
+}
+
+func (i EcsLaunchTemplateNetworkInterfacesArgs) ToEcsLaunchTemplateNetworkInterfacesPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateNetworkInterfacesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateNetworkInterfacesOutput).ToEcsLaunchTemplateNetworkInterfacesPtrOutputWithContext(ctx)
+}
+
+// EcsLaunchTemplateNetworkInterfacesPtrInput is an input type that accepts EcsLaunchTemplateNetworkInterfacesArgs, EcsLaunchTemplateNetworkInterfacesPtr and EcsLaunchTemplateNetworkInterfacesPtrOutput values.
+// You can construct a concrete instance of `EcsLaunchTemplateNetworkInterfacesPtrInput` via:
+//
+//          EcsLaunchTemplateNetworkInterfacesArgs{...}
+//
+//  or:
+//
+//          nil
+type EcsLaunchTemplateNetworkInterfacesPtrInput interface {
+	pulumi.Input
+
+	ToEcsLaunchTemplateNetworkInterfacesPtrOutput() EcsLaunchTemplateNetworkInterfacesPtrOutput
+	ToEcsLaunchTemplateNetworkInterfacesPtrOutputWithContext(context.Context) EcsLaunchTemplateNetworkInterfacesPtrOutput
+}
+
+type ecsLaunchTemplateNetworkInterfacesPtrType EcsLaunchTemplateNetworkInterfacesArgs
+
+func EcsLaunchTemplateNetworkInterfacesPtr(v *EcsLaunchTemplateNetworkInterfacesArgs) EcsLaunchTemplateNetworkInterfacesPtrInput {
+	return (*ecsLaunchTemplateNetworkInterfacesPtrType)(v)
+}
+
+func (*ecsLaunchTemplateNetworkInterfacesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EcsLaunchTemplateNetworkInterfaces)(nil)).Elem()
+}
+
+func (i *ecsLaunchTemplateNetworkInterfacesPtrType) ToEcsLaunchTemplateNetworkInterfacesPtrOutput() EcsLaunchTemplateNetworkInterfacesPtrOutput {
+	return i.ToEcsLaunchTemplateNetworkInterfacesPtrOutputWithContext(context.Background())
+}
+
+func (i *ecsLaunchTemplateNetworkInterfacesPtrType) ToEcsLaunchTemplateNetworkInterfacesPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateNetworkInterfacesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateNetworkInterfacesPtrOutput)
+}
+
+type EcsLaunchTemplateNetworkInterfacesOutput struct{ *pulumi.OutputState }
+
+func (EcsLaunchTemplateNetworkInterfacesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsLaunchTemplateNetworkInterfaces)(nil)).Elem()
+}
+
+func (o EcsLaunchTemplateNetworkInterfacesOutput) ToEcsLaunchTemplateNetworkInterfacesOutput() EcsLaunchTemplateNetworkInterfacesOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateNetworkInterfacesOutput) ToEcsLaunchTemplateNetworkInterfacesOutputWithContext(ctx context.Context) EcsLaunchTemplateNetworkInterfacesOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateNetworkInterfacesOutput) ToEcsLaunchTemplateNetworkInterfacesPtrOutput() EcsLaunchTemplateNetworkInterfacesPtrOutput {
+	return o.ToEcsLaunchTemplateNetworkInterfacesPtrOutputWithContext(context.Background())
+}
+
+func (o EcsLaunchTemplateNetworkInterfacesOutput) ToEcsLaunchTemplateNetworkInterfacesPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateNetworkInterfacesPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *EcsLaunchTemplateNetworkInterfaces {
+		return &v
+	}).(EcsLaunchTemplateNetworkInterfacesPtrOutput)
+}
+
+// The description of the data disk.
+func (o EcsLaunchTemplateNetworkInterfacesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the data disk.
+func (o EcsLaunchTemplateNetworkInterfacesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The primary private IP address of the ENI.
+func (o EcsLaunchTemplateNetworkInterfacesOutput) PrimaryIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.PrimaryIp }).(pulumi.StringPtrOutput)
+}
+
+// The security group ID must be one in the same VPC.
+func (o EcsLaunchTemplateNetworkInterfacesOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+func (o EcsLaunchTemplateNetworkInterfacesOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type EcsLaunchTemplateNetworkInterfacesPtrOutput struct{ *pulumi.OutputState }
+
+func (EcsLaunchTemplateNetworkInterfacesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EcsLaunchTemplateNetworkInterfaces)(nil)).Elem()
+}
+
+func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) ToEcsLaunchTemplateNetworkInterfacesPtrOutput() EcsLaunchTemplateNetworkInterfacesPtrOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) ToEcsLaunchTemplateNetworkInterfacesPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateNetworkInterfacesPtrOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Elem() EcsLaunchTemplateNetworkInterfacesOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) EcsLaunchTemplateNetworkInterfaces { return *v }).(EcsLaunchTemplateNetworkInterfacesOutput)
+}
+
+// The description of the data disk.
+func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the data disk.
+func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The primary private IP address of the ENI.
+func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) PrimaryIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// The security group ID must be one in the same VPC.
+func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VswitchId
+	}).(pulumi.StringPtrOutput)
+}
+
+type EcsLaunchTemplateSystemDisk struct {
+	// The category of the disk.
+	Category *string `pulumi:"category"`
+	// Indicates whether the data disk is released with the instance.
+	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
+	// The description of the data disk.
+	Description *string `pulumi:"description"`
+	// The Iops.
+	Iops *string `pulumi:"iops"`
+	// The name of the data disk.
+	Name *string `pulumi:"name"`
+	// The performance level of the ESSD used as the data disk.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The size of the data disk.
+	Size *int `pulumi:"size"`
+}
+
+// EcsLaunchTemplateSystemDiskInput is an input type that accepts EcsLaunchTemplateSystemDiskArgs and EcsLaunchTemplateSystemDiskOutput values.
+// You can construct a concrete instance of `EcsLaunchTemplateSystemDiskInput` via:
+//
+//          EcsLaunchTemplateSystemDiskArgs{...}
+type EcsLaunchTemplateSystemDiskInput interface {
+	pulumi.Input
+
+	ToEcsLaunchTemplateSystemDiskOutput() EcsLaunchTemplateSystemDiskOutput
+	ToEcsLaunchTemplateSystemDiskOutputWithContext(context.Context) EcsLaunchTemplateSystemDiskOutput
+}
+
+type EcsLaunchTemplateSystemDiskArgs struct {
+	// The category of the disk.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Indicates whether the data disk is released with the instance.
+	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
+	// The description of the data disk.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Iops.
+	Iops pulumi.StringPtrInput `pulumi:"iops"`
+	// The name of the data disk.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The performance level of the ESSD used as the data disk.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The size of the data disk.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (EcsLaunchTemplateSystemDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsLaunchTemplateSystemDisk)(nil)).Elem()
+}
+
+func (i EcsLaunchTemplateSystemDiskArgs) ToEcsLaunchTemplateSystemDiskOutput() EcsLaunchTemplateSystemDiskOutput {
+	return i.ToEcsLaunchTemplateSystemDiskOutputWithContext(context.Background())
+}
+
+func (i EcsLaunchTemplateSystemDiskArgs) ToEcsLaunchTemplateSystemDiskOutputWithContext(ctx context.Context) EcsLaunchTemplateSystemDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateSystemDiskOutput)
+}
+
+func (i EcsLaunchTemplateSystemDiskArgs) ToEcsLaunchTemplateSystemDiskPtrOutput() EcsLaunchTemplateSystemDiskPtrOutput {
+	return i.ToEcsLaunchTemplateSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i EcsLaunchTemplateSystemDiskArgs) ToEcsLaunchTemplateSystemDiskPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateSystemDiskOutput).ToEcsLaunchTemplateSystemDiskPtrOutputWithContext(ctx)
+}
+
+// EcsLaunchTemplateSystemDiskPtrInput is an input type that accepts EcsLaunchTemplateSystemDiskArgs, EcsLaunchTemplateSystemDiskPtr and EcsLaunchTemplateSystemDiskPtrOutput values.
+// You can construct a concrete instance of `EcsLaunchTemplateSystemDiskPtrInput` via:
+//
+//          EcsLaunchTemplateSystemDiskArgs{...}
+//
+//  or:
+//
+//          nil
+type EcsLaunchTemplateSystemDiskPtrInput interface {
+	pulumi.Input
+
+	ToEcsLaunchTemplateSystemDiskPtrOutput() EcsLaunchTemplateSystemDiskPtrOutput
+	ToEcsLaunchTemplateSystemDiskPtrOutputWithContext(context.Context) EcsLaunchTemplateSystemDiskPtrOutput
+}
+
+type ecsLaunchTemplateSystemDiskPtrType EcsLaunchTemplateSystemDiskArgs
+
+func EcsLaunchTemplateSystemDiskPtr(v *EcsLaunchTemplateSystemDiskArgs) EcsLaunchTemplateSystemDiskPtrInput {
+	return (*ecsLaunchTemplateSystemDiskPtrType)(v)
+}
+
+func (*ecsLaunchTemplateSystemDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EcsLaunchTemplateSystemDisk)(nil)).Elem()
+}
+
+func (i *ecsLaunchTemplateSystemDiskPtrType) ToEcsLaunchTemplateSystemDiskPtrOutput() EcsLaunchTemplateSystemDiskPtrOutput {
+	return i.ToEcsLaunchTemplateSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *ecsLaunchTemplateSystemDiskPtrType) ToEcsLaunchTemplateSystemDiskPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateSystemDiskPtrOutput)
+}
+
+type EcsLaunchTemplateSystemDiskOutput struct{ *pulumi.OutputState }
+
+func (EcsLaunchTemplateSystemDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsLaunchTemplateSystemDisk)(nil)).Elem()
+}
+
+func (o EcsLaunchTemplateSystemDiskOutput) ToEcsLaunchTemplateSystemDiskOutput() EcsLaunchTemplateSystemDiskOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateSystemDiskOutput) ToEcsLaunchTemplateSystemDiskOutputWithContext(ctx context.Context) EcsLaunchTemplateSystemDiskOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateSystemDiskOutput) ToEcsLaunchTemplateSystemDiskPtrOutput() EcsLaunchTemplateSystemDiskPtrOutput {
+	return o.ToEcsLaunchTemplateSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (o EcsLaunchTemplateSystemDiskOutput) ToEcsLaunchTemplateSystemDiskPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateSystemDiskPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *EcsLaunchTemplateSystemDisk {
+		return &v
+	}).(EcsLaunchTemplateSystemDiskPtrOutput)
+}
+
+// The category of the disk.
+func (o EcsLaunchTemplateSystemDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the data disk is released with the instance.
+func (o EcsLaunchTemplateSystemDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+}
+
+// The description of the data disk.
+func (o EcsLaunchTemplateSystemDiskOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Iops.
+func (o EcsLaunchTemplateSystemDiskOutput) Iops() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Iops }).(pulumi.StringPtrOutput)
+}
+
+// The name of the data disk.
+func (o EcsLaunchTemplateSystemDiskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The performance level of the ESSD used as the data disk.
+func (o EcsLaunchTemplateSystemDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the data disk.
+func (o EcsLaunchTemplateSystemDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type EcsLaunchTemplateSystemDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (EcsLaunchTemplateSystemDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EcsLaunchTemplateSystemDisk)(nil)).Elem()
+}
+
+func (o EcsLaunchTemplateSystemDiskPtrOutput) ToEcsLaunchTemplateSystemDiskPtrOutput() EcsLaunchTemplateSystemDiskPtrOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateSystemDiskPtrOutput) ToEcsLaunchTemplateSystemDiskPtrOutputWithContext(ctx context.Context) EcsLaunchTemplateSystemDiskPtrOutput {
+	return o
+}
+
+func (o EcsLaunchTemplateSystemDiskPtrOutput) Elem() EcsLaunchTemplateSystemDiskOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) EcsLaunchTemplateSystemDisk { return *v }).(EcsLaunchTemplateSystemDiskOutput)
+}
+
+// The category of the disk.
+func (o EcsLaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Category
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the data disk is released with the instance.
+func (o EcsLaunchTemplateSystemDiskPtrOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteWithInstance
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The description of the data disk.
+func (o EcsLaunchTemplateSystemDiskPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Iops.
+func (o EcsLaunchTemplateSystemDiskPtrOutput) Iops() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Iops
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the data disk.
+func (o EcsLaunchTemplateSystemDiskPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The performance level of the ESSD used as the data disk.
+func (o EcsLaunchTemplateSystemDiskPtrOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// The size of the data disk.
+func (o EcsLaunchTemplateSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
 type ImageDiskDeviceMapping struct {
 	// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
 	Device *string `pulumi:"device"`
@@ -732,7 +1344,8 @@ type LaunchTemplateDataDisk struct {
 	// -(Optional, Bool) Encrypted the data in this disk.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The name of the data disk.
-	Name *string `pulumi:"name"`
+	Name             *string `pulumi:"name"`
+	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The size of the data disk.
 	// - cloud：[5, 2000]
 	// - cloud_efficiency：[20, 32768]
@@ -770,7 +1383,8 @@ type LaunchTemplateDataDiskArgs struct {
 	// -(Optional, Bool) Encrypted the data in this disk.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The name of the data disk.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// The size of the data disk.
 	// - cloud：[5, 2000]
 	// - cloud_efficiency：[20, 32768]
@@ -861,6 +1475,10 @@ func (o LaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 // The name of the data disk.
 func (o LaunchTemplateDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
 // The size of the data disk.
@@ -1103,6 +1721,283 @@ func (o LaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOu
 		}
 		return v.VswitchId
 	}).(pulumi.StringPtrOutput)
+}
+
+type LaunchTemplateSystemDisk struct {
+	// The category of the disk:
+	// - cloud: Basic cloud disk.
+	// - cloud_efficiency: Ultra cloud disk.
+	// - cloud_ssd: SSD cloud Disks.
+	// - ephemeral_ssd: local SSD Disks
+	// - cloud_essd: ESSD cloud Disks.
+	Category *string `pulumi:"category"`
+	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
+	// The description of the data disk.
+	Description *string `pulumi:"description"`
+	Iops        *string `pulumi:"iops"`
+	// The name of the data disk.
+	Name             *string `pulumi:"name"`
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The size of the data disk.
+	// - cloud：[5, 2000]
+	// - cloud_efficiency：[20, 32768]
+	// - cloud_ssd：[20, 32768]
+	// - cloud_essd：[20, 32768]
+	// - ephemeral_ssd: [5, 800]
+	Size *int `pulumi:"size"`
+}
+
+// LaunchTemplateSystemDiskInput is an input type that accepts LaunchTemplateSystemDiskArgs and LaunchTemplateSystemDiskOutput values.
+// You can construct a concrete instance of `LaunchTemplateSystemDiskInput` via:
+//
+//          LaunchTemplateSystemDiskArgs{...}
+type LaunchTemplateSystemDiskInput interface {
+	pulumi.Input
+
+	ToLaunchTemplateSystemDiskOutput() LaunchTemplateSystemDiskOutput
+	ToLaunchTemplateSystemDiskOutputWithContext(context.Context) LaunchTemplateSystemDiskOutput
+}
+
+type LaunchTemplateSystemDiskArgs struct {
+	// The category of the disk:
+	// - cloud: Basic cloud disk.
+	// - cloud_efficiency: Ultra cloud disk.
+	// - cloud_ssd: SSD cloud Disks.
+	// - ephemeral_ssd: local SSD Disks
+	// - cloud_essd: ESSD cloud Disks.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
+	// The description of the data disk.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Iops        pulumi.StringPtrInput `pulumi:"iops"`
+	// The name of the data disk.
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The size of the data disk.
+	// - cloud：[5, 2000]
+	// - cloud_efficiency：[20, 32768]
+	// - cloud_ssd：[20, 32768]
+	// - cloud_essd：[20, 32768]
+	// - ephemeral_ssd: [5, 800]
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (LaunchTemplateSystemDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LaunchTemplateSystemDisk)(nil)).Elem()
+}
+
+func (i LaunchTemplateSystemDiskArgs) ToLaunchTemplateSystemDiskOutput() LaunchTemplateSystemDiskOutput {
+	return i.ToLaunchTemplateSystemDiskOutputWithContext(context.Background())
+}
+
+func (i LaunchTemplateSystemDiskArgs) ToLaunchTemplateSystemDiskOutputWithContext(ctx context.Context) LaunchTemplateSystemDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateSystemDiskOutput)
+}
+
+func (i LaunchTemplateSystemDiskArgs) ToLaunchTemplateSystemDiskPtrOutput() LaunchTemplateSystemDiskPtrOutput {
+	return i.ToLaunchTemplateSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i LaunchTemplateSystemDiskArgs) ToLaunchTemplateSystemDiskPtrOutputWithContext(ctx context.Context) LaunchTemplateSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateSystemDiskOutput).ToLaunchTemplateSystemDiskPtrOutputWithContext(ctx)
+}
+
+// LaunchTemplateSystemDiskPtrInput is an input type that accepts LaunchTemplateSystemDiskArgs, LaunchTemplateSystemDiskPtr and LaunchTemplateSystemDiskPtrOutput values.
+// You can construct a concrete instance of `LaunchTemplateSystemDiskPtrInput` via:
+//
+//          LaunchTemplateSystemDiskArgs{...}
+//
+//  or:
+//
+//          nil
+type LaunchTemplateSystemDiskPtrInput interface {
+	pulumi.Input
+
+	ToLaunchTemplateSystemDiskPtrOutput() LaunchTemplateSystemDiskPtrOutput
+	ToLaunchTemplateSystemDiskPtrOutputWithContext(context.Context) LaunchTemplateSystemDiskPtrOutput
+}
+
+type launchTemplateSystemDiskPtrType LaunchTemplateSystemDiskArgs
+
+func LaunchTemplateSystemDiskPtr(v *LaunchTemplateSystemDiskArgs) LaunchTemplateSystemDiskPtrInput {
+	return (*launchTemplateSystemDiskPtrType)(v)
+}
+
+func (*launchTemplateSystemDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LaunchTemplateSystemDisk)(nil)).Elem()
+}
+
+func (i *launchTemplateSystemDiskPtrType) ToLaunchTemplateSystemDiskPtrOutput() LaunchTemplateSystemDiskPtrOutput {
+	return i.ToLaunchTemplateSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *launchTemplateSystemDiskPtrType) ToLaunchTemplateSystemDiskPtrOutputWithContext(ctx context.Context) LaunchTemplateSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateSystemDiskPtrOutput)
+}
+
+type LaunchTemplateSystemDiskOutput struct{ *pulumi.OutputState }
+
+func (LaunchTemplateSystemDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LaunchTemplateSystemDisk)(nil)).Elem()
+}
+
+func (o LaunchTemplateSystemDiskOutput) ToLaunchTemplateSystemDiskOutput() LaunchTemplateSystemDiskOutput {
+	return o
+}
+
+func (o LaunchTemplateSystemDiskOutput) ToLaunchTemplateSystemDiskOutputWithContext(ctx context.Context) LaunchTemplateSystemDiskOutput {
+	return o
+}
+
+func (o LaunchTemplateSystemDiskOutput) ToLaunchTemplateSystemDiskPtrOutput() LaunchTemplateSystemDiskPtrOutput {
+	return o.ToLaunchTemplateSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (o LaunchTemplateSystemDiskOutput) ToLaunchTemplateSystemDiskPtrOutputWithContext(ctx context.Context) LaunchTemplateSystemDiskPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSystemDisk) *LaunchTemplateSystemDisk {
+		return &v
+	}).(LaunchTemplateSystemDiskPtrOutput)
+}
+
+// The category of the disk:
+// - cloud: Basic cloud disk.
+// - cloud_efficiency: Ultra cloud disk.
+// - cloud_ssd: SSD cloud Disks.
+// - ephemeral_ssd: local SSD Disks
+// - cloud_essd: ESSD cloud Disks.
+func (o LaunchTemplateSystemDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+func (o LaunchTemplateSystemDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSystemDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+}
+
+// The description of the data disk.
+func (o LaunchTemplateSystemDiskOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateSystemDiskOutput) Iops() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Iops }).(pulumi.StringPtrOutput)
+}
+
+// The name of the data disk.
+func (o LaunchTemplateSystemDiskOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateSystemDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the data disk.
+// - cloud：[5, 2000]
+// - cloud_efficiency：[20, 32768]
+// - cloud_ssd：[20, 32768]
+// - cloud_essd：[20, 32768]
+// - ephemeral_ssd: [5, 800]
+func (o LaunchTemplateSystemDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type LaunchTemplateSystemDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (LaunchTemplateSystemDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LaunchTemplateSystemDisk)(nil)).Elem()
+}
+
+func (o LaunchTemplateSystemDiskPtrOutput) ToLaunchTemplateSystemDiskPtrOutput() LaunchTemplateSystemDiskPtrOutput {
+	return o
+}
+
+func (o LaunchTemplateSystemDiskPtrOutput) ToLaunchTemplateSystemDiskPtrOutputWithContext(ctx context.Context) LaunchTemplateSystemDiskPtrOutput {
+	return o
+}
+
+func (o LaunchTemplateSystemDiskPtrOutput) Elem() LaunchTemplateSystemDiskOutput {
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) LaunchTemplateSystemDisk { return *v }).(LaunchTemplateSystemDiskOutput)
+}
+
+// The category of the disk:
+// - cloud: Basic cloud disk.
+// - cloud_efficiency: Ultra cloud disk.
+// - cloud_ssd: SSD cloud Disks.
+// - ephemeral_ssd: local SSD Disks
+// - cloud_essd: ESSD cloud Disks.
+func (o LaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Category
+	}).(pulumi.StringPtrOutput)
+}
+
+// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+func (o LaunchTemplateSystemDiskPtrOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteWithInstance
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The description of the data disk.
+func (o LaunchTemplateSystemDiskPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateSystemDiskPtrOutput) Iops() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Iops
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the data disk.
+func (o LaunchTemplateSystemDiskPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateSystemDiskPtrOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// The size of the data disk.
+// - cloud：[5, 2000]
+// - cloud_efficiency：[20, 32768]
+// - cloud_ssd：[20, 32768]
+// - cloud_essd：[20, 32768]
+// - ephemeral_ssd: [5, 800]
+func (o LaunchTemplateSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetAutoSnapshotPoliciesPolicy struct {
@@ -2091,6 +2986,1237 @@ func (o GetDisksDiskArrayOutput) Index(i pulumi.IntInput) GetDisksDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDisksDisk {
 		return vs[0].([]GetDisksDisk)[vs[1].(int)]
 	}).(GetDisksDiskOutput)
+}
+
+type GetEcsLaunchTemplatesTemplate struct {
+	// Instance auto release time.
+	AutoReleaseTime string `pulumi:"autoReleaseTime"`
+	// CreatedBy.
+	CreatedBy string `pulumi:"createdBy"`
+	// The list of data disks created with instance.
+	DataDisks []GetEcsLaunchTemplatesTemplateDataDisk `pulumi:"dataDisks"`
+	// The Default Version Number.
+	DefaultVersionNumber int `pulumi:"defaultVersionNumber"`
+	// The Deployment Set Id.
+	DeploymentSetId string `pulumi:"deploymentSetId"`
+	// System disk description.
+	Description string `pulumi:"description"`
+	// Whether to enable the instance operating system configuration.
+	EnableVmOsConfig bool `pulumi:"enableVmOsConfig"`
+	// Instance host name.
+	HostName string `pulumi:"hostName"`
+	// The ID of the Launch Template.
+	Id string `pulumi:"id"`
+	// The Image Id.
+	ImageId string `pulumi:"imageId"`
+	// Mirror source.
+	ImageOwnerAlias string `pulumi:"imageOwnerAlias"`
+	// Internet bandwidth billing method.
+	InstanceChargeType string `pulumi:"instanceChargeType"`
+	// The Instance Name.
+	InstanceName string `pulumi:"instanceName"`
+	// Instance type.
+	InstanceType string `pulumi:"instanceType"`
+	// Internet bandwidth billing method.
+	InternetChargeType string `pulumi:"internetChargeType"`
+	// The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+	InternetMaxBandwidthIn int `pulumi:"internetMaxBandwidthIn"`
+	// Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+	InternetMaxBandwidthOut int `pulumi:"internetMaxBandwidthOut"`
+	// Whether it is an I/O-optimized instance or not.
+	IoOptimized string `pulumi:"ioOptimized"`
+	// The name of the key pair.
+	KeyPairName string `pulumi:"keyPairName"`
+	// The Latest Version Number.
+	LatestVersionNumber int `pulumi:"latestVersionNumber"`
+	// The ID of the Launch Template.
+	LaunchTemplateId string `pulumi:"launchTemplateId"`
+	// The Launch Template Name.
+	LaunchTemplateName string `pulumi:"launchTemplateName"`
+	// The Modified Time.
+	ModifiedTime string `pulumi:"modifiedTime"`
+	// The list of network interfaces created with instance.
+	NetworkInterfaces []GetEcsLaunchTemplatesTemplateNetworkInterface `pulumi:"networkInterfaces"`
+	// Network type of the instance.
+	NetworkType string `pulumi:"networkType"`
+	// Whether to use the password preset by the mirror.
+	PasswordInherit bool `pulumi:"passwordInherit"`
+	// The subscription period of the instance.
+	Period int `pulumi:"period"`
+	// The private IP address of the instance.
+	PrivateIpAddress string `pulumi:"privateIpAddress"`
+	// The RAM role name of the instance.
+	RamRoleName string `pulumi:"ramRoleName"`
+	// The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Whether or not to activate the security enhancement feature and install network security software free of charge.
+	SecurityEnhancementStrategy string `pulumi:"securityEnhancementStrategy"`
+	// The security group ID.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The security group IDs.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The protection period of the preemptible instance.
+	SpotDuration string `pulumi:"spotDuration"`
+	// Sets the maximum hourly instance price.
+	SpotPriceLimit float64 `pulumi:"spotPriceLimit"`
+	// The spot strategy for a Pay-As-You-Go instance.
+	SpotStrategy string `pulumi:"spotStrategy"`
+	// The System Disk.
+	SystemDisks []GetEcsLaunchTemplatesTemplateSystemDisk `pulumi:"systemDisks"`
+	// The template tags.
+	TemplateTags map[string]interface{} `pulumi:"templateTags"`
+	// The User Data.
+	UserData string `pulumi:"userData"`
+	// The Version Description.
+	VersionDescription string `pulumi:"versionDescription"`
+	// VpcId.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The Zone Id.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetEcsLaunchTemplatesTemplateInput is an input type that accepts GetEcsLaunchTemplatesTemplateArgs and GetEcsLaunchTemplatesTemplateOutput values.
+// You can construct a concrete instance of `GetEcsLaunchTemplatesTemplateInput` via:
+//
+//          GetEcsLaunchTemplatesTemplateArgs{...}
+type GetEcsLaunchTemplatesTemplateInput interface {
+	pulumi.Input
+
+	ToGetEcsLaunchTemplatesTemplateOutput() GetEcsLaunchTemplatesTemplateOutput
+	ToGetEcsLaunchTemplatesTemplateOutputWithContext(context.Context) GetEcsLaunchTemplatesTemplateOutput
+}
+
+type GetEcsLaunchTemplatesTemplateArgs struct {
+	// Instance auto release time.
+	AutoReleaseTime pulumi.StringInput `pulumi:"autoReleaseTime"`
+	// CreatedBy.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// The list of data disks created with instance.
+	DataDisks GetEcsLaunchTemplatesTemplateDataDiskArrayInput `pulumi:"dataDisks"`
+	// The Default Version Number.
+	DefaultVersionNumber pulumi.IntInput `pulumi:"defaultVersionNumber"`
+	// The Deployment Set Id.
+	DeploymentSetId pulumi.StringInput `pulumi:"deploymentSetId"`
+	// System disk description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether to enable the instance operating system configuration.
+	EnableVmOsConfig pulumi.BoolInput `pulumi:"enableVmOsConfig"`
+	// Instance host name.
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// The ID of the Launch Template.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Image Id.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// Mirror source.
+	ImageOwnerAlias pulumi.StringInput `pulumi:"imageOwnerAlias"`
+	// Internet bandwidth billing method.
+	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
+	// The Instance Name.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// Instance type.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Internet bandwidth billing method.
+	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
+	// The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+	InternetMaxBandwidthIn pulumi.IntInput `pulumi:"internetMaxBandwidthIn"`
+	// Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+	InternetMaxBandwidthOut pulumi.IntInput `pulumi:"internetMaxBandwidthOut"`
+	// Whether it is an I/O-optimized instance or not.
+	IoOptimized pulumi.StringInput `pulumi:"ioOptimized"`
+	// The name of the key pair.
+	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
+	// The Latest Version Number.
+	LatestVersionNumber pulumi.IntInput `pulumi:"latestVersionNumber"`
+	// The ID of the Launch Template.
+	LaunchTemplateId pulumi.StringInput `pulumi:"launchTemplateId"`
+	// The Launch Template Name.
+	LaunchTemplateName pulumi.StringInput `pulumi:"launchTemplateName"`
+	// The Modified Time.
+	ModifiedTime pulumi.StringInput `pulumi:"modifiedTime"`
+	// The list of network interfaces created with instance.
+	NetworkInterfaces GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// Network type of the instance.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// Whether to use the password preset by the mirror.
+	PasswordInherit pulumi.BoolInput `pulumi:"passwordInherit"`
+	// The subscription period of the instance.
+	Period pulumi.IntInput `pulumi:"period"`
+	// The private IP address of the instance.
+	PrivateIpAddress pulumi.StringInput `pulumi:"privateIpAddress"`
+	// The RAM role name of the instance.
+	RamRoleName pulumi.StringInput `pulumi:"ramRoleName"`
+	// The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Whether or not to activate the security enhancement feature and install network security software free of charge.
+	SecurityEnhancementStrategy pulumi.StringInput `pulumi:"securityEnhancementStrategy"`
+	// The security group ID.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The security group IDs.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// The protection period of the preemptible instance.
+	SpotDuration pulumi.StringInput `pulumi:"spotDuration"`
+	// Sets the maximum hourly instance price.
+	SpotPriceLimit pulumi.Float64Input `pulumi:"spotPriceLimit"`
+	// The spot strategy for a Pay-As-You-Go instance.
+	SpotStrategy pulumi.StringInput `pulumi:"spotStrategy"`
+	// The System Disk.
+	SystemDisks GetEcsLaunchTemplatesTemplateSystemDiskArrayInput `pulumi:"systemDisks"`
+	// The template tags.
+	TemplateTags pulumi.MapInput `pulumi:"templateTags"`
+	// The User Data.
+	UserData pulumi.StringInput `pulumi:"userData"`
+	// The Version Description.
+	VersionDescription pulumi.StringInput `pulumi:"versionDescription"`
+	// VpcId.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The Zone Id.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetEcsLaunchTemplatesTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsLaunchTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetEcsLaunchTemplatesTemplateArgs) ToGetEcsLaunchTemplatesTemplateOutput() GetEcsLaunchTemplatesTemplateOutput {
+	return i.ToGetEcsLaunchTemplatesTemplateOutputWithContext(context.Background())
+}
+
+func (i GetEcsLaunchTemplatesTemplateArgs) ToGetEcsLaunchTemplatesTemplateOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsLaunchTemplatesTemplateOutput)
+}
+
+// GetEcsLaunchTemplatesTemplateArrayInput is an input type that accepts GetEcsLaunchTemplatesTemplateArray and GetEcsLaunchTemplatesTemplateArrayOutput values.
+// You can construct a concrete instance of `GetEcsLaunchTemplatesTemplateArrayInput` via:
+//
+//          GetEcsLaunchTemplatesTemplateArray{ GetEcsLaunchTemplatesTemplateArgs{...} }
+type GetEcsLaunchTemplatesTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsLaunchTemplatesTemplateArrayOutput() GetEcsLaunchTemplatesTemplateArrayOutput
+	ToGetEcsLaunchTemplatesTemplateArrayOutputWithContext(context.Context) GetEcsLaunchTemplatesTemplateArrayOutput
+}
+
+type GetEcsLaunchTemplatesTemplateArray []GetEcsLaunchTemplatesTemplateInput
+
+func (GetEcsLaunchTemplatesTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsLaunchTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetEcsLaunchTemplatesTemplateArray) ToGetEcsLaunchTemplatesTemplateArrayOutput() GetEcsLaunchTemplatesTemplateArrayOutput {
+	return i.ToGetEcsLaunchTemplatesTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsLaunchTemplatesTemplateArray) ToGetEcsLaunchTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsLaunchTemplatesTemplateArrayOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetEcsLaunchTemplatesTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsLaunchTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetEcsLaunchTemplatesTemplateOutput) ToGetEcsLaunchTemplatesTemplateOutput() GetEcsLaunchTemplatesTemplateOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateOutput) ToGetEcsLaunchTemplatesTemplateOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateOutput {
+	return o
+}
+
+// Instance auto release time.
+func (o GetEcsLaunchTemplatesTemplateOutput) AutoReleaseTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.AutoReleaseTime }).(pulumi.StringOutput)
+}
+
+// CreatedBy.
+func (o GetEcsLaunchTemplatesTemplateOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The list of data disks created with instance.
+func (o GetEcsLaunchTemplatesTemplateOutput) DataDisks() GetEcsLaunchTemplatesTemplateDataDiskArrayOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) []GetEcsLaunchTemplatesTemplateDataDisk { return v.DataDisks }).(GetEcsLaunchTemplatesTemplateDataDiskArrayOutput)
+}
+
+// The Default Version Number.
+func (o GetEcsLaunchTemplatesTemplateOutput) DefaultVersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) int { return v.DefaultVersionNumber }).(pulumi.IntOutput)
+}
+
+// The Deployment Set Id.
+func (o GetEcsLaunchTemplatesTemplateOutput) DeploymentSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.DeploymentSetId }).(pulumi.StringOutput)
+}
+
+// System disk description.
+func (o GetEcsLaunchTemplatesTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether to enable the instance operating system configuration.
+func (o GetEcsLaunchTemplatesTemplateOutput) EnableVmOsConfig() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) bool { return v.EnableVmOsConfig }).(pulumi.BoolOutput)
+}
+
+// Instance host name.
+func (o GetEcsLaunchTemplatesTemplateOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.HostName }).(pulumi.StringOutput)
+}
+
+// The ID of the Launch Template.
+func (o GetEcsLaunchTemplatesTemplateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Image Id.
+func (o GetEcsLaunchTemplatesTemplateOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// Mirror source.
+func (o GetEcsLaunchTemplatesTemplateOutput) ImageOwnerAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.ImageOwnerAlias }).(pulumi.StringOutput)
+}
+
+// Internet bandwidth billing method.
+func (o GetEcsLaunchTemplatesTemplateOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// The Instance Name.
+func (o GetEcsLaunchTemplatesTemplateOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// Instance type.
+func (o GetEcsLaunchTemplatesTemplateOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Internet bandwidth billing method.
+func (o GetEcsLaunchTemplatesTemplateOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
+func (o GetEcsLaunchTemplatesTemplateOutput) InternetMaxBandwidthIn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) int { return v.InternetMaxBandwidthIn }).(pulumi.IntOutput)
+}
+
+// Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
+func (o GetEcsLaunchTemplatesTemplateOutput) InternetMaxBandwidthOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) int { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
+}
+
+// Whether it is an I/O-optimized instance or not.
+func (o GetEcsLaunchTemplatesTemplateOutput) IoOptimized() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.IoOptimized }).(pulumi.StringOutput)
+}
+
+// The name of the key pair.
+func (o GetEcsLaunchTemplatesTemplateOutput) KeyPairName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.KeyPairName }).(pulumi.StringOutput)
+}
+
+// The Latest Version Number.
+func (o GetEcsLaunchTemplatesTemplateOutput) LatestVersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) int { return v.LatestVersionNumber }).(pulumi.IntOutput)
+}
+
+// The ID of the Launch Template.
+func (o GetEcsLaunchTemplatesTemplateOutput) LaunchTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.LaunchTemplateId }).(pulumi.StringOutput)
+}
+
+// The Launch Template Name.
+func (o GetEcsLaunchTemplatesTemplateOutput) LaunchTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.LaunchTemplateName }).(pulumi.StringOutput)
+}
+
+// The Modified Time.
+func (o GetEcsLaunchTemplatesTemplateOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.ModifiedTime }).(pulumi.StringOutput)
+}
+
+// The list of network interfaces created with instance.
+func (o GetEcsLaunchTemplatesTemplateOutput) NetworkInterfaces() GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) []GetEcsLaunchTemplatesTemplateNetworkInterface {
+		return v.NetworkInterfaces
+	}).(GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput)
+}
+
+// Network type of the instance.
+func (o GetEcsLaunchTemplatesTemplateOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// Whether to use the password preset by the mirror.
+func (o GetEcsLaunchTemplatesTemplateOutput) PasswordInherit() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) bool { return v.PasswordInherit }).(pulumi.BoolOutput)
+}
+
+// The subscription period of the instance.
+func (o GetEcsLaunchTemplatesTemplateOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) int { return v.Period }).(pulumi.IntOutput)
+}
+
+// The private IP address of the instance.
+func (o GetEcsLaunchTemplatesTemplateOutput) PrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// The RAM role name of the instance.
+func (o GetEcsLaunchTemplatesTemplateOutput) RamRoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.RamRoleName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
+func (o GetEcsLaunchTemplatesTemplateOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Whether or not to activate the security enhancement feature and install network security software free of charge.
+func (o GetEcsLaunchTemplatesTemplateOutput) SecurityEnhancementStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.SecurityEnhancementStrategy }).(pulumi.StringOutput)
+}
+
+// The security group ID.
+func (o GetEcsLaunchTemplatesTemplateOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The security group IDs.
+func (o GetEcsLaunchTemplatesTemplateOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The protection period of the preemptible instance.
+func (o GetEcsLaunchTemplatesTemplateOutput) SpotDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.SpotDuration }).(pulumi.StringOutput)
+}
+
+// Sets the maximum hourly instance price.
+func (o GetEcsLaunchTemplatesTemplateOutput) SpotPriceLimit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) float64 { return v.SpotPriceLimit }).(pulumi.Float64Output)
+}
+
+// The spot strategy for a Pay-As-You-Go instance.
+func (o GetEcsLaunchTemplatesTemplateOutput) SpotStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.SpotStrategy }).(pulumi.StringOutput)
+}
+
+// The System Disk.
+func (o GetEcsLaunchTemplatesTemplateOutput) SystemDisks() GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) []GetEcsLaunchTemplatesTemplateSystemDisk { return v.SystemDisks }).(GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput)
+}
+
+// The template tags.
+func (o GetEcsLaunchTemplatesTemplateOutput) TemplateTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) map[string]interface{} { return v.TemplateTags }).(pulumi.MapOutput)
+}
+
+// The User Data.
+func (o GetEcsLaunchTemplatesTemplateOutput) UserData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.UserData }).(pulumi.StringOutput)
+}
+
+// The Version Description.
+func (o GetEcsLaunchTemplatesTemplateOutput) VersionDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.VersionDescription }).(pulumi.StringOutput)
+}
+
+// VpcId.
+func (o GetEcsLaunchTemplatesTemplateOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetEcsLaunchTemplatesTemplateOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone Id.
+func (o GetEcsLaunchTemplatesTemplateOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsLaunchTemplatesTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsLaunchTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetEcsLaunchTemplatesTemplateArrayOutput) ToGetEcsLaunchTemplatesTemplateArrayOutput() GetEcsLaunchTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateArrayOutput) ToGetEcsLaunchTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetEcsLaunchTemplatesTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsLaunchTemplatesTemplate {
+		return vs[0].([]GetEcsLaunchTemplatesTemplate)[vs[1].(int)]
+	}).(GetEcsLaunchTemplatesTemplateOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateDataDisk struct {
+	// The category of the system disk.
+	Category string `pulumi:"category"`
+	// Specifies whether to release the system disk when the instance is released.
+	DeleteWithInstance bool `pulumi:"deleteWithInstance"`
+	// System disk description.
+	Description string `pulumi:"description"`
+	// Encrypted the data in this disk.
+	Encrypted bool `pulumi:"encrypted"`
+	// System disk name.
+	Name string `pulumi:"name"`
+	// The performance level of the ESSD used as the system disk.
+	PerformanceLevel string `pulumi:"performanceLevel"`
+	// Size of the system disk, measured in GB.
+	Size int `pulumi:"size"`
+	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+	SnapshotId string `pulumi:"snapshotId"`
+}
+
+// GetEcsLaunchTemplatesTemplateDataDiskInput is an input type that accepts GetEcsLaunchTemplatesTemplateDataDiskArgs and GetEcsLaunchTemplatesTemplateDataDiskOutput values.
+// You can construct a concrete instance of `GetEcsLaunchTemplatesTemplateDataDiskInput` via:
+//
+//          GetEcsLaunchTemplatesTemplateDataDiskArgs{...}
+type GetEcsLaunchTemplatesTemplateDataDiskInput interface {
+	pulumi.Input
+
+	ToGetEcsLaunchTemplatesTemplateDataDiskOutput() GetEcsLaunchTemplatesTemplateDataDiskOutput
+	ToGetEcsLaunchTemplatesTemplateDataDiskOutputWithContext(context.Context) GetEcsLaunchTemplatesTemplateDataDiskOutput
+}
+
+type GetEcsLaunchTemplatesTemplateDataDiskArgs struct {
+	// The category of the system disk.
+	Category pulumi.StringInput `pulumi:"category"`
+	// Specifies whether to release the system disk when the instance is released.
+	DeleteWithInstance pulumi.BoolInput `pulumi:"deleteWithInstance"`
+	// System disk description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Encrypted the data in this disk.
+	Encrypted pulumi.BoolInput `pulumi:"encrypted"`
+	// System disk name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The performance level of the ESSD used as the system disk.
+	PerformanceLevel pulumi.StringInput `pulumi:"performanceLevel"`
+	// Size of the system disk, measured in GB.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+}
+
+func (GetEcsLaunchTemplatesTemplateDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsLaunchTemplatesTemplateDataDisk)(nil)).Elem()
+}
+
+func (i GetEcsLaunchTemplatesTemplateDataDiskArgs) ToGetEcsLaunchTemplatesTemplateDataDiskOutput() GetEcsLaunchTemplatesTemplateDataDiskOutput {
+	return i.ToGetEcsLaunchTemplatesTemplateDataDiskOutputWithContext(context.Background())
+}
+
+func (i GetEcsLaunchTemplatesTemplateDataDiskArgs) ToGetEcsLaunchTemplatesTemplateDataDiskOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsLaunchTemplatesTemplateDataDiskOutput)
+}
+
+// GetEcsLaunchTemplatesTemplateDataDiskArrayInput is an input type that accepts GetEcsLaunchTemplatesTemplateDataDiskArray and GetEcsLaunchTemplatesTemplateDataDiskArrayOutput values.
+// You can construct a concrete instance of `GetEcsLaunchTemplatesTemplateDataDiskArrayInput` via:
+//
+//          GetEcsLaunchTemplatesTemplateDataDiskArray{ GetEcsLaunchTemplatesTemplateDataDiskArgs{...} }
+type GetEcsLaunchTemplatesTemplateDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsLaunchTemplatesTemplateDataDiskArrayOutput() GetEcsLaunchTemplatesTemplateDataDiskArrayOutput
+	ToGetEcsLaunchTemplatesTemplateDataDiskArrayOutputWithContext(context.Context) GetEcsLaunchTemplatesTemplateDataDiskArrayOutput
+}
+
+type GetEcsLaunchTemplatesTemplateDataDiskArray []GetEcsLaunchTemplatesTemplateDataDiskInput
+
+func (GetEcsLaunchTemplatesTemplateDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsLaunchTemplatesTemplateDataDisk)(nil)).Elem()
+}
+
+func (i GetEcsLaunchTemplatesTemplateDataDiskArray) ToGetEcsLaunchTemplatesTemplateDataDiskArrayOutput() GetEcsLaunchTemplatesTemplateDataDiskArrayOutput {
+	return i.ToGetEcsLaunchTemplatesTemplateDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsLaunchTemplatesTemplateDataDiskArray) ToGetEcsLaunchTemplatesTemplateDataDiskArrayOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsLaunchTemplatesTemplateDataDiskArrayOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateDataDiskOutput struct{ *pulumi.OutputState }
+
+func (GetEcsLaunchTemplatesTemplateDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsLaunchTemplatesTemplateDataDisk)(nil)).Elem()
+}
+
+func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) ToGetEcsLaunchTemplatesTemplateDataDiskOutput() GetEcsLaunchTemplatesTemplateDataDiskOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) ToGetEcsLaunchTemplatesTemplateDataDiskOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateDataDiskOutput {
+	return o
+}
+
+// The category of the system disk.
+func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// Specifies whether to release the system disk when the instance is released.
+func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) bool { return v.DeleteWithInstance }).(pulumi.BoolOutput)
+}
+
+// System disk description.
+func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Encrypted the data in this disk.
+func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) bool { return v.Encrypted }).(pulumi.BoolOutput)
+}
+
+// System disk name.
+func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The performance level of the ESSD used as the system disk.
+func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) string { return v.PerformanceLevel }).(pulumi.StringOutput)
+}
+
+// Size of the system disk, measured in GB.
+func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsLaunchTemplatesTemplateDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsLaunchTemplatesTemplateDataDisk)(nil)).Elem()
+}
+
+func (o GetEcsLaunchTemplatesTemplateDataDiskArrayOutput) ToGetEcsLaunchTemplatesTemplateDataDiskArrayOutput() GetEcsLaunchTemplatesTemplateDataDiskArrayOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateDataDiskArrayOutput) ToGetEcsLaunchTemplatesTemplateDataDiskArrayOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateDataDiskArrayOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateDataDiskArrayOutput) Index(i pulumi.IntInput) GetEcsLaunchTemplatesTemplateDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsLaunchTemplatesTemplateDataDisk {
+		return vs[0].([]GetEcsLaunchTemplatesTemplateDataDisk)[vs[1].(int)]
+	}).(GetEcsLaunchTemplatesTemplateDataDiskOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateNetworkInterface struct {
+	// System disk description.
+	Description string `pulumi:"description"`
+	// System disk name.
+	Name string `pulumi:"name"`
+	// The primary private IP address of the ENI.
+	PrimaryIp string `pulumi:"primaryIp"`
+	// The security group ID.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetEcsLaunchTemplatesTemplateNetworkInterfaceInput is an input type that accepts GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs and GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GetEcsLaunchTemplatesTemplateNetworkInterfaceInput` via:
+//
+//          GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs{...}
+type GetEcsLaunchTemplatesTemplateNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGetEcsLaunchTemplatesTemplateNetworkInterfaceOutput() GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput
+	ToGetEcsLaunchTemplatesTemplateNetworkInterfaceOutputWithContext(context.Context) GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput
+}
+
+type GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs struct {
+	// System disk description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// System disk name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The primary private IP address of the ENI.
+	PrimaryIp pulumi.StringInput `pulumi:"primaryIp"`
+	// The security group ID.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsLaunchTemplatesTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (i GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs) ToGetEcsLaunchTemplatesTemplateNetworkInterfaceOutput() GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput {
+	return i.ToGetEcsLaunchTemplatesTemplateNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs) ToGetEcsLaunchTemplatesTemplateNetworkInterfaceOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput)
+}
+
+// GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayInput is an input type that accepts GetEcsLaunchTemplatesTemplateNetworkInterfaceArray and GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayInput` via:
+//
+//          GetEcsLaunchTemplatesTemplateNetworkInterfaceArray{ GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs{...} }
+type GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput() GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput
+	ToGetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutputWithContext(context.Context) GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput
+}
+
+type GetEcsLaunchTemplatesTemplateNetworkInterfaceArray []GetEcsLaunchTemplatesTemplateNetworkInterfaceInput
+
+func (GetEcsLaunchTemplatesTemplateNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsLaunchTemplatesTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (i GetEcsLaunchTemplatesTemplateNetworkInterfaceArray) ToGetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput() GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput {
+	return i.ToGetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsLaunchTemplatesTemplateNetworkInterfaceArray) ToGetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsLaunchTemplatesTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) ToGetEcsLaunchTemplatesTemplateNetworkInterfaceOutput() GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) ToGetEcsLaunchTemplatesTemplateNetworkInterfaceOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput {
+	return o
+}
+
+// System disk description.
+func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// System disk name.
+func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The primary private IP address of the ENI.
+func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) PrimaryIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.PrimaryIp }).(pulumi.StringOutput)
+}
+
+// The security group ID.
+func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsLaunchTemplatesTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput) ToGetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput() GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput) ToGetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsLaunchTemplatesTemplateNetworkInterface {
+		return vs[0].([]GetEcsLaunchTemplatesTemplateNetworkInterface)[vs[1].(int)]
+	}).(GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateSystemDisk struct {
+	// The category of the system disk.
+	Category string `pulumi:"category"`
+	// Specifies whether to release the system disk when the instance is released.
+	DeleteWithInstance bool `pulumi:"deleteWithInstance"`
+	// System disk description.
+	Description string `pulumi:"description"`
+	// The Iops.
+	Iops string `pulumi:"iops"`
+	// System disk name.
+	Name string `pulumi:"name"`
+	// The performance level of the ESSD used as the system disk.
+	PerformanceLevel string `pulumi:"performanceLevel"`
+	// Size of the system disk, measured in GB.
+	Size int `pulumi:"size"`
+}
+
+// GetEcsLaunchTemplatesTemplateSystemDiskInput is an input type that accepts GetEcsLaunchTemplatesTemplateSystemDiskArgs and GetEcsLaunchTemplatesTemplateSystemDiskOutput values.
+// You can construct a concrete instance of `GetEcsLaunchTemplatesTemplateSystemDiskInput` via:
+//
+//          GetEcsLaunchTemplatesTemplateSystemDiskArgs{...}
+type GetEcsLaunchTemplatesTemplateSystemDiskInput interface {
+	pulumi.Input
+
+	ToGetEcsLaunchTemplatesTemplateSystemDiskOutput() GetEcsLaunchTemplatesTemplateSystemDiskOutput
+	ToGetEcsLaunchTemplatesTemplateSystemDiskOutputWithContext(context.Context) GetEcsLaunchTemplatesTemplateSystemDiskOutput
+}
+
+type GetEcsLaunchTemplatesTemplateSystemDiskArgs struct {
+	// The category of the system disk.
+	Category pulumi.StringInput `pulumi:"category"`
+	// Specifies whether to release the system disk when the instance is released.
+	DeleteWithInstance pulumi.BoolInput `pulumi:"deleteWithInstance"`
+	// System disk description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The Iops.
+	Iops pulumi.StringInput `pulumi:"iops"`
+	// System disk name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The performance level of the ESSD used as the system disk.
+	PerformanceLevel pulumi.StringInput `pulumi:"performanceLevel"`
+	// Size of the system disk, measured in GB.
+	Size pulumi.IntInput `pulumi:"size"`
+}
+
+func (GetEcsLaunchTemplatesTemplateSystemDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsLaunchTemplatesTemplateSystemDisk)(nil)).Elem()
+}
+
+func (i GetEcsLaunchTemplatesTemplateSystemDiskArgs) ToGetEcsLaunchTemplatesTemplateSystemDiskOutput() GetEcsLaunchTemplatesTemplateSystemDiskOutput {
+	return i.ToGetEcsLaunchTemplatesTemplateSystemDiskOutputWithContext(context.Background())
+}
+
+func (i GetEcsLaunchTemplatesTemplateSystemDiskArgs) ToGetEcsLaunchTemplatesTemplateSystemDiskOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateSystemDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsLaunchTemplatesTemplateSystemDiskOutput)
+}
+
+// GetEcsLaunchTemplatesTemplateSystemDiskArrayInput is an input type that accepts GetEcsLaunchTemplatesTemplateSystemDiskArray and GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput values.
+// You can construct a concrete instance of `GetEcsLaunchTemplatesTemplateSystemDiskArrayInput` via:
+//
+//          GetEcsLaunchTemplatesTemplateSystemDiskArray{ GetEcsLaunchTemplatesTemplateSystemDiskArgs{...} }
+type GetEcsLaunchTemplatesTemplateSystemDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsLaunchTemplatesTemplateSystemDiskArrayOutput() GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput
+	ToGetEcsLaunchTemplatesTemplateSystemDiskArrayOutputWithContext(context.Context) GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput
+}
+
+type GetEcsLaunchTemplatesTemplateSystemDiskArray []GetEcsLaunchTemplatesTemplateSystemDiskInput
+
+func (GetEcsLaunchTemplatesTemplateSystemDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsLaunchTemplatesTemplateSystemDisk)(nil)).Elem()
+}
+
+func (i GetEcsLaunchTemplatesTemplateSystemDiskArray) ToGetEcsLaunchTemplatesTemplateSystemDiskArrayOutput() GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput {
+	return i.ToGetEcsLaunchTemplatesTemplateSystemDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsLaunchTemplatesTemplateSystemDiskArray) ToGetEcsLaunchTemplatesTemplateSystemDiskArrayOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateSystemDiskOutput struct{ *pulumi.OutputState }
+
+func (GetEcsLaunchTemplatesTemplateSystemDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsLaunchTemplatesTemplateSystemDisk)(nil)).Elem()
+}
+
+func (o GetEcsLaunchTemplatesTemplateSystemDiskOutput) ToGetEcsLaunchTemplatesTemplateSystemDiskOutput() GetEcsLaunchTemplatesTemplateSystemDiskOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateSystemDiskOutput) ToGetEcsLaunchTemplatesTemplateSystemDiskOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateSystemDiskOutput {
+	return o
+}
+
+// The category of the system disk.
+func (o GetEcsLaunchTemplatesTemplateSystemDiskOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateSystemDisk) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// Specifies whether to release the system disk when the instance is released.
+func (o GetEcsLaunchTemplatesTemplateSystemDiskOutput) DeleteWithInstance() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateSystemDisk) bool { return v.DeleteWithInstance }).(pulumi.BoolOutput)
+}
+
+// System disk description.
+func (o GetEcsLaunchTemplatesTemplateSystemDiskOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateSystemDisk) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The Iops.
+func (o GetEcsLaunchTemplatesTemplateSystemDiskOutput) Iops() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateSystemDisk) string { return v.Iops }).(pulumi.StringOutput)
+}
+
+// System disk name.
+func (o GetEcsLaunchTemplatesTemplateSystemDiskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateSystemDisk) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The performance level of the ESSD used as the system disk.
+func (o GetEcsLaunchTemplatesTemplateSystemDiskOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateSystemDisk) string { return v.PerformanceLevel }).(pulumi.StringOutput)
+}
+
+// Size of the system disk, measured in GB.
+func (o GetEcsLaunchTemplatesTemplateSystemDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateSystemDisk) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsLaunchTemplatesTemplateSystemDisk)(nil)).Elem()
+}
+
+func (o GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput) ToGetEcsLaunchTemplatesTemplateSystemDiskArrayOutput() GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput) ToGetEcsLaunchTemplatesTemplateSystemDiskArrayOutputWithContext(ctx context.Context) GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput {
+	return o
+}
+
+func (o GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput) Index(i pulumi.IntInput) GetEcsLaunchTemplatesTemplateSystemDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsLaunchTemplatesTemplateSystemDisk {
+		return vs[0].([]GetEcsLaunchTemplatesTemplateSystemDisk)[vs[1].(int)]
+	}).(GetEcsLaunchTemplatesTemplateSystemDiskOutput)
+}
+
+type GetEcsSnapshotsSnapshot struct {
+	// The category of the snapshot.
+	Category     string `pulumi:"category"`
+	CreationTime string `pulumi:"creationTime"`
+	// The description of the snapshot.
+	Description string `pulumi:"description"`
+	// The source disk id.
+	DiskId string `pulumi:"diskId"`
+	// Whether the snapshot is encrypted.
+	Encrypted bool `pulumi:"encrypted"`
+	// The ID of the Snapshot.
+	Id string `pulumi:"id"`
+	// Whether snapshot speed availability is enabled.
+	InstantAccess bool `pulumi:"instantAccess"`
+	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+	InstantAccessRetentionDays int    `pulumi:"instantAccessRetentionDays"`
+	Name                       string `pulumi:"name"`
+	// The product number inherited from the mirror market.
+	ProductCode string `pulumi:"productCode"`
+	// Snapshot creation progress, in percentage.
+	Progress string `pulumi:"progress"`
+	// Remaining completion time for the snapshot being created.
+	RemainTime int `pulumi:"remainTime"`
+	// The resource group id.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Automatic snapshot retention days.
+	RetentionDays int `pulumi:"retentionDays"`
+	// The snapshot id.
+	SnapshotId string `pulumi:"snapshotId"`
+	// Snapshot Display Name.
+	SnapshotName string `pulumi:"snapshotName"`
+	// The serial number of the snapshot.
+	SnapshotSn string `pulumi:"snapshotSn"`
+	// Snapshot creation type.
+	SnapshotType string `pulumi:"snapshotType"`
+	SourceDiskId string `pulumi:"sourceDiskId"`
+	// Source disk capacity.
+	SourceDiskSize string `pulumi:"sourceDiskSize"`
+	// Source disk attributes.
+	SourceDiskType string `pulumi:"sourceDiskType"`
+	// Original disk type.
+	SourceStorageType string `pulumi:"sourceStorageType"`
+	// The status of the snapshot.
+	Status string `pulumi:"status"`
+	// The tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	Type string                 `pulumi:"type"`
+	// A resource type that has a reference relationship.
+	Usage string `pulumi:"usage"`
+}
+
+// GetEcsSnapshotsSnapshotInput is an input type that accepts GetEcsSnapshotsSnapshotArgs and GetEcsSnapshotsSnapshotOutput values.
+// You can construct a concrete instance of `GetEcsSnapshotsSnapshotInput` via:
+//
+//          GetEcsSnapshotsSnapshotArgs{...}
+type GetEcsSnapshotsSnapshotInput interface {
+	pulumi.Input
+
+	ToGetEcsSnapshotsSnapshotOutput() GetEcsSnapshotsSnapshotOutput
+	ToGetEcsSnapshotsSnapshotOutputWithContext(context.Context) GetEcsSnapshotsSnapshotOutput
+}
+
+type GetEcsSnapshotsSnapshotArgs struct {
+	// The category of the snapshot.
+	Category     pulumi.StringInput `pulumi:"category"`
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// The description of the snapshot.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The source disk id.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// Whether the snapshot is encrypted.
+	Encrypted pulumi.BoolInput `pulumi:"encrypted"`
+	// The ID of the Snapshot.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether snapshot speed availability is enabled.
+	InstantAccess pulumi.BoolInput `pulumi:"instantAccess"`
+	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+	InstantAccessRetentionDays pulumi.IntInput    `pulumi:"instantAccessRetentionDays"`
+	Name                       pulumi.StringInput `pulumi:"name"`
+	// The product number inherited from the mirror market.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// Snapshot creation progress, in percentage.
+	Progress pulumi.StringInput `pulumi:"progress"`
+	// Remaining completion time for the snapshot being created.
+	RemainTime pulumi.IntInput `pulumi:"remainTime"`
+	// The resource group id.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Automatic snapshot retention days.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// The snapshot id.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+	// Snapshot Display Name.
+	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
+	// The serial number of the snapshot.
+	SnapshotSn pulumi.StringInput `pulumi:"snapshotSn"`
+	// Snapshot creation type.
+	SnapshotType pulumi.StringInput `pulumi:"snapshotType"`
+	SourceDiskId pulumi.StringInput `pulumi:"sourceDiskId"`
+	// Source disk capacity.
+	SourceDiskSize pulumi.StringInput `pulumi:"sourceDiskSize"`
+	// Source disk attributes.
+	SourceDiskType pulumi.StringInput `pulumi:"sourceDiskType"`
+	// Original disk type.
+	SourceStorageType pulumi.StringInput `pulumi:"sourceStorageType"`
+	// The status of the snapshot.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tags.
+	Tags pulumi.MapInput    `pulumi:"tags"`
+	Type pulumi.StringInput `pulumi:"type"`
+	// A resource type that has a reference relationship.
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetEcsSnapshotsSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetEcsSnapshotsSnapshotArgs) ToGetEcsSnapshotsSnapshotOutput() GetEcsSnapshotsSnapshotOutput {
+	return i.ToGetEcsSnapshotsSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetEcsSnapshotsSnapshotArgs) ToGetEcsSnapshotsSnapshotOutputWithContext(ctx context.Context) GetEcsSnapshotsSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsSnapshotsSnapshotOutput)
+}
+
+// GetEcsSnapshotsSnapshotArrayInput is an input type that accepts GetEcsSnapshotsSnapshotArray and GetEcsSnapshotsSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetEcsSnapshotsSnapshotArrayInput` via:
+//
+//          GetEcsSnapshotsSnapshotArray{ GetEcsSnapshotsSnapshotArgs{...} }
+type GetEcsSnapshotsSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsSnapshotsSnapshotArrayOutput() GetEcsSnapshotsSnapshotArrayOutput
+	ToGetEcsSnapshotsSnapshotArrayOutputWithContext(context.Context) GetEcsSnapshotsSnapshotArrayOutput
+}
+
+type GetEcsSnapshotsSnapshotArray []GetEcsSnapshotsSnapshotInput
+
+func (GetEcsSnapshotsSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetEcsSnapshotsSnapshotArray) ToGetEcsSnapshotsSnapshotArrayOutput() GetEcsSnapshotsSnapshotArrayOutput {
+	return i.ToGetEcsSnapshotsSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsSnapshotsSnapshotArray) ToGetEcsSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetEcsSnapshotsSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsSnapshotsSnapshotArrayOutput)
+}
+
+type GetEcsSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetEcsSnapshotsSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetEcsSnapshotsSnapshotOutput) ToGetEcsSnapshotsSnapshotOutput() GetEcsSnapshotsSnapshotOutput {
+	return o
+}
+
+func (o GetEcsSnapshotsSnapshotOutput) ToGetEcsSnapshotsSnapshotOutputWithContext(ctx context.Context) GetEcsSnapshotsSnapshotOutput {
+	return o
+}
+
+// The category of the snapshot.
+func (o GetEcsSnapshotsSnapshotOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Category }).(pulumi.StringOutput)
+}
+
+func (o GetEcsSnapshotsSnapshotOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// The description of the snapshot.
+func (o GetEcsSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The source disk id.
+func (o GetEcsSnapshotsSnapshotOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// Whether the snapshot is encrypted.
+func (o GetEcsSnapshotsSnapshotOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) bool { return v.Encrypted }).(pulumi.BoolOutput)
+}
+
+// The ID of the Snapshot.
+func (o GetEcsSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether snapshot speed availability is enabled.
+func (o GetEcsSnapshotsSnapshotOutput) InstantAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) bool { return v.InstantAccess }).(pulumi.BoolOutput)
+}
+
+// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+func (o GetEcsSnapshotsSnapshotOutput) InstantAccessRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) int { return v.InstantAccessRetentionDays }).(pulumi.IntOutput)
+}
+
+func (o GetEcsSnapshotsSnapshotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The product number inherited from the mirror market.
+func (o GetEcsSnapshotsSnapshotOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// Snapshot creation progress, in percentage.
+func (o GetEcsSnapshotsSnapshotOutput) Progress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Progress }).(pulumi.StringOutput)
+}
+
+// Remaining completion time for the snapshot being created.
+func (o GetEcsSnapshotsSnapshotOutput) RemainTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) int { return v.RemainTime }).(pulumi.IntOutput)
+}
+
+// The resource group id.
+func (o GetEcsSnapshotsSnapshotOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Automatic snapshot retention days.
+func (o GetEcsSnapshotsSnapshotOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// The snapshot id.
+func (o GetEcsSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// Snapshot Display Name.
+func (o GetEcsSnapshotsSnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+// The serial number of the snapshot.
+func (o GetEcsSnapshotsSnapshotOutput) SnapshotSn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SnapshotSn }).(pulumi.StringOutput)
+}
+
+// Snapshot creation type.
+func (o GetEcsSnapshotsSnapshotOutput) SnapshotType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SnapshotType }).(pulumi.StringOutput)
+}
+
+func (o GetEcsSnapshotsSnapshotOutput) SourceDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// Source disk capacity.
+func (o GetEcsSnapshotsSnapshotOutput) SourceDiskSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SourceDiskSize }).(pulumi.StringOutput)
+}
+
+// Source disk attributes.
+func (o GetEcsSnapshotsSnapshotOutput) SourceDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SourceDiskType }).(pulumi.StringOutput)
+}
+
+// Original disk type.
+func (o GetEcsSnapshotsSnapshotOutput) SourceStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.SourceStorageType }).(pulumi.StringOutput)
+}
+
+// The status of the snapshot.
+func (o GetEcsSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags.
+func (o GetEcsSnapshotsSnapshotOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetEcsSnapshotsSnapshotOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A resource type that has a reference relationship.
+func (o GetEcsSnapshotsSnapshotOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetEcsSnapshotsSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsSnapshotsSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetEcsSnapshotsSnapshotArrayOutput) ToGetEcsSnapshotsSnapshotArrayOutput() GetEcsSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetEcsSnapshotsSnapshotArrayOutput) ToGetEcsSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetEcsSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetEcsSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetEcsSnapshotsSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsSnapshotsSnapshot {
+		return vs[0].([]GetEcsSnapshotsSnapshot)[vs[1].(int)]
+	}).(GetEcsSnapshotsSnapshotOutput)
 }
 
 type GetEipsEip struct {
@@ -4782,14 +6908,18 @@ func (o GetSecurityGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetSecurityG
 }
 
 type GetSnapshotsSnapshot struct {
+	Category string `pulumi:"category"`
 	// Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
 	CreationTime string `pulumi:"creationTime"`
 	// Description of the snapshot.
 	Description string `pulumi:"description"`
+	DiskId      string `pulumi:"diskId"`
 	// Whether the snapshot is encrypted or not.
 	Encrypted bool `pulumi:"encrypted"`
 	// ID of the snapshot.
-	Id string `pulumi:"id"`
+	Id                         string `pulumi:"id"`
+	InstantAccess              bool   `pulumi:"instantAccess"`
+	InstantAccessRetentionDays int    `pulumi:"instantAccessRetentionDays"`
 	// Name of the snapshot.
 	Name string `pulumi:"name"`
 	// Product code on the image market place.
@@ -4797,19 +6927,26 @@ type GetSnapshotsSnapshot struct {
 	// Progress of snapshot creation, presented in percentage.
 	Progress string `pulumi:"progress"`
 	// The remaining time of a snapshot creation task, in seconds.
-	RemainTime int `pulumi:"remainTime"`
+	RemainTime      int    `pulumi:"remainTime"`
+	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The number of days that an automatic snapshot retains in the console for your instance.
-	RetentionDays int `pulumi:"retentionDays"`
+	RetentionDays int    `pulumi:"retentionDays"`
+	SnapshotId    string `pulumi:"snapshotId"`
+	SnapshotName  string `pulumi:"snapshotName"`
+	SnapshotSn    string `pulumi:"snapshotSn"`
+	SnapshotType  string `pulumi:"snapshotType"`
 	// Source disk ID, which is retained after the source disk of the snapshot is deleted.
 	SourceDiskId string `pulumi:"sourceDiskId"`
 	// Size of the source disk, measured in GB.
 	SourceDiskSize string `pulumi:"sourceDiskSize"`
 	// Source disk attribute. Value range: `System`,`Data`.
-	SourceDiskType string `pulumi:"sourceDiskType"`
+	SourceDiskType    string `pulumi:"sourceDiskType"`
+	SourceStorageType string `pulumi:"sourceStorageType"`
 	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the snapshot.
 	Tags map[string]interface{} `pulumi:"tags"`
+	Type string                 `pulumi:"type"`
 	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage string `pulumi:"usage"`
 }
@@ -4826,14 +6963,18 @@ type GetSnapshotsSnapshotInput interface {
 }
 
 type GetSnapshotsSnapshotArgs struct {
+	Category pulumi.StringInput `pulumi:"category"`
 	// Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// Description of the snapshot.
 	Description pulumi.StringInput `pulumi:"description"`
+	DiskId      pulumi.StringInput `pulumi:"diskId"`
 	// Whether the snapshot is encrypted or not.
 	Encrypted pulumi.BoolInput `pulumi:"encrypted"`
 	// ID of the snapshot.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id                         pulumi.StringInput `pulumi:"id"`
+	InstantAccess              pulumi.BoolInput   `pulumi:"instantAccess"`
+	InstantAccessRetentionDays pulumi.IntInput    `pulumi:"instantAccessRetentionDays"`
 	// Name of the snapshot.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Product code on the image market place.
@@ -4841,19 +6982,26 @@ type GetSnapshotsSnapshotArgs struct {
 	// Progress of snapshot creation, presented in percentage.
 	Progress pulumi.StringInput `pulumi:"progress"`
 	// The remaining time of a snapshot creation task, in seconds.
-	RemainTime pulumi.IntInput `pulumi:"remainTime"`
+	RemainTime      pulumi.IntInput    `pulumi:"remainTime"`
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The number of days that an automatic snapshot retains in the console for your instance.
-	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	RetentionDays pulumi.IntInput    `pulumi:"retentionDays"`
+	SnapshotId    pulumi.StringInput `pulumi:"snapshotId"`
+	SnapshotName  pulumi.StringInput `pulumi:"snapshotName"`
+	SnapshotSn    pulumi.StringInput `pulumi:"snapshotSn"`
+	SnapshotType  pulumi.StringInput `pulumi:"snapshotType"`
 	// Source disk ID, which is retained after the source disk of the snapshot is deleted.
 	SourceDiskId pulumi.StringInput `pulumi:"sourceDiskId"`
 	// Size of the source disk, measured in GB.
 	SourceDiskSize pulumi.StringInput `pulumi:"sourceDiskSize"`
 	// Source disk attribute. Value range: `System`,`Data`.
-	SourceDiskType pulumi.StringInput `pulumi:"sourceDiskType"`
+	SourceDiskType    pulumi.StringInput `pulumi:"sourceDiskType"`
+	SourceStorageType pulumi.StringInput `pulumi:"sourceStorageType"`
 	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the snapshot.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.MapInput    `pulumi:"tags"`
+	Type pulumi.StringInput `pulumi:"type"`
 	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
@@ -4909,6 +7057,10 @@ func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutputWithContext(ctx 
 	return o
 }
 
+func (o GetSnapshotsSnapshotOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Category }).(pulumi.StringOutput)
+}
+
 // Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
 func (o GetSnapshotsSnapshotOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.CreationTime }).(pulumi.StringOutput)
@@ -4919,6 +7071,10 @@ func (o GetSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o GetSnapshotsSnapshotOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
 // Whether the snapshot is encrypted or not.
 func (o GetSnapshotsSnapshotOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) bool { return v.Encrypted }).(pulumi.BoolOutput)
@@ -4927,6 +7083,14 @@ func (o GetSnapshotsSnapshotOutput) Encrypted() pulumi.BoolOutput {
 // ID of the snapshot.
 func (o GetSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotsSnapshotOutput) InstantAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) bool { return v.InstantAccess }).(pulumi.BoolOutput)
+}
+
+func (o GetSnapshotsSnapshotOutput) InstantAccessRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.InstantAccessRetentionDays }).(pulumi.IntOutput)
 }
 
 // Name of the snapshot.
@@ -4949,9 +7113,29 @@ func (o GetSnapshotsSnapshotOutput) RemainTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RemainTime }).(pulumi.IntOutput)
 }
 
+func (o GetSnapshotsSnapshotOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
 // The number of days that an automatic snapshot retains in the console for your instance.
 func (o GetSnapshotsSnapshotOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+func (o GetSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotsSnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotsSnapshotOutput) SnapshotSn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotSn }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotsSnapshotOutput) SnapshotType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotType }).(pulumi.StringOutput)
 }
 
 // Source disk ID, which is retained after the source disk of the snapshot is deleted.
@@ -4969,6 +7153,10 @@ func (o GetSnapshotsSnapshotOutput) SourceDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskType }).(pulumi.StringOutput)
 }
 
+func (o GetSnapshotsSnapshotOutput) SourceStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceStorageType }).(pulumi.StringOutput)
+}
+
 // The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
@@ -4977,6 +7165,10 @@ func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 // A map of tags assigned to the snapshot.
 func (o GetSnapshotsSnapshotOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetSnapshotsSnapshotOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
@@ -5009,6 +7201,12 @@ func init() {
 	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigArrayOutput{})
 	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeOutput{})
 	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeArrayOutput{})
+	pulumi.RegisterOutputType(EcsLaunchTemplateDataDiskOutput{})
+	pulumi.RegisterOutputType(EcsLaunchTemplateDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(EcsLaunchTemplateNetworkInterfacesOutput{})
+	pulumi.RegisterOutputType(EcsLaunchTemplateNetworkInterfacesPtrOutput{})
+	pulumi.RegisterOutputType(EcsLaunchTemplateSystemDiskOutput{})
+	pulumi.RegisterOutputType(EcsLaunchTemplateSystemDiskPtrOutput{})
 	pulumi.RegisterOutputType(ImageDiskDeviceMappingOutput{})
 	pulumi.RegisterOutputType(ImageDiskDeviceMappingArrayOutput{})
 	pulumi.RegisterOutputType(ImageImportDiskDeviceMappingOutput{})
@@ -5019,6 +7217,8 @@ func init() {
 	pulumi.RegisterOutputType(LaunchTemplateDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesPtrOutput{})
+	pulumi.RegisterOutputType(LaunchTemplateSystemDiskOutput{})
+	pulumi.RegisterOutputType(LaunchTemplateSystemDiskPtrOutput{})
 	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandOutput{})
@@ -5027,6 +7227,16 @@ func init() {
 	pulumi.RegisterOutputType(GetDedicatedHostsHostArrayOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateOutput{})
+	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateDataDiskOutput{})
+	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateSystemDiskOutput{})
+	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsSnapshotsSnapshotOutput{})
+	pulumi.RegisterOutputType(GetEcsSnapshotsSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(GetEipsEipOutput{})
 	pulumi.RegisterOutputType(GetEipsEipArrayOutput{})
 	pulumi.RegisterOutputType(GetHpcClustersClusterOutput{})

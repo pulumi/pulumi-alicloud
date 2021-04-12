@@ -16,6 +16,7 @@ class HAVip(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 havip_name: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -33,6 +34,7 @@ class HAVip(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the HaVip instance.
+        :param pulumi.Input[str] havip_name: The name of the HaVip instance.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         """
@@ -54,10 +56,12 @@ class HAVip(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
+            __props__['havip_name'] = havip_name
             __props__['ip_address'] = ip_address
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
+            __props__['status'] = None
         super(HAVip, __self__).__init__(
             'alicloud:vpc/hAVip:HAVip',
             resource_name,
@@ -69,7 +73,9 @@ class HAVip(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            havip_name: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'HAVip':
         """
         Get an existing HAVip resource's state with the given name, id, and optional extra
@@ -79,7 +85,9 @@ class HAVip(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the HaVip instance.
+        :param pulumi.Input[str] havip_name: The name of the HaVip instance.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+        :param pulumi.Input[str] status: (Available in v1.120.0+) The status of the HaVip instance.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -87,7 +95,9 @@ class HAVip(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["description"] = description
+        __props__["havip_name"] = havip_name
         __props__["ip_address"] = ip_address
+        __props__["status"] = status
         __props__["vswitch_id"] = vswitch_id
         return HAVip(resource_name, opts=opts, __props__=__props__)
 
@@ -100,12 +110,28 @@ class HAVip(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="havipName")
+    def havip_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the HaVip instance.
+        """
+        return pulumi.get(self, "havip_name")
+
+    @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[str]:
         """
         The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.120.0+) The status of the HaVip instance.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vswitchId")

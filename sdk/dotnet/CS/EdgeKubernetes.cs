@@ -178,6 +178,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SlbIntranet { get; private set; } = null!;
 
         /// <summary>
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work node.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         /// </summary>
         [Output("userData")]
@@ -197,13 +203,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values:
-        /// * cloud : basic disks.
-        /// * cloud_efficiency : ultra disks.
-        /// * cloud_ssd : SSDs.
-        /// * cloud_essd : ESSDs.
-        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
-        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         [Output("workerDataDisks")]
         public Output<ImmutableArray<Outputs.EdgeKubernetesWorkerDataDisk>> WorkerDataDisks { get; private set; } = null!;
@@ -215,10 +214,22 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> WorkerDiskCategory { get; private set; } = null!;
 
         /// <summary>
+        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// </summary>
+        [Output("workerDiskPerformanceLevel")]
+        public Output<string?> WorkerDiskPerformanceLevel { get; private set; } = null!;
+
+        /// <summary>
         /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         /// </summary>
         [Output("workerDiskSize")]
         public Output<int?> WorkerDiskSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Worker node system disk auto snapshot policy.
+        /// </summary>
+        [Output("workerDiskSnapshotPolicyId")]
+        public Output<string?> WorkerDiskSnapshotPolicyId { get; private set; } = null!;
 
         [Output("workerInstanceChargeType")]
         public Output<string?> WorkerInstanceChargeType { get; private set; } = null!;
@@ -432,6 +443,18 @@ namespace Pulumi.AliCloud.CS
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work node.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         /// </summary>
@@ -449,13 +472,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values:
-        /// * cloud : basic disks.
-        /// * cloud_efficiency : ultra disks.
-        /// * cloud_ssd : SSDs.
-        /// * cloud_essd : ESSDs.
-        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
-        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesWorkerDataDiskArgs> WorkerDataDisks
         {
@@ -470,10 +486,22 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
+        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// </summary>
+        [Input("workerDiskPerformanceLevel")]
+        public Input<string>? WorkerDiskPerformanceLevel { get; set; }
+
+        /// <summary>
         /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }
+
+        /// <summary>
+        /// Worker node system disk auto snapshot policy.
+        /// </summary>
+        [Input("workerDiskSnapshotPolicyId")]
+        public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
@@ -677,6 +705,18 @@ namespace Pulumi.AliCloud.CS
         [Input("slbIntranet")]
         public Input<string>? SlbIntranet { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work node.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         /// </summary>
@@ -700,13 +740,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values:
-        /// * cloud : basic disks.
-        /// * cloud_efficiency : ultra disks.
-        /// * cloud_ssd : SSDs.
-        /// * cloud_essd : ESSDs.
-        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
-        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         /// </summary>
         public InputList<Inputs.EdgeKubernetesWorkerDataDiskGetArgs> WorkerDataDisks
         {
@@ -721,10 +754,22 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
+        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// </summary>
+        [Input("workerDiskPerformanceLevel")]
+        public Input<string>? WorkerDiskPerformanceLevel { get; set; }
+
+        /// <summary>
         /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }
+
+        /// <summary>
+        /// Worker node system disk auto snapshot policy.
+        /// </summary>
+        [Input("workerDiskSnapshotPolicyId")]
+        public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }

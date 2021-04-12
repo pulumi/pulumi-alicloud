@@ -47,6 +47,9 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("performanceLevel")]
+        public Input<string>? PerformanceLevel { get; set; }
+
         /// <summary>
         /// The size of the data disk.
         /// - cloud：[5, 2000]

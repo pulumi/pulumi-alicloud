@@ -39,6 +39,9 @@ namespace Pulumi.AliCloud.CS
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.NodePoolDataDisk>> DataDisks { get; private set; } = null!;
 
@@ -49,7 +52,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+        /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         /// </summary>
         [Output("installCloudMonitor")]
         public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
@@ -80,8 +83,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-        /// * key: The label key.
-        /// * value: The label value.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.NodePoolLabel>> Labels { get; private set; } = null!;
@@ -152,6 +153,9 @@ namespace Pulumi.AliCloud.CS
         [Output("systemDiskCategory")]
         public Output<string?> SystemDiskCategory { get; private set; } = null!;
 
+        [Output("systemDiskPerformanceLevel")]
+        public Output<string?> SystemDiskPerformanceLevel { get; private set; } = null!;
+
         /// <summary>
         /// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         /// </summary>
@@ -159,9 +163,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> SystemDiskSize { get; private set; } = null!;
 
         /// <summary>
-        /// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-        /// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-        /// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        /// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -184,9 +186,6 @@ namespace Pulumi.AliCloud.CS
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of VPC where the current cluster is located.
-        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -262,6 +261,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("dataDisks")]
         private InputList<Inputs.NodePoolDataDiskArgs>? _dataDisks;
+
+        /// <summary>
+        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// </summary>
         public InputList<Inputs.NodePoolDataDiskArgs> DataDisks
         {
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.NodePoolDataDiskArgs>());
@@ -275,7 +278,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+        /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -315,8 +318,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-        /// * key: The label key.
-        /// * value: The label value.
         /// </summary>
         public InputList<Inputs.NodePoolLabelArgs> Labels
         {
@@ -384,6 +385,9 @@ namespace Pulumi.AliCloud.CS
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
+        [Input("systemDiskPerformanceLevel")]
+        public Input<string>? SystemDiskPerformanceLevel { get; set; }
+
         /// <summary>
         /// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         /// </summary>
@@ -394,9 +398,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-        /// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-        /// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        /// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -467,6 +469,10 @@ namespace Pulumi.AliCloud.CS
 
         [Input("dataDisks")]
         private InputList<Inputs.NodePoolDataDiskGetArgs>? _dataDisks;
+
+        /// <summary>
+        /// The data disk configurations of worker nodes, such as the disk type and disk size.
+        /// </summary>
         public InputList<Inputs.NodePoolDataDiskGetArgs> DataDisks
         {
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.NodePoolDataDiskGetArgs>());
@@ -480,7 +486,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `false`.
+        /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
@@ -520,8 +526,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
-        /// * key: The label key.
-        /// * value: The label value.
         /// </summary>
         public InputList<Inputs.NodePoolLabelGetArgs> Labels
         {
@@ -595,6 +599,9 @@ namespace Pulumi.AliCloud.CS
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
+        [Input("systemDiskPerformanceLevel")]
+        public Input<string>? SystemDiskPerformanceLevel { get; set; }
+
         /// <summary>
         /// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         /// </summary>
@@ -605,9 +612,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A List of tags to assign to the resource. It will be applied for ECS instances finally.
-        /// * key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
-        /// * value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+        /// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -639,9 +644,6 @@ namespace Pulumi.AliCloud.CS
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
-        /// <summary>
-        /// The ID of VPC where the current cluster is located.
-        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

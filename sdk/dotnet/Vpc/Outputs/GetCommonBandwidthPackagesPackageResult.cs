@@ -18,21 +18,41 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Bandwidth;
         /// <summary>
+        /// The resource ID of bandwidth package.
+        /// </summary>
+        public readonly string BandwidthPackageId;
+        /// <summary>
+        /// The name of bandwidth package.
+        /// </summary>
+        public readonly string BandwidthPackageName;
+        /// <summary>
         /// The business status of the Common Bandwidth Package instance.
         /// </summary>
         public readonly string BusinessStatus;
         /// <summary>
-        /// Time of creation.
+        /// The deletion protection of bandwidth package.
         /// </summary>
-        public readonly string CreationTime;
+        public readonly bool DeletionProtection;
         /// <summary>
         /// The description of the Common Bandwidth Package instance.
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The expired time of bandwidth package.
+        /// </summary>
+        public readonly string ExpiredTime;
+        /// <summary>
+        /// Is has reservation data.
+        /// </summary>
+        public readonly bool HasReservationData;
+        /// <summary>
         /// ID of the Common Bandwidth Package.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The internet charge type of bandwidth package.
+        /// </summary>
+        public readonly string InternetChargeType;
         /// <summary>
         /// ISP of the Common Bandwidth Package.
         /// </summary>
@@ -42,15 +62,43 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The payment type of bandwidth package.
+        /// </summary>
+        public readonly string PaymentType;
+        /// <summary>
         /// Public ip addresses that in the Common Bandwidth Pakcage.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult> PublicIpAddresses;
         /// <summary>
+        /// The ratio of bandwidth package.
+        /// </summary>
+        public readonly int Ratio;
+        /// <summary>
+        /// The active time of reservation.
+        /// </summary>
+        public readonly string ReservationActiveTime;
+        /// <summary>
+        /// The bandwidth of reservation.
+        /// </summary>
+        public readonly string ReservationBandwidth;
+        /// <summary>
+        /// The charge type of reservation internet.
+        /// </summary>
+        public readonly string ReservationInternetChargeType;
+        /// <summary>
+        /// The type of reservation order.
+        /// </summary>
+        public readonly string ReservationOrderType;
+        /// <summary>
         /// The Id of resource group which the common bandwidth package belongs.
         /// </summary>
-        public readonly string? ResourceGroupId;
+        public readonly string ResourceGroupId;
         /// <summary>
-        /// Status of the Common Bandwidth Package.
+        /// The service managed.
+        /// </summary>
+        public readonly int ServiceManaged;
+        /// <summary>
+        /// The status of bandwidth package. Valid values: `Available` and `Pending`.
         /// </summary>
         public readonly string Status;
 
@@ -58,33 +106,69 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         private GetCommonBandwidthPackagesPackageResult(
             string bandwidth,
 
+            string bandwidthPackageId,
+
+            string bandwidthPackageName,
+
             string businessStatus,
 
-            string creationTime,
+            bool deletionProtection,
 
             string description,
 
+            string expiredTime,
+
+            bool hasReservationData,
+
             string id,
+
+            string internetChargeType,
 
             string isp,
 
             string name,
 
+            string paymentType,
+
             ImmutableArray<Outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult> publicIpAddresses,
 
-            string? resourceGroupId,
+            int ratio,
+
+            string reservationActiveTime,
+
+            string reservationBandwidth,
+
+            string reservationInternetChargeType,
+
+            string reservationOrderType,
+
+            string resourceGroupId,
+
+            int serviceManaged,
 
             string status)
         {
             Bandwidth = bandwidth;
+            BandwidthPackageId = bandwidthPackageId;
+            BandwidthPackageName = bandwidthPackageName;
             BusinessStatus = businessStatus;
-            CreationTime = creationTime;
+            DeletionProtection = deletionProtection;
             Description = description;
+            ExpiredTime = expiredTime;
+            HasReservationData = hasReservationData;
             Id = id;
+            InternetChargeType = internetChargeType;
             Isp = isp;
             Name = name;
+            PaymentType = paymentType;
             PublicIpAddresses = publicIpAddresses;
+            Ratio = ratio;
+            ReservationActiveTime = reservationActiveTime;
+            ReservationBandwidth = reservationBandwidth;
+            ReservationInternetChargeType = reservationInternetChargeType;
+            ReservationOrderType = reservationOrderType;
             ResourceGroupId = resourceGroupId;
+            ServiceManaged = serviceManaged;
             Status = status;
         }
     }

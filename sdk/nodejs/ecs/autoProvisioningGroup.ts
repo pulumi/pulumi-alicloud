@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const template = new alicloud.ecs.LaunchTemplate("template", {
+ * const template = new alicloud.ecs.EcsLaunchTemplate("template", {
  *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
  *     instanceType: "ecs.n1.tiny",
  *     securityGroupId: defaultSecurityGroup.id,

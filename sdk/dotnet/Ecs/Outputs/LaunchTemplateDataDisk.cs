@@ -38,6 +38,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The name of the data disk.
         /// </summary>
         public readonly string? Name;
+        public readonly string? PerformanceLevel;
         /// <summary>
         /// The size of the data disk.
         /// - cloud：[5, 2000]
@@ -64,6 +65,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string? name,
 
+            string? performanceLevel,
+
             int? size,
 
             string? snapshotId)
@@ -73,6 +76,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Description = description;
             Encrypted = encrypted;
             Name = name;
+            PerformanceLevel = performanceLevel;
             Size = size;
             SnapshotId = snapshotId;
         }

@@ -6,6 +6,7 @@
 from .alert import *
 from .audit import *
 from .dashboard import *
+from .etl import *
 from .get_service import *
 from .log_tail_attachment import *
 from .log_tail_config import *
@@ -34,6 +35,8 @@ def _register_module():
                 return Audit(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:log/dashboard:Dashboard":
                 return Dashboard(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:log/etl:Etl":
+                return Etl(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:log/logTailAttachment:LogTailAttachment":
                 return LogTailAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:log/logTailConfig:LogTailConfig":
@@ -54,6 +57,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "log/alert", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "log/audit", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "log/dashboard", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "log/etl", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "log/logTailAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "log/logTailConfig", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "log/machineGroup", _module_instance)

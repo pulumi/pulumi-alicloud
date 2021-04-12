@@ -36,6 +36,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     {
     ///         var example = new AliCloud.ResourceManager.ResourceDirectory("example", new AliCloud.ResourceManager.ResourceDirectoryArgs
     ///         {
+    ///             Status = "Enabled",
     ///         });
     ///     }
     /// 
@@ -70,6 +71,12 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Output("rootFolderId")]
         public Output<string> RootFolderId { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        /// </summary>
+        [Output("status")]
+        public Output<string?> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -117,6 +124,12 @@ namespace Pulumi.AliCloud.ResourceManager
 
     public sealed class ResourceDirectoryArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         public ResourceDirectoryArgs()
         {
         }
@@ -141,6 +154,12 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Input("rootFolderId")]
         public Input<string>? RootFolderId { get; set; }
+
+        /// <summary>
+        /// The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public ResourceDirectoryState()
         {

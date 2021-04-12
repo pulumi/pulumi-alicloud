@@ -10,85 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides an ECS Launch Template resource.
-    /// 
-    /// For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var images = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             Owners = "system",
-    ///         }));
-    ///         var instances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync());
-    ///         var template = new AliCloud.Ecs.LaunchTemplate("template", new AliCloud.Ecs.LaunchTemplateArgs
-    ///         {
-    ///             Description = "test1",
-    ///             ImageId = images.Apply(images =&gt; images.Images[0].Id),
-    ///             HostName = "tf-test-host",
-    ///             InstanceChargeType = "PrePaid",
-    ///             InstanceName = "tf-instance-name",
-    ///             InstanceType = instances.Apply(instances =&gt; instances.Instances[0].InstanceType),
-    ///             InternetChargeType = "PayByBandwidth",
-    ///             InternetMaxBandwidthIn = 5,
-    ///             InternetMaxBandwidthOut = 0,
-    ///             IoOptimized = "none",
-    ///             KeyPairName = "test-key-pair",
-    ///             RamRoleName = "xxxxx",
-    ///             NetworkType = "vpc",
-    ///             SecurityEnhancementStrategy = "Active",
-    ///             SpotPriceLimit = 5,
-    ///             SpotStrategy = "SpotWithPriceLimit",
-    ///             SecurityGroupId = "sg-zxcvj0lasdf102350asdf9a",
-    ///             SystemDiskCategory = "cloud_ssd",
-    ///             SystemDiskDescription = "test disk",
-    ///             SystemDiskName = "hello",
-    ///             SystemDiskSize = 40,
-    ///             ResourceGroupId = "rg-zkdfjahg9zxncv0",
-    ///             Userdata = "xxxxxxxxxxxxxx",
-    ///             VswitchId = "sw-ljkngaksdjfj0nnasdf",
-    ///             VpcId = "vpc-asdfnbg0as8dfk1nb2",
-    ///             ZoneId = "beijing-a",
-    ///             Tags = 
-    ///             {
-    ///                 { "tag1", "hello" },
-    ///                 { "tag2", "world" },
-    ///             },
-    ///             NetworkInterfaces = new AliCloud.Ecs.Inputs.LaunchTemplateNetworkInterfacesArgs
-    ///             {
-    ///                 Name = "eth0",
-    ///                 Description = "hello1",
-    ///                 PrimaryIp = "10.0.0.2",
-    ///                 SecurityGroupId = "xxxx",
-    ///                 VswitchId = "xxxxxxx",
-    ///             },
-    ///             DataDisks = 
-    ///             {
-    ///                 new AliCloud.Ecs.Inputs.LaunchTemplateDataDiskArgs
-    ///                 {
-    ///                     Name = "disk1",
-    ///                     Description = "test1",
-    ///                 },
-    ///                 new AliCloud.Ecs.Inputs.LaunchTemplateDataDiskArgs
-    ///                 {
-    ///                     Name = "disk2",
-    ///                     Description = "test2",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Launch Template can be imported using the id, e.g.
@@ -112,11 +33,17 @@ namespace Pulumi.AliCloud.Ecs
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.LaunchTemplateDataDisk>> DataDisks { get; private set; } = null!;
 
+        [Output("deploymentSetId")]
+        public Output<string?> DeploymentSetId { get; private set; } = null!;
+
         /// <summary>
         /// The description of the data disk.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        [Output("enableVmOsConfig")]
+        public Output<bool?> EnableVmOsConfig { get; private set; } = null!;
 
         /// <summary>
         /// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
@@ -187,6 +114,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("keyPairName")]
         public Output<string?> KeyPairName { get; private set; } = null!;
 
+        [Output("launchTemplateName")]
+        public Output<string> LaunchTemplateName { get; private set; } = null!;
+
         /// <summary>
         /// The name of the data disk.
         /// </summary>
@@ -204,6 +134,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("networkType")]
         public Output<string?> NetworkType { get; private set; } = null!;
+
+        [Output("passwordInherit")]
+        public Output<bool?> PasswordInherit { get; private set; } = null!;
+
+        [Output("period")]
+        public Output<int?> Period { get; private set; } = null!;
+
+        [Output("privateIpAddress")]
+        public Output<string?> PrivateIpAddress { get; private set; } = null!;
 
         /// <summary>
         /// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
@@ -226,6 +165,12 @@ namespace Pulumi.AliCloud.Ecs
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
 
+        [Output("securityGroupIds")]
+        public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        [Output("spotDuration")]
+        public Output<string?> SpotDuration { get; private set; } = null!;
+
         /// <summary>
         /// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
         /// </summary>
@@ -241,6 +186,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("spotStrategy")]
         public Output<string?> SpotStrategy { get; private set; } = null!;
 
+        [Output("systemDisk")]
+        public Output<Outputs.LaunchTemplateSystemDisk> SystemDisk { get; private set; } = null!;
+
         /// <summary>
         /// The category of the system disk. System disk type. Optional values:
         /// - cloud: Basic cloud disk.
@@ -250,25 +198,25 @@ namespace Pulumi.AliCloud.Ecs
         /// - cloud_essd: ESSD cloud Disks.
         /// </summary>
         [Output("systemDiskCategory")]
-        public Output<string?> SystemDiskCategory { get; private set; } = null!;
+        public Output<string> SystemDiskCategory { get; private set; } = null!;
 
         /// <summary>
         /// System disk description. It cannot begin with http:// or https://.
         /// </summary>
         [Output("systemDiskDescription")]
-        public Output<string?> SystemDiskDescription { get; private set; } = null!;
+        public Output<string> SystemDiskDescription { get; private set; } = null!;
 
         /// <summary>
         /// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Output("systemDiskName")]
-        public Output<string?> SystemDiskName { get; private set; } = null!;
+        public Output<string> SystemDiskName { get; private set; } = null!;
 
         /// <summary>
         /// Size of the system disk, measured in GB. Value range: [20, 500].
         /// </summary>
         [Output("systemDiskSize")]
-        public Output<int?> SystemDiskSize { get; private set; } = null!;
+        public Output<int> SystemDiskSize { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -278,11 +226,23 @@ namespace Pulumi.AliCloud.Ecs
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
+        [Output("templateResourceGroupId")]
+        public Output<string?> TemplateResourceGroupId { get; private set; } = null!;
+
+        [Output("templateTags")]
+        public Output<ImmutableDictionary<string, object>?> TemplateTags { get; private set; } = null!;
+
+        [Output("userData")]
+        public Output<string> UserData { get; private set; } = null!;
+
         /// <summary>
         /// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         /// </summary>
         [Output("userdata")]
-        public Output<string?> Userdata { get; private set; } = null!;
+        public Output<string> Userdata { get; private set; } = null!;
+
+        [Output("versionDescription")]
+        public Output<string?> VersionDescription { get; private set; } = null!;
 
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -363,11 +323,17 @@ namespace Pulumi.AliCloud.Ecs
             set => _dataDisks = value;
         }
 
+        [Input("deploymentSetId")]
+        public Input<string>? DeploymentSetId { get; set; }
+
         /// <summary>
         /// The description of the data disk.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("enableVmOsConfig")]
+        public Input<bool>? EnableVmOsConfig { get; set; }
 
         /// <summary>
         /// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
@@ -438,6 +404,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
+        [Input("launchTemplateName")]
+        public Input<string>? LaunchTemplateName { get; set; }
+
         /// <summary>
         /// The name of the data disk.
         /// </summary>
@@ -455,6 +424,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
+
+        [Input("passwordInherit")]
+        public Input<bool>? PasswordInherit { get; set; }
+
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
         /// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
@@ -477,6 +455,17 @@ namespace Pulumi.AliCloud.Ecs
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
+
+        [Input("spotDuration")]
+        public Input<string>? SpotDuration { get; set; }
+
         /// <summary>
         /// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
         /// </summary>
@@ -491,6 +480,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
+
+        [Input("systemDisk")]
+        public Input<Inputs.LaunchTemplateSystemDiskArgs>? SystemDisk { get; set; }
 
         /// <summary>
         /// The category of the system disk. System disk type. Optional values:
@@ -535,11 +527,28 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        [Input("templateResourceGroupId")]
+        public Input<string>? TemplateResourceGroupId { get; set; }
+
+        [Input("templateTags")]
+        private InputMap<object>? _templateTags;
+        public InputMap<object> TemplateTags
+        {
+            get => _templateTags ?? (_templateTags = new InputMap<object>());
+            set => _templateTags = value;
+        }
+
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
         /// <summary>
         /// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
+
+        [Input("versionDescription")]
+        public Input<string>? VersionDescription { get; set; }
 
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -581,11 +590,17 @@ namespace Pulumi.AliCloud.Ecs
             set => _dataDisks = value;
         }
 
+        [Input("deploymentSetId")]
+        public Input<string>? DeploymentSetId { get; set; }
+
         /// <summary>
         /// The description of the data disk.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("enableVmOsConfig")]
+        public Input<bool>? EnableVmOsConfig { get; set; }
 
         /// <summary>
         /// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
@@ -656,6 +671,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
+        [Input("launchTemplateName")]
+        public Input<string>? LaunchTemplateName { get; set; }
+
         /// <summary>
         /// The name of the data disk.
         /// </summary>
@@ -673,6 +691,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
+
+        [Input("passwordInherit")]
+        public Input<bool>? PasswordInherit { get; set; }
+
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
         /// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
@@ -695,6 +722,17 @@ namespace Pulumi.AliCloud.Ecs
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
+
+        [Input("spotDuration")]
+        public Input<string>? SpotDuration { get; set; }
+
         /// <summary>
         /// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
         /// </summary>
@@ -709,6 +747,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
+
+        [Input("systemDisk")]
+        public Input<Inputs.LaunchTemplateSystemDiskGetArgs>? SystemDisk { get; set; }
 
         /// <summary>
         /// The category of the system disk. System disk type. Optional values:
@@ -753,11 +794,28 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        [Input("templateResourceGroupId")]
+        public Input<string>? TemplateResourceGroupId { get; set; }
+
+        [Input("templateTags")]
+        private InputMap<object>? _templateTags;
+        public InputMap<object> TemplateTags
+        {
+            get => _templateTags ?? (_templateTags = new InputMap<object>());
+            set => _templateTags = value;
+        }
+
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
         /// <summary>
         /// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
+
+        [Input("versionDescription")]
+        public Input<string>? VersionDescription { get; set; }
 
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

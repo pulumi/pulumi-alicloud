@@ -10,56 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provides an RDS account resource and used to manage databases.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var name = config.Get("name") ?? "dbaccountmysql";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             EngineVersion = "5.6",
-    ///             InstanceType = "rds.mysql.s1.small",
-    ///             InstanceStorage = 10,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             InstanceName = name,
-    ///         });
-    ///         var account = new AliCloud.Rds.Account("account", new AliCloud.Rds.AccountArgs
-    ///         {
-    ///             InstanceId = instance.Id,
-    ///             Password = "Test12345",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RDS account can be imported using the id, e.g.
@@ -71,11 +21,26 @@ namespace Pulumi.AliCloud.Rds
     [AliCloudResourceType("alicloud:rds/account:Account")]
     public partial class Account : Pulumi.CustomResource
     {
+        [Output("accountDescription")]
+        public Output<string> AccountDescription { get; private set; } = null!;
+
+        [Output("accountName")]
+        public Output<string> AccountName { get; private set; } = null!;
+
+        [Output("accountPassword")]
+        public Output<string> AccountPassword { get; private set; } = null!;
+
+        [Output("accountType")]
+        public Output<string> AccountType { get; private set; } = null!;
+
+        [Output("dbInstanceId")]
+        public Output<string> DbInstanceId { get; private set; } = null!;
+
         /// <summary>
         /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The Id of instance in which account belongs.
@@ -105,7 +70,10 @@ namespace Pulumi.AliCloud.Rds
         /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
         [Output("password")]
-        public Output<string?> Password { get; private set; } = null!;
+        public Output<string> Password { get; private set; } = null!;
+
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// Privilege type of account.
@@ -123,7 +91,7 @@ namespace Pulumi.AliCloud.Rds
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Account(string name, AccountArgs args, CustomResourceOptions? options = null)
+        public Account(string name, AccountArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:rds/account:Account", name, args ?? new AccountArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -161,6 +129,21 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class AccountArgs : Pulumi.ResourceArgs
     {
+        [Input("accountDescription")]
+        public Input<string>? AccountDescription { get; set; }
+
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
+
+        [Input("accountPassword")]
+        public Input<string>? AccountPassword { get; set; }
+
+        [Input("accountType")]
+        public Input<string>? AccountType { get; set; }
+
+        [Input("dbInstanceId")]
+        public Input<string>? DbInstanceId { get; set; }
+
         /// <summary>
         /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         /// </summary>
@@ -170,8 +153,8 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The Id of instance in which account belongs.
         /// </summary>
-        [Input("instanceId", required: true)]
-        public Input<string> InstanceId { get; set; } = null!;
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -218,6 +201,21 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class AccountState : Pulumi.ResourceArgs
     {
+        [Input("accountDescription")]
+        public Input<string>? AccountDescription { get; set; }
+
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
+
+        [Input("accountPassword")]
+        public Input<string>? AccountPassword { get; set; }
+
+        [Input("accountType")]
+        public Input<string>? AccountType { get; set; }
+
+        [Input("dbInstanceId")]
+        public Input<string>? DbInstanceId { get; set; }
+
         /// <summary>
         /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         /// </summary>
@@ -259,6 +257,9 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Privilege type of account.

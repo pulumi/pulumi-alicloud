@@ -12,12 +12,16 @@ export * from "./copyImage";
 export * from "./dedicatedHost";
 export * from "./disk";
 export * from "./diskAttachment";
+export * from "./ecsLaunchTemplate";
+export * from "./ecsSnapshot";
 export * from "./eip";
 export * from "./eipAssociation";
 export * from "./getAutoSnapshotPolicies";
 export * from "./getCommands";
 export * from "./getDedicatedHosts";
 export * from "./getDisks";
+export * from "./getEcsLaunchTemplates";
+export * from "./getEcsSnapshots";
 export * from "./getEips";
 export * from "./getHpcClusters";
 export * from "./getImages";
@@ -53,6 +57,8 @@ import { CopyImage } from "./copyImage";
 import { DedicatedHost } from "./dedicatedHost";
 import { Disk } from "./disk";
 import { DiskAttachment } from "./diskAttachment";
+import { EcsLaunchTemplate } from "./ecsLaunchTemplate";
+import { EcsSnapshot } from "./ecsSnapshot";
 import { Eip } from "./eip";
 import { EipAssociation } from "./eipAssociation";
 import { HpcCluster } from "./hpcCluster";
@@ -89,6 +95,10 @@ const _module = {
                 return new Disk(name, <any>undefined, { urn })
             case "alicloud:ecs/diskAttachment:DiskAttachment":
                 return new DiskAttachment(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate":
+                return new EcsLaunchTemplate(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsSnapshot:EcsSnapshot":
+                return new EcsSnapshot(name, <any>undefined, { urn })
             case "alicloud:ecs/eip:Eip":
                 return new Eip(name, <any>undefined, { urn })
             case "alicloud:ecs/eipAssociation:EipAssociation":
@@ -135,6 +145,8 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/copyImage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/dedicatedHost", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/disk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/diskAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsLaunchTemplate", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSnapshot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAssociation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/hpcCluster", _module)

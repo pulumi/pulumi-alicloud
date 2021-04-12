@@ -665,15 +665,31 @@ export namespace cs {
     }
 
     export interface EdgeKubernetesWorkerDataDisk {
+        /**
+         * Worker node data disk auto snapshot policy.
+         */
         autoSnapshotPolicyId?: pulumi.Input<string>;
+        /**
+         * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+         */
         category?: pulumi.Input<string>;
         device?: pulumi.Input<string>;
+        /**
+         * Specifies whether to encrypt data disks. Valid values: true and false. Default is `false`.
+         */
         encrypted?: pulumi.Input<string>;
         kmsKeyId?: pulumi.Input<string>;
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: pulumi.Input<string>;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * The size of a data disk, at least 40. Unit: GiB.
+         */
         size?: pulumi.Input<string>;
         snapshotId?: pulumi.Input<string>;
     }
@@ -775,15 +791,31 @@ export namespace cs {
     }
 
     export interface KubernetesWorkerDataDisk {
+        /**
+         * Worker node data disk auto snapshot policy.
+         */
         autoSnapshotPolicyId?: pulumi.Input<string>;
+        /**
+         * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+         */
         category?: pulumi.Input<string>;
         device?: pulumi.Input<string>;
+        /**
+         * Specifies whether to encrypt data disks. Valid values: true and false.
+         */
         encrypted?: pulumi.Input<string>;
         kmsKeyId?: pulumi.Input<string>;
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: pulumi.Input<string>;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
+         */
         size?: pulumi.Input<string>;
         snapshotId?: pulumi.Input<string>;
     }
@@ -883,15 +915,31 @@ export namespace cs {
     }
 
     export interface ManagedKubernetesWorkerDataDisk {
+        /**
+         * Worker node data disk auto snapshot policy.
+         */
         autoSnapshotPolicyId?: pulumi.Input<string>;
+        /**
+         * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+         */
         category?: pulumi.Input<string>;
         device?: pulumi.Input<string>;
+        /**
+         * Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+         */
         encrypted?: pulumi.Input<string>;
         kmsKeyId?: pulumi.Input<string>;
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: pulumi.Input<string>;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * The size of a data disk, at least 40. Unit: GiB.
+         */
         size?: pulumi.Input<string>;
         snapshotId?: pulumi.Input<string>;
     }
@@ -913,20 +961,39 @@ export namespace cs {
 
     export interface NodePoolDataDisk {
         autoSnapshotPolicyId?: pulumi.Input<string>;
+        /**
+         * The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
+         */
         category?: pulumi.Input<string>;
         device?: pulumi.Input<string>;
+        /**
+         * Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+         */
         encrypted?: pulumi.Input<string>;
         kmsKeyId?: pulumi.Input<string>;
         /**
          * The name of node pool.
          */
         name?: pulumi.Input<string>;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+         */
         size?: pulumi.Input<number>;
         snapshotId?: pulumi.Input<string>;
     }
 
     export interface NodePoolLabel {
+        /**
+         * The label key.
+         */
         key: pulumi.Input<string>;
+        /**
+         * The label value.
+         */
         value?: pulumi.Input<string>;
     }
 
@@ -982,7 +1049,13 @@ export namespace cs {
 
     export interface NodePoolTaint {
         effect?: pulumi.Input<string>;
+        /**
+         * The label key.
+         */
         key: pulumi.Input<string>;
+        /**
+         * The label value.
+         */
         value?: pulumi.Input<string>;
     }
 
@@ -1389,6 +1462,95 @@ export namespace ecs {
         udpTimeout?: pulumi.Input<number>;
     }
 
+    export interface EcsLaunchTemplateDataDisk {
+        /**
+         * The category of the disk.
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * Indicates whether the data disk is released with the instance.
+         */
+        deleteWithInstance?: pulumi.Input<boolean>;
+        /**
+         * The description of the data disk.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Encrypted the data in this disk.
+         */
+        encrypted?: pulumi.Input<boolean>;
+        /**
+         * The name of the data disk.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The performance level of the ESSD used as the data disk.
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * The size of the data disk.
+         */
+        size?: pulumi.Input<number>;
+        /**
+         * The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+         */
+        snapshotId?: pulumi.Input<string>;
+    }
+
+    export interface EcsLaunchTemplateNetworkInterfaces {
+        /**
+         * The description of the data disk.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The name of the data disk.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The primary private IP address of the ENI.
+         */
+        primaryIp?: pulumi.Input<string>;
+        /**
+         * The security group ID must be one in the same VPC.
+         */
+        securityGroupId?: pulumi.Input<string>;
+        /**
+         * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface EcsLaunchTemplateSystemDisk {
+        /**
+         * The category of the disk.
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * Indicates whether the data disk is released with the instance.
+         */
+        deleteWithInstance?: pulumi.Input<boolean>;
+        /**
+         * The description of the data disk.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The Iops.
+         */
+        iops?: pulumi.Input<string>;
+        /**
+         * The name of the data disk.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The performance level of the ESSD used as the data disk.
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * The size of the data disk.
+         */
+        size?: pulumi.Input<number>;
+    }
+
     export interface ImageDiskDeviceMapping {
         /**
          * Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
@@ -1516,6 +1678,7 @@ export namespace ecs {
          * The name of the data disk.
          */
         name?: pulumi.Input<string>;
+        performanceLevel?: pulumi.Input<string>;
         /**
          * The size of the data disk.
          * - cloud：[5, 2000]
@@ -1552,6 +1715,41 @@ export namespace ecs {
          * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
          */
         vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface LaunchTemplateSystemDisk {
+        /**
+         * The category of the disk:
+         * - cloud: Basic cloud disk.
+         * - cloud_efficiency: Ultra cloud disk.
+         * - cloud_ssd: SSD cloud Disks.
+         * - ephemeral_ssd: local SSD Disks
+         * - cloud_essd: ESSD cloud Disks.
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+         */
+        deleteWithInstance?: pulumi.Input<boolean>;
+        /**
+         * The description of the data disk.
+         */
+        description?: pulumi.Input<string>;
+        iops?: pulumi.Input<string>;
+        /**
+         * The name of the data disk.
+         */
+        name?: pulumi.Input<string>;
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * The size of the data disk.
+         * - cloud：[5, 2000]
+         * - cloud_efficiency：[20, 32768]
+         * - cloud_ssd：[20, 32768]
+         * - cloud_essd：[20, 32768]
+         * - ephemeral_ssd: [5, 800]
+         */
+        size?: pulumi.Input<number>;
     }
 }
 
@@ -1840,6 +2038,64 @@ export namespace ga {
         listenerPort?: pulumi.Input<number>;
     }
 
+    export interface ForwardingRuleRuleAction {
+        /**
+         * Forwarding configuration.
+         */
+        forwardGroupConfig: pulumi.Input<inputs.ga.ForwardingRuleRuleActionForwardGroupConfig>;
+        /**
+         * Forwarding priority.
+         */
+        order: pulumi.Input<number>;
+        /**
+         * Forward action type. Default: forwardgroup.
+         */
+        ruleActionType: pulumi.Input<string>;
+    }
+
+    export interface ForwardingRuleRuleActionForwardGroupConfig {
+        /**
+         * Terminal node group configuration.
+         */
+        serverGroupTuples: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple>[]>;
+    }
+
+    export interface ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
+        /**
+         * Terminal node group ID.
+         */
+        endpointGroupId: pulumi.Input<string>;
+    }
+
+    export interface ForwardingRuleRuleCondition {
+        /**
+         * Domain name configuration information.
+         */
+        hostConfigs?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleConditionHostConfig>[]>;
+        /**
+         * Path configuration information.
+         */
+        pathConfig?: pulumi.Input<inputs.ga.ForwardingRuleRuleConditionPathConfig>;
+        /**
+         * Forwarding condition type. Valid value: `Host`, `Path`.
+         */
+        ruleConditionType: pulumi.Input<string>;
+    }
+
+    export interface ForwardingRuleRuleConditionHostConfig {
+        /**
+         * The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ForwardingRuleRuleConditionPathConfig {
+        /**
+         * The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ListenerCertificate {
         /**
          * The id of the certificate.
@@ -1941,6 +2197,49 @@ export namespace log {
          * default Custom. No need to configure this parameter.
          */
         timeSpanType?: pulumi.Input<string>;
+    }
+
+    export interface EtlEtlSink {
+        /**
+         * Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+         */
+        accessKeyId?: pulumi.Input<string>;
+        /**
+         * Delivery target logstore access key secret.
+         */
+        accessKeySecret?: pulumi.Input<string>;
+        /**
+         * Delivery target logstore region.
+         */
+        endpoint: pulumi.Input<string>;
+        /**
+         * An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
+         */
+        kmsEncryptedAccessKeyId?: pulumi.Input<string>;
+        /**
+         * An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
+         */
+        kmsEncryptedAccessKeySecret?: pulumi.Input<string>;
+        /**
+         * Delivery target logstore.
+         */
+        logstore: pulumi.Input<string>;
+        /**
+         * Delivery target name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The project where the target logstore is delivered.
+         */
+        project: pulumi.Input<string>;
+        /**
+         * Sts role info.
+         */
+        roleArn?: pulumi.Input<string>;
+        /**
+         * ETL sinks type, the default value is AliyunLOG.
+         */
+        type?: pulumi.Input<string>;
     }
 
     export interface StoreIndexFieldSearch {

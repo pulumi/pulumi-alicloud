@@ -14,15 +14,19 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class GetCommonBandwidthPackagesPackagePublicIpAddressResult
     {
         public readonly string AllocationId;
+        public readonly string BandwidthPackageIpRelationStatus;
         public readonly string IpAddress;
 
         [OutputConstructor]
         private GetCommonBandwidthPackagesPackagePublicIpAddressResult(
             string allocationId,
 
+            string bandwidthPackageIpRelationStatus,
+
             string ipAddress)
         {
             AllocationId = allocationId;
+            BandwidthPackageIpRelationStatus = bandwidthPackageIpRelationStatus;
             IpAddress = ipAddress;
         }
     }

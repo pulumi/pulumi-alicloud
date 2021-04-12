@@ -20,10 +20,13 @@ class GetSnapshotsResult:
     """
     A collection of values returned by getSnapshots.
     """
-    def __init__(__self__, disk_id=None, encrypted=None, id=None, ids=None, instance_id=None, name_regex=None, names=None, output_file=None, snapshots=None, source_disk_type=None, status=None, tags=None, type=None, usage=None):
-        if disk_id and not isinstance(disk_id, str):
-            raise TypeError("Expected argument 'disk_id' to be a str")
-        pulumi.set(__self__, "disk_id", disk_id)
+    def __init__(__self__, category=None, dry_run=None, encrypted=None, id=None, ids=None, kms_key_id=None, name_regex=None, names=None, output_file=None, resource_group_id=None, snapshot_link_id=None, snapshot_name=None, snapshot_type=None, snapshots=None, source_disk_type=None, status=None, tags=None, type=None, usage=None):
+        if category and not isinstance(category, str):
+            raise TypeError("Expected argument 'category' to be a str")
+        pulumi.set(__self__, "category", category)
+        if dry_run and not isinstance(dry_run, bool):
+            raise TypeError("Expected argument 'dry_run' to be a bool")
+        pulumi.set(__self__, "dry_run", dry_run)
         if encrypted and not isinstance(encrypted, bool):
             raise TypeError("Expected argument 'encrypted' to be a bool")
         pulumi.set(__self__, "encrypted", encrypted)
@@ -33,9 +36,9 @@ class GetSnapshotsResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
-        if instance_id and not isinstance(instance_id, str):
-            raise TypeError("Expected argument 'instance_id' to be a str")
-        pulumi.set(__self__, "instance_id", instance_id)
+        if kms_key_id and not isinstance(kms_key_id, str):
+            raise TypeError("Expected argument 'kms_key_id' to be a str")
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         pulumi.set(__self__, "name_regex", name_regex)
@@ -45,6 +48,18 @@ class GetSnapshotsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if resource_group_id and not isinstance(resource_group_id, str):
+            raise TypeError("Expected argument 'resource_group_id' to be a str")
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if snapshot_link_id and not isinstance(snapshot_link_id, str):
+            raise TypeError("Expected argument 'snapshot_link_id' to be a str")
+        pulumi.set(__self__, "snapshot_link_id", snapshot_link_id)
+        if snapshot_name and not isinstance(snapshot_name, str):
+            raise TypeError("Expected argument 'snapshot_name' to be a str")
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        if snapshot_type and not isinstance(snapshot_type, str):
+            raise TypeError("Expected argument 'snapshot_type' to be a str")
+        pulumi.set(__self__, "snapshot_type", snapshot_type)
         if snapshots and not isinstance(snapshots, list):
             raise TypeError("Expected argument 'snapshots' to be a list")
         pulumi.set(__self__, "snapshots", snapshots)
@@ -65,9 +80,14 @@ class GetSnapshotsResult:
         pulumi.set(__self__, "usage", usage)
 
     @property
-    @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[str]:
-        return pulumi.get(self, "disk_id")
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[bool]:
+        return pulumi.get(self, "dry_run")
 
     @property
     @pulumi.getter
@@ -94,9 +114,9 @@ class GetSnapshotsResult:
         return pulumi.get(self, "ids")
 
     @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[str]:
-        return pulumi.get(self, "instance_id")
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter(name="nameRegex")
@@ -115,6 +135,26 @@ class GetSnapshotsResult:
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[str]:
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="snapshotLinkId")
+    def snapshot_link_id(self) -> Optional[str]:
+        return pulumi.get(self, "snapshot_link_id")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> Optional[str]:
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> Optional[str]:
+        return pulumi.get(self, "snapshot_type")
 
     @property
     @pulumi.getter
@@ -168,14 +208,19 @@ class AwaitableGetSnapshotsResult(GetSnapshotsResult):
         if False:
             yield self
         return GetSnapshotsResult(
-            disk_id=self.disk_id,
+            category=self.category,
+            dry_run=self.dry_run,
             encrypted=self.encrypted,
             id=self.id,
             ids=self.ids,
-            instance_id=self.instance_id,
+            kms_key_id=self.kms_key_id,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            resource_group_id=self.resource_group_id,
+            snapshot_link_id=self.snapshot_link_id,
+            snapshot_name=self.snapshot_name,
+            snapshot_type=self.snapshot_type,
             snapshots=self.snapshots,
             source_disk_type=self.source_disk_type,
             status=self.status,
@@ -184,12 +229,17 @@ class AwaitableGetSnapshotsResult(GetSnapshotsResult):
             usage=self.usage)
 
 
-def get_snapshots(disk_id: Optional[str] = None,
+def get_snapshots(category: Optional[str] = None,
+                  dry_run: Optional[bool] = None,
                   encrypted: Optional[bool] = None,
                   ids: Optional[Sequence[str]] = None,
-                  instance_id: Optional[str] = None,
+                  kms_key_id: Optional[str] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
+                  resource_group_id: Optional[str] = None,
+                  snapshot_link_id: Optional[str] = None,
+                  snapshot_name: Optional[str] = None,
+                  snapshot_type: Optional[str] = None,
                   source_disk_type: Optional[str] = None,
                   status: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
@@ -197,50 +247,7 @@ def get_snapshots(disk_id: Optional[str] = None,
                   usage: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotsResult:
     """
-    Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
-
-    For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-
-    > **NOTE:**  Available in 1.40.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    snapshots = alicloud.ecs.get_snapshots(ids=["s-123456890abcdef"],
-        name_regex="tf-testAcc-snapshot")
-    ```
-    ## Argument Reference
-
-    The following arguments are supported:
-
-    * `instance_id` - (Optional) The specified instance ID.
-    * `disk_id` - (Optional) The specified disk ID.
-    * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-    * `ids` - (Optional)  A list of snapshot IDs.
-    * `name_regex` - (Optional) A regex string to filter results by snapshot name.
-    * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-      * progressing: The snapshots are being created.
-      * accomplished: The snapshots are ready to use.
-      * failed: The snapshot creation failed.
-      * all: All status.
-    * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-      * auto: Auto snapshots.
-      * user: Manual snapshots.
-      * all: Auto and manual snapshots.
-    * `source_disk_type` - (Optional) The type of source disk:
-      * System: The snapshots are created for system disks.
-      * Data: The snapshots are created for data disks.
-    * `usage` - (Optional) The usage of the snapshot:
-      * image: The snapshots are used to create custom images.
-      * disk: The snapshots are used to CreateDisk.
-      * mage_disk: The snapshots are used to create custom images and data disks.
-      * none: The snapshots are not used yet.
-    * `tags` - (Optional) A map of tags assigned to snapshots.
-    * `output_file` - (Optional) The name of output file that saves the filter results.
-
+    Use this data source to access information about an existing resource.
 
     :param bool encrypted: Whether the snapshot is encrypted or not.
     :param Sequence[str] ids: A list of snapshot IDs.
@@ -250,12 +257,17 @@ def get_snapshots(disk_id: Optional[str] = None,
     :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
     """
     __args__ = dict()
-    __args__['diskId'] = disk_id
+    __args__['category'] = category
+    __args__['dryRun'] = dry_run
     __args__['encrypted'] = encrypted
     __args__['ids'] = ids
-    __args__['instanceId'] = instance_id
+    __args__['kmsKeyId'] = kms_key_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['snapshotLinkId'] = snapshot_link_id
+    __args__['snapshotName'] = snapshot_name
+    __args__['snapshotType'] = snapshot_type
     __args__['sourceDiskType'] = source_disk_type
     __args__['status'] = status
     __args__['tags'] = tags
@@ -268,14 +280,19 @@ def get_snapshots(disk_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult).value
 
     return AwaitableGetSnapshotsResult(
-        disk_id=__ret__.disk_id,
+        category=__ret__.category,
+        dry_run=__ret__.dry_run,
         encrypted=__ret__.encrypted,
         id=__ret__.id,
         ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
+        kms_key_id=__ret__.kms_key_id,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
+        resource_group_id=__ret__.resource_group_id,
+        snapshot_link_id=__ret__.snapshot_link_id,
+        snapshot_name=__ret__.snapshot_name,
+        snapshot_type=__ret__.snapshot_type,
         snapshots=__ret__.snapshots,
         source_disk_type=__ret__.source_disk_type,
         status=__ret__.status,

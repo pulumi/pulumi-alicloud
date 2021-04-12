@@ -10,90 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an ECS Launch Template resource.
-//
-// For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "system"
-// 		images, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			Owners: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instances, err := ecs.GetInstances(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewLaunchTemplate(ctx, "template", &ecs.LaunchTemplateArgs{
-// 			Description:                 pulumi.String("test1"),
-// 			ImageId:                     pulumi.String(images.Images[0].Id),
-// 			HostName:                    pulumi.String("tf-test-host"),
-// 			InstanceChargeType:          pulumi.String("PrePaid"),
-// 			InstanceName:                pulumi.String("tf-instance-name"),
-// 			InstanceType:                pulumi.String(instances.Instances[0].InstanceType),
-// 			InternetChargeType:          pulumi.String("PayByBandwidth"),
-// 			InternetMaxBandwidthIn:      pulumi.Int(5),
-// 			InternetMaxBandwidthOut:     pulumi.Int(0),
-// 			IoOptimized:                 pulumi.String("none"),
-// 			KeyPairName:                 pulumi.String("test-key-pair"),
-// 			RamRoleName:                 pulumi.String("xxxxx"),
-// 			NetworkType:                 pulumi.String("vpc"),
-// 			SecurityEnhancementStrategy: pulumi.String("Active"),
-// 			SpotPriceLimit:              pulumi.Float64(5),
-// 			SpotStrategy:                pulumi.String("SpotWithPriceLimit"),
-// 			SecurityGroupId:             pulumi.String("sg-zxcvj0lasdf102350asdf9a"),
-// 			SystemDiskCategory:          pulumi.String("cloud_ssd"),
-// 			SystemDiskDescription:       pulumi.String("test disk"),
-// 			SystemDiskName:              pulumi.String("hello"),
-// 			SystemDiskSize:              pulumi.Int(40),
-// 			ResourceGroupId:             pulumi.String("rg-zkdfjahg9zxncv0"),
-// 			Userdata:                    pulumi.String("xxxxxxxxxxxxxx"),
-// 			VswitchId:                   pulumi.String("sw-ljkngaksdjfj0nnasdf"),
-// 			VpcId:                       pulumi.String("vpc-asdfnbg0as8dfk1nb2"),
-// 			ZoneId:                      pulumi.String("beijing-a"),
-// 			Tags: pulumi.StringMap{
-// 				"tag1": pulumi.String("hello"),
-// 				"tag2": pulumi.String("world"),
-// 			},
-// 			NetworkInterfaces: &ecs.LaunchTemplateNetworkInterfacesArgs{
-// 				Name:            pulumi.String("eth0"),
-// 				Description:     pulumi.String("hello1"),
-// 				PrimaryIp:       pulumi.String("10.0.0.2"),
-// 				SecurityGroupId: pulumi.String("xxxx"),
-// 				VswitchId:       pulumi.String("xxxxxxx"),
-// 			},
-// 			DataDisks: ecs.LaunchTemplateDataDiskArray{
-// 				&ecs.LaunchTemplateDataDiskArgs{
-// 					Name:        pulumi.String("disk1"),
-// 					Description: pulumi.String("test1"),
-// 				},
-// 				&ecs.LaunchTemplateDataDiskArgs{
-// 					Name:        pulumi.String("disk2"),
-// 					Description: pulumi.String("test2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Launch Template can be imported using the id, e.g.
@@ -107,9 +23,11 @@ type LaunchTemplate struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrOutput `pulumi:"autoReleaseTime"`
 	// The list of data disks created with instance.
-	DataDisks LaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
+	DataDisks       LaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
+	DeploymentSetId pulumi.StringPtrOutput            `pulumi:"deploymentSetId"`
 	// The description of the data disk.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description      pulumi.StringPtrOutput `pulumi:"description"`
+	EnableVmOsConfig pulumi.BoolPtrOutput   `pulumi:"enableVmOsConfig"`
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 	HostName pulumi.StringPtrOutput `pulumi:"hostName"`
 	// Image ID.
@@ -136,47 +54,70 @@ type LaunchTemplate struct {
 	// The name of the key pair.
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
+	KeyPairName        pulumi.StringPtrOutput `pulumi:"keyPairName"`
+	LaunchTemplateName pulumi.StringOutput    `pulumi:"launchTemplateName"`
 	// The name of the data disk.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The list of network interfaces created with instance.
 	NetworkInterfaces LaunchTemplateNetworkInterfacesPtrOutput `pulumi:"networkInterfaces"`
 	// Network type of the instance. Value options: `classic` | `vpc`.
-	NetworkType pulumi.StringPtrOutput `pulumi:"networkType"`
+	NetworkType      pulumi.StringPtrOutput `pulumi:"networkType"`
+	PasswordInherit  pulumi.BoolPtrOutput   `pulumi:"passwordInherit"`
+	Period           pulumi.IntPtrOutput    `pulumi:"period"`
+	PrivateIpAddress pulumi.StringPtrOutput `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     pulumi.StringPtrOutput `pulumi:"ramRoleName"`
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
+	SecurityGroupId  pulumi.StringPtrOutput   `pulumi:"securityGroupId"`
+	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	SpotDuration     pulumi.StringPtrOutput   `pulumi:"spotDuration"`
 	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
 	// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
-	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
+	SpotStrategy pulumi.StringPtrOutput         `pulumi:"spotStrategy"`
+	SystemDisk   LaunchTemplateSystemDiskOutput `pulumi:"systemDisk"`
 	// The category of the system disk. System disk type. Optional values:
 	// - cloud: Basic cloud disk.
 	// - cloud_efficiency: Ultra cloud disk.
 	// - cloud_ssd: SSD cloud Disks.
 	// - ephemeral_ssd: local SSD Disks
 	// - cloud_essd: ESSD cloud Disks.
-	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
+	//
+	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+	SystemDiskCategory pulumi.StringOutput `pulumi:"systemDiskCategory"`
 	// System disk description. It cannot begin with http:// or https://.
-	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
+	//
+	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+	SystemDiskDescription pulumi.StringOutput `pulumi:"systemDiskDescription"`
 	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
-	SystemDiskName pulumi.StringPtrOutput `pulumi:"systemDiskName"`
+	//
+	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+	SystemDiskName pulumi.StringOutput `pulumi:"systemDiskName"`
 	// Size of the system disk, measured in GB. Value range: [20, 500].
-	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
+	//
+	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
+	SystemDiskSize pulumi.IntOutput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags                    pulumi.MapOutput       `pulumi:"tags"`
+	TemplateResourceGroupId pulumi.StringPtrOutput `pulumi:"templateResourceGroupId"`
+	TemplateTags            pulumi.MapOutput       `pulumi:"templateTags"`
+	UserData                pulumi.StringOutput    `pulumi:"userData"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
-	Userdata pulumi.StringPtrOutput `pulumi:"userdata"`
-	VpcId    pulumi.StringPtrOutput `pulumi:"vpcId"`
+	//
+	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
+	Userdata           pulumi.StringOutput    `pulumi:"userdata"`
+	VersionDescription pulumi.StringPtrOutput `pulumi:"versionDescription"`
+	VpcId              pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -215,9 +156,11 @@ type launchTemplateState struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
 	// The list of data disks created with instance.
-	DataDisks []LaunchTemplateDataDisk `pulumi:"dataDisks"`
+	DataDisks       []LaunchTemplateDataDisk `pulumi:"dataDisks"`
+	DeploymentSetId *string                  `pulumi:"deploymentSetId"`
 	// The description of the data disk.
-	Description *string `pulumi:"description"`
+	Description      *string `pulumi:"description"`
+	EnableVmOsConfig *bool   `pulumi:"enableVmOsConfig"`
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 	HostName *string `pulumi:"hostName"`
 	// Image ID.
@@ -244,47 +187,70 @@ type launchTemplateState struct {
 	// The name of the key pair.
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName *string `pulumi:"keyPairName"`
+	KeyPairName        *string `pulumi:"keyPairName"`
+	LaunchTemplateName *string `pulumi:"launchTemplateName"`
 	// The name of the data disk.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
 	// The list of network interfaces created with instance.
 	NetworkInterfaces *LaunchTemplateNetworkInterfaces `pulumi:"networkInterfaces"`
 	// Network type of the instance. Value options: `classic` | `vpc`.
-	NetworkType *string `pulumi:"networkType"`
+	NetworkType      *string `pulumi:"networkType"`
+	PasswordInherit  *bool   `pulumi:"passwordInherit"`
+	Period           *int    `pulumi:"period"`
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     *string `pulumi:"ramRoleName"`
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
+	SecurityGroupId  *string  `pulumi:"securityGroupId"`
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	SpotDuration     *string  `pulumi:"spotDuration"`
 	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
 	// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
-	SpotStrategy *string `pulumi:"spotStrategy"`
+	SpotStrategy *string                   `pulumi:"spotStrategy"`
+	SystemDisk   *LaunchTemplateSystemDisk `pulumi:"systemDisk"`
 	// The category of the system disk. System disk type. Optional values:
 	// - cloud: Basic cloud disk.
 	// - cloud_efficiency: Ultra cloud disk.
 	// - cloud_ssd: SSD cloud Disks.
 	// - ephemeral_ssd: local SSD Disks
 	// - cloud_essd: ESSD cloud Disks.
+	//
+	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// System disk description. It cannot begin with http:// or https://.
+	//
+	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
 	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+	//
+	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// Size of the system disk, measured in GB. Value range: [20, 500].
+	//
+	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags                    map[string]interface{} `pulumi:"tags"`
+	TemplateResourceGroupId *string                `pulumi:"templateResourceGroupId"`
+	TemplateTags            map[string]interface{} `pulumi:"templateTags"`
+	UserData                *string                `pulumi:"userData"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
-	Userdata *string `pulumi:"userdata"`
-	VpcId    *string `pulumi:"vpcId"`
+	//
+	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
+	Userdata           *string `pulumi:"userdata"`
+	VersionDescription *string `pulumi:"versionDescription"`
+	VpcId              *string `pulumi:"vpcId"`
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -295,9 +261,11 @@ type LaunchTemplateState struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrInput
 	// The list of data disks created with instance.
-	DataDisks LaunchTemplateDataDiskArrayInput
+	DataDisks       LaunchTemplateDataDiskArrayInput
+	DeploymentSetId pulumi.StringPtrInput
 	// The description of the data disk.
-	Description pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
+	EnableVmOsConfig pulumi.BoolPtrInput
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 	HostName pulumi.StringPtrInput
 	// Image ID.
@@ -324,20 +292,28 @@ type LaunchTemplateState struct {
 	// The name of the key pair.
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName pulumi.StringPtrInput
+	KeyPairName        pulumi.StringPtrInput
+	LaunchTemplateName pulumi.StringPtrInput
 	// The name of the data disk.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
 	// The list of network interfaces created with instance.
 	NetworkInterfaces LaunchTemplateNetworkInterfacesPtrInput
 	// Network type of the instance. Value options: `classic` | `vpc`.
-	NetworkType pulumi.StringPtrInput
+	NetworkType      pulumi.StringPtrInput
+	PasswordInherit  pulumi.BoolPtrInput
+	Period           pulumi.IntPtrInput
+	PrivateIpAddress pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     pulumi.StringPtrInput
 	ResourceGroupId pulumi.StringPtrInput
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId pulumi.StringPtrInput
+	SecurityGroupId  pulumi.StringPtrInput
+	SecurityGroupIds pulumi.StringArrayInput
+	SpotDuration     pulumi.StringPtrInput
 	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
@@ -345,26 +321,41 @@ type LaunchTemplateState struct {
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
 	// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
 	SpotStrategy pulumi.StringPtrInput
+	SystemDisk   LaunchTemplateSystemDiskPtrInput
 	// The category of the system disk. System disk type. Optional values:
 	// - cloud: Basic cloud disk.
 	// - cloud_efficiency: Ultra cloud disk.
 	// - cloud_ssd: SSD cloud Disks.
 	// - ephemeral_ssd: local SSD Disks
 	// - cloud_essd: ESSD cloud Disks.
+	//
+	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringPtrInput
 	// System disk description. It cannot begin with http:// or https://.
+	//
+	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringPtrInput
 	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+	//
+	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringPtrInput
 	// Size of the system disk, measured in GB. Value range: [20, 500].
+	//
+	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags                    pulumi.MapInput
+	TemplateResourceGroupId pulumi.StringPtrInput
+	TemplateTags            pulumi.MapInput
+	UserData                pulumi.StringPtrInput
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
-	Userdata pulumi.StringPtrInput
-	VpcId    pulumi.StringPtrInput
+	//
+	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
+	Userdata           pulumi.StringPtrInput
+	VersionDescription pulumi.StringPtrInput
+	VpcId              pulumi.StringPtrInput
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
@@ -379,9 +370,11 @@ type launchTemplateArgs struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
 	// The list of data disks created with instance.
-	DataDisks []LaunchTemplateDataDisk `pulumi:"dataDisks"`
+	DataDisks       []LaunchTemplateDataDisk `pulumi:"dataDisks"`
+	DeploymentSetId *string                  `pulumi:"deploymentSetId"`
 	// The description of the data disk.
-	Description *string `pulumi:"description"`
+	Description      *string `pulumi:"description"`
+	EnableVmOsConfig *bool   `pulumi:"enableVmOsConfig"`
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 	HostName *string `pulumi:"hostName"`
 	// Image ID.
@@ -408,47 +401,70 @@ type launchTemplateArgs struct {
 	// The name of the key pair.
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName *string `pulumi:"keyPairName"`
+	KeyPairName        *string `pulumi:"keyPairName"`
+	LaunchTemplateName *string `pulumi:"launchTemplateName"`
 	// The name of the data disk.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
 	// The list of network interfaces created with instance.
 	NetworkInterfaces *LaunchTemplateNetworkInterfaces `pulumi:"networkInterfaces"`
 	// Network type of the instance. Value options: `classic` | `vpc`.
-	NetworkType *string `pulumi:"networkType"`
+	NetworkType      *string `pulumi:"networkType"`
+	PasswordInherit  *bool   `pulumi:"passwordInherit"`
+	Period           *int    `pulumi:"period"`
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     *string `pulumi:"ramRoleName"`
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
+	SecurityGroupId  *string  `pulumi:"securityGroupId"`
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	SpotDuration     *string  `pulumi:"spotDuration"`
 	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
 	// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
-	SpotStrategy *string `pulumi:"spotStrategy"`
+	SpotStrategy *string                   `pulumi:"spotStrategy"`
+	SystemDisk   *LaunchTemplateSystemDisk `pulumi:"systemDisk"`
 	// The category of the system disk. System disk type. Optional values:
 	// - cloud: Basic cloud disk.
 	// - cloud_efficiency: Ultra cloud disk.
 	// - cloud_ssd: SSD cloud Disks.
 	// - ephemeral_ssd: local SSD Disks
 	// - cloud_essd: ESSD cloud Disks.
+	//
+	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// System disk description. It cannot begin with http:// or https://.
+	//
+	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
 	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+	//
+	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// Size of the system disk, measured in GB. Value range: [20, 500].
+	//
+	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags                    map[string]interface{} `pulumi:"tags"`
+	TemplateResourceGroupId *string                `pulumi:"templateResourceGroupId"`
+	TemplateTags            map[string]interface{} `pulumi:"templateTags"`
+	UserData                *string                `pulumi:"userData"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
-	Userdata *string `pulumi:"userdata"`
-	VpcId    *string `pulumi:"vpcId"`
+	//
+	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
+	Userdata           *string `pulumi:"userdata"`
+	VersionDescription *string `pulumi:"versionDescription"`
+	VpcId              *string `pulumi:"vpcId"`
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -460,9 +476,11 @@ type LaunchTemplateArgs struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrInput
 	// The list of data disks created with instance.
-	DataDisks LaunchTemplateDataDiskArrayInput
+	DataDisks       LaunchTemplateDataDiskArrayInput
+	DeploymentSetId pulumi.StringPtrInput
 	// The description of the data disk.
-	Description pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
+	EnableVmOsConfig pulumi.BoolPtrInput
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 	HostName pulumi.StringPtrInput
 	// Image ID.
@@ -489,20 +507,28 @@ type LaunchTemplateArgs struct {
 	// The name of the key pair.
 	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName pulumi.StringPtrInput
+	KeyPairName        pulumi.StringPtrInput
+	LaunchTemplateName pulumi.StringPtrInput
 	// The name of the data disk.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
 	// The list of network interfaces created with instance.
 	NetworkInterfaces LaunchTemplateNetworkInterfacesPtrInput
 	// Network type of the instance. Value options: `classic` | `vpc`.
-	NetworkType pulumi.StringPtrInput
+	NetworkType      pulumi.StringPtrInput
+	PasswordInherit  pulumi.BoolPtrInput
+	Period           pulumi.IntPtrInput
+	PrivateIpAddress pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     pulumi.StringPtrInput
 	ResourceGroupId pulumi.StringPtrInput
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId pulumi.StringPtrInput
+	SecurityGroupId  pulumi.StringPtrInput
+	SecurityGroupIds pulumi.StringArrayInput
+	SpotDuration     pulumi.StringPtrInput
 	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
@@ -510,26 +536,41 @@ type LaunchTemplateArgs struct {
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
 	// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
 	SpotStrategy pulumi.StringPtrInput
+	SystemDisk   LaunchTemplateSystemDiskPtrInput
 	// The category of the system disk. System disk type. Optional values:
 	// - cloud: Basic cloud disk.
 	// - cloud_efficiency: Ultra cloud disk.
 	// - cloud_ssd: SSD cloud Disks.
 	// - ephemeral_ssd: local SSD Disks
 	// - cloud_essd: ESSD cloud Disks.
+	//
+	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringPtrInput
 	// System disk description. It cannot begin with http:// or https://.
+	//
+	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringPtrInput
 	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+	//
+	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringPtrInput
 	// Size of the system disk, measured in GB. Value range: [20, 500].
+	//
+	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags                    pulumi.MapInput
+	TemplateResourceGroupId pulumi.StringPtrInput
+	TemplateTags            pulumi.MapInput
+	UserData                pulumi.StringPtrInput
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
-	Userdata pulumi.StringPtrInput
-	VpcId    pulumi.StringPtrInput
+	//
+	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
+	Userdata           pulumi.StringPtrInput
+	VersionDescription pulumi.StringPtrInput
+	VpcId              pulumi.StringPtrInput
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.

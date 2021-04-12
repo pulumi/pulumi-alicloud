@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 export * from "./alert";
 export * from "./audit";
 export * from "./dashboard";
+export * from "./etl";
 export * from "./getService";
 export * from "./logTailAttachment";
 export * from "./logTailConfig";
@@ -20,6 +21,7 @@ export * from "./storeIndex";
 import { Alert } from "./alert";
 import { Audit } from "./audit";
 import { Dashboard } from "./dashboard";
+import { Etl } from "./etl";
 import { LogTailAttachment } from "./logTailAttachment";
 import { LogTailConfig } from "./logTailConfig";
 import { MachineGroup } from "./machineGroup";
@@ -37,6 +39,8 @@ const _module = {
                 return new Audit(name, <any>undefined, { urn })
             case "alicloud:log/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
+            case "alicloud:log/etl:Etl":
+                return new Etl(name, <any>undefined, { urn })
             case "alicloud:log/logTailAttachment:LogTailAttachment":
                 return new LogTailAttachment(name, <any>undefined, { urn })
             case "alicloud:log/logTailConfig:LogTailConfig":
@@ -57,6 +61,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "log/alert", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/audit", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/dashboard", _module)
+pulumi.runtime.registerResourceModule("alicloud", "log/etl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/logTailAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/logTailConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/machineGroup", _module)

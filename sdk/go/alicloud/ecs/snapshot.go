@@ -11,37 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an ECS snapshot resource.
-//
-// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewSnapshot(ctx, "snapshot", &ecs.SnapshotArgs{
-// 			DiskId:      pulumi.Any(alicloud_disk_attachment.Instance - attachment.Disk_id),
-// 			Description: pulumi.String("this snapshot is created for testing"),
-// 			Tags: pulumi.StringMap{
-// 				"version": pulumi.String("1.2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Snapshot can be imported using the id, e.g.
@@ -52,15 +21,24 @@ import (
 type Snapshot struct {
 	pulumi.CustomResourceState
 
+	Category pulumi.StringPtrOutput `pulumi:"category"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The source disk ID.
-	DiskId pulumi.StringOutput `pulumi:"diskId"`
+	DiskId                     pulumi.StringOutput  `pulumi:"diskId"`
+	Force                      pulumi.BoolPtrOutput `pulumi:"force"`
+	InstantAccess              pulumi.BoolPtrOutput `pulumi:"instantAccess"`
+	InstantAccessRetentionDays pulumi.IntPtrOutput  `pulumi:"instantAccessRetentionDays"`
 	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	RetentionDays   pulumi.IntPtrOutput    `pulumi:"retentionDays"`
+	SnapshotName    pulumi.StringOutput    `pulumi:"snapshotName"`
+	Status          pulumi.StringOutput    `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
@@ -97,29 +75,47 @@ func GetSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Snapshot resources.
 type snapshotState struct {
+	Category *string `pulumi:"category"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
 	// The source disk ID.
-	DiskId *string `pulumi:"diskId"`
+	DiskId                     *string `pulumi:"diskId"`
+	Force                      *bool   `pulumi:"force"`
+	InstantAccess              *bool   `pulumi:"instantAccess"`
+	InstantAccessRetentionDays *int    `pulumi:"instantAccessRetentionDays"`
 	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
 	Name *string `pulumi:"name"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	RetentionDays   *int    `pulumi:"retentionDays"`
+	SnapshotName    *string `pulumi:"snapshotName"`
+	Status          *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type SnapshotState struct {
+	Category pulumi.StringPtrInput
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
 	// The source disk ID.
-	DiskId pulumi.StringPtrInput
+	DiskId                     pulumi.StringPtrInput
+	Force                      pulumi.BoolPtrInput
+	InstantAccess              pulumi.BoolPtrInput
+	InstantAccessRetentionDays pulumi.IntPtrInput
 	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
 	Name pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	RetentionDays   pulumi.IntPtrInput
+	SnapshotName    pulumi.StringPtrInput
+	Status          pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -129,30 +125,46 @@ func (SnapshotState) ElementType() reflect.Type {
 }
 
 type snapshotArgs struct {
+	Category *string `pulumi:"category"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
 	// The source disk ID.
-	DiskId string `pulumi:"diskId"`
+	DiskId                     string `pulumi:"diskId"`
+	Force                      *bool  `pulumi:"force"`
+	InstantAccess              *bool  `pulumi:"instantAccess"`
+	InstantAccessRetentionDays *int   `pulumi:"instantAccessRetentionDays"`
 	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
 	Name *string `pulumi:"name"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	RetentionDays   *int    `pulumi:"retentionDays"`
+	SnapshotName    *string `pulumi:"snapshotName"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
+	Category pulumi.StringPtrInput
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
 	// The source disk ID.
-	DiskId pulumi.StringInput
+	DiskId                     pulumi.StringInput
+	Force                      pulumi.BoolPtrInput
+	InstantAccess              pulumi.BoolPtrInput
+	InstantAccessRetentionDays pulumi.IntPtrInput
 	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
 	Name pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	RetentionDays   pulumi.IntPtrInput
+	SnapshotName    pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

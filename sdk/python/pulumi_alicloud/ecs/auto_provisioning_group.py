@@ -69,7 +69,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        template = alicloud.ecs.LaunchTemplate("template",
+        template = alicloud.ecs.EcsLaunchTemplate("template",
             image_id=default_images.images[0].id,
             instance_type="ecs.n1.tiny",
             security_group_id=default_security_group.id)

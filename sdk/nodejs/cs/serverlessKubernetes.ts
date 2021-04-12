@@ -99,7 +99,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
-     * Default nil, A map of tags assigned to the kubernetes cluster .
+     * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -248,7 +248,7 @@ export interface ServerlessKubernetesState {
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
-     * Default nil, A map of tags assigned to the kubernetes cluster .
+     * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -332,7 +332,7 @@ export interface ServerlessKubernetesArgs {
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
-     * Default nil, A map of tags assigned to the kubernetes cluster .
+     * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**

@@ -294,6 +294,308 @@ func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccou
 	}).(GetAccountsAccountOutput)
 }
 
+type GetControlPoliciesPolicy struct {
+	// The count of policy attachment.
+	AttachmentCount int `pulumi:"attachmentCount"`
+	// The name of policy.
+	ControlPolicyName string `pulumi:"controlPolicyName"`
+	// The description of policy.
+	Description string `pulumi:"description"`
+	// The effect scope.
+	EffectScope string `pulumi:"effectScope"`
+	// The ID of the Control Policy.
+	Id string `pulumi:"id"`
+	// The policy document.
+	PolicyDocument string `pulumi:"policyDocument"`
+	// The ID of policy.
+	PolicyId string `pulumi:"policyId"`
+	// The type of policy.
+	PolicyType string `pulumi:"policyType"`
+}
+
+// GetControlPoliciesPolicyInput is an input type that accepts GetControlPoliciesPolicyArgs and GetControlPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetControlPoliciesPolicyInput` via:
+//
+//          GetControlPoliciesPolicyArgs{...}
+type GetControlPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetControlPoliciesPolicyOutput() GetControlPoliciesPolicyOutput
+	ToGetControlPoliciesPolicyOutputWithContext(context.Context) GetControlPoliciesPolicyOutput
+}
+
+type GetControlPoliciesPolicyArgs struct {
+	// The count of policy attachment.
+	AttachmentCount pulumi.IntInput `pulumi:"attachmentCount"`
+	// The name of policy.
+	ControlPolicyName pulumi.StringInput `pulumi:"controlPolicyName"`
+	// The description of policy.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The effect scope.
+	EffectScope pulumi.StringInput `pulumi:"effectScope"`
+	// The ID of the Control Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The policy document.
+	PolicyDocument pulumi.StringInput `pulumi:"policyDocument"`
+	// The ID of policy.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// The type of policy.
+	PolicyType pulumi.StringInput `pulumi:"policyType"`
+}
+
+func (GetControlPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetControlPoliciesPolicyArgs) ToGetControlPoliciesPolicyOutput() GetControlPoliciesPolicyOutput {
+	return i.ToGetControlPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetControlPoliciesPolicyArgs) ToGetControlPoliciesPolicyOutputWithContext(ctx context.Context) GetControlPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlPoliciesPolicyOutput)
+}
+
+// GetControlPoliciesPolicyArrayInput is an input type that accepts GetControlPoliciesPolicyArray and GetControlPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetControlPoliciesPolicyArrayInput` via:
+//
+//          GetControlPoliciesPolicyArray{ GetControlPoliciesPolicyArgs{...} }
+type GetControlPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetControlPoliciesPolicyArrayOutput() GetControlPoliciesPolicyArrayOutput
+	ToGetControlPoliciesPolicyArrayOutputWithContext(context.Context) GetControlPoliciesPolicyArrayOutput
+}
+
+type GetControlPoliciesPolicyArray []GetControlPoliciesPolicyInput
+
+func (GetControlPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetControlPoliciesPolicyArray) ToGetControlPoliciesPolicyArrayOutput() GetControlPoliciesPolicyArrayOutput {
+	return i.ToGetControlPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlPoliciesPolicyArray) ToGetControlPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetControlPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlPoliciesPolicyArrayOutput)
+}
+
+type GetControlPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetControlPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetControlPoliciesPolicyOutput) ToGetControlPoliciesPolicyOutput() GetControlPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetControlPoliciesPolicyOutput) ToGetControlPoliciesPolicyOutputWithContext(ctx context.Context) GetControlPoliciesPolicyOutput {
+	return o
+}
+
+// The count of policy attachment.
+func (o GetControlPoliciesPolicyOutput) AttachmentCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetControlPoliciesPolicy) int { return v.AttachmentCount }).(pulumi.IntOutput)
+}
+
+// The name of policy.
+func (o GetControlPoliciesPolicyOutput) ControlPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.ControlPolicyName }).(pulumi.StringOutput)
+}
+
+// The description of policy.
+func (o GetControlPoliciesPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The effect scope.
+func (o GetControlPoliciesPolicyOutput) EffectScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.EffectScope }).(pulumi.StringOutput)
+}
+
+// The ID of the Control Policy.
+func (o GetControlPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The policy document.
+func (o GetControlPoliciesPolicyOutput) PolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.PolicyDocument }).(pulumi.StringOutput)
+}
+
+// The ID of policy.
+func (o GetControlPoliciesPolicyOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// The type of policy.
+func (o GetControlPoliciesPolicyOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+type GetControlPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetControlPoliciesPolicyArrayOutput) ToGetControlPoliciesPolicyArrayOutput() GetControlPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetControlPoliciesPolicyArrayOutput) ToGetControlPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetControlPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetControlPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetControlPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlPoliciesPolicy {
+		return vs[0].([]GetControlPoliciesPolicy)[vs[1].(int)]
+	}).(GetControlPoliciesPolicyOutput)
+}
+
+type GetControlPolicyAttachmentsAttachment struct {
+	// The attach date.
+	AttachDate string `pulumi:"attachDate"`
+	// The description of policy.
+	Description string `pulumi:"description"`
+	// The ID of the Control Policy Attachment.
+	Id string `pulumi:"id"`
+	// The ID of policy.
+	PolicyId string `pulumi:"policyId"`
+	// The name of policy.
+	PolicyName string `pulumi:"policyName"`
+	// The type of policy.
+	PolicyType string `pulumi:"policyType"`
+}
+
+// GetControlPolicyAttachmentsAttachmentInput is an input type that accepts GetControlPolicyAttachmentsAttachmentArgs and GetControlPolicyAttachmentsAttachmentOutput values.
+// You can construct a concrete instance of `GetControlPolicyAttachmentsAttachmentInput` via:
+//
+//          GetControlPolicyAttachmentsAttachmentArgs{...}
+type GetControlPolicyAttachmentsAttachmentInput interface {
+	pulumi.Input
+
+	ToGetControlPolicyAttachmentsAttachmentOutput() GetControlPolicyAttachmentsAttachmentOutput
+	ToGetControlPolicyAttachmentsAttachmentOutputWithContext(context.Context) GetControlPolicyAttachmentsAttachmentOutput
+}
+
+type GetControlPolicyAttachmentsAttachmentArgs struct {
+	// The attach date.
+	AttachDate pulumi.StringInput `pulumi:"attachDate"`
+	// The description of policy.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Control Policy Attachment.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of policy.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// The name of policy.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// The type of policy.
+	PolicyType pulumi.StringInput `pulumi:"policyType"`
+}
+
+func (GetControlPolicyAttachmentsAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlPolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetControlPolicyAttachmentsAttachmentArgs) ToGetControlPolicyAttachmentsAttachmentOutput() GetControlPolicyAttachmentsAttachmentOutput {
+	return i.ToGetControlPolicyAttachmentsAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetControlPolicyAttachmentsAttachmentArgs) ToGetControlPolicyAttachmentsAttachmentOutputWithContext(ctx context.Context) GetControlPolicyAttachmentsAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlPolicyAttachmentsAttachmentOutput)
+}
+
+// GetControlPolicyAttachmentsAttachmentArrayInput is an input type that accepts GetControlPolicyAttachmentsAttachmentArray and GetControlPolicyAttachmentsAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetControlPolicyAttachmentsAttachmentArrayInput` via:
+//
+//          GetControlPolicyAttachmentsAttachmentArray{ GetControlPolicyAttachmentsAttachmentArgs{...} }
+type GetControlPolicyAttachmentsAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetControlPolicyAttachmentsAttachmentArrayOutput() GetControlPolicyAttachmentsAttachmentArrayOutput
+	ToGetControlPolicyAttachmentsAttachmentArrayOutputWithContext(context.Context) GetControlPolicyAttachmentsAttachmentArrayOutput
+}
+
+type GetControlPolicyAttachmentsAttachmentArray []GetControlPolicyAttachmentsAttachmentInput
+
+func (GetControlPolicyAttachmentsAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlPolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetControlPolicyAttachmentsAttachmentArray) ToGetControlPolicyAttachmentsAttachmentArrayOutput() GetControlPolicyAttachmentsAttachmentArrayOutput {
+	return i.ToGetControlPolicyAttachmentsAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlPolicyAttachmentsAttachmentArray) ToGetControlPolicyAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetControlPolicyAttachmentsAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlPolicyAttachmentsAttachmentArrayOutput)
+}
+
+type GetControlPolicyAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetControlPolicyAttachmentsAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlPolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetControlPolicyAttachmentsAttachmentOutput) ToGetControlPolicyAttachmentsAttachmentOutput() GetControlPolicyAttachmentsAttachmentOutput {
+	return o
+}
+
+func (o GetControlPolicyAttachmentsAttachmentOutput) ToGetControlPolicyAttachmentsAttachmentOutputWithContext(ctx context.Context) GetControlPolicyAttachmentsAttachmentOutput {
+	return o
+}
+
+// The attach date.
+func (o GetControlPolicyAttachmentsAttachmentOutput) AttachDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsAttachment) string { return v.AttachDate }).(pulumi.StringOutput)
+}
+
+// The description of policy.
+func (o GetControlPolicyAttachmentsAttachmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsAttachment) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Control Policy Attachment.
+func (o GetControlPolicyAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of policy.
+func (o GetControlPolicyAttachmentsAttachmentOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsAttachment) string { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// The name of policy.
+func (o GetControlPolicyAttachmentsAttachmentOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsAttachment) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// The type of policy.
+func (o GetControlPolicyAttachmentsAttachmentOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsAttachment) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+type GetControlPolicyAttachmentsAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlPolicyAttachmentsAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlPolicyAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetControlPolicyAttachmentsAttachmentArrayOutput) ToGetControlPolicyAttachmentsAttachmentArrayOutput() GetControlPolicyAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetControlPolicyAttachmentsAttachmentArrayOutput) ToGetControlPolicyAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetControlPolicyAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetControlPolicyAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetControlPolicyAttachmentsAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlPolicyAttachmentsAttachment {
+		return vs[0].([]GetControlPolicyAttachmentsAttachment)[vs[1].(int)]
+	}).(GetControlPolicyAttachmentsAttachmentOutput)
+}
+
 type GetFoldersFolder struct {
 	FolderId   string `pulumi:"folderId"`
 	FolderName string `pulumi:"folderName"`
@@ -1090,6 +1392,8 @@ type GetResourceDirectoriesDirectory struct {
 	ResourceDirectoryId string `pulumi:"resourceDirectoryId"`
 	// The ID of the root folder.
 	RootFolderId string `pulumi:"rootFolderId"`
+	// (Available in 1.120.0+.) The status of the control policy.
+	Status string `pulumi:"status"`
 }
 
 // GetResourceDirectoriesDirectoryInput is an input type that accepts GetResourceDirectoriesDirectoryArgs and GetResourceDirectoriesDirectoryOutput values.
@@ -1114,6 +1418,8 @@ type GetResourceDirectoriesDirectoryArgs struct {
 	ResourceDirectoryId pulumi.StringInput `pulumi:"resourceDirectoryId"`
 	// The ID of the root folder.
 	RootFolderId pulumi.StringInput `pulumi:"rootFolderId"`
+	// (Available in 1.120.0+.) The status of the control policy.
+	Status pulumi.StringInput `pulumi:"status"`
 }
 
 func (GetResourceDirectoriesDirectoryArgs) ElementType() reflect.Type {
@@ -1190,6 +1496,11 @@ func (o GetResourceDirectoriesDirectoryOutput) ResourceDirectoryId() pulumi.Stri
 // The ID of the root folder.
 func (o GetResourceDirectoriesDirectoryOutput) RootFolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceDirectoriesDirectory) string { return v.RootFolderId }).(pulumi.StringOutput)
+}
+
+// (Available in 1.120.0+.) The status of the control policy.
+func (o GetResourceDirectoriesDirectoryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceDirectoriesDirectory) string { return v.Status }).(pulumi.StringOutput)
 }
 
 type GetResourceDirectoriesDirectoryArrayOutput struct{ *pulumi.OutputState }
@@ -2024,6 +2335,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetControlPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetControlPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetControlPolicyAttachmentsAttachmentOutput{})
+	pulumi.RegisterOutputType(GetControlPolicyAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderArrayOutput{})
 	pulumi.RegisterOutputType(GetHandshakesHandshakeOutput{})

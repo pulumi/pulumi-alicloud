@@ -5,44 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an RDS account resource and used to manage databases.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const creation = config.get("creation") || "Rds";
- * const name = config.get("name") || "dbaccountmysql";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
- *     vswitchName: name,
- * });
- * const instance = new alicloud.rds.Instance("instance", {
- *     engine: "MySQL",
- *     engineVersion: "5.6",
- *     instanceType: "rds.mysql.s1.small",
- *     instanceStorage: "10",
- *     vswitchId: defaultSwitch.id,
- *     instanceName: name,
- * });
- * const account = new alicloud.rds.Account("account", {
- *     instanceId: instance.id,
- *     password: "Test12345",
- * });
- * ```
- *
  * ## Import
  *
  * RDS account can be imported using the id, e.g.
@@ -79,12 +41,21 @@ export class Account extends pulumi.CustomResource {
         return obj['__pulumiType'] === Account.__pulumiType;
     }
 
+    public readonly accountDescription!: pulumi.Output<string>;
+    public readonly accountName!: pulumi.Output<string>;
+    public readonly accountPassword!: pulumi.Output<string>;
+    public readonly accountType!: pulumi.Output<string>;
+    public readonly dbInstanceId!: pulumi.Output<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     *
+     * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The Id of instance in which account belongs.
+     *
+     * @deprecated Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -97,16 +68,23 @@ export class Account extends pulumi.CustomResource {
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     *
+     * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
      * - Super: High privilege.
+     *
+     * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -117,24 +95,32 @@ export class Account extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AccountArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
+            inputs["accountDescription"] = state ? state.accountDescription : undefined;
+            inputs["accountName"] = state ? state.accountName : undefined;
+            inputs["accountPassword"] = state ? state.accountPassword : undefined;
+            inputs["accountType"] = state ? state.accountType : undefined;
+            inputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["password"] = state ? state.password : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceId'");
-            }
+            inputs["accountDescription"] = args ? args.accountDescription : undefined;
+            inputs["accountName"] = args ? args.accountName : undefined;
+            inputs["accountPassword"] = args ? args.accountPassword : undefined;
+            inputs["accountType"] = args ? args.accountType : undefined;
+            inputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
@@ -142,6 +128,7 @@ export class Account extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -154,12 +141,21 @@ export class Account extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Account resources.
  */
 export interface AccountState {
+    readonly accountDescription?: pulumi.Input<string>;
+    readonly accountName?: pulumi.Input<string>;
+    readonly accountPassword?: pulumi.Input<string>;
+    readonly accountType?: pulumi.Input<string>;
+    readonly dbInstanceId?: pulumi.Input<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     *
+     * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
     readonly description?: pulumi.Input<string>;
     /**
      * The Id of instance in which account belongs.
+     *
+     * @deprecated Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
@@ -172,16 +168,23 @@ export interface AccountState {
     readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     *
+     * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     readonly password?: pulumi.Input<string>;
+    readonly status?: pulumi.Input<string>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
      * - Super: High privilege.
+     *
+     * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -190,14 +193,23 @@ export interface AccountState {
  * The set of arguments for constructing a Account resource.
  */
 export interface AccountArgs {
+    readonly accountDescription?: pulumi.Input<string>;
+    readonly accountName?: pulumi.Input<string>;
+    readonly accountPassword?: pulumi.Input<string>;
+    readonly accountType?: pulumi.Input<string>;
+    readonly dbInstanceId?: pulumi.Input<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     *
+     * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
     readonly description?: pulumi.Input<string>;
     /**
      * The Id of instance in which account belongs.
+     *
+     * @deprecated Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
      */
-    readonly instanceId: pulumi.Input<string>;
+    readonly instanceId?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
      */
@@ -208,16 +220,22 @@ export interface AccountArgs {
     readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     *
+     * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     readonly password?: pulumi.Input<string>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
      * - Super: High privilege.
+     *
+     * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
     readonly type?: pulumi.Input<string>;
 }

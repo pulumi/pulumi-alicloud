@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SlbIntranet { get; private set; } = null!;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes . Detailed below.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -361,9 +361,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
-        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
         /// </summary>
         [Output("workerDataDisks")]
         public Output<ImmutableArray<Outputs.ManagedKubernetesWorkerDataDisk>> WorkerDataDisks { get; private set; } = null!;
@@ -375,10 +372,22 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> WorkerDiskCategory { get; private set; } = null!;
 
         /// <summary>
+        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// </summary>
+        [Output("workerDiskPerformanceLevel")]
+        public Output<string?> WorkerDiskPerformanceLevel { get; private set; } = null!;
+
+        /// <summary>
         /// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         /// </summary>
         [Output("workerDiskSize")]
         public Output<int?> WorkerDiskSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Worker node system disk auto snapshot policy.
+        /// </summary>
+        [Output("workerDiskSnapshotPolicyId")]
+        public Output<string?> WorkerDiskSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
@@ -752,7 +761,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes . Detailed below.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -819,9 +828,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
-        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesWorkerDataDiskArgs> WorkerDataDisks
         {
@@ -836,10 +842,22 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
+        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// </summary>
+        [Input("workerDiskPerformanceLevel")]
+        public Input<string>? WorkerDiskPerformanceLevel { get; set; }
+
+        /// <summary>
         /// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }
+
+        /// <summary>
+        /// Worker node system disk auto snapshot policy.
+        /// </summary>
+        [Input("workerDiskSnapshotPolicyId")]
+        public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
         /// <summary>
         /// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
@@ -1203,7 +1221,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster . Detailed below.
+        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes . Detailed below.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -1276,9 +1294,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
-        /// * `category`: the type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
-        /// * `size`: the size of a data disk, at least 40. Unit: GiB.
-        /// * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false. Default to false.
         /// </summary>
         public InputList<Inputs.ManagedKubernetesWorkerDataDiskGetArgs> WorkerDataDisks
         {
@@ -1293,10 +1308,22 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
+        /// Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// </summary>
+        [Input("workerDiskPerformanceLevel")]
+        public Input<string>? WorkerDiskPerformanceLevel { get; set; }
+
+        /// <summary>
         /// The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }
+
+        /// <summary>
+        /// Worker node system disk auto snapshot policy.
+        /// </summary>
+        [Input("workerDiskSnapshotPolicyId")]
+        public Input<string>? WorkerDiskSnapshotPolicyId { get; set; }
 
         /// <summary>
         /// Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.

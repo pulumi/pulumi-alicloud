@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("foo", {
- *     bandwidth: 2,
+ *     bandwidth: "2",
  *     description: "tf-testAcc-CommonBandwidthPackage",
  * });
  * const fooCommonBandwidthPackages = fooCommonBandwithPackage.id.apply(id => alicloud.vpc.getCommonBandwidthPackages({
@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *
  *   * `ipAddress`   - The address of the EIP.
  *   * `allocationId` - The ID of the EIP instance.
+ *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
  */
 export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetCommonBandwidthPackagesResult> {
     args = args || {};
@@ -42,10 +43,14 @@ export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", {
+        "bandwidthPackageName": args.bandwidthPackageName,
+        "dryRun": args.dryRun,
         "ids": args.ids,
+        "includeReservationData": args.includeReservationData,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
     }, opts);
 }
 
@@ -54,9 +59,21 @@ export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs
  */
 export interface GetCommonBandwidthPackagesArgs {
     /**
+     * The name of bandwidth package.
+     */
+    readonly bandwidthPackageName?: string;
+    /**
+     * Specifies whether to precheck only the request.
+     */
+    readonly dryRun?: boolean;
+    /**
      * A list of Common Bandwidth Packages IDs.
      */
     readonly ids?: string[];
+    /**
+     * Specifies whether to return data of orders that have not taken effect.
+     */
+    readonly includeReservationData?: boolean;
     /**
      * A regex string to filter results by name.
      */
@@ -66,12 +83,21 @@ export interface GetCommonBandwidthPackagesArgs {
      * The Id of resource group which the common bandwidth package belongs.
      */
     readonly resourceGroupId?: string;
+    /**
+     * The status of bandwidth package. Valid values: `Available` and `Pending`.
+     */
+    readonly status?: string;
 }
 
 /**
  * A collection of values returned by getCommonBandwidthPackages.
  */
 export interface GetCommonBandwidthPackagesResult {
+    /**
+     * The name of bandwidth package.
+     */
+    readonly bandwidthPackageName?: string;
+    readonly dryRun?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -80,6 +106,7 @@ export interface GetCommonBandwidthPackagesResult {
      * (Optional) A list of Common Bandwidth Packages IDs.
      */
     readonly ids: string[];
+    readonly includeReservationData?: boolean;
     readonly nameRegex?: string;
     /**
      * A list of Common Bandwidth Packages names.
@@ -94,4 +121,8 @@ export interface GetCommonBandwidthPackagesResult {
      * The Id of resource group which the common bandwidth package belongs.
      */
     readonly resourceGroupId?: string;
+    /**
+     * Status of the Common Bandwidth Package.
+     */
+    readonly status?: string;
 }

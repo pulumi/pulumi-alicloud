@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class NodePoolLabel
     {
+        /// <summary>
+        /// The label key.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The label value.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

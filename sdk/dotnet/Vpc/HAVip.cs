@@ -28,10 +28,22 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the HaVip instance.
+        /// </summary>
+        [Output("havipName")]
+        public Output<string?> HavipName { get; private set; } = null!;
+
+        /// <summary>
         /// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.120.0+) The status of the HaVip instance.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The vswitch_id of the HaVip, the field can't be changed.
@@ -92,6 +104,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The name of the HaVip instance.
+        /// </summary>
+        [Input("havipName")]
+        public Input<string>? HavipName { get; set; }
+
+        /// <summary>
         /// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         /// </summary>
         [Input("ipAddress")]
@@ -117,10 +135,22 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The name of the HaVip instance.
+        /// </summary>
+        [Input("havipName")]
+        public Input<string>? HavipName { get; set; }
+
+        /// <summary>
         /// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// (Available in v1.120.0+) The status of the HaVip instance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The vswitch_id of the HaVip, the field can't be changed.

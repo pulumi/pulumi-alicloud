@@ -12,6 +12,8 @@ from . import outputs
 __all__ = [
     'ResourceGroupRegionStatus',
     'GetAccountsAccountResult',
+    'GetControlPoliciesPolicyResult',
+    'GetControlPolicyAttachmentsAttachmentResult',
     'GetFoldersFolderResult',
     'GetHandshakesHandshakeResult',
     'GetPoliciesPolicyResult',
@@ -171,6 +173,174 @@ class GetAccountsAccountResult(dict):
         The type of the member account.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetControlPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 attachment_count: int,
+                 control_policy_name: str,
+                 description: str,
+                 effect_scope: str,
+                 id: str,
+                 policy_document: str,
+                 policy_id: str,
+                 policy_type: str):
+        """
+        :param int attachment_count: The count of policy attachment.
+        :param str control_policy_name: The name of policy.
+        :param str description: The description of policy.
+        :param str effect_scope: The effect scope.
+        :param str id: The ID of the Control Policy.
+        :param str policy_document: The policy document.
+        :param str policy_id: The ID of policy.
+        :param str policy_type: The type of policy.
+        """
+        pulumi.set(__self__, "attachment_count", attachment_count)
+        pulumi.set(__self__, "control_policy_name", control_policy_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "effect_scope", effect_scope)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_document", policy_document)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "policy_type", policy_type)
+
+    @property
+    @pulumi.getter(name="attachmentCount")
+    def attachment_count(self) -> int:
+        """
+        The count of policy attachment.
+        """
+        return pulumi.get(self, "attachment_count")
+
+    @property
+    @pulumi.getter(name="controlPolicyName")
+    def control_policy_name(self) -> str:
+        """
+        The name of policy.
+        """
+        return pulumi.get(self, "control_policy_name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of policy.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectScope")
+    def effect_scope(self) -> str:
+        """
+        The effect scope.
+        """
+        return pulumi.get(self, "effect_scope")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Control Policy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="policyDocument")
+    def policy_document(self) -> str:
+        """
+        The policy document.
+        """
+        return pulumi.get(self, "policy_document")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> str:
+        """
+        The ID of policy.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> str:
+        """
+        The type of policy.
+        """
+        return pulumi.get(self, "policy_type")
+
+
+@pulumi.output_type
+class GetControlPolicyAttachmentsAttachmentResult(dict):
+    def __init__(__self__, *,
+                 attach_date: str,
+                 description: str,
+                 id: str,
+                 policy_id: str,
+                 policy_name: str,
+                 policy_type: str):
+        """
+        :param str attach_date: The attach date.
+        :param str description: The description of policy.
+        :param str id: The ID of the Control Policy Attachment.
+        :param str policy_id: The ID of policy.
+        :param str policy_name: The name of policy.
+        :param str policy_type: The type of policy.
+        """
+        pulumi.set(__self__, "attach_date", attach_date)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+
+    @property
+    @pulumi.getter(name="attachDate")
+    def attach_date(self) -> str:
+        """
+        The attach date.
+        """
+        return pulumi.get(self, "attach_date")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of policy.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Control Policy Attachment.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> str:
+        """
+        The ID of policy.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> str:
+        """
+        The name of policy.
+        """
+        return pulumi.get(self, "policy_name")
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> str:
+        """
+        The type of policy.
+        """
+        return pulumi.get(self, "policy_type")
 
 
 @pulumi.output_type
@@ -611,19 +781,22 @@ class GetResourceDirectoriesDirectoryResult(dict):
                  master_account_id: str,
                  master_account_name: str,
                  resource_directory_id: str,
-                 root_folder_id: str):
+                 root_folder_id: str,
+                 status: str):
         """
         :param str id: The ID of resource directory.
                * `master_account_id`- The ID of the master account.
                * `master_account_name`- The name of the master account.
         :param str resource_directory_id: The ID of the resource directory.
         :param str root_folder_id: The ID of the root folder.
+        :param str status: (Available in 1.120.0+.) The status of the control policy.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "master_account_id", master_account_id)
         pulumi.set(__self__, "master_account_name", master_account_name)
         pulumi.set(__self__, "resource_directory_id", resource_directory_id)
         pulumi.set(__self__, "root_folder_id", root_folder_id)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -660,6 +833,14 @@ class GetResourceDirectoriesDirectoryResult(dict):
         The ID of the root folder.
         """
         return pulumi.get(self, "root_folder_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        (Available in 1.120.0+.) The status of the control policy.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

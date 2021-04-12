@@ -9,9 +9,11 @@ export * from "./accelerator";
 export * from "./bandwidthPackage";
 export * from "./bandwidthPackageAttachment";
 export * from "./endpointGroup";
+export * from "./forwardingRule";
 export * from "./getAccelerators";
 export * from "./getBandwidthPackages";
 export * from "./getEndpointGroups";
+export * from "./getForwardingRules";
 export * from "./getIpSets";
 export * from "./getListeners";
 export * from "./ipSet";
@@ -22,6 +24,7 @@ import { Accelerator } from "./accelerator";
 import { BandwidthPackage } from "./bandwidthPackage";
 import { BandwidthPackageAttachment } from "./bandwidthPackageAttachment";
 import { EndpointGroup } from "./endpointGroup";
+import { ForwardingRule } from "./forwardingRule";
 import { IpSet } from "./ipSet";
 import { Listener } from "./listener";
 
@@ -37,6 +40,8 @@ const _module = {
                 return new BandwidthPackageAttachment(name, <any>undefined, { urn })
             case "alicloud:ga/endpointGroup:EndpointGroup":
                 return new EndpointGroup(name, <any>undefined, { urn })
+            case "alicloud:ga/forwardingRule:ForwardingRule":
+                return new ForwardingRule(name, <any>undefined, { urn })
             case "alicloud:ga/ipSet:IpSet":
                 return new IpSet(name, <any>undefined, { urn })
             case "alicloud:ga/listener:Listener":
@@ -50,5 +55,6 @@ pulumi.runtime.registerResourceModule("alicloud", "ga/accelerator", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/bandwidthPackage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/bandwidthPackageAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/endpointGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/forwardingRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/ipSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/listener", _module)

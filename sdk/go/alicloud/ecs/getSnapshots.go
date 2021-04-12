@@ -7,66 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
-//
-// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-//
-// > **NOTE:**  Available in 1.40.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-testAcc-snapshot"
-// 		_, err := ecs.GetSnapshots(ctx, &ecs.GetSnapshotsArgs{
-// 			Ids: []string{
-// 				"s-123456890abcdef",
-// 			},
-// 			NameRegex: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ## Argument Reference
-//
-// The following arguments are supported:
-//
-// * `instanceId` - (Optional) The specified instance ID.
-// * `diskId` - (Optional) The specified disk ID.
-// * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-// * `ids` - (Optional)  A list of snapshot IDs.
-// * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
-// * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-//   * progressing: The snapshots are being created.
-//   * accomplished: The snapshots are ready to use.
-//   * failed: The snapshot creation failed.
-//   * all: All status.
-// * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-//   * auto: Auto snapshots.
-//   * user: Manual snapshots.
-//   * all: Auto and manual snapshots.
-// * `sourceDiskType` - (Optional) The type of source disk:
-//   * System: The snapshots are created for system disks.
-//   * Data: The snapshots are created for data disks.
-// * `usage` - (Optional) The usage of the snapshot:
-//   * image: The snapshots are used to create custom images.
-//   * disk: The snapshots are used to CreateDisk.
-//   * mage_disk: The snapshots are used to create custom images and data disks.
-//   * none: The snapshots are not used yet.
-// * `tags` - (Optional) A map of tags assigned to snapshots.
-// * `outputFile` - (Optional) The name of output file that saves the filter results.
 func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetSnapshotsResult, error) {
 	var rv GetSnapshotsResult
 	err := ctx.Invoke("alicloud:ecs/getSnapshots:getSnapshots", args, &rv, opts...)
@@ -78,14 +18,19 @@ func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSnapshots.
 type GetSnapshotsArgs struct {
-	DiskId *string `pulumi:"diskId"`
+	Category *string `pulumi:"category"`
+	DryRun   *bool   `pulumi:"dryRun"`
 	// Whether the snapshot is encrypted or not.
 	Encrypted *bool `pulumi:"encrypted"`
 	// A list of snapshot IDs.
-	Ids        []string `pulumi:"ids"`
-	InstanceId *string  `pulumi:"instanceId"`
-	NameRegex  *string  `pulumi:"nameRegex"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids             []string `pulumi:"ids"`
+	KmsKeyId        *string  `pulumi:"kmsKeyId"`
+	NameRegex       *string  `pulumi:"nameRegex"`
+	OutputFile      *string  `pulumi:"outputFile"`
+	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	SnapshotLinkId  *string  `pulumi:"snapshotLinkId"`
+	SnapshotName    *string  `pulumi:"snapshotName"`
+	SnapshotType    *string  `pulumi:"snapshotType"`
 	// Source disk attribute. Value range: `System`,`Data`.
 	SourceDiskType *string `pulumi:"sourceDiskType"`
 	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
@@ -99,18 +44,23 @@ type GetSnapshotsArgs struct {
 
 // A collection of values returned by getSnapshots.
 type GetSnapshotsResult struct {
-	DiskId *string `pulumi:"diskId"`
+	Category *string `pulumi:"category"`
+	DryRun   *bool   `pulumi:"dryRun"`
 	// Whether the snapshot is encrypted or not.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of snapshot IDs.
-	Ids        []string `pulumi:"ids"`
-	InstanceId *string  `pulumi:"instanceId"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	KmsKeyId  *string  `pulumi:"kmsKeyId"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of snapshots names.
-	Names      []string `pulumi:"names"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Names           []string `pulumi:"names"`
+	OutputFile      *string  `pulumi:"outputFile"`
+	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	SnapshotLinkId  *string  `pulumi:"snapshotLinkId"`
+	SnapshotName    *string  `pulumi:"snapshotName"`
+	SnapshotType    *string  `pulumi:"snapshotType"`
 	// A list of snapshots. Each element contains the following attributes:
 	Snapshots []GetSnapshotsSnapshot `pulumi:"snapshots"`
 	// Source disk attribute. Value range: `System`,`Data`.

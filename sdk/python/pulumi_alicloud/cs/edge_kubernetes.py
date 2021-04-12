@@ -41,11 +41,14 @@ class EdgeKubernetes(pulumi.CustomResource):
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  slb_internet_enabled: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]]] = None,
                  worker_disk_category: Optional[pulumi.Input[str]] = None,
+                 worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  worker_disk_size: Optional[pulumi.Input[int]] = None,
+                 worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
                  worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  worker_number: Optional[pulumi.Input[int]] = None,
@@ -84,18 +87,14 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
+        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work node.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-               * `category`: the type of the data disks. Valid values:
-               * cloud : basic disks.
-               * cloud_efficiency : ultra disks.
-               * cloud_ssd : SSDs.
-               * cloud_essd : ESSDs.
-               * `size`: the size of a data disk, at least 40. Unit: GiB.
-               * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
+        :param pulumi.Input[str] worker_disk_performance_level: Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        :param pulumi.Input[str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
         :param pulumi.Input[int] worker_number: The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         """
@@ -140,11 +139,14 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__['security_group_id'] = security_group_id
             __props__['service_cidr'] = service_cidr
             __props__['slb_internet_enabled'] = slb_internet_enabled
+            __props__['tags'] = tags
             __props__['user_data'] = user_data
             __props__['version'] = version
             __props__['worker_data_disks'] = worker_data_disks
             __props__['worker_disk_category'] = worker_disk_category
+            __props__['worker_disk_performance_level'] = worker_disk_performance_level
             __props__['worker_disk_size'] = worker_disk_size
+            __props__['worker_disk_snapshot_policy_id'] = worker_disk_snapshot_policy_id
             __props__['worker_instance_charge_type'] = worker_instance_charge_type
             if worker_instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_instance_types'")
@@ -201,12 +203,15 @@ class EdgeKubernetes(pulumi.CustomResource):
             slb_internet: Optional[pulumi.Input[str]] = None,
             slb_internet_enabled: Optional[pulumi.Input[bool]] = None,
             slb_intranet: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]]] = None,
             worker_disk_category: Optional[pulumi.Input[str]] = None,
+            worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
             worker_disk_size: Optional[pulumi.Input[int]] = None,
+            worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
             worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             worker_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerNodeArgs']]]]] = None,
@@ -242,19 +247,15 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
+        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work node.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-               * `category`: the type of the data disks. Valid values:
-               * cloud : basic disks.
-               * cloud_efficiency : ultra disks.
-               * cloud_ssd : SSDs.
-               * cloud_essd : ESSDs.
-               * `size`: the size of a data disk, at least 40. Unit: GiB.
-               * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
+        :param pulumi.Input[str] worker_disk_performance_level: Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
+        :param pulumi.Input[str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes.
         :param pulumi.Input[int] worker_number: The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
@@ -292,12 +293,15 @@ class EdgeKubernetes(pulumi.CustomResource):
         __props__["slb_internet"] = slb_internet
         __props__["slb_internet_enabled"] = slb_internet_enabled
         __props__["slb_intranet"] = slb_intranet
+        __props__["tags"] = tags
         __props__["user_data"] = user_data
         __props__["version"] = version
         __props__["vpc_id"] = vpc_id
         __props__["worker_data_disks"] = worker_data_disks
         __props__["worker_disk_category"] = worker_disk_category
+        __props__["worker_disk_performance_level"] = worker_disk_performance_level
         __props__["worker_disk_size"] = worker_disk_size
+        __props__["worker_disk_snapshot_policy_id"] = worker_disk_snapshot_policy_id
         __props__["worker_instance_charge_type"] = worker_instance_charge_type
         __props__["worker_instance_types"] = worker_instance_types
         __props__["worker_nodes"] = worker_nodes
@@ -520,6 +524,14 @@ class EdgeKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "slb_intranet")
 
     @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Default nil, A map of tags assigned to the kubernetes cluster and work node.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
@@ -548,13 +560,6 @@ class EdgeKubernetes(pulumi.CustomResource):
     def worker_data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.EdgeKubernetesWorkerDataDisk']]]:
         """
         The data disk configurations of worker nodes, such as the disk type and disk size.
-        * `category`: the type of the data disks. Valid values:
-        * cloud : basic disks.
-        * cloud_efficiency : ultra disks.
-        * cloud_ssd : SSDs.
-        * cloud_essd : ESSDs.
-        * `size`: the size of a data disk, at least 40. Unit: GiB.
-        * `encrypted`: specifies whether to encrypt data disks. Valid values: true and false.
         """
         return pulumi.get(self, "worker_data_disks")
 
@@ -567,12 +572,28 @@ class EdgeKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "worker_disk_category")
 
     @property
+    @pulumi.getter(name="workerDiskPerformanceLevel")
+    def worker_disk_performance_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        """
+        return pulumi.get(self, "worker_disk_performance_level")
+
+    @property
     @pulumi.getter(name="workerDiskSize")
     def worker_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
         The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         """
         return pulumi.get(self, "worker_disk_size")
+
+    @property
+    @pulumi.getter(name="workerDiskSnapshotPolicyId")
+    def worker_disk_snapshot_policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Worker node system disk auto snapshot policy.
+        """
+        return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
     @property
     @pulumi.getter(name="workerInstanceChargeType")

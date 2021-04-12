@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetSnapshotsSnapshotResult
     {
+        public readonly string Category;
         /// <summary>
         /// Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
         /// </summary>
@@ -21,6 +22,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Description of the snapshot.
         /// </summary>
         public readonly string Description;
+        public readonly string DiskId;
         /// <summary>
         /// Whether the snapshot is encrypted or not.
         /// </summary>
@@ -29,6 +31,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// ID of the snapshot.
         /// </summary>
         public readonly string Id;
+        public readonly bool InstantAccess;
+        public readonly int InstantAccessRetentionDays;
         /// <summary>
         /// Name of the snapshot.
         /// </summary>
@@ -45,10 +49,15 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The remaining time of a snapshot creation task, in seconds.
         /// </summary>
         public readonly int RemainTime;
+        public readonly string ResourceGroupId;
         /// <summary>
         /// The number of days that an automatic snapshot retains in the console for your instance.
         /// </summary>
         public readonly int RetentionDays;
+        public readonly string SnapshotId;
+        public readonly string SnapshotName;
+        public readonly string SnapshotSn;
+        public readonly string SnapshotType;
         /// <summary>
         /// Source disk ID, which is retained after the source disk of the snapshot is deleted.
         /// </summary>
@@ -61,6 +70,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Source disk attribute. Value range: `System`,`Data`.
         /// </summary>
         public readonly string SourceDiskType;
+        public readonly string SourceStorageType;
         /// <summary>
         /// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
         /// </summary>
@@ -68,7 +78,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// A map of tags assigned to the snapshot.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly string Type;
         /// <summary>
         /// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
         /// </summary>
@@ -76,13 +87,21 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
         [OutputConstructor]
         private GetSnapshotsSnapshotResult(
+            string category,
+
             string creationTime,
 
             string description,
 
+            string diskId,
+
             bool encrypted,
 
             string id,
+
+            bool instantAccess,
+
+            int instantAccessRetentionDays,
 
             string name,
 
@@ -92,7 +111,17 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             int remainTime,
 
+            string resourceGroupId,
+
             int retentionDays,
+
+            string snapshotId,
+
+            string snapshotName,
+
+            string snapshotSn,
+
+            string snapshotType,
 
             string sourceDiskId,
 
@@ -100,26 +129,41 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string sourceDiskType,
 
+            string sourceStorageType,
+
             string status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, object> tags,
+
+            string type,
 
             string usage)
         {
+            Category = category;
             CreationTime = creationTime;
             Description = description;
+            DiskId = diskId;
             Encrypted = encrypted;
             Id = id;
+            InstantAccess = instantAccess;
+            InstantAccessRetentionDays = instantAccessRetentionDays;
             Name = name;
             ProductCode = productCode;
             Progress = progress;
             RemainTime = remainTime;
+            ResourceGroupId = resourceGroupId;
             RetentionDays = retentionDays;
+            SnapshotId = snapshotId;
+            SnapshotName = snapshotName;
+            SnapshotSn = snapshotSn;
+            SnapshotType = snapshotType;
             SourceDiskId = sourceDiskId;
             SourceDiskSize = sourceDiskSize;
             SourceDiskType = sourceDiskType;
+            SourceStorageType = sourceStorageType;
             Status = status;
             Tags = tags;
+            Type = type;
             Usage = usage;
         }
     }

@@ -10,6 +10,7 @@ from .forward_entry import *
 from .get_common_bandwidth_packages import *
 from .get_enhanced_nat_available_zones import *
 from .get_forward_entries import *
+from .get_havips import *
 from .get_nat_gateways import *
 from .get_networks import *
 from .get_route_entries import *

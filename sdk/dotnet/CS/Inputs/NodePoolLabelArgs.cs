@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.CS.Inputs
 
     public sealed class NodePoolLabelArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The label key.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The label value.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

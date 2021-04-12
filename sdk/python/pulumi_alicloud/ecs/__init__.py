@@ -10,12 +10,16 @@ from .copy_image import *
 from .dedicated_host import *
 from .disk import *
 from .disk_attachment import *
+from .ecs_launch_template import *
+from .ecs_snapshot import *
 from .eip import *
 from .eip_association import *
 from .get_auto_snapshot_policies import *
 from .get_commands import *
 from .get_dedicated_hosts import *
 from .get_disks import *
+from .get_ecs_launch_templates import *
+from .get_ecs_snapshots import *
 from .get_eips import *
 from .get_hpc_clusters import *
 from .get_images import *
@@ -71,6 +75,10 @@ def _register_module():
                 return Disk(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/diskAttachment:DiskAttachment":
                 return DiskAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate":
+                return EcsLaunchTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/ecsSnapshot:EcsSnapshot":
+                return EcsSnapshot(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/eip:Eip":
                 return Eip(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/eipAssociation:EipAssociation":
@@ -117,6 +125,8 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "ecs/dedicatedHost", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/disk", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/diskAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/ecsLaunchTemplate", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/ecsSnapshot", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/eip", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/eipAssociation", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/hpcCluster", _module_instance)

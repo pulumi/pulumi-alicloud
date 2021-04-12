@@ -12,6 +12,12 @@ from . import outputs
 __all__ = [
     'EndpointGroupEndpointConfiguration',
     'EndpointGroupPortOverrides',
+    'ForwardingRuleRuleAction',
+    'ForwardingRuleRuleActionForwardGroupConfig',
+    'ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple',
+    'ForwardingRuleRuleCondition',
+    'ForwardingRuleRuleConditionHostConfig',
+    'ForwardingRuleRuleConditionPathConfig',
     'ListenerCertificate',
     'ListenerPortRange',
     'GetAcceleratorsAcceleratorResult',
@@ -21,6 +27,13 @@ __all__ = [
     'GetEndpointGroupsGroupResult',
     'GetEndpointGroupsGroupEndpointConfigurationResult',
     'GetEndpointGroupsGroupPortOverrideResult',
+    'GetForwardingRulesForwardingRuleResult',
+    'GetForwardingRulesForwardingRuleRuleActionResult',
+    'GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult',
+    'GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult',
+    'GetForwardingRulesForwardingRuleRuleConditionResult',
+    'GetForwardingRulesForwardingRuleRuleConditionHostConfigResult',
+    'GetForwardingRulesForwardingRuleRuleConditionPathConfigResult',
     'GetIpSetsSetResult',
     'GetListenersListenerResult',
     'GetListenersListenerCertificateResult',
@@ -111,6 +124,180 @@ class EndpointGroupPortOverrides(dict):
         Listener port.
         """
         return pulumi.get(self, "listener_port")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ForwardingRuleRuleAction(dict):
+    def __init__(__self__, *,
+                 forward_group_config: 'outputs.ForwardingRuleRuleActionForwardGroupConfig',
+                 order: int,
+                 rule_action_type: str):
+        """
+        :param 'ForwardingRuleRuleActionForwardGroupConfigArgs' forward_group_config: Forwarding configuration.
+        :param int order: Forwarding priority.
+        :param str rule_action_type: Forward action type. Default: forwardgroup.
+        """
+        pulumi.set(__self__, "forward_group_config", forward_group_config)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "rule_action_type", rule_action_type)
+
+    @property
+    @pulumi.getter(name="forwardGroupConfig")
+    def forward_group_config(self) -> 'outputs.ForwardingRuleRuleActionForwardGroupConfig':
+        """
+        Forwarding configuration.
+        """
+        return pulumi.get(self, "forward_group_config")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        """
+        Forwarding priority.
+        """
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="ruleActionType")
+    def rule_action_type(self) -> str:
+        """
+        Forward action type. Default: forwardgroup.
+        """
+        return pulumi.get(self, "rule_action_type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ForwardingRuleRuleActionForwardGroupConfig(dict):
+    def __init__(__self__, *,
+                 server_group_tuples: Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple']):
+        """
+        :param Sequence['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: Terminal node group configuration.
+        """
+        pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+
+    @property
+    @pulumi.getter(name="serverGroupTuples")
+    def server_group_tuples(self) -> Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple']:
+        """
+        Terminal node group configuration.
+        """
+        return pulumi.get(self, "server_group_tuples")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(dict):
+    def __init__(__self__, *,
+                 endpoint_group_id: str):
+        """
+        :param str endpoint_group_id: Terminal node group ID.
+        """
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+
+    @property
+    @pulumi.getter(name="endpointGroupId")
+    def endpoint_group_id(self) -> str:
+        """
+        Terminal node group ID.
+        """
+        return pulumi.get(self, "endpoint_group_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ForwardingRuleRuleCondition(dict):
+    def __init__(__self__, *,
+                 rule_condition_type: str,
+                 host_configs: Optional[Sequence['outputs.ForwardingRuleRuleConditionHostConfig']] = None,
+                 path_config: Optional['outputs.ForwardingRuleRuleConditionPathConfig'] = None):
+        """
+        :param str rule_condition_type: Forwarding condition type. Valid value: `Host`, `Path`.
+        :param Sequence['ForwardingRuleRuleConditionHostConfigArgs'] host_configs: Domain name configuration information.
+        :param 'ForwardingRuleRuleConditionPathConfigArgs' path_config: Path configuration information.
+        """
+        pulumi.set(__self__, "rule_condition_type", rule_condition_type)
+        if host_configs is not None:
+            pulumi.set(__self__, "host_configs", host_configs)
+        if path_config is not None:
+            pulumi.set(__self__, "path_config", path_config)
+
+    @property
+    @pulumi.getter(name="ruleConditionType")
+    def rule_condition_type(self) -> str:
+        """
+        Forwarding condition type. Valid value: `Host`, `Path`.
+        """
+        return pulumi.get(self, "rule_condition_type")
+
+    @property
+    @pulumi.getter(name="hostConfigs")
+    def host_configs(self) -> Optional[Sequence['outputs.ForwardingRuleRuleConditionHostConfig']]:
+        """
+        Domain name configuration information.
+        """
+        return pulumi.get(self, "host_configs")
+
+    @property
+    @pulumi.getter(name="pathConfig")
+    def path_config(self) -> Optional['outputs.ForwardingRuleRuleConditionPathConfig']:
+        """
+        Path configuration information.
+        """
+        return pulumi.get(self, "path_config")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ForwardingRuleRuleConditionHostConfig(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        """
+        return pulumi.get(self, "values")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ForwardingRuleRuleConditionPathConfig(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        """
+        return pulumi.get(self, "values")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -811,6 +998,217 @@ class GetEndpointGroupsGroupPortOverrideResult(dict):
         Listener port.
         """
         return pulumi.get(self, "listener_port")
+
+
+@pulumi.output_type
+class GetForwardingRulesForwardingRuleResult(dict):
+    def __init__(__self__, *,
+                 forwarding_rule_id: str,
+                 forwarding_rule_name: str,
+                 forwarding_rule_status: str,
+                 id: str,
+                 listener_id: str,
+                 priority: int,
+                 rule_actions: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionResult'],
+                 rule_conditions: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionResult']):
+        """
+        :param str forwarding_rule_id: Forwarding Policy ID.
+        :param str forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters.
+        :param str forwarding_rule_status: Forwarding Policy Status.
+        :param str listener_id: The ID of the listener.
+        :param int priority: Forwarding policy priority.
+        :param Sequence['GetForwardingRulesForwardingRuleRuleActionArgs'] rule_actions: The IP protocol used by the GA instance.
+               `order` - Forwarding priority.
+               `rule_action_type` - Forward action type.
+               `forward_group_config` - Forwarding configuration.
+               `server_group_tuples` - Terminal node group configuration.
+               `endpoint_group_id` - Terminal node group ID.
+        :param Sequence['GetForwardingRulesForwardingRuleRuleConditionArgs'] rule_conditions: Forward action.
+               `rule_condition_type` - Forwarding condition type.
+               `path_config` - Path configuration information.
+               `values` - The length of the path is 1-128 characters.
+               `host_config` - Domain name configuration information.
+               `values` - The domain name is 3-128 characters long.
+        """
+        pulumi.set(__self__, "forwarding_rule_id", forwarding_rule_id)
+        pulumi.set(__self__, "forwarding_rule_name", forwarding_rule_name)
+        pulumi.set(__self__, "forwarding_rule_status", forwarding_rule_status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "rule_actions", rule_actions)
+        pulumi.set(__self__, "rule_conditions", rule_conditions)
+
+    @property
+    @pulumi.getter(name="forwardingRuleId")
+    def forwarding_rule_id(self) -> str:
+        """
+        Forwarding Policy ID.
+        """
+        return pulumi.get(self, "forwarding_rule_id")
+
+    @property
+    @pulumi.getter(name="forwardingRuleName")
+    def forwarding_rule_name(self) -> str:
+        """
+        Forwarding policy name. The length of the name is 2-128 English or Chinese characters.
+        """
+        return pulumi.get(self, "forwarding_rule_name")
+
+    @property
+    @pulumi.getter(name="forwardingRuleStatus")
+    def forwarding_rule_status(self) -> str:
+        """
+        Forwarding Policy Status.
+        """
+        return pulumi.get(self, "forwarding_rule_status")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        """
+        The ID of the listener.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        Forwarding policy priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="ruleActions")
+    def rule_actions(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionResult']:
+        """
+        The IP protocol used by the GA instance.
+        `order` - Forwarding priority.
+        `rule_action_type` - Forward action type.
+        `forward_group_config` - Forwarding configuration.
+        `server_group_tuples` - Terminal node group configuration.
+        `endpoint_group_id` - Terminal node group ID.
+        """
+        return pulumi.get(self, "rule_actions")
+
+    @property
+    @pulumi.getter(name="ruleConditions")
+    def rule_conditions(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionResult']:
+        """
+        Forward action.
+        `rule_condition_type` - Forwarding condition type.
+        `path_config` - Path configuration information.
+        `values` - The length of the path is 1-128 characters.
+        `host_config` - Domain name configuration information.
+        `values` - The domain name is 3-128 characters long.
+        """
+        return pulumi.get(self, "rule_conditions")
+
+
+@pulumi.output_type
+class GetForwardingRulesForwardingRuleRuleActionResult(dict):
+    def __init__(__self__, *,
+                 forward_group_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult'],
+                 order: int,
+                 rule_action_type: str):
+        pulumi.set(__self__, "forward_group_configs", forward_group_configs)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "rule_action_type", rule_action_type)
+
+    @property
+    @pulumi.getter(name="forwardGroupConfigs")
+    def forward_group_configs(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult']:
+        return pulumi.get(self, "forward_group_configs")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="ruleActionType")
+    def rule_action_type(self) -> str:
+        return pulumi.get(self, "rule_action_type")
+
+
+@pulumi.output_type
+class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult(dict):
+    def __init__(__self__, *,
+                 server_group_tuples: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult']):
+        pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+
+    @property
+    @pulumi.getter(name="serverGroupTuples")
+    def server_group_tuples(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult']:
+        return pulumi.get(self, "server_group_tuples")
+
+
+@pulumi.output_type
+class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult(dict):
+    def __init__(__self__, *,
+                 endpoint_group_id: str):
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+
+    @property
+    @pulumi.getter(name="endpointGroupId")
+    def endpoint_group_id(self) -> str:
+        return pulumi.get(self, "endpoint_group_id")
+
+
+@pulumi.output_type
+class GetForwardingRulesForwardingRuleRuleConditionResult(dict):
+    def __init__(__self__, *,
+                 host_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfigResult'],
+                 path_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfigResult'],
+                 rule_condition_type: str):
+        pulumi.set(__self__, "host_configs", host_configs)
+        pulumi.set(__self__, "path_configs", path_configs)
+        pulumi.set(__self__, "rule_condition_type", rule_condition_type)
+
+    @property
+    @pulumi.getter(name="hostConfigs")
+    def host_configs(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfigResult']:
+        return pulumi.get(self, "host_configs")
+
+    @property
+    @pulumi.getter(name="pathConfigs")
+    def path_configs(self) -> Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfigResult']:
+        return pulumi.get(self, "path_configs")
+
+    @property
+    @pulumi.getter(name="ruleConditionType")
+    def rule_condition_type(self) -> str:
+        return pulumi.get(self, "rule_condition_type")
+
+
+@pulumi.output_type
+class GetForwardingRulesForwardingRuleRuleConditionHostConfigResult(dict):
+    def __init__(__self__, *,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetForwardingRulesForwardingRuleRuleConditionPathConfigResult(dict):
+    def __init__(__self__, *,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

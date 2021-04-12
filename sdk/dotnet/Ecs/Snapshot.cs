@@ -10,34 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides an ECS snapshot resource.
-    /// 
-    /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var snapshot = new AliCloud.Ecs.Snapshot("snapshot", new AliCloud.Ecs.SnapshotArgs
-    ///         {
-    ///             DiskId = alicloud_disk_attachment.Instance_attachment.Disk_id,
-    ///             Description = "this snapshot is created for testing",
-    ///             Tags = 
-    ///             {
-    ///                 { "version", "1.2" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Snapshot can be imported using the id, e.g.
@@ -49,6 +21,9 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/snapshot:Snapshot")]
     public partial class Snapshot : Pulumi.CustomResource
     {
+        [Output("category")]
+        public Output<string?> Category { get; private set; } = null!;
+
         /// <summary>
         /// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
@@ -60,6 +35,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("diskId")]
         public Output<string> DiskId { get; private set; } = null!;
+
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
+
+        [Output("instantAccess")]
+        public Output<bool?> InstantAccess { get; private set; } = null!;
+
+        [Output("instantAccessRetentionDays")]
+        public Output<int?> InstantAccessRetentionDays { get; private set; } = null!;
 
         /// <summary>
         /// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -73,6 +57,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
+
+        [Output("retentionDays")]
+        public Output<int?> RetentionDays { get; private set; } = null!;
+
+        [Output("snapshotName")]
+        public Output<string> SnapshotName { get; private set; } = null!;
+
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -126,6 +119,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotArgs : Pulumi.ResourceArgs
     {
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
         /// <summary>
         /// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
@@ -137,6 +133,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("diskId", required: true)]
         public Input<string> DiskId { get; set; } = null!;
+
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        [Input("instantAccess")]
+        public Input<bool>? InstantAccess { get; set; }
+
+        [Input("instantAccessRetentionDays")]
+        public Input<int>? InstantAccessRetentionDays { get; set; }
 
         /// <summary>
         /// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -150,6 +155,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("retentionDays")]
+        public Input<int>? RetentionDays { get; set; }
+
+        [Input("snapshotName")]
+        public Input<string>? SnapshotName { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -170,6 +181,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotState : Pulumi.ResourceArgs
     {
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
         /// <summary>
         /// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
@@ -181,6 +195,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("diskId")]
         public Input<string>? DiskId { get; set; }
+
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        [Input("instantAccess")]
+        public Input<bool>? InstantAccess { get; set; }
+
+        [Input("instantAccessRetentionDays")]
+        public Input<int>? InstantAccessRetentionDays { get; set; }
 
         /// <summary>
         /// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -194,6 +217,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("retentionDays")]
+        public Input<int>? RetentionDays { get; set; }
+
+        [Input("snapshotName")]
+        public Input<string>? SnapshotName { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

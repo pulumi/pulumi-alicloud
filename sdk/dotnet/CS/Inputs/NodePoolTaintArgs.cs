@@ -15,9 +15,15 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
+        /// <summary>
+        /// The label key.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The label value.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

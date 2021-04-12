@@ -13,6 +13,8 @@ __all__ = [
     'InstanceParameter',
     'RdsParameterGroupParamDetail',
     'ReadOnlyInstanceParameter',
+    'GetAccountsAccountResult',
+    'GetAccountsAccountDatabasePrivilegeResult',
     'GetInstanceClassesInstanceClassResult',
     'GetInstanceClassesInstanceClassStorageRangeResult',
     'GetInstanceClassesInstanceClassZoneIdResult',
@@ -98,6 +100,130 @@ class ReadOnlyInstanceParameter(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetAccountsAccountResult(dict):
+    def __init__(__self__, *,
+                 account_description: str,
+                 account_name: str,
+                 account_type: str,
+                 database_privileges: Sequence['outputs.GetAccountsAccountDatabasePrivilegeResult'],
+                 id: str,
+                 priv_exceeded: str,
+                 status: str):
+        """
+        :param str account_description: Database description.
+        :param str account_name: Name of database account.
+        :param str account_type: Privilege type of account.
+        :param Sequence['GetAccountsAccountDatabasePrivilegeArgs'] database_privileges: A list of database permissions the account has.
+        :param str id: The ID of the Account.
+        :param str priv_exceeded: Whether the maximum number of databases managed by the account is exceeded.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "account_description", account_description)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "account_type", account_type)
+        pulumi.set(__self__, "database_privileges", database_privileges)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "priv_exceeded", priv_exceeded)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountDescription")
+    def account_description(self) -> str:
+        """
+        Database description.
+        """
+        return pulumi.get(self, "account_description")
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> str:
+        """
+        Name of database account.
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> str:
+        """
+        Privilege type of account.
+        """
+        return pulumi.get(self, "account_type")
+
+    @property
+    @pulumi.getter(name="databasePrivileges")
+    def database_privileges(self) -> Sequence['outputs.GetAccountsAccountDatabasePrivilegeResult']:
+        """
+        A list of database permissions the account has.
+        """
+        return pulumi.get(self, "database_privileges")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Account.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="privExceeded")
+    def priv_exceeded(self) -> str:
+        """
+        Whether the maximum number of databases managed by the account is exceeded.
+        """
+        return pulumi.get(self, "priv_exceeded")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAccountsAccountDatabasePrivilegeResult(dict):
+    def __init__(__self__, *,
+                 account_privilege: str,
+                 account_privilege_detail: str,
+                 db_name: str):
+        """
+        :param str account_privilege: The type of permission for the account.
+        :param str account_privilege_detail: The specific permissions corresponding to the type of account permissions.
+        :param str db_name: Database name.
+        """
+        pulumi.set(__self__, "account_privilege", account_privilege)
+        pulumi.set(__self__, "account_privilege_detail", account_privilege_detail)
+        pulumi.set(__self__, "db_name", db_name)
+
+    @property
+    @pulumi.getter(name="accountPrivilege")
+    def account_privilege(self) -> str:
+        """
+        The type of permission for the account.
+        """
+        return pulumi.get(self, "account_privilege")
+
+    @property
+    @pulumi.getter(name="accountPrivilegeDetail")
+    def account_privilege_detail(self) -> str:
+        """
+        The specific permissions corresponding to the type of account permissions.
+        """
+        return pulumi.get(self, "account_privilege_detail")
+
+    @property
+    @pulumi.getter(name="dbName")
+    def db_name(self) -> str:
+        """
+        Database name.
+        """
+        return pulumi.get(self, "db_name")
 
 
 @pulumi.output_type

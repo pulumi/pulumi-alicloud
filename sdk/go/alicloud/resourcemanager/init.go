@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:resourcemanager/account:Account":
 		r, err = NewAccount(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:resourcemanager/controlPolicy:ControlPolicy":
+		r, err = NewControlPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment":
+		r, err = NewControlPolicyAttachment(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:resourcemanager/folder:Folder":
 		r, err = NewFolder(ctx, name, nil, pulumi.URN_(urn))
 	case "alicloud:resourcemanager/handshake:Handshake":
@@ -60,6 +64,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"resourcemanager/account",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"resourcemanager/controlPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"resourcemanager/controlPolicyAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -6,71 +6,6 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ECS Launch Template resource.
- *
- * For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const images = alicloud.ecs.getImages({
- *     owners: "system",
- * });
- * const instances = alicloud.ecs.getInstances({});
- * const template = new alicloud.ecs.LaunchTemplate("template", {
- *     description: "test1",
- *     imageId: images.then(images => images.images[0].id),
- *     hostName: "tf-test-host",
- *     instanceChargeType: "PrePaid",
- *     instanceName: "tf-instance-name",
- *     instanceType: instances.then(instances => instances.instances[0].instanceType),
- *     internetChargeType: "PayByBandwidth",
- *     internetMaxBandwidthIn: 5,
- *     internetMaxBandwidthOut: 0,
- *     ioOptimized: "none",
- *     keyPairName: "test-key-pair",
- *     ramRoleName: "xxxxx",
- *     networkType: "vpc",
- *     securityEnhancementStrategy: "Active",
- *     spotPriceLimit: 5,
- *     spotStrategy: "SpotWithPriceLimit",
- *     securityGroupId: "sg-zxcvj0lasdf102350asdf9a",
- *     systemDiskCategory: "cloud_ssd",
- *     systemDiskDescription: "test disk",
- *     systemDiskName: "hello",
- *     systemDiskSize: 40,
- *     resourceGroupId: "rg-zkdfjahg9zxncv0",
- *     userdata: "xxxxxxxxxxxxxx",
- *     vswitchId: "sw-ljkngaksdjfj0nnasdf",
- *     vpcId: "vpc-asdfnbg0as8dfk1nb2",
- *     zoneId: "beijing-a",
- *     tags: {
- *         tag1: "hello",
- *         tag2: "world",
- *     },
- *     networkInterfaces: {
- *         name: "eth0",
- *         description: "hello1",
- *         primaryIp: "10.0.0.2",
- *         securityGroupId: "xxxx",
- *         vswitchId: "xxxxxxx",
- *     },
- *     dataDisks: [
- *         {
- *             name: "disk1",
- *             description: "test1",
- *         },
- *         {
- *             name: "disk2",
- *             description: "test2",
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Launch Template can be imported using the id, e.g.
@@ -115,10 +50,12 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * The list of data disks created with instance.
      */
     public readonly dataDisks!: pulumi.Output<outputs.ecs.LaunchTemplateDataDisk[] | undefined>;
+    public readonly deploymentSetId!: pulumi.Output<string | undefined>;
     /**
      * The description of the data disk.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly enableVmOsConfig!: pulumi.Output<boolean | undefined>;
     /**
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
@@ -166,8 +103,11 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
     public readonly keyPairName!: pulumi.Output<string | undefined>;
+    public readonly launchTemplateName!: pulumi.Output<string>;
     /**
      * The name of the data disk.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -178,6 +118,9 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * Network type of the instance. Value options: `classic` | `vpc`.
      */
     public readonly networkType!: pulumi.Output<string | undefined>;
+    public readonly passwordInherit!: pulumi.Output<boolean | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
+    public readonly privateIpAddress!: pulumi.Output<string | undefined>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      */
@@ -191,6 +134,8 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * The security group ID must be one in the same VPC.
      */
     public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    public readonly spotDuration!: pulumi.Output<string | undefined>;
     /**
      * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
      */
@@ -202,6 +147,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
      */
     public readonly spotStrategy!: pulumi.Output<string | undefined>;
+    public readonly systemDisk!: pulumi.Output<outputs.ecs.LaunchTemplateSystemDisk>;
     /**
      * The category of the system disk. System disk type. Optional values:
      * - cloud: Basic cloud disk.
@@ -209,30 +155,44 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * - cloud_ssd: SSD cloud Disks.
      * - ephemeral_ssd: local SSD Disks
      * - cloud_essd: ESSD cloud Disks.
+     *
+     * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
+    public readonly systemDiskCategory!: pulumi.Output<string>;
     /**
      * System disk description. It cannot begin with http:// or https://.
+     *
+     * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    public readonly systemDiskDescription!: pulumi.Output<string | undefined>;
+    public readonly systemDiskDescription!: pulumi.Output<string>;
     /**
      * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+     *
+     * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    public readonly systemDiskName!: pulumi.Output<string | undefined>;
+    public readonly systemDiskName!: pulumi.Output<string>;
     /**
      * Size of the system disk, measured in GB. Value range: [20, 500].
+     *
+     * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    public readonly systemDiskSize!: pulumi.Output<number | undefined>;
+    public readonly systemDiskSize!: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly templateResourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly templateTags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly userData!: pulumi.Output<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     *
+     * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
-    public readonly userdata!: pulumi.Output<string | undefined>;
+    public readonly userdata!: pulumi.Output<string>;
+    public readonly versionDescription!: pulumi.Output<string | undefined>;
     public readonly vpcId!: pulumi.Output<string | undefined>;
     /**
      * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
@@ -258,7 +218,9 @@ export class LaunchTemplate extends pulumi.CustomResource {
             const state = argsOrState as LaunchTemplateState | undefined;
             inputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
             inputs["dataDisks"] = state ? state.dataDisks : undefined;
+            inputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["enableVmOsConfig"] = state ? state.enableVmOsConfig : undefined;
             inputs["hostName"] = state ? state.hostName : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["imageOwnerAlias"] = state ? state.imageOwnerAlias : undefined;
@@ -270,21 +232,32 @@ export class LaunchTemplate extends pulumi.CustomResource {
             inputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
             inputs["ioOptimized"] = state ? state.ioOptimized : undefined;
             inputs["keyPairName"] = state ? state.keyPairName : undefined;
+            inputs["launchTemplateName"] = state ? state.launchTemplateName : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["networkType"] = state ? state.networkType : undefined;
+            inputs["passwordInherit"] = state ? state.passwordInherit : undefined;
+            inputs["period"] = state ? state.period : undefined;
+            inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             inputs["ramRoleName"] = state ? state.ramRoleName : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityEnhancementStrategy"] = state ? state.securityEnhancementStrategy : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            inputs["spotDuration"] = state ? state.spotDuration : undefined;
             inputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
             inputs["spotStrategy"] = state ? state.spotStrategy : undefined;
+            inputs["systemDisk"] = state ? state.systemDisk : undefined;
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
             inputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
             inputs["systemDiskName"] = state ? state.systemDiskName : undefined;
             inputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["templateResourceGroupId"] = state ? state.templateResourceGroupId : undefined;
+            inputs["templateTags"] = state ? state.templateTags : undefined;
+            inputs["userData"] = state ? state.userData : undefined;
             inputs["userdata"] = state ? state.userdata : undefined;
+            inputs["versionDescription"] = state ? state.versionDescription : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
@@ -292,7 +265,9 @@ export class LaunchTemplate extends pulumi.CustomResource {
             const args = argsOrState as LaunchTemplateArgs | undefined;
             inputs["autoReleaseTime"] = args ? args.autoReleaseTime : undefined;
             inputs["dataDisks"] = args ? args.dataDisks : undefined;
+            inputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["enableVmOsConfig"] = args ? args.enableVmOsConfig : undefined;
             inputs["hostName"] = args ? args.hostName : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["imageOwnerAlias"] = args ? args.imageOwnerAlias : undefined;
@@ -304,21 +279,32 @@ export class LaunchTemplate extends pulumi.CustomResource {
             inputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
             inputs["ioOptimized"] = args ? args.ioOptimized : undefined;
             inputs["keyPairName"] = args ? args.keyPairName : undefined;
+            inputs["launchTemplateName"] = args ? args.launchTemplateName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["networkType"] = args ? args.networkType : undefined;
+            inputs["passwordInherit"] = args ? args.passwordInherit : undefined;
+            inputs["period"] = args ? args.period : undefined;
+            inputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             inputs["ramRoleName"] = args ? args.ramRoleName : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityEnhancementStrategy"] = args ? args.securityEnhancementStrategy : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            inputs["spotDuration"] = args ? args.spotDuration : undefined;
             inputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
             inputs["spotStrategy"] = args ? args.spotStrategy : undefined;
+            inputs["systemDisk"] = args ? args.systemDisk : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             inputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
             inputs["systemDiskName"] = args ? args.systemDiskName : undefined;
             inputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["templateResourceGroupId"] = args ? args.templateResourceGroupId : undefined;
+            inputs["templateTags"] = args ? args.templateTags : undefined;
+            inputs["userData"] = args ? args.userData : undefined;
             inputs["userdata"] = args ? args.userdata : undefined;
+            inputs["versionDescription"] = args ? args.versionDescription : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
@@ -342,10 +328,12 @@ export interface LaunchTemplateState {
      * The list of data disks created with instance.
      */
     readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
+    readonly deploymentSetId?: pulumi.Input<string>;
     /**
      * The description of the data disk.
      */
     readonly description?: pulumi.Input<string>;
+    readonly enableVmOsConfig?: pulumi.Input<boolean>;
     /**
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
@@ -393,8 +381,11 @@ export interface LaunchTemplateState {
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
     readonly keyPairName?: pulumi.Input<string>;
+    readonly launchTemplateName?: pulumi.Input<string>;
     /**
      * The name of the data disk.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -405,6 +396,9 @@ export interface LaunchTemplateState {
      * Network type of the instance. Value options: `classic` | `vpc`.
      */
     readonly networkType?: pulumi.Input<string>;
+    readonly passwordInherit?: pulumi.Input<boolean>;
+    readonly period?: pulumi.Input<number>;
+    readonly privateIpAddress?: pulumi.Input<string>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      */
@@ -418,6 +412,8 @@ export interface LaunchTemplateState {
      * The security group ID must be one in the same VPC.
      */
     readonly securityGroupId?: pulumi.Input<string>;
+    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly spotDuration?: pulumi.Input<string>;
     /**
      * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
      */
@@ -429,6 +425,7 @@ export interface LaunchTemplateState {
      * - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
      */
     readonly spotStrategy?: pulumi.Input<string>;
+    readonly systemDisk?: pulumi.Input<inputs.ecs.LaunchTemplateSystemDisk>;
     /**
      * The category of the system disk. System disk type. Optional values:
      * - cloud: Basic cloud disk.
@@ -436,18 +433,26 @@ export interface LaunchTemplateState {
      * - cloud_ssd: SSD cloud Disks.
      * - ephemeral_ssd: local SSD Disks
      * - cloud_essd: ESSD cloud Disks.
+     *
+     * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
     /**
      * System disk description. It cannot begin with http:// or https://.
+     *
+     * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     readonly systemDiskDescription?: pulumi.Input<string>;
     /**
      * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+     *
+     * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     readonly systemDiskName?: pulumi.Input<string>;
     /**
      * Size of the system disk, measured in GB. Value range: [20, 500].
+     *
+     * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     readonly systemDiskSize?: pulumi.Input<number>;
     /**
@@ -456,10 +461,16 @@ export interface LaunchTemplateState {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly templateResourceGroupId?: pulumi.Input<string>;
+    readonly templateTags?: pulumi.Input<{[key: string]: any}>;
+    readonly userData?: pulumi.Input<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     *
+     * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
     readonly userdata?: pulumi.Input<string>;
+    readonly versionDescription?: pulumi.Input<string>;
     readonly vpcId?: pulumi.Input<string>;
     /**
      * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
@@ -483,10 +494,12 @@ export interface LaunchTemplateArgs {
      * The list of data disks created with instance.
      */
     readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
+    readonly deploymentSetId?: pulumi.Input<string>;
     /**
      * The description of the data disk.
      */
     readonly description?: pulumi.Input<string>;
+    readonly enableVmOsConfig?: pulumi.Input<boolean>;
     /**
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
@@ -534,8 +547,11 @@ export interface LaunchTemplateArgs {
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
     readonly keyPairName?: pulumi.Input<string>;
+    readonly launchTemplateName?: pulumi.Input<string>;
     /**
      * The name of the data disk.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -546,6 +562,9 @@ export interface LaunchTemplateArgs {
      * Network type of the instance. Value options: `classic` | `vpc`.
      */
     readonly networkType?: pulumi.Input<string>;
+    readonly passwordInherit?: pulumi.Input<boolean>;
+    readonly period?: pulumi.Input<number>;
+    readonly privateIpAddress?: pulumi.Input<string>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      */
@@ -559,6 +578,8 @@ export interface LaunchTemplateArgs {
      * The security group ID must be one in the same VPC.
      */
     readonly securityGroupId?: pulumi.Input<string>;
+    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly spotDuration?: pulumi.Input<string>;
     /**
      * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
      */
@@ -570,6 +591,7 @@ export interface LaunchTemplateArgs {
      * - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
      */
     readonly spotStrategy?: pulumi.Input<string>;
+    readonly systemDisk?: pulumi.Input<inputs.ecs.LaunchTemplateSystemDisk>;
     /**
      * The category of the system disk. System disk type. Optional values:
      * - cloud: Basic cloud disk.
@@ -577,18 +599,26 @@ export interface LaunchTemplateArgs {
      * - cloud_ssd: SSD cloud Disks.
      * - ephemeral_ssd: local SSD Disks
      * - cloud_essd: ESSD cloud Disks.
+     *
+     * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
     /**
      * System disk description. It cannot begin with http:// or https://.
+     *
+     * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     readonly systemDiskDescription?: pulumi.Input<string>;
     /**
      * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+     *
+     * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     readonly systemDiskName?: pulumi.Input<string>;
     /**
      * Size of the system disk, measured in GB. Value range: [20, 500].
+     *
+     * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     readonly systemDiskSize?: pulumi.Input<number>;
     /**
@@ -597,10 +627,16 @@ export interface LaunchTemplateArgs {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly templateResourceGroupId?: pulumi.Input<string>;
+    readonly templateTags?: pulumi.Input<{[key: string]: any}>;
+    readonly userData?: pulumi.Input<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     *
+     * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
     readonly userdata?: pulumi.Input<string>;
+    readonly versionDescription?: pulumi.Input<string>;
     readonly vpcId?: pulumi.Input<string>;
     /**
      * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.

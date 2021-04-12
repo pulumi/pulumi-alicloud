@@ -77,7 +77,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		template, err := ecs.NewLaunchTemplate(ctx, "template", &ecs.LaunchTemplateArgs{
+// 		template, err := ecs.NewEcsLaunchTemplate(ctx, "template", &ecs.EcsLaunchTemplateArgs{
 // 			ImageId:         pulumi.String(defaultImages.Images[0].Id),
 // 			InstanceType:    pulumi.String("ecs.n1.tiny"),
 // 			SecurityGroupId: defaultSecurityGroup.ID(),

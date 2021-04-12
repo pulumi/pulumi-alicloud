@@ -71,6 +71,7 @@ import * as rds from "./rds";
 import * as resourcemanager from "./resourcemanager";
 import * as rocketmq from "./rocketmq";
 import * as ros from "./ros";
+import * as sae from "./sae";
 import * as sag from "./sag";
 import * as slb from "./slb";
 import * as tsdb from "./tsdb";
@@ -140,6 +141,7 @@ export {
     resourcemanager,
     rocketmq,
     ros,
+    sae,
     sag,
     slb,
     tsdb,

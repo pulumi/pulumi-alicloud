@@ -15,33 +15,21 @@ class Snapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 category: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 instant_access: Optional[pulumi.Input[bool]] = None,
+                 instant_access_retention_days: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
+                 snapshot_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        Provides an ECS snapshot resource.
-
-        For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        snapshot = alicloud.ecs.Snapshot("snapshot",
-            disk_id=alicloud_disk_attachment["instance-attachment"]["disk_id"],
-            description="this snapshot is created for testing",
-            tags={
-                "version": "1.2",
-            })
-        ```
-
         ## Import
 
         Snapshot can be imported using the id, e.g.
@@ -76,13 +64,23 @@ class Snapshot(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['category'] = category
             __props__['description'] = description
             if disk_id is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_id'")
             __props__['disk_id'] = disk_id
+            __props__['force'] = force
+            __props__['instant_access'] = instant_access
+            __props__['instant_access_retention_days'] = instant_access_retention_days
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
             __props__['name'] = name
             __props__['resource_group_id'] = resource_group_id
+            __props__['retention_days'] = retention_days
+            __props__['snapshot_name'] = snapshot_name
             __props__['tags'] = tags
+            __props__['status'] = None
         super(Snapshot, __self__).__init__(
             'alicloud:ecs/snapshot:Snapshot',
             resource_name,
@@ -93,10 +91,17 @@ class Snapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            category: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_id: Optional[pulumi.Input[str]] = None,
+            force: Optional[pulumi.Input[bool]] = None,
+            instant_access: Optional[pulumi.Input[bool]] = None,
+            instant_access_retention_days: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            retention_days: Optional[pulumi.Input[int]] = None,
+            snapshot_name: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
@@ -116,12 +121,24 @@ class Snapshot(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["category"] = category
         __props__["description"] = description
         __props__["disk_id"] = disk_id
+        __props__["force"] = force
+        __props__["instant_access"] = instant_access
+        __props__["instant_access_retention_days"] = instant_access_retention_days
         __props__["name"] = name
         __props__["resource_group_id"] = resource_group_id
+        __props__["retention_days"] = retention_days
+        __props__["snapshot_name"] = snapshot_name
+        __props__["status"] = status
         __props__["tags"] = tags
         return Snapshot(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def category(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "category")
 
     @property
     @pulumi.getter
@@ -141,6 +158,21 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter(name="instantAccess")
+    def instant_access(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "instant_access")
+
+    @property
+    @pulumi.getter(name="instantAccessRetentionDays")
+    def instant_access_retention_days(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "instant_access_retention_days")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -155,6 +187,21 @@ class Snapshot(pulumi.CustomResource):
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter

@@ -7,9 +7,11 @@ from .accelerator import *
 from .bandwidth_package import *
 from .bandwidth_package_attachment import *
 from .endpoint_group import *
+from .forwarding_rule import *
 from .get_accelerators import *
 from .get_bandwidth_packages import *
 from .get_endpoint_groups import *
+from .get_forwarding_rules import *
 from .get_ip_sets import *
 from .get_listeners import *
 from .ip_set import *
@@ -37,6 +39,8 @@ def _register_module():
                 return BandwidthPackageAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ga/endpointGroup:EndpointGroup":
                 return EndpointGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ga/forwardingRule:ForwardingRule":
+                return ForwardingRule(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ga/ipSet:IpSet":
                 return IpSet(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ga/listener:Listener":
@@ -50,6 +54,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "ga/bandwidthPackage", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ga/bandwidthPackageAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ga/endpointGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ga/forwardingRule", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ga/ipSet", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ga/listener", _module_instance)
 
