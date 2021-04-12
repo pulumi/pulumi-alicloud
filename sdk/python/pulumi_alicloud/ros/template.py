@@ -5,13 +5,100 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Template']
+__all__ = ['TemplateArgs', 'Template']
+
+@pulumi.input_type
+class TemplateArgs:
+    def __init__(__self__, *,
+                 template_name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_body: Optional[pulumi.Input[str]] = None,
+                 template_url: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Template resource.
+        :param pulumi.Input[str] template_name: The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        :param pulumi.Input[str] description: The description of the template. The description can be up to 256 characters in length.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
+        :param pulumi.Input[str] template_url: The template url.
+        """
+        pulumi.set(__self__, "template_name", template_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if template_body is not None:
+            pulumi.set(__self__, "template_body", template_body)
+        if template_url is not None:
+            pulumi.set(__self__, "template_url", template_url)
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> pulumi.Input[str]:
+        """
+        The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        """
+        return pulumi.get(self, "template_name")
+
+    @template_name.setter
+    def template_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "template_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the template. The description can be up to 256 characters in length.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="templateBody")
+    def template_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
+        """
+        return pulumi.get(self, "template_body")
+
+    @template_body.setter
+    def template_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_body", value)
+
+    @property
+    @pulumi.getter(name="templateUrl")
+    def template_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The template url.
+        """
+        return pulumi.get(self, "template_url")
+
+    @template_url.setter
+    def template_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_url", value)
 
 
 class Template(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -63,6 +150,67 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[str] template_name: The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         :param pulumi.Input[str] template_url: The template url.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TemplateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a ROS Template resource.
+
+        For information about ROS Template and how to use it, see [What is Template](https://www.alibabacloud.com/help/en/doc-detail/141851.htm).
+
+        > **NOTE:** Available in v1.108.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ros.Template("example",
+            template_body=\"\"\"    {
+            	"ROSTemplateFormatVersion": "2015-09-01"
+            }
+            
+        \"\"\",
+            template_name="example_value")
+        ```
+
+        ## Import
+
+        ROS Template can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ros/template:Template example <template_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TemplateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_body: Optional[pulumi.Input[str]] = None,
+                 template_name: Optional[pulumi.Input[str]] = None,
+                 template_url: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

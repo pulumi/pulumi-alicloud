@@ -5,13 +5,167 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Eip']
+__all__ = ['EipArgs', 'Eip']
+
+@pulumi.input_type
+class EipArgs:
+    def __init__(__self__, *,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 isp: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a Eip resource.
+        :param pulumi.Input[int] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        :param pulumi.Input[str] instance_charge_type: Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+        :param pulumi.Input[str] name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+               Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        """
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if internet_charge_type is not None:
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if isp is not None:
+            pulumi.set(__self__, "isp", isp)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @internet_charge_type.setter
+    def internet_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_charge_type", value)
+
+    @property
+    @pulumi.getter
+    def isp(self) -> Optional[pulumi.Input[str]]:
+        """
+        The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+        """
+        return pulumi.get(self, "isp")
+
+    @isp.setter
+    def isp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "isp", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+        Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the eip belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Eip(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +203,48 @@ class Eip(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[EipArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Elastic IP address can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param EipArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EipArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 isp: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

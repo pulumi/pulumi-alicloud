@@ -5,15 +5,262 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Bucket']
+__all__ = ['BucketArgs', 'Bucket']
+
+@pulumi.input_type
+class BucketArgs:
+    def __init__(__self__, *,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
+                 logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
+                 logging_isenable: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 redundancy_type: Optional[pulumi.Input[str]] = None,
+                 referer_config: Optional[pulumi.Input['BucketRefererConfigArgs']] = None,
+                 server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
+                 storage_class: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
+                 website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
+        """
+        The set of arguments for constructing a Bucket resource.
+        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+        :param pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]] cors_rules: A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+        :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+        :param pulumi.Input['BucketLoggingArgs'] logging: A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+        :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
+        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+        :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+        :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption (documented below).
+        :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+        :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning (documented below).
+        :param pulumi.Input['BucketWebsiteArgs'] website: A website object(documented below).
+        """
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if cors_rules is not None:
+            pulumi.set(__self__, "cors_rules", cors_rules)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
+        if lifecycle_rules is not None:
+            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
+        if logging_isenable is not None:
+            warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
+            pulumi.log.warn("""logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
+        if logging_isenable is not None:
+            pulumi.set(__self__, "logging_isenable", logging_isenable)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if redundancy_type is not None:
+            pulumi.set(__self__, "redundancy_type", redundancy_type)
+        if referer_config is not None:
+            pulumi.set(__self__, "referer_config", referer_config)
+        if server_side_encryption_rule is not None:
+            pulumi.set(__self__, "server_side_encryption_rule", server_side_encryption_rule)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if versioning is not None:
+            pulumi.set(__self__, "versioning", versioning)
+        if website is not None:
+            pulumi.set(__self__, "website", website)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="corsRules")
+    def cors_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]:
+        """
+        A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+        """
+        return pulumi.get(self, "cors_rules")
+
+    @cors_rules.setter
+    def cors_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]):
+        pulumi.set(self, "cors_rules", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
+
+    @property
+    @pulumi.getter(name="lifecycleRules")
+    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
+        """
+        A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
+        """
+        return pulumi.get(self, "lifecycle_rules")
+
+    @lifecycle_rules.setter
+    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]):
+        pulumi.set(self, "lifecycle_rules", value)
+
+    @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['BucketLoggingArgs']]:
+        """
+        A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['BucketLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
+    @pulumi.getter(name="loggingIsenable")
+    def logging_isenable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The flag of using logging enable container. Defaults true.
+        """
+        return pulumi.get(self, "logging_isenable")
+
+    @logging_isenable.setter
+    def logging_isenable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "logging_isenable", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter(name="redundancyType")
+    def redundancy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+        """
+        return pulumi.get(self, "redundancy_type")
+
+    @redundancy_type.setter
+    def redundancy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redundancy_type", value)
+
+    @property
+    @pulumi.getter(name="refererConfig")
+    def referer_config(self) -> Optional[pulumi.Input['BucketRefererConfigArgs']]:
+        """
+        The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
+        """
+        return pulumi.get(self, "referer_config")
+
+    @referer_config.setter
+    def referer_config(self, value: Optional[pulumi.Input['BucketRefererConfigArgs']]):
+        pulumi.set(self, "referer_config", value)
+
+    @property
+    @pulumi.getter(name="serverSideEncryptionRule")
+    def server_side_encryption_rule(self) -> Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']]:
+        """
+        A configuration of server-side encryption (documented below).
+        """
+        return pulumi.get(self, "server_side_encryption_rule")
+
+    @server_side_encryption_rule.setter
+    def server_side_encryption_rule(self, value: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']]):
+        pulumi.set(self, "server_side_encryption_rule", value)
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_class", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def versioning(self) -> Optional[pulumi.Input['BucketVersioningArgs']]:
+        """
+        A state of versioning (documented below).
+        """
+        return pulumi.get(self, "versioning")
+
+    @versioning.setter
+    def versioning(self, value: Optional[pulumi.Input['BucketVersioningArgs']]):
+        pulumi.set(self, "versioning", value)
+
+    @property
+    @pulumi.getter
+    def website(self) -> Optional[pulumi.Input['BucketWebsiteArgs']]:
+        """
+        A website object(documented below).
+        """
+        return pulumi.get(self, "website")
+
+    @website.setter
+    def website(self, value: Optional[pulumi.Input['BucketWebsiteArgs']]):
+        pulumi.set(self, "website", value)
 
 
 class Bucket(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -239,6 +486,232 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: A state of versioning (documented below).
         :param pulumi.Input[pulumi.InputType['BucketWebsiteArgs']] website: A website object(documented below).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[BucketArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a resource to create a oss bucket and set its attribution.
+
+        > **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
+
+        ## Example Usage
+
+        Private Bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_acl = alicloud.oss.Bucket("bucket-acl",
+            acl="private",
+            bucket="bucket-170309-acl")
+        ```
+
+        Static Website
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_website = alicloud.oss.Bucket("bucket-website",
+            bucket="bucket-170309-website",
+            website=alicloud.oss.BucketWebsiteArgs(
+                error_document="error.html",
+                index_document="index.html",
+            ))
+        ```
+
+        Enable Logging
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_target = alicloud.oss.Bucket("bucket-target",
+            bucket="bucket-170309-acl",
+            acl="public-read")
+        bucket_logging = alicloud.oss.Bucket("bucket-logging",
+            bucket="bucket-170309-logging",
+            logging=alicloud.oss.BucketLoggingArgs(
+                target_bucket=bucket_target.id,
+                target_prefix="log/",
+            ))
+        ```
+
+        Referer configuration
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_referer = alicloud.oss.Bucket("bucket-referer",
+            acl="private",
+            bucket="bucket-170309-referer",
+            referer_config=alicloud.oss.BucketRefererConfigArgs(
+                allow_empty=False,
+                referers=[
+                    "http://www.aliyun.com",
+                    "https://www.aliyun.com",
+                ],
+            ))
+        ```
+
+        Set lifecycle rule
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_lifecycle = alicloud.oss.Bucket("bucket-lifecycle",
+            acl="public-read",
+            bucket="bucket-170309-lifecycle",
+            lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                enabled=True,
+                id="rule-days-transition",
+                prefix="path3/",
+                transitions=[
+                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                        created_before_date="2020-11-11",
+                        storage_class="IA",
+                    ),
+                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                        created_before_date="2021-11-11",
+                        storage_class="Archive",
+                    ),
+                ],
+            )])
+        ```
+
+        Set bucket policy
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_policy = alicloud.oss.Bucket("bucket-policy",
+            acl="private",
+            bucket="bucket-170309-policy",
+            policy=\"\"\"  {"Statement":
+              [{"Action":
+                  ["oss:PutObject", "oss:GetObject", "oss:DeleteBucket"],
+                "Effect":"Allow",
+                "Resource":
+                    ["acs:oss:*:*:*"]}],
+           "Version":"1"}
+          
+        \"\"\")
+        ```
+
+        IA Bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_storageclass = alicloud.oss.Bucket("bucket-storageclass",
+            bucket="bucket-170309-storageclass",
+            storage_class="IA")
+        ```
+
+        Set bucket server-side encryption rule
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_sserule = alicloud.oss.Bucket("bucket-sserule",
+            acl="private",
+            bucket="bucket-170309-sserule",
+            server_side_encryption_rule=alicloud.oss.BucketServerSideEncryptionRuleArgs(
+                kms_master_key_id="your kms key id",
+                sse_algorithm="KMS",
+            ))
+        ```
+
+        Set bucket tags
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_tags = alicloud.oss.Bucket("bucket-tags",
+            acl="private",
+            bucket="bucket-170309-tags",
+            tags={
+                "key1": "value1",
+                "key2": "value2",
+            })
+        ```
+
+        Enable bucket versioning
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_versioning = alicloud.oss.Bucket("bucket-versioning",
+            acl="private",
+            bucket="bucket-170309-versioning",
+            versioning=alicloud.oss.BucketVersioningArgs(
+                status="Enabled",
+            ))
+        ```
+
+        Set bucket redundancy type
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_redundancytype = alicloud.oss.Bucket("bucket-redundancytype",
+            bucket="bucket_name",
+            redundancy_type="ZRS")
+        ```
+
+        ## Import
+
+        OSS bucket can be imported using the bucket name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:oss/bucket:Bucket bucket bucket-12345678
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BucketArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BucketArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
+                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
+                 logging_isenable: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 redundancy_type: Optional[pulumi.Input[str]] = None,
+                 referer_config: Optional[pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']]] = None,
+                 server_side_encryption_rule: Optional[pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']]] = None,
+                 storage_class: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
+                 website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

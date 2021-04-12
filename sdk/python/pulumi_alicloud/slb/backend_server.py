@@ -5,15 +5,70 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BackendServer']
+__all__ = ['BackendServerArgs', 'BackendServer']
+
+@pulumi.input_type
+class BackendServerArgs:
+    def __init__(__self__, *,
+                 load_balancer_id: pulumi.Input[str],
+                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
+                 delete_protection_validation: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a BackendServer resource.
+        :param pulumi.Input[str] load_balancer_id: ID of the load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        """
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        if backend_servers is not None:
+            pulumi.set(__self__, "backend_servers", backend_servers)
+        if delete_protection_validation is not None:
+            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> pulumi.Input[str]:
+        """
+        ID of the load balancer.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @load_balancer_id.setter
+    def load_balancer_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "load_balancer_id", value)
+
+    @property
+    @pulumi.getter(name="backendServers")
+    def backend_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]:
+        """
+        A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+        """
+        return pulumi.get(self, "backend_servers")
+
+    @backend_servers.setter
+    def backend_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]):
+        pulumi.set(self, "backend_servers", value)
+
+    @property
+    @pulumi.getter(name="deleteProtectionValidation")
+    def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        """
+        return pulumi.get(self, "delete_protection_validation")
+
+    @delete_protection_validation.setter
+    def delete_protection_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_protection_validation", value)
 
 
 class BackendServer(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -105,6 +160,109 @@ class BackendServer(pulumi.CustomResource):
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[str] load_balancer_id: ID of the load balancer.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BackendServerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
+
+        > **NOTE:** Available in 1.53.0+
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "slbbackendservertest"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/16",
+            availability_zone=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
+                image_id=default_images.images[0].id,
+                instance_type=default_instance_types.instance_types[0].id,
+                instance_name=name,
+                security_groups=[__item.id for __item in [default_security_group]],
+                internet_charge_type="PayByTraffic",
+                internet_max_bandwidth_out=10,
+                availability_zone=default_zones.zones[0].id,
+                instance_charge_type="PostPaid",
+                system_disk_category="cloud_efficiency",
+                vswitch_id=default_switch.id))
+        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
+        default_backend_server = alicloud.slb.BackendServer("defaultBackendServer",
+            load_balancer_id=default_load_balancer.id,
+            backend_servers=[
+                alicloud.slb.BackendServerBackendServerArgs(
+                    server_id=default_instance[0].id,
+                    weight=100,
+                ),
+                alicloud.slb.BackendServerBackendServerArgs(
+                    server_id=default_instance[1].id,
+                    weight=100,
+                ),
+            ])
+        ```
+        ## Block servers
+
+        The servers mapping supports the following:
+
+        * `server_id` - (Required) A list backend server ID (ECS instance ID).
+        * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100].
+        * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`. Default to `ecs`.
+        * `server_ip` - (Optional, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `server_ip` parameter.
+
+        ## Import
+
+        Load balancer backend server can be imported using the load balancer id.
+
+        ```sh
+         $ pulumi import alicloud:slb/backendServer:BackendServer example lb-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BackendServerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BackendServerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServerBackendServerArgs']]]]] = None,
+                 delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+                 load_balancer_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

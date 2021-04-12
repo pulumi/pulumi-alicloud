@@ -5,15 +5,119 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KubernetesAutoscaler']
+__all__ = ['KubernetesAutoscalerArgs', 'KubernetesAutoscaler']
+
+@pulumi.input_type
+class KubernetesAutoscalerArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[str],
+                 cool_down_duration: pulumi.Input[str],
+                 defer_scale_in_duration: pulumi.Input[str],
+                 utilization: pulumi.Input[str],
+                 nodepools: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]] = None,
+                 use_ecs_ram_role_token: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a KubernetesAutoscaler resource.
+        :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
+        :param pulumi.Input[str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
+        :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]] nodepools: * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
+               * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
+               * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cool_down_duration", cool_down_duration)
+        pulumi.set(__self__, "defer_scale_in_duration", defer_scale_in_duration)
+        pulumi.set(__self__, "utilization", utilization)
+        if nodepools is not None:
+            pulumi.set(__self__, "nodepools", nodepools)
+        if use_ecs_ram_role_token is not None:
+            pulumi.set(__self__, "use_ecs_ram_role_token", use_ecs_ram_role_token)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The id of kubernetes cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="coolDownDuration")
+    def cool_down_duration(self) -> pulumi.Input[str]:
+        """
+        The cool_down_duration option of cluster-autoscaler.
+        """
+        return pulumi.get(self, "cool_down_duration")
+
+    @cool_down_duration.setter
+    def cool_down_duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cool_down_duration", value)
+
+    @property
+    @pulumi.getter(name="deferScaleInDuration")
+    def defer_scale_in_duration(self) -> pulumi.Input[str]:
+        """
+        The defer_scale_in_duration option of cluster-autoscaler.
+        """
+        return pulumi.get(self, "defer_scale_in_duration")
+
+    @defer_scale_in_duration.setter
+    def defer_scale_in_duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "defer_scale_in_duration", value)
+
+    @property
+    @pulumi.getter
+    def utilization(self) -> pulumi.Input[str]:
+        """
+        The utilization option of cluster-autoscaler.
+        """
+        return pulumi.get(self, "utilization")
+
+    @utilization.setter
+    def utilization(self, value: pulumi.Input[str]):
+        pulumi.set(self, "utilization", value)
+
+    @property
+    @pulumi.getter
+    def nodepools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]]:
+        """
+        * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
+        * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
+        * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        """
+        return pulumi.get(self, "nodepools")
+
+    @nodepools.setter
+    def nodepools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]]):
+        pulumi.set(self, "nodepools", value)
+
+    @property
+    @pulumi.getter(name="useEcsRamRoleToken")
+    def use_ecs_ram_role_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+        """
+        return pulumi.get(self, "use_ecs_ram_role_token")
+
+    @use_ecs_ram_role_token.setter
+    def use_ecs_ram_role_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_ecs_ram_role_token", value)
 
 
 class KubernetesAutoscaler(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -101,6 +205,100 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KubernetesAutoscalerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This resource will help you to manager cluster-autoscaler in Kubernetes Cluster.
+
+        > **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
+
+        > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group.
+
+        > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
+
+        > **NOTE:** Available in 1.65.0+.
+
+        ## Example Usage
+
+        cluster-autoscaler in Kubernetes Cluster.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "autoscaler"
+        default_networks = alicloud.vpc.get_networks()
+        default_images = alicloud.ecs.get_images(owners="system",
+            name_regex="^centos_7",
+            most_recent=True)
+        default_managed_kubernetes_clusters = alicloud.cs.get_managed_kubernetes_clusters()
+        default_instance_types = alicloud.ecs.get_instance_types(cpu_core_count=2,
+            memory_size=4)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.vpcs[0].id)
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            scaling_group_name=name,
+            min_size=var["min_size"],
+            max_size=var["max_size"],
+            vswitch_ids=[default_networks.vpcs[0].vswitch_ids[0]],
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
+            image_id=default_images.images[0].id,
+            security_group_id=default_security_group.id,
+            scaling_group_id=default_scaling_group.id,
+            instance_type=default_instance_types.instance_types[0].id,
+            internet_charge_type="PayByTraffic",
+            force_delete=True,
+            enable=True,
+            active=True)
+        default_kubernetes_autoscaler = alicloud.cs.KubernetesAutoscaler("defaultKubernetesAutoscaler",
+            cluster_id=default_managed_kubernetes_clusters.clusters[0].id,
+            nodepools=[alicloud.cs.KubernetesAutoscalerNodepoolArgs(
+                id=default_scaling_group.id,
+                labels="a=b",
+            )],
+            utilization=var["utilization"],
+            cool_down_duration=var["cool_down_duration"],
+            defer_scale_in_duration=var["defer_scale_in_duration"],
+            opts=pulumi.ResourceOptions(depends_on=[
+                    alicloud_ess_scaling_group["defalut"],
+                    default_scaling_configuration,
+                ]))
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param KubernetesAutoscalerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KubernetesAutoscalerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 cool_down_duration: Optional[pulumi.Input[str]] = None,
+                 defer_scale_in_duration: Optional[pulumi.Input[str]] = None,
+                 nodepools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAutoscalerNodepoolArgs']]]]] = None,
+                 use_ecs_ram_role_token: Optional[pulumi.Input[bool]] = None,
+                 utilization: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

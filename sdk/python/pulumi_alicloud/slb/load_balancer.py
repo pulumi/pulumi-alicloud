@@ -5,13 +5,290 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['LoadBalancer']
+__all__ = ['LoadBalancerArgs', 'LoadBalancer']
+
+@pulumi.input_type
+class LoadBalancerArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 address_ip_version: Optional[pulumi.Input[str]] = None,
+                 address_type: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 delete_protection: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 internet: Optional[pulumi.Input[bool]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 master_zone_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 slave_zone_id: Optional[pulumi.Input[str]] = None,
+                 specification: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a LoadBalancer resource.
+        :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        :param pulumi.Input[str] address_ip_version: The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
+        :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
+               - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
+               - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
+        :param pulumi.Input[int] bandwidth: Valid
+               value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
+        :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
+        :param pulumi.Input[str] instance_charge_type: The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[bool] internet: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+        :param pulumi.Input[str] internet_charge_type: Valid
+               values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
+               Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
+        :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
+        :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+        :param pulumi.Input[str] specification: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
+               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+               "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if address_ip_version is not None:
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
+        if address_type is not None:
+            pulumi.set(__self__, "address_type", address_type)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if delete_protection is not None:
+            pulumi.set(__self__, "delete_protection", delete_protection)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if internet is not None:
+            warnings.warn("""Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""internet is deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.""")
+        if internet is not None:
+            pulumi.set(__self__, "internet", internet)
+        if internet_charge_type is not None:
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if master_zone_id is not None:
+            pulumi.set(__self__, "master_zone_id", master_zone_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if slave_zone_id is not None:
+            pulumi.set(__self__, "slave_zone_id", slave_zone_id)
+        if specification is not None:
+            pulumi.set(__self__, "specification", specification)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @address_ip_version.setter
+    def address_ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_ip_version", value)
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
+        - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
+        - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
+        """
+        return pulumi.get(self, "address_type")
+
+    @address_type.setter
+    def address_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_type", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        Valid
+        value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="deleteProtection")
+    def delete_protection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
+        """
+        return pulumi.get(self, "delete_protection")
+
+    @delete_protection.setter
+    def delete_protection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_protection", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter
+    def internet(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+        """
+        return pulumi.get(self, "internet")
+
+    @internet.setter
+    def internet(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "internet", value)
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid
+        values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
+        Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @internet_charge_type.setter
+    def internet_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_charge_type", value)
+
+    @property
+    @pulumi.getter(name="masterZoneId")
+    def master_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+        """
+        return pulumi.get(self, "master_zone_id")
+
+    @master_zone_id.setter
+    def master_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_zone_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the SLB belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="slaveZoneId")
+    def slave_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+        """
+        return pulumi.get(self, "slave_zone_id")
+
+    @slave_zone_id.setter
+    def slave_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slave_zone_id", value)
+
+    @property
+    @pulumi.getter
+    def specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
+        Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+        "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+        """
+        return pulumi.get(self, "specification")
+
+    @specification.setter
+    def specification(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "specification", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 class LoadBalancer(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -109,6 +386,96 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[LoadBalancerArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an Application Load Balancer resource.
+
+        > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
+
+        > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
+        For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraformtestslbconfig"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            availability_zone=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
+            specification="slb.s2.small",
+            vswitch_id=default_switch.id,
+            tags={
+                "tag_a": 1,
+                "tag_b": 2,
+                "tag_c": 3,
+                "tag_d": 4,
+                "tag_e": 5,
+                "tag_f": 6,
+                "tag_g": 7,
+                "tag_h": 8,
+                "tag_i": 9,
+                "tag_j": 10,
+            })
+        ```
+
+        ## Import
+
+        Load balancer can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LoadBalancerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 address_ip_version: Optional[pulumi.Input[str]] = None,
+                 address_type: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 delete_protection: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 internet: Optional[pulumi.Input[bool]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 master_zone_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 slave_zone_id: Optional[pulumi.Input[str]] = None,
+                 specification: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

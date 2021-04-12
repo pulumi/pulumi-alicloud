@@ -5,13 +5,86 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Policy']
+__all__ = ['PolicyArgs', 'Policy']
+
+@pulumi.input_type
+class PolicyArgs:
+    def __init__(__self__, *,
+                 policy_document: pulumi.Input[str],
+                 policy_name: pulumi.Input[str],
+                 default_version: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Policy resource.
+        :param pulumi.Input[str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
+        :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] default_version: The version of the policy. Default to v1.
+        :param pulumi.Input[str] description: The description of the policy. The description must be 1 to 1,024 characters in length.
+        """
+        pulumi.set(__self__, "policy_document", policy_document)
+        pulumi.set(__self__, "policy_name", policy_name)
+        if default_version is not None:
+            warnings.warn("""Field 'default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
+            pulumi.log.warn("""default_version is deprecated: Field 'default_version' has been deprecated from provider version 1.90.0""")
+        if default_version is not None:
+            pulumi.set(__self__, "default_version", default_version)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="policyDocument")
+    def policy_document(self) -> pulumi.Input[str]:
+        """
+        The content of the policy. The content must be 1 to 2,048 characters in length.
+        """
+        return pulumi.get(self, "policy_document")
+
+    @policy_document.setter
+    def policy_document(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_document", value)
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> pulumi.Input[str]:
+        """
+        The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        """
+        return pulumi.get(self, "policy_name")
+
+    @policy_name.setter
+    def policy_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_name", value)
+
+    @property
+    @pulumi.getter(name="defaultVersion")
+    def default_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the policy. Default to v1.
+        """
+        return pulumi.get(self, "default_version")
+
+    @default_version.setter
+    def default_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_version", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the policy. The description must be 1 to 1,024 characters in length.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 class Policy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -65,6 +138,70 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Resource Manager Policy resource.\
+        For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
+
+        > **NOTE:** Available in v1.83.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.resourcemanager.Policy("example",
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:*"]
+        			}],
+        			"Version": "1"
+        		}
+            
+        \"\"\",
+            policy_name="abc12345")
+        ```
+
+        ## Import
+
+        Resource Manager Policy can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/policy:Policy example abc12345
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_version: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 policy_document: Optional[pulumi.Input[str]] = None,
+                 policy_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

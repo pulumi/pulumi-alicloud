@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ConsumerGroup']
+__all__ = ['ConsumerGroupArgs', 'ConsumerGroup']
+
+@pulumi.input_type
+class ConsumerGroupArgs:
+    def __init__(__self__, *,
+                 consumer_id: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a ConsumerGroup resource.
+        :param pulumi.Input[str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
+        :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "consumer_id", consumer_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="consumerId")
+    def consumer_id(self) -> pulumi.Input[str]:
+        """
+        ID of the consumer group. The length cannot exceed 64 characters.
+        """
+        return pulumi.get(self, "consumer_id")
+
+    @consumer_id.setter
+    def consumer_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consumer_id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        ID of the ALIKAFKA Instance that owns the groups.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ConsumerGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -73,6 +127,79 @@ class ConsumerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConsumerGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an ALIKAFKA consumer group resource.
+
+        > **NOTE:** Available in 1.56.0+
+
+        > **NOTE:**  Only the following regions support create alikafka consumer group.
+        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        consumer_id = config.get("consumerId")
+        if consumer_id is None:
+            consumer_id = "CID-alikafkaGroupDatasourceName"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0].id)
+        default_instance = alicloud.alikafka.Instance("defaultInstance",
+            topic_quota=50,
+            disk_type=1,
+            disk_size=500,
+            deploy_type=5,
+            io_max=20,
+            vswitch_id=default_switch.id)
+        default_consumer_group = alicloud.alikafka.ConsumerGroup("defaultConsumerGroup",
+            consumer_id=consumer_id,
+            instance_id=default_instance.id)
+        ```
+
+        ## Import
+
+        ALIKAFKA GROUP can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:alikafka/consumerGroup:ConsumerGroup group alikafka_post-cn-123455abc:consumerId
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ConsumerGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConsumerGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 consumer_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,388 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Instance']
+__all__ = ['InstanceArgs', 'Instance']
+
+@pulumi.input_type
+class InstanceArgs:
+    def __init__(__self__, *,
+                 core_instance_type: pulumi.Input[str],
+                 engine_version: pulumi.Input[str],
+                 master_instance_type: pulumi.Input[str],
+                 account: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 cold_storage_size: Optional[pulumi.Input[int]] = None,
+                 core_disk_size: Optional[pulumi.Input[int]] = None,
+                 core_disk_type: Optional[pulumi.Input[str]] = None,
+                 core_instance_quantity: Optional[pulumi.Input[int]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 duration: Optional[pulumi.Input[int]] = None,
+                 engine: Optional[pulumi.Input[str]] = None,
+                 immediate_delete_flag: Optional[pulumi.Input[bool]] = None,
+                 ip_white: Optional[pulumi.Input[str]] = None,
+                 maintain_end_time: Optional[pulumi.Input[str]] = None,
+                 maintain_start_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 pay_type: Optional[pulumi.Input[str]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+               * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        :param pulumi.Input[str] account: The account of the cluster web ui. Size [0-128].
+        :param pulumi.Input[bool] auto_renew: Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+        :param pulumi.Input[int] cold_storage_size: 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+               - Custom storage space, value range: [20, 64000].
+               - Cluster [400, 64000], step:40-GB increments.
+               - Single [20-500GB], step:1-GB increments.
+        :param pulumi.Input[str] core_disk_type: Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+        :param pulumi.Input[int] core_instance_quantity: Default=2, [1-200]. If core_instance_quantity > 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
+        :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+        :param pulumi.Input[str] engine: Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
+        :param pulumi.Input[bool] immediate_delete_flag: The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+        :param pulumi.Input[str] ip_white: The white ip list of the cluster.
+        :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
+        :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
+        :param pulumi.Input[str] name: HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
+        :param pulumi.Input[str] password: The password of the cluster web ui account. Size [0-128].
+        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+        :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        """
+        pulumi.set(__self__, "core_instance_type", core_instance_type)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "master_instance_type", master_instance_type)
+        if account is not None:
+            pulumi.set(__self__, "account", account)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if cold_storage_size is not None:
+            pulumi.set(__self__, "cold_storage_size", cold_storage_size)
+        if core_disk_size is not None:
+            pulumi.set(__self__, "core_disk_size", core_disk_size)
+        if core_disk_type is not None:
+            pulumi.set(__self__, "core_disk_type", core_disk_type)
+        if core_instance_quantity is not None:
+            pulumi.set(__self__, "core_instance_quantity", core_instance_quantity)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if engine is not None:
+            pulumi.set(__self__, "engine", engine)
+        if immediate_delete_flag is not None:
+            pulumi.set(__self__, "immediate_delete_flag", immediate_delete_flag)
+        if ip_white is not None:
+            pulumi.set(__self__, "ip_white", ip_white)
+        if maintain_end_time is not None:
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+        if maintain_start_time is not None:
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if pay_type is not None:
+            pulumi.set(__self__, "pay_type", pay_type)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="coreInstanceType")
+    def core_instance_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "core_instance_type")
+
+    @core_instance_type.setter
+    def core_instance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "core_instance_type", value)
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> pulumi.Input[str]:
+        """
+        HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+        * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @engine_version.setter
+    def engine_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine_version", value)
+
+    @property
+    @pulumi.getter(name="masterInstanceType")
+    def master_instance_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "master_instance_type")
+
+    @master_instance_type.setter
+    def master_instance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "master_instance_type", value)
+
+    @property
+    @pulumi.getter
+    def account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account of the cluster web ui. Size [0-128].
+        """
+        return pulumi.get(self, "account")
+
+    @account.setter
+    def account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="coldStorageSize")
+    def cold_storage_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        """
+        return pulumi.get(self, "cold_storage_size")
+
+    @cold_storage_size.setter
+    def cold_storage_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cold_storage_size", value)
+
+    @property
+    @pulumi.getter(name="coreDiskSize")
+    def core_disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
+        - Custom storage space, value range: [20, 64000].
+        - Cluster [400, 64000], step:40-GB increments.
+        - Single [20-500GB], step:1-GB increments.
+        """
+        return pulumi.get(self, "core_disk_size")
+
+    @core_disk_size.setter
+    def core_disk_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "core_disk_size", value)
+
+    @property
+    @pulumi.getter(name="coreDiskType")
+    def core_disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
+        """
+        return pulumi.get(self, "core_disk_type")
+
+    @core_disk_type.setter
+    def core_disk_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "core_disk_type", value)
+
+    @property
+    @pulumi.getter(name="coreInstanceQuantity")
+    def core_instance_quantity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default=2, [1-200]. If core_instance_quantity > 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        """
+        return pulumi.get(self, "core_instance_quantity")
+
+    @core_instance_quantity.setter
+    def core_instance_quantity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "core_instance_quantity", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter(name="immediateDeleteFlag")
+    def immediate_delete_flag(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
+        """
+        return pulumi.get(self, "immediate_delete_flag")
+
+    @immediate_delete_flag.setter
+    def immediate_delete_flag(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "immediate_delete_flag", value)
+
+    @property
+    @pulumi.getter(name="ipWhite")
+    def ip_white(self) -> Optional[pulumi.Input[str]]:
+        """
+        The white ip list of the cluster.
+        """
+        return pulumi.get(self, "ip_white")
+
+    @ip_white.setter
+    def ip_white(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_white", value)
+
+    @property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @maintain_end_time.setter
+    def maintain_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_end_time", value)
+
+    @property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
+        """
+        return pulumi.get(self, "maintain_start_time")
+
+    @maintain_start_time.setter
+    def maintain_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_start_time", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of the cluster web ui account. Size [0-128].
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="payType")
+    def pay_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
+        """
+        return pulumi.get(self, "pay_type")
+
+    @pay_type.setter
+    def pay_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pay_type", value)
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The security group resource of the cluster.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_groups", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class Instance(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -115,6 +488,97 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a HBase instance resource supports replica set instances only. The HBase provides stable, reliable, and automatic scalable database services.
+        It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
+        You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
+
+        > **NOTE:**  Available in 1.67.0+
+
+        > **NOTE:**  The following regions don't support create Classic network HBase instance.
+        [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
+        The official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
+
+        > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
+
+        ## Example Usage
+        ### Create a hbase instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.hbase.Instance("default",
+            cold_storage_size=0,
+            core_disk_size=400,
+            core_disk_type="cloud_efficiency",
+            core_instance_quantity=2,
+            core_instance_type="hbase.sn1.large",
+            engine="hbaseue",
+            engine_version="2.0",
+            master_instance_type="hbase.sn1.large",
+            pay_type="PostPaid",
+            vswitch_id="vsw-123456",
+            zone_id="cn-shenzhen-b")
+        ```
+
+        this is a example for class netType instance. you can find more detail with the examples/hbase dir.
+
+        ## Import
+
+        HBase can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:hbase/instance:Instance example hb-wz96815u13k659fvd
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 cold_storage_size: Optional[pulumi.Input[int]] = None,
+                 core_disk_size: Optional[pulumi.Input[int]] = None,
+                 core_disk_type: Optional[pulumi.Input[str]] = None,
+                 core_instance_quantity: Optional[pulumi.Input[int]] = None,
+                 core_instance_type: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 duration: Optional[pulumi.Input[int]] = None,
+                 engine: Optional[pulumi.Input[str]] = None,
+                 engine_version: Optional[pulumi.Input[str]] = None,
+                 immediate_delete_flag: Optional[pulumi.Input[bool]] = None,
+                 ip_white: Optional[pulumi.Input[str]] = None,
+                 maintain_end_time: Optional[pulumi.Input[str]] = None,
+                 maintain_start_time: Optional[pulumi.Input[str]] = None,
+                 master_instance_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 pay_type: Optional[pulumi.Input[str]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

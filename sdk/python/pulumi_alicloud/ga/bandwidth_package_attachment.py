@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['BandwidthPackageAttachment']
+__all__ = ['BandwidthPackageAttachmentArgs', 'BandwidthPackageAttachment']
+
+@pulumi.input_type
+class BandwidthPackageAttachmentArgs:
+    def __init__(__self__, *,
+                 accelerator_id: pulumi.Input[str],
+                 bandwidth_package_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a BandwidthPackageAttachment resource.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth plan to disassociate.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @accelerator_id.setter
+    def accelerator_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "accelerator_id", value)
+
+    @property
+    @pulumi.getter(name="bandwidthPackageId")
+    def bandwidth_package_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the bandwidth plan to disassociate.
+        """
+        return pulumi.get(self, "bandwidth_package_id")
+
+    @bandwidth_package_id.setter
+    def bandwidth_package_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bandwidth_package_id", value)
 
 
 class BandwidthPackageAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -64,6 +102,71 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
         :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth plan to disassociate.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BandwidthPackageAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Global Accelerator (GA) Bandwidth Package Attachment resource.
+
+        For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
+
+        > **NOTE:** Available in v1.113.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
+            bandwidth=20,
+            type="Basic",
+            bandwidth_type="Basic",
+            duration="1",
+            auto_pay=True,
+            ratio=30)
+        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
+            accelerator_id=example_accelerator.id,
+            bandwidth_package_id=example_bandwidth_package.id)
+        ```
+
+        ## Import
+
+        Ga Bandwidth Package Attachment can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BandwidthPackageAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BandwidthPackageAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerator_id: Optional[pulumi.Input[str]] = None,
+                 bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

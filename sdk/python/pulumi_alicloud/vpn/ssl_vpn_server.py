@@ -5,13 +5,146 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['SslVpnServer']
+__all__ = ['SslVpnServerArgs', 'SslVpnServer']
+
+@pulumi.input_type
+class SslVpnServerArgs:
+    def __init__(__self__, *,
+                 client_ip_pool: pulumi.Input[str],
+                 local_subnet: pulumi.Input[str],
+                 vpn_gateway_id: pulumi.Input[str],
+                 cipher: Optional[pulumi.Input[str]] = None,
+                 compress: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SslVpnServer resource.
+        :param pulumi.Input[str] client_ip_pool: The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
+        :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
+        :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
+        :param pulumi.Input[str] cipher: The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        :param pulumi.Input[bool] compress: Specify whether to compress the communication. Valid value: true (default) | false
+        :param pulumi.Input[str] name: The name of the SSL-VPN server.
+        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
+        """
+        pulumi.set(__self__, "client_ip_pool", client_ip_pool)
+        pulumi.set(__self__, "local_subnet", local_subnet)
+        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+        if cipher is not None:
+            pulumi.set(__self__, "cipher", cipher)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="clientIpPool")
+    def client_ip_pool(self) -> pulumi.Input[str]:
+        """
+        The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
+        """
+        return pulumi.get(self, "client_ip_pool")
+
+    @client_ip_pool.setter
+    def client_ip_pool(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_ip_pool", value)
+
+    @property
+    @pulumi.getter(name="localSubnet")
+    def local_subnet(self) -> pulumi.Input[str]:
+        """
+        The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
+        """
+        return pulumi.get(self, "local_subnet")
+
+    @local_subnet.setter
+    def local_subnet(self, value: pulumi.Input[str]):
+        pulumi.set(self, "local_subnet", value)
+
+    @property
+    @pulumi.getter(name="vpnGatewayId")
+    def vpn_gateway_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the VPN gateway.
+        """
+        return pulumi.get(self, "vpn_gateway_id")
+
+    @vpn_gateway_id.setter
+    def vpn_gateway_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpn_gateway_id", value)
+
+    @property
+    @pulumi.getter
+    def cipher(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        """
+        return pulumi.get(self, "cipher")
+
+    @cipher.setter
+    def cipher(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cipher", value)
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether to compress the communication. Valid value: true (default) | false
+        """
+        return pulumi.get(self, "compress")
+
+    @compress.setter
+    def compress(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "compress", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SSL-VPN server.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
 
 
 class SslVpnServer(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +179,47 @@ class SslVpnServer(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SslVpnServerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        SSL-VPN server can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpn/sslVpnServer:SslVpnServer example vss-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SslVpnServerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SslVpnServerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cipher: Optional[pulumi.Input[str]] = None,
+                 client_ip_pool: Optional[pulumi.Input[str]] = None,
+                 compress: Optional[pulumi.Input[bool]] = None,
+                 local_subnet: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 vpn_gateway_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

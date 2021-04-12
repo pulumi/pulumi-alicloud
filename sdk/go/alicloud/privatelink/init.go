@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:privatelink/vpcEndpoint:VpcEndpoint":
-		r, err = NewVpcEndpoint(ctx, name, nil, pulumi.URN_(urn))
+		r = &VpcEndpoint{}
 	case "alicloud:privatelink/vpcEndpointService:VpcEndpointService":
-		r, err = NewVpcEndpointService(ctx, name, nil, pulumi.URN_(urn))
+		r = &VpcEndpointService{}
 	case "alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection":
-		r, err = NewVpcEndpointServiceConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &VpcEndpointServiceConnection{}
 	case "alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource":
-		r, err = NewVpcEndpointServiceResource(ctx, name, nil, pulumi.URN_(urn))
+		r = &VpcEndpointServiceResource{}
 	case "alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser":
-		r, err = NewVpcEndpointServiceUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &VpcEndpointServiceUser{}
 	case "alicloud:privatelink/vpcEndpointZone:VpcEndpointZone":
-		r, err = NewVpcEndpointZone(ctx, name, nil, pulumi.URN_(urn))
+		r = &VpcEndpointZone{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,15 +5,115 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ForwardingRule']
+__all__ = ['ForwardingRuleArgs', 'ForwardingRule']
+
+@pulumi.input_type
+class ForwardingRuleArgs:
+    def __init__(__self__, *,
+                 accelerator_id: pulumi.Input[str],
+                 listener_id: pulumi.Input[str],
+                 rule_actions: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]],
+                 rule_conditions: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]],
+                 forwarding_rule_name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a ForwardingRule resource.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance.
+        :param pulumi.Input[str] listener_id: The ID of the listener.
+        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]] rule_actions: Forward action.
+        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]] rule_conditions: Forwarding condition list.
+        :param pulumi.Input[str] forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
+        :param pulumi.Input[int] priority: Forwarding policy priority.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "rule_actions", rule_actions)
+        pulumi.set(__self__, "rule_conditions", rule_conditions)
+        if forwarding_rule_name is not None:
+            pulumi.set(__self__, "forwarding_rule_name", forwarding_rule_name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Global Accelerator instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @accelerator_id.setter
+    def accelerator_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "accelerator_id", value)
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the listener.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @listener_id.setter
+    def listener_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "listener_id", value)
+
+    @property
+    @pulumi.getter(name="ruleActions")
+    def rule_actions(self) -> pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]:
+        """
+        Forward action.
+        """
+        return pulumi.get(self, "rule_actions")
+
+    @rule_actions.setter
+    def rule_actions(self, value: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]):
+        pulumi.set(self, "rule_actions", value)
+
+    @property
+    @pulumi.getter(name="ruleConditions")
+    def rule_conditions(self) -> pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]:
+        """
+        Forwarding condition list.
+        """
+        return pulumi.get(self, "rule_conditions")
+
+    @rule_conditions.setter
+    def rule_conditions(self, value: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]):
+        pulumi.set(self, "rule_conditions", value)
+
+    @property
+    @pulumi.getter(name="forwardingRuleName")
+    def forwarding_rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
+        """
+        return pulumi.get(self, "forwarding_rule_name")
+
+    @forwarding_rule_name.setter
+    def forwarding_rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forwarding_rule_name", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Forwarding policy priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
 
 
 class ForwardingRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -112,6 +212,113 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]] rule_actions: Forward action.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]] rule_conditions: Forwarding condition list.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ForwardingRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Global Accelerator (GA) Forwarding Rule resource.
+
+        For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
+
+        > **NOTE:** Available in v1.120.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        de_bandwidth_package = alicloud.ga.BandwidthPackage("deBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        de_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment",
+            accelerator_id=example_accelerator.id,
+            bandwidth_package_id=de_bandwidth_package.id)
+        example_listener = alicloud.ga.Listener("exampleListener",
+            accelerator_id=example_accelerator.id,
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=70,
+                to_port=70,
+            )],
+            protocol="HTTP",
+            opts=pulumi.ResourceOptions(depends_on=[de_bandwidth_package_attachment]))
+        example_eip = alicloud.ecs.Eip("exampleEip",
+            bandwidth=10,
+            internet_charge_type="PayByBandwidth")
+        example_endpoint_group = alicloud.ga.EndpointGroup("exampleEndpointGroup",
+            accelerator_id=example_accelerator.id,
+            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                endpoint=example_eip.ip_address,
+                type="PublicIp",
+                weight=20,
+            )],
+            endpoint_group_region="cn-hangzhou",
+            listener_id=example_listener.id)
+        example_forwarding_rule = alicloud.ga.ForwardingRule("exampleForwardingRule",
+            accelerator_id=example_accelerator.id,
+            listener_id=example_listener.id,
+            rule_conditions=[alicloud.ga.ForwardingRuleRuleConditionArgs(
+                rule_condition_type="Path",
+                path_config=alicloud.ga.ForwardingRuleRuleConditionPathConfigArgs(
+                    values=["/test"],
+                ),
+            )],
+            rule_actions=[alicloud.ga.ForwardingRuleRuleActionArgs(
+                order=30,
+                rule_action_type="ForwardGroup",
+                forward_group_config=alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigArgs(
+                    server_group_tuples=[alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs(
+                        endpoint_group_id=example_endpoint_group.id,
+                    )],
+                ),
+            )])
+        ```
+
+        ## Import
+
+        Ga Forwarding Rule can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ga/forwardingRule:ForwardingRule example <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ForwardingRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ForwardingRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerator_id: Optional[pulumi.Input[str]] = None,
+                 forwarding_rule_name: Optional[pulumi.Input[str]] = None,
+                 listener_id: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]]] = None,
+                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Audit']
+__all__ = ['AuditArgs', 'Audit']
+
+@pulumi.input_type
+class AuditArgs:
+    def __init__(__self__, *,
+                 aliuid: pulumi.Input[str],
+                 display_name: pulumi.Input[str],
+                 multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a Audit resource.
+        :param pulumi.Input[str] aliuid: Aliuid value of your account.
+        :param pulumi.Input[str] display_name: Name of SLS log audit.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
+        :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
+        """
+        pulumi.set(__self__, "aliuid", aliuid)
+        pulumi.set(__self__, "display_name", display_name)
+        if multi_accounts is not None:
+            pulumi.set(__self__, "multi_accounts", multi_accounts)
+        if variable_map is not None:
+            pulumi.set(__self__, "variable_map", variable_map)
+
+    @property
+    @pulumi.getter
+    def aliuid(self) -> pulumi.Input[str]:
+        """
+        Aliuid value of your account.
+        """
+        return pulumi.get(self, "aliuid")
+
+    @aliuid.setter
+    def aliuid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "aliuid", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Name of SLS log audit.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="multiAccounts")
+    def multi_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Multi-account configuration, please fill in multiple aliuid.
+        """
+        return pulumi.get(self, "multi_accounts")
+
+    @multi_accounts.setter
+    def multi_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "multi_accounts", value)
+
+    @property
+    @pulumi.getter(name="variableMap")
+    def variable_map(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Log audit detailed configuration.
+        """
+        return pulumi.get(self, "variable_map")
+
+    @variable_map.setter
+    def variable_map(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "variable_map", value)
 
 
 class Audit(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -83,6 +153,88 @@ class Audit(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
         :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AuditArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        SLS log audit exists in the form of log service app.
+
+        In addition to inheriting all SLS functions, it also enhances the real-time automatic centralized collection of audit related logs across multi cloud products under multi accounts, and provides support for storage, query and information summary required by audit. It covers actiontrail, OSS, NAS, SLB, API gateway, RDS, WAF, cloud firewall, cloud security center and other products.
+
+        > **NOTE:** Available in 1.81.0
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.Audit("example",
+            aliuid="12345678",
+            display_name="tf-audit-test",
+            variable_map={
+                "actiontrail_enabled": "true",
+                "actiontrail_ttl": "180",
+                "oss_access_enabled": "true",
+                "oss_access_ttl": "180",
+            })
+        ```
+        Multiple accounts Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.Audit("example",
+            aliuid="12345678",
+            display_name="tf-audit-test",
+            multi_accounts=[
+                "123456789123",
+                "12345678912300123",
+            ],
+            variable_map={
+                "actiontrail_enabled": "true",
+                "actiontrail_ttl": "180",
+                "oss_access_enabled": "true",
+                "oss_access_ttl": "180",
+            })
+        ```
+
+        ## Import
+
+        Log alert can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:log/audit:Audit example tf-audit-test
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AuditArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AuditArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 aliuid: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

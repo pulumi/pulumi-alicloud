@@ -5,13 +5,263 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Instance']
+__all__ = ['InstanceArgs', 'Instance']
+
+@pulumi.input_type
+class InstanceArgs:
+    def __init__(__self__, *,
+                 big_screen: pulumi.Input[str],
+                 exclusive_ip_package: pulumi.Input[str],
+                 ext_bandwidth: pulumi.Input[str],
+                 ext_domain_package: pulumi.Input[str],
+                 log_storage: pulumi.Input[str],
+                 log_time: pulumi.Input[str],
+                 package_code: pulumi.Input[str],
+                 prefessional_service: pulumi.Input[str],
+                 subscription_type: pulumi.Input[str],
+                 waf_log: pulumi.Input[str],
+                 modify_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] big_screen: Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
+        :param pulumi.Input[str] exclusive_ip_package: Specify the number of exclusive WAF IP addresses.
+        :param pulumi.Input[str] ext_bandwidth: The extra bandwidth. Unit: Mbit/s.
+        :param pulumi.Input[str] ext_domain_package: The number of extra domains.
+        :param pulumi.Input[str] log_storage: Log storage size. Unit: T. Valid values: [3, 5, 10, 20, 50].
+        :param pulumi.Input[str] log_time: Log storage period. Unit: day. Valid values: [180, 360].
+        :param pulumi.Input[str] package_code: Subscription plan:
+               * China site customers can purchase the following versions of China Mainland region, valid values: ["version_3", "version_4", "version_5"].
+               * China site customers can purchase the following versions of International region, valid values: ["version_pro_asia", "version_business_asia", "version_enterprise_asia"]
+               * International site customers can purchase the following versions of China Mainland region: ["version_pro_china", "version_business_china", "version_enterprise_china"]
+               * International site customers can purchase the following versions of International region: ["version_pro", "version_business", "version_enterprise"].
+        :param pulumi.Input[str] prefessional_service: Specify whether professional service is supported. Valid values: ["true", "false"]
+        :param pulumi.Input[str] subscription_type: Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
+        :param pulumi.Input[str] waf_log: Specify whether Log service is supported. Valid values: ["true", "false"]
+        :param pulumi.Input[str] modify_type: Type of configuration change. Valid value: Upgrade.
+        :param pulumi.Input[int] period: Service time of Web Application Firewall.
+        :param pulumi.Input[int] renew_period: Renewal period of WAF service. Unit: month
+        :param pulumi.Input[str] renewal_status: Renewal status of WAF service. Valid values: 
+               * AutoRenewal: The service time of WAF is renewed automatically.
+               * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+        :param pulumi.Input[str] resource_group_id: The resource group ID.
+        """
+        pulumi.set(__self__, "big_screen", big_screen)
+        pulumi.set(__self__, "exclusive_ip_package", exclusive_ip_package)
+        pulumi.set(__self__, "ext_bandwidth", ext_bandwidth)
+        pulumi.set(__self__, "ext_domain_package", ext_domain_package)
+        pulumi.set(__self__, "log_storage", log_storage)
+        pulumi.set(__self__, "log_time", log_time)
+        pulumi.set(__self__, "package_code", package_code)
+        pulumi.set(__self__, "prefessional_service", prefessional_service)
+        pulumi.set(__self__, "subscription_type", subscription_type)
+        pulumi.set(__self__, "waf_log", waf_log)
+        if modify_type is not None:
+            pulumi.set(__self__, "modify_type", modify_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if renew_period is not None:
+            pulumi.set(__self__, "renew_period", renew_period)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+
+    @property
+    @pulumi.getter(name="bigScreen")
+    def big_screen(self) -> pulumi.Input[str]:
+        """
+        Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
+        """
+        return pulumi.get(self, "big_screen")
+
+    @big_screen.setter
+    def big_screen(self, value: pulumi.Input[str]):
+        pulumi.set(self, "big_screen", value)
+
+    @property
+    @pulumi.getter(name="exclusiveIpPackage")
+    def exclusive_ip_package(self) -> pulumi.Input[str]:
+        """
+        Specify the number of exclusive WAF IP addresses.
+        """
+        return pulumi.get(self, "exclusive_ip_package")
+
+    @exclusive_ip_package.setter
+    def exclusive_ip_package(self, value: pulumi.Input[str]):
+        pulumi.set(self, "exclusive_ip_package", value)
+
+    @property
+    @pulumi.getter(name="extBandwidth")
+    def ext_bandwidth(self) -> pulumi.Input[str]:
+        """
+        The extra bandwidth. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "ext_bandwidth")
+
+    @ext_bandwidth.setter
+    def ext_bandwidth(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ext_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="extDomainPackage")
+    def ext_domain_package(self) -> pulumi.Input[str]:
+        """
+        The number of extra domains.
+        """
+        return pulumi.get(self, "ext_domain_package")
+
+    @ext_domain_package.setter
+    def ext_domain_package(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ext_domain_package", value)
+
+    @property
+    @pulumi.getter(name="logStorage")
+    def log_storage(self) -> pulumi.Input[str]:
+        """
+        Log storage size. Unit: T. Valid values: [3, 5, 10, 20, 50].
+        """
+        return pulumi.get(self, "log_storage")
+
+    @log_storage.setter
+    def log_storage(self, value: pulumi.Input[str]):
+        pulumi.set(self, "log_storage", value)
+
+    @property
+    @pulumi.getter(name="logTime")
+    def log_time(self) -> pulumi.Input[str]:
+        """
+        Log storage period. Unit: day. Valid values: [180, 360].
+        """
+        return pulumi.get(self, "log_time")
+
+    @log_time.setter
+    def log_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "log_time", value)
+
+    @property
+    @pulumi.getter(name="packageCode")
+    def package_code(self) -> pulumi.Input[str]:
+        """
+        Subscription plan:
+        * China site customers can purchase the following versions of China Mainland region, valid values: ["version_3", "version_4", "version_5"].
+        * China site customers can purchase the following versions of International region, valid values: ["version_pro_asia", "version_business_asia", "version_enterprise_asia"]
+        * International site customers can purchase the following versions of China Mainland region: ["version_pro_china", "version_business_china", "version_enterprise_china"]
+        * International site customers can purchase the following versions of International region: ["version_pro", "version_business", "version_enterprise"].
+        """
+        return pulumi.get(self, "package_code")
+
+    @package_code.setter
+    def package_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package_code", value)
+
+    @property
+    @pulumi.getter(name="prefessionalService")
+    def prefessional_service(self) -> pulumi.Input[str]:
+        """
+        Specify whether professional service is supported. Valid values: ["true", "false"]
+        """
+        return pulumi.get(self, "prefessional_service")
+
+    @prefessional_service.setter
+    def prefessional_service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "prefessional_service", value)
+
+    @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> pulumi.Input[str]:
+        """
+        Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
+        """
+        return pulumi.get(self, "subscription_type")
+
+    @subscription_type.setter
+    def subscription_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subscription_type", value)
+
+    @property
+    @pulumi.getter(name="wafLog")
+    def waf_log(self) -> pulumi.Input[str]:
+        """
+        Specify whether Log service is supported. Valid values: ["true", "false"]
+        """
+        return pulumi.get(self, "waf_log")
+
+    @waf_log.setter
+    def waf_log(self, value: pulumi.Input[str]):
+        pulumi.set(self, "waf_log", value)
+
+    @property
+    @pulumi.getter(name="modifyType")
+    def modify_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of configuration change. Valid value: Upgrade.
+        """
+        return pulumi.get(self, "modify_type")
+
+    @modify_type.setter
+    def modify_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modify_type", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Service time of Web Application Firewall.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Renewal period of WAF service. Unit: month
+        """
+        return pulumi.get(self, "renew_period")
+
+    @renew_period.setter
+    def renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "renew_period", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Renewal status of WAF service. Valid values: 
+        * AutoRenewal: The service time of WAF is renewed automatically.
+        * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
 
 class Instance(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -93,6 +343,81 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] subscription_type: Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
         :param pulumi.Input[str] waf_log: Specify whether Log service is supported. Valid values: ["true", "false"]
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a WAF Instance resource to create instance in the Web Application Firewall.
+
+        For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+
+        > **NOTE:** Available in 1.83.0+ .
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.waf.Instance("default",
+            big_screen="0",
+            exclusive_ip_package="1",
+            ext_bandwidth="50",
+            ext_domain_package="1",
+            log_storage="3",
+            log_time="180",
+            package_code="version_3",
+            period=1,
+            prefessional_service="false",
+            resource_group_id="rs-abc12345",
+            subscription_type="Subscription",
+            waf_log="false")
+        ```
+
+        ## Import
+
+        WAF instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:waf/instance:Instance default waf-cn-132435
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 big_screen: Optional[pulumi.Input[str]] = None,
+                 exclusive_ip_package: Optional[pulumi.Input[str]] = None,
+                 ext_bandwidth: Optional[pulumi.Input[str]] = None,
+                 ext_domain_package: Optional[pulumi.Input[str]] = None,
+                 log_storage: Optional[pulumi.Input[str]] = None,
+                 log_time: Optional[pulumi.Input[str]] = None,
+                 modify_type: Optional[pulumi.Input[str]] = None,
+                 package_code: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 prefessional_service: Optional[pulumi.Input[str]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 subscription_type: Optional[pulumi.Input[str]] = None,
+                 waf_log: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

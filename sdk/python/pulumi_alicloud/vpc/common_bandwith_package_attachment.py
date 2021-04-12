@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['CommonBandwithPackageAttachment']
+__all__ = ['CommonBandwithPackageAttachmentArgs', 'CommonBandwithPackageAttachment']
+
+@pulumi.input_type
+class CommonBandwithPackageAttachmentArgs:
+    def __init__(__self__, *,
+                 bandwidth_package_id: pulumi.Input[str],
+                 instance_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a CommonBandwithPackageAttachment resource.
+        :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
+        """
+        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter(name="bandwidthPackageId")
+    def bandwidth_package_id(self) -> pulumi.Input[str]:
+        """
+        The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        """
+        return pulumi.get(self, "bandwidth_package_id")
+
+    @bandwidth_package_id.setter
+    def bandwidth_package_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bandwidth_package_id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The instance_id of the common bandwidth package attachment, the field can't be changed.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
 
 
 class CommonBandwithPackageAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -34,6 +72,41 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CommonBandwithPackageAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        The common bandwidth package attachemnt can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo cbwp-abc123456:eip-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param CommonBandwithPackageAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CommonBandwithPackageAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

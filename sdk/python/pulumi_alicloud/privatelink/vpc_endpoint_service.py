@@ -5,13 +5,101 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['VpcEndpointService']
+__all__ = ['VpcEndpointServiceArgs', 'VpcEndpointService']
+
+@pulumi.input_type
+class VpcEndpointServiceArgs:
+    def __init__(__self__, *,
+                 auto_accept_connection: Optional[pulumi.Input[bool]] = None,
+                 connect_bandwidth: Optional[pulumi.Input[int]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 payer: Optional[pulumi.Input[str]] = None,
+                 service_description: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a VpcEndpointService resource.
+        :param pulumi.Input[bool] auto_accept_connection: Whether to automatically accept terminal node connections.
+        :param pulumi.Input[int] connect_bandwidth: The connection bandwidth.
+        :param pulumi.Input[bool] dry_run: Whether to pre-check this request only. Default to: `false`
+        :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+        :param pulumi.Input[str] service_description: The description of the terminal node service.
+        """
+        if auto_accept_connection is not None:
+            pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
+        if connect_bandwidth is not None:
+            pulumi.set(__self__, "connect_bandwidth", connect_bandwidth)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
+        if payer is not None:
+            pulumi.set(__self__, "payer", payer)
+        if service_description is not None:
+            pulumi.set(__self__, "service_description", service_description)
+
+    @property
+    @pulumi.getter(name="autoAcceptConnection")
+    def auto_accept_connection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically accept terminal node connections.
+        """
+        return pulumi.get(self, "auto_accept_connection")
+
+    @auto_accept_connection.setter
+    def auto_accept_connection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_accept_connection", value)
+
+    @property
+    @pulumi.getter(name="connectBandwidth")
+    def connect_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The connection bandwidth.
+        """
+        return pulumi.get(self, "connect_bandwidth")
+
+    @connect_bandwidth.setter
+    def connect_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connect_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pre-check this request only. Default to: `false`
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter
+    def payer(self) -> Optional[pulumi.Input[str]]:
+        """
+        The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+        """
+        return pulumi.get(self, "payer")
+
+    @payer.setter
+    def payer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payer", value)
+
+    @property
+    @pulumi.getter(name="serviceDescription")
+    def service_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the terminal node service.
+        """
+        return pulumi.get(self, "service_description")
+
+    @service_description.setter
+    def service_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_description", value)
 
 
 class VpcEndpointService(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -60,6 +148,64 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
         :param pulumi.Input[str] service_description: The description of the terminal node service.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[VpcEndpointServiceArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Private Link Vpc Endpoint Service resource.
+
+        For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://help.aliyun.com/document_detail/183540.html).
+
+        > **NOTE:** Available in v1.109.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.privatelink.VpcEndpointService("example",
+            auto_accept_connection=False,
+            connect_bandwidth=103,
+            service_description="tftest")
+        ```
+
+        ## Import
+
+        Private Link Vpc Endpoint Service can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:privatelink/vpcEndpointService:VpcEndpointService example <service_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VpcEndpointServiceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VpcEndpointServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_accept_connection: Optional[pulumi.Input[bool]] = None,
+                 connect_bandwidth: Optional[pulumi.Input[int]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 payer: Optional[pulumi.Input[str]] = None,
+                 service_description: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

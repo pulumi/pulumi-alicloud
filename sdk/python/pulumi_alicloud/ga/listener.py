@@ -5,15 +5,157 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Listener']
+__all__ = ['ListenerArgs', 'Listener']
+
+@pulumi.input_type
+class ListenerArgs:
+    def __init__(__self__, *,
+                 accelerator_id: pulumi.Input[str],
+                 port_ranges: pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]],
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
+                 client_affinity: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 proxy_protocol: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a Listener resource.
+        :param pulumi.Input[str] accelerator_id: The accelerator id.
+        :param pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]] port_ranges: The portRanges of the listener.
+        :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The certificates of the listener.
+        :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value is `NONE`. Valid values:
+               `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+               `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+        :param pulumi.Input[str] description: The description of the listener.
+        :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
+        :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+        :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
+               `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+               `false`: keep client source IP function is not turned on.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "port_ranges", port_ranges)
+        if certificates is not None:
+            pulumi.set(__self__, "certificates", certificates)
+        if client_affinity is not None:
+            pulumi.set(__self__, "client_affinity", client_affinity)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if proxy_protocol is not None:
+            pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> pulumi.Input[str]:
+        """
+        The accelerator id.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @accelerator_id.setter
+    def accelerator_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "accelerator_id", value)
+
+    @property
+    @pulumi.getter(name="portRanges")
+    def port_ranges(self) -> pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]:
+        """
+        The portRanges of the listener.
+        """
+        return pulumi.get(self, "port_ranges")
+
+    @port_ranges.setter
+    def port_ranges(self, value: pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]):
+        pulumi.set(self, "port_ranges", value)
+
+    @property
+    @pulumi.getter
+    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
+        """
+        The certificates of the listener.
+        """
+        return pulumi.get(self, "certificates")
+
+    @certificates.setter
+    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]):
+        pulumi.set(self, "certificates", value)
+
+    @property
+    @pulumi.getter(name="clientAffinity")
+    def client_affinity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The clientAffinity of the listener. Default value is `NONE`. Valid values:
+        `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+        `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+        """
+        return pulumi.get(self, "client_affinity")
+
+    @client_affinity.setter
+    def client_affinity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_affinity", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the listener.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="proxyProtocol")
+    def proxy_protocol(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The proxy protocol of the listener. Default value is `false`. Valid value:
+        `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
+        `false`: keep client source IP function is not turned on.
+        """
+        return pulumi.get(self, "proxy_protocol")
+
+    @proxy_protocol.setter
+    def proxy_protocol(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "proxy_protocol", value)
 
 
 class Listener(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -89,6 +231,84 @@ class Listener(pulumi.CustomResource):
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ListenerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Global Accelerator (GA) Listener resource.
+
+        For information about Global Accelerator (GA) Listener and how to use it, see [What is Listener](https://help.aliyun.com/document_detail/153253.html).
+
+        > **NOTE:** Available in v1.111.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        de_bandwidth_package = alicloud.ga.BandwidthPackage("deBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        de_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment",
+            accelerator_id=example_accelerator.id,
+            bandwidth_package_id=de_bandwidth_package.id)
+        example_listener = alicloud.ga.Listener("exampleListener",
+            accelerator_id=example_accelerator.id,
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=60,
+                to_port=70,
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[de_bandwidth_package_attachment]))
+        ```
+
+        ## Import
+
+        Ga Listener can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ga/listener:Listener example <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ListenerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ListenerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerator_id: Optional[pulumi.Input[str]] = None,
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
+                 client_affinity: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

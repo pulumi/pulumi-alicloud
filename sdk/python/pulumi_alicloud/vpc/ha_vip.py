@@ -5,13 +5,84 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['HAVip']
+__all__ = ['HAVipArgs', 'HAVip']
+
+@pulumi.input_type
+class HAVipArgs:
+    def __init__(__self__, *,
+                 vswitch_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 havip_name: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a HAVip resource.
+        :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
+        :param pulumi.Input[str] description: The description of the HaVip instance.
+        :param pulumi.Input[str] havip_name: The name of the HaVip instance.
+        :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+        """
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if havip_name is not None:
+            pulumi.set(__self__, "havip_name", havip_name)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        The vswitch_id of the HaVip, the field can't be changed.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the HaVip instance.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="havipName")
+    def havip_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the HaVip instance.
+        """
+        return pulumi.get(self, "havip_name")
+
+    @havip_name.setter
+    def havip_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "havip_name", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
 
 
 class HAVip(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -38,6 +109,43 @@ class HAVip(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: HAVipArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        The havip can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/hAVip:HAVip foo havip-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param HAVipArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(HAVipArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 havip_name: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

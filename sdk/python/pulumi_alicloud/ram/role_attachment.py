@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RoleAttachment']
+__all__ = ['RoleAttachmentArgs', 'RoleAttachment']
+
+@pulumi.input_type
+class RoleAttachmentArgs:
+    def __init__(__self__, *,
+                 instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 role_name: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a RoleAttachment resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
+        :param pulumi.Input[str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        """
+        pulumi.set(__self__, "instance_ids", instance_ids)
+        pulumi.set(__self__, "role_name", role_name)
+
+    @property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of ECS instance's IDs.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @instance_ids.setter
+    def instance_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "instance_ids", value)
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> pulumi.Input[str]:
+        """
+        The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "role_name")
+
+    @role_name.setter
+    def role_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_name", value)
 
 
 class RoleAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -96,6 +134,103 @@ class RoleAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RoleAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a RAM role attachment resource to bind role for several ECS instances.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "ecsInstanceVPCExample"
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        foo = alicloud.ecs.Instance("foo",
+            vswitch_id=default_switch.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            security_groups=[default_security_group.id],
+            instance_name=name)
+        role = alicloud.ram.Role("role",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "ecs.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+          
+        \"\"\",
+            description="this is a test",
+            force=True)
+        attach = alicloud.ram.RoleAttachment("attach",
+            role_name=role.name,
+            instance_ids=[__item.id for __item in [foo]])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RoleAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoleAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

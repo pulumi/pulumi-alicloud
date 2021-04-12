@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['NetworkAttachment']
+__all__ = ['NetworkAttachmentArgs', 'NetworkAttachment']
+
+@pulumi.input_type
+class NetworkAttachmentArgs:
+    def __init__(__self__, *,
+                 ccn_id: pulumi.Input[str],
+                 sag_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a NetworkAttachment resource.
+        :param pulumi.Input[str] ccn_id: The ID of the CCN instance.
+        :param pulumi.Input[str] sag_id: The ID of the Smart Access Gateway instance.
+        """
+        pulumi.set(__self__, "ccn_id", ccn_id)
+        pulumi.set(__self__, "sag_id", sag_id)
+
+    @property
+    @pulumi.getter(name="ccnId")
+    def ccn_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the CCN instance.
+        """
+        return pulumi.get(self, "ccn_id")
+
+    @ccn_id.setter
+    def ccn_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ccn_id", value)
+
+    @property
+    @pulumi.getter(name="sagId")
+    def sag_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Smart Access Gateway instance.
+        """
+        return pulumi.get(self, "sag_id")
+
+    @sag_id.setter
+    def sag_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sag_id", value)
 
 
 class NetworkAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -57,6 +95,64 @@ class NetworkAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] ccn_id: The ID of the CCN instance.
         :param pulumi.Input[str] sag_id: The ID of the Smart Access Gateway instance.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NetworkAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloud Connect Network Attachment resource. This topic describes how to associate a Smart Access Gateway (SAG) instance with a network instance. You must associate an SAG instance with a network instance if you want to connect the SAG to Alibaba Cloud. You can connect an SAG to Alibaba Cloud through a leased line, the Internet, or the active and standby links.
+
+        For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/doc-detail/124230.htm).
+
+        > **NOTE:** Available in 1.64.0+
+
+        > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        ccn = alicloud.cloudconnect.Network("ccn", is_default=True)
+        default = alicloud.cloudconnect.NetworkAttachment("default",
+            ccn_id=ccn.id,
+            sag_id="sag-xxxxx",
+            opts=pulumi.ResourceOptions(depends_on=[ccn]))
+        ```
+
+        ## Import
+
+        The Cloud Connect Network Attachment can be imported using the instance_id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cloudconnect/networkAttachment:NetworkAttachment example ccn-abc123456:sag-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NetworkAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ccn_id: Optional[pulumi.Input[str]] = None,
+                 sag_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,111 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Accelerator']
+__all__ = ['AcceleratorArgs', 'Accelerator']
+
+@pulumi.input_type
+class AcceleratorArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[int],
+                 spec: pulumi.Input[str],
+                 accelerator_name: Optional[pulumi.Input[str]] = None,
+                 auto_use_coupon: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Accelerator resource.
+        :param pulumi.Input[int] duration: The duration. The value range is 1-9.
+        :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
+               `1`: Small 1.
+               `2`: Small 2.
+               `3`: Small 3.
+               `5`: Medium 1.
+               `8`: Medium 2.
+               `10`: Medium 3.
+        :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
+        :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "spec", spec)
+        if accelerator_name is not None:
+            pulumi.set(__self__, "accelerator_name", accelerator_name)
+        if auto_use_coupon is not None:
+            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[int]:
+        """
+        The duration. The value range is 1-9.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> pulumi.Input[str]:
+        """
+        The instance type of the GA instance. Specification of global acceleration instance, value:
+        `1`: Small 1.
+        `2`: Small 2.
+        `3`: Small 3.
+        `5`: Medium 1.
+        `8`: Medium 2.
+        `10`: Medium 3.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: pulumi.Input[str]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter(name="acceleratorName")
+    def accelerator_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Name of the GA instance.
+        """
+        return pulumi.get(self, "accelerator_name")
+
+    @accelerator_name.setter
+    def accelerator_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_name", value)
+
+    @property
+    @pulumi.getter(name="autoUseCoupon")
+    def auto_use_coupon(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        """
+        return pulumi.get(self, "auto_use_coupon")
+
+    @auto_use_coupon.setter
+    def auto_use_coupon(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_use_coupon", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Descriptive information of the global acceleration instance.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 class Accelerator(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +164,64 @@ class Accelerator(pulumi.CustomResource):
                `8`: Medium 2.
                `10`: Medium 3.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AcceleratorArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Global Accelerator (GA) Accelerator resource.
+
+        For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://help.aliyun.com/document_detail/153235.html).
+
+        > **NOTE:** Available in v1.111.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ga.Accelerator("example",
+            auto_use_coupon=True,
+            duration=1,
+            spec="1")
+        ```
+
+        ## Import
+
+        Ga Accelerator can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ga/accelerator:Accelerator example <accelerator_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AcceleratorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AcceleratorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerator_name: Optional[pulumi.Input[str]] = None,
+                 auto_use_coupon: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[int]] = None,
+                 spec: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

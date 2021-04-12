@@ -5,13 +5,195 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['EcsSnapshot']
+__all__ = ['EcsSnapshotArgs', 'EcsSnapshot']
+
+@pulumi.input_type
+class EcsSnapshotArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[str],
+                 category: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 instant_access: Optional[pulumi.Input[bool]] = None,
+                 instant_access_retention_days: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
+                 snapshot_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a EcsSnapshot resource.
+        :param pulumi.Input[str] disk_id: The ID of the disk.
+        :param pulumi.Input[str] category: The category of the snapshot. Valid Values: `standard` and `flash`.
+        :param pulumi.Input[str] description: The description of the snapshot.
+        :param pulumi.Input[bool] force: Specifies whether to forcibly delete the snapshot that has been used to create disks.
+        :param pulumi.Input[bool] instant_access: Specifies whether to enable the instant access feature.
+        :param pulumi.Input[int] instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        :param pulumi.Input[str] resource_group_id: The resource group id.
+        :param pulumi.Input[int] retention_days: The retention period of the snapshot.
+        :param pulumi.Input[str] snapshot_name: The name of the snapshot.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot.
+        """
+        pulumi.set(__self__, "disk_id", disk_id)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if instant_access is not None:
+            pulumi.set(__self__, "instant_access", instant_access)
+        if instant_access_retention_days is not None:
+            pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+        if snapshot_name is not None:
+            pulumi.set(__self__, "snapshot_name", snapshot_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the disk.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk_id", value)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The category of the snapshot. Valid Values: `standard` and `flash`.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the snapshot.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to forcibly delete the snapshot that has been used to create disks.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="instantAccess")
+    def instant_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the instant access feature.
+        """
+        return pulumi.get(self, "instant_access")
+
+    @instant_access.setter
+    def instant_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "instant_access", value)
+
+    @property
+    @pulumi.getter(name="instantAccessRetentionDays")
+    def instant_access_retention_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        """
+        return pulumi.get(self, "instant_access_retention_days")
+
+    @instant_access_retention_days.setter
+    def instant_access_retention_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "instant_access_retention_days", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource group id.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        The retention period of the snapshot.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_days", value)
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @snapshot_name.setter
+    def snapshot_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the snapshot.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class EcsSnapshot(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -77,6 +259,76 @@ class EcsSnapshot(pulumi.CustomResource):
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: EcsSnapshotArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a ECS Snapshot resource.
+
+        For information about ECS Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/25524.htm).
+
+        > **NOTE:** Available in v1.120.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.EcsSnapshot("default",
+            category="standard",
+            description="Test For Terraform",
+            disk_id="d-gw8csgxxxxxxxxx",
+            retention_days=20,
+            snapshot_name="tf-test",
+            tags={
+                "Created": "TF",
+                "For": "Acceptance-test",
+            })
+        ```
+
+        ## Import
+
+        ECS Snapshot can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/ecsSnapshot:EcsSnapshot example <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param EcsSnapshotArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EcsSnapshotArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 category: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disk_id: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 instant_access: Optional[pulumi.Input[bool]] = None,
+                 instant_access_retention_days: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 retention_days: Optional[pulumi.Input[int]] = None,
+                 snapshot_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

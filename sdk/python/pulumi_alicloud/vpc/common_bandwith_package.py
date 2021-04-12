@@ -5,13 +5,179 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['CommonBandwithPackage']
+__all__ = ['CommonBandwithPackageArgs', 'CommonBandwithPackage']
+
+@pulumi.input_type
+class CommonBandwithPackageArgs:
+    def __init__(__self__, *,
+                 bandwidth: pulumi.Input[str],
+                 bandwidth_package_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 isp: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ratio: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a CommonBandwithPackage resource.
+        :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
+        :param pulumi.Input[str] bandwidth_package_name: The name of the common bandwidth package.
+        :param pulumi.Input[str] description: The description of the common bandwidth package instance.
+        :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        :param pulumi.Input[str] isp: The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
+        :param pulumi.Input[int] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the common bandwidth package belongs.
+        :param pulumi.Input[str] zone: The zone of bandwidth package.
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        if bandwidth_package_name is not None:
+            pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if internet_charge_type is not None:
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if isp is not None:
+            pulumi.set(__self__, "isp", isp)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ratio is not None:
+            pulumi.set(__self__, "ratio", ratio)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Input[str]:
+        """
+        The bandwidth of the common bandwidth package, in Mbps.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="bandwidthPackageName")
+    def bandwidth_package_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the common bandwidth package.
+        """
+        return pulumi.get(self, "bandwidth_package_name")
+
+    @bandwidth_package_name.setter
+    def bandwidth_package_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth_package_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the common bandwidth package instance.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @internet_charge_type.setter
+    def internet_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_charge_type", value)
+
+    @property
+    @pulumi.getter
+    def isp(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
+        """
+        return pulumi.get(self, "isp")
+
+    @isp.setter
+    def isp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "isp", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def ratio(self) -> Optional[pulumi.Input[int]]:
+        """
+        Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
+        """
+        return pulumi.get(self, "ratio")
+
+    @ratio.setter
+    def ratio(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ratio", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the common bandwidth package belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone of bandwidth package.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class CommonBandwithPackage(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +215,49 @@ class CommonBandwithPackage(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the common bandwidth package belongs.
         :param pulumi.Input[str] zone: The zone of bandwidth package.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CommonBandwithPackageArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        The common bandwidth package can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage foo cbwp-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param CommonBandwithPackageArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CommonBandwithPackageArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
+                 bandwidth_package_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 isp: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ratio: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

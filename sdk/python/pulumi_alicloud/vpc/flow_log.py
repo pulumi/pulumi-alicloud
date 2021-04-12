@@ -5,13 +5,144 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['FlowLog']
+__all__ = ['FlowLogArgs', 'FlowLog']
+
+@pulumi.input_type
+class FlowLogArgs:
+    def __init__(__self__, *,
+                 log_store_name: pulumi.Input[str],
+                 project_name: pulumi.Input[str],
+                 resource_id: pulumi.Input[str],
+                 resource_type: pulumi.Input[str],
+                 traffic_type: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 flow_log_name: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a FlowLog resource.
+        :param pulumi.Input[str] log_store_name: The name of the logstore.
+        :param pulumi.Input[str] project_name: The name of the project.
+        :param pulumi.Input[str] resource_id: The ID of the resource.
+        :param pulumi.Input[str] resource_type: The type of the resource to capture traffic.
+        :param pulumi.Input[str] traffic_type: The type of traffic collected.
+        :param pulumi.Input[str] description: The Description of the VPC Flow Log.
+        :param pulumi.Input[str] flow_log_name: The Name of the VPC Flow Log.
+        :param pulumi.Input[str] status: The status of the VPC Flow Log.
+        """
+        pulumi.set(__self__, "log_store_name", log_store_name)
+        pulumi.set(__self__, "project_name", project_name)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "traffic_type", traffic_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if flow_log_name is not None:
+            pulumi.set(__self__, "flow_log_name", flow_log_name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="logStoreName")
+    def log_store_name(self) -> pulumi.Input[str]:
+        """
+        The name of the logstore.
+        """
+        return pulumi.get(self, "log_store_name")
+
+    @log_store_name.setter
+    def log_store_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "log_store_name", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> pulumi.Input[str]:
+        """
+        The name of the project.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[str]:
+        """
+        The type of the resource to capture traffic.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter(name="trafficType")
+    def traffic_type(self) -> pulumi.Input[str]:
+        """
+        The type of traffic collected.
+        """
+        return pulumi.get(self, "traffic_type")
+
+    @traffic_type.setter
+    def traffic_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "traffic_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Description of the VPC Flow Log.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="flowLogName")
+    def flow_log_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Name of the VPC Flow Log.
+        """
+        return pulumi.get(self, "flow_log_name")
+
+    @flow_log_name.setter
+    def flow_log_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flow_log_name", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the VPC Flow Log.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class FlowLog(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -84,6 +215,85 @@ class FlowLog(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the VPC Flow Log.
         :param pulumi.Input[str] traffic_type: The type of traffic collected.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FlowLogArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a VPC Flow Log resource.
+
+        For information about VPC Flow log and how to use it, see [Flow log overview](https://www.alibabacloud.com/help/doc-detail/127150.htm).
+
+        > **NOTE:** Available in v1.117.0+
+
+        > **NOTE:** While it uses `vpc.FlowLog` to build a vpc flow log resource, it will be active by default.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terratest_vpc_flow_log"
+        log_store_name = config.get("logStoreName")
+        if log_store_name is None:
+            log_store_name = "vpc-flow-log-for-vpc"
+        project_name = config.get("projectName")
+        if project_name is None:
+            project_name = "vpc-flow-log-for-vpc"
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="192.168.0.0/24")
+        default_flow_log = alicloud.vpc.FlowLog("defaultFlowLog",
+            resource_id=default_network.id,
+            resource_type="VPC",
+            traffic_type="All",
+            log_store_name=log_store_name,
+            project_name=project_name,
+            flow_log_name=name,
+            status="Active",
+            opts=pulumi.ResourceOptions(depends_on=["alicloud_vpc.default"]))
+        ```
+
+        ## Import
+
+        VPC Flow Log can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/flowLog:FlowLog example fl-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FlowLogArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FlowLogArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 flow_log_name: Optional[pulumi.Input[str]] = None,
+                 log_store_name: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 traffic_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

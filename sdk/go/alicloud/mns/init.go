@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:mns/queue:Queue":
-		r, err = NewQueue(ctx, name, nil, pulumi.URN_(urn))
+		r = &Queue{}
 	case "alicloud:mns/topic:Topic":
-		r, err = NewTopic(ctx, name, nil, pulumi.URN_(urn))
+		r = &Topic{}
 	case "alicloud:mns/topicSubscription:TopicSubscription":
-		r, err = NewTopicSubscription(ctx, name, nil, pulumi.URN_(urn))
+		r = &TopicSubscription{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -22,33 +22,34 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:cs/application:Application":
-		r, err = NewApplication(ctx, name, nil, pulumi.URN_(urn))
+		r = &Application{}
 	case "alicloud:cs/cluster:Cluster":
-		r, err = NewCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &Cluster{}
 	case "alicloud:cs/edgeKubernetes:EdgeKubernetes":
-		r, err = NewEdgeKubernetes(ctx, name, nil, pulumi.URN_(urn))
+		r = &EdgeKubernetes{}
 	case "alicloud:cs/kubernetes:Kubernetes":
-		r, err = NewKubernetes(ctx, name, nil, pulumi.URN_(urn))
+		r = &Kubernetes{}
 	case "alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler":
-		r, err = NewKubernetesAutoscaler(ctx, name, nil, pulumi.URN_(urn))
+		r = &KubernetesAutoscaler{}
 	case "alicloud:cs/managedKubernetes:ManagedKubernetes":
-		r, err = NewManagedKubernetes(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagedKubernetes{}
 	case "alicloud:cs/nodePool:NodePool":
-		r, err = NewNodePool(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodePool{}
 	case "alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace":
-		r, err = NewRegistryEnterpriseNamespace(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegistryEnterpriseNamespace{}
 	case "alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo":
-		r, err = NewRegistryEnterpriseRepo(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegistryEnterpriseRepo{}
 	case "alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule":
-		r, err = NewRegistryEnterpriseSyncRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegistryEnterpriseSyncRule{}
 	case "alicloud:cs/serverlessKubernetes:ServerlessKubernetes":
-		r, err = NewServerlessKubernetes(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServerlessKubernetes{}
 	case "alicloud:cs/swarm:Swarm":
-		r, err = NewSwarm(ctx, name, nil, pulumi.URN_(urn))
+		r = &Swarm{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

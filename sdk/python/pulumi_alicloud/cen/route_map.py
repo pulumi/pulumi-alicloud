@@ -5,13 +5,448 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RouteMap']
+__all__ = ['RouteMapArgs', 'RouteMap']
+
+@pulumi.input_type
+class RouteMapArgs:
+    def __init__(__self__, *,
+                 cen_id: pulumi.Input[str],
+                 cen_region_id: pulumi.Input[str],
+                 map_result: pulumi.Input[str],
+                 priority: pulumi.Input[int],
+                 transmit_direction: pulumi.Input[str],
+                 as_path_match_mode: Optional[pulumi.Input[str]] = None,
+                 cidr_match_mode: Optional[pulumi.Input[str]] = None,
+                 community_match_mode: Optional[pulumi.Input[str]] = None,
+                 community_operate_mode: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 destination_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destination_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destination_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destination_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
+                 destination_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 match_asns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 match_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 next_priority: Optional[pulumi.Input[int]] = None,
+                 operate_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 preference: Optional[pulumi.Input[int]] = None,
+                 prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 route_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
+                 source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a RouteMap resource.
+        :param pulumi.Input[str] cen_id: The ID of the CEN instance.
+        :param pulumi.Input[str] cen_region_id: The ID of the region to which the CEN instance belongs.
+        :param pulumi.Input[str] map_result: The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
+        :param pulumi.Input[int] priority: The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
+        :param pulumi.Input[str] transmit_direction: The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
+        :param pulumi.Input[str] as_path_match_mode: A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
+        :param pulumi.Input[str] cidr_match_mode: A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
+        :param pulumi.Input[str] community_match_mode: A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
+        :param pulumi.Input[str] community_operate_mode: An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
+        :param pulumi.Input[str] description: The description of the route map.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_child_instance_types: A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_cidr_blocks: A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_instance_ids: A match statement that indicates the list of IDs of the destination instances.
+        :param pulumi.Input[bool] destination_instance_ids_reverse_match: Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_route_table_ids: A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] match_asns: A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] match_community_sets: A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        :param pulumi.Input[int] next_priority: The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] operate_community_sets: An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        :param pulumi.Input[int] preference: An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] prepend_as_paths: An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_types: A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_child_instance_types: A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_instance_ids: A match statement that indicates the list of IDs of the source instances.
+        :param pulumi.Input[bool] source_instance_ids_reverse_match: Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_region_ids: A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_route_table_ids: A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
+        """
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cen_region_id", cen_region_id)
+        pulumi.set(__self__, "map_result", map_result)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "transmit_direction", transmit_direction)
+        if as_path_match_mode is not None:
+            pulumi.set(__self__, "as_path_match_mode", as_path_match_mode)
+        if cidr_match_mode is not None:
+            pulumi.set(__self__, "cidr_match_mode", cidr_match_mode)
+        if community_match_mode is not None:
+            pulumi.set(__self__, "community_match_mode", community_match_mode)
+        if community_operate_mode is not None:
+            pulumi.set(__self__, "community_operate_mode", community_operate_mode)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if destination_child_instance_types is not None:
+            pulumi.set(__self__, "destination_child_instance_types", destination_child_instance_types)
+        if destination_cidr_blocks is not None:
+            pulumi.set(__self__, "destination_cidr_blocks", destination_cidr_blocks)
+        if destination_instance_ids is not None:
+            pulumi.set(__self__, "destination_instance_ids", destination_instance_ids)
+        if destination_instance_ids_reverse_match is not None:
+            pulumi.set(__self__, "destination_instance_ids_reverse_match", destination_instance_ids_reverse_match)
+        if destination_route_table_ids is not None:
+            pulumi.set(__self__, "destination_route_table_ids", destination_route_table_ids)
+        if match_asns is not None:
+            pulumi.set(__self__, "match_asns", match_asns)
+        if match_community_sets is not None:
+            pulumi.set(__self__, "match_community_sets", match_community_sets)
+        if next_priority is not None:
+            pulumi.set(__self__, "next_priority", next_priority)
+        if operate_community_sets is not None:
+            pulumi.set(__self__, "operate_community_sets", operate_community_sets)
+        if preference is not None:
+            pulumi.set(__self__, "preference", preference)
+        if prepend_as_paths is not None:
+            pulumi.set(__self__, "prepend_as_paths", prepend_as_paths)
+        if route_types is not None:
+            pulumi.set(__self__, "route_types", route_types)
+        if source_child_instance_types is not None:
+            pulumi.set(__self__, "source_child_instance_types", source_child_instance_types)
+        if source_instance_ids is not None:
+            pulumi.set(__self__, "source_instance_ids", source_instance_ids)
+        if source_instance_ids_reverse_match is not None:
+            pulumi.set(__self__, "source_instance_ids_reverse_match", source_instance_ids_reverse_match)
+        if source_region_ids is not None:
+            pulumi.set(__self__, "source_region_ids", source_region_ids)
+        if source_route_table_ids is not None:
+            pulumi.set(__self__, "source_route_table_ids", source_route_table_ids)
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the CEN instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @cen_id.setter
+    def cen_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cen_id", value)
+
+    @property
+    @pulumi.getter(name="cenRegionId")
+    def cen_region_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the region to which the CEN instance belongs.
+        """
+        return pulumi.get(self, "cen_region_id")
+
+    @cen_region_id.setter
+    def cen_region_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cen_region_id", value)
+
+    @property
+    @pulumi.getter(name="mapResult")
+    def map_result(self) -> pulumi.Input[str]:
+        """
+        The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
+        """
+        return pulumi.get(self, "map_result")
+
+    @map_result.setter
+    def map_result(self, value: pulumi.Input[str]):
+        pulumi.set(self, "map_result", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[int]:
+        """
+        The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[int]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="transmitDirection")
+    def transmit_direction(self) -> pulumi.Input[str]:
+        """
+        The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
+        """
+        return pulumi.get(self, "transmit_direction")
+
+    @transmit_direction.setter
+    def transmit_direction(self, value: pulumi.Input[str]):
+        pulumi.set(self, "transmit_direction", value)
+
+    @property
+    @pulumi.getter(name="asPathMatchMode")
+    def as_path_match_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
+        """
+        return pulumi.get(self, "as_path_match_mode")
+
+    @as_path_match_mode.setter
+    def as_path_match_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "as_path_match_mode", value)
+
+    @property
+    @pulumi.getter(name="cidrMatchMode")
+    def cidr_match_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
+        """
+        return pulumi.get(self, "cidr_match_mode")
+
+    @cidr_match_mode.setter
+    def cidr_match_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_match_mode", value)
+
+    @property
+    @pulumi.getter(name="communityMatchMode")
+    def community_match_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
+        """
+        return pulumi.get(self, "community_match_mode")
+
+    @community_match_mode.setter
+    def community_match_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "community_match_mode", value)
+
+    @property
+    @pulumi.getter(name="communityOperateMode")
+    def community_operate_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
+        """
+        return pulumi.get(self, "community_operate_mode")
+
+    @community_operate_mode.setter
+    def community_operate_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "community_operate_mode", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the route map.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="destinationChildInstanceTypes")
+    def destination_child_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        """
+        return pulumi.get(self, "destination_child_instance_types")
+
+    @destination_child_instance_types.setter
+    def destination_child_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "destination_child_instance_types", value)
+
+    @property
+    @pulumi.getter(name="destinationCidrBlocks")
+    def destination_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
+        """
+        return pulumi.get(self, "destination_cidr_blocks")
+
+    @destination_cidr_blocks.setter
+    def destination_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "destination_cidr_blocks", value)
+
+    @property
+    @pulumi.getter(name="destinationInstanceIds")
+    def destination_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the list of IDs of the destination instances.
+        """
+        return pulumi.get(self, "destination_instance_ids")
+
+    @destination_instance_ids.setter
+    def destination_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "destination_instance_ids", value)
+
+    @property
+    @pulumi.getter(name="destinationInstanceIdsReverseMatch")
+    def destination_instance_ids_reverse_match(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
+        """
+        return pulumi.get(self, "destination_instance_ids_reverse_match")
+
+    @destination_instance_ids_reverse_match.setter
+    def destination_instance_ids_reverse_match(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "destination_instance_ids_reverse_match", value)
+
+    @property
+    @pulumi.getter(name="destinationRouteTableIds")
+    def destination_route_table_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
+        """
+        return pulumi.get(self, "destination_route_table_ids")
+
+    @destination_route_table_ids.setter
+    def destination_route_table_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "destination_route_table_ids", value)
+
+    @property
+    @pulumi.getter(name="matchAsns")
+    def match_asns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
+        """
+        return pulumi.get(self, "match_asns")
+
+    @match_asns.setter
+    def match_asns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "match_asns", value)
+
+    @property
+    @pulumi.getter(name="matchCommunitySets")
+    def match_community_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        """
+        return pulumi.get(self, "match_community_sets")
+
+    @match_community_sets.setter
+    def match_community_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "match_community_sets", value)
+
+    @property
+    @pulumi.getter(name="nextPriority")
+    def next_priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
+        """
+        return pulumi.get(self, "next_priority")
+
+    @next_priority.setter
+    def next_priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "next_priority", value)
+
+    @property
+    @pulumi.getter(name="operateCommunitySets")
+    def operate_community_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+        """
+        return pulumi.get(self, "operate_community_sets")
+
+    @operate_community_sets.setter
+    def operate_community_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "operate_community_sets", value)
+
+    @property
+    @pulumi.getter
+    def preference(self) -> Optional[pulumi.Input[int]]:
+        """
+        An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
+        """
+        return pulumi.get(self, "preference")
+
+    @preference.setter
+    def preference(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "preference", value)
+
+    @property
+    @pulumi.getter(name="prependAsPaths")
+    def prepend_as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
+        """
+        return pulumi.get(self, "prepend_as_paths")
+
+    @prepend_as_paths.setter
+    def prepend_as_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "prepend_as_paths", value)
+
+    @property
+    @pulumi.getter(name="routeTypes")
+    def route_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
+        """
+        return pulumi.get(self, "route_types")
+
+    @route_types.setter
+    def route_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "route_types", value)
+
+    @property
+    @pulumi.getter(name="sourceChildInstanceTypes")
+    def source_child_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
+        """
+        return pulumi.get(self, "source_child_instance_types")
+
+    @source_child_instance_types.setter
+    def source_child_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_child_instance_types", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceIds")
+    def source_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the list of IDs of the source instances.
+        """
+        return pulumi.get(self, "source_instance_ids")
+
+    @source_instance_ids.setter
+    def source_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_instance_ids", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceIdsReverseMatch")
+    def source_instance_ids_reverse_match(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
+        """
+        return pulumi.get(self, "source_instance_ids_reverse_match")
+
+    @source_instance_ids_reverse_match.setter
+    def source_instance_ids_reverse_match(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "source_instance_ids_reverse_match", value)
+
+    @property
+    @pulumi.getter(name="sourceRegionIds")
+    def source_region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
+        """
+        return pulumi.get(self, "source_region_ids")
+
+    @source_region_ids.setter
+    def source_region_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_region_ids", value)
+
+    @property
+    @pulumi.getter(name="sourceRouteTableIds")
+    def source_route_table_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
+        """
+        return pulumi.get(self, "source_route_table_ids")
+
+    @source_route_table_ids.setter
+    def source_route_table_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_route_table_ids", value)
 
 
 class RouteMap(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -153,6 +588,135 @@ class RouteMap(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_route_table_ids: A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
         :param pulumi.Input[str] transmit_direction: The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RouteMapArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This topic provides an overview of the route map function of Cloud Enterprise Networks (CENs).
+        You can use the route map function to filter routes and modify route attributes.
+        By doing so, you can manage the communication between networks attached to a CEN.
+
+        For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
+
+        > **NOTE:** Available in 1.82.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_pulumi as pulumi
+
+        # Create a cen Route map resource and use it.
+        default_instance = alicloud.cen.Instance("defaultInstance")
+        vpc00_region = pulumi.providers.Alicloud("vpc00Region", region="cn-hangzhou")
+        vpc01_region = pulumi.providers.Alicloud("vpc01Region", region="cn-shanghai")
+        vpc00 = alicloud.vpc.Network("vpc00", cidr_block="172.16.0.0/12",
+        opts=pulumi.ResourceOptions(provider=alicloud["vpc00_region"]))
+        vpc01 = alicloud.vpc.Network("vpc01", cidr_block="172.16.0.0/12",
+        opts=pulumi.ResourceOptions(provider=alicloud["vpc01_region"]))
+        default00 = alicloud.cen.InstanceAttachment("default00",
+            instance_id=default_instance.id,
+            child_instance_id=vpc00.id,
+            child_instance_type="VPC",
+            child_instance_region_id="cn-hangzhou")
+        default01 = alicloud.cen.InstanceAttachment("default01",
+            instance_id=default_instance.id,
+            child_instance_id=vpc01.id,
+            child_instance_type="VPC",
+            child_instance_region_id="cn-shanghai")
+        default_route_map = alicloud.cen.RouteMap("defaultRouteMap",
+            cen_region_id="cn-hangzhou",
+            cen_id=alicloud_cen_instance["cen"]["id"],
+            description="test-desc",
+            priority=1,
+            transmit_direction="RegionIn",
+            map_result="Permit",
+            next_priority=1,
+            source_region_ids=["cn-hangzhou"],
+            source_instance_ids=[vpc00.id],
+            source_instance_ids_reverse_match=False,
+            destination_instance_ids=[vpc01.id],
+            destination_instance_ids_reverse_match=False,
+            source_route_table_ids=[vpc00.route_table_id],
+            destination_route_table_ids=[vpc01.route_table_id],
+            source_child_instance_types=["VPC"],
+            destination_child_instance_types=["VPC"],
+            destination_cidr_blocks=[vpc01.cidr_block],
+            cidr_match_mode="Include",
+            route_types=["System"],
+            match_asns=["65501"],
+            as_path_match_mode="Include",
+            match_community_sets=["65501:1"],
+            community_match_mode="Include",
+            community_operate_mode="Additive",
+            operate_community_sets=["65501:1"],
+            preference=20,
+            prepend_as_paths=["65501"],
+            opts=pulumi.ResourceOptions(depends_on=[
+                    default00,
+                    default01,
+                ]))
+        ```
+
+        ## Import
+
+        CEN RouteMap can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RouteMapArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RouteMapArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 as_path_match_mode: Optional[pulumi.Input[str]] = None,
+                 cen_id: Optional[pulumi.Input[str]] = None,
+                 cen_region_id: Optional[pulumi.Input[str]] = None,
+                 cidr_match_mode: Optional[pulumi.Input[str]] = None,
+                 community_match_mode: Optional[pulumi.Input[str]] = None,
+                 community_operate_mode: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 destination_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destination_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destination_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 destination_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
+                 destination_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 map_result: Optional[pulumi.Input[str]] = None,
+                 match_asns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 match_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 next_priority: Optional[pulumi.Input[int]] = None,
+                 operate_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 preference: Optional[pulumi.Input[int]] = None,
+                 prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 route_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
+                 source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 transmit_direction: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -22,61 +22,62 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup":
-		r, err = NewAutoProvisioningGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &AutoProvisioningGroup{}
 	case "alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy":
-		r, err = NewAutoSnapshotPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AutoSnapshotPolicy{}
 	case "alicloud:ecs/command:Command":
-		r, err = NewCommand(ctx, name, nil, pulumi.URN_(urn))
+		r = &Command{}
 	case "alicloud:ecs/copyImage:CopyImage":
-		r, err = NewCopyImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &CopyImage{}
 	case "alicloud:ecs/dedicatedHost:DedicatedHost":
-		r, err = NewDedicatedHost(ctx, name, nil, pulumi.URN_(urn))
+		r = &DedicatedHost{}
 	case "alicloud:ecs/disk:Disk":
-		r, err = NewDisk(ctx, name, nil, pulumi.URN_(urn))
+		r = &Disk{}
 	case "alicloud:ecs/diskAttachment:DiskAttachment":
-		r, err = NewDiskAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &DiskAttachment{}
 	case "alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate":
-		r, err = NewEcsLaunchTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &EcsLaunchTemplate{}
 	case "alicloud:ecs/ecsSnapshot:EcsSnapshot":
-		r, err = NewEcsSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &EcsSnapshot{}
 	case "alicloud:ecs/eip:Eip":
-		r, err = NewEip(ctx, name, nil, pulumi.URN_(urn))
+		r = &Eip{}
 	case "alicloud:ecs/eipAssociation:EipAssociation":
-		r, err = NewEipAssociation(ctx, name, nil, pulumi.URN_(urn))
+		r = &EipAssociation{}
 	case "alicloud:ecs/hpcCluster:HpcCluster":
-		r, err = NewHpcCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &HpcCluster{}
 	case "alicloud:ecs/image:Image":
-		r, err = NewImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &Image{}
 	case "alicloud:ecs/imageCopy:ImageCopy":
-		r, err = NewImageCopy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageCopy{}
 	case "alicloud:ecs/imageExport:ImageExport":
-		r, err = NewImageExport(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageExport{}
 	case "alicloud:ecs/imageImport:ImageImport":
-		r, err = NewImageImport(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageImport{}
 	case "alicloud:ecs/imageSharePermission:ImageSharePermission":
-		r, err = NewImageSharePermission(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageSharePermission{}
 	case "alicloud:ecs/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "alicloud:ecs/keyPair:KeyPair":
-		r, err = NewKeyPair(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyPair{}
 	case "alicloud:ecs/keyPairAttachment:KeyPairAttachment":
-		r, err = NewKeyPairAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyPairAttachment{}
 	case "alicloud:ecs/launchTemplate:LaunchTemplate":
-		r, err = NewLaunchTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &LaunchTemplate{}
 	case "alicloud:ecs/reservedInstance:ReservedInstance":
-		r, err = NewReservedInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReservedInstance{}
 	case "alicloud:ecs/securityGroup:SecurityGroup":
-		r, err = NewSecurityGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecurityGroup{}
 	case "alicloud:ecs/securityGroupRule:SecurityGroupRule":
-		r, err = NewSecurityGroupRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecurityGroupRule{}
 	case "alicloud:ecs/snapshot:Snapshot":
-		r, err = NewSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &Snapshot{}
 	case "alicloud:ecs/snapshotPolicy:SnapshotPolicy":
-		r, err = NewSnapshotPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SnapshotPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

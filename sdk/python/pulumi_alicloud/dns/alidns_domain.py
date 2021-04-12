@@ -5,13 +5,120 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['AlidnsDomain']
+__all__ = ['AlidnsDomainArgs', 'AlidnsDomain']
+
+@pulumi.input_type
+class AlidnsDomainArgs:
+    def __init__(__self__, *,
+                 domain_name: pulumi.Input[str],
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
+                 remark: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a AlidnsDomain resource.
+        :param pulumi.Input[str] domain_name: Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        :param pulumi.Input[str] group_id: Id of the group in which the domain will add. If not supplied, then use default group.
+        :param pulumi.Input[str] lang: User language.
+        :param pulumi.Input[str] remark: Remarks information for your domain name.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the dns domain belongs.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        pulumi.set(__self__, "domain_name", domain_name)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
+        if remark is not None:
+            pulumi.set(__self__, "remark", remark)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Input[str]:
+        """
+        Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Id of the group in which the domain will add. If not supplied, then use default group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def lang(self) -> Optional[pulumi.Input[str]]:
+        """
+        User language.
+        """
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lang", value)
+
+    @property
+    @pulumi.getter
+    def remark(self) -> Optional[pulumi.Input[str]]:
+        """
+        Remarks information for your domain name.
+        """
+        return pulumi.get(self, "remark")
+
+    @remark.setter
+    def remark(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "remark", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the dns domain belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class AlidnsDomain(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +173,67 @@ class AlidnsDomain(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AlidnsDomainArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Alidns domain resource.
+
+        > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+
+        > **NOTE:** Available in v1.95.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Domain.
+        dns = alicloud.dns.AlidnsDomain("dns",
+            domain_name="starmove.com",
+            group_id="85ab8713-4a30-4de4-9d20-155ff830****",
+            tags={
+                "Created": "Terraform",
+                "Environment": "test",
+            })
+        ```
+
+        ## Import
+
+        Alidns domain can be imported using the id or domain name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:dns/alidnsDomain:AlidnsDomain example aliyun.com
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AlidnsDomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AlidnsDomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
+                 remark: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['BandwidthPackageAttachment']
+__all__ = ['BandwidthPackageAttachmentArgs', 'BandwidthPackageAttachment']
+
+@pulumi.input_type
+class BandwidthPackageAttachmentArgs:
+    def __init__(__self__, *,
+                 bandwidth_package_id: pulumi.Input[str],
+                 instance_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a BandwidthPackageAttachment resource.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth package.
+        :param pulumi.Input[str] instance_id: The ID of the CEN.
+        """
+        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter(name="bandwidthPackageId")
+    def bandwidth_package_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the bandwidth package.
+        """
+        return pulumi.get(self, "bandwidth_package_id")
+
+    @bandwidth_package_id.setter
+    def bandwidth_package_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bandwidth_package_id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the CEN.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
 
 
 class BandwidthPackageAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -57,6 +95,64 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth package.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BandwidthPackageAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new bandwidth package attachment and use it to attach a bandwidth package to a new CEN
+        cen = alicloud.cen.Instance("cen", description="tf-testAccCenBandwidthPackageAttachmentDescription")
+        bwp = alicloud.cen.BandwidthPackage("bwp",
+            bandwidth=20,
+            geographic_region_ids=[
+                "China",
+                "Asia-Pacific",
+            ])
+        foo = alicloud.cen.BandwidthPackageAttachment("foo",
+            instance_id=cen.id,
+            bandwidth_package_id=bwp.id)
+        ```
+
+        ## Import
+
+        CEN bandwidth package attachment resource can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment example bwp-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BandwidthPackageAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BandwidthPackageAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

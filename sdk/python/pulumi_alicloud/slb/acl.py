@@ -5,15 +5,103 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Acl']
+__all__ = ['AclArgs', 'Acl']
+
+@pulumi.input_type
+class AclArgs:
+    def __init__(__self__, *,
+                 entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AclEntryListArgs']]]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a Acl resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AclEntryListArgs']]] entry_lists: A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
+        :param pulumi.Input[str] ip_version: The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
+        :param pulumi.Input[str] name: Name of the access control list.
+        :param pulumi.Input[str] resource_group_id: Resource group ID.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        """
+        if entry_lists is not None:
+            pulumi.set(__self__, "entry_lists", entry_lists)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="entryLists")
+    def entry_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclEntryListArgs']]]]:
+        """
+        A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
+        """
+        return pulumi.get(self, "entry_lists")
+
+    @entry_lists.setter
+    def entry_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclEntryListArgs']]]]):
+        pulumi.set(self, "entry_lists", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the access control list.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Acl(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -99,6 +187,101 @@ class Acl(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[AclArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        An access control list contains multiple IP addresses or CIDR blocks.
+        The access control list can help you to define multiple instance listening dimension,
+        and to meet the multiple usage for single access control list.
+
+        Server Load Balancer allows you to configure access control for listeners.
+        You can configure different whitelists or blacklists for different listeners.
+
+        You can configure access control
+        when you create a listener or change access control configuration after a listener is created.
+
+        > **NOTE:** One access control list can be attached to many Listeners in different load balancer as whitelists or blacklists.
+
+        > **NOTE:** The maximum number of access control lists per region  is 50.
+
+        > **NOTE:** The maximum number of IP addresses added each time is 50.
+
+        > **NOTE:** The maximum number of entries per access control list is 300.
+
+        > **NOTE:** The maximum number of listeners that an access control list can be added to is 50.
+
+        For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
+
+        For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/85978.htm).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraformslbaclconfig"
+        ip_version = config.get("ipVersion")
+        if ip_version is None:
+            ip_version = "ipv4"
+        default = alicloud.slb.Acl("default",
+            ip_version=ip_version,
+            entry_lists=[
+                alicloud.slb.AclEntryListArgs(
+                    entry="10.10.10.0/24",
+                    comment="first",
+                ),
+                alicloud.slb.AclEntryListArgs(
+                    entry="168.10.10.0/24",
+                    comment="second",
+                ),
+            ])
+        ```
+        ## Entry Block
+
+        The entry mapping supports the following:
+
+        * `entry` - (Required) An IP addresses or CIDR blocks.
+        * `comment` - (Optional) the comment of the entry.
+
+        ## Import
+
+        Server Load balancer access control list can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/acl:Acl example acl-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AclArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AclArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

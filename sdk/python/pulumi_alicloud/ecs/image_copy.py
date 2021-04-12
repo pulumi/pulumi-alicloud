@@ -5,13 +5,166 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ImageCopy']
+__all__ = ['ImageCopyArgs', 'ImageCopy']
+
+@pulumi.input_type
+class ImageCopyArgs:
+    def __init__(__self__, *,
+                 source_image_id: pulumi.Input[str],
+                 source_region_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a ImageCopy resource.
+        :param pulumi.Input[str] source_image_id: The source image ID.
+        :param pulumi.Input[str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+        :param pulumi.Input[str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+        :param pulumi.Input[bool] encrypted: Indicates whether to encrypt the image.
+        :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
+               - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+               - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+        :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+        :param pulumi.Input[str] kms_key_id: Key ID used to encrypt the image.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
+        """
+        pulumi.set(__self__, "source_image_id", source_image_id)
+        pulumi.set(__self__, "source_region_id", source_region_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if name is not None:
+            warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> pulumi.Input[str]:
+        """
+        The source image ID.
+        """
+        return pulumi.get(self, "source_image_id")
+
+    @source_image_id.setter
+    def source_image_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_image_id", value)
+
+    @property
+    @pulumi.getter(name="sourceRegionId")
+    def source_region_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+        """
+        return pulumi.get(self, "source_region_id")
+
+    @source_region_id.setter
+    def source_region_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_region_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to encrypt the image.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to force delete the custom image, Default is `false`. 
+        - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+        - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+        """
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key ID used to encrypt the image.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tag value of an image. The value of N ranges from 1 to 20.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ImageCopy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -80,6 +233,79 @@ class ImageCopy(pulumi.CustomResource):
         :param pulumi.Input[str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ImageCopyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).
+
+        > **NOTE:** You can only copy the custom image when it is in the Available state.
+
+        > **NOTE:** You can only copy the image belonging to your Alibaba Cloud account. Images cannot be copied from one account to another.
+
+        > **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
+
+        > **NOTE:** Available in 1.66.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.ImageCopy("default",
+            description="test-image",
+            image_name="test-image",
+            source_image_id="m-bp1gxyhdswlsn18tu***",
+            source_region_id="cn-hangzhou",
+            tags={
+                "FinanceDept": "FinanceDeptJoshua",
+            })
+        ```
+        ## Attributes Reference0
+
+         The following attributes are exported:
+
+        * `id` - ID of the image.
+
+        ## Import
+
+        image can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/imageCopy:ImageCopy default m-uf66871ape***yg1q***
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ImageCopyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ImageCopyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 source_image_id: Optional[pulumi.Input[str]] = None,
+                 source_region_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

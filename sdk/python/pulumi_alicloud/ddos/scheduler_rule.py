@@ -5,15 +5,124 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SchedulerRule']
+__all__ = ['SchedulerRuleArgs', 'SchedulerRule']
+
+@pulumi.input_type
+class SchedulerRuleArgs:
+    def __init__(__self__, *,
+                 rule_name: pulumi.Input[str],
+                 rule_type: pulumi.Input[int],
+                 rules: pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]],
+                 param: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SchedulerRule resource.
+        :param pulumi.Input[str] rule_name: The name of the rule.
+        :param pulumi.Input[int] rule_type: The rule type. Valid values:
+               `2`: tiered protection.
+               `3`: globalization acceleration.
+               `6`: Cloud product interaction.
+        :param pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]] rules: The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
+               `Type`: String type, required, the address format of the linkage resource. Valid values:
+               `A`: IP address.
+               `CNAME`: Domain name.
+               `Value`: String type, required, link address of resource.
+               `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
+               `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
+               `1`: Anti-DDoS Pro.
+               `2`: (Tiered protection) cloud resource IP.
+               `3`: (sea acceleration) MCA IP address.
+               `6`: (Cloud product linkage) cloud resource IP.
+               `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
+        """
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "rule_type", rule_type)
+        pulumi.set(__self__, "rules", rules)
+        if param is not None:
+            pulumi.set(__self__, "param", param)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> pulumi.Input[str]:
+        """
+        The name of the rule.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @rule_name.setter
+    def rule_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule_name", value)
+
+    @property
+    @pulumi.getter(name="ruleType")
+    def rule_type(self) -> pulumi.Input[int]:
+        """
+        The rule type. Valid values:
+        `2`: tiered protection.
+        `3`: globalization acceleration.
+        `6`: Cloud product interaction.
+        """
+        return pulumi.get(self, "rule_type")
+
+    @rule_type.setter
+    def rule_type(self, value: pulumi.Input[int]):
+        pulumi.set(self, "rule_type", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]:
+        """
+        The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
+        `Type`: String type, required, the address format of the linkage resource. Valid values:
+        `A`: IP address.
+        `CNAME`: Domain name.
+        `Value`: String type, required, link address of resource.
+        `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
+        `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
+        `1`: Anti-DDoS Pro.
+        `2`: (Tiered protection) cloud resource IP.
+        `3`: (sea acceleration) MCA IP address.
+        `6`: (Cloud product linkage) cloud resource IP.
+        `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def param(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "param")
+
+    @param.setter
+    def param(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "param", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
 
 class SchedulerRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -88,6 +197,77 @@ class SchedulerRule(pulumi.CustomResource):
                `6`: (Cloud product linkage) cloud resource IP.
                `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SchedulerRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/doc-detail/157481.htm).
+
+        > **NOTE:** Available in 1.86.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ddos.SchedulerRule("example",
+            rule_name="tf-testacc7929727******",
+            rule_type=3,
+            rules=[
+                alicloud.ddos.SchedulerRuleRuleArgs(
+                    priority=100,
+                    region_id="cn-hangzhou",
+                    type="A",
+                    value="170.33.2.125",
+                    value_type=3,
+                ),
+                alicloud.ddos.SchedulerRuleRuleArgs(
+                    priority=50,
+                    region_id="cn-hangzhou",
+                    type="A",
+                    value="170.33.14.193",
+                    value_type=1,
+                ),
+            ])
+        ```
+
+        ## Import
+
+        DdosCoo Scheduler Rule can be imported using the id or the rule name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ddos/schedulerRule:SchedulerRule example fbb20dc77e8fc******
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SchedulerRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SchedulerRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 param: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None,
+                 rule_type: Optional[pulumi.Input[int]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

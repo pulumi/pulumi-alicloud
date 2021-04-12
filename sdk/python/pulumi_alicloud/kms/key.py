@@ -5,13 +5,203 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Key']
+__all__ = ['KeyArgs', 'Key']
+
+@pulumi.input_type
+class KeyArgs:
+    def __init__(__self__, *,
+                 automatic_rotation: Optional[pulumi.Input[str]] = None,
+                 deletion_window_in_days: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 key_spec: Optional[pulumi.Input[str]] = None,
+                 key_state: Optional[pulumi.Input[str]] = None,
+                 key_usage: Optional[pulumi.Input[str]] = None,
+                 origin: Optional[pulumi.Input[str]] = None,
+                 pending_window_in_days: Optional[pulumi.Input[int]] = None,
+                 protection_level: Optional[pulumi.Input[str]] = None,
+                 rotation_interval: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Key resource.
+        :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default:"Disabled".
+        :param pulumi.Input[int] deletion_window_in_days: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+        :param pulumi.Input[str] description: The description of the key as viewed in Alicloud console.
+        :param pulumi.Input[bool] is_enabled: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+        :param pulumi.Input[str] key_spec: The type of the CMK.
+        :param pulumi.Input[str] key_state: The status of CMK. Defaults to Enabled.
+        :param pulumi.Input[str] key_usage: Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
+        :param pulumi.Input[str] origin: The source of the key material for the CMK. Defaults to "Aliyun_KMS".
+        :param pulumi.Input[int] pending_window_in_days: Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+        :param pulumi.Input[str] protection_level: The protection level of the CMK. Defaults to "SOFTWARE".
+        :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. Unit: seconds.
+        """
+        if automatic_rotation is not None:
+            pulumi.set(__self__, "automatic_rotation", automatic_rotation)
+        if deletion_window_in_days is not None:
+            warnings.warn("""Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""", DeprecationWarning)
+            pulumi.log.warn("""deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""")
+        if deletion_window_in_days is not None:
+            pulumi.set(__self__, "deletion_window_in_days", deletion_window_in_days)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if is_enabled is not None:
+            warnings.warn("""Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""", DeprecationWarning)
+            pulumi.log.warn("""is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""")
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if key_spec is not None:
+            pulumi.set(__self__, "key_spec", key_spec)
+        if key_state is not None:
+            pulumi.set(__self__, "key_state", key_state)
+        if key_usage is not None:
+            pulumi.set(__self__, "key_usage", key_usage)
+        if origin is not None:
+            pulumi.set(__self__, "origin", origin)
+        if pending_window_in_days is not None:
+            pulumi.set(__self__, "pending_window_in_days", pending_window_in_days)
+        if protection_level is not None:
+            pulumi.set(__self__, "protection_level", protection_level)
+        if rotation_interval is not None:
+            pulumi.set(__self__, "rotation_interval", rotation_interval)
+
+    @property
+    @pulumi.getter(name="automaticRotation")
+    def automatic_rotation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable automatic key rotation. Default:"Disabled".
+        """
+        return pulumi.get(self, "automatic_rotation")
+
+    @automatic_rotation.setter
+    def automatic_rotation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "automatic_rotation", value)
+
+    @property
+    @pulumi.getter(name="deletionWindowInDays")
+    def deletion_window_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+        """
+        return pulumi.get(self, "deletion_window_in_days")
+
+    @deletion_window_in_days.setter
+    def deletion_window_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deletion_window_in_days", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the key as viewed in Alicloud console.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter(name="keySpec")
+    def key_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the CMK.
+        """
+        return pulumi.get(self, "key_spec")
+
+    @key_spec.setter
+    def key_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_spec", value)
+
+    @property
+    @pulumi.getter(name="keyState")
+    def key_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of CMK. Defaults to Enabled.
+        """
+        return pulumi.get(self, "key_state")
+
+    @key_state.setter
+    def key_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_state", value)
+
+    @property
+    @pulumi.getter(name="keyUsage")
+    def key_usage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
+        """
+        return pulumi.get(self, "key_usage")
+
+    @key_usage.setter
+    def key_usage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_usage", value)
+
+    @property
+    @pulumi.getter
+    def origin(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source of the key material for the CMK. Defaults to "Aliyun_KMS".
+        """
+        return pulumi.get(self, "origin")
+
+    @origin.setter
+    def origin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin", value)
+
+    @property
+    @pulumi.getter(name="pendingWindowInDays")
+    def pending_window_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+        """
+        return pulumi.get(self, "pending_window_in_days")
+
+    @pending_window_in_days.setter
+    def pending_window_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pending_window_in_days", value)
+
+    @property
+    @pulumi.getter(name="protectionLevel")
+    def protection_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protection level of the CMK. Defaults to "SOFTWARE".
+        """
+        return pulumi.get(self, "protection_level")
+
+    @protection_level.setter
+    def protection_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protection_level", value)
+
+    @property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The period of automatic key rotation. Unit: seconds.
+        """
+        return pulumi.get(self, "rotation_interval")
+
+    @rotation_interval.setter
+    def rotation_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rotation_interval", value)
 
 
 class Key(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -70,6 +260,68 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] protection_level: The protection level of the CMK. Defaults to "SOFTWARE".
         :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. Unit: seconds.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[KeyArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).
+
+        > **NOTE:** Available in v1.85.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        key = alicloud.kms.Key("key",
+            description="Hello KMS",
+            key_state="Enabled",
+            pending_window_in_days=7)
+        ```
+
+        ## Import
+
+        Alikms key can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:kms/key:Key example abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param KeyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 automatic_rotation: Optional[pulumi.Input[str]] = None,
+                 deletion_window_in_days: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 key_spec: Optional[pulumi.Input[str]] = None,
+                 key_state: Optional[pulumi.Input[str]] = None,
+                 key_usage: Optional[pulumi.Input[str]] = None,
+                 origin: Optional[pulumi.Input[str]] = None,
+                 pending_window_in_days: Optional[pulumi.Input[int]] = None,
+                 protection_level: Optional[pulumi.Input[str]] = None,
+                 rotation_interval: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

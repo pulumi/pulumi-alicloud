@@ -5,13 +5,98 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Flow']
+__all__ = ['FlowArgs', 'Flow']
+
+@pulumi.input_type
+class FlowArgs:
+    def __init__(__self__, *,
+                 definition: pulumi.Input[str],
+                 description: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Flow resource.
+        :param pulumi.Input[str] definition: The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
+        :param pulumi.Input[str] description: The description of the flow.
+        :param pulumi.Input[str] type: The type of the flow. Valid values are `FDL` or `DEFAULT`.
+        :param pulumi.Input[str] name: The name of the flow. The name must be unique in an Alibaba Cloud account.
+        :param pulumi.Input[str] role_arn: The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
+        """
+        pulumi.set(__self__, "definition", definition)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "type", type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+
+    @property
+    @pulumi.getter
+    def definition(self) -> pulumi.Input[str]:
+        """
+        The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
+        """
+        return pulumi.get(self, "definition")
+
+    @definition.setter
+    def definition(self, value: pulumi.Input[str]):
+        pulumi.set(self, "definition", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        The description of the flow.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the flow. Valid values are `FDL` or `DEFAULT`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the flow. The name must be unique in an Alibaba Cloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
 
 
 class Flow(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -81,6 +166,85 @@ class Flow(pulumi.CustomResource):
         :param pulumi.Input[str] role_arn: The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
         :param pulumi.Input[str] type: The type of the flow. Valid values are `FDL` or `DEFAULT`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FlowArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Serverless Workflow Flow resource.
+
+        For information about Serverless Workflow Flow and how to use it, see [What is Flow](https://www.alibabacloud.com/help/en/doc-detail/123079.htm).
+
+        > **NOTE:** Available in v1.105.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ram.Role("default", document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "fnf.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+        \"\"\")
+        example = alicloud.fnf.Flow("example",
+            definition=\"\"\"  version: v1beta1
+          type: flow
+          steps:
+            - type: pass
+              name: helloworld
+        \"\"\",
+            role_arn=default.arn,
+            description="Test for terraform fnf_flow.",
+            type="FDL")
+        ```
+
+        ## Import
+
+        Serverless Workflow Flow can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:fnf/flow:Flow example <name>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FlowArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FlowArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 definition: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

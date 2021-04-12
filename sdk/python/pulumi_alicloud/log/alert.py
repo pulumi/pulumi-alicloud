@@ -5,15 +5,220 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Alert']
+__all__ = ['AlertArgs', 'Alert']
+
+@pulumi.input_type
+class AlertArgs:
+    def __init__(__self__, *,
+                 alert_displayname: pulumi.Input[str],
+                 alert_name: pulumi.Input[str],
+                 condition: pulumi.Input[str],
+                 dashboard: pulumi.Input[str],
+                 notification_lists: pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]],
+                 project_name: pulumi.Input[str],
+                 query_lists: pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]],
+                 alert_description: Optional[pulumi.Input[str]] = None,
+                 mute_until: Optional[pulumi.Input[int]] = None,
+                 notify_threshold: Optional[pulumi.Input[int]] = None,
+                 schedule_interval: Optional[pulumi.Input[str]] = None,
+                 schedule_type: Optional[pulumi.Input[str]] = None,
+                 throttling: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Alert resource.
+        :param pulumi.Input[str] alert_displayname: Alert displayname.
+        :param pulumi.Input[str] alert_name: Name of logstore for configuring alarm service.
+        :param pulumi.Input[str] condition: Conditional expression, such as: count> 100.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list.
+        :param pulumi.Input[str] project_name: The project name.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]] query_lists: Multiple conditions for configured alarm query.
+        :param pulumi.Input[str] alert_description: Alert description.
+        :param pulumi.Input[int] mute_until: Timestamp, notifications before closing again.
+        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
+        :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
+        :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        """
+        pulumi.set(__self__, "alert_displayname", alert_displayname)
+        pulumi.set(__self__, "alert_name", alert_name)
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "dashboard", dashboard)
+        pulumi.set(__self__, "notification_lists", notification_lists)
+        pulumi.set(__self__, "project_name", project_name)
+        pulumi.set(__self__, "query_lists", query_lists)
+        if alert_description is not None:
+            pulumi.set(__self__, "alert_description", alert_description)
+        if mute_until is not None:
+            pulumi.set(__self__, "mute_until", mute_until)
+        if notify_threshold is not None:
+            pulumi.set(__self__, "notify_threshold", notify_threshold)
+        if schedule_interval is not None:
+            pulumi.set(__self__, "schedule_interval", schedule_interval)
+        if schedule_type is not None:
+            pulumi.set(__self__, "schedule_type", schedule_type)
+        if throttling is not None:
+            pulumi.set(__self__, "throttling", throttling)
+
+    @property
+    @pulumi.getter(name="alertDisplayname")
+    def alert_displayname(self) -> pulumi.Input[str]:
+        """
+        Alert displayname.
+        """
+        return pulumi.get(self, "alert_displayname")
+
+    @alert_displayname.setter
+    def alert_displayname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "alert_displayname", value)
+
+    @property
+    @pulumi.getter(name="alertName")
+    def alert_name(self) -> pulumi.Input[str]:
+        """
+        Name of logstore for configuring alarm service.
+        """
+        return pulumi.get(self, "alert_name")
+
+    @alert_name.setter
+    def alert_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "alert_name", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> pulumi.Input[str]:
+        """
+        Conditional expression, such as: count> 100.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: pulumi.Input[str]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def dashboard(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dashboard")
+
+    @dashboard.setter
+    def dashboard(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dashboard", value)
+
+    @property
+    @pulumi.getter(name="notificationLists")
+    def notification_lists(self) -> pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]:
+        """
+        Alarm information notification list.
+        """
+        return pulumi.get(self, "notification_lists")
+
+    @notification_lists.setter
+    def notification_lists(self, value: pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]):
+        pulumi.set(self, "notification_lists", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> pulumi.Input[str]:
+        """
+        The project name.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter(name="queryLists")
+    def query_lists(self) -> pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]]:
+        """
+        Multiple conditions for configured alarm query.
+        """
+        return pulumi.get(self, "query_lists")
+
+    @query_lists.setter
+    def query_lists(self, value: pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]]):
+        pulumi.set(self, "query_lists", value)
+
+    @property
+    @pulumi.getter(name="alertDescription")
+    def alert_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alert description.
+        """
+        return pulumi.get(self, "alert_description")
+
+    @alert_description.setter
+    def alert_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alert_description", value)
+
+    @property
+    @pulumi.getter(name="muteUntil")
+    def mute_until(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timestamp, notifications before closing again.
+        """
+        return pulumi.get(self, "mute_until")
+
+    @mute_until.setter
+    def mute_until(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mute_until", value)
+
+    @property
+    @pulumi.getter(name="notifyThreshold")
+    def notify_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        """
+        return pulumi.get(self, "notify_threshold")
+
+    @notify_threshold.setter
+    def notify_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "notify_threshold", value)
+
+    @property
+    @pulumi.getter(name="scheduleInterval")
+    def schedule_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Execution interval. 60 seconds minimum, such as 60s, 1h.
+        """
+        return pulumi.get(self, "schedule_interval")
+
+    @schedule_interval.setter
+    def schedule_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_interval", value)
+
+    @property
+    @pulumi.getter(name="scheduleType")
+    def schedule_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default FixedRate. No need to configure this parameter.
+        """
+        return pulumi.get(self, "schedule_type")
+
+    @schedule_type.setter
+    def schedule_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_type", value)
+
+    @property
+    @pulumi.getter
+    def throttling(self) -> Optional[pulumi.Input[str]]:
+        """
+        Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        """
+        return pulumi.get(self, "throttling")
+
+    @throttling.setter
+    def throttling(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "throttling", value)
 
 
 class Alert(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -116,6 +321,111 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
         :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AlertArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information.
+        Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
+
+        > **NOTE:** Available in 1.78.0
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_alert = alicloud.log.Alert("exampleAlert",
+            project_name=example_project.name,
+            alert_name="tf-test-alert",
+            alert_displayname="tf-test-alert-displayname",
+            condition="count> 100",
+            dashboard="tf-test-dashboard",
+            query_lists=[alicloud.log.AlertQueryListArgs(
+                logstore="tf-test-logstore",
+                chart_title="chart_title",
+                start="-60s",
+                end="20s",
+                query="* AND aliyun",
+            )],
+            notification_lists=[
+                alicloud.log.AlertNotificationListArgs(
+                    type="SMS",
+                    mobile_lists=[
+                        "12345678",
+                        "87654321",
+                    ],
+                    content="alert content",
+                ),
+                alicloud.log.AlertNotificationListArgs(
+                    type="Email",
+                    email_lists=[
+                        "aliyun@alibaba-inc.com",
+                        "tf-test@123.com",
+                    ],
+                    content="alert content",
+                ),
+                alicloud.log.AlertNotificationListArgs(
+                    type="DingTalk",
+                    service_uri="www.aliyun.com",
+                    content="alert content",
+                ),
+            ])
+        ```
+
+        ## Import
+
+        Log alert can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:log/alert:Alert example tf-log:tf-log-alert
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AlertArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AlertArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 alert_description: Optional[pulumi.Input[str]] = None,
+                 alert_displayname: Optional[pulumi.Input[str]] = None,
+                 alert_name: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input[str]] = None,
+                 dashboard: Optional[pulumi.Input[str]] = None,
+                 mute_until: Optional[pulumi.Input[int]] = None,
+                 notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
+                 notify_threshold: Optional[pulumi.Input[int]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
+                 schedule_interval: Optional[pulumi.Input[str]] = None,
+                 schedule_type: Optional[pulumi.Input[str]] = None,
+                 throttling: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

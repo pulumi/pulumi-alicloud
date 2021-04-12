@@ -5,13 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['InstanceAttachment']
+__all__ = ['InstanceAttachmentArgs', 'InstanceAttachment']
+
+@pulumi.input_type
+class InstanceAttachmentArgs:
+    def __init__(__self__, *,
+                 instance_name: pulumi.Input[str],
+                 vpc_name: pulumi.Input[str],
+                 vswitch_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a InstanceAttachment resource.
+        :param pulumi.Input[str] instance_name: The name of the OTS instance.
+        :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance.
+        :param pulumi.Input[str] vswitch_id: The ID of attaching VSwitch to instance.
+        """
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "vpc_name", vpc_name)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Input[str]:
+        """
+        The name of the OTS instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="vpcName")
+    def vpc_name(self) -> pulumi.Input[str]:
+        """
+        The name of attaching VPC to instance.
+        """
+        return pulumi.get(self, "vpc_name")
+
+    @vpc_name.setter
+    def vpc_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpc_name", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        The ID of attaching VSwitch to instance.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 class InstanceAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -57,6 +110,63 @@ class InstanceAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching VSwitch to instance.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This resource will help you to bind a VPC to an OTS instance.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create an OTS instance
+        foo_instance = alicloud.ots.Instance("fooInstance",
+            description="for table",
+            accessed_by="Vpc",
+            tags={
+                "Created": "TF",
+                "For": "Building table",
+            })
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/16")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_network.id,
+            vswitch_name="for-ots-instance",
+            cidr_block="172.16.1.0/24",
+            availability_zone=foo_zones.zones[0].id)
+        foo_instance_attachment = alicloud.ots.InstanceAttachment("fooInstanceAttachment",
+            instance_name=foo_instance.name,
+            vpc_name="attachment1",
+            vswitch_id=foo_switch.id)
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InstanceAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 vpc_name: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

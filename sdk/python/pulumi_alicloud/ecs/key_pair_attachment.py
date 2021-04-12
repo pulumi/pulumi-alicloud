@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['KeyPairAttachment']
+__all__ = ['KeyPairAttachmentArgs', 'KeyPairAttachment']
+
+@pulumi.input_type
+class KeyPairAttachmentArgs:
+    def __init__(__self__, *,
+                 instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 key_name: pulumi.Input[str],
+                 force: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a KeyPairAttachment resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
+        :param pulumi.Input[str] key_name: The name of key pair used to bind.
+        :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        """
+        pulumi.set(__self__, "instance_ids", instance_ids)
+        pulumi.set(__self__, "key_name", key_name)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+
+    @property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of ECS instance's IDs.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @instance_ids.setter
+    def instance_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "instance_ids", value)
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> pulumi.Input[str]:
+        """
+        The name of key pair used to bind.
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_name", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
 
 
 class KeyPairAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -82,6 +136,88 @@ class KeyPairAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] key_name: The name of key pair used to bind.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KeyPairAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a key pair attachment resource to bind key pair for several ECS instances.
+
+        > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.get_zones(available_disk_category="cloud_ssd",
+            available_resource_creation="VSwitch")
+        type = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "keyPairAttachmentName"
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc.id,
+            cidr_block="10.1.1.0/24",
+            availability_zone=default.zones[0].id,
+            vswitch_name=name)
+        group = alicloud.ecs.SecurityGroup("group",
+            description="New security group",
+            vpc_id=vpc.id)
+        instance = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            instance.append(alicloud.ecs.Instance(f"instance-{range['value']}",
+                instance_name=f"{name}-{range['value'] + 1}",
+                image_id=images.images[0].id,
+                instance_type=type.instance_types[0].id,
+                security_groups=[group.id],
+                vswitch_id=vswitch.id,
+                internet_charge_type="PayByTraffic",
+                internet_max_bandwidth_out=5,
+                password="Test12345",
+                instance_charge_type="PostPaid",
+                system_disk_category="cloud_ssd"))
+        pair = alicloud.ecs.KeyPair("pair", key_name=name)
+        attachment = alicloud.ecs.KeyPairAttachment("attachment",
+            key_name=pair.id,
+            instance_ids=[__item.id for __item in instance])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param KeyPairAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KeyPairAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 key_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,82 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ApplicationDeployment']
+__all__ = ['ApplicationDeploymentArgs', 'ApplicationDeployment']
+
+@pulumi.input_type
+class ApplicationDeploymentArgs:
+    def __init__(__self__, *,
+                 app_id: pulumi.Input[str],
+                 group_id: pulumi.Input[str],
+                 war_url: pulumi.Input[str],
+                 package_version: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ApplicationDeployment resource.
+        :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.
+        :param pulumi.Input[str] group_id: The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
+        :param pulumi.Input[str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
+        :param pulumi.Input[str] package_version: The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
+        """
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "war_url", war_url)
+        if package_version is not None:
+            pulumi.set(__self__, "package_version", package_version)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the application that you want to deploy.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="warUrl")
+    def war_url(self) -> pulumi.Input[str]:
+        """
+        The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
+        """
+        return pulumi.get(self, "war_url")
+
+    @war_url.setter
+    def war_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "war_url", value)
+
+    @property
+    @pulumi.getter(name="packageVersion")
+    def package_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
+        """
+        return pulumi.get(self, "package_version")
+
+    @package_version.setter
+    def package_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_version", value)
 
 
 class ApplicationDeployment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +118,54 @@ class ApplicationDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] package_version: The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         :param pulumi.Input[str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApplicationDeploymentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Deploys applications on EDAS.
+
+        > **NOTE:** Available in 1.82.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.edas.ApplicationDeployment("default",
+            app_id=var["app_id"],
+            group_id=var["group_id"],
+            package_version=var["package_version"],
+            war_url=var["war_url"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ApplicationDeploymentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationDeploymentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 package_version: Optional[pulumi.Input[str]] = None,
+                 war_url: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

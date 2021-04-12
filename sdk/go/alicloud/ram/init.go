@@ -22,39 +22,40 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:ram/accessKey:AccessKey":
-		r, err = NewAccessKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessKey{}
 	case "alicloud:ram/accountAlias:AccountAlias":
-		r, err = NewAccountAlias(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountAlias{}
 	case "alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy":
-		r, err = NewAccountPasswordPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountPasswordPolicy{}
 	case "alicloud:ram/alias:Alias":
-		r, err = NewAlias(ctx, name, nil, pulumi.URN_(urn))
+		r = &Alias{}
 	case "alicloud:ram/group:Group":
-		r, err = NewGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &Group{}
 	case "alicloud:ram/groupMembership:GroupMembership":
-		r, err = NewGroupMembership(ctx, name, nil, pulumi.URN_(urn))
+		r = &GroupMembership{}
 	case "alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment":
-		r, err = NewGroupPolicyAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &GroupPolicyAttachment{}
 	case "alicloud:ram/loginProfile:LoginProfile":
-		r, err = NewLoginProfile(ctx, name, nil, pulumi.URN_(urn))
+		r = &LoginProfile{}
 	case "alicloud:ram/policy:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Policy{}
 	case "alicloud:ram/role:Role":
-		r, err = NewRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &Role{}
 	case "alicloud:ram/roleAttachment:RoleAttachment":
-		r, err = NewRoleAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &RoleAttachment{}
 	case "alicloud:ram/rolePolicyAttachment:RolePolicyAttachment":
-		r, err = NewRolePolicyAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &RolePolicyAttachment{}
 	case "alicloud:ram/samlProvider:SamlProvider":
-		r, err = NewSamlProvider(ctx, name, nil, pulumi.URN_(urn))
+		r = &SamlProvider{}
 	case "alicloud:ram/user:User":
-		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &User{}
 	case "alicloud:ram/userPolicyAttachment:UserPolicyAttachment":
-		r, err = NewUserPolicyAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &UserPolicyAttachment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

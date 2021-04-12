@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:cms/alarm:Alarm":
-		r, err = NewAlarm(ctx, name, nil, pulumi.URN_(urn))
+		r = &Alarm{}
 	case "alicloud:cms/alarmContact:AlarmContact":
-		r, err = NewAlarmContact(ctx, name, nil, pulumi.URN_(urn))
+		r = &AlarmContact{}
 	case "alicloud:cms/alarmContactGroup:AlarmContactGroup":
-		r, err = NewAlarmContactGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &AlarmContactGroup{}
 	case "alicloud:cms/groupMetricRule:GroupMetricRule":
-		r, err = NewGroupMetricRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &GroupMetricRule{}
 	case "alicloud:cms/monitorGroup:MonitorGroup":
-		r, err = NewMonitorGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &MonitorGroup{}
 	case "alicloud:cms/monitorGroupInstances:MonitorGroupInstances":
-		r, err = NewMonitorGroupInstances(ctx, name, nil, pulumi.URN_(urn))
+		r = &MonitorGroupInstances{}
 	case "alicloud:cms/siteMonitor:SiteMonitor":
-		r, err = NewSiteMonitor(ctx, name, nil, pulumi.URN_(urn))
+		r = &SiteMonitor{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -22,33 +22,34 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:cen/bandwidthLimit:BandwidthLimit":
-		r, err = NewBandwidthLimit(ctx, name, nil, pulumi.URN_(urn))
+		r = &BandwidthLimit{}
 	case "alicloud:cen/bandwidthPackage:BandwidthPackage":
-		r, err = NewBandwidthPackage(ctx, name, nil, pulumi.URN_(urn))
+		r = &BandwidthPackage{}
 	case "alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment":
-		r, err = NewBandwidthPackageAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &BandwidthPackageAttachment{}
 	case "alicloud:cen/flowLog:FlowLog":
-		r, err = NewFlowLog(ctx, name, nil, pulumi.URN_(urn))
+		r = &FlowLog{}
 	case "alicloud:cen/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "alicloud:cen/instanceAttachment:InstanceAttachment":
-		r, err = NewInstanceAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceAttachment{}
 	case "alicloud:cen/instanceGrant:InstanceGrant":
-		r, err = NewInstanceGrant(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceGrant{}
 	case "alicloud:cen/privateZone:PrivateZone":
-		r, err = NewPrivateZone(ctx, name, nil, pulumi.URN_(urn))
+		r = &PrivateZone{}
 	case "alicloud:cen/routeEntry:RouteEntry":
-		r, err = NewRouteEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouteEntry{}
 	case "alicloud:cen/routeMap:RouteMap":
-		r, err = NewRouteMap(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouteMap{}
 	case "alicloud:cen/routeService:RouteService":
-		r, err = NewRouteService(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouteService{}
 	case "alicloud:cen/vbrHealthCheck:VbrHealthCheck":
-		r, err = NewVbrHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &VbrHealthCheck{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

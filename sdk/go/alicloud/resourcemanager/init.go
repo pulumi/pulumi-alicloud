@@ -22,37 +22,38 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:resourcemanager/account:Account":
-		r, err = NewAccount(ctx, name, nil, pulumi.URN_(urn))
+		r = &Account{}
 	case "alicloud:resourcemanager/controlPolicy:ControlPolicy":
-		r, err = NewControlPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ControlPolicy{}
 	case "alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment":
-		r, err = NewControlPolicyAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &ControlPolicyAttachment{}
 	case "alicloud:resourcemanager/folder:Folder":
-		r, err = NewFolder(ctx, name, nil, pulumi.URN_(urn))
+		r = &Folder{}
 	case "alicloud:resourcemanager/handshake:Handshake":
-		r, err = NewHandshake(ctx, name, nil, pulumi.URN_(urn))
+		r = &Handshake{}
 	case "alicloud:resourcemanager/policy:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Policy{}
 	case "alicloud:resourcemanager/policyAttachment:PolicyAttachment":
-		r, err = NewPolicyAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicyAttachment{}
 	case "alicloud:resourcemanager/policyVersion:PolicyVersion":
-		r, err = NewPolicyVersion(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicyVersion{}
 	case "alicloud:resourcemanager/resourceDirectory:ResourceDirectory":
-		r, err = NewResourceDirectory(ctx, name, nil, pulumi.URN_(urn))
+		r = &ResourceDirectory{}
 	case "alicloud:resourcemanager/resourceGroup:ResourceGroup":
-		r, err = NewResourceGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ResourceGroup{}
 	case "alicloud:resourcemanager/resourceShare:ResourceShare":
-		r, err = NewResourceShare(ctx, name, nil, pulumi.URN_(urn))
+		r = &ResourceShare{}
 	case "alicloud:resourcemanager/role:Role":
-		r, err = NewRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &Role{}
 	case "alicloud:resourcemanager/sharedResource:SharedResource":
-		r, err = NewSharedResource(ctx, name, nil, pulumi.URN_(urn))
+		r = &SharedResource{}
 	case "alicloud:resourcemanager/sharedTarget:SharedTarget":
-		r, err = NewSharedTarget(ctx, name, nil, pulumi.URN_(urn))
+		r = &SharedTarget{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,13 +5,84 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['AlarmContactGroup']
+__all__ = ['AlarmContactGroupArgs', 'AlarmContactGroup']
+
+@pulumi.input_type
+class AlarmContactGroupArgs:
+    def __init__(__self__, *,
+                 alarm_contact_group_name: pulumi.Input[str],
+                 contacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 describe: Optional[pulumi.Input[str]] = None,
+                 enable_subscribed: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a AlarmContactGroup resource.
+        :param pulumi.Input[str] alarm_contact_group_name: The name of the alarm group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] contacts: The name of the alert contact.
+        :param pulumi.Input[str] describe: The description of the alert group.
+        :param pulumi.Input[bool] enable_subscribed: Whether to open weekly subscription.
+        """
+        pulumi.set(__self__, "alarm_contact_group_name", alarm_contact_group_name)
+        if contacts is not None:
+            pulumi.set(__self__, "contacts", contacts)
+        if describe is not None:
+            pulumi.set(__self__, "describe", describe)
+        if enable_subscribed is not None:
+            pulumi.set(__self__, "enable_subscribed", enable_subscribed)
+
+    @property
+    @pulumi.getter(name="alarmContactGroupName")
+    def alarm_contact_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the alarm group.
+        """
+        return pulumi.get(self, "alarm_contact_group_name")
+
+    @alarm_contact_group_name.setter
+    def alarm_contact_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "alarm_contact_group_name", value)
+
+    @property
+    @pulumi.getter
+    def contacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the alert contact.
+        """
+        return pulumi.get(self, "contacts")
+
+    @contacts.setter
+    def contacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "contacts", value)
+
+    @property
+    @pulumi.getter
+    def describe(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the alert group.
+        """
+        return pulumi.get(self, "describe")
+
+    @describe.setter
+    def describe(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "describe", value)
+
+    @property
+    @pulumi.getter(name="enableSubscribed")
+    def enable_subscribed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to open weekly subscription.
+        """
+        return pulumi.get(self, "enable_subscribed")
+
+    @enable_subscribed.setter
+    def enable_subscribed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_subscribed", value)
 
 
 class AlarmContactGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +126,60 @@ class AlarmContactGroup(pulumi.CustomResource):
         :param pulumi.Input[str] describe: The description of the alert group.
         :param pulumi.Input[bool] enable_subscribed: Whether to open weekly subscription.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AlarmContactGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a CMS Alarm Contact Group resource.
+
+        For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/doc-detail/114929.htm).
+
+        > **NOTE:** Available in v1.101.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-test")
+        ```
+
+        ## Import
+
+        CMS Alarm Contact Group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cms/alarmContactGroup:AlarmContactGroup example tf-testacc123
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AlarmContactGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AlarmContactGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 alarm_contact_group_name: Optional[pulumi.Input[str]] = None,
+                 contacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 describe: Optional[pulumi.Input[str]] = None,
+                 enable_subscribed: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

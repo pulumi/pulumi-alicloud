@@ -5,13 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['GroupPolicyAttachment']
+__all__ = ['GroupPolicyAttachmentArgs', 'GroupPolicyAttachment']
+
+@pulumi.input_type
+class GroupPolicyAttachmentArgs:
+    def __init__(__self__, *,
+                 group_name: pulumi.Input[str],
+                 policy_name: pulumi.Input[str],
+                 policy_type: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a GroupPolicyAttachment resource.
+        :param pulumi.Input[str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
+        """
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_name", value)
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> pulumi.Input[str]:
+        """
+        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "policy_name")
+
+    @policy_name.setter
+    def policy_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_name", value)
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> pulumi.Input[str]:
+        """
+        Type of the RAM policy. It must be `Custom` or `System`.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @policy_type.setter
+    def policy_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_type", value)
 
 
 class GroupPolicyAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -74,6 +127,80 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GroupPolicyAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a RAM Group Policy attachment resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a RAM Group Policy attachment.
+        group = alicloud.ram.Group("group",
+            comments="this is a group comments.",
+            force=True)
+        policy = alicloud.ram.Policy("policy",
+            document=\"\"\"    {
+              "Statement": [
+                {
+                  "Action": [
+                    "oss:ListObjects",
+                    "oss:GetObject"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": [
+                    "acs:oss:*:*:mybucket",
+                    "acs:oss:*:*:mybucket/*"
+                  ]
+                }
+              ],
+                "Version": "1"
+            }
+        \"\"\",
+            description="this is a policy test",
+            force=True)
+        attach = alicloud.ram.GroupPolicyAttachment("attach",
+            policy_name=policy.name,
+            policy_type=policy.type,
+            group_name=group.name)
+        ```
+
+        ## Import
+
+        RAM Group Policy attachment can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GroupPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GroupPolicyAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 group_name: Optional[pulumi.Input[str]] = None,
+                 policy_name: Optional[pulumi.Input[str]] = None,
+                 policy_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

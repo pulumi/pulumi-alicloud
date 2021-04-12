@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ImageExport']
+__all__ = ['ImageExportArgs', 'ImageExport']
+
+@pulumi.input_type
+class ImageExportArgs:
+    def __init__(__self__, *,
+                 image_id: pulumi.Input[str],
+                 oss_bucket: pulumi.Input[str],
+                 oss_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ImageExport resource.
+        :param pulumi.Input[str] image_id: The source image ID.
+        :param pulumi.Input[str] oss_bucket: Save the exported OSS bucket.
+        :param pulumi.Input[str] oss_prefix: The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
+        """
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "oss_bucket", oss_bucket)
+        if oss_prefix is not None:
+            pulumi.set(__self__, "oss_prefix", oss_prefix)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Input[str]:
+        """
+        The source image ID.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="ossBucket")
+    def oss_bucket(self) -> pulumi.Input[str]:
+        """
+        Save the exported OSS bucket.
+        """
+        return pulumi.get(self, "oss_bucket")
+
+    @oss_bucket.setter
+    def oss_bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "oss_bucket", value)
+
+    @property
+    @pulumi.getter(name="ossPrefix")
+    def oss_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
+        """
+        return pulumi.get(self, "oss_prefix")
+
+    @oss_prefix.setter
+    def oss_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oss_prefix", value)
 
 
 class ImageExport(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +109,61 @@ class ImageExport(pulumi.CustomResource):
         :param pulumi.Input[str] oss_bucket: Save the exported OSS bucket.
         :param pulumi.Input[str] oss_prefix: The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ImageExportArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Export a custom image to the OSS bucket in the same region as the custom image.
+
+        > **NOTE:** If you create an ECS instance using a mirror image and create a system disk snapshot again, exporting a custom image created from the system disk snapshot is not supported.
+
+        > **NOTE:** Support for exporting custom images that include data disk snapshot information in the image. The number of data disks cannot exceed 4 and the maximum capacity of a single data disk cannot exceed 500 GiB.
+
+        > **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
+
+        > **NOTE:** Available in 1.68.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.ImageExport("default",
+            image_id="m-bp1gxy***",
+            oss_bucket="ecsimageexportconfig",
+            oss_prefix="ecsExport")
+        ```
+        ## Attributes Reference0
+
+         The following attributes are exported:
+
+        * `id` - ID of the image.
+
+        :param str resource_name: The name of the resource.
+        :param ImageExportArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ImageExportArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 oss_bucket: Optional[pulumi.Input[str]] = None,
+                 oss_prefix: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

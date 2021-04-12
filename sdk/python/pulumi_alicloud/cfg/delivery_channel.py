@@ -5,13 +5,136 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['DeliveryChannel']
+__all__ = ['DeliveryChannelArgs', 'DeliveryChannel']
+
+@pulumi.input_type
+class DeliveryChannelArgs:
+    def __init__(__self__, *,
+                 delivery_channel_assume_role_arn: pulumi.Input[str],
+                 delivery_channel_target_arn: pulumi.Input[str],
+                 delivery_channel_type: pulumi.Input[str],
+                 delivery_channel_condition: Optional[pulumi.Input[str]] = None,
+                 delivery_channel_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a DeliveryChannel resource.
+        :param pulumi.Input[str] delivery_channel_assume_role_arn: The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+        :param pulumi.Input[str] delivery_channel_target_arn: - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+               - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
+               - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
+               - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+        :param pulumi.Input[str] delivery_channel_type: - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+        :param pulumi.Input[str] delivery_channel_condition: The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
+        :param pulumi.Input[str] delivery_channel_name: The name of the delivery channel.
+        :param pulumi.Input[str] description: The description of the delivery method.
+        :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
+        """
+        pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
+        pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
+        pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
+        if delivery_channel_condition is not None:
+            pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
+        if delivery_channel_name is not None:
+            pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="deliveryChannelAssumeRoleArn")
+    def delivery_channel_assume_role_arn(self) -> pulumi.Input[str]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+        """
+        return pulumi.get(self, "delivery_channel_assume_role_arn")
+
+    @delivery_channel_assume_role_arn.setter
+    def delivery_channel_assume_role_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "delivery_channel_assume_role_arn", value)
+
+    @property
+    @pulumi.getter(name="deliveryChannelTargetArn")
+    def delivery_channel_target_arn(self) -> pulumi.Input[str]:
+        """
+        - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+        - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
+        - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
+        - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+        """
+        return pulumi.get(self, "delivery_channel_target_arn")
+
+    @delivery_channel_target_arn.setter
+    def delivery_channel_target_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "delivery_channel_target_arn", value)
+
+    @property
+    @pulumi.getter(name="deliveryChannelType")
+    def delivery_channel_type(self) -> pulumi.Input[str]:
+        """
+        - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+        """
+        return pulumi.get(self, "delivery_channel_type")
+
+    @delivery_channel_type.setter
+    def delivery_channel_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "delivery_channel_type", value)
+
+    @property
+    @pulumi.getter(name="deliveryChannelCondition")
+    def delivery_channel_condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
+        """
+        return pulumi.get(self, "delivery_channel_condition")
+
+    @delivery_channel_condition.setter
+    def delivery_channel_condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delivery_channel_condition", value)
+
+    @property
+    @pulumi.getter(name="deliveryChannelName")
+    def delivery_channel_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the delivery channel.
+        """
+        return pulumi.get(self, "delivery_channel_name")
+
+    @delivery_channel_name.setter
+    def delivery_channel_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delivery_channel_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the delivery method.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[int]]:
+        """
+        The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "status", value)
 
 
 class DeliveryChannel(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -47,6 +170,46 @@ class DeliveryChannel(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DeliveryChannelArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Alicloud Config Delivery Channel can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cfg/deliveryChannel:DeliveryChannel example cdc-49a2ad756057********
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DeliveryChannelArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DeliveryChannelArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 delivery_channel_assume_role_arn: Optional[pulumi.Input[str]] = None,
+                 delivery_channel_condition: Optional[pulumi.Input[str]] = None,
+                 delivery_channel_name: Optional[pulumi.Input[str]] = None,
+                 delivery_channel_target_arn: Optional[pulumi.Input[str]] = None,
+                 delivery_channel_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

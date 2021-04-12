@@ -5,13 +5,130 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Topic']
+__all__ = ['TopicArgs', 'Topic']
+
+@pulumi.input_type
+class TopicArgs:
+    def __init__(__self__, *,
+                 instance_id: pulumi.Input[str],
+                 remark: pulumi.Input[str],
+                 topic: pulumi.Input[str],
+                 compact_topic: Optional[pulumi.Input[bool]] = None,
+                 local_topic: Optional[pulumi.Input[bool]] = None,
+                 partition_num: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a Topic resource.
+        :param pulumi.Input[str] instance_id: InstanceId of your Kafka resource, the topic will create in this instance.
+        :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
+        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        :param pulumi.Input[bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+        :param pulumi.Input[bool] local_topic: Whether the topic is localTopic or not.
+        :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "remark", remark)
+        pulumi.set(__self__, "topic", topic)
+        if compact_topic is not None:
+            pulumi.set(__self__, "compact_topic", compact_topic)
+        if local_topic is not None:
+            pulumi.set(__self__, "local_topic", local_topic)
+        if partition_num is not None:
+            pulumi.set(__self__, "partition_num", partition_num)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        InstanceId of your Kafka resource, the topic will create in this instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def remark(self) -> pulumi.Input[str]:
+        """
+        This attribute is a concise description of topic. The length cannot exceed 64.
+        """
+        return pulumi.get(self, "remark")
+
+    @remark.setter
+    def remark(self, value: pulumi.Input[str]):
+        pulumi.set(self, "remark", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Input[str]:
+        """
+        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic", value)
+
+    @property
+    @pulumi.getter(name="compactTopic")
+    def compact_topic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+        """
+        return pulumi.get(self, "compact_topic")
+
+    @compact_topic.setter
+    def compact_topic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "compact_topic", value)
+
+    @property
+    @pulumi.getter(name="localTopic")
+    def local_topic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the topic is localTopic or not.
+        """
+        return pulumi.get(self, "local_topic")
+
+    @local_topic.setter
+    def local_topic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "local_topic", value)
+
+    @property
+    @pulumi.getter(name="partitionNum")
+    def partition_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of partitions of the topic. The number should between 1 and 48.
+        """
+        return pulumi.get(self, "partition_num")
+
+    @partition_num.setter
+    def partition_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "partition_num", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Topic(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -81,6 +198,83 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TopicArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an ALIKAFKA topic resource.
+
+        > **NOTE:** Available in 1.56.0+
+
+        > **NOTE:**  Only the following regions support create alikafka topic.
+        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0].id)
+        default_instance = alicloud.alikafka.Instance("defaultInstance",
+            topic_quota=50,
+            disk_type=1,
+            disk_size=500,
+            deploy_type=5,
+            io_max=20,
+            vswitch_id=default_switch.id)
+        config = pulumi.Config()
+        topic = config.get("topic")
+        if topic is None:
+            topic = "alikafkaTopicName"
+        default_topic = alicloud.alikafka.Topic("defaultTopic",
+            instance_id=default_instance.id,
+            topic=topic,
+            local_topic=False,
+            compact_topic=False,
+            partition_num=12,
+            remark="dafault_kafka_topic_remark")
+        ```
+
+        ## Import
+
+        ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
+
+        :param str resource_name: The name of the resource.
+        :param TopicArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TopicArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 compact_topic: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 local_topic: Optional[pulumi.Input[bool]] = None,
+                 partition_num: Optional[pulumi.Input[int]] = None,
+                 remark: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 topic: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

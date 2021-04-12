@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:brain/industrialPidLoop:IndustrialPidLoop":
-		r, err = NewIndustrialPidLoop(ctx, name, nil, pulumi.URN_(urn))
+		r = &IndustrialPidLoop{}
 	case "alicloud:brain/industrialPidOrganization:IndustrialPidOrganization":
-		r, err = NewIndustrialPidOrganization(ctx, name, nil, pulumi.URN_(urn))
+		r = &IndustrialPidOrganization{}
 	case "alicloud:brain/industrialPidProject:IndustrialPidProject":
-		r, err = NewIndustrialPidProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &IndustrialPidProject{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,13 +5,179 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Gateway']
+__all__ = ['GatewayArgs', 'Gateway']
+
+@pulumi.input_type
+class GatewayArgs:
+    def __init__(__self__, *,
+                 bandwidth: pulumi.Input[int],
+                 vpc_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_ipsec: Optional[pulumi.Input[bool]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 ssl_connections: Optional[pulumi.Input[int]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Gateway resource.
+        :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
+        :param pulumi.Input[str] description: The description of the VPN instance.
+        :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
+        :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+        :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+               Default to PostPaid.
+        :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
+        :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
+        :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+               This field is ignored when enable_ssl is false.
+        :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_ipsec is not None:
+            pulumi.set(__self__, "enable_ipsec", enable_ipsec)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if ssl_connections is not None:
+            pulumi.set(__self__, "ssl_connections", ssl_connections)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: pulumi.Input[int]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[str]:
+        """
+        The VPN belongs the vpc_id, the field can't be changed.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the VPN instance.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableIpsec")
+    def enable_ipsec(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
+        """
+        return pulumi.get(self, "enable_ipsec")
+
+    @enable_ipsec.setter
+    def enable_ipsec(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ipsec", value)
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ssl", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        Default to PostPaid.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the VPN. Defaults to null.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="sslConnections")
+    def ssl_connections(self) -> Optional[pulumi.Input[int]]:
+        """
+        The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+        This field is ignored when enable_ssl is false.
+        """
+        return pulumi.get(self, "ssl_connections")
+
+    @ssl_connections.setter
+    def ssl_connections(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ssl_connections", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPN belongs the vswitch_id, the field can't be changed.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 class Gateway(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -51,6 +217,49 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GatewayArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        VPN gateway can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpn/gateway:Gateway example vpn-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GatewayArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GatewayArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_ipsec: Optional[pulumi.Input[bool]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 ssl_connections: Optional[pulumi.Input[int]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

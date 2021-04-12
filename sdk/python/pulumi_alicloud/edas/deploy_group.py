@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['DeployGroup']
+__all__ = ['DeployGroupArgs', 'DeployGroup']
+
+@pulumi.input_type
+class DeployGroupArgs:
+    def __init__(__self__, *,
+                 app_id: pulumi.Input[str],
+                 group_name: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a DeployGroup resource.
+        :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.
+        :param pulumi.Input[str] group_name: The name of the instance group that you want to create.
+        """
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "group_name", group_name)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the application that you want to deploy.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the instance group that you want to create.
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_name", value)
 
 
 class DeployGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -51,6 +89,58 @@ class DeployGroup(pulumi.CustomResource):
         :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[str] group_name: The name of the instance group that you want to create.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DeployGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an EDAS deploy group resource.
+
+        > **NOTE:** Available in 1.82.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.edas.DeployGroup("default",
+            app_id=var["app_id"],
+            group_name=var["group_name"])
+        ```
+
+        ## Import
+
+        EDAS deploy group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:edas/deployGroup:DeployGroup group app_id:group_name:group_id
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DeployGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DeployGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

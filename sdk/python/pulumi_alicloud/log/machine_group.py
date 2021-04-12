@@ -5,13 +5,99 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['MachineGroup']
+__all__ = ['MachineGroupArgs', 'MachineGroup']
+
+@pulumi.input_type
+class MachineGroupArgs:
+    def __init__(__self__, *,
+                 identify_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 project: pulumi.Input[str],
+                 identify_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a MachineGroup resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identify_lists: The specific machine identification, which can be an IP address or user-defined identity.
+        :param pulumi.Input[str] project: The project name to the machine group belongs.
+        :param pulumi.Input[str] identify_type: The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
+        :param pulumi.Input[str] name: The machine group name, which is unique in the same project.
+        :param pulumi.Input[str] topic: The topic of a machine group.
+        """
+        pulumi.set(__self__, "identify_lists", identify_lists)
+        pulumi.set(__self__, "project", project)
+        if identify_type is not None:
+            pulumi.set(__self__, "identify_type", identify_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="identifyLists")
+    def identify_lists(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The specific machine identification, which can be an IP address or user-defined identity.
+        """
+        return pulumi.get(self, "identify_lists")
+
+    @identify_lists.setter
+    def identify_lists(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "identify_lists", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The project name to the machine group belongs.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="identifyType")
+    def identify_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
+        """
+        return pulumi.get(self, "identify_type")
+
+    @identify_type.setter
+    def identify_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identify_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The machine group name, which is unique in the same project.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The topic of a machine group.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
 
 
 class MachineGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +126,44 @@ class MachineGroup(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project name to the machine group belongs.
         :param pulumi.Input[str] topic: The topic of a machine group.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MachineGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Log machine group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:log/machineGroup:MachineGroup example tf-log:tf-machine-group
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param MachineGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MachineGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 identify_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 identify_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

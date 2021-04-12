@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['VpcEndpointZone']
+__all__ = ['VpcEndpointZoneArgs', 'VpcEndpointZone']
+
+@pulumi.input_type
+class VpcEndpointZoneArgs:
+    def __init__(__self__, *,
+                 endpoint_id: pulumi.Input[str],
+                 vswitch_id: pulumi.Input[str],
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a VpcEndpointZone resource.
+        :param pulumi.Input[str] endpoint_id: The ID of the Vpc Endpoint.
+        :param pulumi.Input[str] vswitch_id: The VSwitch id.
+        :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] zone_id: The Zone Id.
+        """
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Vpc Endpoint.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @endpoint_id.setter
+    def endpoint_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        The VSwitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The dry run.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Zone Id.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class VpcEndpointZone(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -58,6 +128,63 @@ class VpcEndpointZone(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: The VSwitch id.
         :param pulumi.Input[str] zone_id: The Zone Id.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VpcEndpointZoneArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Private Link Vpc Endpoint Zone resource.
+
+        For information about Private Link Vpc Endpoint Zone and how to use it, see [What is Vpc Endpoint Zone](https://help.aliyun.com/document_detail/183561.html).
+
+        > **NOTE:** Available in v1.111.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.privatelink.VpcEndpointZone("example",
+            endpoint_id="ep-gw8boxxxxx",
+            vswitch_id="vsw-rtycxxxxx",
+            zone_id="eu-central-1a")
+        ```
+
+        ## Import
+
+        Private Link Vpc Endpoint Zone can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:privatelink/vpcEndpointZone:VpcEndpointZone example <endpoint_id>:<zone_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VpcEndpointZoneArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VpcEndpointZoneArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 endpoint_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

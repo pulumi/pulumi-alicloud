@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Namespace']
+__all__ = ['NamespaceArgs', 'Namespace']
+
+@pulumi.input_type
+class NamespaceArgs:
+    def __init__(__self__, *,
+                 auto_create: pulumi.Input[bool],
+                 default_visibility: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Namespace resource.
+        :param pulumi.Input[bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+        :param pulumi.Input[str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+        :param pulumi.Input[str] name: Name of Container Registry namespace.
+        """
+        pulumi.set(__self__, "auto_create", auto_create)
+        pulumi.set(__self__, "default_visibility", default_visibility)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="autoCreate")
+    def auto_create(self) -> pulumi.Input[bool]:
+        """
+        Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+        """
+        return pulumi.get(self, "auto_create")
+
+    @auto_create.setter
+    def auto_create(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "auto_create", value)
+
+    @property
+    @pulumi.getter(name="defaultVisibility")
+    def default_visibility(self) -> pulumi.Input[str]:
+        """
+        `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+        """
+        return pulumi.get(self, "default_visibility")
+
+    @default_visibility.setter
+    def default_visibility(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_visibility", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Container Registry namespace.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Namespace(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +109,61 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
         :param pulumi.Input[str] name: Name of Container Registry namespace.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NamespaceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This resource will help you to manager Container Registry namespaces.
+
+        > **NOTE:** Available in v1.34.0+.
+
+        > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        my_namespace = alicloud.cr.Namespace("my-namespace",
+            auto_create=False,
+            default_visibility="PUBLIC")
+        ```
+
+        ## Import
+
+        Container Registry namespace can be imported using the namespace, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cr/namespace:Namespace default my-namespace
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NamespaceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NamespaceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_create: Optional[pulumi.Input[bool]] = None,
+                 default_visibility: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

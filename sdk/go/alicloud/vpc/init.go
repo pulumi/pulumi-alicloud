@@ -22,51 +22,52 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:vpc/commonBandwithPackage:CommonBandwithPackage":
-		r, err = NewCommonBandwithPackage(ctx, name, nil, pulumi.URN_(urn))
+		r = &CommonBandwithPackage{}
 	case "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment":
-		r, err = NewCommonBandwithPackageAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &CommonBandwithPackageAttachment{}
 	case "alicloud:vpc/flowLog:FlowLog":
-		r, err = NewFlowLog(ctx, name, nil, pulumi.URN_(urn))
+		r = &FlowLog{}
 	case "alicloud:vpc/forwardEntry:ForwardEntry":
-		r, err = NewForwardEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &ForwardEntry{}
 	case "alicloud:vpc/hAVip:HAVip":
-		r, err = NewHAVip(ctx, name, nil, pulumi.URN_(urn))
+		r = &HAVip{}
 	case "alicloud:vpc/hAVipAttachment:HAVipAttachment":
-		r, err = NewHAVipAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &HAVipAttachment{}
 	case "alicloud:vpc/natGateway:NatGateway":
-		r, err = NewNatGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &NatGateway{}
 	case "alicloud:vpc/network:Network":
-		r, err = NewNetwork(ctx, name, nil, pulumi.URN_(urn))
+		r = &Network{}
 	case "alicloud:vpc/networkAcl:NetworkAcl":
-		r, err = NewNetworkAcl(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkAcl{}
 	case "alicloud:vpc/networkAclAttachment:NetworkAclAttachment":
-		r, err = NewNetworkAclAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkAclAttachment{}
 	case "alicloud:vpc/networkAclEntries:NetworkAclEntries":
-		r, err = NewNetworkAclEntries(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkAclEntries{}
 	case "alicloud:vpc/networkInterface:NetworkInterface":
-		r, err = NewNetworkInterface(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkInterface{}
 	case "alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment":
-		r, err = NewNetworkInterfaceAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkInterfaceAttachment{}
 	case "alicloud:vpc/routeEntry:RouteEntry":
-		r, err = NewRouteEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouteEntry{}
 	case "alicloud:vpc/routeTable:RouteTable":
-		r, err = NewRouteTable(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouteTable{}
 	case "alicloud:vpc/routeTableAttachment:RouteTableAttachment":
-		r, err = NewRouteTableAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouteTableAttachment{}
 	case "alicloud:vpc/routerInterface:RouterInterface":
-		r, err = NewRouterInterface(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouterInterface{}
 	case "alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection":
-		r, err = NewRouterInterfaceConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouterInterfaceConnection{}
 	case "alicloud:vpc/snatEntry:SnatEntry":
-		r, err = NewSnatEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &SnatEntry{}
 	case "alicloud:vpc/subnet:Subnet":
-		r, err = NewSubnet(ctx, name, nil, pulumi.URN_(urn))
+		r = &Subnet{}
 	case "alicloud:vpc/switch:Switch":
-		r, err = NewSwitch(ctx, name, nil, pulumi.URN_(urn))
+		r = &Switch{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

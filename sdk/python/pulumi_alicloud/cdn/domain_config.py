@@ -5,15 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DomainConfig']
+__all__ = ['DomainConfigArgs', 'DomainConfig']
+
+@pulumi.input_type
+class DomainConfigArgs:
+    def __init__(__self__, *,
+                 domain_name: pulumi.Input[str],
+                 function_args: pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]],
+                 function_name: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a DomainConfig resource.
+        :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.
+        :param pulumi.Input[str] function_name: The name of the domain config.
+        """
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "function_args", function_args)
+        pulumi.set(__self__, "function_name", function_name)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Input[str]:
+        """
+        Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter(name="functionArgs")
+    def function_args(self) -> pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]:
+        """
+        The args of the domain config.
+        """
+        return pulumi.get(self, "function_args")
+
+    @function_args.setter
+    def function_args(self, value: pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]):
+        pulumi.set(self, "function_args", value)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> pulumi.Input[str]:
+        """
+        The name of the domain config.
+        """
+        return pulumi.get(self, "function_name")
+
+    @function_name.setter
+    def function_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "function_name", value)
 
 
 class DomainConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -73,6 +126,77 @@ class DomainConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config.
         :param pulumi.Input[str] function_name: The name of the domain config.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DomainConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a CDN Accelerated Domain resource.
+
+        For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
+
+        > **NOTE:** Available in v1.34.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new Domain config.
+        domain = alicloud.cdn.DomainNew("domain",
+            domain_name="tf-testacc%d.xiaozhu.com",
+            cdn_type="web",
+            scope="overseas",
+            sources=[alicloud.cdn.DomainNewSourceArgs(
+                content="1.1.1.1",
+                type="ipaddr",
+                priority=20,
+                port=80,
+                weight=15,
+            )])
+        config = alicloud.cdn.DomainConfig("config",
+            domain_name=domain.domain_name,
+            function_name="ip_allow_list_set",
+            function_args=[alicloud.cdn.DomainConfigFunctionArgArgs(
+                arg_name="ip_list",
+                arg_value="110.110.110.110",
+            )])
+        ```
+
+        ## Import
+
+        CDN domain config can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cdn/domainConfig:DomainConfig example cdn:config-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DomainConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DomainConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 function_args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
+                 function_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

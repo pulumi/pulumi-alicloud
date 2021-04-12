@@ -22,29 +22,30 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:rds/account:Account":
-		r, err = NewAccount(ctx, name, nil, pulumi.URN_(urn))
+		r = &Account{}
 	case "alicloud:rds/accountPrivilege:AccountPrivilege":
-		r, err = NewAccountPrivilege(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountPrivilege{}
 	case "alicloud:rds/backupPolicy:BackupPolicy":
-		r, err = NewBackupPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackupPolicy{}
 	case "alicloud:rds/connection:Connection":
-		r, err = NewConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &Connection{}
 	case "alicloud:rds/database:Database":
-		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
+		r = &Database{}
 	case "alicloud:rds/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "alicloud:rds/rdsAccount:RdsAccount":
-		r, err = NewRdsAccount(ctx, name, nil, pulumi.URN_(urn))
+		r = &RdsAccount{}
 	case "alicloud:rds/rdsParameterGroup:RdsParameterGroup":
-		r, err = NewRdsParameterGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &RdsParameterGroup{}
 	case "alicloud:rds/readOnlyInstance:ReadOnlyInstance":
-		r, err = NewReadOnlyInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReadOnlyInstance{}
 	case "alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection":
-		r, err = NewReadWriteSplittingConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReadWriteSplittingConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

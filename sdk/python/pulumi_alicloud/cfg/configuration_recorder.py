@@ -5,13 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ConfigurationRecorder']
+__all__ = ['ConfigurationRecorderArgs', 'ConfigurationRecorder']
+
+@pulumi.input_type
+class ConfigurationRecorderArgs:
+    def __init__(__self__, *,
+                 enterprise_edition: Optional[pulumi.Input[bool]] = None,
+                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ConfigurationRecorder resource.
+        :param pulumi.Input[bool] enterprise_edition: - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        """
+        if enterprise_edition is not None:
+            pulumi.set(__self__, "enterprise_edition", enterprise_edition)
+        if resource_types is not None:
+            pulumi.set(__self__, "resource_types", resource_types)
+
+    @property
+    @pulumi.getter(name="enterpriseEdition")
+    def enterprise_edition(self) -> Optional[pulumi.Input[bool]]:
+        """
+        - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
+        """
+        return pulumi.get(self, "enterprise_edition")
+
+    @enterprise_edition.setter
+    def enterprise_edition(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enterprise_edition", value)
+
+    @property
+    @pulumi.getter(name="resourceTypes")
+    def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        """
+        return pulumi.get(self, "resource_types")
+
+    @resource_types.setter
+    def resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_types", value)
 
 
 class ConfigurationRecorder(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -53,6 +93,60 @@ class ConfigurationRecorder(pulumi.CustomResource):
         :param pulumi.Input[bool] enterprise_edition: - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ConfigurationRecorderArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Alicloud Config Configuration Recorder resource. Cloud Config is a specialized service for evaluating resources. Cloud Config tracks configuration changes of your resources and evaluates configuration compliance. Cloud Config can help you evaluate numerous resources and maintain the continuous compliance of your cloud infrastructure.
+        For information about Alicloud Config Configuration Recorder and how to use it, see [What is Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127388.htm)
+
+        > **NOTE:** Available in v1.99.0+.
+
+        > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.cfg.ConfigurationRecorder("example", resource_types=[
+            "ACS::ECS::Instance",
+            "ACS::ECS::Disk",
+        ])
+        ```
+
+        ## Import
+
+        Alicloud Config Configuration Recorder can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cfg/configurationRecorder:ConfigurationRecorder example 122378463********
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ConfigurationRecorderArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConfigurationRecorderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enterprise_edition: Optional[pulumi.Input[bool]] = None,
+                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

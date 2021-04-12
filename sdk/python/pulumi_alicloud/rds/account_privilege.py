@@ -5,13 +5,92 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['AccountPrivilege']
+__all__ = ['AccountPrivilegeArgs', 'AccountPrivilege']
+
+@pulumi.input_type
+class AccountPrivilegeArgs:
+    def __init__(__self__, *,
+                 account_name: pulumi.Input[str],
+                 db_names: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 instance_id: pulumi.Input[str],
+                 privilege: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AccountPrivilege resource.
+        :param pulumi.Input[str] account_name: A specified account name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
+        :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
+               - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+               - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+               - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+               - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+               - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+        """
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "db_names", db_names)
+        pulumi.set(__self__, "instance_id", instance_id)
+        if privilege is not None:
+            pulumi.set(__self__, "privilege", privilege)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Input[str]:
+        """
+        A specified account name.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="dbNames")
+    def db_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of specified database name.
+        """
+        return pulumi.get(self, "db_names")
+
+    @db_names.setter
+    def db_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "db_names", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The Id of instance in which account belongs.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def privilege(self) -> Optional[pulumi.Input[str]]:
+        """
+        The privilege of one account access database. Valid values: 
+        - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+        - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+        - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+        - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+        - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+        """
+        return pulumi.get(self, "privilege")
+
+    @privilege.setter
+    def privilege(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "privilege", value)
 
 
 class AccountPrivilege(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -90,6 +169,90 @@ class AccountPrivilege(pulumi.CustomResource):
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccountPrivilegeArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        creation = config.get("creation")
+        if creation is None:
+            creation = "Rds"
+        name = config.get("name")
+        if name is None:
+            name = "dbaccountprivilegebasic"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.rds.Instance("instance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.s1.small",
+            instance_storage=10,
+            vswitch_id=default_switch.id,
+            instance_name=name)
+        db = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            db.append(alicloud.rds.Database(f"db-{range['value']}",
+                instance_id=instance.id,
+                description="from terraform"))
+        account = alicloud.rds.Account("account",
+            instance_id=instance.id,
+            password="Test12345",
+            description="from terraform")
+        privilege = alicloud.rds.AccountPrivilege("privilege",
+            instance_id=instance.id,
+            account_name=account.name,
+            privilege="ReadOnly",
+            db_names=[__item.name for __item in db])
+        ```
+
+        ## Import
+
+        RDS account privilege can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rds/accountPrivilege:AccountPrivilege example "rm-12345:tf_account:ReadOnly"
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AccountPrivilegeArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccountPrivilegeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 privilege: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

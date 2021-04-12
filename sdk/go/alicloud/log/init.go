@@ -22,29 +22,30 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:log/alert:Alert":
-		r, err = NewAlert(ctx, name, nil, pulumi.URN_(urn))
+		r = &Alert{}
 	case "alicloud:log/audit:Audit":
-		r, err = NewAudit(ctx, name, nil, pulumi.URN_(urn))
+		r = &Audit{}
 	case "alicloud:log/dashboard:Dashboard":
-		r, err = NewDashboard(ctx, name, nil, pulumi.URN_(urn))
+		r = &Dashboard{}
 	case "alicloud:log/etl:Etl":
-		r, err = NewEtl(ctx, name, nil, pulumi.URN_(urn))
+		r = &Etl{}
 	case "alicloud:log/logTailAttachment:LogTailAttachment":
-		r, err = NewLogTailAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &LogTailAttachment{}
 	case "alicloud:log/logTailConfig:LogTailConfig":
-		r, err = NewLogTailConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &LogTailConfig{}
 	case "alicloud:log/machineGroup:MachineGroup":
-		r, err = NewMachineGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &MachineGroup{}
 	case "alicloud:log/project:Project":
-		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &Project{}
 	case "alicloud:log/store:Store":
-		r, err = NewStore(ctx, name, nil, pulumi.URN_(urn))
+		r = &Store{}
 	case "alicloud:log/storeIndex:StoreIndex":
-		r, err = NewStoreIndex(ctx, name, nil, pulumi.URN_(urn))
+		r = &StoreIndex{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

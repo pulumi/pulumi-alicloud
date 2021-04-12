@@ -22,29 +22,30 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:ess/alarm:Alarm":
-		r, err = NewAlarm(ctx, name, nil, pulumi.URN_(urn))
+		r = &Alarm{}
 	case "alicloud:ess/attachment:Attachment":
-		r, err = NewAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &Attachment{}
 	case "alicloud:ess/lifecycleHook:LifecycleHook":
-		r, err = NewLifecycleHook(ctx, name, nil, pulumi.URN_(urn))
+		r = &LifecycleHook{}
 	case "alicloud:ess/notification:Notification":
-		r, err = NewNotification(ctx, name, nil, pulumi.URN_(urn))
+		r = &Notification{}
 	case "alicloud:ess/scalingConfiguration:ScalingConfiguration":
-		r, err = NewScalingConfiguration(ctx, name, nil, pulumi.URN_(urn))
+		r = &ScalingConfiguration{}
 	case "alicloud:ess/scalingGroup:ScalingGroup":
-		r, err = NewScalingGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ScalingGroup{}
 	case "alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups":
-		r, err = NewScalingGroupVServerGroups(ctx, name, nil, pulumi.URN_(urn))
+		r = &ScalingGroupVServerGroups{}
 	case "alicloud:ess/scalingRule:ScalingRule":
-		r, err = NewScalingRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ScalingRule{}
 	case "alicloud:ess/schedule:Schedule":
-		r, err = NewSchedule(ctx, name, nil, pulumi.URN_(urn))
+		r = &Schedule{}
 	case "alicloud:ess/scheduledTask:ScheduledTask":
-		r, err = NewScheduledTask(ctx, name, nil, pulumi.URN_(urn))
+		r = &ScheduledTask{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

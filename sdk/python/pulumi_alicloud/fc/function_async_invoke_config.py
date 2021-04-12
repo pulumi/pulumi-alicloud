@@ -5,15 +5,117 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FunctionAsyncInvokeConfig']
+__all__ = ['FunctionAsyncInvokeConfigArgs', 'FunctionAsyncInvokeConfig']
+
+@pulumi.input_type
+class FunctionAsyncInvokeConfigArgs:
+    def __init__(__self__, *,
+                 function_name: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 destination_config: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']] = None,
+                 maximum_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
+                 maximum_retry_attempts: Optional[pulumi.Input[int]] = None,
+                 qualifier: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a FunctionAsyncInvokeConfig resource.
+        :param pulumi.Input[str] function_name: Name of the Function Compute Function.
+        :param pulumi.Input[str] service_name: Name of the Function Compute Function, omitting any version or alias qualifier.
+        :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs'] destination_config: Configuration block with destination configuration. See below for details.
+        :param pulumi.Input[int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+        :param pulumi.Input[int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+        :param pulumi.Input[str] qualifier: Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
+        """
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "service_name", service_name)
+        if destination_config is not None:
+            pulumi.set(__self__, "destination_config", destination_config)
+        if maximum_event_age_in_seconds is not None:
+            pulumi.set(__self__, "maximum_event_age_in_seconds", maximum_event_age_in_seconds)
+        if maximum_retry_attempts is not None:
+            pulumi.set(__self__, "maximum_retry_attempts", maximum_retry_attempts)
+        if qualifier is not None:
+            pulumi.set(__self__, "qualifier", qualifier)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> pulumi.Input[str]:
+        """
+        Name of the Function Compute Function.
+        """
+        return pulumi.get(self, "function_name")
+
+    @function_name.setter
+    def function_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "function_name", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Name of the Function Compute Function, omitting any version or alias qualifier.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="destinationConfig")
+    def destination_config(self) -> Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']]:
+        """
+        Configuration block with destination configuration. See below for details.
+        """
+        return pulumi.get(self, "destination_config")
+
+    @destination_config.setter
+    def destination_config(self, value: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']]):
+        pulumi.set(self, "destination_config", value)
+
+    @property
+    @pulumi.getter(name="maximumEventAgeInSeconds")
+    def maximum_event_age_in_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+        """
+        return pulumi.get(self, "maximum_event_age_in_seconds")
+
+    @maximum_event_age_in_seconds.setter
+    def maximum_event_age_in_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "maximum_event_age_in_seconds", value)
+
+    @property
+    @pulumi.getter(name="maximumRetryAttempts")
+    def maximum_retry_attempts(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+        """
+        return pulumi.get(self, "maximum_retry_attempts")
+
+    @maximum_retry_attempts.setter
+    def maximum_retry_attempts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "maximum_retry_attempts", value)
+
+    @property
+    @pulumi.getter
+    def qualifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
+        """
+        return pulumi.get(self, "qualifier")
+
+    @qualifier.setter
+    def qualifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "qualifier", value)
 
 
 class FunctionAsyncInvokeConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -95,6 +197,96 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         :param pulumi.Input[str] qualifier: Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
         :param pulumi.Input[str] service_name: Name of the Function Compute Function, omitting any version or alias qualifier.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FunctionAsyncInvokeConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages an asynchronous invocation configuration for a FC Function or Alias.\
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/181866.htm).
+
+        > **NOTE:** Available in 1.100.0+
+
+        ## Example Usage
+        ### Destination Configuration
+
+        > **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
+            service_name=alicloud_fc_service["example"]["name"],
+            function_name=alicloud_fc_function["example"]["name"],
+            destination_config=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigArgs(
+                on_failure=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs(
+                    destination=the_example_mns_queue_arn,
+                ),
+                on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
+                    destination=the_example_mns_topic_arn,
+                ),
+            ))
+        ```
+        ### Error Handling Configuration
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
+            service_name=alicloud_fc_service["example"]["name"],
+            function_name=alicloud_fc_function["example"]["name"],
+            maximum_event_age_in_seconds=60,
+            maximum_retry_attempts=0)
+        ```
+        ### Configuration for Function Latest Unpublished Version
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
+            service_name=alicloud_fc_service["example"]["name"],
+            function_name=alicloud_fc_function["example"]["name"],
+            qualifier="LATEST")
+        # ... other configuration ...
+        ```
+
+        ## Import
+
+        Function Compute Function Async Invoke Configs can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig example my_function
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FunctionAsyncInvokeConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FunctionAsyncInvokeConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 destination_config: Optional[pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']]] = None,
+                 function_name: Optional[pulumi.Input[str]] = None,
+                 maximum_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
+                 maximum_retry_attempts: Optional[pulumi.Input[int]] = None,
+                 qualifier: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

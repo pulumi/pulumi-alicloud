@@ -5,13 +5,100 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['MountTarget']
+__all__ = ['MountTargetArgs', 'MountTarget']
+
+@pulumi.input_type
+class MountTargetArgs:
+    def __init__(__self__, *,
+                 file_system_id: pulumi.Input[str],
+                 access_group_name: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a MountTarget resource.
+        :param pulumi.Input[str] file_system_id: The ID of the file system.
+        :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
+        :param pulumi.Input[str] security_group_id: The ID of security group.
+        :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
+        """
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        if access_group_name is not None:
+            pulumi.set(__self__, "access_group_name", access_group_name)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="fileSystemId")
+    def file_system_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the file system.
+        """
+        return pulumi.get(self, "file_system_id")
+
+    @file_system_id.setter
+    def file_system_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "file_system_id", value)
+
+    @property
+    @pulumi.getter(name="accessGroupName")
+    def access_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the permission group that applies to the mount target.
+        """
+        return pulumi.get(self, "access_group_name")
+
+    @access_group_name.setter
+    def access_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_group_name", value)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VSwitch in the VPC where the mount target resides.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 class MountTarget(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -74,6 +161,78 @@ class MountTarget(pulumi.CustomResource):
         :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MountTargetArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a NAS Mount Target resource.
+        For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
+
+        > **NOTE**: Available in v1.34.0+.
+
+        > **NOTE**: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
+
+        > **NOTE**: You must grant NAS with specific RAM permissions when creating a classic mount targets,
+        and it only can be achieved by creating a classic mount target mannually.
+        See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            protocol_type="NFS",
+            storage_type="Performance",
+            description="test file system")
+        example_access_group = alicloud.nas.AccessGroup("exampleAccessGroup",
+            access_group_name="test_name",
+            access_group_type="Classic",
+            description="test access group")
+        example_mount_target = alicloud.nas.MountTarget("exampleMountTarget",
+            file_system_id=example_file_system.id,
+            access_group_name=example_access_group.access_group_name)
+        ```
+
+        ## Import
+
+        NAS MountTarget
+
+        can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param MountTargetArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MountTargetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_group_name: Optional[pulumi.Input[str]] = None,
+                 file_system_id: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

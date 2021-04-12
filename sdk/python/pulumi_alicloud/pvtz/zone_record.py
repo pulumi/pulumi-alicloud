@@ -5,13 +5,197 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ZoneRecord']
+__all__ = ['ZoneRecordArgs', 'ZoneRecord']
+
+@pulumi.input_type
+class ZoneRecordArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 zone_id: pulumi.Input[str],
+                 lang: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 remark: Optional[pulumi.Input[str]] = None,
+                 resource_record: Optional[pulumi.Input[str]] = None,
+                 rr: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 user_client_ip: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ZoneRecord resource.
+        :param pulumi.Input[str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        :param pulumi.Input[str] value: The value of the Private Zone Record.
+        :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
+        :param pulumi.Input[str] lang: User language.
+        :param pulumi.Input[int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
+        :param pulumi.Input[str] remark: The remark of the Private Zone Record.
+        :param pulumi.Input[str] resource_record: The resource record of the Private Zone Record.
+        :param pulumi.Input[str] rr: The rr of the Private Zone Record.
+        :param pulumi.Input[str] status: Resolve record status. Value:
+               - ENABLE: enable resolution.
+               - DISABLE: pause parsing.
+        :param pulumi.Input[int] ttl: The ttl of the Private Zone Record. Default to `60`.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "zone_id", zone_id)
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if remark is not None:
+            pulumi.set(__self__, "remark", remark)
+        if resource_record is not None:
+            warnings.warn("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""", DeprecationWarning)
+            pulumi.log.warn("""resource_record is deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
+        if resource_record is not None:
+            pulumi.set(__self__, "resource_record", resource_record)
+        if rr is not None:
+            pulumi.set(__self__, "rr", rr)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+        if user_client_ip is not None:
+            pulumi.set(__self__, "user_client_ip", user_client_ip)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the Private Zone Record.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The name of the Private Zone Record.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def lang(self) -> Optional[pulumi.Input[str]]:
+        """
+        User language.
+        """
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lang", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def remark(self) -> Optional[pulumi.Input[str]]:
+        """
+        The remark of the Private Zone Record.
+        """
+        return pulumi.get(self, "remark")
+
+    @remark.setter
+    def remark(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "remark", value)
+
+    @property
+    @pulumi.getter(name="resourceRecord")
+    def resource_record(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource record of the Private Zone Record.
+        """
+        return pulumi.get(self, "resource_record")
+
+    @resource_record.setter
+    def resource_record(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_record", value)
+
+    @property
+    @pulumi.getter
+    def rr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rr of the Private Zone Record.
+        """
+        return pulumi.get(self, "rr")
+
+    @rr.setter
+    def rr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rr", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resolve record status. Value:
+        - ENABLE: enable resolution.
+        - DISABLE: pause parsing.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ttl of the Private Zone Record. Default to `60`.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
+
+    @property
+    @pulumi.getter(name="userClientIp")
+    def user_client_ip(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_client_ip")
+
+    @user_client_ip.setter
+    def user_client_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_client_ip", value)
 
 
 class ZoneRecord(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -53,6 +237,50 @@ class ZoneRecord(pulumi.CustomResource):
         :param pulumi.Input[str] value: The value of the Private Zone Record.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ZoneRecordArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Private Zone Record can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:pvtz/zoneRecord:ZoneRecord example abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ZoneRecordArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneRecordArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 remark: Optional[pulumi.Input[str]] = None,
+                 resource_record: Optional[pulumi.Input[str]] = None,
+                 rr: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_client_ip: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

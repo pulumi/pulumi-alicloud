@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['SharedTarget']
+__all__ = ['SharedTargetArgs', 'SharedTarget']
+
+@pulumi.input_type
+class SharedTargetArgs:
+    def __init__(__self__, *,
+                 resource_share_id: pulumi.Input[str],
+                 target_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a SharedTarget resource.
+        :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
+        :param pulumi.Input[str] target_id: The member account ID in resource directory.
+        """
+        pulumi.set(__self__, "resource_share_id", resource_share_id)
+        pulumi.set(__self__, "target_id", target_id)
+
+    @property
+    @pulumi.getter(name="resourceShareId")
+    def resource_share_id(self) -> pulumi.Input[str]:
+        """
+        The resource share ID of resource manager.
+        """
+        return pulumi.get(self, "resource_share_id")
+
+    @resource_share_id.setter
+    def resource_share_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_share_id", value)
+
+    @property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> pulumi.Input[str]:
+        """
+        The member account ID in resource directory.
+        """
+        return pulumi.get(self, "target_id")
+
+    @target_id.setter
+    def target_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_id", value)
 
 
 class SharedTarget(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +78,47 @@ class SharedTarget(pulumi.CustomResource):
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
         :param pulumi.Input[str] target_id: The member account ID in resource directory.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SharedTargetArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Resource Manager Shared Target resource.
+
+        For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+
+        > **NOTE:** Available in v1.111.0+.
+
+        ## Import
+
+        Resource Manager Shared Target can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/sharedTarget:SharedTarget example <resource_share_id>:<target_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SharedTargetArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SharedTargetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 resource_share_id: Optional[pulumi.Input[str]] = None,
+                 target_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

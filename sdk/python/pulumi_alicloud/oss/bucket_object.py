@@ -5,13 +5,227 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['BucketObject']
+__all__ = ['BucketObjectArgs', 'BucketObject']
+
+@pulumi.input_type
+class BucketObjectArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 key: pulumi.Input[str],
+                 acl: Optional[pulumi.Input[str]] = None,
+                 cache_control: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 content_disposition: Optional[pulumi.Input[str]] = None,
+                 content_encoding: Optional[pulumi.Input[str]] = None,
+                 content_md5: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 expires: Optional[pulumi.Input[str]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 server_side_encryption: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a BucketObject resource.
+        :param pulumi.Input[str] bucket: The name of the bucket to put the file in.
+        :param pulumi.Input[str] key: The name of the object once it is in the bucket.
+        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+        :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        :param pulumi.Input[str] content: The literal content being uploaded to the bucket.
+        :param pulumi.Input[str] content_disposition: Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        :param pulumi.Input[str] content_md5: The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        :param pulumi.Input[str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+        :param pulumi.Input[str] server_side_encryption: Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
+        :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "key", key)
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if cache_control is not None:
+            pulumi.set(__self__, "cache_control", cache_control)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if content_disposition is not None:
+            pulumi.set(__self__, "content_disposition", content_disposition)
+        if content_encoding is not None:
+            pulumi.set(__self__, "content_encoding", content_encoding)
+        if content_md5 is not None:
+            pulumi.set(__self__, "content_md5", content_md5)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if expires is not None:
+            pulumi.set(__self__, "expires", expires)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if server_side_encryption is not None:
+            pulumi.set(__self__, "server_side_encryption", server_side_encryption)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The name of the bucket to put the file in.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The name of the object once it is in the bucket.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter(name="cacheControl")
+    def cache_control(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        """
+        return pulumi.get(self, "cache_control")
+
+    @cache_control.setter
+    def cache_control(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cache_control", value)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        """
+        The literal content being uploaded to the bucket.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="contentDisposition")
+    def content_disposition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        """
+        return pulumi.get(self, "content_disposition")
+
+    @content_disposition.setter
+    def content_disposition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_disposition", value)
+
+    @property
+    @pulumi.getter(name="contentEncoding")
+    def content_encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        """
+        return pulumi.get(self, "content_encoding")
+
+    @content_encoding.setter
+    def content_encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_encoding", value)
+
+    @property
+    @pulumi.getter(name="contentMd5")
+    def content_md5(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        """
+        return pulumi.get(self, "content_md5")
+
+    @content_md5.setter
+    def content_md5(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_md5", value)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter
+    def expires(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        """
+        return pulumi.get(self, "expires")
+
+    @expires.setter
+    def expires(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter(name="serverSideEncryption")
+    def server_side_encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
+        """
+        return pulumi.get(self, "server_side_encryption")
+
+    @server_side_encryption.setter
+    def server_side_encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_side_encryption", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the source file being uploaded to the bucket.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
 
 
 class BucketObject(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -77,6 +291,73 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] server_side_encryption: Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
         :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BucketObjectArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a resource to put a object(content or file) to a oss bucket.
+
+        ## Example Usage
+        ### Uploading a file to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        object_source = alicloud.oss.BucketObject("object-source",
+            bucket="your_bucket_name",
+            key="new_object_key",
+            source="path/to/file")
+        ```
+        ### Uploading a content to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.oss.Bucket("example",
+            bucket="your_bucket_name",
+            acl="public-read")
+        object_content = alicloud.oss.BucketObject("object-content",
+            bucket=example.bucket,
+            key="new_object_key",
+            content="the content that you want to upload.")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BucketObjectArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BucketObjectArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 cache_control: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 content_disposition: Optional[pulumi.Input[str]] = None,
+                 content_encoding: Optional[pulumi.Input[str]] = None,
+                 content_md5: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 expires: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 server_side_encryption: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:cfg/configurationRecorder:ConfigurationRecorder":
-		r, err = NewConfigurationRecorder(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConfigurationRecorder{}
 	case "alicloud:cfg/deliveryChannel:DeliveryChannel":
-		r, err = NewDeliveryChannel(ctx, name, nil, pulumi.URN_(urn))
+		r = &DeliveryChannel{}
 	case "alicloud:cfg/rule:Rule":
-		r, err = NewRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &Rule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

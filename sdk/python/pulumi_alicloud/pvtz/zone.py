@@ -5,13 +5,142 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Zone']
+__all__ = ['ZoneArgs', 'Zone']
+
+@pulumi.input_type
+class ZoneArgs:
+    def __init__(__self__, *,
+                 lang: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 proxy_pattern: Optional[pulumi.Input[str]] = None,
+                 remark: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 user_client_ip: Optional[pulumi.Input[str]] = None,
+                 zone_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Zone resource.
+        :param pulumi.Input[str] lang: The language. Valid values: "zh", "en", "jp".
+        :param pulumi.Input[str] name: The name of the Private Zone.
+        :param pulumi.Input[str] proxy_pattern: The recursive DNS proxy. Valid values:
+               - ZONE: indicates that the recursive DNS proxy is disabled.
+               - RECORD: indicates that the recursive DNS proxy is enabled.
+               Default to "ZONE".
+        :param pulumi.Input[str] remark: The remark of the Private Zone.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
+        :param pulumi.Input[str] user_client_ip: The IP address of the client.
+        :param pulumi.Input[str] zone_name: The zone_name of the Private Zone.
+        """
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if proxy_pattern is not None:
+            pulumi.set(__self__, "proxy_pattern", proxy_pattern)
+        if remark is not None:
+            pulumi.set(__self__, "remark", remark)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if user_client_ip is not None:
+            pulumi.set(__self__, "user_client_ip", user_client_ip)
+        if zone_name is not None:
+            pulumi.set(__self__, "zone_name", zone_name)
+
+    @property
+    @pulumi.getter
+    def lang(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language. Valid values: "zh", "en", "jp".
+        """
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lang", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Private Zone.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="proxyPattern")
+    def proxy_pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        The recursive DNS proxy. Valid values:
+        - ZONE: indicates that the recursive DNS proxy is disabled.
+        - RECORD: indicates that the recursive DNS proxy is enabled.
+        Default to "ZONE".
+        """
+        return pulumi.get(self, "proxy_pattern")
+
+    @proxy_pattern.setter
+    def proxy_pattern(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_pattern", value)
+
+    @property
+    @pulumi.getter
+    def remark(self) -> Optional[pulumi.Input[str]]:
+        """
+        The remark of the Private Zone.
+        """
+        return pulumi.get(self, "remark")
+
+    @remark.setter
+    def remark(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "remark", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the Private Zone belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="userClientIp")
+    def user_client_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address of the client.
+        """
+        return pulumi.get(self, "user_client_ip")
+
+    @user_client_ip.setter
+    def user_client_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_client_ip", value)
+
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone_name of the Private Zone.
+        """
+        return pulumi.get(self, "zone_name")
+
+    @zone_name.setter
+    def zone_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_name", value)
 
 
 class Zone(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -47,6 +176,46 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ZoneArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Private Zone can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:pvtz/zone:Zone example abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ZoneArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 proxy_pattern: Optional[pulumi.Input[str]] = None,
+                 remark: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 user_client_ip: Optional[pulumi.Input[str]] = None,
+                 zone_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

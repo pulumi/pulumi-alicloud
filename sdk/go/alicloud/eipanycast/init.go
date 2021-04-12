@@ -22,13 +22,14 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:eipanycast/anycastEipAddress:AnycastEipAddress":
-		r, err = NewAnycastEipAddress(ctx, name, nil, pulumi.URN_(urn))
+		r = &AnycastEipAddress{}
 	case "alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment":
-		r, err = NewAnycastEipAddressAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &AnycastEipAddressAttachment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

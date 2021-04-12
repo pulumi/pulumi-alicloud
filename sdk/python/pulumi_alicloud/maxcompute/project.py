@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Project']
+__all__ = ['ProjectArgs', 'Project']
+
+@pulumi.input_type
+class ProjectArgs:
+    def __init__(__self__, *,
+                 order_type: pulumi.Input[str],
+                 specification_type: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Project resource.
+        :param pulumi.Input[str] order_type: The type of payment, only `PayAsYouGo` supported currently.
+        :param pulumi.Input[str] specification_type: The type of resource Specification, only `OdpsStandard` supported currently.
+        :param pulumi.Input[str] name: It has been deprecated from provider version 1.110.0 and `project_name` instead.
+        :param pulumi.Input[str] project_name: The name of the maxcompute project.
+        """
+        pulumi.set(__self__, "order_type", order_type)
+        pulumi.set(__self__, "specification_type", specification_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
+
+    @property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> pulumi.Input[str]:
+        """
+        The type of payment, only `PayAsYouGo` supported currently.
+        """
+        return pulumi.get(self, "order_type")
+
+    @order_type.setter
+    def order_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "order_type", value)
+
+    @property
+    @pulumi.getter(name="specificationType")
+    def specification_type(self) -> pulumi.Input[str]:
+        """
+        The type of resource Specification, only `OdpsStandard` supported currently.
+        """
+        return pulumi.get(self, "specification_type")
+
+    @specification_type.setter
+    def specification_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "specification_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from provider version 1.110.0 and `project_name` instead.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the maxcompute project.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_name", value)
 
 
 class Project(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -56,6 +126,61 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] project_name: The name of the maxcompute project.
         :param pulumi.Input[str] specification_type: The type of resource Specification, only `OdpsStandard` supported currently.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProjectArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The project is the basic unit of operation in maxcompute. It is similar to the concept of Database or Schema in traditional databases, and sets the boundary for maxcompute multi-user isolation and access control. [Refer to details](https://www.alibabacloud.com/help/doc-detail/27818.html).
+
+        ->**NOTE:** Available in 1.77.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.maxcompute.Project("example",
+            order_type="PayAsYouGo",
+            project_name="tf_maxcompute_project",
+            specification_type="OdpsStandard")
+        ```
+
+        ## Import
+
+        MaxCompute project can be imported using the *name* or ID, e.g.
+
+        ```sh
+         $ pulumi import alicloud:maxcompute/project:Project example tf_maxcompute_project
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ProjectArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProjectArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 specification_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

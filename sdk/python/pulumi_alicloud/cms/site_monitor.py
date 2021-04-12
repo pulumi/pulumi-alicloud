@@ -5,15 +5,132 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SiteMonitor']
+__all__ = ['SiteMonitorArgs', 'SiteMonitor']
+
+@pulumi.input_type
+class SiteMonitorArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 task_name: pulumi.Input[str],
+                 task_type: pulumi.Input[str],
+                 alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 interval: Optional[pulumi.Input[int]] = None,
+                 isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
+                 options_json: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SiteMonitor resource.
+        :param pulumi.Input[str] address: The URL or IP address monitored by the site monitoring task.
+        :param pulumi.Input[str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+        :param pulumi.Input[str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_ids: The IDs of existing alert rules to be associated with the site monitoring task.
+        :param pulumi.Input[int] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+        :param pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+        :param pulumi.Input[str] options_json: The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "task_name", task_name)
+        pulumi.set(__self__, "task_type", task_type)
+        if alert_ids is not None:
+            pulumi.set(__self__, "alert_ids", alert_ids)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if isp_cities is not None:
+            pulumi.set(__self__, "isp_cities", isp_cities)
+        if options_json is not None:
+            pulumi.set(__self__, "options_json", options_json)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        The URL or IP address monitored by the site monitoring task.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="taskName")
+    def task_name(self) -> pulumi.Input[str]:
+        """
+        The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+        """
+        return pulumi.get(self, "task_name")
+
+    @task_name.setter
+    def task_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "task_name", value)
+
+    @property
+    @pulumi.getter(name="taskType")
+    def task_type(self) -> pulumi.Input[str]:
+        """
+        The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        """
+        return pulumi.get(self, "task_type")
+
+    @task_type.setter
+    def task_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "task_type", value)
+
+    @property
+    @pulumi.getter(name="alertIds")
+    def alert_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of existing alert rules to be associated with the site monitoring task.
+        """
+        return pulumi.get(self, "alert_ids")
+
+    @alert_ids.setter
+    def alert_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "alert_ids", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter(name="ispCities")
+    def isp_cities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]]:
+        """
+        The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+        """
+        return pulumi.get(self, "isp_cities")
+
+    @isp_cities.setter
+    def isp_cities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]]):
+        pulumi.set(self, "isp_cities", value)
+
+    @property
+    @pulumi.getter(name="optionsJson")
+    def options_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+        """
+        return pulumi.get(self, "options_json")
+
+    @options_json.setter
+    def options_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "options_json", value)
 
 
 class SiteMonitor(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -70,6 +187,70 @@ class SiteMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
         :param pulumi.Input[str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SiteMonitorArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
+        Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+
+        Available in 1.72.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        basic = alicloud.cms.SiteMonitor("basic",
+            address="http://www.alibabacloud.com",
+            interval=5,
+            isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
+                city="546",
+                isp="465",
+            )],
+            task_name="tf-testAccCmsSiteMonitor_basic",
+            task_type="HTTP")
+        ```
+
+        ## Import
+
+        Alarm rule can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cms/siteMonitor:SiteMonitor alarm abc12345
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SiteMonitorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SiteMonitorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 interval: Optional[pulumi.Input[int]] = None,
+                 isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteMonitorIspCityArgs']]]]] = None,
+                 options_json: Optional[pulumi.Input[str]] = None,
+                 task_name: Optional[pulumi.Input[str]] = None,
+                 task_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

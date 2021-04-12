@@ -5,15 +5,214 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['StackGroup']
+__all__ = ['StackGroupArgs', 'StackGroup']
+
+@pulumi.input_type
+class StackGroupArgs:
+    def __init__(__self__, *,
+                 stack_group_name: pulumi.Input[str],
+                 account_ids: Optional[pulumi.Input[str]] = None,
+                 administration_role_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 execution_role_name: Optional[pulumi.Input[str]] = None,
+                 operation_description: Optional[pulumi.Input[str]] = None,
+                 operation_preferences: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]] = None,
+                 region_ids: Optional[pulumi.Input[str]] = None,
+                 template_body: Optional[pulumi.Input[str]] = None,
+                 template_url: Optional[pulumi.Input[str]] = None,
+                 template_version: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a StackGroup resource.
+        :param pulumi.Input[str] stack_group_name: The name of the stack group. The name must be unique in a region.
+        :param pulumi.Input[str] account_ids: The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
+        :param pulumi.Input[str] administration_role_name: The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        :param pulumi.Input[str] description: The description of the stack group.
+        :param pulumi.Input[str] execution_role_name: The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        :param pulumi.Input[str] operation_description: The description of the operation.
+        :param pulumi.Input[str] operation_preferences: The operation settings, in JSON format.
+        :param pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[str] region_ids: The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+        :param pulumi.Input[str] template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        :param pulumi.Input[str] template_url: The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        :param pulumi.Input[str] template_version: The version of the template.
+        """
+        pulumi.set(__self__, "stack_group_name", stack_group_name)
+        if account_ids is not None:
+            pulumi.set(__self__, "account_ids", account_ids)
+        if administration_role_name is not None:
+            pulumi.set(__self__, "administration_role_name", administration_role_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if execution_role_name is not None:
+            pulumi.set(__self__, "execution_role_name", execution_role_name)
+        if operation_description is not None:
+            pulumi.set(__self__, "operation_description", operation_description)
+        if operation_preferences is not None:
+            pulumi.set(__self__, "operation_preferences", operation_preferences)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if region_ids is not None:
+            pulumi.set(__self__, "region_ids", region_ids)
+        if template_body is not None:
+            pulumi.set(__self__, "template_body", template_body)
+        if template_url is not None:
+            pulumi.set(__self__, "template_url", template_url)
+        if template_version is not None:
+            pulumi.set(__self__, "template_version", template_version)
+
+    @property
+    @pulumi.getter(name="stackGroupName")
+    def stack_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the stack group. The name must be unique in a region.
+        """
+        return pulumi.get(self, "stack_group_name")
+
+    @stack_group_name.setter
+    def stack_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "stack_group_name", value)
+
+    @property
+    @pulumi.getter(name="accountIds")
+    def account_ids(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
+        """
+        return pulumi.get(self, "account_ids")
+
+    @account_ids.setter
+    def account_ids(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_ids", value)
+
+    @property
+    @pulumi.getter(name="administrationRoleName")
+    def administration_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        """
+        return pulumi.get(self, "administration_role_name")
+
+    @administration_role_name.setter
+    def administration_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "administration_role_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the stack group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="executionRoleName")
+    def execution_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        """
+        return pulumi.get(self, "execution_role_name")
+
+    @execution_role_name.setter
+    def execution_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execution_role_name", value)
+
+    @property
+    @pulumi.getter(name="operationDescription")
+    def operation_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the operation.
+        """
+        return pulumi.get(self, "operation_description")
+
+    @operation_description.setter
+    def operation_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation_description", value)
+
+    @property
+    @pulumi.getter(name="operationPreferences")
+    def operation_preferences(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operation settings, in JSON format.
+        """
+        return pulumi.get(self, "operation_preferences")
+
+    @operation_preferences.setter
+    def operation_preferences(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation_preferences", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]]:
+        """
+        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="regionIds")
+    def region_ids(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+        """
+        return pulumi.get(self, "region_ids")
+
+    @region_ids.setter
+    def region_ids(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_ids", value)
+
+    @property
+    @pulumi.getter(name="templateBody")
+    def template_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        """
+        return pulumi.get(self, "template_body")
+
+    @template_body.setter
+    def template_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_body", value)
+
+    @property
+    @pulumi.getter(name="templateUrl")
+    def template_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        """
+        return pulumi.get(self, "template_url")
+
+    @template_url.setter
+    def template_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_url", value)
+
+    @property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the template.
+        """
+        return pulumi.get(self, "template_version")
+
+    @template_version.setter
+    def template_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_version", value)
 
 
 class StackGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -79,6 +278,74 @@ class StackGroup(pulumi.CustomResource):
         :param pulumi.Input[str] template_url: The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
         :param pulumi.Input[str] template_version: The version of the template.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: StackGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a ROS Stack Group resource.
+
+        For information about ROS Stack Group and how to use it, see [What is Stack Group](https://www.alibabacloud.com/help/en/doc-detail/151333.htm).
+
+        > **NOTE:** Available in v1.107.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.ros.StackGroup("example",
+            stack_group_name="example_value",
+            template_body=\"\"\"    {
+            	"ROSTemplateFormatVersion": "2015-09-01"
+            }
+            
+        \"\"\")
+        ```
+
+        ## Import
+
+        ROS Stack Group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param StackGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(StackGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_ids: Optional[pulumi.Input[str]] = None,
+                 administration_role_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 execution_role_name: Optional[pulumi.Input[str]] = None,
+                 operation_description: Optional[pulumi.Input[str]] = None,
+                 operation_preferences: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackGroupParameterArgs']]]]] = None,
+                 region_ids: Optional[pulumi.Input[str]] = None,
+                 stack_group_name: Optional[pulumi.Input[str]] = None,
+                 template_body: Optional[pulumi.Input[str]] = None,
+                 template_url: Optional[pulumi.Input[str]] = None,
+                 template_version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

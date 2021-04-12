@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:pvtz/zone:Zone":
-		r, err = NewZone(ctx, name, nil, pulumi.URN_(urn))
+		r = &Zone{}
 	case "alicloud:pvtz/zoneAttachment:ZoneAttachment":
-		r, err = NewZoneAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &ZoneAttachment{}
 	case "alicloud:pvtz/zoneRecord:ZoneRecord":
-		r, err = NewZoneRecord(ctx, name, nil, pulumi.URN_(urn))
+		r = &ZoneRecord{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,13 +5,128 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['DdosCooInstance']
+__all__ = ['DdosCooInstanceArgs', 'DdosCooInstance']
+
+@pulumi.input_type
+class DdosCooInstanceArgs:
+    def __init__(__self__, *,
+                 bandwidth: pulumi.Input[str],
+                 base_bandwidth: pulumi.Input[str],
+                 domain_count: pulumi.Input[str],
+                 port_count: pulumi.Input[str],
+                 service_bandwidth: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a DdosCooInstance resource.
+        :param pulumi.Input[str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        :param pulumi.Input[str] base_bandwidth: Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        :param pulumi.Input[str] domain_count: Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
+        :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
+        :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+        :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "base_bandwidth", base_bandwidth)
+        pulumi.set(__self__, "domain_count", domain_count)
+        pulumi.set(__self__, "port_count", port_count)
+        pulumi.set(__self__, "service_bandwidth", service_bandwidth)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Input[str]:
+        """
+        Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="baseBandwidth")
+    def base_bandwidth(self) -> pulumi.Input[str]:
+        """
+        Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+        """
+        return pulumi.get(self, "base_bandwidth")
+
+    @base_bandwidth.setter
+    def base_bandwidth(self, value: pulumi.Input[str]):
+        pulumi.set(self, "base_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="domainCount")
+    def domain_count(self) -> pulumi.Input[str]:
+        """
+        Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
+        """
+        return pulumi.get(self, "domain_count")
+
+    @domain_count.setter
+    def domain_count(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_count", value)
+
+    @property
+    @pulumi.getter(name="portCount")
+    def port_count(self) -> pulumi.Input[str]:
+        """
+        Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
+        """
+        return pulumi.get(self, "port_count")
+
+    @port_count.setter
+    def port_count(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port_count", value)
+
+    @property
+    @pulumi.getter(name="serviceBandwidth")
+    def service_bandwidth(self) -> pulumi.Input[str]:
+        """
+        Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
+        """
+        return pulumi.get(self, "service_bandwidth")
+
+    @service_bandwidth.setter
+    def service_bandwidth(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_bandwidth", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the instance. This name can have a string of 1 to 63 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
 
 
 class DdosCooInstance(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -69,6 +184,71 @@ class DdosCooInstance(pulumi.CustomResource):
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DdosCooInstanceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/doc-detail/69319.htm).
+
+        > **NOTE:** The product region only support cn-hangzhou.
+
+        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+
+        > **NOTE:** Available in 1.37.0+ .
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        new_instance = alicloud.ddos.DdosCooInstance("newInstance",
+            bandwidth="30",
+            base_bandwidth="30",
+            domain_count="50",
+            period=1,
+            port_count="50",
+            service_bandwidth="100")
+        ```
+
+        ## Import
+
+        Ddoscoo instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ddos/ddosCooInstance:DdosCooInstance example ddoscoo-cn-123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DdosCooInstanceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DdosCooInstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
+                 base_bandwidth: Optional[pulumi.Input[str]] = None,
+                 domain_count: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 port_count: Optional[pulumi.Input[str]] = None,
+                 service_bandwidth: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,283 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ContainerGroup']
+__all__ = ['ContainerGroupArgs', 'ContainerGroup']
+
+@pulumi.input_type
+class ContainerGroupArgs:
+    def __init__(__self__, *,
+                 container_group_name: pulumi.Input[str],
+                 containers: pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]],
+                 security_group_id: pulumi.Input[str],
+                 vswitch_id: pulumi.Input[str],
+                 cpu: Optional[pulumi.Input[float]] = None,
+                 dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
+                 eci_security_context: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']] = None,
+                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
+                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 memory: Optional[pulumi.Input[float]] = None,
+                 ram_role_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 restart_policy: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ContainerGroup resource.
+        :param pulumi.Input[str] container_group_name: The name of the container group.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]] containers: The list of containers.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
+        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
+        :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers.
+        :param pulumi.Input[str] instance_type: The type of the ECS instance.
+        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
+        :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]] volumes: The list of volumes.
+        :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
+        """
+        pulumi.set(__self__, "container_group_name", container_group_name)
+        pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if dns_config is not None:
+            pulumi.set(__self__, "dns_config", dns_config)
+        if eci_security_context is not None:
+            pulumi.set(__self__, "eci_security_context", eci_security_context)
+        if host_aliases is not None:
+            pulumi.set(__self__, "host_aliases", host_aliases)
+        if init_containers is not None:
+            pulumi.set(__self__, "init_containers", init_containers)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if ram_role_name is not None:
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if restart_policy is not None:
+            pulumi.set(__self__, "restart_policy", restart_policy)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="containerGroupName")
+    def container_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the container group.
+        """
+        return pulumi.get(self, "container_group_name")
+
+    @container_group_name.setter
+    def container_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "container_group_name", value)
+
+    @property
+    @pulumi.getter
+    def containers(self) -> pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]:
+        """
+        The list of containers.
+        """
+        return pulumi.get(self, "containers")
+
+    @containers.setter
+    def containers(self, value: pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]):
+        pulumi.set(self, "containers", value)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[float]]:
+        """
+        The amount of CPU resources allocated to the container.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter(name="dnsConfig")
+    def dns_config(self) -> Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]:
+        """
+        The structure of dnsConfig.
+        """
+        return pulumi.get(self, "dns_config")
+
+    @dns_config.setter
+    def dns_config(self, value: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]):
+        pulumi.set(self, "dns_config", value)
+
+    @property
+    @pulumi.getter(name="eciSecurityContext")
+    def eci_security_context(self) -> Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']]:
+        return pulumi.get(self, "eci_security_context")
+
+    @eci_security_context.setter
+    def eci_security_context(self, value: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']]):
+        pulumi.set(self, "eci_security_context", value)
+
+    @property
+    @pulumi.getter(name="hostAliases")
+    def host_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]:
+        """
+        HostAliases.
+        """
+        return pulumi.get(self, "host_aliases")
+
+    @host_aliases.setter
+    def host_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]):
+        pulumi.set(self, "host_aliases", value)
+
+    @property
+    @pulumi.getter(name="initContainers")
+    def init_containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]:
+        """
+        The list of initContainers.
+        """
+        return pulumi.get(self, "init_containers")
+
+    @init_containers.setter
+    def init_containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]):
+        pulumi.set(self, "init_containers", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the ECS instance.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[float]]:
+        """
+        The amount of memory resources allocated to the container.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RAM role that the container group assumes. ECI and ECS share the same RAM role.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @ram_role_name.setter
+    def ram_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ram_role_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="restartPolicy")
+    def restart_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The restart policy of the container group. Default to `Always`.
+        """
+        return pulumi.get(self, "restart_policy")
+
+    @restart_policy.setter
+    def restart_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "restart_policy", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]:
+        """
+        The list of volumes.
+        """
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]):
+        pulumi.set(self, "volumes", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class ContainerGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -142,6 +410,134 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ContainerGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides ECI Container Group resource.
+
+        For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/doc-detail/90341.htm).
+
+        > **NOTE:** Available in v1.111.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.eci.ContainerGroup("example",
+            container_group_name="tf-testacc-eci-gruop",
+            cpu=8,
+            memory=16,
+            restart_policy="OnFailure",
+            security_group_id=alicloud_security_group["group"]["id"],
+            vswitch_id=data["alicloud_vpcs"]["default"]["vpcs"][0]["vswitch_ids"],
+            tags={
+                "TF": "create",
+            },
+            containers=[
+                alicloud.eci.ContainerGroupContainerArgs(
+                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+                    name="nginx",
+                    working_dir="/tmp/nginx",
+                    image_pull_policy="IfNotPresent",
+                    commands=[
+                        "/bin/sh",
+                        "-c",
+                        "sleep 9999",
+                    ],
+                    volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
+                        mount_path="/tmp/test",
+                        read_only=False,
+                        name="empty1",
+                    )],
+                    ports=[alicloud.eci.ContainerGroupContainerPortArgs(
+                        port=80,
+                        protocol="TCP",
+                    )],
+                    environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
+                        key="test",
+                        value="nginx",
+                    )],
+                ),
+                alicloud.eci.ContainerGroupContainerArgs(
+                    image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
+                    name="centos",
+                    commands=[
+                        "/bin/sh",
+                        "-c",
+                        "sleep 9999",
+                    ],
+                ),
+            ],
+            init_containers=[alicloud.eci.ContainerGroupInitContainerArgs(
+                name="init-busybox",
+                image="registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+                image_pull_policy="IfNotPresent",
+                commands=["echo"],
+                args=["hello initcontainer"],
+            )],
+            volumes=[
+                alicloud.eci.ContainerGroupVolumeArgs(
+                    name="empty1",
+                    type="EmptyDirVolume",
+                ),
+                alicloud.eci.ContainerGroupVolumeArgs(
+                    name="empty2",
+                    type="EmptyDirVolume",
+                ),
+            ])
+        ```
+
+        ## Import
+
+        ECI Container Group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:eci/containerGroup:ContainerGroup example <container_group_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ContainerGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ContainerGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 container_group_name: Optional[pulumi.Input[str]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]]] = None,
+                 cpu: Optional[pulumi.Input[float]] = None,
+                 dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
+                 eci_security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']]] = None,
+                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
+                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 memory: Optional[pulumi.Input[float]] = None,
+                 ram_role_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 restart_policy: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

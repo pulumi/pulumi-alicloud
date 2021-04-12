@@ -5,13 +5,96 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RouteEntry']
+__all__ = ['RouteEntryArgs', 'RouteEntry']
+
+@pulumi.input_type
+class RouteEntryArgs:
+    def __init__(__self__, *,
+                 next_hop: pulumi.Input[str],
+                 publish_vpc: pulumi.Input[bool],
+                 route_dest: pulumi.Input[str],
+                 vpn_gateway_id: pulumi.Input[str],
+                 weight: pulumi.Input[int]):
+        """
+        The set of arguments for constructing a RouteEntry resource.
+        :param pulumi.Input[str] next_hop: The next hop of the destination route.
+        :param pulumi.Input[bool] publish_vpc: Whether to issue the destination route to the VPC.
+        :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
+        :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
+        :param pulumi.Input[int] weight: The value should be 0 or 100.
+        """
+        pulumi.set(__self__, "next_hop", next_hop)
+        pulumi.set(__self__, "publish_vpc", publish_vpc)
+        pulumi.set(__self__, "route_dest", route_dest)
+        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> pulumi.Input[str]:
+        """
+        The next hop of the destination route.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @next_hop.setter
+    def next_hop(self, value: pulumi.Input[str]):
+        pulumi.set(self, "next_hop", value)
+
+    @property
+    @pulumi.getter(name="publishVpc")
+    def publish_vpc(self) -> pulumi.Input[bool]:
+        """
+        Whether to issue the destination route to the VPC.
+        """
+        return pulumi.get(self, "publish_vpc")
+
+    @publish_vpc.setter
+    def publish_vpc(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "publish_vpc", value)
+
+    @property
+    @pulumi.getter(name="routeDest")
+    def route_dest(self) -> pulumi.Input[str]:
+        """
+        The destination network segment of the destination route.
+        """
+        return pulumi.get(self, "route_dest")
+
+    @route_dest.setter
+    def route_dest(self, value: pulumi.Input[str]):
+        pulumi.set(self, "route_dest", value)
+
+    @property
+    @pulumi.getter(name="vpnGatewayId")
+    def vpn_gateway_id(self) -> pulumi.Input[str]:
+        """
+        The id of the vpn gateway.
+        """
+        return pulumi.get(self, "vpn_gateway_id")
+
+    @vpn_gateway_id.setter
+    def vpn_gateway_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpn_gateway_id", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[int]:
+        """
+        The value should be 0 or 100.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[int]):
+        pulumi.set(self, "weight", value)
 
 
 class RouteEntry(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +123,44 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
         :param pulumi.Input[int] weight: The value should be 0 or 100.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RouteEntryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        VPN route entry can be imported using the id(VpnGatewayId +":"+ NextHop +":"+ RouteDest), e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpn/routeEntry:RouteEntry example vpn-abc123456:vco-abc123456:10.0.0.10/24
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RouteEntryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RouteEntryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 next_hop: Optional[pulumi.Input[str]] = None,
+                 publish_vpc: Optional[pulumi.Input[bool]] = None,
+                 route_dest: Optional[pulumi.Input[str]] = None,
+                 vpn_gateway_id: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,82 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ApplicationScale']
+__all__ = ['ApplicationScaleArgs', 'ApplicationScale']
+
+@pulumi.input_type
+class ApplicationScaleArgs:
+    def __init__(__self__, *,
+                 app_id: pulumi.Input[str],
+                 deploy_group: pulumi.Input[str],
+                 ecu_infos: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 force_status: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a ApplicationScale resource.
+        :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.
+        :param pulumi.Input[str] deploy_group: The ID of the instance group to which you want to add ECS instances to scale out the application.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ecu_infos: The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
+        :param pulumi.Input[bool] force_status: This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
+        """
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "deploy_group", deploy_group)
+        pulumi.set(__self__, "ecu_infos", ecu_infos)
+        if force_status is not None:
+            pulumi.set(__self__, "force_status", force_status)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the application that you want to deploy.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter(name="deployGroup")
+    def deploy_group(self) -> pulumi.Input[str]:
+        """
+        The ID of the instance group to which you want to add ECS instances to scale out the application.
+        """
+        return pulumi.get(self, "deploy_group")
+
+    @deploy_group.setter
+    def deploy_group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deploy_group", value)
+
+    @property
+    @pulumi.getter(name="ecuInfos")
+    def ecu_infos(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
+        """
+        return pulumi.get(self, "ecu_infos")
+
+    @ecu_infos.setter
+    def ecu_infos(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "ecu_infos", value)
+
+    @property
+    @pulumi.getter(name="forceStatus")
+    def force_status(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
+        """
+        return pulumi.get(self, "force_status")
+
+    @force_status.setter
+    def force_status(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_status", value)
 
 
 class ApplicationScale(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +118,54 @@ class ApplicationScale(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ecu_infos: The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         :param pulumi.Input[bool] force_status: This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApplicationScaleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This operation is provided to scale out an EDAS application.
+
+        > **NOTE:** Available in 1.82.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.edas.ApplicationScale("default",
+            app_id=var["app_id"],
+            deploy_group=var["deploy_group"],
+            ecu_infos=var["ecu_info"],
+            force_status=var["force_status"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ApplicationScaleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationScaleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 deploy_group: Optional[pulumi.Input[str]] = None,
+                 ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 force_status: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,212 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Account']
+__all__ = ['AccountArgs', 'Account']
+
+@pulumi.input_type
+class AccountArgs:
+    def __init__(__self__, *,
+                 account_description: Optional[pulumi.Input[str]] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 account_password: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
+                 db_instance_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Account resource.
+        :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        :param pulumi.Input[str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] type: Privilege type of account.
+               - Normal: Common privilege.
+               - Super: High privilege.
+        """
+        if account_description is not None:
+            pulumi.set(__self__, "account_description", account_description)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_password is not None:
+            pulumi.set(__self__, "account_password", account_password)
+        if account_type is not None:
+            pulumi.set(__self__, "account_type", account_type)
+        if db_instance_id is not None:
+            pulumi.set(__self__, "db_instance_id", db_instance_id)
+        if description is not None:
+            warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
+            pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instance_id is not None:
+            warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.""")
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if kms_encrypted_password is not None:
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if kms_encryption_context is not None:
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
+            pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if type is not None:
+            warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="accountDescription")
+    def account_description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account_description")
+
+    @account_description.setter
+    def account_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_description", value)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="accountPassword")
+    def account_password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account_password")
+
+    @account_password.setter
+    def account_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_password", value)
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account_type")
+
+    @account_type.setter
+    def account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_type", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceId")
+    def db_instance_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "db_instance_id")
+
+    @db_instance_id.setter
+    def db_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of instance in which account belongs.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptedPassword")
+    def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_password")
+
+    @kms_encrypted_password.setter
+    def kms_encrypted_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_encrypted_password", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @kms_encryption_context.setter
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Privilege type of account.
+        - Normal: Common privilege.
+        - Super: High privilege.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class Account(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -51,6 +250,51 @@ class Account(pulumi.CustomResource):
                - Normal: Common privilege.
                - Super: High privilege.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[AccountArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        RDS account can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rds/account:Account example "rm-12345:tf_account"
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AccountArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccountArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_description: Optional[pulumi.Input[str]] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 account_password: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
+                 db_instance_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,183 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ReadOnlyInstance']
+__all__ = ['ReadOnlyInstanceArgs', 'ReadOnlyInstance']
+
+@pulumi.input_type
+class ReadOnlyInstanceArgs:
+    def __init__(__self__, *,
+                 engine_version: pulumi.Input[str],
+                 instance_storage: pulumi.Input[int],
+                 instance_type: pulumi.Input[str],
+                 master_db_instance_id: pulumi.Input[str],
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ReadOnlyInstance resource.
+        :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
+        :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
+        """
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "instance_storage", instance_storage)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "master_db_instance_id", master_db_instance_id)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> pulumi.Input[str]:
+        """
+        Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @engine_version.setter
+    def engine_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine_version", value)
+
+    @property
+    @pulumi.getter(name="instanceStorage")
+    def instance_storage(self) -> pulumi.Input[int]:
+        """
+        User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        """
+        return pulumi.get(self, "instance_storage")
+
+    @instance_storage.setter
+    def instance_storage(self, value: pulumi.Input[int]):
+        pulumi.set(self, "instance_storage", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Input[str]:
+        """
+        DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="masterDbInstanceId")
+    def master_db_instance_id(self) -> pulumi.Input[str]:
+        """
+        ID of the master instance.
+        """
+        return pulumi.get(self, "master_db_instance_id")
+
+    @master_db_instance_id.setter
+    def master_db_instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "master_db_instance_id", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of DB instance. It a string of 2 to 256 characters.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]:
+        """
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of resource group which the DB read-only instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The virtual switch ID to launch DB instances in one VPC.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Zone to launch the DB instance.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class ReadOnlyInstance(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -98,6 +266,93 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ReadOnlyInstanceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an RDS readonly instance resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        creation = config.get("creation")
+        if creation is None:
+            creation = "Rds"
+        name = config.get("name")
+        if name is None:
+            name = "dbInstancevpc"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.t1.small",
+            instance_storage=20,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=default_switch.id,
+            security_ips=[
+                "10.168.1.12",
+                "100.69.7.112",
+            ])
+        default_read_only_instance = alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance",
+            master_db_instance_id=default_instance.id,
+            zone_id=default_instance.zone_id,
+            engine_version=default_instance.engine_version,
+            instance_type=default_instance.instance_type,
+            instance_storage=30,
+            instance_name=f"{name}ro",
+            vswitch_id=default_switch.id)
+        ```
+
+        ## Import
+
+        RDS readonly instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rds/readOnlyInstance:ReadOnlyInstance example rm-abc12345678
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ReadOnlyInstanceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ReadOnlyInstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 engine_version: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_storage: Optional[pulumi.Input[int]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 master_db_instance_id: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

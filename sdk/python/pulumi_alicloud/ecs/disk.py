@@ -5,13 +5,251 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Disk']
+__all__ = ['DiskArgs', 'Disk']
+
+@pulumi.input_type
+class DiskArgs:
+    def __init__(__self__, *,
+                 availability_zone: pulumi.Input[str],
+                 size: pulumi.Input[int],
+                 category: Optional[pulumi.Input[str]] = None,
+                 delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+                 delete_with_instance: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a Disk resource.
+        :param pulumi.Input[str] availability_zone: The Zone to create the disk in.
+        :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
+        :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+        :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance: Default value: false.
+        :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+        :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        :param pulumi.Input[str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs.
+               > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "size", size)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if delete_auto_snapshot is not None:
+            pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_auto_snapshot is not None:
+            pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> pulumi.Input[str]:
+        """
+        The Zone to create the disk in.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "availability_zone", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[int]:
+        """
+        The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="deleteAutoSnapshot")
+    def delete_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+        """
+        return pulumi.get(self, "delete_auto_snapshot")
+
+    @delete_auto_snapshot.setter
+    def delete_auto_snapshot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_auto_snapshot", value)
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the disk is released together with the instance: Default value: false.
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @delete_with_instance.setter
+    def delete_with_instance(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_with_instance", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableAutoSnapshot")
+    def enable_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+        """
+        return pulumi.get(self, "enable_auto_snapshot")
+
+    @enable_auto_snapshot.setter
+    def enable_auto_snapshot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_auto_snapshot", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the disk will be encrypted, conflict with `snapshot_id`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the disk belongs.
+        > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Disk(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -85,6 +323,76 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DiskArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a ECS disk resource.
+
+        > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new ECS disk.
+        ecs_disk = alicloud.ecs.Disk("ecsDisk",
+            availability_zone="cn-beijing-b",
+            category="cloud_efficiency",
+            description="Hello ecs disk.",
+            encrypted=True,
+            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
+            size=30,
+            tags={
+                "Name": "TerraformTest",
+            })
+        ```
+
+        ## Import
+
+        Cloud disk can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/disk:Disk example d-abc12345678
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DiskArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DiskArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input[str]] = None,
+                 delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+                 delete_with_instance: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

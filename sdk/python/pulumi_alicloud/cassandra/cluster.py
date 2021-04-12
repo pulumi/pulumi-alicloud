@@ -5,13 +5,340 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Cluster']
+__all__ = ['ClusterArgs', 'Cluster']
+
+@pulumi.input_type
+class ClusterArgs:
+    def __init__(__self__, *,
+                 instance_type: pulumi.Input[str],
+                 major_version: pulumi.Input[str],
+                 node_count: pulumi.Input[int],
+                 pay_type: pulumi.Input[str],
+                 vswitch_id: pulumi.Input[str],
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 data_center_name: Optional[pulumi.Input[str]] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
+                 disk_type: Optional[pulumi.Input[str]] = None,
+                 enable_public: Optional[pulumi.Input[bool]] = None,
+                 ip_white: Optional[pulumi.Input[str]] = None,
+                 maintain_end_time: Optional[pulumi.Input[str]] = None,
+                 maintain_start_time: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Cluster resource.
+        :param pulumi.Input[str] instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
+        :param pulumi.Input[str] major_version: Cassandra major version. Now only support version `3.11`.
+        :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-1 default to 2.
+        :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
+        :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-1, can not empty.
+        :param pulumi.Input[bool] auto_renew: Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
+        :param pulumi.Input[int] auto_renew_period: Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        :param pulumi.Input[str] cluster_name: Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
+        :param pulumi.Input[str] data_center_name: Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
+        :param pulumi.Input[int] disk_size: User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
+               - Custom storage space; value range: [160, 2000].
+               - 80-GB increments.
+        :param pulumi.Input[str] disk_type: The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        :param pulumi.Input[str] ip_white: Set the instance's IP whitelist in VPC network.
+        :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
+        :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        """
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "major_version", major_version)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "pay_type", pay_type)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if data_center_name is not None:
+            pulumi.set(__self__, "data_center_name", data_center_name)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if enable_public is not None:
+            pulumi.set(__self__, "enable_public", enable_public)
+        if ip_white is not None:
+            pulumi.set(__self__, "ip_white", ip_white)
+        if maintain_end_time is not None:
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+        if maintain_start_time is not None:
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if period_unit is not None:
+            pulumi.set(__self__, "period_unit", period_unit)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Input[str]:
+        """
+        Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="majorVersion")
+    def major_version(self) -> pulumi.Input[str]:
+        """
+        Cassandra major version. Now only support version `3.11`.
+        """
+        return pulumi.get(self, "major_version")
+
+    @major_version.setter
+    def major_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "major_version", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> pulumi.Input[int]:
+        """
+        The node count of Cassandra dataCenter-1 default to 2.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter(name="payType")
+    def pay_type(self) -> pulumi.Input[str]:
+        """
+        The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
+        """
+        return pulumi.get(self, "pay_type")
+
+    @pay_type.setter
+    def pay_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pay_type", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        The vswitch_id of dataCenter-1, can not empty.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="dataCenterName")
+    def data_center_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
+        """
+        return pulumi.get(self, "data_center_name")
+
+    @data_center_name.setter
+    def data_center_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_center_name", value)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
+        - Custom storage space; value range: [160, 2000].
+        - 80-GB increments.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="enablePublic")
+    def enable_public(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_public")
+
+    @enable_public.setter
+    def enable_public(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_public", value)
+
+    @property
+    @pulumi.getter(name="ipWhite")
+    def ip_white(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the instance's IP whitelist in VPC network.
+        """
+        return pulumi.get(self, "ip_white")
+
+    @ip_white.setter
+    def ip_white(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_white", value)
+
+    @property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @maintain_end_time.setter
+    def maintain_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_end_time", value)
+
+    @property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
+        """
+        return pulumi.get(self, "maintain_start_time")
+
+    @maintain_start_time.setter
+    def maintain_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_start_time", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "period_unit")
+
+    @period_unit.setter
+    def period_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period_unit", value)
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of security group ids to associate with.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_groups", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class Cluster(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -106,6 +433,96 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-1, can not empty.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ClusterArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cassandra cluster resource supports replica set clusters only. The Cassandra provides stable, reliable, and automatic scalable database services.
+        It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
+        You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
+
+        > **NOTE:**  Available in 1.88.0+.
+
+        > **NOTE:**  The following regions support create Vpc network Cassandra cluster.
+        The official website mark more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
+
+        > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
+
+        ## Example Usage
+        ### Create a cassandra cluster
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cassandra.Cluster("default",
+            auto_renew=False,
+            cluster_name="cassandra-cluster-name-tf",
+            data_center_name="dc-1",
+            disk_size=160,
+            disk_type="cloud_ssd",
+            instance_type="cassandra.c.large",
+            ip_white="127.0.0.1",
+            maintain_end_time="20:00Z",
+            maintain_start_time="18:00Z",
+            major_version="3.11",
+            node_count=2,
+            pay_type="PayAsYouGo",
+            vswitch_id="vsw-xxxx")
+        ```
+
+        This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
+
+        ## Import
+
+        Cassandra cluster can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cassandra/cluster:Cluster example cds-wz9sr400dd7xxxxx
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ClusterArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 data_center_name: Optional[pulumi.Input[str]] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
+                 disk_type: Optional[pulumi.Input[str]] = None,
+                 enable_public: Optional[pulumi.Input[bool]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 ip_white: Optional[pulumi.Input[str]] = None,
+                 maintain_end_time: Optional[pulumi.Input[str]] = None,
+                 maintain_start_time: Optional[pulumi.Input[str]] = None,
+                 major_version: Optional[pulumi.Input[str]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 pay_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

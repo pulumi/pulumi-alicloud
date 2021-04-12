@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:polardb/account:Account":
-		r, err = NewAccount(ctx, name, nil, pulumi.URN_(urn))
+		r = &Account{}
 	case "alicloud:polardb/accountPrivilege:AccountPrivilege":
-		r, err = NewAccountPrivilege(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountPrivilege{}
 	case "alicloud:polardb/backupPolicy:BackupPolicy":
-		r, err = NewBackupPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackupPolicy{}
 	case "alicloud:polardb/cluster:Cluster":
-		r, err = NewCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &Cluster{}
 	case "alicloud:polardb/database:Database":
-		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
+		r = &Database{}
 	case "alicloud:polardb/endpoint:Endpoint":
-		r, err = NewEndpoint(ctx, name, nil, pulumi.URN_(urn))
+		r = &Endpoint{}
 	case "alicloud:polardb/endpointAddress:EndpointAddress":
-		r, err = NewEndpointAddress(ctx, name, nil, pulumi.URN_(urn))
+		r = &EndpointAddress{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

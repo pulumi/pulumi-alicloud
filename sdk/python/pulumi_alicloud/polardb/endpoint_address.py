@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['EndpointAddress']
+__all__ = ['EndpointAddressArgs', 'EndpointAddress']
+
+@pulumi.input_type
+class EndpointAddressArgs:
+    def __init__(__self__, *,
+                 db_cluster_id: pulumi.Input[str],
+                 db_endpoint_id: pulumi.Input[str],
+                 connection_prefix: Optional[pulumi.Input[str]] = None,
+                 net_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a EndpointAddress resource.
+        :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
+        :param pulumi.Input[str] db_endpoint_id: The Id of endpoint that can run database.
+        :param pulumi.Input[str] connection_prefix: Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
+        :param pulumi.Input[str] net_type: Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
+        """
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_endpoint_id", db_endpoint_id)
+        if connection_prefix is not None:
+            pulumi.set(__self__, "connection_prefix", connection_prefix)
+        if net_type is not None:
+            pulumi.set(__self__, "net_type", net_type)
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> pulumi.Input[str]:
+        """
+        The Id of cluster that can run database.
+        """
+        return pulumi.get(self, "db_cluster_id")
+
+    @db_cluster_id.setter
+    def db_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "db_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="dbEndpointId")
+    def db_endpoint_id(self) -> pulumi.Input[str]:
+        """
+        The Id of endpoint that can run database.
+        """
+        return pulumi.get(self, "db_endpoint_id")
+
+    @db_endpoint_id.setter
+    def db_endpoint_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "db_endpoint_id", value)
+
+    @property
+    @pulumi.getter(name="connectionPrefix")
+    def connection_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
+        """
+        return pulumi.get(self, "connection_prefix")
+
+    @connection_prefix.setter
+    def connection_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_prefix", value)
+
+    @property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
+        """
+        return pulumi.get(self, "net_type")
+
+    @net_type.setter
+    def net_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "net_type", value)
 
 
 class EndpointAddress(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -78,6 +148,83 @@ class EndpointAddress(pulumi.CustomResource):
         :param pulumi.Input[str] db_endpoint_id: The Id of endpoint that can run database.
         :param pulumi.Input[str] net_type: Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: EndpointAddressArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
+
+        > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
+         To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        creation = config.get("creation")
+        if creation is None:
+            creation = "PolarDB"
+        name = config.get("name")
+        if name is None:
+            name = "polardbconnectionbasic"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+            db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid",
+            db_node_class="polar.mysql.x4.large",
+            vswitch_id=default_switch.id,
+            description=name)
+        default_endpoints = default_cluster.id.apply(lambda id: alicloud.polardb.get_endpoints(db_cluster_id=id))
+        endpoint = alicloud.polardb.EndpointAddress("endpoint",
+            db_cluster_id=default_cluster.id,
+            db_endpoint_id=default_endpoints.endpoints[0].db_endpoint_id,
+            connection_prefix="testpolardbconn",
+            net_type="Public")
+        ```
+
+        ## Import
+
+        PolarDB endpoint address can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:polardb/endpointAddress:EndpointAddress example pc-abc123456:pe-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param EndpointAddressArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EndpointAddressArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 connection_prefix: Optional[pulumi.Input[str]] = None,
+                 db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 db_endpoint_id: Optional[pulumi.Input[str]] = None,
+                 net_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

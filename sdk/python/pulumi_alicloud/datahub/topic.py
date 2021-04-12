@@ -5,13 +5,142 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Topic']
+__all__ = ['TopicArgs', 'Topic']
+
+@pulumi.input_type
+class TopicArgs:
+    def __init__(__self__, *,
+                 project_name: pulumi.Input[str],
+                 comment: Optional[pulumi.Input[str]] = None,
+                 life_cycle: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 record_type: Optional[pulumi.Input[str]] = None,
+                 shard_count: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a Topic resource.
+        :param pulumi.Input[str] project_name: The name of the datahub project that this topic belongs to. It is case-insensitive.
+        :param pulumi.Input[str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
+        :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
+        :param pulumi.Input[str] name: The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
+        :param pulumi.Input[Mapping[str, Any]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
+               - BIGINT
+               - STRING
+               - BOOLEAN
+               - DOUBLE
+               - TIMESTAMP
+        :param pulumi.Input[str] record_type: The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
+        :param pulumi.Input[int] shard_count: The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
+        """
+        pulumi.set(__self__, "project_name", project_name)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if life_cycle is not None:
+            pulumi.set(__self__, "life_cycle", life_cycle)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if record_schema is not None:
+            pulumi.set(__self__, "record_schema", record_schema)
+        if record_type is not None:
+            pulumi.set(__self__, "record_type", record_type)
+        if shard_count is not None:
+            pulumi.set(__self__, "shard_count", shard_count)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> pulumi.Input[str]:
+        """
+        The name of the datahub project that this topic belongs to. It is case-insensitive.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comment of the datahub topic. It cannot be longer than 255 characters.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="lifeCycle")
+    def life_cycle(self) -> Optional[pulumi.Input[int]]:
+        """
+        How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
+        """
+        return pulumi.get(self, "life_cycle")
+
+    @life_cycle.setter
+    def life_cycle(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "life_cycle", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="recordSchema")
+    def record_schema(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
+        - BIGINT
+        - STRING
+        - BOOLEAN
+        - DOUBLE
+        - TIMESTAMP
+        """
+        return pulumi.get(self, "record_schema")
+
+    @record_schema.setter
+    def record_schema(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "record_schema", value)
+
+    @property
+    @pulumi.getter(name="recordType")
+    def record_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
+        """
+        return pulumi.get(self, "record_type")
+
+    @record_type.setter
+    def record_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "record_type", value)
+
+    @property
+    @pulumi.getter(name="shardCount")
+    def shard_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
+        """
+        return pulumi.get(self, "shard_count")
+
+    @shard_count.setter
+    def shard_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "shard_count", value)
 
 
 class Topic(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -89,6 +218,86 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] record_type: The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
         :param pulumi.Input[int] shard_count: The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TopicArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+
+        ## Example Usage
+
+        Basic Usage
+
+        - BLob Topic
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.datahub.Topic("example",
+            comment="created by terraform",
+            life_cycle=7,
+            project_name="tf_datahub_project",
+            record_type="BLOB",
+            shard_count=3)
+        ```
+        - Tuple Topic
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.datahub.Topic("example",
+            comment="created by terraform",
+            life_cycle=7,
+            project_name="tf_datahub_project",
+            record_schema={
+                "bigint_field": "BIGINT",
+                "boolean_field": "BOOLEAN",
+                "double_field": "DOUBLE",
+                "string_field": "STRING",
+                "timestamp_field": "TIMESTAMP",
+            },
+            record_type="TUPLE",
+            shard_count=3)
+        ```
+
+        ## Import
+
+        Datahub topic can be imported using the ID, e.g.
+
+        ```sh
+         $ pulumi import alicloud:datahub/topic:Topic example tf_datahub_project:tf_datahub_topic
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TopicArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TopicArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 life_cycle: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 record_type: Optional[pulumi.Input[str]] = None,
+                 shard_count: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

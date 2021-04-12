@@ -5,13 +5,163 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['NetworkInterface']
+__all__ = ['NetworkInterfaceArgs', 'NetworkInterface']
+
+@pulumi.input_type
+class NetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 vswitch_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_ip: Optional[pulumi.Input[str]] = None,
+                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 private_ips_count: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a NetworkInterface resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[str] vswitch_id: The VSwitch to create the ENI in.
+        :param pulumi.Input[str] description: Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        :param pulumi.Input[str] name: Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        :param pulumi.Input[str] private_ip: The primary private IP of the ENI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        :param pulumi.Input[int] private_ips_count: Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the network interface belongs.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if private_ip is not None:
+            pulumi.set(__self__, "private_ip", private_ip)
+        if private_ips is not None:
+            pulumi.set(__self__, "private_ips", private_ips)
+        if private_ips_count is not None:
+            pulumi.set(__self__, "private_ips_count", private_ips_count)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of security group ids to associate with.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "security_groups", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        The VSwitch to create the ENI in.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary private IP of the ENI.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @private_ip.setter
+    def private_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip", value)
+
+    @property
+    @pulumi.getter(name="privateIps")
+    def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        """
+        return pulumi.get(self, "private_ips")
+
+    @private_ips.setter
+    def private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "private_ips", value)
+
+    @property
+    @pulumi.getter(name="privateIpsCount")
+    def private_ips_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
+        """
+        return pulumi.get(self, "private_ips_count")
+
+    @private_ips_count.setter
+    def private_ips_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "private_ips_count", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the network interface belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class NetworkInterface(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -80,6 +230,80 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitch to create the ENI in.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NetworkInterfaceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an ECS Elastic Network Interface resource.
+
+        For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
+
+        > **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "networkInterfaceName"
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/24")
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        vswitch = alicloud.vpc.Switch("vswitch",
+            cidr_block="192.168.0.0/24",
+            availability_zone=default_zones.zones[0].id,
+            vpc_id=vpc.id)
+        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+        default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
+            vswitch_id=vswitch.id,
+            security_groups=[group.id],
+            private_ip="192.168.0.2",
+            private_ips_count=3)
+        ```
+
+        ## Import
+
+        ENI can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/networkInterface:NetworkInterface eni eni-abc1234567890000
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NetworkInterfaceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkInterfaceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_ip: Optional[pulumi.Input[str]] = None,
+                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 private_ips_count: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

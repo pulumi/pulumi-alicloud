@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:alikafka/consumerGroup:ConsumerGroup":
-		r, err = NewConsumerGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConsumerGroup{}
 	case "alicloud:alikafka/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "alicloud:alikafka/saslAcl:SaslAcl":
-		r, err = NewSaslAcl(ctx, name, nil, pulumi.URN_(urn))
+		r = &SaslAcl{}
 	case "alicloud:alikafka/saslUser:SaslUser":
-		r, err = NewSaslUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &SaslUser{}
 	case "alicloud:alikafka/topic:Topic":
-		r, err = NewTopic(ctx, name, nil, pulumi.URN_(urn))
+		r = &Topic{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

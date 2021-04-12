@@ -5,13 +5,158 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Role']
+__all__ = ['RoleArgs', 'Role']
+
+@pulumi.input_type
+class RoleArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 document: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 max_session_duration: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ram_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Role resource.
+        :param pulumi.Input[str] description: Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        :param pulumi.Input[str] document: Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[int] max_session_duration: The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+        :param pulumi.Input[str] name: Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_users: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+        :param pulumi.Input[str] version: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if document is not None:
+            pulumi.set(__self__, "document", document)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if max_session_duration is not None:
+            pulumi.set(__self__, "max_session_duration", max_session_duration)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ram_users is not None:
+            warnings.warn("""Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
+            pulumi.log.warn("""ram_users is deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
+        if ram_users is not None:
+            pulumi.set(__self__, "ram_users", ram_users)
+        if services is not None:
+            warnings.warn("""Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
+            pulumi.log.warn("""services is deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+        if version is not None:
+            warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
+            pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def document(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+        """
+        return pulumi.get(self, "document")
+
+    @document.setter
+    def document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "document", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This parameter is used for resource destroy. Default value is `false`.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="maxSessionDuration")
+    def max_session_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
+        """
+        return pulumi.get(self, "max_session_duration")
+
+    @max_session_duration.setter
+    def max_session_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_session_duration", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="ramUsers")
+    def ram_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+        """
+        return pulumi.get(self, "ram_users")
+
+    @ram_users.setter
+    def ram_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ram_users", value)
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "services", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 class Role(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +191,47 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
         :param pulumi.Input[str] version: (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[RoleArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        RAM role can be imported using the id or name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/role:Role example my-role
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RoleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 document: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 max_session_duration: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ram_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

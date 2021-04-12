@@ -5,15 +5,536 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Instance']
+__all__ = ['InstanceArgs', 'Instance']
+
+@pulumi.input_type
+class InstanceArgs:
+    def __init__(__self__, *,
+                 engine: pulumi.Input[str],
+                 engine_version: pulumi.Input[str],
+                 instance_storage: pulumi.Input[int],
+                 instance_type: pulumi.Input[str],
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
+                 db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 force_restart: Optional[pulumi.Input[bool]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 maintain_time: Optional[pulumi.Input[str]] = None,
+                 monitoring_period: Optional[pulumi.Input[int]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_ip_mode: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sql_collector_config_value: Optional[pulumi.Input[int]] = None,
+                 sql_collector_status: Optional[pulumi.Input[str]] = None,
+                 ssl_action: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tde_status: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range:
+               - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+               - [20,1000] for MySQL 5.7 basic single node edition;
+               - [10, 2000] for SQL Server 2008R2;
+               - [20,2000] for SQL Server 2012 basic single node edition
+               Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+               Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+        :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        :param pulumi.Input[bool] auto_renew: Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        :param pulumi.Input[str] auto_upgrade_minor_version: The upgrade method to use. Valid values:
+               - Auto: Instances are automatically upgraded to a higher minor version.
+               - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+        :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
+               - local_ssd: specifies to use local SSDs. This value is recommended.
+               - cloud_ssd: specifies to use standard SSDs.
+               - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+               - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+               - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+        :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+        :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
+        :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+        :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
+               If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
+        :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        """
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "instance_storage", instance_storage)
+        pulumi.set(__self__, "instance_type", instance_type)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if auto_upgrade_minor_version is not None:
+            pulumi.set(__self__, "auto_upgrade_minor_version", auto_upgrade_minor_version)
+        if db_instance_storage_type is not None:
+            pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if force_restart is not None:
+            pulumi.set(__self__, "force_restart", force_restart)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if maintain_time is not None:
+            pulumi.set(__self__, "maintain_time", maintain_time)
+        if monitoring_period is not None:
+            pulumi.set(__self__, "monitoring_period", monitoring_period)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_group_id is not None:
+            warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
+            pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if security_ip_mode is not None:
+            pulumi.set(__self__, "security_ip_mode", security_ip_mode)
+        if security_ips is not None:
+            pulumi.set(__self__, "security_ips", security_ips)
+        if sql_collector_config_value is not None:
+            pulumi.set(__self__, "sql_collector_config_value", sql_collector_config_value)
+        if sql_collector_status is not None:
+            pulumi.set(__self__, "sql_collector_status", sql_collector_status)
+        if ssl_action is not None:
+            pulumi.set(__self__, "ssl_action", ssl_action)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tde_status is not None:
+            pulumi.set(__self__, "tde_status", tde_status)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id_slave_a is not None:
+            pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
+        if zone_id_slave_b is not None:
+            pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> pulumi.Input[str]:
+        """
+        Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> pulumi.Input[str]:
+        """
+        Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @engine_version.setter
+    def engine_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine_version", value)
+
+    @property
+    @pulumi.getter(name="instanceStorage")
+    def instance_storage(self) -> pulumi.Input[int]:
+        """
+        User-defined DB instance storage space. Value range:
+        - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+        - [20,1000] for MySQL 5.7 basic single node edition;
+        - [10, 2000] for SQL Server 2008R2;
+        - [20,2000] for SQL Server 2012 basic single node edition
+        Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
+        """
+        return pulumi.get(self, "instance_storage")
+
+    @instance_storage.setter
+    def instance_storage(self, value: pulumi.Input[int]):
+        pulumi.set(self, "instance_storage", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Input[str]:
+        """
+        DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="autoUpgradeMinorVersion")
+    def auto_upgrade_minor_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The upgrade method to use. Valid values:
+        - Auto: Instances are automatically upgraded to a higher minor version.
+        - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+        """
+        return pulumi.get(self, "auto_upgrade_minor_version")
+
+    @auto_upgrade_minor_version.setter
+    def auto_upgrade_minor_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_upgrade_minor_version", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceStorageType")
+    def db_instance_storage_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage type of the instance. Valid values:
+        - local_ssd: specifies to use local SSDs. This value is recommended.
+        - cloud_ssd: specifies to use standard SSDs.
+        - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+        - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+        - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        """
+        return pulumi.get(self, "db_instance_storage_type")
+
+    @db_instance_storage_type.setter
+    def db_instance_storage_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_storage_type", value)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="forceRestart")
+    def force_restart(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set it to true to make some parameter efficient when modifying them. Default to false.
+        """
+        return pulumi.get(self, "force_restart")
+
+    @force_restart.setter
+    def force_restart(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_restart", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of DB instance. It a string of 2 to 256 characters.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="maintainTime")
+    def maintain_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        """
+        return pulumi.get(self, "maintain_time")
+
+    @maintain_time.setter
+    def maintain_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_time", value)
+
+    @property
+    @pulumi.getter(name="monitoringPeriod")
+    def monitoring_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
+        """
+        return pulumi.get(self, "monitoring_period")
+
+    @monitoring_period.setter
+    def monitoring_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "monitoring_period", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
+        """
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of resource group which the DB instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="securityIpMode")
+    def security_ip_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        """
+        return pulumi.get(self, "security_ip_mode")
+
+    @security_ip_mode.setter
+    def security_ip_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_mode", value)
+
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        return pulumi.get(self, "security_ips")
+
+    @security_ips.setter
+    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_ips", value)
+
+    @property
+    @pulumi.getter(name="sqlCollectorConfigValue")
+    def sql_collector_config_value(self) -> Optional[pulumi.Input[int]]:
+        """
+        The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+        """
+        return pulumi.get(self, "sql_collector_config_value")
+
+    @sql_collector_config_value.setter
+    def sql_collector_config_value(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "sql_collector_config_value", value)
+
+    @property
+    @pulumi.getter(name="sqlCollectorStatus")
+    def sql_collector_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+        """
+        return pulumi.get(self, "sql_collector_status")
+
+    @sql_collector_status.setter
+    def sql_collector_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_collector_status", value)
+
+    @property
+    @pulumi.getter(name="sslAction")
+    def ssl_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        """
+        return pulumi.get(self, "ssl_action")
+
+    @ssl_action.setter
+    def ssl_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_action", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="tdeStatus")
+    def tde_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        """
+        return pulumi.get(self, "tde_status")
+
+    @tde_status.setter
+    def tde_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tde_status", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
+        If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveA")
+    def zone_id_slave_a(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        """
+        return pulumi.get(self, "zone_id_slave_a")
+
+    @zone_id_slave_a.setter
+    def zone_id_slave_a(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id_slave_a", value)
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveB")
+    def zone_id_slave_b(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        """
+        return pulumi.get(self, "zone_id_slave_b")
+
+    @zone_id_slave_b.setter
+    def zone_id_slave_b(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id_slave_b", value)
 
 
 class Instance(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -144,6 +665,104 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
+
+        For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
+
+        ## Example Usage
+        ### Create a RDS MySQL instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testaccdbinstance"
+        creation = config.get("creation")
+        if creation is None:
+            creation = "Rds"
+        example_zones = alicloud.get_zones(available_resource_creation=creation)
+        example_network = alicloud.vpc.Network("exampleNetwork", cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=example_zones.zones[0].id)
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="MySQL",
+            engine_version="5.6",
+            instance_type="rds.mysql.s2.large",
+            instance_storage=30,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=example_switch.id,
+            monitoring_period=60)
+        ```
+
+        ## Import
+
+        RDS instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rds/instance:Instance example rm-abc12345678
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
+                 db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 engine: Optional[pulumi.Input[str]] = None,
+                 engine_version: Optional[pulumi.Input[str]] = None,
+                 force_restart: Optional[pulumi.Input[bool]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_storage: Optional[pulumi.Input[int]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 maintain_time: Optional[pulumi.Input[str]] = None,
+                 monitoring_period: Optional[pulumi.Input[int]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_ip_mode: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sql_collector_config_value: Optional[pulumi.Input[int]] = None,
+                 sql_collector_status: Optional[pulumi.Input[str]] = None,
+                 ssl_action: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tde_status: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,117 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['User']
+__all__ = ['UserArgs', 'User']
+
+@pulumi.input_type
+class UserArgs:
+    def __init__(__self__, *,
+                 comments: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 mobile: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a User resource.
+        :param pulumi.Input[str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
+        :param pulumi.Input[str] display_name: Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
+        :param pulumi.Input[str] email: Email of the RAM user.
+        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
+        :param pulumi.Input[str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        """
+        if comments is not None:
+            pulumi.set(__self__, "comments", comments)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if mobile is not None:
+            pulumi.set(__self__, "mobile", mobile)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def comments(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
+        """
+        return pulumi.get(self, "comments")
+
+    @comments.setter
+    def comments(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comments", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of the RAM user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This parameter is used for resource destroy. Default value is `false`.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter
+    def mobile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
+        """
+        return pulumi.get(self, "mobile")
+
+    @mobile.setter
+    def mobile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mobile", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class User(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -42,6 +146,45 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[UserArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        RAM user can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/user:User example 123456789xxx
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param UserArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(UserArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 comments: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 mobile: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
