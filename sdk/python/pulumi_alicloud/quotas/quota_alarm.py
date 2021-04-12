@@ -5,15 +5,132 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['QuotaAlarm']
+__all__ = ['QuotaAlarmArgs', 'QuotaAlarm']
+
+@pulumi.input_type
+class QuotaAlarmArgs:
+    def __init__(__self__, *,
+                 product_code: pulumi.Input[str],
+                 quota_action_code: pulumi.Input[str],
+                 quota_alarm_name: pulumi.Input[str],
+                 quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]]] = None,
+                 threshold: Optional[pulumi.Input[float]] = None,
+                 threshold_percent: Optional[pulumi.Input[float]] = None,
+                 web_hook: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a QuotaAlarm resource.
+        :param pulumi.Input[str] product_code: The Product Code.
+        :param pulumi.Input[str] quota_action_code: The Quota Action Code.
+        :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
+        :param pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]] quota_dimensions: The Quota Dimensions.
+        :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
+        :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
+        :param pulumi.Input[str] web_hook: The WebHook of Quota Alarm.
+        """
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "quota_action_code", quota_action_code)
+        pulumi.set(__self__, "quota_alarm_name", quota_alarm_name)
+        if quota_dimensions is not None:
+            pulumi.set(__self__, "quota_dimensions", quota_dimensions)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if threshold_percent is not None:
+            pulumi.set(__self__, "threshold_percent", threshold_percent)
+        if web_hook is not None:
+            pulumi.set(__self__, "web_hook", web_hook)
+
+    @property
+    @pulumi.getter(name="productCode")
+    def product_code(self) -> pulumi.Input[str]:
+        """
+        The Product Code.
+        """
+        return pulumi.get(self, "product_code")
+
+    @product_code.setter
+    def product_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "product_code", value)
+
+    @property
+    @pulumi.getter(name="quotaActionCode")
+    def quota_action_code(self) -> pulumi.Input[str]:
+        """
+        The Quota Action Code.
+        """
+        return pulumi.get(self, "quota_action_code")
+
+    @quota_action_code.setter
+    def quota_action_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "quota_action_code", value)
+
+    @property
+    @pulumi.getter(name="quotaAlarmName")
+    def quota_alarm_name(self) -> pulumi.Input[str]:
+        """
+        The name of Quota Alarm.
+        """
+        return pulumi.get(self, "quota_alarm_name")
+
+    @quota_alarm_name.setter
+    def quota_alarm_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "quota_alarm_name", value)
+
+    @property
+    @pulumi.getter(name="quotaDimensions")
+    def quota_dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]]]:
+        """
+        The Quota Dimensions.
+        """
+        return pulumi.get(self, "quota_dimensions")
+
+    @quota_dimensions.setter
+    def quota_dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]]]):
+        pulumi.set(self, "quota_dimensions", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        The threshold of Quota Alarm.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter(name="thresholdPercent")
+    def threshold_percent(self) -> Optional[pulumi.Input[float]]:
+        """
+        The threshold percent of Quota Alarm.
+        """
+        return pulumi.get(self, "threshold_percent")
+
+    @threshold_percent.setter
+    def threshold_percent(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "threshold_percent", value)
+
+    @property
+    @pulumi.getter(name="webHook")
+    def web_hook(self) -> Optional[pulumi.Input[str]]:
+        """
+        The WebHook of Quota Alarm.
+        """
+        return pulumi.get(self, "web_hook")
+
+    @web_hook.setter
+    def web_hook(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "web_hook", value)
 
 
 class QuotaAlarm(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -71,6 +188,71 @@ class QuotaAlarm(pulumi.CustomResource):
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
         :param pulumi.Input[str] web_hook: The WebHook of Quota Alarm.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: QuotaAlarmArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Quotas Quota Alarm resource.
+
+        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/184343.html).
+
+        > **NOTE:** Available in v1.116.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.quotas.QuotaAlarm("example",
+            product_code="ecs",
+            quota_action_code="q_prepaid-instance-count-per-once-purchase",
+            quota_alarm_name="tf-testAcc",
+            quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
+                key="regionId",
+                value="cn-hangzhou",
+            )],
+            threshold=100)
+        ```
+
+        ## Import
+
+        Quotas Quota Alarm can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:quotas/quotaAlarm:QuotaAlarm example <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param QuotaAlarmArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(QuotaAlarmArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 product_code: Optional[pulumi.Input[str]] = None,
+                 quota_action_code: Optional[pulumi.Input[str]] = None,
+                 quota_alarm_name: Optional[pulumi.Input[str]] = None,
+                 quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]]] = None,
+                 threshold: Optional[pulumi.Input[float]] = None,
+                 threshold_percent: Optional[pulumi.Input[float]] = None,
+                 web_hook: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,159 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RegistryEnterpriseSyncRule']
+__all__ = ['RegistryEnterpriseSyncRuleArgs', 'RegistryEnterpriseSyncRule']
+
+@pulumi.input_type
+class RegistryEnterpriseSyncRuleArgs:
+    def __init__(__self__, *,
+                 instance_id: pulumi.Input[str],
+                 namespace_name: pulumi.Input[str],
+                 tag_filter: pulumi.Input[str],
+                 target_instance_id: pulumi.Input[str],
+                 target_namespace_name: pulumi.Input[str],
+                 target_region_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 target_repo_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RegistryEnterpriseSyncRule resource.
+        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition source instance.
+        :param pulumi.Input[str] namespace_name: Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+        :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags for synchronization in the source repository.
+        :param pulumi.Input[str] target_instance_id: ID of Container Registry Enterprise Edition target instance to be synchronized.
+        :param pulumi.Input[str] target_namespace_name: Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+        :param pulumi.Input[str] target_region_id: The target region to be synchronized.
+        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition sync rule.
+        :param pulumi.Input[str] repo_name: Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+        :param pulumi.Input[str] target_repo_name: Name of the target repository.
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        pulumi.set(__self__, "tag_filter", tag_filter)
+        pulumi.set(__self__, "target_instance_id", target_instance_id)
+        pulumi.set(__self__, "target_namespace_name", target_namespace_name)
+        pulumi.set(__self__, "target_region_id", target_region_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if target_repo_name is not None:
+            pulumi.set(__self__, "target_repo_name", target_repo_name)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        ID of Container Registry Enterprise Edition source instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> pulumi.Input[str]:
+        """
+        Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter(name="tagFilter")
+    def tag_filter(self) -> pulumi.Input[str]:
+        """
+        The regular expression used to filter image tags for synchronization in the source repository.
+        """
+        return pulumi.get(self, "tag_filter")
+
+    @tag_filter.setter
+    def tag_filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag_filter", value)
+
+    @property
+    @pulumi.getter(name="targetInstanceId")
+    def target_instance_id(self) -> pulumi.Input[str]:
+        """
+        ID of Container Registry Enterprise Edition target instance to be synchronized.
+        """
+        return pulumi.get(self, "target_instance_id")
+
+    @target_instance_id.setter
+    def target_instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_instance_id", value)
+
+    @property
+    @pulumi.getter(name="targetNamespaceName")
+    def target_namespace_name(self) -> pulumi.Input[str]:
+        """
+        Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+        """
+        return pulumi.get(self, "target_namespace_name")
+
+    @target_namespace_name.setter
+    def target_namespace_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_namespace_name", value)
+
+    @property
+    @pulumi.getter(name="targetRegionId")
+    def target_region_id(self) -> pulumi.Input[str]:
+        """
+        The target region to be synchronized.
+        """
+        return pulumi.get(self, "target_region_id")
+
+    @target_region_id.setter
+    def target_region_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_region_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Container Registry Enterprise Edition sync rule.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="targetRepoName")
+    def target_repo_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the target repository.
+        """
+        return pulumi.get(self, "target_repo_name")
+
+    @target_repo_name.setter
+    def target_repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_repo_name", value)
 
 
 class RegistryEnterpriseSyncRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -75,6 +221,75 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         :param pulumi.Input[str] target_region_id: The target region to be synchronized.
         :param pulumi.Input[str] target_repo_name: Name of the target repository.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RegistryEnterpriseSyncRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This resource will help you to manager Container Registry Enterprise Edition sync rules.
+
+        For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/doc-detail/145280.htm)
+
+        > **NOTE:** Available in v1.90.0+.
+
+        > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.RegistryEnterpriseSyncRule("default",
+            instance_id="my-source-instance-id",
+            namespace_name="my-source-namespace",
+            repo_name="my-source-repo",
+            tag_filter=".*",
+            target_instance_id="my-target-instance-id",
+            target_namespace_name="my-target-namespace",
+            target_region_id="cn-hangzhou",
+            target_repo_name="my-target-repo")
+        ```
+
+        ## Import
+
+        Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RegistryEnterpriseSyncRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RegistryEnterpriseSyncRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 tag_filter: Optional[pulumi.Input[str]] = None,
+                 target_instance_id: Optional[pulumi.Input[str]] = None,
+                 target_namespace_name: Optional[pulumi.Input[str]] = None,
+                 target_region_id: Optional[pulumi.Input[str]] = None,
+                 target_repo_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

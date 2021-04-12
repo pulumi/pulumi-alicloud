@@ -5,13 +5,36 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['AccountAlias']
+__all__ = ['AccountAliasArgs', 'AccountAlias']
+
+@pulumi.input_type
+class AccountAliasArgs:
+    def __init__(__self__, *,
+                 account_alias: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a AccountAlias resource.
+        :param pulumi.Input[str] account_alias: Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        """
+        pulumi.set(__self__, "account_alias", account_alias)
+
+    @property
+    @pulumi.getter(name="accountAlias")
+    def account_alias(self) -> pulumi.Input[str]:
+        """
+        Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "account_alias")
+
+    @account_alias.setter
+    def account_alias(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_alias", value)
 
 
 class AccountAlias(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +67,52 @@ class AccountAlias(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_alias: Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccountAliasArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a RAM cloud account alias.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a alias for cloud account.
+        alias = alicloud.ram.AccountAlias("alias", account_alias="hallo")
+        ```
+
+        ## Import
+
+        RAM account alias can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AccountAliasArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccountAliasArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_alias: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

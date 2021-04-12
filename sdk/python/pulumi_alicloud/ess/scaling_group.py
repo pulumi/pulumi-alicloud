@@ -5,13 +5,300 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ScalingGroup']
+__all__ = ['ScalingGroupArgs', 'ScalingGroup']
+
+@pulumi.input_type
+class ScalingGroupArgs:
+    def __init__(__self__, *,
+                 max_size: pulumi.Input[int],
+                 min_size: pulumi.Input[int],
+                 db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_cooldown: Optional[pulumi.Input[int]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 group_deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 multi_az_policy: Optional[pulumi.Input[str]] = None,
+                 on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
+                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scaling_group_name: Optional[pulumi.Input[str]] = None,
+                 spot_instance_pools: Optional[pulumi.Input[int]] = None,
+                 spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ScalingGroup resource.
+        :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+        :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] db_instance_ids: If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
+               - The specified RDS instance must be in running status.
+               - The specified RDS instance’s whitelist must have room for more IP addresses.
+        :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
+        :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+        :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
+               - The Server Load Balancer instance must be enabled.
+               - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
+               targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+               - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
+               - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
+        :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
+        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
+               - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+               - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+               - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+               - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
+        :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
+        :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
+        :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
+        """
+        pulumi.set(__self__, "max_size", max_size)
+        pulumi.set(__self__, "min_size", min_size)
+        if db_instance_ids is not None:
+            pulumi.set(__self__, "db_instance_ids", db_instance_ids)
+        if default_cooldown is not None:
+            pulumi.set(__self__, "default_cooldown", default_cooldown)
+        if desired_capacity is not None:
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if group_deletion_protection is not None:
+            pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
+        if loadbalancer_ids is not None:
+            pulumi.set(__self__, "loadbalancer_ids", loadbalancer_ids)
+        if multi_az_policy is not None:
+            pulumi.set(__self__, "multi_az_policy", multi_az_policy)
+        if on_demand_base_capacity is not None:
+            pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
+        if on_demand_percentage_above_base_capacity is not None:
+            pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
+        if removal_policies is not None:
+            pulumi.set(__self__, "removal_policies", removal_policies)
+        if scaling_group_name is not None:
+            pulumi.set(__self__, "scaling_group_name", scaling_group_name)
+        if spot_instance_pools is not None:
+            pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
+        if spot_instance_remedy is not None:
+            pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+        if vswitch_id is not None:
+            warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
+            pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> pulumi.Input[int]:
+        """
+        Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+        """
+        return pulumi.get(self, "max_size")
+
+    @max_size.setter
+    def max_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_size", value)
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> pulumi.Input[int]:
+        """
+        Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        """
+        return pulumi.get(self, "min_size")
+
+    @min_size.setter
+    def min_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_size", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceIds")
+    def db_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
+        - The specified RDS instance must be in running status.
+        - The specified RDS instance’s whitelist must have room for more IP addresses.
+        """
+        return pulumi.get(self, "db_instance_ids")
+
+    @db_instance_ids.setter
+    def db_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "db_instance_ids", value)
+
+    @property
+    @pulumi.getter(name="defaultCooldown")
+    def default_cooldown(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
+        """
+        return pulumi.get(self, "default_cooldown")
+
+    @default_cooldown.setter
+    def default_cooldown(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_cooldown", value)
+
+    @property
+    @pulumi.getter(name="desiredCapacity")
+    def desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+        """
+        return pulumi.get(self, "desired_capacity")
+
+    @desired_capacity.setter
+    def desired_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="groupDeletionProtection")
+    def group_deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
+        """
+        return pulumi.get(self, "group_deletion_protection")
+
+    @group_deletion_protection.setter
+    def group_deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "group_deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="loadbalancerIds")
+    def loadbalancer_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
+        - The Server Load Balancer instance must be enabled.
+        - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
+        targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+        - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
+        - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
+        """
+        return pulumi.get(self, "loadbalancer_ids")
+
+    @loadbalancer_ids.setter
+    def loadbalancer_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "loadbalancer_ids", value)
+
+    @property
+    @pulumi.getter(name="multiAzPolicy")
+    def multi_az_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
+        """
+        return pulumi.get(self, "multi_az_policy")
+
+    @multi_az_policy.setter
+    def multi_az_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "multi_az_policy", value)
+
+    @property
+    @pulumi.getter(name="onDemandBaseCapacity")
+    def on_demand_base_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
+        """
+        return pulumi.get(self, "on_demand_base_capacity")
+
+    @on_demand_base_capacity.setter
+    def on_demand_base_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "on_demand_base_capacity", value)
+
+    @property
+    @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
+    def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
+        """
+        return pulumi.get(self, "on_demand_percentage_above_base_capacity")
+
+    @on_demand_percentage_above_base_capacity.setter
+    def on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "on_demand_percentage_above_base_capacity", value)
+
+    @property
+    @pulumi.getter(name="removalPolicies")
+    def removal_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
+        - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+        - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+        - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+        - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
+        """
+        return pulumi.get(self, "removal_policies")
+
+    @removal_policies.setter
+    def removal_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "removal_policies", value)
+
+    @property
+    @pulumi.getter(name="scalingGroupName")
+    def scaling_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
+        """
+        return pulumi.get(self, "scaling_group_name")
+
+    @scaling_group_name.setter
+    def scaling_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_group_name", value)
+
+    @property
+    @pulumi.getter(name="spotInstancePools")
+    def spot_instance_pools(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
+        """
+        return pulumi.get(self, "spot_instance_pools")
+
+    @spot_instance_pools.setter
+    def spot_instance_pools(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_instance_pools", value)
+
+    @property
+    @pulumi.getter(name="spotInstanceRemedy")
+    def spot_instance_remedy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        """
+        return pulumi.get(self, "spot_instance_remedy")
+
+    @spot_instance_remedy.setter
+    def spot_instance_remedy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "spot_instance_remedy", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of virtual switch IDs in which the ecs instances to be launched.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
 
 
 class ScalingGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -73,6 +360,55 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ScalingGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        ESS scaling group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/scalingGroup:ScalingGroup example asg-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ScalingGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ScalingGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_cooldown: Optional[pulumi.Input[int]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 group_deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
+                 multi_az_policy: Optional[pulumi.Input[str]] = None,
+                 on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
+                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scaling_group_name: Optional[pulumi.Input[str]] = None,
+                 spot_instance_pools: Optional[pulumi.Input[int]] = None,
+                 spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

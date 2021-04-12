@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['VpcEndpointServiceUser']
+__all__ = ['VpcEndpointServiceUserArgs', 'VpcEndpointServiceUser']
+
+@pulumi.input_type
+class VpcEndpointServiceUserArgs:
+    def __init__(__self__, *,
+                 service_id: pulumi.Input[str],
+                 user_id: pulumi.Input[str],
+                 dry_run: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a VpcEndpointServiceUser resource.
+        :param pulumi.Input[str] service_id: The Id of Vpc Endpoint Service.
+        :param pulumi.Input[str] user_id: The Id of Ram User.
+        :param pulumi.Input[bool] dry_run: The dry run.
+        """
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "user_id", user_id)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Input[str]:
+        """
+        The Id of Vpc Endpoint Service.
+        """
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Input[str]:
+        """
+        The Id of Ram User.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_id", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The dry run.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
 
 
 class VpcEndpointServiceUser(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +109,61 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         :param pulumi.Input[str] service_id: The Id of Vpc Endpoint Service.
         :param pulumi.Input[str] user_id: The Id of Ram User.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VpcEndpointServiceUserArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Private Link Vpc Endpoint Service User resource.
+
+        For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://help.aliyun.com/document_detail/183545.html).
+
+        > **NOTE:** Available in v1.110.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.privatelink.VpcEndpointServiceUser("example",
+            service_id="epsrv-gw81c6xxxxxx",
+            user_id="YourRamUserId")
+        ```
+
+        ## Import
+
+        Private Link Vpc Endpoint Service User can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser example <service_id>:<user_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VpcEndpointServiceUserArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VpcEndpointServiceUserArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

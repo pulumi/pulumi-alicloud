@@ -5,15 +5,210 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ScalingRule']
+__all__ = ['ScalingRuleArgs', 'ScalingRule']
+
+@pulumi.input_type
+class ScalingRuleArgs:
+    def __init__(__self__, *,
+                 scaling_group_id: pulumi.Input[str],
+                 adjustment_type: Optional[pulumi.Input[str]] = None,
+                 adjustment_value: Optional[pulumi.Input[int]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
+                 disable_scale_in: Optional[pulumi.Input[bool]] = None,
+                 estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+                 metric_name: Optional[pulumi.Input[str]] = None,
+                 scaling_rule_name: Optional[pulumi.Input[str]] = None,
+                 scaling_rule_type: Optional[pulumi.Input[str]] = None,
+                 step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
+                 target_value: Optional[pulumi.Input[float]] = None):
+        """
+        The set of arguments for constructing a ScalingRule resource.
+        :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
+        :param pulumi.Input[str] adjustment_type: Adjustment mode of a scaling rule. Optional values:
+               - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
+               - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
+               - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
+        :param pulumi.Input[int] adjustment_value: The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
+               - QuantityChangeInCapacity：(0, 500] U (-500, 0]
+               - PercentChangeInCapacity：[0, 10000] U [-100, 0]
+               - TotalCapacity：[0, 1000]
+        :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+        :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
+        :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
+        :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
+        :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
+        :param pulumi.Input[float] target_value: The target value for the metric.
+        """
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if adjustment_type is not None:
+            pulumi.set(__self__, "adjustment_type", adjustment_type)
+        if adjustment_value is not None:
+            pulumi.set(__self__, "adjustment_value", adjustment_value)
+        if cooldown is not None:
+            pulumi.set(__self__, "cooldown", cooldown)
+        if disable_scale_in is not None:
+            pulumi.set(__self__, "disable_scale_in", disable_scale_in)
+        if estimated_instance_warmup is not None:
+            pulumi.set(__self__, "estimated_instance_warmup", estimated_instance_warmup)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if scaling_rule_name is not None:
+            pulumi.set(__self__, "scaling_rule_name", scaling_rule_name)
+        if scaling_rule_type is not None:
+            pulumi.set(__self__, "scaling_rule_type", scaling_rule_type)
+        if step_adjustments is not None:
+            pulumi.set(__self__, "step_adjustments", step_adjustments)
+        if target_value is not None:
+            pulumi.set(__self__, "target_value", target_value)
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> pulumi.Input[str]:
+        """
+        ID of the scaling group of a scaling rule.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @scaling_group_id.setter
+    def scaling_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scaling_group_id", value)
+
+    @property
+    @pulumi.getter(name="adjustmentType")
+    def adjustment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Adjustment mode of a scaling rule. Optional values:
+        - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
+        - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
+        - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
+        """
+        return pulumi.get(self, "adjustment_type")
+
+    @adjustment_type.setter
+    def adjustment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "adjustment_type", value)
+
+    @property
+    @pulumi.getter(name="adjustmentValue")
+    def adjustment_value(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
+        - QuantityChangeInCapacity：(0, 500] U (-500, 0]
+        - PercentChangeInCapacity：[0, 10000] U [-100, 0]
+        - TotalCapacity：[0, 1000]
+        """
+        return pulumi.get(self, "adjustment_value")
+
+    @adjustment_value.setter
+    def adjustment_value(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "adjustment_value", value)
+
+    @property
+    @pulumi.getter
+    def cooldown(self) -> Optional[pulumi.Input[int]]:
+        """
+        The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+        """
+        return pulumi.get(self, "cooldown")
+
+    @cooldown.setter
+    def cooldown(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cooldown", value)
+
+    @property
+    @pulumi.getter(name="disableScaleIn")
+    def disable_scale_in(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether scale in by the target tracking policy is disabled. Default to false.
+        """
+        return pulumi.get(self, "disable_scale_in")
+
+    @disable_scale_in.setter
+    def disable_scale_in(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_scale_in", value)
+
+    @property
+    @pulumi.getter(name="estimatedInstanceWarmup")
+    def estimated_instance_warmup(self) -> Optional[pulumi.Input[int]]:
+        """
+        The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        """
+        return pulumi.get(self, "estimated_instance_warmup")
+
+    @estimated_instance_warmup.setter
+    def estimated_instance_warmup(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "estimated_instance_warmup", value)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A CloudMonitor metric name.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter(name="scalingRuleName")
+    def scaling_rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
+        """
+        return pulumi.get(self, "scaling_rule_name")
+
+    @scaling_rule_name.setter
+    def scaling_rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_rule_name", value)
+
+    @property
+    @pulumi.getter(name="scalingRuleType")
+    def scaling_rule_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        """
+        return pulumi.get(self, "scaling_rule_type")
+
+    @scaling_rule_type.setter
+    def scaling_rule_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_rule_type", value)
+
+    @property
+    @pulumi.getter(name="stepAdjustments")
+    def step_adjustments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]:
+        """
+        Steps for StepScalingRule. See Block stepAdjustment below for details.
+        """
+        return pulumi.get(self, "step_adjustments")
+
+    @step_adjustments.setter
+    def step_adjustments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]):
+        pulumi.set(self, "step_adjustments", value)
+
+    @property
+    @pulumi.getter(name="targetValue")
+    def target_value(self) -> Optional[pulumi.Input[float]]:
+        """
+        The target value for the metric.
+        """
+        return pulumi.get(self, "target_value")
+
+    @target_value.setter
+    def target_value(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "target_value", value)
 
 
 class ScalingRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -60,6 +255,50 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ScalingRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        ESS scaling rule can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/scalingRule:ScalingRule example abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ScalingRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ScalingRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 adjustment_type: Optional[pulumi.Input[str]] = None,
+                 adjustment_value: Optional[pulumi.Input[int]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
+                 disable_scale_in: Optional[pulumi.Input[bool]] = None,
+                 estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+                 metric_name: Optional[pulumi.Input[str]] = None,
+                 scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 scaling_rule_name: Optional[pulumi.Input[str]] = None,
+                 scaling_rule_type: Optional[pulumi.Input[str]] = None,
+                 step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]]] = None,
+                 target_value: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,190 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Swarm']
+__all__ = ['SwarmArgs', 'Swarm']
+
+@pulumi.input_type
+class SwarmArgs:
+    def __init__(__self__, *,
+                 cidr_block: pulumi.Input[str],
+                 instance_type: pulumi.Input[str],
+                 password: pulumi.Input[str],
+                 vswitch_id: pulumi.Input[str],
+                 disk_category: Optional[pulumi.Input[str]] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 is_outdated: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 need_slb: Optional[pulumi.Input[bool]] = None,
+                 node_number: Optional[pulumi.Input[int]] = None,
+                 release_eip: Optional[pulumi.Input[bool]] = None,
+                 size: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a Swarm resource.
+        """
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if disk_category is not None:
+            pulumi.set(__self__, "disk_category", disk_category)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if is_outdated is not None:
+            pulumi.set(__self__, "is_outdated", is_outdated)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if need_slb is not None:
+            pulumi.set(__self__, "need_slb", need_slb)
+        if node_number is not None:
+            pulumi.set(__self__, "node_number", node_number)
+        if release_eip is not None:
+            pulumi.set(__self__, "release_eip", release_eip)
+        if size is not None:
+            warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""size is deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""")
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="diskCategory")
+    def disk_category(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "disk_category")
+
+    @disk_category.setter
+    def disk_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_category", value)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="isOutdated")
+    def is_outdated(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_outdated")
+
+    @is_outdated.setter
+    def is_outdated(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_outdated", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter(name="needSlb")
+    def need_slb(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "need_slb")
+
+    @need_slb.setter
+    def need_slb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "need_slb", value)
+
+    @property
+    @pulumi.getter(name="nodeNumber")
+    def node_number(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "node_number")
+
+    @node_number.setter
+    def node_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "node_number", value)
+
+    @property
+    @pulumi.getter(name="releaseEip")
+    def release_eip(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "release_eip")
+
+    @release_eip.setter
+    def release_eip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "release_eip", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
 
 
 class Swarm(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +214,46 @@ class Swarm(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SwarmArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Swarm resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param SwarmArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SwarmArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cidr_block: Optional[pulumi.Input[str]] = None,
+                 disk_category: Optional[pulumi.Input[str]] = None,
+                 disk_size: Optional[pulumi.Input[int]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 is_outdated: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 need_slb: Optional[pulumi.Input[bool]] = None,
+                 node_number: Optional[pulumi.Input[int]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 release_eip: Optional[pulumi.Input[bool]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

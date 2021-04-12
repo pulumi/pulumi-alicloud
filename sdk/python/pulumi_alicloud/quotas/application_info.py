@@ -5,15 +5,115 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ApplicationInfo']
+__all__ = ['ApplicationInfoArgs', 'ApplicationInfo']
+
+@pulumi.input_type
+class ApplicationInfoArgs:
+    def __init__(__self__, *,
+                 desire_value: pulumi.Input[float],
+                 product_code: pulumi.Input[str],
+                 quota_action_code: pulumi.Input[str],
+                 reason: pulumi.Input[str],
+                 audit_mode: Optional[pulumi.Input[str]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]] = None,
+                 notice_type: Optional[pulumi.Input[int]] = None,
+                 quota_category: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ApplicationInfo resource.
+        """
+        pulumi.set(__self__, "desire_value", desire_value)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "quota_action_code", quota_action_code)
+        pulumi.set(__self__, "reason", reason)
+        if audit_mode is not None:
+            pulumi.set(__self__, "audit_mode", audit_mode)
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if notice_type is not None:
+            pulumi.set(__self__, "notice_type", notice_type)
+        if quota_category is not None:
+            pulumi.set(__self__, "quota_category", quota_category)
+
+    @property
+    @pulumi.getter(name="desireValue")
+    def desire_value(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "desire_value")
+
+    @desire_value.setter
+    def desire_value(self, value: pulumi.Input[float]):
+        pulumi.set(self, "desire_value", value)
+
+    @property
+    @pulumi.getter(name="productCode")
+    def product_code(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "product_code")
+
+    @product_code.setter
+    def product_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "product_code", value)
+
+    @property
+    @pulumi.getter(name="quotaActionCode")
+    def quota_action_code(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "quota_action_code")
+
+    @quota_action_code.setter
+    def quota_action_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "quota_action_code", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: pulumi.Input[str]):
+        pulumi.set(self, "reason", value)
+
+    @property
+    @pulumi.getter(name="auditMode")
+    def audit_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "audit_mode")
+
+    @audit_mode.setter
+    def audit_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audit_mode", value)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]:
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter(name="noticeType")
+    def notice_type(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "notice_type")
+
+    @notice_type.setter
+    def notice_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "notice_type", value)
+
+    @property
+    @pulumi.getter(name="quotaCategory")
+    def quota_category(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "quota_category")
+
+    @quota_category.setter
+    def quota_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quota_category", value)
 
 
 class ApplicationInfo(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +133,40 @@ class ApplicationInfo(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApplicationInfoArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a ApplicationInfo resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param ApplicationInfoArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationInfoArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 audit_mode: Optional[pulumi.Input[str]] = None,
+                 desire_value: Optional[pulumi.Input[float]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInfoDimensionArgs']]]]] = None,
+                 notice_type: Optional[pulumi.Input[int]] = None,
+                 product_code: Optional[pulumi.Input[str]] = None,
+                 quota_action_code: Optional[pulumi.Input[str]] = None,
+                 quota_category: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

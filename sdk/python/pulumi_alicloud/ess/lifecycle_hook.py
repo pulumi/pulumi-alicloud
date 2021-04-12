@@ -5,13 +5,131 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['LifecycleHook']
+__all__ = ['LifecycleHookArgs', 'LifecycleHook']
+
+@pulumi.input_type
+class LifecycleHookArgs:
+    def __init__(__self__, *,
+                 lifecycle_transition: pulumi.Input[str],
+                 scaling_group_id: pulumi.Input[str],
+                 default_result: Optional[pulumi.Input[str]] = None,
+                 heartbeat_timeout: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_arn: Optional[pulumi.Input[str]] = None,
+                 notification_metadata: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a LifecycleHook resource.
+        :param pulumi.Input[str] lifecycle_transition: Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
+        :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
+        :param pulumi.Input[str] default_result: Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+        :param pulumi.Input[int] heartbeat_timeout: Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+        :param pulumi.Input[str] name: The name of the lifecycle hook, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is lifecycle hook id.
+        :param pulumi.Input[str] notification_arn: The Arn of notification target.
+        :param pulumi.Input[str] notification_metadata: Additional information that you want to include when Auto Scaling sends a message to the notification target.
+        """
+        pulumi.set(__self__, "lifecycle_transition", lifecycle_transition)
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if default_result is not None:
+            pulumi.set(__self__, "default_result", default_result)
+        if heartbeat_timeout is not None:
+            pulumi.set(__self__, "heartbeat_timeout", heartbeat_timeout)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if notification_arn is not None:
+            pulumi.set(__self__, "notification_arn", notification_arn)
+        if notification_metadata is not None:
+            pulumi.set(__self__, "notification_metadata", notification_metadata)
+
+    @property
+    @pulumi.getter(name="lifecycleTransition")
+    def lifecycle_transition(self) -> pulumi.Input[str]:
+        """
+        Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
+        """
+        return pulumi.get(self, "lifecycle_transition")
+
+    @lifecycle_transition.setter
+    def lifecycle_transition(self, value: pulumi.Input[str]):
+        pulumi.set(self, "lifecycle_transition", value)
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @scaling_group_id.setter
+    def scaling_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scaling_group_id", value)
+
+    @property
+    @pulumi.getter(name="defaultResult")
+    def default_result(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+        """
+        return pulumi.get(self, "default_result")
+
+    @default_result.setter
+    def default_result(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_result", value)
+
+    @property
+    @pulumi.getter(name="heartbeatTimeout")
+    def heartbeat_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
+        """
+        return pulumi.get(self, "heartbeat_timeout")
+
+    @heartbeat_timeout.setter
+    def heartbeat_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "heartbeat_timeout", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the lifecycle hook, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is lifecycle hook id.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="notificationArn")
+    def notification_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Arn of notification target.
+        """
+        return pulumi.get(self, "notification_arn")
+
+    @notification_arn.setter
+    def notification_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notification_arn", value)
+
+    @property
+    @pulumi.getter(name="notificationMetadata")
+    def notification_metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional information that you want to include when Auto Scaling sends a message to the notification target.
+        """
+        return pulumi.get(self, "notification_metadata")
+
+    @notification_metadata.setter
+    def notification_metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notification_metadata", value)
 
 
 class LifecycleHook(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +162,46 @@ class LifecycleHook(pulumi.CustomResource):
         :param pulumi.Input[str] notification_metadata: Additional information that you want to include when Auto Scaling sends a message to the notification target.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LifecycleHookArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Ess lifecycle hook can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/lifecycleHook:LifecycleHook example ash-l12345
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LifecycleHookArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LifecycleHookArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_result: Optional[pulumi.Input[str]] = None,
+                 heartbeat_timeout: Optional[pulumi.Input[int]] = None,
+                 lifecycle_transition: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_arn: Optional[pulumi.Input[str]] = None,
+                 notification_metadata: Optional[pulumi.Input[str]] = None,
+                 scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

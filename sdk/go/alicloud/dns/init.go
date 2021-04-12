@@ -22,35 +22,36 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:dns/alidnsDomain:AlidnsDomain":
-		r, err = NewAlidnsDomain(ctx, name, nil, pulumi.URN_(urn))
+		r = &AlidnsDomain{}
 	case "alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment":
-		r, err = NewAlidnsDomainAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &AlidnsDomainAttachment{}
 	case "alicloud:dns/alidnsInstance:AlidnsInstance":
-		r, err = NewAlidnsInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &AlidnsInstance{}
 	case "alicloud:dns/alidnsRecord:AlidnsRecord":
-		r, err = NewAlidnsRecord(ctx, name, nil, pulumi.URN_(urn))
+		r = &AlidnsRecord{}
 	case "alicloud:dns/ddosBgpInstance:DdosBgpInstance":
-		r, err = NewDdosBgpInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &DdosBgpInstance{}
 	case "alicloud:dns/ddosCooInstance:DdosCooInstance":
-		r, err = NewDdosCooInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &DdosCooInstance{}
 	case "alicloud:dns/dnsDomain:DnsDomain":
-		r, err = NewDnsDomain(ctx, name, nil, pulumi.URN_(urn))
+		r = &DnsDomain{}
 	case "alicloud:dns/domain:Domain":
-		r, err = NewDomain(ctx, name, nil, pulumi.URN_(urn))
+		r = &Domain{}
 	case "alicloud:dns/domainAttachment:DomainAttachment":
-		r, err = NewDomainAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &DomainAttachment{}
 	case "alicloud:dns/domainGroup:DomainGroup":
-		r, err = NewDomainGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &DomainGroup{}
 	case "alicloud:dns/group:Group":
-		r, err = NewGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &Group{}
 	case "alicloud:dns/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "alicloud:dns/record:Record":
-		r, err = NewRecord(ctx, name, nil, pulumi.URN_(urn))
+		r = &Record{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

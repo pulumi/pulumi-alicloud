@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:fc/alias:Alias":
-		r, err = NewAlias(ctx, name, nil, pulumi.URN_(urn))
+		r = &Alias{}
 	case "alicloud:fc/customDomain:CustomDomain":
-		r, err = NewCustomDomain(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomDomain{}
 	case "alicloud:fc/function:Function":
-		r, err = NewFunction(ctx, name, nil, pulumi.URN_(urn))
+		r = &Function{}
 	case "alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig":
-		r, err = NewFunctionAsyncInvokeConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &FunctionAsyncInvokeConfig{}
 	case "alicloud:fc/service:Service":
-		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+		r = &Service{}
 	case "alicloud:fc/trigger:Trigger":
-		r, err = NewTrigger(ctx, name, nil, pulumi.URN_(urn))
+		r = &Trigger{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

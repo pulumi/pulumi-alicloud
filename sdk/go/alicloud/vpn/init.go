@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:vpn/connection:Connection":
-		r, err = NewConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &Connection{}
 	case "alicloud:vpn/customerGateway:CustomerGateway":
-		r, err = NewCustomerGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomerGateway{}
 	case "alicloud:vpn/gateway:Gateway":
-		r, err = NewGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &Gateway{}
 	case "alicloud:vpn/routeEntry:RouteEntry":
-		r, err = NewRouteEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouteEntry{}
 	case "alicloud:vpn/sslVpnClientCert:SslVpnClientCert":
-		r, err = NewSslVpnClientCert(ctx, name, nil, pulumi.URN_(urn))
+		r = &SslVpnClientCert{}
 	case "alicloud:vpn/sslVpnServer:SslVpnServer":
-		r, err = NewSslVpnServer(ctx, name, nil, pulumi.URN_(urn))
+		r = &SslVpnServer{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

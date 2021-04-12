@@ -5,15 +5,100 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Repo']
+__all__ = ['RepoArgs', 'Repo']
+
+@pulumi.input_type
+class RepoArgs:
+    def __init__(__self__, *,
+                 namespace: pulumi.Input[str],
+                 repo_type: pulumi.Input[str],
+                 summary: pulumi.Input[str],
+                 detail: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Repo resource.
+        :param pulumi.Input[str] namespace: Name of container registry namespace where repository is located.
+        :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
+        :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 80 characters.
+        :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
+        :param pulumi.Input[str] name: Name of container registry repository.
+        """
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "summary", summary)
+        if detail is not None:
+            pulumi.set(__self__, "detail", detail)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[str]:
+        """
+        Name of container registry namespace where repository is located.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> pulumi.Input[str]:
+        """
+        `PUBLIC` or `PRIVATE`, repo's visibility.
+        """
+        return pulumi.get(self, "repo_type")
+
+    @repo_type.setter
+    def repo_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repo_type", value)
+
+    @property
+    @pulumi.getter
+    def summary(self) -> pulumi.Input[str]:
+        """
+        The repository general information. It can contain 1 to 80 characters.
+        """
+        return pulumi.get(self, "summary")
+
+    @summary.setter
+    def summary(self, value: pulumi.Input[str]):
+        pulumi.set(self, "summary", value)
+
+    @property
+    @pulumi.getter
+    def detail(self) -> Optional[pulumi.Input[str]]:
+        """
+        The repository specific information. MarkDown format is supported, and the length limit is 2000.
+        """
+        return pulumi.get(self, "detail")
+
+    @detail.setter
+    def detail(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "detail", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of container registry repository.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Repo(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +151,68 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
         :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 80 characters.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RepoArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This resource will help you to manager Container Registry repositories.
+
+        > **NOTE:** Available in v1.35.0+.
+
+        > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        my_namespace = alicloud.cr.Namespace("my-namespace",
+            auto_create=False,
+            default_visibility="PUBLIC")
+        my_repo = alicloud.cr.Repo("my-repo",
+            namespace=my_namespace.name,
+            summary="this is summary of my new repo",
+            repo_type="PUBLIC",
+            detail="this is a public repo")
+        ```
+
+        ## Import
+
+        Container Registry repository can be imported using the `namespace/repository`, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cr/repo:Repo default `my-namespace/my-repo`
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RepoArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RepoArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 detail: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 repo_type: Optional[pulumi.Input[str]] = None,
+                 summary: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

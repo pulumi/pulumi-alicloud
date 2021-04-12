@@ -5,15 +5,185 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NatGateway']
+__all__ = ['NatGatewayArgs', 'NatGateway']
+
+@pulumi.input_type
+class NatGatewayArgs:
+    def __init__(__self__, *,
+                 vpc_id: pulumi.Input[str],
+                 bandwidth_packages: Optional[pulumi.Input[Sequence[pulumi.Input['NatGatewayBandwidthPackageArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nat_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 spec: Optional[pulumi.Input[str]] = None,
+                 specification: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a NatGateway resource.
+        :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[Sequence[pulumi.Input['NatGatewayBandwidthPackageArgs']]] bandwidth_packages: A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
+        :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
+        :param pulumi.Input[str] instance_charge_type: The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[str] name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+        :param pulumi.Input[str] nat_type: The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[str] spec: It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+        :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+        :param pulumi.Input[str] vswitch_id: The id of VSwitch.
+        """
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        if bandwidth_packages is not None:
+            pulumi.set(__self__, "bandwidth_packages", bandwidth_packages)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nat_type is not None:
+            pulumi.set(__self__, "nat_type", nat_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if spec is not None:
+            warnings.warn("""Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.""", DeprecationWarning)
+            pulumi.log.warn("""spec is deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.""")
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if specification is not None:
+            pulumi.set(__self__, "specification", specification)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[str]:
+        """
+        The VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="bandwidthPackages")
+    def bandwidth_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NatGatewayBandwidthPackageArgs']]]]:
+        """
+        A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
+        """
+        return pulumi.get(self, "bandwidth_packages")
+
+    @bandwidth_packages.setter
+    def bandwidth_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NatGatewayBandwidthPackageArgs']]]]):
+        pulumi.set(self, "bandwidth_packages", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="natType")
+    def nat_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        """
+        return pulumi.get(self, "nat_type")
+
+    @nat_type.setter
+    def nat_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nat_type", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+        """
+        return pulumi.get(self, "specification")
+
+    @specification.setter
+    def specification(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "specification", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of VSwitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 class NatGateway(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -52,6 +222,49 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NatGatewayArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Nat gateway can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NatGatewayArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NatGatewayArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth_packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatGatewayBandwidthPackageArgs']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nat_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 spec: Optional[pulumi.Input[str]] = None,
+                 specification: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

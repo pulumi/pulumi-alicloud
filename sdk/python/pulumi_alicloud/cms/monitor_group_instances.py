@@ -5,15 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MonitorGroupInstances']
+__all__ = ['MonitorGroupInstancesArgs', 'MonitorGroupInstances']
+
+@pulumi.input_type
+class MonitorGroupInstancesArgs:
+    def __init__(__self__, *,
+                 group_id: pulumi.Input[str],
+                 instances: pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]):
+        """
+        The set of arguments for constructing a MonitorGroupInstances resource.
+        :param pulumi.Input[str] group_id: The id of Cms Group.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]] instances: Instance information added to the Cms Group.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "instances", instances)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        """
+        The id of Cms Group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def instances(self) -> pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]:
+        """
+        Instance information added to the Cms Group.
+        """
+        return pulumi.get(self, "instances")
+
+    @instances.setter
+    def instances(self, value: pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]):
+        pulumi.set(self, "instances", value)
 
 
 class MonitorGroupInstances(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -64,6 +102,69 @@ class MonitorGroupInstances(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The id of Cms Group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]] instances: Instance information added to the Cms Group.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: MonitorGroupInstancesArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloud Monitor Service Monitor Group Instances resource.
+
+        For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/doc-detail/115031.htm).
+
+        > **NOTE:** Available in v1.115.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="tf-testacc-vpcname",
+            cidr_block="192.168.0.0/16")
+        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup", monitor_group_name="tf-testaccmonitorgroup")
+        example = alicloud.cms.MonitorGroupInstances("example",
+            group_id=default_monitor_group.id,
+            instances=[alicloud.cms.MonitorGroupInstancesInstanceArgs(
+                instance_id=default_network.id,
+                instance_name="tf-testacc-vpcname",
+                region_id="cn-hangzhou",
+                category="vpc",
+            )])
+        ```
+
+        ## Import
+
+        Cloud Monitor Service Monitor Group Instances can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cms/monitorGroupInstances:MonitorGroupInstances example <group_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param MonitorGroupInstancesArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(MonitorGroupInstancesArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,164 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Execution']
+__all__ = ['ExecutionArgs', 'Execution']
+
+@pulumi.input_type
+class ExecutionArgs:
+    def __init__(__self__, *,
+                 template_name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 loop_mode: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[str]] = None,
+                 parent_execution_id: Optional[pulumi.Input[str]] = None,
+                 safety_check: Optional[pulumi.Input[str]] = None,
+                 template_content: Optional[pulumi.Input[str]] = None,
+                 template_version: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Execution resource.
+        :param pulumi.Input[str] template_name: The name of execution template.
+        :param pulumi.Input[str] description: The description of OOS Execution.
+        :param pulumi.Input[str] loop_mode: The loop mode of OOS Execution.
+        :param pulumi.Input[str] mode: The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
+        :param pulumi.Input[str] parameters: The parameters required by the template. Default to `{}`.
+        :param pulumi.Input[str] parent_execution_id: The id of parent execution.
+        :param pulumi.Input[str] safety_check: The mode of safety check.
+        :param pulumi.Input[str] template_content: The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+        :param pulumi.Input[str] template_version: The version of execution template.
+        """
+        pulumi.set(__self__, "template_name", template_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if loop_mode is not None:
+            pulumi.set(__self__, "loop_mode", loop_mode)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if parent_execution_id is not None:
+            pulumi.set(__self__, "parent_execution_id", parent_execution_id)
+        if safety_check is not None:
+            pulumi.set(__self__, "safety_check", safety_check)
+        if template_content is not None:
+            pulumi.set(__self__, "template_content", template_content)
+        if template_version is not None:
+            pulumi.set(__self__, "template_version", template_version)
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> pulumi.Input[str]:
+        """
+        The name of execution template.
+        """
+        return pulumi.get(self, "template_name")
+
+    @template_name.setter
+    def template_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "template_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of OOS Execution.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="loopMode")
+    def loop_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The loop mode of OOS Execution.
+        """
+        return pulumi.get(self, "loop_mode")
+
+    @loop_mode.setter
+    def loop_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "loop_mode", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[str]]:
+        """
+        The parameters required by the template. Default to `{}`.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="parentExecutionId")
+    def parent_execution_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of parent execution.
+        """
+        return pulumi.get(self, "parent_execution_id")
+
+    @parent_execution_id.setter
+    def parent_execution_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_execution_id", value)
+
+    @property
+    @pulumi.getter(name="safetyCheck")
+    def safety_check(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode of safety check.
+        """
+        return pulumi.get(self, "safety_check")
+
+    @safety_check.setter
+    def safety_check(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "safety_check", value)
+
+    @property
+    @pulumi.getter(name="templateContent")
+    def template_content(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
+        """
+        return pulumi.get(self, "template_content")
+
+    @template_content.setter
+    def template_content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_content", value)
+
+    @property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of execution template.
+        """
+        return pulumi.get(self, "template_version")
+
+    @template_version.setter
+    def template_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_version", value)
 
 
 class Execution(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -94,6 +245,94 @@ class Execution(pulumi.CustomResource):
         :param pulumi.Input[str] template_name: The name of execution template.
         :param pulumi.Input[str] template_version: The version of execution template.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ExecutionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
+
+        > **NOTE:** Available in 1.93.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.oos.Template("default",
+            content=\"\"\"  {
+            "FormatVersion": "OOS-2019-06-01",
+            "Description": "Update Describe instances of given status",
+            "Parameters":{
+              "Status":{
+                "Type": "String",
+                "Description": "(Required) The status of the Ecs instance."
+              }
+            },
+            "Tasks": [
+              {
+                "Properties" :{
+                  "Parameters":{
+                    "Status": "{{ Status }}"
+                  },
+                  "API": "DescribeInstances",
+                  "Service": "Ecs"
+                },
+                "Name": "foo",
+                "Action": "ACS::ExecuteApi"
+              }]
+          }
+        \"\"\",
+            template_name="test-name",
+            version_name="test",
+            tags={
+                "Created": "TF",
+                "For": "acceptance Test",
+            })
+        example = alicloud.oos.Execution("example",
+            template_name=default.template_name,
+            description="From TF Test",
+            parameters="				{\"Status\":\"Running\"}\n")
+        ```
+
+        ## Import
+
+        OOS Execution can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:oos/execution:Execution example exec-ef6xxxx
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ExecutionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ExecutionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 loop_mode: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[str]] = None,
+                 parent_execution_id: Optional[pulumi.Input[str]] = None,
+                 safety_check: Optional[pulumi.Input[str]] = None,
+                 template_content: Optional[pulumi.Input[str]] = None,
+                 template_name: Optional[pulumi.Input[str]] = None,
+                 template_version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

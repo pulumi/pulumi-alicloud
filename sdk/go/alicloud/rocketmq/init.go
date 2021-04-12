@@ -22,31 +22,32 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:rocketmq/acl:Acl":
-		r, err = NewAcl(ctx, name, nil, pulumi.URN_(urn))
+		r = &Acl{}
 	case "alicloud:rocketmq/aclRule:AclRule":
-		r, err = NewAclRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &AclRule{}
 	case "alicloud:rocketmq/clientUser:ClientUser":
-		r, err = NewClientUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClientUser{}
 	case "alicloud:rocketmq/dnatEntry:DnatEntry":
-		r, err = NewDnatEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &DnatEntry{}
 	case "alicloud:rocketmq/group:Group":
-		r, err = NewGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &Group{}
 	case "alicloud:rocketmq/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "alicloud:rocketmq/qos:Qos":
-		r, err = NewQos(ctx, name, nil, pulumi.URN_(urn))
+		r = &Qos{}
 	case "alicloud:rocketmq/qosCar:QosCar":
-		r, err = NewQosCar(ctx, name, nil, pulumi.URN_(urn))
+		r = &QosCar{}
 	case "alicloud:rocketmq/qosPolicy:QosPolicy":
-		r, err = NewQosPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &QosPolicy{}
 	case "alicloud:rocketmq/snatEntry:SnatEntry":
-		r, err = NewSnatEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &SnatEntry{}
 	case "alicloud:rocketmq/topic:Topic":
-		r, err = NewTopic(ctx, name, nil, pulumi.URN_(urn))
+		r = &Topic{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

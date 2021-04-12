@@ -5,15 +5,100 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Alias']
+__all__ = ['AliasArgs', 'Alias']
+
+@pulumi.input_type
+class AliasArgs:
+    def __init__(__self__, *,
+                 alias_name: pulumi.Input[str],
+                 service_name: pulumi.Input[str],
+                 service_version: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 routing_config: Optional[pulumi.Input['AliasRoutingConfigArgs']] = None):
+        """
+        The set of arguments for constructing a Alias resource.
+        :param pulumi.Input[str] alias_name: Name for the alias you are creating.
+        :param pulumi.Input[str] service_name: The Function Compute service name.
+        :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
+        :param pulumi.Input[str] description: Description of the alias.
+        :param pulumi.Input['AliasRoutingConfigArgs'] routing_config: The Function Compute alias' route configuration settings. Fields documented below.
+        """
+        pulumi.set(__self__, "alias_name", alias_name)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "service_version", service_version)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if routing_config is not None:
+            pulumi.set(__self__, "routing_config", routing_config)
+
+    @property
+    @pulumi.getter(name="aliasName")
+    def alias_name(self) -> pulumi.Input[str]:
+        """
+        Name for the alias you are creating.
+        """
+        return pulumi.get(self, "alias_name")
+
+    @alias_name.setter
+    def alias_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "alias_name", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        The Function Compute service name.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="serviceVersion")
+    def service_version(self) -> pulumi.Input[str]:
+        """
+        The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
+        """
+        return pulumi.get(self, "service_version")
+
+    @service_version.setter
+    def service_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_version", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the alias.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="routingConfig")
+    def routing_config(self) -> Optional[pulumi.Input['AliasRoutingConfigArgs']]:
+        """
+        The Function Compute alias' route configuration settings. Fields documented below.
+        """
+        return pulumi.get(self, "routing_config")
+
+    @routing_config.setter
+    def routing_config(self, value: Optional[pulumi.Input['AliasRoutingConfigArgs']]):
+        pulumi.set(self, "routing_config", value)
 
 
 class Alias(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -67,6 +152,69 @@ class Alias(pulumi.CustomResource):
         :param pulumi.Input[str] service_name: The Function Compute service name.
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AliasArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/171635.htm).
+
+        > **NOTE:** Available in 1.104.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.fc.Alias("example",
+            alias_name="my_alias",
+            description="a sample description",
+            routing_config=alicloud.fc.AliasRoutingConfigArgs(
+                additional_version_weights={
+                    "2": 0.5,
+                },
+            ),
+            service_name="my_service_name",
+            service_version="1")
+        ```
+
+        ## Import
+
+        Function Compute alias can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:fc/alias:Alias example my_alias_id
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AliasArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AliasArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 alias_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 routing_config: Optional[pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 service_version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

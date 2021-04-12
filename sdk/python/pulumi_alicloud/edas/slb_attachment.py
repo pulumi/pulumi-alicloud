@@ -5,13 +5,113 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['SlbAttachment']
+__all__ = ['SlbAttachmentArgs', 'SlbAttachment']
+
+@pulumi.input_type
+class SlbAttachmentArgs:
+    def __init__(__self__, *,
+                 app_id: pulumi.Input[str],
+                 slb_id: pulumi.Input[str],
+                 slb_ip: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 listener_port: Optional[pulumi.Input[int]] = None,
+                 vserver_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SlbAttachment resource.
+        :param pulumi.Input[str] app_id: The ID of the applicaton to which you want to bind an SLB instance.
+        :param pulumi.Input[str] slb_id: The ID of the SLB instance that is going to be bound.
+        :param pulumi.Input[str] slb_ip: The IP address that is allocated to the bound SLB instance.
+        :param pulumi.Input[str] type: The type of the bound SLB instance.
+        :param pulumi.Input[int] listener_port: The listening port for the bound SLB instance.
+        :param pulumi.Input[str] vserver_group_id: The ID of the virtual server (VServer) group associated with the intranet SLB instance.
+        """
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "slb_id", slb_id)
+        pulumi.set(__self__, "slb_ip", slb_ip)
+        pulumi.set(__self__, "type", type)
+        if listener_port is not None:
+            pulumi.set(__self__, "listener_port", listener_port)
+        if vserver_group_id is not None:
+            pulumi.set(__self__, "vserver_group_id", vserver_group_id)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the applicaton to which you want to bind an SLB instance.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter(name="slbId")
+    def slb_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the SLB instance that is going to be bound.
+        """
+        return pulumi.get(self, "slb_id")
+
+    @slb_id.setter
+    def slb_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "slb_id", value)
+
+    @property
+    @pulumi.getter(name="slbIp")
+    def slb_ip(self) -> pulumi.Input[str]:
+        """
+        The IP address that is allocated to the bound SLB instance.
+        """
+        return pulumi.get(self, "slb_ip")
+
+    @slb_ip.setter
+    def slb_ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "slb_ip", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the bound SLB instance.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The listening port for the bound SLB instance.
+        """
+        return pulumi.get(self, "listener_port")
+
+    @listener_port.setter
+    def listener_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "listener_port", value)
+
+    @property
+    @pulumi.getter(name="vserverGroupId")
+    def vserver_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the virtual server (VServer) group associated with the intranet SLB instance.
+        """
+        return pulumi.get(self, "vserver_group_id")
+
+    @vserver_group_id.setter
+    def vserver_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vserver_group_id", value)
 
 
 class SlbAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +155,58 @@ class SlbAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the bound SLB instance.
         :param pulumi.Input[str] vserver_group_id: The ID of the virtual server (VServer) group associated with the intranet SLB instance.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SlbAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Binds SLB to an EDAS application.
+
+        > **NOTE:** Available in 1.82.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.edas.SlbAttachment("default",
+            app_id=var["app_id"],
+            slb_id=var["slb_id"],
+            slb_ip=var["slb_ip"],
+            type=var["type"],
+            listener_port=var["listener_port"],
+            vserver_group_id=var["vserver_group_id"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SlbAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SlbAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 listener_port: Optional[pulumi.Input[int]] = None,
+                 slb_id: Optional[pulumi.Input[str]] = None,
+                 slb_ip: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 vserver_group_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

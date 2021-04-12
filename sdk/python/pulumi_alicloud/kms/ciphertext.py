@@ -5,13 +5,69 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Ciphertext']
+__all__ = ['CiphertextArgs', 'Ciphertext']
+
+@pulumi.input_type
+class CiphertextArgs:
+    def __init__(__self__, *,
+                 key_id: pulumi.Input[str],
+                 plaintext: pulumi.Input[str],
+                 encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Ciphertext resource.
+        :param pulumi.Input[str] key_id: The globally unique ID of the CMK.
+        :param pulumi.Input[str] plaintext: The plaintext to be encrypted which must be encoded in Base64.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: -
+               (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        """
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "plaintext", plaintext)
+        if encryption_context is not None:
+            pulumi.set(__self__, "encryption_context", encryption_context)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Input[str]:
+        """
+        The globally unique ID of the CMK.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter
+    def plaintext(self) -> pulumi.Input[str]:
+        """
+        The plaintext to be encrypted which must be encoded in Base64.
+        """
+        return pulumi.get(self, "plaintext")
+
+    @plaintext.setter
+    def plaintext(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plaintext", value)
+
+    @property
+    @pulumi.getter(name="encryptionContext")
+    def encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        -
+        (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        """
+        return pulumi.get(self, "encryption_context")
+
+    @encryption_context.setter
+    def encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "encryption_context", value)
 
 
 class Ciphertext(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -30,6 +86,35 @@ class Ciphertext(pulumi.CustomResource):
         :param pulumi.Input[str] key_id: The globally unique ID of the CMK.
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted which must be encoded in Base64.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CiphertextArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Ciphertext resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param CiphertextArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CiphertextArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 plaintext: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

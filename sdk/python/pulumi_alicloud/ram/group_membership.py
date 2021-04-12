@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['GroupMembership']
+__all__ = ['GroupMembershipArgs', 'GroupMembership']
+
+@pulumi.input_type
+class GroupMembershipArgs:
+    def __init__(__self__, *,
+                 group_name: pulumi.Input[str],
+                 user_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        The set of arguments for constructing a GroupMembership resource.
+        :param pulumi.Input[str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_names: Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        """
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "user_names", user_names)
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Input[str]:
+        """
+        Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_name", value)
+
+    @property
+    @pulumi.getter(name="userNames")
+    def user_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "user_names")
+
+    @user_names.setter
+    def user_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "user_names", value)
 
 
 class GroupMembership(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +104,73 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_names: Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GroupMembershipArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a RAM Group membership resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a RAM Group membership.
+        group = alicloud.ram.Group("group",
+            comments="this is a group comments.",
+            force=True)
+        user = alicloud.ram.User("user",
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo",
+            force=True)
+        user1 = alicloud.ram.User("user1",
+            display_name="user_display_name1",
+            mobile="86-18688888889",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo",
+            force=True)
+        membership = alicloud.ram.GroupMembership("membership",
+            group_name=group.name,
+            user_names=[
+                user.name,
+                user1.name,
+            ])
+        ```
+
+        ## Import
+
+        RAM Group membership can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/groupMembership:GroupMembership example my-group
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GroupMembershipArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GroupMembershipArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 group_name: Optional[pulumi.Input[str]] = None,
+                 user_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

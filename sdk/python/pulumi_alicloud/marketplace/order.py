@@ -5,13 +5,146 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Order']
+__all__ = ['OrderArgs', 'Order']
+
+@pulumi.input_type
+class OrderArgs:
+    def __init__(__self__, *,
+                 package_version: pulumi.Input[str],
+                 pricing_cycle: pulumi.Input[str],
+                 product_code: pulumi.Input[str],
+                 components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 coupon_id: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[int]] = None,
+                 pay_type: Optional[pulumi.Input[str]] = None,
+                 quantity: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a Order resource.
+        :param pulumi.Input[str] package_version: The package version of the market product.
+        :param pulumi.Input[str] pricing_cycle: The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
+        :param pulumi.Input[str] product_code: The product_code of market place product.
+        :param pulumi.Input[Mapping[str, Any]] components: Service providers customize additional components.
+        :param pulumi.Input[str] coupon_id: The coupon id of the market product.
+        :param pulumi.Input[int] duration: The number of purchase cycles.
+        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        :param pulumi.Input[int] quantity: The quantity of the market product will be purchased.
+        """
+        pulumi.set(__self__, "package_version", package_version)
+        pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        pulumi.set(__self__, "product_code", product_code)
+        if components is not None:
+            pulumi.set(__self__, "components", components)
+        if coupon_id is not None:
+            pulumi.set(__self__, "coupon_id", coupon_id)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if pay_type is not None:
+            pulumi.set(__self__, "pay_type", pay_type)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @property
+    @pulumi.getter(name="packageVersion")
+    def package_version(self) -> pulumi.Input[str]:
+        """
+        The package version of the market product.
+        """
+        return pulumi.get(self, "package_version")
+
+    @package_version.setter
+    def package_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package_version", value)
+
+    @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> pulumi.Input[str]:
+        """
+        The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
+        """
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pricing_cycle", value)
+
+    @property
+    @pulumi.getter(name="productCode")
+    def product_code(self) -> pulumi.Input[str]:
+        """
+        The product_code of market place product.
+        """
+        return pulumi.get(self, "product_code")
+
+    @product_code.setter
+    def product_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "product_code", value)
+
+    @property
+    @pulumi.getter
+    def components(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Service providers customize additional components.
+        """
+        return pulumi.get(self, "components")
+
+    @components.setter
+    def components(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "components", value)
+
+    @property
+    @pulumi.getter(name="couponId")
+    def coupon_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The coupon id of the market product.
+        """
+        return pulumi.get(self, "coupon_id")
+
+    @coupon_id.setter
+    def coupon_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "coupon_id", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of purchase cycles.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="payType")
+    def pay_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        """
+        return pulumi.get(self, "pay_type")
+
+    @pay_type.setter
+    def pay_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pay_type", value)
+
+    @property
+    @pulumi.getter
+    def quantity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The quantity of the market product will be purchased.
+        """
+        return pulumi.get(self, "quantity")
+
+    @quantity.setter
+    def quantity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "quantity", value)
 
 
 class Order(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +179,47 @@ class Order(pulumi.CustomResource):
         :param pulumi.Input[str] product_code: The product_code of market place product.
         :param pulumi.Input[int] quantity: The quantity of the market product will be purchased.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrderArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Market order can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:marketplace/order:Order order your-order-id
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param OrderArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 coupon_id: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[int]] = None,
+                 package_version: Optional[pulumi.Input[str]] = None,
+                 pay_type: Optional[pulumi.Input[str]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 product_code: Optional[pulumi.Input[str]] = None,
+                 quantity: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

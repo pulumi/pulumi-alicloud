@@ -5,15 +5,69 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ScalingGroupVServerGroups']
+__all__ = ['ScalingGroupVServerGroupsArgs', 'ScalingGroupVServerGroups']
+
+@pulumi.input_type
+class ScalingGroupVServerGroupsArgs:
+    def __init__(__self__, *,
+                 scaling_group_id: pulumi.Input[str],
+                 vserver_groups: pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]],
+                 force: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a ScalingGroupVServerGroups resource.
+        :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        :param pulumi.Input[bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
+        """
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        pulumi.set(__self__, "vserver_groups", vserver_groups)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> pulumi.Input[str]:
+        """
+        ID of the scaling group.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @scaling_group_id.setter
+    def scaling_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scaling_group_id", value)
+
+    @property
+    @pulumi.getter(name="vserverGroups")
+    def vserver_groups(self) -> pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]:
+        """
+        A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        """
+        return pulumi.get(self, "vserver_groups")
+
+    @vserver_groups.setter
+    def vserver_groups(self, value: pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]):
+        pulumi.set(self, "vserver_groups", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
 
 
 class ScalingGroupVServerGroups(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -115,6 +169,119 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ScalingGroupVServerGroupsArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Attaches/Detaches vserver groups to a specified scaling group.
+
+        > **NOTE:** The load balancer of which vserver groups belongs to must be in `active` status.
+
+        > **NOTE:** If scaling group's network type is `VPC`, the vserver groups must be in the same `VPC`.
+
+        > **NOTE:** A scaling group can have at most 5 vserver groups attached by default.
+
+        > **NOTE:** Vserver groups and the default group of loadbalancer share the same backend server quota.
+
+        > **NOTE:** When attach vserver groups to scaling group, existing ECS instances will be added to vserver groups; Instead, ECS instances will be removed from vserver group when detach.
+
+        > **NOTE:** Detach action will be executed before attach action.
+
+        > **NOTE:** Vserver group is defined uniquely by `loadbalancer_id`, `vserver_group_id`, `port`.
+
+        > **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.
+
+        > **NOTE:** Resource `ess.ScalingGroupVServerGroups` is available in 1.53.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "testAccEssVserverGroupsAttachment"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0].id)
+        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
+        default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_load_balancer.id)
+        default_listener = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_listener.append(alicloud.slb.Listener(f"defaultListener-{range['value']}",
+                load_balancer_id=[__item.id for __item in [default_load_balancer]][range["value"]],
+                backend_port=22,
+                frontend_port=22,
+                protocol="tcp",
+                bandwidth=10,
+                health_check_type="tcp"))
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=2,
+            max_size=2,
+            scaling_group_name=name,
+            vswitch_ids=[default_switch.id])
+        default_scaling_group_v_server_groups = alicloud.ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups",
+            scaling_group_id=default_scaling_group.id,
+            vserver_groups=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupArgs(
+                loadbalancer_id=default_load_balancer.id,
+                vserver_attributes=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs(
+                    vserver_group_id=default_server_group.id,
+                    port=100,
+                    weight=60,
+                )],
+            )])
+        ```
+        ## Block vserver_group
+
+        the vserver_group supports the following:
+
+        * `loadbalancer_id` - (Required) Loadbalancer server ID of VServer Group.
+        * `vserver_attributes` - (Required) A list of VServer Group attributes. See Block vserver_attribute below for details.
+
+        ## Block vserver_attribute
+
+        * `vserver_group_id` - (Required) ID of VServer Group.
+        * `port` - (Required) - The port will be used for VServer Group backend server.
+        * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
+
+        ## Import
+
+        ESS vserver groups can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups example abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ScalingGroupVServerGroupsArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ScalingGroupVServerGroupsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 vserver_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

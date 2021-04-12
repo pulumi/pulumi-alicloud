@@ -5,15 +5,259 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EndpointGroup']
+__all__ = ['EndpointGroupArgs', 'EndpointGroup']
+
+@pulumi.input_type
+class EndpointGroupArgs:
+    def __init__(__self__, *,
+                 accelerator_id: pulumi.Input[str],
+                 endpoint_configurations: pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]],
+                 endpoint_group_region: pulumi.Input[str],
+                 listener_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 endpoint_group_type: Optional[pulumi.Input[str]] = None,
+                 endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
+                 health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 health_check_path: Optional[pulumi.Input[str]] = None,
+                 health_check_port: Optional[pulumi.Input[int]] = None,
+                 health_check_protocol: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port_overrides: Optional[pulumi.Input['EndpointGroupPortOverridesArgs']] = None,
+                 threshold_count: Optional[pulumi.Input[int]] = None,
+                 traffic_percentage: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a EndpointGroup resource.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group.
+        :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
+        :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
+        :param pulumi.Input[str] description: The description of the endpoint group.
+        :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+        :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
+        :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
+        :param pulumi.Input[int] health_check_port: The port that is used for health checks.
+        :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        :param pulumi.Input[str] name: The name of the endpoint group.
+        :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point.
+        :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "endpoint_configurations", endpoint_configurations)
+        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
+        pulumi.set(__self__, "listener_id", listener_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if endpoint_group_type is not None:
+            pulumi.set(__self__, "endpoint_group_type", endpoint_group_type)
+        if endpoint_request_protocol is not None:
+            pulumi.set(__self__, "endpoint_request_protocol", endpoint_request_protocol)
+        if health_check_interval_seconds is not None:
+            pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
+        if health_check_path is not None:
+            pulumi.set(__self__, "health_check_path", health_check_path)
+        if health_check_port is not None:
+            pulumi.set(__self__, "health_check_port", health_check_port)
+        if health_check_protocol is not None:
+            pulumi.set(__self__, "health_check_protocol", health_check_protocol)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port_overrides is not None:
+            pulumi.set(__self__, "port_overrides", port_overrides)
+        if threshold_count is not None:
+            pulumi.set(__self__, "threshold_count", threshold_count)
+        if traffic_percentage is not None:
+            pulumi.set(__self__, "traffic_percentage", traffic_percentage)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Global Accelerator instance to which the endpoint group will be added.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @accelerator_id.setter
+    def accelerator_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "accelerator_id", value)
+
+    @property
+    @pulumi.getter(name="endpointConfigurations")
+    def endpoint_configurations(self) -> pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]]:
+        """
+        The endpointConfigurations of the endpoint group.
+        """
+        return pulumi.get(self, "endpoint_configurations")
+
+    @endpoint_configurations.setter
+    def endpoint_configurations(self, value: pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]]):
+        pulumi.set(self, "endpoint_configurations", value)
+
+    @property
+    @pulumi.getter(name="endpointGroupRegion")
+    def endpoint_group_region(self) -> pulumi.Input[str]:
+        """
+        The ID of the region where the endpoint group is deployed.
+        """
+        return pulumi.get(self, "endpoint_group_region")
+
+    @endpoint_group_region.setter
+    def endpoint_group_region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint_group_region", value)
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the listener that is associated with the endpoint group.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @listener_id.setter
+    def listener_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "listener_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the endpoint group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="endpointGroupType")
+    def endpoint_group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+        """
+        return pulumi.get(self, "endpoint_group_type")
+
+    @endpoint_group_type.setter
+    def endpoint_group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_group_type", value)
+
+    @property
+    @pulumi.getter(name="endpointRequestProtocol")
+    def endpoint_request_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+        """
+        return pulumi.get(self, "endpoint_request_protocol")
+
+    @endpoint_request_protocol.setter
+    def endpoint_request_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_request_protocol", value)
+
+    @property
+    @pulumi.getter(name="healthCheckIntervalSeconds")
+    def health_check_interval_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interval between two consecutive health checks. Unit: seconds.
+        """
+        return pulumi.get(self, "health_check_interval_seconds")
+
+    @health_check_interval_seconds.setter
+    def health_check_interval_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="healthCheckPath")
+    def health_check_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path specified as the destination of the targets for health checks.
+        """
+        return pulumi.get(self, "health_check_path")
+
+    @health_check_path.setter
+    def health_check_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_path", value)
+
+    @property
+    @pulumi.getter(name="healthCheckPort")
+    def health_check_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port that is used for health checks.
+        """
+        return pulumi.get(self, "health_check_port")
+
+    @health_check_port.setter
+    def health_check_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_port", value)
+
+    @property
+    @pulumi.getter(name="healthCheckProtocol")
+    def health_check_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        """
+        return pulumi.get(self, "health_check_protocol")
+
+    @health_check_protocol.setter
+    def health_check_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_protocol", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the endpoint group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="portOverrides")
+    def port_overrides(self) -> Optional[pulumi.Input['EndpointGroupPortOverridesArgs']]:
+        """
+        Mapping between listening port and forwarding port of boarding point.
+        """
+        return pulumi.get(self, "port_overrides")
+
+    @port_overrides.setter
+    def port_overrides(self, value: Optional[pulumi.Input['EndpointGroupPortOverridesArgs']]):
+        pulumi.set(self, "port_overrides", value)
+
+    @property
+    @pulumi.getter(name="thresholdCount")
+    def threshold_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        """
+        return pulumi.get(self, "threshold_count")
+
+    @threshold_count.setter
+    def threshold_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threshold_count", value)
+
+    @property
+    @pulumi.getter(name="trafficPercentage")
+    def traffic_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
+        """
+        return pulumi.get(self, "traffic_percentage")
+
+    @traffic_percentage.setter
+    def traffic_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "traffic_percentage", value)
 
 
 class EndpointGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -111,6 +355,103 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: EndpointGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Global Accelerator (GA) Endpoint Group resource.
+
+        For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/doc-detail/153259.htm).
+
+        > **NOTE:** Available in v1.113.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        de_bandwidth_package = alicloud.ga.BandwidthPackage("deBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        de_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment",
+            accelerator_id=example_accelerator.id,
+            bandwidth_package_id=de_bandwidth_package.id)
+        example_listener = alicloud.ga.Listener("exampleListener",
+            accelerator_id=example_accelerator.id,
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=60,
+                to_port=70,
+            )],
+            opts=pulumi.ResourceOptions(depends_on=[de_bandwidth_package_attachment]))
+        example_eip = alicloud.ecs.Eip("exampleEip",
+            bandwidth=10,
+            internet_charge_type="PayByBandwidth")
+        example_endpoint_group = alicloud.ga.EndpointGroup("exampleEndpointGroup",
+            accelerator_id=example_accelerator.id,
+            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                endpoint=example_eip.ip_address,
+                type="PublicIp",
+                weight=20,
+            )],
+            endpoint_group_region="cn-hangzhou",
+            listener_id=example_listener.id)
+        ```
+
+        ## Import
+
+        Ga Endpoint Group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ga/endpointGroup:EndpointGroup example <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param EndpointGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EndpointGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerator_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 endpoint_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]]] = None,
+                 endpoint_group_region: Optional[pulumi.Input[str]] = None,
+                 endpoint_group_type: Optional[pulumi.Input[str]] = None,
+                 endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
+                 health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 health_check_path: Optional[pulumi.Input[str]] = None,
+                 health_check_port: Optional[pulumi.Input[int]] = None,
+                 health_check_protocol: Optional[pulumi.Input[str]] = None,
+                 listener_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port_overrides: Optional[pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']]] = None,
+                 threshold_count: Optional[pulumi.Input[int]] = None,
+                 traffic_percentage: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

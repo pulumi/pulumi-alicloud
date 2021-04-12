@@ -5,13 +5,119 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RouteEntry']
+__all__ = ['RouteEntryArgs', 'RouteEntry']
+
+@pulumi.input_type
+class RouteEntryArgs:
+    def __init__(__self__, *,
+                 route_table_id: pulumi.Input[str],
+                 destination_cidrblock: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nexthop_id: Optional[pulumi.Input[str]] = None,
+                 nexthop_type: Optional[pulumi.Input[str]] = None,
+                 router_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RouteEntry resource.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
+        :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
+        :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
+        :param pulumi.Input[str] router_id: This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        """
+        pulumi.set(__self__, "route_table_id", route_table_id)
+        if destination_cidrblock is not None:
+            pulumi.set(__self__, "destination_cidrblock", destination_cidrblock)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nexthop_id is not None:
+            pulumi.set(__self__, "nexthop_id", nexthop_id)
+        if nexthop_type is not None:
+            pulumi.set(__self__, "nexthop_type", nexthop_type)
+        if router_id is not None:
+            warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+            pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
+        if router_id is not None:
+            pulumi.set(__self__, "router_id", router_id)
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the route table.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @route_table_id.setter
+    def route_table_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "route_table_id", value)
+
+    @property
+    @pulumi.getter(name="destinationCidrblock")
+    def destination_cidrblock(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RouteEntry's target network segment.
+        """
+        return pulumi.get(self, "destination_cidrblock")
+
+    @destination_cidrblock.setter
+    def destination_cidrblock(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_cidrblock", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nexthopId")
+    def nexthop_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The route entry's next hop. ECS instance ID or VPC router interface ID.
+        """
+        return pulumi.get(self, "nexthop_id")
+
+    @nexthop_id.setter
+    def nexthop_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nexthop_id", value)
+
+    @property
+    @pulumi.getter(name="nexthopType")
+    def nexthop_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The next hop type. Available values:
+        """
+        return pulumi.get(self, "nexthop_type")
+
+    @nexthop_type.setter
+    def nexthop_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nexthop_type", value)
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        """
+        return pulumi.get(self, "router_id")
+
+    @router_id.setter
+    def router_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "router_id", value)
 
 
 class RouteEntry(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -42,6 +148,45 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] route_table_id: The ID of the route table.
         :param pulumi.Input[str] router_id: This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RouteEntryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Router entry can be imported using the id, e.g (formatted as<route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id>).
+
+        ```sh
+         $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RouteEntryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RouteEntryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 destination_cidrblock: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nexthop_id: Optional[pulumi.Input[str]] = None,
+                 nexthop_type: Optional[pulumi.Input[str]] = None,
+                 route_table_id: Optional[pulumi.Input[str]] = None,
+                 router_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

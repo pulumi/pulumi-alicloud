@@ -5,13 +5,82 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['VpcEndpointServiceResource']
+__all__ = ['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResource']
+
+@pulumi.input_type
+class VpcEndpointServiceResourceArgs:
+    def __init__(__self__, *,
+                 resource_id: pulumi.Input[str],
+                 resource_type: pulumi.Input[str],
+                 service_id: pulumi.Input[str],
+                 dry_run: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a VpcEndpointServiceResource resource.
+        :param pulumi.Input[str] resource_id: The ID of Resource.
+        :param pulumi.Input[str] resource_type: The Type of Resource.
+        :param pulumi.Input[str] service_id: The ID of Vpc Endpoint Service.
+        :param pulumi.Input[bool] dry_run: The dry run.
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "service_id", service_id)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[str]:
+        """
+        The ID of Resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[str]:
+        """
+        The Type of Resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Input[str]:
+        """
+        The ID of Vpc Endpoint Service.
+        """
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The dry run.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
 
 
 class VpcEndpointServiceResource(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -58,6 +127,63 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         :param pulumi.Input[str] resource_type: The Type of Resource.
         :param pulumi.Input[str] service_id: The ID of Vpc Endpoint Service.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VpcEndpointServiceResourceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Private Link Vpc Endpoint Service Resource resource.
+
+        For information about Private Link Vpc Endpoint Service Resource and how to use it, see [What is Vpc Endpoint Service Resource](https://help.aliyun.com/document_detail/183548.html).
+
+        > **NOTE:** Available in v1.110.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.privatelink.VpcEndpointServiceResource("example",
+            resource_id="lb-gw8nuym5xxxxx",
+            resource_type="slb",
+            service_id="epsrv-gw8ii1xxxx")
+        ```
+
+        ## Import
+
+        Private Link Vpc Endpoint Service Resource can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VpcEndpointServiceResourceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VpcEndpointServiceResourceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

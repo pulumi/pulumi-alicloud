@@ -5,13 +5,127 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['IndustrialPidLoop']
+__all__ = ['IndustrialPidLoopArgs', 'IndustrialPidLoop']
+
+@pulumi.input_type
+class IndustrialPidLoopArgs:
+    def __init__(__self__, *,
+                 pid_loop_configuration: pulumi.Input[str],
+                 pid_loop_dcs_type: pulumi.Input[str],
+                 pid_loop_is_crucial: pulumi.Input[bool],
+                 pid_loop_name: pulumi.Input[str],
+                 pid_loop_type: pulumi.Input[str],
+                 pid_project_id: pulumi.Input[str],
+                 pid_loop_desc: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a IndustrialPidLoop resource.
+        :param pulumi.Input[str] pid_loop_configuration: The Pid Loop Configuration.
+        :param pulumi.Input[str] pid_loop_dcs_type: The dcs type of Pid Loop. Valid values: `standard`.
+        :param pulumi.Input[bool] pid_loop_is_crucial: Whether is crucial Pid Loop.
+        :param pulumi.Input[str] pid_loop_name: The name of Pid Loop.
+        :param pulumi.Input[str] pid_loop_type: The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
+        :param pulumi.Input[str] pid_project_id: The pid project id.
+        :param pulumi.Input[str] pid_loop_desc: The desc of Pid Loop.
+        """
+        pulumi.set(__self__, "pid_loop_configuration", pid_loop_configuration)
+        pulumi.set(__self__, "pid_loop_dcs_type", pid_loop_dcs_type)
+        pulumi.set(__self__, "pid_loop_is_crucial", pid_loop_is_crucial)
+        pulumi.set(__self__, "pid_loop_name", pid_loop_name)
+        pulumi.set(__self__, "pid_loop_type", pid_loop_type)
+        pulumi.set(__self__, "pid_project_id", pid_project_id)
+        if pid_loop_desc is not None:
+            pulumi.set(__self__, "pid_loop_desc", pid_loop_desc)
+
+    @property
+    @pulumi.getter(name="pidLoopConfiguration")
+    def pid_loop_configuration(self) -> pulumi.Input[str]:
+        """
+        The Pid Loop Configuration.
+        """
+        return pulumi.get(self, "pid_loop_configuration")
+
+    @pid_loop_configuration.setter
+    def pid_loop_configuration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pid_loop_configuration", value)
+
+    @property
+    @pulumi.getter(name="pidLoopDcsType")
+    def pid_loop_dcs_type(self) -> pulumi.Input[str]:
+        """
+        The dcs type of Pid Loop. Valid values: `standard`.
+        """
+        return pulumi.get(self, "pid_loop_dcs_type")
+
+    @pid_loop_dcs_type.setter
+    def pid_loop_dcs_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pid_loop_dcs_type", value)
+
+    @property
+    @pulumi.getter(name="pidLoopIsCrucial")
+    def pid_loop_is_crucial(self) -> pulumi.Input[bool]:
+        """
+        Whether is crucial Pid Loop.
+        """
+        return pulumi.get(self, "pid_loop_is_crucial")
+
+    @pid_loop_is_crucial.setter
+    def pid_loop_is_crucial(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "pid_loop_is_crucial", value)
+
+    @property
+    @pulumi.getter(name="pidLoopName")
+    def pid_loop_name(self) -> pulumi.Input[str]:
+        """
+        The name of Pid Loop.
+        """
+        return pulumi.get(self, "pid_loop_name")
+
+    @pid_loop_name.setter
+    def pid_loop_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pid_loop_name", value)
+
+    @property
+    @pulumi.getter(name="pidLoopType")
+    def pid_loop_type(self) -> pulumi.Input[str]:
+        """
+        The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
+        """
+        return pulumi.get(self, "pid_loop_type")
+
+    @pid_loop_type.setter
+    def pid_loop_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pid_loop_type", value)
+
+    @property
+    @pulumi.getter(name="pidProjectId")
+    def pid_project_id(self) -> pulumi.Input[str]:
+        """
+        The pid project id.
+        """
+        return pulumi.get(self, "pid_project_id")
+
+    @pid_project_id.setter
+    def pid_project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pid_project_id", value)
+
+    @property
+    @pulumi.getter(name="pidLoopDesc")
+    def pid_loop_desc(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desc of Pid Loop.
+        """
+        return pulumi.get(self, "pid_loop_desc")
+
+    @pid_loop_desc.setter
+    def pid_loop_desc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pid_loop_desc", value)
 
 
 class IndustrialPidLoop(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -65,6 +179,67 @@ class IndustrialPidLoop(pulumi.CustomResource):
         :param pulumi.Input[str] pid_loop_type: The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
         :param pulumi.Input[str] pid_project_id: The pid project id.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IndustrialPidLoopArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Brain Industrial Pid Loop resource.
+
+        > **NOTE:** Available in v1.117.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.brain.IndustrialPidLoop("example",
+            pid_loop_configuration="YourLoopConfiguration",
+            pid_loop_dcs_type="standard",
+            pid_loop_is_crucial=True,
+            pid_loop_name="tf-testAcc",
+            pid_loop_type="0",
+            pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx")
+        ```
+
+        ## Import
+
+        Brain Industrial Pid Loop can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:brain/industrialPidLoop:IndustrialPidLoop example <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param IndustrialPidLoopArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IndustrialPidLoopArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 pid_loop_configuration: Optional[pulumi.Input[str]] = None,
+                 pid_loop_dcs_type: Optional[pulumi.Input[str]] = None,
+                 pid_loop_desc: Optional[pulumi.Input[str]] = None,
+                 pid_loop_is_crucial: Optional[pulumi.Input[bool]] = None,
+                 pid_loop_name: Optional[pulumi.Input[str]] = None,
+                 pid_loop_type: Optional[pulumi.Input[str]] = None,
+                 pid_project_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

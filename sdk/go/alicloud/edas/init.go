@@ -22,27 +22,28 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:edas/application:Application":
-		r, err = NewApplication(ctx, name, nil, pulumi.URN_(urn))
+		r = &Application{}
 	case "alicloud:edas/applicationDeployment:ApplicationDeployment":
-		r, err = NewApplicationDeployment(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApplicationDeployment{}
 	case "alicloud:edas/applicationScale:ApplicationScale":
-		r, err = NewApplicationScale(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApplicationScale{}
 	case "alicloud:edas/cluster:Cluster":
-		r, err = NewCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &Cluster{}
 	case "alicloud:edas/deployGroup:DeployGroup":
-		r, err = NewDeployGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &DeployGroup{}
 	case "alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment":
-		r, err = NewInstanceClusterAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceClusterAttachment{}
 	case "alicloud:edas/k8sApplication:K8sApplication":
-		r, err = NewK8sApplication(ctx, name, nil, pulumi.URN_(urn))
+		r = &K8sApplication{}
 	case "alicloud:edas/k8sCluster:K8sCluster":
-		r, err = NewK8sCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &K8sCluster{}
 	case "alicloud:edas/slbAttachment:SlbAttachment":
-		r, err = NewSlbAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &SlbAttachment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

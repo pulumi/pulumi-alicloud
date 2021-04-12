@@ -5,15 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NetworkAclAttachment']
+__all__ = ['NetworkAclAttachmentArgs', 'NetworkAclAttachment']
+
+@pulumi.input_type
+class NetworkAclAttachmentArgs:
+    def __init__(__self__, *,
+                 network_acl_id: pulumi.Input[str],
+                 resources: pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]):
+        """
+        The set of arguments for constructing a NetworkAclAttachment resource.
+        :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        """
+        pulumi.set(__self__, "network_acl_id", network_acl_id)
+        pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="networkAclId")
+    def network_acl_id(self) -> pulumi.Input[str]:
+        """
+        The id of the network acl, the field can't be changed.
+        """
+        return pulumi.get(self, "network_acl_id")
+
+    @network_acl_id.setter
+    def network_acl_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_acl_id", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]:
+        """
+        List of the resources associated with the network acl. The details see Block Resources.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]):
+        pulumi.set(self, "resources", value)
 
 
 class NetworkAclAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -59,6 +97,64 @@ class NetworkAclAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NetworkAclAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a network acl attachment resource to associate network acls to vswitches.
+
+        > **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "NatGatewayConfigSpec"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl", vpc_id=default_network.id)
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            availability_zone=default_zones.zones[0].id)
+        default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
+            network_acl_id=default_network_acl.id,
+            resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
+                resource_id=default_switch.id,
+                resource_type="VSwitch",
+            )])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NetworkAclAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkAclAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 network_acl_id: Optional[pulumi.Input[str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

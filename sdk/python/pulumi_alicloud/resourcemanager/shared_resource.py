@@ -5,13 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['SharedResource']
+__all__ = ['SharedResourceArgs', 'SharedResource']
+
+@pulumi.input_type
+class SharedResourceArgs:
+    def __init__(__self__, *,
+                 resource_id: pulumi.Input[str],
+                 resource_share_id: pulumi.Input[str],
+                 resource_type: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a SharedResource resource.
+        :param pulumi.Input[str] resource_id: The resource ID need shared.
+        :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
+        :param pulumi.Input[str] resource_type: The resource type of should shared, valid value `VSwitch`.
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_share_id", resource_share_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[str]:
+        """
+        The resource ID need shared.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="resourceShareId")
+    def resource_share_id(self) -> pulumi.Input[str]:
+        """
+        The resource share ID of resource manager.
+        """
+        return pulumi.get(self, "resource_share_id")
+
+    @resource_share_id.setter
+    def resource_share_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_share_id", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[str]:
+        """
+        The resource type of should shared, valid value `VSwitch`.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_type", value)
 
 
 class SharedResource(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -42,6 +95,48 @@ class SharedResource(pulumi.CustomResource):
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
         :param pulumi.Input[str] resource_type: The resource type of should shared, valid value `VSwitch`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SharedResourceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Resource Manager Shared Resource resource.
+
+        For information about Resource Manager Shared Resource and how to use it, see [What is Shared Resource](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+
+        > **NOTE:** Available in v1.111.0+.
+
+        ## Import
+
+        Resource Manager Shared Resource can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/sharedResource:SharedResource example <resource_share_id>:<resource_id>:<resource_type>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SharedResourceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SharedResourceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 resource_share_id: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

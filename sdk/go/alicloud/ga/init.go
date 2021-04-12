@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:ga/accelerator:Accelerator":
-		r, err = NewAccelerator(ctx, name, nil, pulumi.URN_(urn))
+		r = &Accelerator{}
 	case "alicloud:ga/bandwidthPackage:BandwidthPackage":
-		r, err = NewBandwidthPackage(ctx, name, nil, pulumi.URN_(urn))
+		r = &BandwidthPackage{}
 	case "alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment":
-		r, err = NewBandwidthPackageAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &BandwidthPackageAttachment{}
 	case "alicloud:ga/endpointGroup:EndpointGroup":
-		r, err = NewEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &EndpointGroup{}
 	case "alicloud:ga/forwardingRule:ForwardingRule":
-		r, err = NewForwardingRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ForwardingRule{}
 	case "alicloud:ga/ipSet:IpSet":
-		r, err = NewIpSet(ctx, name, nil, pulumi.URN_(urn))
+		r = &IpSet{}
 	case "alicloud:ga/listener:Listener":
-		r, err = NewListener(ctx, name, nil, pulumi.URN_(urn))
+		r = &Listener{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

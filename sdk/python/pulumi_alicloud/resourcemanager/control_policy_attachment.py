@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ControlPolicyAttachment']
+__all__ = ['ControlPolicyAttachmentArgs', 'ControlPolicyAttachment']
+
+@pulumi.input_type
+class ControlPolicyAttachmentArgs:
+    def __init__(__self__, *,
+                 policy_id: pulumi.Input[str],
+                 target_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a ControlPolicyAttachment resource.
+        :param pulumi.Input[str] policy_id: The ID of control policy.
+        :param pulumi.Input[str] target_id: The ID of target.
+        """
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "target_id", target_id)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> pulumi.Input[str]:
+        """
+        The ID of control policy.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> pulumi.Input[str]:
+        """
+        The ID of target.
+        """
+        return pulumi.get(self, "target_id")
+
+    @target_id.setter
+    def target_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_id", value)
 
 
 class ControlPolicyAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -77,6 +115,84 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] policy_id: The ID of control policy.
         :param pulumi.Input[str] target_id: The ID of target.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ControlPolicyAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Resource Manager Control Policy Attachment resource.
+
+        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://help.aliyun.com/document_detail/208330.html).
+
+        > **NOTE:** Available in v1.120.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Enable the control policy
+        example_resource_directory = alicloud.resourcemanager.ResourceDirectory("exampleResourceDirectory", status="Enabled")
+        example_control_policy = alicloud.resourcemanager.ControlPolicy("exampleControlPolicy",
+            control_policy_name="tf-testAccName",
+            description="tf-testAccRDControlPolicy",
+            effect_scope="RAM",
+            policy_document=\"\"\"  {
+            "Version": "1",
+            "Statement": [
+              {
+                "Effect": "Deny",
+                "Action": [
+                  "ram:UpdateRole",
+                  "ram:DeleteRole",
+                  "ram:AttachPolicyToRole",
+                  "ram:DetachPolicyFromRole"
+                ],
+                "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+              }
+            ]
+          }
+        \"\"\")
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name="tf-testAccName")
+        example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("exampleControlPolicyAttachment",
+            policy_id=example_control_policy.id,
+            target_id=example_folder.id,
+            opts=pulumi.ResourceOptions(depends_on=[example_resource_directory]))
+        ```
+
+        ## Import
+
+        Resource Manager Control Policy Attachment can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment example <policy_id>:<target_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ControlPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ControlPolicyAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 target_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,82 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RegistryEnterpriseNamespace']
+__all__ = ['RegistryEnterpriseNamespaceArgs', 'RegistryEnterpriseNamespace']
+
+@pulumi.input_type
+class RegistryEnterpriseNamespaceArgs:
+    def __init__(__self__, *,
+                 auto_create: pulumi.Input[bool],
+                 default_visibility: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RegistryEnterpriseNamespace resource.
+        :param pulumi.Input[bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+        :param pulumi.Input[str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        """
+        pulumi.set(__self__, "auto_create", auto_create)
+        pulumi.set(__self__, "default_visibility", default_visibility)
+        pulumi.set(__self__, "instance_id", instance_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="autoCreate")
+    def auto_create(self) -> pulumi.Input[bool]:
+        """
+        Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+        """
+        return pulumi.get(self, "auto_create")
+
+    @auto_create.setter
+    def auto_create(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "auto_create", value)
+
+    @property
+    @pulumi.getter(name="defaultVisibility")
+    def default_visibility(self) -> pulumi.Input[str]:
+        """
+        `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+        """
+        return pulumi.get(self, "default_visibility")
+
+    @default_visibility.setter
+    def default_visibility(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_visibility", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        ID of Container Registry Enterprise Edition instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class RegistryEnterpriseNamespace(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -60,6 +129,65 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
         :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RegistryEnterpriseNamespaceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This resource will help you to manager Container Registry Enterprise Edition namespaces.
+
+        For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/doc-detail/145483.htm)
+
+        > **NOTE:** Available in v1.86.0+.
+
+        > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        my_namespace = alicloud.cs.RegistryEnterpriseNamespace("my-namespace",
+            auto_create=False,
+            default_visibility="PUBLIC",
+            instance_id="cri-xxx")
+        ```
+
+        ## Import
+
+        Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RegistryEnterpriseNamespaceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RegistryEnterpriseNamespaceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_create: Optional[pulumi.Input[bool]] = None,
+                 default_visibility: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

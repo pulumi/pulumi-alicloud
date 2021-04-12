@@ -5,13 +5,173 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['AclRule']
+__all__ = ['AclRuleArgs', 'AclRule']
+
+@pulumi.input_type
+class AclRuleArgs:
+    def __init__(__self__, *,
+                 acl_id: pulumi.Input[str],
+                 dest_cidr: pulumi.Input[str],
+                 dest_port_range: pulumi.Input[str],
+                 direction: pulumi.Input[str],
+                 ip_protocol: pulumi.Input[str],
+                 policy: pulumi.Input[str],
+                 source_cidr: pulumi.Input[str],
+                 source_port_range: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a AclRule resource.
+        :param pulumi.Input[str] acl_id: The ID of the ACL.
+        :param pulumi.Input[str] dest_cidr: The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
+        :param pulumi.Input[str] dest_port_range: The range of the destination port. Valid value: 80/80.
+        :param pulumi.Input[str] direction: The direction of the ACL rule. Valid values: in|out.
+        :param pulumi.Input[str] ip_protocol: The protocol used by the ACL rule. The value is not case sensitive.
+        :param pulumi.Input[str] policy: The policy used by the ACL rule. Valid values: accept|drop.
+        :param pulumi.Input[str] source_cidr: The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
+        :param pulumi.Input[str] source_port_range: The range of the source port. Valid value: 80/80.
+        :param pulumi.Input[str] description: The description of the ACL rule. It must be 1 to 512 characters in length.
+        :param pulumi.Input[int] priority: The priority of the ACL rule. Value range: 1 to 100.
+        """
+        pulumi.set(__self__, "acl_id", acl_id)
+        pulumi.set(__self__, "dest_cidr", dest_cidr)
+        pulumi.set(__self__, "dest_port_range", dest_port_range)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "source_cidr", source_cidr)
+        pulumi.set(__self__, "source_port_range", source_port_range)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the ACL.
+        """
+        return pulumi.get(self, "acl_id")
+
+    @acl_id.setter
+    def acl_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "acl_id", value)
+
+    @property
+    @pulumi.getter(name="destCidr")
+    def dest_cidr(self) -> pulumi.Input[str]:
+        """
+        The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
+        """
+        return pulumi.get(self, "dest_cidr")
+
+    @dest_cidr.setter
+    def dest_cidr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dest_cidr", value)
+
+    @property
+    @pulumi.getter(name="destPortRange")
+    def dest_port_range(self) -> pulumi.Input[str]:
+        """
+        The range of the destination port. Valid value: 80/80.
+        """
+        return pulumi.get(self, "dest_port_range")
+
+    @dest_port_range.setter
+    def dest_port_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dest_port_range", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> pulumi.Input[str]:
+        """
+        The direction of the ACL rule. Valid values: in|out.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: pulumi.Input[str]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Input[str]:
+        """
+        The protocol used by the ACL rule. The value is not case sensitive.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> pulumi.Input[str]:
+        """
+        The policy used by the ACL rule. Valid values: accept|drop.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter(name="sourceCidr")
+    def source_cidr(self) -> pulumi.Input[str]:
+        """
+        The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
+        """
+        return pulumi.get(self, "source_cidr")
+
+    @source_cidr.setter
+    def source_cidr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_cidr", value)
+
+    @property
+    @pulumi.getter(name="sourcePortRange")
+    def source_port_range(self) -> pulumi.Input[str]:
+        """
+        The range of the source port. Valid value: 80/80.
+        """
+        return pulumi.get(self, "source_port_range")
+
+    @source_port_range.setter
+    def source_port_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_port_range", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the ACL rule. It must be 1 to 512 characters in length.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of the ACL rule. Value range: 1 to 100.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
 
 
 class AclRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -58,6 +218,57 @@ class AclRule(pulumi.CustomResource):
         :param pulumi.Input[str] source_cidr: The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
         :param pulumi.Input[str] source_port_range: The range of the source port. Valid value: 80/80.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AclRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Sag Acl Rule resource. This topic describes how to configure an access control list (ACL) rule for a target Smart Access Gateway instance to permit or deny access to or from specified IP addresses in the ACL rule.
+
+        For information about Sag Acl Rule and how to use it, see [What is access control list (ACL) rule](https://www.alibabacloud.com/help/doc-detail/111483.htm).
+
+        > **NOTE:** Available in 1.60.0+
+
+        > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Import
+
+        The Sag Acl Rule can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AclRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AclRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dest_cidr: Optional[pulumi.Input[str]] = None,
+                 dest_port_range: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
+                 ip_protocol: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 source_cidr: Optional[pulumi.Input[str]] = None,
+                 source_port_range: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

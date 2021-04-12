@@ -5,15 +5,720 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Listener']
+__all__ = ['ListenerArgs', 'Listener']
+
+@pulumi.input_type
+class ListenerArgs:
+    def __init__(__self__, *,
+                 frontend_port: pulumi.Input[int],
+                 load_balancer_id: pulumi.Input[str],
+                 protocol: pulumi.Input[str],
+                 acl_id: Optional[pulumi.Input[str]] = None,
+                 acl_status: Optional[pulumi.Input[str]] = None,
+                 acl_type: Optional[pulumi.Input[str]] = None,
+                 backend_port: Optional[pulumi.Input[int]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 ca_certificate_id: Optional[pulumi.Input[str]] = None,
+                 cookie: Optional[pulumi.Input[str]] = None,
+                 cookie_timeout: Optional[pulumi.Input[int]] = None,
+                 delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_http2: Optional[pulumi.Input[str]] = None,
+                 established_timeout: Optional[pulumi.Input[int]] = None,
+                 forward_port: Optional[pulumi.Input[int]] = None,
+                 gzip: Optional[pulumi.Input[bool]] = None,
+                 health_check: Optional[pulumi.Input[str]] = None,
+                 health_check_connect_port: Optional[pulumi.Input[int]] = None,
+                 health_check_domain: Optional[pulumi.Input[str]] = None,
+                 health_check_http_code: Optional[pulumi.Input[str]] = None,
+                 health_check_interval: Optional[pulumi.Input[int]] = None,
+                 health_check_method: Optional[pulumi.Input[str]] = None,
+                 health_check_timeout: Optional[pulumi.Input[int]] = None,
+                 health_check_type: Optional[pulumi.Input[str]] = None,
+                 health_check_uri: Optional[pulumi.Input[str]] = None,
+                 healthy_threshold: Optional[pulumi.Input[int]] = None,
+                 idle_timeout: Optional[pulumi.Input[int]] = None,
+                 instance_port: Optional[pulumi.Input[int]] = None,
+                 lb_port: Optional[pulumi.Input[int]] = None,
+                 lb_protocol: Optional[pulumi.Input[str]] = None,
+                 listener_forward: Optional[pulumi.Input[str]] = None,
+                 master_slave_server_group_id: Optional[pulumi.Input[str]] = None,
+                 persistence_timeout: Optional[pulumi.Input[int]] = None,
+                 request_timeout: Optional[pulumi.Input[int]] = None,
+                 scheduler: Optional[pulumi.Input[str]] = None,
+                 server_certificate_id: Optional[pulumi.Input[str]] = None,
+                 server_group_id: Optional[pulumi.Input[str]] = None,
+                 ssl_certificate_id: Optional[pulumi.Input[str]] = None,
+                 sticky_session: Optional[pulumi.Input[str]] = None,
+                 sticky_session_type: Optional[pulumi.Input[str]] = None,
+                 tls_cipher_policy: Optional[pulumi.Input[str]] = None,
+                 unhealthy_threshold: Optional[pulumi.Input[int]] = None,
+                 x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None):
+        """
+        The set of arguments for constructing a Listener resource.
+        :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+        :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
+        :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        :param pulumi.Input[str] acl_id: the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
+        :param pulumi.Input[str] acl_status: Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+        :param pulumi.Input[str] acl_type: Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+        :param pulumi.Input[int] backend_port: Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+        :param pulumi.Input[int] bandwidth: Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+        :param pulumi.Input[str] ca_certificate_id: SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[str] description: The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        :param pulumi.Input[str] enable_http2: Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+        :param pulumi.Input[int] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+        :param pulumi.Input[int] forward_port: The port that http redirect to https.
+        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        :param pulumi.Input[str] health_check_method: The method of health check. Valid values: ["head", "get"].
+        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+        :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+        :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`.
+        :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
+        :param pulumi.Input[str] ssl_certificate_id: It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
+        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        """
+        pulumi.set(__self__, "frontend_port", frontend_port)
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        pulumi.set(__self__, "protocol", protocol)
+        if acl_id is not None:
+            pulumi.set(__self__, "acl_id", acl_id)
+        if acl_status is not None:
+            pulumi.set(__self__, "acl_status", acl_status)
+        if acl_type is not None:
+            pulumi.set(__self__, "acl_type", acl_type)
+        if backend_port is not None:
+            pulumi.set(__self__, "backend_port", backend_port)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if ca_certificate_id is not None:
+            pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
+        if cookie is not None:
+            pulumi.set(__self__, "cookie", cookie)
+        if cookie_timeout is not None:
+            pulumi.set(__self__, "cookie_timeout", cookie_timeout)
+        if delete_protection_validation is not None:
+            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_http2 is not None:
+            pulumi.set(__self__, "enable_http2", enable_http2)
+        if established_timeout is not None:
+            pulumi.set(__self__, "established_timeout", established_timeout)
+        if forward_port is not None:
+            pulumi.set(__self__, "forward_port", forward_port)
+        if gzip is not None:
+            pulumi.set(__self__, "gzip", gzip)
+        if health_check is not None:
+            pulumi.set(__self__, "health_check", health_check)
+        if health_check_connect_port is not None:
+            pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
+        if health_check_domain is not None:
+            pulumi.set(__self__, "health_check_domain", health_check_domain)
+        if health_check_http_code is not None:
+            pulumi.set(__self__, "health_check_http_code", health_check_http_code)
+        if health_check_interval is not None:
+            pulumi.set(__self__, "health_check_interval", health_check_interval)
+        if health_check_method is not None:
+            pulumi.set(__self__, "health_check_method", health_check_method)
+        if health_check_timeout is not None:
+            pulumi.set(__self__, "health_check_timeout", health_check_timeout)
+        if health_check_type is not None:
+            pulumi.set(__self__, "health_check_type", health_check_type)
+        if health_check_uri is not None:
+            pulumi.set(__self__, "health_check_uri", health_check_uri)
+        if healthy_threshold is not None:
+            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
+        if instance_port is not None:
+            warnings.warn("""Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""", DeprecationWarning)
+            pulumi.log.warn("""instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.""")
+        if instance_port is not None:
+            pulumi.set(__self__, "instance_port", instance_port)
+        if lb_port is not None:
+            warnings.warn("""Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""", DeprecationWarning)
+            pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.""")
+        if lb_port is not None:
+            pulumi.set(__self__, "lb_port", lb_port)
+        if lb_protocol is not None:
+            warnings.warn("""Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""", DeprecationWarning)
+            pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.""")
+        if lb_protocol is not None:
+            pulumi.set(__self__, "lb_protocol", lb_protocol)
+        if listener_forward is not None:
+            pulumi.set(__self__, "listener_forward", listener_forward)
+        if master_slave_server_group_id is not None:
+            pulumi.set(__self__, "master_slave_server_group_id", master_slave_server_group_id)
+        if persistence_timeout is not None:
+            pulumi.set(__self__, "persistence_timeout", persistence_timeout)
+        if request_timeout is not None:
+            pulumi.set(__self__, "request_timeout", request_timeout)
+        if scheduler is not None:
+            pulumi.set(__self__, "scheduler", scheduler)
+        if server_certificate_id is not None:
+            pulumi.set(__self__, "server_certificate_id", server_certificate_id)
+        if server_group_id is not None:
+            pulumi.set(__self__, "server_group_id", server_group_id)
+        if ssl_certificate_id is not None:
+            warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
+        if ssl_certificate_id is not None:
+            pulumi.set(__self__, "ssl_certificate_id", ssl_certificate_id)
+        if sticky_session is not None:
+            pulumi.set(__self__, "sticky_session", sticky_session)
+        if sticky_session_type is not None:
+            pulumi.set(__self__, "sticky_session_type", sticky_session_type)
+        if tls_cipher_policy is not None:
+            pulumi.set(__self__, "tls_cipher_policy", tls_cipher_policy)
+        if unhealthy_threshold is not None:
+            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+        if x_forwarded_for is not None:
+            pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+
+    @property
+    @pulumi.getter(name="frontendPort")
+    def frontend_port(self) -> pulumi.Input[int]:
+        """
+        Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+        """
+        return pulumi.get(self, "frontend_port")
+
+    @frontend_port.setter
+    def frontend_port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "frontend_port", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> pulumi.Input[str]:
+        """
+        The Load Balancer ID which is used to launch a new listener.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @load_balancer_id.setter
+    def load_balancer_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "load_balancer_id", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[str]:
+        """
+        The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
+        """
+        return pulumi.get(self, "acl_id")
+
+    @acl_id.setter
+    def acl_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_id", value)
+
+    @property
+    @pulumi.getter(name="aclStatus")
+    def acl_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+        """
+        return pulumi.get(self, "acl_status")
+
+    @acl_status.setter
+    def acl_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_status", value)
+
+    @property
+    @pulumi.getter(name="aclType")
+    def acl_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+        """
+        return pulumi.get(self, "acl_type")
+
+    @acl_type.setter
+    def acl_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_type", value)
+
+    @property
+    @pulumi.getter(name="backendPort")
+    def backend_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+        """
+        return pulumi.get(self, "backend_port")
+
+    @backend_port.setter
+    def backend_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backend_port", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="caCertificateId")
+    def ca_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        """
+        return pulumi.get(self, "ca_certificate_id")
+
+    @ca_certificate_id.setter
+    def ca_certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_certificate_id", value)
+
+    @property
+    @pulumi.getter
+    def cookie(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        """
+        return pulumi.get(self, "cookie")
+
+    @cookie.setter
+    def cookie(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cookie", value)
+
+    @property
+    @pulumi.getter(name="cookieTimeout")
+    def cookie_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        """
+        return pulumi.get(self, "cookie_timeout")
+
+    @cookie_timeout.setter
+    def cookie_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cookie_timeout", value)
+
+    @property
+    @pulumi.getter(name="deleteProtectionValidation")
+    def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        """
+        return pulumi.get(self, "delete_protection_validation")
+
+    @delete_protection_validation.setter
+    def delete_protection_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_protection_validation", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableHttp2")
+    def enable_http2(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+        """
+        return pulumi.get(self, "enable_http2")
+
+    @enable_http2.setter
+    def enable_http2(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enable_http2", value)
+
+    @property
+    @pulumi.getter(name="establishedTimeout")
+    def established_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+        """
+        return pulumi.get(self, "established_timeout")
+
+    @established_timeout.setter
+    def established_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "established_timeout", value)
+
+    @property
+    @pulumi.getter(name="forwardPort")
+    def forward_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port that http redirect to https.
+        """
+        return pulumi.get(self, "forward_port")
+
+    @forward_port.setter
+    def forward_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "forward_port", value)
+
+    @property
+    @pulumi.getter
+    def gzip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
+        """
+        return pulumi.get(self, "gzip")
+
+    @gzip.setter
+    def gzip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gzip", value)
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+        """
+        return pulumi.get(self, "health_check")
+
+    @health_check.setter
+    def health_check(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check", value)
+
+    @property
+    @pulumi.getter(name="healthCheckConnectPort")
+    def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        """
+        return pulumi.get(self, "health_check_connect_port")
+
+    @health_check_connect_port.setter
+    def health_check_connect_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_connect_port", value)
+
+    @property
+    @pulumi.getter(name="healthCheckDomain")
+    def health_check_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        """
+        return pulumi.get(self, "health_check_domain")
+
+    @health_check_domain.setter
+    def health_check_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_domain", value)
+
+    @property
+    @pulumi.getter(name="healthCheckHttpCode")
+    def health_check_http_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        """
+        return pulumi.get(self, "health_check_http_code")
+
+    @health_check_http_code.setter
+    def health_check_http_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_http_code", value)
+
+    @property
+    @pulumi.getter(name="healthCheckInterval")
+    def health_check_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        """
+        return pulumi.get(self, "health_check_interval")
+
+    @health_check_interval.setter
+    def health_check_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_interval", value)
+
+    @property
+    @pulumi.getter(name="healthCheckMethod")
+    def health_check_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method of health check. Valid values: ["head", "get"].
+        """
+        return pulumi.get(self, "health_check_method")
+
+    @health_check_method.setter
+    def health_check_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_method", value)
+
+    @property
+    @pulumi.getter(name="healthCheckTimeout")
+    def health_check_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        """
+        return pulumi.get(self, "health_check_timeout")
+
+    @health_check_timeout.setter
+    def health_check_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_timeout", value)
+
+    @property
+    @pulumi.getter(name="healthCheckType")
+    def health_check_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+        """
+        return pulumi.get(self, "health_check_type")
+
+    @health_check_type.setter
+    def health_check_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_type", value)
+
+    @property
+    @pulumi.getter(name="healthCheckUri")
+    def health_check_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+        """
+        return pulumi.get(self, "health_check_uri")
+
+    @health_check_uri.setter
+    def health_check_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_uri", value)
+
+    @property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @healthy_threshold.setter
+    def healthy_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "healthy_threshold", value)
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "idle_timeout", value)
+
+    @property
+    @pulumi.getter(name="instancePort")
+    def instance_port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "instance_port")
+
+    @instance_port.setter
+    def instance_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "instance_port", value)
+
+    @property
+    @pulumi.getter(name="lbPort")
+    def lb_port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "lb_port")
+
+    @lb_port.setter
+    def lb_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lb_port", value)
+
+    @property
+    @pulumi.getter(name="lbProtocol")
+    def lb_protocol(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "lb_protocol")
+
+    @lb_protocol.setter
+    def lb_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lb_protocol", value)
+
+    @property
+    @pulumi.getter(name="listenerForward")
+    def listener_forward(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        """
+        return pulumi.get(self, "listener_forward")
+
+    @listener_forward.setter
+    def listener_forward(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "listener_forward", value)
+
+    @property
+    @pulumi.getter(name="masterSlaveServerGroupId")
+    def master_slave_server_group_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "master_slave_server_group_id")
+
+    @master_slave_server_group_id.setter
+    def master_slave_server_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_slave_server_group_id", value)
+
+    @property
+    @pulumi.getter(name="persistenceTimeout")
+    def persistence_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+        """
+        return pulumi.get(self, "persistence_timeout")
+
+    @persistence_timeout.setter
+    def persistence_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "persistence_timeout", value)
+
+    @property
+    @pulumi.getter(name="requestTimeout")
+    def request_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+        """
+        return pulumi.get(self, "request_timeout")
+
+    @request_timeout.setter
+    def request_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "request_timeout", value)
+
+    @property
+    @pulumi.getter
+    def scheduler(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`. Default to `wrr`. Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`.
+        """
+        return pulumi.get(self, "scheduler")
+
+    @scheduler.setter
+    def scheduler(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheduler", value)
+
+    @property
+    @pulumi.getter(name="serverCertificateId")
+    def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        SLB Server certificate ID. It is required when `protocol` is `https`.
+        """
+        return pulumi.get(self, "server_certificate_id")
+
+    @server_certificate_id.setter
+    def server_certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_certificate_id", value)
+
+    @property
+    @pulumi.getter(name="serverGroupId")
+    def server_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
+        """
+        return pulumi.get(self, "server_group_id")
+
+    @server_group_id.setter
+    def server_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_group_id", value)
+
+    @property
+    @pulumi.getter(name="sslCertificateId")
+    def ssl_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        """
+        return pulumi.get(self, "ssl_certificate_id")
+
+    @ssl_certificate_id.setter
+    def ssl_certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_certificate_id", value)
+
+    @property
+    @pulumi.getter(name="stickySession")
+    def sticky_session(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+        """
+        return pulumi.get(self, "sticky_session")
+
+    @sticky_session.setter
+    def sticky_session(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sticky_session", value)
+
+    @property
+    @pulumi.getter(name="stickySessionType")
+    def sticky_session_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        """
+        return pulumi.get(self, "sticky_session_type")
+
+    @sticky_session_type.setter
+    def sticky_session_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sticky_session_type", value)
+
+    @property
+    @pulumi.getter(name="tlsCipherPolicy")
+    def tls_cipher_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
+        """
+        return pulumi.get(self, "tls_cipher_policy")
+
+    @tls_cipher_policy.setter
+    def tls_cipher_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_cipher_policy", value)
+
+    @property
+    @pulumi.getter(name="unhealthyThreshold")
+    def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        """
+        return pulumi.get(self, "unhealthy_threshold")
+
+    @unhealthy_threshold.setter
+    def unhealthy_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "unhealthy_threshold", value)
+
+    @property
+    @pulumi.getter(name="xForwardedFor")
+    def x_forwarded_for(self) -> Optional[pulumi.Input['ListenerXForwardedForArgs']]:
+        """
+        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        """
+        return pulumi.get(self, "x_forwarded_for")
+
+    @x_forwarded_for.setter
+    def x_forwarded_for(self, value: Optional[pulumi.Input['ListenerXForwardedForArgs']]):
+        pulumi.set(self, "x_forwarded_for", value)
 
 
 class Listener(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -226,6 +931,193 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ListenerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an Application Load Balancer Listener resource.
+
+        For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
+
+        For information about listener and how to use it, to see the following:
+
+        * [Configure a HTTP Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
+        * [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+        * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
+        * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "testcreatehttplistener"
+        ip_version = config.get("ipVersion")
+        if ip_version is None:
+            ip_version = "ipv4"
+        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
+            internet_charge_type="PayByTraffic",
+            internet=True)
+        default_acl = alicloud.slb.Acl("defaultAcl",
+            ip_version=ip_version,
+            entry_lists=[
+                alicloud.slb.AclEntryListArgs(
+                    entry="10.10.10.0/24",
+                    comment="first",
+                ),
+                alicloud.slb.AclEntryListArgs(
+                    entry="168.10.10.0/24",
+                    comment="second",
+                ),
+            ])
+        default_listener = alicloud.slb.Listener("defaultListener",
+            load_balancer_id=default_load_balancer.id,
+            backend_port=80,
+            frontend_port=80,
+            protocol="http",
+            bandwidth=10,
+            sticky_session="on",
+            sticky_session_type="insert",
+            cookie_timeout=86400,
+            cookie="testslblistenercookie",
+            health_check="on",
+            health_check_domain="ali.com",
+            health_check_uri="/cons",
+            health_check_connect_port=20,
+            healthy_threshold=8,
+            unhealthy_threshold=8,
+            health_check_timeout=8,
+            health_check_interval=5,
+            health_check_http_code="http_2xx,http_3xx",
+            x_forwarded_for=alicloud.slb.ListenerXForwardedForArgs(
+                retrive_slb_ip=True,
+                retrive_slb_id=True,
+            ),
+            acl_status="on",
+            acl_type="white",
+            acl_id=default_acl.id,
+            request_timeout=80,
+            idle_timeout=30)
+        ```
+        ## Listener fields and protocol mapping
+
+        load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
+
+        listener parameter | support protocol | value range |
+        ------------- | ------------- | ------------- |
+        backend_port | http & https & tcp & udp | 1-65535 |
+        frontend_port | http & https & tcp & udp | 1-65535 |
+        protocol | http & https & tcp & udp |
+        bandwidth | http & https & tcp & udp | -1 / 1-1000 |
+        scheduler | http & https & tcp & udp | wrr rr or wlc |
+        sticky_session | http & https | on or off |
+        sticky_session_type | http & https | insert or server |
+        cookie_timeout | http & https | 1-86400  |
+        cookie | http & https |   |
+        persistence_timeout | tcp & udp | 0-3600 |
+        health_check | http & https | on or off |
+        health_check_type | tcp | tcp or http |
+        health_check_domain | http & https & tcp |
+        health_check_method | http & https & tcp |
+        health_check_uri | http & https & tcp |  |
+        health_check_connect_port | http & https & tcp & udp | 1-65535 or -520 |
+        healthy_threshold | http & https & tcp & udp | 1-10 |
+        unhealthy_threshold | http & https & tcp & udp | 1-10 |
+        health_check_timeout | http & https & tcp & udp | 1-300 |
+        health_check_interval | http & https & tcp & udp | 1-50 |
+        health_check_http_code | http & https & tcp | http_2xx,http_3xx,http_4xx,http_5xx |
+        server_certificate_id | https |  |
+        gzip | http & https | true or false  |
+        x_forwarded_for | http & https |  |
+        acl_status | http & https & tcp & udp | on or off |
+        acl_type   | http & https & tcp & udp | white or black |
+        acl_id     | http & https & tcp & udp | the id of resource alicloud_slb_acl|
+        established_timeout | tcp       | 10-900|
+        idle_timeout |http & https      | 1-60  |
+        request_timeout |http & https   | 1-180 |
+        enable_http2    |https          | on or off |
+        tls_cipher_policy |https        |  tls_cipher_policy_1_0, tls_cipher_policy_1_1, tls_cipher_policy_1_2, tls_cipher_policy_1_2_strict |
+        server_group_id    | http & https & tcp & udp | the id of resource slb.ServerGroup |
+
+        The listener mapping supports the following:
+
+        ## Import
+
+        Load balancer listener can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/listener:Listener example "lb-abc123456:22"
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ListenerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ListenerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_id: Optional[pulumi.Input[str]] = None,
+                 acl_status: Optional[pulumi.Input[str]] = None,
+                 acl_type: Optional[pulumi.Input[str]] = None,
+                 backend_port: Optional[pulumi.Input[int]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 ca_certificate_id: Optional[pulumi.Input[str]] = None,
+                 cookie: Optional[pulumi.Input[str]] = None,
+                 cookie_timeout: Optional[pulumi.Input[int]] = None,
+                 delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_http2: Optional[pulumi.Input[str]] = None,
+                 established_timeout: Optional[pulumi.Input[int]] = None,
+                 forward_port: Optional[pulumi.Input[int]] = None,
+                 frontend_port: Optional[pulumi.Input[int]] = None,
+                 gzip: Optional[pulumi.Input[bool]] = None,
+                 health_check: Optional[pulumi.Input[str]] = None,
+                 health_check_connect_port: Optional[pulumi.Input[int]] = None,
+                 health_check_domain: Optional[pulumi.Input[str]] = None,
+                 health_check_http_code: Optional[pulumi.Input[str]] = None,
+                 health_check_interval: Optional[pulumi.Input[int]] = None,
+                 health_check_method: Optional[pulumi.Input[str]] = None,
+                 health_check_timeout: Optional[pulumi.Input[int]] = None,
+                 health_check_type: Optional[pulumi.Input[str]] = None,
+                 health_check_uri: Optional[pulumi.Input[str]] = None,
+                 healthy_threshold: Optional[pulumi.Input[int]] = None,
+                 idle_timeout: Optional[pulumi.Input[int]] = None,
+                 instance_port: Optional[pulumi.Input[int]] = None,
+                 lb_port: Optional[pulumi.Input[int]] = None,
+                 lb_protocol: Optional[pulumi.Input[str]] = None,
+                 listener_forward: Optional[pulumi.Input[str]] = None,
+                 load_balancer_id: Optional[pulumi.Input[str]] = None,
+                 master_slave_server_group_id: Optional[pulumi.Input[str]] = None,
+                 persistence_timeout: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 request_timeout: Optional[pulumi.Input[int]] = None,
+                 scheduler: Optional[pulumi.Input[str]] = None,
+                 server_certificate_id: Optional[pulumi.Input[str]] = None,
+                 server_group_id: Optional[pulumi.Input[str]] = None,
+                 ssl_certificate_id: Optional[pulumi.Input[str]] = None,
+                 sticky_session: Optional[pulumi.Input[str]] = None,
+                 sticky_session_type: Optional[pulumi.Input[str]] = None,
+                 tls_cipher_policy: Optional[pulumi.Input[str]] = None,
+                 unhealthy_threshold: Optional[pulumi.Input[int]] = None,
+                 x_forwarded_for: Optional[pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

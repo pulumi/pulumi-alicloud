@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['IpSet']
+__all__ = ['IpSetArgs', 'IpSet']
+
+@pulumi.input_type
+class IpSetArgs:
+    def __init__(__self__, *,
+                 accelerate_region_id: pulumi.Input[str],
+                 accelerator_id: pulumi.Input[str],
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a IpSet resource.
+        :param pulumi.Input[str] accelerate_region_id: The ID of an acceleration region.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator (GA) instance.
+        :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
+        :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        """
+        pulumi.set(__self__, "accelerate_region_id", accelerate_region_id)
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
+
+    @property
+    @pulumi.getter(name="accelerateRegionId")
+    def accelerate_region_id(self) -> pulumi.Input[str]:
+        """
+        The ID of an acceleration region.
+        """
+        return pulumi.get(self, "accelerate_region_id")
+
+    @accelerate_region_id.setter
+    def accelerate_region_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "accelerate_region_id", value)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Global Accelerator (GA) instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @accelerator_id.setter
+    def accelerator_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "accelerator_id", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The bandwidth allocated to the acceleration region.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
 
 
 class IpSet(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -73,6 +143,78 @@ class IpSet(pulumi.CustomResource):
         :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
         :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IpSetArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Global Accelerator (GA) Ip Set resource.
+
+        For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/doc-detail/153246.htm).
+
+        > **NOTE:** Available in v1.113.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
+            bandwidth=20,
+            type="Basic",
+            bandwidth_type="Basic",
+            duration="1",
+            auto_pay=True,
+            ratio=30)
+        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
+            accelerator_id=example_accelerator.id,
+            bandwidth_package_id=example_bandwidth_package.id)
+        example_ip_set = alicloud.ga.IpSet("exampleIpSet",
+            accelerate_region_id="cn-hangzhou",
+            bandwidth=5,
+            accelerator_id=example_accelerator.id,
+            opts=pulumi.ResourceOptions(depends_on=[example_bandwidth_package_attachment]))
+        ```
+
+        ## Import
+
+        Ga Ip Set can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ga/ipSet:IpSet example <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param IpSetArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IpSetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerate_region_id: Optional[pulumi.Input[str]] = None,
+                 accelerator_id: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

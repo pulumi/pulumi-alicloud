@@ -5,15 +5,85 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CustomDomain']
+__all__ = ['CustomDomainArgs', 'CustomDomain']
+
+@pulumi.input_type
+class CustomDomainArgs:
+    def __init__(__self__, *,
+                 domain_name: pulumi.Input[str],
+                 protocol: pulumi.Input[str],
+                 cert_config: Optional[pulumi.Input['CustomDomainCertConfigArgs']] = None,
+                 route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None):
+        """
+        The set of arguments for constructing a CustomDomain resource.
+        :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
+        :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
+        :param pulumi.Input['CustomDomainCertConfigArgs'] cert_config: The configuration of HTTPS certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
+        """
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "protocol", protocol)
+        if cert_config is not None:
+            pulumi.set(__self__, "cert_config", cert_config)
+        if route_configs is not None:
+            pulumi.set(__self__, "route_configs", route_configs)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Input[str]:
+        """
+        The custom domain name. For example, "example.com".
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[str]:
+        """
+        The protocol, `HTTP` or `HTTP,HTTPS`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="certConfig")
+    def cert_config(self) -> Optional[pulumi.Input['CustomDomainCertConfigArgs']]:
+        """
+        The configuration of HTTPS certificate.
+        """
+        return pulumi.get(self, "cert_config")
+
+    @cert_config.setter
+    def cert_config(self, value: Optional[pulumi.Input['CustomDomainCertConfigArgs']]):
+        pulumi.set(self, "cert_config", value)
+
+    @property
+    @pulumi.getter(name="routeConfigs")
+    def route_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]:
+        """
+        The configuration of domain route, mapping the path and Function Compute function.
+        """
+        return pulumi.get(self, "route_configs")
+
+    @route_configs.setter
+    def route_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]):
+        pulumi.set(self, "route_configs", value)
 
 
 class CustomDomain(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -94,6 +164,97 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CustomDomainArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an Alicloud Function Compute custom domain resource.
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/90759.htm).
+
+        > **NOTE:** Available in 1.98.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testaccalicloudfcservice"
+        default_service = alicloud.fc.Service("defaultService", description=f"{name}-description")
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=name)
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="fc/hello.zip",
+            content=\"\"\"		# -*- coding: utf-8 -*-
+        	def handler(event, context):
+        		print "hello world"
+        		return 'hello world'
+        \"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python2.7",
+            handler="hello.handler")
+        default_custom_domain = alicloud.fc.CustomDomain("defaultCustomDomain",
+            domain_name="terraform.functioncompute.com",
+            protocol="HTTP",
+            route_configs=[alicloud.fc.CustomDomainRouteConfigArgs(
+                path="/login/*",
+                service_name=default_service.name,
+                function_name=default_function.name,
+                qualifier="v1",
+                methods=[
+                    "GET",
+                    "POST",
+                ],
+            )],
+            cert_config=alicloud.fc.CustomDomainCertConfigArgs(
+                cert_name="your certificate name",
+                private_key="your private key",
+                certificate="your certificate data",
+            ))
+        ```
+
+        ## Import
+
+        Function Compute custom domain can be imported using the id or the domain name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:fc/customDomain:CustomDomain foo my-fc-custom-domain
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param CustomDomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CustomDomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cert_config: Optional[pulumi.Input[pulumi.InputType['CustomDomainCertConfigArgs']]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 route_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

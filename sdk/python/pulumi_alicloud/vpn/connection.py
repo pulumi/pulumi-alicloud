@@ -5,15 +5,147 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Connection']
+__all__ = ['ConnectionArgs', 'Connection']
+
+@pulumi.input_type
+class ConnectionArgs:
+    def __init__(__self__, *,
+                 customer_gateway_id: pulumi.Input[str],
+                 local_subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 remote_subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 vpn_gateway_id: pulumi.Input[str],
+                 effect_immediately: Optional[pulumi.Input[bool]] = None,
+                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]]] = None,
+                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Connection resource.
+        :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
+        :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
+        :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]] ike_configs: The configurations of phase-one negotiation.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]] ipsec_configs: The configurations of phase-two negotiation.
+        :param pulumi.Input[str] name: The name of the IPsec connection.
+        """
+        pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
+        pulumi.set(__self__, "local_subnets", local_subnets)
+        pulumi.set(__self__, "remote_subnets", remote_subnets)
+        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+        if effect_immediately is not None:
+            pulumi.set(__self__, "effect_immediately", effect_immediately)
+        if ike_configs is not None:
+            pulumi.set(__self__, "ike_configs", ike_configs)
+        if ipsec_configs is not None:
+            pulumi.set(__self__, "ipsec_configs", ipsec_configs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="customerGatewayId")
+    def customer_gateway_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the customer gateway.
+        """
+        return pulumi.get(self, "customer_gateway_id")
+
+    @customer_gateway_id.setter
+    def customer_gateway_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "customer_gateway_id", value)
+
+    @property
+    @pulumi.getter(name="localSubnets")
+    def local_subnets(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
+        """
+        return pulumi.get(self, "local_subnets")
+
+    @local_subnets.setter
+    def local_subnets(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "local_subnets", value)
+
+    @property
+    @pulumi.getter(name="remoteSubnets")
+    def remote_subnets(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The CIDR block of the local data center. This parameter is used for phase-two negotiation.
+        """
+        return pulumi.get(self, "remote_subnets")
+
+    @remote_subnets.setter
+    def remote_subnets(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "remote_subnets", value)
+
+    @property
+    @pulumi.getter(name="vpnGatewayId")
+    def vpn_gateway_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the VPN gateway.
+        """
+        return pulumi.get(self, "vpn_gateway_id")
+
+    @vpn_gateway_id.setter
+    def vpn_gateway_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpn_gateway_id", value)
+
+    @property
+    @pulumi.getter(name="effectImmediately")
+    def effect_immediately(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
+        """
+        return pulumi.get(self, "effect_immediately")
+
+    @effect_immediately.setter
+    def effect_immediately(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "effect_immediately", value)
+
+    @property
+    @pulumi.getter(name="ikeConfigs")
+    def ike_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]]]:
+        """
+        The configurations of phase-one negotiation.
+        """
+        return pulumi.get(self, "ike_configs")
+
+    @ike_configs.setter
+    def ike_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]]]):
+        pulumi.set(self, "ike_configs", value)
+
+    @property
+    @pulumi.getter(name="ipsecConfigs")
+    def ipsec_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]]]:
+        """
+        The configurations of phase-two negotiation.
+        """
+        return pulumi.get(self, "ipsec_configs")
+
+    @ipsec_configs.setter
+    def ipsec_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]]]):
+        pulumi.set(self, "ipsec_configs", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the IPsec connection.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Connection(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +180,47 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConnectionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        VPN connection can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpn/connection:Connection example vco-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ConnectionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 customer_gateway_id: Optional[pulumi.Input[str]] = None,
+                 effect_immediately: Optional[pulumi.Input[bool]] = None,
+                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]]] = None,
+                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]]] = None,
+                 local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpn_gateway_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

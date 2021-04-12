@@ -5,13 +5,70 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['DiskAttachment']
+__all__ = ['DiskAttachmentArgs', 'DiskAttachment']
+
+@pulumi.input_type
+class DiskAttachmentArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 device_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DiskAttachment resource.
+        :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
+        :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
+        :param pulumi.Input[str] device_name: The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+        """
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        if device_name is not None:
+            warnings.warn("""Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
+            pulumi.log.warn("""device_name is deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""")
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[str]:
+        """
+        ID of the Disk to be attached.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk_id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        ID of the Instance to attach to.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+        """
+        return pulumi.get(self, "device_name")
+
+    @device_name.setter
+    def device_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_name", value)
 
 
 class DiskAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -69,6 +126,75 @@ class DiskAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DiskAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
+
+        ## Example Usage
+
+        Basic usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new ECS disk-attachment and use it attach one disk to a new instance.
+        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
+        ecs_disk = alicloud.ecs.Disk("ecsDisk",
+            availability_zone="cn-beijing-a",
+            size=50,
+            tags={
+                "Name": "TerraformTest-disk",
+            })
+        ecs_instance = alicloud.ecs.Instance("ecsInstance",
+            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
+            instance_type="ecs.n4.small",
+            availability_zone="cn-beijing-a",
+            security_groups=[ecs_sg.id],
+            instance_name="Hello",
+            internet_charge_type="PayByBandwidth",
+            tags={
+                "Name": "TerraformTest-instance",
+            })
+        ecs_disk_att = alicloud.ecs.DiskAttachment("ecsDiskAtt",
+            disk_id=ecs_disk.id,
+            instance_id=ecs_instance.id)
+        ```
+
+        ## Import
+
+        The disk attachment can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/diskAttachment:DiskAttachment example d-abc12345678:i-abc12355
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DiskAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DiskAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 device_name: Optional[pulumi.Input[str]] = None,
+                 disk_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

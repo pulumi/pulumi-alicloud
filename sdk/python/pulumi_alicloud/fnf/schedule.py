@@ -5,13 +5,114 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Schedule']
+__all__ = ['ScheduleArgs', 'Schedule']
+
+@pulumi.input_type
+class ScheduleArgs:
+    def __init__(__self__, *,
+                 cron_expression: pulumi.Input[str],
+                 flow_name: pulumi.Input[str],
+                 schedule_name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 payload: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Schedule resource.
+        :param pulumi.Input[str] cron_expression: The CRON expression of the time-based schedule to be created.
+        :param pulumi.Input[str] flow_name: The name of the flow bound to the time-based schedule you want to create.
+        :param pulumi.Input[str] schedule_name: The name of the time-based schedule to be created.
+        :param pulumi.Input[str] description: The description of the time-based schedule to be created.
+        :param pulumi.Input[bool] enable: Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
+        :param pulumi.Input[str] payload: The trigger message of the time-based schedule to be created. It must be in JSON object format.
+        """
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "flow_name", flow_name)
+        pulumi.set(__self__, "schedule_name", schedule_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> pulumi.Input[str]:
+        """
+        The CRON expression of the time-based schedule to be created.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron_expression", value)
+
+    @property
+    @pulumi.getter(name="flowName")
+    def flow_name(self) -> pulumi.Input[str]:
+        """
+        The name of the flow bound to the time-based schedule you want to create.
+        """
+        return pulumi.get(self, "flow_name")
+
+    @flow_name.setter
+    def flow_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "flow_name", value)
+
+    @property
+    @pulumi.getter(name="scheduleName")
+    def schedule_name(self) -> pulumi.Input[str]:
+        """
+        The name of the time-based schedule to be created.
+        """
+        return pulumi.get(self, "schedule_name")
+
+    @schedule_name.setter
+    def schedule_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schedule_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the time-based schedule to be created.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger message of the time-based schedule to be created. It must be in JSON object format.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
 
 
 class Schedule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -74,6 +175,77 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.Input[str] payload: The trigger message of the time-based schedule to be created. It must be in JSON object format.
         :param pulumi.Input[str] schedule_name: The name of the time-based schedule to be created.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ScheduleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Serverless Workflow Schedule resource.
+
+        For information about Serverless Workflow Schedule and how to use it, see [What is Schedule](https://www.alibabacloud.com/help/en/doc-detail/168934.htm).
+
+        > **NOTE:** Available in v1.105.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_flow = alicloud.fnf.Flow("exampleFlow",
+            definition=\"\"\"  version: v1beta1
+          type: flow
+          steps:
+            - type: pass
+              name: helloworld
+        \"\"\",
+            description="tf-testaccFnFFlow983041",
+            type="FDL")
+        example_schedule = alicloud.fnf.Schedule("exampleSchedule",
+            cron_expression="30 9 * * * *",
+            description="tf-testaccFnFSchedule983041",
+            enable=True,
+            flow_name=example_flow.name,
+            payload="{\"tf-test\": \"test success\"}",
+            schedule_name="tf-testaccFnFSchedule983041")
+        ```
+
+        ## Import
+
+        Serverless Workflow Schedule can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:fnf/schedule:Schedule example <schedule_name>:<flow_name>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ScheduleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ScheduleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cron_expression: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 flow_name: Optional[pulumi.Input[str]] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 schedule_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

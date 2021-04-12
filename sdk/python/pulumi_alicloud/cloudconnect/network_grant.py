@@ -5,13 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['NetworkGrant']
+__all__ = ['NetworkGrantArgs', 'NetworkGrant']
+
+@pulumi.input_type
+class NetworkGrantArgs:
+    def __init__(__self__, *,
+                 ccn_id: pulumi.Input[str],
+                 cen_id: pulumi.Input[str],
+                 cen_uid: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a NetworkGrant resource.
+        :param pulumi.Input[str] ccn_id: The ID of the CCN instance.
+        :param pulumi.Input[str] cen_id: The ID of the CEN instance.
+        :param pulumi.Input[str] cen_uid: The ID of the account to which the CEN instance belongs.
+        """
+        pulumi.set(__self__, "ccn_id", ccn_id)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cen_uid", cen_uid)
+
+    @property
+    @pulumi.getter(name="ccnId")
+    def ccn_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the CCN instance.
+        """
+        return pulumi.get(self, "ccn_id")
+
+    @ccn_id.setter
+    def ccn_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ccn_id", value)
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the CEN instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @cen_id.setter
+    def cen_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cen_id", value)
+
+    @property
+    @pulumi.getter(name="cenUid")
+    def cen_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of the account to which the CEN instance belongs.
+        """
+        return pulumi.get(self, "cen_uid")
+
+    @cen_uid.setter
+    def cen_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cen_uid", value)
 
 
 class NetworkGrant(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -71,6 +124,77 @@ class NetworkGrant(pulumi.CustomResource):
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] cen_uid: The ID of the account to which the CEN instance belongs.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NetworkGrantArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloud Connect Network Grant resource. If the CEN instance to be attached belongs to another account, authorization by the CEN instance is required.
+
+        For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/doc-detail/94543.htm).
+
+        > **NOTE:** Available in 1.63.0+
+
+        > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_pulumi as pulumi
+
+        ccn_account = pulumi.providers.Alicloud("ccnAccount")
+        cen_account = pulumi.providers.Alicloud("cenAccount",
+            region="cn-hangzhou",
+            access_key="xxxxxx",
+            secret_key="xxxxxx")
+        cen = alicloud.cen.Instance("cen", opts=pulumi.ResourceOptions(provider=alicloud["cen_account"]))
+        ccn = alicloud.cloudconnect.Network("ccn", is_default=True,
+        opts=pulumi.ResourceOptions(provider=alicloud["ccn_account"]))
+        default = alicloud.cloudconnect.NetworkGrant("default",
+            ccn_id=ccn.id,
+            cen_id=cen.id,
+            cen_uid="xxxxxx",
+            opts=pulumi.ResourceOptions(depends_on=[
+                    ccn,
+                    cen,
+                ]))
+        ```
+
+        ## Import
+
+        The Cloud Connect Network Grant can be imported using the instance_id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cloudconnect/networkGrant:NetworkGrant example ccn-abc123456:cen-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param NetworkGrantArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkGrantArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ccn_id: Optional[pulumi.Input[str]] = None,
+                 cen_id: Optional[pulumi.Input[str]] = None,
+                 cen_uid: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

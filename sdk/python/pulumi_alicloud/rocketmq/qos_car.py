@@ -5,13 +5,178 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['QosCar']
+__all__ = ['QosCarArgs', 'QosCar']
+
+@pulumi.input_type
+class QosCarArgs:
+    def __init__(__self__, *,
+                 limit_type: pulumi.Input[str],
+                 priority: pulumi.Input[int],
+                 qos_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 max_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+                 max_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+                 min_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+                 min_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 percent_source_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a QosCar resource.
+        :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: Absolute, Percent.
+        :param pulumi.Input[int] priority: The priority of the specified stream.
+        :param pulumi.Input[str] qos_id: The instance ID of the QoS.
+        :param pulumi.Input[str] description: The description of the QoS speed limiting rule.
+        :param pulumi.Input[int] max_bandwidth_abs: The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
+        :param pulumi.Input[int] max_bandwidth_percent: The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
+        :param pulumi.Input[int] min_bandwidth_abs: The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
+        :param pulumi.Input[int] min_bandwidth_percent: The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
+        :param pulumi.Input[str] name: The name of the QoS speed limiting rule..
+        :param pulumi.Input[str] percent_source_type: The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
+        """
+        pulumi.set(__self__, "limit_type", limit_type)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "qos_id", qos_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if max_bandwidth_abs is not None:
+            pulumi.set(__self__, "max_bandwidth_abs", max_bandwidth_abs)
+        if max_bandwidth_percent is not None:
+            pulumi.set(__self__, "max_bandwidth_percent", max_bandwidth_percent)
+        if min_bandwidth_abs is not None:
+            pulumi.set(__self__, "min_bandwidth_abs", min_bandwidth_abs)
+        if min_bandwidth_percent is not None:
+            pulumi.set(__self__, "min_bandwidth_percent", min_bandwidth_percent)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if percent_source_type is not None:
+            pulumi.set(__self__, "percent_source_type", percent_source_type)
+
+    @property
+    @pulumi.getter(name="limitType")
+    def limit_type(self) -> pulumi.Input[str]:
+        """
+        The speed limiting method. Valid values: Absolute, Percent.
+        """
+        return pulumi.get(self, "limit_type")
+
+    @limit_type.setter
+    def limit_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "limit_type", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[int]:
+        """
+        The priority of the specified stream.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[int]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="qosId")
+    def qos_id(self) -> pulumi.Input[str]:
+        """
+        The instance ID of the QoS.
+        """
+        return pulumi.get(self, "qos_id")
+
+    @qos_id.setter
+    def qos_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "qos_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the QoS speed limiting rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="maxBandwidthAbs")
+    def max_bandwidth_abs(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
+        """
+        return pulumi.get(self, "max_bandwidth_abs")
+
+    @max_bandwidth_abs.setter
+    def max_bandwidth_abs(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_bandwidth_abs", value)
+
+    @property
+    @pulumi.getter(name="maxBandwidthPercent")
+    def max_bandwidth_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
+        """
+        return pulumi.get(self, "max_bandwidth_percent")
+
+    @max_bandwidth_percent.setter
+    def max_bandwidth_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_bandwidth_percent", value)
+
+    @property
+    @pulumi.getter(name="minBandwidthAbs")
+    def min_bandwidth_abs(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
+        """
+        return pulumi.get(self, "min_bandwidth_abs")
+
+    @min_bandwidth_abs.setter
+    def min_bandwidth_abs(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_bandwidth_abs", value)
+
+    @property
+    @pulumi.getter(name="minBandwidthPercent")
+    def min_bandwidth_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
+        """
+        return pulumi.get(self, "min_bandwidth_percent")
+
+    @min_bandwidth_percent.setter
+    def min_bandwidth_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_bandwidth_percent", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the QoS speed limiting rule..
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="percentSourceType")
+    def percent_source_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
+        """
+        return pulumi.get(self, "percent_source_type")
+
+    @percent_source_type.setter
+    def percent_source_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "percent_source_type", value)
 
 
 class QosCar(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -80,6 +245,79 @@ class QosCar(pulumi.CustomResource):
         :param pulumi.Input[int] priority: The priority of the specified stream.
         :param pulumi.Input[str] qos_id: The instance ID of the QoS.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: QosCarArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Sag qos car resource.
+        You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
+
+        For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/doc-detail/140065.htm).
+
+        > **NOTE:** Available in 1.60.0+
+
+        > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_qos = alicloud.rocketmq.Qos("defaultQos")
+        default_qos_car = alicloud.rocketmq.QosCar("defaultQosCar",
+            qos_id=default_qos.id,
+            description="tf-testSagQosCarDescription",
+            priority=1,
+            limit_type="Absolute",
+            min_bandwidth_abs=10,
+            max_bandwidth_abs=20,
+            min_bandwidth_percent=10,
+            max_bandwidth_percent=20,
+            percent_source_type="InternetUpBandwidth")
+        ```
+
+        ## Import
+
+        The Sag Qos Car can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rocketmq/qosCar:QosCar example qos-abc123456:qoscar-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param QosCarArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(QosCarArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 limit_type: Optional[pulumi.Input[str]] = None,
+                 max_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+                 max_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+                 min_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+                 min_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 percent_source_type: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 qos_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

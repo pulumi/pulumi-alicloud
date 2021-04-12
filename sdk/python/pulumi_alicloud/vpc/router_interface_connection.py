@@ -5,13 +5,95 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RouterInterfaceConnection']
+__all__ = ['RouterInterfaceConnectionArgs', 'RouterInterfaceConnection']
+
+@pulumi.input_type
+class RouterInterfaceConnectionArgs:
+    def __init__(__self__, *,
+                 interface_id: pulumi.Input[str],
+                 opposite_interface_id: pulumi.Input[str],
+                 opposite_interface_owner_id: Optional[pulumi.Input[str]] = None,
+                 opposite_router_id: Optional[pulumi.Input[str]] = None,
+                 opposite_router_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RouterInterfaceConnection resource.
+        :param pulumi.Input[str] interface_id: One side router interface ID.
+        :param pulumi.Input[str] opposite_interface_id: Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+        :param pulumi.Input[str] opposite_router_id: Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+        :param pulumi.Input[str] opposite_router_type: Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+        """
+        pulumi.set(__self__, "interface_id", interface_id)
+        pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
+        if opposite_interface_owner_id is not None:
+            pulumi.set(__self__, "opposite_interface_owner_id", opposite_interface_owner_id)
+        if opposite_router_id is not None:
+            pulumi.set(__self__, "opposite_router_id", opposite_router_id)
+        if opposite_router_type is not None:
+            pulumi.set(__self__, "opposite_router_type", opposite_router_type)
+
+    @property
+    @pulumi.getter(name="interfaceId")
+    def interface_id(self) -> pulumi.Input[str]:
+        """
+        One side router interface ID.
+        """
+        return pulumi.get(self, "interface_id")
+
+    @interface_id.setter
+    def interface_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "interface_id", value)
+
+    @property
+    @pulumi.getter(name="oppositeInterfaceId")
+    def opposite_interface_id(self) -> pulumi.Input[str]:
+        """
+        Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+        """
+        return pulumi.get(self, "opposite_interface_id")
+
+    @opposite_interface_id.setter
+    def opposite_interface_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "opposite_interface_id", value)
+
+    @property
+    @pulumi.getter(name="oppositeInterfaceOwnerId")
+    def opposite_interface_owner_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "opposite_interface_owner_id")
+
+    @opposite_interface_owner_id.setter
+    def opposite_interface_owner_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "opposite_interface_owner_id", value)
+
+    @property
+    @pulumi.getter(name="oppositeRouterId")
+    def opposite_router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+        """
+        return pulumi.get(self, "opposite_router_id")
+
+    @opposite_router_id.setter
+    def opposite_router_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "opposite_router_id", value)
+
+    @property
+    @pulumi.getter(name="oppositeRouterType")
+    def opposite_router_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+        """
+        return pulumi.get(self, "opposite_router_type")
+
+    @opposite_router_type.setter
+    def opposite_router_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "opposite_router_type", value)
 
 
 class RouterInterfaceConnection(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -98,6 +180,103 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         :param pulumi.Input[str] opposite_router_id: Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
         :param pulumi.Input[str] opposite_router_type: Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RouterInterfaceConnectionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a VPC router interface connection resource to connect two router interfaces which are in two different VPCs.
+        After that, all of the two router interfaces will be active.
+
+        > **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
+
+        > **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
+
+        > **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
+
+        > **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        name = config.get("name")
+        if name is None:
+            name = "alicloudRouterInterfaceConnectionBasic"
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        bar_network = alicloud.vpc.Network("barNetwork",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider=alicloud))
+        initiate = alicloud.vpc.RouterInterface("initiate",
+            opposite_region=region,
+            router_type="VRouter",
+            router_id=foo_network.router_id,
+            role="InitiatingSide",
+            specification="Large.2",
+            description=name,
+            instance_charge_type="PostPaid")
+        opposite = alicloud.vpc.RouterInterface("opposite",
+            opposite_region=region,
+            router_type="VRouter",
+            router_id=bar_network.router_id,
+            role="AcceptingSide",
+            specification="Large.1",
+            description=f"{name}-opposite",
+            opts=pulumi.ResourceOptions(provider=alicloud))
+        bar_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("barRouterInterfaceConnection",
+            interface_id=opposite.id,
+            opposite_interface_id=initiate.id,
+            opts=pulumi.ResourceOptions(provider=alicloud))
+        # A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
+        foo_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("fooRouterInterfaceConnection",
+            interface_id=initiate.id,
+            opposite_interface_id=opposite.id,
+            opts=pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
+        # The connection must start from the accepting side.
+        ```
+
+        ## Import
+
+        The router interface connection can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection foo ri-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RouterInterfaceConnectionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RouterInterfaceConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 interface_id: Optional[pulumi.Input[str]] = None,
+                 opposite_interface_id: Optional[pulumi.Input[str]] = None,
+                 opposite_interface_owner_id: Optional[pulumi.Input[str]] = None,
+                 opposite_router_id: Optional[pulumi.Input[str]] = None,
+                 opposite_router_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,131 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['VpcEndpoint']
+__all__ = ['VpcEndpointArgs', 'VpcEndpoint']
+
+@pulumi.input_type
+class VpcEndpointArgs:
+    def __init__(__self__, *,
+                 security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 vpc_id: pulumi.Input[str],
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 endpoint_description: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 vpc_endpoint_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a VpcEndpoint resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group associated with the terminal node network card.
+        :param pulumi.Input[str] vpc_id: The private network to which the terminal node belongs.
+        :param pulumi.Input[bool] dry_run: The dry run. Default to: `false`.
+        :param pulumi.Input[str] endpoint_description: The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+        :param pulumi.Input[str] service_id: The terminal node service associated with the terminal node.
+        :param pulumi.Input[str] service_name: The name of the terminal node service associated with the terminal node.
+        :param pulumi.Input[str] vpc_endpoint_name: The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+        """
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
+        if endpoint_description is not None:
+            pulumi.set(__self__, "endpoint_description", endpoint_description)
+        if service_id is not None:
+            pulumi.set(__self__, "service_id", service_id)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if vpc_endpoint_name is not None:
+            pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The security group associated with the terminal node network card.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[str]:
+        """
+        The private network to which the terminal node belongs.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The dry run. Default to: `false`.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter(name="endpointDescription")
+    def endpoint_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+        """
+        return pulumi.get(self, "endpoint_description")
+
+    @endpoint_description.setter
+    def endpoint_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_description", value)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The terminal node service associated with the terminal node.
+        """
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the terminal node service associated with the terminal node.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="vpcEndpointName")
+    def vpc_endpoint_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+        """
+        return pulumi.get(self, "vpc_endpoint_name")
+
+    @vpc_endpoint_name.setter
+    def vpc_endpoint_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_endpoint_name", value)
 
 
 class VpcEndpoint(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -50,6 +168,52 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_endpoint_name: The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
         :param pulumi.Input[str] vpc_id: The private network to which the terminal node belongs.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VpcEndpointArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Private Link Vpc Endpoint resource.
+
+        For information about Private Link Vpc Endpoint and how to use it, see [What is Vpc Endpoint](https://help.aliyun.com/document_detail/120479.html).
+
+        > **NOTE:** Available in v1.109.0+.
+
+        ## Import
+
+        Private Link Vpc Endpoint can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <endpoint_id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param VpcEndpointArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VpcEndpointArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 endpoint_description: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

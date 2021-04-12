@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['LoginProfile']
+__all__ = ['LoginProfileArgs', 'LoginProfile']
+
+@pulumi.input_type
+class LoginProfileArgs:
+    def __init__(__self__, *,
+                 password: pulumi.Input[str],
+                 user_name: pulumi.Input[str],
+                 mfa_bind_required: Optional[pulumi.Input[bool]] = None,
+                 password_reset_required: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a LoginProfile resource.
+        :param pulumi.Input[str] password: Password of the RAM user.
+        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[bool] mfa_bind_required: This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+        :param pulumi.Input[bool] password_reset_required: This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "user_name", user_name)
+        if mfa_bind_required is not None:
+            pulumi.set(__self__, "mfa_bind_required", mfa_bind_required)
+        if password_reset_required is not None:
+            pulumi.set(__self__, "password_reset_required", password_reset_required)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        Password of the RAM user.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> pulumi.Input[str]:
+        """
+        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_name", value)
+
+    @property
+    @pulumi.getter(name="mfaBindRequired")
+    def mfa_bind_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
+        """
+        return pulumi.get(self, "mfa_bind_required")
+
+    @mfa_bind_required.setter
+    def mfa_bind_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mfa_bind_required", value)
+
+    @property
+    @pulumi.getter(name="passwordResetRequired")
+    def password_reset_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
+        """
+        return pulumi.get(self, "password_reset_required")
+
+    @password_reset_required.setter
+    def password_reset_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "password_reset_required", value)
 
 
 class LoginProfile(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -58,6 +128,63 @@ class LoginProfile(pulumi.CustomResource):
         :param pulumi.Input[bool] password_reset_required: This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
         :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LoginProfileArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a RAM User Login Profile resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a RAM login profile.
+        user = alicloud.ram.User("user",
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo",
+            force=True)
+        profile = alicloud.ram.LoginProfile("profile",
+            user_name=user.name,
+            password="Yourpassword1234")
+        ```
+
+        ## Import
+
+        RAM login profile can be imported using the id or user name, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ram/loginProfile:LoginProfile example my-login
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LoginProfileArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LoginProfileArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 mfa_bind_required: Optional[pulumi.Input[bool]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 password_reset_required: Optional[pulumi.Input[bool]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

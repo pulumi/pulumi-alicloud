@@ -5,13 +5,241 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Alarm']
+__all__ = ['AlarmArgs', 'Alarm']
+
+@pulumi.input_type
+class AlarmArgs:
+    def __init__(__self__, *,
+                 alarm_actions: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 metric_name: pulumi.Input[str],
+                 scaling_group_id: pulumi.Input[str],
+                 threshold: pulumi.Input[str],
+                 cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
+                 comparison_operator: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 evaluation_count: Optional[pulumi.Input[int]] = None,
+                 metric_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 statistics: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Alarm resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alarm_actions: The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
+        :param pulumi.Input[str] metric_name: The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+        :param pulumi.Input[str] scaling_group_id: The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
+        :param pulumi.Input[str] threshold: The value against which the specified statistics is compared.
+        :param pulumi.Input[int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
+        :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+        :param pulumi.Input[str] description: The description for the alarm.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
+        :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
+        :param pulumi.Input[str] metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+        :param pulumi.Input[str] name: The name for ess alarm.
+        :param pulumi.Input[int] period: The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
+        :param pulumi.Input[str] statistics: The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+        """
+        pulumi.set(__self__, "alarm_actions", alarm_actions)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        pulumi.set(__self__, "threshold", threshold)
+        if cloud_monitor_group_id is not None:
+            pulumi.set(__self__, "cloud_monitor_group_id", cloud_monitor_group_id)
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if evaluation_count is not None:
+            pulumi.set(__self__, "evaluation_count", evaluation_count)
+        if metric_type is not None:
+            pulumi.set(__self__, "metric_type", metric_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+
+    @property
+    @pulumi.getter(name="alarmActions")
+    def alarm_actions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
+        """
+        return pulumi.get(self, "alarm_actions")
+
+    @alarm_actions.setter
+    def alarm_actions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "alarm_actions", value)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> pulumi.Input[str]:
+        """
+        The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> pulumi.Input[str]:
+        """
+        The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @scaling_group_id.setter
+    def scaling_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scaling_group_id", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[str]:
+        """
+        The value against which the specified statistics is compared.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[str]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter(name="cloudMonitorGroupId")
+    def cloud_monitor_group_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
+        """
+        return pulumi.get(self, "cloud_monitor_group_id")
+
+    @cloud_monitor_group_id.setter
+    def cloud_monitor_group_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cloud_monitor_group_id", value)
+
+    @property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description for the alarm.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable specific ess alarm. Default to true.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="evaluationCount")
+    def evaluation_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
+        """
+        return pulumi.get(self, "evaluation_count")
+
+    @evaluation_count.setter
+    def evaluation_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "evaluation_count", value)
+
+    @property
+    @pulumi.getter(name="metricType")
+    def metric_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+        """
+        return pulumi.get(self, "metric_type")
+
+    @metric_type.setter
+    def metric_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for ess alarm.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter
+    def statistics(self) -> Optional[pulumi.Input[str]]:
+        """
+        The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+        """
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "statistics", value)
 
 
 class Alarm(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -58,6 +286,53 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] statistics: The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         :param pulumi.Input[str] threshold: The value against which the specified statistics is compared.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AlarmArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Ess alarm can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AlarmArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AlarmArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 alarm_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
+                 comparison_operator: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 evaluation_count: Optional[pulumi.Input[int]] = None,
+                 metric_name: Optional[pulumi.Input[str]] = None,
+                 metric_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 statistics: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

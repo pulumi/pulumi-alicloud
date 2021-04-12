@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Handshake']
+__all__ = ['HandshakeArgs', 'Handshake']
+
+@pulumi.input_type
+class HandshakeArgs:
+    def __init__(__self__, *,
+                 target_entity: pulumi.Input[str],
+                 target_type: pulumi.Input[str],
+                 note: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Handshake resource.
+        :param pulumi.Input[str] target_entity: Invited account ID or login email.
+        :param pulumi.Input[str] target_type: Type of account being invited. Valid values: `Account`, `Email`.
+        :param pulumi.Input[str] note: Remarks. The maximum length is 1024 characters.
+        """
+        pulumi.set(__self__, "target_entity", target_entity)
+        pulumi.set(__self__, "target_type", target_type)
+        if note is not None:
+            pulumi.set(__self__, "note", note)
+
+    @property
+    @pulumi.getter(name="targetEntity")
+    def target_entity(self) -> pulumi.Input[str]:
+        """
+        Invited account ID or login email.
+        """
+        return pulumi.get(self, "target_entity")
+
+    @target_entity.setter
+    def target_entity(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_entity", value)
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> pulumi.Input[str]:
+        """
+        Type of account being invited. Valid values: `Account`, `Email`.
+        """
+        return pulumi.get(self, "target_type")
+
+    @target_type.setter
+    def target_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_type", value)
+
+    @property
+    @pulumi.getter
+    def note(self) -> Optional[pulumi.Input[str]]:
+        """
+        Remarks. The maximum length is 1024 characters.
+        """
+        return pulumi.get(self, "note")
+
+    @note.setter
+    def note(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "note", value)
 
 
 class Handshake(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -54,6 +108,60 @@ class Handshake(pulumi.CustomResource):
         :param pulumi.Input[str] target_entity: Invited account ID or login email.
         :param pulumi.Input[str] target_type: Type of account being invited. Valid values: `Account`, `Email`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: HandshakeArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Resource Manager handshake resource. You can invite accounts to join a resource directory for unified management.
+        For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+
+        > **NOTE:** Available in v1.82.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a Resource Manager handshake.
+        example = alicloud.resourcemanager.Handshake("example",
+            note="test resource manager handshake",
+            target_entity="1182775234******",
+            target_type="Account")
+        ```
+
+        ## Import
+
+        Resource Manager handshake can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param HandshakeArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(HandshakeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 note: Optional[pulumi.Input[str]] = None,
+                 target_entity: Optional[pulumi.Input[str]] = None,
+                 target_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

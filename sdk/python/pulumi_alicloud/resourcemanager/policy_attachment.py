@@ -5,13 +5,96 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['PolicyAttachment']
+__all__ = ['PolicyAttachmentArgs', 'PolicyAttachment']
+
+@pulumi.input_type
+class PolicyAttachmentArgs:
+    def __init__(__self__, *,
+                 policy_name: pulumi.Input[str],
+                 policy_type: pulumi.Input[str],
+                 principal_name: pulumi.Input[str],
+                 principal_type: pulumi.Input[str],
+                 resource_group_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a PolicyAttachment resource.
+        :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] policy_type: - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        :param pulumi.Input[str] principal_name: The name of the object to which you want to attach the policy.
+        :param pulumi.Input[str] principal_type: The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
+        """
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+        pulumi.set(__self__, "principal_name", principal_name)
+        pulumi.set(__self__, "principal_type", principal_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> pulumi.Input[str]:
+        """
+        The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        """
+        return pulumi.get(self, "policy_name")
+
+    @policy_name.setter
+    def policy_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_name", value)
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> pulumi.Input[str]:
+        """
+        - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @policy_type.setter
+    def policy_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_type", value)
+
+    @property
+    @pulumi.getter(name="principalName")
+    def principal_name(self) -> pulumi.Input[str]:
+        """
+        The name of the object to which you want to attach the policy.
+        """
+        return pulumi.get(self, "principal_name")
+
+    @principal_name.setter
+    def principal_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "principal_name", value)
+
+    @property
+    @pulumi.getter(name="principalType")
+    def principal_type(self) -> pulumi.Input[str]:
+        """
+        The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
+        """
+        return pulumi.get(self, "principal_type")
+
+    @principal_type.setter
+    def principal_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "principal_type", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_id", value)
 
 
 class PolicyAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -45,6 +128,49 @@ class PolicyAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] principal_type: The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: PolicyAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Resource Manager Policy Attachment resource to attaches a policy to an object. After you attach a policy to an object, the object has the operation permissions on the current resource group or the resources under the current account.
+        For information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).
+
+        > **NOTE:** Available in v1.93.0+.
+
+        ## Import
+
+        Resource Manager Policy Attachment can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/policyAttachment:PolicyAttachment example tf-testaccrdpolicy:Custom:tf-testaccrdpolicy@11827252********.onaliyun.com:IMSUser:rg******
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PolicyAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PolicyAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 policy_name: Optional[pulumi.Input[str]] = None,
+                 policy_type: Optional[pulumi.Input[str]] = None,
+                 principal_name: Optional[pulumi.Input[str]] = None,
+                 principal_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,128 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['LogTailConfig']
+__all__ = ['LogTailConfigArgs', 'LogTailConfig']
+
+@pulumi.input_type
+class LogTailConfigArgs:
+    def __init__(__self__, *,
+                 input_detail: pulumi.Input[str],
+                 input_type: pulumi.Input[str],
+                 logstore: pulumi.Input[str],
+                 output_type: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 log_sample: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a LogTailConfig resource.
+        :param pulumi.Input[str] input_detail: The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
+        :param pulumi.Input[str] input_type: The input type. Currently only two types of files and plugin are supported.
+        :param pulumi.Input[str] logstore: The log store name to the query index belongs.
+        :param pulumi.Input[str] output_type: The output type. Currently, only LogService is supported.
+        :param pulumi.Input[str] project: The project name to the log store belongs.
+        :param pulumi.Input[str] log_sample: （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
+        :param pulumi.Input[str] name: The Logtail configuration name, which is unique in the same project.
+        """
+        pulumi.set(__self__, "input_detail", input_detail)
+        pulumi.set(__self__, "input_type", input_type)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "output_type", output_type)
+        pulumi.set(__self__, "project", project)
+        if log_sample is not None:
+            pulumi.set(__self__, "log_sample", log_sample)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="inputDetail")
+    def input_detail(self) -> pulumi.Input[str]:
+        """
+        The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
+        """
+        return pulumi.get(self, "input_detail")
+
+    @input_detail.setter
+    def input_detail(self, value: pulumi.Input[str]):
+        pulumi.set(self, "input_detail", value)
+
+    @property
+    @pulumi.getter(name="inputType")
+    def input_type(self) -> pulumi.Input[str]:
+        """
+        The input type. Currently only two types of files and plugin are supported.
+        """
+        return pulumi.get(self, "input_type")
+
+    @input_type.setter
+    def input_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "input_type", value)
+
+    @property
+    @pulumi.getter
+    def logstore(self) -> pulumi.Input[str]:
+        """
+        The log store name to the query index belongs.
+        """
+        return pulumi.get(self, "logstore")
+
+    @logstore.setter
+    def logstore(self, value: pulumi.Input[str]):
+        pulumi.set(self, "logstore", value)
+
+    @property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> pulumi.Input[str]:
+        """
+        The output type. Currently, only LogService is supported.
+        """
+        return pulumi.get(self, "output_type")
+
+    @output_type.setter
+    def output_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "output_type", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The project name to the log store belongs.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="logSample")
+    def log_sample(self) -> Optional[pulumi.Input[str]]:
+        """
+        （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
+        """
+        return pulumi.get(self, "log_sample")
+
+    @log_sample.setter
+    def log_sample(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_sample", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Logtail configuration name, which is unique in the same project.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class LogTailConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +159,46 @@ class LogTailConfig(pulumi.CustomResource):
         :param pulumi.Input[str] output_type: The output type. Currently, only LogService is supported.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LogTailConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Logtial config can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:log/logTailConfig:LogTailConfig example tf-log:tf-log-store:tf-log-config
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LogTailConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LogTailConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 input_detail: Optional[pulumi.Input[str]] = None,
+                 input_type: Optional[pulumi.Input[str]] = None,
+                 log_sample: Optional[pulumi.Input[str]] = None,
+                 logstore: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 output_type: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

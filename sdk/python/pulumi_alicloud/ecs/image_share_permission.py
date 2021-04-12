@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ImageSharePermission']
+__all__ = ['ImageSharePermissionArgs', 'ImageSharePermission']
+
+@pulumi.input_type
+class ImageSharePermissionArgs:
+    def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
+                 image_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a ImageSharePermission resource.
+        :param pulumi.Input[str] account_id: Alibaba Cloud Account ID. It is used to share images.
+        :param pulumi.Input[str] image_id: The source image ID.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "image_id", image_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        """
+        Alibaba Cloud Account ID. It is used to share images.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Input[str]:
+        """
+        The source image ID.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_id", value)
 
 
 class ImageSharePermission(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -60,6 +98,67 @@ class ImageSharePermission(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Alibaba Cloud Account ID. It is used to share images.
         :param pulumi.Input[str] image_id: The source image ID.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ImageSharePermissionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manage image sharing permissions. You can share your custom image to other Alibaba Cloud users. The user can use the shared custom image to create ECS instances or replace the system disk of the instance.
+
+        > **NOTE:** You can only share your own custom images to other Alibaba Cloud users.
+
+        > **NOTE:** Each custom image can be shared with up to 50 Alibaba Cloud accounts. You can submit a ticket to share with more users.
+
+        > **NOTE:** After creating an ECS instance using a shared image, once the custom image owner releases the image sharing relationship or deletes the custom image, the instance cannot initialize the system disk.
+
+        > **NOTE:** Available in 1.68.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.ImageSharePermission("default",
+            account_id="1234567890",
+            image_id="m-bp1gxyh***")
+        ```
+        ## Attributes Reference0
+
+         The following attributes are exported:
+
+        * `id` - ID of the image. It formats as `<image_id>:<account_id>`
+
+        ## Import
+
+        image can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:ecs/imageSharePermission:ImageSharePermission default m-uf66yg1q:123456789
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ImageSharePermissionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ImageSharePermissionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

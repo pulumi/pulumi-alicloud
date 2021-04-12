@@ -5,13 +5,117 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['AccessGroup']
+__all__ = ['AccessGroupArgs', 'AccessGroup']
+
+@pulumi.input_type
+class AccessGroupArgs:
+    def __init__(__self__, *,
+                 access_group_name: Optional[pulumi.Input[str]] = None,
+                 access_group_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 file_system_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AccessGroup resource.
+        :param pulumi.Input[str] access_group_name: A Name of one Access Group.
+        :param pulumi.Input[str] access_group_type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        :param pulumi.Input[str] description: The Access Group description.
+        :param pulumi.Input[str] file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
+        :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
+        """
+        if access_group_name is not None:
+            pulumi.set(__self__, "access_group_name", access_group_name)
+        if access_group_type is not None:
+            pulumi.set(__self__, "access_group_type", access_group_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if file_system_type is not None:
+            pulumi.set(__self__, "file_system_type", file_system_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="accessGroupName")
+    def access_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A Name of one Access Group.
+        """
+        return pulumi.get(self, "access_group_name")
+
+    @access_group_name.setter
+    def access_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_group_name", value)
+
+    @property
+    @pulumi.getter(name="accessGroupType")
+    def access_group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        """
+        return pulumi.get(self, "access_group_type")
+
+    @access_group_type.setter
+    def access_group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_group_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Group description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        """
+        return pulumi.get(self, "file_system_type")
+
+    @file_system_type.setter
+    def file_system_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_system_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Replaced by `access_group_name` after version 1.92.0.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Replaced by `access_group_type` after version 1.92.0.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class AccessGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -75,6 +179,78 @@ class AccessGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
         :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[AccessGroupArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a NAS Access Group resource.
+
+        In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
+        For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)
+
+        > **NOTE:** Available in v1.33.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.nas.AccessGroup("foo",
+            description="test_AccessG",
+            type="Classic")
+        ```
+
+        Example after v1.92.0
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.nas.AccessGroup("foo",
+            access_group_name="CreateAccessGroup",
+            access_group_type="Vpc",
+            description="test_AccessG",
+            file_system_type="extreme")
+        ```
+
+        ## Import
+
+        NAS Access Group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:nas/accessGroup:AccessGroup foo tf_testAccNasConfig:standard
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AccessGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccessGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_group_name: Optional[pulumi.Input[str]] = None,
+                 access_group_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 file_system_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

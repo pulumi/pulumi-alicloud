@@ -5,13 +5,208 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Cluster']
+__all__ = ['ClusterArgs', 'Cluster']
+
+@pulumi.input_type
+class ClusterArgs:
+    def __init__(__self__, *,
+                 cluster_specification: pulumi.Input[str],
+                 cluster_type: pulumi.Input[str],
+                 cluster_version: pulumi.Input[str],
+                 instance_count: pulumi.Input[int],
+                 net_type: pulumi.Input[str],
+                 acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_alias_name: Optional[pulumi.Input[str]] = None,
+                 disk_type: Optional[pulumi.Input[str]] = None,
+                 private_slb_specification: Optional[pulumi.Input[str]] = None,
+                 pub_network_flow: Optional[pulumi.Input[str]] = None,
+                 pub_slb_specification: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Cluster resource.
+        :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+        :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
+        :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
+        :param pulumi.Input[int] instance_count: The count of instance.
+        :param pulumi.Input[str] net_type: The type of network. Range limit: 1~5.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist.
+        :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
+        :param pulumi.Input[str] disk_type: The type of Disk.
+        :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
+        :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
+        :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
+        :param pulumi.Input[str] vswitch_id: The id of VSwitch.
+        """
+        pulumi.set(__self__, "cluster_specification", cluster_specification)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "cluster_version", cluster_version)
+        pulumi.set(__self__, "instance_count", instance_count)
+        pulumi.set(__self__, "net_type", net_type)
+        if acl_entry_lists is not None:
+            pulumi.set(__self__, "acl_entry_lists", acl_entry_lists)
+        if cluster_alias_name is not None:
+            pulumi.set(__self__, "cluster_alias_name", cluster_alias_name)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if private_slb_specification is not None:
+            pulumi.set(__self__, "private_slb_specification", private_slb_specification)
+        if pub_network_flow is not None:
+            pulumi.set(__self__, "pub_network_flow", pub_network_flow)
+        if pub_slb_specification is not None:
+            pulumi.set(__self__, "pub_slb_specification", pub_slb_specification)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="clusterSpecification")
+    def cluster_specification(self) -> pulumi.Input[str]:
+        """
+        The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+        """
+        return pulumi.get(self, "cluster_specification")
+
+    @cluster_specification.setter
+    def cluster_specification(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_specification", value)
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> pulumi.Input[str]:
+        """
+        The type of MSE Cluster.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @cluster_type.setter
+    def cluster_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_type", value)
+
+    @property
+    @pulumi.getter(name="clusterVersion")
+    def cluster_version(self) -> pulumi.Input[str]:
+        """
+        The version of MSE Cluster.
+        """
+        return pulumi.get(self, "cluster_version")
+
+    @cluster_version.setter
+    def cluster_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_version", value)
+
+    @property
+    @pulumi.getter(name="instanceCount")
+    def instance_count(self) -> pulumi.Input[int]:
+        """
+        The count of instance.
+        """
+        return pulumi.get(self, "instance_count")
+
+    @instance_count.setter
+    def instance_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "instance_count", value)
+
+    @property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> pulumi.Input[str]:
+        """
+        The type of network. Range limit: 1~5.
+        """
+        return pulumi.get(self, "net_type")
+
+    @net_type.setter
+    def net_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "net_type", value)
+
+    @property
+    @pulumi.getter(name="aclEntryLists")
+    def acl_entry_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The whitelist.
+        """
+        return pulumi.get(self, "acl_entry_lists")
+
+    @acl_entry_lists.setter
+    def acl_entry_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "acl_entry_lists", value)
+
+    @property
+    @pulumi.getter(name="clusterAliasName")
+    def cluster_alias_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The alias of MSE Cluster.
+        """
+        return pulumi.get(self, "cluster_alias_name")
+
+    @cluster_alias_name.setter
+    def cluster_alias_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_alias_name", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of Disk.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="privateSlbSpecification")
+    def private_slb_specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of private network SLB.
+        """
+        return pulumi.get(self, "private_slb_specification")
+
+    @private_slb_specification.setter
+    def private_slb_specification(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_slb_specification", value)
+
+    @property
+    @pulumi.getter(name="pubNetworkFlow")
+    def pub_network_flow(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public network bandwidth. `0` means no access to the public network.
+        """
+        return pulumi.get(self, "pub_network_flow")
+
+    @pub_network_flow.setter
+    def pub_network_flow(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pub_network_flow", value)
+
+    @property
+    @pulumi.getter(name="pubSlbSpecification")
+    def pub_slb_specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of public network SLB.
+        """
+        return pulumi.get(self, "pub_slb_specification")
+
+    @pub_slb_specification.setter
+    def pub_slb_specification(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pub_slb_specification", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of VSwitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 class Cluster(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -76,6 +271,73 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ClusterArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
+
+        > **NOTE:** Available in 1.94.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.mse.Cluster("example",
+            acl_entry_lists=["127.0.0.1/32"],
+            cluster_alias_name="tf-testAccMseCluster",
+            cluster_specification="MSE_SC_1_2_200_c",
+            cluster_type="Eureka",
+            cluster_version="EUREKA_1_9_3",
+            instance_count=1,
+            net_type="privatenet",
+            pub_network_flow="1",
+            vswitch_id="vsw-123456")
+        ```
+
+        ## Import
+
+        MSE Cluster can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:mse/cluster:Cluster example mse-cn-0d9xxxx
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ClusterArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_alias_name: Optional[pulumi.Input[str]] = None,
+                 cluster_specification: Optional[pulumi.Input[str]] = None,
+                 cluster_type: Optional[pulumi.Input[str]] = None,
+                 cluster_version: Optional[pulumi.Input[str]] = None,
+                 disk_type: Optional[pulumi.Input[str]] = None,
+                 instance_count: Optional[pulumi.Input[int]] = None,
+                 net_type: Optional[pulumi.Input[str]] = None,
+                 private_slb_specification: Optional[pulumi.Input[str]] = None,
+                 pub_network_flow: Optional[pulumi.Input[str]] = None,
+                 pub_slb_specification: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

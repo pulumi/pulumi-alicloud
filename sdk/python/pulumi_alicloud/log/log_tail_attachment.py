@@ -5,13 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['LogTailAttachment']
+__all__ = ['LogTailAttachmentArgs', 'LogTailAttachment']
+
+@pulumi.input_type
+class LogTailAttachmentArgs:
+    def __init__(__self__, *,
+                 logtail_config_name: pulumi.Input[str],
+                 machine_group_name: pulumi.Input[str],
+                 project: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a LogTailAttachment resource.
+        :param pulumi.Input[str] logtail_config_name: The Logtail configuration name, which is unique in the same project.
+        :param pulumi.Input[str] machine_group_name: The machine group name, which is unique in the same project.
+        :param pulumi.Input[str] project: The project name to the log store belongs.
+        """
+        pulumi.set(__self__, "logtail_config_name", logtail_config_name)
+        pulumi.set(__self__, "machine_group_name", machine_group_name)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="logtailConfigName")
+    def logtail_config_name(self) -> pulumi.Input[str]:
+        """
+        The Logtail configuration name, which is unique in the same project.
+        """
+        return pulumi.get(self, "logtail_config_name")
+
+    @logtail_config_name.setter
+    def logtail_config_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "logtail_config_name", value)
+
+    @property
+    @pulumi.getter(name="machineGroupName")
+    def machine_group_name(self) -> pulumi.Input[str]:
+        """
+        The machine group name, which is unique in the same project.
+        """
+        return pulumi.get(self, "machine_group_name")
+
+    @machine_group_name.setter
+    def machine_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "machine_group_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The project name to the log store belongs.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
 
 class LogTailAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -92,6 +145,98 @@ class LogTailAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] machine_group_name: The machine group name, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LogTailAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The Logtail access service is a log collection agent provided by Log Service.
+        You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
+        Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
+
+        This resource amis to attach one logtail configure to a machine group.
+
+        > **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        test_project = alicloud.log.Project("testProject", description="create by terraform")
+        test_store = alicloud.log.Store("testStore",
+            project=test_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        test_machine_group = alicloud.log.MachineGroup("testMachineGroup",
+            project=test_project.name,
+            topic="terraform",
+            identify_lists=[
+                "10.0.0.1",
+                "10.0.0.3",
+                "10.0.0.2",
+            ])
+        test_log_tail_config = alicloud.log.LogTailConfig("testLogTailConfig",
+            project=test_project.name,
+            logstore=test_store.name,
+            input_type="file",
+            log_sample="test",
+            output_type="LogService",
+            input_detail=\"\"\"  	{
+        		"logPath": "/logPath",
+        		"filePattern": "access.log",
+        		"logType": "json_log",
+        		"topicFormat": "default",
+        		"discardUnmatch": false,
+        		"enableRawLog": true,
+        		"fileEncoding": "gbk",
+        		"maxDepth": 10
+        	}
+        	
+        \"\"\")
+        test_log_tail_attachment = alicloud.log.LogTailAttachment("testLogTailAttachment",
+            project=test_project.name,
+            logtail_config_name=test_log_tail_config.name,
+            machine_group_name=test_machine_group.name)
+        ```
+
+        ## Import
+
+        Logtial to machine group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:log/logTailAttachment:LogTailAttachment example tf-log:tf-log-config:tf-log-machine-group
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LogTailAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LogTailAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 logtail_config_name: Optional[pulumi.Input[str]] = None,
+                 machine_group_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

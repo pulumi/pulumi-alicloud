@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RouteTableAttachment']
+__all__ = ['RouteTableAttachmentArgs', 'RouteTableAttachment']
+
+@pulumi.input_type
+class RouteTableAttachmentArgs:
+    def __init__(__self__, *,
+                 route_table_id: pulumi.Input[str],
+                 vswitch_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a RouteTableAttachment resource.
+        :param pulumi.Input[str] route_table_id: The route_table_id of the route table attachment, the field can't be changed.
+        :param pulumi.Input[str] vswitch_id: The vswitch_id of the route table attachment, the field can't be changed.
+        """
+        pulumi.set(__self__, "route_table_id", route_table_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> pulumi.Input[str]:
+        """
+        The route_table_id of the route table attachment, the field can't be changed.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @route_table_id.setter
+    def route_table_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "route_table_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        The vswitch_id of the route table attachment, the field can't be changed.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 class RouteTableAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -34,6 +72,41 @@ class RouteTableAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] route_table_id: The route_table_id of the route table attachment, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the route table attachment, the field can't be changed.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RouteTableAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        The route table attachemnt can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RouteTableAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RouteTableAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 route_table_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

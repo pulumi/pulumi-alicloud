@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:cdn/domain:Domain":
-		r, err = NewDomain(ctx, name, nil, pulumi.URN_(urn))
+		r = &Domain{}
 	case "alicloud:cdn/domainConfig:DomainConfig":
-		r, err = NewDomainConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &DomainConfig{}
 	case "alicloud:cdn/domainNew:DomainNew":
-		r, err = NewDomainNew(ctx, name, nil, pulumi.URN_(urn))
+		r = &DomainNew{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

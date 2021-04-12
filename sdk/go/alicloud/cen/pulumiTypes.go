@@ -1635,7 +1635,7 @@ func (i GetRouteMapsMapArgs) ToGetRouteMapsMapOutputWithContext(ctx context.Cont
 // GetRouteMapsMapArrayInput is an input type that accepts GetRouteMapsMapArray and GetRouteMapsMapArrayOutput values.
 // You can construct a concrete instance of `GetRouteMapsMapArrayInput` via:
 //
-//          GetRouteMapsMapArray{ GetRouteMapsMapArgs{...} }
+//          GetRouteMapsMapArray{ GetRouteMapsMap{ "key": GetRouteMapsArgs{...} } }
 type GetRouteMapsMapArrayInput interface {
 	pulumi.Input
 

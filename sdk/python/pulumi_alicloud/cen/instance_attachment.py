@@ -5,13 +5,113 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['InstanceAttachment']
+__all__ = ['InstanceAttachmentArgs', 'InstanceAttachment']
+
+@pulumi.input_type
+class InstanceAttachmentArgs:
+    def __init__(__self__, *,
+                 child_instance_id: pulumi.Input[str],
+                 child_instance_region_id: pulumi.Input[str],
+                 child_instance_type: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 cen_owner_id: Optional[pulumi.Input[int]] = None,
+                 child_instance_owner_id: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a InstanceAttachment resource.
+        :param pulumi.Input[str] child_instance_id: The ID of the child instance to attach.
+        :param pulumi.Input[str] child_instance_region_id: The region ID of the child instance to attach.
+        :param pulumi.Input[str] child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+        :param pulumi.Input[str] instance_id: The ID of the CEN.
+        :param pulumi.Input[int] cen_owner_id: The account ID to which the CEN instance belongs.
+        :param pulumi.Input[int] child_instance_owner_id: The uid of the child instance. Only used when attach a child instance of other account.
+        """
+        pulumi.set(__self__, "child_instance_id", child_instance_id)
+        pulumi.set(__self__, "child_instance_region_id", child_instance_region_id)
+        pulumi.set(__self__, "child_instance_type", child_instance_type)
+        pulumi.set(__self__, "instance_id", instance_id)
+        if cen_owner_id is not None:
+            pulumi.set(__self__, "cen_owner_id", cen_owner_id)
+        if child_instance_owner_id is not None:
+            pulumi.set(__self__, "child_instance_owner_id", child_instance_owner_id)
+
+    @property
+    @pulumi.getter(name="childInstanceId")
+    def child_instance_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the child instance to attach.
+        """
+        return pulumi.get(self, "child_instance_id")
+
+    @child_instance_id.setter
+    def child_instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "child_instance_id", value)
+
+    @property
+    @pulumi.getter(name="childInstanceRegionId")
+    def child_instance_region_id(self) -> pulumi.Input[str]:
+        """
+        The region ID of the child instance to attach.
+        """
+        return pulumi.get(self, "child_instance_region_id")
+
+    @child_instance_region_id.setter
+    def child_instance_region_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "child_instance_region_id", value)
+
+    @property
+    @pulumi.getter(name="childInstanceType")
+    def child_instance_type(self) -> pulumi.Input[str]:
+        """
+        The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+        """
+        return pulumi.get(self, "child_instance_type")
+
+    @child_instance_type.setter
+    def child_instance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "child_instance_type", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the CEN.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="cenOwnerId")
+    def cen_owner_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The account ID to which the CEN instance belongs.
+        """
+        return pulumi.get(self, "cen_owner_id")
+
+    @cen_owner_id.setter
+    def cen_owner_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cen_owner_id", value)
+
+    @property
+    @pulumi.getter(name="childInstanceOwnerId")
+    def child_instance_owner_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The uid of the child instance. Only used when attach a child instance of other account.
+        """
+        return pulumi.get(self, "child_instance_owner_id")
+
+    @child_instance_owner_id.setter
+    def child_instance_owner_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "child_instance_owner_id", value)
 
 
 class InstanceAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -67,6 +167,70 @@ class InstanceAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
+
+        ->**NOTE:** Available in 1.42.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testAccCenInstanceAttachmentBasic"
+        cen = alicloud.cen.Instance("cen", description="terraform01")
+        vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/16")
+        foo = alicloud.cen.InstanceAttachment("foo",
+            instance_id=cen.id,
+            child_instance_id=vpc.id,
+            child_instance_type="VPC",
+            child_instance_region_id="cn-beijing")
+        ```
+
+        ## Import
+
+        CEN instance can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cen/instanceAttachment:InstanceAttachment example cen-m7i7pjmkon********:vpc-2ze2w07mcy9nz********:VPC:cn-beijing
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param InstanceAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cen_owner_id: Optional[pulumi.Input[int]] = None,
+                 child_instance_id: Optional[pulumi.Input[str]] = None,
+                 child_instance_owner_id: Optional[pulumi.Input[int]] = None,
+                 child_instance_region_id: Optional[pulumi.Input[str]] = None,
+                 child_instance_type: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

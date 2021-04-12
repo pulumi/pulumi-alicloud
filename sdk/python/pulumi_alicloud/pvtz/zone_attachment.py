@@ -5,15 +5,102 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ZoneAttachment']
+__all__ = ['ZoneAttachmentArgs', 'ZoneAttachment']
+
+@pulumi.input_type
+class ZoneAttachmentArgs:
+    def __init__(__self__, *,
+                 zone_id: pulumi.Input[str],
+                 lang: Optional[pulumi.Input[str]] = None,
+                 user_client_ip: Optional[pulumi.Input[str]] = None,
+                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]] = None):
+        """
+        The set of arguments for constructing a ZoneAttachment resource.
+        :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
+        :param pulumi.Input[str] lang: The language of code.
+        :param pulumi.Input[str] user_client_ip: The user custom IP address.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ids: The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]] vpcs: The List of the VPC:
+        """
+        pulumi.set(__self__, "zone_id", zone_id)
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
+        if user_client_ip is not None:
+            pulumi.set(__self__, "user_client_ip", user_client_ip)
+        if vpc_ids is not None:
+            pulumi.set(__self__, "vpc_ids", vpc_ids)
+        if vpcs is not None:
+            pulumi.set(__self__, "vpcs", vpcs)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The name of the Private Zone Record.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def lang(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language of code.
+        """
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lang", value)
+
+    @property
+    @pulumi.getter(name="userClientIp")
+    def user_client_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user custom IP address.
+        """
+        return pulumi.get(self, "user_client_ip")
+
+    @user_client_ip.setter
+    def user_client_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_client_ip", value)
+
+    @property
+    @pulumi.getter(name="vpcIds")
+    def vpc_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
+        """
+        return pulumi.get(self, "vpc_ids")
+
+    @vpc_ids.setter
+    def vpc_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vpc_ids", value)
+
+    @property
+    @pulumi.getter
+    def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]:
+        """
+        The List of the VPC:
+        """
+        return pulumi.get(self, "vpcs")
+
+    @vpcs.setter
+    def vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]):
+        pulumi.set(self, "vpcs", value)
 
 
 class ZoneAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -42,6 +129,44 @@ class ZoneAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]] vpcs: The List of the VPC:
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ZoneAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Private Zone attachment can be imported using the id(same with `zone_id`), e.g.
+
+        ```sh
+         $ pulumi import alicloud:pvtz/zoneAttachment:ZoneAttachment example abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ZoneAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
+                 user_client_ip: Optional[pulumi.Input[str]] = None,
+                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneAttachmentVpcArgs']]]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

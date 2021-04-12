@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:ros/changeSet:ChangeSet":
-		r, err = NewChangeSet(ctx, name, nil, pulumi.URN_(urn))
+		r = &ChangeSet{}
 	case "alicloud:ros/stack:Stack":
-		r, err = NewStack(ctx, name, nil, pulumi.URN_(urn))
+		r = &Stack{}
 	case "alicloud:ros/stackGroup:StackGroup":
-		r, err = NewStackGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &StackGroup{}
 	case "alicloud:ros/template:Template":
-		r, err = NewTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &Template{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

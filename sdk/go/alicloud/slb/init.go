@@ -22,31 +22,32 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:slb/acl:Acl":
-		r, err = NewAcl(ctx, name, nil, pulumi.URN_(urn))
+		r = &Acl{}
 	case "alicloud:slb/attachment:Attachment":
-		r, err = NewAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &Attachment{}
 	case "alicloud:slb/backendServer:BackendServer":
-		r, err = NewBackendServer(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackendServer{}
 	case "alicloud:slb/caCertificate:CaCertificate":
-		r, err = NewCaCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &CaCertificate{}
 	case "alicloud:slb/domainExtension:DomainExtension":
-		r, err = NewDomainExtension(ctx, name, nil, pulumi.URN_(urn))
+		r = &DomainExtension{}
 	case "alicloud:slb/listener:Listener":
-		r, err = NewListener(ctx, name, nil, pulumi.URN_(urn))
+		r = &Listener{}
 	case "alicloud:slb/loadBalancer:LoadBalancer":
-		r, err = NewLoadBalancer(ctx, name, nil, pulumi.URN_(urn))
+		r = &LoadBalancer{}
 	case "alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup":
-		r, err = NewMasterSlaveServerGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &MasterSlaveServerGroup{}
 	case "alicloud:slb/rule:Rule":
-		r, err = NewRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &Rule{}
 	case "alicloud:slb/serverCertificate:ServerCertificate":
-		r, err = NewServerCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServerCertificate{}
 	case "alicloud:slb/serverGroup:ServerGroup":
-		r, err = NewServerGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServerGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

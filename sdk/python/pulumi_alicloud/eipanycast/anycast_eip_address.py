@@ -5,13 +5,116 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['AnycastEipAddress']
+__all__ = ['AnycastEipAddressArgs', 'AnycastEipAddress']
+
+@pulumi.input_type
+class AnycastEipAddressArgs:
+    def __init__(__self__, *,
+                 service_location: pulumi.Input[str],
+                 anycast_eip_address_name: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AnycastEipAddress resource.
+        :param pulumi.Input[str] service_location: Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+        :param pulumi.Input[str] anycast_eip_address_name: Anycast EIP instance name.
+        :param pulumi.Input[int] bandwidth: The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+        :param pulumi.Input[str] description: Anycast EIP instance description.
+        :param pulumi.Input[str] internet_charge_type: The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+        :param pulumi.Input[str] payment_type: The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+        """
+        pulumi.set(__self__, "service_location", service_location)
+        if anycast_eip_address_name is not None:
+            pulumi.set(__self__, "anycast_eip_address_name", anycast_eip_address_name)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if internet_charge_type is not None:
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
+
+    @property
+    @pulumi.getter(name="serviceLocation")
+    def service_location(self) -> pulumi.Input[str]:
+        """
+        Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+        """
+        return pulumi.get(self, "service_location")
+
+    @service_location.setter
+    def service_location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_location", value)
+
+    @property
+    @pulumi.getter(name="anycastEipAddressName")
+    def anycast_eip_address_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Anycast EIP instance name.
+        """
+        return pulumi.get(self, "anycast_eip_address_name")
+
+    @anycast_eip_address_name.setter
+    def anycast_eip_address_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "anycast_eip_address_name", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Anycast EIP instance description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @internet_charge_type.setter
+    def internet_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_charge_type", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
 
 
 class AnycastEipAddress(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -59,6 +162,62 @@ class AnycastEipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[str] service_location: Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AnycastEipAddressArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Eipanycast Anycast Eip Address resource.
+
+        For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://help.aliyun.com/document_detail/169284.html).
+
+        > **NOTE:** Available in v1.113.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.eipanycast.AnycastEipAddress("example", service_location="international")
+        ```
+
+        ## Import
+
+        Eipanycast Anycast Eip Address can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:eipanycast/anycastEipAddress:AnycastEipAddress example <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AnycastEipAddressArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AnycastEipAddressArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 anycast_eip_address_name: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
+                 service_location: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

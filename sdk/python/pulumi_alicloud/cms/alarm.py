@@ -5,15 +5,341 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Alarm']
+__all__ = ['AlarmArgs', 'Alarm']
+
+@pulumi.input_type
+class AlarmArgs:
+    def __init__(__self__, *,
+                 contact_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 dimensions: pulumi.Input[Mapping[str, Any]],
+                 metric: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 effective_interval: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 escalations_critical: Optional[pulumi.Input['AlarmEscalationsCriticalArgs']] = None,
+                 escalations_info: Optional[pulumi.Input['AlarmEscalationsInfoArgs']] = None,
+                 escalations_warn: Optional[pulumi.Input['AlarmEscalationsWarnArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 silence_time: Optional[pulumi.Input[int]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 statistics: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input[str]] = None,
+                 triggered_count: Optional[pulumi.Input[int]] = None,
+                 webhook: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Alarm resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
+        :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm (documented below).
+        :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info (documented below).
+        :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn (documented below).
+        :param pulumi.Input[str] name: The alarm rule name.
+        :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+        :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+        :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        :param pulumi.Input[str] statistics: Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        :param pulumi.Input[str] threshold: Critical level alarm threshold value, which must be a numeric value currently.
+        :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+        :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+        """
+        pulumi.set(__self__, "contact_groups", contact_groups)
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "metric", metric)
+        pulumi.set(__self__, "project", project)
+        if effective_interval is not None:
+            pulumi.set(__self__, "effective_interval", effective_interval)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if end_time is not None:
+            warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
+            pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if escalations_critical is not None:
+            pulumi.set(__self__, "escalations_critical", escalations_critical)
+        if escalations_info is not None:
+            pulumi.set(__self__, "escalations_info", escalations_info)
+        if escalations_warn is not None:
+            pulumi.set(__self__, "escalations_warn", escalations_warn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operator is not None:
+            warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
+            pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if silence_time is not None:
+            pulumi.set(__self__, "silence_time", silence_time)
+        if start_time is not None:
+            warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
+            pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if statistics is not None:
+            warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
+            pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
+            pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if triggered_count is not None:
+            warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
+            pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
+        if triggered_count is not None:
+            pulumi.set(__self__, "triggered_count", triggered_count)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter(name="contactGroups")
+    def contact_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List contact groups of the alarm rule, which must have been created on the console.
+        """
+        return pulumi.get(self, "contact_groups")
+
+    @contact_groups.setter
+    def contact_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "contact_groups", value)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> pulumi.Input[Mapping[str, Any]]:
+        """
+        Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: pulumi.Input[Mapping[str, Any]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter
+    def metric(self) -> pulumi.Input[str]:
+        """
+        Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        """
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metric", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="effectiveInterval")
+    def effective_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        """
+        return pulumi.get(self, "effective_interval")
+
+    @effective_interval.setter
+    def effective_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_interval", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable alarm rule. Default to true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="escalationsCritical")
+    def escalations_critical(self) -> Optional[pulumi.Input['AlarmEscalationsCriticalArgs']]:
+        """
+        A configuration of critical alarm (documented below).
+        """
+        return pulumi.get(self, "escalations_critical")
+
+    @escalations_critical.setter
+    def escalations_critical(self, value: Optional[pulumi.Input['AlarmEscalationsCriticalArgs']]):
+        pulumi.set(self, "escalations_critical", value)
+
+    @property
+    @pulumi.getter(name="escalationsInfo")
+    def escalations_info(self) -> Optional[pulumi.Input['AlarmEscalationsInfoArgs']]:
+        """
+        A configuration of critical info (documented below).
+        """
+        return pulumi.get(self, "escalations_info")
+
+    @escalations_info.setter
+    def escalations_info(self, value: Optional[pulumi.Input['AlarmEscalationsInfoArgs']]):
+        pulumi.set(self, "escalations_info", value)
+
+    @property
+    @pulumi.getter(name="escalationsWarn")
+    def escalations_warn(self) -> Optional[pulumi.Input['AlarmEscalationsWarnArgs']]:
+        """
+        A configuration of critical warn (documented below).
+        """
+        return pulumi.get(self, "escalations_warn")
+
+    @escalations_warn.setter
+    def escalations_warn(self, value: Optional[pulumi.Input['AlarmEscalationsWarnArgs']]):
+        pulumi.set(self, "escalations_warn", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The alarm rule name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="silenceTime")
+    def silence_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
+        """
+        return pulumi.get(self, "silence_time")
+
+    @silence_time.setter
+    def silence_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "silence_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def statistics(self) -> Optional[pulumi.Input[str]]:
+        """
+        Critical level alarm statistics method.. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
+        """
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "statistics", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        Critical level alarm threshold value, which must be a numeric value currently.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter(name="triggeredCount")
+    def triggered_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
+        """
+        return pulumi.get(self, "triggered_count")
+
+    @triggered_count.setter
+    def triggered_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "triggered_count", value)
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[pulumi.Input[str]]:
+        """
+        The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+        """
+        return pulumi.get(self, "webhook")
+
+    @webhook.setter
+    def webhook(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "webhook", value)
 
 
 class Alarm(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -100,6 +426,88 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AlarmArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
+        Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        basic = alicloud.cms.Alarm("basic",
+            contact_groups=["test-group"],
+            dimensions={
+                "device": "/dev/vda1,/dev/vdb1",
+                "instance_id": "i-bp1247,i-bp11gd",
+            },
+            effective_interval="0:00-2:00",
+            escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
+                comparison_operator="<=",
+                statistics="Average",
+                threshold="35",
+                times=2,
+            ),
+            metric="disk_writebytes",
+            period=900,
+            project="acs_ecs_dashboard",
+            webhook=f"https://{data['alicloud_account']['current']['id']}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/")
+        ```
+
+        ## Import
+
+        Alarm rule can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:cms/alarm:Alarm alarm abc12345
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AlarmArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AlarmArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_interval: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 escalations_critical: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']]] = None,
+                 escalations_info: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']]] = None,
+                 escalations_warn: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']]] = None,
+                 metric: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 silence_time: Optional[pulumi.Input[int]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 statistics: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input[str]] = None,
+                 triggered_count: Optional[pulumi.Input[int]] = None,
+                 webhook: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

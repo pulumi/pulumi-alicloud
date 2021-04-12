@@ -5,15 +5,99 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RdsParameterGroup']
+__all__ = ['RdsParameterGroupArgs', 'RdsParameterGroup']
+
+@pulumi.input_type
+class RdsParameterGroupArgs:
+    def __init__(__self__, *,
+                 engine: pulumi.Input[str],
+                 engine_version: pulumi.Input[str],
+                 param_details: pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]],
+                 parameter_group_name: pulumi.Input[str],
+                 parameter_group_desc: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RdsParameterGroup resource.
+        :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`.
+        :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]] param_details: Parameter list.
+        :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
+        :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
+        """
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "param_details", param_details)
+        pulumi.set(__self__, "parameter_group_name", parameter_group_name)
+        if parameter_group_desc is not None:
+            pulumi.set(__self__, "parameter_group_desc", parameter_group_desc)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> pulumi.Input[str]:
+        """
+        The database engine. Valid values: `mysql`, `mariadb`.
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> pulumi.Input[str]:
+        """
+        The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @engine_version.setter
+    def engine_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine_version", value)
+
+    @property
+    @pulumi.getter(name="paramDetails")
+    def param_details(self) -> pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]:
+        """
+        Parameter list.
+        """
+        return pulumi.get(self, "param_details")
+
+    @param_details.setter
+    def param_details(self, value: pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]):
+        pulumi.set(self, "param_details", value)
+
+    @property
+    @pulumi.getter(name="parameterGroupName")
+    def parameter_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the parameter template.
+        """
+        return pulumi.get(self, "parameter_group_name")
+
+    @parameter_group_name.setter
+    def parameter_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parameter_group_name", value)
+
+    @property
+    @pulumi.getter(name="parameterGroupDesc")
+    def parameter_group_desc(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the parameter template.
+        """
+        return pulumi.get(self, "parameter_group_desc")
+
+    @parameter_group_desc.setter
+    def parameter_group_desc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter_group_desc", value)
 
 
 class RdsParameterGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -73,6 +157,75 @@ class RdsParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RdsParameterGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a RDS Parameter Group resource.
+
+        For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
+
+        > **NOTE:** Available in v1.119.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.rds.RdsParameterGroup("default",
+            engine="mysql",
+            engine_version="5.7",
+            param_details=[
+                alicloud.rds.RdsParameterGroupParamDetailArgs(
+                    param_name="back_log",
+                    param_value="4000",
+                ),
+                alicloud.rds.RdsParameterGroupParamDetailArgs(
+                    param_name="wait_timeout",
+                    param_value="86460",
+                ),
+            ],
+            parameter_group_desc="test",
+            parameter_group_name="test1234")
+        ```
+
+        ## Import
+
+        RDS Parameter Group can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:rds/rdsParameterGroup:RdsParameterGroup example <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RdsParameterGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RdsParameterGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 engine: Optional[pulumi.Input[str]] = None,
+                 engine_version: Optional[pulumi.Input[str]] = None,
+                 param_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsParameterGroupParamDetailArgs']]]]] = None,
+                 parameter_group_desc: Optional[pulumi.Input[str]] = None,
+                 parameter_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

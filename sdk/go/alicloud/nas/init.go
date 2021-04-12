@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:nas/accessGroup:AccessGroup":
-		r, err = NewAccessGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessGroup{}
 	case "alicloud:nas/accessRule:AccessRule":
-		r, err = NewAccessRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessRule{}
 	case "alicloud:nas/fileSystem:FileSystem":
-		r, err = NewFileSystem(ctx, name, nil, pulumi.URN_(urn))
+		r = &FileSystem{}
 	case "alicloud:nas/mountTarget:MountTarget":
-		r, err = NewMountTarget(ctx, name, nil, pulumi.URN_(urn))
+		r = &MountTarget{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

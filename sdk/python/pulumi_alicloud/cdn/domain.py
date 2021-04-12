@@ -5,15 +5,346 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Domain']
+__all__ = ['DomainArgs', 'Domain']
+
+@pulumi.input_type
+class DomainArgs:
+    def __init__(__self__, *,
+                 cdn_type: pulumi.Input[str],
+                 domain_name: pulumi.Input[str],
+                 auth_config: Optional[pulumi.Input['DomainAuthConfigArgs']] = None,
+                 block_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cache_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]] = None,
+                 certificate_config: Optional[pulumi.Input['DomainCertificateConfigArgs']] = None,
+                 http_header_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]] = None,
+                 optimize_enable: Optional[pulumi.Input[str]] = None,
+                 page404_config: Optional[pulumi.Input['DomainPage404ConfigArgs']] = None,
+                 page_compress_enable: Optional[pulumi.Input[str]] = None,
+                 parameter_filter_config: Optional[pulumi.Input['DomainParameterFilterConfigArgs']] = None,
+                 range_enable: Optional[pulumi.Input[str]] = None,
+                 refer_config: Optional[pulumi.Input['DomainReferConfigArgs']] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 source_port: Optional[pulumi.Input[int]] = None,
+                 source_type: Optional[pulumi.Input[str]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 video_seek_enable: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Domain resource.
+        :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
+        :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        :param pulumi.Input['DomainAuthConfigArgs'] auth_config: The auth config of the accelerated domain.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]] cache_configs: The cache configs of the accelerated domain.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]] http_header_configs: The http header configs of the accelerated domain.
+        :param pulumi.Input[str] optimize_enable: Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
+        :param pulumi.Input['DomainPage404ConfigArgs'] page404_config: The error page config of the accelerated domain.
+        :param pulumi.Input[str] page_compress_enable: Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
+        :param pulumi.Input['DomainParameterFilterConfigArgs'] parameter_filter_config: The parameter filter config of the accelerated domain.
+        :param pulumi.Input[str] range_enable: Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
+        :param pulumi.Input['DomainReferConfigArgs'] refer_config: The refer config of the accelerated domain.
+        :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+        :param pulumi.Input[int] source_port: Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
+        :param pulumi.Input[str] source_type: Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sources: Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
+        :param pulumi.Input[str] video_seek_enable: Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
+        """
+        pulumi.set(__self__, "cdn_type", cdn_type)
+        pulumi.set(__self__, "domain_name", domain_name)
+        if auth_config is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""auth_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if auth_config is not None:
+            pulumi.set(__self__, "auth_config", auth_config)
+        if block_ips is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""block_ips is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if block_ips is not None:
+            pulumi.set(__self__, "block_ips", block_ips)
+        if cache_configs is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""cache_configs is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if cache_configs is not None:
+            pulumi.set(__self__, "cache_configs", cache_configs)
+        if certificate_config is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""certificate_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if certificate_config is not None:
+            pulumi.set(__self__, "certificate_config", certificate_config)
+        if http_header_configs is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""http_header_configs is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if http_header_configs is not None:
+            pulumi.set(__self__, "http_header_configs", http_header_configs)
+        if optimize_enable is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""optimize_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if optimize_enable is not None:
+            pulumi.set(__self__, "optimize_enable", optimize_enable)
+        if page404_config is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""page404_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if page404_config is not None:
+            pulumi.set(__self__, "page404_config", page404_config)
+        if page_compress_enable is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""page_compress_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if page_compress_enable is not None:
+            pulumi.set(__self__, "page_compress_enable", page_compress_enable)
+        if parameter_filter_config is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""parameter_filter_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if parameter_filter_config is not None:
+            pulumi.set(__self__, "parameter_filter_config", parameter_filter_config)
+        if range_enable is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""range_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if range_enable is not None:
+            pulumi.set(__self__, "range_enable", range_enable)
+        if refer_config is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""refer_config is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if refer_config is not None:
+            pulumi.set(__self__, "refer_config", refer_config)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if source_port is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.""", DeprecationWarning)
+            pulumi.log.warn("""source_port is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.""")
+        if source_port is not None:
+            pulumi.set(__self__, "source_port", source_port)
+        if source_type is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.""", DeprecationWarning)
+            pulumi.log.warn("""source_type is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.""")
+        if source_type is not None:
+            pulumi.set(__self__, "source_type", source_type)
+        if sources is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_new` configuration `sources` argument instead.""", DeprecationWarning)
+            pulumi.log.warn("""sources is deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.""")
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
+        if video_seek_enable is not None:
+            warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
+            pulumi.log.warn("""video_seek_enable is deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""")
+        if video_seek_enable is not None:
+            pulumi.set(__self__, "video_seek_enable", video_seek_enable)
+
+    @property
+    @pulumi.getter(name="cdnType")
+    def cdn_type(self) -> pulumi.Input[str]:
+        """
+        Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
+        """
+        return pulumi.get(self, "cdn_type")
+
+    @cdn_type.setter
+    def cdn_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cdn_type", value)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Input[str]:
+        """
+        Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter(name="authConfig")
+    def auth_config(self) -> Optional[pulumi.Input['DomainAuthConfigArgs']]:
+        """
+        The auth config of the accelerated domain.
+        """
+        return pulumi.get(self, "auth_config")
+
+    @auth_config.setter
+    def auth_config(self, value: Optional[pulumi.Input['DomainAuthConfigArgs']]):
+        pulumi.set(self, "auth_config", value)
+
+    @property
+    @pulumi.getter(name="blockIps")
+    def block_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "block_ips")
+
+    @block_ips.setter
+    def block_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "block_ips", value)
+
+    @property
+    @pulumi.getter(name="cacheConfigs")
+    def cache_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]:
+        """
+        The cache configs of the accelerated domain.
+        """
+        return pulumi.get(self, "cache_configs")
+
+    @cache_configs.setter
+    def cache_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]):
+        pulumi.set(self, "cache_configs", value)
+
+    @property
+    @pulumi.getter(name="certificateConfig")
+    def certificate_config(self) -> Optional[pulumi.Input['DomainCertificateConfigArgs']]:
+        return pulumi.get(self, "certificate_config")
+
+    @certificate_config.setter
+    def certificate_config(self, value: Optional[pulumi.Input['DomainCertificateConfigArgs']]):
+        pulumi.set(self, "certificate_config", value)
+
+    @property
+    @pulumi.getter(name="httpHeaderConfigs")
+    def http_header_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]:
+        """
+        The http header configs of the accelerated domain.
+        """
+        return pulumi.get(self, "http_header_configs")
+
+    @http_header_configs.setter
+    def http_header_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]):
+        pulumi.set(self, "http_header_configs", value)
+
+    @property
+    @pulumi.getter(name="optimizeEnable")
+    def optimize_enable(self) -> Optional[pulumi.Input[str]]:
+        """
+        Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
+        """
+        return pulumi.get(self, "optimize_enable")
+
+    @optimize_enable.setter
+    def optimize_enable(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "optimize_enable", value)
+
+    @property
+    @pulumi.getter(name="page404Config")
+    def page404_config(self) -> Optional[pulumi.Input['DomainPage404ConfigArgs']]:
+        """
+        The error page config of the accelerated domain.
+        """
+        return pulumi.get(self, "page404_config")
+
+    @page404_config.setter
+    def page404_config(self, value: Optional[pulumi.Input['DomainPage404ConfigArgs']]):
+        pulumi.set(self, "page404_config", value)
+
+    @property
+    @pulumi.getter(name="pageCompressEnable")
+    def page_compress_enable(self) -> Optional[pulumi.Input[str]]:
+        """
+        Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
+        """
+        return pulumi.get(self, "page_compress_enable")
+
+    @page_compress_enable.setter
+    def page_compress_enable(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "page_compress_enable", value)
+
+    @property
+    @pulumi.getter(name="parameterFilterConfig")
+    def parameter_filter_config(self) -> Optional[pulumi.Input['DomainParameterFilterConfigArgs']]:
+        """
+        The parameter filter config of the accelerated domain.
+        """
+        return pulumi.get(self, "parameter_filter_config")
+
+    @parameter_filter_config.setter
+    def parameter_filter_config(self, value: Optional[pulumi.Input['DomainParameterFilterConfigArgs']]):
+        pulumi.set(self, "parameter_filter_config", value)
+
+    @property
+    @pulumi.getter(name="rangeEnable")
+    def range_enable(self) -> Optional[pulumi.Input[str]]:
+        """
+        Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
+        """
+        return pulumi.get(self, "range_enable")
+
+    @range_enable.setter
+    def range_enable(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "range_enable", value)
+
+    @property
+    @pulumi.getter(name="referConfig")
+    def refer_config(self) -> Optional[pulumi.Input['DomainReferConfigArgs']]:
+        """
+        The refer config of the accelerated domain.
+        """
+        return pulumi.get(self, "refer_config")
+
+    @refer_config.setter
+    def refer_config(self, value: Optional[pulumi.Input['DomainReferConfigArgs']]):
+        pulumi.set(self, "refer_config", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="sourcePort")
+    def source_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
+        """
+        return pulumi.get(self, "source_port")
+
+    @source_port.setter
+    def source_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "source_port", value)
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
+        """
+        return pulumi.get(self, "source_type")
+
+    @source_type.setter
+    def source_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_type", value)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
+        """
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "sources", value)
+
+    @property
+    @pulumi.getter(name="videoSeekEnable")
+    def video_seek_enable(self) -> Optional[pulumi.Input[str]]:
+        """
+        Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
+        """
+        return pulumi.get(self, "video_seek_enable")
+
+    @video_seek_enable.setter
+    def video_seek_enable(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "video_seek_enable", value)
 
 
 class Domain(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -59,6 +390,50 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sources: Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
         :param pulumi.Input[str] video_seek_enable: Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DomainArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Domain resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param DomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auth_config: Optional[pulumi.Input[pulumi.InputType['DomainAuthConfigArgs']]] = None,
+                 block_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cache_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainCacheConfigArgs']]]]] = None,
+                 cdn_type: Optional[pulumi.Input[str]] = None,
+                 certificate_config: Optional[pulumi.Input[pulumi.InputType['DomainCertificateConfigArgs']]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 http_header_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainHttpHeaderConfigArgs']]]]] = None,
+                 optimize_enable: Optional[pulumi.Input[str]] = None,
+                 page404_config: Optional[pulumi.Input[pulumi.InputType['DomainPage404ConfigArgs']]] = None,
+                 page_compress_enable: Optional[pulumi.Input[str]] = None,
+                 parameter_filter_config: Optional[pulumi.Input[pulumi.InputType['DomainParameterFilterConfigArgs']]] = None,
+                 range_enable: Optional[pulumi.Input[str]] = None,
+                 refer_config: Optional[pulumi.Input[pulumi.InputType['DomainReferConfigArgs']]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
+                 source_port: Optional[pulumi.Input[int]] = None,
+                 source_type: Optional[pulumi.Input[str]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 video_seek_enable: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

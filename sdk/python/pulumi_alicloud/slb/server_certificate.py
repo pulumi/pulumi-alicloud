@@ -5,13 +5,179 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ServerCertificate']
+__all__ = ['ServerCertificateArgs', 'ServerCertificate']
+
+@pulumi.input_type
+class ServerCertificateArgs:
+    def __init__(__self__, *,
+                 alicloud_certifacte_id: Optional[pulumi.Input[str]] = None,
+                 alicloud_certifacte_name: Optional[pulumi.Input[str]] = None,
+                 alicloud_certificate_id: Optional[pulumi.Input[str]] = None,
+                 alicloud_certificate_name: Optional[pulumi.Input[str]] = None,
+                 alicloud_certificate_region_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 server_certificate: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a ServerCertificate resource.
+        :param pulumi.Input[str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
+        :param pulumi.Input[str] alicloud_certificate_name: the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        :param pulumi.Input[str] alicloud_certificate_region_id: the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+        :param pulumi.Input[str] name: Name of the Server Certificate.
+        :param pulumi.Input[str] private_key: the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb server certificate belongs.
+        :param pulumi.Input[str] server_certificate: the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        """
+        if alicloud_certifacte_id is not None:
+            warnings.warn("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""alicloud_certifacte_id is deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
+        if alicloud_certifacte_id is not None:
+            pulumi.set(__self__, "alicloud_certifacte_id", alicloud_certifacte_id)
+        if alicloud_certifacte_name is not None:
+            warnings.warn("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""alicloud_certifacte_name is deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
+        if alicloud_certifacte_name is not None:
+            pulumi.set(__self__, "alicloud_certifacte_name", alicloud_certifacte_name)
+        if alicloud_certificate_id is not None:
+            pulumi.set(__self__, "alicloud_certificate_id", alicloud_certificate_id)
+        if alicloud_certificate_name is not None:
+            pulumi.set(__self__, "alicloud_certificate_name", alicloud_certificate_name)
+        if alicloud_certificate_region_id is not None:
+            pulumi.set(__self__, "alicloud_certificate_region_id", alicloud_certificate_region_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if server_certificate is not None:
+            pulumi.set(__self__, "server_certificate", server_certificate)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="alicloudCertifacteId")
+    def alicloud_certifacte_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "alicloud_certifacte_id")
+
+    @alicloud_certifacte_id.setter
+    def alicloud_certifacte_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alicloud_certifacte_id", value)
+
+    @property
+    @pulumi.getter(name="alicloudCertifacteName")
+    def alicloud_certifacte_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "alicloud_certifacte_name")
+
+    @alicloud_certifacte_name.setter
+    def alicloud_certifacte_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alicloud_certifacte_name", value)
+
+    @property
+    @pulumi.getter(name="alicloudCertificateId")
+    def alicloud_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
+        """
+        return pulumi.get(self, "alicloud_certificate_id")
+
+    @alicloud_certificate_id.setter
+    def alicloud_certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alicloud_certificate_id", value)
+
+    @property
+    @pulumi.getter(name="alicloudCertificateName")
+    def alicloud_certificate_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        """
+        return pulumi.get(self, "alicloud_certificate_name")
+
+    @alicloud_certificate_name.setter
+    def alicloud_certificate_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alicloud_certificate_name", value)
+
+    @property
+    @pulumi.getter(name="alicloudCertificateRegionId")
+    def alicloud_certificate_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+        """
+        return pulumi.get(self, "alicloud_certificate_region_id")
+
+    @alicloud_certificate_region_id.setter
+    def alicloud_certificate_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alicloud_certificate_region_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Server Certificate.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the slb server certificate belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="serverCertificate")
+    def server_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
+        """
+        return pulumi.get(self, "server_certificate")
+
+    @server_certificate.setter
+    def server_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_certificate", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ServerCertificate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -86,6 +252,87 @@ class ServerCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] server_certificate: the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[ServerCertificateArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Load Balancer Server Certificate is an ssl Certificate used by the listener of the protocol https.
+
+        For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
+
+        For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
+
+        ## Example Usage
+
+        * using server_certificate/private content as string example
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # create a server certificate
+        foo = alicloud.slb.ServerCertificate("foo",
+            private_key=\"\"\"-----BEGIN RSA PRIVATE KEY-----
+        MIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=
+        -----END RSA PRIVATE KEY-----
+        \"\"\",
+            server_certificate=\"\"\"-----BEGIN CERTIFICATE-----
+        MIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=
+        -----END CERTIFICATE-----
+        \"\"\")
+        ```
+
+        * using server_certificate/private file example
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # create a server certificate
+        foo = alicloud.slb.ServerCertificate("foo",
+            server_certificate=(lambda path: open(path).read())(f"{path['module']}/server_certificate.pem"),
+            private_key=(lambda path: open(path).read())(f"{path['module']}/private_key.pem"))
+        ```
+
+        ## Import
+
+        Server Load balancer Server Certificate can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:slb/serverCertificate:ServerCertificate example abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ServerCertificateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServerCertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 alicloud_certifacte_id: Optional[pulumi.Input[str]] = None,
+                 alicloud_certifacte_name: Optional[pulumi.Input[str]] = None,
+                 alicloud_certificate_id: Optional[pulumi.Input[str]] = None,
+                 alicloud_certificate_name: Optional[pulumi.Input[str]] = None,
+                 alicloud_certificate_region_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 server_certificate: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

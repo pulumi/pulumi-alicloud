@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "alicloud:eci/containerGroup:ContainerGroup":
-		r, err = NewContainerGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ContainerGroup{}
 	case "alicloud:eci/imageCache:ImageCache":
-		r, err = NewImageCache(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageCache{}
 	case "alicloud:eci/openApiImageCache:OpenApiImageCache":
-		r, err = NewOpenApiImageCache(ctx, name, nil, pulumi.URN_(urn))
+		r = &OpenApiImageCache{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

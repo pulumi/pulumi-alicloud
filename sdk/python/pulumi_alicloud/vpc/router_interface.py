@@ -5,13 +5,214 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RouterInterface']
+__all__ = ['RouterInterfaceArgs', 'RouterInterface']
+
+@pulumi.input_type
+class RouterInterfaceArgs:
+    def __init__(__self__, *,
+                 opposite_region: pulumi.Input[str],
+                 role: pulumi.Input[str],
+                 router_id: pulumi.Input[str],
+                 router_type: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 health_check_source_ip: Optional[pulumi.Input[str]] = None,
+                 health_check_target_ip: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 opposite_access_point_id: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 specification: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RouterInterface resource.
+        :param pulumi.Input[str] opposite_region: The Region of peer side.
+        :param pulumi.Input[str] role: The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
+        :param pulumi.Input[str] router_id: The Router ID.
+        :param pulumi.Input[str] router_type: Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
+        :param pulumi.Input[str] description: Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
+        :param pulumi.Input[str] health_check_source_ip: Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+        :param pulumi.Input[str] health_check_target_ip: Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+        :param pulumi.Input[str] instance_charge_type: The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
+        :param pulumi.Input[str] name: Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
+               If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
+        :param pulumi.Input[str] opposite_access_point_id: It has been deprecated from version 1.11.0.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        :param pulumi.Input[str] specification: Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
+        """
+        pulumi.set(__self__, "opposite_region", opposite_region)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "router_id", router_id)
+        pulumi.set(__self__, "router_type", router_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if health_check_source_ip is not None:
+            pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
+        if health_check_target_ip is not None:
+            pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if opposite_access_point_id is not None:
+            warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
+            pulumi.log.warn("""opposite_access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
+        if opposite_access_point_id is not None:
+            pulumi.set(__self__, "opposite_access_point_id", opposite_access_point_id)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if specification is not None:
+            pulumi.set(__self__, "specification", specification)
+
+    @property
+    @pulumi.getter(name="oppositeRegion")
+    def opposite_region(self) -> pulumi.Input[str]:
+        """
+        The Region of peer side.
+        """
+        return pulumi.get(self, "opposite_region")
+
+    @opposite_region.setter
+    def opposite_region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "opposite_region", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> pulumi.Input[str]:
+        """
+        The Router ID.
+        """
+        return pulumi.get(self, "router_id")
+
+    @router_id.setter
+    def router_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "router_id", value)
+
+    @property
+    @pulumi.getter(name="routerType")
+    def router_type(self) -> pulumi.Input[str]:
+        """
+        Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
+        """
+        return pulumi.get(self, "router_type")
+
+    @router_type.setter
+    def router_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "router_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="healthCheckSourceIp")
+    def health_check_source_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+        """
+        return pulumi.get(self, "health_check_source_ip")
+
+    @health_check_source_ip.setter
+    def health_check_source_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_source_ip", value)
+
+    @property
+    @pulumi.getter(name="healthCheckTargetIp")
+    def health_check_target_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+        """
+        return pulumi.get(self, "health_check_target_ip")
+
+    @health_check_target_ip.setter
+    def health_check_target_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_target_ip", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
+        If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="oppositeAccessPointId")
+    def opposite_access_point_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from version 1.11.0.
+        """
+        return pulumi.get(self, "opposite_access_point_id")
+
+    @opposite_access_point_id.setter
+    def opposite_access_point_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "opposite_access_point_id", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter
+    def specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
+        """
+        return pulumi.get(self, "specification")
+
+    @specification.setter
+    def specification(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "specification", value)
 
 
 class RouterInterface(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +256,51 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.Input[str] router_type: Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
         :param pulumi.Input[str] specification: Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RouterInterfaceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        The router interface can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:vpc/routerInterface:RouterInterface interface ri-abc123456
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RouterInterfaceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RouterInterfaceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 health_check_source_ip: Optional[pulumi.Input[str]] = None,
+                 health_check_target_ip: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 opposite_access_point_id: Optional[pulumi.Input[str]] = None,
+                 opposite_region: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 router_id: Optional[pulumi.Input[str]] = None,
+                 router_type: Optional[pulumi.Input[str]] = None,
+                 specification: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

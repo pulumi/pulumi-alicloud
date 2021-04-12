@@ -5,13 +5,82 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['ControlPolicy']
+__all__ = ['ControlPolicyArgs', 'ControlPolicy']
+
+@pulumi.input_type
+class ControlPolicyArgs:
+    def __init__(__self__, *,
+                 control_policy_name: pulumi.Input[str],
+                 effect_scope: pulumi.Input[str],
+                 policy_document: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ControlPolicy resource.
+        :param pulumi.Input[str] control_policy_name: The name of control policy.
+        :param pulumi.Input[str] effect_scope: The effect scope. Valid values `RAM`.
+        :param pulumi.Input[str] policy_document: The policy document of control policy.
+        :param pulumi.Input[str] description: The description of control policy.
+        """
+        pulumi.set(__self__, "control_policy_name", control_policy_name)
+        pulumi.set(__self__, "effect_scope", effect_scope)
+        pulumi.set(__self__, "policy_document", policy_document)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="controlPolicyName")
+    def control_policy_name(self) -> pulumi.Input[str]:
+        """
+        The name of control policy.
+        """
+        return pulumi.get(self, "control_policy_name")
+
+    @control_policy_name.setter
+    def control_policy_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "control_policy_name", value)
+
+    @property
+    @pulumi.getter(name="effectScope")
+    def effect_scope(self) -> pulumi.Input[str]:
+        """
+        The effect scope. Valid values `RAM`.
+        """
+        return pulumi.get(self, "effect_scope")
+
+    @effect_scope.setter
+    def effect_scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "effect_scope", value)
+
+    @property
+    @pulumi.getter(name="policyDocument")
+    def policy_document(self) -> pulumi.Input[str]:
+        """
+        The policy document of control policy.
+        """
+        return pulumi.get(self, "policy_document")
+
+    @policy_document.setter
+    def policy_document(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_document", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of control policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 class ControlPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -75,6 +144,80 @@ class ControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] effect_scope: The effect scope. Valid values `RAM`.
         :param pulumi.Input[str] policy_document: The policy document of control policy.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ControlPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Resource Manager Control Policy resource.
+
+        For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://help.aliyun.com/document_detail/208287.html).
+
+        > **NOTE:** Available in v1.120.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.resourcemanager.ControlPolicy("example",
+            control_policy_name="tf-testAccRDControlPolicy",
+            description="tf-testAccRDControlPolicy",
+            effect_scope="RAM",
+            policy_document=\"\"\"  {
+            "Version": "1",
+            "Statement": [
+              {
+                "Effect": "Deny",
+                "Action": [
+                  "ram:UpdateRole",
+                  "ram:DeleteRole",
+                  "ram:AttachPolicyToRole",
+                  "ram:DetachPolicyFromRole"
+                ],
+                "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+              }
+            ]
+          }
+          
+        \"\"\")
+        ```
+
+        ## Import
+
+        Resource Manager Control Policy can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:resourcemanager/controlPolicy:ControlPolicy example <id>
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ControlPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ControlPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 control_policy_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 effect_scope: Optional[pulumi.Input[str]] = None,
+                 policy_document: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,302 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Domain']
+__all__ = ['DomainArgs', 'Domain']
+
+@pulumi.input_type
+class DomainArgs:
+    def __init__(__self__, *,
+                 instance_id: pulumi.Input[str],
+                 is_access_product: pulumi.Input[str],
+                 cluster_type: Optional[pulumi.Input[str]] = None,
+                 connection_time: Optional[pulumi.Input[int]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 http2_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 http_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 http_to_user_ip: Optional[pulumi.Input[str]] = None,
+                 https_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 https_redirect: Optional[pulumi.Input[str]] = None,
+                 load_balancing: Optional[pulumi.Input[str]] = None,
+                 log_headers: Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]] = None,
+                 read_time: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 write_time: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a Domain resource.
+        :param pulumi.Input[str] instance_id: The ID of the WAF instance.
+        :param pulumi.Input[str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
+        :param pulumi.Input[str] cluster_type: The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
+        :param pulumi.Input[int] connection_time: The connection timeout for WAF exclusive clusters. Unit: seconds.
+        :param pulumi.Input[str] domain: Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] http2_ports: List of the HTTP 2.0 ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] http_ports: List of the HTTP ports.
+        :param pulumi.Input[str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+               By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] https_ports: List of the HTTPS ports.
+        :param pulumi.Input[str] https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
+        :param pulumi.Input[str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+               * key: The key of label
+               * value: The value of label
+        :param pulumi.Input[int] read_time: The read timeout of a WAF exclusive cluster. Unit: seconds.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
+        :param pulumi.Input[int] write_time: The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "is_access_product", is_access_product)
+        if cluster_type is not None:
+            pulumi.set(__self__, "cluster_type", cluster_type)
+        if connection_time is not None:
+            pulumi.set(__self__, "connection_time", connection_time)
+        if domain is not None:
+            warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if http2_ports is not None:
+            pulumi.set(__self__, "http2_ports", http2_ports)
+        if http_ports is not None:
+            pulumi.set(__self__, "http_ports", http_ports)
+        if http_to_user_ip is not None:
+            pulumi.set(__self__, "http_to_user_ip", http_to_user_ip)
+        if https_ports is not None:
+            pulumi.set(__self__, "https_ports", https_ports)
+        if https_redirect is not None:
+            pulumi.set(__self__, "https_redirect", https_redirect)
+        if load_balancing is not None:
+            pulumi.set(__self__, "load_balancing", load_balancing)
+        if log_headers is not None:
+            pulumi.set(__self__, "log_headers", log_headers)
+        if read_time is not None:
+            pulumi.set(__self__, "read_time", read_time)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if source_ips is not None:
+            pulumi.set(__self__, "source_ips", source_ips)
+        if write_time is not None:
+            pulumi.set(__self__, "write_time", write_time)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the WAF instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="isAccessProduct")
+    def is_access_product(self) -> pulumi.Input[str]:
+        """
+        Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
+        """
+        return pulumi.get(self, "is_access_product")
+
+    @is_access_product.setter
+    def is_access_product(self, value: pulumi.Input[str]):
+        pulumi.set(self, "is_access_product", value)
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @cluster_type.setter
+    def cluster_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_type", value)
+
+    @property
+    @pulumi.getter(name="connectionTime")
+    def connection_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        The connection timeout for WAF exclusive clusters. Unit: seconds.
+        """
+        return pulumi.get(self, "connection_time")
+
+    @connection_time.setter
+    def connection_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connection_time", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain that you want to add to WAF.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter(name="http2Ports")
+    def http2_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of the HTTP 2.0 ports.
+        """
+        return pulumi.get(self, "http2_ports")
+
+    @http2_ports.setter
+    def http2_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "http2_ports", value)
+
+    @property
+    @pulumi.getter(name="httpPorts")
+    def http_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of the HTTP ports.
+        """
+        return pulumi.get(self, "http_ports")
+
+    @http_ports.setter
+    def http_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "http_ports", value)
+
+    @property
+    @pulumi.getter(name="httpToUserIp")
+    def http_to_user_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
+        """
+        return pulumi.get(self, "http_to_user_ip")
+
+    @http_to_user_ip.setter
+    def http_to_user_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_to_user_ip", value)
+
+    @property
+    @pulumi.getter(name="httpsPorts")
+    def https_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of the HTTPS ports.
+        """
+        return pulumi.get(self, "https_ports")
+
+    @https_ports.setter
+    def https_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "https_ports", value)
+
+    @property
+    @pulumi.getter(name="httpsRedirect")
+    def https_redirect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
+        """
+        return pulumi.get(self, "https_redirect")
+
+    @https_redirect.setter
+    def https_redirect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "https_redirect", value)
+
+    @property
+    @pulumi.getter(name="loadBalancing")
+    def load_balancing(self) -> Optional[pulumi.Input[str]]:
+        """
+        The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
+        """
+        return pulumi.get(self, "load_balancing")
+
+    @load_balancing.setter
+    def load_balancing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancing", value)
+
+    @property
+    @pulumi.getter(name="logHeaders")
+    def log_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]:
+        """
+        The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+        * key: The key of label
+        * value: The value of label
+        """
+        return pulumi.get(self, "log_headers")
+
+    @log_headers.setter
+    def log_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]):
+        pulumi.set(self, "log_headers", value)
+
+    @property
+    @pulumi.getter(name="readTime")
+    def read_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        The read timeout of a WAF exclusive cluster. Unit: seconds.
+        """
+        return pulumi.get(self, "read_time")
+
+    @read_time.setter
+    def read_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "read_time", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="sourceIps")
+    def source_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of the IP address or domain of the origin server to which the specified domain points.
+        """
+        return pulumi.get(self, "source_ips")
+
+    @source_ips.setter
+    def source_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_ips", value)
+
+    @property
+    @pulumi.getter(name="writeTime")
+    def write_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+        """
+        return pulumi.get(self, "write_time")
+
+    @write_time.setter
+    def write_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "write_time", value)
 
 
 class Domain(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -99,6 +386,86 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
         :param pulumi.Input[int] write_time: The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DomainArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a WAF Domain resource to create domain in the Web Application Firewall.
+
+        For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+
+        > **NOTE:** Available in 1.82.0+ .
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        domain = alicloud.waf.Domain("domain",
+            cluster_type="PhysicalCluster",
+            domain="www.aliyun.com",
+            http2_ports=["443"],
+            http_ports=["80"],
+            http_to_user_ip="Off",
+            https_ports=["443"],
+            https_redirect="Off",
+            instance_id="waf-123455",
+            is_access_product="On",
+            load_balancing="IpHash",
+            log_headers=[alicloud.waf.DomainLogHeaderArgs(
+                key="foo",
+                value="http",
+            )],
+            source_ips=["1.1.1.1"])
+        ```
+
+        ## Import
+
+        WAF domain can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:waf/domain:Domain domain waf-132435:www.domain.com
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_type: Optional[pulumi.Input[str]] = None,
+                 connection_time: Optional[pulumi.Input[int]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 http2_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 http_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 http_to_user_ip: Optional[pulumi.Input[str]] = None,
+                 https_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 https_redirect: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 is_access_product: Optional[pulumi.Input[str]] = None,
+                 load_balancing: Optional[pulumi.Input[str]] = None,
+                 log_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainLogHeaderArgs']]]]] = None,
+                 read_time: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 write_time: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
