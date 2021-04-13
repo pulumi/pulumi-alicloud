@@ -7,37 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
-// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
-//
-// > **NOTE:** Available in v1.71.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/adb"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "am-\\w+"
-// 		opt1 := "Running"
-// 		adbClustersDs, err := adb.GetClusters(ctx, &adb.GetClustersArgs{
-// 			DescriptionRegex: &opt0,
-// 			Status:           &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstAdbClusterId", adbClustersDs.Clusters[0].Id)
-// 		return nil
-// 	})
-// }
-// ```
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	var rv GetClustersResult
 	err := ctx.Invoke("alicloud:adb/getClusters:getClusters", args, &rv, opts...)
@@ -49,11 +18,15 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getClusters.
 type GetClustersArgs struct {
+	// The description of the ADB cluster.
+	Description *string `pulumi:"description"`
 	// A regex string to filter results by cluster description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
+	EnableDetails    *bool   `pulumi:"enableDetails"`
 	// A list of ADB cluster IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids             []string `pulumi:"ids"`
+	OutputFile      *string  `pulumi:"outputFile"`
+	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -65,15 +38,19 @@ type GetClustersArgs struct {
 // A collection of values returned by getClusters.
 type GetClustersResult struct {
 	// A list of ADB clusters. Each element contains the following attributes:
-	Clusters         []GetClustersCluster `pulumi:"clusters"`
-	DescriptionRegex *string              `pulumi:"descriptionRegex"`
+	Clusters []GetClustersCluster `pulumi:"clusters"`
+	// The description of the ADB cluster.
+	Description      *string `pulumi:"description"`
+	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of ADB cluster descriptions.
-	Descriptions []string `pulumi:"descriptions"`
+	Descriptions  []string `pulumi:"descriptions"`
+	EnableDetails *bool    `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of ADB cluster IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids             []string `pulumi:"ids"`
+	OutputFile      *string  `pulumi:"outputFile"`
+	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	// Status of the cluster.
 	Status *string                `pulumi:"status"`
 	Tags   map[string]interface{} `pulumi:"tags"`

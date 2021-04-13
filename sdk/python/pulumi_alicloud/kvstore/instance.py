@@ -97,7 +97,7 @@ class InstanceArgs:
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[int] modify_mode: The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-        :param pulumi.Input[str] node_type: Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        :param pulumi.Input[str] node_type: "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         :param pulumi.Input[str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead..
         :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
@@ -194,6 +194,9 @@ class InstanceArgs:
             pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if modify_mode is not None:
             pulumi.set(__self__, "modify_mode", modify_mode)
+        if node_type is not None:
+            warnings.warn("""Field 'node_type' has been deprecated from version 1.120.1""", DeprecationWarning)
+            pulumi.log.warn("""node_type is deprecated: Field 'node_type' has been deprecated from version 1.120.1""")
         if node_type is not None:
             pulumi.set(__self__, "node_type", node_type)
         if order_type is not None:
@@ -601,7 +604,7 @@ class InstanceArgs:
     @pulumi.getter(name="nodeType")
     def node_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         """
         return pulumi.get(self, "node_type")
 
@@ -1029,7 +1032,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[int] modify_mode: The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-        :param pulumi.Input[str] node_type: Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        :param pulumi.Input[str] node_type: "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         :param pulumi.Input[str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead..
         :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
@@ -1277,6 +1280,9 @@ class Instance(pulumi.CustomResource):
             __props__['maintain_end_time'] = maintain_end_time
             __props__['maintain_start_time'] = maintain_start_time
             __props__['modify_mode'] = modify_mode
+            if node_type is not None and not opts.urn:
+                warnings.warn("""Field 'node_type' has been deprecated from version 1.120.1""", DeprecationWarning)
+                pulumi.log.warn("""node_type is deprecated: Field 'node_type' has been deprecated from version 1.120.1""")
             __props__['node_type'] = node_type
             __props__['order_type'] = order_type
             if parameters is not None and not opts.urn:
@@ -1412,7 +1418,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[int] modify_mode: The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
-        :param pulumi.Input[str] node_type: Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        :param pulumi.Input[str] node_type: "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         :param pulumi.Input[str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead..
         :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
@@ -1765,9 +1771,9 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> pulumi.Output[Optional[str]]:
+    def node_type(self) -> pulumi.Output[str]:
         """
-        Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         """
         return pulumi.get(self, "node_type")
 

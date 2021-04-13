@@ -9,62 +9,10 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
-    'NatGatewayBandwidthPackageArgs',
     'NetworkAclAttachmentResourceArgs',
     'NetworkAclEntriesEgressArgs',
     'NetworkAclEntriesIngressArgs',
 ]
-
-@pulumi.input_type
-class NatGatewayBandwidthPackageArgs:
-    def __init__(__self__, *,
-                 bandwidth: pulumi.Input[int],
-                 ip_count: pulumi.Input[int],
-                 public_ip_addresses: Optional[pulumi.Input[str]] = None,
-                 zone: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "ip_count", ip_count)
-        if public_ip_addresses is not None:
-            pulumi.set(__self__, "public_ip_addresses", public_ip_addresses)
-        if zone is not None:
-            pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter
-    def bandwidth(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "bandwidth")
-
-    @bandwidth.setter
-    def bandwidth(self, value: pulumi.Input[int]):
-        pulumi.set(self, "bandwidth", value)
-
-    @property
-    @pulumi.getter(name="ipCount")
-    def ip_count(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "ip_count")
-
-    @ip_count.setter
-    def ip_count(self, value: pulumi.Input[int]):
-        pulumi.set(self, "ip_count", value)
-
-    @property
-    @pulumi.getter(name="publicIpAddresses")
-    def public_ip_addresses(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "public_ip_addresses")
-
-    @public_ip_addresses.setter
-    def public_ip_addresses(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "public_ip_addresses", value)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "zone", value)
-
 
 @pulumi.input_type
 class NetworkAclAttachmentResourceArgs:

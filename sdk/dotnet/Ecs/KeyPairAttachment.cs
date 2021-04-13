@@ -9,96 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
-    /// <summary>
-    /// Provides a key pair attachment resource to bind key pair for several ECS instances.
-    /// 
-    /// &gt; **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableDiskCategory = "cloud_ssd",
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var type = @default.Apply(@default =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             AvailabilityZone = @default.Zones[0].Id,
-    ///             CpuCoreCount = 1,
-    ///             MemorySize = 2,
-    ///         })));
-    ///         var images = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             NameRegex = "^ubuntu_18.*64",
-    ///             MostRecent = true,
-    ///             Owners = "system",
-    ///         }));
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "keyPairAttachmentName";
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "10.1.0.0/21",
-    ///         });
-    ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///             CidrBlock = "10.1.1.0/24",
-    ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Zones[0].Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             Description = "New security group",
-    ///             VpcId = vpc.Id,
-    ///         });
-    ///         var instance = new List&lt;AliCloud.Ecs.Instance&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             instance.Add(new AliCloud.Ecs.Instance($"instance-{range.Value}", new AliCloud.Ecs.InstanceArgs
-    ///             {
-    ///                 InstanceName = $"{name}-{range.Value + 1}",
-    ///                 ImageId = images.Apply(images =&gt; images.Images[0].Id),
-    ///                 InstanceType = type.Apply(type =&gt; type.InstanceTypes[0].Id),
-    ///                 SecurityGroups = 
-    ///                 {
-    ///                     @group.Id,
-    ///                 },
-    ///                 VswitchId = vswitch.Id,
-    ///                 InternetChargeType = "PayByTraffic",
-    ///                 InternetMaxBandwidthOut = 5,
-    ///                 Password = "Test12345",
-    ///                 InstanceChargeType = "PostPaid",
-    ///                 SystemDiskCategory = "cloud_ssd",
-    ///             }));
-    ///         }
-    ///         var pair = new AliCloud.Ecs.KeyPair("pair", new AliCloud.Ecs.KeyPairArgs
-    ///         {
-    ///             KeyName = name,
-    ///         });
-    ///         var attachment = new AliCloud.Ecs.KeyPairAttachment("attachment", new AliCloud.Ecs.KeyPairAttachmentArgs
-    ///         {
-    ///             KeyName = pair.Id,
-    ///             InstanceIds = instance.Select(__item =&gt; __item.Id).ToList(),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     [AliCloudResourceType("alicloud:ecs/keyPairAttachment:KeyPairAttachment")]
     public partial class KeyPairAttachment : Pulumi.CustomResource
     {
@@ -119,6 +29,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
+
+        [Output("keyPairName")]
+        public Output<string> KeyPairName { get; private set; } = null!;
 
 
         /// <summary>
@@ -187,8 +100,11 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The name of key pair used to bind.
         /// </summary>
-        [Input("keyName", required: true)]
-        public Input<string> KeyName { get; set; } = null!;
+        [Input("keyName")]
+        public Input<string>? KeyName { get; set; }
+
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
 
         public KeyPairAttachmentArgs()
         {
@@ -220,6 +136,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
+
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
 
         public KeyPairAttachmentState()
         {

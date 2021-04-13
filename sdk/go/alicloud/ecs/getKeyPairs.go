@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultKeyPair, err := ecs.NewKeyPair(ctx, "defaultKeyPair", &ecs.KeyPairArgs{
-// 			KeyName: pulumi.String("keyPairDatasource"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetKeyPairs(ctx *pulumi.Context, args *GetKeyPairsArgs, opts ...pulumi.InvokeOption) (*GetKeyPairsResult, error) {
 	var rv GetKeyPairsResult
 	err := ctx.Invoke("alicloud:ecs/getKeyPairs:getKeyPairs", args, &rv, opts...)
@@ -58,16 +34,19 @@ type GetKeyPairsArgs struct {
 // A collection of values returned by getKeyPairs.
 type GetKeyPairsResult struct {
 	// Finger print of the key pair.
-	FingerPrint string `pulumi:"fingerPrint"`
+	FingerPrint *string `pulumi:"fingerPrint"`
 	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// A list of key pairs. Each element contains the following attributes:
+	//
+	// Deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.
 	KeyPairs  []GetKeyPairsKeyPair `pulumi:"keyPairs"`
 	NameRegex *string              `pulumi:"nameRegex"`
 	// A list of key pair names.
-	Names      []string `pulumi:"names"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Names      []string          `pulumi:"names"`
+	OutputFile *string           `pulumi:"outputFile"`
+	Pairs      []GetKeyPairsPair `pulumi:"pairs"`
 	// The Id of resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.

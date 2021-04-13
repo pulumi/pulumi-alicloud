@@ -5,47 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ADB cluster resource. A ADB cluster is an isolated database
- * environment in the cloud. A ADB cluster can contain multiple user-created
- * databases.
- *
- * > **NOTE:** Available in v1.71.0+.
- *
- * ## Example Usage
- * ### Create a ADB MySQL cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "adbClusterconfig";
- * const creation = config.get("creation") || "ADB";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
- *     vswitchName: name,
- * });
- * const defaultCluster = new alicloud.adb.Cluster("defaultCluster", {
- *     dbClusterVersion: "3.0",
- *     dbClusterCategory: "Cluster",
- *     dbNodeClass: "C8",
- *     dbNodeCount: 2,
- *     dbNodeStorage: 200,
- *     payType: "PostPaid",
- *     description: name,
- *     vswitchId: defaultSwitch.id,
- * });
- * ```
- *
  * ## Import
  *
  * ADB cluster can be imported using the id, e.g.
@@ -86,6 +45,7 @@ export class Cluster extends pulumi.CustomResource {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    public readonly computeResource!: pulumi.Output<string | undefined>;
     /**
      * (Available in 1.93.0+) The connection string of the ADB cluster.
      */
@@ -94,6 +54,7 @@ export class Cluster extends pulumi.CustomResource {
      * Cluster category. Value options: `Basic`, `Cluster`.
      */
     public readonly dbClusterCategory!: pulumi.Output<string>;
+    public readonly dbClusterClass!: pulumi.Output<string | undefined>;
     /**
      * Cluster version. Value options: `3.0`, Default to `3.0`.
      */
@@ -105,23 +66,27 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The dbNodeCount of cluster node.
      */
-    public readonly dbNodeCount!: pulumi.Output<number>;
+    public readonly dbNodeCount!: pulumi.Output<number | undefined>;
     /**
      * The dbNodeStorage of cluster node.
      */
-    public readonly dbNodeStorage!: pulumi.Output<number>;
+    public readonly dbNodeStorage!: pulumi.Output<number | undefined>;
     /**
      * The description of cluster.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
+    public readonly elasticIoResource!: pulumi.Output<number | undefined>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     public readonly maintainTime!: pulumi.Output<string>;
+    public readonly mode!: pulumi.Output<string | undefined>;
+    public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
      */
-    public readonly payType!: pulumi.Output<string | undefined>;
+    public readonly payType!: pulumi.Output<string>;
+    public readonly paymentType!: pulumi.Output<string>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
@@ -130,10 +95,12 @@ export class Cluster extends pulumi.CustomResource {
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
     public readonly renewalStatus!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     public readonly securityIps!: pulumi.Output<string[]>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -143,7 +110,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
      * The Zone to launch the DB cluster.
      */
@@ -163,18 +130,26 @@ export class Cluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            inputs["computeResource"] = state ? state.computeResource : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["dbClusterCategory"] = state ? state.dbClusterCategory : undefined;
+            inputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
             inputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
             inputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
             inputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
             inputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
             inputs["maintainTime"] = state ? state.maintainTime : undefined;
+            inputs["mode"] = state ? state.mode : undefined;
+            inputs["modifyType"] = state ? state.modifyType : undefined;
             inputs["payType"] = state ? state.payType : undefined;
+            inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityIps"] = state ? state.securityIps : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
@@ -183,34 +158,30 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.dbClusterCategory === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterCategory'");
             }
-            if ((!args || args.dbNodeClass === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dbNodeClass'");
-            }
-            if ((!args || args.dbNodeCount === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dbNodeCount'");
-            }
-            if ((!args || args.dbNodeStorage === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dbNodeStorage'");
-            }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'vswitchId'");
-            }
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            inputs["computeResource"] = args ? args.computeResource : undefined;
             inputs["dbClusterCategory"] = args ? args.dbClusterCategory : undefined;
+            inputs["dbClusterClass"] = args ? args.dbClusterClass : undefined;
             inputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
             inputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
             inputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
             inputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
             inputs["maintainTime"] = args ? args.maintainTime : undefined;
+            inputs["mode"] = args ? args.mode : undefined;
+            inputs["modifyType"] = args ? args.modifyType : undefined;
             inputs["payType"] = args ? args.payType : undefined;
+            inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityIps"] = args ? args.securityIps : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["connectionString"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -227,6 +198,7 @@ export interface ClusterState {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
+    readonly computeResource?: pulumi.Input<string>;
     /**
      * (Available in 1.93.0+) The connection string of the ADB cluster.
      */
@@ -235,6 +207,7 @@ export interface ClusterState {
      * Cluster category. Value options: `Basic`, `Cluster`.
      */
     readonly dbClusterCategory?: pulumi.Input<string>;
+    readonly dbClusterClass?: pulumi.Input<string>;
     /**
      * Cluster version. Value options: `3.0`, Default to `3.0`.
      */
@@ -255,14 +228,18 @@ export interface ClusterState {
      * The description of cluster.
      */
     readonly description?: pulumi.Input<string>;
+    readonly elasticIoResource?: pulumi.Input<number>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     readonly maintainTime?: pulumi.Input<string>;
+    readonly mode?: pulumi.Input<string>;
+    readonly modifyType?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
      */
     readonly payType?: pulumi.Input<string>;
+    readonly paymentType?: pulumi.Input<string>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
@@ -271,10 +248,12 @@ export interface ClusterState {
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
     readonly renewalStatus?: pulumi.Input<string>;
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -299,10 +278,12 @@ export interface ClusterArgs {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
+    readonly computeResource?: pulumi.Input<string>;
     /**
      * Cluster category. Value options: `Basic`, `Cluster`.
      */
     readonly dbClusterCategory: pulumi.Input<string>;
+    readonly dbClusterClass?: pulumi.Input<string>;
     /**
      * Cluster version. Value options: `3.0`, Default to `3.0`.
      */
@@ -310,27 +291,31 @@ export interface ClusterArgs {
     /**
      * The dbNodeClass of cluster node.
      */
-    readonly dbNodeClass: pulumi.Input<string>;
+    readonly dbNodeClass?: pulumi.Input<string>;
     /**
      * The dbNodeCount of cluster node.
      */
-    readonly dbNodeCount: pulumi.Input<number>;
+    readonly dbNodeCount?: pulumi.Input<number>;
     /**
      * The dbNodeStorage of cluster node.
      */
-    readonly dbNodeStorage: pulumi.Input<number>;
+    readonly dbNodeStorage?: pulumi.Input<number>;
     /**
      * The description of cluster.
      */
     readonly description?: pulumi.Input<string>;
+    readonly elasticIoResource?: pulumi.Input<number>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     readonly maintainTime?: pulumi.Input<string>;
+    readonly mode?: pulumi.Input<string>;
+    readonly modifyType?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
      */
     readonly payType?: pulumi.Input<string>;
+    readonly paymentType?: pulumi.Input<string>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
@@ -339,6 +324,7 @@ export interface ClusterArgs {
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
     readonly renewalStatus?: pulumi.Input<string>;
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
@@ -352,7 +338,7 @@ export interface ClusterArgs {
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    readonly vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB cluster.
      */

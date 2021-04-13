@@ -2242,6 +2242,11 @@ export namespace log {
         type?: pulumi.Input<string>;
     }
 
+    export interface OssShipperParquetConfig {
+        name: pulumi.Input<string>;
+        type: pulumi.Input<string>;
+    }
+
     export interface StoreIndexFieldSearch {
         /**
          * The alias of one field.
@@ -2749,13 +2754,6 @@ export namespace tsdb {
 }
 
 export namespace vpc {
-    export interface NatGatewayBandwidthPackage {
-        bandwidth: pulumi.Input<number>;
-        ipCount: pulumi.Input<number>;
-        publicIpAddresses?: pulumi.Input<string>;
-        zone?: pulumi.Input<string>;
-    }
-
     export interface NetworkAclAttachmentResource {
         /**
          * The resource id that the network acl will associate with.

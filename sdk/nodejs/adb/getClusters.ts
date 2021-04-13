@@ -5,25 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
- * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
- *
- * > **NOTE:** Available in v1.71.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const adbClustersDs = alicloud.adb.getClusters({
- *     descriptionRegex: "am-\\w+",
- *     status: "Running",
- * });
- * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters[0].id);
- * ```
- */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
     if (!opts) {
@@ -34,9 +15,12 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:adb/getClusters:getClusters", {
+        "description": args.description,
         "descriptionRegex": args.descriptionRegex,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
         "status": args.status,
         "tags": args.tags,
     }, opts);
@@ -47,14 +31,20 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetClustersArgs {
     /**
+     * The description of the ADB cluster.
+     */
+    readonly description?: string;
+    /**
      * A regex string to filter results by cluster description.
      */
     readonly descriptionRegex?: string;
+    readonly enableDetails?: boolean;
     /**
      * A list of ADB cluster IDs.
      */
     readonly ids?: string[];
     readonly outputFile?: string;
+    readonly resourceGroupId?: string;
     /**
      * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
      */
@@ -75,11 +65,16 @@ export interface GetClustersResult {
      * A list of ADB clusters. Each element contains the following attributes:
      */
     readonly clusters: outputs.adb.GetClustersCluster[];
+    /**
+     * The description of the ADB cluster.
+     */
+    readonly description?: string;
     readonly descriptionRegex?: string;
     /**
      * A list of ADB cluster descriptions.
      */
     readonly descriptions: string[];
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -89,6 +84,7 @@ export interface GetClustersResult {
      */
     readonly ids: string[];
     readonly outputFile?: string;
+    readonly resourceGroupId?: string;
     /**
      * Status of the cluster.
      */

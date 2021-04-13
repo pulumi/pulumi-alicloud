@@ -35,6 +35,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Disk{}
 	case "alicloud:ecs/diskAttachment:DiskAttachment":
 		r = &DiskAttachment{}
+	case "alicloud:ecs/ecsKeyPair:EcsKeyPair":
+		r = &EcsKeyPair{}
+	case "alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment":
+		r = &EcsKeyPairAttachment{}
 	case "alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate":
 		r = &EcsLaunchTemplate{}
 	case "alicloud:ecs/ecsSnapshot:EcsSnapshot":
@@ -119,6 +123,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/diskAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/ecsKeyPair",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/ecsKeyPairAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

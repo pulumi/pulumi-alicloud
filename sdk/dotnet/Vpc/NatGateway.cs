@@ -22,70 +22,88 @@ namespace Pulumi.AliCloud.Vpc
     public partial class NatGateway : Pulumi.CustomResource
     {
         /// <summary>
-        /// A list ID of the bandwidth packages, and split them with commas.
-        /// </summary>
-        [Output("bandwidthPackageIds")]
-        public Output<string> BandwidthPackageIds { get; private set; } = null!;
-
-        /// <summary>
-        /// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
-        /// </summary>
-        [Output("bandwidthPackages")]
-        public Output<ImmutableArray<Outputs.NatGatewayBandwidthPackage>> BandwidthPackages { get; private set; } = null!;
-
-        /// <summary>
         /// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The nat gateway will auto create a snap and forward item, the `forward_table_ids` is the created one.
-        /// </summary>
-        [Output("forwardTableIds")]
-        public Output<string> ForwardTableIds { get; private set; } = null!;
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
+
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        /// The nat gateway will auto create a snap and forward item, the `forward_table_ids` is the created one. It is format a list after v1.121.0+.
+        /// </summary>
+        [Output("forwardTableIds")]
+        public Output<ImmutableArray<string>> ForwardTableIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+        /// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+        /// </summary>
+        [Output("internetChargeType")]
+        public Output<string> InternetChargeType { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        /// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+        /// </summary>
+        [Output("natGatewayName")]
+        public Output<string> NatGatewayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
         /// </summary>
         [Output("natType")]
         public Output<string?> NatType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
+
+        /// <summary>
+        /// The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The nat gateway will auto create a snap and forward item, the `snat_table_ids` is the created one.
+        /// The nat gateway will auto create a snap and forward item, the `snat_table_ids` is the created one. It is format a list after v1.121.0+.
         /// </summary>
         [Output("snatTableIds")]
-        public Output<string> SnatTableIds { get; private set; } = null!;
+        public Output<ImmutableArray<string>> SnatTableIds { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-        /// </summary>
-        [Output("spec")]
-        public Output<string?> Spec { get; private set; } = null!;
-
-        /// <summary>
-        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         /// </summary>
         [Output("specification")]
         public Output<string?> Specification { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.121.0+) The status of NAT gateway.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tags of NAT gateway.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The VPC ID.
@@ -145,59 +163,77 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class NatGatewayArgs : Pulumi.ResourceArgs
     {
-        [Input("bandwidthPackages")]
-        private InputList<Inputs.NatGatewayBandwidthPackageArgs>? _bandwidthPackages;
-
-        /// <summary>
-        /// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
-        /// </summary>
-        public InputList<Inputs.NatGatewayBandwidthPackageArgs> BandwidthPackages
-        {
-            get => _bandwidthPackages ?? (_bandwidthPackages = new InputList<Inputs.NatGatewayBandwidthPackageArgs>());
-            set => _bandwidthPackages = value;
-        }
-
         /// <summary>
         /// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
         /// <summary>
-        /// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        /// Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+        /// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+        /// </summary>
+        [Input("internetChargeType")]
+        public Input<string>? InternetChargeType { get; set; }
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        /// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+        /// </summary>
+        [Input("natGatewayName")]
+        public Input<string>? NatGatewayName { get; set; }
+
+        /// <summary>
+        /// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
         /// </summary>
         [Input("natType")]
         public Input<string>? NatType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-        /// </summary>
-        [Input("spec")]
-        public Input<string>? Spec { get; set; }
-
-        /// <summary>
-        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of NAT gateway.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The VPC ID.
@@ -219,76 +255,106 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NatGatewayState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A list ID of the bandwidth packages, and split them with commas.
-        /// </summary>
-        [Input("bandwidthPackageIds")]
-        public Input<string>? BandwidthPackageIds { get; set; }
-
-        [Input("bandwidthPackages")]
-        private InputList<Inputs.NatGatewayBandwidthPackageGetArgs>? _bandwidthPackages;
-
-        /// <summary>
-        /// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
-        /// </summary>
-        public InputList<Inputs.NatGatewayBandwidthPackageGetArgs> BandwidthPackages
-        {
-            get => _bandwidthPackages ?? (_bandwidthPackages = new InputList<Inputs.NatGatewayBandwidthPackageGetArgs>());
-            set => _bandwidthPackages = value;
-        }
-
-        /// <summary>
         /// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The nat gateway will auto create a snap and forward item, the `forward_table_ids` is the created one.
-        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
         [Input("forwardTableIds")]
-        public Input<string>? ForwardTableIds { get; set; }
+        private InputList<string>? _forwardTableIds;
 
         /// <summary>
-        /// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        /// The nat gateway will auto create a snap and forward item, the `forward_table_ids` is the created one. It is format a list after v1.121.0+.
+        /// </summary>
+        public InputList<string> ForwardTableIds
+        {
+            get => _forwardTableIds ?? (_forwardTableIds = new InputList<string>());
+            set => _forwardTableIds = value;
+        }
+
+        /// <summary>
+        /// Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+        /// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+        /// </summary>
+        [Input("internetChargeType")]
+        public Input<string>? InternetChargeType { get; set; }
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+        /// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+        /// </summary>
+        [Input("natGatewayName")]
+        public Input<string>? NatGatewayName { get; set; }
+
+        /// <summary>
+        /// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
         /// </summary>
         [Input("natType")]
         public Input<string>? NatType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
-        /// <summary>
-        /// The nat gateway will auto create a snap and forward item, the `snat_table_ids` is the created one.
-        /// </summary>
         [Input("snatTableIds")]
-        public Input<string>? SnatTableIds { get; set; }
+        private InputList<string>? _snatTableIds;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+        /// The nat gateway will auto create a snap and forward item, the `snat_table_ids` is the created one. It is format a list after v1.121.0+.
         /// </summary>
-        [Input("spec")]
-        public Input<string>? Spec { get; set; }
+        public InputList<string> SnatTableIds
+        {
+            get => _snatTableIds ?? (_snatTableIds = new InputList<string>());
+            set => _snatTableIds = value;
+        }
 
         /// <summary>
-        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+        /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
+
+        /// <summary>
+        /// (Available in 1.121.0+) The status of NAT gateway.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of NAT gateway.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The VPC ID.

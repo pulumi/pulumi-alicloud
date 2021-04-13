@@ -10,58 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Adb
 {
     /// <summary>
-    /// Provides a ADB cluster resource. A ADB cluster is an isolated database
-    /// environment in the cloud. A ADB cluster can contain multiple user-created
-    /// databases.
-    /// 
-    /// &gt; **NOTE:** Available in v1.71.0+.
-    /// 
-    /// ## Example Usage
-    /// ### Create a ADB MySQL cluster
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "adbClusterconfig";
-    ///         var creation = config.Get("creation") ?? "ADB";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultCluster = new AliCloud.Adb.Cluster("defaultCluster", new AliCloud.Adb.ClusterArgs
-    ///         {
-    ///             DbClusterVersion = "3.0",
-    ///             DbClusterCategory = "Cluster",
-    ///             DbNodeClass = "C8",
-    ///             DbNodeCount = 2,
-    ///             DbNodeStorage = 200,
-    ///             PayType = "PostPaid",
-    ///             Description = name,
-    ///             VswitchId = defaultSwitch.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ADB cluster can be imported using the id, e.g.
@@ -79,6 +27,9 @@ namespace Pulumi.AliCloud.Adb
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
+        [Output("computeResource")]
+        public Output<string?> ComputeResource { get; private set; } = null!;
+
         /// <summary>
         /// (Available in 1.93.0+) The connection string of the ADB cluster.
         /// </summary>
@@ -90,6 +41,9 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Output("dbClusterCategory")]
         public Output<string> DbClusterCategory { get; private set; } = null!;
+
+        [Output("dbClusterClass")]
+        public Output<string?> DbClusterClass { get; private set; } = null!;
 
         /// <summary>
         /// Cluster version. Value options: `3.0`, Default to `3.0`.
@@ -107,19 +61,22 @@ namespace Pulumi.AliCloud.Adb
         /// The db_node_count of cluster node.
         /// </summary>
         [Output("dbNodeCount")]
-        public Output<int> DbNodeCount { get; private set; } = null!;
+        public Output<int?> DbNodeCount { get; private set; } = null!;
 
         /// <summary>
         /// The db_node_storage of cluster node.
         /// </summary>
         [Output("dbNodeStorage")]
-        public Output<int> DbNodeStorage { get; private set; } = null!;
+        public Output<int?> DbNodeStorage { get; private set; } = null!;
 
         /// <summary>
         /// The description of cluster.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
+
+        [Output("elasticIoResource")]
+        public Output<int?> ElasticIoResource { get; private set; } = null!;
 
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -127,11 +84,20 @@ namespace Pulumi.AliCloud.Adb
         [Output("maintainTime")]
         public Output<string> MaintainTime { get; private set; } = null!;
 
+        [Output("mode")]
+        public Output<string?> Mode { get; private set; } = null!;
+
+        [Output("modifyType")]
+        public Output<string?> ModifyType { get; private set; } = null!;
+
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
         /// </summary>
         [Output("payType")]
-        public Output<string?> PayType { get; private set; } = null!;
+        public Output<string> PayType { get; private set; } = null!;
+
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
@@ -145,11 +111,17 @@ namespace Pulumi.AliCloud.Adb
         [Output("renewalStatus")]
         public Output<string?> RenewalStatus { get; private set; } = null!;
 
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
         /// <summary>
         /// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         /// </summary>
         [Output("securityIps")]
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
+
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -163,7 +135,7 @@ namespace Pulumi.AliCloud.Adb
         /// The virtual switch ID to launch DB instances in one VPC.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string> VswitchId { get; private set; } = null!;
+        public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DB cluster.
@@ -223,128 +195,17 @@ namespace Pulumi.AliCloud.Adb
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
+        [Input("computeResource")]
+        public Input<string>? ComputeResource { get; set; }
+
         /// <summary>
         /// Cluster category. Value options: `Basic`, `Cluster`.
         /// </summary>
         [Input("dbClusterCategory", required: true)]
         public Input<string> DbClusterCategory { get; set; } = null!;
 
-        /// <summary>
-        /// Cluster version. Value options: `3.0`, Default to `3.0`.
-        /// </summary>
-        [Input("dbClusterVersion")]
-        public Input<string>? DbClusterVersion { get; set; }
-
-        /// <summary>
-        /// The db_node_class of cluster node.
-        /// </summary>
-        [Input("dbNodeClass", required: true)]
-        public Input<string> DbNodeClass { get; set; } = null!;
-
-        /// <summary>
-        /// The db_node_count of cluster node.
-        /// </summary>
-        [Input("dbNodeCount", required: true)]
-        public Input<int> DbNodeCount { get; set; } = null!;
-
-        /// <summary>
-        /// The db_node_storage of cluster node.
-        /// </summary>
-        [Input("dbNodeStorage", required: true)]
-        public Input<int> DbNodeStorage { get; set; } = null!;
-
-        /// <summary>
-        /// The description of cluster.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
-        /// </summary>
-        [Input("maintainTime")]
-        public Input<string>? MaintainTime { get; set; }
-
-        /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-        /// </summary>
-        [Input("payType")]
-        public Input<string>? PayType { get; set; }
-
-        /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        /// </summary>
-        [Input("period")]
-        public Input<int>? Period { get; set; }
-
-        /// <summary>
-        /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
-        /// </summary>
-        [Input("renewalStatus")]
-        public Input<string>? RenewalStatus { get; set; }
-
-        [Input("securityIps")]
-        private InputList<string>? _securityIps;
-
-        /// <summary>
-        /// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        /// </summary>
-        public InputList<string> SecurityIps
-        {
-            get => _securityIps ?? (_securityIps = new InputList<string>());
-            set => _securityIps = value;
-        }
-
-        [Input("tags")]
-        private InputMap<object>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        /// </summary>
-        public InputMap<object> Tags
-        {
-            get => _tags ?? (_tags = new InputMap<object>());
-            set => _tags = value;
-        }
-
-        /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.
-        /// </summary>
-        [Input("vswitchId", required: true)]
-        public Input<string> VswitchId { get; set; } = null!;
-
-        /// <summary>
-        /// The Zone to launch the DB cluster.
-        /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
-
-        public ClusterArgs()
-        {
-        }
-    }
-
-    public sealed class ClusterState : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        /// </summary>
-        [Input("autoRenewPeriod")]
-        public Input<int>? AutoRenewPeriod { get; set; }
-
-        /// <summary>
-        /// (Available in 1.93.0+) The connection string of the ADB cluster.
-        /// </summary>
-        [Input("connectionString")]
-        public Input<string>? ConnectionString { get; set; }
-
-        /// <summary>
-        /// Cluster category. Value options: `Basic`, `Cluster`.
-        /// </summary>
-        [Input("dbClusterCategory")]
-        public Input<string>? DbClusterCategory { get; set; }
+        [Input("dbClusterClass")]
+        public Input<string>? DbClusterClass { get; set; }
 
         /// <summary>
         /// Cluster version. Value options: `3.0`, Default to `3.0`.
@@ -376,17 +237,29 @@ namespace Pulumi.AliCloud.Adb
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("elasticIoResource")]
+        public Input<int>? ElasticIoResource { get; set; }
+
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         /// </summary>
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }
 
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        [Input("modifyType")]
+        public Input<string>? ModifyType { get; set; }
+
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
@@ -400,6 +273,9 @@ namespace Pulumi.AliCloud.Adb
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("securityIps")]
         private InputList<string>? _securityIps;
 
@@ -411,6 +287,147 @@ namespace Pulumi.AliCloud.Adb
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The virtual switch ID to launch DB instances in one VPC.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The Zone to launch the DB cluster.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public ClusterArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterState : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
+        [Input("computeResource")]
+        public Input<string>? ComputeResource { get; set; }
+
+        /// <summary>
+        /// (Available in 1.93.0+) The connection string of the ADB cluster.
+        /// </summary>
+        [Input("connectionString")]
+        public Input<string>? ConnectionString { get; set; }
+
+        /// <summary>
+        /// Cluster category. Value options: `Basic`, `Cluster`.
+        /// </summary>
+        [Input("dbClusterCategory")]
+        public Input<string>? DbClusterCategory { get; set; }
+
+        [Input("dbClusterClass")]
+        public Input<string>? DbClusterClass { get; set; }
+
+        /// <summary>
+        /// Cluster version. Value options: `3.0`, Default to `3.0`.
+        /// </summary>
+        [Input("dbClusterVersion")]
+        public Input<string>? DbClusterVersion { get; set; }
+
+        /// <summary>
+        /// The db_node_class of cluster node.
+        /// </summary>
+        [Input("dbNodeClass")]
+        public Input<string>? DbNodeClass { get; set; }
+
+        /// <summary>
+        /// The db_node_count of cluster node.
+        /// </summary>
+        [Input("dbNodeCount")]
+        public Input<int>? DbNodeCount { get; set; }
+
+        /// <summary>
+        /// The db_node_storage of cluster node.
+        /// </summary>
+        [Input("dbNodeStorage")]
+        public Input<int>? DbNodeStorage { get; set; }
+
+        /// <summary>
+        /// The description of cluster.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("elasticIoResource")]
+        public Input<int>? ElasticIoResource { get; set; }
+
+        /// <summary>
+        /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        /// </summary>
+        [Input("maintainTime")]
+        public Input<string>? MaintainTime { get; set; }
+
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        [Input("modifyType")]
+        public Input<string>? ModifyType { get; set; }
+
+        /// <summary>
+        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        /// </summary>
+        [Input("payType")]
+        public Input<string>? PayType { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("securityIps")]
+        private InputList<string>? _securityIps;
+
+        /// <summary>
+        /// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        /// </summary>
+        public InputList<string> SecurityIps
+        {
+            get => _securityIps ?? (_securityIps = new InputList<string>());
+            set => _securityIps = value;
+        }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

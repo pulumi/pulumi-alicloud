@@ -10,118 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-type NatGatewayBandwidthPackage struct {
-	Bandwidth         int     `pulumi:"bandwidth"`
-	IpCount           int     `pulumi:"ipCount"`
-	PublicIpAddresses *string `pulumi:"publicIpAddresses"`
-	Zone              *string `pulumi:"zone"`
-}
-
-// NatGatewayBandwidthPackageInput is an input type that accepts NatGatewayBandwidthPackageArgs and NatGatewayBandwidthPackageOutput values.
-// You can construct a concrete instance of `NatGatewayBandwidthPackageInput` via:
-//
-//          NatGatewayBandwidthPackageArgs{...}
-type NatGatewayBandwidthPackageInput interface {
-	pulumi.Input
-
-	ToNatGatewayBandwidthPackageOutput() NatGatewayBandwidthPackageOutput
-	ToNatGatewayBandwidthPackageOutputWithContext(context.Context) NatGatewayBandwidthPackageOutput
-}
-
-type NatGatewayBandwidthPackageArgs struct {
-	Bandwidth         pulumi.IntInput       `pulumi:"bandwidth"`
-	IpCount           pulumi.IntInput       `pulumi:"ipCount"`
-	PublicIpAddresses pulumi.StringPtrInput `pulumi:"publicIpAddresses"`
-	Zone              pulumi.StringPtrInput `pulumi:"zone"`
-}
-
-func (NatGatewayBandwidthPackageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatGatewayBandwidthPackage)(nil)).Elem()
-}
-
-func (i NatGatewayBandwidthPackageArgs) ToNatGatewayBandwidthPackageOutput() NatGatewayBandwidthPackageOutput {
-	return i.ToNatGatewayBandwidthPackageOutputWithContext(context.Background())
-}
-
-func (i NatGatewayBandwidthPackageArgs) ToNatGatewayBandwidthPackageOutputWithContext(ctx context.Context) NatGatewayBandwidthPackageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayBandwidthPackageOutput)
-}
-
-// NatGatewayBandwidthPackageArrayInput is an input type that accepts NatGatewayBandwidthPackageArray and NatGatewayBandwidthPackageArrayOutput values.
-// You can construct a concrete instance of `NatGatewayBandwidthPackageArrayInput` via:
-//
-//          NatGatewayBandwidthPackageArray{ NatGatewayBandwidthPackageArgs{...} }
-type NatGatewayBandwidthPackageArrayInput interface {
-	pulumi.Input
-
-	ToNatGatewayBandwidthPackageArrayOutput() NatGatewayBandwidthPackageArrayOutput
-	ToNatGatewayBandwidthPackageArrayOutputWithContext(context.Context) NatGatewayBandwidthPackageArrayOutput
-}
-
-type NatGatewayBandwidthPackageArray []NatGatewayBandwidthPackageInput
-
-func (NatGatewayBandwidthPackageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NatGatewayBandwidthPackage)(nil)).Elem()
-}
-
-func (i NatGatewayBandwidthPackageArray) ToNatGatewayBandwidthPackageArrayOutput() NatGatewayBandwidthPackageArrayOutput {
-	return i.ToNatGatewayBandwidthPackageArrayOutputWithContext(context.Background())
-}
-
-func (i NatGatewayBandwidthPackageArray) ToNatGatewayBandwidthPackageArrayOutputWithContext(ctx context.Context) NatGatewayBandwidthPackageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayBandwidthPackageArrayOutput)
-}
-
-type NatGatewayBandwidthPackageOutput struct{ *pulumi.OutputState }
-
-func (NatGatewayBandwidthPackageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatGatewayBandwidthPackage)(nil)).Elem()
-}
-
-func (o NatGatewayBandwidthPackageOutput) ToNatGatewayBandwidthPackageOutput() NatGatewayBandwidthPackageOutput {
-	return o
-}
-
-func (o NatGatewayBandwidthPackageOutput) ToNatGatewayBandwidthPackageOutputWithContext(ctx context.Context) NatGatewayBandwidthPackageOutput {
-	return o
-}
-
-func (o NatGatewayBandwidthPackageOutput) Bandwidth() pulumi.IntOutput {
-	return o.ApplyT(func(v NatGatewayBandwidthPackage) int { return v.Bandwidth }).(pulumi.IntOutput)
-}
-
-func (o NatGatewayBandwidthPackageOutput) IpCount() pulumi.IntOutput {
-	return o.ApplyT(func(v NatGatewayBandwidthPackage) int { return v.IpCount }).(pulumi.IntOutput)
-}
-
-func (o NatGatewayBandwidthPackageOutput) PublicIpAddresses() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NatGatewayBandwidthPackage) *string { return v.PublicIpAddresses }).(pulumi.StringPtrOutput)
-}
-
-func (o NatGatewayBandwidthPackageOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NatGatewayBandwidthPackage) *string { return v.Zone }).(pulumi.StringPtrOutput)
-}
-
-type NatGatewayBandwidthPackageArrayOutput struct{ *pulumi.OutputState }
-
-func (NatGatewayBandwidthPackageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NatGatewayBandwidthPackage)(nil)).Elem()
-}
-
-func (o NatGatewayBandwidthPackageArrayOutput) ToNatGatewayBandwidthPackageArrayOutput() NatGatewayBandwidthPackageArrayOutput {
-	return o
-}
-
-func (o NatGatewayBandwidthPackageArrayOutput) ToNatGatewayBandwidthPackageArrayOutputWithContext(ctx context.Context) NatGatewayBandwidthPackageArrayOutput {
-	return o
-}
-
-func (o NatGatewayBandwidthPackageArrayOutput) Index(i pulumi.IntInput) NatGatewayBandwidthPackageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NatGatewayBandwidthPackage {
-		return vs[0].([]NatGatewayBandwidthPackage)[vs[1].(int)]
-	}).(NatGatewayBandwidthPackageOutput)
-}
-
 type NetworkAclAttachmentResource struct {
 	// The resource id that the network acl will associate with.
 	ResourceId string `pulumi:"resourceId"`
@@ -1392,26 +1280,50 @@ func (o GetHavipsHavipArrayOutput) Index(i pulumi.IntInput) GetHavipsHavipOutput
 }
 
 type GetNatGatewaysGateway struct {
-	// Time of creation.
-	CreationTime string `pulumi:"creationTime"`
+	// The state of the NAT gateway.
+	BusinessStatus string `pulumi:"businessStatus"`
+	// Indicates whether deletion protection is enabled.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// The description of the NAT gateway.
 	Description string `pulumi:"description"`
-	// The forward table id.
-	ForwardTableId string `pulumi:"forwardTableId"`
+	// Indicates whether the traffic monitoring feature is enabled.
+	EcsMetricEnabled bool `pulumi:"ecsMetricEnabled"`
+	// The time when the NAT gateway expires.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// The ID of the DNAT table.
+	ForwardTableIds []string `pulumi:"forwardTableIds"`
 	// The ID of the NAT gateway.
 	Id string `pulumi:"id"`
+	// The metering method of the NAT gateway.
+	InternetChargeType string `pulumi:"internetChargeType"`
 	// The ip address of the bind eip.
-	IpLists []string `pulumi:"ipLists"`
+	IpLists []GetNatGatewaysGatewayIpList `pulumi:"ipLists"`
 	// Name of the NAT gateway.
 	Name string `pulumi:"name"`
-	// The snat table id.
-	SnatTableId string `pulumi:"snatTableId"`
+	// The ID of the NAT gateway.
+	NatGatewayId string `pulumi:"natGatewayId"`
+	// The name of NAT gateway.
+	NatGatewayName string `pulumi:"natGatewayName"`
+	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+	NatType string `pulumi:"natType"`
+	// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+	PaymentType string `pulumi:"paymentType"`
+	// The resource group id of NAT gateway.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The ID of the SNAT table that is associated with the NAT gateway.
+	SnatTableIds []string `pulumi:"snatTableIds"`
 	// The specification of the NAT gateway.
 	Spec string `pulumi:"spec"`
-	// The status of the NAT gateway.
+	// The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+	Specification string `pulumi:"specification"`
+	// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
 	Status string `pulumi:"status"`
+	// The tags of NAT gateway.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
+	// The ID of the vSwitch to which the NAT gateway belongs.
+	VswitchId string `pulumi:"vswitchId"`
 }
 
 // GetNatGatewaysGatewayInput is an input type that accepts GetNatGatewaysGatewayArgs and GetNatGatewaysGatewayOutput values.
@@ -1426,26 +1338,50 @@ type GetNatGatewaysGatewayInput interface {
 }
 
 type GetNatGatewaysGatewayArgs struct {
-	// Time of creation.
-	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// The state of the NAT gateway.
+	BusinessStatus pulumi.StringInput `pulumi:"businessStatus"`
+	// Indicates whether deletion protection is enabled.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// The description of the NAT gateway.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The forward table id.
-	ForwardTableId pulumi.StringInput `pulumi:"forwardTableId"`
+	// Indicates whether the traffic monitoring feature is enabled.
+	EcsMetricEnabled pulumi.BoolInput `pulumi:"ecsMetricEnabled"`
+	// The time when the NAT gateway expires.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// The ID of the DNAT table.
+	ForwardTableIds pulumi.StringArrayInput `pulumi:"forwardTableIds"`
 	// The ID of the NAT gateway.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The metering method of the NAT gateway.
+	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
 	// The ip address of the bind eip.
-	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
+	IpLists GetNatGatewaysGatewayIpListArrayInput `pulumi:"ipLists"`
 	// Name of the NAT gateway.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The snat table id.
-	SnatTableId pulumi.StringInput `pulumi:"snatTableId"`
+	// The ID of the NAT gateway.
+	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
+	// The name of NAT gateway.
+	NatGatewayName pulumi.StringInput `pulumi:"natGatewayName"`
+	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+	NatType pulumi.StringInput `pulumi:"natType"`
+	// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The resource group id of NAT gateway.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The ID of the SNAT table that is associated with the NAT gateway.
+	SnatTableIds pulumi.StringArrayInput `pulumi:"snatTableIds"`
 	// The specification of the NAT gateway.
 	Spec pulumi.StringInput `pulumi:"spec"`
-	// The status of the NAT gateway.
+	// The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+	Specification pulumi.StringInput `pulumi:"specification"`
+	// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
 	Status pulumi.StringInput `pulumi:"status"`
+	// The tags of NAT gateway.
+	Tags pulumi.MapInput `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the vSwitch to which the NAT gateway belongs.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
 func (GetNatGatewaysGatewayArgs) ElementType() reflect.Type {
@@ -1499,9 +1435,14 @@ func (o GetNatGatewaysGatewayOutput) ToGetNatGatewaysGatewayOutputWithContext(ct
 	return o
 }
 
-// Time of creation.
-func (o GetNatGatewaysGatewayOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.CreationTime }).(pulumi.StringOutput)
+// The state of the NAT gateway.
+func (o GetNatGatewaysGatewayOutput) BusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.BusinessStatus }).(pulumi.StringOutput)
+}
+
+// Indicates whether deletion protection is enabled.
+func (o GetNatGatewaysGatewayOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // The description of the NAT gateway.
@@ -1509,9 +1450,19 @@ func (o GetNatGatewaysGatewayOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The forward table id.
-func (o GetNatGatewaysGatewayOutput) ForwardTableId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.ForwardTableId }).(pulumi.StringOutput)
+// Indicates whether the traffic monitoring feature is enabled.
+func (o GetNatGatewaysGatewayOutput) EcsMetricEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) bool { return v.EcsMetricEnabled }).(pulumi.BoolOutput)
+}
+
+// The time when the NAT gateway expires.
+func (o GetNatGatewaysGatewayOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The ID of the DNAT table.
+func (o GetNatGatewaysGatewayOutput) ForwardTableIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) []string { return v.ForwardTableIds }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the NAT gateway.
@@ -1519,9 +1470,14 @@ func (o GetNatGatewaysGatewayOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The metering method of the NAT gateway.
+func (o GetNatGatewaysGatewayOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
 // The ip address of the bind eip.
-func (o GetNatGatewaysGatewayOutput) IpLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetNatGatewaysGateway) []string { return v.IpLists }).(pulumi.StringArrayOutput)
+func (o GetNatGatewaysGatewayOutput) IpLists() GetNatGatewaysGatewayIpListArrayOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) []GetNatGatewaysGatewayIpList { return v.IpLists }).(GetNatGatewaysGatewayIpListArrayOutput)
 }
 
 // Name of the NAT gateway.
@@ -1529,9 +1485,34 @@ func (o GetNatGatewaysGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The snat table id.
-func (o GetNatGatewaysGatewayOutput) SnatTableId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.SnatTableId }).(pulumi.StringOutput)
+// The ID of the NAT gateway.
+func (o GetNatGatewaysGatewayOutput) NatGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.NatGatewayId }).(pulumi.StringOutput)
+}
+
+// The name of NAT gateway.
+func (o GetNatGatewaysGatewayOutput) NatGatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.NatGatewayName }).(pulumi.StringOutput)
+}
+
+// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+func (o GetNatGatewaysGatewayOutput) NatType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.NatType }).(pulumi.StringOutput)
+}
+
+// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+func (o GetNatGatewaysGatewayOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The resource group id of NAT gateway.
+func (o GetNatGatewaysGatewayOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the SNAT table that is associated with the NAT gateway.
+func (o GetNatGatewaysGatewayOutput) SnatTableIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) []string { return v.SnatTableIds }).(pulumi.StringArrayOutput)
 }
 
 // The specification of the NAT gateway.
@@ -1539,14 +1520,29 @@ func (o GetNatGatewaysGatewayOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.Spec }).(pulumi.StringOutput)
 }
 
-// The status of the NAT gateway.
+// The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+func (o GetNatGatewaysGatewayOutput) Specification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.Specification }).(pulumi.StringOutput)
+}
+
+// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
 func (o GetNatGatewaysGatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags of NAT gateway.
+func (o GetNatGatewaysGatewayOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The ID of the VPC.
 func (o GetNatGatewaysGatewayOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch to which the NAT gateway belongs.
+func (o GetNatGatewaysGatewayOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 type GetNatGatewaysGatewayArrayOutput struct{ *pulumi.OutputState }
@@ -1567,6 +1563,106 @@ func (o GetNatGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetNatGateway
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNatGatewaysGateway {
 		return vs[0].([]GetNatGatewaysGateway)[vs[1].(int)]
 	}).(GetNatGatewaysGatewayOutput)
+}
+
+type GetNatGatewaysGatewayIpList struct {
+	IpAddress        string `pulumi:"ipAddress"`
+	SnatEntryEnabled bool   `pulumi:"snatEntryEnabled"`
+}
+
+// GetNatGatewaysGatewayIpListInput is an input type that accepts GetNatGatewaysGatewayIpListArgs and GetNatGatewaysGatewayIpListOutput values.
+// You can construct a concrete instance of `GetNatGatewaysGatewayIpListInput` via:
+//
+//          GetNatGatewaysGatewayIpListArgs{...}
+type GetNatGatewaysGatewayIpListInput interface {
+	pulumi.Input
+
+	ToGetNatGatewaysGatewayIpListOutput() GetNatGatewaysGatewayIpListOutput
+	ToGetNatGatewaysGatewayIpListOutputWithContext(context.Context) GetNatGatewaysGatewayIpListOutput
+}
+
+type GetNatGatewaysGatewayIpListArgs struct {
+	IpAddress        pulumi.StringInput `pulumi:"ipAddress"`
+	SnatEntryEnabled pulumi.BoolInput   `pulumi:"snatEntryEnabled"`
+}
+
+func (GetNatGatewaysGatewayIpListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatGatewaysGatewayIpList)(nil)).Elem()
+}
+
+func (i GetNatGatewaysGatewayIpListArgs) ToGetNatGatewaysGatewayIpListOutput() GetNatGatewaysGatewayIpListOutput {
+	return i.ToGetNatGatewaysGatewayIpListOutputWithContext(context.Background())
+}
+
+func (i GetNatGatewaysGatewayIpListArgs) ToGetNatGatewaysGatewayIpListOutputWithContext(ctx context.Context) GetNatGatewaysGatewayIpListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNatGatewaysGatewayIpListOutput)
+}
+
+// GetNatGatewaysGatewayIpListArrayInput is an input type that accepts GetNatGatewaysGatewayIpListArray and GetNatGatewaysGatewayIpListArrayOutput values.
+// You can construct a concrete instance of `GetNatGatewaysGatewayIpListArrayInput` via:
+//
+//          GetNatGatewaysGatewayIpListArray{ GetNatGatewaysGatewayIpListArgs{...} }
+type GetNatGatewaysGatewayIpListArrayInput interface {
+	pulumi.Input
+
+	ToGetNatGatewaysGatewayIpListArrayOutput() GetNatGatewaysGatewayIpListArrayOutput
+	ToGetNatGatewaysGatewayIpListArrayOutputWithContext(context.Context) GetNatGatewaysGatewayIpListArrayOutput
+}
+
+type GetNatGatewaysGatewayIpListArray []GetNatGatewaysGatewayIpListInput
+
+func (GetNatGatewaysGatewayIpListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNatGatewaysGatewayIpList)(nil)).Elem()
+}
+
+func (i GetNatGatewaysGatewayIpListArray) ToGetNatGatewaysGatewayIpListArrayOutput() GetNatGatewaysGatewayIpListArrayOutput {
+	return i.ToGetNatGatewaysGatewayIpListArrayOutputWithContext(context.Background())
+}
+
+func (i GetNatGatewaysGatewayIpListArray) ToGetNatGatewaysGatewayIpListArrayOutputWithContext(ctx context.Context) GetNatGatewaysGatewayIpListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNatGatewaysGatewayIpListArrayOutput)
+}
+
+type GetNatGatewaysGatewayIpListOutput struct{ *pulumi.OutputState }
+
+func (GetNatGatewaysGatewayIpListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatGatewaysGatewayIpList)(nil)).Elem()
+}
+
+func (o GetNatGatewaysGatewayIpListOutput) ToGetNatGatewaysGatewayIpListOutput() GetNatGatewaysGatewayIpListOutput {
+	return o
+}
+
+func (o GetNatGatewaysGatewayIpListOutput) ToGetNatGatewaysGatewayIpListOutputWithContext(ctx context.Context) GetNatGatewaysGatewayIpListOutput {
+	return o
+}
+
+func (o GetNatGatewaysGatewayIpListOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysGatewayIpList) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetNatGatewaysGatewayIpListOutput) SnatEntryEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNatGatewaysGatewayIpList) bool { return v.SnatEntryEnabled }).(pulumi.BoolOutput)
+}
+
+type GetNatGatewaysGatewayIpListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNatGatewaysGatewayIpListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNatGatewaysGatewayIpList)(nil)).Elem()
+}
+
+func (o GetNatGatewaysGatewayIpListArrayOutput) ToGetNatGatewaysGatewayIpListArrayOutput() GetNatGatewaysGatewayIpListArrayOutput {
+	return o
+}
+
+func (o GetNatGatewaysGatewayIpListArrayOutput) ToGetNatGatewaysGatewayIpListArrayOutputWithContext(ctx context.Context) GetNatGatewaysGatewayIpListArrayOutput {
+	return o
+}
+
+func (o GetNatGatewaysGatewayIpListArrayOutput) Index(i pulumi.IntInput) GetNatGatewaysGatewayIpListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNatGatewaysGatewayIpList {
+		return vs[0].([]GetNatGatewaysGatewayIpList)[vs[1].(int)]
+	}).(GetNatGatewaysGatewayIpListOutput)
 }
 
 type GetNetworksVpc struct {
@@ -3141,8 +3237,6 @@ func (o GetSwitchesVswitchArrayOutput) Index(i pulumi.IntInput) GetSwitchesVswit
 }
 
 func init() {
-	pulumi.RegisterOutputType(NatGatewayBandwidthPackageOutput{})
-	pulumi.RegisterOutputType(NatGatewayBandwidthPackageArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclAttachmentResourceOutput{})
 	pulumi.RegisterOutputType(NetworkAclAttachmentResourceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclEntriesEgressOutput{})
@@ -3161,6 +3255,8 @@ func init() {
 	pulumi.RegisterOutputType(GetHavipsHavipArrayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetNatGatewaysGatewayIpListOutput{})
+	pulumi.RegisterOutputType(GetNatGatewaysGatewayIpListArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworksVpcOutput{})
 	pulumi.RegisterOutputType(GetNetworksVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryOutput{})

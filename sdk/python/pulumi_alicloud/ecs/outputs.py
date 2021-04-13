@@ -25,6 +25,10 @@ __all__ = [
     'GetCommandsCommandResult',
     'GetDedicatedHostsHostResult',
     'GetDisksDiskResult',
+    'GetEcsKeyPairsKeyPairResult',
+    'GetEcsKeyPairsKeyPairInstanceResult',
+    'GetEcsKeyPairsPairResult',
+    'GetEcsKeyPairsPairInstanceResult',
     'GetEcsLaunchTemplatesTemplateResult',
     'GetEcsLaunchTemplatesTemplateDataDiskResult',
     'GetEcsLaunchTemplatesTemplateNetworkInterfaceResult',
@@ -43,6 +47,8 @@ __all__ = [
     'GetInstancesInstanceDiskDeviceMappingResult',
     'GetKeyPairsKeyPairResult',
     'GetKeyPairsKeyPairInstanceResult',
+    'GetKeyPairsPairResult',
+    'GetKeyPairsPairInstanceResult',
     'GetNetworkInterfacesInterfaceResult',
     'GetSecurityGroupRulesRuleResult',
     'GetSecurityGroupsGroupResult',
@@ -1723,6 +1729,404 @@ class GetDisksDiskResult(dict):
         ```
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetEcsKeyPairsKeyPairResult(dict):
+    def __init__(__self__, *,
+                 finger_print: str,
+                 id: str,
+                 instances: Sequence['outputs.GetEcsKeyPairsKeyPairInstanceResult'],
+                 key_name: str,
+                 key_pair_name: str,
+                 resource_group_id: str,
+                 tags: Mapping[str, Any]):
+        """
+        :param str finger_print: The finger print of the key pair.
+        :param str id: The ID of the Key Pair.
+        :param Sequence['GetEcsKeyPairsKeyPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
+        :param str key_name: The Key Pair Name.
+        :param str resource_group_id: The Resource Group Id.
+        :param Mapping[str, Any] tags: The tags.
+        """
+        pulumi.set(__self__, "finger_print", finger_print)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="fingerPrint")
+    def finger_print(self) -> str:
+        """
+        The finger print of the key pair.
+        """
+        return pulumi.get(self, "finger_print")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Key Pair.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def instances(self) -> Sequence['outputs.GetEcsKeyPairsKeyPairInstanceResult']:
+        """
+        A list of ECS instances that has been bound this key pair.
+        """
+        return pulumi.get(self, "instances")
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> str:
+        """
+        The Key Pair Name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> str:
+        return pulumi.get(self, "key_pair_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The Resource Group Id.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tags.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetEcsKeyPairsKeyPairInstanceResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: str,
+                 description: str,
+                 image_id: str,
+                 instance_id: str,
+                 instance_name: str,
+                 instance_type: str,
+                 key_name: str,
+                 private_ip: str,
+                 public_ip: str,
+                 region_id: str,
+                 status: str,
+                 vswitch_id: str):
+        """
+        :param str availability_zone: The ID of the availability zone where the ECS instance is located.
+        :param str instance_id: The ID of the ECS instance.
+        :param str instance_name: The name of the ECS instance.
+        :param str key_name: The Key Pair Name.
+        :param str private_ip: The private IP address of the ECS instance.
+        :param str public_ip: The public IP address or EIP of the ECS instance.
+        :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        """
+        The ID of the availability zone where the ECS instance is located.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the ECS instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of the ECS instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> str:
+        """
+        The Key Pair Name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> str:
+        """
+        The private IP address of the ECS instance.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> str:
+        """
+        The public IP address or EIP of the ECS instance.
+        """
+        return pulumi.get(self, "public_ip")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the VSwitch attached to the ECS instance.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetEcsKeyPairsPairResult(dict):
+    def __init__(__self__, *,
+                 finger_print: str,
+                 id: str,
+                 instances: Sequence['outputs.GetEcsKeyPairsPairInstanceResult'],
+                 key_name: str,
+                 key_pair_name: str,
+                 resource_group_id: str,
+                 tags: Mapping[str, Any]):
+        """
+        :param str finger_print: The finger print of the key pair.
+        :param str id: The ID of the Key Pair.
+        :param Sequence['GetEcsKeyPairsPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
+        :param str key_name: The Key Pair Name.
+        :param str resource_group_id: The Resource Group Id.
+        :param Mapping[str, Any] tags: The tags.
+        """
+        pulumi.set(__self__, "finger_print", finger_print)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="fingerPrint")
+    def finger_print(self) -> str:
+        """
+        The finger print of the key pair.
+        """
+        return pulumi.get(self, "finger_print")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Key Pair.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def instances(self) -> Sequence['outputs.GetEcsKeyPairsPairInstanceResult']:
+        """
+        A list of ECS instances that has been bound this key pair.
+        """
+        return pulumi.get(self, "instances")
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> str:
+        """
+        The Key Pair Name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> str:
+        return pulumi.get(self, "key_pair_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The Resource Group Id.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tags.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetEcsKeyPairsPairInstanceResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: str,
+                 description: str,
+                 image_id: str,
+                 instance_id: str,
+                 instance_name: str,
+                 instance_type: str,
+                 key_name: str,
+                 private_ip: str,
+                 public_ip: str,
+                 region_id: str,
+                 status: str,
+                 vswitch_id: str):
+        """
+        :param str availability_zone: The ID of the availability zone where the ECS instance is located.
+        :param str instance_id: The ID of the ECS instance.
+        :param str instance_name: The name of the ECS instance.
+        :param str key_name: The Key Pair Name.
+        :param str private_ip: The private IP address of the ECS instance.
+        :param str public_ip: The public IP address or EIP of the ECS instance.
+        :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        """
+        The ID of the availability zone where the ECS instance is located.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the ECS instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of the ECS instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> str:
+        """
+        The Key Pair Name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> str:
+        """
+        The private IP address of the ECS instance.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> str:
+        """
+        The public IP address or EIP of the ECS instance.
+        """
+        return pulumi.get(self, "public_ip")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the VSwitch attached to the ECS instance.
+        """
+        return pulumi.get(self, "vswitch_id")
 
 
 @pulumi.output_type
@@ -3772,8 +4176,9 @@ class GetKeyPairsKeyPairResult(dict):
                  id: str,
                  instances: Sequence['outputs.GetKeyPairsKeyPairInstanceResult'],
                  key_name: str,
+                 key_pair_name: str,
                  resource_group_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Mapping[str, Any]):
         """
         :param str finger_print: A finger print used to retrieve specified key pair.
         :param str id: ID of the key pair.
@@ -3786,9 +4191,9 @@ class GetKeyPairsKeyPairResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instances", instances)
         pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
         pulumi.set(__self__, "resource_group_id", resource_group_id)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -3823,6 +4228,11 @@ class GetKeyPairsKeyPairResult(dict):
         return pulumi.get(self, "key_name")
 
     @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> str:
+        return pulumi.get(self, "key_pair_name")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> str:
         """
@@ -3832,7 +4242,7 @@ class GetKeyPairsKeyPairResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Mapping[str, Any]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -3841,6 +4251,205 @@ class GetKeyPairsKeyPairResult(dict):
 
 @pulumi.output_type
 class GetKeyPairsKeyPairInstanceResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: str,
+                 description: str,
+                 image_id: str,
+                 instance_id: str,
+                 instance_name: str,
+                 instance_type: str,
+                 key_name: str,
+                 private_ip: str,
+                 public_ip: str,
+                 region_id: str,
+                 status: str,
+                 vswitch_id: str):
+        """
+        :param str availability_zone: The ID of the availability zone where the ECS instance is located.
+        :param str instance_id: The ID of the ECS instance.
+        :param str instance_name: The name of the ECS instance.
+        :param str key_name: Name of the key pair.
+        :param str private_ip: The private IP address of the ECS instance.
+        :param str public_ip: The public IP address or EIP of the ECS instance.
+        :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        """
+        The ID of the availability zone where the ECS instance is located.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the ECS instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of the ECS instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> str:
+        """
+        Name of the key pair.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> str:
+        """
+        The private IP address of the ECS instance.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> str:
+        """
+        The public IP address or EIP of the ECS instance.
+        """
+        return pulumi.get(self, "public_ip")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the VSwitch attached to the ECS instance.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetKeyPairsPairResult(dict):
+    def __init__(__self__, *,
+                 finger_print: str,
+                 id: str,
+                 instances: Sequence['outputs.GetKeyPairsPairInstanceResult'],
+                 key_name: str,
+                 key_pair_name: str,
+                 resource_group_id: str,
+                 tags: Mapping[str, Any]):
+        """
+        :param str finger_print: A finger print used to retrieve specified key pair.
+        :param str id: ID of the key pair.
+        :param Sequence['GetKeyPairsPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
+        :param str key_name: Name of the key pair.
+        :param str resource_group_id: The Id of resource group which the key pair belongs.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "finger_print", finger_print)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="fingerPrint")
+    def finger_print(self) -> str:
+        """
+        A finger print used to retrieve specified key pair.
+        """
+        return pulumi.get(self, "finger_print")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the key pair.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def instances(self) -> Sequence['outputs.GetKeyPairsPairInstanceResult']:
+        """
+        A list of ECS instances that has been bound this key pair.
+        """
+        return pulumi.get(self, "instances")
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> str:
+        """
+        Name of the key pair.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> str:
+        return pulumi.get(self, "key_pair_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The Id of resource group which the key pair belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetKeyPairsPairInstanceResult(dict):
     def __init__(__self__, *,
                  availability_zone: str,
                  description: str,

@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Name of the key pair.
         /// </summary>
         public readonly string KeyName;
+        public readonly string KeyPairName;
         /// <summary>
         /// The Id of resource group which the key pair belongs.
         /// </summary>
@@ -36,7 +37,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, object> Tags;
 
         [OutputConstructor]
         private GetKeyPairsKeyPairResult(
@@ -48,14 +49,17 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string keyName,
 
+            string keyPairName,
+
             string resourceGroupId,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, object> tags)
         {
             FingerPrint = fingerPrint;
             Id = id;
             Instances = instances;
             KeyName = keyName;
+            KeyPairName = keyPairName;
             ResourceGroupId = resourceGroupId;
             Tags = tags;
         }

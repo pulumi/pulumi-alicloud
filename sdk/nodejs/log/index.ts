@@ -13,6 +13,7 @@ export * from "./getService";
 export * from "./logTailAttachment";
 export * from "./logTailConfig";
 export * from "./machineGroup";
+export * from "./ossShipper";
 export * from "./project";
 export * from "./store";
 export * from "./storeIndex";
@@ -25,6 +26,7 @@ import { Etl } from "./etl";
 import { LogTailAttachment } from "./logTailAttachment";
 import { LogTailConfig } from "./logTailConfig";
 import { MachineGroup } from "./machineGroup";
+import { OssShipper } from "./ossShipper";
 import { Project } from "./project";
 import { Store } from "./store";
 import { StoreIndex } from "./storeIndex";
@@ -47,6 +49,8 @@ const _module = {
                 return new LogTailConfig(name, <any>undefined, { urn })
             case "alicloud:log/machineGroup:MachineGroup":
                 return new MachineGroup(name, <any>undefined, { urn })
+            case "alicloud:log/ossShipper:OssShipper":
+                return new OssShipper(name, <any>undefined, { urn })
             case "alicloud:log/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "alicloud:log/store:Store":
@@ -65,6 +69,7 @@ pulumi.runtime.registerResourceModule("alicloud", "log/etl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/logTailAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/logTailConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/machineGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "log/ossShipper", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/project", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/store", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/storeIndex", _module)

@@ -10,26 +10,54 @@ from .. import _utilities, _tables
 
 __all__ = [
     'GetClustersClusterResult',
+    'GetDbClustersClusterResult',
     'GetZonesZoneResult',
 ]
 
 @pulumi.output_type
 class GetClustersClusterResult(dict):
     def __init__(__self__, *,
+                 auto_renew_period: int,
                  charge_type: str,
+                 commodity_code: str,
+                 compute_resource: str,
+                 connection_string: str,
                  create_time: str,
+                 db_cluster_category: str,
+                 db_cluster_id: str,
+                 db_cluster_network_type: str,
+                 db_cluster_type: str,
+                 db_cluster_version: str,
                  db_node_class: str,
                  db_node_count: int,
                  db_node_storage: int,
                  description: str,
+                 disk_type: str,
+                 dts_job_id: str,
+                 elastic_io_resource: int,
+                 engine: str,
+                 engine_version: str,
+                 executor_count: str,
                  expire_time: str,
                  expired: str,
                  id: str,
                  lock_mode: str,
+                 lock_reason: str,
+                 maintain_time: str,
                  network_type: str,
+                 payment_type: str,
+                 port: int,
+                 rds_instance_id: str,
                  region_id: str,
+                 renewal_status: str,
+                 resource_group_id: str,
+                 security_ips: Sequence[str],
                  status: str,
+                 storage_resource: str,
+                 tags: Mapping[str, Any],
+                 vpc_cloud_instance_id: str,
                  vpc_id: str,
+                 vswitch_id: str,
                  zone_id: str):
         """
         :param str charge_type: Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
@@ -45,24 +73,59 @@ class GetClustersClusterResult(dict):
         :param str network_type: The DBClusterNetworkType of the ADB cluster.
         :param str region_id: Region ID the cluster belongs to.
         :param str status: The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param str vpc_id: ID of the VPC the cluster belongs to.
         :param str zone_id: The ZoneId of the ADB cluster.
         """
+        pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         pulumi.set(__self__, "charge_type", charge_type)
+        pulumi.set(__self__, "commodity_code", commodity_code)
+        pulumi.set(__self__, "compute_resource", compute_resource)
+        pulumi.set(__self__, "connection_string", connection_string)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_cluster_category", db_cluster_category)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
+        pulumi.set(__self__, "db_cluster_type", db_cluster_type)
+        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
         pulumi.set(__self__, "db_node_class", db_node_class)
         pulumi.set(__self__, "db_node_count", db_node_count)
         pulumi.set(__self__, "db_node_storage", db_node_storage)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "dts_job_id", dts_job_id)
+        pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "executor_count", executor_count)
         pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "expired", expired)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "lock_mode", lock_mode)
+        pulumi.set(__self__, "lock_reason", lock_reason)
+        pulumi.set(__self__, "maintain_time", maintain_time)
         pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "rds_instance_id", rds_instance_id)
         pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "renewal_status", renewal_status)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_ips", security_ips)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_resource", storage_resource)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> int:
+        return pulumi.get(self, "auto_renew_period")
 
     @property
     @pulumi.getter(name="chargeType")
@@ -73,12 +136,52 @@ class GetClustersClusterResult(dict):
         return pulumi.get(self, "charge_type")
 
     @property
+    @pulumi.getter(name="commodityCode")
+    def commodity_code(self) -> str:
+        return pulumi.get(self, "commodity_code")
+
+    @property
+    @pulumi.getter(name="computeResource")
+    def compute_resource(self) -> str:
+        return pulumi.get(self, "compute_resource")
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> str:
+        return pulumi.get(self, "connection_string")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
         The CreateTime of the ADB cluster.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dbClusterCategory")
+    def db_cluster_category(self) -> str:
+        return pulumi.get(self, "db_cluster_category")
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> str:
+        return pulumi.get(self, "db_cluster_id")
+
+    @property
+    @pulumi.getter(name="dbClusterNetworkType")
+    def db_cluster_network_type(self) -> str:
+        return pulumi.get(self, "db_cluster_network_type")
+
+    @property
+    @pulumi.getter(name="dbClusterType")
+    def db_cluster_type(self) -> str:
+        return pulumi.get(self, "db_cluster_type")
+
+    @property
+    @pulumi.getter(name="dbClusterVersion")
+    def db_cluster_version(self) -> str:
+        return pulumi.get(self, "db_cluster_version")
 
     @property
     @pulumi.getter(name="dbNodeClass")
@@ -113,6 +216,36 @@ class GetClustersClusterResult(dict):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="dtsJobId")
+    def dts_job_id(self) -> str:
+        return pulumi.get(self, "dts_job_id")
+
+    @property
+    @pulumi.getter(name="elasticIoResource")
+    def elastic_io_resource(self) -> int:
+        return pulumi.get(self, "elastic_io_resource")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> str:
+        return pulumi.get(self, "engine_version")
+
+    @property
+    @pulumi.getter(name="executorCount")
+    def executor_count(self) -> str:
+        return pulumi.get(self, "executor_count")
+
+    @property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> str:
         """
@@ -145,12 +278,37 @@ class GetClustersClusterResult(dict):
         return pulumi.get(self, "lock_mode")
 
     @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> str:
+        return pulumi.get(self, "lock_reason")
+
+    @property
+    @pulumi.getter(name="maintainTime")
+    def maintain_time(self) -> str:
+        return pulumi.get(self, "maintain_time")
+
+    @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> str:
         """
         The DBClusterNetworkType of the ADB cluster.
         """
         return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="rdsInstanceId")
+    def rds_instance_id(self) -> str:
+        return pulumi.get(self, "rds_instance_id")
 
     @property
     @pulumi.getter(name="regionId")
@@ -161,12 +319,47 @@ class GetClustersClusterResult(dict):
         return pulumi.get(self, "region_id")
 
     @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> str:
+        return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> Sequence[str]:
+        return pulumi.get(self, "security_ips")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
         The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageResource")
+    def storage_resource(self) -> str:
+        return pulumi.get(self, "storage_resource")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcCloudInstanceId")
+    def vpc_cloud_instance_id(self) -> str:
+        return pulumi.get(self, "vpc_cloud_instance_id")
 
     @property
     @pulumi.getter(name="vpcId")
@@ -177,10 +370,476 @@ class GetClustersClusterResult(dict):
         return pulumi.get(self, "vpc_id")
 
     @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        return pulumi.get(self, "vswitch_id")
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
         The ZoneId of the ADB cluster.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetDbClustersClusterResult(dict):
+    def __init__(__self__, *,
+                 auto_renew_period: int,
+                 charge_type: str,
+                 commodity_code: str,
+                 compute_resource: str,
+                 connection_string: str,
+                 create_time: str,
+                 db_cluster_category: str,
+                 db_cluster_id: str,
+                 db_cluster_network_type: str,
+                 db_cluster_type: str,
+                 db_cluster_version: str,
+                 db_node_class: str,
+                 db_node_count: int,
+                 db_node_storage: int,
+                 description: str,
+                 disk_type: str,
+                 dts_job_id: str,
+                 elastic_io_resource: int,
+                 engine: str,
+                 engine_version: str,
+                 executor_count: str,
+                 expire_time: str,
+                 expired: str,
+                 id: str,
+                 lock_mode: str,
+                 lock_reason: str,
+                 maintain_time: str,
+                 network_type: str,
+                 payment_type: str,
+                 port: int,
+                 rds_instance_id: str,
+                 region_id: str,
+                 renewal_status: str,
+                 resource_group_id: str,
+                 security_ips: Sequence[str],
+                 status: str,
+                 storage_resource: str,
+                 tags: Mapping[str, Any],
+                 vpc_cloud_instance_id: str,
+                 vpc_id: str,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param int auto_renew_period: Auto-renewal period of an cluster, in the unit of the month.
+        :param str charge_type: The payment type of the resource.
+        :param str commodity_code: The name of the service.
+        :param str compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+        :param str connection_string: The endpoint of the cluster.
+        :param str create_time: The CreateTime of the ADB cluster.
+        :param str db_cluster_category: The db cluster category.
+        :param str db_cluster_id: The db cluster id.
+        :param str db_cluster_network_type: The db cluster network type.
+        :param str db_cluster_type: The db cluster type.
+        :param str db_cluster_version: The db cluster version.
+        :param str db_node_class: The db node class.
+        :param int db_node_count: The db node count.
+        :param int db_node_storage: The db node storage.
+        :param str description: The description of DBCluster.
+        :param str disk_type: The type of the disk.
+        :param str dts_job_id: The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
+        :param int elastic_io_resource: The elastic io resource.
+        :param str engine: The engine of the database.
+        :param str engine_version: The engine version of the database..
+        :param str executor_count: The number of nodes. The node resources are used for data computing in elastic mode.
+        :param str expire_time: The time when the cluster expires.
+        :param str expired: Indicates whether the cluster has expired.
+        :param str id: The ID of the DBCluster.
+        :param str lock_mode: The lock mode of the cluster.
+        :param str lock_reason: The reason why the cluster is locked.
+        :param str maintain_time: The maintenance window of the cluster.
+        :param str payment_type: The payment type of the resource.
+        :param int port: The port that is used to access the cluster.
+        :param str rds_instance_id: The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
+        :param str renewal_status: The status of renewal.
+        :param str resource_group_id: The ID of the resource group.
+        :param Sequence[str] security_ips: List of IP addresses allowed to access all databases of an cluster.
+        :param str status: The status of the resource.
+        :param str storage_resource: The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+        :param Mapping[str, Any] tags: The tag of the resource.
+        :param str vpc_cloud_instance_id: The vpc cloud instance id.
+        :param str vpc_id: The vpc id.
+        :param str vswitch_id: The vswitch id.
+        :param str zone_id: The zone ID  of the resource.
+        """
+        pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        pulumi.set(__self__, "charge_type", charge_type)
+        pulumi.set(__self__, "commodity_code", commodity_code)
+        pulumi.set(__self__, "compute_resource", compute_resource)
+        pulumi.set(__self__, "connection_string", connection_string)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_cluster_category", db_cluster_category)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
+        pulumi.set(__self__, "db_cluster_type", db_cluster_type)
+        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+        pulumi.set(__self__, "db_node_class", db_node_class)
+        pulumi.set(__self__, "db_node_count", db_node_count)
+        pulumi.set(__self__, "db_node_storage", db_node_storage)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "dts_job_id", dts_job_id)
+        pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "executor_count", executor_count)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lock_mode", lock_mode)
+        pulumi.set(__self__, "lock_reason", lock_reason)
+        pulumi.set(__self__, "maintain_time", maintain_time)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "rds_instance_id", rds_instance_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "renewal_status", renewal_status)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_ips", security_ips)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_resource", storage_resource)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> int:
+        """
+        Auto-renewal period of an cluster, in the unit of the month.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="chargeType")
+    def charge_type(self) -> str:
+        """
+        The payment type of the resource.
+        """
+        return pulumi.get(self, "charge_type")
+
+    @property
+    @pulumi.getter(name="commodityCode")
+    def commodity_code(self) -> str:
+        """
+        The name of the service.
+        """
+        return pulumi.get(self, "commodity_code")
+
+    @property
+    @pulumi.getter(name="computeResource")
+    def compute_resource(self) -> str:
+        """
+        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+        """
+        return pulumi.get(self, "compute_resource")
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> str:
+        """
+        The endpoint of the cluster.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The CreateTime of the ADB cluster.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dbClusterCategory")
+    def db_cluster_category(self) -> str:
+        """
+        The db cluster category.
+        """
+        return pulumi.get(self, "db_cluster_category")
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> str:
+        """
+        The db cluster id.
+        """
+        return pulumi.get(self, "db_cluster_id")
+
+    @property
+    @pulumi.getter(name="dbClusterNetworkType")
+    def db_cluster_network_type(self) -> str:
+        """
+        The db cluster network type.
+        """
+        return pulumi.get(self, "db_cluster_network_type")
+
+    @property
+    @pulumi.getter(name="dbClusterType")
+    def db_cluster_type(self) -> str:
+        """
+        The db cluster type.
+        """
+        return pulumi.get(self, "db_cluster_type")
+
+    @property
+    @pulumi.getter(name="dbClusterVersion")
+    def db_cluster_version(self) -> str:
+        """
+        The db cluster version.
+        """
+        return pulumi.get(self, "db_cluster_version")
+
+    @property
+    @pulumi.getter(name="dbNodeClass")
+    def db_node_class(self) -> str:
+        """
+        The db node class.
+        """
+        return pulumi.get(self, "db_node_class")
+
+    @property
+    @pulumi.getter(name="dbNodeCount")
+    def db_node_count(self) -> int:
+        """
+        The db node count.
+        """
+        return pulumi.get(self, "db_node_count")
+
+    @property
+    @pulumi.getter(name="dbNodeStorage")
+    def db_node_storage(self) -> int:
+        """
+        The db node storage.
+        """
+        return pulumi.get(self, "db_node_storage")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of DBCluster.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        The type of the disk.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="dtsJobId")
+    def dts_job_id(self) -> str:
+        """
+        The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
+        """
+        return pulumi.get(self, "dts_job_id")
+
+    @property
+    @pulumi.getter(name="elasticIoResource")
+    def elastic_io_resource(self) -> int:
+        """
+        The elastic io resource.
+        """
+        return pulumi.get(self, "elastic_io_resource")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        """
+        The engine of the database.
+        """
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> str:
+        """
+        The engine version of the database..
+        """
+        return pulumi.get(self, "engine_version")
+
+    @property
+    @pulumi.getter(name="executorCount")
+    def executor_count(self) -> str:
+        """
+        The number of nodes. The node resources are used for data computing in elastic mode.
+        """
+        return pulumi.get(self, "executor_count")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        The time when the cluster expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def expired(self) -> str:
+        """
+        Indicates whether the cluster has expired.
+        """
+        return pulumi.get(self, "expired")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the DBCluster.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lockMode")
+    def lock_mode(self) -> str:
+        """
+        The lock mode of the cluster.
+        """
+        return pulumi.get(self, "lock_mode")
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> str:
+        """
+        The reason why the cluster is locked.
+        """
+        return pulumi.get(self, "lock_reason")
+
+    @property
+    @pulumi.getter(name="maintainTime")
+    def maintain_time(self) -> str:
+        """
+        The maintenance window of the cluster.
+        """
+        return pulumi.get(self, "maintain_time")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the resource.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port that is used to access the cluster.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="rdsInstanceId")
+    def rds_instance_id(self) -> str:
+        """
+        The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
+        """
+        return pulumi.get(self, "rds_instance_id")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> str:
+        """
+        The status of renewal.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> Sequence[str]:
+        """
+        List of IP addresses allowed to access all databases of an cluster.
+        """
+        return pulumi.get(self, "security_ips")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageResource")
+    def storage_resource(self) -> str:
+        """
+        The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+        """
+        return pulumi.get(self, "storage_resource")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcCloudInstanceId")
+    def vpc_cloud_instance_id(self) -> str:
+        """
+        The vpc cloud instance id.
+        """
+        return pulumi.get(self, "vpc_cloud_instance_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The vpc id.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID  of the resource.
         """
         return pulumi.get(self, "zone_id")
 

@@ -10,40 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a key pair resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var basic = new AliCloud.Ecs.KeyPair("basic", new AliCloud.Ecs.KeyPairArgs
-    ///         {
-    ///             KeyName = "terraform-test-key-pair",
-    ///         });
-    ///         // Using name prefix to build key pair
-    ///         var prefix = new AliCloud.Ecs.KeyPair("prefix", new AliCloud.Ecs.KeyPairArgs
-    ///         {
-    ///             KeyNamePrefix = "terraform-test-key-pair-prefix",
-    ///         });
-    ///         // Import an existing public key to build a alicloud key pair
-    ///         var publickey = new AliCloud.Ecs.KeyPair("publickey", new AliCloud.Ecs.KeyPairArgs
-    ///         {
-    ///             KeyName = "my_public_key",
-    ///             PublicKey = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Key pair can be imported using the name, e.g.
@@ -72,6 +38,9 @@ namespace Pulumi.AliCloud.Ecs
 
         [Output("keyNamePrefix")]
         public Output<string?> KeyNamePrefix { get; private set; } = null!;
+
+        [Output("keyPairName")]
+        public Output<string> KeyPairName { get; private set; } = null!;
 
         /// <summary>
         /// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
@@ -149,6 +118,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyNamePrefix")]
         public Input<string>? KeyNamePrefix { get; set; }
 
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
+
         /// <summary>
         /// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         /// </summary>
@@ -193,6 +165,9 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("keyNamePrefix")]
         public Input<string>? KeyNamePrefix { get; set; }
+
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
         /// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.

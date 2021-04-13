@@ -11,78 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a ADB cluster resource. A ADB cluster is an isolated database
-// environment in the cloud. A ADB cluster can contain multiple user-created
-// databases.
-//
-// > **NOTE:** Available in v1.71.0+.
-//
-// ## Example Usage
-// ### Create a ADB MySQL cluster
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/adb"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "adbClusterconfig"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		creation := "ADB"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:            defaultNetwork.ID(),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName:      pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = adb.NewCluster(ctx, "defaultCluster", &adb.ClusterArgs{
-// 			DbClusterVersion:  pulumi.String("3.0"),
-// 			DbClusterCategory: pulumi.String("Cluster"),
-// 			DbNodeClass:       pulumi.String("C8"),
-// 			DbNodeCount:       pulumi.Int(2),
-// 			DbNodeStorage:     pulumi.Int(200),
-// 			PayType:           pulumi.String("PostPaid"),
-// 			Description:       pulumi.String(name),
-// 			VswitchId:         defaultSwitch.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // ADB cluster can be imported using the id, e.g.
@@ -94,37 +22,45 @@ type Cluster struct {
 	pulumi.CustomResourceState
 
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
+	AutoRenewPeriod pulumi.IntPtrOutput    `pulumi:"autoRenewPeriod"`
+	ComputeResource pulumi.StringPtrOutput `pulumi:"computeResource"`
 	// (Available in 1.93.0+) The connection string of the ADB cluster.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// Cluster category. Value options: `Basic`, `Cluster`.
-	DbClusterCategory pulumi.StringOutput `pulumi:"dbClusterCategory"`
+	DbClusterCategory pulumi.StringOutput    `pulumi:"dbClusterCategory"`
+	DbClusterClass    pulumi.StringPtrOutput `pulumi:"dbClusterClass"`
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion pulumi.StringPtrOutput `pulumi:"dbClusterVersion"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
 	// The dbNodeCount of cluster node.
-	DbNodeCount pulumi.IntOutput `pulumi:"dbNodeCount"`
+	DbNodeCount pulumi.IntPtrOutput `pulumi:"dbNodeCount"`
 	// The dbNodeStorage of cluster node.
-	DbNodeStorage pulumi.IntOutput `pulumi:"dbNodeStorage"`
+	DbNodeStorage pulumi.IntPtrOutput `pulumi:"dbNodeStorage"`
 	// The description of cluster.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description       pulumi.StringOutput `pulumi:"description"`
+	ElasticIoResource pulumi.IntPtrOutput `pulumi:"elasticIoResource"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
-	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
+	MaintainTime pulumi.StringOutput    `pulumi:"maintainTime"`
+	Mode         pulumi.StringPtrOutput `pulumi:"mode"`
+	ModifyType   pulumi.StringPtrOutput `pulumi:"modifyType"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-	PayType pulumi.StringPtrOutput `pulumi:"payType"`
+	PayType     pulumi.StringOutput `pulumi:"payType"`
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
-	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
+	RenewalStatus   pulumi.StringPtrOutput `pulumi:"renewalStatus"`
+	ResourceGroupId pulumi.StringOutput    `pulumi:"resourceGroupId"`
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
+	Status      pulumi.StringOutput      `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The virtual switch ID to launch DB instances in one VPC.
-	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
+	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -138,18 +74,6 @@ func NewCluster(ctx *pulumi.Context,
 
 	if args.DbClusterCategory == nil {
 		return nil, errors.New("invalid value for required argument 'DbClusterCategory'")
-	}
-	if args.DbNodeClass == nil {
-		return nil, errors.New("invalid value for required argument 'DbNodeClass'")
-	}
-	if args.DbNodeCount == nil {
-		return nil, errors.New("invalid value for required argument 'DbNodeCount'")
-	}
-	if args.DbNodeStorage == nil {
-		return nil, errors.New("invalid value for required argument 'DbNodeStorage'")
-	}
-	if args.VswitchId == nil {
-		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("alicloud:adb/cluster:Cluster", name, args, &resource, opts...)
@@ -174,11 +98,13 @@ func GetCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	AutoRenewPeriod *int    `pulumi:"autoRenewPeriod"`
+	ComputeResource *string `pulumi:"computeResource"`
 	// (Available in 1.93.0+) The connection string of the ADB cluster.
 	ConnectionString *string `pulumi:"connectionString"`
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory *string `pulumi:"dbClusterCategory"`
+	DbClusterClass    *string `pulumi:"dbClusterClass"`
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// The dbNodeClass of cluster node.
@@ -188,17 +114,23 @@ type clusterState struct {
 	// The dbNodeStorage of cluster node.
 	DbNodeStorage *int `pulumi:"dbNodeStorage"`
 	// The description of cluster.
-	Description *string `pulumi:"description"`
+	Description       *string `pulumi:"description"`
+	ElasticIoResource *int    `pulumi:"elasticIoResource"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
+	Mode         *string `pulumi:"mode"`
+	ModifyType   *string `pulumi:"modifyType"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-	PayType *string `pulumi:"payType"`
+	PayType     *string `pulumi:"payType"`
+	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period *int `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
-	RenewalStatus *string `pulumi:"renewalStatus"`
+	RenewalStatus   *string `pulumi:"renewalStatus"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
+	Status      *string  `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -212,10 +144,12 @@ type clusterState struct {
 type ClusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
+	ComputeResource pulumi.StringPtrInput
 	// (Available in 1.93.0+) The connection string of the ADB cluster.
 	ConnectionString pulumi.StringPtrInput
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory pulumi.StringPtrInput
+	DbClusterClass    pulumi.StringPtrInput
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
@@ -225,17 +159,23 @@ type ClusterState struct {
 	// The dbNodeStorage of cluster node.
 	DbNodeStorage pulumi.IntPtrInput
 	// The description of cluster.
-	Description pulumi.StringPtrInput
+	Description       pulumi.StringPtrInput
+	ElasticIoResource pulumi.IntPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
+	Mode         pulumi.StringPtrInput
+	ModifyType   pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-	PayType pulumi.StringPtrInput
+	PayType     pulumi.StringPtrInput
+	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
-	RenewalStatus pulumi.StringPtrInput
+	RenewalStatus   pulumi.StringPtrInput
+	ResourceGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
+	Status      pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -252,27 +192,34 @@ func (ClusterState) ElementType() reflect.Type {
 
 type clusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	AutoRenewPeriod *int    `pulumi:"autoRenewPeriod"`
+	ComputeResource *string `pulumi:"computeResource"`
 	// Cluster category. Value options: `Basic`, `Cluster`.
-	DbClusterCategory string `pulumi:"dbClusterCategory"`
+	DbClusterCategory string  `pulumi:"dbClusterCategory"`
+	DbClusterClass    *string `pulumi:"dbClusterClass"`
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// The dbNodeClass of cluster node.
-	DbNodeClass string `pulumi:"dbNodeClass"`
+	DbNodeClass *string `pulumi:"dbNodeClass"`
 	// The dbNodeCount of cluster node.
-	DbNodeCount int `pulumi:"dbNodeCount"`
+	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// The dbNodeStorage of cluster node.
-	DbNodeStorage int `pulumi:"dbNodeStorage"`
+	DbNodeStorage *int `pulumi:"dbNodeStorage"`
 	// The description of cluster.
-	Description *string `pulumi:"description"`
+	Description       *string `pulumi:"description"`
+	ElasticIoResource *int    `pulumi:"elasticIoResource"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
+	Mode         *string `pulumi:"mode"`
+	ModifyType   *string `pulumi:"modifyType"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-	PayType *string `pulumi:"payType"`
+	PayType     *string `pulumi:"payType"`
+	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period *int `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
-	RenewalStatus *string `pulumi:"renewalStatus"`
+	RenewalStatus   *string `pulumi:"renewalStatus"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
 	// A mapping of tags to assign to the resource.
@@ -280,7 +227,7 @@ type clusterArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The virtual switch ID to launch DB instances in one VPC.
-	VswitchId string `pulumi:"vswitchId"`
+	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -289,26 +236,33 @@ type clusterArgs struct {
 type ClusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
+	ComputeResource pulumi.StringPtrInput
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory pulumi.StringInput
+	DbClusterClass    pulumi.StringPtrInput
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
-	DbNodeClass pulumi.StringInput
+	DbNodeClass pulumi.StringPtrInput
 	// The dbNodeCount of cluster node.
-	DbNodeCount pulumi.IntInput
+	DbNodeCount pulumi.IntPtrInput
 	// The dbNodeStorage of cluster node.
-	DbNodeStorage pulumi.IntInput
+	DbNodeStorage pulumi.IntPtrInput
 	// The description of cluster.
-	Description pulumi.StringPtrInput
+	Description       pulumi.StringPtrInput
+	ElasticIoResource pulumi.IntPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
+	Mode         pulumi.StringPtrInput
+	ModifyType   pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-	PayType pulumi.StringPtrInput
+	PayType     pulumi.StringPtrInput
+	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
-	RenewalStatus pulumi.StringPtrInput
+	RenewalStatus   pulumi.StringPtrInput
+	ResourceGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
@@ -316,7 +270,7 @@ type ClusterArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
 	// The virtual switch ID to launch DB instances in one VPC.
-	VswitchId pulumi.StringInput
+	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB cluster.
 	ZoneId pulumi.StringPtrInput
 }

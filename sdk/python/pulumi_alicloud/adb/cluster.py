@@ -14,29 +14,35 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  db_cluster_category: pulumi.Input[str],
-                 db_node_class: pulumi.Input[str],
-                 db_node_count: pulumi.Input[int],
-                 db_node_storage: pulumi.Input[int],
-                 vswitch_id: pulumi.Input[str],
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 compute_resource: Optional[pulumi.Input[str]] = None,
+                 db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
+                 db_node_class: Optional[pulumi.Input[str]] = None,
+                 db_node_count: Optional[pulumi.Input[int]] = None,
+                 db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 modify_type: Optional[pulumi.Input[str]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
         :param pulumi.Input[int] db_node_count: The db_node_count of cluster node.
         :param pulumi.Input[int] db_node_storage: The db_node_storage of cluster node.
-        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
-        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-        :param pulumi.Input[str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
@@ -46,31 +52,50 @@ class ClusterArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster.
         """
         pulumi.set(__self__, "db_cluster_category", db_cluster_category)
-        pulumi.set(__self__, "db_node_class", db_node_class)
-        pulumi.set(__self__, "db_node_count", db_node_count)
-        pulumi.set(__self__, "db_node_storage", db_node_storage)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if compute_resource is not None:
+            pulumi.set(__self__, "compute_resource", compute_resource)
+        if db_cluster_class is not None:
+            pulumi.set(__self__, "db_cluster_class", db_cluster_class)
         if db_cluster_version is not None:
             pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+        if db_node_class is not None:
+            pulumi.set(__self__, "db_node_class", db_node_class)
+        if db_node_count is not None:
+            pulumi.set(__self__, "db_node_count", db_node_count)
+        if db_node_storage is not None:
+            pulumi.set(__self__, "db_node_storage", db_node_storage)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if elastic_io_resource is not None:
+            pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if modify_type is not None:
+            pulumi.set(__self__, "modify_type", modify_type)
         if pay_type is not None:
             pulumi.set(__self__, "pay_type", pay_type)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -87,54 +112,6 @@ class ClusterArgs:
         pulumi.set(self, "db_cluster_category", value)
 
     @property
-    @pulumi.getter(name="dbNodeClass")
-    def db_node_class(self) -> pulumi.Input[str]:
-        """
-        The db_node_class of cluster node.
-        """
-        return pulumi.get(self, "db_node_class")
-
-    @db_node_class.setter
-    def db_node_class(self, value: pulumi.Input[str]):
-        pulumi.set(self, "db_node_class", value)
-
-    @property
-    @pulumi.getter(name="dbNodeCount")
-    def db_node_count(self) -> pulumi.Input[int]:
-        """
-        The db_node_count of cluster node.
-        """
-        return pulumi.get(self, "db_node_count")
-
-    @db_node_count.setter
-    def db_node_count(self, value: pulumi.Input[int]):
-        pulumi.set(self, "db_node_count", value)
-
-    @property
-    @pulumi.getter(name="dbNodeStorage")
-    def db_node_storage(self) -> pulumi.Input[int]:
-        """
-        The db_node_storage of cluster node.
-        """
-        return pulumi.get(self, "db_node_storage")
-
-    @db_node_storage.setter
-    def db_node_storage(self, value: pulumi.Input[int]):
-        pulumi.set(self, "db_node_storage", value)
-
-    @property
-    @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> pulumi.Input[str]:
-        """
-        The virtual switch ID to launch DB instances in one VPC.
-        """
-        return pulumi.get(self, "vswitch_id")
-
-    @vswitch_id.setter
-    def vswitch_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "vswitch_id", value)
-
-    @property
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -145,6 +122,24 @@ class ClusterArgs:
     @auto_renew_period.setter
     def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="computeResource")
+    def compute_resource(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "compute_resource")
+
+    @compute_resource.setter
+    def compute_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compute_resource", value)
+
+    @property
+    @pulumi.getter(name="dbClusterClass")
+    def db_cluster_class(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "db_cluster_class")
+
+    @db_cluster_class.setter
+    def db_cluster_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_class", value)
 
     @property
     @pulumi.getter(name="dbClusterVersion")
@@ -159,6 +154,42 @@ class ClusterArgs:
         pulumi.set(self, "db_cluster_version", value)
 
     @property
+    @pulumi.getter(name="dbNodeClass")
+    def db_node_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The db_node_class of cluster node.
+        """
+        return pulumi.get(self, "db_node_class")
+
+    @db_node_class.setter
+    def db_node_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_node_class", value)
+
+    @property
+    @pulumi.getter(name="dbNodeCount")
+    def db_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The db_node_count of cluster node.
+        """
+        return pulumi.get(self, "db_node_count")
+
+    @db_node_count.setter
+    def db_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "db_node_count", value)
+
+    @property
+    @pulumi.getter(name="dbNodeStorage")
+    def db_node_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The db_node_storage of cluster node.
+        """
+        return pulumi.get(self, "db_node_storage")
+
+    @db_node_storage.setter
+    def db_node_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "db_node_storage", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -169,6 +200,15 @@ class ClusterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="elasticIoResource")
+    def elastic_io_resource(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "elastic_io_resource")
+
+    @elastic_io_resource.setter
+    def elastic_io_resource(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "elastic_io_resource", value)
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -183,6 +223,24 @@ class ClusterArgs:
         pulumi.set(self, "maintain_time", value)
 
     @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="modifyType")
+    def modify_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "modify_type")
+
+    @modify_type.setter
+    def modify_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modify_type", value)
+
+    @property
     @pulumi.getter(name="payType")
     def pay_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -193,6 +251,15 @@ class ClusterArgs:
     @pay_type.setter
     def pay_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pay_type", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
 
     @property
     @pulumi.getter
@@ -217,6 +284,15 @@ class ClusterArgs:
     @renewal_status.setter
     def renewal_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter(name="securityIps")
@@ -245,6 +321,18 @@ class ClusterArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The virtual switch ID to launch DB instances in one VPC.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -263,16 +351,23 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 compute_resource: Optional[pulumi.Input[str]] = None,
                  db_cluster_category: Optional[pulumi.Input[str]] = None,
+                 db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 modify_type: Optional[pulumi.Input[str]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -281,46 +376,6 @@ class Cluster(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a ADB cluster resource. A ADB cluster is an isolated database
-        environment in the cloud. A ADB cluster can contain multiple user-created
-        databases.
-
-        > **NOTE:** Available in v1.71.0+.
-
-        ## Example Usage
-        ### Create a ADB MySQL cluster
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "adbClusterconfig"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "ADB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_cluster = alicloud.adb.Cluster("defaultCluster",
-            db_cluster_version="3.0",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=2,
-            db_node_storage=200,
-            pay_type="PostPaid",
-            description=name,
-            vswitch_id=default_switch.id)
-        ```
-
         ## Import
 
         ADB cluster can be imported using the id, e.g.
@@ -356,46 +411,6 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ADB cluster resource. A ADB cluster is an isolated database
-        environment in the cloud. A ADB cluster can contain multiple user-created
-        databases.
-
-        > **NOTE:** Available in v1.71.0+.
-
-        ## Example Usage
-        ### Create a ADB MySQL cluster
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "adbClusterconfig"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "ADB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_cluster = alicloud.adb.Cluster("defaultCluster",
-            db_cluster_version="3.0",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=2,
-            db_node_storage=200,
-            pay_type="PostPaid",
-            description=name,
-            vswitch_id=default_switch.id)
-        ```
-
         ## Import
 
         ADB cluster can be imported using the id, e.g.
@@ -420,16 +435,23 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 compute_resource: Optional[pulumi.Input[str]] = None,
                  db_cluster_category: Optional[pulumi.Input[str]] = None,
+                 db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 modify_type: Optional[pulumi.Input[str]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -455,31 +477,31 @@ class Cluster(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['auto_renew_period'] = auto_renew_period
+            __props__['compute_resource'] = compute_resource
             if db_cluster_category is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_category'")
             __props__['db_cluster_category'] = db_cluster_category
+            __props__['db_cluster_class'] = db_cluster_class
             __props__['db_cluster_version'] = db_cluster_version
-            if db_node_class is None and not opts.urn:
-                raise TypeError("Missing required property 'db_node_class'")
             __props__['db_node_class'] = db_node_class
-            if db_node_count is None and not opts.urn:
-                raise TypeError("Missing required property 'db_node_count'")
             __props__['db_node_count'] = db_node_count
-            if db_node_storage is None and not opts.urn:
-                raise TypeError("Missing required property 'db_node_storage'")
             __props__['db_node_storage'] = db_node_storage
             __props__['description'] = description
+            __props__['elastic_io_resource'] = elastic_io_resource
             __props__['maintain_time'] = maintain_time
+            __props__['mode'] = mode
+            __props__['modify_type'] = modify_type
             __props__['pay_type'] = pay_type
+            __props__['payment_type'] = payment_type
             __props__['period'] = period
             __props__['renewal_status'] = renewal_status
+            __props__['resource_group_id'] = resource_group_id
             __props__['security_ips'] = security_ips
             __props__['tags'] = tags
-            if vswitch_id is None and not opts.urn:
-                raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
             __props__['connection_string'] = None
+            __props__['status'] = None
         super(Cluster, __self__).__init__(
             'alicloud:adb/cluster:Cluster',
             resource_name,
@@ -491,18 +513,26 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
+            compute_resource: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             db_cluster_category: Optional[pulumi.Input[str]] = None,
+            db_cluster_class: Optional[pulumi.Input[str]] = None,
             db_cluster_version: Optional[pulumi.Input[str]] = None,
             db_node_class: Optional[pulumi.Input[str]] = None,
             db_node_count: Optional[pulumi.Input[int]] = None,
             db_node_storage: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            elastic_io_resource: Optional[pulumi.Input[int]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
+            mode: Optional[pulumi.Input[str]] = None,
+            modify_type: Optional[pulumi.Input[str]] = None,
             pay_type: Optional[pulumi.Input[str]] = None,
+            payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Cluster':
@@ -537,18 +567,26 @@ class Cluster(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["auto_renew_period"] = auto_renew_period
+        __props__["compute_resource"] = compute_resource
         __props__["connection_string"] = connection_string
         __props__["db_cluster_category"] = db_cluster_category
+        __props__["db_cluster_class"] = db_cluster_class
         __props__["db_cluster_version"] = db_cluster_version
         __props__["db_node_class"] = db_node_class
         __props__["db_node_count"] = db_node_count
         __props__["db_node_storage"] = db_node_storage
         __props__["description"] = description
+        __props__["elastic_io_resource"] = elastic_io_resource
         __props__["maintain_time"] = maintain_time
+        __props__["mode"] = mode
+        __props__["modify_type"] = modify_type
         __props__["pay_type"] = pay_type
+        __props__["payment_type"] = payment_type
         __props__["period"] = period
         __props__["renewal_status"] = renewal_status
+        __props__["resource_group_id"] = resource_group_id
         __props__["security_ips"] = security_ips
+        __props__["status"] = status
         __props__["tags"] = tags
         __props__["vswitch_id"] = vswitch_id
         __props__["zone_id"] = zone_id
@@ -561,6 +599,11 @@ class Cluster(pulumi.CustomResource):
         Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         """
         return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="computeResource")
+    def compute_resource(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "compute_resource")
 
     @property
     @pulumi.getter(name="connectionString")
@@ -577,6 +620,11 @@ class Cluster(pulumi.CustomResource):
         Cluster category. Value options: `Basic`, `Cluster`.
         """
         return pulumi.get(self, "db_cluster_category")
+
+    @property
+    @pulumi.getter(name="dbClusterClass")
+    def db_cluster_class(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "db_cluster_class")
 
     @property
     @pulumi.getter(name="dbClusterVersion")
@@ -596,7 +644,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNodeCount")
-    def db_node_count(self) -> pulumi.Output[int]:
+    def db_node_count(self) -> pulumi.Output[Optional[int]]:
         """
         The db_node_count of cluster node.
         """
@@ -604,7 +652,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNodeStorage")
-    def db_node_storage(self) -> pulumi.Output[int]:
+    def db_node_storage(self) -> pulumi.Output[Optional[int]]:
         """
         The db_node_storage of cluster node.
         """
@@ -612,11 +660,16 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of cluster.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="elasticIoResource")
+    def elastic_io_resource(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "elastic_io_resource")
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -627,12 +680,27 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "maintain_time")
 
     @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="modifyType")
+    def modify_type(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "modify_type")
+
+    @property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> pulumi.Output[Optional[str]]:
+    def pay_type(self) -> pulumi.Output[str]:
         """
         Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
         """
         return pulumi.get(self, "pay_type")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter
@@ -651,12 +719,22 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "renewal_status")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "resource_group_id")
+
+    @property
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> pulumi.Output[Sequence[str]]:
         """
         List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
         return pulumi.get(self, "security_ips")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
@@ -670,7 +748,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> pulumi.Output[str]:
+    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """

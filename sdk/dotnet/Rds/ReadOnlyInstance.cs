@@ -100,6 +100,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Set it to true to make some parameter efficient when modifying them. Default to false.
+        /// </summary>
+        [Output("forceRestart")]
+        public Output<bool?> ForceRestart { get; private set; } = null!;
+
+        /// <summary>
         /// The name of DB instance. It a string of 2 to 256 characters.
         /// </summary>
         [Output("instanceName")]
@@ -214,6 +220,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
+        /// Set it to true to make some parameter efficient when modifying them. Default to false.
+        /// </summary>
+        [Input("forceRestart")]
+        public Input<bool>? ForceRestart { get; set; }
+
+        /// <summary>
         /// The name of DB instance. It a string of 2 to 256 characters.
         /// </summary>
         [Input("instanceName")]
@@ -305,6 +317,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// Set it to true to make some parameter efficient when modifying them. Default to false.
+        /// </summary>
+        [Input("forceRestart")]
+        public Input<bool>? ForceRestart { get; set; }
 
         /// <summary>
         /// The name of DB instance. It a string of 2 to 256 characters.

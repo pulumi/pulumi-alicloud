@@ -19,6 +19,7 @@ class ReadOnlyInstanceArgs:
                  instance_storage: pulumi.Input[int],
                  instance_type: pulumi.Input[str],
                  master_db_instance_id: pulumi.Input[str],
+                 force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -31,6 +32,7 @@ class ReadOnlyInstanceArgs:
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
+        :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
@@ -44,6 +46,8 @@ class ReadOnlyInstanceArgs:
         pulumi.set(__self__, "instance_storage", instance_storage)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "master_db_instance_id", master_db_instance_id)
+        if force_restart is not None:
+            pulumi.set(__self__, "force_restart", force_restart)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if parameters is not None:
@@ -104,6 +108,18 @@ class ReadOnlyInstanceArgs:
     @master_db_instance_id.setter
     def master_db_instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "master_db_instance_id", value)
+
+    @property
+    @pulumi.getter(name="forceRestart")
+    def force_restart(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set it to true to make some parameter efficient when modifying them. Default to false.
+        """
+        return pulumi.get(self, "force_restart")
+
+    @force_restart.setter
+    def force_restart(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_restart", value)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -186,6 +202,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
+                 force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -254,6 +271,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -341,6 +359,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
+                 force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -373,6 +392,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__['engine_version'] = engine_version
+            __props__['force_restart'] = force_restart
             __props__['instance_name'] = instance_name
             if instance_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_storage'")
@@ -404,6 +424,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             connection_string: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
+            force_restart: Optional[pulumi.Input[bool]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_storage: Optional[pulumi.Input[int]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
@@ -424,6 +445,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[str] connection_string: RDS database connection string.
         :param pulumi.Input[str] engine: Database type.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -444,6 +466,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__["connection_string"] = connection_string
         __props__["engine"] = engine
         __props__["engine_version"] = engine_version
+        __props__["force_restart"] = force_restart
         __props__["instance_name"] = instance_name
         __props__["instance_storage"] = instance_storage
         __props__["instance_type"] = instance_type
@@ -479,6 +502,14 @@ class ReadOnlyInstance(pulumi.CustomResource):
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         """
         return pulumi.get(self, "engine_version")
+
+    @property
+    @pulumi.getter(name="forceRestart")
+    def force_restart(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set it to true to make some parameter efficient when modifying them. Default to false.
+        """
+        return pulumi.get(self, "force_restart")
 
     @property
     @pulumi.getter(name="instanceName")
