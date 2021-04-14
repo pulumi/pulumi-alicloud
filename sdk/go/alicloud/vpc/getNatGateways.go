@@ -10,50 +10,6 @@ import (
 // This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
 //
 // > **NOTE:** Available in 1.37.0+.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "natGatewaysDatasource"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		opt0 := "VSwitch"
-// 		_, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		fooNatGateway, err := vpc.NewNatGateway(ctx, "fooNatGateway", &vpc.NatGatewayArgs{
-// 			Specification: pulumi.String("Small"),
-// 			VpcId:         fooNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetNatGateways(ctx *pulumi.Context, args *GetNatGatewaysArgs, opts ...pulumi.InvokeOption) (*GetNatGatewaysResult, error) {
 	var rv GetNatGatewaysResult
 	err := ctx.Invoke("alicloud:vpc/getNatGateways:getNatGateways", args, &rv, opts...)
@@ -65,17 +21,37 @@ func GetNatGateways(ctx *pulumi.Context, args *GetNatGatewaysArgs, opts ...pulum
 
 // A collection of arguments for invoking getNatGateways.
 type GetNatGatewaysArgs struct {
+	// Specifies whether to only precheck the request.
+	DryRun *bool `pulumi:"dryRun"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of NAT gateways IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter nat gateways by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// The name of NAT gateway.
+	NatGatewayName *string `pulumi:"natGatewayName"`
+	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+	NatType    *string `pulumi:"natType"`
 	OutputFile *string `pulumi:"outputFile"`
+	// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+	PaymentType *string `pulumi:"paymentType"`
+	// The resource group id of NAT gateway.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+	Specification *string `pulumi:"specification"`
+	// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
+	Status *string `pulumi:"status"`
+	// The tags of NAT gateway.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getNatGateways.
 type GetNatGatewaysResult struct {
+	DryRun        *bool `pulumi:"dryRun"`
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Nat gateways. Each element contains the following attributes:
 	Gateways []GetNatGatewaysGateway `pulumi:"gateways"`
 	// The provider-assigned unique ID for this managed resource.
@@ -84,8 +60,22 @@ type GetNatGatewaysResult struct {
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of Nat gateways names.
-	Names      []string `pulumi:"names"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Names []string `pulumi:"names"`
+	// The name of the NAT gateway.
+	NatGatewayName *string `pulumi:"natGatewayName"`
+	// The type of the NAT gateway.
+	NatType    *string `pulumi:"natType"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The billing method of the NAT gateway.
+	PaymentType *string `pulumi:"paymentType"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The specification of the NAT gateway.
+	Specification *string `pulumi:"specification"`
+	// The status of the NAT gateway.
+	Status *string `pulumi:"status"`
+	// The tags of NAT gateway.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }

@@ -11,10 +11,19 @@ import (
 )
 
 type GetClustersCluster struct {
+	AutoRenewPeriod int `pulumi:"autoRenewPeriod"`
 	// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
-	ChargeType string `pulumi:"chargeType"`
+	ChargeType       string `pulumi:"chargeType"`
+	CommodityCode    string `pulumi:"commodityCode"`
+	ComputeResource  string `pulumi:"computeResource"`
+	ConnectionString string `pulumi:"connectionString"`
 	// The CreateTime of the ADB cluster.
-	CreateTime string `pulumi:"createTime"`
+	CreateTime           string `pulumi:"createTime"`
+	DbClusterCategory    string `pulumi:"dbClusterCategory"`
+	DbClusterId          string `pulumi:"dbClusterId"`
+	DbClusterNetworkType string `pulumi:"dbClusterNetworkType"`
+	DbClusterType        string `pulumi:"dbClusterType"`
+	DbClusterVersion     string `pulumi:"dbClusterVersion"`
 	// The DBNodeClass of the ADB cluster.
 	DbNodeClass string `pulumi:"dbNodeClass"`
 	// The DBNodeCount of the ADB cluster.
@@ -22,7 +31,13 @@ type GetClustersCluster struct {
 	// The DBNodeStorage of the ADB cluster.
 	DbNodeStorage int `pulumi:"dbNodeStorage"`
 	// The description of the ADB cluster.
-	Description string `pulumi:"description"`
+	Description       string `pulumi:"description"`
+	DiskType          string `pulumi:"diskType"`
+	DtsJobId          string `pulumi:"dtsJobId"`
+	ElasticIoResource int    `pulumi:"elasticIoResource"`
+	Engine            string `pulumi:"engine"`
+	EngineVersion     string `pulumi:"engineVersion"`
+	ExecutorCount     string `pulumi:"executorCount"`
 	// Expiration time. Pay-As-You-Go clusters never expire.
 	ExpireTime string `pulumi:"expireTime"`
 	// The expired of the ADB cluster.
@@ -30,15 +45,30 @@ type GetClustersCluster struct {
 	// The ID of the ADB cluster.
 	Id string `pulumi:"id"`
 	// The LockMode of the ADB cluster.
-	LockMode string `pulumi:"lockMode"`
+	LockMode     string `pulumi:"lockMode"`
+	LockReason   string `pulumi:"lockReason"`
+	MaintainTime string `pulumi:"maintainTime"`
 	// The DBClusterNetworkType of the ADB cluster.
-	NetworkType string `pulumi:"networkType"`
+	NetworkType   string `pulumi:"networkType"`
+	PaymentType   string `pulumi:"paymentType"`
+	Port          int    `pulumi:"port"`
+	RdsInstanceId string `pulumi:"rdsInstanceId"`
 	// Region ID the cluster belongs to.
-	RegionId string `pulumi:"regionId"`
+	RegionId        string   `pulumi:"regionId"`
+	RenewalStatus   string   `pulumi:"renewalStatus"`
+	ResourceGroupId string   `pulumi:"resourceGroupId"`
+	SecurityIps     []string `pulumi:"securityIps"`
 	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
-	Status string `pulumi:"status"`
+	Status          string `pulumi:"status"`
+	StorageResource string `pulumi:"storageResource"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags               map[string]interface{} `pulumi:"tags"`
+	VpcCloudInstanceId string                 `pulumi:"vpcCloudInstanceId"`
 	// ID of the VPC the cluster belongs to.
-	VpcId string `pulumi:"vpcId"`
+	VpcId     string `pulumi:"vpcId"`
+	VswitchId string `pulumi:"vswitchId"`
 	// The ZoneId of the ADB cluster.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -55,10 +85,19 @@ type GetClustersClusterInput interface {
 }
 
 type GetClustersClusterArgs struct {
+	AutoRenewPeriod pulumi.IntInput `pulumi:"autoRenewPeriod"`
 	// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
-	ChargeType pulumi.StringInput `pulumi:"chargeType"`
+	ChargeType       pulumi.StringInput `pulumi:"chargeType"`
+	CommodityCode    pulumi.StringInput `pulumi:"commodityCode"`
+	ComputeResource  pulumi.StringInput `pulumi:"computeResource"`
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
 	// The CreateTime of the ADB cluster.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	CreateTime           pulumi.StringInput `pulumi:"createTime"`
+	DbClusterCategory    pulumi.StringInput `pulumi:"dbClusterCategory"`
+	DbClusterId          pulumi.StringInput `pulumi:"dbClusterId"`
+	DbClusterNetworkType pulumi.StringInput `pulumi:"dbClusterNetworkType"`
+	DbClusterType        pulumi.StringInput `pulumi:"dbClusterType"`
+	DbClusterVersion     pulumi.StringInput `pulumi:"dbClusterVersion"`
 	// The DBNodeClass of the ADB cluster.
 	DbNodeClass pulumi.StringInput `pulumi:"dbNodeClass"`
 	// The DBNodeCount of the ADB cluster.
@@ -66,7 +105,13 @@ type GetClustersClusterArgs struct {
 	// The DBNodeStorage of the ADB cluster.
 	DbNodeStorage pulumi.IntInput `pulumi:"dbNodeStorage"`
 	// The description of the ADB cluster.
-	Description pulumi.StringInput `pulumi:"description"`
+	Description       pulumi.StringInput `pulumi:"description"`
+	DiskType          pulumi.StringInput `pulumi:"diskType"`
+	DtsJobId          pulumi.StringInput `pulumi:"dtsJobId"`
+	ElasticIoResource pulumi.IntInput    `pulumi:"elasticIoResource"`
+	Engine            pulumi.StringInput `pulumi:"engine"`
+	EngineVersion     pulumi.StringInput `pulumi:"engineVersion"`
+	ExecutorCount     pulumi.StringInput `pulumi:"executorCount"`
 	// Expiration time. Pay-As-You-Go clusters never expire.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// The expired of the ADB cluster.
@@ -74,15 +119,30 @@ type GetClustersClusterArgs struct {
 	// The ID of the ADB cluster.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The LockMode of the ADB cluster.
-	LockMode pulumi.StringInput `pulumi:"lockMode"`
+	LockMode     pulumi.StringInput `pulumi:"lockMode"`
+	LockReason   pulumi.StringInput `pulumi:"lockReason"`
+	MaintainTime pulumi.StringInput `pulumi:"maintainTime"`
 	// The DBClusterNetworkType of the ADB cluster.
-	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	NetworkType   pulumi.StringInput `pulumi:"networkType"`
+	PaymentType   pulumi.StringInput `pulumi:"paymentType"`
+	Port          pulumi.IntInput    `pulumi:"port"`
+	RdsInstanceId pulumi.StringInput `pulumi:"rdsInstanceId"`
 	// Region ID the cluster belongs to.
-	RegionId pulumi.StringInput `pulumi:"regionId"`
+	RegionId        pulumi.StringInput      `pulumi:"regionId"`
+	RenewalStatus   pulumi.StringInput      `pulumi:"renewalStatus"`
+	ResourceGroupId pulumi.StringInput      `pulumi:"resourceGroupId"`
+	SecurityIps     pulumi.StringArrayInput `pulumi:"securityIps"`
 	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
-	Status pulumi.StringInput `pulumi:"status"`
+	Status          pulumi.StringInput `pulumi:"status"`
+	StorageResource pulumi.StringInput `pulumi:"storageResource"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags               pulumi.MapInput    `pulumi:"tags"`
+	VpcCloudInstanceId pulumi.StringInput `pulumi:"vpcCloudInstanceId"`
 	// ID of the VPC the cluster belongs to.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	VpcId     pulumi.StringInput `pulumi:"vpcId"`
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// The ZoneId of the ADB cluster.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -138,14 +198,50 @@ func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx cont
 	return o
 }
 
+func (o GetClustersClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersCluster) int { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+}
+
 // Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
 func (o GetClustersClusterOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
+func (o GetClustersClusterOutput) CommodityCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.CommodityCode }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) ComputeResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ComputeResource }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
 // The CreateTime of the ADB cluster.
 func (o GetClustersClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) DbClusterCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DbClusterCategory }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) DbClusterNetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DbClusterNetworkType }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) DbClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DbClusterType }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) DbClusterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DbClusterVersion }).(pulumi.StringOutput)
 }
 
 // The DBNodeClass of the ADB cluster.
@@ -168,6 +264,30 @@ func (o GetClustersClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o GetClustersClusterOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) DtsJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DtsJobId }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) ElasticIoResource() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersCluster) int { return v.ElasticIoResource }).(pulumi.IntOutput)
+}
+
+func (o GetClustersClusterOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) ExecutorCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ExecutorCount }).(pulumi.StringOutput)
+}
+
 // Expiration time. Pay-As-You-Go clusters never expire.
 func (o GetClustersClusterOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ExpireTime }).(pulumi.StringOutput)
@@ -188,9 +308,29 @@ func (o GetClustersClusterOutput) LockMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.LockMode }).(pulumi.StringOutput)
 }
 
+func (o GetClustersClusterOutput) LockReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.LockReason }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) MaintainTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.MaintainTime }).(pulumi.StringOutput)
+}
+
 // The DBClusterNetworkType of the ADB cluster.
 func (o GetClustersClusterOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersCluster) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetClustersClusterOutput) RdsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.RdsInstanceId }).(pulumi.StringOutput)
 }
 
 // Region ID the cluster belongs to.
@@ -198,14 +338,45 @@ func (o GetClustersClusterOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
+func (o GetClustersClusterOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []string { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
 // The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
 func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }
 
+func (o GetClustersClusterOutput) StorageResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.StorageResource }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (o GetClustersClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetClustersClusterOutput) VpcCloudInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VpcCloudInstanceId }).(pulumi.StringOutput)
+}
+
 // ID of the VPC the cluster belongs to.
 func (o GetClustersClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 // The ZoneId of the ADB cluster.
@@ -231,6 +402,466 @@ func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClust
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersCluster {
 		return vs[0].([]GetClustersCluster)[vs[1].(int)]
 	}).(GetClustersClusterOutput)
+}
+
+type GetDBClustersCluster struct {
+	// Auto-renewal period of an cluster, in the unit of the month.
+	AutoRenewPeriod int `pulumi:"autoRenewPeriod"`
+	// The payment type of the resource.
+	ChargeType string `pulumi:"chargeType"`
+	// The name of the service.
+	CommodityCode string `pulumi:"commodityCode"`
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+	ComputeResource string `pulumi:"computeResource"`
+	// The endpoint of the cluster.
+	ConnectionString string `pulumi:"connectionString"`
+	// The CreateTime of the ADB cluster.
+	CreateTime string `pulumi:"createTime"`
+	// The db cluster category.
+	DbClusterCategory string `pulumi:"dbClusterCategory"`
+	// The db cluster id.
+	DbClusterId string `pulumi:"dbClusterId"`
+	// The db cluster network type.
+	DbClusterNetworkType string `pulumi:"dbClusterNetworkType"`
+	// The db cluster type.
+	DbClusterType string `pulumi:"dbClusterType"`
+	// The db cluster version.
+	DbClusterVersion string `pulumi:"dbClusterVersion"`
+	// The db node class.
+	DbNodeClass string `pulumi:"dbNodeClass"`
+	// The db node count.
+	DbNodeCount int `pulumi:"dbNodeCount"`
+	// The db node storage.
+	DbNodeStorage int `pulumi:"dbNodeStorage"`
+	// The description of DBCluster.
+	Description string `pulumi:"description"`
+	// The type of the disk.
+	DiskType string `pulumi:"diskType"`
+	// The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
+	DtsJobId string `pulumi:"dtsJobId"`
+	// The elastic io resource.
+	ElasticIoResource int `pulumi:"elasticIoResource"`
+	// The engine of the database.
+	Engine string `pulumi:"engine"`
+	// The engine version of the database..
+	EngineVersion string `pulumi:"engineVersion"`
+	// The number of nodes. The node resources are used for data computing in elastic mode.
+	ExecutorCount string `pulumi:"executorCount"`
+	// The time when the cluster expires.
+	ExpireTime string `pulumi:"expireTime"`
+	// Indicates whether the cluster has expired.
+	Expired string `pulumi:"expired"`
+	// The ID of the DBCluster.
+	Id string `pulumi:"id"`
+	// The lock mode of the cluster.
+	LockMode string `pulumi:"lockMode"`
+	// The reason why the cluster is locked.
+	LockReason string `pulumi:"lockReason"`
+	// The maintenance window of the cluster.
+	MaintainTime string `pulumi:"maintainTime"`
+	NetworkType  string `pulumi:"networkType"`
+	// The payment type of the resource.
+	PaymentType string `pulumi:"paymentType"`
+	// The port that is used to access the cluster.
+	Port int `pulumi:"port"`
+	// The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
+	RdsInstanceId string `pulumi:"rdsInstanceId"`
+	RegionId      string `pulumi:"regionId"`
+	// The status of renewal.
+	RenewalStatus string `pulumi:"renewalStatus"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// List of IP addresses allowed to access all databases of an cluster.
+	SecurityIps []string `pulumi:"securityIps"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+	StorageResource string `pulumi:"storageResource"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The vpc cloud instance id.
+	VpcCloudInstanceId string `pulumi:"vpcCloudInstanceId"`
+	// The vpc id.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID  of the resource.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetDBClustersClusterInput is an input type that accepts GetDBClustersClusterArgs and GetDBClustersClusterOutput values.
+// You can construct a concrete instance of `GetDBClustersClusterInput` via:
+//
+//          GetDBClustersClusterArgs{...}
+type GetDBClustersClusterInput interface {
+	pulumi.Input
+
+	ToGetDBClustersClusterOutput() GetDBClustersClusterOutput
+	ToGetDBClustersClusterOutputWithContext(context.Context) GetDBClustersClusterOutput
+}
+
+type GetDBClustersClusterArgs struct {
+	// Auto-renewal period of an cluster, in the unit of the month.
+	AutoRenewPeriod pulumi.IntInput `pulumi:"autoRenewPeriod"`
+	// The payment type of the resource.
+	ChargeType pulumi.StringInput `pulumi:"chargeType"`
+	// The name of the service.
+	CommodityCode pulumi.StringInput `pulumi:"commodityCode"`
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+	ComputeResource pulumi.StringInput `pulumi:"computeResource"`
+	// The endpoint of the cluster.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
+	// The CreateTime of the ADB cluster.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The db cluster category.
+	DbClusterCategory pulumi.StringInput `pulumi:"dbClusterCategory"`
+	// The db cluster id.
+	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
+	// The db cluster network type.
+	DbClusterNetworkType pulumi.StringInput `pulumi:"dbClusterNetworkType"`
+	// The db cluster type.
+	DbClusterType pulumi.StringInput `pulumi:"dbClusterType"`
+	// The db cluster version.
+	DbClusterVersion pulumi.StringInput `pulumi:"dbClusterVersion"`
+	// The db node class.
+	DbNodeClass pulumi.StringInput `pulumi:"dbNodeClass"`
+	// The db node count.
+	DbNodeCount pulumi.IntInput `pulumi:"dbNodeCount"`
+	// The db node storage.
+	DbNodeStorage pulumi.IntInput `pulumi:"dbNodeStorage"`
+	// The description of DBCluster.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The type of the disk.
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
+	DtsJobId pulumi.StringInput `pulumi:"dtsJobId"`
+	// The elastic io resource.
+	ElasticIoResource pulumi.IntInput `pulumi:"elasticIoResource"`
+	// The engine of the database.
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The engine version of the database..
+	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
+	// The number of nodes. The node resources are used for data computing in elastic mode.
+	ExecutorCount pulumi.StringInput `pulumi:"executorCount"`
+	// The time when the cluster expires.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// Indicates whether the cluster has expired.
+	Expired pulumi.StringInput `pulumi:"expired"`
+	// The ID of the DBCluster.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The lock mode of the cluster.
+	LockMode pulumi.StringInput `pulumi:"lockMode"`
+	// The reason why the cluster is locked.
+	LockReason pulumi.StringInput `pulumi:"lockReason"`
+	// The maintenance window of the cluster.
+	MaintainTime pulumi.StringInput `pulumi:"maintainTime"`
+	NetworkType  pulumi.StringInput `pulumi:"networkType"`
+	// The payment type of the resource.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The port that is used to access the cluster.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
+	RdsInstanceId pulumi.StringInput `pulumi:"rdsInstanceId"`
+	RegionId      pulumi.StringInput `pulumi:"regionId"`
+	// The status of renewal.
+	RenewalStatus pulumi.StringInput `pulumi:"renewalStatus"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// List of IP addresses allowed to access all databases of an cluster.
+	SecurityIps pulumi.StringArrayInput `pulumi:"securityIps"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+	StorageResource pulumi.StringInput `pulumi:"storageResource"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The vpc cloud instance id.
+	VpcCloudInstanceId pulumi.StringInput `pulumi:"vpcCloudInstanceId"`
+	// The vpc id.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The zone ID  of the resource.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetDBClustersClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDBClustersCluster)(nil)).Elem()
+}
+
+func (i GetDBClustersClusterArgs) ToGetDBClustersClusterOutput() GetDBClustersClusterOutput {
+	return i.ToGetDBClustersClusterOutputWithContext(context.Background())
+}
+
+func (i GetDBClustersClusterArgs) ToGetDBClustersClusterOutputWithContext(ctx context.Context) GetDBClustersClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDBClustersClusterOutput)
+}
+
+// GetDBClustersClusterArrayInput is an input type that accepts GetDBClustersClusterArray and GetDBClustersClusterArrayOutput values.
+// You can construct a concrete instance of `GetDBClustersClusterArrayInput` via:
+//
+//          GetDBClustersClusterArray{ GetDBClustersClusterArgs{...} }
+type GetDBClustersClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetDBClustersClusterArrayOutput() GetDBClustersClusterArrayOutput
+	ToGetDBClustersClusterArrayOutputWithContext(context.Context) GetDBClustersClusterArrayOutput
+}
+
+type GetDBClustersClusterArray []GetDBClustersClusterInput
+
+func (GetDBClustersClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDBClustersCluster)(nil)).Elem()
+}
+
+func (i GetDBClustersClusterArray) ToGetDBClustersClusterArrayOutput() GetDBClustersClusterArrayOutput {
+	return i.ToGetDBClustersClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDBClustersClusterArray) ToGetDBClustersClusterArrayOutputWithContext(ctx context.Context) GetDBClustersClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDBClustersClusterArrayOutput)
+}
+
+type GetDBClustersClusterOutput struct{ *pulumi.OutputState }
+
+func (GetDBClustersClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDBClustersCluster)(nil)).Elem()
+}
+
+func (o GetDBClustersClusterOutput) ToGetDBClustersClusterOutput() GetDBClustersClusterOutput {
+	return o
+}
+
+func (o GetDBClustersClusterOutput) ToGetDBClustersClusterOutputWithContext(ctx context.Context) GetDBClustersClusterOutput {
+	return o
+}
+
+// Auto-renewal period of an cluster, in the unit of the month.
+func (o GetDBClustersClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) int { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+}
+
+// The payment type of the resource.
+func (o GetDBClustersClusterOutput) ChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ChargeType }).(pulumi.StringOutput)
+}
+
+// The name of the service.
+func (o GetDBClustersClusterOutput) CommodityCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.CommodityCode }).(pulumi.StringOutput)
+}
+
+// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+func (o GetDBClustersClusterOutput) ComputeResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ComputeResource }).(pulumi.StringOutput)
+}
+
+// The endpoint of the cluster.
+func (o GetDBClustersClusterOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The CreateTime of the ADB cluster.
+func (o GetDBClustersClusterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The db cluster category.
+func (o GetDBClustersClusterOutput) DbClusterCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbClusterCategory }).(pulumi.StringOutput)
+}
+
+// The db cluster id.
+func (o GetDBClustersClusterOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The db cluster network type.
+func (o GetDBClustersClusterOutput) DbClusterNetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbClusterNetworkType }).(pulumi.StringOutput)
+}
+
+// The db cluster type.
+func (o GetDBClustersClusterOutput) DbClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbClusterType }).(pulumi.StringOutput)
+}
+
+// The db cluster version.
+func (o GetDBClustersClusterOutput) DbClusterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbClusterVersion }).(pulumi.StringOutput)
+}
+
+// The db node class.
+func (o GetDBClustersClusterOutput) DbNodeClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbNodeClass }).(pulumi.StringOutput)
+}
+
+// The db node count.
+func (o GetDBClustersClusterOutput) DbNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) int { return v.DbNodeCount }).(pulumi.IntOutput)
+}
+
+// The db node storage.
+func (o GetDBClustersClusterOutput) DbNodeStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) int { return v.DbNodeStorage }).(pulumi.IntOutput)
+}
+
+// The description of DBCluster.
+func (o GetDBClustersClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The type of the disk.
+func (o GetDBClustersClusterOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
+func (o GetDBClustersClusterOutput) DtsJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DtsJobId }).(pulumi.StringOutput)
+}
+
+// The elastic io resource.
+func (o GetDBClustersClusterOutput) ElasticIoResource() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) int { return v.ElasticIoResource }).(pulumi.IntOutput)
+}
+
+// The engine of the database.
+func (o GetDBClustersClusterOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The engine version of the database..
+func (o GetDBClustersClusterOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The number of nodes. The node resources are used for data computing in elastic mode.
+func (o GetDBClustersClusterOutput) ExecutorCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ExecutorCount }).(pulumi.StringOutput)
+}
+
+// The time when the cluster expires.
+func (o GetDBClustersClusterOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether the cluster has expired.
+func (o GetDBClustersClusterOutput) Expired() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Expired }).(pulumi.StringOutput)
+}
+
+// The ID of the DBCluster.
+func (o GetDBClustersClusterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The lock mode of the cluster.
+func (o GetDBClustersClusterOutput) LockMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.LockMode }).(pulumi.StringOutput)
+}
+
+// The reason why the cluster is locked.
+func (o GetDBClustersClusterOutput) LockReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.LockReason }).(pulumi.StringOutput)
+}
+
+// The maintenance window of the cluster.
+func (o GetDBClustersClusterOutput) MaintainTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.MaintainTime }).(pulumi.StringOutput)
+}
+
+func (o GetDBClustersClusterOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource.
+func (o GetDBClustersClusterOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The port that is used to access the cluster.
+func (o GetDBClustersClusterOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
+func (o GetDBClustersClusterOutput) RdsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.RdsInstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetDBClustersClusterOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The status of renewal.
+func (o GetDBClustersClusterOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetDBClustersClusterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// List of IP addresses allowed to access all databases of an cluster.
+func (o GetDBClustersClusterOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) []string { return v.SecurityIps }).(pulumi.StringArrayOutput)
+}
+
+// The status of the resource.
+func (o GetDBClustersClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+func (o GetDBClustersClusterOutput) StorageResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.StorageResource }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetDBClustersClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The vpc cloud instance id.
+func (o GetDBClustersClusterOutput) VpcCloudInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.VpcCloudInstanceId }).(pulumi.StringOutput)
+}
+
+// The vpc id.
+func (o GetDBClustersClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetDBClustersClusterOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID  of the resource.
+func (o GetDBClustersClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetDBClustersClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDBClustersClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDBClustersCluster)(nil)).Elem()
+}
+
+func (o GetDBClustersClusterArrayOutput) ToGetDBClustersClusterArrayOutput() GetDBClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetDBClustersClusterArrayOutput) ToGetDBClustersClusterArrayOutputWithContext(ctx context.Context) GetDBClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetDBClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDBClustersClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDBClustersCluster {
+		return vs[0].([]GetDBClustersCluster)[vs[1].(int)]
+	}).(GetDBClustersClusterOutput)
 }
 
 type GetZonesZone struct {
@@ -342,6 +973,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetDBClustersClusterOutput{})
+	pulumi.RegisterOutputType(GetDBClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

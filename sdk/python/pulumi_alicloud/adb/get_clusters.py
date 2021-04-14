@@ -20,16 +20,22 @@ class GetClustersResult:
     """
     A collection of values returned by getClusters.
     """
-    def __init__(__self__, clusters=None, description_regex=None, descriptions=None, id=None, ids=None, output_file=None, status=None, tags=None):
+    def __init__(__self__, clusters=None, description=None, description_regex=None, descriptions=None, enable_details=None, id=None, ids=None, output_file=None, resource_group_id=None, status=None, tags=None):
         if clusters and not isinstance(clusters, list):
             raise TypeError("Expected argument 'clusters' to be a list")
         pulumi.set(__self__, "clusters", clusters)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if description_regex and not isinstance(description_regex, str):
             raise TypeError("Expected argument 'description_regex' to be a str")
         pulumi.set(__self__, "description_regex", description_regex)
         if descriptions and not isinstance(descriptions, list):
             raise TypeError("Expected argument 'descriptions' to be a list")
         pulumi.set(__self__, "descriptions", descriptions)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +45,9 @@ class GetClustersResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if resource_group_id and not isinstance(resource_group_id, str):
+            raise TypeError("Expected argument 'resource_group_id' to be a str")
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -55,6 +64,14 @@ class GetClustersResult:
         return pulumi.get(self, "clusters")
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the ADB cluster.
+        """
+        return pulumi.get(self, "description")
+
+    @property
     @pulumi.getter(name="descriptionRegex")
     def description_regex(self) -> Optional[str]:
         return pulumi.get(self, "description_regex")
@@ -66,6 +83,11 @@ class GetClustersResult:
         A list of ADB cluster descriptions.
         """
         return pulumi.get(self, "descriptions")
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -89,6 +111,11 @@ class GetClustersResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[str]:
+        return pulumi.get(self, "resource_group_id")
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
@@ -109,39 +136,31 @@ class AwaitableGetClustersResult(GetClustersResult):
             yield self
         return GetClustersResult(
             clusters=self.clusters,
+            description=self.description,
             description_regex=self.description_regex,
             descriptions=self.descriptions,
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             output_file=self.output_file,
+            resource_group_id=self.resource_group_id,
             status=self.status,
             tags=self.tags)
 
 
-def get_clusters(description_regex: Optional[str] = None,
+def get_clusters(description: Optional[str] = None,
+                 description_regex: Optional[str] = None,
+                 enable_details: Optional[bool] = None,
                  ids: Optional[Sequence[str]] = None,
                  output_file: Optional[str] = None,
+                 resource_group_id: Optional[str] = None,
                  status: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
-    The `adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
-    Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+    Use this data source to access information about an existing resource.
 
-    > **NOTE:** Available in v1.71.0+.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    adb_clusters_ds = alicloud.adb.get_clusters(description_regex="am-\\w+",
-        status="Running")
-    pulumi.export("firstAdbClusterId", adb_clusters_ds.clusters[0].id)
-    ```
-
-
+    :param str description: The description of the ADB cluster.
     :param str description_regex: A regex string to filter results by cluster description.
     :param Sequence[str] ids: A list of ADB cluster IDs.
     :param str status: The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
@@ -150,9 +169,12 @@ def get_clusters(description_regex: Optional[str] = None,
            - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
     """
     __args__ = dict()
+    __args__['description'] = description
     __args__['descriptionRegex'] = description_regex
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
     __args__['tags'] = tags
     if opts is None:
@@ -163,10 +185,13 @@ def get_clusters(description_regex: Optional[str] = None,
 
     return AwaitableGetClustersResult(
         clusters=__ret__.clusters,
+        description=__ret__.description,
         description_regex=__ret__.description_regex,
         descriptions=__ret__.descriptions,
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
+        resource_group_id=__ret__.resource_group_id,
         status=__ret__.status,
         tags=__ret__.tags)

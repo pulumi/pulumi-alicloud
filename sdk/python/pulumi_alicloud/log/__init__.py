@@ -11,6 +11,7 @@ from .get_service import *
 from .log_tail_attachment import *
 from .log_tail_config import *
 from .machine_group import *
+from .oss_shipper import *
 from .project import *
 from .store import *
 from .store_index import *
@@ -43,6 +44,8 @@ def _register_module():
                 return LogTailConfig(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:log/machineGroup:MachineGroup":
                 return MachineGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:log/ossShipper:OssShipper":
+                return OssShipper(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:log/project:Project":
                 return Project(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:log/store:Store":
@@ -61,6 +64,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "log/logTailAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "log/logTailConfig", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "log/machineGroup", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "log/ossShipper", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "log/project", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "log/store", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "log/storeIndex", _module_instance)

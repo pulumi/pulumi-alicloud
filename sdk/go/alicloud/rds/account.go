@@ -31,7 +31,7 @@ type Account struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The Id of instance in which account belongs.
 	//
-	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
@@ -94,7 +94,7 @@ type accountState struct {
 	Description *string `pulumi:"description"`
 	// The Id of instance in which account belongs.
 	//
-	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId *string `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -129,7 +129,7 @@ type AccountState struct {
 	Description pulumi.StringPtrInput
 	// The Id of instance in which account belongs.
 	//
-	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -168,7 +168,7 @@ type accountArgs struct {
 	Description *string `pulumi:"description"`
 	// The Id of instance in which account belongs.
 	//
-	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId *string `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -203,7 +203,7 @@ type AccountArgs struct {
 	Description pulumi.StringPtrInput
 	// The Id of instance in which account belongs.
 	//
-	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput

@@ -15,55 +15,6 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
         /// 
         /// &gt; **NOTE:** Available in 1.37.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "natGatewaysDatasource";
-        ///         var @default = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableResourceCreation = "VSwitch",
-        ///         }));
-        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///         });
-        ///         var fooNatGateway = new AliCloud.Vpc.NatGateway("fooNatGateway", new AliCloud.Vpc.NatGatewayArgs
-        ///         {
-        ///             Specification = "Small",
-        ///             VpcId = fooNetwork.Id,
-        ///         });
-        ///         var fooNatGateways = Output.Tuple(fooNatGateway.Id, fooNatGateway.Name, fooNetwork.Id).Apply(values =&gt;
-        ///         {
-        ///             var fooNatGatewayId = values.Item1;
-        ///             var name = values.Item2;
-        ///             var fooNetworkId = values.Item3;
-        ///             return AliCloud.Vpc.GetNatGateways.InvokeAsync(new AliCloud.Vpc.GetNatGatewaysArgs
-        ///             {
-        ///                 Ids = 
-        ///                 {
-        ///                     fooNatGatewayId,
-        ///                 },
-        ///                 NameRegex = name,
-        ///                 VpcId = fooNetworkId,
-        ///             });
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNatGatewaysResult> InvokeAsync(GetNatGatewaysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysArgs(), options.WithVersion());
@@ -72,6 +23,18 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class GetNatGatewaysArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specifies whether to only precheck the request.
+        /// </summary>
+        [Input("dryRun")]
+        public bool? DryRun { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -90,8 +53,56 @@ namespace Pulumi.AliCloud.Vpc
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// The name of NAT gateway.
+        /// </summary>
+        [Input("natGatewayName")]
+        public string? NatGatewayName { get; set; }
+
+        /// <summary>
+        /// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+        /// </summary>
+        [Input("natType")]
+        public string? NatType { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        /// <summary>
+        /// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+        /// </summary>
+        [Input("paymentType")]
+        public string? PaymentType { get; set; }
+
+        /// <summary>
+        /// The resource group id of NAT gateway.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public string? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+        /// </summary>
+        [Input("specification")]
+        public string? Specification { get; set; }
+
+        /// <summary>
+        /// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
+
+        [Input("tags")]
+        private Dictionary<string, object>? _tags;
+
+        /// <summary>
+        /// The tags of NAT gateway.
+        /// </summary>
+        public Dictionary<string, object> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The ID of the VPC.
@@ -108,6 +119,8 @@ namespace Pulumi.AliCloud.Vpc
     [OutputType]
     public sealed class GetNatGatewaysResult
     {
+        public readonly bool? DryRun;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// A list of Nat gateways. Each element contains the following attributes:
         /// </summary>
@@ -125,7 +138,35 @@ namespace Pulumi.AliCloud.Vpc
         /// A list of Nat gateways names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// The name of the NAT gateway.
+        /// </summary>
+        public readonly string? NatGatewayName;
+        /// <summary>
+        /// The type of the NAT gateway.
+        /// </summary>
+        public readonly string? NatType;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The billing method of the NAT gateway.
+        /// </summary>
+        public readonly string? PaymentType;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The specification of the NAT gateway.
+        /// </summary>
+        public readonly string? Specification;
+        /// <summary>
+        /// The status of the NAT gateway.
+        /// </summary>
+        public readonly string? Status;
+        /// <summary>
+        /// The tags of NAT gateway.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
         /// The ID of the VPC.
         /// </summary>
@@ -133,6 +174,10 @@ namespace Pulumi.AliCloud.Vpc
 
         [OutputConstructor]
         private GetNatGatewaysResult(
+            bool? dryRun,
+
+            bool? enableDetails,
+
             ImmutableArray<Outputs.GetNatGatewaysGatewayResult> gateways,
 
             string id,
@@ -143,16 +188,39 @@ namespace Pulumi.AliCloud.Vpc
 
             ImmutableArray<string> names,
 
+            string? natGatewayName,
+
+            string? natType,
+
             string? outputFile,
+
+            string? paymentType,
+
+            string? resourceGroupId,
+
+            string? specification,
+
+            string? status,
+
+            ImmutableDictionary<string, object>? tags,
 
             string? vpcId)
         {
+            DryRun = dryRun;
+            EnableDetails = enableDetails;
             Gateways = gateways;
             Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
+            NatGatewayName = natGatewayName;
+            NatType = natType;
             OutputFile = outputFile;
+            PaymentType = paymentType;
+            ResourceGroupId = resourceGroupId;
+            Specification = specification;
+            Status = status;
+            Tags = tags;
             VpcId = vpcId;
         }
     }

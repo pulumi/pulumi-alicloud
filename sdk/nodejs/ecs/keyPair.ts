@@ -5,30 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a key pair resource.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const basic = new alicloud.ecs.KeyPair("basic", {
- *     keyName: "terraform-test-key-pair",
- * });
- * // Using name prefix to build key pair
- * const prefix = new alicloud.ecs.KeyPair("prefix", {
- *     keyNamePrefix: "terraform-test-key-pair-prefix",
- * });
- * // Import an existing public key to build a alicloud key pair
- * const publickey = new alicloud.ecs.KeyPair("publickey", {
- *     keyName: "my_public_key",
- *     publicKey: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
- * });
- * ```
- *
  * ## Import
  *
  * Key pair can be imported using the name, e.g.
@@ -72,9 +48,12 @@ export class KeyPair extends pulumi.CustomResource {
     public readonly keyFile!: pulumi.Output<string | undefined>;
     /**
      * The key pair's name. It is the only in one Alicloud account.
+     *
+     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     public readonly keyName!: pulumi.Output<string>;
     public readonly keyNamePrefix!: pulumi.Output<string | undefined>;
+    public readonly keyPairName!: pulumi.Output<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
@@ -102,6 +81,7 @@ export class KeyPair extends pulumi.CustomResource {
             inputs["keyFile"] = state ? state.keyFile : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["keyNamePrefix"] = state ? state.keyNamePrefix : undefined;
+            inputs["keyPairName"] = state ? state.keyPairName : undefined;
             inputs["publicKey"] = state ? state.publicKey : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -110,6 +90,7 @@ export class KeyPair extends pulumi.CustomResource {
             inputs["keyFile"] = args ? args.keyFile : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["keyNamePrefix"] = args ? args.keyNamePrefix : undefined;
+            inputs["keyPairName"] = args ? args.keyPairName : undefined;
             inputs["publicKey"] = args ? args.publicKey : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -133,9 +114,12 @@ export interface KeyPairState {
     readonly keyFile?: pulumi.Input<string>;
     /**
      * The key pair's name. It is the only in one Alicloud account.
+     *
+     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     readonly keyName?: pulumi.Input<string>;
     readonly keyNamePrefix?: pulumi.Input<string>;
+    readonly keyPairName?: pulumi.Input<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
@@ -157,9 +141,12 @@ export interface KeyPairArgs {
     readonly keyFile?: pulumi.Input<string>;
     /**
      * The key pair's name. It is the only in one Alicloud account.
+     *
+     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     readonly keyName?: pulumi.Input<string>;
     readonly keyNamePrefix?: pulumi.Input<string>;
+    readonly keyPairName?: pulumi.Input<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */

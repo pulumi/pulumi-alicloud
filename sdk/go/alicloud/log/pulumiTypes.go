@@ -463,6 +463,106 @@ func (o EtlEtlSinkArrayOutput) Index(i pulumi.IntInput) EtlEtlSinkOutput {
 	}).(EtlEtlSinkOutput)
 }
 
+type OssShipperParquetConfig struct {
+	Name string `pulumi:"name"`
+	Type string `pulumi:"type"`
+}
+
+// OssShipperParquetConfigInput is an input type that accepts OssShipperParquetConfigArgs and OssShipperParquetConfigOutput values.
+// You can construct a concrete instance of `OssShipperParquetConfigInput` via:
+//
+//          OssShipperParquetConfigArgs{...}
+type OssShipperParquetConfigInput interface {
+	pulumi.Input
+
+	ToOssShipperParquetConfigOutput() OssShipperParquetConfigOutput
+	ToOssShipperParquetConfigOutputWithContext(context.Context) OssShipperParquetConfigOutput
+}
+
+type OssShipperParquetConfigArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (OssShipperParquetConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OssShipperParquetConfig)(nil)).Elem()
+}
+
+func (i OssShipperParquetConfigArgs) ToOssShipperParquetConfigOutput() OssShipperParquetConfigOutput {
+	return i.ToOssShipperParquetConfigOutputWithContext(context.Background())
+}
+
+func (i OssShipperParquetConfigArgs) ToOssShipperParquetConfigOutputWithContext(ctx context.Context) OssShipperParquetConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OssShipperParquetConfigOutput)
+}
+
+// OssShipperParquetConfigArrayInput is an input type that accepts OssShipperParquetConfigArray and OssShipperParquetConfigArrayOutput values.
+// You can construct a concrete instance of `OssShipperParquetConfigArrayInput` via:
+//
+//          OssShipperParquetConfigArray{ OssShipperParquetConfigArgs{...} }
+type OssShipperParquetConfigArrayInput interface {
+	pulumi.Input
+
+	ToOssShipperParquetConfigArrayOutput() OssShipperParquetConfigArrayOutput
+	ToOssShipperParquetConfigArrayOutputWithContext(context.Context) OssShipperParquetConfigArrayOutput
+}
+
+type OssShipperParquetConfigArray []OssShipperParquetConfigInput
+
+func (OssShipperParquetConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OssShipperParquetConfig)(nil)).Elem()
+}
+
+func (i OssShipperParquetConfigArray) ToOssShipperParquetConfigArrayOutput() OssShipperParquetConfigArrayOutput {
+	return i.ToOssShipperParquetConfigArrayOutputWithContext(context.Background())
+}
+
+func (i OssShipperParquetConfigArray) ToOssShipperParquetConfigArrayOutputWithContext(ctx context.Context) OssShipperParquetConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OssShipperParquetConfigArrayOutput)
+}
+
+type OssShipperParquetConfigOutput struct{ *pulumi.OutputState }
+
+func (OssShipperParquetConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OssShipperParquetConfig)(nil)).Elem()
+}
+
+func (o OssShipperParquetConfigOutput) ToOssShipperParquetConfigOutput() OssShipperParquetConfigOutput {
+	return o
+}
+
+func (o OssShipperParquetConfigOutput) ToOssShipperParquetConfigOutputWithContext(ctx context.Context) OssShipperParquetConfigOutput {
+	return o
+}
+
+func (o OssShipperParquetConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OssShipperParquetConfig) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o OssShipperParquetConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OssShipperParquetConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OssShipperParquetConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (OssShipperParquetConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OssShipperParquetConfig)(nil)).Elem()
+}
+
+func (o OssShipperParquetConfigArrayOutput) ToOssShipperParquetConfigArrayOutput() OssShipperParquetConfigArrayOutput {
+	return o
+}
+
+func (o OssShipperParquetConfigArrayOutput) ToOssShipperParquetConfigArrayOutputWithContext(ctx context.Context) OssShipperParquetConfigArrayOutput {
+	return o
+}
+
+func (o OssShipperParquetConfigArrayOutput) Index(i pulumi.IntInput) OssShipperParquetConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OssShipperParquetConfig {
+		return vs[0].([]OssShipperParquetConfig)[vs[1].(int)]
+	}).(OssShipperParquetConfigOutput)
+}
+
 type StoreIndexFieldSearch struct {
 	// The alias of one field.
 	Alias *string `pulumi:"alias"`
@@ -1038,6 +1138,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertQueryListArrayOutput{})
 	pulumi.RegisterOutputType(EtlEtlSinkOutput{})
 	pulumi.RegisterOutputType(EtlEtlSinkArrayOutput{})
+	pulumi.RegisterOutputType(OssShipperParquetConfigOutput{})
+	pulumi.RegisterOutputType(OssShipperParquetConfigArrayOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchArrayOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchJsonKeyOutput{})

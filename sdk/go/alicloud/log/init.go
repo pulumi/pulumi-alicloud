@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogTailConfig{}
 	case "alicloud:log/machineGroup:MachineGroup":
 		r = &MachineGroup{}
+	case "alicloud:log/ossShipper:OssShipper":
+		r = &OssShipper{}
 	case "alicloud:log/project:Project":
 		r = &Project{}
 	case "alicloud:log/store:Store":
@@ -87,6 +89,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"log/machineGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"log/ossShipper",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

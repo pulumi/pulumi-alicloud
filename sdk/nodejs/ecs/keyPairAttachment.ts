@@ -4,71 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a key pair attachment resource to bind key pair for several ECS instances.
- *
- * > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const default = alicloud.getZones({
- *     availableDiskCategory: "cloud_ssd",
- *     availableResourceCreation: "VSwitch",
- * });
- * const type = _default.then(_default => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: _default.zones[0].id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
- * }));
- * const images = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
- *     mostRecent: true,
- *     owners: "system",
- * });
- * const config = new pulumi.Config();
- * const name = config.get("name") || "keyPairAttachmentName";
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: name,
- *     cidrBlock: "10.1.0.0/21",
- * });
- * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     vpcId: vpc.id,
- *     cidrBlock: "10.1.1.0/24",
- *     availabilityZone: _default.then(_default => _default.zones[0].id),
- *     vswitchName: name,
- * });
- * const group = new alicloud.ecs.SecurityGroup("group", {
- *     description: "New security group",
- *     vpcId: vpc.id,
- * });
- * const instance: alicloud.ecs.Instance[];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     instance.push(new alicloud.ecs.Instance(`instance-${range.value}`, {
- *         instanceName: `${name}-${range.value + 1}`,
- *         imageId: images.then(images => images.images[0].id),
- *         instanceType: type.then(type => type.instanceTypes[0].id),
- *         securityGroups: [group.id],
- *         vswitchId: vswitch.id,
- *         internetChargeType: "PayByTraffic",
- *         internetMaxBandwidthOut: 5,
- *         password: "Test12345",
- *         instanceChargeType: "PostPaid",
- *         systemDiskCategory: "cloud_ssd",
- *     }));
- * }
- * const pair = new alicloud.ecs.KeyPair("pair", {keyName: name});
- * const attachment = new alicloud.ecs.KeyPairAttachment("attachment", {
- *     keyName: pair.id,
- *     instanceIds: instance.map(__item => __item.id),
- * });
- * ```
- */
 export class KeyPairAttachment extends pulumi.CustomResource {
     /**
      * Get an existing KeyPairAttachment resource's state with the given name, ID, and optional extra
@@ -107,8 +42,11 @@ export class KeyPairAttachment extends pulumi.CustomResource {
     public readonly instanceIds!: pulumi.Output<string[]>;
     /**
      * The name of key pair used to bind.
+     *
+     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     public readonly keyName!: pulumi.Output<string>;
+    public readonly keyPairName!: pulumi.Output<string>;
 
     /**
      * Create a KeyPairAttachment resource with the given unique name, arguments, and options.
@@ -126,17 +64,16 @@ export class KeyPairAttachment extends pulumi.CustomResource {
             inputs["force"] = state ? state.force : undefined;
             inputs["instanceIds"] = state ? state.instanceIds : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
+            inputs["keyPairName"] = state ? state.keyPairName : undefined;
         } else {
             const args = argsOrState as KeyPairAttachmentArgs | undefined;
             if ((!args || args.instanceIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if ((!args || args.keyName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keyName'");
-            }
             inputs["force"] = args ? args.force : undefined;
             inputs["instanceIds"] = args ? args.instanceIds : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
+            inputs["keyPairName"] = args ? args.keyPairName : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -159,8 +96,11 @@ export interface KeyPairAttachmentState {
     readonly instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of key pair used to bind.
+     *
+     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     readonly keyName?: pulumi.Input<string>;
+    readonly keyPairName?: pulumi.Input<string>;
 }
 
 /**
@@ -177,6 +117,9 @@ export interface KeyPairAttachmentArgs {
     readonly instanceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of key pair used to bind.
+     *
+     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
-    readonly keyName: pulumi.Input<string>;
+    readonly keyName?: pulumi.Input<string>;
+    readonly keyPairName?: pulumi.Input<string>;
 }

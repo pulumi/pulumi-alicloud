@@ -16,6 +16,7 @@ class KeyPairArgs:
                  key_file: Optional[pulumi.Input[str]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  key_name_prefix: Optional[pulumi.Input[str]] = None,
+                 key_pair_name: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
@@ -29,9 +30,14 @@ class KeyPairArgs:
         if key_file is not None:
             pulumi.set(__self__, "key_file", key_file)
         if key_name is not None:
+            warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+        if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if key_name_prefix is not None:
             pulumi.set(__self__, "key_name_prefix", key_name_prefix)
+        if key_pair_name is not None:
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
         if resource_group_id is not None:
@@ -71,6 +77,15 @@ class KeyPairArgs:
     @key_name_prefix.setter
     def key_name_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_name_prefix", value)
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key_pair_name")
+
+    @key_pair_name.setter
+    def key_pair_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_pair_name", value)
 
     @property
     @pulumi.getter(name="publicKey")
@@ -114,6 +129,7 @@ class KeyPair(pulumi.CustomResource):
                  key_file: Optional[pulumi.Input[str]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  key_name_prefix: Optional[pulumi.Input[str]] = None,
+                 key_pair_name: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -121,25 +137,6 @@ class KeyPair(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a key pair resource.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        basic = alicloud.ecs.KeyPair("basic", key_name="terraform-test-key-pair")
-        # Using name prefix to build key pair
-        prefix = alicloud.ecs.KeyPair("prefix", key_name_prefix="terraform-test-key-pair-prefix")
-        # Import an existing public key to build a alicloud key pair
-        publickey = alicloud.ecs.KeyPair("publickey",
-            key_name="my_public_key",
-            public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
-        ```
-
         ## Import
 
         Key pair can be imported using the name, e.g.
@@ -162,25 +159,6 @@ class KeyPair(pulumi.CustomResource):
                  args: Optional[KeyPairArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a key pair resource.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        basic = alicloud.ecs.KeyPair("basic", key_name="terraform-test-key-pair")
-        # Using name prefix to build key pair
-        prefix = alicloud.ecs.KeyPair("prefix", key_name_prefix="terraform-test-key-pair-prefix")
-        # Import an existing public key to build a alicloud key pair
-        publickey = alicloud.ecs.KeyPair("publickey",
-            key_name="my_public_key",
-            public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
-        ```
-
         ## Import
 
         Key pair can be imported using the name, e.g.
@@ -207,6 +185,7 @@ class KeyPair(pulumi.CustomResource):
                  key_file: Optional[pulumi.Input[str]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  key_name_prefix: Optional[pulumi.Input[str]] = None,
+                 key_pair_name: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -231,8 +210,12 @@ class KeyPair(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['key_file'] = key_file
+            if key_name is not None and not opts.urn:
+                warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
             __props__['key_name'] = key_name
             __props__['key_name_prefix'] = key_name_prefix
+            __props__['key_pair_name'] = key_pair_name
             __props__['public_key'] = public_key
             __props__['resource_group_id'] = resource_group_id
             __props__['tags'] = tags
@@ -251,6 +234,7 @@ class KeyPair(pulumi.CustomResource):
             key_file: Optional[pulumi.Input[str]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             key_name_prefix: Optional[pulumi.Input[str]] = None,
+            key_pair_name: Optional[pulumi.Input[str]] = None,
             public_key: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'KeyPair':
@@ -274,6 +258,7 @@ class KeyPair(pulumi.CustomResource):
         __props__["key_file"] = key_file
         __props__["key_name"] = key_name
         __props__["key_name_prefix"] = key_name_prefix
+        __props__["key_pair_name"] = key_pair_name
         __props__["public_key"] = public_key
         __props__["resource_group_id"] = resource_group_id
         __props__["tags"] = tags
@@ -304,6 +289,11 @@ class KeyPair(pulumi.CustomResource):
     @pulumi.getter(name="keyNamePrefix")
     def key_name_prefix(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "key_name_prefix")
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "key_pair_name")
 
     @property
     @pulumi.getter(name="publicKey")

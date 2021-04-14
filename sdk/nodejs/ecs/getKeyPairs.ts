@@ -5,24 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Declare the data source
- * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {
- *     keyName: "keyPairDatasource",
- * });
- * const defaultKeyPairs = defaultKeyPair.keyName.apply(keyName => alicloud.ecs.getKeyPairs({
- *     nameRegex: keyName,
- * }, { async: true }));
- * ```
- */
 export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
     args = args || {};
     if (!opts) {
@@ -76,7 +58,7 @@ export interface GetKeyPairsResult {
     /**
      * Finger print of the key pair.
      */
-    readonly fingerPrint: string;
+    readonly fingerPrint?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -84,6 +66,8 @@ export interface GetKeyPairsResult {
     readonly ids: string[];
     /**
      * A list of key pairs. Each element contains the following attributes:
+     *
+     * @deprecated Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.
      */
     readonly keyPairs: outputs.ecs.GetKeyPairsKeyPair[];
     readonly nameRegex?: string;
@@ -92,6 +76,7 @@ export interface GetKeyPairsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pairs: outputs.ecs.GetKeyPairsPair[];
     /**
      * The Id of resource group.
      */

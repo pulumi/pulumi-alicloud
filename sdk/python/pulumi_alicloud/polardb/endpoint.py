@@ -14,37 +14,36 @@ __all__ = ['EndpointArgs', 'Endpoint']
 class EndpointArgs:
     def __init__(__self__, *,
                  db_cluster_id: pulumi.Input[str],
-                 endpoint_type: pulumi.Input[str],
                  auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
                  endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
+                 net_type: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 read_write_mode: Optional[pulumi.Input[str]] = None):
+                 read_write_mode: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
-        :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[str] endpoint_type: Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
-        :param pulumi.Input[str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. Default to `Disable`.
-        :param pulumi.Input[Mapping[str, Any]] endpoint_config: The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
-        :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. Default to `ReadOnly`.
+        :param pulumi.Input[str] endpoint_type: Type of endpoint.
         """
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "endpoint_type", endpoint_type)
         if auto_add_new_nodes is not None:
             pulumi.set(__self__, "auto_add_new_nodes", auto_add_new_nodes)
         if endpoint_config is not None:
             pulumi.set(__self__, "endpoint_config", endpoint_config)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if net_type is not None:
+            pulumi.set(__self__, "net_type", net_type)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
         if read_write_mode is not None:
             pulumi.set(__self__, "read_write_mode", read_write_mode)
+        if ssl_enabled is not None:
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
 
     @property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Input[str]:
-        """
-        The Id of cluster that can run database.
-        """
         return pulumi.get(self, "db_cluster_id")
 
     @db_cluster_id.setter
@@ -52,23 +51,8 @@ class EndpointArgs:
         pulumi.set(self, "db_cluster_id", value)
 
     @property
-    @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> pulumi.Input[str]:
-        """
-        Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
-        """
-        return pulumi.get(self, "endpoint_type")
-
-    @endpoint_type.setter
-    def endpoint_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint_type", value)
-
-    @property
     @pulumi.getter(name="autoAddNewNodes")
     def auto_add_new_nodes(self) -> Optional[pulumi.Input[str]]:
-        """
-        Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. Default to `Disable`.
-        """
         return pulumi.get(self, "auto_add_new_nodes")
 
     @auto_add_new_nodes.setter
@@ -78,9 +62,6 @@ class EndpointArgs:
     @property
     @pulumi.getter(name="endpointConfig")
     def endpoint_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-        """
         return pulumi.get(self, "endpoint_config")
 
     @endpoint_config.setter
@@ -88,11 +69,29 @@ class EndpointArgs:
         pulumi.set(self, "endpoint_config", value)
 
     @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of endpoint.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_type", value)
+
+    @property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "net_type")
+
+    @net_type.setter
+    def net_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "net_type", value)
+
+    @property
     @pulumi.getter
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
-        """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
@@ -102,14 +101,20 @@ class EndpointArgs:
     @property
     @pulumi.getter(name="readWriteMode")
     def read_write_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. Default to `ReadOnly`.
-        """
         return pulumi.get(self, "read_write_mode")
 
     @read_write_mode.setter
     def read_write_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "read_write_mode", value)
+
+    @property
+    @pulumi.getter(name="sslEnabled")
+    def ssl_enabled(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssl_enabled")
+
+    @ssl_enabled.setter
+    def ssl_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_enabled", value)
 
 
 class Endpoint(pulumi.CustomResource):
@@ -121,15 +126,19 @@ class Endpoint(pulumi.CustomResource):
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
+                 net_type: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  read_write_mode: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
-        Provides a PolarDB endpoint resource to manage custom endpoint of PolarDB cluster.
+        Provides a PolarDB endpoint resource to manage endpoint of PolarDB cluster.
 
-        > **NOTE:** Available in v1.80.0+. Only used to manage PolarDB MySQL custom cluster endpoint.
+        > **NOTE:** After v1.80.0 and before v1.121.0, you can only use this resource to manage the custom endpoint. Since v1.121.0, you also can import the primary endpoint and the cluster endpoint, to modify their ssl status and so on.
+
+        > **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
 
         ## Example Usage
 
@@ -161,6 +170,20 @@ class Endpoint(pulumi.CustomResource):
             db_cluster_id=default_cluster.id,
             endpoint_type="Custom")
         ```
+        ## Argument Reference
+
+        The following arguments are supported:
+
+        * `db_cluster_id` - (Required, ForceNew) The Id of cluster that can run database.
+        * `endpoint_type` - (Required & ForceNew before v1.121.0, Optional in v1.121.0+) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+        * `read_write_mode` - (Optional) Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+        * `nodes` - (Optional) Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+        * `auto_add_new_nodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
+        * `endpoint_config` - (Optional) The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
+        * `ssl_enabled` - (Optional, Available in v1.121.0+) Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
+        * `net_type` - (Optional, Available in v1.121.0+) The network type of the endpoint address.\
+            **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
+            For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
 
         ## Import
 
@@ -172,12 +195,7 @@ class Endpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. Default to `Disable`.
-        :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[Mapping[str, Any]] endpoint_config: The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-        :param pulumi.Input[str] endpoint_type: Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
-        :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. Default to `ReadOnly`.
+        :param pulumi.Input[str] endpoint_type: Type of endpoint.
         """
         ...
     @overload
@@ -186,9 +204,11 @@ class Endpoint(pulumi.CustomResource):
                  args: EndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a PolarDB endpoint resource to manage custom endpoint of PolarDB cluster.
+        Provides a PolarDB endpoint resource to manage endpoint of PolarDB cluster.
 
-        > **NOTE:** Available in v1.80.0+. Only used to manage PolarDB MySQL custom cluster endpoint.
+        > **NOTE:** After v1.80.0 and before v1.121.0, you can only use this resource to manage the custom endpoint. Since v1.121.0, you also can import the primary endpoint and the cluster endpoint, to modify their ssl status and so on.
+
+        > **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
 
         ## Example Usage
 
@@ -220,6 +240,20 @@ class Endpoint(pulumi.CustomResource):
             db_cluster_id=default_cluster.id,
             endpoint_type="Custom")
         ```
+        ## Argument Reference
+
+        The following arguments are supported:
+
+        * `db_cluster_id` - (Required, ForceNew) The Id of cluster that can run database.
+        * `endpoint_type` - (Required & ForceNew before v1.121.0, Optional in v1.121.0+) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+        * `read_write_mode` - (Optional) Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+        * `nodes` - (Optional) Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
+        * `auto_add_new_nodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
+        * `endpoint_config` - (Optional) The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
+        * `ssl_enabled` - (Optional, Available in v1.121.0+) Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
+        * `net_type` - (Optional, Available in v1.121.0+) The network type of the endpoint address.\
+            **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
+            For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
 
         ## Import
 
@@ -248,8 +282,10 @@ class Endpoint(pulumi.CustomResource):
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
+                 net_type: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  read_write_mode: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -275,11 +311,13 @@ class Endpoint(pulumi.CustomResource):
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__['db_cluster_id'] = db_cluster_id
             __props__['endpoint_config'] = endpoint_config
-            if endpoint_type is None and not opts.urn:
-                raise TypeError("Missing required property 'endpoint_type'")
             __props__['endpoint_type'] = endpoint_type
+            __props__['net_type'] = net_type
             __props__['nodes'] = nodes
             __props__['read_write_mode'] = read_write_mode
+            __props__['ssl_enabled'] = ssl_enabled
+            __props__['ssl_connection_string'] = None
+            __props__['ssl_expire_time'] = None
         super(Endpoint, __self__).__init__(
             'alicloud:polardb/endpoint:Endpoint',
             resource_name,
@@ -294,8 +332,12 @@ class Endpoint(pulumi.CustomResource):
             db_cluster_id: Optional[pulumi.Input[str]] = None,
             endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             endpoint_type: Optional[pulumi.Input[str]] = None,
+            net_type: Optional[pulumi.Input[str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            read_write_mode: Optional[pulumi.Input[str]] = None) -> 'Endpoint':
+            read_write_mode: Optional[pulumi.Input[str]] = None,
+            ssl_connection_string: Optional[pulumi.Input[str]] = None,
+            ssl_enabled: Optional[pulumi.Input[str]] = None,
+            ssl_expire_time: Optional[pulumi.Input[str]] = None) -> 'Endpoint':
         """
         Get an existing Endpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -303,12 +345,9 @@ class Endpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] auto_add_new_nodes: Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. Default to `Disable`.
-        :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[Mapping[str, Any]] endpoint_config: The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-        :param pulumi.Input[str] endpoint_type: Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
-        :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. Default to `ReadOnly`.
+        :param pulumi.Input[str] endpoint_type: Type of endpoint.
+        :param pulumi.Input[str] ssl_connection_string: (Available in v1.121.0+) The SSL connection string.
+        :param pulumi.Input[str] ssl_expire_time: (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -318,57 +357,72 @@ class Endpoint(pulumi.CustomResource):
         __props__["db_cluster_id"] = db_cluster_id
         __props__["endpoint_config"] = endpoint_config
         __props__["endpoint_type"] = endpoint_type
+        __props__["net_type"] = net_type
         __props__["nodes"] = nodes
         __props__["read_write_mode"] = read_write_mode
+        __props__["ssl_connection_string"] = ssl_connection_string
+        __props__["ssl_enabled"] = ssl_enabled
+        __props__["ssl_expire_time"] = ssl_expire_time
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="autoAddNewNodes")
-    def auto_add_new_nodes(self) -> pulumi.Output[Optional[str]]:
-        """
-        Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. Default to `Disable`.
-        """
+    def auto_add_new_nodes(self) -> pulumi.Output[str]:
         return pulumi.get(self, "auto_add_new_nodes")
 
     @property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Output[str]:
-        """
-        The Id of cluster that can run database.
-        """
         return pulumi.get(self, "db_cluster_id")
 
     @property
     @pulumi.getter(name="endpointConfig")
     def endpoint_config(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-        """
         return pulumi.get(self, "endpoint_config")
 
     @property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> pulumi.Output[str]:
+    def endpoint_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Type of endpoint. Valid value: `Custom`. Currently supported only `Custom`.
+        Type of endpoint.
         """
         return pulumi.get(self, "endpoint_type")
 
     @property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "net_type")
+
+    @property
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence[str]]:
-        """
-        Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
-        """
         return pulumi.get(self, "nodes")
 
     @property
     @pulumi.getter(name="readWriteMode")
-    def read_write_mode(self) -> pulumi.Output[Optional[str]]:
-        """
-        Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. Default to `ReadOnly`.
-        """
+    def read_write_mode(self) -> pulumi.Output[str]:
         return pulumi.get(self, "read_write_mode")
+
+    @property
+    @pulumi.getter(name="sslConnectionString")
+    def ssl_connection_string(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.121.0+) The SSL connection string.
+        """
+        return pulumi.get(self, "ssl_connection_string")
+
+    @property
+    @pulumi.getter(name="sslEnabled")
+    def ssl_enabled(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "ssl_enabled")
+
+    @property
+    @pulumi.getter(name="sslExpireTime")
+    def ssl_expire_time(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "ssl_expire_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -2988,6 +2988,664 @@ func (o GetDisksDiskArrayOutput) Index(i pulumi.IntInput) GetDisksDiskOutput {
 	}).(GetDisksDiskOutput)
 }
 
+type GetEcsKeyPairsKeyPair struct {
+	// The finger print of the key pair.
+	FingerPrint string `pulumi:"fingerPrint"`
+	// The ID of the Key Pair.
+	Id string `pulumi:"id"`
+	// A list of ECS instances that has been bound this key pair.
+	Instances []GetEcsKeyPairsKeyPairInstance `pulumi:"instances"`
+	// The Key Pair Name.
+	KeyName     string `pulumi:"keyName"`
+	KeyPairName string `pulumi:"keyPairName"`
+	// The Resource Group Id.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetEcsKeyPairsKeyPairInput is an input type that accepts GetEcsKeyPairsKeyPairArgs and GetEcsKeyPairsKeyPairOutput values.
+// You can construct a concrete instance of `GetEcsKeyPairsKeyPairInput` via:
+//
+//          GetEcsKeyPairsKeyPairArgs{...}
+type GetEcsKeyPairsKeyPairInput interface {
+	pulumi.Input
+
+	ToGetEcsKeyPairsKeyPairOutput() GetEcsKeyPairsKeyPairOutput
+	ToGetEcsKeyPairsKeyPairOutputWithContext(context.Context) GetEcsKeyPairsKeyPairOutput
+}
+
+type GetEcsKeyPairsKeyPairArgs struct {
+	// The finger print of the key pair.
+	FingerPrint pulumi.StringInput `pulumi:"fingerPrint"`
+	// The ID of the Key Pair.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A list of ECS instances that has been bound this key pair.
+	Instances GetEcsKeyPairsKeyPairInstanceArrayInput `pulumi:"instances"`
+	// The Key Pair Name.
+	KeyName     pulumi.StringInput `pulumi:"keyName"`
+	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
+	// The Resource Group Id.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The tags.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetEcsKeyPairsKeyPairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsKeyPairsKeyPair)(nil)).Elem()
+}
+
+func (i GetEcsKeyPairsKeyPairArgs) ToGetEcsKeyPairsKeyPairOutput() GetEcsKeyPairsKeyPairOutput {
+	return i.ToGetEcsKeyPairsKeyPairOutputWithContext(context.Background())
+}
+
+func (i GetEcsKeyPairsKeyPairArgs) ToGetEcsKeyPairsKeyPairOutputWithContext(ctx context.Context) GetEcsKeyPairsKeyPairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsKeyPairsKeyPairOutput)
+}
+
+// GetEcsKeyPairsKeyPairArrayInput is an input type that accepts GetEcsKeyPairsKeyPairArray and GetEcsKeyPairsKeyPairArrayOutput values.
+// You can construct a concrete instance of `GetEcsKeyPairsKeyPairArrayInput` via:
+//
+//          GetEcsKeyPairsKeyPairArray{ GetEcsKeyPairsKeyPairArgs{...} }
+type GetEcsKeyPairsKeyPairArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsKeyPairsKeyPairArrayOutput() GetEcsKeyPairsKeyPairArrayOutput
+	ToGetEcsKeyPairsKeyPairArrayOutputWithContext(context.Context) GetEcsKeyPairsKeyPairArrayOutput
+}
+
+type GetEcsKeyPairsKeyPairArray []GetEcsKeyPairsKeyPairInput
+
+func (GetEcsKeyPairsKeyPairArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsKeyPairsKeyPair)(nil)).Elem()
+}
+
+func (i GetEcsKeyPairsKeyPairArray) ToGetEcsKeyPairsKeyPairArrayOutput() GetEcsKeyPairsKeyPairArrayOutput {
+	return i.ToGetEcsKeyPairsKeyPairArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsKeyPairsKeyPairArray) ToGetEcsKeyPairsKeyPairArrayOutputWithContext(ctx context.Context) GetEcsKeyPairsKeyPairArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsKeyPairsKeyPairArrayOutput)
+}
+
+type GetEcsKeyPairsKeyPairOutput struct{ *pulumi.OutputState }
+
+func (GetEcsKeyPairsKeyPairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsKeyPairsKeyPair)(nil)).Elem()
+}
+
+func (o GetEcsKeyPairsKeyPairOutput) ToGetEcsKeyPairsKeyPairOutput() GetEcsKeyPairsKeyPairOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsKeyPairOutput) ToGetEcsKeyPairsKeyPairOutputWithContext(ctx context.Context) GetEcsKeyPairsKeyPairOutput {
+	return o
+}
+
+// The finger print of the key pair.
+func (o GetEcsKeyPairsKeyPairOutput) FingerPrint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) string { return v.FingerPrint }).(pulumi.StringOutput)
+}
+
+// The ID of the Key Pair.
+func (o GetEcsKeyPairsKeyPairOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of ECS instances that has been bound this key pair.
+func (o GetEcsKeyPairsKeyPairOutput) Instances() GetEcsKeyPairsKeyPairInstanceArrayOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) []GetEcsKeyPairsKeyPairInstance { return v.Instances }).(GetEcsKeyPairsKeyPairInstanceArrayOutput)
+}
+
+// The Key Pair Name.
+func (o GetEcsKeyPairsKeyPairOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsKeyPairOutput) KeyPairName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) string { return v.KeyPairName }).(pulumi.StringOutput)
+}
+
+// The Resource Group Id.
+func (o GetEcsKeyPairsKeyPairOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The tags.
+func (o GetEcsKeyPairsKeyPairOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetEcsKeyPairsKeyPairArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsKeyPairsKeyPairArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsKeyPairsKeyPair)(nil)).Elem()
+}
+
+func (o GetEcsKeyPairsKeyPairArrayOutput) ToGetEcsKeyPairsKeyPairArrayOutput() GetEcsKeyPairsKeyPairArrayOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsKeyPairArrayOutput) ToGetEcsKeyPairsKeyPairArrayOutputWithContext(ctx context.Context) GetEcsKeyPairsKeyPairArrayOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsKeyPairArrayOutput) Index(i pulumi.IntInput) GetEcsKeyPairsKeyPairOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsKeyPairsKeyPair {
+		return vs[0].([]GetEcsKeyPairsKeyPair)[vs[1].(int)]
+	}).(GetEcsKeyPairsKeyPairOutput)
+}
+
+type GetEcsKeyPairsKeyPairInstance struct {
+	// The ID of the availability zone where the ECS instance is located.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	Description      string `pulumi:"description"`
+	ImageId          string `pulumi:"imageId"`
+	// The ID of the ECS instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of the ECS instance.
+	InstanceName string `pulumi:"instanceName"`
+	InstanceType string `pulumi:"instanceType"`
+	// The Key Pair Name.
+	KeyName string `pulumi:"keyName"`
+	// The private IP address of the ECS instance.
+	PrivateIp string `pulumi:"privateIp"`
+	// The public IP address or EIP of the ECS instance.
+	PublicIp string `pulumi:"publicIp"`
+	RegionId string `pulumi:"regionId"`
+	Status   string `pulumi:"status"`
+	// The ID of the VSwitch attached to the ECS instance.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetEcsKeyPairsKeyPairInstanceInput is an input type that accepts GetEcsKeyPairsKeyPairInstanceArgs and GetEcsKeyPairsKeyPairInstanceOutput values.
+// You can construct a concrete instance of `GetEcsKeyPairsKeyPairInstanceInput` via:
+//
+//          GetEcsKeyPairsKeyPairInstanceArgs{...}
+type GetEcsKeyPairsKeyPairInstanceInput interface {
+	pulumi.Input
+
+	ToGetEcsKeyPairsKeyPairInstanceOutput() GetEcsKeyPairsKeyPairInstanceOutput
+	ToGetEcsKeyPairsKeyPairInstanceOutputWithContext(context.Context) GetEcsKeyPairsKeyPairInstanceOutput
+}
+
+type GetEcsKeyPairsKeyPairInstanceArgs struct {
+	// The ID of the availability zone where the ECS instance is located.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	Description      pulumi.StringInput `pulumi:"description"`
+	ImageId          pulumi.StringInput `pulumi:"imageId"`
+	// The ID of the ECS instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of the ECS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The Key Pair Name.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The private IP address of the ECS instance.
+	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
+	// The public IP address or EIP of the ECS instance.
+	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	Status   pulumi.StringInput `pulumi:"status"`
+	// The ID of the VSwitch attached to the ECS instance.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetEcsKeyPairsKeyPairInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsKeyPairsKeyPairInstance)(nil)).Elem()
+}
+
+func (i GetEcsKeyPairsKeyPairInstanceArgs) ToGetEcsKeyPairsKeyPairInstanceOutput() GetEcsKeyPairsKeyPairInstanceOutput {
+	return i.ToGetEcsKeyPairsKeyPairInstanceOutputWithContext(context.Background())
+}
+
+func (i GetEcsKeyPairsKeyPairInstanceArgs) ToGetEcsKeyPairsKeyPairInstanceOutputWithContext(ctx context.Context) GetEcsKeyPairsKeyPairInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsKeyPairsKeyPairInstanceOutput)
+}
+
+// GetEcsKeyPairsKeyPairInstanceArrayInput is an input type that accepts GetEcsKeyPairsKeyPairInstanceArray and GetEcsKeyPairsKeyPairInstanceArrayOutput values.
+// You can construct a concrete instance of `GetEcsKeyPairsKeyPairInstanceArrayInput` via:
+//
+//          GetEcsKeyPairsKeyPairInstanceArray{ GetEcsKeyPairsKeyPairInstanceArgs{...} }
+type GetEcsKeyPairsKeyPairInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsKeyPairsKeyPairInstanceArrayOutput() GetEcsKeyPairsKeyPairInstanceArrayOutput
+	ToGetEcsKeyPairsKeyPairInstanceArrayOutputWithContext(context.Context) GetEcsKeyPairsKeyPairInstanceArrayOutput
+}
+
+type GetEcsKeyPairsKeyPairInstanceArray []GetEcsKeyPairsKeyPairInstanceInput
+
+func (GetEcsKeyPairsKeyPairInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsKeyPairsKeyPairInstance)(nil)).Elem()
+}
+
+func (i GetEcsKeyPairsKeyPairInstanceArray) ToGetEcsKeyPairsKeyPairInstanceArrayOutput() GetEcsKeyPairsKeyPairInstanceArrayOutput {
+	return i.ToGetEcsKeyPairsKeyPairInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsKeyPairsKeyPairInstanceArray) ToGetEcsKeyPairsKeyPairInstanceArrayOutputWithContext(ctx context.Context) GetEcsKeyPairsKeyPairInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsKeyPairsKeyPairInstanceArrayOutput)
+}
+
+type GetEcsKeyPairsKeyPairInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetEcsKeyPairsKeyPairInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsKeyPairsKeyPairInstance)(nil)).Elem()
+}
+
+func (o GetEcsKeyPairsKeyPairInstanceOutput) ToGetEcsKeyPairsKeyPairInstanceOutput() GetEcsKeyPairsKeyPairInstanceOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsKeyPairInstanceOutput) ToGetEcsKeyPairsKeyPairInstanceOutputWithContext(ctx context.Context) GetEcsKeyPairsKeyPairInstanceOutput {
+	return o
+}
+
+// The ID of the availability zone where the ECS instance is located.
+func (o GetEcsKeyPairsKeyPairInstanceOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsKeyPairInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsKeyPairInstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The ID of the ECS instance.
+func (o GetEcsKeyPairsKeyPairInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the ECS instance.
+func (o GetEcsKeyPairsKeyPairInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsKeyPairInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The Key Pair Name.
+func (o GetEcsKeyPairsKeyPairInstanceOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// The private IP address of the ECS instance.
+func (o GetEcsKeyPairsKeyPairInstanceOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+// The public IP address or EIP of the ECS instance.
+func (o GetEcsKeyPairsKeyPairInstanceOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.PublicIp }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsKeyPairInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsKeyPairInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VSwitch attached to the ECS instance.
+func (o GetEcsKeyPairsKeyPairInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetEcsKeyPairsKeyPairInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsKeyPairsKeyPairInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsKeyPairsKeyPairInstance)(nil)).Elem()
+}
+
+func (o GetEcsKeyPairsKeyPairInstanceArrayOutput) ToGetEcsKeyPairsKeyPairInstanceArrayOutput() GetEcsKeyPairsKeyPairInstanceArrayOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsKeyPairInstanceArrayOutput) ToGetEcsKeyPairsKeyPairInstanceArrayOutputWithContext(ctx context.Context) GetEcsKeyPairsKeyPairInstanceArrayOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsKeyPairInstanceArrayOutput) Index(i pulumi.IntInput) GetEcsKeyPairsKeyPairInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsKeyPairsKeyPairInstance {
+		return vs[0].([]GetEcsKeyPairsKeyPairInstance)[vs[1].(int)]
+	}).(GetEcsKeyPairsKeyPairInstanceOutput)
+}
+
+type GetEcsKeyPairsPair struct {
+	// The finger print of the key pair.
+	FingerPrint string `pulumi:"fingerPrint"`
+	// The ID of the Key Pair.
+	Id string `pulumi:"id"`
+	// A list of ECS instances that has been bound this key pair.
+	Instances []GetEcsKeyPairsPairInstance `pulumi:"instances"`
+	// The Key Pair Name.
+	KeyName     string `pulumi:"keyName"`
+	KeyPairName string `pulumi:"keyPairName"`
+	// The Resource Group Id.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetEcsKeyPairsPairInput is an input type that accepts GetEcsKeyPairsPairArgs and GetEcsKeyPairsPairOutput values.
+// You can construct a concrete instance of `GetEcsKeyPairsPairInput` via:
+//
+//          GetEcsKeyPairsPairArgs{...}
+type GetEcsKeyPairsPairInput interface {
+	pulumi.Input
+
+	ToGetEcsKeyPairsPairOutput() GetEcsKeyPairsPairOutput
+	ToGetEcsKeyPairsPairOutputWithContext(context.Context) GetEcsKeyPairsPairOutput
+}
+
+type GetEcsKeyPairsPairArgs struct {
+	// The finger print of the key pair.
+	FingerPrint pulumi.StringInput `pulumi:"fingerPrint"`
+	// The ID of the Key Pair.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A list of ECS instances that has been bound this key pair.
+	Instances GetEcsKeyPairsPairInstanceArrayInput `pulumi:"instances"`
+	// The Key Pair Name.
+	KeyName     pulumi.StringInput `pulumi:"keyName"`
+	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
+	// The Resource Group Id.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The tags.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetEcsKeyPairsPairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsKeyPairsPair)(nil)).Elem()
+}
+
+func (i GetEcsKeyPairsPairArgs) ToGetEcsKeyPairsPairOutput() GetEcsKeyPairsPairOutput {
+	return i.ToGetEcsKeyPairsPairOutputWithContext(context.Background())
+}
+
+func (i GetEcsKeyPairsPairArgs) ToGetEcsKeyPairsPairOutputWithContext(ctx context.Context) GetEcsKeyPairsPairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsKeyPairsPairOutput)
+}
+
+// GetEcsKeyPairsPairArrayInput is an input type that accepts GetEcsKeyPairsPairArray and GetEcsKeyPairsPairArrayOutput values.
+// You can construct a concrete instance of `GetEcsKeyPairsPairArrayInput` via:
+//
+//          GetEcsKeyPairsPairArray{ GetEcsKeyPairsPairArgs{...} }
+type GetEcsKeyPairsPairArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsKeyPairsPairArrayOutput() GetEcsKeyPairsPairArrayOutput
+	ToGetEcsKeyPairsPairArrayOutputWithContext(context.Context) GetEcsKeyPairsPairArrayOutput
+}
+
+type GetEcsKeyPairsPairArray []GetEcsKeyPairsPairInput
+
+func (GetEcsKeyPairsPairArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsKeyPairsPair)(nil)).Elem()
+}
+
+func (i GetEcsKeyPairsPairArray) ToGetEcsKeyPairsPairArrayOutput() GetEcsKeyPairsPairArrayOutput {
+	return i.ToGetEcsKeyPairsPairArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsKeyPairsPairArray) ToGetEcsKeyPairsPairArrayOutputWithContext(ctx context.Context) GetEcsKeyPairsPairArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsKeyPairsPairArrayOutput)
+}
+
+type GetEcsKeyPairsPairOutput struct{ *pulumi.OutputState }
+
+func (GetEcsKeyPairsPairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsKeyPairsPair)(nil)).Elem()
+}
+
+func (o GetEcsKeyPairsPairOutput) ToGetEcsKeyPairsPairOutput() GetEcsKeyPairsPairOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsPairOutput) ToGetEcsKeyPairsPairOutputWithContext(ctx context.Context) GetEcsKeyPairsPairOutput {
+	return o
+}
+
+// The finger print of the key pair.
+func (o GetEcsKeyPairsPairOutput) FingerPrint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPair) string { return v.FingerPrint }).(pulumi.StringOutput)
+}
+
+// The ID of the Key Pair.
+func (o GetEcsKeyPairsPairOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPair) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of ECS instances that has been bound this key pair.
+func (o GetEcsKeyPairsPairOutput) Instances() GetEcsKeyPairsPairInstanceArrayOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPair) []GetEcsKeyPairsPairInstance { return v.Instances }).(GetEcsKeyPairsPairInstanceArrayOutput)
+}
+
+// The Key Pair Name.
+func (o GetEcsKeyPairsPairOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPair) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsPairOutput) KeyPairName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPair) string { return v.KeyPairName }).(pulumi.StringOutput)
+}
+
+// The Resource Group Id.
+func (o GetEcsKeyPairsPairOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPair) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The tags.
+func (o GetEcsKeyPairsPairOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPair) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetEcsKeyPairsPairArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsKeyPairsPairArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsKeyPairsPair)(nil)).Elem()
+}
+
+func (o GetEcsKeyPairsPairArrayOutput) ToGetEcsKeyPairsPairArrayOutput() GetEcsKeyPairsPairArrayOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsPairArrayOutput) ToGetEcsKeyPairsPairArrayOutputWithContext(ctx context.Context) GetEcsKeyPairsPairArrayOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsPairArrayOutput) Index(i pulumi.IntInput) GetEcsKeyPairsPairOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsKeyPairsPair {
+		return vs[0].([]GetEcsKeyPairsPair)[vs[1].(int)]
+	}).(GetEcsKeyPairsPairOutput)
+}
+
+type GetEcsKeyPairsPairInstance struct {
+	// The ID of the availability zone where the ECS instance is located.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	Description      string `pulumi:"description"`
+	ImageId          string `pulumi:"imageId"`
+	// The ID of the ECS instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of the ECS instance.
+	InstanceName string `pulumi:"instanceName"`
+	InstanceType string `pulumi:"instanceType"`
+	// The Key Pair Name.
+	KeyName string `pulumi:"keyName"`
+	// The private IP address of the ECS instance.
+	PrivateIp string `pulumi:"privateIp"`
+	// The public IP address or EIP of the ECS instance.
+	PublicIp string `pulumi:"publicIp"`
+	RegionId string `pulumi:"regionId"`
+	Status   string `pulumi:"status"`
+	// The ID of the VSwitch attached to the ECS instance.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetEcsKeyPairsPairInstanceInput is an input type that accepts GetEcsKeyPairsPairInstanceArgs and GetEcsKeyPairsPairInstanceOutput values.
+// You can construct a concrete instance of `GetEcsKeyPairsPairInstanceInput` via:
+//
+//          GetEcsKeyPairsPairInstanceArgs{...}
+type GetEcsKeyPairsPairInstanceInput interface {
+	pulumi.Input
+
+	ToGetEcsKeyPairsPairInstanceOutput() GetEcsKeyPairsPairInstanceOutput
+	ToGetEcsKeyPairsPairInstanceOutputWithContext(context.Context) GetEcsKeyPairsPairInstanceOutput
+}
+
+type GetEcsKeyPairsPairInstanceArgs struct {
+	// The ID of the availability zone where the ECS instance is located.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	Description      pulumi.StringInput `pulumi:"description"`
+	ImageId          pulumi.StringInput `pulumi:"imageId"`
+	// The ID of the ECS instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of the ECS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The Key Pair Name.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The private IP address of the ECS instance.
+	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
+	// The public IP address or EIP of the ECS instance.
+	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	Status   pulumi.StringInput `pulumi:"status"`
+	// The ID of the VSwitch attached to the ECS instance.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetEcsKeyPairsPairInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsKeyPairsPairInstance)(nil)).Elem()
+}
+
+func (i GetEcsKeyPairsPairInstanceArgs) ToGetEcsKeyPairsPairInstanceOutput() GetEcsKeyPairsPairInstanceOutput {
+	return i.ToGetEcsKeyPairsPairInstanceOutputWithContext(context.Background())
+}
+
+func (i GetEcsKeyPairsPairInstanceArgs) ToGetEcsKeyPairsPairInstanceOutputWithContext(ctx context.Context) GetEcsKeyPairsPairInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsKeyPairsPairInstanceOutput)
+}
+
+// GetEcsKeyPairsPairInstanceArrayInput is an input type that accepts GetEcsKeyPairsPairInstanceArray and GetEcsKeyPairsPairInstanceArrayOutput values.
+// You can construct a concrete instance of `GetEcsKeyPairsPairInstanceArrayInput` via:
+//
+//          GetEcsKeyPairsPairInstanceArray{ GetEcsKeyPairsPairInstanceArgs{...} }
+type GetEcsKeyPairsPairInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsKeyPairsPairInstanceArrayOutput() GetEcsKeyPairsPairInstanceArrayOutput
+	ToGetEcsKeyPairsPairInstanceArrayOutputWithContext(context.Context) GetEcsKeyPairsPairInstanceArrayOutput
+}
+
+type GetEcsKeyPairsPairInstanceArray []GetEcsKeyPairsPairInstanceInput
+
+func (GetEcsKeyPairsPairInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsKeyPairsPairInstance)(nil)).Elem()
+}
+
+func (i GetEcsKeyPairsPairInstanceArray) ToGetEcsKeyPairsPairInstanceArrayOutput() GetEcsKeyPairsPairInstanceArrayOutput {
+	return i.ToGetEcsKeyPairsPairInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsKeyPairsPairInstanceArray) ToGetEcsKeyPairsPairInstanceArrayOutputWithContext(ctx context.Context) GetEcsKeyPairsPairInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsKeyPairsPairInstanceArrayOutput)
+}
+
+type GetEcsKeyPairsPairInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetEcsKeyPairsPairInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsKeyPairsPairInstance)(nil)).Elem()
+}
+
+func (o GetEcsKeyPairsPairInstanceOutput) ToGetEcsKeyPairsPairInstanceOutput() GetEcsKeyPairsPairInstanceOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsPairInstanceOutput) ToGetEcsKeyPairsPairInstanceOutputWithContext(ctx context.Context) GetEcsKeyPairsPairInstanceOutput {
+	return o
+}
+
+// The ID of the availability zone where the ECS instance is located.
+func (o GetEcsKeyPairsPairInstanceOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsPairInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsPairInstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The ID of the ECS instance.
+func (o GetEcsKeyPairsPairInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the ECS instance.
+func (o GetEcsKeyPairsPairInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsPairInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The Key Pair Name.
+func (o GetEcsKeyPairsPairInstanceOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// The private IP address of the ECS instance.
+func (o GetEcsKeyPairsPairInstanceOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+// The public IP address or EIP of the ECS instance.
+func (o GetEcsKeyPairsPairInstanceOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.PublicIp }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsPairInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+func (o GetEcsKeyPairsPairInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VSwitch attached to the ECS instance.
+func (o GetEcsKeyPairsPairInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetEcsKeyPairsPairInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsKeyPairsPairInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsKeyPairsPairInstance)(nil)).Elem()
+}
+
+func (o GetEcsKeyPairsPairInstanceArrayOutput) ToGetEcsKeyPairsPairInstanceArrayOutput() GetEcsKeyPairsPairInstanceArrayOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsPairInstanceArrayOutput) ToGetEcsKeyPairsPairInstanceArrayOutputWithContext(ctx context.Context) GetEcsKeyPairsPairInstanceArrayOutput {
+	return o
+}
+
+func (o GetEcsKeyPairsPairInstanceArrayOutput) Index(i pulumi.IntInput) GetEcsKeyPairsPairInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsKeyPairsPairInstance {
+		return vs[0].([]GetEcsKeyPairsPairInstance)[vs[1].(int)]
+	}).(GetEcsKeyPairsPairInstanceOutput)
+}
+
 type GetEcsLaunchTemplatesTemplate struct {
 	// Instance auto release time.
 	AutoReleaseTime string `pulumi:"autoReleaseTime"`
@@ -5917,7 +6575,8 @@ type GetKeyPairsKeyPair struct {
 	// A list of ECS instances that has been bound this key pair.
 	Instances []GetKeyPairsKeyPairInstance `pulumi:"instances"`
 	// Name of the key pair.
-	KeyName string `pulumi:"keyName"`
+	KeyName     string `pulumi:"keyName"`
+	KeyPairName string `pulumi:"keyPairName"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
@@ -5943,7 +6602,8 @@ type GetKeyPairsKeyPairArgs struct {
 	// A list of ECS instances that has been bound this key pair.
 	Instances GetKeyPairsKeyPairInstanceArrayInput `pulumi:"instances"`
 	// Name of the key pair.
-	KeyName pulumi.StringInput `pulumi:"keyName"`
+	KeyName     pulumi.StringInput `pulumi:"keyName"`
+	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
@@ -6019,6 +6679,10 @@ func (o GetKeyPairsKeyPairOutput) Instances() GetKeyPairsKeyPairInstanceArrayOut
 // Name of the key pair.
 func (o GetKeyPairsKeyPairOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPair) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+func (o GetKeyPairsKeyPairOutput) KeyPairName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsKeyPair) string { return v.KeyPairName }).(pulumi.StringOutput)
 }
 
 // The Id of resource group which the key pair belongs.
@@ -6230,6 +6894,335 @@ func (o GetKeyPairsKeyPairInstanceArrayOutput) Index(i pulumi.IntInput) GetKeyPa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeyPairsKeyPairInstance {
 		return vs[0].([]GetKeyPairsKeyPairInstance)[vs[1].(int)]
 	}).(GetKeyPairsKeyPairInstanceOutput)
+}
+
+type GetKeyPairsPair struct {
+	// A finger print used to retrieve specified key pair.
+	FingerPrint string `pulumi:"fingerPrint"`
+	// ID of the key pair.
+	Id string `pulumi:"id"`
+	// A list of ECS instances that has been bound this key pair.
+	Instances []GetKeyPairsPairInstance `pulumi:"instances"`
+	// Name of the key pair.
+	KeyName     string `pulumi:"keyName"`
+	KeyPairName string `pulumi:"keyPairName"`
+	// The Id of resource group which the key pair belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetKeyPairsPairInput is an input type that accepts GetKeyPairsPairArgs and GetKeyPairsPairOutput values.
+// You can construct a concrete instance of `GetKeyPairsPairInput` via:
+//
+//          GetKeyPairsPairArgs{...}
+type GetKeyPairsPairInput interface {
+	pulumi.Input
+
+	ToGetKeyPairsPairOutput() GetKeyPairsPairOutput
+	ToGetKeyPairsPairOutputWithContext(context.Context) GetKeyPairsPairOutput
+}
+
+type GetKeyPairsPairArgs struct {
+	// A finger print used to retrieve specified key pair.
+	FingerPrint pulumi.StringInput `pulumi:"fingerPrint"`
+	// ID of the key pair.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A list of ECS instances that has been bound this key pair.
+	Instances GetKeyPairsPairInstanceArrayInput `pulumi:"instances"`
+	// Name of the key pair.
+	KeyName     pulumi.StringInput `pulumi:"keyName"`
+	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
+	// The Id of resource group which the key pair belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetKeyPairsPairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyPairsPair)(nil)).Elem()
+}
+
+func (i GetKeyPairsPairArgs) ToGetKeyPairsPairOutput() GetKeyPairsPairOutput {
+	return i.ToGetKeyPairsPairOutputWithContext(context.Background())
+}
+
+func (i GetKeyPairsPairArgs) ToGetKeyPairsPairOutputWithContext(ctx context.Context) GetKeyPairsPairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyPairsPairOutput)
+}
+
+// GetKeyPairsPairArrayInput is an input type that accepts GetKeyPairsPairArray and GetKeyPairsPairArrayOutput values.
+// You can construct a concrete instance of `GetKeyPairsPairArrayInput` via:
+//
+//          GetKeyPairsPairArray{ GetKeyPairsPairArgs{...} }
+type GetKeyPairsPairArrayInput interface {
+	pulumi.Input
+
+	ToGetKeyPairsPairArrayOutput() GetKeyPairsPairArrayOutput
+	ToGetKeyPairsPairArrayOutputWithContext(context.Context) GetKeyPairsPairArrayOutput
+}
+
+type GetKeyPairsPairArray []GetKeyPairsPairInput
+
+func (GetKeyPairsPairArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeyPairsPair)(nil)).Elem()
+}
+
+func (i GetKeyPairsPairArray) ToGetKeyPairsPairArrayOutput() GetKeyPairsPairArrayOutput {
+	return i.ToGetKeyPairsPairArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeyPairsPairArray) ToGetKeyPairsPairArrayOutputWithContext(ctx context.Context) GetKeyPairsPairArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyPairsPairArrayOutput)
+}
+
+type GetKeyPairsPairOutput struct{ *pulumi.OutputState }
+
+func (GetKeyPairsPairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyPairsPair)(nil)).Elem()
+}
+
+func (o GetKeyPairsPairOutput) ToGetKeyPairsPairOutput() GetKeyPairsPairOutput {
+	return o
+}
+
+func (o GetKeyPairsPairOutput) ToGetKeyPairsPairOutputWithContext(ctx context.Context) GetKeyPairsPairOutput {
+	return o
+}
+
+// A finger print used to retrieve specified key pair.
+func (o GetKeyPairsPairOutput) FingerPrint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPair) string { return v.FingerPrint }).(pulumi.StringOutput)
+}
+
+// ID of the key pair.
+func (o GetKeyPairsPairOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPair) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of ECS instances that has been bound this key pair.
+func (o GetKeyPairsPairOutput) Instances() GetKeyPairsPairInstanceArrayOutput {
+	return o.ApplyT(func(v GetKeyPairsPair) []GetKeyPairsPairInstance { return v.Instances }).(GetKeyPairsPairInstanceArrayOutput)
+}
+
+// Name of the key pair.
+func (o GetKeyPairsPairOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPair) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+func (o GetKeyPairsPairOutput) KeyPairName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPair) string { return v.KeyPairName }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the key pair belongs.
+func (o GetKeyPairsPairOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPair) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetKeyPairsPairOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetKeyPairsPair) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetKeyPairsPairArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeyPairsPairArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeyPairsPair)(nil)).Elem()
+}
+
+func (o GetKeyPairsPairArrayOutput) ToGetKeyPairsPairArrayOutput() GetKeyPairsPairArrayOutput {
+	return o
+}
+
+func (o GetKeyPairsPairArrayOutput) ToGetKeyPairsPairArrayOutputWithContext(ctx context.Context) GetKeyPairsPairArrayOutput {
+	return o
+}
+
+func (o GetKeyPairsPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsPairOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeyPairsPair {
+		return vs[0].([]GetKeyPairsPair)[vs[1].(int)]
+	}).(GetKeyPairsPairOutput)
+}
+
+type GetKeyPairsPairInstance struct {
+	// The ID of the availability zone where the ECS instance is located.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	Description      string `pulumi:"description"`
+	ImageId          string `pulumi:"imageId"`
+	// The ID of the ECS instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of the ECS instance.
+	InstanceName string `pulumi:"instanceName"`
+	InstanceType string `pulumi:"instanceType"`
+	// Name of the key pair.
+	KeyName string `pulumi:"keyName"`
+	// The private IP address of the ECS instance.
+	PrivateIp string `pulumi:"privateIp"`
+	// The public IP address or EIP of the ECS instance.
+	PublicIp string `pulumi:"publicIp"`
+	RegionId string `pulumi:"regionId"`
+	Status   string `pulumi:"status"`
+	// The ID of the VSwitch attached to the ECS instance.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetKeyPairsPairInstanceInput is an input type that accepts GetKeyPairsPairInstanceArgs and GetKeyPairsPairInstanceOutput values.
+// You can construct a concrete instance of `GetKeyPairsPairInstanceInput` via:
+//
+//          GetKeyPairsPairInstanceArgs{...}
+type GetKeyPairsPairInstanceInput interface {
+	pulumi.Input
+
+	ToGetKeyPairsPairInstanceOutput() GetKeyPairsPairInstanceOutput
+	ToGetKeyPairsPairInstanceOutputWithContext(context.Context) GetKeyPairsPairInstanceOutput
+}
+
+type GetKeyPairsPairInstanceArgs struct {
+	// The ID of the availability zone where the ECS instance is located.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	Description      pulumi.StringInput `pulumi:"description"`
+	ImageId          pulumi.StringInput `pulumi:"imageId"`
+	// The ID of the ECS instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of the ECS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Name of the key pair.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// The private IP address of the ECS instance.
+	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
+	// The public IP address or EIP of the ECS instance.
+	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	Status   pulumi.StringInput `pulumi:"status"`
+	// The ID of the VSwitch attached to the ECS instance.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetKeyPairsPairInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyPairsPairInstance)(nil)).Elem()
+}
+
+func (i GetKeyPairsPairInstanceArgs) ToGetKeyPairsPairInstanceOutput() GetKeyPairsPairInstanceOutput {
+	return i.ToGetKeyPairsPairInstanceOutputWithContext(context.Background())
+}
+
+func (i GetKeyPairsPairInstanceArgs) ToGetKeyPairsPairInstanceOutputWithContext(ctx context.Context) GetKeyPairsPairInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyPairsPairInstanceOutput)
+}
+
+// GetKeyPairsPairInstanceArrayInput is an input type that accepts GetKeyPairsPairInstanceArray and GetKeyPairsPairInstanceArrayOutput values.
+// You can construct a concrete instance of `GetKeyPairsPairInstanceArrayInput` via:
+//
+//          GetKeyPairsPairInstanceArray{ GetKeyPairsPairInstanceArgs{...} }
+type GetKeyPairsPairInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetKeyPairsPairInstanceArrayOutput() GetKeyPairsPairInstanceArrayOutput
+	ToGetKeyPairsPairInstanceArrayOutputWithContext(context.Context) GetKeyPairsPairInstanceArrayOutput
+}
+
+type GetKeyPairsPairInstanceArray []GetKeyPairsPairInstanceInput
+
+func (GetKeyPairsPairInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeyPairsPairInstance)(nil)).Elem()
+}
+
+func (i GetKeyPairsPairInstanceArray) ToGetKeyPairsPairInstanceArrayOutput() GetKeyPairsPairInstanceArrayOutput {
+	return i.ToGetKeyPairsPairInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeyPairsPairInstanceArray) ToGetKeyPairsPairInstanceArrayOutputWithContext(ctx context.Context) GetKeyPairsPairInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyPairsPairInstanceArrayOutput)
+}
+
+type GetKeyPairsPairInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetKeyPairsPairInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyPairsPairInstance)(nil)).Elem()
+}
+
+func (o GetKeyPairsPairInstanceOutput) ToGetKeyPairsPairInstanceOutput() GetKeyPairsPairInstanceOutput {
+	return o
+}
+
+func (o GetKeyPairsPairInstanceOutput) ToGetKeyPairsPairInstanceOutputWithContext(ctx context.Context) GetKeyPairsPairInstanceOutput {
+	return o
+}
+
+// The ID of the availability zone where the ECS instance is located.
+func (o GetKeyPairsPairInstanceOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+func (o GetKeyPairsPairInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetKeyPairsPairInstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The ID of the ECS instance.
+func (o GetKeyPairsPairInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the ECS instance.
+func (o GetKeyPairsPairInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+func (o GetKeyPairsPairInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Name of the key pair.
+func (o GetKeyPairsPairInstanceOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// The private IP address of the ECS instance.
+func (o GetKeyPairsPairInstanceOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+// The public IP address or EIP of the ECS instance.
+func (o GetKeyPairsPairInstanceOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.PublicIp }).(pulumi.StringOutput)
+}
+
+func (o GetKeyPairsPairInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+func (o GetKeyPairsPairInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VSwitch attached to the ECS instance.
+func (o GetKeyPairsPairInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetKeyPairsPairInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeyPairsPairInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeyPairsPairInstance)(nil)).Elem()
+}
+
+func (o GetKeyPairsPairInstanceArrayOutput) ToGetKeyPairsPairInstanceArrayOutput() GetKeyPairsPairInstanceArrayOutput {
+	return o
+}
+
+func (o GetKeyPairsPairInstanceArrayOutput) ToGetKeyPairsPairInstanceArrayOutputWithContext(ctx context.Context) GetKeyPairsPairInstanceArrayOutput {
+	return o
+}
+
+func (o GetKeyPairsPairInstanceArrayOutput) Index(i pulumi.IntInput) GetKeyPairsPairInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeyPairsPairInstance {
+		return vs[0].([]GetKeyPairsPairInstance)[vs[1].(int)]
+	}).(GetKeyPairsPairInstanceOutput)
 }
 
 type GetNetworkInterfacesInterface struct {
@@ -7227,6 +8220,14 @@ func init() {
 	pulumi.RegisterOutputType(GetDedicatedHostsHostArrayOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairOutput{})
+	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairInstanceOutput{})
+	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsKeyPairsPairOutput{})
+	pulumi.RegisterOutputType(GetEcsKeyPairsPairArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsKeyPairsPairInstanceOutput{})
+	pulumi.RegisterOutputType(GetEcsKeyPairsPairInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateOutput{})
 	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateDataDiskOutput{})
@@ -7260,6 +8261,10 @@ func init() {
 	pulumi.RegisterOutputType(GetKeyPairsKeyPairArrayOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsKeyPairInstanceOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsKeyPairInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetKeyPairsPairOutput{})
+	pulumi.RegisterOutputType(GetKeyPairsPairArrayOutput{})
+	pulumi.RegisterOutputType(GetKeyPairsPairInstanceOutput{})
+	pulumi.RegisterOutputType(GetKeyPairsPairInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkInterfacesInterfaceOutput{})
 	pulumi.RegisterOutputType(GetNetworkInterfacesInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRulesRuleOutput{})

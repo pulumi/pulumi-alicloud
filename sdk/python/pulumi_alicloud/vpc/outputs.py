@@ -10,7 +10,6 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
-    'NatGatewayBandwidthPackage',
     'NetworkAclAttachmentResource',
     'NetworkAclEntriesEgress',
     'NetworkAclEntriesIngress',
@@ -20,6 +19,7 @@ __all__ = [
     'GetForwardEntriesEntryResult',
     'GetHavipsHavipResult',
     'GetNatGatewaysGatewayResult',
+    'GetNatGatewaysGatewayIpListResult',
     'GetNetworksVpcResult',
     'GetRouteEntriesEntryResult',
     'GetRouteTablesTableResult',
@@ -29,44 +29,6 @@ __all__ = [
     'GetSslVpnServersServerResult',
     'GetSwitchesVswitchResult',
 ]
-
-@pulumi.output_type
-class NatGatewayBandwidthPackage(dict):
-    def __init__(__self__, *,
-                 bandwidth: int,
-                 ip_count: int,
-                 public_ip_addresses: Optional[str] = None,
-                 zone: Optional[str] = None):
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "ip_count", ip_count)
-        if public_ip_addresses is not None:
-            pulumi.set(__self__, "public_ip_addresses", public_ip_addresses)
-        if zone is not None:
-            pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter
-    def bandwidth(self) -> int:
-        return pulumi.get(self, "bandwidth")
-
-    @property
-    @pulumi.getter(name="ipCount")
-    def ip_count(self) -> int:
-        return pulumi.get(self, "ip_count")
-
-    @property
-    @pulumi.getter(name="publicIpAddresses")
-    def public_ip_addresses(self) -> Optional[str]:
-        return pulumi.get(self, "public_ip_addresses")
-
-    @property
-    @pulumi.getter
-    def zone(self) -> Optional[str]:
-        return pulumi.get(self, "zone")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkAclAttachmentResource(dict):
@@ -830,46 +792,90 @@ class GetHavipsHavipResult(dict):
 @pulumi.output_type
 class GetNatGatewaysGatewayResult(dict):
     def __init__(__self__, *,
-                 creation_time: str,
+                 business_status: str,
+                 deletion_protection: bool,
                  description: str,
-                 forward_table_id: str,
+                 ecs_metric_enabled: bool,
+                 expired_time: str,
+                 forward_table_ids: Sequence[str],
                  id: str,
-                 ip_lists: Sequence[str],
+                 internet_charge_type: str,
+                 ip_lists: Sequence['outputs.GetNatGatewaysGatewayIpListResult'],
                  name: str,
-                 snat_table_id: str,
+                 nat_gateway_id: str,
+                 nat_gateway_name: str,
+                 nat_type: str,
+                 payment_type: str,
+                 resource_group_id: str,
+                 snat_table_ids: Sequence[str],
                  spec: str,
+                 specification: str,
                  status: str,
-                 vpc_id: str):
+                 tags: Mapping[str, Any],
+                 vpc_id: str,
+                 vswitch_id: str):
         """
-        :param str creation_time: Time of creation.
+        :param str business_status: The state of the NAT gateway.
+        :param bool deletion_protection: Indicates whether deletion protection is enabled.
         :param str description: The description of the NAT gateway.
-        :param str forward_table_id: The forward table id.
+        :param bool ecs_metric_enabled: Indicates whether the traffic monitoring feature is enabled.
+        :param str expired_time: The time when the NAT gateway expires.
+        :param Sequence[str] forward_table_ids: The ID of the DNAT table.
         :param str id: The ID of the NAT gateway.
-        :param Sequence[str] ip_lists: The ip address of the bind eip.
+        :param str internet_charge_type: The metering method of the NAT gateway.
+        :param Sequence['GetNatGatewaysGatewayIpListArgs'] ip_lists: The ip address of the bind eip.
         :param str name: Name of the NAT gateway.
-        :param str snat_table_id: The snat table id.
+        :param str nat_gateway_id: The ID of the NAT gateway.
+        :param str nat_gateway_name: The name of NAT gateway.
+        :param str nat_type: The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+        :param str payment_type: The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+        :param str resource_group_id: The resource group id of NAT gateway.
+        :param Sequence[str] snat_table_ids: The ID of the SNAT table that is associated with the NAT gateway.
         :param str spec: The specification of the NAT gateway.
-        :param str status: The status of the NAT gateway.
+        :param str specification: The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+        :param str status: The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
+        :param Mapping[str, Any] tags: The tags of NAT gateway.
         :param str vpc_id: The ID of the VPC.
+        :param str vswitch_id: The ID of the vSwitch to which the NAT gateway belongs.
         """
-        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "business_status", business_status)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "forward_table_id", forward_table_id)
+        pulumi.set(__self__, "ecs_metric_enabled", ecs_metric_enabled)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "forward_table_ids", forward_table_ids)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         pulumi.set(__self__, "ip_lists", ip_lists)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "snat_table_id", snat_table_id)
+        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+        pulumi.set(__self__, "nat_gateway_name", nat_gateway_name)
+        pulumi.set(__self__, "nat_type", nat_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "snat_table_ids", snat_table_ids)
         pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "specification", specification)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
-    @pulumi.getter(name="creationTime")
-    def creation_time(self) -> str:
+    @pulumi.getter(name="businessStatus")
+    def business_status(self) -> str:
         """
-        Time of creation.
+        The state of the NAT gateway.
         """
-        return pulumi.get(self, "creation_time")
+        return pulumi.get(self, "business_status")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        """
+        Indicates whether deletion protection is enabled.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -880,12 +886,28 @@ class GetNatGatewaysGatewayResult(dict):
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="forwardTableId")
-    def forward_table_id(self) -> str:
+    @pulumi.getter(name="ecsMetricEnabled")
+    def ecs_metric_enabled(self) -> bool:
         """
-        The forward table id.
+        Indicates whether the traffic monitoring feature is enabled.
         """
-        return pulumi.get(self, "forward_table_id")
+        return pulumi.get(self, "ecs_metric_enabled")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        The time when the NAT gateway expires.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="forwardTableIds")
+    def forward_table_ids(self) -> Sequence[str]:
+        """
+        The ID of the DNAT table.
+        """
+        return pulumi.get(self, "forward_table_ids")
 
     @property
     @pulumi.getter
@@ -896,8 +918,16 @@ class GetNatGatewaysGatewayResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        """
+        The metering method of the NAT gateway.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
     @pulumi.getter(name="ipLists")
-    def ip_lists(self) -> Sequence[str]:
+    def ip_lists(self) -> Sequence['outputs.GetNatGatewaysGatewayIpListResult']:
         """
         The ip address of the bind eip.
         """
@@ -912,12 +942,52 @@ class GetNatGatewaysGatewayResult(dict):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="snatTableId")
-    def snat_table_id(self) -> str:
+    @pulumi.getter(name="natGatewayId")
+    def nat_gateway_id(self) -> str:
         """
-        The snat table id.
+        The ID of the NAT gateway.
         """
-        return pulumi.get(self, "snat_table_id")
+        return pulumi.get(self, "nat_gateway_id")
+
+    @property
+    @pulumi.getter(name="natGatewayName")
+    def nat_gateway_name(self) -> str:
+        """
+        The name of NAT gateway.
+        """
+        return pulumi.get(self, "nat_gateway_name")
+
+    @property
+    @pulumi.getter(name="natType")
+    def nat_type(self) -> str:
+        """
+        The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+        """
+        return pulumi.get(self, "nat_type")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The resource group id of NAT gateway.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="snatTableIds")
+    def snat_table_ids(self) -> Sequence[str]:
+        """
+        The ID of the SNAT table that is associated with the NAT gateway.
+        """
+        return pulumi.get(self, "snat_table_ids")
 
     @property
     @pulumi.getter
@@ -929,11 +999,27 @@ class GetNatGatewaysGatewayResult(dict):
 
     @property
     @pulumi.getter
+    def specification(self) -> str:
+        """
+        The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+        """
+        return pulumi.get(self, "specification")
+
+    @property
+    @pulumi.getter
     def status(self) -> str:
         """
-        The status of the NAT gateway.
+        The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tags of NAT gateway.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")
@@ -942,6 +1028,33 @@ class GetNatGatewaysGatewayResult(dict):
         The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the vSwitch to which the NAT gateway belongs.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetNatGatewaysGatewayIpListResult(dict):
+    def __init__(__self__, *,
+                 ip_address: str,
+                 snat_entry_enabled: bool):
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "snat_entry_enabled", snat_entry_enabled)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="snatEntryEnabled")
+    def snat_entry_enabled(self) -> bool:
+        return pulumi.get(self, "snat_entry_enabled")
 
 
 @pulumi.output_type

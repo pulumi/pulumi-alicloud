@@ -12,6 +12,7 @@ __all__ = [
     'AlertNotificationListArgs',
     'AlertQueryListArgs',
     'EtlEtlSinkArgs',
+    'OssShipperParquetConfigArgs',
     'StoreIndexFieldSearchArgs',
     'StoreIndexFieldSearchJsonKeyArgs',
     'StoreIndexFullTextArgs',
@@ -361,6 +362,33 @@ class EtlEtlSinkArgs:
 
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class OssShipperParquetConfigArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
 

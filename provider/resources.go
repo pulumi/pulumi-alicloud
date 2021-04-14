@@ -183,6 +183,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_adb_backup_policy": {Tok: resource(adbMod, "BackupPolicy")},
 			"alicloud_adb_cluster":       {Tok: resource(adbMod, "Cluster")},
 			"alicloud_adb_connection":    {Tok: resource(adbMod, "Connection")},
+			"alicloud_adb_db_cluster":    {Tok: resource(adbMod, "DBCluster")},
 
 			// AliKafka
 			"alicloud_alikafka_consumer_group": {Tok: resource(aliKafaMod, "ConsumerGroup")},
@@ -366,6 +367,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecs_auto_snapshot_policy": {Tok: resource(ecsMod, "AutoSnapshotPolicy")},
 			"alicloud_ecs_snapshot":             {Tok: resource(ecsMod, "EcsSnapshot")},
 			"alicloud_ecs_launch_template":      {Tok: resource(ecsMod, "EcsLaunchTemplate")},
+			"alicloud_ecs_key_pair":             {Tok: resource(ecsMod, "EcsKeyPair")},
+			"alicloud_ecs_key_pair_attachment":  {Tok: resource(ecsMod, "EcsKeyPairAttachment")},
 
 			// Edas
 			"alicloud_edas_application":                 {Tok: resource(edasMod, "Application")},
@@ -469,6 +472,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_log_audit":          {Tok: resource(logMod, "Audit")},
 			"alicloud_log_dashboard":      {Tok: resource(logMod, "Dashboard")},
 			"alicloud_log_etl":            {Tok: resource(logMod, "Etl")},
+			"alicloud_log_oss_shipper":    {Tok: resource(logMod, "OssShipper")},
 
 			// Marketplace
 			"alicloud_market_order": {Tok: resource(marketPlaceMod, "Order")},
@@ -858,6 +862,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecs_auto_snapshot_policies": {Tok: dataSource(ecsMod, "getAutoSnapshotPolicies")},
 			"alicloud_ecs_snapshots":              {Tok: dataSource(ecsMod, "getEcsSnapshots")},
 			"alicloud_ecs_launch_templates":       {Tok: dataSource(ecsMod, "getEcsLaunchTemplates")},
+			"alicloud_ecs_key_pairs":              {Tok: dataSource(ecsMod, "getEcsKeyPairs")},
 
 			// Edas
 			"alicloud_edas_applications":  {Tok: dataSource(edasMod, "getApplications")},
@@ -1119,8 +1124,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_yundun_dbaudit_instance":      {Tok: dataSource(yundunMod, "getDBAuditInstance")},
 
 			// Adb
-			"alicloud_adb_clusters": {Tok: dataSource(adbMod, "getClusters")},
-			"alicloud_adb_zones":    {Tok: dataSource(adbMod, "getZones")},
+			"alicloud_adb_clusters":    {Tok: dataSource(adbMod, "getClusters")},
+			"alicloud_adb_zones":       {Tok: dataSource(adbMod, "getZones")},
+			"alicloud_adb_db_clusters": {Tok: dataSource(adbMod, "getDBClusters")},
 
 			// Waf
 			"alicloud_waf_domains":   {Tok: dataSource(wafMod, "getDomains")},

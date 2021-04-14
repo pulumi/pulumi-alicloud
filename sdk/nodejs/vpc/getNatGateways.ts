@@ -24,8 +24,10 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * const fooNetwork = new alicloud.vpc.Network("foo", {
  *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
  * });
  * const fooNatGateway = new alicloud.vpc.NatGateway("foo", {
+ *     natGateName: name,
  *     specification: "Small",
  *     vpcId: fooNetwork.id,
  * });
@@ -46,9 +48,18 @@ export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOp
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:vpc/getNatGateways:getNatGateways", {
+        "dryRun": args.dryRun,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
+        "natGatewayName": args.natGatewayName,
+        "natType": args.natType,
         "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
+        "resourceGroupId": args.resourceGroupId,
+        "specification": args.specification,
+        "status": args.status,
+        "tags": args.tags,
         "vpcId": args.vpcId,
     }, opts);
 }
@@ -58,6 +69,14 @@ export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOp
  */
 export interface GetNatGatewaysArgs {
     /**
+     * Specifies whether to only precheck the request.
+     */
+    readonly dryRun?: boolean;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    readonly enableDetails?: boolean;
+    /**
      * A list of NAT gateways IDs.
      */
     readonly ids?: string[];
@@ -65,7 +84,35 @@ export interface GetNatGatewaysArgs {
      * A regex string to filter nat gateways by name.
      */
     readonly nameRegex?: string;
+    /**
+     * The name of NAT gateway.
+     */
+    readonly natGatewayName?: string;
+    /**
+     * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+     */
+    readonly natType?: string;
     readonly outputFile?: string;
+    /**
+     * The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+     */
+    readonly paymentType?: string;
+    /**
+     * The resource group id of NAT gateway.
+     */
+    readonly resourceGroupId?: string;
+    /**
+     * The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+     */
+    readonly specification?: string;
+    /**
+     * The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
+     */
+    readonly status?: string;
+    /**
+     * The tags of NAT gateway.
+     */
+    readonly tags?: {[key: string]: any};
     /**
      * The ID of the VPC.
      */
@@ -76,6 +123,8 @@ export interface GetNatGatewaysArgs {
  * A collection of values returned by getNatGateways.
  */
 export interface GetNatGatewaysResult {
+    readonly dryRun?: boolean;
+    readonly enableDetails?: boolean;
     /**
      * A list of Nat gateways. Each element contains the following attributes:
      */
@@ -93,7 +142,35 @@ export interface GetNatGatewaysResult {
      * A list of Nat gateways names.
      */
     readonly names: string[];
+    /**
+     * The name of the NAT gateway.
+     */
+    readonly natGatewayName?: string;
+    /**
+     * The type of the NAT gateway.
+     */
+    readonly natType?: string;
     readonly outputFile?: string;
+    /**
+     * The billing method of the NAT gateway.
+     */
+    readonly paymentType?: string;
+    /**
+     * The ID of the resource group.
+     */
+    readonly resourceGroupId?: string;
+    /**
+     * The specification of the NAT gateway.
+     */
+    readonly specification?: string;
+    /**
+     * The status of the NAT gateway.
+     */
+    readonly status?: string;
+    /**
+     * The tags of NAT gateway.
+     */
+    readonly tags?: {[key: string]: any};
     /**
      * The ID of the VPC.
      */

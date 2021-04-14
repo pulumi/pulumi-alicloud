@@ -64,6 +64,9 @@ export class AlidnsDomain extends pulumi.CustomResource {
         return obj['__pulumiType'] === AlidnsDomain.__pulumiType;
     }
 
+    /**
+     * A list of the dns server name.
+     */
     public /*out*/ readonly dnsServers!: pulumi.Output<string[]>;
     /**
      * The domain ID.
@@ -154,6 +157,9 @@ export class AlidnsDomain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlidnsDomain resources.
  */
 export interface AlidnsDomainState {
+    /**
+     * A list of the dns server name.
+     */
     readonly dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The domain ID.

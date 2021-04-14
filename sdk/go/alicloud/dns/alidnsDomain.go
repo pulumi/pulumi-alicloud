@@ -55,6 +55,7 @@ import (
 type AlidnsDomain struct {
 	pulumi.CustomResourceState
 
+	// A list of the dns server name.
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
 	// The domain ID.
 	DomainId pulumi.StringOutput `pulumi:"domainId"`
@@ -110,6 +111,7 @@ func GetAlidnsDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlidnsDomain resources.
 type alidnsDomainState struct {
+	// A list of the dns server name.
 	DnsServers []string `pulumi:"dnsServers"`
 	// The domain ID.
 	DomainId *string `pulumi:"domainId"`
@@ -134,6 +136,7 @@ type alidnsDomainState struct {
 }
 
 type AlidnsDomainState struct {
+	// A list of the dns server name.
 	DnsServers pulumi.StringArrayInput
 	// The domain ID.
 	DomainId pulumi.StringPtrInput

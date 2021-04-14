@@ -11,37 +11,6 @@ namespace Pulumi.AliCloud.Ecs
 {
     public static class GetKeyPairs
     {
-        /// <summary>
-        /// This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         // Declare the data source
-        ///         var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new AliCloud.Ecs.KeyPairArgs
-        ///         {
-        ///             KeyName = "keyPairDatasource",
-        ///         });
-        ///         var defaultKeyPairs = defaultKeyPair.KeyName.Apply(keyName =&gt; AliCloud.Ecs.GetKeyPairs.InvokeAsync(new AliCloud.Ecs.GetKeyPairsArgs
-        ///         {
-        ///             NameRegex = keyName,
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetKeyPairsResult> InvokeAsync(GetKeyPairsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairsResult>("alicloud:ecs/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsArgs(), options.WithVersion());
     }
@@ -106,7 +75,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// Finger print of the key pair.
         /// </summary>
-        public readonly string FingerPrint;
+        public readonly string? FingerPrint;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -122,6 +91,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly ImmutableArray<Outputs.GetKeyPairsPairResult> Pairs;
         /// <summary>
         /// The Id of resource group.
         /// </summary>
@@ -133,7 +103,7 @@ namespace Pulumi.AliCloud.Ecs
 
         [OutputConstructor]
         private GetKeyPairsResult(
-            string fingerPrint,
+            string? fingerPrint,
 
             string id,
 
@@ -147,6 +117,8 @@ namespace Pulumi.AliCloud.Ecs
 
             string? outputFile,
 
+            ImmutableArray<Outputs.GetKeyPairsPairResult> pairs,
+
             string? resourceGroupId,
 
             ImmutableDictionary<string, object>? tags)
@@ -158,6 +130,7 @@ namespace Pulumi.AliCloud.Ecs
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Pairs = pairs;
             ResourceGroupId = resourceGroupId;
             Tags = tags;
         }

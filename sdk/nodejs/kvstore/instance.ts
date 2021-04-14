@@ -266,9 +266,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly modifyMode!: pulumi.Output<number | undefined>;
     /**
-     * Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+     * "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     *
+     * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
-    public readonly nodeType!: pulumi.Output<string | undefined>;
+    public readonly nodeType!: pulumi.Output<string>;
     /**
      * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
      */
@@ -643,7 +645,9 @@ export interface InstanceState {
      */
     readonly modifyMode?: pulumi.Input<number>;
     /**
-     * Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+     * "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     *
+     * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
     readonly nodeType?: pulumi.Input<string>;
     /**
@@ -871,7 +875,9 @@ export interface InstanceArgs {
      */
     readonly modifyMode?: pulumi.Input<number>;
     /**
-     * Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+     * "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     *
+     * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
     readonly nodeType?: pulumi.Input<string>;
     /**

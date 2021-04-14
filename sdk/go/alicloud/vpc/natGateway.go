@@ -21,30 +21,34 @@ import (
 type NatGateway struct {
 	pulumi.CustomResourceState
 
-	// A list ID of the bandwidth packages, and split them with commas.
-	BandwidthPackageIds pulumi.StringOutput `pulumi:"bandwidthPackageIds"`
-	// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
-	BandwidthPackages NatGatewayBandwidthPackageArrayOutput `pulumi:"bandwidthPackages"`
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The nat gateway will auto create a snap and forward item, the `forwardTableIds` is the created one.
+	DryRun      pulumi.BoolPtrOutput   `pulumi:"dryRun"`
+	Force       pulumi.BoolPtrOutput   `pulumi:"force"`
+	// The nat gateway will auto create a forward item.
 	ForwardTableIds pulumi.StringOutput `pulumi:"forwardTableIds"`
-	// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
-	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
+	// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+	NatGatewayName pulumi.StringOutput `pulumi:"natGatewayName"`
+	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
 	NatType pulumi.StringPtrOutput `pulumi:"natType"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
+	// The nat gateway will auto create a snat item.
 	SnatTableIds pulumi.StringOutput `pulumi:"snatTableIds"`
-	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-	//
-	// Deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-	Spec pulumi.StringPtrOutput `pulumi:"spec"`
-	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification pulumi.StringPtrOutput `pulumi:"specification"`
+	// (Available in 1.121.0+) The status of NAT gateway.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The tags of NAT gateway.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -83,30 +87,34 @@ func GetNatGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NatGateway resources.
 type natGatewayState struct {
-	// A list ID of the bandwidth packages, and split them with commas.
-	BandwidthPackageIds *string `pulumi:"bandwidthPackageIds"`
-	// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
-	BandwidthPackages []NatGatewayBandwidthPackage `pulumi:"bandwidthPackages"`
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description *string `pulumi:"description"`
-	// The nat gateway will auto create a snap and forward item, the `forwardTableIds` is the created one.
+	DryRun      *bool   `pulumi:"dryRun"`
+	Force       *bool   `pulumi:"force"`
+	// The nat gateway will auto create a forward item.
 	ForwardTableIds *string `pulumi:"forwardTableIds"`
-	// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+	InternetChargeType *string `pulumi:"internetChargeType"`
+	// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
 	Name *string `pulumi:"name"`
-	// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+	NatGatewayName *string `pulumi:"natGatewayName"`
+	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
 	NatType *string `pulumi:"natType"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	PaymentType *string `pulumi:"paymentType"`
+	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period *int `pulumi:"period"`
-	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
+	// The nat gateway will auto create a snat item.
 	SnatTableIds *string `pulumi:"snatTableIds"`
-	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-	//
-	// Deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-	Spec *string `pulumi:"spec"`
-	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification *string `pulumi:"specification"`
+	// (Available in 1.121.0+) The status of NAT gateway.
+	Status *string `pulumi:"status"`
+	// The tags of NAT gateway.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -114,30 +122,34 @@ type natGatewayState struct {
 }
 
 type NatGatewayState struct {
-	// A list ID of the bandwidth packages, and split them with commas.
-	BandwidthPackageIds pulumi.StringPtrInput
-	// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
-	BandwidthPackages NatGatewayBandwidthPackageArrayInput
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description pulumi.StringPtrInput
-	// The nat gateway will auto create a snap and forward item, the `forwardTableIds` is the created one.
+	DryRun      pulumi.BoolPtrInput
+	Force       pulumi.BoolPtrInput
+	// The nat gateway will auto create a forward item.
 	ForwardTableIds pulumi.StringPtrInput
-	// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+	InternetChargeType pulumi.StringPtrInput
+	// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
 	Name pulumi.StringPtrInput
-	// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+	NatGatewayName pulumi.StringPtrInput
+	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
 	NatType pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	PaymentType pulumi.StringPtrInput
+	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrInput
-	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
+	// The nat gateway will auto create a snat item.
 	SnatTableIds pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-	//
-	// Deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-	Spec pulumi.StringPtrInput
-	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification pulumi.StringPtrInput
+	// (Available in 1.121.0+) The status of NAT gateway.
+	Status pulumi.StringPtrInput
+	// The tags of NAT gateway.
+	Tags pulumi.MapInput
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
 	// The id of VSwitch.
@@ -149,24 +161,28 @@ func (NatGatewayState) ElementType() reflect.Type {
 }
 
 type natGatewayArgs struct {
-	// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
-	BandwidthPackages []NatGatewayBandwidthPackage `pulumi:"bandwidthPackages"`
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description *string `pulumi:"description"`
-	// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	DryRun      *bool   `pulumi:"dryRun"`
+	Force       *bool   `pulumi:"force"`
+	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+	InternetChargeType *string `pulumi:"internetChargeType"`
+	// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
 	Name *string `pulumi:"name"`
-	// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+	NatGatewayName *string `pulumi:"natGatewayName"`
+	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
 	NatType *string `pulumi:"natType"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	PaymentType *string `pulumi:"paymentType"`
+	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period *int `pulumi:"period"`
-	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-	//
-	// Deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-	Spec *string `pulumi:"spec"`
-	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification *string `pulumi:"specification"`
+	// The tags of NAT gateway.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -175,24 +191,28 @@ type natGatewayArgs struct {
 
 // The set of arguments for constructing a NatGateway resource.
 type NatGatewayArgs struct {
-	// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
-	BandwidthPackages NatGatewayBandwidthPackageArrayInput
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description pulumi.StringPtrInput
-	// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	DryRun      pulumi.BoolPtrInput
+	Force       pulumi.BoolPtrInput
+	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
+	InternetChargeType pulumi.StringPtrInput
+	// Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
 	Name pulumi.StringPtrInput
-	// The type of nat gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
+	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
+	NatGatewayName pulumi.StringPtrInput
+	// The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
 	NatType pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	PaymentType pulumi.StringPtrInput
+	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrInput
-	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-	//
-	// Deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-	Spec pulumi.StringPtrInput
-	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
+	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification pulumi.StringPtrInput
+	// The tags of NAT gateway.
+	Tags pulumi.MapInput
 	// The VPC ID.
 	VpcId pulumi.StringInput
 	// The id of VSwitch.

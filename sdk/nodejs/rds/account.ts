@@ -55,7 +55,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The Id of instance in which account belongs.
      *
-     * @deprecated Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+     * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -155,7 +155,7 @@ export interface AccountState {
     /**
      * The Id of instance in which account belongs.
      *
-     * @deprecated Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+     * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
@@ -207,7 +207,7 @@ export interface AccountArgs {
     /**
      * The Id of instance in which account belongs.
      *
-     * @deprecated Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+     * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
     readonly instanceId?: pulumi.Input<string>;
     /**

@@ -11,137 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a key pair attachment resource to bind key pair for several ECS instances.
-//
-// > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "cloud_ssd"
-// 		opt1 := "VSwitch"
-// 		_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// 			AvailableDiskCategory:     &opt0,
-// 			AvailableResourceCreation: &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt2 := _default.Zones[0].Id
-// 		opt3 := 1
-// 		opt4 := 2
-// 		_type, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			AvailabilityZone: &opt2,
-// 			CpuCoreCount:     &opt3,
-// 			MemorySize:       &opt4,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt5 := "^ubuntu_18.*64"
-// 		opt6 := true
-// 		opt7 := "system"
-// 		images, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex:  &opt5,
-// 			MostRecent: &opt6,
-// 			Owners:     &opt7,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cfg := config.New(ctx, "")
-// 		name := "keyPairAttachmentName"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("10.1.0.0/21"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// 			VpcId:            vpc.ID(),
-// 			CidrBlock:        pulumi.String("10.1.1.0/24"),
-// 			AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-// 			VswitchName:      pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
-// 			Description: pulumi.String("New security group"),
-// 			VpcId:       vpc.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var instance []*ecs.Instance
-// 		for key0, val0 := range 2 {
-// 			__res, err := ecs.NewInstance(ctx, fmt.Sprintf("instance-%v", key0), &ecs.InstanceArgs{
-// 				InstanceName: pulumi.String(fmt.Sprintf("%v%v%v", name, "-", val0+1)),
-// 				ImageId:      pulumi.String(images.Images[0].Id),
-// 				InstanceType: pulumi.String(_type.InstanceTypes[0].Id),
-// 				SecurityGroups: pulumi.StringArray{
-// 					group.ID(),
-// 				},
-// 				VswitchId:               vswitch.ID(),
-// 				InternetChargeType:      pulumi.String("PayByTraffic"),
-// 				InternetMaxBandwidthOut: pulumi.Int(5),
-// 				Password:                pulumi.String("Test12345"),
-// 				InstanceChargeType:      pulumi.String("PostPaid"),
-// 				SystemDiskCategory:      pulumi.String("cloud_ssd"),
-// 			})
-// 			if err != nil {
-// 				return err
-// 			}
-// 			instance = append(instance, __res)
-// 		}
-// 		pair, err := ecs.NewKeyPair(ctx, "pair", &ecs.KeyPairArgs{
-// 			KeyName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var splat0 pulumi.StringArray
-// 		for _, val0 := range instance {
-// 			splat0 = append(splat0, val0.ID())
-// 		}
-// 		_, err = ecs.NewKeyPairAttachment(ctx, "attachment", &ecs.KeyPairAttachmentArgs{
-// 			KeyName:     pair.ID(),
-// 			InstanceIds: toPulumiStringArray(splat0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// func toPulumiStringArray(arr []string) pulumi.StringArray {
-// 	var pulumiArr pulumi.StringArray
-// 	for _, v := range arr {
-// 		pulumiArr = append(pulumiArr, pulumi.String(v))
-// 	}
-// 	return pulumiArr
-// }
-// ```
 type KeyPairAttachment struct {
 	pulumi.CustomResourceState
 
@@ -150,7 +19,10 @@ type KeyPairAttachment struct {
 	// The list of ECS instance's IDs.
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
 	// The name of key pair used to bind.
-	KeyName pulumi.StringOutput `pulumi:"keyName"`
+	//
+	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	KeyName     pulumi.StringOutput `pulumi:"keyName"`
+	KeyPairName pulumi.StringOutput `pulumi:"keyPairName"`
 }
 
 // NewKeyPairAttachment registers a new resource with the given unique name, arguments, and options.
@@ -162,9 +34,6 @@ func NewKeyPairAttachment(ctx *pulumi.Context,
 
 	if args.InstanceIds == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceIds'")
-	}
-	if args.KeyName == nil {
-		return nil, errors.New("invalid value for required argument 'KeyName'")
 	}
 	var resource KeyPairAttachment
 	err := ctx.RegisterResource("alicloud:ecs/keyPairAttachment:KeyPairAttachment", name, args, &resource, opts...)
@@ -193,7 +62,10 @@ type keyPairAttachmentState struct {
 	// The list of ECS instance's IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// The name of key pair used to bind.
-	KeyName *string `pulumi:"keyName"`
+	//
+	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	KeyName     *string `pulumi:"keyName"`
+	KeyPairName *string `pulumi:"keyPairName"`
 }
 
 type KeyPairAttachmentState struct {
@@ -202,7 +74,10 @@ type KeyPairAttachmentState struct {
 	// The list of ECS instance's IDs.
 	InstanceIds pulumi.StringArrayInput
 	// The name of key pair used to bind.
-	KeyName pulumi.StringPtrInput
+	//
+	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	KeyName     pulumi.StringPtrInput
+	KeyPairName pulumi.StringPtrInput
 }
 
 func (KeyPairAttachmentState) ElementType() reflect.Type {
@@ -215,7 +90,10 @@ type keyPairAttachmentArgs struct {
 	// The list of ECS instance's IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// The name of key pair used to bind.
-	KeyName string `pulumi:"keyName"`
+	//
+	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	KeyName     *string `pulumi:"keyName"`
+	KeyPairName *string `pulumi:"keyPairName"`
 }
 
 // The set of arguments for constructing a KeyPairAttachment resource.
@@ -225,7 +103,10 @@ type KeyPairAttachmentArgs struct {
 	// The list of ECS instance's IDs.
 	InstanceIds pulumi.StringArrayInput
 	// The name of key pair used to bind.
-	KeyName pulumi.StringInput
+	//
+	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	KeyName     pulumi.StringPtrInput
+	KeyPairName pulumi.StringPtrInput
 }
 
 func (KeyPairAttachmentArgs) ElementType() reflect.Type {

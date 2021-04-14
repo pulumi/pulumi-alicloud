@@ -10,46 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a key pair resource.
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewKeyPair(ctx, "basic", &ecs.KeyPairArgs{
-// 			KeyName: pulumi.String("terraform-test-key-pair"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewKeyPair(ctx, "prefix", &ecs.KeyPairArgs{
-// 			KeyNamePrefix: pulumi.String("terraform-test-key-pair-prefix"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewKeyPair(ctx, "publickey", &ecs.KeyPairArgs{
-// 			KeyName:   pulumi.String("my_public_key"),
-// 			PublicKey: pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Key pair can be imported using the name, e.g.
@@ -64,8 +24,11 @@ type KeyPair struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrOutput `pulumi:"keyFile"`
 	// The key pair's name. It is the only in one Alicloud account.
+	//
+	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName       pulumi.StringOutput    `pulumi:"keyName"`
 	KeyNamePrefix pulumi.StringPtrOutput `pulumi:"keyNamePrefix"`
+	KeyPairName   pulumi.StringOutput    `pulumi:"keyPairName"`
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
@@ -106,8 +69,11 @@ type keyPairState struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile *string `pulumi:"keyFile"`
 	// The key pair's name. It is the only in one Alicloud account.
+	//
+	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName       *string `pulumi:"keyName"`
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
+	KeyPairName   *string `pulumi:"keyPairName"`
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
@@ -120,8 +86,11 @@ type KeyPairState struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrInput
 	// The key pair's name. It is the only in one Alicloud account.
+	//
+	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName       pulumi.StringPtrInput
 	KeyNamePrefix pulumi.StringPtrInput
+	KeyPairName   pulumi.StringPtrInput
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
@@ -137,8 +106,11 @@ type keyPairArgs struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile *string `pulumi:"keyFile"`
 	// The key pair's name. It is the only in one Alicloud account.
+	//
+	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName       *string `pulumi:"keyName"`
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
+	KeyPairName   *string `pulumi:"keyPairName"`
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
@@ -151,8 +123,11 @@ type KeyPairArgs struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrInput
 	// The key pair's name. It is the only in one Alicloud account.
+	//
+	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName       pulumi.StringPtrInput
 	KeyNamePrefix pulumi.StringPtrInput
+	KeyPairName   pulumi.StringPtrInput
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.

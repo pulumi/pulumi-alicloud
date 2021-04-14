@@ -339,10 +339,10 @@ namespace Pulumi.AliCloud.KVStore
         public Output<int?> ModifyMode { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        /// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         /// </summary>
         [Output("nodeType")]
-        public Output<string?> NodeType { get; private set; } = null!;
+        public Output<string> NodeType { get; private set; } = null!;
 
         /// <summary>
         /// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
@@ -719,7 +719,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? ModifyMode { get; set; }
 
         /// <summary>
-        /// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        /// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
@@ -1084,7 +1084,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? ModifyMode { get; set; }
 
         /// <summary>
-        /// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+        /// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }

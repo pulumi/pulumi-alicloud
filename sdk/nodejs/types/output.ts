@@ -413,14 +413,23 @@ export namespace actiontrail {
 
 export namespace adb {
     export interface GetClustersCluster {
+        autoRenewPeriod: number;
         /**
          * Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
          */
         chargeType: string;
+        commodityCode: string;
+        computeResource: string;
+        connectionString: string;
         /**
          * The CreateTime of the ADB cluster.
          */
         createTime: string;
+        dbClusterCategory: string;
+        dbClusterId: string;
+        dbClusterNetworkType: string;
+        dbClusterType: string;
+        dbClusterVersion: string;
         /**
          * The DBNodeClass of the ADB cluster.
          */
@@ -437,6 +446,12 @@ export namespace adb {
          * The description of the ADB cluster.
          */
         description: string;
+        diskType: string;
+        dtsJobId: string;
+        elasticIoResource: number;
+        engine: string;
+        engineVersion: string;
+        executorCount: string;
         /**
          * Expiration time. Pay-As-You-Go clusters never expire.
          */
@@ -453,24 +468,206 @@ export namespace adb {
          * The LockMode of the ADB cluster.
          */
         lockMode: string;
+        lockReason: string;
+        maintainTime: string;
         /**
          * The DBClusterNetworkType of the ADB cluster.
          */
         networkType: string;
+        paymentType: string;
+        port: number;
+        rdsInstanceId: string;
         /**
          * Region ID the cluster belongs to.
          */
         regionId: string;
+        renewalStatus: string;
+        resourceGroupId: string;
+        securityIps: string[];
         /**
          * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
          */
         status: string;
+        storageResource: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+         * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+         */
+        tags: {[key: string]: any};
+        vpcCloudInstanceId: string;
         /**
          * ID of the VPC the cluster belongs to.
          */
         vpcId: string;
+        vswitchId: string;
         /**
          * The ZoneId of the ADB cluster.
+         */
+        zoneId: string;
+    }
+
+    export interface GetDBClustersCluster {
+        /**
+         * Auto-renewal period of an cluster, in the unit of the month.
+         */
+        autoRenewPeriod: number;
+        /**
+         * The payment type of the resource.
+         */
+        chargeType: string;
+        /**
+         * The name of the service.
+         */
+        commodityCode: string;
+        /**
+         * The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+         */
+        computeResource: string;
+        /**
+         * The endpoint of the cluster.
+         */
+        connectionString: string;
+        /**
+         * The CreateTime of the ADB cluster.
+         */
+        createTime: string;
+        /**
+         * The db cluster category.
+         */
+        dbClusterCategory: string;
+        /**
+         * The db cluster id.
+         */
+        dbClusterId: string;
+        /**
+         * The db cluster network type.
+         */
+        dbClusterNetworkType: string;
+        /**
+         * The db cluster type.
+         */
+        dbClusterType: string;
+        /**
+         * The db cluster version.
+         */
+        dbClusterVersion: string;
+        /**
+         * The db node class.
+         */
+        dbNodeClass: string;
+        /**
+         * The db node count.
+         */
+        dbNodeCount: number;
+        /**
+         * The db node storage.
+         */
+        dbNodeStorage: number;
+        /**
+         * The description of DBCluster.
+         */
+        description: string;
+        /**
+         * The type of the disk.
+         */
+        diskType: string;
+        /**
+         * The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
+         */
+        dtsJobId: string;
+        /**
+         * The elastic io resource.
+         */
+        elasticIoResource: number;
+        /**
+         * The engine of the database.
+         */
+        engine: string;
+        /**
+         * The engine version of the database..
+         */
+        engineVersion: string;
+        /**
+         * The number of nodes. The node resources are used for data computing in elastic mode.
+         */
+        executorCount: string;
+        /**
+         * The time when the cluster expires.
+         */
+        expireTime: string;
+        /**
+         * Indicates whether the cluster has expired.
+         */
+        expired: string;
+        /**
+         * The ID of the DBCluster.
+         */
+        id: string;
+        /**
+         * The lock mode of the cluster.
+         */
+        lockMode: string;
+        /**
+         * The reason why the cluster is locked.
+         */
+        lockReason: string;
+        /**
+         * The maintenance window of the cluster.
+         */
+        maintainTime: string;
+        networkType: string;
+        /**
+         * The payment type of the resource.
+         */
+        paymentType: string;
+        /**
+         * The port that is used to access the cluster.
+         */
+        port: number;
+        /**
+         * The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
+         */
+        rdsInstanceId: string;
+        regionId: string;
+        /**
+         * The status of renewal.
+         */
+        renewalStatus: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * List of IP addresses allowed to access all databases of an cluster.
+         */
+        securityIps: string[];
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+         */
+        storageResource: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The vpc cloud instance id.
+         */
+        vpcCloudInstanceId: string;
+        /**
+         * The vpc id.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * The zone ID  of the resource.
          */
         zoneId: string;
     }
@@ -5580,6 +5777,134 @@ export namespace ecs {
         type: string;
     }
 
+    export interface GetEcsKeyPairsKeyPair {
+        /**
+         * The finger print of the key pair.
+         */
+        fingerPrint: string;
+        /**
+         * The ID of the Key Pair.
+         */
+        id: string;
+        /**
+         * A list of ECS instances that has been bound this key pair.
+         */
+        instances: outputs.ecs.GetEcsKeyPairsKeyPairInstance[];
+        /**
+         * The Key Pair Name.
+         */
+        keyName: string;
+        keyPairName: string;
+        /**
+         * The Resource Group Id.
+         */
+        resourceGroupId: string;
+        /**
+         * The tags.
+         */
+        tags: {[key: string]: any};
+    }
+
+    export interface GetEcsKeyPairsKeyPairInstance {
+        /**
+         * The ID of the availability zone where the ECS instance is located.
+         */
+        availabilityZone: string;
+        description: string;
+        imageId: string;
+        /**
+         * The ID of the ECS instance.
+         */
+        instanceId: string;
+        /**
+         * The name of the ECS instance.
+         */
+        instanceName: string;
+        instanceType: string;
+        /**
+         * The Key Pair Name.
+         */
+        keyName: string;
+        /**
+         * The private IP address of the ECS instance.
+         */
+        privateIp: string;
+        /**
+         * The public IP address or EIP of the ECS instance.
+         */
+        publicIp: string;
+        regionId: string;
+        status: string;
+        /**
+         * The ID of the VSwitch attached to the ECS instance.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetEcsKeyPairsPair {
+        /**
+         * The finger print of the key pair.
+         */
+        fingerPrint: string;
+        /**
+         * The ID of the Key Pair.
+         */
+        id: string;
+        /**
+         * A list of ECS instances that has been bound this key pair.
+         */
+        instances: outputs.ecs.GetEcsKeyPairsPairInstance[];
+        /**
+         * The Key Pair Name.
+         */
+        keyName: string;
+        keyPairName: string;
+        /**
+         * The Resource Group Id.
+         */
+        resourceGroupId: string;
+        /**
+         * The tags.
+         */
+        tags: {[key: string]: any};
+    }
+
+    export interface GetEcsKeyPairsPairInstance {
+        /**
+         * The ID of the availability zone where the ECS instance is located.
+         */
+        availabilityZone: string;
+        description: string;
+        imageId: string;
+        /**
+         * The ID of the ECS instance.
+         */
+        instanceId: string;
+        /**
+         * The name of the ECS instance.
+         */
+        instanceName: string;
+        instanceType: string;
+        /**
+         * The Key Pair Name.
+         */
+        keyName: string;
+        /**
+         * The private IP address of the ECS instance.
+         */
+        privateIp: string;
+        /**
+         * The public IP address or EIP of the ECS instance.
+         */
+        publicIp: string;
+        regionId: string;
+        status: string;
+        /**
+         * The ID of the VSwitch attached to the ECS instance.
+         */
+        vswitchId: string;
+    }
+
     export interface GetEcsLaunchTemplatesTemplate {
         /**
          * Instance auto release time.
@@ -6335,6 +6660,7 @@ export namespace ecs {
          * Name of the key pair.
          */
         keyName: string;
+        keyPairName: string;
         /**
          * The Id of resource group which the key pair belongs.
          */
@@ -6342,10 +6668,74 @@ export namespace ecs {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags: {[key: string]: any};
     }
 
     export interface GetKeyPairsKeyPairInstance {
+        /**
+         * The ID of the availability zone where the ECS instance is located.
+         */
+        availabilityZone: string;
+        description: string;
+        imageId: string;
+        /**
+         * The ID of the ECS instance.
+         */
+        instanceId: string;
+        /**
+         * The name of the ECS instance.
+         */
+        instanceName: string;
+        instanceType: string;
+        /**
+         * Name of the key pair.
+         */
+        keyName: string;
+        /**
+         * The private IP address of the ECS instance.
+         */
+        privateIp: string;
+        /**
+         * The public IP address or EIP of the ECS instance.
+         */
+        publicIp: string;
+        regionId: string;
+        status: string;
+        /**
+         * The ID of the VSwitch attached to the ECS instance.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetKeyPairsPair {
+        /**
+         * A finger print used to retrieve specified key pair.
+         */
+        fingerPrint: string;
+        /**
+         * ID of the key pair.
+         */
+        id: string;
+        /**
+         * A list of ECS instances that has been bound this key pair.
+         */
+        instances: outputs.ecs.GetKeyPairsPairInstance[];
+        /**
+         * Name of the key pair.
+         */
+        keyName: string;
+        keyPairName: string;
+        /**
+         * The Id of resource group which the key pair belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+    }
+
+    export interface GetKeyPairsPairInstance {
         /**
          * The ID of the availability zone where the ECS instance is located.
          */
@@ -9339,6 +9729,11 @@ export namespace log {
          * ETL sinks type, the default value is AliyunLOG.
          */
         type?: string;
+    }
+
+    export interface OssShipperParquetConfig {
+        name: string;
+        type: string;
     }
 
     export interface StoreIndexFieldSearch {
@@ -13819,45 +14214,98 @@ export namespace vpc {
 
     export interface GetNatGatewaysGateway {
         /**
-         * Time of creation.
+         * The state of the NAT gateway.
          */
-        creationTime: string;
+        businessStatus: string;
+        /**
+         * Indicates whether deletion protection is enabled.
+         */
+        deletionProtection: boolean;
         /**
          * The description of the NAT gateway.
          */
         description: string;
         /**
-         * The forward table id.
+         * Indicates whether the traffic monitoring feature is enabled.
          */
-        forwardTableId: string;
+        ecsMetricEnabled: boolean;
+        /**
+         * The time when the NAT gateway expires.
+         */
+        expiredTime: string;
+        /**
+         * The ID of the DNAT table.
+         */
+        forwardTableIds: string[];
         /**
          * The ID of the NAT gateway.
          */
         id: string;
         /**
+         * The metering method of the NAT gateway.
+         */
+        internetChargeType: string;
+        /**
          * The ip address of the bind eip.
          */
-        ipLists: string[];
+        ipLists: outputs.vpc.GetNatGatewaysGatewayIpList[];
         /**
          * Name of the NAT gateway.
          */
         name: string;
         /**
-         * The snat table id.
+         * The ID of the NAT gateway.
          */
-        snatTableId: string;
+        natGatewayId: string;
+        /**
+         * The name of NAT gateway.
+         */
+        natGatewayName: string;
+        /**
+         * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+         */
+        natType: string;
+        /**
+         * The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+         */
+        paymentType: string;
+        /**
+         * The resource group id of NAT gateway.
+         */
+        resourceGroupId: string;
+        /**
+         * The ID of the SNAT table that is associated with the NAT gateway.
+         */
+        snatTableIds: string[];
         /**
          * The specification of the NAT gateway.
          */
         spec: string;
         /**
-         * The status of the NAT gateway.
+         * The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+         */
+        specification: string;
+        /**
+         * The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
          */
         status: string;
+        /**
+         * The tags of NAT gateway.
+         */
+        tags: {[key: string]: any};
         /**
          * The ID of the VPC.
          */
         vpcId: string;
+        /**
+         * The ID of the vSwitch to which the NAT gateway belongs.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetNatGatewaysGatewayIpList {
+        ipAddress: string;
+        snatEntryEnabled: boolean;
     }
 
     export interface GetNetworksVpc {
@@ -14267,13 +14715,6 @@ export namespace vpc {
          * The availability zone of the VSwitch.
          */
         zoneId: string;
-    }
-
-    export interface NatGatewayBandwidthPackage {
-        bandwidth: number;
-        ipCount: number;
-        publicIpAddresses: string;
-        zone: string;
     }
 
     export interface NetworkAclAttachmentResource {

@@ -100,6 +100,10 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
+     * Set it to true to make some parameter efficient when modifying them. Default to false.
+     */
+    public readonly forceRestart!: pulumi.Output<boolean | undefined>;
+    /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
     public readonly instanceName!: pulumi.Output<string>;
@@ -158,6 +162,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["engine"] = state ? state.engine : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
+            inputs["forceRestart"] = state ? state.forceRestart : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["instanceStorage"] = state ? state.instanceStorage : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
@@ -183,6 +188,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'masterDbInstanceId'");
             }
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
+            inputs["forceRestart"] = args ? args.forceRestart : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["instanceStorage"] = args ? args.instanceStorage : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
@@ -219,6 +225,10 @@ export interface ReadOnlyInstanceState {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
     readonly engineVersion?: pulumi.Input<string>;
+    /**
+     * Set it to true to make some parameter efficient when modifying them. Default to false.
+     */
+    readonly forceRestart?: pulumi.Input<boolean>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
@@ -271,6 +281,10 @@ export interface ReadOnlyInstanceArgs {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
     readonly engineVersion: pulumi.Input<string>;
+    /**
+     * Set it to true to make some parameter efficient when modifying them. Default to false.
+     */
+    readonly forceRestart?: pulumi.Input<boolean>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */

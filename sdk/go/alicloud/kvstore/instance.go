@@ -221,8 +221,10 @@ type Instance struct {
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
 	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode pulumi.IntPtrOutput `pulumi:"modifyMode"`
-	// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
-	NodeType pulumi.StringPtrOutput `pulumi:"nodeType"`
+	// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	//
+	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
+	NodeType pulumi.StringOutput `pulumi:"nodeType"`
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
 	// It has been deprecated from provider version 1.101.0 and `config` instead..
@@ -377,7 +379,9 @@ type instanceState struct {
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode *int `pulumi:"modifyMode"`
-	// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+	// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	//
+	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType *string `pulumi:"nodeType"`
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType *string `pulumi:"orderType"`
@@ -505,7 +509,9 @@ type InstanceState struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode pulumi.IntPtrInput
-	// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+	// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	//
+	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringPtrInput
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrInput
@@ -630,7 +636,9 @@ type instanceArgs struct {
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode *int `pulumi:"modifyMode"`
-	// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+	// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	//
+	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType *string `pulumi:"nodeType"`
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType *string `pulumi:"orderType"`
@@ -747,7 +755,9 @@ type InstanceArgs struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode pulumi.IntPtrInput
-	// Valid values: `MASTER_SLAVE`, `STAND_ALONE`, `double` and `single`. Default to `double`.
+	// "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	//
+	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringPtrInput
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrInput

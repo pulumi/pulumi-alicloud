@@ -11,39 +11,6 @@ namespace Pulumi.AliCloud.Adb
 {
     public static class GetClusters
     {
-        /// <summary>
-        /// The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
-        /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
-        /// 
-        /// &gt; **NOTE:** Available in v1.71.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var adbClustersDs = Output.Create(AliCloud.Adb.GetClusters.InvokeAsync(new AliCloud.Adb.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "am-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         this.FirstAdbClusterId = adbClustersDs.Apply(adbClustersDs =&gt; adbClustersDs.Clusters[0].Id);
-        ///     }
-        /// 
-        ///     [Output("firstAdbClusterId")]
-        ///     public Output&lt;string&gt; FirstAdbClusterId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithVersion());
     }
@@ -52,10 +19,19 @@ namespace Pulumi.AliCloud.Adb
     public sealed class GetClustersArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The description of the ADB cluster.
+        /// </summary>
+        [Input("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
         /// A regex string to filter results by cluster description.
         /// </summary>
         [Input("descriptionRegex")]
         public string? DescriptionRegex { get; set; }
+
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
@@ -71,6 +47,9 @@ namespace Pulumi.AliCloud.Adb
 
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        [Input("resourceGroupId")]
+        public string? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
@@ -105,11 +84,16 @@ namespace Pulumi.AliCloud.Adb
         /// A list of ADB clusters. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterResult> Clusters;
+        /// <summary>
+        /// The description of the ADB cluster.
+        /// </summary>
+        public readonly string? Description;
         public readonly string? DescriptionRegex;
         /// <summary>
         /// A list of ADB cluster descriptions.
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -119,6 +103,7 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        public readonly string? ResourceGroupId;
         /// <summary>
         /// Status of the cluster.
         /// </summary>
@@ -129,9 +114,13 @@ namespace Pulumi.AliCloud.Adb
         private GetClustersResult(
             ImmutableArray<Outputs.GetClustersClusterResult> clusters,
 
+            string? description,
+
             string? descriptionRegex,
 
             ImmutableArray<string> descriptions,
+
+            bool? enableDetails,
 
             string id,
 
@@ -139,16 +128,21 @@ namespace Pulumi.AliCloud.Adb
 
             string? outputFile,
 
+            string? resourceGroupId,
+
             string? status,
 
             ImmutableDictionary<string, object>? tags)
         {
             Clusters = clusters;
+            Description = description;
             DescriptionRegex = descriptionRegex;
             Descriptions = descriptions;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             OutputFile = outputFile;
+            ResourceGroupId = resourceGroupId;
             Status = status;
             Tags = tags;
         }

@@ -20,7 +20,7 @@ class GetKeyPairsResult:
     """
     A collection of values returned by getKeyPairs.
     """
-    def __init__(__self__, finger_print=None, id=None, ids=None, key_pairs=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tags=None):
+    def __init__(__self__, finger_print=None, id=None, ids=None, key_pairs=None, name_regex=None, names=None, output_file=None, pairs=None, resource_group_id=None, tags=None):
         if finger_print and not isinstance(finger_print, str):
             raise TypeError("Expected argument 'finger_print' to be a str")
         pulumi.set(__self__, "finger_print", finger_print)
@@ -32,6 +32,10 @@ class GetKeyPairsResult:
         pulumi.set(__self__, "ids", ids)
         if key_pairs and not isinstance(key_pairs, list):
             raise TypeError("Expected argument 'key_pairs' to be a list")
+        if key_pairs is not None:
+            warnings.warn("""Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.""", DeprecationWarning)
+            pulumi.log.warn("""key_pairs is deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.""")
+
         pulumi.set(__self__, "key_pairs", key_pairs)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
@@ -42,6 +46,9 @@ class GetKeyPairsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if pairs and not isinstance(pairs, list):
+            raise TypeError("Expected argument 'pairs' to be a list")
+        pulumi.set(__self__, "pairs", pairs)
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
         pulumi.set(__self__, "resource_group_id", resource_group_id)
@@ -51,7 +58,7 @@ class GetKeyPairsResult:
 
     @property
     @pulumi.getter(name="fingerPrint")
-    def finger_print(self) -> str:
+    def finger_print(self) -> Optional[str]:
         """
         Finger print of the key pair.
         """
@@ -97,6 +104,11 @@ class GetKeyPairsResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter
+    def pairs(self) -> Sequence['outputs.GetKeyPairsPairResult']:
+        return pulumi.get(self, "pairs")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
         """
@@ -126,6 +138,7 @@ class AwaitableGetKeyPairsResult(GetKeyPairsResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            pairs=self.pairs,
             resource_group_id=self.resource_group_id,
             tags=self.tags)
 
@@ -138,19 +151,7 @@ def get_key_pairs(finger_print: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyPairsResult:
     """
-    This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    # Declare the data source
-    default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_name="keyPairDatasource")
-    default_key_pairs = default_key_pair.key_name.apply(lambda key_name: alicloud.ecs.get_key_pairs(name_regex=key_name))
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str finger_print: A finger print used to retrieve specified key pair.
     :param Sequence[str] ids: A list of key pair IDs.
@@ -179,5 +180,6 @@ def get_key_pairs(finger_print: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
+        pairs=__ret__.pairs,
         resource_group_id=__ret__.resource_group_id,
         tags=__ret__.tags)

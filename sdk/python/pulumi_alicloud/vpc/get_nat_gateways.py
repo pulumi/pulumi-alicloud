@@ -20,7 +20,13 @@ class GetNatGatewaysResult:
     """
     A collection of values returned by getNatGateways.
     """
-    def __init__(__self__, gateways=None, id=None, ids=None, name_regex=None, names=None, output_file=None, vpc_id=None):
+    def __init__(__self__, dry_run=None, enable_details=None, gateways=None, id=None, ids=None, name_regex=None, names=None, nat_gateway_name=None, nat_type=None, output_file=None, payment_type=None, resource_group_id=None, specification=None, status=None, tags=None, vpc_id=None):
+        if dry_run and not isinstance(dry_run, bool):
+            raise TypeError("Expected argument 'dry_run' to be a bool")
+        pulumi.set(__self__, "dry_run", dry_run)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if gateways and not isinstance(gateways, list):
             raise TypeError("Expected argument 'gateways' to be a list")
         pulumi.set(__self__, "gateways", gateways)
@@ -36,12 +42,43 @@ class GetNatGatewaysResult:
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
         pulumi.set(__self__, "names", names)
+        if nat_gateway_name and not isinstance(nat_gateway_name, str):
+            raise TypeError("Expected argument 'nat_gateway_name' to be a str")
+        pulumi.set(__self__, "nat_gateway_name", nat_gateway_name)
+        if nat_type and not isinstance(nat_type, str):
+            raise TypeError("Expected argument 'nat_type' to be a str")
+        pulumi.set(__self__, "nat_type", nat_type)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if payment_type and not isinstance(payment_type, str):
+            raise TypeError("Expected argument 'payment_type' to be a str")
+        pulumi.set(__self__, "payment_type", payment_type)
+        if resource_group_id and not isinstance(resource_group_id, str):
+            raise TypeError("Expected argument 'resource_group_id' to be a str")
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if specification and not isinstance(specification, str):
+            raise TypeError("Expected argument 'specification' to be a str")
+        pulumi.set(__self__, "specification", specification)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[bool]:
+        return pulumi.get(self, "dry_run")
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -81,9 +118,65 @@ class GetNatGatewaysResult:
         return pulumi.get(self, "names")
 
     @property
+    @pulumi.getter(name="natGatewayName")
+    def nat_gateway_name(self) -> Optional[str]:
+        """
+        The name of the NAT gateway.
+        """
+        return pulumi.get(self, "nat_gateway_name")
+
+    @property
+    @pulumi.getter(name="natType")
+    def nat_type(self) -> Optional[str]:
+        """
+        The type of the NAT gateway.
+        """
+        return pulumi.get(self, "nat_type")
+
+    @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[str]:
+        """
+        The billing method of the NAT gateway.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def specification(self) -> Optional[str]:
+        """
+        The specification of the NAT gateway.
+        """
+        return pulumi.get(self, "specification")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The status of the NAT gateway.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The tags of NAT gateway.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")
@@ -100,18 +193,36 @@ class AwaitableGetNatGatewaysResult(GetNatGatewaysResult):
         if False:
             yield self
         return GetNatGatewaysResult(
+            dry_run=self.dry_run,
+            enable_details=self.enable_details,
             gateways=self.gateways,
             id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
+            nat_gateway_name=self.nat_gateway_name,
+            nat_type=self.nat_type,
             output_file=self.output_file,
+            payment_type=self.payment_type,
+            resource_group_id=self.resource_group_id,
+            specification=self.specification,
+            status=self.status,
+            tags=self.tags,
             vpc_id=self.vpc_id)
 
 
-def get_nat_gateways(ids: Optional[Sequence[str]] = None,
+def get_nat_gateways(dry_run: Optional[bool] = None,
+                     enable_details: Optional[bool] = None,
+                     ids: Optional[Sequence[str]] = None,
                      name_regex: Optional[str] = None,
+                     nat_gateway_name: Optional[str] = None,
+                     nat_type: Optional[str] = None,
                      output_file: Optional[str] = None,
+                     payment_type: Optional[str] = None,
+                     resource_group_id: Optional[str] = None,
+                     specification: Optional[str] = None,
+                     status: Optional[str] = None,
+                     tags: Optional[Mapping[str, Any]] = None,
                      vpc_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNatGatewaysResult:
     """
@@ -119,35 +230,33 @@ def get_nat_gateways(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in 1.37.0+.
 
-    ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    config = pulumi.Config()
-    name = config.get("name")
-    if name is None:
-        name = "natGatewaysDatasource"
-    default = alicloud.get_zones(available_resource_creation="VSwitch")
-    foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
-    foo_nat_gateway = alicloud.vpc.NatGateway("fooNatGateway",
-        specification="Small",
-        vpc_id=foo_network.id)
-    foo_nat_gateways = pulumi.Output.all(foo_nat_gateway.id, foo_nat_gateway.name, foo_network.id).apply(lambda fooNatGatewayId, name, fooNetworkId: alicloud.vpc.get_nat_gateways(ids=[foo_nat_gateway_id],
-        name_regex=name,
-        vpc_id=foo_network_id))
-    ```
-
-
+    :param bool dry_run: Specifies whether to only precheck the request.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of NAT gateways IDs.
     :param str name_regex: A regex string to filter nat gateways by name.
+    :param str nat_gateway_name: The name of NAT gateway.
+    :param str nat_type: The nat type of NAT gateway. Valid values `Enhanced` and `Normal`. Default value `Normal`.
+    :param str payment_type: The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+    :param str resource_group_id: The resource group id of NAT gateway.
+    :param str specification: The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+    :param str status: The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
+    :param Mapping[str, Any] tags: The tags of NAT gateway.
     :param str vpc_id: The ID of the VPC.
     """
     __args__ = dict()
+    __args__['dryRun'] = dry_run
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
+    __args__['natGatewayName'] = nat_gateway_name
+    __args__['natType'] = nat_type
     __args__['outputFile'] = output_file
+    __args__['paymentType'] = payment_type
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['specification'] = specification
+    __args__['status'] = status
+    __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -156,10 +265,19 @@ def get_nat_gateways(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getNatGateways:getNatGateways', __args__, opts=opts, typ=GetNatGatewaysResult).value
 
     return AwaitableGetNatGatewaysResult(
+        dry_run=__ret__.dry_run,
+        enable_details=__ret__.enable_details,
         gateways=__ret__.gateways,
         id=__ret__.id,
         ids=__ret__.ids,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
+        nat_gateway_name=__ret__.nat_gateway_name,
+        nat_type=__ret__.nat_type,
         output_file=__ret__.output_file,
+        payment_type=__ret__.payment_type,
+        resource_group_id=__ret__.resource_group_id,
+        specification=__ret__.specification,
+        status=__ret__.status,
+        tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
