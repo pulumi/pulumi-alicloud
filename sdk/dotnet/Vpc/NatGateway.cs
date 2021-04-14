@@ -34,10 +34,10 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The nat gateway will auto create a snap and forward item, the `forward_table_ids` is the created one. It is format a list after v1.121.0+.
+        /// The nat gateway will auto create a forward item.
         /// </summary>
         [Output("forwardTableIds")]
-        public Output<ImmutableArray<string>> ForwardTableIds { get; private set; } = null!;
+        public Output<string> ForwardTableIds { get; private set; } = null!;
 
         /// <summary>
         /// Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
@@ -82,10 +82,10 @@ namespace Pulumi.AliCloud.Vpc
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The nat gateway will auto create a snap and forward item, the `snat_table_ids` is the created one. It is format a list after v1.121.0+.
+        /// The nat gateway will auto create a snat item.
         /// </summary>
         [Output("snatTableIds")]
-        public Output<ImmutableArray<string>> SnatTableIds { get; private set; } = null!;
+        public Output<string> SnatTableIds { get; private set; } = null!;
 
         /// <summary>
         /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
@@ -266,17 +266,11 @@ namespace Pulumi.AliCloud.Vpc
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
-        [Input("forwardTableIds")]
-        private InputList<string>? _forwardTableIds;
-
         /// <summary>
-        /// The nat gateway will auto create a snap and forward item, the `forward_table_ids` is the created one. It is format a list after v1.121.0+.
+        /// The nat gateway will auto create a forward item.
         /// </summary>
-        public InputList<string> ForwardTableIds
-        {
-            get => _forwardTableIds ?? (_forwardTableIds = new InputList<string>());
-            set => _forwardTableIds = value;
-        }
+        [Input("forwardTableIds")]
+        public Input<string>? ForwardTableIds { get; set; }
 
         /// <summary>
         /// Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
@@ -320,17 +314,11 @@ namespace Pulumi.AliCloud.Vpc
         [Input("period")]
         public Input<int>? Period { get; set; }
 
-        [Input("snatTableIds")]
-        private InputList<string>? _snatTableIds;
-
         /// <summary>
-        /// The nat gateway will auto create a snap and forward item, the `snat_table_ids` is the created one. It is format a list after v1.121.0+.
+        /// The nat gateway will auto create a snat item.
         /// </summary>
-        public InputList<string> SnatTableIds
-        {
-            get => _snatTableIds ?? (_snatTableIds = new InputList<string>());
-            set => _snatTableIds = value;
-        }
+        [Input("snatTableIds")]
+        public Input<string>? SnatTableIds { get; set; }
 
         /// <summary>
         /// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).

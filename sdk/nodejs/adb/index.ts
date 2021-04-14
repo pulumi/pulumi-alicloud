@@ -9,9 +9,9 @@ export * from "./account";
 export * from "./backupPolicy";
 export * from "./cluster";
 export * from "./connection";
-export * from "./dbCluster";
+export * from "./dbcluster";
 export * from "./getClusters";
-export * from "./getDbClusters";
+export * from "./getDBClusters";
 export * from "./getZones";
 
 // Import resources to register:
@@ -19,7 +19,7 @@ import { Account } from "./account";
 import { BackupPolicy } from "./backupPolicy";
 import { Cluster } from "./cluster";
 import { Connection } from "./connection";
-import { DbCluster } from "./dbCluster";
+import { DBCluster } from "./dbcluster";
 
 const _module = {
     version: utilities.getVersion(),
@@ -33,8 +33,8 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "alicloud:adb/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
-            case "alicloud:adb/dbCluster:DbCluster":
-                return new DbCluster(name, <any>undefined, { urn })
+            case "alicloud:adb/dBCluster:DBCluster":
+                return new DBCluster(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -44,4 +44,4 @@ pulumi.runtime.registerResourceModule("alicloud", "adb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "adb/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "adb/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "adb/connection", _module)
-pulumi.runtime.registerResourceModule("alicloud", "adb/dbCluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "adb/dBCluster", _module)

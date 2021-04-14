@@ -404,7 +404,7 @@ func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClust
 	}).(GetClustersClusterOutput)
 }
 
-type GetDbClustersCluster struct {
+type GetDBClustersCluster struct {
 	// Auto-renewal period of an cluster, in the unit of the month.
 	AutoRenewPeriod int `pulumi:"autoRenewPeriod"`
 	// The payment type of the resource.
@@ -489,18 +489,18 @@ type GetDbClustersCluster struct {
 	ZoneId string `pulumi:"zoneId"`
 }
 
-// GetDbClustersClusterInput is an input type that accepts GetDbClustersClusterArgs and GetDbClustersClusterOutput values.
-// You can construct a concrete instance of `GetDbClustersClusterInput` via:
+// GetDBClustersClusterInput is an input type that accepts GetDBClustersClusterArgs and GetDBClustersClusterOutput values.
+// You can construct a concrete instance of `GetDBClustersClusterInput` via:
 //
-//          GetDbClustersClusterArgs{...}
-type GetDbClustersClusterInput interface {
+//          GetDBClustersClusterArgs{...}
+type GetDBClustersClusterInput interface {
 	pulumi.Input
 
-	ToGetDbClustersClusterOutput() GetDbClustersClusterOutput
-	ToGetDbClustersClusterOutputWithContext(context.Context) GetDbClustersClusterOutput
+	ToGetDBClustersClusterOutput() GetDBClustersClusterOutput
+	ToGetDBClustersClusterOutputWithContext(context.Context) GetDBClustersClusterOutput
 }
 
-type GetDbClustersClusterArgs struct {
+type GetDBClustersClusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month.
 	AutoRenewPeriod pulumi.IntInput `pulumi:"autoRenewPeriod"`
 	// The payment type of the resource.
@@ -585,283 +585,283 @@ type GetDbClustersClusterArgs struct {
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
-func (GetDbClustersClusterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbClustersCluster)(nil)).Elem()
+func (GetDBClustersClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDBClustersCluster)(nil)).Elem()
 }
 
-func (i GetDbClustersClusterArgs) ToGetDbClustersClusterOutput() GetDbClustersClusterOutput {
-	return i.ToGetDbClustersClusterOutputWithContext(context.Background())
+func (i GetDBClustersClusterArgs) ToGetDBClustersClusterOutput() GetDBClustersClusterOutput {
+	return i.ToGetDBClustersClusterOutputWithContext(context.Background())
 }
 
-func (i GetDbClustersClusterArgs) ToGetDbClustersClusterOutputWithContext(ctx context.Context) GetDbClustersClusterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDbClustersClusterOutput)
+func (i GetDBClustersClusterArgs) ToGetDBClustersClusterOutputWithContext(ctx context.Context) GetDBClustersClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDBClustersClusterOutput)
 }
 
-// GetDbClustersClusterArrayInput is an input type that accepts GetDbClustersClusterArray and GetDbClustersClusterArrayOutput values.
-// You can construct a concrete instance of `GetDbClustersClusterArrayInput` via:
+// GetDBClustersClusterArrayInput is an input type that accepts GetDBClustersClusterArray and GetDBClustersClusterArrayOutput values.
+// You can construct a concrete instance of `GetDBClustersClusterArrayInput` via:
 //
-//          GetDbClustersClusterArray{ GetDbClustersClusterArgs{...} }
-type GetDbClustersClusterArrayInput interface {
+//          GetDBClustersClusterArray{ GetDBClustersClusterArgs{...} }
+type GetDBClustersClusterArrayInput interface {
 	pulumi.Input
 
-	ToGetDbClustersClusterArrayOutput() GetDbClustersClusterArrayOutput
-	ToGetDbClustersClusterArrayOutputWithContext(context.Context) GetDbClustersClusterArrayOutput
+	ToGetDBClustersClusterArrayOutput() GetDBClustersClusterArrayOutput
+	ToGetDBClustersClusterArrayOutputWithContext(context.Context) GetDBClustersClusterArrayOutput
 }
 
-type GetDbClustersClusterArray []GetDbClustersClusterInput
+type GetDBClustersClusterArray []GetDBClustersClusterInput
 
-func (GetDbClustersClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDbClustersCluster)(nil)).Elem()
+func (GetDBClustersClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDBClustersCluster)(nil)).Elem()
 }
 
-func (i GetDbClustersClusterArray) ToGetDbClustersClusterArrayOutput() GetDbClustersClusterArrayOutput {
-	return i.ToGetDbClustersClusterArrayOutputWithContext(context.Background())
+func (i GetDBClustersClusterArray) ToGetDBClustersClusterArrayOutput() GetDBClustersClusterArrayOutput {
+	return i.ToGetDBClustersClusterArrayOutputWithContext(context.Background())
 }
 
-func (i GetDbClustersClusterArray) ToGetDbClustersClusterArrayOutputWithContext(ctx context.Context) GetDbClustersClusterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDbClustersClusterArrayOutput)
+func (i GetDBClustersClusterArray) ToGetDBClustersClusterArrayOutputWithContext(ctx context.Context) GetDBClustersClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDBClustersClusterArrayOutput)
 }
 
-type GetDbClustersClusterOutput struct{ *pulumi.OutputState }
+type GetDBClustersClusterOutput struct{ *pulumi.OutputState }
 
-func (GetDbClustersClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbClustersCluster)(nil)).Elem()
+func (GetDBClustersClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDBClustersCluster)(nil)).Elem()
 }
 
-func (o GetDbClustersClusterOutput) ToGetDbClustersClusterOutput() GetDbClustersClusterOutput {
+func (o GetDBClustersClusterOutput) ToGetDBClustersClusterOutput() GetDBClustersClusterOutput {
 	return o
 }
 
-func (o GetDbClustersClusterOutput) ToGetDbClustersClusterOutputWithContext(ctx context.Context) GetDbClustersClusterOutput {
+func (o GetDBClustersClusterOutput) ToGetDBClustersClusterOutputWithContext(ctx context.Context) GetDBClustersClusterOutput {
 	return o
 }
 
 // Auto-renewal period of an cluster, in the unit of the month.
-func (o GetDbClustersClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) int { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+func (o GetDBClustersClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) int { return v.AutoRenewPeriod }).(pulumi.IntOutput)
 }
 
 // The payment type of the resource.
-func (o GetDbClustersClusterOutput) ChargeType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.ChargeType }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) ChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
 // The name of the service.
-func (o GetDbClustersClusterOutput) CommodityCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.CommodityCode }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) CommodityCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.CommodityCode }).(pulumi.StringOutput)
 }
 
 // The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
-func (o GetDbClustersClusterOutput) ComputeResource() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.ComputeResource }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) ComputeResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ComputeResource }).(pulumi.StringOutput)
 }
 
 // The endpoint of the cluster.
-func (o GetDbClustersClusterOutput) ConnectionString() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.ConnectionString }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
 // The CreateTime of the ADB cluster.
-func (o GetDbClustersClusterOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The db cluster category.
-func (o GetDbClustersClusterOutput) DbClusterCategory() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.DbClusterCategory }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) DbClusterCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbClusterCategory }).(pulumi.StringOutput)
 }
 
 // The db cluster id.
-func (o GetDbClustersClusterOutput) DbClusterId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.DbClusterId }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbClusterId }).(pulumi.StringOutput)
 }
 
 // The db cluster network type.
-func (o GetDbClustersClusterOutput) DbClusterNetworkType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.DbClusterNetworkType }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) DbClusterNetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbClusterNetworkType }).(pulumi.StringOutput)
 }
 
 // The db cluster type.
-func (o GetDbClustersClusterOutput) DbClusterType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.DbClusterType }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) DbClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbClusterType }).(pulumi.StringOutput)
 }
 
 // The db cluster version.
-func (o GetDbClustersClusterOutput) DbClusterVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.DbClusterVersion }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) DbClusterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbClusterVersion }).(pulumi.StringOutput)
 }
 
 // The db node class.
-func (o GetDbClustersClusterOutput) DbNodeClass() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.DbNodeClass }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) DbNodeClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DbNodeClass }).(pulumi.StringOutput)
 }
 
 // The db node count.
-func (o GetDbClustersClusterOutput) DbNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) int { return v.DbNodeCount }).(pulumi.IntOutput)
+func (o GetDBClustersClusterOutput) DbNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) int { return v.DbNodeCount }).(pulumi.IntOutput)
 }
 
 // The db node storage.
-func (o GetDbClustersClusterOutput) DbNodeStorage() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) int { return v.DbNodeStorage }).(pulumi.IntOutput)
+func (o GetDBClustersClusterOutput) DbNodeStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) int { return v.DbNodeStorage }).(pulumi.IntOutput)
 }
 
 // The description of DBCluster.
-func (o GetDbClustersClusterOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Description }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The type of the disk.
-func (o GetDbClustersClusterOutput) DiskType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.DiskType }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
 // The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
-func (o GetDbClustersClusterOutput) DtsJobId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.DtsJobId }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) DtsJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.DtsJobId }).(pulumi.StringOutput)
 }
 
 // The elastic io resource.
-func (o GetDbClustersClusterOutput) ElasticIoResource() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) int { return v.ElasticIoResource }).(pulumi.IntOutput)
+func (o GetDBClustersClusterOutput) ElasticIoResource() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) int { return v.ElasticIoResource }).(pulumi.IntOutput)
 }
 
 // The engine of the database.
-func (o GetDbClustersClusterOutput) Engine() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Engine }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Engine }).(pulumi.StringOutput)
 }
 
 // The engine version of the database..
-func (o GetDbClustersClusterOutput) EngineVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.EngineVersion }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
 // The number of nodes. The node resources are used for data computing in elastic mode.
-func (o GetDbClustersClusterOutput) ExecutorCount() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.ExecutorCount }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) ExecutorCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ExecutorCount }).(pulumi.StringOutput)
 }
 
 // The time when the cluster expires.
-func (o GetDbClustersClusterOutput) ExpireTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.ExpireTime }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // Indicates whether the cluster has expired.
-func (o GetDbClustersClusterOutput) Expired() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Expired }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) Expired() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Expired }).(pulumi.StringOutput)
 }
 
 // The ID of the DBCluster.
-func (o GetDbClustersClusterOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The lock mode of the cluster.
-func (o GetDbClustersClusterOutput) LockMode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.LockMode }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) LockMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.LockMode }).(pulumi.StringOutput)
 }
 
 // The reason why the cluster is locked.
-func (o GetDbClustersClusterOutput) LockReason() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.LockReason }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) LockReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.LockReason }).(pulumi.StringOutput)
 }
 
 // The maintenance window of the cluster.
-func (o GetDbClustersClusterOutput) MaintainTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.MaintainTime }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) MaintainTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.MaintainTime }).(pulumi.StringOutput)
 }
 
-func (o GetDbClustersClusterOutput) NetworkType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // The payment type of the resource.
-func (o GetDbClustersClusterOutput) PaymentType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.PaymentType }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // The port that is used to access the cluster.
-func (o GetDbClustersClusterOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) int { return v.Port }).(pulumi.IntOutput)
+func (o GetDBClustersClusterOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
-func (o GetDbClustersClusterOutput) RdsInstanceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.RdsInstanceId }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) RdsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.RdsInstanceId }).(pulumi.StringOutput)
 }
 
-func (o GetDbClustersClusterOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The status of renewal.
-func (o GetDbClustersClusterOutput) RenewalStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.RenewalStatus }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.RenewalStatus }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.
-func (o GetDbClustersClusterOutput) ResourceGroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // List of IP addresses allowed to access all databases of an cluster.
-func (o GetDbClustersClusterOutput) SecurityIps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) []string { return v.SecurityIps }).(pulumi.StringArrayOutput)
+func (o GetDBClustersClusterOutput) SecurityIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) []string { return v.SecurityIps }).(pulumi.StringArrayOutput)
 }
 
 // The status of the resource.
-func (o GetDbClustersClusterOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Status }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
-func (o GetDbClustersClusterOutput) StorageResource() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.StorageResource }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) StorageResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.StorageResource }).(pulumi.StringOutput)
 }
 
 // The tag of the resource.
-func (o GetDbClustersClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDBClustersClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The vpc cloud instance id.
-func (o GetDbClustersClusterOutput) VpcCloudInstanceId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.VpcCloudInstanceId }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) VpcCloudInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.VpcCloudInstanceId }).(pulumi.StringOutput)
 }
 
 // The vpc id.
-func (o GetDbClustersClusterOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The vswitch id.
-func (o GetDbClustersClusterOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 // The zone ID  of the resource.
-func (o GetDbClustersClusterOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o GetDBClustersClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-type GetDbClustersClusterArrayOutput struct{ *pulumi.OutputState }
+type GetDBClustersClusterArrayOutput struct{ *pulumi.OutputState }
 
-func (GetDbClustersClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDbClustersCluster)(nil)).Elem()
+func (GetDBClustersClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDBClustersCluster)(nil)).Elem()
 }
 
-func (o GetDbClustersClusterArrayOutput) ToGetDbClustersClusterArrayOutput() GetDbClustersClusterArrayOutput {
+func (o GetDBClustersClusterArrayOutput) ToGetDBClustersClusterArrayOutput() GetDBClustersClusterArrayOutput {
 	return o
 }
 
-func (o GetDbClustersClusterArrayOutput) ToGetDbClustersClusterArrayOutputWithContext(ctx context.Context) GetDbClustersClusterArrayOutput {
+func (o GetDBClustersClusterArrayOutput) ToGetDBClustersClusterArrayOutputWithContext(ctx context.Context) GetDBClustersClusterArrayOutput {
 	return o
 }
 
-func (o GetDbClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDbClustersClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbClustersCluster {
-		return vs[0].([]GetDbClustersCluster)[vs[1].(int)]
-	}).(GetDbClustersClusterOutput)
+func (o GetDBClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDBClustersClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDBClustersCluster {
+		return vs[0].([]GetDBClustersCluster)[vs[1].(int)]
+	}).(GetDBClustersClusterOutput)
 }
 
 type GetZonesZone struct {
@@ -973,8 +973,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
-	pulumi.RegisterOutputType(GetDbClustersClusterOutput{})
-	pulumi.RegisterOutputType(GetDbClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetDBClustersClusterOutput{})
+	pulumi.RegisterOutputType(GetDBClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

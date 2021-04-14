@@ -33,8 +33,8 @@ def _register_module():
                 return Cluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:adb/connection:Connection":
                 return Connection(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "alicloud:adb/dbCluster:DbCluster":
-                return DbCluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:adb/dBCluster:DBCluster":
+                return DBCluster(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -44,6 +44,6 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "adb/backupPolicy", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "adb/cluster", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "adb/connection", _module_instance)
-    pulumi.runtime.register_resource_module("alicloud", "adb/dbCluster", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "adb/dBCluster", _module_instance)
 
 _register_module()

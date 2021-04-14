@@ -53,6 +53,9 @@ namespace Pulumi.AliCloud.Dns
     [AliCloudResourceType("alicloud:dns/alidnsDomain:AlidnsDomain")]
     public partial class AlidnsDomain : Pulumi.CustomResource
     {
+        /// <summary>
+        /// A list of the dns server name.
+        /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
@@ -211,6 +214,10 @@ namespace Pulumi.AliCloud.Dns
     {
         [Input("dnsServers")]
         private InputList<string>? _dnsServers;
+
+        /// <summary>
+        /// A list of the dns server name.
+        /// </summary>
         public InputList<string> DnsServers
         {
             get => _dnsServers ?? (_dnsServers = new InputList<string>());

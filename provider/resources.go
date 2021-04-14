@@ -183,7 +183,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_adb_backup_policy": {Tok: resource(adbMod, "BackupPolicy")},
 			"alicloud_adb_cluster":       {Tok: resource(adbMod, "Cluster")},
 			"alicloud_adb_connection":    {Tok: resource(adbMod, "Connection")},
-			"alicloud_adb_db_cluster":    {Tok: resource(adbMod, "DbCluster")},
+			"alicloud_adb_db_cluster":    {Tok: resource(adbMod, "DBCluster")},
 
 			// AliKafka
 			"alicloud_alikafka_consumer_group": {Tok: resource(aliKafaMod, "ConsumerGroup")},
@@ -1126,7 +1126,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Adb
 			"alicloud_adb_clusters":    {Tok: dataSource(adbMod, "getClusters")},
 			"alicloud_adb_zones":       {Tok: dataSource(adbMod, "getZones")},
-			"alicloud_adb_db_clusters": {Tok: dataSource(adbMod, "getDbClusters")},
+			"alicloud_adb_db_clusters": {Tok: dataSource(adbMod, "getDBClusters")},
 
 			// Waf
 			"alicloud_waf_domains":   {Tok: dataSource(wafMod, "getDomains")},

@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *     vswitchName: name,
  * });
- * const _this = new alicloud.adb.DbCluster("this", {
+ * const _this = new alicloud.adb.DBCluster("this", {
  *     dbClusterCategory: "Cluster",
  *     dbClusterClass: "C8",
  *     dbNodeCount: "4",
@@ -63,12 +63,12 @@ import * as utilities from "../utilities";
  * AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:adb/dbCluster:DbCluster example <id>
+ *  $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
  * ```
  */
-export class DbCluster extends pulumi.CustomResource {
+export class DBCluster extends pulumi.CustomResource {
     /**
-     * Get an existing DbCluster resource's state with the given name, ID, and optional extra
+     * Get an existing DBCluster resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -76,22 +76,22 @@ export class DbCluster extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DbClusterState, opts?: pulumi.CustomResourceOptions): DbCluster {
-        return new DbCluster(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DBClusterState, opts?: pulumi.CustomResourceOptions): DBCluster {
+        return new DBCluster(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'alicloud:adb/dbCluster:DbCluster';
+    public static readonly __pulumiType = 'alicloud:adb/dBCluster:DBCluster';
 
     /**
-     * Returns true if the given object is an instance of DbCluster.  This is designed to work even
+     * Returns true if the given object is an instance of DBCluster.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DbCluster {
+    public static isInstance(obj: any): obj is DBCluster {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DbCluster.__pulumiType;
+        return obj['__pulumiType'] === DBCluster.__pulumiType;
     }
 
     /**
@@ -194,18 +194,18 @@ export class DbCluster extends pulumi.CustomResource {
     public readonly zoneId!: pulumi.Output<string>;
 
     /**
-     * Create a DbCluster resource with the given unique name, arguments, and options.
+     * Create a DBCluster resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DbClusterArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DbClusterArgs | DbClusterState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DBClusterArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DBClusterArgs | DBClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DbClusterState | undefined;
+            const state = argsOrState as DBClusterState | undefined;
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             inputs["computeResource"] = state ? state.computeResource : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
@@ -231,7 +231,7 @@ export class DbCluster extends pulumi.CustomResource {
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
-            const args = argsOrState as DbClusterArgs | undefined;
+            const args = argsOrState as DBClusterArgs | undefined;
             if ((!args || args.dbClusterCategory === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterCategory'");
             }
@@ -263,14 +263,14 @@ export class DbCluster extends pulumi.CustomResource {
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DbCluster.__pulumiType, name, inputs, opts);
+        super(DBCluster.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering DbCluster resources.
+ * Input properties used for looking up and filtering DBCluster resources.
  */
-export interface DbClusterState {
+export interface DBClusterState {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
      */
@@ -372,9 +372,9 @@ export interface DbClusterState {
 }
 
 /**
- * The set of arguments for constructing a DbCluster resource.
+ * The set of arguments for constructing a DBCluster resource.
  */
-export interface DbClusterArgs {
+export interface DBClusterArgs {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
      */

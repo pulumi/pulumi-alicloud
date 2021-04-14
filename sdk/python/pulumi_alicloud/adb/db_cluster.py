@@ -8,10 +8,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['DbClusterArgs', 'DbCluster']
+__all__ = ['DBClusterArgs', 'DBCluster']
 
 @pulumi.input_type
-class DbClusterArgs:
+class DBClusterArgs:
     def __init__(__self__, *,
                  db_cluster_category: pulumi.Input[str],
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
@@ -36,7 +36,7 @@ class DbClusterArgs:
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a DbCluster resource.
+        The set of arguments for constructing a DBCluster resource.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
@@ -373,7 +373,7 @@ class DbClusterArgs:
         pulumi.set(self, "zone_id", value)
 
 
-class DbCluster(pulumi.CustomResource):
+class DBCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -434,7 +434,7 @@ class DbCluster(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             availability_zone=default_zones.zones[0].id,
             vswitch_name=name)
-        this = alicloud.adb.DbCluster("this",
+        this = alicloud.adb.DBCluster("this",
             db_cluster_category="Cluster",
             db_cluster_class="C8",
             db_node_count=4,
@@ -461,7 +461,7 @@ class DbCluster(pulumi.CustomResource):
         AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/dbCluster:DbCluster example <id>
+         $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -495,7 +495,7 @@ class DbCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DbClusterArgs,
+                 args: DBClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
@@ -528,7 +528,7 @@ class DbCluster(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             availability_zone=default_zones.zones[0].id,
             vswitch_name=name)
-        this = alicloud.adb.DbCluster("this",
+        this = alicloud.adb.DBCluster("this",
             db_cluster_category="Cluster",
             db_cluster_class="C8",
             db_node_count=4,
@@ -555,16 +555,16 @@ class DbCluster(pulumi.CustomResource):
         AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:adb/dbCluster:DbCluster example <id>
+         $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
         ```
 
         :param str resource_name: The name of the resource.
-        :param DbClusterArgs args: The arguments to use to populate this resource's properties.
+        :param DBClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DbClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DBClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -641,8 +641,8 @@ class DbCluster(pulumi.CustomResource):
             __props__['zone_id'] = zone_id
             __props__['connection_string'] = None
             __props__['status'] = None
-        super(DbCluster, __self__).__init__(
-            'alicloud:adb/dbCluster:DbCluster',
+        super(DBCluster, __self__).__init__(
+            'alicloud:adb/dBCluster:DBCluster',
             resource_name,
             __props__,
             opts)
@@ -674,9 +674,9 @@ class DbCluster(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
-            zone_id: Optional[pulumi.Input[str]] = None) -> 'DbCluster':
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'DBCluster':
         """
-        Get an existing DbCluster resource's state with the given name, id, and optional extra
+        Get an existing DBCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -737,7 +737,7 @@ class DbCluster(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vswitch_id"] = vswitch_id
         __props__["zone_id"] = zone_id
-        return DbCluster(resource_name, opts=opts, __props__=__props__)
+        return DBCluster(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="autoRenewPeriod")

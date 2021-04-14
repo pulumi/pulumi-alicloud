@@ -9,7 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Adb
 {
-    public static class GetDbClusters
+    public static class GetDBClusters
     {
         /// <summary>
         /// This data source provides the Adb DBClusters of the current Alibaba Cloud user.
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Adb
         /// {
         ///     public MyStack()
         ///     {
-        ///         var example = Output.Create(AliCloud.Adb.GetDbClusters.InvokeAsync(new AliCloud.Adb.GetDbClustersArgs
+        ///         var example = Output.Create(AliCloud.Adb.GetDBClusters.InvokeAsync(new AliCloud.Adb.GetDBClustersArgs
         ///         {
         ///             DescriptionRegex = "example",
         ///         }));
@@ -44,12 +44,12 @@ namespace Pulumi.AliCloud.Adb
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetDbClustersResult> InvokeAsync(GetDbClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDbClustersResult>("alicloud:adb/getDbClusters:getDbClusters", args ?? new GetDbClustersArgs(), options.WithVersion());
+        public static Task<GetDBClustersResult> InvokeAsync(GetDBClustersArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDBClustersResult>("alicloud:adb/getDBClusters:getDBClusters", args ?? new GetDBClustersArgs(), options.WithVersion());
     }
 
 
-    public sealed class GetDbClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetDBClustersArgs : Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of DBCluster.
@@ -108,16 +108,16 @@ namespace Pulumi.AliCloud.Adb
             set => _tags = value;
         }
 
-        public GetDbClustersArgs()
+        public GetDBClustersArgs()
         {
         }
     }
 
 
     [OutputType]
-    public sealed class GetDbClustersResult
+    public sealed class GetDBClustersResult
     {
-        public readonly ImmutableArray<Outputs.GetDbClustersClusterResult> Clusters;
+        public readonly ImmutableArray<Outputs.GetDBClustersClusterResult> Clusters;
         public readonly string? Description;
         public readonly string? DescriptionRegex;
         public readonly ImmutableArray<string> Descriptions;
@@ -133,8 +133,8 @@ namespace Pulumi.AliCloud.Adb
         public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]
-        private GetDbClustersResult(
-            ImmutableArray<Outputs.GetDbClustersClusterResult> clusters,
+        private GetDBClustersResult(
+            ImmutableArray<Outputs.GetDBClustersClusterResult> clusters,
 
             string? description,
 

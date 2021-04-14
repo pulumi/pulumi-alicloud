@@ -53,8 +53,8 @@ class AccountArgs:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_id is not None:
-            warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.""", DeprecationWarning)
-            pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.""")
+            warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if kms_encrypted_password is not None:
@@ -322,8 +322,8 @@ class Account(pulumi.CustomResource):
                 pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
             __props__['description'] = description
             if instance_id is not None and not opts.urn:
-                warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.""", DeprecationWarning)
-                pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.""")
+                warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+                pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
             __props__['instance_id'] = instance_id
             __props__['kms_encrypted_password'] = kms_encrypted_password
             __props__['kms_encryption_context'] = kms_encryption_context

@@ -10,7 +10,7 @@ from .. import _utilities, _tables
 
 __all__ = [
     'GetClustersClusterResult',
-    'GetDbClustersClusterResult',
+    'GetDBClustersClusterResult',
     'GetZonesZoneResult',
 ]
 
@@ -384,7 +384,7 @@ class GetClustersClusterResult(dict):
 
 
 @pulumi.output_type
-class GetDbClustersClusterResult(dict):
+class GetDBClustersClusterResult(dict):
     def __init__(__self__, *,
                  auto_renew_period: int,
                  charge_type: str,

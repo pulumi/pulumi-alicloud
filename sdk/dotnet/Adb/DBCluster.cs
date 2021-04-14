@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Adb
     ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///             VswitchName = name,
     ///         });
-    ///         var @this = new AliCloud.Adb.DbCluster("this", new AliCloud.Adb.DbClusterArgs
+    ///         var @this = new AliCloud.Adb.DBCluster("this", new AliCloud.Adb.DBClusterArgs
     ///         {
     ///             DbClusterCategory = "Cluster",
     ///             DbClusterClass = "C8",
@@ -81,11 +81,11 @@ namespace Pulumi.AliCloud.Adb
     /// AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:adb/dbCluster:DbCluster example &lt;id&gt;
+    ///  $ pulumi import alicloud:adb/dBCluster:DBCluster example &lt;id&gt;
     /// ```
     /// </summary>
-    [AliCloudResourceType("alicloud:adb/dbCluster:DbCluster")]
-    public partial class DbCluster : Pulumi.CustomResource
+    [AliCloudResourceType("alicloud:adb/dBCluster:DBCluster")]
+    public partial class DBCluster : Pulumi.CustomResource
     {
         /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
@@ -235,19 +235,19 @@ namespace Pulumi.AliCloud.Adb
 
 
         /// <summary>
-        /// Create a DbCluster resource with the given unique name, arguments, and options.
+        /// Create a DBCluster resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public DbCluster(string name, DbClusterArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:adb/dbCluster:DbCluster", name, args ?? new DbClusterArgs(), MakeResourceOptions(options, ""))
+        public DBCluster(string name, DBClusterArgs args, CustomResourceOptions? options = null)
+            : base("alicloud:adb/dBCluster:DBCluster", name, args ?? new DBClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private DbCluster(string name, Input<string> id, DbClusterState? state = null, CustomResourceOptions? options = null)
-            : base("alicloud:adb/dbCluster:DbCluster", name, state, MakeResourceOptions(options, id))
+        private DBCluster(string name, Input<string> id, DBClusterState? state = null, CustomResourceOptions? options = null)
+            : base("alicloud:adb/dBCluster:DBCluster", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.Adb
             return merged;
         }
         /// <summary>
-        /// Get an existing DbCluster resource's state with the given name, ID, and optional extra
+        /// Get an existing DBCluster resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -271,13 +271,13 @@ namespace Pulumi.AliCloud.Adb
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static DbCluster Get(string name, Input<string> id, DbClusterState? state = null, CustomResourceOptions? options = null)
+        public static DBCluster Get(string name, Input<string> id, DBClusterState? state = null, CustomResourceOptions? options = null)
         {
-            return new DbCluster(name, id, state, options);
+            return new DBCluster(name, id, state, options);
         }
     }
 
-    public sealed class DbClusterArgs : Pulumi.ResourceArgs
+    public sealed class DBClusterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
@@ -425,12 +425,12 @@ namespace Pulumi.AliCloud.Adb
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
-        public DbClusterArgs()
+        public DBClusterArgs()
         {
         }
     }
 
-    public sealed class DbClusterState : Pulumi.ResourceArgs
+    public sealed class DBClusterState : Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
@@ -590,7 +590,7 @@ namespace Pulumi.AliCloud.Adb
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
-        public DbClusterState()
+        public DBClusterState()
         {
         }
     }

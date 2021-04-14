@@ -507,7 +507,7 @@ export namespace adb {
         zoneId: string;
     }
 
-    export interface GetDbClustersCluster {
+    export interface GetDBClustersCluster {
         /**
          * Auto-renewal period of an cluster, in the unit of the month.
          */

@@ -18,13 +18,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.adb.getDbClusters({
+ * const example = alicloud.adb.getDBClusters({
  *     descriptionRegex: "example",
  * });
  * export const firstAdbDbClusterId = example.then(example => example.clusters[0].id);
  * ```
  */
-export function getDbClusters(args?: GetDbClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDbClustersResult> {
+export function getDBClusters(args?: GetDBClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDBClustersResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,7 +33,7 @@ export function getDbClusters(args?: GetDbClustersArgs, opts?: pulumi.InvokeOpti
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    return pulumi.runtime.invoke("alicloud:adb/getDbClusters:getDbClusters", {
+    return pulumi.runtime.invoke("alicloud:adb/getDBClusters:getDBClusters", {
         "description": args.description,
         "descriptionRegex": args.descriptionRegex,
         "enableDetails": args.enableDetails,
@@ -46,9 +46,9 @@ export function getDbClusters(args?: GetDbClustersArgs, opts?: pulumi.InvokeOpti
 }
 
 /**
- * A collection of arguments for invoking getDbClusters.
+ * A collection of arguments for invoking getDBClusters.
  */
-export interface GetDbClustersArgs {
+export interface GetDBClustersArgs {
     /**
      * The description of DBCluster.
      */
@@ -81,10 +81,10 @@ export interface GetDbClustersArgs {
 }
 
 /**
- * A collection of values returned by getDbClusters.
+ * A collection of values returned by getDBClusters.
  */
-export interface GetDbClustersResult {
-    readonly clusters: outputs.adb.GetDbClustersCluster[];
+export interface GetDBClustersResult {
+    readonly clusters: outputs.adb.GetDBClustersCluster[];
     readonly description?: string;
     readonly descriptionRegex?: string;
     readonly descriptions: string[];

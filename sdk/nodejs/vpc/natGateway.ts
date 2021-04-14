@@ -48,9 +48,9 @@ export class NatGateway extends pulumi.CustomResource {
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * The nat gateway will auto create a snap and forward item, the `forwardTableIds` is the created one. It is format a list after v1.121.0+.
+     * The nat gateway will auto create a forward item.
      */
-    public /*out*/ readonly forwardTableIds!: pulumi.Output<string[]>;
+    public /*out*/ readonly forwardTableIds!: pulumi.Output<string>;
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      */
@@ -80,9 +80,9 @@ export class NatGateway extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one. It is format a list after v1.121.0+.
+     * The nat gateway will auto create a snat item.
      */
-    public /*out*/ readonly snatTableIds!: pulumi.Output<string[]>;
+    public /*out*/ readonly snatTableIds!: pulumi.Output<string>;
     /**
      * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
      */
@@ -175,9 +175,9 @@ export interface NatGatewayState {
     readonly dryRun?: pulumi.Input<boolean>;
     readonly force?: pulumi.Input<boolean>;
     /**
-     * The nat gateway will auto create a snap and forward item, the `forwardTableIds` is the created one. It is format a list after v1.121.0+.
+     * The nat gateway will auto create a forward item.
      */
-    readonly forwardTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly forwardTableIds?: pulumi.Input<string>;
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      */
@@ -207,9 +207,9 @@ export interface NatGatewayState {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one. It is format a list after v1.121.0+.
+     * The nat gateway will auto create a snat item.
      */
-    readonly snatTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly snatTableIds?: pulumi.Input<string>;
     /**
      * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
      */

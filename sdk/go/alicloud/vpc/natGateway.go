@@ -25,8 +25,8 @@ type NatGateway struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	DryRun      pulumi.BoolPtrOutput   `pulumi:"dryRun"`
 	Force       pulumi.BoolPtrOutput   `pulumi:"force"`
-	// The nat gateway will auto create a snap and forward item, the `forwardTableIds` is the created one. It is format a list after v1.121.0+.
-	ForwardTableIds pulumi.StringArrayOutput `pulumi:"forwardTableIds"`
+	// The nat gateway will auto create a forward item.
+	ForwardTableIds pulumi.StringOutput `pulumi:"forwardTableIds"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
@@ -41,8 +41,8 @@ type NatGateway struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one. It is format a list after v1.121.0+.
-	SnatTableIds pulumi.StringArrayOutput `pulumi:"snatTableIds"`
+	// The nat gateway will auto create a snat item.
+	SnatTableIds pulumi.StringOutput `pulumi:"snatTableIds"`
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification pulumi.StringPtrOutput `pulumi:"specification"`
 	// (Available in 1.121.0+) The status of NAT gateway.
@@ -91,8 +91,8 @@ type natGatewayState struct {
 	Description *string `pulumi:"description"`
 	DryRun      *bool   `pulumi:"dryRun"`
 	Force       *bool   `pulumi:"force"`
-	// The nat gateway will auto create a snap and forward item, the `forwardTableIds` is the created one. It is format a list after v1.121.0+.
-	ForwardTableIds []string `pulumi:"forwardTableIds"`
+	// The nat gateway will auto create a forward item.
+	ForwardTableIds *string `pulumi:"forwardTableIds"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
@@ -107,8 +107,8 @@ type natGatewayState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period *int `pulumi:"period"`
-	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one. It is format a list after v1.121.0+.
-	SnatTableIds []string `pulumi:"snatTableIds"`
+	// The nat gateway will auto create a snat item.
+	SnatTableIds *string `pulumi:"snatTableIds"`
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification *string `pulumi:"specification"`
 	// (Available in 1.121.0+) The status of NAT gateway.
@@ -126,8 +126,8 @@ type NatGatewayState struct {
 	Description pulumi.StringPtrInput
 	DryRun      pulumi.BoolPtrInput
 	Force       pulumi.BoolPtrInput
-	// The nat gateway will auto create a snap and forward item, the `forwardTableIds` is the created one. It is format a list after v1.121.0+.
-	ForwardTableIds pulumi.StringArrayInput
+	// The nat gateway will auto create a forward item.
+	ForwardTableIds pulumi.StringPtrInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
@@ -142,8 +142,8 @@ type NatGatewayState struct {
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrInput
-	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one. It is format a list after v1.121.0+.
-	SnatTableIds pulumi.StringArrayInput
+	// The nat gateway will auto create a snat item.
+	SnatTableIds pulumi.StringPtrInput
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification pulumi.StringPtrInput
 	// (Available in 1.121.0+) The status of NAT gateway.

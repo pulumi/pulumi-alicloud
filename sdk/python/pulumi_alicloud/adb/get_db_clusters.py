@@ -10,15 +10,15 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
-    'GetDbClustersResult',
-    'AwaitableGetDbClustersResult',
+    'GetDBClustersResult',
+    'AwaitableGetDBClustersResult',
     'get_db_clusters',
 ]
 
 @pulumi.output_type
-class GetDbClustersResult:
+class GetDBClustersResult:
     """
-    A collection of values returned by getDbClusters.
+    A collection of values returned by getDBClusters.
     """
     def __init__(__self__, clusters=None, description=None, description_regex=None, descriptions=None, enable_details=None, id=None, ids=None, output_file=None, resource_group_id=None, status=None, tags=None):
         if clusters and not isinstance(clusters, list):
@@ -57,7 +57,7 @@ class GetDbClustersResult:
 
     @property
     @pulumi.getter
-    def clusters(self) -> Sequence['outputs.GetDbClustersClusterResult']:
+    def clusters(self) -> Sequence['outputs.GetDBClustersClusterResult']:
         return pulumi.get(self, "clusters")
 
     @property
@@ -114,12 +114,12 @@ class GetDbClustersResult:
         return pulumi.get(self, "tags")
 
 
-class AwaitableGetDbClustersResult(GetDbClustersResult):
+class AwaitableGetDBClustersResult(GetDBClustersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetDbClustersResult(
+        return GetDBClustersResult(
             clusters=self.clusters,
             description=self.description,
             description_regex=self.description_regex,
@@ -141,7 +141,7 @@ def get_db_clusters(description: Optional[str] = None,
                     resource_group_id: Optional[str] = None,
                     status: Optional[str] = None,
                     tags: Optional[Mapping[str, Any]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbClustersResult:
+                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDBClustersResult:
     """
     This data source provides the Adb DBClusters of the current Alibaba Cloud user.
 
@@ -181,9 +181,9 @@ def get_db_clusters(description: Optional[str] = None,
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('alicloud:adb/getDbClusters:getDbClusters', __args__, opts=opts, typ=GetDbClustersResult).value
+    __ret__ = pulumi.runtime.invoke('alicloud:adb/getDBClusters:getDBClusters', __args__, opts=opts, typ=GetDBClustersResult).value
 
-    return AwaitableGetDbClustersResult(
+    return AwaitableGetDBClustersResult(
         clusters=__ret__.clusters,
         description=__ret__.description,
         description_regex=__ret__.description_regex,

@@ -112,7 +112,7 @@ export class RdsAccount extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * @deprecated Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+     * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -220,7 +220,7 @@ export interface RdsAccountState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * @deprecated Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+     * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
@@ -280,7 +280,7 @@ export interface RdsAccountArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * @deprecated Field 'instance_id' has been deprecated from provider version 1.20.0. New field 'db_instance_id' instead.
+     * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
     readonly instanceId?: pulumi.Input<string>;
     /**

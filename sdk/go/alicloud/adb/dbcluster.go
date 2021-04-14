@@ -66,7 +66,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = adb.NewDbCluster(ctx, "this", &adb.DbClusterArgs{
+// 		_, err = adb.NewDBCluster(ctx, "this", &adb.DBClusterArgs{
 // 			DbClusterCategory: pulumi.String("Cluster"),
 // 			DbClusterClass:    pulumi.String("C8"),
 // 			DbNodeCount:       pulumi.Int(4),
@@ -100,9 +100,9 @@ import (
 // AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:adb/dbCluster:DbCluster example <id>
+//  $ pulumi import alicloud:adb/dBCluster:DBCluster example <id>
 // ```
-type DbCluster struct {
+type DBCluster struct {
 	pulumi.CustomResourceState
 
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
@@ -157,9 +157,9 @@ type DbCluster struct {
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
-// NewDbCluster registers a new resource with the given unique name, arguments, and options.
-func NewDbCluster(ctx *pulumi.Context,
-	name string, args *DbClusterArgs, opts ...pulumi.ResourceOption) (*DbCluster, error) {
+// NewDBCluster registers a new resource with the given unique name, arguments, and options.
+func NewDBCluster(ctx *pulumi.Context,
+	name string, args *DBClusterArgs, opts ...pulumi.ResourceOption) (*DBCluster, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -167,28 +167,28 @@ func NewDbCluster(ctx *pulumi.Context,
 	if args.DbClusterCategory == nil {
 		return nil, errors.New("invalid value for required argument 'DbClusterCategory'")
 	}
-	var resource DbCluster
-	err := ctx.RegisterResource("alicloud:adb/dbCluster:DbCluster", name, args, &resource, opts...)
+	var resource DBCluster
+	err := ctx.RegisterResource("alicloud:adb/dBCluster:DBCluster", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetDbCluster gets an existing DbCluster resource's state with the given name, ID, and optional
+// GetDBCluster gets an existing DBCluster resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetDbCluster(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *DbClusterState, opts ...pulumi.ResourceOption) (*DbCluster, error) {
-	var resource DbCluster
-	err := ctx.ReadResource("alicloud:adb/dbCluster:DbCluster", name, id, state, &resource, opts...)
+func GetDBCluster(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *DBClusterState, opts ...pulumi.ResourceOption) (*DBCluster, error) {
+	var resource DBCluster
+	err := ctx.ReadResource("alicloud:adb/dBCluster:DBCluster", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering DbCluster resources.
-type dbClusterState struct {
+// Input properties used for looking up and filtering DBCluster resources.
+type dbclusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
@@ -241,7 +241,7 @@ type dbClusterState struct {
 	ZoneId *string `pulumi:"zoneId"`
 }
 
-type DbClusterState struct {
+type DBClusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
@@ -294,11 +294,11 @@ type DbClusterState struct {
 	ZoneId pulumi.StringPtrInput
 }
 
-func (DbClusterState) ElementType() reflect.Type {
-	return reflect.TypeOf((*dbClusterState)(nil)).Elem()
+func (DBClusterState) ElementType() reflect.Type {
+	return reflect.TypeOf((*dbclusterState)(nil)).Elem()
 }
 
-type dbClusterArgs struct {
+type dbclusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
@@ -347,8 +347,8 @@ type dbClusterArgs struct {
 	ZoneId *string `pulumi:"zoneId"`
 }
 
-// The set of arguments for constructing a DbCluster resource.
-type DbClusterArgs struct {
+// The set of arguments for constructing a DBCluster resource.
+type DBClusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
@@ -397,193 +397,193 @@ type DbClusterArgs struct {
 	ZoneId pulumi.StringPtrInput
 }
 
-func (DbClusterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*dbClusterArgs)(nil)).Elem()
+func (DBClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*dbclusterArgs)(nil)).Elem()
 }
 
-type DbClusterInput interface {
+type DBClusterInput interface {
 	pulumi.Input
 
-	ToDbClusterOutput() DbClusterOutput
-	ToDbClusterOutputWithContext(ctx context.Context) DbClusterOutput
+	ToDBClusterOutput() DBClusterOutput
+	ToDBClusterOutputWithContext(ctx context.Context) DBClusterOutput
 }
 
-func (*DbCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*DbCluster)(nil))
+func (*DBCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*DBCluster)(nil))
 }
 
-func (i *DbCluster) ToDbClusterOutput() DbClusterOutput {
-	return i.ToDbClusterOutputWithContext(context.Background())
+func (i *DBCluster) ToDBClusterOutput() DBClusterOutput {
+	return i.ToDBClusterOutputWithContext(context.Background())
 }
 
-func (i *DbCluster) ToDbClusterOutputWithContext(ctx context.Context) DbClusterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbClusterOutput)
+func (i *DBCluster) ToDBClusterOutputWithContext(ctx context.Context) DBClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBClusterOutput)
 }
 
-func (i *DbCluster) ToDbClusterPtrOutput() DbClusterPtrOutput {
-	return i.ToDbClusterPtrOutputWithContext(context.Background())
+func (i *DBCluster) ToDBClusterPtrOutput() DBClusterPtrOutput {
+	return i.ToDBClusterPtrOutputWithContext(context.Background())
 }
 
-func (i *DbCluster) ToDbClusterPtrOutputWithContext(ctx context.Context) DbClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbClusterPtrOutput)
+func (i *DBCluster) ToDBClusterPtrOutputWithContext(ctx context.Context) DBClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBClusterPtrOutput)
 }
 
-type DbClusterPtrInput interface {
+type DBClusterPtrInput interface {
 	pulumi.Input
 
-	ToDbClusterPtrOutput() DbClusterPtrOutput
-	ToDbClusterPtrOutputWithContext(ctx context.Context) DbClusterPtrOutput
+	ToDBClusterPtrOutput() DBClusterPtrOutput
+	ToDBClusterPtrOutputWithContext(ctx context.Context) DBClusterPtrOutput
 }
 
-type dbClusterPtrType DbClusterArgs
+type dbclusterPtrType DBClusterArgs
 
-func (*dbClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DbCluster)(nil))
+func (*dbclusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DBCluster)(nil))
 }
 
-func (i *dbClusterPtrType) ToDbClusterPtrOutput() DbClusterPtrOutput {
-	return i.ToDbClusterPtrOutputWithContext(context.Background())
+func (i *dbclusterPtrType) ToDBClusterPtrOutput() DBClusterPtrOutput {
+	return i.ToDBClusterPtrOutputWithContext(context.Background())
 }
 
-func (i *dbClusterPtrType) ToDbClusterPtrOutputWithContext(ctx context.Context) DbClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbClusterPtrOutput)
+func (i *dbclusterPtrType) ToDBClusterPtrOutputWithContext(ctx context.Context) DBClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBClusterPtrOutput)
 }
 
-// DbClusterArrayInput is an input type that accepts DbClusterArray and DbClusterArrayOutput values.
-// You can construct a concrete instance of `DbClusterArrayInput` via:
+// DBClusterArrayInput is an input type that accepts DBClusterArray and DBClusterArrayOutput values.
+// You can construct a concrete instance of `DBClusterArrayInput` via:
 //
-//          DbClusterArray{ DbClusterArgs{...} }
-type DbClusterArrayInput interface {
+//          DBClusterArray{ DBClusterArgs{...} }
+type DBClusterArrayInput interface {
 	pulumi.Input
 
-	ToDbClusterArrayOutput() DbClusterArrayOutput
-	ToDbClusterArrayOutputWithContext(context.Context) DbClusterArrayOutput
+	ToDBClusterArrayOutput() DBClusterArrayOutput
+	ToDBClusterArrayOutputWithContext(context.Context) DBClusterArrayOutput
 }
 
-type DbClusterArray []DbClusterInput
+type DBClusterArray []DBClusterInput
 
-func (DbClusterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DbCluster)(nil))
+func (DBClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DBCluster)(nil))
 }
 
-func (i DbClusterArray) ToDbClusterArrayOutput() DbClusterArrayOutput {
-	return i.ToDbClusterArrayOutputWithContext(context.Background())
+func (i DBClusterArray) ToDBClusterArrayOutput() DBClusterArrayOutput {
+	return i.ToDBClusterArrayOutputWithContext(context.Background())
 }
 
-func (i DbClusterArray) ToDbClusterArrayOutputWithContext(ctx context.Context) DbClusterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbClusterArrayOutput)
+func (i DBClusterArray) ToDBClusterArrayOutputWithContext(ctx context.Context) DBClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBClusterArrayOutput)
 }
 
-// DbClusterMapInput is an input type that accepts DbClusterMap and DbClusterMapOutput values.
-// You can construct a concrete instance of `DbClusterMapInput` via:
+// DBClusterMapInput is an input type that accepts DBClusterMap and DBClusterMapOutput values.
+// You can construct a concrete instance of `DBClusterMapInput` via:
 //
-//          DbClusterMap{ "key": DbClusterArgs{...} }
-type DbClusterMapInput interface {
+//          DBClusterMap{ "key": DBClusterArgs{...} }
+type DBClusterMapInput interface {
 	pulumi.Input
 
-	ToDbClusterMapOutput() DbClusterMapOutput
-	ToDbClusterMapOutputWithContext(context.Context) DbClusterMapOutput
+	ToDBClusterMapOutput() DBClusterMapOutput
+	ToDBClusterMapOutputWithContext(context.Context) DBClusterMapOutput
 }
 
-type DbClusterMap map[string]DbClusterInput
+type DBClusterMap map[string]DBClusterInput
 
-func (DbClusterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DbCluster)(nil))
+func (DBClusterMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DBCluster)(nil))
 }
 
-func (i DbClusterMap) ToDbClusterMapOutput() DbClusterMapOutput {
-	return i.ToDbClusterMapOutputWithContext(context.Background())
+func (i DBClusterMap) ToDBClusterMapOutput() DBClusterMapOutput {
+	return i.ToDBClusterMapOutputWithContext(context.Background())
 }
 
-func (i DbClusterMap) ToDbClusterMapOutputWithContext(ctx context.Context) DbClusterMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbClusterMapOutput)
+func (i DBClusterMap) ToDBClusterMapOutputWithContext(ctx context.Context) DBClusterMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBClusterMapOutput)
 }
 
-type DbClusterOutput struct {
+type DBClusterOutput struct {
 	*pulumi.OutputState
 }
 
-func (DbClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DbCluster)(nil))
+func (DBClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DBCluster)(nil))
 }
 
-func (o DbClusterOutput) ToDbClusterOutput() DbClusterOutput {
+func (o DBClusterOutput) ToDBClusterOutput() DBClusterOutput {
 	return o
 }
 
-func (o DbClusterOutput) ToDbClusterOutputWithContext(ctx context.Context) DbClusterOutput {
+func (o DBClusterOutput) ToDBClusterOutputWithContext(ctx context.Context) DBClusterOutput {
 	return o
 }
 
-func (o DbClusterOutput) ToDbClusterPtrOutput() DbClusterPtrOutput {
-	return o.ToDbClusterPtrOutputWithContext(context.Background())
+func (o DBClusterOutput) ToDBClusterPtrOutput() DBClusterPtrOutput {
+	return o.ToDBClusterPtrOutputWithContext(context.Background())
 }
 
-func (o DbClusterOutput) ToDbClusterPtrOutputWithContext(ctx context.Context) DbClusterPtrOutput {
-	return o.ApplyT(func(v DbCluster) *DbCluster {
+func (o DBClusterOutput) ToDBClusterPtrOutputWithContext(ctx context.Context) DBClusterPtrOutput {
+	return o.ApplyT(func(v DBCluster) *DBCluster {
 		return &v
-	}).(DbClusterPtrOutput)
+	}).(DBClusterPtrOutput)
 }
 
-type DbClusterPtrOutput struct {
+type DBClusterPtrOutput struct {
 	*pulumi.OutputState
 }
 
-func (DbClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DbCluster)(nil))
+func (DBClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DBCluster)(nil))
 }
 
-func (o DbClusterPtrOutput) ToDbClusterPtrOutput() DbClusterPtrOutput {
+func (o DBClusterPtrOutput) ToDBClusterPtrOutput() DBClusterPtrOutput {
 	return o
 }
 
-func (o DbClusterPtrOutput) ToDbClusterPtrOutputWithContext(ctx context.Context) DbClusterPtrOutput {
+func (o DBClusterPtrOutput) ToDBClusterPtrOutputWithContext(ctx context.Context) DBClusterPtrOutput {
 	return o
 }
 
-type DbClusterArrayOutput struct{ *pulumi.OutputState }
+type DBClusterArrayOutput struct{ *pulumi.OutputState }
 
-func (DbClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DbCluster)(nil))
+func (DBClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DBCluster)(nil))
 }
 
-func (o DbClusterArrayOutput) ToDbClusterArrayOutput() DbClusterArrayOutput {
+func (o DBClusterArrayOutput) ToDBClusterArrayOutput() DBClusterArrayOutput {
 	return o
 }
 
-func (o DbClusterArrayOutput) ToDbClusterArrayOutputWithContext(ctx context.Context) DbClusterArrayOutput {
+func (o DBClusterArrayOutput) ToDBClusterArrayOutputWithContext(ctx context.Context) DBClusterArrayOutput {
 	return o
 }
 
-func (o DbClusterArrayOutput) Index(i pulumi.IntInput) DbClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DbCluster {
-		return vs[0].([]DbCluster)[vs[1].(int)]
-	}).(DbClusterOutput)
+func (o DBClusterArrayOutput) Index(i pulumi.IntInput) DBClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DBCluster {
+		return vs[0].([]DBCluster)[vs[1].(int)]
+	}).(DBClusterOutput)
 }
 
-type DbClusterMapOutput struct{ *pulumi.OutputState }
+type DBClusterMapOutput struct{ *pulumi.OutputState }
 
-func (DbClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DbCluster)(nil))
+func (DBClusterMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DBCluster)(nil))
 }
 
-func (o DbClusterMapOutput) ToDbClusterMapOutput() DbClusterMapOutput {
+func (o DBClusterMapOutput) ToDBClusterMapOutput() DBClusterMapOutput {
 	return o
 }
 
-func (o DbClusterMapOutput) ToDbClusterMapOutputWithContext(ctx context.Context) DbClusterMapOutput {
+func (o DBClusterMapOutput) ToDBClusterMapOutputWithContext(ctx context.Context) DBClusterMapOutput {
 	return o
 }
 
-func (o DbClusterMapOutput) MapIndex(k pulumi.StringInput) DbClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DbCluster {
-		return vs[0].(map[string]DbCluster)[vs[1].(string)]
-	}).(DbClusterOutput)
+func (o DBClusterMapOutput) MapIndex(k pulumi.StringInput) DBClusterOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DBCluster {
+		return vs[0].(map[string]DBCluster)[vs[1].(string)]
+	}).(DBClusterOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(DbClusterOutput{})
-	pulumi.RegisterOutputType(DbClusterPtrOutput{})
-	pulumi.RegisterOutputType(DbClusterArrayOutput{})
-	pulumi.RegisterOutputType(DbClusterMapOutput{})
+	pulumi.RegisterOutputType(DBClusterOutput{})
+	pulumi.RegisterOutputType(DBClusterPtrOutput{})
+	pulumi.RegisterOutputType(DBClusterArrayOutput{})
+	pulumi.RegisterOutputType(DBClusterMapOutput{})
 }

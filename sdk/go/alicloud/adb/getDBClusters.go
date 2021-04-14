@@ -26,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "example"
-// 		example, err := adb.GetDbClusters(ctx, &adb.GetDbClustersArgs{
+// 		example, err := adb.GetDBClusters(ctx, &adb.GetDBClustersArgs{
 // 			DescriptionRegex: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -37,17 +37,17 @@ import (
 // 	})
 // }
 // ```
-func GetDbClusters(ctx *pulumi.Context, args *GetDbClustersArgs, opts ...pulumi.InvokeOption) (*GetDbClustersResult, error) {
-	var rv GetDbClustersResult
-	err := ctx.Invoke("alicloud:adb/getDbClusters:getDbClusters", args, &rv, opts...)
+func GetDBClusters(ctx *pulumi.Context, args *GetDBClustersArgs, opts ...pulumi.InvokeOption) (*GetDBClustersResult, error) {
+	var rv GetDBClustersResult
+	err := ctx.Invoke("alicloud:adb/getDBClusters:getDBClusters", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
-// A collection of arguments for invoking getDbClusters.
-type GetDbClustersArgs struct {
+// A collection of arguments for invoking getDBClusters.
+type GetDBClustersArgs struct {
 	// The description of DBCluster.
 	Description *string `pulumi:"description"`
 	// A regex string to filter results by DBCluster description.
@@ -65,9 +65,9 @@ type GetDbClustersArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
-// A collection of values returned by getDbClusters.
-type GetDbClustersResult struct {
-	Clusters         []GetDbClustersCluster `pulumi:"clusters"`
+// A collection of values returned by getDBClusters.
+type GetDBClustersResult struct {
+	Clusters         []GetDBClustersCluster `pulumi:"clusters"`
 	Description      *string                `pulumi:"description"`
 	DescriptionRegex *string                `pulumi:"descriptionRegex"`
 	Descriptions     []string               `pulumi:"descriptions"`
