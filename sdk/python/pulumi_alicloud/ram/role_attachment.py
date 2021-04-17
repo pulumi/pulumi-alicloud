@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RoleAttachmentArgs', 'RoleAttachment']
 
@@ -45,6 +45,46 @@ class RoleAttachmentArgs:
 
     @role_name.setter
     def role_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_name", value)
+
+
+@pulumi.input_type
+class _RoleAttachmentState:
+    def __init__(__self__, *,
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RoleAttachment resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
+        :param pulumi.Input[str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        """
+        if instance_ids is not None:
+            pulumi.set(__self__, "instance_ids", instance_ids)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+
+    @property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of ECS instance's IDs.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @instance_ids.setter
+    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_ids", value)
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "role_name")
+
+    @role_name.setter
+    def role_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role_name", value)
 
 
@@ -246,14 +286,14 @@ class RoleAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RoleAttachmentArgs.__new__(RoleAttachmentArgs)
 
             if instance_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_ids'")
-            __props__['instance_ids'] = instance_ids
+            __props__.__dict__["instance_ids"] = instance_ids
             if role_name is None and not opts.urn:
                 raise TypeError("Missing required property 'role_name'")
-            __props__['role_name'] = role_name
+            __props__.__dict__["role_name"] = role_name
         super(RoleAttachment, __self__).__init__(
             'alicloud:ram/roleAttachment:RoleAttachment',
             resource_name,
@@ -278,10 +318,10 @@ class RoleAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RoleAttachmentState.__new__(_RoleAttachmentState)
 
-        __props__["instance_ids"] = instance_ids
-        __props__["role_name"] = role_name
+        __props__.__dict__["instance_ids"] = instance_ids
+        __props__.__dict__["role_name"] = role_name
         return RoleAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -299,10 +339,4 @@ class RoleAttachment(pulumi.CustomResource):
         The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
         return pulumi.get(self, "role_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

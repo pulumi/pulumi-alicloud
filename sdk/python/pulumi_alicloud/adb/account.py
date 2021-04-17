@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AccountArgs', 'Account']
 
@@ -86,6 +86,110 @@ class AccountArgs:
     @account_password.setter
     def account_password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_password", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptedPassword")
+    def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_password")
+
+    @kms_encrypted_password.setter
+    def kms_encrypted_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_encrypted_password", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @kms_encryption_context.setter
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "kms_encryption_context", value)
+
+
+@pulumi.input_type
+class _AccountState:
+    def __init__(__self__, *,
+                 account_description: Optional[pulumi.Input[str]] = None,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 account_password: Optional[pulumi.Input[str]] = None,
+                 db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering Account resources.
+        :param pulumi.Input[str] account_description: Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        :param pulumi.Input[str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        if account_description is not None:
+            pulumi.set(__self__, "account_description", account_description)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_password is not None:
+            pulumi.set(__self__, "account_password", account_password)
+        if db_cluster_id is not None:
+            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if kms_encrypted_password is not None:
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if kms_encryption_context is not None:
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+
+    @property
+    @pulumi.getter(name="accountDescription")
+    def account_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        """
+        return pulumi.get(self, "account_description")
+
+    @account_description.setter
+    def account_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_description", value)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="accountPassword")
+    def account_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        """
+        return pulumi.get(self, "account_password")
+
+    @account_password.setter
+    def account_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_password", value)
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of cluster in which account belongs.
+        """
+        return pulumi.get(self, "db_cluster_id")
+
+    @db_cluster_id.setter
+    def db_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_id", value)
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
@@ -276,18 +380,18 @@ class Account(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountArgs.__new__(AccountArgs)
 
-            __props__['account_description'] = account_description
+            __props__.__dict__["account_description"] = account_description
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
-            __props__['account_password'] = account_password
+            __props__.__dict__["account_name"] = account_name
+            __props__.__dict__["account_password"] = account_password
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
-            __props__['db_cluster_id'] = db_cluster_id
-            __props__['kms_encrypted_password'] = kms_encrypted_password
-            __props__['kms_encryption_context'] = kms_encryption_context
+            __props__.__dict__["db_cluster_id"] = db_cluster_id
+            __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+            __props__.__dict__["kms_encryption_context"] = kms_encryption_context
         super(Account, __self__).__init__(
             'alicloud:adb/account:Account',
             resource_name,
@@ -320,14 +424,14 @@ class Account(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountState.__new__(_AccountState)
 
-        __props__["account_description"] = account_description
-        __props__["account_name"] = account_name
-        __props__["account_password"] = account_password
-        __props__["db_cluster_id"] = db_cluster_id
-        __props__["kms_encrypted_password"] = kms_encrypted_password
-        __props__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["account_description"] = account_description
+        __props__.__dict__["account_name"] = account_name
+        __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["db_cluster_id"] = db_cluster_id
+        __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+        __props__.__dict__["kms_encryption_context"] = kms_encryption_context
         return Account(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -377,10 +481,4 @@ class Account(pulumi.CustomResource):
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

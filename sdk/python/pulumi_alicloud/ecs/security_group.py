@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SecurityGroupArgs', 'SecurityGroup']
 
@@ -23,6 +23,149 @@ class SecurityGroupArgs:
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
+        :param pulumi.Input[str] description: The security group description. Defaults to null.
+        :param pulumi.Input[bool] inner_access: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        :param pulumi.Input[str] inner_access_policy: Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+        :param pulumi.Input[str] name: The name of the security group. Defaults to null.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the security_group belongs.
+        :param pulumi.Input[str] security_group_type: The type of the security group. Valid values:
+               `normal`: basic security group.
+               `enterprise`: advanced security group For more information.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vpc_id: The VPC ID.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if inner_access is not None:
+            warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
+        if inner_access is not None:
+            pulumi.set(__self__, "inner_access", inner_access)
+        if inner_access_policy is not None:
+            pulumi.set(__self__, "inner_access_policy", inner_access_policy)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_group_type is not None:
+            pulumi.set(__self__, "security_group_type", security_group_type)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security group description. Defaults to null.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="innerAccess")
+    def inner_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        """
+        return pulumi.get(self, "inner_access")
+
+    @inner_access.setter
+    def inner_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "inner_access", value)
+
+    @property
+    @pulumi.getter(name="innerAccessPolicy")
+    def inner_access_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+        """
+        return pulumi.get(self, "inner_access_policy")
+
+    @inner_access_policy.setter
+    def inner_access_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "inner_access_policy", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group. Defaults to null.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the security_group belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupType")
+    def security_group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the security group. Valid values:
+        `normal`: basic security group.
+        `enterprise`: advanced security group For more information.
+        """
+        return pulumi.get(self, "security_group_type")
+
+    @security_group_type.setter
+    def security_group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_type", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+
+@pulumi.input_type
+class _SecurityGroupState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 inner_access: Optional[pulumi.Input[bool]] = None,
+                 inner_access_policy: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_type: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SecurityGroup resources.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
         :param pulumi.Input[bool] inner_access: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         :param pulumi.Input[str] inner_access_policy: Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
@@ -247,19 +390,19 @@ class SecurityGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SecurityGroupArgs.__new__(SecurityGroupArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if inner_access is not None and not opts.urn:
                 warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
                 pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
-            __props__['inner_access'] = inner_access
-            __props__['inner_access_policy'] = inner_access_policy
-            __props__['name'] = name
-            __props__['resource_group_id'] = resource_group_id
-            __props__['security_group_type'] = security_group_type
-            __props__['tags'] = tags
-            __props__['vpc_id'] = vpc_id
+            __props__.__dict__["inner_access"] = inner_access
+            __props__.__dict__["inner_access_policy"] = inner_access_policy
+            __props__.__dict__["name"] = name
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["security_group_type"] = security_group_type
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["vpc_id"] = vpc_id
         super(SecurityGroup, __self__).__init__(
             'alicloud:ecs/securityGroup:SecurityGroup',
             resource_name,
@@ -298,16 +441,16 @@ class SecurityGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SecurityGroupState.__new__(_SecurityGroupState)
 
-        __props__["description"] = description
-        __props__["inner_access"] = inner_access
-        __props__["inner_access_policy"] = inner_access_policy
-        __props__["name"] = name
-        __props__["resource_group_id"] = resource_group_id
-        __props__["security_group_type"] = security_group_type
-        __props__["tags"] = tags
-        __props__["vpc_id"] = vpc_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["inner_access"] = inner_access
+        __props__.__dict__["inner_access_policy"] = inner_access_policy
+        __props__.__dict__["name"] = name
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_group_type"] = security_group_type
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["vpc_id"] = vpc_id
         return SecurityGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -375,10 +518,4 @@ class SecurityGroup(pulumi.CustomResource):
         The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AlarmContactArgs', 'AlarmContact']
 
@@ -114,6 +114,126 @@ class AlarmContactArgs:
     @channels_sms.setter
     def channels_sms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "channels_sms", value)
+
+    @property
+    @pulumi.getter
+    def lang(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language type of the alarm. Valid values: `en`, `zh-cn`.
+        """
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lang", value)
+
+
+@pulumi.input_type
+class _AlarmContactState:
+    def __init__(__self__, *,
+                 alarm_contact_name: Optional[pulumi.Input[str]] = None,
+                 channels_aliim: Optional[pulumi.Input[str]] = None,
+                 channels_ding_web_hook: Optional[pulumi.Input[str]] = None,
+                 channels_mail: Optional[pulumi.Input[str]] = None,
+                 channels_sms: Optional[pulumi.Input[str]] = None,
+                 describe: Optional[pulumi.Input[str]] = None,
+                 lang: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AlarmContact resources.
+        :param pulumi.Input[str] alarm_contact_name: The name of the alarm contact.
+        :param pulumi.Input[str] channels_aliim: The TradeManager ID of the alarm contact.
+        :param pulumi.Input[str] channels_ding_web_hook: The webhook URL of the DingTalk chatbot.
+        :param pulumi.Input[str] channels_mail: The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
+        :param pulumi.Input[str] channels_sms: The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
+        :param pulumi.Input[str] describe: The description of the alarm contact.
+        :param pulumi.Input[str] lang: The language type of the alarm. Valid values: `en`, `zh-cn`.
+        """
+        if alarm_contact_name is not None:
+            pulumi.set(__self__, "alarm_contact_name", alarm_contact_name)
+        if channels_aliim is not None:
+            pulumi.set(__self__, "channels_aliim", channels_aliim)
+        if channels_ding_web_hook is not None:
+            pulumi.set(__self__, "channels_ding_web_hook", channels_ding_web_hook)
+        if channels_mail is not None:
+            pulumi.set(__self__, "channels_mail", channels_mail)
+        if channels_sms is not None:
+            pulumi.set(__self__, "channels_sms", channels_sms)
+        if describe is not None:
+            pulumi.set(__self__, "describe", describe)
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
+
+    @property
+    @pulumi.getter(name="alarmContactName")
+    def alarm_contact_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the alarm contact.
+        """
+        return pulumi.get(self, "alarm_contact_name")
+
+    @alarm_contact_name.setter
+    def alarm_contact_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alarm_contact_name", value)
+
+    @property
+    @pulumi.getter(name="channelsAliim")
+    def channels_aliim(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TradeManager ID of the alarm contact.
+        """
+        return pulumi.get(self, "channels_aliim")
+
+    @channels_aliim.setter
+    def channels_aliim(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channels_aliim", value)
+
+    @property
+    @pulumi.getter(name="channelsDingWebHook")
+    def channels_ding_web_hook(self) -> Optional[pulumi.Input[str]]:
+        """
+        The webhook URL of the DingTalk chatbot.
+        """
+        return pulumi.get(self, "channels_ding_web_hook")
+
+    @channels_ding_web_hook.setter
+    def channels_ding_web_hook(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channels_ding_web_hook", value)
+
+    @property
+    @pulumi.getter(name="channelsMail")
+    def channels_mail(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
+        """
+        return pulumi.get(self, "channels_mail")
+
+    @channels_mail.setter
+    def channels_mail(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channels_mail", value)
+
+    @property
+    @pulumi.getter(name="channelsSms")
+    def channels_sms(self) -> Optional[pulumi.Input[str]]:
+        """
+        The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
+        """
+        return pulumi.get(self, "channels_sms")
+
+    @channels_sms.setter
+    def channels_sms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channels_sms", value)
+
+    @property
+    @pulumi.getter
+    def describe(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the alarm contact.
+        """
+        return pulumi.get(self, "describe")
+
+    @describe.setter
+    def describe(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "describe", value)
 
     @property
     @pulumi.getter
@@ -277,19 +397,19 @@ class AlarmContact(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AlarmContactArgs.__new__(AlarmContactArgs)
 
             if alarm_contact_name is None and not opts.urn:
                 raise TypeError("Missing required property 'alarm_contact_name'")
-            __props__['alarm_contact_name'] = alarm_contact_name
-            __props__['channels_aliim'] = channels_aliim
-            __props__['channels_ding_web_hook'] = channels_ding_web_hook
-            __props__['channels_mail'] = channels_mail
-            __props__['channels_sms'] = channels_sms
+            __props__.__dict__["alarm_contact_name"] = alarm_contact_name
+            __props__.__dict__["channels_aliim"] = channels_aliim
+            __props__.__dict__["channels_ding_web_hook"] = channels_ding_web_hook
+            __props__.__dict__["channels_mail"] = channels_mail
+            __props__.__dict__["channels_sms"] = channels_sms
             if describe is None and not opts.urn:
                 raise TypeError("Missing required property 'describe'")
-            __props__['describe'] = describe
-            __props__['lang'] = lang
+            __props__.__dict__["describe"] = describe
+            __props__.__dict__["lang"] = lang
         super(AlarmContact, __self__).__init__(
             'alicloud:cms/alarmContact:AlarmContact',
             resource_name,
@@ -324,15 +444,15 @@ class AlarmContact(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AlarmContactState.__new__(_AlarmContactState)
 
-        __props__["alarm_contact_name"] = alarm_contact_name
-        __props__["channels_aliim"] = channels_aliim
-        __props__["channels_ding_web_hook"] = channels_ding_web_hook
-        __props__["channels_mail"] = channels_mail
-        __props__["channels_sms"] = channels_sms
-        __props__["describe"] = describe
-        __props__["lang"] = lang
+        __props__.__dict__["alarm_contact_name"] = alarm_contact_name
+        __props__.__dict__["channels_aliim"] = channels_aliim
+        __props__.__dict__["channels_ding_web_hook"] = channels_ding_web_hook
+        __props__.__dict__["channels_mail"] = channels_mail
+        __props__.__dict__["channels_sms"] = channels_sms
+        __props__.__dict__["describe"] = describe
+        __props__.__dict__["lang"] = lang
         return AlarmContact(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -390,10 +510,4 @@ class AlarmContact(pulumi.CustomResource):
         The language type of the alarm. Valid values: `en`, `zh-cn`.
         """
         return pulumi.get(self, "lang")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -65,6 +65,62 @@ class NetworkAclEntriesArgs:
     @ingresses.setter
     def ingresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]]):
         pulumi.set(self, "ingresses", value)
+
+
+@pulumi.input_type
+class _NetworkAclEntriesState:
+    def __init__(__self__, *,
+                 egresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]]] = None,
+                 ingresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]] = None,
+                 network_acl_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering NetworkAclEntries resources.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
+        """
+        if egresses is not None:
+            pulumi.set(__self__, "egresses", egresses)
+        if ingresses is not None:
+            pulumi.set(__self__, "ingresses", ingresses)
+        if network_acl_id is not None:
+            pulumi.set(__self__, "network_acl_id", network_acl_id)
+
+    @property
+    @pulumi.getter
+    def egresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]]]:
+        """
+        List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+        """
+        return pulumi.get(self, "egresses")
+
+    @egresses.setter
+    def egresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]]]):
+        pulumi.set(self, "egresses", value)
+
+    @property
+    @pulumi.getter
+    def ingresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]]:
+        """
+        List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        """
+        return pulumi.get(self, "ingresses")
+
+    @ingresses.setter
+    def ingresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]]):
+        pulumi.set(self, "ingresses", value)
+
+    @property
+    @pulumi.getter(name="networkAclId")
+    def network_acl_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the network acl, the field can't be changed.
+        """
+        return pulumi.get(self, "network_acl_id")
+
+    @network_acl_id.setter
+    def network_acl_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_acl_id", value)
 
 
 class NetworkAclEntries(pulumi.CustomResource):
@@ -238,13 +294,13 @@ class NetworkAclEntries(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NetworkAclEntriesArgs.__new__(NetworkAclEntriesArgs)
 
-            __props__['egresses'] = egresses
-            __props__['ingresses'] = ingresses
+            __props__.__dict__["egresses"] = egresses
+            __props__.__dict__["ingresses"] = ingresses
             if network_acl_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_acl_id'")
-            __props__['network_acl_id'] = network_acl_id
+            __props__.__dict__["network_acl_id"] = network_acl_id
         super(NetworkAclEntries, __self__).__init__(
             'alicloud:vpc/networkAclEntries:NetworkAclEntries',
             resource_name,
@@ -271,11 +327,11 @@ class NetworkAclEntries(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NetworkAclEntriesState.__new__(_NetworkAclEntriesState)
 
-        __props__["egresses"] = egresses
-        __props__["ingresses"] = ingresses
-        __props__["network_acl_id"] = network_acl_id
+        __props__.__dict__["egresses"] = egresses
+        __props__.__dict__["ingresses"] = ingresses
+        __props__.__dict__["network_acl_id"] = network_acl_id
         return NetworkAclEntries(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -301,10 +357,4 @@ class NetworkAclEntries(pulumi.CustomResource):
         The id of the network acl, the field can't be changed.
         """
         return pulumi.get(self, "network_acl_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

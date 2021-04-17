@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['DBAuditInstanceArgs', 'DBAuditInstance']
 
@@ -109,6 +109,110 @@ class DBAuditInstanceArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _DBAuditInstanceState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 plan_code: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DBAuditInstance resources.
+        :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
+        :param pulumi.Input[str] plan_code: Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vswitch_id: vSwtich ID configured to audit
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if plan_code is not None:
+            pulumi.set(__self__, "plan_code", plan_code)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the instance. This name can have a string of 1 to 63 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
+        """
+        return pulumi.get(self, "plan_code")
+
+    @plan_code.setter
+    def plan_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_code", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        vSwtich ID configured to audit
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 class DBAuditInstance(pulumi.CustomResource):
@@ -243,20 +347,20 @@ class DBAuditInstance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DBAuditInstanceArgs.__new__(DBAuditInstanceArgs)
 
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
-            __props__['period'] = period
+            __props__.__dict__["description"] = description
+            __props__.__dict__["period"] = period
             if plan_code is None and not opts.urn:
                 raise TypeError("Missing required property 'plan_code'")
-            __props__['plan_code'] = plan_code
-            __props__['resource_group_id'] = resource_group_id
-            __props__['tags'] = tags
+            __props__.__dict__["plan_code"] = plan_code
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["tags"] = tags
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
-            __props__['vswitch_id'] = vswitch_id
+            __props__.__dict__["vswitch_id"] = vswitch_id
         super(DBAuditInstance, __self__).__init__(
             'alicloud:yundun/dBAuditInstance:DBAuditInstance',
             resource_name,
@@ -289,14 +393,14 @@ class DBAuditInstance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DBAuditInstanceState.__new__(_DBAuditInstanceState)
 
-        __props__["description"] = description
-        __props__["period"] = period
-        __props__["plan_code"] = plan_code
-        __props__["resource_group_id"] = resource_group_id
-        __props__["tags"] = tags
-        __props__["vswitch_id"] = vswitch_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["period"] = period
+        __props__.__dict__["plan_code"] = plan_code
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["vswitch_id"] = vswitch_id
         return DBAuditInstance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -346,10 +450,4 @@ class DBAuditInstance(pulumi.CustomResource):
         vSwtich ID configured to audit
         """
         return pulumi.get(self, "vswitch_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

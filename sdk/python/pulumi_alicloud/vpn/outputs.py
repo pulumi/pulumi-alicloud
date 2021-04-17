@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -21,6 +21,37 @@ __all__ = [
 
 @pulumi.output_type
 class ConnectionIkeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ikeAuthAlg":
+            suggest = "ike_auth_alg"
+        elif key == "ikeEncAlg":
+            suggest = "ike_enc_alg"
+        elif key == "ikeLifetime":
+            suggest = "ike_lifetime"
+        elif key == "ikeLocalId":
+            suggest = "ike_local_id"
+        elif key == "ikeMode":
+            suggest = "ike_mode"
+        elif key == "ikePfs":
+            suggest = "ike_pfs"
+        elif key == "ikeRemoteId":
+            suggest = "ike_remote_id"
+        elif key == "ikeVersion":
+            suggest = "ike_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionIkeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionIkeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionIkeConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ike_auth_alg: Optional[str] = None,
                  ike_enc_alg: Optional[str] = None,
@@ -133,12 +164,32 @@ class ConnectionIkeConfig(dict):
         """
         return pulumi.get(self, "psk")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConnectionIpsecConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipsecAuthAlg":
+            suggest = "ipsec_auth_alg"
+        elif key == "ipsecEncAlg":
+            suggest = "ipsec_enc_alg"
+        elif key == "ipsecLifetime":
+            suggest = "ipsec_lifetime"
+        elif key == "ipsecPfs":
+            suggest = "ipsec_pfs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionIpsecConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionIpsecConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionIpsecConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ipsec_auth_alg: Optional[str] = None,
                  ipsec_enc_alg: Optional[str] = None,
@@ -190,9 +241,6 @@ class ConnectionIpsecConfig(dict):
         The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
         """
         return pulumi.get(self, "ipsec_pfs")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

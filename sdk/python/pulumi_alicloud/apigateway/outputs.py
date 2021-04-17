@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'ApiConstantParameter',
@@ -24,6 +24,23 @@ __all__ = [
 
 @pulumi.output_type
 class ApiConstantParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "in":
+            suggest = "in_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiConstantParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiConstantParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiConstantParameter.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  in_: str,
                  name: str,
@@ -73,12 +90,30 @@ class ApiConstantParameter(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiFcServiceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionName":
+            suggest = "function_name"
+        elif key == "serviceName":
+            suggest = "service_name"
+        elif key == "arnRole":
+            suggest = "arn_role"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiFcServiceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiFcServiceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiFcServiceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  function_name: str,
                  region: str,
@@ -139,12 +174,26 @@ class ApiFcServiceConfig(dict):
         """
         return pulumi.get(self, "arn_role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiHttpServiceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aoneName":
+            suggest = "aone_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiHttpServiceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiHttpServiceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiHttpServiceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address: str,
                  method: str,
@@ -201,12 +250,26 @@ class ApiHttpServiceConfig(dict):
     def aone_name(self) -> Optional[str]:
         return pulumi.get(self, "aone_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiHttpVpcServiceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aoneName":
+            suggest = "aone_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiHttpVpcServiceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiHttpVpcServiceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiHttpVpcServiceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method: str,
                  name: str,
@@ -263,12 +326,26 @@ class ApiHttpVpcServiceConfig(dict):
     def aone_name(self) -> Optional[str]:
         return pulumi.get(self, "aone_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiMockServiceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aoneName":
+            suggest = "aone_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiMockServiceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiMockServiceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiMockServiceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  result: str,
                  aone_name: Optional[str] = None):
@@ -292,12 +369,26 @@ class ApiMockServiceConfig(dict):
     def aone_name(self) -> Optional[str]:
         return pulumi.get(self, "aone_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiRequestConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bodyFormat":
+            suggest = "body_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiRequestConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiRequestConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiRequestConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method: str,
                  mode: str,
@@ -358,12 +449,32 @@ class ApiRequestConfig(dict):
         """
         return pulumi.get(self, "body_format")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiRequestParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "in":
+            suggest = "in_"
+        elif key == "inService":
+            suggest = "in_service"
+        elif key == "nameService":
+            suggest = "name_service"
+        elif key == "defaultValue":
+            suggest = "default_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiRequestParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiRequestParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiRequestParameter.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  in_: str,
                  in_service: str,
@@ -458,12 +569,28 @@ class ApiRequestParameter(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiSystemParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "in":
+            suggest = "in_"
+        elif key == "nameService":
+            suggest = "name_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiSystemParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiSystemParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiSystemParameter.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  in_: str,
                  name: str,
@@ -500,9 +627,6 @@ class ApiSystemParameter(dict):
         Backend service's parameter name.
         """
         return pulumi.get(self, "name_service")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AccountAliasArgs', 'AccountAlias']
 
@@ -30,6 +30,30 @@ class AccountAliasArgs:
 
     @account_alias.setter
     def account_alias(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_alias", value)
+
+
+@pulumi.input_type
+class _AccountAliasState:
+    def __init__(__self__, *,
+                 account_alias: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccountAlias resources.
+        :param pulumi.Input[str] account_alias: Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        """
+        if account_alias is not None:
+            pulumi.set(__self__, "account_alias", account_alias)
+
+    @property
+    @pulumi.getter(name="accountAlias")
+    def account_alias(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "account_alias")
+
+    @account_alias.setter
+    def account_alias(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_alias", value)
 
 
@@ -128,11 +152,11 @@ class AccountAlias(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountAliasArgs.__new__(AccountAliasArgs)
 
             if account_alias is None and not opts.urn:
                 raise TypeError("Missing required property 'account_alias'")
-            __props__['account_alias'] = account_alias
+            __props__.__dict__["account_alias"] = account_alias
         super(AccountAlias, __self__).__init__(
             'alicloud:ram/accountAlias:AccountAlias',
             resource_name,
@@ -155,9 +179,9 @@ class AccountAlias(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountAliasState.__new__(_AccountAliasState)
 
-        __props__["account_alias"] = account_alias
+        __props__.__dict__["account_alias"] = account_alias
         return AccountAlias(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -167,10 +191,4 @@ class AccountAlias(pulumi.CustomResource):
         Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
         """
         return pulumi.get(self, "account_alias")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

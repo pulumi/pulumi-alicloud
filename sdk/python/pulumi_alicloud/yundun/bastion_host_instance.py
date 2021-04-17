@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['BastionHostInstanceArgs', 'BastionHostInstance']
 
@@ -124,6 +124,126 @@ class BastionHostInstanceArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _BastionHostInstanceState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 license_code: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering BastionHostInstance resources.
+        :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if license_code is not None:
+            pulumi.set(__self__, "license_code", license_code)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the instance. This name can have a string of 1 to 63 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="licenseCode")
+    def license_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        """
+        return pulumi.get(self, "license_code")
+
+    @license_code.setter
+    def license_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_code", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        security group IDs configured to Bastionhost.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        VSwitch ID configured to Bastionhost.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 class BastionHostInstance(pulumi.CustomResource):
@@ -265,23 +385,23 @@ class BastionHostInstance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BastionHostInstanceArgs.__new__(BastionHostInstanceArgs)
 
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if license_code is None and not opts.urn:
                 raise TypeError("Missing required property 'license_code'")
-            __props__['license_code'] = license_code
-            __props__['period'] = period
-            __props__['resource_group_id'] = resource_group_id
+            __props__.__dict__["license_code"] = license_code
+            __props__.__dict__["period"] = period
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
-            __props__['security_group_ids'] = security_group_ids
-            __props__['tags'] = tags
+            __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["tags"] = tags
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
-            __props__['vswitch_id'] = vswitch_id
+            __props__.__dict__["vswitch_id"] = vswitch_id
         super(BastionHostInstance, __self__).__init__(
             'alicloud:yundun/bastionHostInstance:BastionHostInstance',
             resource_name,
@@ -316,15 +436,15 @@ class BastionHostInstance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BastionHostInstanceState.__new__(_BastionHostInstanceState)
 
-        __props__["description"] = description
-        __props__["license_code"] = license_code
-        __props__["period"] = period
-        __props__["resource_group_id"] = resource_group_id
-        __props__["security_group_ids"] = security_group_ids
-        __props__["tags"] = tags
-        __props__["vswitch_id"] = vswitch_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["license_code"] = license_code
+        __props__.__dict__["period"] = period
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["vswitch_id"] = vswitch_id
         return BastionHostInstance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -382,10 +502,4 @@ class BastionHostInstance(pulumi.CustomResource):
         VSwitch ID configured to Bastionhost.
         """
         return pulumi.get(self, "vswitch_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

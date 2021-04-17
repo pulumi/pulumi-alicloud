@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RoleArgs', 'Role']
 
@@ -78,6 +78,124 @@ class RoleArgs:
     @max_session_duration.setter
     def max_session_duration(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_session_duration", value)
+
+
+@pulumi.input_type
+class _RoleState:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 assume_role_policy_document: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 max_session_duration: Optional[pulumi.Input[int]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
+                 role_name: Optional[pulumi.Input[str]] = None,
+                 update_date: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Role resources.
+        :param pulumi.Input[str] arn: The resource descriptor of the role.
+               * `create_date` (Removed form v1.114.0) - Role creation time.
+        :param pulumi.Input[str] assume_role_policy_document: The content of the permissions strategy that plays a role.
+        :param pulumi.Input[str] description: The description of the Resource Manager role.
+        :param pulumi.Input[int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
+        :param pulumi.Input[str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+        :param pulumi.Input[str] update_date: Role update time.
+        """
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if assume_role_policy_document is not None:
+            pulumi.set(__self__, "assume_role_policy_document", assume_role_policy_document)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if max_session_duration is not None:
+            pulumi.set(__self__, "max_session_duration", max_session_duration)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+        if update_date is not None:
+            pulumi.set(__self__, "update_date", update_date)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource descriptor of the role.
+        * `create_date` (Removed form v1.114.0) - Role creation time.
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="assumeRolePolicyDocument")
+    def assume_role_policy_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content of the permissions strategy that plays a role.
+        """
+        return pulumi.get(self, "assume_role_policy_document")
+
+    @assume_role_policy_document.setter
+    def assume_role_policy_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "assume_role_policy_document", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the Resource Manager role.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="maxSessionDuration")
+    def max_session_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
+        """
+        return pulumi.get(self, "max_session_duration")
+
+    @max_session_duration.setter
+    def max_session_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_session_duration", value)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_id", value)
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
+        """
+        return pulumi.get(self, "role_name")
+
+    @role_name.setter
+    def role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_name", value)
+
+    @property
+    @pulumi.getter(name="updateDate")
+    def update_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        Role update time.
+        """
+        return pulumi.get(self, "update_date")
+
+    @update_date.setter
+    def update_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_date", value)
 
 
 class Role(pulumi.CustomResource):
@@ -226,19 +344,19 @@ class Role(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RoleArgs.__new__(RoleArgs)
 
             if assume_role_policy_document is None and not opts.urn:
                 raise TypeError("Missing required property 'assume_role_policy_document'")
-            __props__['assume_role_policy_document'] = assume_role_policy_document
-            __props__['description'] = description
-            __props__['max_session_duration'] = max_session_duration
+            __props__.__dict__["assume_role_policy_document"] = assume_role_policy_document
+            __props__.__dict__["description"] = description
+            __props__.__dict__["max_session_duration"] = max_session_duration
             if role_name is None and not opts.urn:
                 raise TypeError("Missing required property 'role_name'")
-            __props__['role_name'] = role_name
-            __props__['arn'] = None
-            __props__['role_id'] = None
-            __props__['update_date'] = None
+            __props__.__dict__["role_name"] = role_name
+            __props__.__dict__["arn"] = None
+            __props__.__dict__["role_id"] = None
+            __props__.__dict__["update_date"] = None
         super(Role, __self__).__init__(
             'alicloud:resourcemanager/role:Role',
             resource_name,
@@ -273,15 +391,15 @@ class Role(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RoleState.__new__(_RoleState)
 
-        __props__["arn"] = arn
-        __props__["assume_role_policy_document"] = assume_role_policy_document
-        __props__["description"] = description
-        __props__["max_session_duration"] = max_session_duration
-        __props__["role_id"] = role_id
-        __props__["role_name"] = role_name
-        __props__["update_date"] = update_date
+        __props__.__dict__["arn"] = arn
+        __props__.__dict__["assume_role_policy_document"] = assume_role_policy_document
+        __props__.__dict__["description"] = description
+        __props__.__dict__["max_session_duration"] = max_session_duration
+        __props__.__dict__["role_id"] = role_id
+        __props__.__dict__["role_name"] = role_name
+        __props__.__dict__["update_date"] = update_date
         return Role(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -337,10 +455,4 @@ class Role(pulumi.CustomResource):
         Role update time.
         """
         return pulumi.get(self, "update_date")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -339,6 +339,350 @@ class StackArgs:
         pulumi.set(self, "use_previous_parameters", value)
 
 
+@pulumi.input_type
+class _StackState:
+    def __init__(__self__, *,
+                 create_option: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[str]] = None,
+                 disable_rollback: Optional[pulumi.Input[bool]] = None,
+                 notification_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['StackParameterArgs']]]] = None,
+                 ram_role_name: Optional[pulumi.Input[str]] = None,
+                 replacement_option: Optional[pulumi.Input[str]] = None,
+                 retain_all_resources: Optional[pulumi.Input[bool]] = None,
+                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 stack_name: Optional[pulumi.Input[str]] = None,
+                 stack_policy_body: Optional[pulumi.Input[str]] = None,
+                 stack_policy_during_update_body: Optional[pulumi.Input[str]] = None,
+                 stack_policy_during_update_url: Optional[pulumi.Input[str]] = None,
+                 stack_policy_url: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_body: Optional[pulumi.Input[str]] = None,
+                 template_url: Optional[pulumi.Input[str]] = None,
+                 template_version: Optional[pulumi.Input[str]] = None,
+                 timeout_in_minutes: Optional[pulumi.Input[int]] = None,
+                 use_previous_parameters: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering Stack resources.
+        :param pulumi.Input[str] create_option: Specifies whether to delete the stack after it is created.
+        :param pulumi.Input[str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
+        :param pulumi.Input[bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default to: `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_urls: The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
+        :param pulumi.Input[Sequence[pulumi.Input['StackParameterArgs']]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[str] ram_role_name: The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
+        :param pulumi.Input[str] replacement_option: Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
+        :param pulumi.Input[bool] retain_all_resources: The retain all resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] retain_resources: Specifies whether to retain the resources in the stack.
+        :param pulumi.Input[str] stack_name: The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        :param pulumi.Input[str] stack_policy_body: The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
+        :param pulumi.Input[str] stack_policy_during_update_body: The structure that contains the body of the temporary overriding stack policy. The stack policy body must be 1 to 16,384 bytes in length.
+        :param pulumi.Input[str] stack_policy_during_update_url: The URL of the file that contains the temporary overriding stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        :param pulumi.Input[str] stack_policy_url: The URL of the file that contains the stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        :param pulumi.Input[str] status: The status of Stack.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        :param pulumi.Input[str] template_url: The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        :param pulumi.Input[str] template_version: The version of the template.
+        :param pulumi.Input[int] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default to: `60`.
+        :param pulumi.Input[bool] use_previous_parameters: Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
+        """
+        if create_option is not None:
+            pulumi.set(__self__, "create_option", create_option)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if disable_rollback is not None:
+            pulumi.set(__self__, "disable_rollback", disable_rollback)
+        if notification_urls is not None:
+            pulumi.set(__self__, "notification_urls", notification_urls)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if ram_role_name is not None:
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
+        if replacement_option is not None:
+            pulumi.set(__self__, "replacement_option", replacement_option)
+        if retain_all_resources is not None:
+            pulumi.set(__self__, "retain_all_resources", retain_all_resources)
+        if retain_resources is not None:
+            pulumi.set(__self__, "retain_resources", retain_resources)
+        if stack_name is not None:
+            pulumi.set(__self__, "stack_name", stack_name)
+        if stack_policy_body is not None:
+            pulumi.set(__self__, "stack_policy_body", stack_policy_body)
+        if stack_policy_during_update_body is not None:
+            pulumi.set(__self__, "stack_policy_during_update_body", stack_policy_during_update_body)
+        if stack_policy_during_update_url is not None:
+            pulumi.set(__self__, "stack_policy_during_update_url", stack_policy_during_update_url)
+        if stack_policy_url is not None:
+            pulumi.set(__self__, "stack_policy_url", stack_policy_url)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if template_body is not None:
+            pulumi.set(__self__, "template_body", template_body)
+        if template_url is not None:
+            pulumi.set(__self__, "template_url", template_url)
+        if template_version is not None:
+            pulumi.set(__self__, "template_version", template_version)
+        if timeout_in_minutes is not None:
+            pulumi.set(__self__, "timeout_in_minutes", timeout_in_minutes)
+        if use_previous_parameters is not None:
+            pulumi.set(__self__, "use_previous_parameters", use_previous_parameters)
+
+    @property
+    @pulumi.getter(name="createOption")
+    def create_option(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to delete the stack after it is created.
+        """
+        return pulumi.get(self, "create_option")
+
+    @create_option.setter
+    def create_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_option", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="disableRollback")
+    def disable_rollback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to disable rollback on stack creation failure. Default to: `false`.
+        """
+        return pulumi.get(self, "disable_rollback")
+
+    @disable_rollback.setter
+    def disable_rollback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_rollback", value)
+
+    @property
+    @pulumi.getter(name="notificationUrls")
+    def notification_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
+        """
+        return pulumi.get(self, "notification_urls")
+
+    @notification_urls.setter
+    def notification_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_urls", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackParameterArgs']]]]:
+        """
+        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StackParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @ram_role_name.setter
+    def ram_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ram_role_name", value)
+
+    @property
+    @pulumi.getter(name="replacementOption")
+    def replacement_option(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
+        """
+        return pulumi.get(self, "replacement_option")
+
+    @replacement_option.setter
+    def replacement_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replacement_option", value)
+
+    @property
+    @pulumi.getter(name="retainAllResources")
+    def retain_all_resources(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The retain all resources.
+        """
+        return pulumi.get(self, "retain_all_resources")
+
+    @retain_all_resources.setter
+    def retain_all_resources(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "retain_all_resources", value)
+
+    @property
+    @pulumi.getter(name="retainResources")
+    def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies whether to retain the resources in the stack.
+        """
+        return pulumi.get(self, "retain_resources")
+
+    @retain_resources.setter
+    def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "retain_resources", value)
+
+    @property
+    @pulumi.getter(name="stackName")
+    def stack_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        """
+        return pulumi.get(self, "stack_name")
+
+    @stack_name.setter
+    def stack_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_name", value)
+
+    @property
+    @pulumi.getter(name="stackPolicyBody")
+    def stack_policy_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
+        """
+        return pulumi.get(self, "stack_policy_body")
+
+    @stack_policy_body.setter
+    def stack_policy_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_policy_body", value)
+
+    @property
+    @pulumi.getter(name="stackPolicyDuringUpdateBody")
+    def stack_policy_during_update_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The structure that contains the body of the temporary overriding stack policy. The stack policy body must be 1 to 16,384 bytes in length.
+        """
+        return pulumi.get(self, "stack_policy_during_update_body")
+
+    @stack_policy_during_update_body.setter
+    def stack_policy_during_update_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_policy_during_update_body", value)
+
+    @property
+    @pulumi.getter(name="stackPolicyDuringUpdateUrl")
+    def stack_policy_during_update_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the file that contains the temporary overriding stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        """
+        return pulumi.get(self, "stack_policy_during_update_url")
+
+    @stack_policy_during_update_url.setter
+    def stack_policy_during_update_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_policy_during_update_url", value)
+
+    @property
+    @pulumi.getter(name="stackPolicyUrl")
+    def stack_policy_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the file that contains the stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        """
+        return pulumi.get(self, "stack_policy_url")
+
+    @stack_policy_url.setter
+    def stack_policy_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_policy_url", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of Stack.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="templateBody")
+    def template_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        """
+        return pulumi.get(self, "template_body")
+
+    @template_body.setter
+    def template_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_body", value)
+
+    @property
+    @pulumi.getter(name="templateUrl")
+    def template_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        """
+        return pulumi.get(self, "template_url")
+
+    @template_url.setter
+    def template_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_url", value)
+
+    @property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the template.
+        """
+        return pulumi.get(self, "template_version")
+
+    @template_version.setter
+    def template_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_version", value)
+
+    @property
+    @pulumi.getter(name="timeoutInMinutes")
+    def timeout_in_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period that is specified for the stack creation request. Default to: `60`.
+        """
+        return pulumi.get(self, "timeout_in_minutes")
+
+    @timeout_in_minutes.setter
+    def timeout_in_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_in_minutes", value)
+
+    @property
+    @pulumi.getter(name="usePreviousParameters")
+    def use_previous_parameters(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
+        """
+        return pulumi.get(self, "use_previous_parameters")
+
+    @use_previous_parameters.setter
+    def use_previous_parameters(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_previous_parameters", value)
+
+
 class Stack(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -533,31 +877,31 @@ class Stack(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = StackArgs.__new__(StackArgs)
 
-            __props__['create_option'] = create_option
-            __props__['deletion_protection'] = deletion_protection
-            __props__['disable_rollback'] = disable_rollback
-            __props__['notification_urls'] = notification_urls
-            __props__['parameters'] = parameters
-            __props__['ram_role_name'] = ram_role_name
-            __props__['replacement_option'] = replacement_option
-            __props__['retain_all_resources'] = retain_all_resources
-            __props__['retain_resources'] = retain_resources
+            __props__.__dict__["create_option"] = create_option
+            __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["disable_rollback"] = disable_rollback
+            __props__.__dict__["notification_urls"] = notification_urls
+            __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["ram_role_name"] = ram_role_name
+            __props__.__dict__["replacement_option"] = replacement_option
+            __props__.__dict__["retain_all_resources"] = retain_all_resources
+            __props__.__dict__["retain_resources"] = retain_resources
             if stack_name is None and not opts.urn:
                 raise TypeError("Missing required property 'stack_name'")
-            __props__['stack_name'] = stack_name
-            __props__['stack_policy_body'] = stack_policy_body
-            __props__['stack_policy_during_update_body'] = stack_policy_during_update_body
-            __props__['stack_policy_during_update_url'] = stack_policy_during_update_url
-            __props__['stack_policy_url'] = stack_policy_url
-            __props__['tags'] = tags
-            __props__['template_body'] = template_body
-            __props__['template_url'] = template_url
-            __props__['template_version'] = template_version
-            __props__['timeout_in_minutes'] = timeout_in_minutes
-            __props__['use_previous_parameters'] = use_previous_parameters
-            __props__['status'] = None
+            __props__.__dict__["stack_name"] = stack_name
+            __props__.__dict__["stack_policy_body"] = stack_policy_body
+            __props__.__dict__["stack_policy_during_update_body"] = stack_policy_during_update_body
+            __props__.__dict__["stack_policy_during_update_url"] = stack_policy_during_update_url
+            __props__.__dict__["stack_policy_url"] = stack_policy_url
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["template_body"] = template_body
+            __props__.__dict__["template_url"] = template_url
+            __props__.__dict__["template_version"] = template_version
+            __props__.__dict__["timeout_in_minutes"] = timeout_in_minutes
+            __props__.__dict__["use_previous_parameters"] = use_previous_parameters
+            __props__.__dict__["status"] = None
         super(Stack, __self__).__init__(
             'alicloud:ros/stack:Stack',
             resource_name,
@@ -620,29 +964,29 @@ class Stack(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _StackState.__new__(_StackState)
 
-        __props__["create_option"] = create_option
-        __props__["deletion_protection"] = deletion_protection
-        __props__["disable_rollback"] = disable_rollback
-        __props__["notification_urls"] = notification_urls
-        __props__["parameters"] = parameters
-        __props__["ram_role_name"] = ram_role_name
-        __props__["replacement_option"] = replacement_option
-        __props__["retain_all_resources"] = retain_all_resources
-        __props__["retain_resources"] = retain_resources
-        __props__["stack_name"] = stack_name
-        __props__["stack_policy_body"] = stack_policy_body
-        __props__["stack_policy_during_update_body"] = stack_policy_during_update_body
-        __props__["stack_policy_during_update_url"] = stack_policy_during_update_url
-        __props__["stack_policy_url"] = stack_policy_url
-        __props__["status"] = status
-        __props__["tags"] = tags
-        __props__["template_body"] = template_body
-        __props__["template_url"] = template_url
-        __props__["template_version"] = template_version
-        __props__["timeout_in_minutes"] = timeout_in_minutes
-        __props__["use_previous_parameters"] = use_previous_parameters
+        __props__.__dict__["create_option"] = create_option
+        __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["disable_rollback"] = disable_rollback
+        __props__.__dict__["notification_urls"] = notification_urls
+        __props__.__dict__["parameters"] = parameters
+        __props__.__dict__["ram_role_name"] = ram_role_name
+        __props__.__dict__["replacement_option"] = replacement_option
+        __props__.__dict__["retain_all_resources"] = retain_all_resources
+        __props__.__dict__["retain_resources"] = retain_resources
+        __props__.__dict__["stack_name"] = stack_name
+        __props__.__dict__["stack_policy_body"] = stack_policy_body
+        __props__.__dict__["stack_policy_during_update_body"] = stack_policy_during_update_body
+        __props__.__dict__["stack_policy_during_update_url"] = stack_policy_during_update_url
+        __props__.__dict__["stack_policy_url"] = stack_policy_url
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["template_body"] = template_body
+        __props__.__dict__["template_url"] = template_url
+        __props__.__dict__["template_version"] = template_version
+        __props__.__dict__["timeout_in_minutes"] = timeout_in_minutes
+        __props__.__dict__["use_previous_parameters"] = use_previous_parameters
         return Stack(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -812,10 +1156,4 @@ class Stack(pulumi.CustomResource):
         Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
         """
         return pulumi.get(self, "use_previous_parameters")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

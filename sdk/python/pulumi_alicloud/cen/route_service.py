@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RouteServiceArgs', 'RouteService']
 
@@ -107,6 +107,126 @@ class RouteServiceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class _RouteServiceState:
+    def __init__(__self__, *,
+                 access_region_id: Optional[pulumi.Input[str]] = None,
+                 cen_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 host_region_id: Optional[pulumi.Input[str]] = None,
+                 host_vpc_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RouteService resources.
+        :param pulumi.Input[str] access_region_id: The region of the network instances that access the cloud services.
+        :param pulumi.Input[str] cen_id: The ID of the CEN instance.
+        :param pulumi.Input[str] description: The description of the cloud service.
+        :param pulumi.Input[str] host: The domain name or IP address of the cloud service.
+        :param pulumi.Input[str] host_region_id: The region of the cloud service.
+        :param pulumi.Input[str] host_vpc_id: The VPC associated with the cloud service.
+        :param pulumi.Input[str] status: The status of the cloud service.
+        """
+        if access_region_id is not None:
+            pulumi.set(__self__, "access_region_id", access_region_id)
+        if cen_id is not None:
+            pulumi.set(__self__, "cen_id", cen_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if host_region_id is not None:
+            pulumi.set(__self__, "host_region_id", host_region_id)
+        if host_vpc_id is not None:
+            pulumi.set(__self__, "host_vpc_id", host_vpc_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accessRegionId")
+    def access_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the network instances that access the cloud services.
+        """
+        return pulumi.get(self, "access_region_id")
+
+    @access_region_id.setter
+    def access_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_region_id", value)
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the CEN instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @cen_id.setter
+    def cen_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cen_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the cloud service.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name or IP address of the cloud service.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="hostRegionId")
+    def host_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the cloud service.
+        """
+        return pulumi.get(self, "host_region_id")
+
+    @host_region_id.setter
+    def host_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_region_id", value)
+
+    @property
+    @pulumi.getter(name="hostVpcId")
+    def host_vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC associated with the cloud service.
+        """
+        return pulumi.get(self, "host_vpc_id")
+
+    @host_vpc_id.setter
+    def host_vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_vpc_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the cloud service.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class RouteService(pulumi.CustomResource):
@@ -265,25 +385,25 @@ class RouteService(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouteServiceArgs.__new__(RouteServiceArgs)
 
             if access_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'access_region_id'")
-            __props__['access_region_id'] = access_region_id
+            __props__.__dict__["access_region_id"] = access_region_id
             if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
-            __props__['cen_id'] = cen_id
-            __props__['description'] = description
+            __props__.__dict__["cen_id"] = cen_id
+            __props__.__dict__["description"] = description
             if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
-            __props__['host'] = host
+            __props__.__dict__["host"] = host
             if host_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'host_region_id'")
-            __props__['host_region_id'] = host_region_id
+            __props__.__dict__["host_region_id"] = host_region_id
             if host_vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'host_vpc_id'")
-            __props__['host_vpc_id'] = host_vpc_id
-            __props__['status'] = None
+            __props__.__dict__["host_vpc_id"] = host_vpc_id
+            __props__.__dict__["status"] = None
         super(RouteService, __self__).__init__(
             'alicloud:cen/routeService:RouteService',
             resource_name,
@@ -318,15 +438,15 @@ class RouteService(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouteServiceState.__new__(_RouteServiceState)
 
-        __props__["access_region_id"] = access_region_id
-        __props__["cen_id"] = cen_id
-        __props__["description"] = description
-        __props__["host"] = host
-        __props__["host_region_id"] = host_region_id
-        __props__["host_vpc_id"] = host_vpc_id
-        __props__["status"] = status
+        __props__.__dict__["access_region_id"] = access_region_id
+        __props__.__dict__["cen_id"] = cen_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["host"] = host
+        __props__.__dict__["host_region_id"] = host_region_id
+        __props__.__dict__["host_vpc_id"] = host_vpc_id
+        __props__.__dict__["status"] = status
         return RouteService(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -384,10 +504,4 @@ class RouteService(pulumi.CustomResource):
         The status of the cloud service.
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

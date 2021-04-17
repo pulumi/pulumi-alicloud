@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['LogTailAttachmentArgs', 'LogTailAttachment']
 
@@ -60,6 +60,62 @@ class LogTailAttachmentArgs:
 
     @project.setter
     def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class _LogTailAttachmentState:
+    def __init__(__self__, *,
+                 logtail_config_name: Optional[pulumi.Input[str]] = None,
+                 machine_group_name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering LogTailAttachment resources.
+        :param pulumi.Input[str] logtail_config_name: The Logtail configuration name, which is unique in the same project.
+        :param pulumi.Input[str] machine_group_name: The machine group name, which is unique in the same project.
+        :param pulumi.Input[str] project: The project name to the log store belongs.
+        """
+        if logtail_config_name is not None:
+            pulumi.set(__self__, "logtail_config_name", logtail_config_name)
+        if machine_group_name is not None:
+            pulumi.set(__self__, "machine_group_name", machine_group_name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="logtailConfigName")
+    def logtail_config_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Logtail configuration name, which is unique in the same project.
+        """
+        return pulumi.get(self, "logtail_config_name")
+
+    @logtail_config_name.setter
+    def logtail_config_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logtail_config_name", value)
+
+    @property
+    @pulumi.getter(name="machineGroupName")
+    def machine_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The machine group name, which is unique in the same project.
+        """
+        return pulumi.get(self, "machine_group_name")
+
+    @machine_group_name.setter
+    def machine_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_group_name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project name to the log store belongs.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
 
@@ -252,17 +308,17 @@ class LogTailAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LogTailAttachmentArgs.__new__(LogTailAttachmentArgs)
 
             if logtail_config_name is None and not opts.urn:
                 raise TypeError("Missing required property 'logtail_config_name'")
-            __props__['logtail_config_name'] = logtail_config_name
+            __props__.__dict__["logtail_config_name"] = logtail_config_name
             if machine_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_group_name'")
-            __props__['machine_group_name'] = machine_group_name
+            __props__.__dict__["machine_group_name"] = machine_group_name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
         super(LogTailAttachment, __self__).__init__(
             'alicloud:log/logTailAttachment:LogTailAttachment',
             resource_name,
@@ -289,11 +345,11 @@ class LogTailAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LogTailAttachmentState.__new__(_LogTailAttachmentState)
 
-        __props__["logtail_config_name"] = logtail_config_name
-        __props__["machine_group_name"] = machine_group_name
-        __props__["project"] = project
+        __props__.__dict__["logtail_config_name"] = logtail_config_name
+        __props__.__dict__["machine_group_name"] = machine_group_name
+        __props__.__dict__["project"] = project
         return LogTailAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -319,10 +375,4 @@ class LogTailAttachment(pulumi.CustomResource):
         The project name to the log store belongs.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

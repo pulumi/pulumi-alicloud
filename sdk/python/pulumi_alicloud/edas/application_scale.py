@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ApplicationScaleArgs', 'ApplicationScale']
 
@@ -64,6 +64,94 @@ class ApplicationScaleArgs:
 
     @ecu_infos.setter
     def ecu_infos(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "ecu_infos", value)
+
+    @property
+    @pulumi.getter(name="forceStatus")
+    def force_status(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
+        """
+        return pulumi.get(self, "force_status")
+
+    @force_status.setter
+    def force_status(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_status", value)
+
+
+@pulumi.input_type
+class _ApplicationScaleState:
+    def __init__(__self__, *,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 deploy_group: Optional[pulumi.Input[str]] = None,
+                 ecc_info: Optional[pulumi.Input[str]] = None,
+                 ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 force_status: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering ApplicationScale resources.
+        :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.
+        :param pulumi.Input[str] deploy_group: The ID of the instance group to which you want to add ECS instances to scale out the application.
+        :param pulumi.Input[str] ecc_info: The ecc information of the resource supplied above. The value is formulated as `<ecc1,ecc2>`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ecu_infos: The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
+        :param pulumi.Input[bool] force_status: This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
+        """
+        if app_id is not None:
+            pulumi.set(__self__, "app_id", app_id)
+        if deploy_group is not None:
+            pulumi.set(__self__, "deploy_group", deploy_group)
+        if ecc_info is not None:
+            pulumi.set(__self__, "ecc_info", ecc_info)
+        if ecu_infos is not None:
+            pulumi.set(__self__, "ecu_infos", ecu_infos)
+        if force_status is not None:
+            pulumi.set(__self__, "force_status", force_status)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the application that you want to deploy.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter(name="deployGroup")
+    def deploy_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the instance group to which you want to add ECS instances to scale out the application.
+        """
+        return pulumi.get(self, "deploy_group")
+
+    @deploy_group.setter
+    def deploy_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deploy_group", value)
+
+    @property
+    @pulumi.getter(name="eccInfo")
+    def ecc_info(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ecc information of the resource supplied above. The value is formulated as `<ecc1,ecc2>`.
+        """
+        return pulumi.get(self, "ecc_info")
+
+    @ecc_info.setter
+    def ecc_info(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ecc_info", value)
+
+    @property
+    @pulumi.getter(name="ecuInfos")
+    def ecu_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
+        """
+        return pulumi.get(self, "ecu_infos")
+
+    @ecu_infos.setter
+    def ecu_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ecu_infos", value)
 
     @property
@@ -181,19 +269,19 @@ class ApplicationScale(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApplicationScaleArgs.__new__(ApplicationScaleArgs)
 
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
-            __props__['app_id'] = app_id
+            __props__.__dict__["app_id"] = app_id
             if deploy_group is None and not opts.urn:
                 raise TypeError("Missing required property 'deploy_group'")
-            __props__['deploy_group'] = deploy_group
+            __props__.__dict__["deploy_group"] = deploy_group
             if ecu_infos is None and not opts.urn:
                 raise TypeError("Missing required property 'ecu_infos'")
-            __props__['ecu_infos'] = ecu_infos
-            __props__['force_status'] = force_status
-            __props__['ecc_info'] = None
+            __props__.__dict__["ecu_infos"] = ecu_infos
+            __props__.__dict__["force_status"] = force_status
+            __props__.__dict__["ecc_info"] = None
         super(ApplicationScale, __self__).__init__(
             'alicloud:edas/applicationScale:ApplicationScale',
             resource_name,
@@ -224,13 +312,13 @@ class ApplicationScale(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ApplicationScaleState.__new__(_ApplicationScaleState)
 
-        __props__["app_id"] = app_id
-        __props__["deploy_group"] = deploy_group
-        __props__["ecc_info"] = ecc_info
-        __props__["ecu_infos"] = ecu_infos
-        __props__["force_status"] = force_status
+        __props__.__dict__["app_id"] = app_id
+        __props__.__dict__["deploy_group"] = deploy_group
+        __props__.__dict__["ecc_info"] = ecc_info
+        __props__.__dict__["ecu_infos"] = ecu_infos
+        __props__.__dict__["force_status"] = force_status
         return ApplicationScale(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -272,10 +360,4 @@ class ApplicationScale(pulumi.CustomResource):
         This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
         """
         return pulumi.get(self, "force_status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

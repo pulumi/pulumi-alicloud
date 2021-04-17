@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RegistryEnterpriseNamespaceArgs', 'RegistryEnterpriseNamespace']
 
@@ -64,6 +64,78 @@ class RegistryEnterpriseNamespaceArgs:
 
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _RegistryEnterpriseNamespaceState:
+    def __init__(__self__, *,
+                 auto_create: Optional[pulumi.Input[bool]] = None,
+                 default_visibility: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RegistryEnterpriseNamespace resources.
+        :param pulumi.Input[bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+        :param pulumi.Input[str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        """
+        if auto_create is not None:
+            pulumi.set(__self__, "auto_create", auto_create)
+        if default_visibility is not None:
+            pulumi.set(__self__, "default_visibility", default_visibility)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="autoCreate")
+    def auto_create(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+        """
+        return pulumi.get(self, "auto_create")
+
+    @auto_create.setter
+    def auto_create(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_create", value)
+
+    @property
+    @pulumi.getter(name="defaultVisibility")
+    def default_visibility(self) -> Optional[pulumi.Input[str]]:
+        """
+        `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+        """
+        return pulumi.get(self, "default_visibility")
+
+    @default_visibility.setter
+    def default_visibility(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_visibility", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of Container Registry Enterprise Edition instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
 
     @property
@@ -203,18 +275,18 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RegistryEnterpriseNamespaceArgs.__new__(RegistryEnterpriseNamespaceArgs)
 
             if auto_create is None and not opts.urn:
                 raise TypeError("Missing required property 'auto_create'")
-            __props__['auto_create'] = auto_create
+            __props__.__dict__["auto_create"] = auto_create
             if default_visibility is None and not opts.urn:
                 raise TypeError("Missing required property 'default_visibility'")
-            __props__['default_visibility'] = default_visibility
+            __props__.__dict__["default_visibility"] = default_visibility
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['name'] = name
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["name"] = name
         super(RegistryEnterpriseNamespace, __self__).__init__(
             'alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace',
             resource_name,
@@ -243,12 +315,12 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RegistryEnterpriseNamespaceState.__new__(_RegistryEnterpriseNamespaceState)
 
-        __props__["auto_create"] = auto_create
-        __props__["default_visibility"] = default_visibility
-        __props__["instance_id"] = instance_id
-        __props__["name"] = name
+        __props__.__dict__["auto_create"] = auto_create
+        __props__.__dict__["default_visibility"] = default_visibility
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["name"] = name
         return RegistryEnterpriseNamespace(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -282,10 +354,4 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

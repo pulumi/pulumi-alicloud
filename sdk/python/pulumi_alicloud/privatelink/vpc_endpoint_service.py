@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['VpcEndpointServiceArgs', 'VpcEndpointService']
 
@@ -96,6 +96,142 @@ class VpcEndpointServiceArgs:
     @service_description.setter
     def service_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_description", value)
+
+
+@pulumi.input_type
+class _VpcEndpointServiceState:
+    def __init__(__self__, *,
+                 auto_accept_connection: Optional[pulumi.Input[bool]] = None,
+                 connect_bandwidth: Optional[pulumi.Input[int]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 payer: Optional[pulumi.Input[str]] = None,
+                 service_business_status: Optional[pulumi.Input[str]] = None,
+                 service_description: Optional[pulumi.Input[str]] = None,
+                 service_domain: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering VpcEndpointService resources.
+        :param pulumi.Input[bool] auto_accept_connection: Whether to automatically accept terminal node connections.
+        :param pulumi.Input[int] connect_bandwidth: The connection bandwidth.
+        :param pulumi.Input[bool] dry_run: Whether to pre-check this request only. Default to: `false`
+        :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+        :param pulumi.Input[str] service_business_status: The business status of Vpc Endpoint Service.
+        :param pulumi.Input[str] service_description: The description of the terminal node service.
+        :param pulumi.Input[str] service_domain: Service Domain.
+        :param pulumi.Input[str] status: The status of Vpc Endpoint Service.
+        """
+        if auto_accept_connection is not None:
+            pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
+        if connect_bandwidth is not None:
+            pulumi.set(__self__, "connect_bandwidth", connect_bandwidth)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
+        if payer is not None:
+            pulumi.set(__self__, "payer", payer)
+        if service_business_status is not None:
+            pulumi.set(__self__, "service_business_status", service_business_status)
+        if service_description is not None:
+            pulumi.set(__self__, "service_description", service_description)
+        if service_domain is not None:
+            pulumi.set(__self__, "service_domain", service_domain)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="autoAcceptConnection")
+    def auto_accept_connection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically accept terminal node connections.
+        """
+        return pulumi.get(self, "auto_accept_connection")
+
+    @auto_accept_connection.setter
+    def auto_accept_connection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_accept_connection", value)
+
+    @property
+    @pulumi.getter(name="connectBandwidth")
+    def connect_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The connection bandwidth.
+        """
+        return pulumi.get(self, "connect_bandwidth")
+
+    @connect_bandwidth.setter
+    def connect_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connect_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pre-check this request only. Default to: `false`
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter
+    def payer(self) -> Optional[pulumi.Input[str]]:
+        """
+        The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+        """
+        return pulumi.get(self, "payer")
+
+    @payer.setter
+    def payer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payer", value)
+
+    @property
+    @pulumi.getter(name="serviceBusinessStatus")
+    def service_business_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The business status of Vpc Endpoint Service.
+        """
+        return pulumi.get(self, "service_business_status")
+
+    @service_business_status.setter
+    def service_business_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_business_status", value)
+
+    @property
+    @pulumi.getter(name="serviceDescription")
+    def service_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the terminal node service.
+        """
+        return pulumi.get(self, "service_description")
+
+    @service_description.setter
+    def service_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_description", value)
+
+    @property
+    @pulumi.getter(name="serviceDomain")
+    def service_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Domain.
+        """
+        return pulumi.get(self, "service_domain")
+
+    @service_domain.setter
+    def service_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_domain", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of Vpc Endpoint Service.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class VpcEndpointService(pulumi.CustomResource):
@@ -221,16 +357,16 @@ class VpcEndpointService(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VpcEndpointServiceArgs.__new__(VpcEndpointServiceArgs)
 
-            __props__['auto_accept_connection'] = auto_accept_connection
-            __props__['connect_bandwidth'] = connect_bandwidth
-            __props__['dry_run'] = dry_run
-            __props__['payer'] = payer
-            __props__['service_description'] = service_description
-            __props__['service_business_status'] = None
-            __props__['service_domain'] = None
-            __props__['status'] = None
+            __props__.__dict__["auto_accept_connection"] = auto_accept_connection
+            __props__.__dict__["connect_bandwidth"] = connect_bandwidth
+            __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["payer"] = payer
+            __props__.__dict__["service_description"] = service_description
+            __props__.__dict__["service_business_status"] = None
+            __props__.__dict__["service_domain"] = None
+            __props__.__dict__["status"] = None
         super(VpcEndpointService, __self__).__init__(
             'alicloud:privatelink/vpcEndpointService:VpcEndpointService',
             resource_name,
@@ -267,16 +403,16 @@ class VpcEndpointService(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VpcEndpointServiceState.__new__(_VpcEndpointServiceState)
 
-        __props__["auto_accept_connection"] = auto_accept_connection
-        __props__["connect_bandwidth"] = connect_bandwidth
-        __props__["dry_run"] = dry_run
-        __props__["payer"] = payer
-        __props__["service_business_status"] = service_business_status
-        __props__["service_description"] = service_description
-        __props__["service_domain"] = service_domain
-        __props__["status"] = status
+        __props__.__dict__["auto_accept_connection"] = auto_accept_connection
+        __props__.__dict__["connect_bandwidth"] = connect_bandwidth
+        __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["payer"] = payer
+        __props__.__dict__["service_business_status"] = service_business_status
+        __props__.__dict__["service_description"] = service_description
+        __props__.__dict__["service_domain"] = service_domain
+        __props__.__dict__["status"] = status
         return VpcEndpointService(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -342,10 +478,4 @@ class VpcEndpointService(pulumi.CustomResource):
         The status of Vpc Endpoint Service.
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ProjectArgs', 'Project']
 
@@ -78,6 +78,78 @@ class ProjectArgs:
     @project_name.setter
     def project_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_name", value)
+
+
+@pulumi.input_type
+class _ProjectState:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 specification_type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Project resources.
+        :param pulumi.Input[str] name: It has been deprecated from provider version 1.110.0 and `project_name` instead.
+        :param pulumi.Input[str] order_type: The type of payment, only `PayAsYouGo` supported currently.
+        :param pulumi.Input[str] project_name: The name of the maxcompute project.
+        :param pulumi.Input[str] specification_type: The type of resource Specification, only `OdpsStandard` supported currently.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if order_type is not None:
+            pulumi.set(__self__, "order_type", order_type)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
+        if specification_type is not None:
+            pulumi.set(__self__, "specification_type", specification_type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from provider version 1.110.0 and `project_name` instead.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of payment, only `PayAsYouGo` supported currently.
+        """
+        return pulumi.get(self, "order_type")
+
+    @order_type.setter
+    def order_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_type", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the maxcompute project.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter(name="specificationType")
+    def specification_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of resource Specification, only `OdpsStandard` supported currently.
+        """
+        return pulumi.get(self, "specification_type")
+
+    @specification_type.setter
+    def specification_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "specification_type", value)
 
 
 class Project(pulumi.CustomResource):
@@ -196,16 +268,16 @@ class Project(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectArgs.__new__(ProjectArgs)
 
-            __props__['name'] = name
+            __props__.__dict__["name"] = name
             if order_type is None and not opts.urn:
                 raise TypeError("Missing required property 'order_type'")
-            __props__['order_type'] = order_type
-            __props__['project_name'] = project_name
+            __props__.__dict__["order_type"] = order_type
+            __props__.__dict__["project_name"] = project_name
             if specification_type is None and not opts.urn:
                 raise TypeError("Missing required property 'specification_type'")
-            __props__['specification_type'] = specification_type
+            __props__.__dict__["specification_type"] = specification_type
         super(Project, __self__).__init__(
             'alicloud:maxcompute/project:Project',
             resource_name,
@@ -234,12 +306,12 @@ class Project(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectState.__new__(_ProjectState)
 
-        __props__["name"] = name
-        __props__["order_type"] = order_type
-        __props__["project_name"] = project_name
-        __props__["specification_type"] = specification_type
+        __props__.__dict__["name"] = name
+        __props__.__dict__["order_type"] = order_type
+        __props__.__dict__["project_name"] = project_name
+        __props__.__dict__["specification_type"] = specification_type
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -273,10 +345,4 @@ class Project(pulumi.CustomResource):
         The type of resource Specification, only `OdpsStandard` supported currently.
         """
         return pulumi.get(self, "specification_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

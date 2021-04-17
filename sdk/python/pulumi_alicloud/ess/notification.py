@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['NotificationArgs', 'Notification']
 
@@ -66,6 +66,68 @@ class NotificationArgs:
 
     @scaling_group_id.setter
     def scaling_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scaling_group_id", value)
+
+
+@pulumi.input_type
+class _NotificationState:
+    def __init__(__self__, *,
+                 notification_arn: Optional[pulumi.Input[str]] = None,
+                 notification_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scaling_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Notification resources.
+        :param pulumi.Input[str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
+               * region: the region ID of the scaling group. For more information, see `Regions and zones`
+               * account-id: the ID of your account.
+               * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
+        :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
+        """
+        if notification_arn is not None:
+            pulumi.set(__self__, "notification_arn", notification_arn)
+        if notification_types is not None:
+            pulumi.set(__self__, "notification_types", notification_types)
+        if scaling_group_id is not None:
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+
+    @property
+    @pulumi.getter(name="notificationArn")
+    def notification_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
+        * region: the region ID of the scaling group. For more information, see `Regions and zones`
+        * account-id: the ID of your account.
+        * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
+        """
+        return pulumi.get(self, "notification_arn")
+
+    @notification_arn.setter
+    def notification_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notification_arn", value)
+
+    @property
+    @pulumi.getter(name="notificationTypes")
+    def notification_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
+        """
+        return pulumi.get(self, "notification_types")
+
+    @notification_types.setter
+    def notification_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_types", value)
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Auto Scaling group.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @scaling_group_id.setter
+    def scaling_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scaling_group_id", value)
 
 
@@ -239,17 +301,17 @@ class Notification(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NotificationArgs.__new__(NotificationArgs)
 
             if notification_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'notification_arn'")
-            __props__['notification_arn'] = notification_arn
+            __props__.__dict__["notification_arn"] = notification_arn
             if notification_types is None and not opts.urn:
                 raise TypeError("Missing required property 'notification_types'")
-            __props__['notification_types'] = notification_types
+            __props__.__dict__["notification_types"] = notification_types
             if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
-            __props__['scaling_group_id'] = scaling_group_id
+            __props__.__dict__["scaling_group_id"] = scaling_group_id
         super(Notification, __self__).__init__(
             'alicloud:ess/notification:Notification',
             resource_name,
@@ -279,11 +341,11 @@ class Notification(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NotificationState.__new__(_NotificationState)
 
-        __props__["notification_arn"] = notification_arn
-        __props__["notification_types"] = notification_types
-        __props__["scaling_group_id"] = scaling_group_id
+        __props__.__dict__["notification_arn"] = notification_arn
+        __props__.__dict__["notification_types"] = notification_types
+        __props__.__dict__["scaling_group_id"] = scaling_group_id
         return Notification(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -312,10 +374,4 @@ class Notification(pulumi.CustomResource):
         The ID of the Auto Scaling group.
         """
         return pulumi.get(self, "scaling_group_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

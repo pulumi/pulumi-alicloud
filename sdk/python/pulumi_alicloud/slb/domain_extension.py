@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['DomainExtensionArgs', 'DomainExtension']
 
@@ -92,6 +92,94 @@ class DomainExtensionArgs:
     @delete_protection_validation.setter
     def delete_protection_validation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "delete_protection_validation", value)
+
+
+@pulumi.input_type
+class _DomainExtensionState:
+    def __init__(__self__, *,
+                 delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 frontend_port: Optional[pulumi.Input[int]] = None,
+                 load_balancer_id: Optional[pulumi.Input[str]] = None,
+                 server_certificate_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DomainExtension resources.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[str] domain: The domain name,
+        :param pulumi.Input[int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        :param pulumi.Input[str] load_balancer_id: The ID of the SLB instance.
+        :param pulumi.Input[str] server_certificate_id: The ID of the certificate used by the domain name.
+        """
+        if delete_protection_validation is not None:
+            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if frontend_port is not None:
+            pulumi.set(__self__, "frontend_port", frontend_port)
+        if load_balancer_id is not None:
+            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        if server_certificate_id is not None:
+            pulumi.set(__self__, "server_certificate_id", server_certificate_id)
+
+    @property
+    @pulumi.getter(name="deleteProtectionValidation")
+    def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        """
+        return pulumi.get(self, "delete_protection_validation")
+
+    @delete_protection_validation.setter
+    def delete_protection_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_protection_validation", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name,
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="frontendPort")
+    def frontend_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        """
+        return pulumi.get(self, "frontend_port")
+
+    @frontend_port.setter
+    def frontend_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "frontend_port", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the SLB instance.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @load_balancer_id.setter
+    def load_balancer_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_id", value)
+
+    @property
+    @pulumi.getter(name="serverCertificateId")
+    def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the certificate used by the domain name.
+        """
+        return pulumi.get(self, "server_certificate_id")
+
+    @server_certificate_id.setter
+    def server_certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_certificate_id", value)
 
 
 class DomainExtension(pulumi.CustomResource):
@@ -361,21 +449,21 @@ class DomainExtension(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DomainExtensionArgs.__new__(DomainExtensionArgs)
 
-            __props__['delete_protection_validation'] = delete_protection_validation
+            __props__.__dict__["delete_protection_validation"] = delete_protection_validation
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
-            __props__['domain'] = domain
+            __props__.__dict__["domain"] = domain
             if frontend_port is None and not opts.urn:
                 raise TypeError("Missing required property 'frontend_port'")
-            __props__['frontend_port'] = frontend_port
+            __props__.__dict__["frontend_port"] = frontend_port
             if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
-            __props__['load_balancer_id'] = load_balancer_id
+            __props__.__dict__["load_balancer_id"] = load_balancer_id
             if server_certificate_id is None and not opts.urn:
                 raise TypeError("Missing required property 'server_certificate_id'")
-            __props__['server_certificate_id'] = server_certificate_id
+            __props__.__dict__["server_certificate_id"] = server_certificate_id
         super(DomainExtension, __self__).__init__(
             'alicloud:slb/domainExtension:DomainExtension',
             resource_name,
@@ -406,13 +494,13 @@ class DomainExtension(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DomainExtensionState.__new__(_DomainExtensionState)
 
-        __props__["delete_protection_validation"] = delete_protection_validation
-        __props__["domain"] = domain
-        __props__["frontend_port"] = frontend_port
-        __props__["load_balancer_id"] = load_balancer_id
-        __props__["server_certificate_id"] = server_certificate_id
+        __props__.__dict__["delete_protection_validation"] = delete_protection_validation
+        __props__.__dict__["domain"] = domain
+        __props__.__dict__["frontend_port"] = frontend_port
+        __props__.__dict__["load_balancer_id"] = load_balancer_id
+        __props__.__dict__["server_certificate_id"] = server_certificate_id
         return DomainExtension(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -454,10 +542,4 @@ class DomainExtension(pulumi.CustomResource):
         The ID of the certificate used by the domain name.
         """
         return pulumi.get(self, "server_certificate_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

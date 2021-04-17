@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ImageSharePermissionArgs', 'ImageSharePermission']
 
@@ -45,6 +45,46 @@ class ImageSharePermissionArgs:
 
     @image_id.setter
     def image_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_id", value)
+
+
+@pulumi.input_type
+class _ImageSharePermissionState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ImageSharePermission resources.
+        :param pulumi.Input[str] account_id: Alibaba Cloud Account ID. It is used to share images.
+        :param pulumi.Input[str] image_id: The source image ID.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alibaba Cloud Account ID. It is used to share images.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source image ID.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
 
 
@@ -174,14 +214,14 @@ class ImageSharePermission(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ImageSharePermissionArgs.__new__(ImageSharePermissionArgs)
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
-            __props__['account_id'] = account_id
+            __props__.__dict__["account_id"] = account_id
             if image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_id'")
-            __props__['image_id'] = image_id
+            __props__.__dict__["image_id"] = image_id
         super(ImageSharePermission, __self__).__init__(
             'alicloud:ecs/imageSharePermission:ImageSharePermission',
             resource_name,
@@ -206,10 +246,10 @@ class ImageSharePermission(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ImageSharePermissionState.__new__(_ImageSharePermissionState)
 
-        __props__["account_id"] = account_id
-        __props__["image_id"] = image_id
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["image_id"] = image_id
         return ImageSharePermission(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -227,10 +267,4 @@ class ImageSharePermission(pulumi.CustomResource):
         The source image ID.
         """
         return pulumi.get(self, "image_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

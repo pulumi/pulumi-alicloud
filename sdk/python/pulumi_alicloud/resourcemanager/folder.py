@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['FolderArgs', 'Folder']
 
@@ -34,6 +34,46 @@ class FolderArgs:
 
     @folder_name.setter
     def folder_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "folder_name", value)
+
+    @property
+    @pulumi.getter(name="parentFolderId")
+    def parent_folder_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the parent folder. If not set, the system default value will be used.
+        """
+        return pulumi.get(self, "parent_folder_id")
+
+    @parent_folder_id.setter
+    def parent_folder_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_folder_id", value)
+
+
+@pulumi.input_type
+class _FolderState:
+    def __init__(__self__, *,
+                 folder_name: Optional[pulumi.Input[str]] = None,
+                 parent_folder_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Folder resources.
+        :param pulumi.Input[str] folder_name: The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        :param pulumi.Input[str] parent_folder_id: The ID of the parent folder. If not set, the system default value will be used.
+        """
+        if folder_name is not None:
+            pulumi.set(__self__, "folder_name", folder_name)
+        if parent_folder_id is not None:
+            pulumi.set(__self__, "parent_folder_id", parent_folder_id)
+
+    @property
+    @pulumi.getter(name="folderName")
+    def folder_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        """
+        return pulumi.get(self, "folder_name")
+
+    @folder_name.setter
+    def folder_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "folder_name", value)
 
     @property
@@ -159,12 +199,12 @@ class Folder(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FolderArgs.__new__(FolderArgs)
 
             if folder_name is None and not opts.urn:
                 raise TypeError("Missing required property 'folder_name'")
-            __props__['folder_name'] = folder_name
-            __props__['parent_folder_id'] = parent_folder_id
+            __props__.__dict__["folder_name"] = folder_name
+            __props__.__dict__["parent_folder_id"] = parent_folder_id
         super(Folder, __self__).__init__(
             'alicloud:resourcemanager/folder:Folder',
             resource_name,
@@ -189,10 +229,10 @@ class Folder(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FolderState.__new__(_FolderState)
 
-        __props__["folder_name"] = folder_name
-        __props__["parent_folder_id"] = parent_folder_id
+        __props__.__dict__["folder_name"] = folder_name
+        __props__.__dict__["parent_folder_id"] = parent_folder_id
         return Folder(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -210,10 +250,4 @@ class Folder(pulumi.CustomResource):
         The ID of the parent folder. If not set, the system default value will be used.
         """
         return pulumi.get(self, "parent_folder_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

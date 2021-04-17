@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -47,6 +47,46 @@ class NetworkAclAttachmentArgs:
 
     @resources.setter
     def resources(self, value: pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]):
+        pulumi.set(self, "resources", value)
+
+
+@pulumi.input_type
+class _NetworkAclAttachmentState:
+    def __init__(__self__, *,
+                 network_acl_id: Optional[pulumi.Input[str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering NetworkAclAttachment resources.
+        :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        """
+        if network_acl_id is not None:
+            pulumi.set(__self__, "network_acl_id", network_acl_id)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="networkAclId")
+    def network_acl_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the network acl, the field can't be changed.
+        """
+        return pulumi.get(self, "network_acl_id")
+
+    @network_acl_id.setter
+    def network_acl_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_acl_id", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]]:
+        """
+        List of the resources associated with the network acl. The details see Block Resources.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
 
@@ -170,14 +210,14 @@ class NetworkAclAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NetworkAclAttachmentArgs.__new__(NetworkAclAttachmentArgs)
 
             if network_acl_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_acl_id'")
-            __props__['network_acl_id'] = network_acl_id
+            __props__.__dict__["network_acl_id"] = network_acl_id
             if resources is None and not opts.urn:
                 raise TypeError("Missing required property 'resources'")
-            __props__['resources'] = resources
+            __props__.__dict__["resources"] = resources
         super(NetworkAclAttachment, __self__).__init__(
             'alicloud:vpc/networkAclAttachment:NetworkAclAttachment',
             resource_name,
@@ -202,10 +242,10 @@ class NetworkAclAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NetworkAclAttachmentState.__new__(_NetworkAclAttachmentState)
 
-        __props__["network_acl_id"] = network_acl_id
-        __props__["resources"] = resources
+        __props__.__dict__["network_acl_id"] = network_acl_id
+        __props__.__dict__["resources"] = resources
         return NetworkAclAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -223,10 +263,4 @@ class NetworkAclAttachment(pulumi.CustomResource):
         List of the resources associated with the network acl. The details see Block Resources.
         """
         return pulumi.get(self, "resources")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

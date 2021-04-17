@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AttachmentArgs', 'Attachment']
 
@@ -62,6 +62,62 @@ class AttachmentArgs:
     @force.setter
     def force(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force", value)
+
+
+@pulumi.input_type
+class _AttachmentState:
+    def __init__(__self__, *,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scaling_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Attachment resources.
+        :param pulumi.Input[bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
+        :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
+        """
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if instance_ids is not None:
+            pulumi.set(__self__, "instance_ids", instance_ids)
+        if scaling_group_id is not None:
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @instance_ids.setter
+    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_ids", value)
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the scaling group of a scaling configuration.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @scaling_group_id.setter
+    def scaling_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_group_id", value)
 
 
 class Attachment(pulumi.CustomResource):
@@ -299,15 +355,15 @@ class Attachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AttachmentArgs.__new__(AttachmentArgs)
 
-            __props__['force'] = force
+            __props__.__dict__["force"] = force
             if instance_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_ids'")
-            __props__['instance_ids'] = instance_ids
+            __props__.__dict__["instance_ids"] = instance_ids
             if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
-            __props__['scaling_group_id'] = scaling_group_id
+            __props__.__dict__["scaling_group_id"] = scaling_group_id
         super(Attachment, __self__).__init__(
             'alicloud:ess/attachment:Attachment',
             resource_name,
@@ -334,11 +390,11 @@ class Attachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AttachmentState.__new__(_AttachmentState)
 
-        __props__["force"] = force
-        __props__["instance_ids"] = instance_ids
-        __props__["scaling_group_id"] = scaling_group_id
+        __props__.__dict__["force"] = force
+        __props__.__dict__["instance_ids"] = instance_ids
+        __props__.__dict__["scaling_group_id"] = scaling_group_id
         return Attachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -364,10 +420,4 @@ class Attachment(pulumi.CustomResource):
         ID of the scaling group of a scaling configuration.
         """
         return pulumi.get(self, "scaling_group_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

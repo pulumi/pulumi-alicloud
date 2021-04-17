@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ConsumerGroupArgs', 'ConsumerGroup']
 
@@ -49,6 +49,62 @@ class ConsumerGroupArgs:
 
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _ConsumerGroupState:
+    def __init__(__self__, *,
+                 consumer_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering ConsumerGroup resources.
+        :param pulumi.Input[str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
+        :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        """
+        if consumer_id is not None:
+            pulumi.set(__self__, "consumer_id", consumer_id)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="consumerId")
+    def consumer_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the consumer group. The length cannot exceed 64 characters.
+        """
+        return pulumi.get(self, "consumer_id")
+
+    @consumer_id.setter
+    def consumer_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the ALIKAFKA Instance that owns the groups.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
 
     @property
@@ -215,15 +271,15 @@ class ConsumerGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConsumerGroupArgs.__new__(ConsumerGroupArgs)
 
             if consumer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consumer_id'")
-            __props__['consumer_id'] = consumer_id
+            __props__.__dict__["consumer_id"] = consumer_id
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['tags'] = tags
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["tags"] = tags
         super(ConsumerGroup, __self__).__init__(
             'alicloud:alikafka/consumerGroup:ConsumerGroup',
             resource_name,
@@ -250,11 +306,11 @@ class ConsumerGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ConsumerGroupState.__new__(_ConsumerGroupState)
 
-        __props__["consumer_id"] = consumer_id
-        __props__["instance_id"] = instance_id
-        __props__["tags"] = tags
+        __props__.__dict__["consumer_id"] = consumer_id
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["tags"] = tags
         return ConsumerGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -280,10 +336,4 @@ class ConsumerGroup(pulumi.CustomResource):
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

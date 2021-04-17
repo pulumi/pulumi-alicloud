@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['QosCarArgs', 'QosCar']
 
@@ -175,6 +175,174 @@ class QosCarArgs:
         pulumi.set(self, "percent_source_type", value)
 
 
+@pulumi.input_type
+class _QosCarState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 limit_type: Optional[pulumi.Input[str]] = None,
+                 max_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+                 max_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+                 min_bandwidth_abs: Optional[pulumi.Input[int]] = None,
+                 min_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 percent_source_type: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 qos_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering QosCar resources.
+        :param pulumi.Input[str] description: The description of the QoS speed limiting rule.
+        :param pulumi.Input[str] limit_type: The speed limiting method. Valid values: Absolute, Percent.
+        :param pulumi.Input[int] max_bandwidth_abs: The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
+        :param pulumi.Input[int] max_bandwidth_percent: The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
+        :param pulumi.Input[int] min_bandwidth_abs: The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
+        :param pulumi.Input[int] min_bandwidth_percent: The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
+        :param pulumi.Input[str] name: The name of the QoS speed limiting rule..
+        :param pulumi.Input[str] percent_source_type: The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
+        :param pulumi.Input[int] priority: The priority of the specified stream.
+        :param pulumi.Input[str] qos_id: The instance ID of the QoS.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if limit_type is not None:
+            pulumi.set(__self__, "limit_type", limit_type)
+        if max_bandwidth_abs is not None:
+            pulumi.set(__self__, "max_bandwidth_abs", max_bandwidth_abs)
+        if max_bandwidth_percent is not None:
+            pulumi.set(__self__, "max_bandwidth_percent", max_bandwidth_percent)
+        if min_bandwidth_abs is not None:
+            pulumi.set(__self__, "min_bandwidth_abs", min_bandwidth_abs)
+        if min_bandwidth_percent is not None:
+            pulumi.set(__self__, "min_bandwidth_percent", min_bandwidth_percent)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if percent_source_type is not None:
+            pulumi.set(__self__, "percent_source_type", percent_source_type)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if qos_id is not None:
+            pulumi.set(__self__, "qos_id", qos_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the QoS speed limiting rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="limitType")
+    def limit_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The speed limiting method. Valid values: Absolute, Percent.
+        """
+        return pulumi.get(self, "limit_type")
+
+    @limit_type.setter
+    def limit_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "limit_type", value)
+
+    @property
+    @pulumi.getter(name="maxBandwidthAbs")
+    def max_bandwidth_abs(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
+        """
+        return pulumi.get(self, "max_bandwidth_abs")
+
+    @max_bandwidth_abs.setter
+    def max_bandwidth_abs(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_bandwidth_abs", value)
+
+    @property
+    @pulumi.getter(name="maxBandwidthPercent")
+    def max_bandwidth_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
+        """
+        return pulumi.get(self, "max_bandwidth_percent")
+
+    @max_bandwidth_percent.setter
+    def max_bandwidth_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_bandwidth_percent", value)
+
+    @property
+    @pulumi.getter(name="minBandwidthAbs")
+    def min_bandwidth_abs(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
+        """
+        return pulumi.get(self, "min_bandwidth_abs")
+
+    @min_bandwidth_abs.setter
+    def min_bandwidth_abs(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_bandwidth_abs", value)
+
+    @property
+    @pulumi.getter(name="minBandwidthPercent")
+    def min_bandwidth_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
+        """
+        return pulumi.get(self, "min_bandwidth_percent")
+
+    @min_bandwidth_percent.setter
+    def min_bandwidth_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_bandwidth_percent", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the QoS speed limiting rule..
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="percentSourceType")
+    def percent_source_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
+        """
+        return pulumi.get(self, "percent_source_type")
+
+    @percent_source_type.setter
+    def percent_source_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "percent_source_type", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of the specified stream.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="qosId")
+    def qos_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance ID of the QoS.
+        """
+        return pulumi.get(self, "qos_id")
+
+    @qos_id.setter
+    def qos_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "qos_id", value)
+
+
 class QosCar(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -333,24 +501,24 @@ class QosCar(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = QosCarArgs.__new__(QosCarArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if limit_type is None and not opts.urn:
                 raise TypeError("Missing required property 'limit_type'")
-            __props__['limit_type'] = limit_type
-            __props__['max_bandwidth_abs'] = max_bandwidth_abs
-            __props__['max_bandwidth_percent'] = max_bandwidth_percent
-            __props__['min_bandwidth_abs'] = min_bandwidth_abs
-            __props__['min_bandwidth_percent'] = min_bandwidth_percent
-            __props__['name'] = name
-            __props__['percent_source_type'] = percent_source_type
+            __props__.__dict__["limit_type"] = limit_type
+            __props__.__dict__["max_bandwidth_abs"] = max_bandwidth_abs
+            __props__.__dict__["max_bandwidth_percent"] = max_bandwidth_percent
+            __props__.__dict__["min_bandwidth_abs"] = min_bandwidth_abs
+            __props__.__dict__["min_bandwidth_percent"] = min_bandwidth_percent
+            __props__.__dict__["name"] = name
+            __props__.__dict__["percent_source_type"] = percent_source_type
             if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
-            __props__['priority'] = priority
+            __props__.__dict__["priority"] = priority
             if qos_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_id'")
-            __props__['qos_id'] = qos_id
+            __props__.__dict__["qos_id"] = qos_id
         super(QosCar, __self__).__init__(
             'alicloud:rocketmq/qosCar:QosCar',
             resource_name,
@@ -391,18 +559,18 @@ class QosCar(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _QosCarState.__new__(_QosCarState)
 
-        __props__["description"] = description
-        __props__["limit_type"] = limit_type
-        __props__["max_bandwidth_abs"] = max_bandwidth_abs
-        __props__["max_bandwidth_percent"] = max_bandwidth_percent
-        __props__["min_bandwidth_abs"] = min_bandwidth_abs
-        __props__["min_bandwidth_percent"] = min_bandwidth_percent
-        __props__["name"] = name
-        __props__["percent_source_type"] = percent_source_type
-        __props__["priority"] = priority
-        __props__["qos_id"] = qos_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["limit_type"] = limit_type
+        __props__.__dict__["max_bandwidth_abs"] = max_bandwidth_abs
+        __props__.__dict__["max_bandwidth_percent"] = max_bandwidth_percent
+        __props__.__dict__["min_bandwidth_abs"] = min_bandwidth_abs
+        __props__.__dict__["min_bandwidth_percent"] = min_bandwidth_percent
+        __props__.__dict__["name"] = name
+        __props__.__dict__["percent_source_type"] = percent_source_type
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["qos_id"] = qos_id
         return QosCar(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -484,10 +652,4 @@ class QosCar(pulumi.CustomResource):
         The instance ID of the QoS.
         """
         return pulumi.get(self, "qos_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

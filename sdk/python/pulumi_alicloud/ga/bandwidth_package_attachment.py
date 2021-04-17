@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['BandwidthPackageAttachmentArgs', 'BandwidthPackageAttachment']
 
@@ -46,6 +46,78 @@ class BandwidthPackageAttachmentArgs:
     @bandwidth_package_id.setter
     def bandwidth_package_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "bandwidth_package_id", value)
+
+
+@pulumi.input_type
+class _BandwidthPackageAttachmentState:
+    def __init__(__self__, *,
+                 accelerator_id: Optional[pulumi.Input[str]] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering BandwidthPackageAttachment resources.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] accelerators: Accelerators bound with current Bandwidth Package.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth plan to disassociate.
+        :param pulumi.Input[str] status: State of Bandwidth Package.
+        """
+        if accelerator_id is not None:
+            pulumi.set(__self__, "accelerator_id", accelerator_id)
+        if accelerators is not None:
+            pulumi.set(__self__, "accelerators", accelerators)
+        if bandwidth_package_id is not None:
+            pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @accelerator_id.setter
+    def accelerator_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_id", value)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Accelerators bound with current Bandwidth Package.
+        """
+        return pulumi.get(self, "accelerators")
+
+    @accelerators.setter
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "accelerators", value)
+
+    @property
+    @pulumi.getter(name="bandwidthPackageId")
+    def bandwidth_package_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the bandwidth plan to disassociate.
+        """
+        return pulumi.get(self, "bandwidth_package_id")
+
+    @bandwidth_package_id.setter
+    def bandwidth_package_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth_package_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of Bandwidth Package.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class BandwidthPackageAttachment(pulumi.CustomResource):
@@ -182,16 +254,16 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BandwidthPackageAttachmentArgs.__new__(BandwidthPackageAttachmentArgs)
 
             if accelerator_id is None and not opts.urn:
                 raise TypeError("Missing required property 'accelerator_id'")
-            __props__['accelerator_id'] = accelerator_id
+            __props__.__dict__["accelerator_id"] = accelerator_id
             if bandwidth_package_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth_package_id'")
-            __props__['bandwidth_package_id'] = bandwidth_package_id
-            __props__['accelerators'] = None
-            __props__['status'] = None
+            __props__.__dict__["bandwidth_package_id"] = bandwidth_package_id
+            __props__.__dict__["accelerators"] = None
+            __props__.__dict__["status"] = None
         super(BandwidthPackageAttachment, __self__).__init__(
             'alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment',
             resource_name,
@@ -220,12 +292,12 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BandwidthPackageAttachmentState.__new__(_BandwidthPackageAttachmentState)
 
-        __props__["accelerator_id"] = accelerator_id
-        __props__["accelerators"] = accelerators
-        __props__["bandwidth_package_id"] = bandwidth_package_id
-        __props__["status"] = status
+        __props__.__dict__["accelerator_id"] = accelerator_id
+        __props__.__dict__["accelerators"] = accelerators
+        __props__.__dict__["bandwidth_package_id"] = bandwidth_package_id
+        __props__.__dict__["status"] = status
         return BandwidthPackageAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -259,10 +331,4 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         State of Bandwidth Package.
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

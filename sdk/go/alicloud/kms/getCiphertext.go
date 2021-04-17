@@ -4,7 +4,7 @@
 package kms
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupCiphertext(ctx *pulumi.Context, args *LookupCiphertextArgs, opts ...pulumi.InvokeOption) (*LookupCiphertextResult, error) {

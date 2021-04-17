@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ResourceShareArgs', 'ResourceShare']
 
@@ -31,6 +31,62 @@ class ResourceShareArgs:
     @resource_share_name.setter
     def resource_share_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_share_name", value)
+
+
+@pulumi.input_type
+class _ResourceShareState:
+    def __init__(__self__, *,
+                 resource_share_name: Optional[pulumi.Input[str]] = None,
+                 resource_share_owner: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ResourceShare resources.
+        :param pulumi.Input[str] resource_share_name: The name of resource share.
+        :param pulumi.Input[str] resource_share_owner: The owner of resource share.
+        :param pulumi.Input[str] status: The status of resource share.
+        """
+        if resource_share_name is not None:
+            pulumi.set(__self__, "resource_share_name", resource_share_name)
+        if resource_share_owner is not None:
+            pulumi.set(__self__, "resource_share_owner", resource_share_owner)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="resourceShareName")
+    def resource_share_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of resource share.
+        """
+        return pulumi.get(self, "resource_share_name")
+
+    @resource_share_name.setter
+    def resource_share_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_share_name", value)
+
+    @property
+    @pulumi.getter(name="resourceShareOwner")
+    def resource_share_owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of resource share.
+        """
+        return pulumi.get(self, "resource_share_owner")
+
+    @resource_share_owner.setter
+    def resource_share_owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_share_owner", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of resource share.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class ResourceShare(pulumi.CustomResource):
@@ -138,13 +194,13 @@ class ResourceShare(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ResourceShareArgs.__new__(ResourceShareArgs)
 
             if resource_share_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_share_name'")
-            __props__['resource_share_name'] = resource_share_name
-            __props__['resource_share_owner'] = None
-            __props__['status'] = None
+            __props__.__dict__["resource_share_name"] = resource_share_name
+            __props__.__dict__["resource_share_owner"] = None
+            __props__.__dict__["status"] = None
         super(ResourceShare, __self__).__init__(
             'alicloud:resourcemanager/resourceShare:ResourceShare',
             resource_name,
@@ -171,11 +227,11 @@ class ResourceShare(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ResourceShareState.__new__(_ResourceShareState)
 
-        __props__["resource_share_name"] = resource_share_name
-        __props__["resource_share_owner"] = resource_share_owner
-        __props__["status"] = status
+        __props__.__dict__["resource_share_name"] = resource_share_name
+        __props__.__dict__["resource_share_owner"] = resource_share_owner
+        __props__.__dict__["status"] = status
         return ResourceShare(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -201,10 +257,4 @@ class ResourceShare(pulumi.CustomResource):
         The status of resource share.
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

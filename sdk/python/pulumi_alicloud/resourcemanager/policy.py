@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['PolicyArgs', 'Policy']
 
@@ -81,6 +81,97 @@ class PolicyArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class _PolicyState:
+    def __init__(__self__, *,
+                 default_version: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 policy_document: Optional[pulumi.Input[str]] = None,
+                 policy_name: Optional[pulumi.Input[str]] = None,
+                 policy_type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Policy resources.
+        :param pulumi.Input[str] default_version: The version of the policy. Default to v1.
+        :param pulumi.Input[str] description: The description of the policy. The description must be 1 to 1,024 characters in length.
+        :param pulumi.Input[str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
+        :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] policy_type: The type of the policy. Valid values: `Custom`, `System`.
+        """
+        if default_version is not None:
+            warnings.warn("""Field 'default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
+            pulumi.log.warn("""default_version is deprecated: Field 'default_version' has been deprecated from provider version 1.90.0""")
+        if default_version is not None:
+            pulumi.set(__self__, "default_version", default_version)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if policy_document is not None:
+            pulumi.set(__self__, "policy_document", policy_document)
+        if policy_name is not None:
+            pulumi.set(__self__, "policy_name", policy_name)
+        if policy_type is not None:
+            pulumi.set(__self__, "policy_type", policy_type)
+
+    @property
+    @pulumi.getter(name="defaultVersion")
+    def default_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the policy. Default to v1.
+        """
+        return pulumi.get(self, "default_version")
+
+    @default_version.setter
+    def default_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_version", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the policy. The description must be 1 to 1,024 characters in length.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="policyDocument")
+    def policy_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content of the policy. The content must be 1 to 2,048 characters in length.
+        """
+        return pulumi.get(self, "policy_document")
+
+    @policy_document.setter
+    def policy_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_document", value)
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        """
+        return pulumi.get(self, "policy_name")
+
+    @policy_name.setter
+    def policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_name", value)
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the policy. Valid values: `Custom`, `System`.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @policy_type.setter
+    def policy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_type", value)
 
 
 class Policy(pulumi.CustomResource):
@@ -217,20 +308,20 @@ class Policy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PolicyArgs.__new__(PolicyArgs)
 
             if default_version is not None and not opts.urn:
                 warnings.warn("""Field 'default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
                 pulumi.log.warn("""default_version is deprecated: Field 'default_version' has been deprecated from provider version 1.90.0""")
-            __props__['default_version'] = default_version
-            __props__['description'] = description
+            __props__.__dict__["default_version"] = default_version
+            __props__.__dict__["description"] = description
             if policy_document is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_document'")
-            __props__['policy_document'] = policy_document
+            __props__.__dict__["policy_document"] = policy_document
             if policy_name is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_name'")
-            __props__['policy_name'] = policy_name
-            __props__['policy_type'] = None
+            __props__.__dict__["policy_name"] = policy_name
+            __props__.__dict__["policy_type"] = None
         super(Policy, __self__).__init__(
             'alicloud:resourcemanager/policy:Policy',
             resource_name,
@@ -261,13 +352,13 @@ class Policy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PolicyState.__new__(_PolicyState)
 
-        __props__["default_version"] = default_version
-        __props__["description"] = description
-        __props__["policy_document"] = policy_document
-        __props__["policy_name"] = policy_name
-        __props__["policy_type"] = policy_type
+        __props__.__dict__["default_version"] = default_version
+        __props__.__dict__["description"] = description
+        __props__.__dict__["policy_document"] = policy_document
+        __props__.__dict__["policy_name"] = policy_name
+        __props__.__dict__["policy_type"] = policy_type
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -309,10 +400,4 @@ class Policy(pulumi.CustomResource):
         The type of the policy. Valid values: `Custom`, `System`.
         """
         return pulumi.get(self, "policy_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

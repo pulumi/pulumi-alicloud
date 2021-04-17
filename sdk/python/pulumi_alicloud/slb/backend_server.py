@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -65,6 +65,62 @@ class BackendServerArgs:
     @delete_protection_validation.setter
     def delete_protection_validation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "delete_protection_validation", value)
+
+
+@pulumi.input_type
+class _BackendServerState:
+    def __init__(__self__, *,
+                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
+                 delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+                 load_balancer_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering BackendServer resources.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[str] load_balancer_id: ID of the load balancer.
+        """
+        if backend_servers is not None:
+            pulumi.set(__self__, "backend_servers", backend_servers)
+        if delete_protection_validation is not None:
+            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+        if load_balancer_id is not None:
+            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+
+    @property
+    @pulumi.getter(name="backendServers")
+    def backend_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]:
+        """
+        A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+        """
+        return pulumi.get(self, "backend_servers")
+
+    @backend_servers.setter
+    def backend_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]):
+        pulumi.set(self, "backend_servers", value)
+
+    @property
+    @pulumi.getter(name="deleteProtectionValidation")
+    def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        """
+        return pulumi.get(self, "delete_protection_validation")
+
+    @delete_protection_validation.setter
+    def delete_protection_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_protection_validation", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the load balancer.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @load_balancer_id.setter
+    def load_balancer_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_id", value)
 
 
 class BackendServer(pulumi.CustomResource):
@@ -278,13 +334,13 @@ class BackendServer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BackendServerArgs.__new__(BackendServerArgs)
 
-            __props__['backend_servers'] = backend_servers
-            __props__['delete_protection_validation'] = delete_protection_validation
+            __props__.__dict__["backend_servers"] = backend_servers
+            __props__.__dict__["delete_protection_validation"] = delete_protection_validation
             if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
-            __props__['load_balancer_id'] = load_balancer_id
+            __props__.__dict__["load_balancer_id"] = load_balancer_id
         super(BackendServer, __self__).__init__(
             'alicloud:slb/backendServer:BackendServer',
             resource_name,
@@ -311,11 +367,11 @@ class BackendServer(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BackendServerState.__new__(_BackendServerState)
 
-        __props__["backend_servers"] = backend_servers
-        __props__["delete_protection_validation"] = delete_protection_validation
-        __props__["load_balancer_id"] = load_balancer_id
+        __props__.__dict__["backend_servers"] = backend_servers
+        __props__.__dict__["delete_protection_validation"] = delete_protection_validation
+        __props__.__dict__["load_balancer_id"] = load_balancer_id
         return BackendServer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -341,10 +397,4 @@ class BackendServer(pulumi.CustomResource):
         ID of the load balancer.
         """
         return pulumi.get(self, "load_balancer_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

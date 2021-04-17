@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -22,6 +22,27 @@ __all__ = [
 
 @pulumi.output_type
 class AlertNotificationList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailLists":
+            suggest = "email_lists"
+        elif key == "mobileLists":
+            suggest = "mobile_lists"
+        elif key == "serviceUri":
+            suggest = "service_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertNotificationList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertNotificationList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertNotificationList.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content: str,
                  type: str,
@@ -84,12 +105,28 @@ class AlertNotificationList(dict):
         """
         return pulumi.get(self, "service_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AlertQueryList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chartTitle":
+            suggest = "chart_title"
+        elif key == "timeSpanType":
+            suggest = "time_span_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertQueryList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertQueryList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertQueryList.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  chart_title: str,
                  end: str,
@@ -161,12 +198,34 @@ class AlertQueryList(dict):
         """
         return pulumi.get(self, "time_span_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EtlEtlSink(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "accessKeySecret":
+            suggest = "access_key_secret"
+        elif key == "kmsEncryptedAccessKeyId":
+            suggest = "kms_encrypted_access_key_id"
+        elif key == "kmsEncryptedAccessKeySecret":
+            suggest = "kms_encrypted_access_key_secret"
+        elif key == "roleArn":
+            suggest = "role_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EtlEtlSink. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EtlEtlSink.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EtlEtlSink.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  endpoint: str,
                  logstore: str,
@@ -287,9 +346,6 @@ class EtlEtlSink(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OssShipperParquetConfig(dict):
@@ -309,12 +365,32 @@ class OssShipperParquetConfig(dict):
     def type(self) -> str:
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StoreIndexFieldSearch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caseSensitive":
+            suggest = "case_sensitive"
+        elif key == "enableAnalytics":
+            suggest = "enable_analytics"
+        elif key == "includeChinese":
+            suggest = "include_chinese"
+        elif key == "jsonKeys":
+            suggest = "json_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StoreIndexFieldSearch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StoreIndexFieldSearch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StoreIndexFieldSearch.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  alias: Optional[str] = None,
@@ -414,12 +490,26 @@ class StoreIndexFieldSearch(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StoreIndexFieldSearchJsonKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "docValue":
+            suggest = "doc_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StoreIndexFieldSearchJsonKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StoreIndexFieldSearchJsonKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StoreIndexFieldSearchJsonKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  alias: Optional[str] = None,
@@ -471,12 +561,28 @@ class StoreIndexFieldSearchJsonKey(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StoreIndexFullText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caseSensitive":
+            suggest = "case_sensitive"
+        elif key == "includeChinese":
+            suggest = "include_chinese"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StoreIndexFullText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StoreIndexFullText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StoreIndexFullText.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  case_sensitive: Optional[bool] = None,
                  include_chinese: Optional[bool] = None,
@@ -517,12 +623,28 @@ class StoreIndexFullText(dict):
         """
         return pulumi.get(self, "token")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StoreShard(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "beginKey":
+            suggest = "begin_key"
+        elif key == "endKey":
+            suggest = "end_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StoreShard. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StoreShard.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StoreShard.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  begin_key: Optional[str] = None,
                  end_key: Optional[str] = None,
@@ -562,8 +684,5 @@ class StoreShard(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         return pulumi.get(self, "status")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

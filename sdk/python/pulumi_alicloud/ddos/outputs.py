@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'SchedulerRuleRule',
@@ -16,6 +16,25 @@ __all__ = [
 
 @pulumi.output_type
 class SchedulerRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "regionId":
+            suggest = "region_id"
+        elif key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchedulerRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchedulerRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchedulerRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  priority: Optional[int] = None,
                  region_id: Optional[str] = None,
@@ -65,9 +84,6 @@ class SchedulerRuleRule(dict):
     @pulumi.getter(name="valueType")
     def value_type(self) -> Optional[int]:
         return pulumi.get(self, "value_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

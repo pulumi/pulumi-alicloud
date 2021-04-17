@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['NetworkArgs', 'Network']
 
@@ -67,6 +67,78 @@ class NetworkArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _NetworkState:
+    def __init__(__self__, *,
+                 cidr_block: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 is_default: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Network resources.
+        :param pulumi.Input[str] cidr_block: The CidrBlock of the CCN instance. Defaults to null.
+        :param pulumi.Input[str] description: The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
+        :param pulumi.Input[bool] is_default: Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
+        :param pulumi.Input[str] name: The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        """
+        if cidr_block is not None:
+            pulumi.set(__self__, "cidr_block", cidr_block)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CidrBlock of the CCN instance. Defaults to null.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default", value)
 
     @property
     @pulumi.getter
@@ -205,14 +277,14 @@ class Network(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NetworkArgs.__new__(NetworkArgs)
 
-            __props__['cidr_block'] = cidr_block
-            __props__['description'] = description
+            __props__.__dict__["cidr_block"] = cidr_block
+            __props__.__dict__["description"] = description
             if is_default is None and not opts.urn:
                 raise TypeError("Missing required property 'is_default'")
-            __props__['is_default'] = is_default
-            __props__['name'] = name
+            __props__.__dict__["is_default"] = is_default
+            __props__.__dict__["name"] = name
         super(Network, __self__).__init__(
             'alicloud:cloudconnect/network:Network',
             resource_name,
@@ -241,12 +313,12 @@ class Network(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NetworkState.__new__(_NetworkState)
 
-        __props__["cidr_block"] = cidr_block
-        __props__["description"] = description
-        __props__["is_default"] = is_default
-        __props__["name"] = name
+        __props__.__dict__["cidr_block"] = cidr_block
+        __props__.__dict__["description"] = description
+        __props__.__dict__["is_default"] = is_default
+        __props__.__dict__["name"] = name
         return Network(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -280,10 +352,4 @@ class Network(pulumi.CustomResource):
         The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

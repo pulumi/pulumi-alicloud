@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['IpSetArgs', 'IpSet']
 
@@ -78,6 +78,110 @@ class IpSetArgs:
     @ip_version.setter
     def ip_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_version", value)
+
+
+@pulumi.input_type
+class _IpSetState:
+    def __init__(__self__, *,
+                 accelerate_region_id: Optional[pulumi.Input[str]] = None,
+                 accelerator_id: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 ip_address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering IpSet resources.
+        :param pulumi.Input[str] accelerate_region_id: The ID of an acceleration region.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator (GA) instance.
+        :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_address_lists: The list of accelerated IP addresses in the acceleration region.
+        :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        :param pulumi.Input[str] status: The status of the acceleration region.
+        """
+        if accelerate_region_id is not None:
+            pulumi.set(__self__, "accelerate_region_id", accelerate_region_id)
+        if accelerator_id is not None:
+            pulumi.set(__self__, "accelerator_id", accelerator_id)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if ip_address_lists is not None:
+            pulumi.set(__self__, "ip_address_lists", ip_address_lists)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accelerateRegionId")
+    def accelerate_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of an acceleration region.
+        """
+        return pulumi.get(self, "accelerate_region_id")
+
+    @accelerate_region_id.setter
+    def accelerate_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerate_region_id", value)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Global Accelerator (GA) instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @accelerator_id.setter
+    def accelerator_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_id", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The bandwidth allocated to the acceleration region.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="ipAddressLists")
+    def ip_address_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of accelerated IP addresses in the acceleration region.
+        """
+        return pulumi.get(self, "ip_address_lists")
+
+    @ip_address_lists.setter
+    def ip_address_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_address_lists", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the acceleration region.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class IpSet(pulumi.CustomResource):
@@ -230,18 +334,18 @@ class IpSet(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IpSetArgs.__new__(IpSetArgs)
 
             if accelerate_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'accelerate_region_id'")
-            __props__['accelerate_region_id'] = accelerate_region_id
+            __props__.__dict__["accelerate_region_id"] = accelerate_region_id
             if accelerator_id is None and not opts.urn:
                 raise TypeError("Missing required property 'accelerator_id'")
-            __props__['accelerator_id'] = accelerator_id
-            __props__['bandwidth'] = bandwidth
-            __props__['ip_version'] = ip_version
-            __props__['ip_address_lists'] = None
-            __props__['status'] = None
+            __props__.__dict__["accelerator_id"] = accelerator_id
+            __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["ip_version"] = ip_version
+            __props__.__dict__["ip_address_lists"] = None
+            __props__.__dict__["status"] = None
         super(IpSet, __self__).__init__(
             'alicloud:ga/ipSet:IpSet',
             resource_name,
@@ -274,14 +378,14 @@ class IpSet(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _IpSetState.__new__(_IpSetState)
 
-        __props__["accelerate_region_id"] = accelerate_region_id
-        __props__["accelerator_id"] = accelerator_id
-        __props__["bandwidth"] = bandwidth
-        __props__["ip_address_lists"] = ip_address_lists
-        __props__["ip_version"] = ip_version
-        __props__["status"] = status
+        __props__.__dict__["accelerate_region_id"] = accelerate_region_id
+        __props__.__dict__["accelerator_id"] = accelerator_id
+        __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["ip_address_lists"] = ip_address_lists
+        __props__.__dict__["ip_version"] = ip_version
+        __props__.__dict__["status"] = status
         return IpSet(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -331,10 +435,4 @@ class IpSet(pulumi.CustomResource):
         The status of the acceleration region.
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

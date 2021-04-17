@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['DatabaseArgs', 'Database']
 
@@ -78,6 +78,78 @@ class DatabaseArgs:
     @db_description.setter
     def db_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_description", value)
+
+
+@pulumi.input_type
+class _DatabaseState:
+    def __init__(__self__, *,
+                 character_set_name: Optional[pulumi.Input[str]] = None,
+                 db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 db_description: Optional[pulumi.Input[str]] = None,
+                 db_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Database resources.
+        :param pulumi.Input[str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
+        :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
+        :param pulumi.Input[str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+        :param pulumi.Input[str] db_name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        """
+        if character_set_name is not None:
+            pulumi.set(__self__, "character_set_name", character_set_name)
+        if db_cluster_id is not None:
+            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if db_description is not None:
+            pulumi.set(__self__, "db_description", db_description)
+        if db_name is not None:
+            pulumi.set(__self__, "db_name", db_name)
+
+    @property
+    @pulumi.getter(name="characterSetName")
+    def character_set_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
+        """
+        return pulumi.get(self, "character_set_name")
+
+    @character_set_name.setter
+    def character_set_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "character_set_name", value)
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of cluster that can run database.
+        """
+        return pulumi.get(self, "db_cluster_id")
+
+    @db_cluster_id.setter
+    def db_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="dbDescription")
+    def db_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+        """
+        return pulumi.get(self, "db_description")
+
+    @db_description.setter
+    def db_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_description", value)
+
+    @property
+    @pulumi.getter(name="dbName")
+    def db_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        """
+        return pulumi.get(self, "db_name")
+
+    @db_name.setter
+    def db_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_name", value)
 
 
 class Database(pulumi.CustomResource):
@@ -230,16 +302,16 @@ class Database(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
-            __props__['character_set_name'] = character_set_name
+            __props__.__dict__["character_set_name"] = character_set_name
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
-            __props__['db_cluster_id'] = db_cluster_id
-            __props__['db_description'] = db_description
+            __props__.__dict__["db_cluster_id"] = db_cluster_id
+            __props__.__dict__["db_description"] = db_description
             if db_name is None and not opts.urn:
                 raise TypeError("Missing required property 'db_name'")
-            __props__['db_name'] = db_name
+            __props__.__dict__["db_name"] = db_name
         super(Database, __self__).__init__(
             'alicloud:polardb/database:Database',
             resource_name,
@@ -268,12 +340,12 @@ class Database(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseState.__new__(_DatabaseState)
 
-        __props__["character_set_name"] = character_set_name
-        __props__["db_cluster_id"] = db_cluster_id
-        __props__["db_description"] = db_description
-        __props__["db_name"] = db_name
+        __props__.__dict__["character_set_name"] = character_set_name
+        __props__.__dict__["db_cluster_id"] = db_cluster_id
+        __props__.__dict__["db_description"] = db_description
+        __props__.__dict__["db_name"] = db_name
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -307,10 +379,4 @@ class Database(pulumi.CustomResource):
         Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         """
         return pulumi.get(self, "db_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -87,6 +87,113 @@ class InstanceArgs:
     @protection_level.setter
     def protection_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protection_level", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 cen_instance_name: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protection_level: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] cen_instance_name: The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+        :param pulumi.Input[str] protection_level: Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        :param pulumi.Input[str] status: The Cen Instance current status.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        """
+        if cen_instance_name is not None:
+            pulumi.set(__self__, "cen_instance_name", cen_instance_name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protection_level is not None:
+            pulumi.set(__self__, "protection_level", protection_level)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="cenInstanceName")
+    def cen_instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "cen_instance_name")
+
+    @cen_instance_name.setter
+    def cen_instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cen_instance_name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="protectionLevel")
+    def protection_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        """
+        return pulumi.get(self, "protection_level")
+
+    @protection_level.setter
+    def protection_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protection_level", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cen Instance current status.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -218,17 +325,17 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__['cen_instance_name'] = cen_instance_name
-            __props__['description'] = description
+            __props__.__dict__["cen_instance_name"] = cen_instance_name
+            __props__.__dict__["description"] = description
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
-            __props__['name'] = name
-            __props__['protection_level'] = protection_level
-            __props__['tags'] = tags
-            __props__['status'] = None
+            __props__.__dict__["name"] = name
+            __props__.__dict__["protection_level"] = protection_level
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'alicloud:cen/instance:Instance',
             resource_name,
@@ -261,14 +368,14 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__["cen_instance_name"] = cen_instance_name
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["protection_level"] = protection_level
-        __props__["status"] = status
-        __props__["tags"] = tags
+        __props__.__dict__["cen_instance_name"] = cen_instance_name
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["protection_level"] = protection_level
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -318,10 +425,4 @@ class Instance(pulumi.CustomResource):
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

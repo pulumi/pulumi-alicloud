@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['KeyVersionArgs', 'KeyVersion']
 
@@ -31,6 +31,62 @@ class KeyVersionArgs:
     @key_id.setter
     def key_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_id", value)
+
+
+@pulumi.input_type
+class _KeyVersionState:
+    def __init__(__self__, *,
+                 creation_date: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 key_version_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering KeyVersion resources.
+        :param pulumi.Input[str] creation_date: The date and time (UTC time) when the Alikms key version was created.
+        :param pulumi.Input[str] key_id: The id of the master key (CMK).
+        :param pulumi.Input[str] key_version_id: The id of the Alikms key version.
+        """
+        if creation_date is not None:
+            pulumi.set(__self__, "creation_date", creation_date)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if key_version_id is not None:
+            pulumi.set(__self__, "key_version_id", key_version_id)
+
+    @property
+    @pulumi.getter(name="creationDate")
+    def creation_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time (UTC time) when the Alikms key version was created.
+        """
+        return pulumi.get(self, "creation_date")
+
+    @creation_date.setter
+    def creation_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_date", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the master key (CMK).
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="keyVersionId")
+    def key_version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the Alikms key version.
+        """
+        return pulumi.get(self, "key_version_id")
+
+    @key_version_id.setter
+    def key_version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_version_id", value)
 
 
 class KeyVersion(pulumi.CustomResource):
@@ -136,13 +192,13 @@ class KeyVersion(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KeyVersionArgs.__new__(KeyVersionArgs)
 
             if key_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_id'")
-            __props__['key_id'] = key_id
-            __props__['creation_date'] = None
-            __props__['key_version_id'] = None
+            __props__.__dict__["key_id"] = key_id
+            __props__.__dict__["creation_date"] = None
+            __props__.__dict__["key_version_id"] = None
         super(KeyVersion, __self__).__init__(
             'alicloud:kms/keyVersion:KeyVersion',
             resource_name,
@@ -169,11 +225,11 @@ class KeyVersion(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _KeyVersionState.__new__(_KeyVersionState)
 
-        __props__["creation_date"] = creation_date
-        __props__["key_id"] = key_id
-        __props__["key_version_id"] = key_version_id
+        __props__.__dict__["creation_date"] = creation_date
+        __props__.__dict__["key_id"] = key_id
+        __props__.__dict__["key_version_id"] = key_version_id
         return KeyVersion(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -199,10 +255,4 @@ class KeyVersion(pulumi.CustomResource):
         The id of the Alikms key version.
         """
         return pulumi.get(self, "key_version_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

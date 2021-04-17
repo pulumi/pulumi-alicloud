@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ScheduleArgs', 'Schedule']
 
@@ -28,6 +28,170 @@ class ScheduleArgs:
                  task_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Schedule resource.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if desired_capacity is not None:
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if launch_expiration_time is not None:
+            pulumi.set(__self__, "launch_expiration_time", launch_expiration_time)
+        if launch_time is not None:
+            pulumi.set(__self__, "launch_time", launch_time)
+        if max_value is not None:
+            pulumi.set(__self__, "max_value", max_value)
+        if min_value is not None:
+            pulumi.set(__self__, "min_value", min_value)
+        if recurrence_end_time is not None:
+            pulumi.set(__self__, "recurrence_end_time", recurrence_end_time)
+        if recurrence_type is not None:
+            pulumi.set(__self__, "recurrence_type", recurrence_type)
+        if recurrence_value is not None:
+            pulumi.set(__self__, "recurrence_value", recurrence_value)
+        if scaling_group_id is not None:
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if scheduled_action is not None:
+            pulumi.set(__self__, "scheduled_action", scheduled_action)
+        if scheduled_task_name is not None:
+            pulumi.set(__self__, "scheduled_task_name", scheduled_task_name)
+        if task_enabled is not None:
+            pulumi.set(__self__, "task_enabled", task_enabled)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="desiredCapacity")
+    def desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "desired_capacity")
+
+    @desired_capacity.setter
+    def desired_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="launchExpirationTime")
+    def launch_expiration_time(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "launch_expiration_time")
+
+    @launch_expiration_time.setter
+    def launch_expiration_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "launch_expiration_time", value)
+
+    @property
+    @pulumi.getter(name="launchTime")
+    def launch_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "launch_time")
+
+    @launch_time.setter
+    def launch_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "launch_time", value)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_value")
+
+    @max_value.setter
+    def max_value(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_value", value)
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_value")
+
+    @min_value.setter
+    def min_value(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_value", value)
+
+    @property
+    @pulumi.getter(name="recurrenceEndTime")
+    def recurrence_end_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recurrence_end_time")
+
+    @recurrence_end_time.setter
+    def recurrence_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recurrence_end_time", value)
+
+    @property
+    @pulumi.getter(name="recurrenceType")
+    def recurrence_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recurrence_type")
+
+    @recurrence_type.setter
+    def recurrence_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recurrence_type", value)
+
+    @property
+    @pulumi.getter(name="recurrenceValue")
+    def recurrence_value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recurrence_value")
+
+    @recurrence_value.setter
+    def recurrence_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recurrence_value", value)
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scaling_group_id")
+
+    @scaling_group_id.setter
+    def scaling_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_group_id", value)
+
+    @property
+    @pulumi.getter(name="scheduledAction")
+    def scheduled_action(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scheduled_action")
+
+    @scheduled_action.setter
+    def scheduled_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheduled_action", value)
+
+    @property
+    @pulumi.getter(name="scheduledTaskName")
+    def scheduled_task_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scheduled_task_name")
+
+    @scheduled_task_name.setter
+    def scheduled_task_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheduled_task_name", value)
+
+    @property
+    @pulumi.getter(name="taskEnabled")
+    def task_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "task_enabled")
+
+    @task_enabled.setter
+    def task_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "task_enabled", value)
+
+
+@pulumi.input_type
+class _ScheduleState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 launch_expiration_time: Optional[pulumi.Input[int]] = None,
+                 launch_time: Optional[pulumi.Input[str]] = None,
+                 max_value: Optional[pulumi.Input[int]] = None,
+                 min_value: Optional[pulumi.Input[int]] = None,
+                 recurrence_end_time: Optional[pulumi.Input[str]] = None,
+                 recurrence_type: Optional[pulumi.Input[str]] = None,
+                 recurrence_value: Optional[pulumi.Input[str]] = None,
+                 scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 scheduled_action: Optional[pulumi.Input[str]] = None,
+                 scheduled_task_name: Optional[pulumi.Input[str]] = None,
+                 task_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering Schedule resources.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -254,21 +418,21 @@ class Schedule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ScheduleArgs.__new__(ScheduleArgs)
 
-            __props__['description'] = description
-            __props__['desired_capacity'] = desired_capacity
-            __props__['launch_expiration_time'] = launch_expiration_time
-            __props__['launch_time'] = launch_time
-            __props__['max_value'] = max_value
-            __props__['min_value'] = min_value
-            __props__['recurrence_end_time'] = recurrence_end_time
-            __props__['recurrence_type'] = recurrence_type
-            __props__['recurrence_value'] = recurrence_value
-            __props__['scaling_group_id'] = scaling_group_id
-            __props__['scheduled_action'] = scheduled_action
-            __props__['scheduled_task_name'] = scheduled_task_name
-            __props__['task_enabled'] = task_enabled
+            __props__.__dict__["description"] = description
+            __props__.__dict__["desired_capacity"] = desired_capacity
+            __props__.__dict__["launch_expiration_time"] = launch_expiration_time
+            __props__.__dict__["launch_time"] = launch_time
+            __props__.__dict__["max_value"] = max_value
+            __props__.__dict__["min_value"] = min_value
+            __props__.__dict__["recurrence_end_time"] = recurrence_end_time
+            __props__.__dict__["recurrence_type"] = recurrence_type
+            __props__.__dict__["recurrence_value"] = recurrence_value
+            __props__.__dict__["scaling_group_id"] = scaling_group_id
+            __props__.__dict__["scheduled_action"] = scheduled_action
+            __props__.__dict__["scheduled_task_name"] = scheduled_task_name
+            __props__.__dict__["task_enabled"] = task_enabled
         super(Schedule, __self__).__init__(
             'alicloud:ess/schedule:Schedule',
             resource_name,
@@ -302,21 +466,21 @@ class Schedule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ScheduleState.__new__(_ScheduleState)
 
-        __props__["description"] = description
-        __props__["desired_capacity"] = desired_capacity
-        __props__["launch_expiration_time"] = launch_expiration_time
-        __props__["launch_time"] = launch_time
-        __props__["max_value"] = max_value
-        __props__["min_value"] = min_value
-        __props__["recurrence_end_time"] = recurrence_end_time
-        __props__["recurrence_type"] = recurrence_type
-        __props__["recurrence_value"] = recurrence_value
-        __props__["scaling_group_id"] = scaling_group_id
-        __props__["scheduled_action"] = scheduled_action
-        __props__["scheduled_task_name"] = scheduled_task_name
-        __props__["task_enabled"] = task_enabled
+        __props__.__dict__["description"] = description
+        __props__.__dict__["desired_capacity"] = desired_capacity
+        __props__.__dict__["launch_expiration_time"] = launch_expiration_time
+        __props__.__dict__["launch_time"] = launch_time
+        __props__.__dict__["max_value"] = max_value
+        __props__.__dict__["min_value"] = min_value
+        __props__.__dict__["recurrence_end_time"] = recurrence_end_time
+        __props__.__dict__["recurrence_type"] = recurrence_type
+        __props__.__dict__["recurrence_value"] = recurrence_value
+        __props__.__dict__["scaling_group_id"] = scaling_group_id
+        __props__.__dict__["scheduled_action"] = scheduled_action
+        __props__.__dict__["scheduled_task_name"] = scheduled_task_name
+        __props__.__dict__["task_enabled"] = task_enabled
         return Schedule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -383,10 +547,4 @@ class Schedule(pulumi.CustomResource):
     @pulumi.getter(name="taskEnabled")
     def task_enabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "task_enabled")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

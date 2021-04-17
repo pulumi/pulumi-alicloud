@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -95,6 +95,110 @@ class RepoArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _RepoState:
+    def __init__(__self__, *,
+                 detail: Optional[pulumi.Input[str]] = None,
+                 domain_list: Optional[pulumi.Input['RepoDomainListArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 repo_type: Optional[pulumi.Input[str]] = None,
+                 summary: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Repo resources.
+        :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
+        :param pulumi.Input['RepoDomainListArgs'] domain_list: The repository domain list.
+        :param pulumi.Input[str] name: Name of container registry repository.
+        :param pulumi.Input[str] namespace: Name of container registry namespace where repository is located.
+        :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
+        :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 80 characters.
+        """
+        if detail is not None:
+            pulumi.set(__self__, "detail", detail)
+        if domain_list is not None:
+            pulumi.set(__self__, "domain_list", domain_list)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if repo_type is not None:
+            pulumi.set(__self__, "repo_type", repo_type)
+        if summary is not None:
+            pulumi.set(__self__, "summary", summary)
+
+    @property
+    @pulumi.getter
+    def detail(self) -> Optional[pulumi.Input[str]]:
+        """
+        The repository specific information. MarkDown format is supported, and the length limit is 2000.
+        """
+        return pulumi.get(self, "detail")
+
+    @detail.setter
+    def detail(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "detail", value)
+
+    @property
+    @pulumi.getter(name="domainList")
+    def domain_list(self) -> Optional[pulumi.Input['RepoDomainListArgs']]:
+        """
+        The repository domain list.
+        """
+        return pulumi.get(self, "domain_list")
+
+    @domain_list.setter
+    def domain_list(self, value: Optional[pulumi.Input['RepoDomainListArgs']]):
+        pulumi.set(self, "domain_list", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of container registry repository.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of container registry namespace where repository is located.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        `PUBLIC` or `PRIVATE`, repo's visibility.
+        """
+        return pulumi.get(self, "repo_type")
+
+    @repo_type.setter
+    def repo_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_type", value)
+
+    @property
+    @pulumi.getter
+    def summary(self) -> Optional[pulumi.Input[str]]:
+        """
+        The repository general information. It can contain 1 to 80 characters.
+        """
+        return pulumi.get(self, "summary")
+
+    @summary.setter
+    def summary(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "summary", value)
 
 
 class Repo(pulumi.CustomResource):
@@ -228,20 +332,20 @@ class Repo(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RepoArgs.__new__(RepoArgs)
 
-            __props__['detail'] = detail
-            __props__['name'] = name
+            __props__.__dict__["detail"] = detail
+            __props__.__dict__["name"] = name
             if namespace is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace'")
-            __props__['namespace'] = namespace
+            __props__.__dict__["namespace"] = namespace
             if repo_type is None and not opts.urn:
                 raise TypeError("Missing required property 'repo_type'")
-            __props__['repo_type'] = repo_type
+            __props__.__dict__["repo_type"] = repo_type
             if summary is None and not opts.urn:
                 raise TypeError("Missing required property 'summary'")
-            __props__['summary'] = summary
-            __props__['domain_list'] = None
+            __props__.__dict__["summary"] = summary
+            __props__.__dict__["domain_list"] = None
         super(Repo, __self__).__init__(
             'alicloud:cr/repo:Repo',
             resource_name,
@@ -274,14 +378,14 @@ class Repo(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RepoState.__new__(_RepoState)
 
-        __props__["detail"] = detail
-        __props__["domain_list"] = domain_list
-        __props__["name"] = name
-        __props__["namespace"] = namespace
-        __props__["repo_type"] = repo_type
-        __props__["summary"] = summary
+        __props__.__dict__["detail"] = detail
+        __props__.__dict__["domain_list"] = domain_list
+        __props__.__dict__["name"] = name
+        __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["repo_type"] = repo_type
+        __props__.__dict__["summary"] = summary
         return Repo(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -331,10 +435,4 @@ class Repo(pulumi.CustomResource):
         The repository general information. It can contain 1 to 80 characters.
         """
         return pulumi.get(self, "summary")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

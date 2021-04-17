@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AccountArgs', 'Account']
 
@@ -154,6 +154,170 @@ class AccountArgs:
     @kms_encryption_context.setter
     def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "kms_encryption_context", value)
+
+
+@pulumi.input_type
+class _AccountState:
+    def __init__(__self__, *,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 account_password: Optional[pulumi.Input[str]] = None,
+                 account_privilege: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Account resources.
+        :param pulumi.Input[str] account_name: The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
+        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] account_privilege: The privilege of account access database. Valid values: 
+               - RoleReadOnly: This value is only for Redis and Memcache
+               - RoleReadWrite: This value is only for Redis and Memcache
+               - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
+               Only for Redis which engine version is 4.0 and architecture type is standard
+        :param pulumi.Input[str] account_type: Privilege type of account.
+               - Normal: Common privilege.
+               Default to Normal.
+        :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] status: The status of KVStore Account.
+        """
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_password is not None:
+            pulumi.set(__self__, "account_password", account_password)
+        if account_privilege is not None:
+            pulumi.set(__self__, "account_privilege", account_privilege)
+        if account_type is not None:
+            pulumi.set(__self__, "account_type", account_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if kms_encrypted_password is not None:
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if kms_encryption_context is not None:
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="accountPassword")
+    def account_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        """
+        return pulumi.get(self, "account_password")
+
+    @account_password.setter
+    def account_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_password", value)
+
+    @property
+    @pulumi.getter(name="accountPrivilege")
+    def account_privilege(self) -> Optional[pulumi.Input[str]]:
+        """
+        The privilege of account access database. Valid values: 
+        - RoleReadOnly: This value is only for Redis and Memcache
+        - RoleReadWrite: This value is only for Redis and Memcache
+        - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
+        Only for Redis which engine version is 4.0 and architecture type is standard
+        """
+        return pulumi.get(self, "account_privilege")
+
+    @account_privilege.setter
+    def account_privilege(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_privilege", value)
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Privilege type of account.
+        - Normal: Common privilege.
+        Default to Normal.
+        """
+        return pulumi.get(self, "account_type")
+
+    @account_type.setter
+    def account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptedPassword")
+    def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_password")
+
+    @kms_encrypted_password.setter
+    def kms_encrypted_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_encrypted_password", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @kms_encryption_context.setter
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of KVStore Account.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class Account(pulumi.CustomResource):
@@ -338,21 +502,21 @@ class Account(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountArgs.__new__(AccountArgs)
 
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
-            __props__['account_password'] = account_password
-            __props__['account_privilege'] = account_privilege
-            __props__['account_type'] = account_type
-            __props__['description'] = description
+            __props__.__dict__["account_name"] = account_name
+            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["account_privilege"] = account_privilege
+            __props__.__dict__["account_type"] = account_type
+            __props__.__dict__["description"] = description
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['kms_encrypted_password'] = kms_encrypted_password
-            __props__['kms_encryption_context'] = kms_encryption_context
-            __props__['status'] = None
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+            __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["status"] = None
         super(Account, __self__).__init__(
             'alicloud:kvstore/account:Account',
             resource_name,
@@ -397,17 +561,17 @@ class Account(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountState.__new__(_AccountState)
 
-        __props__["account_name"] = account_name
-        __props__["account_password"] = account_password
-        __props__["account_privilege"] = account_privilege
-        __props__["account_type"] = account_type
-        __props__["description"] = description
-        __props__["instance_id"] = instance_id
-        __props__["kms_encrypted_password"] = kms_encrypted_password
-        __props__["kms_encryption_context"] = kms_encryption_context
-        __props__["status"] = status
+        __props__.__dict__["account_name"] = account_name
+        __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["account_privilege"] = account_privilege
+        __props__.__dict__["account_type"] = account_type
+        __props__.__dict__["description"] = description
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+        __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["status"] = status
         return Account(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -487,10 +651,4 @@ class Account(pulumi.CustomResource):
         The status of KVStore Account.
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

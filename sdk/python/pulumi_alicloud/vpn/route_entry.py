@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RouteEntryArgs', 'RouteEntry']
 
@@ -93,6 +93,94 @@ class RouteEntryArgs:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.input_type
+class _RouteEntryState:
+    def __init__(__self__, *,
+                 next_hop: Optional[pulumi.Input[str]] = None,
+                 publish_vpc: Optional[pulumi.Input[bool]] = None,
+                 route_dest: Optional[pulumi.Input[str]] = None,
+                 vpn_gateway_id: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering RouteEntry resources.
+        :param pulumi.Input[str] next_hop: The next hop of the destination route.
+        :param pulumi.Input[bool] publish_vpc: Whether to issue the destination route to the VPC.
+        :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
+        :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
+        :param pulumi.Input[int] weight: The value should be 0 or 100.
+        """
+        if next_hop is not None:
+            pulumi.set(__self__, "next_hop", next_hop)
+        if publish_vpc is not None:
+            pulumi.set(__self__, "publish_vpc", publish_vpc)
+        if route_dest is not None:
+            pulumi.set(__self__, "route_dest", route_dest)
+        if vpn_gateway_id is not None:
+            pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> Optional[pulumi.Input[str]]:
+        """
+        The next hop of the destination route.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @next_hop.setter
+    def next_hop(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop", value)
+
+    @property
+    @pulumi.getter(name="publishVpc")
+    def publish_vpc(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to issue the destination route to the VPC.
+        """
+        return pulumi.get(self, "publish_vpc")
+
+    @publish_vpc.setter
+    def publish_vpc(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "publish_vpc", value)
+
+    @property
+    @pulumi.getter(name="routeDest")
+    def route_dest(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination network segment of the destination route.
+        """
+        return pulumi.get(self, "route_dest")
+
+    @route_dest.setter
+    def route_dest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "route_dest", value)
+
+    @property
+    @pulumi.getter(name="vpnGatewayId")
+    def vpn_gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the vpn gateway.
+        """
+        return pulumi.get(self, "vpn_gateway_id")
+
+    @vpn_gateway_id.setter
+    def vpn_gateway_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpn_gateway_id", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        The value should be 0 or 100.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
 class RouteEntry(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -176,23 +264,23 @@ class RouteEntry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouteEntryArgs.__new__(RouteEntryArgs)
 
             if next_hop is None and not opts.urn:
                 raise TypeError("Missing required property 'next_hop'")
-            __props__['next_hop'] = next_hop
+            __props__.__dict__["next_hop"] = next_hop
             if publish_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'publish_vpc'")
-            __props__['publish_vpc'] = publish_vpc
+            __props__.__dict__["publish_vpc"] = publish_vpc
             if route_dest is None and not opts.urn:
                 raise TypeError("Missing required property 'route_dest'")
-            __props__['route_dest'] = route_dest
+            __props__.__dict__["route_dest"] = route_dest
             if vpn_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpn_gateway_id'")
-            __props__['vpn_gateway_id'] = vpn_gateway_id
+            __props__.__dict__["vpn_gateway_id"] = vpn_gateway_id
             if weight is None and not opts.urn:
                 raise TypeError("Missing required property 'weight'")
-            __props__['weight'] = weight
+            __props__.__dict__["weight"] = weight
         super(RouteEntry, __self__).__init__(
             'alicloud:vpn/routeEntry:RouteEntry',
             resource_name,
@@ -223,13 +311,13 @@ class RouteEntry(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouteEntryState.__new__(_RouteEntryState)
 
-        __props__["next_hop"] = next_hop
-        __props__["publish_vpc"] = publish_vpc
-        __props__["route_dest"] = route_dest
-        __props__["vpn_gateway_id"] = vpn_gateway_id
-        __props__["weight"] = weight
+        __props__.__dict__["next_hop"] = next_hop
+        __props__.__dict__["publish_vpc"] = publish_vpc
+        __props__.__dict__["route_dest"] = route_dest
+        __props__.__dict__["vpn_gateway_id"] = vpn_gateway_id
+        __props__.__dict__["weight"] = weight
         return RouteEntry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -271,10 +359,4 @@ class RouteEntry(pulumi.CustomResource):
         The value should be 0 or 100.
         """
         return pulumi.get(self, "weight")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

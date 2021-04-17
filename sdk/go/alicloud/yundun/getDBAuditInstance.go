@@ -4,7 +4,7 @@
 package yundun
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupDBAuditInstance(ctx *pulumi.Context, args *LookupDBAuditInstanceArgs, opts ...pulumi.InvokeOption) (*LookupDBAuditInstanceResult, error) {

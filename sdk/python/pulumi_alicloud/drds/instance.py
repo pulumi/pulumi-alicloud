@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -131,6 +131,134 @@ class InstanceArgs:
     @instance_charge_type.setter
     def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_charge_type", value)
+
+
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 instance_series: Optional[pulumi.Input[str]] = None,
+                 specification: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[str] instance_series: User-defined DRDS instance node spec. Value range:
+               - `drds.sn1.4c8g` for DRDS instance Starter version;
+               - `drds.sn1.8c16g` for DRDS instance Standard edition;
+               - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
+               - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
+               - `drds.sn1.4c8g` for DRDS instance Starter version;
+               - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
+               - `drds.sn1.8c16g` for DRDS instance Standard edition;
+               - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
+               - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
+               - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
+               - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+               - value range : `drds.sn1.32c64g.128c256g`
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
+        :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_series is not None:
+            pulumi.set(__self__, "instance_series", instance_series)
+        if specification is not None:
+            pulumi.set(__self__, "specification", specification)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the DRDS instance, This description can have a string of 2 to 256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter(name="instanceSeries")
+    def instance_series(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-defined DRDS instance node spec. Value range:
+        - `drds.sn1.4c8g` for DRDS instance Starter version;
+        - `drds.sn1.8c16g` for DRDS instance Standard edition;
+        - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
+        - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        """
+        return pulumi.get(self, "instance_series")
+
+    @instance_series.setter
+    def instance_series(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_series", value)
+
+    @property
+    @pulumi.getter
+    def specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-defined DRDS instance specification. Value range:
+        - `drds.sn1.4c8g` for DRDS instance Starter version;
+        - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
+        - `drds.sn1.8c16g` for DRDS instance Standard edition;
+        - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
+        - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
+        - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
+        - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        - value range : `drds.sn1.32c64g.128c256g`
+        """
+        return pulumi.get(self, "specification")
+
+    @specification.setter
+    def specification(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "specification", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VSwitch ID to launch in.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Zone to launch the DRDS instance.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class Instance(pulumi.CustomResource):
@@ -281,24 +409,24 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
-            __props__['instance_charge_type'] = instance_charge_type
+            __props__.__dict__["description"] = description
+            __props__.__dict__["instance_charge_type"] = instance_charge_type
             if instance_series is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_series'")
-            __props__['instance_series'] = instance_series
+            __props__.__dict__["instance_series"] = instance_series
             if specification is None and not opts.urn:
                 raise TypeError("Missing required property 'specification'")
-            __props__['specification'] = specification
+            __props__.__dict__["specification"] = specification
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
-            __props__['vswitch_id'] = vswitch_id
+            __props__.__dict__["vswitch_id"] = vswitch_id
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(Instance, __self__).__init__(
             'alicloud:drds/instance:Instance',
             resource_name,
@@ -343,14 +471,14 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__["description"] = description
-        __props__["instance_charge_type"] = instance_charge_type
-        __props__["instance_series"] = instance_series
-        __props__["specification"] = specification
-        __props__["vswitch_id"] = vswitch_id
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["instance_series"] = instance_series
+        __props__.__dict__["specification"] = specification
+        __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -412,10 +540,4 @@ class Instance(pulumi.CustomResource):
         The Zone to launch the DRDS instance.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

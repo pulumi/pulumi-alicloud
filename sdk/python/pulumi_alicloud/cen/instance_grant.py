@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['InstanceGrantArgs', 'InstanceGrant']
 
@@ -60,6 +60,62 @@ class InstanceGrantArgs:
 
     @child_instance_id.setter
     def child_instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "child_instance_id", value)
+
+
+@pulumi.input_type
+class _InstanceGrantState:
+    def __init__(__self__, *,
+                 cen_id: Optional[pulumi.Input[str]] = None,
+                 cen_owner_id: Optional[pulumi.Input[str]] = None,
+                 child_instance_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering InstanceGrant resources.
+        :param pulumi.Input[str] cen_id: The ID of the CEN.
+        :param pulumi.Input[str] cen_owner_id: The owner UID of the  CEN which the child instance granted to.
+        :param pulumi.Input[str] child_instance_id: The ID of the child instance to grant.
+        """
+        if cen_id is not None:
+            pulumi.set(__self__, "cen_id", cen_id)
+        if cen_owner_id is not None:
+            pulumi.set(__self__, "cen_owner_id", cen_owner_id)
+        if child_instance_id is not None:
+            pulumi.set(__self__, "child_instance_id", child_instance_id)
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the CEN.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @cen_id.setter
+    def cen_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cen_id", value)
+
+    @property
+    @pulumi.getter(name="cenOwnerId")
+    def cen_owner_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner UID of the  CEN which the child instance granted to.
+        """
+        return pulumi.get(self, "cen_owner_id")
+
+    @cen_owner_id.setter
+    def cen_owner_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cen_owner_id", value)
+
+    @property
+    @pulumi.getter(name="childInstanceId")
+    def child_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the child instance to grant.
+        """
+        return pulumi.get(self, "child_instance_id")
+
+    @child_instance_id.setter
+    def child_instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "child_instance_id", value)
 
 
@@ -224,17 +280,17 @@ class InstanceGrant(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceGrantArgs.__new__(InstanceGrantArgs)
 
             if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
-            __props__['cen_id'] = cen_id
+            __props__.__dict__["cen_id"] = cen_id
             if cen_owner_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_owner_id'")
-            __props__['cen_owner_id'] = cen_owner_id
+            __props__.__dict__["cen_owner_id"] = cen_owner_id
             if child_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'child_instance_id'")
-            __props__['child_instance_id'] = child_instance_id
+            __props__.__dict__["child_instance_id"] = child_instance_id
         super(InstanceGrant, __self__).__init__(
             'alicloud:cen/instanceGrant:InstanceGrant',
             resource_name,
@@ -261,11 +317,11 @@ class InstanceGrant(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceGrantState.__new__(_InstanceGrantState)
 
-        __props__["cen_id"] = cen_id
-        __props__["cen_owner_id"] = cen_owner_id
-        __props__["child_instance_id"] = child_instance_id
+        __props__.__dict__["cen_id"] = cen_id
+        __props__.__dict__["cen_owner_id"] = cen_owner_id
+        __props__.__dict__["child_instance_id"] = child_instance_id
         return InstanceGrant(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -291,10 +347,4 @@ class InstanceGrant(pulumi.CustomResource):
         The ID of the child instance to grant.
         """
         return pulumi.get(self, "child_instance_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

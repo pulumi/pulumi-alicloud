@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -20,6 +20,94 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] accessed_by: The network limitation of accessing instance. Valid values:
+        :param pulumi.Input[str] description: The description of the instance. Currently, it does not support modifying.
+        :param pulumi.Input[str] instance_type: The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
+        :param pulumi.Input[str] name: The name of the instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
+        """
+        if accessed_by is not None:
+            pulumi.set(__self__, "accessed_by", accessed_by)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="accessedBy")
+    def accessed_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network limitation of accessing instance. Valid values:
+        """
+        return pulumi.get(self, "accessed_by")
+
+    @accessed_by.setter
+    def accessed_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accessed_by", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the instance. Currently, it does not support modifying.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the instance.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 accessed_by: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] accessed_by: The network limitation of accessing instance. Valid values:
         :param pulumi.Input[str] description: The description of the instance. Currently, it does not support modifying.
         :param pulumi.Input[str] instance_type: The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
@@ -219,13 +307,13 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__['accessed_by'] = accessed_by
-            __props__['description'] = description
-            __props__['instance_type'] = instance_type
-            __props__['name'] = name
-            __props__['tags'] = tags
+            __props__.__dict__["accessed_by"] = accessed_by
+            __props__.__dict__["description"] = description
+            __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["name"] = name
+            __props__.__dict__["tags"] = tags
         super(Instance, __self__).__init__(
             'alicloud:ots/instance:Instance',
             resource_name,
@@ -256,13 +344,13 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__["accessed_by"] = accessed_by
-        __props__["description"] = description
-        __props__["instance_type"] = instance_type
-        __props__["name"] = name
-        __props__["tags"] = tags
+        __props__.__dict__["accessed_by"] = accessed_by
+        __props__.__dict__["description"] = description
+        __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["name"] = name
+        __props__.__dict__["tags"] = tags
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -304,10 +392,4 @@ class Instance(pulumi.CustomResource):
         A mapping of tags to assign to the instance.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

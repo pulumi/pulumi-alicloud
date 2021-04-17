@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -26,6 +26,29 @@ __all__ = [
 
 @pulumi.output_type
 class ScalingConfigurationDataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoSnapshotPolicyId":
+            suggest = "auto_snapshot_policy_id"
+        elif key == "deleteWithInstance":
+            suggest = "delete_with_instance"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
+        elif key == "snapshotId":
+            suggest = "snapshot_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingConfigurationDataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingConfigurationDataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingConfigurationDataDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_snapshot_policy_id: Optional[str] = None,
                  category: Optional[str] = None,
@@ -108,12 +131,28 @@ class ScalingConfigurationDataDisk(dict):
     def snapshot_id(self) -> Optional[str]:
         return pulumi.get(self, "snapshot_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScalingGroupVServerGroupsVserverGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loadbalancerId":
+            suggest = "loadbalancer_id"
+        elif key == "vserverAttributes":
+            suggest = "vserver_attributes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingGroupVServerGroupsVserverGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingGroupVServerGroupsVserverGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingGroupVServerGroupsVserverGroup.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  loadbalancer_id: str,
                  vserver_attributes: Sequence['outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute']):
@@ -130,12 +169,26 @@ class ScalingGroupVServerGroupsVserverGroup(dict):
     def vserver_attributes(self) -> Sequence['outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute']:
         return pulumi.get(self, "vserver_attributes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vserverGroupId":
+            suggest = "vserver_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingGroupVServerGroupsVserverGroupVserverAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingGroupVServerGroupsVserverGroupVserverAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingGroupVServerGroupsVserverGroupVserverAttribute.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  port: int,
                  vserver_group_id: str,
@@ -159,12 +212,30 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
     def weight(self) -> int:
         return pulumi.get(self, "weight")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScalingRuleStepAdjustment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricIntervalLowerBound":
+            suggest = "metric_interval_lower_bound"
+        elif key == "metricIntervalUpperBound":
+            suggest = "metric_interval_upper_bound"
+        elif key == "scalingAdjustment":
+            suggest = "scaling_adjustment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingRuleStepAdjustment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingRuleStepAdjustment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingRuleStepAdjustment.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  metric_interval_lower_bound: Optional[str] = None,
                  metric_interval_upper_bound: Optional[str] = None,
@@ -190,9 +261,6 @@ class ScalingRuleStepAdjustment(dict):
     @pulumi.getter(name="scalingAdjustment")
     def scaling_adjustment(self) -> Optional[int]:
         return pulumi.get(self, "scaling_adjustment")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

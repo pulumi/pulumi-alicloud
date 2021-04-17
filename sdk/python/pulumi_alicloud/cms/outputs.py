@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -33,6 +33,23 @@ __all__ = [
 
 @pulumi.output_type
 class AlarmEscalationsCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmEscalationsCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmEscalationsCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmEscalationsCritical.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  comparison_operator: Optional[str] = None,
                  statistics: Optional[str] = None,
@@ -84,13 +101,27 @@ class AlarmEscalationsCritical(dict):
         Critical level alarm retry times. Default to 3.
         """
         return pulumi.get(self, "times")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class AlarmEscalationsInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmEscalationsInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmEscalationsInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmEscalationsInfo.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  comparison_operator: Optional[str] = None,
                  statistics: Optional[str] = None,
@@ -142,13 +173,27 @@ class AlarmEscalationsInfo(dict):
         Critical level alarm retry times. Default to 3.
         """
         return pulumi.get(self, "times")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class AlarmEscalationsWarn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmEscalationsWarn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmEscalationsWarn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmEscalationsWarn.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  comparison_operator: Optional[str] = None,
                  statistics: Optional[str] = None,
@@ -200,9 +245,6 @@ class AlarmEscalationsWarn(dict):
         Critical level alarm retry times. Default to 3.
         """
         return pulumi.get(self, "times")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -247,12 +289,26 @@ class GroupMetricRuleEscalations(dict):
         """
         return pulumi.get(self, "warn")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GroupMetricRuleEscalationsCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupMetricRuleEscalationsCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupMetricRuleEscalationsCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupMetricRuleEscalationsCritical.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  comparison_operator: Optional[str] = None,
                  statistics: Optional[str] = None,
@@ -304,13 +360,27 @@ class GroupMetricRuleEscalationsCritical(dict):
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class GroupMetricRuleEscalationsInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupMetricRuleEscalationsInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupMetricRuleEscalationsInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupMetricRuleEscalationsInfo.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  comparison_operator: Optional[str] = None,
                  statistics: Optional[str] = None,
@@ -362,13 +432,27 @@ class GroupMetricRuleEscalationsInfo(dict):
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class GroupMetricRuleEscalationsWarn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupMetricRuleEscalationsWarn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupMetricRuleEscalationsWarn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupMetricRuleEscalationsWarn.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  comparison_operator: Optional[str] = None,
                  statistics: Optional[str] = None,
@@ -421,12 +505,30 @@ class GroupMetricRuleEscalationsWarn(dict):
         """
         return pulumi.get(self, "times")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MonitorGroupInstancesInstance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+        elif key == "instanceName":
+            suggest = "instance_name"
+        elif key == "regionId":
+            suggest = "region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorGroupInstancesInstance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorGroupInstancesInstance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorGroupInstancesInstance.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  category: str,
                  instance_id: str,
@@ -475,9 +577,6 @@ class MonitorGroupInstancesInstance(dict):
         """
         return pulumi.get(self, "region_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SiteMonitorIspCity(dict):
@@ -496,9 +595,6 @@ class SiteMonitorIspCity(dict):
     @pulumi.getter
     def isp(self) -> str:
         return pulumi.get(self, "isp")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

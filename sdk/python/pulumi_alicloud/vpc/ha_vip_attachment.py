@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['HAVipAttachmentArgs', 'HAVipAttachment']
 
@@ -45,6 +45,46 @@ class HAVipAttachmentArgs:
 
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+
+@pulumi.input_type
+class _HAVipAttachmentState:
+    def __init__(__self__, *,
+                 havip_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering HAVipAttachment resources.
+        :param pulumi.Input[str] havip_id: The havip_id of the havip attachment, the field can't be changed.
+        :param pulumi.Input[str] instance_id: The instance_id of the havip attachment, the field can't be changed.
+        """
+        if havip_id is not None:
+            pulumi.set(__self__, "havip_id", havip_id)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter(name="havipId")
+    def havip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The havip_id of the havip attachment, the field can't be changed.
+        """
+        return pulumi.get(self, "havip_id")
+
+    @havip_id.setter
+    def havip_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "havip_id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance_id of the havip attachment, the field can't be changed.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
 
 
@@ -122,14 +162,14 @@ class HAVipAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = HAVipAttachmentArgs.__new__(HAVipAttachmentArgs)
 
             if havip_id is None and not opts.urn:
                 raise TypeError("Missing required property 'havip_id'")
-            __props__['havip_id'] = havip_id
+            __props__.__dict__["havip_id"] = havip_id
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
+            __props__.__dict__["instance_id"] = instance_id
         super(HAVipAttachment, __self__).__init__(
             'alicloud:vpc/hAVipAttachment:HAVipAttachment',
             resource_name,
@@ -154,10 +194,10 @@ class HAVipAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _HAVipAttachmentState.__new__(_HAVipAttachmentState)
 
-        __props__["havip_id"] = havip_id
-        __props__["instance_id"] = instance_id
+        __props__.__dict__["havip_id"] = havip_id
+        __props__.__dict__["instance_id"] = instance_id
         return HAVipAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -175,10 +215,4 @@ class HAVipAttachment(pulumi.CustomResource):
         The instance_id of the havip attachment, the field can't be changed.
         """
         return pulumi.get(self, "instance_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

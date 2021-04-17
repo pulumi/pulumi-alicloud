@@ -4,7 +4,7 @@
 package cloudstoragegateway
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetStorageBundles(ctx *pulumi.Context, args *GetStorageBundlesArgs, opts ...pulumi.InvokeOption) (*GetStorageBundlesResult, error) {

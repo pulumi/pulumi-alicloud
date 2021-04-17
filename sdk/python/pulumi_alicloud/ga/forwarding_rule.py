@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -110,6 +110,142 @@ class ForwardingRuleArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
+
+
+@pulumi.input_type
+class _ForwardingRuleState:
+    def __init__(__self__, *,
+                 accelerator_id: Optional[pulumi.Input[str]] = None,
+                 forwarding_rule_id: Optional[pulumi.Input[str]] = None,
+                 forwarding_rule_name: Optional[pulumi.Input[str]] = None,
+                 forwarding_rule_status: Optional[pulumi.Input[str]] = None,
+                 listener_id: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]] = None,
+                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering ForwardingRule resources.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance.
+        :param pulumi.Input[str] forwarding_rule_id: Forwarding Policy ID.
+        :param pulumi.Input[str] forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
+        :param pulumi.Input[str] forwarding_rule_status: Forwarding Policy Status.
+        :param pulumi.Input[str] listener_id: The ID of the listener.
+        :param pulumi.Input[int] priority: Forwarding policy priority.
+        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]] rule_actions: Forward action.
+        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]] rule_conditions: Forwarding condition list.
+        """
+        if accelerator_id is not None:
+            pulumi.set(__self__, "accelerator_id", accelerator_id)
+        if forwarding_rule_id is not None:
+            pulumi.set(__self__, "forwarding_rule_id", forwarding_rule_id)
+        if forwarding_rule_name is not None:
+            pulumi.set(__self__, "forwarding_rule_name", forwarding_rule_name)
+        if forwarding_rule_status is not None:
+            pulumi.set(__self__, "forwarding_rule_status", forwarding_rule_status)
+        if listener_id is not None:
+            pulumi.set(__self__, "listener_id", listener_id)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if rule_actions is not None:
+            pulumi.set(__self__, "rule_actions", rule_actions)
+        if rule_conditions is not None:
+            pulumi.set(__self__, "rule_conditions", rule_conditions)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Global Accelerator instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @accelerator_id.setter
+    def accelerator_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_id", value)
+
+    @property
+    @pulumi.getter(name="forwardingRuleId")
+    def forwarding_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Forwarding Policy ID.
+        """
+        return pulumi.get(self, "forwarding_rule_id")
+
+    @forwarding_rule_id.setter
+    def forwarding_rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forwarding_rule_id", value)
+
+    @property
+    @pulumi.getter(name="forwardingRuleName")
+    def forwarding_rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
+        """
+        return pulumi.get(self, "forwarding_rule_name")
+
+    @forwarding_rule_name.setter
+    def forwarding_rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forwarding_rule_name", value)
+
+    @property
+    @pulumi.getter(name="forwardingRuleStatus")
+    def forwarding_rule_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Forwarding Policy Status.
+        """
+        return pulumi.get(self, "forwarding_rule_status")
+
+    @forwarding_rule_status.setter
+    def forwarding_rule_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forwarding_rule_status", value)
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the listener.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @listener_id.setter
+    def listener_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "listener_id", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Forwarding policy priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="ruleActions")
+    def rule_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]]:
+        """
+        Forward action.
+        """
+        return pulumi.get(self, "rule_actions")
+
+    @rule_actions.setter
+    def rule_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]]):
+        pulumi.set(self, "rule_actions", value)
+
+    @property
+    @pulumi.getter(name="ruleConditions")
+    def rule_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]]:
+        """
+        Forwarding condition list.
+        """
+        return pulumi.get(self, "rule_conditions")
+
+    @rule_conditions.setter
+    def rule_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]]):
+        pulumi.set(self, "rule_conditions", value)
 
 
 class ForwardingRule(pulumi.CustomResource):
@@ -334,24 +470,24 @@ class ForwardingRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ForwardingRuleArgs.__new__(ForwardingRuleArgs)
 
             if accelerator_id is None and not opts.urn:
                 raise TypeError("Missing required property 'accelerator_id'")
-            __props__['accelerator_id'] = accelerator_id
-            __props__['forwarding_rule_name'] = forwarding_rule_name
+            __props__.__dict__["accelerator_id"] = accelerator_id
+            __props__.__dict__["forwarding_rule_name"] = forwarding_rule_name
             if listener_id is None and not opts.urn:
                 raise TypeError("Missing required property 'listener_id'")
-            __props__['listener_id'] = listener_id
-            __props__['priority'] = priority
+            __props__.__dict__["listener_id"] = listener_id
+            __props__.__dict__["priority"] = priority
             if rule_actions is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_actions'")
-            __props__['rule_actions'] = rule_actions
+            __props__.__dict__["rule_actions"] = rule_actions
             if rule_conditions is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_conditions'")
-            __props__['rule_conditions'] = rule_conditions
-            __props__['forwarding_rule_id'] = None
-            __props__['forwarding_rule_status'] = None
+            __props__.__dict__["rule_conditions"] = rule_conditions
+            __props__.__dict__["forwarding_rule_id"] = None
+            __props__.__dict__["forwarding_rule_status"] = None
         super(ForwardingRule, __self__).__init__(
             'alicloud:ga/forwardingRule:ForwardingRule',
             resource_name,
@@ -388,16 +524,16 @@ class ForwardingRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ForwardingRuleState.__new__(_ForwardingRuleState)
 
-        __props__["accelerator_id"] = accelerator_id
-        __props__["forwarding_rule_id"] = forwarding_rule_id
-        __props__["forwarding_rule_name"] = forwarding_rule_name
-        __props__["forwarding_rule_status"] = forwarding_rule_status
-        __props__["listener_id"] = listener_id
-        __props__["priority"] = priority
-        __props__["rule_actions"] = rule_actions
-        __props__["rule_conditions"] = rule_conditions
+        __props__.__dict__["accelerator_id"] = accelerator_id
+        __props__.__dict__["forwarding_rule_id"] = forwarding_rule_id
+        __props__.__dict__["forwarding_rule_name"] = forwarding_rule_name
+        __props__.__dict__["forwarding_rule_status"] = forwarding_rule_status
+        __props__.__dict__["listener_id"] = listener_id
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["rule_actions"] = rule_actions
+        __props__.__dict__["rule_conditions"] = rule_conditions
         return ForwardingRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -463,10 +599,4 @@ class ForwardingRule(pulumi.CustomResource):
         Forwarding condition list.
         """
         return pulumi.get(self, "rule_conditions")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

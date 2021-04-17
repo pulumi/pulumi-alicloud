@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['FileSystemArgs', 'FileSystem']
 
@@ -62,6 +62,62 @@ class FileSystemArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class _FileSystemState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 protocol_type: Optional[pulumi.Input[str]] = None,
+                 storage_type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering FileSystem resources.
+        :param pulumi.Input[str] description: The File System description.
+        :param pulumi.Input[str] protocol_type: The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
+        :param pulumi.Input[str] storage_type: The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if protocol_type is not None:
+            pulumi.set(__self__, "protocol_type", protocol_type)
+        if storage_type is not None:
+            pulumi.set(__self__, "storage_type", storage_type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The File System description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="protocolType")
+    def protocol_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
+        """
+        return pulumi.get(self, "protocol_type")
+
+    @protocol_type.setter
+    def protocol_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol_type", value)
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @storage_type.setter
+    def storage_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_type", value)
 
 
 class FileSystem(pulumi.CustomResource):
@@ -185,15 +241,15 @@ class FileSystem(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FileSystemArgs.__new__(FileSystemArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if protocol_type is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol_type'")
-            __props__['protocol_type'] = protocol_type
+            __props__.__dict__["protocol_type"] = protocol_type
             if storage_type is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_type'")
-            __props__['storage_type'] = storage_type
+            __props__.__dict__["storage_type"] = storage_type
         super(FileSystem, __self__).__init__(
             'alicloud:nas/fileSystem:FileSystem',
             resource_name,
@@ -220,11 +276,11 @@ class FileSystem(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FileSystemState.__new__(_FileSystemState)
 
-        __props__["description"] = description
-        __props__["protocol_type"] = protocol_type
-        __props__["storage_type"] = storage_type
+        __props__.__dict__["description"] = description
+        __props__.__dict__["protocol_type"] = protocol_type
+        __props__.__dict__["storage_type"] = storage_type
         return FileSystem(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -250,10 +306,4 @@ class FileSystem(pulumi.CustomResource):
         The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
         """
         return pulumi.get(self, "storage_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

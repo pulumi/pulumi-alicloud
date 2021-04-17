@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AccountPrivilegeArgs', 'AccountPrivilege']
 
@@ -69,6 +69,88 @@ class AccountPrivilegeArgs:
 
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def privilege(self) -> Optional[pulumi.Input[str]]:
+        """
+        The privilege of one account access database. Valid values: 
+        - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+        - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+        - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+        - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+        - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+        """
+        return pulumi.get(self, "privilege")
+
+    @privilege.setter
+    def privilege(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "privilege", value)
+
+
+@pulumi.input_type
+class _AccountPrivilegeState:
+    def __init__(__self__, *,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 privilege: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccountPrivilege resources.
+        :param pulumi.Input[str] account_name: A specified account name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
+        :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
+               - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+               - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+               - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+               - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+               - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+        """
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if db_names is not None:
+            pulumi.set(__self__, "db_names", db_names)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if privilege is not None:
+            pulumi.set(__self__, "privilege", privilege)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A specified account name.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="dbNames")
+    def db_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of specified database name.
+        """
+        return pulumi.get(self, "db_names")
+
+    @db_names.setter
+    def db_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "db_names", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of instance in which account belongs.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
 
     @property
@@ -268,18 +350,18 @@ class AccountPrivilege(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountPrivilegeArgs.__new__(AccountPrivilegeArgs)
 
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
+            __props__.__dict__["account_name"] = account_name
             if db_names is None and not opts.urn:
                 raise TypeError("Missing required property 'db_names'")
-            __props__['db_names'] = db_names
+            __props__.__dict__["db_names"] = db_names
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['privilege'] = privilege
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["privilege"] = privilege
         super(AccountPrivilege, __self__).__init__(
             'alicloud:rds/accountPrivilege:AccountPrivilege',
             resource_name,
@@ -313,12 +395,12 @@ class AccountPrivilege(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountPrivilegeState.__new__(_AccountPrivilegeState)
 
-        __props__["account_name"] = account_name
-        __props__["db_names"] = db_names
-        __props__["instance_id"] = instance_id
-        __props__["privilege"] = privilege
+        __props__.__dict__["account_name"] = account_name
+        __props__.__dict__["db_names"] = db_names
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["privilege"] = privilege
         return AccountPrivilege(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -357,10 +439,4 @@ class AccountPrivilege(pulumi.CustomResource):
         - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
         """
         return pulumi.get(self, "privilege")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

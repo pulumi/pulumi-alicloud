@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['DiskAttachmentArgs', 'DiskAttachment']
 
@@ -65,6 +65,65 @@ class DiskAttachmentArgs:
     @device_name.setter
     def device_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "device_name", value)
+
+
+@pulumi.input_type
+class _DiskAttachmentState:
+    def __init__(__self__, *,
+                 device_name: Optional[pulumi.Input[str]] = None,
+                 disk_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DiskAttachment resources.
+        :param pulumi.Input[str] device_name: The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+        :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
+        :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
+        """
+        if device_name is not None:
+            warnings.warn("""Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
+            pulumi.log.warn("""device_name is deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""")
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+        """
+        return pulumi.get(self, "device_name")
+
+    @device_name.setter
+    def device_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_name", value)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the Disk to be attached.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the Instance to attach to.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
 
 class DiskAttachment(pulumi.CustomResource):
@@ -210,18 +269,18 @@ class DiskAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DiskAttachmentArgs.__new__(DiskAttachmentArgs)
 
             if device_name is not None and not opts.urn:
                 warnings.warn("""Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
                 pulumi.log.warn("""device_name is deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""")
-            __props__['device_name'] = device_name
+            __props__.__dict__["device_name"] = device_name
             if disk_id is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_id'")
-            __props__['disk_id'] = disk_id
+            __props__.__dict__["disk_id"] = disk_id
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
+            __props__.__dict__["instance_id"] = instance_id
         super(DiskAttachment, __self__).__init__(
             'alicloud:ecs/diskAttachment:DiskAttachment',
             resource_name,
@@ -248,11 +307,11 @@ class DiskAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DiskAttachmentState.__new__(_DiskAttachmentState)
 
-        __props__["device_name"] = device_name
-        __props__["disk_id"] = disk_id
-        __props__["instance_id"] = instance_id
+        __props__.__dict__["device_name"] = device_name
+        __props__.__dict__["disk_id"] = disk_id
+        __props__.__dict__["instance_id"] = instance_id
         return DiskAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -278,10 +337,4 @@ class DiskAttachment(pulumi.CustomResource):
         ID of the Instance to attach to.
         """
         return pulumi.get(self, "instance_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

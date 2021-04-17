@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -57,6 +57,78 @@ class ServerGroupArgs:
     @delete_protection_validation.setter
     def delete_protection_validation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "delete_protection_validation", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
+        """
+        A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]):
+        pulumi.set(self, "servers", value)
+
+
+@pulumi.input_type
+class _ServerGroupState:
+    def __init__(__self__, *,
+                 delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+                 load_balancer_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering ServerGroup resources.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new virtual server group.
+        :param pulumi.Input[str] name: Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
+        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+        """
+        if delete_protection_validation is not None:
+            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+        if load_balancer_id is not None:
+            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if servers is not None:
+            pulumi.set(__self__, "servers", servers)
+
+    @property
+    @pulumi.getter(name="deleteProtectionValidation")
+    def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        """
+        return pulumi.get(self, "delete_protection_validation")
+
+    @delete_protection_validation.setter
+    def delete_protection_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_protection_validation", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Load Balancer ID which is used to launch a new virtual server group.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @load_balancer_id.setter
+    def load_balancer_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_id", value)
 
     @property
     @pulumi.getter
@@ -207,14 +279,14 @@ class ServerGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServerGroupArgs.__new__(ServerGroupArgs)
 
-            __props__['delete_protection_validation'] = delete_protection_validation
+            __props__.__dict__["delete_protection_validation"] = delete_protection_validation
             if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
-            __props__['load_balancer_id'] = load_balancer_id
-            __props__['name'] = name
-            __props__['servers'] = servers
+            __props__.__dict__["load_balancer_id"] = load_balancer_id
+            __props__.__dict__["name"] = name
+            __props__.__dict__["servers"] = servers
         super(ServerGroup, __self__).__init__(
             'alicloud:slb/serverGroup:ServerGroup',
             resource_name,
@@ -243,12 +315,12 @@ class ServerGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ServerGroupState.__new__(_ServerGroupState)
 
-        __props__["delete_protection_validation"] = delete_protection_validation
-        __props__["load_balancer_id"] = load_balancer_id
-        __props__["name"] = name
-        __props__["servers"] = servers
+        __props__.__dict__["delete_protection_validation"] = delete_protection_validation
+        __props__.__dict__["load_balancer_id"] = load_balancer_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["servers"] = servers
         return ServerGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -282,10 +354,4 @@ class ServerGroup(pulumi.CustomResource):
         A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         """
         return pulumi.get(self, "servers")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -37,6 +37,23 @@ __all__ = [
 
 @pulumi.output_type
 class AliasRoutingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalVersionWeights":
+            suggest = "additional_version_weights"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AliasRoutingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AliasRoutingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AliasRoutingConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  additional_version_weights: Optional[Mapping[str, float]] = None):
         """
@@ -53,12 +70,28 @@ class AliasRoutingConfig(dict):
         """
         return pulumi.get(self, "additional_version_weights")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomDomainCertConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certName":
+            suggest = "cert_name"
+        elif key == "privateKey":
+            suggest = "private_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomDomainCertConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomDomainCertConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomDomainCertConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cert_name: str,
                  certificate: str,
@@ -96,12 +129,28 @@ class CustomDomainCertConfig(dict):
         """
         return pulumi.get(self, "private_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomDomainRouteConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionName":
+            suggest = "function_name"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomDomainRouteConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomDomainRouteConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomDomainRouteConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  function_name: str,
                  path: str,
@@ -159,12 +208,28 @@ class CustomDomainRouteConfig(dict):
         """
         return pulumi.get(self, "qualifier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FunctionAsyncInvokeConfigDestinationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onFailure":
+            suggest = "on_failure"
+        elif key == "onSuccess":
+            suggest = "on_success"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionAsyncInvokeConfigDestinationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionAsyncInvokeConfigDestinationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionAsyncInvokeConfigDestinationConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  on_failure: Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnFailure'] = None,
                  on_success: Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccess'] = None):
@@ -193,9 +258,6 @@ class FunctionAsyncInvokeConfigDestinationConfig(dict):
         """
         return pulumi.get(self, "on_success")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FunctionAsyncInvokeConfigDestinationConfigOnFailure(dict):
@@ -214,9 +276,6 @@ class FunctionAsyncInvokeConfigDestinationConfigOnFailure(dict):
         """
         return pulumi.get(self, "destination")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FunctionAsyncInvokeConfigDestinationConfigOnSuccess(dict):
@@ -234,9 +293,6 @@ class FunctionAsyncInvokeConfigDestinationConfigOnSuccess(dict):
         Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
         """
         return pulumi.get(self, "destination")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -280,9 +336,6 @@ class FunctionCustomContainerConfig(dict):
         """
         return pulumi.get(self, "command")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceLogConfig(dict):
@@ -312,12 +365,30 @@ class ServiceLogConfig(dict):
         """
         return pulumi.get(self, "project")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceNasConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupId":
+            suggest = "group_id"
+        elif key == "mountPoints":
+            suggest = "mount_points"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceNasConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceNasConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceNasConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  group_id: int,
                  mount_points: Sequence['outputs.ServiceNasConfigMountPoint'],
@@ -355,12 +426,28 @@ class ServiceNasConfig(dict):
         """
         return pulumi.get(self, "user_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceNasConfigMountPoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountDir":
+            suggest = "mount_dir"
+        elif key == "serverAddr":
+            suggest = "server_addr"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceNasConfigMountPoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceNasConfigMountPoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceNasConfigMountPoint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mount_dir: str,
                  server_addr: str):
@@ -387,12 +474,30 @@ class ServiceNasConfigMountPoint(dict):
         """
         return pulumi.get(self, "server_addr")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceVpcConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "securityGroupId":
+            suggest = "security_group_id"
+        elif key == "vswitchIds":
+            suggest = "vswitch_ids"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceVpcConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceVpcConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceVpcConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  security_group_id: str,
                  vswitch_ids: Sequence[str],
@@ -426,9 +531,6 @@ class ServiceVpcConfig(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
         return pulumi.get(self, "vpc_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -44,12 +44,28 @@ class InstanceParameter(dict):
     def value(self) -> str:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RdsParameterGroupParamDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "paramName":
+            suggest = "param_name"
+        elif key == "paramValue":
+            suggest = "param_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RdsParameterGroupParamDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RdsParameterGroupParamDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RdsParameterGroupParamDetail.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  param_name: str,
                  param_value: str):
@@ -76,9 +92,6 @@ class RdsParameterGroupParamDetail(dict):
         """
         return pulumi.get(self, "param_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReadOnlyInstanceParameter(dict):
@@ -97,9 +110,6 @@ class ReadOnlyInstanceParameter(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

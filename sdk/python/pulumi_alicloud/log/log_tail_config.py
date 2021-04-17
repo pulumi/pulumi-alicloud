@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['LogTailConfigArgs', 'LogTailConfig']
 
@@ -125,6 +125,126 @@ class LogTailConfigArgs:
         pulumi.set(self, "name", value)
 
 
+@pulumi.input_type
+class _LogTailConfigState:
+    def __init__(__self__, *,
+                 input_detail: Optional[pulumi.Input[str]] = None,
+                 input_type: Optional[pulumi.Input[str]] = None,
+                 log_sample: Optional[pulumi.Input[str]] = None,
+                 logstore: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 output_type: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering LogTailConfig resources.
+        :param pulumi.Input[str] input_detail: The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
+        :param pulumi.Input[str] input_type: The input type. Currently only two types of files and plugin are supported.
+        :param pulumi.Input[str] log_sample: （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
+        :param pulumi.Input[str] logstore: The log store name to the query index belongs.
+        :param pulumi.Input[str] name: The Logtail configuration name, which is unique in the same project.
+        :param pulumi.Input[str] output_type: The output type. Currently, only LogService is supported.
+        :param pulumi.Input[str] project: The project name to the log store belongs.
+        """
+        if input_detail is not None:
+            pulumi.set(__self__, "input_detail", input_detail)
+        if input_type is not None:
+            pulumi.set(__self__, "input_type", input_type)
+        if log_sample is not None:
+            pulumi.set(__self__, "log_sample", log_sample)
+        if logstore is not None:
+            pulumi.set(__self__, "logstore", logstore)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if output_type is not None:
+            pulumi.set(__self__, "output_type", output_type)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="inputDetail")
+    def input_detail(self) -> Optional[pulumi.Input[str]]:
+        """
+        The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
+        """
+        return pulumi.get(self, "input_detail")
+
+    @input_detail.setter
+    def input_detail(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "input_detail", value)
+
+    @property
+    @pulumi.getter(name="inputType")
+    def input_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The input type. Currently only two types of files and plugin are supported.
+        """
+        return pulumi.get(self, "input_type")
+
+    @input_type.setter
+    def input_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "input_type", value)
+
+    @property
+    @pulumi.getter(name="logSample")
+    def log_sample(self) -> Optional[pulumi.Input[str]]:
+        """
+        （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
+        """
+        return pulumi.get(self, "log_sample")
+
+    @log_sample.setter
+    def log_sample(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_sample", value)
+
+    @property
+    @pulumi.getter
+    def logstore(self) -> Optional[pulumi.Input[str]]:
+        """
+        The log store name to the query index belongs.
+        """
+        return pulumi.get(self, "logstore")
+
+    @logstore.setter
+    def logstore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logstore", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Logtail configuration name, which is unique in the same project.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The output type. Currently, only LogService is supported.
+        """
+        return pulumi.get(self, "output_type")
+
+    @output_type.setter
+    def output_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_type", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project name to the log store belongs.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
 class LogTailConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -214,25 +334,25 @@ class LogTailConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LogTailConfigArgs.__new__(LogTailConfigArgs)
 
             if input_detail is None and not opts.urn:
                 raise TypeError("Missing required property 'input_detail'")
-            __props__['input_detail'] = input_detail
+            __props__.__dict__["input_detail"] = input_detail
             if input_type is None and not opts.urn:
                 raise TypeError("Missing required property 'input_type'")
-            __props__['input_type'] = input_type
-            __props__['log_sample'] = log_sample
+            __props__.__dict__["input_type"] = input_type
+            __props__.__dict__["log_sample"] = log_sample
             if logstore is None and not opts.urn:
                 raise TypeError("Missing required property 'logstore'")
-            __props__['logstore'] = logstore
-            __props__['name'] = name
+            __props__.__dict__["logstore"] = logstore
+            __props__.__dict__["name"] = name
             if output_type is None and not opts.urn:
                 raise TypeError("Missing required property 'output_type'")
-            __props__['output_type'] = output_type
+            __props__.__dict__["output_type"] = output_type
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
         super(LogTailConfig, __self__).__init__(
             'alicloud:log/logTailConfig:LogTailConfig',
             resource_name,
@@ -267,15 +387,15 @@ class LogTailConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LogTailConfigState.__new__(_LogTailConfigState)
 
-        __props__["input_detail"] = input_detail
-        __props__["input_type"] = input_type
-        __props__["log_sample"] = log_sample
-        __props__["logstore"] = logstore
-        __props__["name"] = name
-        __props__["output_type"] = output_type
-        __props__["project"] = project
+        __props__.__dict__["input_detail"] = input_detail
+        __props__.__dict__["input_type"] = input_type
+        __props__.__dict__["log_sample"] = log_sample
+        __props__.__dict__["logstore"] = logstore
+        __props__.__dict__["name"] = name
+        __props__.__dict__["output_type"] = output_type
+        __props__.__dict__["project"] = project
         return LogTailConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -333,10 +453,4 @@ class LogTailConfig(pulumi.CustomResource):
         The project name to the log store belongs.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

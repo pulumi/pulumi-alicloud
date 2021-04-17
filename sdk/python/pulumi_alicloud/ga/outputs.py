@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -42,6 +42,23 @@ __all__ = [
 
 @pulumi.output_type
 class EndpointGroupEndpointConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableClientipPreservation":
+            suggest = "enable_clientip_preservation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointGroupEndpointConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointGroupEndpointConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointGroupEndpointConfiguration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  endpoint: str,
                  type: str,
@@ -91,12 +108,28 @@ class EndpointGroupEndpointConfiguration(dict):
         """
         return pulumi.get(self, "enable_clientip_preservation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EndpointGroupPortOverrides(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointPort":
+            suggest = "endpoint_port"
+        elif key == "listenerPort":
+            suggest = "listener_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointGroupPortOverrides. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointGroupPortOverrides.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointGroupPortOverrides.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  endpoint_port: Optional[int] = None,
                  listener_port: Optional[int] = None):
@@ -125,12 +158,28 @@ class EndpointGroupPortOverrides(dict):
         """
         return pulumi.get(self, "listener_port")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ForwardingRuleRuleAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forwardGroupConfig":
+            suggest = "forward_group_config"
+        elif key == "ruleActionType":
+            suggest = "rule_action_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ForwardingRuleRuleAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ForwardingRuleRuleAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ForwardingRuleRuleAction.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  forward_group_config: 'outputs.ForwardingRuleRuleActionForwardGroupConfig',
                  order: int,
@@ -168,12 +217,26 @@ class ForwardingRuleRuleAction(dict):
         """
         return pulumi.get(self, "rule_action_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ForwardingRuleRuleActionForwardGroupConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverGroupTuples":
+            suggest = "server_group_tuples"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ForwardingRuleRuleActionForwardGroupConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ForwardingRuleRuleActionForwardGroupConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ForwardingRuleRuleActionForwardGroupConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  server_group_tuples: Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple']):
         """
@@ -189,12 +252,26 @@ class ForwardingRuleRuleActionForwardGroupConfig(dict):
         """
         return pulumi.get(self, "server_group_tuples")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointGroupId":
+            suggest = "endpoint_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  endpoint_group_id: str):
         """
@@ -210,12 +287,30 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(dict):
         """
         return pulumi.get(self, "endpoint_group_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ForwardingRuleRuleCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleConditionType":
+            suggest = "rule_condition_type"
+        elif key == "hostConfigs":
+            suggest = "host_configs"
+        elif key == "pathConfig":
+            suggest = "path_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ForwardingRuleRuleCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ForwardingRuleRuleCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ForwardingRuleRuleCondition.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  rule_condition_type: str,
                  host_configs: Optional[Sequence['outputs.ForwardingRuleRuleConditionHostConfig']] = None,
@@ -255,9 +350,6 @@ class ForwardingRuleRuleCondition(dict):
         """
         return pulumi.get(self, "path_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ForwardingRuleRuleConditionHostConfig(dict):
@@ -276,9 +368,6 @@ class ForwardingRuleRuleConditionHostConfig(dict):
         The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
         return pulumi.get(self, "values")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -299,9 +388,6 @@ class ForwardingRuleRuleConditionPathConfig(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ListenerCertificate(dict):
@@ -321,12 +407,28 @@ class ListenerCertificate(dict):
         """
         return pulumi.get(self, "id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ListenerPortRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fromPort":
+            suggest = "from_port"
+        elif key == "toPort":
+            suggest = "to_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListenerPortRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListenerPortRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListenerPortRange.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  from_port: int,
                  to_port: int):
@@ -352,9 +454,6 @@ class ListenerPortRange(dict):
         The end listening port used to receive requests and forward them to terminal nodes.
         """
         return pulumi.get(self, "to_port")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

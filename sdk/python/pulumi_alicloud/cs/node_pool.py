@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -461,6 +461,486 @@ class NodePoolArgs:
         pulumi.set(self, "user_data", value)
 
 
+@pulumi.input_type
+class _NodePoolState:
+    def __init__(__self__, *,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 key_name: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]] = None,
+                 management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 node_name_mode: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
+                 scaling_config: Optional[pulumi.Input['NodePoolScalingConfigArgs']] = None,
+                 scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 system_disk_category: Optional[pulumi.Input[str]] = None,
+                 system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+                 system_disk_size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None,
+                 unschedulable: Optional[pulumi.Input[bool]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering NodePool resources.
+        :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
+        :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+        :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
+        :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
+        :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
+        :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
+        :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        :param pulumi.Input['NodePoolManagementArgs'] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+        :param pulumi.Input[str] name: The name of node pool.
+        :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
+        :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`.
+        :param pulumi.Input[str] scaling_group_id: (Available in 1.105.0+) Id of the Scaling Group.
+        :param pulumi.Input[str] security_group_id: The system disk size of worker node.
+        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes.
+        :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+        :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
+        """
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if data_disks is not None:
+            pulumi.set(__self__, "data_disks", data_disks)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if install_cloud_monitor is not None:
+            pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_types is not None:
+            pulumi.set(__self__, "instance_types", instance_types)
+        if key_name is not None:
+            pulumi.set(__self__, "key_name", key_name)
+        if kms_encrypted_password is not None:
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if node_name_mode is not None:
+            pulumi.set(__self__, "node_name_mode", node_name_mode)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if period_unit is not None:
+            pulumi.set(__self__, "period_unit", period_unit)
+        if scaling_config is not None:
+            pulumi.set(__self__, "scaling_config", scaling_config)
+        if scaling_group_id is not None:
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if system_disk_category is not None:
+            pulumi.set(__self__, "system_disk_category", system_disk_category)
+        if system_disk_performance_level is not None:
+            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+        if system_disk_size is not None:
+            pulumi.set(__self__, "system_disk_size", system_disk_size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
+        if unschedulable is not None:
+            pulumi.set(__self__, "unschedulable", unschedulable)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Node payment auto-renew, default is `false`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of kubernetes cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]]:
+        """
+        The data disk configurations of worker nodes, such as the disk type and disk size.
+        """
+        return pulumi.get(self, "data_disks")
+
+    @data_disks.setter
+    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]]):
+        pulumi.set(self, "data_disks", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom Image support. Must based on CentOS7 or AliyunLinux2.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="installCloudMonitor")
+    def install_cloud_monitor(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
+        """
+        return pulumi.get(self, "install_cloud_monitor")
+
+    @install_cloud_monitor.setter
+    def install_cloud_monitor(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "install_cloud_monitor", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The instance type of worker node.
+        """
+        return pulumi.get(self, "instance_types")
+
+    @instance_types.setter
+    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_types", value)
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_name", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptedPassword")
+    def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        """
+        return pulumi.get(self, "kms_encrypted_password")
+
+    @kms_encrypted_password.setter
+    def kms_encrypted_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_encrypted_password", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]]:
+        """
+        A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def management(self) -> Optional[pulumi.Input['NodePoolManagementArgs']]:
+        """
+        Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
+        """
+        return pulumi.get(self, "management")
+
+    @management.setter
+    def management(self, value: Optional[pulumi.Input['NodePoolManagementArgs']]):
+        pulumi.set(self, "management", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of node pool.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter(name="nodeNameMode")
+    def node_name_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        """
+        return pulumi.get(self, "node_name_mode")
+
+    @node_name_mode.setter
+    def node_name_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_name_mode", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node payment period unit, valid value: `Month`. Default is `Month`.
+        """
+        return pulumi.get(self, "period_unit")
+
+    @period_unit.setter
+    def period_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period_unit", value)
+
+    @property
+    @pulumi.getter(name="scalingConfig")
+    def scaling_config(self) -> Optional[pulumi.Input['NodePoolScalingConfigArgs']]:
+        """
+        Auto scaling node pool configuration. For more details, see `scaling_config`.
+        """
+        return pulumi.get(self, "scaling_config")
+
+    @scaling_config.setter
+    def scaling_config(self, value: Optional[pulumi.Input['NodePoolScalingConfigArgs']]):
+        pulumi.set(self, "scaling_config", value)
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.105.0+) Id of the Scaling Group.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @scaling_group_id.setter
+    def scaling_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The system disk size of worker node.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter(name="systemDiskCategory")
+    def system_disk_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        """
+        return pulumi.get(self, "system_disk_category")
+
+    @system_disk_category.setter
+    def system_disk_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_category", value)
+
+    @property
+    @pulumi.getter(name="systemDiskPerformanceLevel")
+    def system_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "system_disk_performance_level")
+
+    @system_disk_performance_level.setter
+    def system_disk_performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_performance_level", value)
+
+    @property
+    @pulumi.getter(name="systemDiskSize")
+    def system_disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        """
+        return pulumi.get(self, "system_disk_size")
+
+    @system_disk_size.setter
+    def system_disk_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "system_disk_size", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A Map of tags to assign to the resource. It will be applied for ECS instances finally.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]]:
+        """
+        A List of Kubernetes taints to assign to the nodes.
+        """
+        return pulumi.get(self, "taints")
+
+    @taints.setter
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]]):
+        pulumi.set(self, "taints", value)
+
+    @property
+    @pulumi.getter
+    def unschedulable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+        """
+        return pulumi.get(self, "unschedulable")
+
+    @unschedulable.setter
+    def unschedulable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "unschedulable", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The vswitches used by node pool workers.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
+
+
 class NodePool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -612,44 +1092,44 @@ class NodePool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NodePoolArgs.__new__(NodePoolArgs)
 
-            __props__['auto_renew'] = auto_renew
-            __props__['auto_renew_period'] = auto_renew_period
+            __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["auto_renew_period"] = auto_renew_period
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
-            __props__['data_disks'] = data_disks
-            __props__['image_id'] = image_id
-            __props__['install_cloud_monitor'] = install_cloud_monitor
-            __props__['instance_charge_type'] = instance_charge_type
+            __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["data_disks"] = data_disks
+            __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
+            __props__.__dict__["instance_charge_type"] = instance_charge_type
             if instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_types'")
-            __props__['instance_types'] = instance_types
-            __props__['key_name'] = key_name
-            __props__['kms_encrypted_password'] = kms_encrypted_password
-            __props__['labels'] = labels
-            __props__['management'] = management
-            __props__['name'] = name
-            __props__['node_count'] = node_count
-            __props__['node_name_mode'] = node_name_mode
-            __props__['password'] = password
-            __props__['period'] = period
-            __props__['period_unit'] = period_unit
-            __props__['scaling_config'] = scaling_config
-            __props__['security_group_id'] = security_group_id
-            __props__['system_disk_category'] = system_disk_category
-            __props__['system_disk_performance_level'] = system_disk_performance_level
-            __props__['system_disk_size'] = system_disk_size
-            __props__['tags'] = tags
-            __props__['taints'] = taints
-            __props__['unschedulable'] = unschedulable
-            __props__['user_data'] = user_data
+            __props__.__dict__["instance_types"] = instance_types
+            __props__.__dict__["key_name"] = key_name
+            __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["management"] = management
+            __props__.__dict__["name"] = name
+            __props__.__dict__["node_count"] = node_count
+            __props__.__dict__["node_name_mode"] = node_name_mode
+            __props__.__dict__["password"] = password
+            __props__.__dict__["period"] = period
+            __props__.__dict__["period_unit"] = period_unit
+            __props__.__dict__["scaling_config"] = scaling_config
+            __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["system_disk_category"] = system_disk_category
+            __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
+            __props__.__dict__["system_disk_size"] = system_disk_size
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["taints"] = taints
+            __props__.__dict__["unschedulable"] = unschedulable
+            __props__.__dict__["user_data"] = user_data
             if vswitch_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_ids'")
-            __props__['vswitch_ids'] = vswitch_ids
-            __props__['scaling_group_id'] = None
-            __props__['vpc_id'] = None
+            __props__.__dict__["vswitch_ids"] = vswitch_ids
+            __props__.__dict__["scaling_group_id"] = None
+            __props__.__dict__["vpc_id"] = None
         super(NodePool, __self__).__init__(
             'alicloud:cs/nodePool:NodePool',
             resource_name,
@@ -728,38 +1208,38 @@ class NodePool(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NodePoolState.__new__(_NodePoolState)
 
-        __props__["auto_renew"] = auto_renew
-        __props__["auto_renew_period"] = auto_renew_period
-        __props__["cluster_id"] = cluster_id
-        __props__["data_disks"] = data_disks
-        __props__["image_id"] = image_id
-        __props__["install_cloud_monitor"] = install_cloud_monitor
-        __props__["instance_charge_type"] = instance_charge_type
-        __props__["instance_types"] = instance_types
-        __props__["key_name"] = key_name
-        __props__["kms_encrypted_password"] = kms_encrypted_password
-        __props__["labels"] = labels
-        __props__["management"] = management
-        __props__["name"] = name
-        __props__["node_count"] = node_count
-        __props__["node_name_mode"] = node_name_mode
-        __props__["password"] = password
-        __props__["period"] = period
-        __props__["period_unit"] = period_unit
-        __props__["scaling_config"] = scaling_config
-        __props__["scaling_group_id"] = scaling_group_id
-        __props__["security_group_id"] = security_group_id
-        __props__["system_disk_category"] = system_disk_category
-        __props__["system_disk_performance_level"] = system_disk_performance_level
-        __props__["system_disk_size"] = system_disk_size
-        __props__["tags"] = tags
-        __props__["taints"] = taints
-        __props__["unschedulable"] = unschedulable
-        __props__["user_data"] = user_data
-        __props__["vpc_id"] = vpc_id
-        __props__["vswitch_ids"] = vswitch_ids
+        __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["data_disks"] = data_disks
+        __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
+        __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["instance_types"] = instance_types
+        __props__.__dict__["key_name"] = key_name
+        __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["management"] = management
+        __props__.__dict__["name"] = name
+        __props__.__dict__["node_count"] = node_count
+        __props__.__dict__["node_name_mode"] = node_name_mode
+        __props__.__dict__["password"] = password
+        __props__.__dict__["period"] = period
+        __props__.__dict__["period_unit"] = period_unit
+        __props__.__dict__["scaling_config"] = scaling_config
+        __props__.__dict__["scaling_group_id"] = scaling_group_id
+        __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["system_disk_category"] = system_disk_category
+        __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
+        __props__.__dict__["system_disk_size"] = system_disk_size
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["taints"] = taints
+        __props__.__dict__["unschedulable"] = unschedulable
+        __props__.__dict__["user_data"] = user_data
+        __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vswitch_ids"] = vswitch_ids
         return NodePool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -995,10 +1475,4 @@ class NodePool(pulumi.CustomResource):
         The vswitches used by node pool workers.
         """
         return pulumi.get(self, "vswitch_ids")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

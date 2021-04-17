@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SamlProviderArgs', 'SamlProvider']
 
@@ -63,6 +63,94 @@ class SamlProviderArgs:
     @encodedsaml_metadata_document.setter
     def encodedsaml_metadata_document(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encodedsaml_metadata_document", value)
+
+
+@pulumi.input_type
+class _SamlProviderState:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encodedsaml_metadata_document: Optional[pulumi.Input[str]] = None,
+                 saml_provider_name: Optional[pulumi.Input[str]] = None,
+                 update_date: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SamlProvider resources.
+        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the IdP.
+        :param pulumi.Input[str] description: The description of SAML Provider.
+        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+        :param pulumi.Input[str] saml_provider_name: The name of SAML Provider.
+        :param pulumi.Input[str] update_date: The update time.
+        """
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if encodedsaml_metadata_document is not None:
+            pulumi.set(__self__, "encodedsaml_metadata_document", encodedsaml_metadata_document)
+        if saml_provider_name is not None:
+            pulumi.set(__self__, "saml_provider_name", saml_provider_name)
+        if update_date is not None:
+            pulumi.set(__self__, "update_date", update_date)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the IdP.
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of SAML Provider.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="encodedsamlMetadataDocument")
+    def encodedsaml_metadata_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+        """
+        return pulumi.get(self, "encodedsaml_metadata_document")
+
+    @encodedsaml_metadata_document.setter
+    def encodedsaml_metadata_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encodedsaml_metadata_document", value)
+
+    @property
+    @pulumi.getter(name="samlProviderName")
+    def saml_provider_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of SAML Provider.
+        """
+        return pulumi.get(self, "saml_provider_name")
+
+    @saml_provider_name.setter
+    def saml_provider_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "saml_provider_name", value)
+
+    @property
+    @pulumi.getter(name="updateDate")
+    def update_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The update time.
+        """
+        return pulumi.get(self, "update_date")
+
+    @update_date.setter
+    def update_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_date", value)
 
 
 class SamlProvider(pulumi.CustomResource):
@@ -182,15 +270,15 @@ class SamlProvider(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SamlProviderArgs.__new__(SamlProviderArgs)
 
-            __props__['description'] = description
-            __props__['encodedsaml_metadata_document'] = encodedsaml_metadata_document
+            __props__.__dict__["description"] = description
+            __props__.__dict__["encodedsaml_metadata_document"] = encodedsaml_metadata_document
             if saml_provider_name is None and not opts.urn:
                 raise TypeError("Missing required property 'saml_provider_name'")
-            __props__['saml_provider_name'] = saml_provider_name
-            __props__['arn'] = None
-            __props__['update_date'] = None
+            __props__.__dict__["saml_provider_name"] = saml_provider_name
+            __props__.__dict__["arn"] = None
+            __props__.__dict__["update_date"] = None
         super(SamlProvider, __self__).__init__(
             'alicloud:ram/samlProvider:SamlProvider',
             resource_name,
@@ -221,13 +309,13 @@ class SamlProvider(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SamlProviderState.__new__(_SamlProviderState)
 
-        __props__["arn"] = arn
-        __props__["description"] = description
-        __props__["encodedsaml_metadata_document"] = encodedsaml_metadata_document
-        __props__["saml_provider_name"] = saml_provider_name
-        __props__["update_date"] = update_date
+        __props__.__dict__["arn"] = arn
+        __props__.__dict__["description"] = description
+        __props__.__dict__["encodedsaml_metadata_document"] = encodedsaml_metadata_document
+        __props__.__dict__["saml_provider_name"] = saml_provider_name
+        __props__.__dict__["update_date"] = update_date
         return SamlProvider(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -269,10 +357,4 @@ class SamlProvider(pulumi.CustomResource):
         The update time.
         """
         return pulumi.get(self, "update_date")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

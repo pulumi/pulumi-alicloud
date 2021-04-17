@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from ._inputs import *
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -424,53 +424,47 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            __props__['access_key'] = access_key
-            __props__['account_id'] = account_id
-            __props__['assume_role'] = pulumi.Output.from_input(assume_role).apply(pulumi.runtime.to_json) if assume_role is not None else None
-            __props__['configuration_source'] = configuration_source
+            __props__.__dict__["access_key"] = access_key
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["assume_role"] = pulumi.Output.from_input(assume_role).apply(pulumi.runtime.to_json) if assume_role is not None else None
+            __props__.__dict__["configuration_source"] = configuration_source
             if ecs_role_name is None:
                 ecs_role_name = _utilities.get_env('ALICLOUD_ECS_ROLE_NAME')
-            __props__['ecs_role_name'] = ecs_role_name
-            __props__['endpoints'] = pulumi.Output.from_input(endpoints).apply(pulumi.runtime.to_json) if endpoints is not None else None
+            __props__.__dict__["ecs_role_name"] = ecs_role_name
+            __props__.__dict__["endpoints"] = pulumi.Output.from_input(endpoints).apply(pulumi.runtime.to_json) if endpoints is not None else None
             if fc is not None and not opts.urn:
                 warnings.warn("""Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""", DeprecationWarning)
                 pulumi.log.warn("""fc is deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""")
-            __props__['fc'] = fc
+            __props__.__dict__["fc"] = fc
             if log_endpoint is not None and not opts.urn:
                 warnings.warn("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""", DeprecationWarning)
                 pulumi.log.warn("""log_endpoint is deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
-            __props__['log_endpoint'] = log_endpoint
+            __props__.__dict__["log_endpoint"] = log_endpoint
             if mns_endpoint is not None and not opts.urn:
                 warnings.warn("""Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""", DeprecationWarning)
                 pulumi.log.warn("""mns_endpoint is deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""")
-            __props__['mns_endpoint'] = mns_endpoint
+            __props__.__dict__["mns_endpoint"] = mns_endpoint
             if ots_instance_name is not None and not opts.urn:
                 warnings.warn("""Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""", DeprecationWarning)
                 pulumi.log.warn("""ots_instance_name is deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""")
-            __props__['ots_instance_name'] = ots_instance_name
+            __props__.__dict__["ots_instance_name"] = ots_instance_name
             if profile is None:
                 profile = _utilities.get_env('ALICLOUD_PROFILE')
-            __props__['profile'] = profile
-            __props__['protocol'] = protocol
+            __props__.__dict__["profile"] = profile
+            __props__.__dict__["protocol"] = protocol
             if region is None:
                 region = _utilities.get_env('ALICLOUD_REGION')
-            __props__['region'] = region
-            __props__['secret_key'] = secret_key
-            __props__['security_token'] = security_token
-            __props__['shared_credentials_file'] = shared_credentials_file
-            __props__['skip_region_validation'] = pulumi.Output.from_input(skip_region_validation).apply(pulumi.runtime.to_json) if skip_region_validation is not None else None
-            __props__['source_ip'] = source_ip
+            __props__.__dict__["region"] = region
+            __props__.__dict__["secret_key"] = secret_key
+            __props__.__dict__["security_token"] = security_token
+            __props__.__dict__["shared_credentials_file"] = shared_credentials_file
+            __props__.__dict__["skip_region_validation"] = pulumi.Output.from_input(skip_region_validation).apply(pulumi.runtime.to_json) if skip_region_validation is not None else None
+            __props__.__dict__["source_ip"] = source_ip
         super(Provider, __self__).__init__(
             'alicloud',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

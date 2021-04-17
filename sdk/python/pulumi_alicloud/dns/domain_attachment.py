@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['DomainAttachmentArgs', 'DomainAttachment']
 
@@ -45,6 +45,46 @@ class DomainAttachmentArgs:
 
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+
+@pulumi.input_type
+class _DomainAttachmentState:
+    def __init__(__self__, *,
+                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DomainAttachment resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: The domain names bound to the DNS instance.
+        :param pulumi.Input[str] instance_id: The id of the DNS instance.
+        """
+        if domain_names is not None:
+            pulumi.set(__self__, "domain_names", domain_names)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The domain names bound to the DNS instance.
+        """
+        return pulumi.get(self, "domain_names")
+
+    @domain_names.setter
+    def domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "domain_names", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the DNS instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
 
 
@@ -122,14 +162,14 @@ class DomainAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DomainAttachmentArgs.__new__(DomainAttachmentArgs)
 
             if domain_names is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_names'")
-            __props__['domain_names'] = domain_names
+            __props__.__dict__["domain_names"] = domain_names
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
+            __props__.__dict__["instance_id"] = instance_id
         super(DomainAttachment, __self__).__init__(
             'alicloud:dns/domainAttachment:DomainAttachment',
             resource_name,
@@ -154,10 +194,10 @@ class DomainAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DomainAttachmentState.__new__(_DomainAttachmentState)
 
-        __props__["domain_names"] = domain_names
-        __props__["instance_id"] = instance_id
+        __props__.__dict__["domain_names"] = domain_names
+        __props__.__dict__["instance_id"] = instance_id
         return DomainAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -175,10 +215,4 @@ class DomainAttachment(pulumi.CustomResource):
         The id of the DNS instance.
         """
         return pulumi.get(self, "instance_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

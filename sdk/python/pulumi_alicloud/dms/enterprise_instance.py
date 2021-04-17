@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['EnterpriseInstanceArgs', 'EnterpriseInstance']
 
@@ -409,6 +409,468 @@ class EnterpriseInstanceArgs:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.input_type
+class _EnterpriseInstanceState:
+    def __init__(__self__, *,
+                 data_link_name: Optional[pulumi.Input[str]] = None,
+                 database_password: Optional[pulumi.Input[str]] = None,
+                 database_user: Optional[pulumi.Input[str]] = None,
+                 dba_id: Optional[pulumi.Input[str]] = None,
+                 dba_nick_name: Optional[pulumi.Input[str]] = None,
+                 dba_uid: Optional[pulumi.Input[int]] = None,
+                 ddl_online: Optional[pulumi.Input[int]] = None,
+                 ecs_instance_id: Optional[pulumi.Input[str]] = None,
+                 ecs_region: Optional[pulumi.Input[str]] = None,
+                 env_type: Optional[pulumi.Input[str]] = None,
+                 export_timeout: Optional[pulumi.Input[int]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 instance_alias: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_source: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 query_timeout: Optional[pulumi.Input[int]] = None,
+                 safe_rule: Optional[pulumi.Input[str]] = None,
+                 safe_rule_id: Optional[pulumi.Input[str]] = None,
+                 sid: Optional[pulumi.Input[str]] = None,
+                 skip_test: Optional[pulumi.Input[bool]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tid: Optional[pulumi.Input[int]] = None,
+                 use_dsql: Optional[pulumi.Input[int]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering EnterpriseInstance resources.
+        :param pulumi.Input[str] data_link_name: Cross-database query datalink name.
+        :param pulumi.Input[str] database_password: Database access password.
+        :param pulumi.Input[str] database_user: Database access account.
+        :param pulumi.Input[str] dba_nick_name: The instance dba nickname.
+        :param pulumi.Input[int] dba_uid: The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
+        :param pulumi.Input[int] ddl_online: Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
+        :param pulumi.Input[str] ecs_instance_id: ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
+        :param pulumi.Input[str] ecs_region: The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
+        :param pulumi.Input[str] env_type: Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
+        :param pulumi.Input[int] export_timeout: Export timeout, unit: s (seconds).
+        :param pulumi.Input[str] host: Host address of the target database.
+        :param pulumi.Input[str] instance_alias: It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        :param pulumi.Input[str] instance_name: Instance name, to help users quickly distinguish positioning.
+        :param pulumi.Input[str] instance_source: The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
+        :param pulumi.Input[str] instance_type: Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
+        :param pulumi.Input[str] network_type: Network type. Valid values: `CLASSIC`, `VPC`.
+        :param pulumi.Input[int] port: Access port of the target database.
+        :param pulumi.Input[int] query_timeout: Query timeout time, unit: s (seconds).
+        :param pulumi.Input[str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
+        :param pulumi.Input[str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
+        :param pulumi.Input[str] state: It has been deprecated from provider version 1.100.0 and 'status' instead.
+        :param pulumi.Input[str] status: The instance status.
+        :param pulumi.Input[int] tid: The tenant ID.
+        :param pulumi.Input[int] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
+        :param pulumi.Input[str] vpc_id: VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
+        """
+        if data_link_name is not None:
+            pulumi.set(__self__, "data_link_name", data_link_name)
+        if database_password is not None:
+            pulumi.set(__self__, "database_password", database_password)
+        if database_user is not None:
+            pulumi.set(__self__, "database_user", database_user)
+        if dba_id is not None:
+            pulumi.set(__self__, "dba_id", dba_id)
+        if dba_nick_name is not None:
+            pulumi.set(__self__, "dba_nick_name", dba_nick_name)
+        if dba_uid is not None:
+            pulumi.set(__self__, "dba_uid", dba_uid)
+        if ddl_online is not None:
+            pulumi.set(__self__, "ddl_online", ddl_online)
+        if ecs_instance_id is not None:
+            pulumi.set(__self__, "ecs_instance_id", ecs_instance_id)
+        if ecs_region is not None:
+            pulumi.set(__self__, "ecs_region", ecs_region)
+        if env_type is not None:
+            pulumi.set(__self__, "env_type", env_type)
+        if export_timeout is not None:
+            pulumi.set(__self__, "export_timeout", export_timeout)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if instance_alias is not None:
+            warnings.warn("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""")
+        if instance_alias is not None:
+            pulumi.set(__self__, "instance_alias", instance_alias)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if instance_source is not None:
+            pulumi.set(__self__, "instance_source", instance_source)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if query_timeout is not None:
+            pulumi.set(__self__, "query_timeout", query_timeout)
+        if safe_rule is not None:
+            pulumi.set(__self__, "safe_rule", safe_rule)
+        if safe_rule_id is not None:
+            pulumi.set(__self__, "safe_rule_id", safe_rule_id)
+        if sid is not None:
+            pulumi.set(__self__, "sid", sid)
+        if skip_test is not None:
+            pulumi.set(__self__, "skip_test", skip_test)
+        if state is not None:
+            warnings.warn("""Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""", DeprecationWarning)
+            pulumi.log.warn("""state is deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""")
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tid is not None:
+            pulumi.set(__self__, "tid", tid)
+        if use_dsql is not None:
+            pulumi.set(__self__, "use_dsql", use_dsql)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="dataLinkName")
+    def data_link_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cross-database query datalink name.
+        """
+        return pulumi.get(self, "data_link_name")
+
+    @data_link_name.setter
+    def data_link_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_link_name", value)
+
+    @property
+    @pulumi.getter(name="databasePassword")
+    def database_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database access password.
+        """
+        return pulumi.get(self, "database_password")
+
+    @database_password.setter
+    def database_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_password", value)
+
+    @property
+    @pulumi.getter(name="databaseUser")
+    def database_user(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database access account.
+        """
+        return pulumi.get(self, "database_user")
+
+    @database_user.setter
+    def database_user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_user", value)
+
+    @property
+    @pulumi.getter(name="dbaId")
+    def dba_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dba_id")
+
+    @dba_id.setter
+    def dba_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dba_id", value)
+
+    @property
+    @pulumi.getter(name="dbaNickName")
+    def dba_nick_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance dba nickname.
+        """
+        return pulumi.get(self, "dba_nick_name")
+
+    @dba_nick_name.setter
+    def dba_nick_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dba_nick_name", value)
+
+    @property
+    @pulumi.getter(name="dbaUid")
+    def dba_uid(self) -> Optional[pulumi.Input[int]]:
+        """
+        The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
+        """
+        return pulumi.get(self, "dba_uid")
+
+    @dba_uid.setter
+    def dba_uid(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "dba_uid", value)
+
+    @property
+    @pulumi.getter(name="ddlOnline")
+    def ddl_online(self) -> Optional[pulumi.Input[int]]:
+        """
+        Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
+        """
+        return pulumi.get(self, "ddl_online")
+
+    @ddl_online.setter
+    def ddl_online(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ddl_online", value)
+
+    @property
+    @pulumi.getter(name="ecsInstanceId")
+    def ecs_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
+        """
+        return pulumi.get(self, "ecs_instance_id")
+
+    @ecs_instance_id.setter
+    def ecs_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ecs_instance_id", value)
+
+    @property
+    @pulumi.getter(name="ecsRegion")
+    def ecs_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
+        """
+        return pulumi.get(self, "ecs_region")
+
+    @ecs_region.setter
+    def ecs_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ecs_region", value)
+
+    @property
+    @pulumi.getter(name="envType")
+    def env_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
+        """
+        return pulumi.get(self, "env_type")
+
+    @env_type.setter
+    def env_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "env_type", value)
+
+    @property
+    @pulumi.getter(name="exportTimeout")
+    def export_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Export timeout, unit: s (seconds).
+        """
+        return pulumi.get(self, "export_timeout")
+
+    @export_timeout.setter
+    def export_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "export_timeout", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host address of the target database.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="instanceAlias")
+    def instance_alias(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        """
+        return pulumi.get(self, "instance_alias")
+
+    @instance_alias.setter
+    def instance_alias(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_alias", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance name, to help users quickly distinguish positioning.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="instanceSource")
+    def instance_source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
+        """
+        return pulumi.get(self, "instance_source")
+
+    @instance_source.setter
+    def instance_source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_source", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network type. Valid values: `CLASSIC`, `VPC`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_type", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Access port of the target database.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="queryTimeout")
+    def query_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Query timeout time, unit: s (seconds).
+        """
+        return pulumi.get(self, "query_timeout")
+
+    @query_timeout.setter
+    def query_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "query_timeout", value)
+
+    @property
+    @pulumi.getter(name="safeRule")
+    def safe_rule(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security rule of the instance is passed into the name of the security rule in the enterprise.
+        """
+        return pulumi.get(self, "safe_rule")
+
+    @safe_rule.setter
+    def safe_rule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "safe_rule", value)
+
+    @property
+    @pulumi.getter(name="safeRuleId")
+    def safe_rule_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "safe_rule_id")
+
+    @safe_rule_id.setter
+    def safe_rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "safe_rule_id", value)
+
+    @property
+    @pulumi.getter
+    def sid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
+        """
+        return pulumi.get(self, "sid")
+
+    @sid.setter
+    def sid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sid", value)
+
+    @property
+    @pulumi.getter(name="skipTest")
+    def skip_test(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "skip_test")
+
+    @skip_test.setter
+    def skip_test(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_test", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from provider version 1.100.0 and 'status' instead.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance status.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tid(self) -> Optional[pulumi.Input[int]]:
+        """
+        The tenant ID.
+        """
+        return pulumi.get(self, "tid")
+
+    @tid.setter
+    def tid(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tid", value)
+
+    @property
+    @pulumi.getter(name="useDsql")
+    def use_dsql(self) -> Optional[pulumi.Input[int]]:
+        """
+        Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
+        """
+        return pulumi.get(self, "use_dsql")
+
+    @use_dsql.setter
+    def use_dsql(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "use_dsql", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+
 class EnterpriseInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -609,64 +1071,64 @@ class EnterpriseInstance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EnterpriseInstanceArgs.__new__(EnterpriseInstanceArgs)
 
-            __props__['data_link_name'] = data_link_name
+            __props__.__dict__["data_link_name"] = data_link_name
             if database_password is None and not opts.urn:
                 raise TypeError("Missing required property 'database_password'")
-            __props__['database_password'] = database_password
+            __props__.__dict__["database_password"] = database_password
             if database_user is None and not opts.urn:
                 raise TypeError("Missing required property 'database_user'")
-            __props__['database_user'] = database_user
-            __props__['dba_id'] = dba_id
+            __props__.__dict__["database_user"] = database_user
+            __props__.__dict__["dba_id"] = dba_id
             if dba_uid is None and not opts.urn:
                 raise TypeError("Missing required property 'dba_uid'")
-            __props__['dba_uid'] = dba_uid
-            __props__['ddl_online'] = ddl_online
-            __props__['ecs_instance_id'] = ecs_instance_id
-            __props__['ecs_region'] = ecs_region
+            __props__.__dict__["dba_uid"] = dba_uid
+            __props__.__dict__["ddl_online"] = ddl_online
+            __props__.__dict__["ecs_instance_id"] = ecs_instance_id
+            __props__.__dict__["ecs_region"] = ecs_region
             if env_type is None and not opts.urn:
                 raise TypeError("Missing required property 'env_type'")
-            __props__['env_type'] = env_type
+            __props__.__dict__["env_type"] = env_type
             if export_timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'export_timeout'")
-            __props__['export_timeout'] = export_timeout
+            __props__.__dict__["export_timeout"] = export_timeout
             if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
-            __props__['host'] = host
+            __props__.__dict__["host"] = host
             if instance_alias is not None and not opts.urn:
                 warnings.warn("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("""instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""")
-            __props__['instance_alias'] = instance_alias
-            __props__['instance_id'] = instance_id
-            __props__['instance_name'] = instance_name
+            __props__.__dict__["instance_alias"] = instance_alias
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["instance_name"] = instance_name
             if instance_source is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_source'")
-            __props__['instance_source'] = instance_source
+            __props__.__dict__["instance_source"] = instance_source
             if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
-            __props__['instance_type'] = instance_type
+            __props__.__dict__["instance_type"] = instance_type
             if network_type is None and not opts.urn:
                 raise TypeError("Missing required property 'network_type'")
-            __props__['network_type'] = network_type
+            __props__.__dict__["network_type"] = network_type
             if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
-            __props__['port'] = port
+            __props__.__dict__["port"] = port
             if query_timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'query_timeout'")
-            __props__['query_timeout'] = query_timeout
+            __props__.__dict__["query_timeout"] = query_timeout
             if safe_rule is None and not opts.urn:
                 raise TypeError("Missing required property 'safe_rule'")
-            __props__['safe_rule'] = safe_rule
-            __props__['safe_rule_id'] = safe_rule_id
-            __props__['sid'] = sid
-            __props__['skip_test'] = skip_test
-            __props__['tid'] = tid
-            __props__['use_dsql'] = use_dsql
-            __props__['vpc_id'] = vpc_id
-            __props__['dba_nick_name'] = None
-            __props__['state'] = None
-            __props__['status'] = None
+            __props__.__dict__["safe_rule"] = safe_rule
+            __props__.__dict__["safe_rule_id"] = safe_rule_id
+            __props__.__dict__["sid"] = sid
+            __props__.__dict__["skip_test"] = skip_test
+            __props__.__dict__["tid"] = tid
+            __props__.__dict__["use_dsql"] = use_dsql
+            __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["dba_nick_name"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["status"] = None
         super(EnterpriseInstance, __self__).__init__(
             'alicloud:dms/enterpriseInstance:EnterpriseInstance',
             resource_name,
@@ -741,37 +1203,37 @@ class EnterpriseInstance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EnterpriseInstanceState.__new__(_EnterpriseInstanceState)
 
-        __props__["data_link_name"] = data_link_name
-        __props__["database_password"] = database_password
-        __props__["database_user"] = database_user
-        __props__["dba_id"] = dba_id
-        __props__["dba_nick_name"] = dba_nick_name
-        __props__["dba_uid"] = dba_uid
-        __props__["ddl_online"] = ddl_online
-        __props__["ecs_instance_id"] = ecs_instance_id
-        __props__["ecs_region"] = ecs_region
-        __props__["env_type"] = env_type
-        __props__["export_timeout"] = export_timeout
-        __props__["host"] = host
-        __props__["instance_alias"] = instance_alias
-        __props__["instance_id"] = instance_id
-        __props__["instance_name"] = instance_name
-        __props__["instance_source"] = instance_source
-        __props__["instance_type"] = instance_type
-        __props__["network_type"] = network_type
-        __props__["port"] = port
-        __props__["query_timeout"] = query_timeout
-        __props__["safe_rule"] = safe_rule
-        __props__["safe_rule_id"] = safe_rule_id
-        __props__["sid"] = sid
-        __props__["skip_test"] = skip_test
-        __props__["state"] = state
-        __props__["status"] = status
-        __props__["tid"] = tid
-        __props__["use_dsql"] = use_dsql
-        __props__["vpc_id"] = vpc_id
+        __props__.__dict__["data_link_name"] = data_link_name
+        __props__.__dict__["database_password"] = database_password
+        __props__.__dict__["database_user"] = database_user
+        __props__.__dict__["dba_id"] = dba_id
+        __props__.__dict__["dba_nick_name"] = dba_nick_name
+        __props__.__dict__["dba_uid"] = dba_uid
+        __props__.__dict__["ddl_online"] = ddl_online
+        __props__.__dict__["ecs_instance_id"] = ecs_instance_id
+        __props__.__dict__["ecs_region"] = ecs_region
+        __props__.__dict__["env_type"] = env_type
+        __props__.__dict__["export_timeout"] = export_timeout
+        __props__.__dict__["host"] = host
+        __props__.__dict__["instance_alias"] = instance_alias
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["instance_name"] = instance_name
+        __props__.__dict__["instance_source"] = instance_source
+        __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["network_type"] = network_type
+        __props__.__dict__["port"] = port
+        __props__.__dict__["query_timeout"] = query_timeout
+        __props__.__dict__["safe_rule"] = safe_rule
+        __props__.__dict__["safe_rule_id"] = safe_rule_id
+        __props__.__dict__["sid"] = sid
+        __props__.__dict__["skip_test"] = skip_test
+        __props__.__dict__["state"] = state
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tid"] = tid
+        __props__.__dict__["use_dsql"] = use_dsql
+        __props__.__dict__["vpc_id"] = vpc_id
         return EnterpriseInstance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -993,10 +1455,4 @@ class EnterpriseInstance(pulumi.CustomResource):
         VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
         """
         return pulumi.get(self, "vpc_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

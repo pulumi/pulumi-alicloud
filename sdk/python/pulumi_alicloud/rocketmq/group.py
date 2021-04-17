@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['GroupArgs', 'Group']
 
@@ -96,6 +96,133 @@ class GroupArgs:
     @group_type.setter
     def group_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "group_type", value)
+
+    @property
+    @pulumi.getter(name="readEnable")
+    def read_enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
+        """
+        return pulumi.get(self, "read_enable")
+
+    @read_enable.setter
+    def read_enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_enable", value)
+
+    @property
+    @pulumi.getter
+    def remark(self) -> Optional[pulumi.Input[str]]:
+        """
+        This attribute is a concise description of group. The length cannot exceed 256.
+        """
+        return pulumi.get(self, "remark")
+
+    @remark.setter
+    def remark(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "remark", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _GroupState:
+    def __init__(__self__, *,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 group_name: Optional[pulumi.Input[str]] = None,
+                 group_type: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 read_enable: Optional[pulumi.Input[bool]] = None,
+                 remark: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[str] group_id: Replaced by `group_name` after version 1.98.0.
+        :param pulumi.Input[str] group_name: Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        :param pulumi.Input[str] group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the groups.
+        :param pulumi.Input[bool] read_enable: This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
+        :param pulumi.Input[str] remark: This attribute is a concise description of group. The length cannot exceed 256.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        if group_id is not None:
+            warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if group_name is not None:
+            pulumi.set(__self__, "group_name", group_name)
+        if group_type is not None:
+            pulumi.set(__self__, "group_type", group_type)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if read_enable is not None:
+            pulumi.set(__self__, "read_enable", read_enable)
+        if remark is not None:
+            pulumi.set(__self__, "remark", remark)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Replaced by `group_name` after version 1.98.0.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_name", value)
+
+    @property
+    @pulumi.getter(name="groupType")
+    def group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+        """
+        return pulumi.get(self, "group_type")
+
+    @group_type.setter
+    def group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_type", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the ONS Instance that owns the groups.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="readEnable")
@@ -283,20 +410,20 @@ class Group(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GroupArgs.__new__(GroupArgs)
 
             if group_id is not None and not opts.urn:
                 warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
-            __props__['group_id'] = group_id
-            __props__['group_name'] = group_name
-            __props__['group_type'] = group_type
+            __props__.__dict__["group_id"] = group_id
+            __props__.__dict__["group_name"] = group_name
+            __props__.__dict__["group_type"] = group_type
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['read_enable'] = read_enable
-            __props__['remark'] = remark
-            __props__['tags'] = tags
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["read_enable"] = read_enable
+            __props__.__dict__["remark"] = remark
+            __props__.__dict__["tags"] = tags
         super(Group, __self__).__init__(
             'alicloud:rocketmq/group:Group',
             resource_name,
@@ -333,15 +460,15 @@ class Group(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GroupState.__new__(_GroupState)
 
-        __props__["group_id"] = group_id
-        __props__["group_name"] = group_name
-        __props__["group_type"] = group_type
-        __props__["instance_id"] = instance_id
-        __props__["read_enable"] = read_enable
-        __props__["remark"] = remark
-        __props__["tags"] = tags
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["group_name"] = group_name
+        __props__.__dict__["group_type"] = group_type
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["read_enable"] = read_enable
+        __props__.__dict__["remark"] = remark
+        __props__.__dict__["tags"] = tags
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -401,10 +528,4 @@ class Group(pulumi.CustomResource):
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

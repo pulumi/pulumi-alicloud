@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['FlowLogArgs', 'FlowLog']
 
@@ -97,6 +97,110 @@ class FlowLogArgs:
     @flow_log_name.setter
     def flow_log_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "flow_log_name", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class _FlowLogState:
+    def __init__(__self__, *,
+                 cen_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 flow_log_name: Optional[pulumi.Input[str]] = None,
+                 log_store_name: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering FlowLog resources.
+        :param pulumi.Input[str] cen_id: The ID of the CEN Instance.
+        :param pulumi.Input[str] description: The description of flowlog.
+        :param pulumi.Input[str] flow_log_name: The name of flowlog.
+        :param pulumi.Input[str] log_store_name: The name of the log store which is in the  `project_name` SLS project.
+        :param pulumi.Input[str] project_name: The name of the SLS project.
+        :param pulumi.Input[str] status: The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        """
+        if cen_id is not None:
+            pulumi.set(__self__, "cen_id", cen_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if flow_log_name is not None:
+            pulumi.set(__self__, "flow_log_name", flow_log_name)
+        if log_store_name is not None:
+            pulumi.set(__self__, "log_store_name", log_store_name)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the CEN Instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @cen_id.setter
+    def cen_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cen_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of flowlog.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="flowLogName")
+    def flow_log_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of flowlog.
+        """
+        return pulumi.get(self, "flow_log_name")
+
+    @flow_log_name.setter
+    def flow_log_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flow_log_name", value)
+
+    @property
+    @pulumi.getter(name="logStoreName")
+    def log_store_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the log store which is in the  `project_name` SLS project.
+        """
+        return pulumi.get(self, "log_store_name")
+
+    @log_store_name.setter
+    def log_store_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_store_name", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the SLS project.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_name", value)
 
     @property
     @pulumi.getter
@@ -263,20 +367,20 @@ class FlowLog(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FlowLogArgs.__new__(FlowLogArgs)
 
             if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
-            __props__['cen_id'] = cen_id
-            __props__['description'] = description
-            __props__['flow_log_name'] = flow_log_name
+            __props__.__dict__["cen_id"] = cen_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["flow_log_name"] = flow_log_name
             if log_store_name is None and not opts.urn:
                 raise TypeError("Missing required property 'log_store_name'")
-            __props__['log_store_name'] = log_store_name
+            __props__.__dict__["log_store_name"] = log_store_name
             if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
-            __props__['project_name'] = project_name
-            __props__['status'] = status
+            __props__.__dict__["project_name"] = project_name
+            __props__.__dict__["status"] = status
         super(FlowLog, __self__).__init__(
             'alicloud:cen/flowLog:FlowLog',
             resource_name,
@@ -309,14 +413,14 @@ class FlowLog(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FlowLogState.__new__(_FlowLogState)
 
-        __props__["cen_id"] = cen_id
-        __props__["description"] = description
-        __props__["flow_log_name"] = flow_log_name
-        __props__["log_store_name"] = log_store_name
-        __props__["project_name"] = project_name
-        __props__["status"] = status
+        __props__.__dict__["cen_id"] = cen_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["flow_log_name"] = flow_log_name
+        __props__.__dict__["log_store_name"] = log_store_name
+        __props__.__dict__["project_name"] = project_name
+        __props__.__dict__["status"] = status
         return FlowLog(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -366,10 +470,4 @@ class FlowLog(pulumi.CustomResource):
         The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

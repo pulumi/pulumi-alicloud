@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['CopyImageArgs', 'CopyImage']
 
@@ -127,6 +127,125 @@ class CopyImageArgs:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.input_type
+class _CopyImageState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 source_image_id: Optional[pulumi.Input[str]] = None,
+                 source_region_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering CopyImage resources.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if name is not None:
+            warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if source_image_id is not None:
+            pulumi.set(__self__, "source_image_id", source_image_id)
+        if source_region_id is not None:
+            pulumi.set(__self__, "source_region_id", source_region_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_image_id")
+
+    @source_image_id.setter
+    def source_image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_image_id", value)
+
+    @property
+    @pulumi.getter(name="sourceRegionId")
+    def source_region_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_region_id")
+
+    @source_region_id.setter
+    def source_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_region_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+
 class CopyImage(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -199,24 +318,24 @@ class CopyImage(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CopyImageArgs.__new__(CopyImageArgs)
 
-            __props__['description'] = description
-            __props__['encrypted'] = encrypted
-            __props__['force'] = force
-            __props__['image_name'] = image_name
-            __props__['kms_key_id'] = kms_key_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["encrypted"] = encrypted
+            __props__.__dict__["force"] = force
+            __props__.__dict__["image_name"] = image_name
+            __props__.__dict__["kms_key_id"] = kms_key_id
             if name is not None and not opts.urn:
                 warnings.warn("""Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""", DeprecationWarning)
                 pulumi.log.warn("""name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.""")
-            __props__['name'] = name
+            __props__.__dict__["name"] = name
             if source_image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'source_image_id'")
-            __props__['source_image_id'] = source_image_id
+            __props__.__dict__["source_image_id"] = source_image_id
             if source_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'source_region_id'")
-            __props__['source_region_id'] = source_region_id
-            __props__['tags'] = tags
+            __props__.__dict__["source_region_id"] = source_region_id
+            __props__.__dict__["tags"] = tags
         super(CopyImage, __self__).__init__(
             'alicloud:ecs/copyImage:CopyImage',
             resource_name,
@@ -246,17 +365,17 @@ class CopyImage(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _CopyImageState.__new__(_CopyImageState)
 
-        __props__["description"] = description
-        __props__["encrypted"] = encrypted
-        __props__["force"] = force
-        __props__["image_name"] = image_name
-        __props__["kms_key_id"] = kms_key_id
-        __props__["name"] = name
-        __props__["source_image_id"] = source_image_id
-        __props__["source_region_id"] = source_region_id
-        __props__["tags"] = tags
+        __props__.__dict__["description"] = description
+        __props__.__dict__["encrypted"] = encrypted
+        __props__.__dict__["force"] = force
+        __props__.__dict__["image_name"] = image_name
+        __props__.__dict__["kms_key_id"] = kms_key_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["source_image_id"] = source_image_id
+        __props__.__dict__["source_region_id"] = source_region_id
+        __props__.__dict__["tags"] = tags
         return CopyImage(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -303,10 +422,4 @@ class CopyImage(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

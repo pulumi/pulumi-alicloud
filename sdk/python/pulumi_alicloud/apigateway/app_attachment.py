@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AppAttachmentArgs', 'AppAttachment']
 
@@ -78,6 +78,78 @@ class AppAttachmentArgs:
         pulumi.set(self, "stage_name", value)
 
 
+@pulumi.input_type
+class _AppAttachmentState:
+    def __init__(__self__, *,
+                 api_id: Optional[pulumi.Input[str]] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 stage_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AppAttachment resources.
+        :param pulumi.Input[str] api_id: The api_id that app apply to access.
+        :param pulumi.Input[str] app_id: The app that apply to the authorization.
+        :param pulumi.Input[str] group_id: The group that the api belongs to.
+        :param pulumi.Input[str] stage_name: Stage that the app apply to access.
+        """
+        if api_id is not None:
+            pulumi.set(__self__, "api_id", api_id)
+        if app_id is not None:
+            pulumi.set(__self__, "app_id", app_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if stage_name is not None:
+            pulumi.set(__self__, "stage_name", stage_name)
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The api_id that app apply to access.
+        """
+        return pulumi.get(self, "api_id")
+
+    @api_id.setter
+    def api_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_id", value)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The app that apply to the authorization.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group that the api belongs to.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="stageName")
+    def stage_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Stage that the app apply to access.
+        """
+        return pulumi.get(self, "stage_name")
+
+    @stage_name.setter
+    def stage_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stage_name", value)
+
+
 class AppAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -144,20 +216,20 @@ class AppAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AppAttachmentArgs.__new__(AppAttachmentArgs)
 
             if api_id is None and not opts.urn:
                 raise TypeError("Missing required property 'api_id'")
-            __props__['api_id'] = api_id
+            __props__.__dict__["api_id"] = api_id
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
-            __props__['app_id'] = app_id
+            __props__.__dict__["app_id"] = app_id
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
+            __props__.__dict__["group_id"] = group_id
             if stage_name is None and not opts.urn:
                 raise TypeError("Missing required property 'stage_name'")
-            __props__['stage_name'] = stage_name
+            __props__.__dict__["stage_name"] = stage_name
         super(AppAttachment, __self__).__init__(
             'alicloud:apigateway/appAttachment:AppAttachment',
             resource_name,
@@ -186,12 +258,12 @@ class AppAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AppAttachmentState.__new__(_AppAttachmentState)
 
-        __props__["api_id"] = api_id
-        __props__["app_id"] = app_id
-        __props__["group_id"] = group_id
-        __props__["stage_name"] = stage_name
+        __props__.__dict__["api_id"] = api_id
+        __props__.__dict__["app_id"] = app_id
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["stage_name"] = stage_name
         return AppAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -225,10 +297,4 @@ class AppAttachment(pulumi.CustomResource):
         Stage that the app apply to access.
         """
         return pulumi.get(self, "stage_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

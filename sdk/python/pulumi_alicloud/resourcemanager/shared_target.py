@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SharedTargetArgs', 'SharedTarget']
 
@@ -45,6 +45,62 @@ class SharedTargetArgs:
 
     @target_id.setter
     def target_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_id", value)
+
+
+@pulumi.input_type
+class _SharedTargetState:
+    def __init__(__self__, *,
+                 resource_share_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 target_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SharedTarget resources.
+        :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
+        :param pulumi.Input[str] status: The status of shared target.
+        :param pulumi.Input[str] target_id: The member account ID in resource directory.
+        """
+        if resource_share_id is not None:
+            pulumi.set(__self__, "resource_share_id", resource_share_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if target_id is not None:
+            pulumi.set(__self__, "target_id", target_id)
+
+    @property
+    @pulumi.getter(name="resourceShareId")
+    def resource_share_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource share ID of resource manager.
+        """
+        return pulumi.get(self, "resource_share_id")
+
+    @resource_share_id.setter
+    def resource_share_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_share_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of shared target.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The member account ID in resource directory.
+        """
+        return pulumi.get(self, "target_id")
+
+    @target_id.setter
+    def target_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_id", value)
 
 
@@ -134,15 +190,15 @@ class SharedTarget(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SharedTargetArgs.__new__(SharedTargetArgs)
 
             if resource_share_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_share_id'")
-            __props__['resource_share_id'] = resource_share_id
+            __props__.__dict__["resource_share_id"] = resource_share_id
             if target_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_id'")
-            __props__['target_id'] = target_id
-            __props__['status'] = None
+            __props__.__dict__["target_id"] = target_id
+            __props__.__dict__["status"] = None
         super(SharedTarget, __self__).__init__(
             'alicloud:resourcemanager/sharedTarget:SharedTarget',
             resource_name,
@@ -169,11 +225,11 @@ class SharedTarget(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SharedTargetState.__new__(_SharedTargetState)
 
-        __props__["resource_share_id"] = resource_share_id
-        __props__["status"] = status
-        __props__["target_id"] = target_id
+        __props__.__dict__["resource_share_id"] = resource_share_id
+        __props__.__dict__["status"] = status
+        __props__.__dict__["target_id"] = target_id
         return SharedTarget(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -199,10 +255,4 @@ class SharedTarget(pulumi.CustomResource):
         The member account ID in resource directory.
         """
         return pulumi.get(self, "target_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

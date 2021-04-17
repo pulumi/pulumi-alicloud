@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ApplicationArgs', 'Application']
 
@@ -191,6 +191,190 @@ class ApplicationArgs:
         pulumi.set(self, "war_url", value)
 
 
+@pulumi.input_type
+class _ApplicationState:
+    def __init__(__self__, *,
+                 application_name: Optional[pulumi.Input[str]] = None,
+                 build_pack_id: Optional[pulumi.Input[int]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 descriotion: Optional[pulumi.Input[str]] = None,
+                 ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 health_check_url: Optional[pulumi.Input[str]] = None,
+                 logical_region_id: Optional[pulumi.Input[str]] = None,
+                 package_type: Optional[pulumi.Input[str]] = None,
+                 package_version: Optional[pulumi.Input[str]] = None,
+                 war_url: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Application resources.
+        :param pulumi.Input[str] application_name: Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
+        :param pulumi.Input[int] build_pack_id: The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
+        :param pulumi.Input[str] cluster_id: The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
+        :param pulumi.Input[str] descriotion: The description of the application that you want to create.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ecu_infos: The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
+        :param pulumi.Input[str] group_id: The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
+        :param pulumi.Input[str] health_check_url: The URL for health checking of the application.
+        :param pulumi.Input[str] logical_region_id: The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
+        :param pulumi.Input[str] package_type: The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
+        :param pulumi.Input[str] package_version: The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
+        :param pulumi.Input[str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
+        """
+        if application_name is not None:
+            pulumi.set(__self__, "application_name", application_name)
+        if build_pack_id is not None:
+            pulumi.set(__self__, "build_pack_id", build_pack_id)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if descriotion is not None:
+            pulumi.set(__self__, "descriotion", descriotion)
+        if ecu_infos is not None:
+            pulumi.set(__self__, "ecu_infos", ecu_infos)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if health_check_url is not None:
+            pulumi.set(__self__, "health_check_url", health_check_url)
+        if logical_region_id is not None:
+            pulumi.set(__self__, "logical_region_id", logical_region_id)
+        if package_type is not None:
+            pulumi.set(__self__, "package_type", package_type)
+        if package_version is not None:
+            pulumi.set(__self__, "package_version", package_version)
+        if war_url is not None:
+            pulumi.set(__self__, "war_url", war_url)
+
+    @property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
+        """
+        return pulumi.get(self, "application_name")
+
+    @application_name.setter
+    def application_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_name", value)
+
+    @property
+    @pulumi.getter(name="buildPackId")
+    def build_pack_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
+        """
+        return pulumi.get(self, "build_pack_id")
+
+    @build_pack_id.setter
+    def build_pack_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "build_pack_id", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def descriotion(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the application that you want to create.
+        """
+        return pulumi.get(self, "descriotion")
+
+    @descriotion.setter
+    def descriotion(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "descriotion", value)
+
+    @property
+    @pulumi.getter(name="ecuInfos")
+    def ecu_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
+        """
+        return pulumi.get(self, "ecu_infos")
+
+    @ecu_infos.setter
+    def ecu_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ecu_infos", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="healthCheckUrl")
+    def health_check_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL for health checking of the application.
+        """
+        return pulumi.get(self, "health_check_url")
+
+    @health_check_url.setter
+    def health_check_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_url", value)
+
+    @property
+    @pulumi.getter(name="logicalRegionId")
+    def logical_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
+        """
+        return pulumi.get(self, "logical_region_id")
+
+    @logical_region_id.setter
+    def logical_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logical_region_id", value)
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
+        """
+        return pulumi.get(self, "package_type")
+
+    @package_type.setter
+    def package_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_type", value)
+
+    @property
+    @pulumi.getter(name="packageVersion")
+    def package_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
+        """
+        return pulumi.get(self, "package_version")
+
+    @package_version.setter
+    def package_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_version", value)
+
+    @property
+    @pulumi.getter(name="warUrl")
+    def war_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
+        """
+        return pulumi.get(self, "war_url")
+
+    @war_url.setter
+    def war_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "war_url", value)
+
+
 class Application(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -300,25 +484,25 @@ class Application(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApplicationArgs.__new__(ApplicationArgs)
 
             if application_name is None and not opts.urn:
                 raise TypeError("Missing required property 'application_name'")
-            __props__['application_name'] = application_name
-            __props__['build_pack_id'] = build_pack_id
+            __props__.__dict__["application_name"] = application_name
+            __props__.__dict__["build_pack_id"] = build_pack_id
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
-            __props__['descriotion'] = descriotion
-            __props__['ecu_infos'] = ecu_infos
-            __props__['group_id'] = group_id
-            __props__['health_check_url'] = health_check_url
-            __props__['logical_region_id'] = logical_region_id
+            __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["descriotion"] = descriotion
+            __props__.__dict__["ecu_infos"] = ecu_infos
+            __props__.__dict__["group_id"] = group_id
+            __props__.__dict__["health_check_url"] = health_check_url
+            __props__.__dict__["logical_region_id"] = logical_region_id
             if package_type is None and not opts.urn:
                 raise TypeError("Missing required property 'package_type'")
-            __props__['package_type'] = package_type
-            __props__['package_version'] = package_version
-            __props__['war_url'] = war_url
+            __props__.__dict__["package_type"] = package_type
+            __props__.__dict__["package_version"] = package_version
+            __props__.__dict__["war_url"] = war_url
         super(Application, __self__).__init__(
             'alicloud:edas/application:Application',
             resource_name,
@@ -361,19 +545,19 @@ class Application(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ApplicationState.__new__(_ApplicationState)
 
-        __props__["application_name"] = application_name
-        __props__["build_pack_id"] = build_pack_id
-        __props__["cluster_id"] = cluster_id
-        __props__["descriotion"] = descriotion
-        __props__["ecu_infos"] = ecu_infos
-        __props__["group_id"] = group_id
-        __props__["health_check_url"] = health_check_url
-        __props__["logical_region_id"] = logical_region_id
-        __props__["package_type"] = package_type
-        __props__["package_version"] = package_version
-        __props__["war_url"] = war_url
+        __props__.__dict__["application_name"] = application_name
+        __props__.__dict__["build_pack_id"] = build_pack_id
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["descriotion"] = descriotion
+        __props__.__dict__["ecu_infos"] = ecu_infos
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["health_check_url"] = health_check_url
+        __props__.__dict__["logical_region_id"] = logical_region_id
+        __props__.__dict__["package_type"] = package_type
+        __props__.__dict__["package_version"] = package_version
+        __props__.__dict__["war_url"] = war_url
         return Application(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -463,10 +647,4 @@ class Application(pulumi.CustomResource):
         The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """
         return pulumi.get(self, "war_url")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

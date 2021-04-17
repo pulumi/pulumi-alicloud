@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RuleArgs', 'Rule']
 
@@ -204,6 +204,206 @@ class RuleArgs:
         pulumi.set(self, "source_maximum_execution_frequency", value)
 
 
+@pulumi.input_type
+class _RuleState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 member_id: Optional[pulumi.Input[int]] = None,
+                 multi_account: Optional[pulumi.Input[bool]] = None,
+                 risk_level: Optional[pulumi.Input[int]] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None,
+                 scope_compliance_resource_id: Optional[pulumi.Input[str]] = None,
+                 scope_compliance_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_detail_message_type: Optional[pulumi.Input[str]] = None,
+                 source_identifier: Optional[pulumi.Input[str]] = None,
+                 source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+                 source_owner: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Rule resources.
+        :param pulumi.Input[str] description: The description of the Config Rule.
+        :param pulumi.Input[Mapping[str, Any]] input_parameters: Threshold value for managed rule triggering.
+        :param pulumi.Input[int] member_id: The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
+        :param pulumi.Input[bool] multi_account: Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
+        :param pulumi.Input[int] risk_level: The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+        :param pulumi.Input[str] rule_name: The name of the Config Rule.
+        :param pulumi.Input[str] scope_compliance_resource_id: The ID of the resource to be evaluated. If not set, all resources are evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        :param pulumi.Input[str] source_detail_message_type: Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
+        :param pulumi.Input[str] source_identifier: The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        :param pulumi.Input[str] source_maximum_execution_frequency: Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
+        :param pulumi.Input[str] source_owner: The source owner of the Config Rule. Values: `CUSTOM_FC`: Custom rules, `ALIYUN`: Trusteeship rules.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if input_parameters is not None:
+            pulumi.set(__self__, "input_parameters", input_parameters)
+        if member_id is not None:
+            pulumi.set(__self__, "member_id", member_id)
+        if multi_account is not None:
+            pulumi.set(__self__, "multi_account", multi_account)
+        if risk_level is not None:
+            pulumi.set(__self__, "risk_level", risk_level)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if scope_compliance_resource_id is not None:
+            pulumi.set(__self__, "scope_compliance_resource_id", scope_compliance_resource_id)
+        if scope_compliance_resource_types is not None:
+            pulumi.set(__self__, "scope_compliance_resource_types", scope_compliance_resource_types)
+        if source_detail_message_type is not None:
+            pulumi.set(__self__, "source_detail_message_type", source_detail_message_type)
+        if source_identifier is not None:
+            pulumi.set(__self__, "source_identifier", source_identifier)
+        if source_maximum_execution_frequency is not None:
+            pulumi.set(__self__, "source_maximum_execution_frequency", source_maximum_execution_frequency)
+        if source_owner is not None:
+            pulumi.set(__self__, "source_owner", source_owner)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the Config Rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="inputParameters")
+    def input_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Threshold value for managed rule triggering.
+        """
+        return pulumi.get(self, "input_parameters")
+
+    @input_parameters.setter
+    def input_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "input_parameters", value)
+
+    @property
+    @pulumi.getter(name="memberId")
+    def member_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
+        """
+        return pulumi.get(self, "member_id")
+
+    @member_id.setter
+    def member_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "member_id", value)
+
+    @property
+    @pulumi.getter(name="multiAccount")
+    def multi_account(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
+        """
+        return pulumi.get(self, "multi_account")
+
+    @multi_account.setter
+    def multi_account(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_account", value)
+
+    @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> Optional[pulumi.Input[int]]:
+        """
+        The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+        """
+        return pulumi.get(self, "risk_level")
+
+    @risk_level.setter
+    def risk_level(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "risk_level", value)
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Config Rule.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @rule_name.setter
+    def rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_name", value)
+
+    @property
+    @pulumi.getter(name="scopeComplianceResourceId")
+    def scope_compliance_resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource to be evaluated. If not set, all resources are evaluated.
+        """
+        return pulumi.get(self, "scope_compliance_resource_id")
+
+    @scope_compliance_resource_id.setter
+    def scope_compliance_resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope_compliance_resource_id", value)
+
+    @property
+    @pulumi.getter(name="scopeComplianceResourceTypes")
+    def scope_compliance_resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        """
+        return pulumi.get(self, "scope_compliance_resource_types")
+
+    @scope_compliance_resource_types.setter
+    def scope_compliance_resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scope_compliance_resource_types", value)
+
+    @property
+    @pulumi.getter(name="sourceDetailMessageType")
+    def source_detail_message_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
+        """
+        return pulumi.get(self, "source_detail_message_type")
+
+    @source_detail_message_type.setter
+    def source_detail_message_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_detail_message_type", value)
+
+    @property
+    @pulumi.getter(name="sourceIdentifier")
+    def source_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        """
+        return pulumi.get(self, "source_identifier")
+
+    @source_identifier.setter
+    def source_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_identifier", value)
+
+    @property
+    @pulumi.getter(name="sourceMaximumExecutionFrequency")
+    def source_maximum_execution_frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
+        """
+        return pulumi.get(self, "source_maximum_execution_frequency")
+
+    @source_maximum_execution_frequency.setter
+    def source_maximum_execution_frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_maximum_execution_frequency", value)
+
+    @property
+    @pulumi.getter(name="sourceOwner")
+    def source_owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source owner of the Config Rule. Values: `CUSTOM_FC`: Custom rules, `ALIYUN`: Trusteeship rules.
+        """
+        return pulumi.get(self, "source_owner")
+
+    @source_owner.setter
+    def source_owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_owner", value)
+
+
 class Rule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -370,32 +570,32 @@ class Rule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RuleArgs.__new__(RuleArgs)
 
-            __props__['description'] = description
-            __props__['input_parameters'] = input_parameters
-            __props__['member_id'] = member_id
-            __props__['multi_account'] = multi_account
+            __props__.__dict__["description"] = description
+            __props__.__dict__["input_parameters"] = input_parameters
+            __props__.__dict__["member_id"] = member_id
+            __props__.__dict__["multi_account"] = multi_account
             if risk_level is None and not opts.urn:
                 raise TypeError("Missing required property 'risk_level'")
-            __props__['risk_level'] = risk_level
+            __props__.__dict__["risk_level"] = risk_level
             if rule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_name'")
-            __props__['rule_name'] = rule_name
-            __props__['scope_compliance_resource_id'] = scope_compliance_resource_id
+            __props__.__dict__["rule_name"] = rule_name
+            __props__.__dict__["scope_compliance_resource_id"] = scope_compliance_resource_id
             if scope_compliance_resource_types is None and not opts.urn:
                 raise TypeError("Missing required property 'scope_compliance_resource_types'")
-            __props__['scope_compliance_resource_types'] = scope_compliance_resource_types
+            __props__.__dict__["scope_compliance_resource_types"] = scope_compliance_resource_types
             if source_detail_message_type is None and not opts.urn:
                 raise TypeError("Missing required property 'source_detail_message_type'")
-            __props__['source_detail_message_type'] = source_detail_message_type
+            __props__.__dict__["source_detail_message_type"] = source_detail_message_type
             if source_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'source_identifier'")
-            __props__['source_identifier'] = source_identifier
-            __props__['source_maximum_execution_frequency'] = source_maximum_execution_frequency
+            __props__.__dict__["source_identifier"] = source_identifier
+            __props__.__dict__["source_maximum_execution_frequency"] = source_maximum_execution_frequency
             if source_owner is None and not opts.urn:
                 raise TypeError("Missing required property 'source_owner'")
-            __props__['source_owner'] = source_owner
+            __props__.__dict__["source_owner"] = source_owner
         super(Rule, __self__).__init__(
             'alicloud:cfg/rule:Rule',
             resource_name,
@@ -440,20 +640,20 @@ class Rule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RuleState.__new__(_RuleState)
 
-        __props__["description"] = description
-        __props__["input_parameters"] = input_parameters
-        __props__["member_id"] = member_id
-        __props__["multi_account"] = multi_account
-        __props__["risk_level"] = risk_level
-        __props__["rule_name"] = rule_name
-        __props__["scope_compliance_resource_id"] = scope_compliance_resource_id
-        __props__["scope_compliance_resource_types"] = scope_compliance_resource_types
-        __props__["source_detail_message_type"] = source_detail_message_type
-        __props__["source_identifier"] = source_identifier
-        __props__["source_maximum_execution_frequency"] = source_maximum_execution_frequency
-        __props__["source_owner"] = source_owner
+        __props__.__dict__["description"] = description
+        __props__.__dict__["input_parameters"] = input_parameters
+        __props__.__dict__["member_id"] = member_id
+        __props__.__dict__["multi_account"] = multi_account
+        __props__.__dict__["risk_level"] = risk_level
+        __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["scope_compliance_resource_id"] = scope_compliance_resource_id
+        __props__.__dict__["scope_compliance_resource_types"] = scope_compliance_resource_types
+        __props__.__dict__["source_detail_message_type"] = source_detail_message_type
+        __props__.__dict__["source_identifier"] = source_identifier
+        __props__.__dict__["source_maximum_execution_frequency"] = source_maximum_execution_frequency
+        __props__.__dict__["source_owner"] = source_owner
         return Rule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -551,10 +751,4 @@ class Rule(pulumi.CustomResource):
         The source owner of the Config Rule. Values: `CUSTOM_FC`: Custom rules, `ALIYUN`: Trusteeship rules.
         """
         return pulumi.get(self, "source_owner")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

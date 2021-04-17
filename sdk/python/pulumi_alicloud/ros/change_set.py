@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -307,6 +307,318 @@ class ChangeSetArgs:
         pulumi.set(self, "use_previous_parameters", value)
 
 
+@pulumi.input_type
+class _ChangeSetState:
+    def __init__(__self__, *,
+                 change_set_name: Optional[pulumi.Input[str]] = None,
+                 change_set_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disable_rollback: Optional[pulumi.Input[bool]] = None,
+                 notification_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ChangeSetParameterArgs']]]] = None,
+                 ram_role_name: Optional[pulumi.Input[str]] = None,
+                 replacement_option: Optional[pulumi.Input[str]] = None,
+                 stack_id: Optional[pulumi.Input[str]] = None,
+                 stack_name: Optional[pulumi.Input[str]] = None,
+                 stack_policy_body: Optional[pulumi.Input[str]] = None,
+                 stack_policy_during_update_body: Optional[pulumi.Input[str]] = None,
+                 stack_policy_during_update_url: Optional[pulumi.Input[str]] = None,
+                 stack_policy_url: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 template_body: Optional[pulumi.Input[str]] = None,
+                 template_url: Optional[pulumi.Input[str]] = None,
+                 timeout_in_minutes: Optional[pulumi.Input[int]] = None,
+                 use_previous_parameters: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering ChangeSet resources.
+        :param pulumi.Input[str] change_set_name: The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        :param pulumi.Input[str] change_set_type: The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
+        :param pulumi.Input[str] description: The description of the change set. The description can be up to 1,024 bytes in length.
+        :param pulumi.Input[bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_urls: The notification urls.
+        :param pulumi.Input[Sequence[pulumi.Input['ChangeSetParameterArgs']]] parameters: Parameters.
+        :param pulumi.Input[str] ram_role_name: The ram role name.
+        :param pulumi.Input[str] replacement_option: The replacement option.
+        :param pulumi.Input[str] stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+        :param pulumi.Input[str] stack_name: The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
+        :param pulumi.Input[str] stack_policy_body: The stack policy body.
+        :param pulumi.Input[str] stack_policy_during_update_body: The stack policy during update body.
+        :param pulumi.Input[str] stack_policy_during_update_url: The stack policy during update url.
+        :param pulumi.Input[str] stack_policy_url: The stack policy url.
+        :param pulumi.Input[str] status: The status of the change set.
+        :param pulumi.Input[str] template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
+        :param pulumi.Input[str] template_url: The template url.
+        :param pulumi.Input[int] timeout_in_minutes: Timeout In Minutes.
+        :param pulumi.Input[bool] use_previous_parameters: The use previous parameters.
+        """
+        if change_set_name is not None:
+            pulumi.set(__self__, "change_set_name", change_set_name)
+        if change_set_type is not None:
+            pulumi.set(__self__, "change_set_type", change_set_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disable_rollback is not None:
+            pulumi.set(__self__, "disable_rollback", disable_rollback)
+        if notification_urls is not None:
+            pulumi.set(__self__, "notification_urls", notification_urls)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if ram_role_name is not None:
+            pulumi.set(__self__, "ram_role_name", ram_role_name)
+        if replacement_option is not None:
+            pulumi.set(__self__, "replacement_option", replacement_option)
+        if stack_id is not None:
+            pulumi.set(__self__, "stack_id", stack_id)
+        if stack_name is not None:
+            pulumi.set(__self__, "stack_name", stack_name)
+        if stack_policy_body is not None:
+            pulumi.set(__self__, "stack_policy_body", stack_policy_body)
+        if stack_policy_during_update_body is not None:
+            pulumi.set(__self__, "stack_policy_during_update_body", stack_policy_during_update_body)
+        if stack_policy_during_update_url is not None:
+            pulumi.set(__self__, "stack_policy_during_update_url", stack_policy_during_update_url)
+        if stack_policy_url is not None:
+            pulumi.set(__self__, "stack_policy_url", stack_policy_url)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if template_body is not None:
+            pulumi.set(__self__, "template_body", template_body)
+        if template_url is not None:
+            pulumi.set(__self__, "template_url", template_url)
+        if timeout_in_minutes is not None:
+            pulumi.set(__self__, "timeout_in_minutes", timeout_in_minutes)
+        if use_previous_parameters is not None:
+            pulumi.set(__self__, "use_previous_parameters", use_previous_parameters)
+
+    @property
+    @pulumi.getter(name="changeSetName")
+    def change_set_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        """
+        return pulumi.get(self, "change_set_name")
+
+    @change_set_name.setter
+    def change_set_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "change_set_name", value)
+
+    @property
+    @pulumi.getter(name="changeSetType")
+    def change_set_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
+        """
+        return pulumi.get(self, "change_set_type")
+
+    @change_set_type.setter
+    def change_set_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "change_set_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the change set. The description can be up to 1,024 bytes in length.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableRollback")
+    def disable_rollback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
+        """
+        return pulumi.get(self, "disable_rollback")
+
+    @disable_rollback.setter
+    def disable_rollback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_rollback", value)
+
+    @property
+    @pulumi.getter(name="notificationUrls")
+    def notification_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The notification urls.
+        """
+        return pulumi.get(self, "notification_urls")
+
+    @notification_urls.setter
+    def notification_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_urls", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChangeSetParameterArgs']]]]:
+        """
+        Parameters.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChangeSetParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ram role name.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @ram_role_name.setter
+    def ram_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ram_role_name", value)
+
+    @property
+    @pulumi.getter(name="replacementOption")
+    def replacement_option(self) -> Optional[pulumi.Input[str]]:
+        """
+        The replacement option.
+        """
+        return pulumi.get(self, "replacement_option")
+
+    @replacement_option.setter
+    def replacement_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replacement_option", value)
+
+    @property
+    @pulumi.getter(name="stackId")
+    def stack_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+        """
+        return pulumi.get(self, "stack_id")
+
+    @stack_id.setter
+    def stack_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_id", value)
+
+    @property
+    @pulumi.getter(name="stackName")
+    def stack_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
+        """
+        return pulumi.get(self, "stack_name")
+
+    @stack_name.setter
+    def stack_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_name", value)
+
+    @property
+    @pulumi.getter(name="stackPolicyBody")
+    def stack_policy_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack policy body.
+        """
+        return pulumi.get(self, "stack_policy_body")
+
+    @stack_policy_body.setter
+    def stack_policy_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_policy_body", value)
+
+    @property
+    @pulumi.getter(name="stackPolicyDuringUpdateBody")
+    def stack_policy_during_update_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack policy during update body.
+        """
+        return pulumi.get(self, "stack_policy_during_update_body")
+
+    @stack_policy_during_update_body.setter
+    def stack_policy_during_update_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_policy_during_update_body", value)
+
+    @property
+    @pulumi.getter(name="stackPolicyDuringUpdateUrl")
+    def stack_policy_during_update_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack policy during update url.
+        """
+        return pulumi.get(self, "stack_policy_during_update_url")
+
+    @stack_policy_during_update_url.setter
+    def stack_policy_during_update_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_policy_during_update_url", value)
+
+    @property
+    @pulumi.getter(name="stackPolicyUrl")
+    def stack_policy_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack policy url.
+        """
+        return pulumi.get(self, "stack_policy_url")
+
+    @stack_policy_url.setter
+    def stack_policy_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_policy_url", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the change set.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="templateBody")
+    def template_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
+        """
+        return pulumi.get(self, "template_body")
+
+    @template_body.setter
+    def template_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_body", value)
+
+    @property
+    @pulumi.getter(name="templateUrl")
+    def template_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The template url.
+        """
+        return pulumi.get(self, "template_url")
+
+    @template_url.setter
+    def template_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_url", value)
+
+    @property
+    @pulumi.getter(name="timeoutInMinutes")
+    def timeout_in_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timeout In Minutes.
+        """
+        return pulumi.get(self, "timeout_in_minutes")
+
+    @timeout_in_minutes.setter
+    def timeout_in_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_in_minutes", value)
+
+    @property
+    @pulumi.getter(name="usePreviousParameters")
+    def use_previous_parameters(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The use previous parameters.
+        """
+        return pulumi.get(self, "use_previous_parameters")
+
+    @use_previous_parameters.setter
+    def use_previous_parameters(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_previous_parameters", value)
+
+
 class ChangeSet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -473,29 +785,29 @@ class ChangeSet(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ChangeSetArgs.__new__(ChangeSetArgs)
 
             if change_set_name is None and not opts.urn:
                 raise TypeError("Missing required property 'change_set_name'")
-            __props__['change_set_name'] = change_set_name
-            __props__['change_set_type'] = change_set_type
-            __props__['description'] = description
-            __props__['disable_rollback'] = disable_rollback
-            __props__['notification_urls'] = notification_urls
-            __props__['parameters'] = parameters
-            __props__['ram_role_name'] = ram_role_name
-            __props__['replacement_option'] = replacement_option
-            __props__['stack_id'] = stack_id
-            __props__['stack_name'] = stack_name
-            __props__['stack_policy_body'] = stack_policy_body
-            __props__['stack_policy_during_update_body'] = stack_policy_during_update_body
-            __props__['stack_policy_during_update_url'] = stack_policy_during_update_url
-            __props__['stack_policy_url'] = stack_policy_url
-            __props__['template_body'] = template_body
-            __props__['template_url'] = template_url
-            __props__['timeout_in_minutes'] = timeout_in_minutes
-            __props__['use_previous_parameters'] = use_previous_parameters
-            __props__['status'] = None
+            __props__.__dict__["change_set_name"] = change_set_name
+            __props__.__dict__["change_set_type"] = change_set_type
+            __props__.__dict__["description"] = description
+            __props__.__dict__["disable_rollback"] = disable_rollback
+            __props__.__dict__["notification_urls"] = notification_urls
+            __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["ram_role_name"] = ram_role_name
+            __props__.__dict__["replacement_option"] = replacement_option
+            __props__.__dict__["stack_id"] = stack_id
+            __props__.__dict__["stack_name"] = stack_name
+            __props__.__dict__["stack_policy_body"] = stack_policy_body
+            __props__.__dict__["stack_policy_during_update_body"] = stack_policy_during_update_body
+            __props__.__dict__["stack_policy_during_update_url"] = stack_policy_during_update_url
+            __props__.__dict__["stack_policy_url"] = stack_policy_url
+            __props__.__dict__["template_body"] = template_body
+            __props__.__dict__["template_url"] = template_url
+            __props__.__dict__["timeout_in_minutes"] = timeout_in_minutes
+            __props__.__dict__["use_previous_parameters"] = use_previous_parameters
+            __props__.__dict__["status"] = None
         super(ChangeSet, __self__).__init__(
             'alicloud:ros/changeSet:ChangeSet',
             resource_name,
@@ -554,27 +866,27 @@ class ChangeSet(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ChangeSetState.__new__(_ChangeSetState)
 
-        __props__["change_set_name"] = change_set_name
-        __props__["change_set_type"] = change_set_type
-        __props__["description"] = description
-        __props__["disable_rollback"] = disable_rollback
-        __props__["notification_urls"] = notification_urls
-        __props__["parameters"] = parameters
-        __props__["ram_role_name"] = ram_role_name
-        __props__["replacement_option"] = replacement_option
-        __props__["stack_id"] = stack_id
-        __props__["stack_name"] = stack_name
-        __props__["stack_policy_body"] = stack_policy_body
-        __props__["stack_policy_during_update_body"] = stack_policy_during_update_body
-        __props__["stack_policy_during_update_url"] = stack_policy_during_update_url
-        __props__["stack_policy_url"] = stack_policy_url
-        __props__["status"] = status
-        __props__["template_body"] = template_body
-        __props__["template_url"] = template_url
-        __props__["timeout_in_minutes"] = timeout_in_minutes
-        __props__["use_previous_parameters"] = use_previous_parameters
+        __props__.__dict__["change_set_name"] = change_set_name
+        __props__.__dict__["change_set_type"] = change_set_type
+        __props__.__dict__["description"] = description
+        __props__.__dict__["disable_rollback"] = disable_rollback
+        __props__.__dict__["notification_urls"] = notification_urls
+        __props__.__dict__["parameters"] = parameters
+        __props__.__dict__["ram_role_name"] = ram_role_name
+        __props__.__dict__["replacement_option"] = replacement_option
+        __props__.__dict__["stack_id"] = stack_id
+        __props__.__dict__["stack_name"] = stack_name
+        __props__.__dict__["stack_policy_body"] = stack_policy_body
+        __props__.__dict__["stack_policy_during_update_body"] = stack_policy_during_update_body
+        __props__.__dict__["stack_policy_during_update_url"] = stack_policy_during_update_url
+        __props__.__dict__["stack_policy_url"] = stack_policy_url
+        __props__.__dict__["status"] = status
+        __props__.__dict__["template_body"] = template_body
+        __props__.__dict__["template_url"] = template_url
+        __props__.__dict__["timeout_in_minutes"] = timeout_in_minutes
+        __props__.__dict__["use_previous_parameters"] = use_previous_parameters
         return ChangeSet(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -728,10 +1040,4 @@ class ChangeSet(pulumi.CustomResource):
         The use previous parameters.
         """
         return pulumi.get(self, "use_previous_parameters")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

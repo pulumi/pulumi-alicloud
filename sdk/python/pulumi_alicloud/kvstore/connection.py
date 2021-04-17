@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ConnectionArgs', 'Connection']
 
@@ -60,6 +60,78 @@ class ConnectionArgs:
 
     @port.setter
     def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class _ConnectionState:
+    def __init__(__self__, *,
+                 connection_string: Optional[pulumi.Input[str]] = None,
+                 connection_string_prefix: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input[str] connection_string: The public connection string of KVStore DBInstance.
+        :param pulumi.Input[str] connection_string_prefix: The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
+        :param pulumi.Input[str] instance_id: The ID of the instance.
+        :param pulumi.Input[str] port: The service port number of the instance.
+        """
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if connection_string_prefix is not None:
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public connection string of KVStore DBInstance.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string", value)
+
+    @property
+    @pulumi.getter(name="connectionStringPrefix")
+    def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
+        """
+        return pulumi.get(self, "connection_string_prefix")
+
+    @connection_string_prefix.setter
+    def connection_string_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string_prefix", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service port number of the instance.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "port", value)
 
 
@@ -176,18 +248,18 @@ class Connection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
             if connection_string_prefix is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_string_prefix'")
-            __props__['connection_string_prefix'] = connection_string_prefix
+            __props__.__dict__["connection_string_prefix"] = connection_string_prefix
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
+            __props__.__dict__["instance_id"] = instance_id
             if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
-            __props__['port'] = port
-            __props__['connection_string'] = None
+            __props__.__dict__["port"] = port
+            __props__.__dict__["connection_string"] = None
         super(Connection, __self__).__init__(
             'alicloud:kvstore/connection:Connection',
             resource_name,
@@ -216,12 +288,12 @@ class Connection(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ConnectionState.__new__(_ConnectionState)
 
-        __props__["connection_string"] = connection_string
-        __props__["connection_string_prefix"] = connection_string_prefix
-        __props__["instance_id"] = instance_id
-        __props__["port"] = port
+        __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["connection_string_prefix"] = connection_string_prefix
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["port"] = port
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -255,10 +327,4 @@ class Connection(pulumi.CustomResource):
         The service port number of the instance.
         """
         return pulumi.get(self, "port")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

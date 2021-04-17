@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -239,6 +239,254 @@ class ApiArgs:
         pulumi.set(self, "system_parameters", value)
 
 
+@pulumi.input_type
+class _ApiState:
+    def __init__(__self__, *,
+                 api_id: Optional[pulumi.Input[str]] = None,
+                 auth_type: Optional[pulumi.Input[str]] = None,
+                 constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 fc_service_config: Optional[pulumi.Input['ApiFcServiceConfigArgs']] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 http_service_config: Optional[pulumi.Input['ApiHttpServiceConfigArgs']] = None,
+                 http_vpc_service_config: Optional[pulumi.Input['ApiHttpVpcServiceConfigArgs']] = None,
+                 mock_service_config: Optional[pulumi.Input['ApiMockServiceConfigArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 request_config: Optional[pulumi.Input['ApiRequestConfigArgs']] = None,
+                 request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]]] = None,
+                 service_type: Optional[pulumi.Input[str]] = None,
+                 stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering Api resources.
+        :param pulumi.Input[str] api_id: The ID of the api of api gateway.
+        :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api.
+        :param pulumi.Input[str] description: The description of Constant parameter.
+        :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
+        :param pulumi.Input['ApiHttpServiceConfigArgs'] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
+        :param pulumi.Input['ApiHttpVpcServiceConfigArgs'] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
+        :param pulumi.Input['ApiMockServiceConfigArgs'] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
+        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api.
+        :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api.
+        """
+        if api_id is not None:
+            pulumi.set(__self__, "api_id", api_id)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+        if constant_parameters is not None:
+            pulumi.set(__self__, "constant_parameters", constant_parameters)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if fc_service_config is not None:
+            pulumi.set(__self__, "fc_service_config", fc_service_config)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if http_service_config is not None:
+            pulumi.set(__self__, "http_service_config", http_service_config)
+        if http_vpc_service_config is not None:
+            pulumi.set(__self__, "http_vpc_service_config", http_vpc_service_config)
+        if mock_service_config is not None:
+            pulumi.set(__self__, "mock_service_config", mock_service_config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if request_config is not None:
+            pulumi.set(__self__, "request_config", request_config)
+        if request_parameters is not None:
+            pulumi.set(__self__, "request_parameters", request_parameters)
+        if service_type is not None:
+            pulumi.set(__self__, "service_type", service_type)
+        if stage_names is not None:
+            pulumi.set(__self__, "stage_names", stage_names)
+        if system_parameters is not None:
+            pulumi.set(__self__, "system_parameters", system_parameters)
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the api of api gateway.
+        """
+        return pulumi.get(self, "api_id")
+
+    @api_id.setter
+    def api_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_id", value)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The authorization Type including APP and ANONYMOUS. Defaults to null.
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_type", value)
+
+    @property
+    @pulumi.getter(name="constantParameters")
+    def constant_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]]]:
+        """
+        constant_parameters defines the constant parameters of the api.
+        """
+        return pulumi.get(self, "constant_parameters")
+
+    @constant_parameters.setter
+    def constant_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]]]):
+        pulumi.set(self, "constant_parameters", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of Constant parameter.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="fcServiceConfig")
+    def fc_service_config(self) -> Optional[pulumi.Input['ApiFcServiceConfigArgs']]:
+        """
+        fc_service_config defines the config when service_type selected 'FunctionCompute'.
+        """
+        return pulumi.get(self, "fc_service_config")
+
+    @fc_service_config.setter
+    def fc_service_config(self, value: Optional[pulumi.Input['ApiFcServiceConfigArgs']]):
+        pulumi.set(self, "fc_service_config", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The api gateway that the api belongs to. Defaults to null.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="httpServiceConfig")
+    def http_service_config(self) -> Optional[pulumi.Input['ApiHttpServiceConfigArgs']]:
+        """
+        http_service_config defines the config when service_type selected 'HTTP'.
+        """
+        return pulumi.get(self, "http_service_config")
+
+    @http_service_config.setter
+    def http_service_config(self, value: Optional[pulumi.Input['ApiHttpServiceConfigArgs']]):
+        pulumi.set(self, "http_service_config", value)
+
+    @property
+    @pulumi.getter(name="httpVpcServiceConfig")
+    def http_vpc_service_config(self) -> Optional[pulumi.Input['ApiHttpVpcServiceConfigArgs']]:
+        """
+        http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
+        """
+        return pulumi.get(self, "http_vpc_service_config")
+
+    @http_vpc_service_config.setter
+    def http_vpc_service_config(self, value: Optional[pulumi.Input['ApiHttpVpcServiceConfigArgs']]):
+        pulumi.set(self, "http_vpc_service_config", value)
+
+    @property
+    @pulumi.getter(name="mockServiceConfig")
+    def mock_service_config(self) -> Optional[pulumi.Input['ApiMockServiceConfigArgs']]:
+        """
+        http_service_config defines the config when service_type selected 'MOCK'.
+        """
+        return pulumi.get(self, "mock_service_config")
+
+    @mock_service_config.setter
+    def mock_service_config(self, value: Optional[pulumi.Input['ApiMockServiceConfigArgs']]):
+        pulumi.set(self, "mock_service_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="requestConfig")
+    def request_config(self) -> Optional[pulumi.Input['ApiRequestConfigArgs']]:
+        """
+        Request_config defines how users can send requests to your API.
+        """
+        return pulumi.get(self, "request_config")
+
+    @request_config.setter
+    def request_config(self, value: Optional[pulumi.Input['ApiRequestConfigArgs']]):
+        pulumi.set(self, "request_config", value)
+
+    @property
+    @pulumi.getter(name="requestParameters")
+    def request_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]]]:
+        """
+        request_parameters defines the request parameters of the api.
+        """
+        return pulumi.get(self, "request_parameters")
+
+    @request_parameters.setter
+    def request_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]]]):
+        pulumi.set(self, "request_parameters", value)
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
+        """
+        return pulumi.get(self, "service_type")
+
+    @service_type.setter
+    def service_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_type", value)
+
+    @property
+    @pulumi.getter(name="stageNames")
+    def stage_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
+        """
+        return pulumi.get(self, "stage_names")
+
+    @stage_names.setter
+    def stage_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "stage_names", value)
+
+    @property
+    @pulumi.getter(name="systemParameters")
+    def system_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]]:
+        """
+        system_parameters defines the system parameters of the api.
+        """
+        return pulumi.get(self, "system_parameters")
+
+    @system_parameters.setter
+    def system_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]]):
+        pulumi.set(self, "system_parameters", value)
+
+
 class Api(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -349,33 +597,33 @@ class Api(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApiArgs.__new__(ApiArgs)
 
             if auth_type is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_type'")
-            __props__['auth_type'] = auth_type
-            __props__['constant_parameters'] = constant_parameters
+            __props__.__dict__["auth_type"] = auth_type
+            __props__.__dict__["constant_parameters"] = constant_parameters
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
-            __props__['fc_service_config'] = fc_service_config
+            __props__.__dict__["description"] = description
+            __props__.__dict__["fc_service_config"] = fc_service_config
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
-            __props__['http_service_config'] = http_service_config
-            __props__['http_vpc_service_config'] = http_vpc_service_config
-            __props__['mock_service_config'] = mock_service_config
-            __props__['name'] = name
+            __props__.__dict__["group_id"] = group_id
+            __props__.__dict__["http_service_config"] = http_service_config
+            __props__.__dict__["http_vpc_service_config"] = http_vpc_service_config
+            __props__.__dict__["mock_service_config"] = mock_service_config
+            __props__.__dict__["name"] = name
             if request_config is None and not opts.urn:
                 raise TypeError("Missing required property 'request_config'")
-            __props__['request_config'] = request_config
-            __props__['request_parameters'] = request_parameters
+            __props__.__dict__["request_config"] = request_config
+            __props__.__dict__["request_parameters"] = request_parameters
             if service_type is None and not opts.urn:
                 raise TypeError("Missing required property 'service_type'")
-            __props__['service_type'] = service_type
-            __props__['stage_names'] = stage_names
-            __props__['system_parameters'] = system_parameters
-            __props__['api_id'] = None
+            __props__.__dict__["service_type"] = service_type
+            __props__.__dict__["stage_names"] = stage_names
+            __props__.__dict__["system_parameters"] = system_parameters
+            __props__.__dict__["api_id"] = None
         super(Api, __self__).__init__(
             'alicloud:apigateway/api:Api',
             resource_name,
@@ -426,23 +674,23 @@ class Api(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ApiState.__new__(_ApiState)
 
-        __props__["api_id"] = api_id
-        __props__["auth_type"] = auth_type
-        __props__["constant_parameters"] = constant_parameters
-        __props__["description"] = description
-        __props__["fc_service_config"] = fc_service_config
-        __props__["group_id"] = group_id
-        __props__["http_service_config"] = http_service_config
-        __props__["http_vpc_service_config"] = http_vpc_service_config
-        __props__["mock_service_config"] = mock_service_config
-        __props__["name"] = name
-        __props__["request_config"] = request_config
-        __props__["request_parameters"] = request_parameters
-        __props__["service_type"] = service_type
-        __props__["stage_names"] = stage_names
-        __props__["system_parameters"] = system_parameters
+        __props__.__dict__["api_id"] = api_id
+        __props__.__dict__["auth_type"] = auth_type
+        __props__.__dict__["constant_parameters"] = constant_parameters
+        __props__.__dict__["description"] = description
+        __props__.__dict__["fc_service_config"] = fc_service_config
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["http_service_config"] = http_service_config
+        __props__.__dict__["http_vpc_service_config"] = http_vpc_service_config
+        __props__.__dict__["mock_service_config"] = mock_service_config
+        __props__.__dict__["name"] = name
+        __props__.__dict__["request_config"] = request_config
+        __props__.__dict__["request_parameters"] = request_parameters
+        __props__.__dict__["service_type"] = service_type
+        __props__.__dict__["stage_names"] = stage_names
+        __props__.__dict__["system_parameters"] = system_parameters
         return Api(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -564,10 +812,4 @@ class Api(pulumi.CustomResource):
         system_parameters defines the system parameters of the api.
         """
         return pulumi.get(self, "system_parameters")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

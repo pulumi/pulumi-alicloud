@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['TriggerArgs', 'Trigger']
 
@@ -159,6 +159,190 @@ class TriggerArgs:
         pulumi.set(self, "source_arn", value)
 
 
+@pulumi.input_type
+class _TriggerState:
+    def __init__(__self__, *,
+                 config: Optional[pulumi.Input[str]] = None,
+                 config_mns: Optional[pulumi.Input[str]] = None,
+                 function: Optional[pulumi.Input[str]] = None,
+                 last_modified: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 source_arn: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Trigger resources.
+        :param pulumi.Input[str] config: The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+        :param pulumi.Input[str] config_mns: The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
+        :param pulumi.Input[str] function: The Function Compute function name.
+        :param pulumi.Input[str] last_modified: The date this resource was last modified.
+        :param pulumi.Input[str] name: The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        :param pulumi.Input[str] name_prefix: Setting a prefix to get a only trigger name. It is conflict with "name".
+        :param pulumi.Input[str] role: RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
+        :param pulumi.Input[str] service: The Function Compute service name.
+        :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
+        :param pulumi.Input[str] trigger_id: The Function Compute trigger ID.
+        :param pulumi.Input[str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events"].
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if config_mns is not None:
+            pulumi.set(__self__, "config_mns", config_mns)
+        if function is not None:
+            pulumi.set(__self__, "function", function)
+        if last_modified is not None:
+            pulumi.set(__self__, "last_modified", last_modified)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if source_arn is not None:
+            pulumi.set(__self__, "source_arn", source_arn)
+        if trigger_id is not None:
+            pulumi.set(__self__, "trigger_id", trigger_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="configMns")
+    def config_mns(self) -> Optional[pulumi.Input[str]]:
+        """
+        The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
+        """
+        return pulumi.get(self, "config_mns")
+
+    @config_mns.setter
+    def config_mns(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_mns", value)
+
+    @property
+    @pulumi.getter
+    def function(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Function Compute function name.
+        """
+        return pulumi.get(self, "function")
+
+    @function.setter
+    def function(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function", value)
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date this resource was last modified.
+        """
+        return pulumi.get(self, "last_modified")
+
+    @last_modified.setter
+    def last_modified(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Setting a prefix to get a only trigger name. It is conflict with "name".
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Function Compute service name.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter(name="sourceArn")
+    def source_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
+        """
+        return pulumi.get(self, "source_arn")
+
+    @source_arn.setter
+    def source_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_arn", value)
+
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Function Compute trigger ID.
+        """
+        return pulumi.get(self, "trigger_id")
+
+    @trigger_id.setter
+    def trigger_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trigger_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events"].
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
 class Trigger(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -254,25 +438,25 @@ class Trigger(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TriggerArgs.__new__(TriggerArgs)
 
-            __props__['config'] = config
-            __props__['config_mns'] = config_mns
+            __props__.__dict__["config"] = config
+            __props__.__dict__["config_mns"] = config_mns
             if function is None and not opts.urn:
                 raise TypeError("Missing required property 'function'")
-            __props__['function'] = function
-            __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
-            __props__['role'] = role
+            __props__.__dict__["function"] = function
+            __props__.__dict__["name"] = name
+            __props__.__dict__["name_prefix"] = name_prefix
+            __props__.__dict__["role"] = role
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
-            __props__['service'] = service
-            __props__['source_arn'] = source_arn
+            __props__.__dict__["service"] = service
+            __props__.__dict__["source_arn"] = source_arn
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
-            __props__['last_modified'] = None
-            __props__['trigger_id'] = None
+            __props__.__dict__["type"] = type
+            __props__.__dict__["last_modified"] = None
+            __props__.__dict__["trigger_id"] = None
         super(Trigger, __self__).__init__(
             'alicloud:fc/trigger:Trigger',
             resource_name,
@@ -315,19 +499,19 @@ class Trigger(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TriggerState.__new__(_TriggerState)
 
-        __props__["config"] = config
-        __props__["config_mns"] = config_mns
-        __props__["function"] = function
-        __props__["last_modified"] = last_modified
-        __props__["name"] = name
-        __props__["name_prefix"] = name_prefix
-        __props__["role"] = role
-        __props__["service"] = service
-        __props__["source_arn"] = source_arn
-        __props__["trigger_id"] = trigger_id
-        __props__["type"] = type
+        __props__.__dict__["config"] = config
+        __props__.__dict__["config_mns"] = config_mns
+        __props__.__dict__["function"] = function
+        __props__.__dict__["last_modified"] = last_modified
+        __props__.__dict__["name"] = name
+        __props__.__dict__["name_prefix"] = name_prefix
+        __props__.__dict__["role"] = role
+        __props__.__dict__["service"] = service
+        __props__.__dict__["source_arn"] = source_arn
+        __props__.__dict__["trigger_id"] = trigger_id
+        __props__.__dict__["type"] = type
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -417,10 +601,4 @@ class Trigger(pulumi.CustomResource):
         The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events"].
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

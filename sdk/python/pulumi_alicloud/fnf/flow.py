@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['FlowArgs', 'Flow']
 
@@ -93,6 +93,126 @@ class FlowArgs:
     @role_arn.setter
     def role_arn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role_arn", value)
+
+
+@pulumi.input_type
+class _FlowState:
+    def __init__(__self__, *,
+                 definition: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 flow_id: Optional[pulumi.Input[str]] = None,
+                 last_modified_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Flow resources.
+        :param pulumi.Input[str] definition: The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
+        :param pulumi.Input[str] description: The description of the flow.
+        :param pulumi.Input[str] flow_id: The unique ID of the flow.
+        :param pulumi.Input[str] last_modified_time: The time when the flow was last modified.
+        :param pulumi.Input[str] name: The name of the flow. The name must be unique in an Alibaba Cloud account.
+        :param pulumi.Input[str] role_arn: The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
+        :param pulumi.Input[str] type: The type of the flow. Valid values are `FDL` or `DEFAULT`.
+        """
+        if definition is not None:
+            pulumi.set(__self__, "definition", definition)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if flow_id is not None:
+            pulumi.set(__self__, "flow_id", flow_id)
+        if last_modified_time is not None:
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def definition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
+        """
+        return pulumi.get(self, "definition")
+
+    @definition.setter
+    def definition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "definition", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the flow.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="flowId")
+    def flow_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique ID of the flow.
+        """
+        return pulumi.get(self, "flow_id")
+
+    @flow_id.setter
+    def flow_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flow_id", value)
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the flow was last modified.
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @last_modified_time.setter
+    def last_modified_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_time", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the flow. The name must be unique in an Alibaba Cloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the flow. Valid values are `FDL` or `DEFAULT`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class Flow(pulumi.CustomResource):
@@ -260,21 +380,21 @@ class Flow(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FlowArgs.__new__(FlowArgs)
 
             if definition is None and not opts.urn:
                 raise TypeError("Missing required property 'definition'")
-            __props__['definition'] = definition
+            __props__.__dict__["definition"] = definition
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['role_arn'] = role_arn
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["role_arn"] = role_arn
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
-            __props__['flow_id'] = None
-            __props__['last_modified_time'] = None
+            __props__.__dict__["type"] = type
+            __props__.__dict__["flow_id"] = None
+            __props__.__dict__["last_modified_time"] = None
         super(Flow, __self__).__init__(
             'alicloud:fnf/flow:Flow',
             resource_name,
@@ -309,15 +429,15 @@ class Flow(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FlowState.__new__(_FlowState)
 
-        __props__["definition"] = definition
-        __props__["description"] = description
-        __props__["flow_id"] = flow_id
-        __props__["last_modified_time"] = last_modified_time
-        __props__["name"] = name
-        __props__["role_arn"] = role_arn
-        __props__["type"] = type
+        __props__.__dict__["definition"] = definition
+        __props__.__dict__["description"] = description
+        __props__.__dict__["flow_id"] = flow_id
+        __props__.__dict__["last_modified_time"] = last_modified_time
+        __props__.__dict__["name"] = name
+        __props__.__dict__["role_arn"] = role_arn
+        __props__.__dict__["type"] = type
         return Flow(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -375,10 +495,4 @@ class Flow(pulumi.CustomResource):
         The type of the flow. Valid values are `FDL` or `DEFAULT`.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

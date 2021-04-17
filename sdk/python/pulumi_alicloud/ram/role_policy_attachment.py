@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RolePolicyAttachmentArgs', 'RolePolicyAttachment']
 
@@ -60,6 +60,62 @@ class RolePolicyAttachmentArgs:
 
     @role_name.setter
     def role_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_name", value)
+
+
+@pulumi.input_type
+class _RolePolicyAttachmentState:
+    def __init__(__self__, *,
+                 policy_name: Optional[pulumi.Input[str]] = None,
+                 policy_type: Optional[pulumi.Input[str]] = None,
+                 role_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RolePolicyAttachment resources.
+        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
+        :param pulumi.Input[str] role_name: Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        """
+        if policy_name is not None:
+            pulumi.set(__self__, "policy_name", policy_name)
+        if policy_type is not None:
+            pulumi.set(__self__, "policy_type", policy_type)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "policy_name")
+
+    @policy_name.setter
+    def policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_name", value)
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the RAM policy. It must be `Custom` or `System`.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @policy_type.setter
+    def policy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_type", value)
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "role_name")
+
+    @role_name.setter
+    def role_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role_name", value)
 
 
@@ -248,17 +304,17 @@ class RolePolicyAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RolePolicyAttachmentArgs.__new__(RolePolicyAttachmentArgs)
 
             if policy_name is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_name'")
-            __props__['policy_name'] = policy_name
+            __props__.__dict__["policy_name"] = policy_name
             if policy_type is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_type'")
-            __props__['policy_type'] = policy_type
+            __props__.__dict__["policy_type"] = policy_type
             if role_name is None and not opts.urn:
                 raise TypeError("Missing required property 'role_name'")
-            __props__['role_name'] = role_name
+            __props__.__dict__["role_name"] = role_name
         super(RolePolicyAttachment, __self__).__init__(
             'alicloud:ram/rolePolicyAttachment:RolePolicyAttachment',
             resource_name,
@@ -285,11 +341,11 @@ class RolePolicyAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RolePolicyAttachmentState.__new__(_RolePolicyAttachmentState)
 
-        __props__["policy_name"] = policy_name
-        __props__["policy_type"] = policy_type
-        __props__["role_name"] = role_name
+        __props__.__dict__["policy_name"] = policy_name
+        __props__.__dict__["policy_type"] = policy_type
+        __props__.__dict__["role_name"] = role_name
         return RolePolicyAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -315,10 +371,4 @@ class RolePolicyAttachment(pulumi.CustomResource):
         Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
         return pulumi.get(self, "role_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

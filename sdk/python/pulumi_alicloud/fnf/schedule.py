@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ScheduleArgs', 'Schedule']
 
@@ -109,6 +109,142 @@ class ScheduleArgs:
     @payload.setter
     def payload(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payload", value)
+
+
+@pulumi.input_type
+class _ScheduleState:
+    def __init__(__self__, *,
+                 cron_expression: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 flow_name: Optional[pulumi.Input[str]] = None,
+                 last_modified_time: Optional[pulumi.Input[str]] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 schedule_id: Optional[pulumi.Input[str]] = None,
+                 schedule_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Schedule resources.
+        :param pulumi.Input[str] cron_expression: The CRON expression of the time-based schedule to be created.
+        :param pulumi.Input[str] description: The description of the time-based schedule to be created.
+        :param pulumi.Input[bool] enable: Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
+        :param pulumi.Input[str] flow_name: The name of the flow bound to the time-based schedule you want to create.
+        :param pulumi.Input[str] last_modified_time: The time when the time-based schedule was last updated.
+        :param pulumi.Input[str] payload: The trigger message of the time-based schedule to be created. It must be in JSON object format.
+        :param pulumi.Input[str] schedule_id: The ID of the time-based schedule.
+        :param pulumi.Input[str] schedule_name: The name of the time-based schedule to be created.
+        """
+        if cron_expression is not None:
+            pulumi.set(__self__, "cron_expression", cron_expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if flow_name is not None:
+            pulumi.set(__self__, "flow_name", flow_name)
+        if last_modified_time is not None:
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if schedule_id is not None:
+            pulumi.set(__self__, "schedule_id", schedule_id)
+        if schedule_name is not None:
+            pulumi.set(__self__, "schedule_name", schedule_name)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CRON expression of the time-based schedule to be created.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cron_expression", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the time-based schedule to be created.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="flowName")
+    def flow_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the flow bound to the time-based schedule you want to create.
+        """
+        return pulumi.get(self, "flow_name")
+
+    @flow_name.setter
+    def flow_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flow_name", value)
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the time-based schedule was last updated.
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @last_modified_time.setter
+    def last_modified_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_time", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger message of the time-based schedule to be created. It must be in JSON object format.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="scheduleId")
+    def schedule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the time-based schedule.
+        """
+        return pulumi.get(self, "schedule_id")
+
+    @schedule_id.setter
+    def schedule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_id", value)
+
+    @property
+    @pulumi.getter(name="scheduleName")
+    def schedule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the time-based schedule to be created.
+        """
+        return pulumi.get(self, "schedule_name")
+
+    @schedule_name.setter
+    def schedule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_name", value)
 
 
 class Schedule(pulumi.CustomResource):
@@ -261,22 +397,22 @@ class Schedule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ScheduleArgs.__new__(ScheduleArgs)
 
             if cron_expression is None and not opts.urn:
                 raise TypeError("Missing required property 'cron_expression'")
-            __props__['cron_expression'] = cron_expression
-            __props__['description'] = description
-            __props__['enable'] = enable
+            __props__.__dict__["cron_expression"] = cron_expression
+            __props__.__dict__["description"] = description
+            __props__.__dict__["enable"] = enable
             if flow_name is None and not opts.urn:
                 raise TypeError("Missing required property 'flow_name'")
-            __props__['flow_name'] = flow_name
-            __props__['payload'] = payload
+            __props__.__dict__["flow_name"] = flow_name
+            __props__.__dict__["payload"] = payload
             if schedule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule_name'")
-            __props__['schedule_name'] = schedule_name
-            __props__['last_modified_time'] = None
-            __props__['schedule_id'] = None
+            __props__.__dict__["schedule_name"] = schedule_name
+            __props__.__dict__["last_modified_time"] = None
+            __props__.__dict__["schedule_id"] = None
         super(Schedule, __self__).__init__(
             'alicloud:fnf/schedule:Schedule',
             resource_name,
@@ -313,16 +449,16 @@ class Schedule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ScheduleState.__new__(_ScheduleState)
 
-        __props__["cron_expression"] = cron_expression
-        __props__["description"] = description
-        __props__["enable"] = enable
-        __props__["flow_name"] = flow_name
-        __props__["last_modified_time"] = last_modified_time
-        __props__["payload"] = payload
-        __props__["schedule_id"] = schedule_id
-        __props__["schedule_name"] = schedule_name
+        __props__.__dict__["cron_expression"] = cron_expression
+        __props__.__dict__["description"] = description
+        __props__.__dict__["enable"] = enable
+        __props__.__dict__["flow_name"] = flow_name
+        __props__.__dict__["last_modified_time"] = last_modified_time
+        __props__.__dict__["payload"] = payload
+        __props__.__dict__["schedule_id"] = schedule_id
+        __props__.__dict__["schedule_name"] = schedule_name
         return Schedule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -388,10 +524,4 @@ class Schedule(pulumi.CustomResource):
         The name of the time-based schedule to be created.
         """
         return pulumi.get(self, "schedule_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
