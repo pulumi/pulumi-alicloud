@@ -4,7 +4,7 @@
 package vpc
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
@@ -15,8 +15,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RegistryEnterpriseSyncRuleArgs', 'RegistryEnterpriseSyncRule']
 
@@ -142,6 +142,206 @@ class RegistryEnterpriseSyncRuleArgs:
     @repo_name.setter
     def repo_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="targetRepoName")
+    def target_repo_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the target repository.
+        """
+        return pulumi.get(self, "target_repo_name")
+
+    @target_repo_name.setter
+    def target_repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_repo_name", value)
+
+
+@pulumi.input_type
+class _RegistryEnterpriseSyncRuleState:
+    def __init__(__self__, *,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 rule_id: Optional[pulumi.Input[str]] = None,
+                 sync_direction: Optional[pulumi.Input[str]] = None,
+                 sync_scope: Optional[pulumi.Input[str]] = None,
+                 tag_filter: Optional[pulumi.Input[str]] = None,
+                 target_instance_id: Optional[pulumi.Input[str]] = None,
+                 target_namespace_name: Optional[pulumi.Input[str]] = None,
+                 target_region_id: Optional[pulumi.Input[str]] = None,
+                 target_repo_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RegistryEnterpriseSyncRule resources.
+        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition source instance.
+        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition sync rule.
+        :param pulumi.Input[str] namespace_name: Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+        :param pulumi.Input[str] repo_name: Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+        :param pulumi.Input[str] rule_id: The uuid of Container Registry Enterprise Edition sync rule.
+        :param pulumi.Input[str] sync_direction: `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+        :param pulumi.Input[str] sync_scope: `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+        :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags for synchronization in the source repository.
+        :param pulumi.Input[str] target_instance_id: ID of Container Registry Enterprise Edition target instance to be synchronized.
+        :param pulumi.Input[str] target_namespace_name: Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+        :param pulumi.Input[str] target_region_id: The target region to be synchronized.
+        :param pulumi.Input[str] target_repo_name: Name of the target repository.
+        """
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace_name is not None:
+            pulumi.set(__self__, "namespace_name", namespace_name)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+        if sync_direction is not None:
+            pulumi.set(__self__, "sync_direction", sync_direction)
+        if sync_scope is not None:
+            pulumi.set(__self__, "sync_scope", sync_scope)
+        if tag_filter is not None:
+            pulumi.set(__self__, "tag_filter", tag_filter)
+        if target_instance_id is not None:
+            pulumi.set(__self__, "target_instance_id", target_instance_id)
+        if target_namespace_name is not None:
+            pulumi.set(__self__, "target_namespace_name", target_namespace_name)
+        if target_region_id is not None:
+            pulumi.set(__self__, "target_region_id", target_region_id)
+        if target_repo_name is not None:
+            pulumi.set(__self__, "target_repo_name", target_repo_name)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of Container Registry Enterprise Edition source instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Container Registry Enterprise Edition sync rule.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uuid of Container Registry Enterprise Edition sync rule.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @rule_id.setter
+    def rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_id", value)
+
+    @property
+    @pulumi.getter(name="syncDirection")
+    def sync_direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+        """
+        return pulumi.get(self, "sync_direction")
+
+    @sync_direction.setter
+    def sync_direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_direction", value)
+
+    @property
+    @pulumi.getter(name="syncScope")
+    def sync_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+        """
+        return pulumi.get(self, "sync_scope")
+
+    @sync_scope.setter
+    def sync_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_scope", value)
+
+    @property
+    @pulumi.getter(name="tagFilter")
+    def tag_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The regular expression used to filter image tags for synchronization in the source repository.
+        """
+        return pulumi.get(self, "tag_filter")
+
+    @tag_filter.setter
+    def tag_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_filter", value)
+
+    @property
+    @pulumi.getter(name="targetInstanceId")
+    def target_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of Container Registry Enterprise Edition target instance to be synchronized.
+        """
+        return pulumi.get(self, "target_instance_id")
+
+    @target_instance_id.setter
+    def target_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_instance_id", value)
+
+    @property
+    @pulumi.getter(name="targetNamespaceName")
+    def target_namespace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+        """
+        return pulumi.get(self, "target_namespace_name")
+
+    @target_namespace_name.setter
+    def target_namespace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_namespace_name", value)
+
+    @property
+    @pulumi.getter(name="targetRegionId")
+    def target_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target region to be synchronized.
+        """
+        return pulumi.get(self, "target_region_id")
+
+    @target_region_id.setter
+    def target_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_region_id", value)
 
     @property
     @pulumi.getter(name="targetRepoName")
@@ -305,32 +505,32 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RegistryEnterpriseSyncRuleArgs.__new__(RegistryEnterpriseSyncRuleArgs)
 
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['name'] = name
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["name"] = name
             if namespace_name is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_name'")
-            __props__['namespace_name'] = namespace_name
-            __props__['repo_name'] = repo_name
+            __props__.__dict__["namespace_name"] = namespace_name
+            __props__.__dict__["repo_name"] = repo_name
             if tag_filter is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_filter'")
-            __props__['tag_filter'] = tag_filter
+            __props__.__dict__["tag_filter"] = tag_filter
             if target_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_instance_id'")
-            __props__['target_instance_id'] = target_instance_id
+            __props__.__dict__["target_instance_id"] = target_instance_id
             if target_namespace_name is None and not opts.urn:
                 raise TypeError("Missing required property 'target_namespace_name'")
-            __props__['target_namespace_name'] = target_namespace_name
+            __props__.__dict__["target_namespace_name"] = target_namespace_name
             if target_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_region_id'")
-            __props__['target_region_id'] = target_region_id
-            __props__['target_repo_name'] = target_repo_name
-            __props__['rule_id'] = None
-            __props__['sync_direction'] = None
-            __props__['sync_scope'] = None
+            __props__.__dict__["target_region_id"] = target_region_id
+            __props__.__dict__["target_repo_name"] = target_repo_name
+            __props__.__dict__["rule_id"] = None
+            __props__.__dict__["sync_direction"] = None
+            __props__.__dict__["sync_scope"] = None
         super(RegistryEnterpriseSyncRule, __self__).__init__(
             'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule',
             resource_name,
@@ -375,20 +575,20 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RegistryEnterpriseSyncRuleState.__new__(_RegistryEnterpriseSyncRuleState)
 
-        __props__["instance_id"] = instance_id
-        __props__["name"] = name
-        __props__["namespace_name"] = namespace_name
-        __props__["repo_name"] = repo_name
-        __props__["rule_id"] = rule_id
-        __props__["sync_direction"] = sync_direction
-        __props__["sync_scope"] = sync_scope
-        __props__["tag_filter"] = tag_filter
-        __props__["target_instance_id"] = target_instance_id
-        __props__["target_namespace_name"] = target_namespace_name
-        __props__["target_region_id"] = target_region_id
-        __props__["target_repo_name"] = target_repo_name
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["namespace_name"] = namespace_name
+        __props__.__dict__["repo_name"] = repo_name
+        __props__.__dict__["rule_id"] = rule_id
+        __props__.__dict__["sync_direction"] = sync_direction
+        __props__.__dict__["sync_scope"] = sync_scope
+        __props__.__dict__["tag_filter"] = tag_filter
+        __props__.__dict__["target_instance_id"] = target_instance_id
+        __props__.__dict__["target_namespace_name"] = target_namespace_name
+        __props__.__dict__["target_region_id"] = target_region_id
+        __props__.__dict__["target_repo_name"] = target_repo_name
         return RegistryEnterpriseSyncRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -486,10 +686,4 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         Name of the target repository.
         """
         return pulumi.get(self, "target_repo_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

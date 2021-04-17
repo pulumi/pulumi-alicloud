@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -37,6 +37,31 @@ __all__ = [
 
 @pulumi.output_type
 class BucketCorsRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedMethods":
+            suggest = "allowed_methods"
+        elif key == "allowedOrigins":
+            suggest = "allowed_origins"
+        elif key == "allowedHeaders":
+            suggest = "allowed_headers"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAgeSeconds":
+            suggest = "max_age_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketCorsRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketCorsRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketCorsRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_methods: Sequence[str],
                  allowed_origins: Sequence[str],
@@ -98,9 +123,6 @@ class BucketCorsRule(dict):
         Specifies time in seconds that browser can cache the response for a preflight request.
         """
         return pulumi.get(self, "max_age_seconds")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -168,9 +190,6 @@ class BucketLifecycleRule(dict):
         """
         return pulumi.get(self, "transitions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketLifecycleRuleExpiration(dict):
@@ -202,12 +221,28 @@ class BucketLifecycleRuleExpiration(dict):
         """
         return pulumi.get(self, "days")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketLifecycleRuleTransition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBeforeDate":
+            suggest = "created_before_date"
+        elif key == "storageClass":
+            suggest = "storage_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketLifecycleRuleTransition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketLifecycleRuleTransition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketLifecycleRuleTransition.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_before_date: Optional[str] = None,
                  days: Optional[int] = None,
@@ -248,12 +283,28 @@ class BucketLifecycleRuleTransition(dict):
         """
         return pulumi.get(self, "storage_class")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketLogging(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetBucket":
+            suggest = "target_bucket"
+        elif key == "targetPrefix":
+            suggest = "target_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketLogging. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketLogging.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketLogging.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_bucket: str,
                  target_prefix: Optional[str] = None):
@@ -281,12 +332,26 @@ class BucketLogging(dict):
         """
         return pulumi.get(self, "target_prefix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketRefererConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowEmpty":
+            suggest = "allow_empty"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketRefererConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketRefererConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketRefererConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  referers: Sequence[str],
                  allow_empty: Optional[bool] = None):
@@ -314,12 +379,28 @@ class BucketRefererConfig(dict):
         """
         return pulumi.get(self, "allow_empty")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketServerSideEncryptionRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sseAlgorithm":
+            suggest = "sse_algorithm"
+        elif key == "kmsMasterKeyId":
+            suggest = "kms_master_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketServerSideEncryptionRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketServerSideEncryptionRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketServerSideEncryptionRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sse_algorithm: str,
                  kms_master_key_id: Optional[str] = None):
@@ -347,9 +428,6 @@ class BucketServerSideEncryptionRule(dict):
         """
         return pulumi.get(self, "kms_master_key_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketVersioning(dict):
@@ -368,12 +446,28 @@ class BucketVersioning(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketWebsite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "indexDocument":
+            suggest = "index_document"
+        elif key == "errorDocument":
+            suggest = "error_document"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketWebsite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketWebsite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketWebsite.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  index_document: str,
                  error_document: Optional[str] = None):
@@ -400,9 +494,6 @@ class BucketWebsite(dict):
         An absolute path to the document to return in case of a 4XX error.
         """
         return pulumi.get(self, "error_document")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

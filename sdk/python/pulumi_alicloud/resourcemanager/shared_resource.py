@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SharedResourceArgs', 'SharedResource']
 
@@ -61,6 +61,78 @@ class SharedResourceArgs:
     @resource_type.setter
     def resource_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_type", value)
+
+
+@pulumi.input_type
+class _SharedResourceState:
+    def __init__(__self__, *,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 resource_share_id: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SharedResource resources.
+        :param pulumi.Input[str] resource_id: The resource ID need shared.
+        :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
+        :param pulumi.Input[str] resource_type: The resource type of should shared, valid value `VSwitch`.
+        :param pulumi.Input[str] status: status.
+        """
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_share_id is not None:
+            pulumi.set(__self__, "resource_share_id", resource_share_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID need shared.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="resourceShareId")
+    def resource_share_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource share ID of resource manager.
+        """
+        return pulumi.get(self, "resource_share_id")
+
+    @resource_share_id.setter
+    def resource_share_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_share_id", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource type of should shared, valid value `VSwitch`.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        status.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class SharedResource(pulumi.CustomResource):
@@ -152,18 +224,18 @@ class SharedResource(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SharedResourceArgs.__new__(SharedResourceArgs)
 
             if resource_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_id'")
-            __props__['resource_id'] = resource_id
+            __props__.__dict__["resource_id"] = resource_id
             if resource_share_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_share_id'")
-            __props__['resource_share_id'] = resource_share_id
+            __props__.__dict__["resource_share_id"] = resource_share_id
             if resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_type'")
-            __props__['resource_type'] = resource_type
-            __props__['status'] = None
+            __props__.__dict__["resource_type"] = resource_type
+            __props__.__dict__["status"] = None
         super(SharedResource, __self__).__init__(
             'alicloud:resourcemanager/sharedResource:SharedResource',
             resource_name,
@@ -192,12 +264,12 @@ class SharedResource(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SharedResourceState.__new__(_SharedResourceState)
 
-        __props__["resource_id"] = resource_id
-        __props__["resource_share_id"] = resource_share_id
-        __props__["resource_type"] = resource_type
-        __props__["status"] = status
+        __props__.__dict__["resource_id"] = resource_id
+        __props__.__dict__["resource_share_id"] = resource_share_id
+        __props__.__dict__["resource_type"] = resource_type
+        __props__.__dict__["status"] = status
         return SharedResource(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -231,10 +303,4 @@ class SharedResource(pulumi.CustomResource):
         status.
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

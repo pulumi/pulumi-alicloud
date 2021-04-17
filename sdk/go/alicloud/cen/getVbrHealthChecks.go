@@ -4,7 +4,7 @@
 package cen
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This data source provides CEN VBR Health Checks available to the user.

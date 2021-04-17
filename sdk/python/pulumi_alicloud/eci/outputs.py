@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -50,6 +50,31 @@ __all__ = [
 
 @pulumi.output_type
 class ContainerGroupContainer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentVars":
+            suggest = "environment_vars"
+        elif key == "imagePullPolicy":
+            suggest = "image_pull_policy"
+        elif key == "restartCount":
+            suggest = "restart_count"
+        elif key == "volumeMounts":
+            suggest = "volume_mounts"
+        elif key == "workingDir":
+            suggest = "working_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerGroupContainer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerGroupContainer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerGroupContainer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image: str,
                  name: str,
@@ -212,9 +237,6 @@ class ContainerGroupContainer(dict):
         """
         return pulumi.get(self, "working_dir")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupContainerEnvironmentVar(dict):
@@ -245,9 +267,6 @@ class ContainerGroupContainerEnvironmentVar(dict):
         The value of the variable. The value can be 0 to 256 characters in length.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -280,12 +299,28 @@ class ContainerGroupContainerPort(dict):
         """
         return pulumi.get(self, "protocol")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupContainerVolumeMount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerGroupContainerVolumeMount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerGroupContainerVolumeMount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerGroupContainerVolumeMount.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mount_path: Optional[str] = None,
                  name: Optional[str] = None,
@@ -326,12 +361,26 @@ class ContainerGroupContainerVolumeMount(dict):
         """
         return pulumi.get(self, "read_only")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupDnsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nameServers":
+            suggest = "name_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerGroupDnsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerGroupDnsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerGroupDnsConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name_servers: Optional[Sequence[str]] = None,
                  options: Optional[Sequence['outputs.ContainerGroupDnsConfigOption']] = None,
@@ -372,9 +421,6 @@ class ContainerGroupDnsConfig(dict):
         """
         return pulumi.get(self, "searches")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupDnsConfigOption(dict):
@@ -406,9 +452,6 @@ class ContainerGroupDnsConfigOption(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupEciSecurityContext(dict):
@@ -421,9 +464,6 @@ class ContainerGroupEciSecurityContext(dict):
     @pulumi.getter
     def sysctls(self) -> Optional[Sequence['outputs.ContainerGroupEciSecurityContextSysctl']]:
         return pulumi.get(self, "sysctls")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -456,9 +496,6 @@ class ContainerGroupEciSecurityContextSysctl(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupHostAlias(dict):
@@ -490,12 +527,34 @@ class ContainerGroupHostAlias(dict):
         """
         return pulumi.get(self, "ip")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupInitContainer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentVars":
+            suggest = "environment_vars"
+        elif key == "imagePullPolicy":
+            suggest = "image_pull_policy"
+        elif key == "restartCount":
+            suggest = "restart_count"
+        elif key == "volumeMounts":
+            suggest = "volume_mounts"
+        elif key == "workingDir":
+            suggest = "working_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerGroupInitContainer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerGroupInitContainer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerGroupInitContainer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  args: Optional[Sequence[str]] = None,
                  commands: Optional[Sequence[str]] = None,
@@ -660,9 +719,6 @@ class ContainerGroupInitContainer(dict):
         """
         return pulumi.get(self, "working_dir")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupInitContainerEnvironmentVar(dict):
@@ -693,9 +749,6 @@ class ContainerGroupInitContainerEnvironmentVar(dict):
         The value of the variable. The value can be 0 to 256 characters in length.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -728,12 +781,28 @@ class ContainerGroupInitContainerPort(dict):
         """
         return pulumi.get(self, "protocol")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupInitContainerVolumeMount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerGroupInitContainerVolumeMount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerGroupInitContainerVolumeMount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerGroupInitContainerVolumeMount.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mount_path: Optional[str] = None,
                  name: Optional[str] = None,
@@ -774,12 +843,42 @@ class ContainerGroupInitContainerVolumeMount(dict):
         """
         return pulumi.get(self, "read_only")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configFileVolumeConfigFileToPaths":
+            suggest = "config_file_volume_config_file_to_paths"
+        elif key == "diskVolumeDiskId":
+            suggest = "disk_volume_disk_id"
+        elif key == "diskVolumeFsType":
+            suggest = "disk_volume_fs_type"
+        elif key == "flexVolumeDriver":
+            suggest = "flex_volume_driver"
+        elif key == "flexVolumeFsType":
+            suggest = "flex_volume_fs_type"
+        elif key == "flexVolumeOptions":
+            suggest = "flex_volume_options"
+        elif key == "nfsVolumePath":
+            suggest = "nfs_volume_path"
+        elif key == "nfsVolumeReadOnly":
+            suggest = "nfs_volume_read_only"
+        elif key == "nfsVolumeServer":
+            suggest = "nfs_volume_server"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerGroupVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerGroupVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerGroupVolume.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config_file_volume_config_file_to_paths: Optional[Sequence['outputs.ContainerGroupVolumeConfigFileVolumeConfigFileToPath']] = None,
                  disk_volume_disk_id: Optional[str] = None,
@@ -916,9 +1015,6 @@ class ContainerGroupVolume(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerGroupVolumeConfigFileVolumeConfigFileToPath(dict):
@@ -950,12 +1046,26 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPath(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ImageCacheImageRegistryCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageCacheImageRegistryCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageCacheImageRegistryCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageCacheImageRegistryCredential.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  password: Optional[str] = None,
                  server: Optional[str] = None,
@@ -996,12 +1106,26 @@ class ImageCacheImageRegistryCredential(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OpenApiImageCacheImageRegistryCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OpenApiImageCacheImageRegistryCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OpenApiImageCacheImageRegistryCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OpenApiImageCacheImageRegistryCredential.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  password: Optional[str] = None,
                  server: Optional[str] = None,
@@ -1027,9 +1151,6 @@ class OpenApiImageCacheImageRegistryCredential(dict):
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
         return pulumi.get(self, "user_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

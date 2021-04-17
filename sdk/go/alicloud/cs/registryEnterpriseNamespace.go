@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This resource will help you to manager Container Registry Enterprise Edition namespaces.
@@ -27,8 +27,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ApplicationDeploymentArgs', 'ApplicationDeployment']
 
@@ -77,6 +77,94 @@ class ApplicationDeploymentArgs:
     @package_version.setter
     def package_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "package_version", value)
+
+
+@pulumi.input_type
+class _ApplicationDeploymentState:
+    def __init__(__self__, *,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 last_package_version: Optional[pulumi.Input[str]] = None,
+                 package_version: Optional[pulumi.Input[str]] = None,
+                 war_url: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ApplicationDeployment resources.
+        :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.
+        :param pulumi.Input[str] group_id: The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
+        :param pulumi.Input[str] last_package_version: Last package version deployed.
+        :param pulumi.Input[str] package_version: The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
+        :param pulumi.Input[str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
+        """
+        if app_id is not None:
+            pulumi.set(__self__, "app_id", app_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if last_package_version is not None:
+            pulumi.set(__self__, "last_package_version", last_package_version)
+        if package_version is not None:
+            pulumi.set(__self__, "package_version", package_version)
+        if war_url is not None:
+            pulumi.set(__self__, "war_url", war_url)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the application that you want to deploy.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="lastPackageVersion")
+    def last_package_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last package version deployed.
+        """
+        return pulumi.get(self, "last_package_version")
+
+    @last_package_version.setter
+    def last_package_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_package_version", value)
+
+    @property
+    @pulumi.getter(name="packageVersion")
+    def package_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
+        """
+        return pulumi.get(self, "package_version")
+
+    @package_version.setter
+    def package_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_version", value)
+
+    @property
+    @pulumi.getter(name="warUrl")
+    def war_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
+        """
+        return pulumi.get(self, "war_url")
+
+    @war_url.setter
+    def war_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "war_url", value)
 
 
 class ApplicationDeployment(pulumi.CustomResource):
@@ -181,19 +269,19 @@ class ApplicationDeployment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApplicationDeploymentArgs.__new__(ApplicationDeploymentArgs)
 
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
-            __props__['app_id'] = app_id
+            __props__.__dict__["app_id"] = app_id
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
-            __props__['package_version'] = package_version
+            __props__.__dict__["group_id"] = group_id
+            __props__.__dict__["package_version"] = package_version
             if war_url is None and not opts.urn:
                 raise TypeError("Missing required property 'war_url'")
-            __props__['war_url'] = war_url
-            __props__['last_package_version'] = None
+            __props__.__dict__["war_url"] = war_url
+            __props__.__dict__["last_package_version"] = None
         super(ApplicationDeployment, __self__).__init__(
             'alicloud:edas/applicationDeployment:ApplicationDeployment',
             resource_name,
@@ -224,13 +312,13 @@ class ApplicationDeployment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ApplicationDeploymentState.__new__(_ApplicationDeploymentState)
 
-        __props__["app_id"] = app_id
-        __props__["group_id"] = group_id
-        __props__["last_package_version"] = last_package_version
-        __props__["package_version"] = package_version
-        __props__["war_url"] = war_url
+        __props__.__dict__["app_id"] = app_id
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["last_package_version"] = last_package_version
+        __props__.__dict__["package_version"] = package_version
+        __props__.__dict__["war_url"] = war_url
         return ApplicationDeployment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -272,10 +360,4 @@ class ApplicationDeployment(pulumi.CustomResource):
         The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """
         return pulumi.get(self, "war_url")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

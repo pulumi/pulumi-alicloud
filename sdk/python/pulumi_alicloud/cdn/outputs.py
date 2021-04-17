@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'DomainAuthConfig',
@@ -23,6 +23,27 @@ __all__ = [
 
 @pulumi.output_type
 class DomainAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authType":
+            suggest = "auth_type"
+        elif key == "masterKey":
+            suggest = "master_key"
+        elif key == "slaveKey":
+            suggest = "slave_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auth_type: Optional[str] = None,
                  master_key: Optional[str] = None,
@@ -75,12 +96,30 @@ class DomainAuthConfig(dict):
         """
         return pulumi.get(self, "timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainCacheConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cacheContent":
+            suggest = "cache_content"
+        elif key == "cacheType":
+            suggest = "cache_type"
+        elif key == "cacheId":
+            suggest = "cache_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainCacheConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainCacheConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainCacheConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cache_content: str,
                  cache_type: str,
@@ -138,12 +177,30 @@ class DomainCacheConfig(dict):
         """
         return pulumi.get(self, "weight")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainCertificateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+        elif key == "serverCertificate":
+            suggest = "server_certificate"
+        elif key == "serverCertificateStatus":
+            suggest = "server_certificate_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainCertificateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainCertificateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainCertificateConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  private_key: Optional[str] = None,
                  server_certificate: Optional[str] = None,
@@ -184,12 +241,28 @@ class DomainCertificateConfig(dict):
         """
         return pulumi.get(self, "server_certificate_status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainConfigFunctionArg(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "argName":
+            suggest = "arg_name"
+        elif key == "argValue":
+            suggest = "arg_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainConfigFunctionArg. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainConfigFunctionArg.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainConfigFunctionArg.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  arg_name: str,
                  arg_value: str):
@@ -216,12 +289,30 @@ class DomainConfigFunctionArg(dict):
         """
         return pulumi.get(self, "arg_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainHttpHeaderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerKey":
+            suggest = "header_key"
+        elif key == "headerValue":
+            suggest = "header_value"
+        elif key == "headerId":
+            suggest = "header_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainHttpHeaderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainHttpHeaderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainHttpHeaderConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  header_key: str,
                  header_value: str,
@@ -256,12 +347,36 @@ class DomainHttpHeaderConfig(dict):
     def header_id(self) -> Optional[str]:
         return pulumi.get(self, "header_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainNewCertificateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certName":
+            suggest = "cert_name"
+        elif key == "certType":
+            suggest = "cert_type"
+        elif key == "forceSet":
+            suggest = "force_set"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "serverCertificate":
+            suggest = "server_certificate"
+        elif key == "serverCertificateStatus":
+            suggest = "server_certificate_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainNewCertificateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainNewCertificateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainNewCertificateConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cert_name: Optional[str] = None,
                  cert_type: Optional[str] = None,
@@ -338,9 +453,6 @@ class DomainNewCertificateConfig(dict):
         """
         return pulumi.get(self, "server_certificate_status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainNewSource(dict):
@@ -406,12 +518,30 @@ class DomainNewSource(dict):
         """
         return pulumi.get(self, "weight")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainPage404Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customPageUrl":
+            suggest = "custom_page_url"
+        elif key == "errorCode":
+            suggest = "error_code"
+        elif key == "pageType":
+            suggest = "page_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainPage404Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainPage404Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainPage404Config.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_page_url: Optional[str] = None,
                  error_code: Optional[str] = None,
@@ -448,12 +578,26 @@ class DomainPage404Config(dict):
         """
         return pulumi.get(self, "page_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainParameterFilterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hashKeyArgs":
+            suggest = "hash_key_args"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainParameterFilterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainParameterFilterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainParameterFilterConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable: Optional[str] = None,
                  hash_key_args: Optional[Sequence[str]] = None):
@@ -482,12 +626,30 @@ class DomainParameterFilterConfig(dict):
         """
         return pulumi.get(self, "hash_key_args")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainReferConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referLists":
+            suggest = "refer_lists"
+        elif key == "allowEmpty":
+            suggest = "allow_empty"
+        elif key == "referType":
+            suggest = "refer_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainReferConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainReferConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainReferConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  refer_lists: Sequence[str],
                  allow_empty: Optional[str] = None,
@@ -526,8 +688,5 @@ class DomainReferConfig(dict):
         Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
         """
         return pulumi.get(self, "refer_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

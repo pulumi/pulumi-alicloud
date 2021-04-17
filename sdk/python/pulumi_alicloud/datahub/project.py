@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ProjectArgs', 'Project']
 
@@ -36,6 +36,78 @@ class ProjectArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _ProjectState:
+    def __init__(__self__, *,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 last_modify_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Project resources.
+        :param pulumi.Input[str] comment: Comment of the datahub project. It cannot be longer than 255 characters.
+        :param pulumi.Input[str] create_time: Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
+        :param pulumi.Input[str] last_modify_time: Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
+        :param pulumi.Input[str] name: The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if last_modify_time is not None:
+            pulumi.set(__self__, "last_modify_time", last_modify_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comment of the datahub project. It cannot be longer than 255 characters.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="lastModifyTime")
+    def last_modify_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
+        """
+        return pulumi.get(self, "last_modify_time")
+
+    @last_modify_time.setter
+    def last_modify_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modify_time", value)
 
     @property
     @pulumi.getter
@@ -154,12 +226,12 @@ class Project(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProjectArgs.__new__(ProjectArgs)
 
-            __props__['comment'] = comment
-            __props__['name'] = name
-            __props__['create_time'] = None
-            __props__['last_modify_time'] = None
+            __props__.__dict__["comment"] = comment
+            __props__.__dict__["name"] = name
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["last_modify_time"] = None
         super(Project, __self__).__init__(
             'alicloud:datahub/project:Project',
             resource_name,
@@ -188,12 +260,12 @@ class Project(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ProjectState.__new__(_ProjectState)
 
-        __props__["comment"] = comment
-        __props__["create_time"] = create_time
-        __props__["last_modify_time"] = last_modify_time
-        __props__["name"] = name
+        __props__.__dict__["comment"] = comment
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["last_modify_time"] = last_modify_time
+        __props__.__dict__["name"] = name
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -227,10 +299,4 @@ class Project(pulumi.CustomResource):
         The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

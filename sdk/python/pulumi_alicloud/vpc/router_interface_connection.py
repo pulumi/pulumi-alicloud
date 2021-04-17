@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RouterInterfaceConnectionArgs', 'RouterInterfaceConnection']
 
@@ -56,6 +56,90 @@ class RouterInterfaceConnectionArgs:
 
     @opposite_interface_id.setter
     def opposite_interface_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "opposite_interface_id", value)
+
+    @property
+    @pulumi.getter(name="oppositeInterfaceOwnerId")
+    def opposite_interface_owner_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "opposite_interface_owner_id")
+
+    @opposite_interface_owner_id.setter
+    def opposite_interface_owner_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "opposite_interface_owner_id", value)
+
+    @property
+    @pulumi.getter(name="oppositeRouterId")
+    def opposite_router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+        """
+        return pulumi.get(self, "opposite_router_id")
+
+    @opposite_router_id.setter
+    def opposite_router_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "opposite_router_id", value)
+
+    @property
+    @pulumi.getter(name="oppositeRouterType")
+    def opposite_router_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+        """
+        return pulumi.get(self, "opposite_router_type")
+
+    @opposite_router_type.setter
+    def opposite_router_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "opposite_router_type", value)
+
+
+@pulumi.input_type
+class _RouterInterfaceConnectionState:
+    def __init__(__self__, *,
+                 interface_id: Optional[pulumi.Input[str]] = None,
+                 opposite_interface_id: Optional[pulumi.Input[str]] = None,
+                 opposite_interface_owner_id: Optional[pulumi.Input[str]] = None,
+                 opposite_router_id: Optional[pulumi.Input[str]] = None,
+                 opposite_router_type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RouterInterfaceConnection resources.
+        :param pulumi.Input[str] interface_id: One side router interface ID.
+        :param pulumi.Input[str] opposite_interface_id: Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+        :param pulumi.Input[str] opposite_router_id: Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+        :param pulumi.Input[str] opposite_router_type: Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+        """
+        if interface_id is not None:
+            pulumi.set(__self__, "interface_id", interface_id)
+        if opposite_interface_id is not None:
+            pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
+        if opposite_interface_owner_id is not None:
+            pulumi.set(__self__, "opposite_interface_owner_id", opposite_interface_owner_id)
+        if opposite_router_id is not None:
+            pulumi.set(__self__, "opposite_router_id", opposite_router_id)
+        if opposite_router_type is not None:
+            pulumi.set(__self__, "opposite_router_type", opposite_router_type)
+
+    @property
+    @pulumi.getter(name="interfaceId")
+    def interface_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        One side router interface ID.
+        """
+        return pulumi.get(self, "interface_id")
+
+    @interface_id.setter
+    def interface_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface_id", value)
+
+    @property
+    @pulumi.getter(name="oppositeInterfaceId")
+    def opposite_interface_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+        """
+        return pulumi.get(self, "opposite_interface_id")
+
+    @opposite_interface_id.setter
+    def opposite_interface_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "opposite_interface_id", value)
 
     @property
@@ -292,17 +376,17 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouterInterfaceConnectionArgs.__new__(RouterInterfaceConnectionArgs)
 
             if interface_id is None and not opts.urn:
                 raise TypeError("Missing required property 'interface_id'")
-            __props__['interface_id'] = interface_id
+            __props__.__dict__["interface_id"] = interface_id
             if opposite_interface_id is None and not opts.urn:
                 raise TypeError("Missing required property 'opposite_interface_id'")
-            __props__['opposite_interface_id'] = opposite_interface_id
-            __props__['opposite_interface_owner_id'] = opposite_interface_owner_id
-            __props__['opposite_router_id'] = opposite_router_id
-            __props__['opposite_router_type'] = opposite_router_type
+            __props__.__dict__["opposite_interface_id"] = opposite_interface_id
+            __props__.__dict__["opposite_interface_owner_id"] = opposite_interface_owner_id
+            __props__.__dict__["opposite_router_id"] = opposite_router_id
+            __props__.__dict__["opposite_router_type"] = opposite_router_type
         super(RouterInterfaceConnection, __self__).__init__(
             'alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection',
             resource_name,
@@ -332,13 +416,13 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouterInterfaceConnectionState.__new__(_RouterInterfaceConnectionState)
 
-        __props__["interface_id"] = interface_id
-        __props__["opposite_interface_id"] = opposite_interface_id
-        __props__["opposite_interface_owner_id"] = opposite_interface_owner_id
-        __props__["opposite_router_id"] = opposite_router_id
-        __props__["opposite_router_type"] = opposite_router_type
+        __props__.__dict__["interface_id"] = interface_id
+        __props__.__dict__["opposite_interface_id"] = opposite_interface_id
+        __props__.__dict__["opposite_interface_owner_id"] = opposite_interface_owner_id
+        __props__.__dict__["opposite_router_id"] = opposite_router_id
+        __props__.__dict__["opposite_router_type"] = opposite_router_type
         return RouterInterfaceConnection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -377,10 +461,4 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
         """
         return pulumi.get(self, "opposite_router_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

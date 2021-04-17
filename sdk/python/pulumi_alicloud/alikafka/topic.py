@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['TopicArgs', 'Topic']
 
@@ -125,6 +125,126 @@ class TopicArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _TopicState:
+    def __init__(__self__, *,
+                 compact_topic: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 local_topic: Optional[pulumi.Input[bool]] = None,
+                 partition_num: Optional[pulumi.Input[int]] = None,
+                 remark: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Topic resources.
+        :param pulumi.Input[bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+        :param pulumi.Input[str] instance_id: InstanceId of your Kafka resource, the topic will create in this instance.
+        :param pulumi.Input[bool] local_topic: Whether the topic is localTopic or not.
+        :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
+        :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        """
+        if compact_topic is not None:
+            pulumi.set(__self__, "compact_topic", compact_topic)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if local_topic is not None:
+            pulumi.set(__self__, "local_topic", local_topic)
+        if partition_num is not None:
+            pulumi.set(__self__, "partition_num", partition_num)
+        if remark is not None:
+            pulumi.set(__self__, "remark", remark)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="compactTopic")
+    def compact_topic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+        """
+        return pulumi.get(self, "compact_topic")
+
+    @compact_topic.setter
+    def compact_topic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "compact_topic", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        InstanceId of your Kafka resource, the topic will create in this instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="localTopic")
+    def local_topic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the topic is localTopic or not.
+        """
+        return pulumi.get(self, "local_topic")
+
+    @local_topic.setter
+    def local_topic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "local_topic", value)
+
+    @property
+    @pulumi.getter(name="partitionNum")
+    def partition_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of partitions of the topic. The number should between 1 and 48.
+        """
+        return pulumi.get(self, "partition_num")
+
+    @partition_num.setter
+    def partition_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "partition_num", value)
+
+    @property
+    @pulumi.getter
+    def remark(self) -> Optional[pulumi.Input[str]]:
+        """
+        This attribute is a concise description of topic. The length cannot exceed 64.
+        """
+        return pulumi.get(self, "remark")
+
+    @remark.setter
+    def remark(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "remark", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
 
 
 class Topic(pulumi.CustomResource):
@@ -290,21 +410,21 @@ class Topic(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TopicArgs.__new__(TopicArgs)
 
-            __props__['compact_topic'] = compact_topic
+            __props__.__dict__["compact_topic"] = compact_topic
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['local_topic'] = local_topic
-            __props__['partition_num'] = partition_num
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["local_topic"] = local_topic
+            __props__.__dict__["partition_num"] = partition_num
             if remark is None and not opts.urn:
                 raise TypeError("Missing required property 'remark'")
-            __props__['remark'] = remark
-            __props__['tags'] = tags
+            __props__.__dict__["remark"] = remark
+            __props__.__dict__["tags"] = tags
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
-            __props__['topic'] = topic
+            __props__.__dict__["topic"] = topic
         super(Topic, __self__).__init__(
             'alicloud:alikafka/topic:Topic',
             resource_name,
@@ -339,15 +459,15 @@ class Topic(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TopicState.__new__(_TopicState)
 
-        __props__["compact_topic"] = compact_topic
-        __props__["instance_id"] = instance_id
-        __props__["local_topic"] = local_topic
-        __props__["partition_num"] = partition_num
-        __props__["remark"] = remark
-        __props__["tags"] = tags
-        __props__["topic"] = topic
+        __props__.__dict__["compact_topic"] = compact_topic
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["local_topic"] = local_topic
+        __props__.__dict__["partition_num"] = partition_num
+        __props__.__dict__["remark"] = remark
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["topic"] = topic
         return Topic(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -405,10 +525,4 @@ class Topic(pulumi.CustomResource):
         Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
         """
         return pulumi.get(self, "topic")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

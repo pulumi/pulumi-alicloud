@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -126,6 +126,146 @@ class ApplicationArgs:
         pulumi.set(self, "version", value)
 
 
+@pulumi.input_type
+class _ApplicationState:
+    def __init__(__self__, *,
+                 blue_green: Optional[pulumi.Input[bool]] = None,
+                 blue_green_confirm: Optional[pulumi.Input[bool]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 default_domain: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 latest_image: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationServiceArgs']]]] = None,
+                 template: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Application resources.
+        """
+        if blue_green is not None:
+            pulumi.set(__self__, "blue_green", blue_green)
+        if blue_green_confirm is not None:
+            pulumi.set(__self__, "blue_green_confirm", blue_green_confirm)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if default_domain is not None:
+            pulumi.set(__self__, "default_domain", default_domain)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if latest_image is not None:
+            pulumi.set(__self__, "latest_image", latest_image)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+        if template is not None:
+            pulumi.set(__self__, "template", template)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="blueGreen")
+    def blue_green(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "blue_green")
+
+    @blue_green.setter
+    def blue_green(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "blue_green", value)
+
+    @property
+    @pulumi.getter(name="blueGreenConfirm")
+    def blue_green_confirm(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "blue_green_confirm")
+
+    @blue_green_confirm.setter
+    def blue_green_confirm(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "blue_green_confirm", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="defaultDomain")
+    def default_domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "default_domain")
+
+    @default_domain.setter
+    def default_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_domain", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter(name="latestImage")
+    def latest_image(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "latest_image")
+
+    @latest_image.setter
+    def latest_image(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "latest_image", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationServiceArgs']]]]:
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationServiceArgs']]]]):
+        pulumi.set(self, "services", value)
+
+    @property
+    @pulumi.getter
+    def template(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "template")
+
+    @template.setter
+    def template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
 class Application(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -198,23 +338,23 @@ class Application(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApplicationArgs.__new__(ApplicationArgs)
 
-            __props__['blue_green'] = blue_green
-            __props__['blue_green_confirm'] = blue_green_confirm
+            __props__.__dict__["blue_green"] = blue_green
+            __props__.__dict__["blue_green_confirm"] = blue_green_confirm
             if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
-            __props__['cluster_name'] = cluster_name
-            __props__['description'] = description
-            __props__['environment'] = environment
-            __props__['latest_image'] = latest_image
-            __props__['name'] = name
+            __props__.__dict__["cluster_name"] = cluster_name
+            __props__.__dict__["description"] = description
+            __props__.__dict__["environment"] = environment
+            __props__.__dict__["latest_image"] = latest_image
+            __props__.__dict__["name"] = name
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
-            __props__['template'] = template
-            __props__['version'] = version
-            __props__['default_domain'] = None
-            __props__['services'] = None
+            __props__.__dict__["template"] = template
+            __props__.__dict__["version"] = version
+            __props__.__dict__["default_domain"] = None
+            __props__.__dict__["services"] = None
         super(Application, __self__).__init__(
             'alicloud:cs/application:Application',
             resource_name,
@@ -246,19 +386,19 @@ class Application(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ApplicationState.__new__(_ApplicationState)
 
-        __props__["blue_green"] = blue_green
-        __props__["blue_green_confirm"] = blue_green_confirm
-        __props__["cluster_name"] = cluster_name
-        __props__["default_domain"] = default_domain
-        __props__["description"] = description
-        __props__["environment"] = environment
-        __props__["latest_image"] = latest_image
-        __props__["name"] = name
-        __props__["services"] = services
-        __props__["template"] = template
-        __props__["version"] = version
+        __props__.__dict__["blue_green"] = blue_green
+        __props__.__dict__["blue_green_confirm"] = blue_green_confirm
+        __props__.__dict__["cluster_name"] = cluster_name
+        __props__.__dict__["default_domain"] = default_domain
+        __props__.__dict__["description"] = description
+        __props__.__dict__["environment"] = environment
+        __props__.__dict__["latest_image"] = latest_image
+        __props__.__dict__["name"] = name
+        __props__.__dict__["services"] = services
+        __props__.__dict__["template"] = template
+        __props__.__dict__["version"] = version
         return Application(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -315,10 +455,4 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

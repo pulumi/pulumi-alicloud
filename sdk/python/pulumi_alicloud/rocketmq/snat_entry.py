@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['SnatEntryArgs', 'SnatEntry']
 
@@ -60,6 +60,62 @@ class SnatEntryArgs:
 
     @snat_ip.setter
     def snat_ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "snat_ip", value)
+
+
+@pulumi.input_type
+class _SnatEntryState:
+    def __init__(__self__, *,
+                 cidr_block: Optional[pulumi.Input[str]] = None,
+                 sag_id: Optional[pulumi.Input[str]] = None,
+                 snat_ip: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SnatEntry resources.
+        :param pulumi.Input[str] cidr_block: The destination CIDR block.
+        :param pulumi.Input[str] sag_id: The ID of the SAG instance.
+        :param pulumi.Input[str] snat_ip: The public IP address.
+        """
+        if cidr_block is not None:
+            pulumi.set(__self__, "cidr_block", cidr_block)
+        if sag_id is not None:
+            pulumi.set(__self__, "sag_id", sag_id)
+        if snat_ip is not None:
+            pulumi.set(__self__, "snat_ip", snat_ip)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination CIDR block.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter(name="sagId")
+    def sag_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the SAG instance.
+        """
+        return pulumi.get(self, "sag_id")
+
+    @sag_id.setter
+    def sag_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sag_id", value)
+
+    @property
+    @pulumi.getter(name="snatIp")
+    def snat_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP address.
+        """
+        return pulumi.get(self, "snat_ip")
+
+    @snat_ip.setter
+    def snat_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snat_ip", value)
 
 
@@ -184,17 +240,17 @@ class SnatEntry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SnatEntryArgs.__new__(SnatEntryArgs)
 
             if cidr_block is None and not opts.urn:
                 raise TypeError("Missing required property 'cidr_block'")
-            __props__['cidr_block'] = cidr_block
+            __props__.__dict__["cidr_block"] = cidr_block
             if sag_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sag_id'")
-            __props__['sag_id'] = sag_id
+            __props__.__dict__["sag_id"] = sag_id
             if snat_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'snat_ip'")
-            __props__['snat_ip'] = snat_ip
+            __props__.__dict__["snat_ip"] = snat_ip
         super(SnatEntry, __self__).__init__(
             'alicloud:rocketmq/snatEntry:SnatEntry',
             resource_name,
@@ -221,11 +277,11 @@ class SnatEntry(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SnatEntryState.__new__(_SnatEntryState)
 
-        __props__["cidr_block"] = cidr_block
-        __props__["sag_id"] = sag_id
-        __props__["snat_ip"] = snat_ip
+        __props__.__dict__["cidr_block"] = cidr_block
+        __props__.__dict__["sag_id"] = sag_id
+        __props__.__dict__["snat_ip"] = snat_ip
         return SnatEntry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -251,10 +307,4 @@ class SnatEntry(pulumi.CustomResource):
         The public IP address.
         """
         return pulumi.get(self, "snat_ip")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

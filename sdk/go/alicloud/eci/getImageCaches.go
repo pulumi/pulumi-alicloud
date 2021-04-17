@@ -4,7 +4,7 @@
 package eci
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a collection of ECI Image Cache to the specified filters.

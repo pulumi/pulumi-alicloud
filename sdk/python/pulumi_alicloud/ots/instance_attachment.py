@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['InstanceAttachmentArgs', 'InstanceAttachment']
 
@@ -60,6 +60,78 @@ class InstanceAttachmentArgs:
 
     @vswitch_id.setter
     def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
+
+
+@pulumi.input_type
+class _InstanceAttachmentState:
+    def __init__(__self__, *,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vpc_name: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering InstanceAttachment resources.
+        :param pulumi.Input[str] instance_name: The name of the OTS instance.
+        :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
+        :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance.
+        :param pulumi.Input[str] vswitch_id: The ID of attaching VSwitch to instance.
+        """
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vpc_name is not None:
+            pulumi.set(__self__, "vpc_name", vpc_name)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the OTS instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of attaching VPC to instance.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="vpcName")
+    def vpc_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of attaching VPC to instance.
+        """
+        return pulumi.get(self, "vpc_name")
+
+    @vpc_name.setter
+    def vpc_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_name", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of attaching VSwitch to instance.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -182,18 +254,18 @@ class InstanceAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceAttachmentArgs.__new__(InstanceAttachmentArgs)
 
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
-            __props__['instance_name'] = instance_name
+            __props__.__dict__["instance_name"] = instance_name
             if vpc_name is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_name'")
-            __props__['vpc_name'] = vpc_name
+            __props__.__dict__["vpc_name"] = vpc_name
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
-            __props__['vswitch_id'] = vswitch_id
-            __props__['vpc_id'] = None
+            __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["vpc_id"] = None
         super(InstanceAttachment, __self__).__init__(
             'alicloud:ots/instanceAttachment:InstanceAttachment',
             resource_name,
@@ -222,12 +294,12 @@ class InstanceAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceAttachmentState.__new__(_InstanceAttachmentState)
 
-        __props__["instance_name"] = instance_name
-        __props__["vpc_id"] = vpc_id
-        __props__["vpc_name"] = vpc_name
-        __props__["vswitch_id"] = vswitch_id
+        __props__.__dict__["instance_name"] = instance_name
+        __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vpc_name"] = vpc_name
+        __props__.__dict__["vswitch_id"] = vswitch_id
         return InstanceAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -261,10 +333,4 @@ class InstanceAttachment(pulumi.CustomResource):
         The ID of attaching VSwitch to instance.
         """
         return pulumi.get(self, "vswitch_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

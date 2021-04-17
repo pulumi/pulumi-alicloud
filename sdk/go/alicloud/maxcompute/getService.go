@@ -4,7 +4,7 @@
 package maxcompute
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // > **NOTE:** When you open MaxCompute service, you'd better open [DataWorks service](https://www.alibabacloud.com/help/en/product/72772.htm) as well.
@@ -21,8 +21,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/maxcompute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/maxcompute"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -52,12 +52,28 @@ class AclEntryList(dict):
     def comment(self) -> Optional[str]:
         return pulumi.get(self, "comment")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendServerBackendServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverId":
+            suggest = "server_id"
+        elif key == "serverIp":
+            suggest = "server_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServerBackendServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServerBackendServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServerBackendServer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  server_id: str,
                  weight: int,
@@ -90,12 +106,32 @@ class BackendServerBackendServer(dict):
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ListenerXForwardedFor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retriveClientIp":
+            suggest = "retrive_client_ip"
+        elif key == "retriveSlbId":
+            suggest = "retrive_slb_id"
+        elif key == "retriveSlbIp":
+            suggest = "retrive_slb_ip"
+        elif key == "retriveSlbProto":
+            suggest = "retrive_slb_proto"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListenerXForwardedFor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListenerXForwardedFor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListenerXForwardedFor.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  retrive_client_ip: Optional[bool] = None,
                  retrive_slb_id: Optional[bool] = None,
@@ -144,12 +180,30 @@ class ListenerXForwardedFor(dict):
         """
         return pulumi.get(self, "retrive_slb_proto")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MasterSlaveServerGroupServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverId":
+            suggest = "server_id"
+        elif key == "isBackup":
+            suggest = "is_backup"
+        elif key == "serverType":
+            suggest = "server_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MasterSlaveServerGroupServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MasterSlaveServerGroupServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MasterSlaveServerGroupServer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  port: int,
                  server_id: str,
@@ -198,12 +252,26 @@ class MasterSlaveServerGroupServer(dict):
     def weight(self) -> Optional[int]:
         return pulumi.get(self, "weight")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServerGroupServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverIds":
+            suggest = "server_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerGroupServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerGroupServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerGroupServer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  port: int,
                  server_ids: Sequence[str],
@@ -235,9 +303,6 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def weight(self) -> Optional[int]:
         return pulumi.get(self, "weight")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

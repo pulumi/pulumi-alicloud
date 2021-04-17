@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
@@ -23,11 +23,11 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/providers"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 // )
 //
 // func main() {

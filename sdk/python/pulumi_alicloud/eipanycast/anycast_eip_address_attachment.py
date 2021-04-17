@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AnycastEipAddressAttachmentArgs', 'AnycastEipAddressAttachment']
 
@@ -76,6 +76,94 @@ class AnycastEipAddressAttachmentArgs:
     @bind_instance_type.setter
     def bind_instance_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "bind_instance_type", value)
+
+
+@pulumi.input_type
+class _AnycastEipAddressAttachmentState:
+    def __init__(__self__, *,
+                 anycast_id: Optional[pulumi.Input[str]] = None,
+                 bind_instance_id: Optional[pulumi.Input[str]] = None,
+                 bind_instance_region_id: Optional[pulumi.Input[str]] = None,
+                 bind_instance_type: Optional[pulumi.Input[str]] = None,
+                 bind_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AnycastEipAddressAttachment resources.
+        :param pulumi.Input[str] anycast_id: The ID of Anycast EIP.
+        :param pulumi.Input[str] bind_instance_id: The ID of bound instance.
+        :param pulumi.Input[str] bind_instance_region_id: The region ID of bound instance.
+        :param pulumi.Input[str] bind_instance_type: The type of bound instance. Valid value: `SlbInstance`.
+        :param pulumi.Input[str] bind_time: The time of bound instance.
+        """
+        if anycast_id is not None:
+            pulumi.set(__self__, "anycast_id", anycast_id)
+        if bind_instance_id is not None:
+            pulumi.set(__self__, "bind_instance_id", bind_instance_id)
+        if bind_instance_region_id is not None:
+            pulumi.set(__self__, "bind_instance_region_id", bind_instance_region_id)
+        if bind_instance_type is not None:
+            pulumi.set(__self__, "bind_instance_type", bind_instance_type)
+        if bind_time is not None:
+            pulumi.set(__self__, "bind_time", bind_time)
+
+    @property
+    @pulumi.getter(name="anycastId")
+    def anycast_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of Anycast EIP.
+        """
+        return pulumi.get(self, "anycast_id")
+
+    @anycast_id.setter
+    def anycast_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "anycast_id", value)
+
+    @property
+    @pulumi.getter(name="bindInstanceId")
+    def bind_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of bound instance.
+        """
+        return pulumi.get(self, "bind_instance_id")
+
+    @bind_instance_id.setter
+    def bind_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bind_instance_id", value)
+
+    @property
+    @pulumi.getter(name="bindInstanceRegionId")
+    def bind_instance_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of bound instance.
+        """
+        return pulumi.get(self, "bind_instance_region_id")
+
+    @bind_instance_region_id.setter
+    def bind_instance_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bind_instance_region_id", value)
+
+    @property
+    @pulumi.getter(name="bindInstanceType")
+    def bind_instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of bound instance. Valid value: `SlbInstance`.
+        """
+        return pulumi.get(self, "bind_instance_type")
+
+    @bind_instance_type.setter
+    def bind_instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bind_instance_type", value)
+
+    @property
+    @pulumi.getter(name="bindTime")
+    def bind_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time of bound instance.
+        """
+        return pulumi.get(self, "bind_time")
+
+    @bind_time.setter
+    def bind_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bind_time", value)
 
 
 class AnycastEipAddressAttachment(pulumi.CustomResource):
@@ -208,21 +296,21 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AnycastEipAddressAttachmentArgs.__new__(AnycastEipAddressAttachmentArgs)
 
             if anycast_id is None and not opts.urn:
                 raise TypeError("Missing required property 'anycast_id'")
-            __props__['anycast_id'] = anycast_id
+            __props__.__dict__["anycast_id"] = anycast_id
             if bind_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bind_instance_id'")
-            __props__['bind_instance_id'] = bind_instance_id
+            __props__.__dict__["bind_instance_id"] = bind_instance_id
             if bind_instance_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bind_instance_region_id'")
-            __props__['bind_instance_region_id'] = bind_instance_region_id
+            __props__.__dict__["bind_instance_region_id"] = bind_instance_region_id
             if bind_instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'bind_instance_type'")
-            __props__['bind_instance_type'] = bind_instance_type
-            __props__['bind_time'] = None
+            __props__.__dict__["bind_instance_type"] = bind_instance_type
+            __props__.__dict__["bind_time"] = None
         super(AnycastEipAddressAttachment, __self__).__init__(
             'alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment',
             resource_name,
@@ -253,13 +341,13 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AnycastEipAddressAttachmentState.__new__(_AnycastEipAddressAttachmentState)
 
-        __props__["anycast_id"] = anycast_id
-        __props__["bind_instance_id"] = bind_instance_id
-        __props__["bind_instance_region_id"] = bind_instance_region_id
-        __props__["bind_instance_type"] = bind_instance_type
-        __props__["bind_time"] = bind_time
+        __props__.__dict__["anycast_id"] = anycast_id
+        __props__.__dict__["bind_instance_id"] = bind_instance_id
+        __props__.__dict__["bind_instance_region_id"] = bind_instance_region_id
+        __props__.__dict__["bind_instance_type"] = bind_instance_type
+        __props__.__dict__["bind_time"] = bind_time
         return AnycastEipAddressAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -301,10 +389,4 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
         The time of bound instance.
         """
         return pulumi.get(self, "bind_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -81,6 +81,126 @@ class ImageImportArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        """
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="licenseType")
+    def license_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+        """
+        return pulumi.get(self, "license_type")
+
+    @license_type.setter
+    def license_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_type", value)
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operating system platform type. Valid values: `windows`, Default is `linux`.
+        """
+        return pulumi.get(self, "os_type")
+
+    @os_type.setter
+    def os_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_type", value)
+
+    @property
+    @pulumi.getter
+    def platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        """
+        return pulumi.get(self, "platform")
+
+    @platform.setter
+    def platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "platform", value)
+
+
+@pulumi.input_type
+class _ImageImportState:
+    def __init__(__self__, *,
+                 architecture: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 license_type: Optional[pulumi.Input[str]] = None,
+                 os_type: Optional[pulumi.Input[str]] = None,
+                 platform: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ImageImport resources.
+        :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+        :param pulumi.Input[str] description: Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]] disk_device_mappings: Description of the system with disks and snapshots under the image.
+        :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        :param pulumi.Input[str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+        :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
+        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        """
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disk_device_mappings is not None:
+            pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
+        if license_type is not None:
+            pulumi.set(__self__, "license_type", license_type)
+        if os_type is not None:
+            pulumi.set(__self__, "os_type", os_type)
+        if platform is not None:
+            pulumi.set(__self__, "platform", platform)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "architecture", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="diskDeviceMappings")
+    def disk_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]]:
+        """
+        Description of the system with disks and snapshots under the image.
+        """
+        return pulumi.get(self, "disk_device_mappings")
+
+    @disk_device_mappings.setter
+    def disk_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]]):
+        pulumi.set(self, "disk_device_mappings", value)
 
     @property
     @pulumi.getter(name="imageName")
@@ -286,17 +406,17 @@ class ImageImport(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ImageImportArgs.__new__(ImageImportArgs)
 
-            __props__['architecture'] = architecture
-            __props__['description'] = description
+            __props__.__dict__["architecture"] = architecture
+            __props__.__dict__["description"] = description
             if disk_device_mappings is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_device_mappings'")
-            __props__['disk_device_mappings'] = disk_device_mappings
-            __props__['image_name'] = image_name
-            __props__['license_type'] = license_type
-            __props__['os_type'] = os_type
-            __props__['platform'] = platform
+            __props__.__dict__["disk_device_mappings"] = disk_device_mappings
+            __props__.__dict__["image_name"] = image_name
+            __props__.__dict__["license_type"] = license_type
+            __props__.__dict__["os_type"] = os_type
+            __props__.__dict__["platform"] = platform
         super(ImageImport, __self__).__init__(
             'alicloud:ecs/imageImport:ImageImport',
             resource_name,
@@ -331,15 +451,15 @@ class ImageImport(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ImageImportState.__new__(_ImageImportState)
 
-        __props__["architecture"] = architecture
-        __props__["description"] = description
-        __props__["disk_device_mappings"] = disk_device_mappings
-        __props__["image_name"] = image_name
-        __props__["license_type"] = license_type
-        __props__["os_type"] = os_type
-        __props__["platform"] = platform
+        __props__.__dict__["architecture"] = architecture
+        __props__.__dict__["description"] = description
+        __props__.__dict__["disk_device_mappings"] = disk_device_mappings
+        __props__.__dict__["image_name"] = image_name
+        __props__.__dict__["license_type"] = license_type
+        __props__.__dict__["os_type"] = os_type
+        __props__.__dict__["platform"] = platform
         return ImageImport(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -397,10 +517,4 @@ class ImageImport(pulumi.CustomResource):
         Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
         """
         return pulumi.get(self, "platform")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

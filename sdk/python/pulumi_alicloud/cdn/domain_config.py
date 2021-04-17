@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -62,6 +62,62 @@ class DomainConfigArgs:
 
     @function_name.setter
     def function_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "function_name", value)
+
+
+@pulumi.input_type
+class _DomainConfigState:
+    def __init__(__self__, *,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 function_args: Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]] = None,
+                 function_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering DomainConfig resources.
+        :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.
+        :param pulumi.Input[str] function_name: The name of the domain config.
+        """
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if function_args is not None:
+            pulumi.set(__self__, "function_args", function_args)
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter(name="functionArgs")
+    def function_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]]:
+        """
+        The args of the domain config.
+        """
+        return pulumi.get(self, "function_args")
+
+    @function_args.setter
+    def function_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]]):
+        pulumi.set(self, "function_args", value)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the domain config.
+        """
+        return pulumi.get(self, "function_name")
+
+    @function_name.setter
+    def function_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "function_name", value)
 
 
@@ -212,17 +268,17 @@ class DomainConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DomainConfigArgs.__new__(DomainConfigArgs)
 
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
-            __props__['domain_name'] = domain_name
+            __props__.__dict__["domain_name"] = domain_name
             if function_args is None and not opts.urn:
                 raise TypeError("Missing required property 'function_args'")
-            __props__['function_args'] = function_args
+            __props__.__dict__["function_args"] = function_args
             if function_name is None and not opts.urn:
                 raise TypeError("Missing required property 'function_name'")
-            __props__['function_name'] = function_name
+            __props__.__dict__["function_name"] = function_name
         super(DomainConfig, __self__).__init__(
             'alicloud:cdn/domainConfig:DomainConfig',
             resource_name,
@@ -249,11 +305,11 @@ class DomainConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DomainConfigState.__new__(_DomainConfigState)
 
-        __props__["domain_name"] = domain_name
-        __props__["function_args"] = function_args
-        __props__["function_name"] = function_name
+        __props__.__dict__["domain_name"] = domain_name
+        __props__.__dict__["function_args"] = function_args
+        __props__.__dict__["function_name"] = function_name
         return DomainConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -279,10 +335,4 @@ class DomainConfig(pulumi.CustomResource):
         The name of the domain config.
         """
         return pulumi.get(self, "function_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

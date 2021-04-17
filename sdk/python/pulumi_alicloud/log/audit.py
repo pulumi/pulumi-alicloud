@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AuditArgs', 'Audit']
 
@@ -53,6 +53,78 @@ class AuditArgs:
 
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="multiAccounts")
+    def multi_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Multi-account configuration, please fill in multiple aliuid.
+        """
+        return pulumi.get(self, "multi_accounts")
+
+    @multi_accounts.setter
+    def multi_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "multi_accounts", value)
+
+    @property
+    @pulumi.getter(name="variableMap")
+    def variable_map(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Log audit detailed configuration.
+        """
+        return pulumi.get(self, "variable_map")
+
+    @variable_map.setter
+    def variable_map(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "variable_map", value)
+
+
+@pulumi.input_type
+class _AuditState:
+    def __init__(__self__, *,
+                 aliuid: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 variable_map: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        Input properties used for looking up and filtering Audit resources.
+        :param pulumi.Input[str] aliuid: Aliuid value of your account.
+        :param pulumi.Input[str] display_name: Name of SLS log audit.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
+        :param pulumi.Input[Mapping[str, Any]] variable_map: Log audit detailed configuration.
+        """
+        if aliuid is not None:
+            pulumi.set(__self__, "aliuid", aliuid)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if multi_accounts is not None:
+            pulumi.set(__self__, "multi_accounts", multi_accounts)
+        if variable_map is not None:
+            pulumi.set(__self__, "variable_map", variable_map)
+
+    @property
+    @pulumi.getter
+    def aliuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Aliuid value of your account.
+        """
+        return pulumi.get(self, "aliuid")
+
+    @aliuid.setter
+    def aliuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aliuid", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of SLS log audit.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
 
     @property
@@ -250,16 +322,16 @@ class Audit(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AuditArgs.__new__(AuditArgs)
 
             if aliuid is None and not opts.urn:
                 raise TypeError("Missing required property 'aliuid'")
-            __props__['aliuid'] = aliuid
+            __props__.__dict__["aliuid"] = aliuid
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
-            __props__['multi_accounts'] = multi_accounts
-            __props__['variable_map'] = variable_map
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["multi_accounts"] = multi_accounts
+            __props__.__dict__["variable_map"] = variable_map
         super(Audit, __self__).__init__(
             'alicloud:log/audit:Audit',
             resource_name,
@@ -288,12 +360,12 @@ class Audit(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AuditState.__new__(_AuditState)
 
-        __props__["aliuid"] = aliuid
-        __props__["display_name"] = display_name
-        __props__["multi_accounts"] = multi_accounts
-        __props__["variable_map"] = variable_map
+        __props__.__dict__["aliuid"] = aliuid
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["multi_accounts"] = multi_accounts
+        __props__.__dict__["variable_map"] = variable_map
         return Audit(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -327,10 +399,4 @@ class Audit(pulumi.CustomResource):
         Log audit detailed configuration.
         """
         return pulumi.get(self, "variable_map")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

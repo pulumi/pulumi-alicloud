@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['DatabaseArgs', 'Database']
 
@@ -74,6 +74,86 @@ class DatabaseArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
+        and have no more than 64 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _DatabaseState:
+    def __init__(__self__, *,
+                 character_set: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Database resources.
+        :param pulumi.Input[str] character_set: Character set. The value range is limited to the following:
+               - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
+               - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
+               - PostgreSQL: [ KOI8U、UTF8、WIN866、WIN874、WIN1250、WIN1251、WIN1252、WIN1253、WIN1254、WIN1255、WIN1256、WIN1257、WIN1258、EUC_CN、EUC_KR、EUC_TW、EUC_JP、EUC_JIS_2004、KOI8R、MULE_INTERNAL、LATIN1、LATIN2、LATIN3、LATIN4、LATIN5、LATIN6、LATIN7、LATIN8、LATIN9、LATIN10、ISO_8859_5、ISO_8859_6、ISO_8859_7、ISO_8859_8、SQL_ASCII ]
+        :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        :param pulumi.Input[str] instance_id: The Id of instance that can run database.
+        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
+               and have no more than 64 characters.
+        """
+        if character_set is not None:
+            pulumi.set(__self__, "character_set", character_set)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="characterSet")
+    def character_set(self) -> Optional[pulumi.Input[str]]:
+        """
+        Character set. The value range is limited to the following:
+        - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
+        - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
+        - PostgreSQL: [ KOI8U、UTF8、WIN866、WIN874、WIN1250、WIN1251、WIN1252、WIN1253、WIN1254、WIN1255、WIN1256、WIN1257、WIN1258、EUC_CN、EUC_KR、EUC_TW、EUC_JP、EUC_JIS_2004、KOI8R、MULE_INTERNAL、LATIN1、LATIN2、LATIN3、LATIN4、LATIN5、LATIN6、LATIN7、LATIN8、LATIN9、LATIN10、ISO_8859_5、ISO_8859_6、ISO_8859_7、ISO_8859_8、SQL_ASCII ]
+        """
+        return pulumi.get(self, "character_set")
+
+    @character_set.setter
+    def character_set(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "character_set", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of instance that can run database.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter
@@ -241,14 +321,14 @@ class Database(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
-            __props__['character_set'] = character_set
-            __props__['description'] = description
+            __props__.__dict__["character_set"] = character_set
+            __props__.__dict__["description"] = description
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['name'] = name
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["name"] = name
         super(Database, __self__).__init__(
             'alicloud:rds/database:Database',
             resource_name,
@@ -281,12 +361,12 @@ class Database(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseState.__new__(_DatabaseState)
 
-        __props__["character_set"] = character_set
-        __props__["description"] = description
-        __props__["instance_id"] = instance_id
-        __props__["name"] = name
+        __props__.__dict__["character_set"] = character_set
+        __props__.__dict__["description"] = description
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["name"] = name
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -324,10 +404,4 @@ class Database(pulumi.CustomResource):
         and have no more than 64 characters.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

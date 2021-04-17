@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResource']
 
@@ -77,6 +77,78 @@ class VpcEndpointServiceResourceArgs:
     @dry_run.setter
     def dry_run(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dry_run", value)
+
+
+@pulumi.input_type
+class _VpcEndpointServiceResourceState:
+    def __init__(__self__, *,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering VpcEndpointServiceResource resources.
+        :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] resource_id: The ID of Resource.
+        :param pulumi.Input[str] resource_type: The Type of Resource.
+        :param pulumi.Input[str] service_id: The ID of Vpc Endpoint Service.
+        """
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+        if service_id is not None:
+            pulumi.set(__self__, "service_id", service_id)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The dry run.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of Resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Type of Resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of Vpc Endpoint Service.
+        """
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_id", value)
 
 
 class VpcEndpointServiceResource(pulumi.CustomResource):
@@ -199,18 +271,18 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VpcEndpointServiceResourceArgs.__new__(VpcEndpointServiceResourceArgs)
 
-            __props__['dry_run'] = dry_run
+            __props__.__dict__["dry_run"] = dry_run
             if resource_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_id'")
-            __props__['resource_id'] = resource_id
+            __props__.__dict__["resource_id"] = resource_id
             if resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_type'")
-            __props__['resource_type'] = resource_type
+            __props__.__dict__["resource_type"] = resource_type
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
-            __props__['service_id'] = service_id
+            __props__.__dict__["service_id"] = service_id
         super(VpcEndpointServiceResource, __self__).__init__(
             'alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource',
             resource_name,
@@ -239,12 +311,12 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VpcEndpointServiceResourceState.__new__(_VpcEndpointServiceResourceState)
 
-        __props__["dry_run"] = dry_run
-        __props__["resource_id"] = resource_id
-        __props__["resource_type"] = resource_type
-        __props__["service_id"] = service_id
+        __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["resource_id"] = resource_id
+        __props__.__dict__["resource_type"] = resource_type
+        __props__.__dict__["service_id"] = service_id
         return VpcEndpointServiceResource(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -278,10 +350,4 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         The ID of Vpc Endpoint Service.
         """
         return pulumi.get(self, "service_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

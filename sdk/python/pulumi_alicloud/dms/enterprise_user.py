@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['EnterpriseUserArgs', 'EnterpriseUser']
 
@@ -164,6 +164,161 @@ class EnterpriseUserArgs:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.input_type
+class _EnterpriseUserState:
+    def __init__(__self__, *,
+                 max_execute_count: Optional[pulumi.Input[int]] = None,
+                 max_result_count: Optional[pulumi.Input[int]] = None,
+                 mobile: Optional[pulumi.Input[str]] = None,
+                 nick_name: Optional[pulumi.Input[str]] = None,
+                 role_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tid: Optional[pulumi.Input[int]] = None,
+                 uid: Optional[pulumi.Input[str]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering EnterpriseUser resources.
+        :param pulumi.Input[int] max_execute_count: Maximum number of inquiries on the day.
+        :param pulumi.Input[int] max_result_count: Query the maximum number of rows on the day.
+        :param pulumi.Input[str] mobile: The DingTalk number or mobile number of the user.
+        :param pulumi.Input[str] nick_name: It has been deprecated from 1.100.0 and use `user_name` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_names: The roles that the user plays.
+        :param pulumi.Input[str] status: The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
+        :param pulumi.Input[int] tid: The tenant ID.
+        :param pulumi.Input[str] uid: The Alibaba Cloud unique ID (UID) of the user to add.
+        :param pulumi.Input[str] user_name: The nickname of the user.
+        """
+        if max_execute_count is not None:
+            pulumi.set(__self__, "max_execute_count", max_execute_count)
+        if max_result_count is not None:
+            pulumi.set(__self__, "max_result_count", max_result_count)
+        if mobile is not None:
+            pulumi.set(__self__, "mobile", mobile)
+        if nick_name is not None:
+            warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
+        if nick_name is not None:
+            pulumi.set(__self__, "nick_name", nick_name)
+        if role_names is not None:
+            pulumi.set(__self__, "role_names", role_names)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tid is not None:
+            pulumi.set(__self__, "tid", tid)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="maxExecuteCount")
+    def max_execute_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of inquiries on the day.
+        """
+        return pulumi.get(self, "max_execute_count")
+
+    @max_execute_count.setter
+    def max_execute_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_execute_count", value)
+
+    @property
+    @pulumi.getter(name="maxResultCount")
+    def max_result_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Query the maximum number of rows on the day.
+        """
+        return pulumi.get(self, "max_result_count")
+
+    @max_result_count.setter
+    def max_result_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_result_count", value)
+
+    @property
+    @pulumi.getter
+    def mobile(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DingTalk number or mobile number of the user.
+        """
+        return pulumi.get(self, "mobile")
+
+    @mobile.setter
+    def mobile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mobile", value)
+
+    @property
+    @pulumi.getter(name="nickName")
+    def nick_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from 1.100.0 and use `user_name` instead.
+        """
+        return pulumi.get(self, "nick_name")
+
+    @nick_name.setter
+    def nick_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nick_name", value)
+
+    @property
+    @pulumi.getter(name="roleNames")
+    def role_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The roles that the user plays.
+        """
+        return pulumi.get(self, "role_names")
+
+    @role_names.setter
+    def role_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "role_names", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tid(self) -> Optional[pulumi.Input[int]]:
+        """
+        The tenant ID.
+        """
+        return pulumi.get(self, "tid")
+
+    @tid.setter
+    def tid(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tid", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Alibaba Cloud unique ID (UID) of the user to add.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The nickname of the user.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_name", value)
+
+
 class EnterpriseUser(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -293,22 +448,22 @@ class EnterpriseUser(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EnterpriseUserArgs.__new__(EnterpriseUserArgs)
 
-            __props__['max_execute_count'] = max_execute_count
-            __props__['max_result_count'] = max_result_count
-            __props__['mobile'] = mobile
+            __props__.__dict__["max_execute_count"] = max_execute_count
+            __props__.__dict__["max_result_count"] = max_result_count
+            __props__.__dict__["mobile"] = mobile
             if nick_name is not None and not opts.urn:
                 warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
-            __props__['nick_name'] = nick_name
-            __props__['role_names'] = role_names
-            __props__['status'] = status
-            __props__['tid'] = tid
+            __props__.__dict__["nick_name"] = nick_name
+            __props__.__dict__["role_names"] = role_names
+            __props__.__dict__["status"] = status
+            __props__.__dict__["tid"] = tid
             if uid is None and not opts.urn:
                 raise TypeError("Missing required property 'uid'")
-            __props__['uid'] = uid
-            __props__['user_name'] = user_name
+            __props__.__dict__["uid"] = uid
+            __props__.__dict__["user_name"] = user_name
         super(EnterpriseUser, __self__).__init__(
             'alicloud:dms/enterpriseUser:EnterpriseUser',
             resource_name,
@@ -347,17 +502,17 @@ class EnterpriseUser(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EnterpriseUserState.__new__(_EnterpriseUserState)
 
-        __props__["max_execute_count"] = max_execute_count
-        __props__["max_result_count"] = max_result_count
-        __props__["mobile"] = mobile
-        __props__["nick_name"] = nick_name
-        __props__["role_names"] = role_names
-        __props__["status"] = status
-        __props__["tid"] = tid
-        __props__["uid"] = uid
-        __props__["user_name"] = user_name
+        __props__.__dict__["max_execute_count"] = max_execute_count
+        __props__.__dict__["max_result_count"] = max_result_count
+        __props__.__dict__["mobile"] = mobile
+        __props__.__dict__["nick_name"] = nick_name
+        __props__.__dict__["role_names"] = role_names
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tid"] = tid
+        __props__.__dict__["uid"] = uid
+        __props__.__dict__["user_name"] = user_name
         return EnterpriseUser(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -431,10 +586,4 @@ class EnterpriseUser(pulumi.CustomResource):
         The nickname of the user.
         """
         return pulumi.get(self, "user_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

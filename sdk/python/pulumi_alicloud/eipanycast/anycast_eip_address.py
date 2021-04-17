@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AnycastEipAddressArgs', 'AnycastEipAddress']
 
@@ -111,6 +111,126 @@ class AnycastEipAddressArgs:
     @payment_type.setter
     def payment_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payment_type", value)
+
+
+@pulumi.input_type
+class _AnycastEipAddressState:
+    def __init__(__self__, *,
+                 anycast_eip_address_name: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
+                 service_location: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AnycastEipAddress resources.
+        :param pulumi.Input[str] anycast_eip_address_name: Anycast EIP instance name.
+        :param pulumi.Input[int] bandwidth: The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+        :param pulumi.Input[str] description: Anycast EIP instance description.
+        :param pulumi.Input[str] internet_charge_type: The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+        :param pulumi.Input[str] payment_type: The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+        :param pulumi.Input[str] service_location: Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+        :param pulumi.Input[str] status: The IP status.
+        """
+        if anycast_eip_address_name is not None:
+            pulumi.set(__self__, "anycast_eip_address_name", anycast_eip_address_name)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if internet_charge_type is not None:
+            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
+        if service_location is not None:
+            pulumi.set(__self__, "service_location", service_location)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="anycastEipAddressName")
+    def anycast_eip_address_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Anycast EIP instance name.
+        """
+        return pulumi.get(self, "anycast_eip_address_name")
+
+    @anycast_eip_address_name.setter
+    def anycast_eip_address_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "anycast_eip_address_name", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The peak bandwidth of the Anycast EIP instance, in Mbps. It can not be changed when the internet_charge_type is `PayByBandwidth` and the default value is 200.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Anycast EIP instance description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic. Valid value: `PayByBandwidth`.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @internet_charge_type.setter
+    def internet_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_charge_type", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Valid value: `PayAsYouGo`. Default value is `PayAsYouGo`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter(name="serviceLocation")
+    def service_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+        """
+        return pulumi.get(self, "service_location")
+
+    @service_location.setter
+    def service_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_location", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP status.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class AnycastEipAddress(pulumi.CustomResource):
@@ -233,17 +353,17 @@ class AnycastEipAddress(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AnycastEipAddressArgs.__new__(AnycastEipAddressArgs)
 
-            __props__['anycast_eip_address_name'] = anycast_eip_address_name
-            __props__['bandwidth'] = bandwidth
-            __props__['description'] = description
-            __props__['internet_charge_type'] = internet_charge_type
-            __props__['payment_type'] = payment_type
+            __props__.__dict__["anycast_eip_address_name"] = anycast_eip_address_name
+            __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["description"] = description
+            __props__.__dict__["internet_charge_type"] = internet_charge_type
+            __props__.__dict__["payment_type"] = payment_type
             if service_location is None and not opts.urn:
                 raise TypeError("Missing required property 'service_location'")
-            __props__['service_location'] = service_location
-            __props__['status'] = None
+            __props__.__dict__["service_location"] = service_location
+            __props__.__dict__["status"] = None
         super(AnycastEipAddress, __self__).__init__(
             'alicloud:eipanycast/anycastEipAddress:AnycastEipAddress',
             resource_name,
@@ -278,15 +398,15 @@ class AnycastEipAddress(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AnycastEipAddressState.__new__(_AnycastEipAddressState)
 
-        __props__["anycast_eip_address_name"] = anycast_eip_address_name
-        __props__["bandwidth"] = bandwidth
-        __props__["description"] = description
-        __props__["internet_charge_type"] = internet_charge_type
-        __props__["payment_type"] = payment_type
-        __props__["service_location"] = service_location
-        __props__["status"] = status
+        __props__.__dict__["anycast_eip_address_name"] = anycast_eip_address_name
+        __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["description"] = description
+        __props__.__dict__["internet_charge_type"] = internet_charge_type
+        __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["service_location"] = service_location
+        __props__.__dict__["status"] = status
         return AnycastEipAddress(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -344,10 +464,4 @@ class AnycastEipAddress(pulumi.CustomResource):
         The IP status.
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

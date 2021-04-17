@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'InstanceSlbConnAddr',
@@ -21,6 +21,27 @@ __all__ = [
 
 @pulumi.output_type
 class InstanceSlbConnAddr(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connAddr":
+            suggest = "conn_addr"
+        elif key == "connAddrPort":
+            suggest = "conn_addr_port"
+        elif key == "netType":
+            suggest = "net_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceSlbConnAddr. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceSlbConnAddr.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceSlbConnAddr.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conn_addr: Optional[str] = None,
                  conn_addr_port: Optional[str] = None,
@@ -46,13 +67,31 @@ class InstanceSlbConnAddr(dict):
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[str]:
         return pulumi.get(self, "net_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class InstanceUiProxyConnAddr(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connAddr":
+            suggest = "conn_addr"
+        elif key == "connAddrPort":
+            suggest = "conn_addr_port"
+        elif key == "netType":
+            suggest = "net_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceUiProxyConnAddr. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceUiProxyConnAddr.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceUiProxyConnAddr.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conn_addr: Optional[str] = None,
                  conn_addr_port: Optional[str] = None,
@@ -78,13 +117,31 @@ class InstanceUiProxyConnAddr(dict):
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[str]:
         return pulumi.get(self, "net_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class InstanceZkConnAddr(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connAddr":
+            suggest = "conn_addr"
+        elif key == "connAddrPort":
+            suggest = "conn_addr_port"
+        elif key == "netType":
+            suggest = "net_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceZkConnAddr. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceZkConnAddr.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceZkConnAddr.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conn_addr: Optional[str] = None,
                  conn_addr_port: Optional[str] = None,
@@ -110,9 +167,6 @@ class InstanceZkConnAddr(dict):
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[str]:
         return pulumi.get(self, "net_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

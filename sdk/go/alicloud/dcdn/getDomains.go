@@ -4,7 +4,7 @@
 package dcdn
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a collection of DCDN Domains to the specified filters.

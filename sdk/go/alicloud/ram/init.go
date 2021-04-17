@@ -7,8 +7,8 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 type module struct {

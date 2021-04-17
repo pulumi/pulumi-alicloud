@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['BandwidthLimitArgs', 'BandwidthLimit']
 
@@ -60,6 +60,62 @@ class BandwidthLimitArgs:
 
     @region_ids.setter
     def region_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "region_ids", value)
+
+
+@pulumi.input_type
+class _BandwidthLimitState:
+    def __init__(__self__, *,
+                 bandwidth_limit: Optional[pulumi.Input[int]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering BandwidthLimit resources.
+        :param pulumi.Input[int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
+        :param pulumi.Input[str] instance_id: The ID of the CEN.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
+        """
+        if bandwidth_limit is not None:
+            pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if region_ids is not None:
+            pulumi.set(__self__, "region_ids", region_ids)
+
+    @property
+    @pulumi.getter(name="bandwidthLimit")
+    def bandwidth_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The bandwidth configured for the interconnected regions communication.
+        """
+        return pulumi.get(self, "bandwidth_limit")
+
+    @bandwidth_limit.setter
+    def bandwidth_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth_limit", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the CEN.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="regionIds")
+    def region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of the two regions to interconnect. Must be two different regions.
+        """
+        return pulumi.get(self, "region_ids")
+
+    @region_ids.setter
+    def region_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "region_ids", value)
 
 
@@ -262,17 +318,17 @@ class BandwidthLimit(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BandwidthLimitArgs.__new__(BandwidthLimitArgs)
 
             if bandwidth_limit is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth_limit'")
-            __props__['bandwidth_limit'] = bandwidth_limit
+            __props__.__dict__["bandwidth_limit"] = bandwidth_limit
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
+            __props__.__dict__["instance_id"] = instance_id
             if region_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'region_ids'")
-            __props__['region_ids'] = region_ids
+            __props__.__dict__["region_ids"] = region_ids
         super(BandwidthLimit, __self__).__init__(
             'alicloud:cen/bandwidthLimit:BandwidthLimit',
             resource_name,
@@ -299,11 +355,11 @@ class BandwidthLimit(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BandwidthLimitState.__new__(_BandwidthLimitState)
 
-        __props__["bandwidth_limit"] = bandwidth_limit
-        __props__["instance_id"] = instance_id
-        __props__["region_ids"] = region_ids
+        __props__.__dict__["bandwidth_limit"] = bandwidth_limit
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["region_ids"] = region_ids
         return BandwidthLimit(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -329,10 +385,4 @@ class BandwidthLimit(pulumi.CustomResource):
         List of the two regions to interconnect. Must be two different regions.
         """
         return pulumi.get(self, "region_ids")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

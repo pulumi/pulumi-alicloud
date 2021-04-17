@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['BackupPolicyArgs', 'BackupPolicy']
 
@@ -60,6 +60,78 @@ class BackupPolicyArgs:
 
     @preferred_backup_time.setter
     def preferred_backup_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "preferred_backup_time", value)
+
+
+@pulumi.input_type
+class _BackupPolicyState:
+    def __init__(__self__, *,
+                 backup_retention_period: Optional[pulumi.Input[str]] = None,
+                 db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 preferred_backup_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering BackupPolicy resources.
+        :param pulumi.Input[str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
+        :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
+        :param pulumi.Input[str] preferred_backup_time: ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
+        """
+        if backup_retention_period is not None:
+            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+        if db_cluster_id is not None:
+            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if preferred_backup_periods is not None:
+            pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
+        if preferred_backup_time is not None:
+            pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+
+    @property
+    @pulumi.getter(name="backupRetentionPeriod")
+    def backup_retention_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster backup retention days, Fixed for 7 days, not modified.
+        """
+        return pulumi.get(self, "backup_retention_period")
+
+    @backup_retention_period.setter
+    def backup_retention_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_retention_period", value)
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of cluster that can run database.
+        """
+        return pulumi.get(self, "db_cluster_id")
+
+    @db_cluster_id.setter
+    def db_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="preferredBackupPeriods")
+    def preferred_backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
+        """
+        return pulumi.get(self, "preferred_backup_periods")
+
+    @preferred_backup_periods.setter
+    def preferred_backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "preferred_backup_periods", value)
+
+    @property
+    @pulumi.getter(name="preferredBackupTime")
+    def preferred_backup_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
+        """
+        return pulumi.get(self, "preferred_backup_time")
+
+    @preferred_backup_time.setter
+    def preferred_backup_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "preferred_backup_time", value)
 
 
@@ -140,18 +212,18 @@ class BackupPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BackupPolicyArgs.__new__(BackupPolicyArgs)
 
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
-            __props__['db_cluster_id'] = db_cluster_id
+            __props__.__dict__["db_cluster_id"] = db_cluster_id
             if preferred_backup_periods is None and not opts.urn:
                 raise TypeError("Missing required property 'preferred_backup_periods'")
-            __props__['preferred_backup_periods'] = preferred_backup_periods
+            __props__.__dict__["preferred_backup_periods"] = preferred_backup_periods
             if preferred_backup_time is None and not opts.urn:
                 raise TypeError("Missing required property 'preferred_backup_time'")
-            __props__['preferred_backup_time'] = preferred_backup_time
-            __props__['backup_retention_period'] = None
+            __props__.__dict__["preferred_backup_time"] = preferred_backup_time
+            __props__.__dict__["backup_retention_period"] = None
         super(BackupPolicy, __self__).__init__(
             'alicloud:adb/backupPolicy:BackupPolicy',
             resource_name,
@@ -180,12 +252,12 @@ class BackupPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BackupPolicyState.__new__(_BackupPolicyState)
 
-        __props__["backup_retention_period"] = backup_retention_period
-        __props__["db_cluster_id"] = db_cluster_id
-        __props__["preferred_backup_periods"] = preferred_backup_periods
-        __props__["preferred_backup_time"] = preferred_backup_time
+        __props__.__dict__["backup_retention_period"] = backup_retention_period
+        __props__.__dict__["db_cluster_id"] = db_cluster_id
+        __props__.__dict__["preferred_backup_periods"] = preferred_backup_periods
+        __props__.__dict__["preferred_backup_time"] = preferred_backup_time
         return BackupPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -219,10 +291,4 @@ class BackupPolicy(pulumi.CustomResource):
         ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
         """
         return pulumi.get(self, "preferred_backup_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

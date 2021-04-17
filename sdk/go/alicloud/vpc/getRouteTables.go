@@ -4,7 +4,7 @@
 package vpc
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This data source provides a list of Route Tables owned by an Alibaba Cloud account.

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -64,6 +64,62 @@ class ScalingGroupVServerGroupsArgs:
     @force.setter
     def force(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force", value)
+
+
+@pulumi.input_type
+class _ScalingGroupVServerGroupsState:
+    def __init__(__self__, *,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 vserver_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering ScalingGroupVServerGroups resources.
+        :param pulumi.Input[bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
+        :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        """
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if scaling_group_id is not None:
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if vserver_groups is not None:
+            pulumi.set(__self__, "vserver_groups", vserver_groups)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the scaling group.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @scaling_group_id.setter
+    def scaling_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_group_id", value)
+
+    @property
+    @pulumi.getter(name="vserverGroups")
+    def vserver_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]]:
+        """
+        A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        """
+        return pulumi.get(self, "vserver_groups")
+
+    @vserver_groups.setter
+    def vserver_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]]):
+        pulumi.set(self, "vserver_groups", value)
 
 
 class ScalingGroupVServerGroups(pulumi.CustomResource):
@@ -297,15 +353,15 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ScalingGroupVServerGroupsArgs.__new__(ScalingGroupVServerGroupsArgs)
 
-            __props__['force'] = force
+            __props__.__dict__["force"] = force
             if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
-            __props__['scaling_group_id'] = scaling_group_id
+            __props__.__dict__["scaling_group_id"] = scaling_group_id
             if vserver_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'vserver_groups'")
-            __props__['vserver_groups'] = vserver_groups
+            __props__.__dict__["vserver_groups"] = vserver_groups
         super(ScalingGroupVServerGroups, __self__).__init__(
             'alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups',
             resource_name,
@@ -332,11 +388,11 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ScalingGroupVServerGroupsState.__new__(_ScalingGroupVServerGroupsState)
 
-        __props__["force"] = force
-        __props__["scaling_group_id"] = scaling_group_id
-        __props__["vserver_groups"] = vserver_groups
+        __props__.__dict__["force"] = force
+        __props__.__dict__["scaling_group_id"] = scaling_group_id
+        __props__.__dict__["vserver_groups"] = vserver_groups
         return ScalingGroupVServerGroups(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -362,10 +418,4 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         A list of vserver groups attached on scaling group. See Block vserver_group below for details.
         """
         return pulumi.get(self, "vserver_groups")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

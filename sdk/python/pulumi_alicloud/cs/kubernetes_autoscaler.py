@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -114,6 +114,114 @@ class KubernetesAutoscalerArgs:
     @use_ecs_ram_role_token.setter
     def use_ecs_ram_role_token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_ecs_ram_role_token", value)
+
+
+@pulumi.input_type
+class _KubernetesAutoscalerState:
+    def __init__(__self__, *,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 cool_down_duration: Optional[pulumi.Input[str]] = None,
+                 defer_scale_in_duration: Optional[pulumi.Input[str]] = None,
+                 nodepools: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]] = None,
+                 use_ecs_ram_role_token: Optional[pulumi.Input[bool]] = None,
+                 utilization: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering KubernetesAutoscaler resources.
+        :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
+        :param pulumi.Input[str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]] nodepools: * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
+               * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
+               * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+        :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if cool_down_duration is not None:
+            pulumi.set(__self__, "cool_down_duration", cool_down_duration)
+        if defer_scale_in_duration is not None:
+            pulumi.set(__self__, "defer_scale_in_duration", defer_scale_in_duration)
+        if nodepools is not None:
+            pulumi.set(__self__, "nodepools", nodepools)
+        if use_ecs_ram_role_token is not None:
+            pulumi.set(__self__, "use_ecs_ram_role_token", use_ecs_ram_role_token)
+        if utilization is not None:
+            pulumi.set(__self__, "utilization", utilization)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of kubernetes cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="coolDownDuration")
+    def cool_down_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cool_down_duration option of cluster-autoscaler.
+        """
+        return pulumi.get(self, "cool_down_duration")
+
+    @cool_down_duration.setter
+    def cool_down_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cool_down_duration", value)
+
+    @property
+    @pulumi.getter(name="deferScaleInDuration")
+    def defer_scale_in_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The defer_scale_in_duration option of cluster-autoscaler.
+        """
+        return pulumi.get(self, "defer_scale_in_duration")
+
+    @defer_scale_in_duration.setter
+    def defer_scale_in_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "defer_scale_in_duration", value)
+
+    @property
+    @pulumi.getter
+    def nodepools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]]:
+        """
+        * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
+        * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
+        * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        """
+        return pulumi.get(self, "nodepools")
+
+    @nodepools.setter
+    def nodepools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAutoscalerNodepoolArgs']]]]):
+        pulumi.set(self, "nodepools", value)
+
+    @property
+    @pulumi.getter(name="useEcsRamRoleToken")
+    def use_ecs_ram_role_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+        """
+        return pulumi.get(self, "use_ecs_ram_role_token")
+
+    @use_ecs_ram_role_token.setter
+    def use_ecs_ram_role_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_ecs_ram_role_token", value)
+
+    @property
+    @pulumi.getter
+    def utilization(self) -> Optional[pulumi.Input[str]]:
+        """
+        The utilization option of cluster-autoscaler.
+        """
+        return pulumi.get(self, "utilization")
+
+    @utilization.setter
+    def utilization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "utilization", value)
 
 
 class KubernetesAutoscaler(pulumi.CustomResource):
@@ -314,22 +422,22 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KubernetesAutoscalerArgs.__new__(KubernetesAutoscalerArgs)
 
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
+            __props__.__dict__["cluster_id"] = cluster_id
             if cool_down_duration is None and not opts.urn:
                 raise TypeError("Missing required property 'cool_down_duration'")
-            __props__['cool_down_duration'] = cool_down_duration
+            __props__.__dict__["cool_down_duration"] = cool_down_duration
             if defer_scale_in_duration is None and not opts.urn:
                 raise TypeError("Missing required property 'defer_scale_in_duration'")
-            __props__['defer_scale_in_duration'] = defer_scale_in_duration
-            __props__['nodepools'] = nodepools
-            __props__['use_ecs_ram_role_token'] = use_ecs_ram_role_token
+            __props__.__dict__["defer_scale_in_duration"] = defer_scale_in_duration
+            __props__.__dict__["nodepools"] = nodepools
+            __props__.__dict__["use_ecs_ram_role_token"] = use_ecs_ram_role_token
             if utilization is None and not opts.urn:
                 raise TypeError("Missing required property 'utilization'")
-            __props__['utilization'] = utilization
+            __props__.__dict__["utilization"] = utilization
         super(KubernetesAutoscaler, __self__).__init__(
             'alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler',
             resource_name,
@@ -364,14 +472,14 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _KubernetesAutoscalerState.__new__(_KubernetesAutoscalerState)
 
-        __props__["cluster_id"] = cluster_id
-        __props__["cool_down_duration"] = cool_down_duration
-        __props__["defer_scale_in_duration"] = defer_scale_in_duration
-        __props__["nodepools"] = nodepools
-        __props__["use_ecs_ram_role_token"] = use_ecs_ram_role_token
-        __props__["utilization"] = utilization
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["cool_down_duration"] = cool_down_duration
+        __props__.__dict__["defer_scale_in_duration"] = defer_scale_in_duration
+        __props__.__dict__["nodepools"] = nodepools
+        __props__.__dict__["use_ecs_ram_role_token"] = use_ecs_ram_role_token
+        __props__.__dict__["utilization"] = utilization
         return KubernetesAutoscaler(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -423,10 +531,4 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         The utilization option of cluster-autoscaler.
         """
         return pulumi.get(self, "utilization")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

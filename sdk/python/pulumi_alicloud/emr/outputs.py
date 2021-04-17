@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'ClusterBootstrapAction',
@@ -58,12 +58,50 @@ class ClusterBootstrapAction(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterHostGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoRenew":
+            suggest = "auto_renew"
+        elif key == "chargeType":
+            suggest = "charge_type"
+        elif key == "diskCapacity":
+            suggest = "disk_capacity"
+        elif key == "diskCount":
+            suggest = "disk_count"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "gpuDriver":
+            suggest = "gpu_driver"
+        elif key == "hostGroupName":
+            suggest = "host_group_name"
+        elif key == "hostGroupType":
+            suggest = "host_group_type"
+        elif key == "instanceList":
+            suggest = "instance_list"
+        elif key == "instanceType":
+            suggest = "instance_type"
+        elif key == "nodeCount":
+            suggest = "node_count"
+        elif key == "sysDiskCapacity":
+            suggest = "sys_disk_capacity"
+        elif key == "sysDiskType":
+            suggest = "sys_disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterHostGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterHostGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterHostGroup.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_renew: Optional[bool] = None,
                  charge_type: Optional[str] = None,
@@ -231,9 +269,6 @@ class ClusterHostGroup(dict):
         System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
         """
         return pulumi.get(self, "sys_disk_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

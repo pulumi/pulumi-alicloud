@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -32,6 +32,25 @@ __all__ = [
 
 @pulumi.output_type
 class NetworkAclAttachmentResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAclAttachmentResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAclAttachmentResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAclAttachmentResource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_id: str,
                  resource_type: str):
@@ -58,12 +77,28 @@ class NetworkAclAttachmentResource(dict):
         """
         return pulumi.get(self, "resource_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkAclEntriesEgress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationCidrIp":
+            suggest = "destination_cidr_ip"
+        elif key == "entryType":
+            suggest = "entry_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAclEntriesEgress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAclEntriesEgress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAclEntriesEgress.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  destination_cidr_ip: Optional[str] = None,
@@ -152,12 +187,28 @@ class NetworkAclEntriesEgress(dict):
         """
         return pulumi.get(self, "protocol")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkAclEntriesIngress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryType":
+            suggest = "entry_type"
+        elif key == "sourceCidrIp":
+            suggest = "source_cidr_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAclEntriesIngress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAclEntriesIngress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAclEntriesIngress.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  entry_type: Optional[str] = None,
@@ -245,9 +296,6 @@ class NetworkAclEntriesIngress(dict):
         The source ip of the ingress entry.
         """
         return pulumi.get(self, "source_cidr_ip")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

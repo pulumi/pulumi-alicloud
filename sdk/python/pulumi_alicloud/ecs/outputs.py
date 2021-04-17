@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -57,6 +57,29 @@ __all__ = [
 
 @pulumi.output_type
 class AutoProvisioningGroupLaunchTemplateConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxPrice":
+            suggest = "max_price"
+        elif key == "vswitchId":
+            suggest = "vswitch_id"
+        elif key == "weightedCapacity":
+            suggest = "weighted_capacity"
+        elif key == "instanceType":
+            suggest = "instance_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoProvisioningGroupLaunchTemplateConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoProvisioningGroupLaunchTemplateConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoProvisioningGroupLaunchTemplateConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_price: str,
                  vswitch_id: str,
@@ -96,12 +119,28 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
     def priority(self) -> Optional[str]:
         return pulumi.get(self, "priority")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DedicatedHostNetworkAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slbUdpTimeout":
+            suggest = "slb_udp_timeout"
+        elif key == "udpTimeout":
+            suggest = "udp_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DedicatedHostNetworkAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DedicatedHostNetworkAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DedicatedHostNetworkAttribute.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  slb_udp_timeout: Optional[int] = None,
                  udp_timeout: Optional[int] = None):
@@ -130,12 +169,30 @@ class DedicatedHostNetworkAttribute(dict):
         """
         return pulumi.get(self, "udp_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EcsLaunchTemplateDataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteWithInstance":
+            suggest = "delete_with_instance"
+        elif key == "performanceLevel":
+            suggest = "performance_level"
+        elif key == "snapshotId":
+            suggest = "snapshot_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EcsLaunchTemplateDataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EcsLaunchTemplateDataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EcsLaunchTemplateDataDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
@@ -236,12 +293,30 @@ class EcsLaunchTemplateDataDisk(dict):
         """
         return pulumi.get(self, "snapshot_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EcsLaunchTemplateNetworkInterfaces(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryIp":
+            suggest = "primary_ip"
+        elif key == "securityGroupId":
+            suggest = "security_group_id"
+        elif key == "vswitchId":
+            suggest = "vswitch_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EcsLaunchTemplateNetworkInterfaces. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EcsLaunchTemplateNetworkInterfaces.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EcsLaunchTemplateNetworkInterfaces.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  name: Optional[str] = None,
@@ -306,12 +381,28 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
         """
         return pulumi.get(self, "vswitch_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EcsLaunchTemplateSystemDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteWithInstance":
+            suggest = "delete_with_instance"
+        elif key == "performanceLevel":
+            suggest = "performance_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EcsLaunchTemplateSystemDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EcsLaunchTemplateSystemDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EcsLaunchTemplateSystemDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
@@ -400,12 +491,28 @@ class EcsLaunchTemplateSystemDisk(dict):
         """
         return pulumi.get(self, "size")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ImageDiskDeviceMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskType":
+            suggest = "disk_type"
+        elif key == "snapshotId":
+            suggest = "snapshot_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageDiskDeviceMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageDiskDeviceMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageDiskDeviceMapping.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device: Optional[str] = None,
                  disk_type: Optional[str] = None,
@@ -458,12 +565,30 @@ class ImageDiskDeviceMapping(dict):
         """
         return pulumi.get(self, "snapshot_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ImageImportDiskDeviceMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskImageSize":
+            suggest = "disk_image_size"
+        elif key == "ossBucket":
+            suggest = "oss_bucket"
+        elif key == "ossObject":
+            suggest = "oss_object"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageImportDiskDeviceMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageImportDiskDeviceMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageImportDiskDeviceMapping.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device: Optional[str] = None,
                  disk_image_size: Optional[int] = None,
@@ -528,12 +653,34 @@ class ImageImportDiskDeviceMapping(dict):
         """
         return pulumi.get(self, "oss_object")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceDataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoSnapshotPolicyId":
+            suggest = "auto_snapshot_policy_id"
+        elif key == "deleteWithInstance":
+            suggest = "delete_with_instance"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
+        elif key == "performanceLevel":
+            suggest = "performance_level"
+        elif key == "snapshotId":
+            suggest = "snapshot_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceDataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceDataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceDataDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  size: int,
                  auto_snapshot_policy_id: Optional[str] = None,
@@ -689,12 +836,30 @@ class InstanceDataDisk(dict):
         """
         return pulumi.get(self, "snapshot_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LaunchTemplateDataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteWithInstance":
+            suggest = "delete_with_instance"
+        elif key == "performanceLevel":
+            suggest = "performance_level"
+        elif key == "snapshotId":
+            suggest = "snapshot_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LaunchTemplateDataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LaunchTemplateDataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LaunchTemplateDataDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
@@ -811,12 +976,30 @@ class LaunchTemplateDataDisk(dict):
         """
         return pulumi.get(self, "snapshot_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LaunchTemplateNetworkInterfaces(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryIp":
+            suggest = "primary_ip"
+        elif key == "securityGroupId":
+            suggest = "security_group_id"
+        elif key == "vswitchId":
+            suggest = "vswitch_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LaunchTemplateNetworkInterfaces. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LaunchTemplateNetworkInterfaces.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LaunchTemplateNetworkInterfaces.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  name: Optional[str] = None,
@@ -881,12 +1064,28 @@ class LaunchTemplateNetworkInterfaces(dict):
         """
         return pulumi.get(self, "vswitch_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LaunchTemplateSystemDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteWithInstance":
+            suggest = "delete_with_instance"
+        elif key == "performanceLevel":
+            suggest = "performance_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LaunchTemplateSystemDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LaunchTemplateSystemDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LaunchTemplateSystemDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
@@ -986,9 +1185,6 @@ class LaunchTemplateSystemDisk(dict):
         - ephemeral_ssd: [5, 800]
         """
         return pulumi.get(self, "size")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

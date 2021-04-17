@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['VpcAccessArgs', 'VpcAccess']
 
@@ -77,6 +77,78 @@ class VpcAccessArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _VpcAccessState:
+    def __init__(__self__, *,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering VpcAccess resources.
+        :param pulumi.Input[str] instance_id: ID of the instance in VPC (ECS/Server Load Balance).
+        :param pulumi.Input[str] name: The name of the vpc authorization.
+        :param pulumi.Input[int] port: ID of the port corresponding to the instance.
+        :param pulumi.Input[str] vpc_id: The vpc id of the vpc authorization.
+        """
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the instance in VPC (ECS/Server Load Balance).
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vpc authorization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        ID of the port corresponding to the instance.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vpc id of the vpc authorization.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
 
 
 class VpcAccess(pulumi.CustomResource):
@@ -159,18 +231,18 @@ class VpcAccess(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VpcAccessArgs.__new__(VpcAccessArgs)
 
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['name'] = name
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["name"] = name
             if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
-            __props__['port'] = port
+            __props__.__dict__["port"] = port
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__.__dict__["vpc_id"] = vpc_id
         super(VpcAccess, __self__).__init__(
             'alicloud:apigateway/vpcAccess:VpcAccess',
             resource_name,
@@ -199,12 +271,12 @@ class VpcAccess(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VpcAccessState.__new__(_VpcAccessState)
 
-        __props__["instance_id"] = instance_id
-        __props__["name"] = name
-        __props__["port"] = port
-        __props__["vpc_id"] = vpc_id
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["port"] = port
+        __props__.__dict__["vpc_id"] = vpc_id
         return VpcAccess(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -238,10 +310,4 @@ class VpcAccess(pulumi.CustomResource):
         The vpc id of the vpc authorization.
         """
         return pulumi.get(self, "vpc_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

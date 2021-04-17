@@ -4,7 +4,7 @@
 package kvstore
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This data source can query the public IP of the specified KVStore DBInstance.

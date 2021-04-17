@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['InstanceClusterAttachmentArgs', 'InstanceClusterAttachment']
 
@@ -46,6 +46,94 @@ class InstanceClusterAttachmentArgs:
     @instance_ids.setter
     def instance_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "instance_ids", value)
+
+
+@pulumi.input_type
+class _InstanceClusterAttachmentState:
+    def __init__(__self__, *,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_member_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 ecu_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 status_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None):
+        """
+        Input properties used for looking up and filtering InstanceClusterAttachment resources.
+        :param pulumi.Input[str] cluster_id: The ID of the cluster that you want to create the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cluster_member_ids: The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] ecu_map: The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The ID of instance. Type: list.
+        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] status_map: The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if cluster_member_ids is not None:
+            pulumi.set(__self__, "cluster_member_ids", cluster_member_ids)
+        if ecu_map is not None:
+            pulumi.set(__self__, "ecu_map", ecu_map)
+        if instance_ids is not None:
+            pulumi.set(__self__, "instance_ids", instance_ids)
+        if status_map is not None:
+            pulumi.set(__self__, "status_map", status_map)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the cluster that you want to create the application.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="clusterMemberIds")
+    def cluster_member_ids(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
+        """
+        return pulumi.get(self, "cluster_member_ids")
+
+    @cluster_member_ids.setter
+    def cluster_member_ids(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "cluster_member_ids", value)
+
+    @property
+    @pulumi.getter(name="ecuMap")
+    def ecu_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
+        """
+        return pulumi.get(self, "ecu_map")
+
+    @ecu_map.setter
+    def ecu_map(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "ecu_map", value)
+
+    @property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of instance. Type: list.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @instance_ids.setter
+    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_ids", value)
+
+    @property
+    @pulumi.getter(name="statusMap")
+    def status_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]:
+        """
+        The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
+        """
+        return pulumi.get(self, "status_map")
+
+    @status_map.setter
+    def status_map(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]):
+        pulumi.set(self, "status_map", value)
 
 
 class InstanceClusterAttachment(pulumi.CustomResource):
@@ -140,17 +228,17 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceClusterAttachmentArgs.__new__(InstanceClusterAttachmentArgs)
 
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
-            __props__['cluster_id'] = cluster_id
+            __props__.__dict__["cluster_id"] = cluster_id
             if instance_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_ids'")
-            __props__['instance_ids'] = instance_ids
-            __props__['cluster_member_ids'] = None
-            __props__['ecu_map'] = None
-            __props__['status_map'] = None
+            __props__.__dict__["instance_ids"] = instance_ids
+            __props__.__dict__["cluster_member_ids"] = None
+            __props__.__dict__["ecu_map"] = None
+            __props__.__dict__["status_map"] = None
         super(InstanceClusterAttachment, __self__).__init__(
             'alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment',
             resource_name,
@@ -181,13 +269,13 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceClusterAttachmentState.__new__(_InstanceClusterAttachmentState)
 
-        __props__["cluster_id"] = cluster_id
-        __props__["cluster_member_ids"] = cluster_member_ids
-        __props__["ecu_map"] = ecu_map
-        __props__["instance_ids"] = instance_ids
-        __props__["status_map"] = status_map
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["cluster_member_ids"] = cluster_member_ids
+        __props__.__dict__["ecu_map"] = ecu_map
+        __props__.__dict__["instance_ids"] = instance_ids
+        __props__.__dict__["status_map"] = status_map
         return InstanceClusterAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -229,10 +317,4 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
         """
         return pulumi.get(self, "status_map")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

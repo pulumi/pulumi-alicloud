@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['KeyArgs', 'Key']
 
@@ -200,6 +200,318 @@ class KeyArgs:
         pulumi.set(self, "rotation_interval", value)
 
 
+@pulumi.input_type
+class _KeyState:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 automatic_rotation: Optional[pulumi.Input[str]] = None,
+                 creation_date: Optional[pulumi.Input[str]] = None,
+                 creator: Optional[pulumi.Input[str]] = None,
+                 delete_date: Optional[pulumi.Input[str]] = None,
+                 deletion_window_in_days: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 key_spec: Optional[pulumi.Input[str]] = None,
+                 key_state: Optional[pulumi.Input[str]] = None,
+                 key_usage: Optional[pulumi.Input[str]] = None,
+                 last_rotation_date: Optional[pulumi.Input[str]] = None,
+                 material_expire_time: Optional[pulumi.Input[str]] = None,
+                 next_rotation_date: Optional[pulumi.Input[str]] = None,
+                 origin: Optional[pulumi.Input[str]] = None,
+                 pending_window_in_days: Optional[pulumi.Input[int]] = None,
+                 primary_key_version: Optional[pulumi.Input[str]] = None,
+                 protection_level: Optional[pulumi.Input[str]] = None,
+                 rotation_interval: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Key resources.
+        :param pulumi.Input[str] arn: The Alicloud Resource Name (ARN) of the key.
+               * `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.
+               * `creator` -The creator of the CMK.
+               * `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+        :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default:"Disabled".
+        :param pulumi.Input[int] deletion_window_in_days: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+        :param pulumi.Input[str] description: The description of the key as viewed in Alicloud console.
+        :param pulumi.Input[bool] is_enabled: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+        :param pulumi.Input[str] key_spec: The type of the CMK.
+        :param pulumi.Input[str] key_state: The status of CMK. Defaults to Enabled.
+        :param pulumi.Input[str] key_usage: Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
+        :param pulumi.Input[str] last_rotation_date: The date and time the last rotation was performed. The time is displayed in UTC.
+        :param pulumi.Input[str] material_expire_time: The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
+        :param pulumi.Input[str] next_rotation_date: The time the next rotation is scheduled for execution.
+        :param pulumi.Input[str] origin: The source of the key material for the CMK. Defaults to "Aliyun_KMS".
+        :param pulumi.Input[int] pending_window_in_days: Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+        :param pulumi.Input[str] primary_key_version: The ID of the current primary key version of the symmetric CMK.
+        :param pulumi.Input[str] protection_level: The protection level of the CMK. Defaults to "SOFTWARE".
+        :param pulumi.Input[str] rotation_interval: The period of automatic key rotation. Unit: seconds.
+        """
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if automatic_rotation is not None:
+            pulumi.set(__self__, "automatic_rotation", automatic_rotation)
+        if creation_date is not None:
+            pulumi.set(__self__, "creation_date", creation_date)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
+        if delete_date is not None:
+            pulumi.set(__self__, "delete_date", delete_date)
+        if deletion_window_in_days is not None:
+            warnings.warn("""Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""", DeprecationWarning)
+            pulumi.log.warn("""deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""")
+        if deletion_window_in_days is not None:
+            pulumi.set(__self__, "deletion_window_in_days", deletion_window_in_days)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if is_enabled is not None:
+            warnings.warn("""Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""", DeprecationWarning)
+            pulumi.log.warn("""is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""")
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if key_spec is not None:
+            pulumi.set(__self__, "key_spec", key_spec)
+        if key_state is not None:
+            pulumi.set(__self__, "key_state", key_state)
+        if key_usage is not None:
+            pulumi.set(__self__, "key_usage", key_usage)
+        if last_rotation_date is not None:
+            pulumi.set(__self__, "last_rotation_date", last_rotation_date)
+        if material_expire_time is not None:
+            pulumi.set(__self__, "material_expire_time", material_expire_time)
+        if next_rotation_date is not None:
+            pulumi.set(__self__, "next_rotation_date", next_rotation_date)
+        if origin is not None:
+            pulumi.set(__self__, "origin", origin)
+        if pending_window_in_days is not None:
+            pulumi.set(__self__, "pending_window_in_days", pending_window_in_days)
+        if primary_key_version is not None:
+            pulumi.set(__self__, "primary_key_version", primary_key_version)
+        if protection_level is not None:
+            pulumi.set(__self__, "protection_level", protection_level)
+        if rotation_interval is not None:
+            pulumi.set(__self__, "rotation_interval", rotation_interval)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Alicloud Resource Name (ARN) of the key.
+        * `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.
+        * `creator` -The creator of the CMK.
+        * `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="automaticRotation")
+    def automatic_rotation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable automatic key rotation. Default:"Disabled".
+        """
+        return pulumi.get(self, "automatic_rotation")
+
+    @automatic_rotation.setter
+    def automatic_rotation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "automatic_rotation", value)
+
+    @property
+    @pulumi.getter(name="creationDate")
+    def creation_date(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "creation_date")
+
+    @creation_date.setter
+    def creation_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_date", value)
+
+    @property
+    @pulumi.getter
+    def creator(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "creator")
+
+    @creator.setter
+    def creator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creator", value)
+
+    @property
+    @pulumi.getter(name="deleteDate")
+    def delete_date(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "delete_date")
+
+    @delete_date.setter
+    def delete_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_date", value)
+
+    @property
+    @pulumi.getter(name="deletionWindowInDays")
+    def deletion_window_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+        """
+        return pulumi.get(self, "deletion_window_in_days")
+
+    @deletion_window_in_days.setter
+    def deletion_window_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deletion_window_in_days", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the key as viewed in Alicloud console.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter(name="keySpec")
+    def key_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the CMK.
+        """
+        return pulumi.get(self, "key_spec")
+
+    @key_spec.setter
+    def key_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_spec", value)
+
+    @property
+    @pulumi.getter(name="keyState")
+    def key_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of CMK. Defaults to Enabled.
+        """
+        return pulumi.get(self, "key_state")
+
+    @key_state.setter
+    def key_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_state", value)
+
+    @property
+    @pulumi.getter(name="keyUsage")
+    def key_usage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
+        """
+        return pulumi.get(self, "key_usage")
+
+    @key_usage.setter
+    def key_usage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_usage", value)
+
+    @property
+    @pulumi.getter(name="lastRotationDate")
+    def last_rotation_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time the last rotation was performed. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "last_rotation_date")
+
+    @last_rotation_date.setter
+    def last_rotation_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_rotation_date", value)
+
+    @property
+    @pulumi.getter(name="materialExpireTime")
+    def material_expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
+        """
+        return pulumi.get(self, "material_expire_time")
+
+    @material_expire_time.setter
+    def material_expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "material_expire_time", value)
+
+    @property
+    @pulumi.getter(name="nextRotationDate")
+    def next_rotation_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time the next rotation is scheduled for execution.
+        """
+        return pulumi.get(self, "next_rotation_date")
+
+    @next_rotation_date.setter
+    def next_rotation_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_rotation_date", value)
+
+    @property
+    @pulumi.getter
+    def origin(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source of the key material for the CMK. Defaults to "Aliyun_KMS".
+        """
+        return pulumi.get(self, "origin")
+
+    @origin.setter
+    def origin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin", value)
+
+    @property
+    @pulumi.getter(name="pendingWindowInDays")
+    def pending_window_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+        """
+        return pulumi.get(self, "pending_window_in_days")
+
+    @pending_window_in_days.setter
+    def pending_window_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pending_window_in_days", value)
+
+    @property
+    @pulumi.getter(name="primaryKeyVersion")
+    def primary_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the current primary key version of the symmetric CMK.
+        """
+        return pulumi.get(self, "primary_key_version")
+
+    @primary_key_version.setter
+    def primary_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_key_version", value)
+
+    @property
+    @pulumi.getter(name="protectionLevel")
+    def protection_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protection level of the CMK. Defaults to "SOFTWARE".
+        """
+        return pulumi.get(self, "protection_level")
+
+    @protection_level.setter
+    def protection_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protection_level", value)
+
+    @property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The period of automatic key rotation. Unit: seconds.
+        """
+        return pulumi.get(self, "rotation_interval")
+
+    @rotation_interval.setter
+    def rotation_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rotation_interval", value)
+
+
 class Key(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -337,33 +649,33 @@ class Key(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KeyArgs.__new__(KeyArgs)
 
-            __props__['automatic_rotation'] = automatic_rotation
+            __props__.__dict__["automatic_rotation"] = automatic_rotation
             if deletion_window_in_days is not None and not opts.urn:
                 warnings.warn("""Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""", DeprecationWarning)
                 pulumi.log.warn("""deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""")
-            __props__['deletion_window_in_days'] = deletion_window_in_days
-            __props__['description'] = description
+            __props__.__dict__["deletion_window_in_days"] = deletion_window_in_days
+            __props__.__dict__["description"] = description
             if is_enabled is not None and not opts.urn:
                 warnings.warn("""Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""", DeprecationWarning)
                 pulumi.log.warn("""is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""")
-            __props__['is_enabled'] = is_enabled
-            __props__['key_spec'] = key_spec
-            __props__['key_state'] = key_state
-            __props__['key_usage'] = key_usage
-            __props__['origin'] = origin
-            __props__['pending_window_in_days'] = pending_window_in_days
-            __props__['protection_level'] = protection_level
-            __props__['rotation_interval'] = rotation_interval
-            __props__['arn'] = None
-            __props__['creation_date'] = None
-            __props__['creator'] = None
-            __props__['delete_date'] = None
-            __props__['last_rotation_date'] = None
-            __props__['material_expire_time'] = None
-            __props__['next_rotation_date'] = None
-            __props__['primary_key_version'] = None
+            __props__.__dict__["is_enabled"] = is_enabled
+            __props__.__dict__["key_spec"] = key_spec
+            __props__.__dict__["key_state"] = key_state
+            __props__.__dict__["key_usage"] = key_usage
+            __props__.__dict__["origin"] = origin
+            __props__.__dict__["pending_window_in_days"] = pending_window_in_days
+            __props__.__dict__["protection_level"] = protection_level
+            __props__.__dict__["rotation_interval"] = rotation_interval
+            __props__.__dict__["arn"] = None
+            __props__.__dict__["creation_date"] = None
+            __props__.__dict__["creator"] = None
+            __props__.__dict__["delete_date"] = None
+            __props__.__dict__["last_rotation_date"] = None
+            __props__.__dict__["material_expire_time"] = None
+            __props__.__dict__["next_rotation_date"] = None
+            __props__.__dict__["primary_key_version"] = None
         super(Key, __self__).__init__(
             'alicloud:kms/key:Key',
             resource_name,
@@ -422,27 +734,27 @@ class Key(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _KeyState.__new__(_KeyState)
 
-        __props__["arn"] = arn
-        __props__["automatic_rotation"] = automatic_rotation
-        __props__["creation_date"] = creation_date
-        __props__["creator"] = creator
-        __props__["delete_date"] = delete_date
-        __props__["deletion_window_in_days"] = deletion_window_in_days
-        __props__["description"] = description
-        __props__["is_enabled"] = is_enabled
-        __props__["key_spec"] = key_spec
-        __props__["key_state"] = key_state
-        __props__["key_usage"] = key_usage
-        __props__["last_rotation_date"] = last_rotation_date
-        __props__["material_expire_time"] = material_expire_time
-        __props__["next_rotation_date"] = next_rotation_date
-        __props__["origin"] = origin
-        __props__["pending_window_in_days"] = pending_window_in_days
-        __props__["primary_key_version"] = primary_key_version
-        __props__["protection_level"] = protection_level
-        __props__["rotation_interval"] = rotation_interval
+        __props__.__dict__["arn"] = arn
+        __props__.__dict__["automatic_rotation"] = automatic_rotation
+        __props__.__dict__["creation_date"] = creation_date
+        __props__.__dict__["creator"] = creator
+        __props__.__dict__["delete_date"] = delete_date
+        __props__.__dict__["deletion_window_in_days"] = deletion_window_in_days
+        __props__.__dict__["description"] = description
+        __props__.__dict__["is_enabled"] = is_enabled
+        __props__.__dict__["key_spec"] = key_spec
+        __props__.__dict__["key_state"] = key_state
+        __props__.__dict__["key_usage"] = key_usage
+        __props__.__dict__["last_rotation_date"] = last_rotation_date
+        __props__.__dict__["material_expire_time"] = material_expire_time
+        __props__.__dict__["next_rotation_date"] = next_rotation_date
+        __props__.__dict__["origin"] = origin
+        __props__.__dict__["pending_window_in_days"] = pending_window_in_days
+        __props__.__dict__["primary_key_version"] = primary_key_version
+        __props__.__dict__["protection_level"] = protection_level
+        __props__.__dict__["rotation_interval"] = rotation_interval
         return Key(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -590,10 +902,4 @@ class Key(pulumi.CustomResource):
         The period of automatic key rotation. Unit: seconds.
         """
         return pulumi.get(self, "rotation_interval")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -47,6 +47,46 @@ class MonitorGroupInstancesArgs:
 
     @instances.setter
     def instances(self, value: pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]):
+        pulumi.set(self, "instances", value)
+
+
+@pulumi.input_type
+class _MonitorGroupInstancesState:
+    def __init__(__self__, *,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering MonitorGroupInstances resources.
+        :param pulumi.Input[str] group_id: The id of Cms Group.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]] instances: Instance information added to the Cms Group.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if instances is not None:
+            pulumi.set(__self__, "instances", instances)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of Cms Group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]]:
+        """
+        Instance information added to the Cms Group.
+        """
+        return pulumi.get(self, "instances")
+
+    @instances.setter
+    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]]):
         pulumi.set(self, "instances", value)
 
 
@@ -180,14 +220,14 @@ class MonitorGroupInstances(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MonitorGroupInstancesArgs.__new__(MonitorGroupInstancesArgs)
 
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
+            __props__.__dict__["group_id"] = group_id
             if instances is None and not opts.urn:
                 raise TypeError("Missing required property 'instances'")
-            __props__['instances'] = instances
+            __props__.__dict__["instances"] = instances
         super(MonitorGroupInstances, __self__).__init__(
             'alicloud:cms/monitorGroupInstances:MonitorGroupInstances',
             resource_name,
@@ -212,10 +252,10 @@ class MonitorGroupInstances(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _MonitorGroupInstancesState.__new__(_MonitorGroupInstancesState)
 
-        __props__["group_id"] = group_id
-        __props__["instances"] = instances
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["instances"] = instances
         return MonitorGroupInstances(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -233,10 +273,4 @@ class MonitorGroupInstances(pulumi.CustomResource):
         Instance information added to the Cms Group.
         """
         return pulumi.get(self, "instances")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

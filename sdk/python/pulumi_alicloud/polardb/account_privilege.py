@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AccountPrivilegeArgs', 'AccountPrivilege']
 
@@ -77,6 +77,78 @@ class AccountPrivilegeArgs:
     @account_privilege.setter
     def account_privilege(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_privilege", value)
+
+
+@pulumi.input_type
+class _AccountPrivilegeState:
+    def __init__(__self__, *,
+                 account_name: Optional[pulumi.Input[str]] = None,
+                 account_privilege: Optional[pulumi.Input[str]] = None,
+                 db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering AccountPrivilege resources.
+        :param pulumi.Input[str] account_name: A specified account name.
+        :param pulumi.Input[str] account_privilege: The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
+        :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
+        """
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_privilege is not None:
+            pulumi.set(__self__, "account_privilege", account_privilege)
+        if db_cluster_id is not None:
+            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if db_names is not None:
+            pulumi.set(__self__, "db_names", db_names)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A specified account name.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_name", value)
+
+    @property
+    @pulumi.getter(name="accountPrivilege")
+    def account_privilege(self) -> Optional[pulumi.Input[str]]:
+        """
+        The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
+        """
+        return pulumi.get(self, "account_privilege")
+
+    @account_privilege.setter
+    def account_privilege(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_privilege", value)
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of cluster in which account belongs.
+        """
+        return pulumi.get(self, "db_cluster_id")
+
+    @db_cluster_id.setter
+    def db_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="dbNames")
+    def db_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of specified database name.
+        """
+        return pulumi.get(self, "db_names")
+
+    @db_names.setter
+    def db_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "db_names", value)
 
 
 class AccountPrivilege(pulumi.CustomResource):
@@ -249,18 +321,18 @@ class AccountPrivilege(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountPrivilegeArgs.__new__(AccountPrivilegeArgs)
 
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
-            __props__['account_name'] = account_name
-            __props__['account_privilege'] = account_privilege
+            __props__.__dict__["account_name"] = account_name
+            __props__.__dict__["account_privilege"] = account_privilege
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
-            __props__['db_cluster_id'] = db_cluster_id
+            __props__.__dict__["db_cluster_id"] = db_cluster_id
             if db_names is None and not opts.urn:
                 raise TypeError("Missing required property 'db_names'")
-            __props__['db_names'] = db_names
+            __props__.__dict__["db_names"] = db_names
         super(AccountPrivilege, __self__).__init__(
             'alicloud:polardb/accountPrivilege:AccountPrivilege',
             resource_name,
@@ -289,12 +361,12 @@ class AccountPrivilege(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountPrivilegeState.__new__(_AccountPrivilegeState)
 
-        __props__["account_name"] = account_name
-        __props__["account_privilege"] = account_privilege
-        __props__["db_cluster_id"] = db_cluster_id
-        __props__["db_names"] = db_names
+        __props__.__dict__["account_name"] = account_name
+        __props__.__dict__["account_privilege"] = account_privilege
+        __props__.__dict__["db_cluster_id"] = db_cluster_id
+        __props__.__dict__["db_names"] = db_names
         return AccountPrivilege(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -328,10 +400,4 @@ class AccountPrivilege(pulumi.CustomResource):
         List of specified database name.
         """
         return pulumi.get(self, "db_names")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

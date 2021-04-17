@@ -4,7 +4,7 @@
 package ecs
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The `ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
@@ -21,9 +21,9 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 // )
 //
 // func main() {

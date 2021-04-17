@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['VpcEndpointServiceUserArgs', 'VpcEndpointServiceUser']
 
@@ -62,6 +62,62 @@ class VpcEndpointServiceUserArgs:
     @dry_run.setter
     def dry_run(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dry_run", value)
+
+
+@pulumi.input_type
+class _VpcEndpointServiceUserState:
+    def __init__(__self__, *,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering VpcEndpointServiceUser resources.
+        :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] service_id: The Id of Vpc Endpoint Service.
+        :param pulumi.Input[str] user_id: The Id of Ram User.
+        """
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
+        if service_id is not None:
+            pulumi.set(__self__, "service_id", service_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The dry run.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of Vpc Endpoint Service.
+        """
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of Ram User.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
 
 
 class VpcEndpointServiceUser(pulumi.CustomResource):
@@ -179,15 +235,15 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VpcEndpointServiceUserArgs.__new__(VpcEndpointServiceUserArgs)
 
-            __props__['dry_run'] = dry_run
+            __props__.__dict__["dry_run"] = dry_run
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
-            __props__['service_id'] = service_id
+            __props__.__dict__["service_id"] = service_id
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
-            __props__['user_id'] = user_id
+            __props__.__dict__["user_id"] = user_id
         super(VpcEndpointServiceUser, __self__).__init__(
             'alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser',
             resource_name,
@@ -214,11 +270,11 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VpcEndpointServiceUserState.__new__(_VpcEndpointServiceUserState)
 
-        __props__["dry_run"] = dry_run
-        __props__["service_id"] = service_id
-        __props__["user_id"] = user_id
+        __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["service_id"] = service_id
+        __props__.__dict__["user_id"] = user_id
         return VpcEndpointServiceUser(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -244,10 +300,4 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         The Id of Ram User.
         """
         return pulumi.get(self, "user_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

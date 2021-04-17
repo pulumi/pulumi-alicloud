@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RouteEntryArgs', 'RouteEntry']
 
@@ -116,6 +116,113 @@ class RouteEntryArgs:
         pulumi.set(self, "router_id", value)
 
 
+@pulumi.input_type
+class _RouteEntryState:
+    def __init__(__self__, *,
+                 destination_cidrblock: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nexthop_id: Optional[pulumi.Input[str]] = None,
+                 nexthop_type: Optional[pulumi.Input[str]] = None,
+                 route_table_id: Optional[pulumi.Input[str]] = None,
+                 router_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RouteEntry resources.
+        :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
+        :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
+        :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] router_id: This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        """
+        if destination_cidrblock is not None:
+            pulumi.set(__self__, "destination_cidrblock", destination_cidrblock)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nexthop_id is not None:
+            pulumi.set(__self__, "nexthop_id", nexthop_id)
+        if nexthop_type is not None:
+            pulumi.set(__self__, "nexthop_type", nexthop_type)
+        if route_table_id is not None:
+            pulumi.set(__self__, "route_table_id", route_table_id)
+        if router_id is not None:
+            warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+            pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
+        if router_id is not None:
+            pulumi.set(__self__, "router_id", router_id)
+
+    @property
+    @pulumi.getter(name="destinationCidrblock")
+    def destination_cidrblock(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RouteEntry's target network segment.
+        """
+        return pulumi.get(self, "destination_cidrblock")
+
+    @destination_cidrblock.setter
+    def destination_cidrblock(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_cidrblock", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nexthopId")
+    def nexthop_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The route entry's next hop. ECS instance ID or VPC router interface ID.
+        """
+        return pulumi.get(self, "nexthop_id")
+
+    @nexthop_id.setter
+    def nexthop_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nexthop_id", value)
+
+    @property
+    @pulumi.getter(name="nexthopType")
+    def nexthop_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The next hop type. Available values:
+        """
+        return pulumi.get(self, "nexthop_type")
+
+    @nexthop_type.setter
+    def nexthop_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nexthop_type", value)
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the route table.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @route_table_id.setter
+    def route_table_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "route_table_id", value)
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+        """
+        return pulumi.get(self, "router_id")
+
+    @router_id.setter
+    def router_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "router_id", value)
+
+
 class RouteEntry(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -202,19 +309,19 @@ class RouteEntry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouteEntryArgs.__new__(RouteEntryArgs)
 
-            __props__['destination_cidrblock'] = destination_cidrblock
-            __props__['name'] = name
-            __props__['nexthop_id'] = nexthop_id
-            __props__['nexthop_type'] = nexthop_type
+            __props__.__dict__["destination_cidrblock"] = destination_cidrblock
+            __props__.__dict__["name"] = name
+            __props__.__dict__["nexthop_id"] = nexthop_id
+            __props__.__dict__["nexthop_type"] = nexthop_type
             if route_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'route_table_id'")
-            __props__['route_table_id'] = route_table_id
+            __props__.__dict__["route_table_id"] = route_table_id
             if router_id is not None and not opts.urn:
                 warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
                 pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
-            __props__['router_id'] = router_id
+            __props__.__dict__["router_id"] = router_id
         super(RouteEntry, __self__).__init__(
             'alicloud:vpc/routeEntry:RouteEntry',
             resource_name,
@@ -247,14 +354,14 @@ class RouteEntry(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouteEntryState.__new__(_RouteEntryState)
 
-        __props__["destination_cidrblock"] = destination_cidrblock
-        __props__["name"] = name
-        __props__["nexthop_id"] = nexthop_id
-        __props__["nexthop_type"] = nexthop_type
-        __props__["route_table_id"] = route_table_id
-        __props__["router_id"] = router_id
+        __props__.__dict__["destination_cidrblock"] = destination_cidrblock
+        __props__.__dict__["name"] = name
+        __props__.__dict__["nexthop_id"] = nexthop_id
+        __props__.__dict__["nexthop_type"] = nexthop_type
+        __props__.__dict__["route_table_id"] = route_table_id
+        __props__.__dict__["router_id"] = router_id
         return RouteEntry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -304,10 +411,4 @@ class RouteEntry(pulumi.CustomResource):
         This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
         """
         return pulumi.get(self, "router_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

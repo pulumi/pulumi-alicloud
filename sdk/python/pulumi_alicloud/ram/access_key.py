@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AccessKeyArgs', 'AccessKey']
 
@@ -44,6 +44,118 @@ class AccessKeyArgs:
     @pgp_key.setter
     def pgp_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pgp_key", value)
+
+    @property
+    @pulumi.getter(name="secretFile")
+    def secret_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
+        """
+        return pulumi.get(self, "secret_file")
+
+    @secret_file.setter
+    def secret_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_file", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_name", value)
+
+
+@pulumi.input_type
+class _AccessKeyState:
+    def __init__(__self__, *,
+                 encrypted_secret: Optional[pulumi.Input[str]] = None,
+                 key_fingerprint: Optional[pulumi.Input[str]] = None,
+                 pgp_key: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
+                 secret_file: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccessKey resources.
+        :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the secret
+        :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+        :param pulumi.Input[str] secret_file: The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
+        :param pulumi.Input[str] status: Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        """
+        if encrypted_secret is not None:
+            pulumi.set(__self__, "encrypted_secret", encrypted_secret)
+        if key_fingerprint is not None:
+            pulumi.set(__self__, "key_fingerprint", key_fingerprint)
+        if pgp_key is not None:
+            pulumi.set(__self__, "pgp_key", pgp_key)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if secret_file is not None:
+            pulumi.set(__self__, "secret_file", secret_file)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="encryptedSecret")
+    def encrypted_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "encrypted_secret")
+
+    @encrypted_secret.setter
+    def encrypted_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encrypted_secret", value)
+
+    @property
+    @pulumi.getter(name="keyFingerprint")
+    def key_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fingerprint of the PGP key used to encrypt the secret
+        """
+        return pulumi.get(self, "key_fingerprint")
+
+    @key_fingerprint.setter
+    def key_fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_fingerprint", value)
+
+    @property
+    @pulumi.getter(name="pgpKey")
+    def pgp_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+        """
+        return pulumi.get(self, "pgp_key")
+
+    @pgp_key.setter
+    def pgp_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pgp_key", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
 
     @property
     @pulumi.getter(name="secretFile")
@@ -232,15 +344,15 @@ class AccessKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessKeyArgs.__new__(AccessKeyArgs)
 
-            __props__['pgp_key'] = pgp_key
-            __props__['secret_file'] = secret_file
-            __props__['status'] = status
-            __props__['user_name'] = user_name
-            __props__['encrypted_secret'] = None
-            __props__['key_fingerprint'] = None
-            __props__['secret'] = None
+            __props__.__dict__["pgp_key"] = pgp_key
+            __props__.__dict__["secret_file"] = secret_file
+            __props__.__dict__["status"] = status
+            __props__.__dict__["user_name"] = user_name
+            __props__.__dict__["encrypted_secret"] = None
+            __props__.__dict__["key_fingerprint"] = None
+            __props__.__dict__["secret"] = None
         super(AccessKey, __self__).__init__(
             'alicloud:ram/accessKey:AccessKey',
             resource_name,
@@ -273,15 +385,15 @@ class AccessKey(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccessKeyState.__new__(_AccessKeyState)
 
-        __props__["encrypted_secret"] = encrypted_secret
-        __props__["key_fingerprint"] = key_fingerprint
-        __props__["pgp_key"] = pgp_key
-        __props__["secret"] = secret
-        __props__["secret_file"] = secret_file
-        __props__["status"] = status
-        __props__["user_name"] = user_name
+        __props__.__dict__["encrypted_secret"] = encrypted_secret
+        __props__.__dict__["key_fingerprint"] = key_fingerprint
+        __props__.__dict__["pgp_key"] = pgp_key
+        __props__.__dict__["secret"] = secret
+        __props__.__dict__["secret_file"] = secret_file
+        __props__.__dict__["status"] = status
+        __props__.__dict__["user_name"] = user_name
         return AccessKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -333,10 +445,4 @@ class AccessKey(pulumi.CustomResource):
         Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
         return pulumi.get(self, "user_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ClusterArgs', 'Cluster']
 
@@ -345,6 +345,370 @@ class ClusterArgs:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.input_type
+class _ClusterState:
+    def __init__(__self__, *,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 compute_resource: Optional[pulumi.Input[str]] = None,
+                 connection_string: Optional[pulumi.Input[str]] = None,
+                 db_cluster_category: Optional[pulumi.Input[str]] = None,
+                 db_cluster_class: Optional[pulumi.Input[str]] = None,
+                 db_cluster_version: Optional[pulumi.Input[str]] = None,
+                 db_node_class: Optional[pulumi.Input[str]] = None,
+                 db_node_count: Optional[pulumi.Input[int]] = None,
+                 db_node_storage: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 elastic_io_resource: Optional[pulumi.Input[int]] = None,
+                 maintain_time: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 modify_type: Optional[pulumi.Input[str]] = None,
+                 pay_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[str] connection_string: (Available in 1.93.0+) The connection string of the ADB cluster.
+        :param pulumi.Input[str] db_cluster_category: Cluster category. Value options: `Basic`, `Cluster`.
+        :param pulumi.Input[str] db_cluster_version: Cluster version. Value options: `3.0`, Default to `3.0`.
+        :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
+        :param pulumi.Input[int] db_node_count: The db_node_count of cluster node.
+        :param pulumi.Input[int] db_node_storage: The db_node_storage of cluster node.
+        :param pulumi.Input[str] description: The description of cluster.
+        :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster.
+        """
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if compute_resource is not None:
+            pulumi.set(__self__, "compute_resource", compute_resource)
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if db_cluster_category is not None:
+            pulumi.set(__self__, "db_cluster_category", db_cluster_category)
+        if db_cluster_class is not None:
+            pulumi.set(__self__, "db_cluster_class", db_cluster_class)
+        if db_cluster_version is not None:
+            pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+        if db_node_class is not None:
+            pulumi.set(__self__, "db_node_class", db_node_class)
+        if db_node_count is not None:
+            pulumi.set(__self__, "db_node_count", db_node_count)
+        if db_node_storage is not None:
+            pulumi.set(__self__, "db_node_storage", db_node_storage)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if elastic_io_resource is not None:
+            pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
+        if maintain_time is not None:
+            pulumi.set(__self__, "maintain_time", maintain_time)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if modify_type is not None:
+            pulumi.set(__self__, "modify_type", modify_type)
+        if pay_type is not None:
+            pulumi.set(__self__, "pay_type", pay_type)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_ips is not None:
+            pulumi.set(__self__, "security_ips", security_ips)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="computeResource")
+    def compute_resource(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "compute_resource")
+
+    @compute_resource.setter
+    def compute_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compute_resource", value)
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.93.0+) The connection string of the ADB cluster.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string", value)
+
+    @property
+    @pulumi.getter(name="dbClusterCategory")
+    def db_cluster_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster category. Value options: `Basic`, `Cluster`.
+        """
+        return pulumi.get(self, "db_cluster_category")
+
+    @db_cluster_category.setter
+    def db_cluster_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_category", value)
+
+    @property
+    @pulumi.getter(name="dbClusterClass")
+    def db_cluster_class(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "db_cluster_class")
+
+    @db_cluster_class.setter
+    def db_cluster_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_class", value)
+
+    @property
+    @pulumi.getter(name="dbClusterVersion")
+    def db_cluster_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster version. Value options: `3.0`, Default to `3.0`.
+        """
+        return pulumi.get(self, "db_cluster_version")
+
+    @db_cluster_version.setter
+    def db_cluster_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_version", value)
+
+    @property
+    @pulumi.getter(name="dbNodeClass")
+    def db_node_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The db_node_class of cluster node.
+        """
+        return pulumi.get(self, "db_node_class")
+
+    @db_node_class.setter
+    def db_node_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_node_class", value)
+
+    @property
+    @pulumi.getter(name="dbNodeCount")
+    def db_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The db_node_count of cluster node.
+        """
+        return pulumi.get(self, "db_node_count")
+
+    @db_node_count.setter
+    def db_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "db_node_count", value)
+
+    @property
+    @pulumi.getter(name="dbNodeStorage")
+    def db_node_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The db_node_storage of cluster node.
+        """
+        return pulumi.get(self, "db_node_storage")
+
+    @db_node_storage.setter
+    def db_node_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "db_node_storage", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of cluster.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="elasticIoResource")
+    def elastic_io_resource(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "elastic_io_resource")
+
+    @elastic_io_resource.setter
+    def elastic_io_resource(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "elastic_io_resource", value)
+
+    @property
+    @pulumi.getter(name="maintainTime")
+    def maintain_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        """
+        return pulumi.get(self, "maintain_time")
+
+    @maintain_time.setter
+    def maintain_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_time", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="modifyType")
+    def modify_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "modify_type")
+
+    @modify_type.setter
+    def modify_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modify_type", value)
+
+    @property
+    @pulumi.getter(name="payType")
+    def pay_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        """
+        return pulumi.get(self, "pay_type")
+
+    @pay_type.setter
+    def pay_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pay_type", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        return pulumi.get(self, "security_ips")
+
+    @security_ips.setter
+    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_ips", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The virtual switch ID to launch DB instances in one VPC.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Zone to launch the DB cluster.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
 class Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -474,34 +838,34 @@ class Cluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClusterArgs.__new__(ClusterArgs)
 
-            __props__['auto_renew_period'] = auto_renew_period
-            __props__['compute_resource'] = compute_resource
+            __props__.__dict__["auto_renew_period"] = auto_renew_period
+            __props__.__dict__["compute_resource"] = compute_resource
             if db_cluster_category is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_category'")
-            __props__['db_cluster_category'] = db_cluster_category
-            __props__['db_cluster_class'] = db_cluster_class
-            __props__['db_cluster_version'] = db_cluster_version
-            __props__['db_node_class'] = db_node_class
-            __props__['db_node_count'] = db_node_count
-            __props__['db_node_storage'] = db_node_storage
-            __props__['description'] = description
-            __props__['elastic_io_resource'] = elastic_io_resource
-            __props__['maintain_time'] = maintain_time
-            __props__['mode'] = mode
-            __props__['modify_type'] = modify_type
-            __props__['pay_type'] = pay_type
-            __props__['payment_type'] = payment_type
-            __props__['period'] = period
-            __props__['renewal_status'] = renewal_status
-            __props__['resource_group_id'] = resource_group_id
-            __props__['security_ips'] = security_ips
-            __props__['tags'] = tags
-            __props__['vswitch_id'] = vswitch_id
-            __props__['zone_id'] = zone_id
-            __props__['connection_string'] = None
-            __props__['status'] = None
+            __props__.__dict__["db_cluster_category"] = db_cluster_category
+            __props__.__dict__["db_cluster_class"] = db_cluster_class
+            __props__.__dict__["db_cluster_version"] = db_cluster_version
+            __props__.__dict__["db_node_class"] = db_node_class
+            __props__.__dict__["db_node_count"] = db_node_count
+            __props__.__dict__["db_node_storage"] = db_node_storage
+            __props__.__dict__["description"] = description
+            __props__.__dict__["elastic_io_resource"] = elastic_io_resource
+            __props__.__dict__["maintain_time"] = maintain_time
+            __props__.__dict__["mode"] = mode
+            __props__.__dict__["modify_type"] = modify_type
+            __props__.__dict__["pay_type"] = pay_type
+            __props__.__dict__["payment_type"] = payment_type
+            __props__.__dict__["period"] = period
+            __props__.__dict__["renewal_status"] = renewal_status
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["security_ips"] = security_ips
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["connection_string"] = None
+            __props__.__dict__["status"] = None
         super(Cluster, __self__).__init__(
             'alicloud:adb/cluster:Cluster',
             resource_name,
@@ -564,32 +928,32 @@ class Cluster(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ClusterState.__new__(_ClusterState)
 
-        __props__["auto_renew_period"] = auto_renew_period
-        __props__["compute_resource"] = compute_resource
-        __props__["connection_string"] = connection_string
-        __props__["db_cluster_category"] = db_cluster_category
-        __props__["db_cluster_class"] = db_cluster_class
-        __props__["db_cluster_version"] = db_cluster_version
-        __props__["db_node_class"] = db_node_class
-        __props__["db_node_count"] = db_node_count
-        __props__["db_node_storage"] = db_node_storage
-        __props__["description"] = description
-        __props__["elastic_io_resource"] = elastic_io_resource
-        __props__["maintain_time"] = maintain_time
-        __props__["mode"] = mode
-        __props__["modify_type"] = modify_type
-        __props__["pay_type"] = pay_type
-        __props__["payment_type"] = payment_type
-        __props__["period"] = period
-        __props__["renewal_status"] = renewal_status
-        __props__["resource_group_id"] = resource_group_id
-        __props__["security_ips"] = security_ips
-        __props__["status"] = status
-        __props__["tags"] = tags
-        __props__["vswitch_id"] = vswitch_id
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["compute_resource"] = compute_resource
+        __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["db_cluster_category"] = db_cluster_category
+        __props__.__dict__["db_cluster_class"] = db_cluster_class
+        __props__.__dict__["db_cluster_version"] = db_cluster_version
+        __props__.__dict__["db_node_class"] = db_node_class
+        __props__.__dict__["db_node_count"] = db_node_count
+        __props__.__dict__["db_node_storage"] = db_node_storage
+        __props__.__dict__["description"] = description
+        __props__.__dict__["elastic_io_resource"] = elastic_io_resource
+        __props__.__dict__["maintain_time"] = maintain_time
+        __props__.__dict__["mode"] = mode
+        __props__.__dict__["modify_type"] = modify_type
+        __props__.__dict__["pay_type"] = pay_type
+        __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["period"] = period
+        __props__.__dict__["renewal_status"] = renewal_status
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_ips"] = security_ips
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["zone_id"] = zone_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -761,10 +1125,4 @@ class Cluster(pulumi.CustomResource):
         The Zone to launch the DB cluster.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

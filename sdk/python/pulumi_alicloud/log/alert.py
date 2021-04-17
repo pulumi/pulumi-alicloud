@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -179,6 +179,218 @@ class AlertArgs:
     @notify_threshold.setter
     def notify_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "notify_threshold", value)
+
+    @property
+    @pulumi.getter(name="scheduleInterval")
+    def schedule_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Execution interval. 60 seconds minimum, such as 60s, 1h.
+        """
+        return pulumi.get(self, "schedule_interval")
+
+    @schedule_interval.setter
+    def schedule_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_interval", value)
+
+    @property
+    @pulumi.getter(name="scheduleType")
+    def schedule_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default FixedRate. No need to configure this parameter.
+        """
+        return pulumi.get(self, "schedule_type")
+
+    @schedule_type.setter
+    def schedule_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_type", value)
+
+    @property
+    @pulumi.getter
+    def throttling(self) -> Optional[pulumi.Input[str]]:
+        """
+        Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        """
+        return pulumi.get(self, "throttling")
+
+    @throttling.setter
+    def throttling(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "throttling", value)
+
+
+@pulumi.input_type
+class _AlertState:
+    def __init__(__self__, *,
+                 alert_description: Optional[pulumi.Input[str]] = None,
+                 alert_displayname: Optional[pulumi.Input[str]] = None,
+                 alert_name: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input[str]] = None,
+                 dashboard: Optional[pulumi.Input[str]] = None,
+                 mute_until: Optional[pulumi.Input[int]] = None,
+                 notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]] = None,
+                 notify_threshold: Optional[pulumi.Input[int]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None,
+                 query_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]]] = None,
+                 schedule_interval: Optional[pulumi.Input[str]] = None,
+                 schedule_type: Optional[pulumi.Input[str]] = None,
+                 throttling: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Alert resources.
+        :param pulumi.Input[str] alert_description: Alert description.
+        :param pulumi.Input[str] alert_displayname: Alert displayname.
+        :param pulumi.Input[str] alert_name: Name of logstore for configuring alarm service.
+        :param pulumi.Input[str] condition: Conditional expression, such as: count> 100.
+        :param pulumi.Input[int] mute_until: Timestamp, notifications before closing again.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list.
+        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[str] project_name: The project name.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]] query_lists: Multiple conditions for configured alarm query.
+        :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
+        :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
+        :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        """
+        if alert_description is not None:
+            pulumi.set(__self__, "alert_description", alert_description)
+        if alert_displayname is not None:
+            pulumi.set(__self__, "alert_displayname", alert_displayname)
+        if alert_name is not None:
+            pulumi.set(__self__, "alert_name", alert_name)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if dashboard is not None:
+            pulumi.set(__self__, "dashboard", dashboard)
+        if mute_until is not None:
+            pulumi.set(__self__, "mute_until", mute_until)
+        if notification_lists is not None:
+            pulumi.set(__self__, "notification_lists", notification_lists)
+        if notify_threshold is not None:
+            pulumi.set(__self__, "notify_threshold", notify_threshold)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
+        if query_lists is not None:
+            pulumi.set(__self__, "query_lists", query_lists)
+        if schedule_interval is not None:
+            pulumi.set(__self__, "schedule_interval", schedule_interval)
+        if schedule_type is not None:
+            pulumi.set(__self__, "schedule_type", schedule_type)
+        if throttling is not None:
+            pulumi.set(__self__, "throttling", throttling)
+
+    @property
+    @pulumi.getter(name="alertDescription")
+    def alert_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alert description.
+        """
+        return pulumi.get(self, "alert_description")
+
+    @alert_description.setter
+    def alert_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alert_description", value)
+
+    @property
+    @pulumi.getter(name="alertDisplayname")
+    def alert_displayname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alert displayname.
+        """
+        return pulumi.get(self, "alert_displayname")
+
+    @alert_displayname.setter
+    def alert_displayname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alert_displayname", value)
+
+    @property
+    @pulumi.getter(name="alertName")
+    def alert_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of logstore for configuring alarm service.
+        """
+        return pulumi.get(self, "alert_name")
+
+    @alert_name.setter
+    def alert_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alert_name", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Conditional expression, such as: count> 100.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def dashboard(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dashboard")
+
+    @dashboard.setter
+    def dashboard(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dashboard", value)
+
+    @property
+    @pulumi.getter(name="muteUntil")
+    def mute_until(self) -> Optional[pulumi.Input[int]]:
+        """
+        Timestamp, notifications before closing again.
+        """
+        return pulumi.get(self, "mute_until")
+
+    @mute_until.setter
+    def mute_until(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mute_until", value)
+
+    @property
+    @pulumi.getter(name="notificationLists")
+    def notification_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]]:
+        """
+        Alarm information notification list.
+        """
+        return pulumi.get(self, "notification_lists")
+
+    @notification_lists.setter
+    def notification_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]]):
+        pulumi.set(self, "notification_lists", value)
+
+    @property
+    @pulumi.getter(name="notifyThreshold")
+    def notify_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        """
+        return pulumi.get(self, "notify_threshold")
+
+    @notify_threshold.setter
+    def notify_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "notify_threshold", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project name.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter(name="queryLists")
+    def query_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]]]:
+        """
+        Multiple conditions for configured alarm query.
+        """
+        return pulumi.get(self, "query_lists")
+
+    @query_lists.setter
+    def query_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]]]):
+        pulumi.set(self, "query_lists", value)
 
     @property
     @pulumi.getter(name="scheduleInterval")
@@ -441,35 +653,35 @@ class Alert(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AlertArgs.__new__(AlertArgs)
 
-            __props__['alert_description'] = alert_description
+            __props__.__dict__["alert_description"] = alert_description
             if alert_displayname is None and not opts.urn:
                 raise TypeError("Missing required property 'alert_displayname'")
-            __props__['alert_displayname'] = alert_displayname
+            __props__.__dict__["alert_displayname"] = alert_displayname
             if alert_name is None and not opts.urn:
                 raise TypeError("Missing required property 'alert_name'")
-            __props__['alert_name'] = alert_name
+            __props__.__dict__["alert_name"] = alert_name
             if condition is None and not opts.urn:
                 raise TypeError("Missing required property 'condition'")
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if dashboard is None and not opts.urn:
                 raise TypeError("Missing required property 'dashboard'")
-            __props__['dashboard'] = dashboard
-            __props__['mute_until'] = mute_until
+            __props__.__dict__["dashboard"] = dashboard
+            __props__.__dict__["mute_until"] = mute_until
             if notification_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'notification_lists'")
-            __props__['notification_lists'] = notification_lists
-            __props__['notify_threshold'] = notify_threshold
+            __props__.__dict__["notification_lists"] = notification_lists
+            __props__.__dict__["notify_threshold"] = notify_threshold
             if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
-            __props__['project_name'] = project_name
+            __props__.__dict__["project_name"] = project_name
             if query_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'query_lists'")
-            __props__['query_lists'] = query_lists
-            __props__['schedule_interval'] = schedule_interval
-            __props__['schedule_type'] = schedule_type
-            __props__['throttling'] = throttling
+            __props__.__dict__["query_lists"] = query_lists
+            __props__.__dict__["schedule_interval"] = schedule_interval
+            __props__.__dict__["schedule_type"] = schedule_type
+            __props__.__dict__["throttling"] = throttling
         super(Alert, __self__).__init__(
             'alicloud:log/alert:Alert',
             resource_name,
@@ -515,21 +727,21 @@ class Alert(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AlertState.__new__(_AlertState)
 
-        __props__["alert_description"] = alert_description
-        __props__["alert_displayname"] = alert_displayname
-        __props__["alert_name"] = alert_name
-        __props__["condition"] = condition
-        __props__["dashboard"] = dashboard
-        __props__["mute_until"] = mute_until
-        __props__["notification_lists"] = notification_lists
-        __props__["notify_threshold"] = notify_threshold
-        __props__["project_name"] = project_name
-        __props__["query_lists"] = query_lists
-        __props__["schedule_interval"] = schedule_interval
-        __props__["schedule_type"] = schedule_type
-        __props__["throttling"] = throttling
+        __props__.__dict__["alert_description"] = alert_description
+        __props__.__dict__["alert_displayname"] = alert_displayname
+        __props__.__dict__["alert_name"] = alert_name
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["dashboard"] = dashboard
+        __props__.__dict__["mute_until"] = mute_until
+        __props__.__dict__["notification_lists"] = notification_lists
+        __props__.__dict__["notify_threshold"] = notify_threshold
+        __props__.__dict__["project_name"] = project_name
+        __props__.__dict__["query_lists"] = query_lists
+        __props__.__dict__["schedule_interval"] = schedule_interval
+        __props__.__dict__["schedule_type"] = schedule_type
+        __props__.__dict__["throttling"] = throttling
         return Alert(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -632,10 +844,4 @@ class Alert(pulumi.CustomResource):
         Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
         """
         return pulumi.get(self, "throttling")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

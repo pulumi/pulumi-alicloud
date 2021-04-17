@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ConnectionArgs', 'Connection']
 
@@ -51,6 +51,94 @@ class ConnectionArgs:
     @connection_prefix.setter
     def connection_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_prefix", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Internet connection port. Valid value: [1000-5999]. Default to 3306.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class _ConnectionState:
+    def __init__(__self__, *,
+                 connection_prefix: Optional[pulumi.Input[str]] = None,
+                 connection_string: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
+        :param pulumi.Input[str] connection_string: Connection instance string.
+        :param pulumi.Input[str] instance_id: The Id of instance that can run database.
+        :param pulumi.Input[str] ip_address: The ip address of connection string.
+        :param pulumi.Input[str] port: Internet connection port. Valid value: [1000-5999]. Default to 3306.
+        """
+        if connection_prefix is not None:
+            pulumi.set(__self__, "connection_prefix", connection_prefix)
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="connectionPrefix")
+    def connection_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
+        """
+        return pulumi.get(self, "connection_prefix")
+
+    @connection_prefix.setter
+    def connection_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_prefix", value)
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        Connection instance string.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Id of instance that can run database.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ip address of connection string.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
 
     @property
     @pulumi.getter
@@ -220,15 +308,15 @@ class Connection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
-            __props__['connection_prefix'] = connection_prefix
+            __props__.__dict__["connection_prefix"] = connection_prefix
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
-            __props__['port'] = port
-            __props__['connection_string'] = None
-            __props__['ip_address'] = None
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["port"] = port
+            __props__.__dict__["connection_string"] = None
+            __props__.__dict__["ip_address"] = None
         super(Connection, __self__).__init__(
             'alicloud:rds/connection:Connection',
             resource_name,
@@ -259,13 +347,13 @@ class Connection(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ConnectionState.__new__(_ConnectionState)
 
-        __props__["connection_prefix"] = connection_prefix
-        __props__["connection_string"] = connection_string
-        __props__["instance_id"] = instance_id
-        __props__["ip_address"] = ip_address
-        __props__["port"] = port
+        __props__.__dict__["connection_prefix"] = connection_prefix
+        __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["ip_address"] = ip_address
+        __props__.__dict__["port"] = port
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -307,10 +395,4 @@ class Connection(pulumi.CustomResource):
         Internet connection port. Valid value: [1000-5999]. Default to 3306.
         """
         return pulumi.get(self, "port")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -30,6 +30,23 @@ __all__ = [
 
 @pulumi.output_type
 class ResourceGroupRegionStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "regionId":
+            suggest = "region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceGroupRegionStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceGroupRegionStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceGroupRegionStatus.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  region_id: Optional[str] = None,
                  status: Optional[str] = None):
@@ -57,9 +74,6 @@ class ResourceGroupRegionStatus(dict):
         The status of the regional resource group.
         """
         return pulumi.get(self, "status")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

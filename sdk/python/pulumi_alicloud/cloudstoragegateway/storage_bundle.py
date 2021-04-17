@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['StorageBundleArgs', 'StorageBundle']
 
@@ -47,6 +47,46 @@ class StorageBundleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class _StorageBundleState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 storage_bundle_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering StorageBundle resources.
+        :param pulumi.Input[str] description: The description of storage bundle.
+        :param pulumi.Input[str] storage_bundle_name: The name of storage bundle.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if storage_bundle_name is not None:
+            pulumi.set(__self__, "storage_bundle_name", storage_bundle_name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of storage bundle.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="storageBundleName")
+    def storage_bundle_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of storage bundle.
+        """
+        return pulumi.get(self, "storage_bundle_name")
+
+    @storage_bundle_name.setter
+    def storage_bundle_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_bundle_name", value)
 
 
 class StorageBundle(pulumi.CustomResource):
@@ -157,12 +197,12 @@ class StorageBundle(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = StorageBundleArgs.__new__(StorageBundleArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if storage_bundle_name is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_bundle_name'")
-            __props__['storage_bundle_name'] = storage_bundle_name
+            __props__.__dict__["storage_bundle_name"] = storage_bundle_name
         super(StorageBundle, __self__).__init__(
             'alicloud:cloudstoragegateway/storageBundle:StorageBundle',
             resource_name,
@@ -187,10 +227,10 @@ class StorageBundle(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _StorageBundleState.__new__(_StorageBundleState)
 
-        __props__["description"] = description
-        __props__["storage_bundle_name"] = storage_bundle_name
+        __props__.__dict__["description"] = description
+        __props__.__dict__["storage_bundle_name"] = storage_bundle_name
         return StorageBundle(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -208,10 +248,4 @@ class StorageBundle(pulumi.CustomResource):
         The name of storage bundle.
         """
         return pulumi.get(self, "storage_bundle_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

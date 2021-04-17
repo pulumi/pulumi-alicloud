@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AlarmContactGroupArgs', 'AlarmContactGroup']
 
@@ -42,6 +42,78 @@ class AlarmContactGroupArgs:
 
     @alarm_contact_group_name.setter
     def alarm_contact_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "alarm_contact_group_name", value)
+
+    @property
+    @pulumi.getter
+    def contacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the alert contact.
+        """
+        return pulumi.get(self, "contacts")
+
+    @contacts.setter
+    def contacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "contacts", value)
+
+    @property
+    @pulumi.getter
+    def describe(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the alert group.
+        """
+        return pulumi.get(self, "describe")
+
+    @describe.setter
+    def describe(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "describe", value)
+
+    @property
+    @pulumi.getter(name="enableSubscribed")
+    def enable_subscribed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to open weekly subscription.
+        """
+        return pulumi.get(self, "enable_subscribed")
+
+    @enable_subscribed.setter
+    def enable_subscribed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_subscribed", value)
+
+
+@pulumi.input_type
+class _AlarmContactGroupState:
+    def __init__(__self__, *,
+                 alarm_contact_group_name: Optional[pulumi.Input[str]] = None,
+                 contacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 describe: Optional[pulumi.Input[str]] = None,
+                 enable_subscribed: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering AlarmContactGroup resources.
+        :param pulumi.Input[str] alarm_contact_group_name: The name of the alarm group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] contacts: The name of the alert contact.
+        :param pulumi.Input[str] describe: The description of the alert group.
+        :param pulumi.Input[bool] enable_subscribed: Whether to open weekly subscription.
+        """
+        if alarm_contact_group_name is not None:
+            pulumi.set(__self__, "alarm_contact_group_name", alarm_contact_group_name)
+        if contacts is not None:
+            pulumi.set(__self__, "contacts", contacts)
+        if describe is not None:
+            pulumi.set(__self__, "describe", describe)
+        if enable_subscribed is not None:
+            pulumi.set(__self__, "enable_subscribed", enable_subscribed)
+
+    @property
+    @pulumi.getter(name="alarmContactGroupName")
+    def alarm_contact_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the alarm group.
+        """
+        return pulumi.get(self, "alarm_contact_group_name")
+
+    @alarm_contact_group_name.setter
+    def alarm_contact_group_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "alarm_contact_group_name", value)
 
     @property
@@ -195,14 +267,14 @@ class AlarmContactGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AlarmContactGroupArgs.__new__(AlarmContactGroupArgs)
 
             if alarm_contact_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'alarm_contact_group_name'")
-            __props__['alarm_contact_group_name'] = alarm_contact_group_name
-            __props__['contacts'] = contacts
-            __props__['describe'] = describe
-            __props__['enable_subscribed'] = enable_subscribed
+            __props__.__dict__["alarm_contact_group_name"] = alarm_contact_group_name
+            __props__.__dict__["contacts"] = contacts
+            __props__.__dict__["describe"] = describe
+            __props__.__dict__["enable_subscribed"] = enable_subscribed
         super(AlarmContactGroup, __self__).__init__(
             'alicloud:cms/alarmContactGroup:AlarmContactGroup',
             resource_name,
@@ -231,12 +303,12 @@ class AlarmContactGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AlarmContactGroupState.__new__(_AlarmContactGroupState)
 
-        __props__["alarm_contact_group_name"] = alarm_contact_group_name
-        __props__["contacts"] = contacts
-        __props__["describe"] = describe
-        __props__["enable_subscribed"] = enable_subscribed
+        __props__.__dict__["alarm_contact_group_name"] = alarm_contact_group_name
+        __props__.__dict__["contacts"] = contacts
+        __props__.__dict__["describe"] = describe
+        __props__.__dict__["enable_subscribed"] = enable_subscribed
         return AlarmContactGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -270,10 +342,4 @@ class AlarmContactGroup(pulumi.CustomResource):
         Whether to open weekly subscription.
         """
         return pulumi.get(self, "enable_subscribed")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

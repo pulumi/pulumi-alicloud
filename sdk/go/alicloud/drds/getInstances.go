@@ -4,7 +4,7 @@
 package drds
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The `drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.

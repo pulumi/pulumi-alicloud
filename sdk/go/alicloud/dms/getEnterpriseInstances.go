@@ -4,7 +4,7 @@
 package dms
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.

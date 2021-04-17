@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AclRuleArgs', 'AclRule']
 
@@ -170,6 +170,174 @@ class AclRuleArgs:
         pulumi.set(self, "priority", value)
 
 
+@pulumi.input_type
+class _AclRuleState:
+    def __init__(__self__, *,
+                 acl_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dest_cidr: Optional[pulumi.Input[str]] = None,
+                 dest_port_range: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
+                 ip_protocol: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 source_cidr: Optional[pulumi.Input[str]] = None,
+                 source_port_range: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AclRule resources.
+        :param pulumi.Input[str] acl_id: The ID of the ACL.
+        :param pulumi.Input[str] description: The description of the ACL rule. It must be 1 to 512 characters in length.
+        :param pulumi.Input[str] dest_cidr: The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
+        :param pulumi.Input[str] dest_port_range: The range of the destination port. Valid value: 80/80.
+        :param pulumi.Input[str] direction: The direction of the ACL rule. Valid values: in|out.
+        :param pulumi.Input[str] ip_protocol: The protocol used by the ACL rule. The value is not case sensitive.
+        :param pulumi.Input[str] policy: The policy used by the ACL rule. Valid values: accept|drop.
+        :param pulumi.Input[int] priority: The priority of the ACL rule. Value range: 1 to 100.
+        :param pulumi.Input[str] source_cidr: The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
+        :param pulumi.Input[str] source_port_range: The range of the source port. Valid value: 80/80.
+        """
+        if acl_id is not None:
+            pulumi.set(__self__, "acl_id", acl_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dest_cidr is not None:
+            pulumi.set(__self__, "dest_cidr", dest_cidr)
+        if dest_port_range is not None:
+            pulumi.set(__self__, "dest_port_range", dest_port_range)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if source_cidr is not None:
+            pulumi.set(__self__, "source_cidr", source_cidr)
+        if source_port_range is not None:
+            pulumi.set(__self__, "source_port_range", source_port_range)
+
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the ACL.
+        """
+        return pulumi.get(self, "acl_id")
+
+    @acl_id.setter
+    def acl_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the ACL rule. It must be 1 to 512 characters in length.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="destCidr")
+    def dest_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
+        """
+        return pulumi.get(self, "dest_cidr")
+
+    @dest_cidr.setter
+    def dest_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_cidr", value)
+
+    @property
+    @pulumi.getter(name="destPortRange")
+    def dest_port_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of the destination port. Valid value: 80/80.
+        """
+        return pulumi.get(self, "dest_port_range")
+
+    @dest_port_range.setter
+    def dest_port_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_port_range", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        The direction of the ACL rule. Valid values: in|out.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol used by the ACL rule. The value is not case sensitive.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy used by the ACL rule. Valid values: accept|drop.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of the ACL rule. Value range: 1 to 100.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="sourceCidr")
+    def source_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
+        """
+        return pulumi.get(self, "source_cidr")
+
+    @source_cidr.setter
+    def source_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_cidr", value)
+
+    @property
+    @pulumi.getter(name="sourcePortRange")
+    def source_port_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of the source port. Valid value: 80/80.
+        """
+        return pulumi.get(self, "source_port_range")
+
+    @source_port_range.setter
+    def source_port_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_port_range", value)
+
+
 class AclRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -284,34 +452,34 @@ class AclRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AclRuleArgs.__new__(AclRuleArgs)
 
             if acl_id is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_id'")
-            __props__['acl_id'] = acl_id
-            __props__['description'] = description
+            __props__.__dict__["acl_id"] = acl_id
+            __props__.__dict__["description"] = description
             if dest_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'dest_cidr'")
-            __props__['dest_cidr'] = dest_cidr
+            __props__.__dict__["dest_cidr"] = dest_cidr
             if dest_port_range is None and not opts.urn:
                 raise TypeError("Missing required property 'dest_port_range'")
-            __props__['dest_port_range'] = dest_port_range
+            __props__.__dict__["dest_port_range"] = dest_port_range
             if direction is None and not opts.urn:
                 raise TypeError("Missing required property 'direction'")
-            __props__['direction'] = direction
+            __props__.__dict__["direction"] = direction
             if ip_protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_protocol'")
-            __props__['ip_protocol'] = ip_protocol
+            __props__.__dict__["ip_protocol"] = ip_protocol
             if policy is None and not opts.urn:
                 raise TypeError("Missing required property 'policy'")
-            __props__['policy'] = policy
-            __props__['priority'] = priority
+            __props__.__dict__["policy"] = policy
+            __props__.__dict__["priority"] = priority
             if source_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'source_cidr'")
-            __props__['source_cidr'] = source_cidr
+            __props__.__dict__["source_cidr"] = source_cidr
             if source_port_range is None and not opts.urn:
                 raise TypeError("Missing required property 'source_port_range'")
-            __props__['source_port_range'] = source_port_range
+            __props__.__dict__["source_port_range"] = source_port_range
         super(AclRule, __self__).__init__(
             'alicloud:rocketmq/aclRule:AclRule',
             resource_name,
@@ -352,18 +520,18 @@ class AclRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AclRuleState.__new__(_AclRuleState)
 
-        __props__["acl_id"] = acl_id
-        __props__["description"] = description
-        __props__["dest_cidr"] = dest_cidr
-        __props__["dest_port_range"] = dest_port_range
-        __props__["direction"] = direction
-        __props__["ip_protocol"] = ip_protocol
-        __props__["policy"] = policy
-        __props__["priority"] = priority
-        __props__["source_cidr"] = source_cidr
-        __props__["source_port_range"] = source_port_range
+        __props__.__dict__["acl_id"] = acl_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["dest_cidr"] = dest_cidr
+        __props__.__dict__["dest_port_range"] = dest_port_range
+        __props__.__dict__["direction"] = direction
+        __props__.__dict__["ip_protocol"] = ip_protocol
+        __props__.__dict__["policy"] = policy
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["source_cidr"] = source_cidr
+        __props__.__dict__["source_port_range"] = source_port_range
         return AclRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -445,10 +613,4 @@ class AclRule(pulumi.CustomResource):
         The range of the source port. Valid value: 80/80.
         """
         return pulumi.get(self, "source_port_range")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['QosPolicyArgs', 'QosPolicy']
 
@@ -187,6 +187,190 @@ class QosPolicyArgs:
         pulumi.set(self, "start_time", value)
 
 
+@pulumi.input_type
+class _QosPolicyState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 dest_cidr: Optional[pulumi.Input[str]] = None,
+                 dest_port_range: Optional[pulumi.Input[str]] = None,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 ip_protocol: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 qos_id: Optional[pulumi.Input[str]] = None,
+                 source_cidr: Optional[pulumi.Input[str]] = None,
+                 source_port_range: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering QosPolicy resources.
+        :param pulumi.Input[str] description: The description of the QoS policy.
+        :param pulumi.Input[str] dest_cidr: The destination CIDR block.
+        :param pulumi.Input[str] dest_port_range: The destination port range.
+        :param pulumi.Input[str] end_time: The expiration time of the quintuple rule.
+        :param pulumi.Input[str] ip_protocol: The transport layer protocol.
+        :param pulumi.Input[str] name: The name of the QoS policy.
+        :param pulumi.Input[int] priority: The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
+        :param pulumi.Input[str] qos_id: The instance ID of the QoS policy to which the quintuple rule is created.
+        :param pulumi.Input[str] source_cidr: The source CIDR block.
+        :param pulumi.Input[str] source_port_range: The source port range of the transport layer.
+        :param pulumi.Input[str] start_time: The time when the quintuple rule takes effect.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dest_cidr is not None:
+            pulumi.set(__self__, "dest_cidr", dest_cidr)
+        if dest_port_range is not None:
+            pulumi.set(__self__, "dest_port_range", dest_port_range)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if qos_id is not None:
+            pulumi.set(__self__, "qos_id", qos_id)
+        if source_cidr is not None:
+            pulumi.set(__self__, "source_cidr", source_cidr)
+        if source_port_range is not None:
+            pulumi.set(__self__, "source_port_range", source_port_range)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the QoS policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="destCidr")
+    def dest_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination CIDR block.
+        """
+        return pulumi.get(self, "dest_cidr")
+
+    @dest_cidr.setter
+    def dest_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_cidr", value)
+
+    @property
+    @pulumi.getter(name="destPortRange")
+    def dest_port_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination port range.
+        """
+        return pulumi.get(self, "dest_port_range")
+
+    @dest_port_range.setter
+    def dest_port_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_port_range", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expiration time of the quintuple rule.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The transport layer protocol.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the QoS policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="qosId")
+    def qos_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance ID of the QoS policy to which the quintuple rule is created.
+        """
+        return pulumi.get(self, "qos_id")
+
+    @qos_id.setter
+    def qos_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "qos_id", value)
+
+    @property
+    @pulumi.getter(name="sourceCidr")
+    def source_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source CIDR block.
+        """
+        return pulumi.get(self, "source_cidr")
+
+    @source_cidr.setter
+    def source_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_cidr", value)
+
+    @property
+    @pulumi.getter(name="sourcePortRange")
+    def source_port_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source port range of the transport layer.
+        """
+        return pulumi.get(self, "source_port_range")
+
+    @source_port_range.setter
+    def source_port_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_port_range", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the quintuple rule takes effect.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+
 class QosPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -350,33 +534,33 @@ class QosPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = QosPolicyArgs.__new__(QosPolicyArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if dest_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'dest_cidr'")
-            __props__['dest_cidr'] = dest_cidr
+            __props__.__dict__["dest_cidr"] = dest_cidr
             if dest_port_range is None and not opts.urn:
                 raise TypeError("Missing required property 'dest_port_range'")
-            __props__['dest_port_range'] = dest_port_range
-            __props__['end_time'] = end_time
+            __props__.__dict__["dest_port_range"] = dest_port_range
+            __props__.__dict__["end_time"] = end_time
             if ip_protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_protocol'")
-            __props__['ip_protocol'] = ip_protocol
-            __props__['name'] = name
+            __props__.__dict__["ip_protocol"] = ip_protocol
+            __props__.__dict__["name"] = name
             if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
-            __props__['priority'] = priority
+            __props__.__dict__["priority"] = priority
             if qos_id is None and not opts.urn:
                 raise TypeError("Missing required property 'qos_id'")
-            __props__['qos_id'] = qos_id
+            __props__.__dict__["qos_id"] = qos_id
             if source_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'source_cidr'")
-            __props__['source_cidr'] = source_cidr
+            __props__.__dict__["source_cidr"] = source_cidr
             if source_port_range is None and not opts.urn:
                 raise TypeError("Missing required property 'source_port_range'")
-            __props__['source_port_range'] = source_port_range
-            __props__['start_time'] = start_time
+            __props__.__dict__["source_port_range"] = source_port_range
+            __props__.__dict__["start_time"] = start_time
         super(QosPolicy, __self__).__init__(
             'alicloud:rocketmq/qosPolicy:QosPolicy',
             resource_name,
@@ -419,19 +603,19 @@ class QosPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _QosPolicyState.__new__(_QosPolicyState)
 
-        __props__["description"] = description
-        __props__["dest_cidr"] = dest_cidr
-        __props__["dest_port_range"] = dest_port_range
-        __props__["end_time"] = end_time
-        __props__["ip_protocol"] = ip_protocol
-        __props__["name"] = name
-        __props__["priority"] = priority
-        __props__["qos_id"] = qos_id
-        __props__["source_cidr"] = source_cidr
-        __props__["source_port_range"] = source_port_range
-        __props__["start_time"] = start_time
+        __props__.__dict__["description"] = description
+        __props__.__dict__["dest_cidr"] = dest_cidr
+        __props__.__dict__["dest_port_range"] = dest_port_range
+        __props__.__dict__["end_time"] = end_time
+        __props__.__dict__["ip_protocol"] = ip_protocol
+        __props__.__dict__["name"] = name
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["qos_id"] = qos_id
+        __props__.__dict__["source_cidr"] = source_cidr
+        __props__.__dict__["source_port_range"] = source_port_range
+        __props__.__dict__["start_time"] = start_time
         return QosPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -521,10 +705,4 @@ class QosPolicy(pulumi.CustomResource):
         The time when the quintuple rule takes effect.
         """
         return pulumi.get(self, "start_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

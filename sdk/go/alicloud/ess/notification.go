@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
@@ -23,12 +23,12 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/ess"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/mns"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 // )
 //
 // func main() {

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['RouteEntryArgs', 'RouteEntry']
 
@@ -60,6 +60,62 @@ class RouteEntryArgs:
 
     @route_table_id.setter
     def route_table_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "route_table_id", value)
+
+
+@pulumi.input_type
+class _RouteEntryState:
+    def __init__(__self__, *,
+                 cidr_block: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 route_table_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RouteEntry resources.
+        :param pulumi.Input[str] cidr_block: The destination CIDR block of the route entry to publish.
+        :param pulumi.Input[str] instance_id: The ID of the CEN.
+        :param pulumi.Input[str] route_table_id: The route table of the attached VBR or VPC.
+        """
+        if cidr_block is not None:
+            pulumi.set(__self__, "cidr_block", cidr_block)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if route_table_id is not None:
+            pulumi.set(__self__, "route_table_id", route_table_id)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination CIDR block of the route entry to publish.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the CEN.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The route table of the attached VBR or VPC.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @route_table_id.setter
+    def route_table_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "route_table_id", value)
 
 
@@ -284,17 +340,17 @@ class RouteEntry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouteEntryArgs.__new__(RouteEntryArgs)
 
             if cidr_block is None and not opts.urn:
                 raise TypeError("Missing required property 'cidr_block'")
-            __props__['cidr_block'] = cidr_block
+            __props__.__dict__["cidr_block"] = cidr_block
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
-            __props__['instance_id'] = instance_id
+            __props__.__dict__["instance_id"] = instance_id
             if route_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'route_table_id'")
-            __props__['route_table_id'] = route_table_id
+            __props__.__dict__["route_table_id"] = route_table_id
         super(RouteEntry, __self__).__init__(
             'alicloud:cen/routeEntry:RouteEntry',
             resource_name,
@@ -321,11 +377,11 @@ class RouteEntry(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouteEntryState.__new__(_RouteEntryState)
 
-        __props__["cidr_block"] = cidr_block
-        __props__["instance_id"] = instance_id
-        __props__["route_table_id"] = route_table_id
+        __props__.__dict__["cidr_block"] = cidr_block
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["route_table_id"] = route_table_id
         return RouteEntry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -351,10 +407,4 @@ class RouteEntry(pulumi.CustomResource):
         The route table of the attached VBR or VPC.
         """
         return pulumi.get(self, "route_table_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

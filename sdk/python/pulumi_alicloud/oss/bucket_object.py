@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['BucketObjectArgs', 'BucketObject']
 
@@ -224,6 +224,270 @@ class BucketObjectArgs:
         pulumi.set(self, "source", value)
 
 
+@pulumi.input_type
+class _BucketObjectState:
+    def __init__(__self__, *,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 cache_control: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 content_disposition: Optional[pulumi.Input[str]] = None,
+                 content_encoding: Optional[pulumi.Input[str]] = None,
+                 content_length: Optional[pulumi.Input[str]] = None,
+                 content_md5: Optional[pulumi.Input[str]] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 expires: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 server_side_encryption: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering BucketObject resources.
+        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+        :param pulumi.Input[str] bucket: The name of the bucket to put the file in.
+        :param pulumi.Input[str] cache_control: Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        :param pulumi.Input[str] content: The literal content being uploaded to the bucket.
+        :param pulumi.Input[str] content_disposition: Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        :param pulumi.Input[str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        :param pulumi.Input[str] content_length: the content length of request.
+        :param pulumi.Input[str] content_md5: The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[str] etag: the ETag generated for the object (an MD5 sum of the object content).
+        :param pulumi.Input[str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        :param pulumi.Input[str] key: The name of the object once it is in the bucket.
+        :param pulumi.Input[str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+        :param pulumi.Input[str] server_side_encryption: Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
+        :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
+        :param pulumi.Input[str] version_id: A unique version ID value for the object, if bucket versioning is enabled.
+        """
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if cache_control is not None:
+            pulumi.set(__self__, "cache_control", cache_control)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if content_disposition is not None:
+            pulumi.set(__self__, "content_disposition", content_disposition)
+        if content_encoding is not None:
+            pulumi.set(__self__, "content_encoding", content_encoding)
+        if content_length is not None:
+            pulumi.set(__self__, "content_length", content_length)
+        if content_md5 is not None:
+            pulumi.set(__self__, "content_md5", content_md5)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if expires is not None:
+            pulumi.set(__self__, "expires", expires)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if server_side_encryption is not None:
+            pulumi.set(__self__, "server_side_encryption", server_side_encryption)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the bucket to put the file in.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="cacheControl")
+    def cache_control(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        """
+        return pulumi.get(self, "cache_control")
+
+    @cache_control.setter
+    def cache_control(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cache_control", value)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        """
+        The literal content being uploaded to the bucket.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="contentDisposition")
+    def content_disposition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        """
+        return pulumi.get(self, "content_disposition")
+
+    @content_disposition.setter
+    def content_disposition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_disposition", value)
+
+    @property
+    @pulumi.getter(name="contentEncoding")
+    def content_encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        """
+        return pulumi.get(self, "content_encoding")
+
+    @content_encoding.setter
+    def content_encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_encoding", value)
+
+    @property
+    @pulumi.getter(name="contentLength")
+    def content_length(self) -> Optional[pulumi.Input[str]]:
+        """
+        the content length of request.
+        """
+        return pulumi.get(self, "content_length")
+
+    @content_length.setter
+    def content_length(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_length", value)
+
+    @property
+    @pulumi.getter(name="contentMd5")
+    def content_md5(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
+        """
+        return pulumi.get(self, "content_md5")
+
+    @content_md5.setter
+    def content_md5(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_md5", value)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        the ETag generated for the object (an MD5 sum of the object content).
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def expires(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
+        """
+        return pulumi.get(self, "expires")
+
+    @expires.setter
+    def expires(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the object once it is in the bucket.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter(name="serverSideEncryption")
+    def server_side_encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
+        """
+        return pulumi.get(self, "server_side_encryption")
+
+    @server_side_encryption.setter
+    def server_side_encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_side_encryption", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the source file being uploaded to the bucket.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique version ID value for the object, if bucket versioning is enabled.
+        """
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_id", value)
+
+
 class BucketObject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -373,28 +637,28 @@ class BucketObject(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BucketObjectArgs.__new__(BucketObjectArgs)
 
-            __props__['acl'] = acl
+            __props__.__dict__["acl"] = acl
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
-            __props__['bucket'] = bucket
-            __props__['cache_control'] = cache_control
-            __props__['content'] = content
-            __props__['content_disposition'] = content_disposition
-            __props__['content_encoding'] = content_encoding
-            __props__['content_md5'] = content_md5
-            __props__['content_type'] = content_type
-            __props__['expires'] = expires
+            __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["cache_control"] = cache_control
+            __props__.__dict__["content"] = content
+            __props__.__dict__["content_disposition"] = content_disposition
+            __props__.__dict__["content_encoding"] = content_encoding
+            __props__.__dict__["content_md5"] = content_md5
+            __props__.__dict__["content_type"] = content_type
+            __props__.__dict__["expires"] = expires
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
-            __props__['key'] = key
-            __props__['kms_key_id'] = kms_key_id
-            __props__['server_side_encryption'] = server_side_encryption
-            __props__['source'] = source
-            __props__['content_length'] = None
-            __props__['etag'] = None
-            __props__['version_id'] = None
+            __props__.__dict__["key"] = key
+            __props__.__dict__["kms_key_id"] = kms_key_id
+            __props__.__dict__["server_side_encryption"] = server_side_encryption
+            __props__.__dict__["source"] = source
+            __props__.__dict__["content_length"] = None
+            __props__.__dict__["etag"] = None
+            __props__.__dict__["version_id"] = None
         super(BucketObject, __self__).__init__(
             'alicloud:oss/bucketObject:BucketObject',
             resource_name,
@@ -447,24 +711,24 @@ class BucketObject(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BucketObjectState.__new__(_BucketObjectState)
 
-        __props__["acl"] = acl
-        __props__["bucket"] = bucket
-        __props__["cache_control"] = cache_control
-        __props__["content"] = content
-        __props__["content_disposition"] = content_disposition
-        __props__["content_encoding"] = content_encoding
-        __props__["content_length"] = content_length
-        __props__["content_md5"] = content_md5
-        __props__["content_type"] = content_type
-        __props__["etag"] = etag
-        __props__["expires"] = expires
-        __props__["key"] = key
-        __props__["kms_key_id"] = kms_key_id
-        __props__["server_side_encryption"] = server_side_encryption
-        __props__["source"] = source
-        __props__["version_id"] = version_id
+        __props__.__dict__["acl"] = acl
+        __props__.__dict__["bucket"] = bucket
+        __props__.__dict__["cache_control"] = cache_control
+        __props__.__dict__["content"] = content
+        __props__.__dict__["content_disposition"] = content_disposition
+        __props__.__dict__["content_encoding"] = content_encoding
+        __props__.__dict__["content_length"] = content_length
+        __props__.__dict__["content_md5"] = content_md5
+        __props__.__dict__["content_type"] = content_type
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["expires"] = expires
+        __props__.__dict__["key"] = key
+        __props__.__dict__["kms_key_id"] = kms_key_id
+        __props__.__dict__["server_side_encryption"] = server_side_encryption
+        __props__.__dict__["source"] = source
+        __props__.__dict__["version_id"] = version_id
         return BucketObject(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -594,10 +858,4 @@ class BucketObject(pulumi.CustomResource):
         A unique version ID value for the object, if bucket versioning is enabled.
         """
         return pulumi.get(self, "version_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['UserArgs', 'User']
 
@@ -21,6 +21,110 @@ class UserArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a User resource.
+        :param pulumi.Input[str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
+        :param pulumi.Input[str] display_name: Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
+        :param pulumi.Input[str] email: Email of the RAM user.
+        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
+        :param pulumi.Input[str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        """
+        if comments is not None:
+            pulumi.set(__self__, "comments", comments)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if mobile is not None:
+            pulumi.set(__self__, "mobile", mobile)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def comments(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
+        """
+        return pulumi.get(self, "comments")
+
+    @comments.setter
+    def comments(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comments", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of the RAM user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This parameter is used for resource destroy. Default value is `false`.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter
+    def mobile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
+        """
+        return pulumi.get(self, "mobile")
+
+    @mobile.setter
+    def mobile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mobile", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _UserState:
+    def __init__(__self__, *,
+                 comments: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 mobile: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering User resources.
         :param pulumi.Input[str] comments: Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
         :param pulumi.Input[str] display_name: Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
         :param pulumi.Input[str] email: Email of the RAM user.
@@ -200,14 +304,14 @@ class User(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = UserArgs.__new__(UserArgs)
 
-            __props__['comments'] = comments
-            __props__['display_name'] = display_name
-            __props__['email'] = email
-            __props__['force'] = force
-            __props__['mobile'] = mobile
-            __props__['name'] = name
+            __props__.__dict__["comments"] = comments
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["email"] = email
+            __props__.__dict__["force"] = force
+            __props__.__dict__["mobile"] = mobile
+            __props__.__dict__["name"] = name
         super(User, __self__).__init__(
             'alicloud:ram/user:User',
             resource_name,
@@ -240,14 +344,14 @@ class User(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _UserState.__new__(_UserState)
 
-        __props__["comments"] = comments
-        __props__["display_name"] = display_name
-        __props__["email"] = email
-        __props__["force"] = force
-        __props__["mobile"] = mobile
-        __props__["name"] = name
+        __props__.__dict__["comments"] = comments
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["email"] = email
+        __props__.__dict__["force"] = force
+        __props__.__dict__["mobile"] = mobile
+        __props__.__dict__["name"] = name
         return User(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -297,10 +401,4 @@ class User(pulumi.CustomResource):
         Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

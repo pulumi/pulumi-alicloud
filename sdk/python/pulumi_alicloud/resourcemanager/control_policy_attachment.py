@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ControlPolicyAttachmentArgs', 'ControlPolicyAttachment']
 
@@ -45,6 +45,46 @@ class ControlPolicyAttachmentArgs:
 
     @target_id.setter
     def target_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_id", value)
+
+
+@pulumi.input_type
+class _ControlPolicyAttachmentState:
+    def __init__(__self__, *,
+                 policy_id: Optional[pulumi.Input[str]] = None,
+                 target_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ControlPolicyAttachment resources.
+        :param pulumi.Input[str] policy_id: The ID of control policy.
+        :param pulumi.Input[str] target_id: The ID of target.
+        """
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+        if target_id is not None:
+            pulumi.set(__self__, "target_id", target_id)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of control policy.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of target.
+        """
+        return pulumi.get(self, "target_id")
+
+    @target_id.setter
+    def target_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_id", value)
 
 
@@ -208,14 +248,14 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ControlPolicyAttachmentArgs.__new__(ControlPolicyAttachmentArgs)
 
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
-            __props__['policy_id'] = policy_id
+            __props__.__dict__["policy_id"] = policy_id
             if target_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_id'")
-            __props__['target_id'] = target_id
+            __props__.__dict__["target_id"] = target_id
         super(ControlPolicyAttachment, __self__).__init__(
             'alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment',
             resource_name,
@@ -240,10 +280,10 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ControlPolicyAttachmentState.__new__(_ControlPolicyAttachmentState)
 
-        __props__["policy_id"] = policy_id
-        __props__["target_id"] = target_id
+        __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["target_id"] = target_id
         return ControlPolicyAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -261,10 +301,4 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         The ID of target.
         """
         return pulumi.get(self, "target_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

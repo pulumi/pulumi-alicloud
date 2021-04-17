@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -338,6 +338,333 @@ class ServerlessKubernetesArgs:
         pulumi.set(self, "vswitch_ids", value)
 
 
+@pulumi.input_type
+class _ServerlessKubernetesState:
+    def __init__(__self__, *,
+                 addons: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]] = None,
+                 client_cert: Optional[pulumi.Input[str]] = None,
+                 client_key: Optional[pulumi.Input[str]] = None,
+                 cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
+                 force_update: Optional[pulumi.Input[bool]] = None,
+                 kube_config: Optional[pulumi.Input[str]] = None,
+                 load_balancer_spec: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+                 private_zone: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering ServerlessKubernetes resources.
+        :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
+        :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
+        :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
+        :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
+        :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
+        :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+        :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
+        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+        :param pulumi.Input[str] vswitch_id: (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
+        """
+        if addons is not None:
+            pulumi.set(__self__, "addons", addons)
+        if client_cert is not None:
+            pulumi.set(__self__, "client_cert", client_cert)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if cluster_ca_cert is not None:
+            pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if endpoint_public_access_enabled is not None:
+            pulumi.set(__self__, "endpoint_public_access_enabled", endpoint_public_access_enabled)
+        if force_update is not None:
+            pulumi.set(__self__, "force_update", force_update)
+        if kube_config is not None:
+            pulumi.set(__self__, "kube_config", kube_config)
+        if load_balancer_spec is not None:
+            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if new_nat_gateway is not None:
+            pulumi.set(__self__, "new_nat_gateway", new_nat_gateway)
+        if private_zone is not None:
+            pulumi.set(__self__, "private_zone", private_zone)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
+            pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @property
+    @pulumi.getter
+    def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]]:
+        return pulumi.get(self, "addons")
+
+    @addons.setter
+    def addons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]]):
+        pulumi.set(self, "addons", value)
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of client certificate, like `~/.kube/client-cert.pem`.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @client_cert.setter
+    def client_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_cert", value)
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of client key, like `~/.kube/client-key.pem`.
+        """
+        return pulumi.get(self, "client_key")
+
+    @client_key.setter
+    def client_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter(name="clusterCaCert")
+    def cluster_ca_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        """
+        return pulumi.get(self, "cluster_ca_cert")
+
+    @cluster_ca_cert.setter
+    def cluster_ca_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_ca_cert", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable the deletion protection or not.
+        - true: Enable deletion protection.
+        - false: Disable deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="endpointPublicAccessEnabled")
+    def endpoint_public_access_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to create internet  eip for API Server. Default to false.
+        """
+        return pulumi.get(self, "endpoint_public_access_enabled")
+
+    @endpoint_public_access_enabled.setter
+    def endpoint_public_access_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "endpoint_public_access_enabled", value)
+
+    @property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
+        """
+        return pulumi.get(self, "force_update")
+
+    @force_update.setter
+    def force_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_update", value)
+
+    @property
+    @pulumi.getter(name="kubeConfig")
+    def kube_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of kube config, like `~/.kube/config`.
+        """
+        return pulumi.get(self, "kube_config")
+
+    @kube_config.setter
+    def kube_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kube_config", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerSpec")
+    def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        """
+        return pulumi.get(self, "load_balancer_spec")
+
+    @load_balancer_spec.setter
+    def load_balancer_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_spec", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kubernetes cluster's name. It is the only in one Alicloud account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter(name="newNatGateway")
+    def new_nat_gateway(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+        """
+        return pulumi.get(self, "new_nat_gateway")
+
+    @new_nat_gateway.setter
+    def new_nat_gateway(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "new_nat_gateway", value)
+
+    @property
+    @pulumi.getter(name="privateZone")
+    def private_zone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+        """
+        return pulumi.get(self, "private_zone")
+
+    @private_zone.setter
+    def private_zone(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "private_zone", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The vswitches where new kubernetes cluster will be located.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+    @vswitch_ids.setter
+    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vswitch_ids", value)
+
+
 class ServerlessKubernetes(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -466,33 +793,33 @@ class ServerlessKubernetes(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServerlessKubernetesArgs.__new__(ServerlessKubernetesArgs)
 
-            __props__['addons'] = addons
-            __props__['client_cert'] = client_cert
-            __props__['client_key'] = client_key
-            __props__['cluster_ca_cert'] = cluster_ca_cert
-            __props__['deletion_protection'] = deletion_protection
-            __props__['endpoint_public_access_enabled'] = endpoint_public_access_enabled
-            __props__['force_update'] = force_update
-            __props__['kube_config'] = kube_config
-            __props__['load_balancer_spec'] = load_balancer_spec
-            __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
-            __props__['new_nat_gateway'] = new_nat_gateway
-            __props__['private_zone'] = private_zone
-            __props__['resource_group_id'] = resource_group_id
-            __props__['security_group_id'] = security_group_id
-            __props__['tags'] = tags
-            __props__['version'] = version
+            __props__.__dict__["addons"] = addons
+            __props__.__dict__["client_cert"] = client_cert
+            __props__.__dict__["client_key"] = client_key
+            __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
+            __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
+            __props__.__dict__["force_update"] = force_update
+            __props__.__dict__["kube_config"] = kube_config
+            __props__.__dict__["load_balancer_spec"] = load_balancer_spec
+            __props__.__dict__["name"] = name
+            __props__.__dict__["name_prefix"] = name_prefix
+            __props__.__dict__["new_nat_gateway"] = new_nat_gateway
+            __props__.__dict__["private_zone"] = private_zone
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["version"] = version
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
+            __props__.__dict__["vpc_id"] = vpc_id
             if vswitch_id is not None and not opts.urn:
                 warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
                 pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
-            __props__['vswitch_id'] = vswitch_id
-            __props__['vswitch_ids'] = vswitch_ids
+            __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["vswitch_ids"] = vswitch_ids
         super(ServerlessKubernetes, __self__).__init__(
             'alicloud:cs/serverlessKubernetes:ServerlessKubernetes',
             resource_name,
@@ -553,28 +880,28 @@ class ServerlessKubernetes(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ServerlessKubernetesState.__new__(_ServerlessKubernetesState)
 
-        __props__["addons"] = addons
-        __props__["client_cert"] = client_cert
-        __props__["client_key"] = client_key
-        __props__["cluster_ca_cert"] = cluster_ca_cert
-        __props__["deletion_protection"] = deletion_protection
-        __props__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
-        __props__["force_update"] = force_update
-        __props__["kube_config"] = kube_config
-        __props__["load_balancer_spec"] = load_balancer_spec
-        __props__["name"] = name
-        __props__["name_prefix"] = name_prefix
-        __props__["new_nat_gateway"] = new_nat_gateway
-        __props__["private_zone"] = private_zone
-        __props__["resource_group_id"] = resource_group_id
-        __props__["security_group_id"] = security_group_id
-        __props__["tags"] = tags
-        __props__["version"] = version
-        __props__["vpc_id"] = vpc_id
-        __props__["vswitch_id"] = vswitch_id
-        __props__["vswitch_ids"] = vswitch_ids
+        __props__.__dict__["addons"] = addons
+        __props__.__dict__["client_cert"] = client_cert
+        __props__.__dict__["client_key"] = client_key
+        __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
+        __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
+        __props__.__dict__["force_update"] = force_update
+        __props__.__dict__["kube_config"] = kube_config
+        __props__.__dict__["load_balancer_spec"] = load_balancer_spec
+        __props__.__dict__["name"] = name
+        __props__.__dict__["name_prefix"] = name_prefix
+        __props__.__dict__["new_nat_gateway"] = new_nat_gateway
+        __props__.__dict__["private_zone"] = private_zone
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["version"] = version
+        __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["vswitch_ids"] = vswitch_ids
         return ServerlessKubernetes(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -732,10 +1059,4 @@ class ServerlessKubernetes(pulumi.CustomResource):
         The vswitches where new kubernetes cluster will be located.
         """
         return pulumi.get(self, "vswitch_ids")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

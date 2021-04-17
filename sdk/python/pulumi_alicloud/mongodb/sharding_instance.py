@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -303,6 +303,316 @@ class ShardingInstanceArgs:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.input_type
+class _ShardingInstanceState:
+    def __init__(__self__, *,
+                 account_password: Optional[pulumi.Input[str]] = None,
+                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_time: Optional[pulumi.Input[str]] = None,
+                 engine_version: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 retention_period: Optional[pulumi.Input[int]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]] = None,
+                 storage_engine: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tde_status: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ShardingInstance resources.
+        :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]] mongo_lists: The mongo-node count can be purchased is in range of [2, 32].
+        :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
+        :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+        :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]] shard_lists: the shard-node count can be purchased is in range of [2, 32].
+        :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
+        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+               If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        """
+        if account_password is not None:
+            pulumi.set(__self__, "account_password", account_password)
+        if backup_periods is not None:
+            pulumi.set(__self__, "backup_periods", backup_periods)
+        if backup_time is not None:
+            pulumi.set(__self__, "backup_time", backup_time)
+        if engine_version is not None:
+            pulumi.set(__self__, "engine_version", engine_version)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if kms_encrypted_password is not None:
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if kms_encryption_context is not None:
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if mongo_lists is not None:
+            pulumi.set(__self__, "mongo_lists", mongo_lists)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if retention_period is not None:
+            pulumi.set(__self__, "retention_period", retention_period)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if security_ip_lists is not None:
+            pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+        if shard_lists is not None:
+            pulumi.set(__self__, "shard_lists", shard_lists)
+        if storage_engine is not None:
+            pulumi.set(__self__, "storage_engine", storage_engine)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tde_status is not None:
+            pulumi.set(__self__, "tde_status", tde_status)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="accountPassword")
+    def account_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
+        """
+        return pulumi.get(self, "account_password")
+
+    @account_password.setter
+    def account_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_password", value)
+
+    @property
+    @pulumi.getter(name="backupPeriods")
+    def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        """
+        return pulumi.get(self, "backup_periods")
+
+    @backup_periods.setter
+    def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "backup_periods", value)
+
+    @property
+    @pulumi.getter(name="backupTime")
+    def backup_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        """
+        return pulumi.get(self, "backup_time")
+
+    @backup_time.setter
+    def backup_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_time", value)
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @engine_version.setter
+    def engine_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "engine_version", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptedPassword")
+    def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_password")
+
+    @kms_encrypted_password.setter
+    def kms_encrypted_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_encrypted_password", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @kms_encryption_context.setter
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter(name="mongoLists")
+    def mongo_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]]:
+        """
+        The mongo-node count can be purchased is in range of [2, 32].
+        """
+        return pulumi.get(self, "mongo_lists")
+
+    @mongo_lists.setter
+    def mongo_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]]):
+        pulumi.set(self, "mongo_lists", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of DB instance. It a string of 2 to 256 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Instance log backup retention days. Available in 1.42.0+.
+        """
+        return pulumi.get(self, "retention_period")
+
+    @retention_period.setter
+    def retention_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_period", value)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Security Group ID of ECS.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityIpLists")
+    def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+        """
+        return pulumi.get(self, "security_ip_lists")
+
+    @security_ip_lists.setter
+    def security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_ip_lists", value)
+
+    @property
+    @pulumi.getter(name="shardLists")
+    def shard_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]]:
+        """
+        the shard-node count can be purchased is in range of [2, 32].
+        """
+        return pulumi.get(self, "shard_lists")
+
+    @shard_lists.setter
+    def shard_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]]):
+        pulumi.set(self, "shard_lists", value)
+
+    @property
+    @pulumi.getter(name="storageEngine")
+    def storage_engine(self) -> Optional[pulumi.Input[str]]:
+        """
+        Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        """
+        return pulumi.get(self, "storage_engine")
+
+    @storage_engine.setter
+    def storage_engine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_engine", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="tdeStatus")
+    def tde_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TDE(Transparent Data Encryption) status.
+        """
+        return pulumi.get(self, "tde_status")
+
+    @tde_status.setter
+    def tde_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tde_status", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The virtual switch ID to launch DB instances in one VPC.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
+        If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
 class ShardingInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -425,33 +735,33 @@ class ShardingInstance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ShardingInstanceArgs.__new__(ShardingInstanceArgs)
 
-            __props__['account_password'] = account_password
-            __props__['backup_periods'] = backup_periods
-            __props__['backup_time'] = backup_time
+            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["backup_periods"] = backup_periods
+            __props__.__dict__["backup_time"] = backup_time
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
-            __props__['engine_version'] = engine_version
-            __props__['instance_charge_type'] = instance_charge_type
-            __props__['kms_encrypted_password'] = kms_encrypted_password
-            __props__['kms_encryption_context'] = kms_encryption_context
+            __props__.__dict__["engine_version"] = engine_version
+            __props__.__dict__["instance_charge_type"] = instance_charge_type
+            __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+            __props__.__dict__["kms_encryption_context"] = kms_encryption_context
             if mongo_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'mongo_lists'")
-            __props__['mongo_lists'] = mongo_lists
-            __props__['name'] = name
-            __props__['period'] = period
-            __props__['security_group_id'] = security_group_id
-            __props__['security_ip_lists'] = security_ip_lists
+            __props__.__dict__["mongo_lists"] = mongo_lists
+            __props__.__dict__["name"] = name
+            __props__.__dict__["period"] = period
+            __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["security_ip_lists"] = security_ip_lists
             if shard_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'shard_lists'")
-            __props__['shard_lists'] = shard_lists
-            __props__['storage_engine'] = storage_engine
-            __props__['tags'] = tags
-            __props__['tde_status'] = tde_status
-            __props__['vswitch_id'] = vswitch_id
-            __props__['zone_id'] = zone_id
-            __props__['retention_period'] = None
+            __props__.__dict__["shard_lists"] = shard_lists
+            __props__.__dict__["storage_engine"] = storage_engine
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["tde_status"] = tde_status
+            __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["retention_period"] = None
         super(ShardingInstance, __self__).__init__(
             'alicloud:mongodb/shardingInstance:ShardingInstance',
             resource_name,
@@ -510,27 +820,27 @@ class ShardingInstance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ShardingInstanceState.__new__(_ShardingInstanceState)
 
-        __props__["account_password"] = account_password
-        __props__["backup_periods"] = backup_periods
-        __props__["backup_time"] = backup_time
-        __props__["engine_version"] = engine_version
-        __props__["instance_charge_type"] = instance_charge_type
-        __props__["kms_encrypted_password"] = kms_encrypted_password
-        __props__["kms_encryption_context"] = kms_encryption_context
-        __props__["mongo_lists"] = mongo_lists
-        __props__["name"] = name
-        __props__["period"] = period
-        __props__["retention_period"] = retention_period
-        __props__["security_group_id"] = security_group_id
-        __props__["security_ip_lists"] = security_ip_lists
-        __props__["shard_lists"] = shard_lists
-        __props__["storage_engine"] = storage_engine
-        __props__["tags"] = tags
-        __props__["tde_status"] = tde_status
-        __props__["vswitch_id"] = vswitch_id
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["backup_periods"] = backup_periods
+        __props__.__dict__["backup_time"] = backup_time
+        __props__.__dict__["engine_version"] = engine_version
+        __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+        __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["mongo_lists"] = mongo_lists
+        __props__.__dict__["name"] = name
+        __props__.__dict__["period"] = period
+        __props__.__dict__["retention_period"] = retention_period
+        __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["security_ip_lists"] = security_ip_lists
+        __props__.__dict__["shard_lists"] = shard_lists
+        __props__.__dict__["storage_engine"] = storage_engine
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["tde_status"] = tde_status
+        __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["zone_id"] = zone_id
         return ShardingInstance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -682,10 +992,4 @@ class ShardingInstance(pulumi.CustomResource):
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

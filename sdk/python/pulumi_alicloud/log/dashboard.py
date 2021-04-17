@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['DashboardArgs', 'Dashboard']
 
@@ -77,6 +77,78 @@ class DashboardArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+
+@pulumi.input_type
+class _DashboardState:
+    def __init__(__self__, *,
+                 char_list: Optional[pulumi.Input[str]] = None,
+                 dashboard_name: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 project_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Dashboard resources.
+        :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.
+        :param pulumi.Input[str] dashboard_name: The name of the Log Dashboard.
+        :param pulumi.Input[str] display_name: Dashboard alias.
+        :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
+        """
+        if char_list is not None:
+            pulumi.set(__self__, "char_list", char_list)
+        if dashboard_name is not None:
+            pulumi.set(__self__, "dashboard_name", dashboard_name)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if project_name is not None:
+            pulumi.set(__self__, "project_name", project_name)
+
+    @property
+    @pulumi.getter(name="charList")
+    def char_list(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configuration of charts in the dashboard.
+        """
+        return pulumi.get(self, "char_list")
+
+    @char_list.setter
+    def char_list(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "char_list", value)
+
+    @property
+    @pulumi.getter(name="dashboardName")
+    def dashboard_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Log Dashboard.
+        """
+        return pulumi.get(self, "dashboard_name")
+
+    @dashboard_name.setter
+    def dashboard_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dashboard_name", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Dashboard alias.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the log project. It is the only in one Alicloud account.
+        """
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_name", value)
 
 
 class Dashboard(pulumi.CustomResource):
@@ -261,18 +333,18 @@ class Dashboard(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DashboardArgs.__new__(DashboardArgs)
 
             if char_list is None and not opts.urn:
                 raise TypeError("Missing required property 'char_list'")
-            __props__['char_list'] = char_list
+            __props__.__dict__["char_list"] = char_list
             if dashboard_name is None and not opts.urn:
                 raise TypeError("Missing required property 'dashboard_name'")
-            __props__['dashboard_name'] = dashboard_name
-            __props__['display_name'] = display_name
+            __props__.__dict__["dashboard_name"] = dashboard_name
+            __props__.__dict__["display_name"] = display_name
             if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
-            __props__['project_name'] = project_name
+            __props__.__dict__["project_name"] = project_name
         super(Dashboard, __self__).__init__(
             'alicloud:log/dashboard:Dashboard',
             resource_name,
@@ -301,12 +373,12 @@ class Dashboard(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DashboardState.__new__(_DashboardState)
 
-        __props__["char_list"] = char_list
-        __props__["dashboard_name"] = dashboard_name
-        __props__["display_name"] = display_name
-        __props__["project_name"] = project_name
+        __props__.__dict__["char_list"] = char_list
+        __props__.__dict__["dashboard_name"] = dashboard_name
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["project_name"] = project_name
         return Dashboard(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -340,10 +412,4 @@ class Dashboard(pulumi.CustomResource):
         The name of the log project. It is the only in one Alicloud account.
         """
         return pulumi.get(self, "project_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

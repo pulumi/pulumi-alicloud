@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -119,6 +119,134 @@ class SchedulerRuleArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+
+@pulumi.input_type
+class _SchedulerRuleState:
+    def __init__(__self__, *,
+                 cname: Optional[pulumi.Input[str]] = None,
+                 param: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None,
+                 rule_type: Optional[pulumi.Input[int]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering SchedulerRule resources.
+        :param pulumi.Input[str] cname: The cname is the traffic scheduler corresponding to rules.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
+        :param pulumi.Input[str] rule_name: The name of the rule.
+        :param pulumi.Input[int] rule_type: The rule type. Valid values:
+               `2`: tiered protection.
+               `3`: globalization acceleration.
+               `6`: Cloud product interaction.
+        :param pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]] rules: The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
+               `Type`: String type, required, the address format of the linkage resource. Valid values:
+               `A`: IP address.
+               `CNAME`: Domain name.
+               `Value`: String type, required, link address of resource.
+               `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
+               `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
+               `1`: Anti-DDoS Pro.
+               `2`: (Tiered protection) cloud resource IP.
+               `3`: (sea acceleration) MCA IP address.
+               `6`: (Cloud product linkage) cloud resource IP.
+               `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+        """
+        if cname is not None:
+            pulumi.set(__self__, "cname", cname)
+        if param is not None:
+            pulumi.set(__self__, "param", param)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if rule_type is not None:
+            pulumi.set(__self__, "rule_type", rule_type)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def cname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cname is the traffic scheduler corresponding to rules.
+        """
+        return pulumi.get(self, "cname")
+
+    @cname.setter
+    def cname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cname", value)
+
+    @property
+    @pulumi.getter
+    def param(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "param")
+
+    @param.setter
+    def param(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "param", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the rule.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @rule_name.setter
+    def rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_name", value)
+
+    @property
+    @pulumi.getter(name="ruleType")
+    def rule_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        The rule type. Valid values:
+        `2`: tiered protection.
+        `3`: globalization acceleration.
+        `6`: Cloud product interaction.
+        """
+        return pulumi.get(self, "rule_type")
+
+    @rule_type.setter
+    def rule_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rule_type", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]]:
+        """
+        The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
+        `Type`: String type, required, the address format of the linkage resource. Valid values:
+        `A`: IP address.
+        `CNAME`: Domain name.
+        `Value`: String type, required, link address of resource.
+        `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
+        `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
+        `1`: Anti-DDoS Pro.
+        `2`: (Tiered protection) cloud resource IP.
+        `3`: (sea acceleration) MCA IP address.
+        `6`: (Cloud product linkage) cloud resource IP.
+        `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
 
 
 class SchedulerRule(pulumi.CustomResource):
@@ -283,20 +411,20 @@ class SchedulerRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SchedulerRuleArgs.__new__(SchedulerRuleArgs)
 
-            __props__['param'] = param
-            __props__['resource_group_id'] = resource_group_id
+            __props__.__dict__["param"] = param
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if rule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_name'")
-            __props__['rule_name'] = rule_name
+            __props__.__dict__["rule_name"] = rule_name
             if rule_type is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_type'")
-            __props__['rule_type'] = rule_type
+            __props__.__dict__["rule_type"] = rule_type
             if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
-            __props__['rules'] = rules
-            __props__['cname'] = None
+            __props__.__dict__["rules"] = rules
+            __props__.__dict__["cname"] = None
         super(SchedulerRule, __self__).__init__(
             'alicloud:ddos/schedulerRule:SchedulerRule',
             resource_name,
@@ -342,14 +470,14 @@ class SchedulerRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SchedulerRuleState.__new__(_SchedulerRuleState)
 
-        __props__["cname"] = cname
-        __props__["param"] = param
-        __props__["resource_group_id"] = resource_group_id
-        __props__["rule_name"] = rule_name
-        __props__["rule_type"] = rule_type
-        __props__["rules"] = rules
+        __props__.__dict__["cname"] = cname
+        __props__.__dict__["param"] = param
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["rule_type"] = rule_type
+        __props__.__dict__["rules"] = rules
         return SchedulerRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -410,10 +538,4 @@ class SchedulerRule(pulumi.CustomResource):
         `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
         """
         return pulumi.get(self, "rules")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

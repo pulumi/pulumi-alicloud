@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['CertificateArgs', 'Certificate']
 
@@ -49,6 +49,62 @@ class CertificateArgs:
 
     @key.setter
     def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _CertificateState:
+    def __init__(__self__, *,
+                 cert: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Certificate resources.
+        :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
+        :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
+        :param pulumi.Input[str] name: Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        """
+        if cert is not None:
+            pulumi.set(__self__, "cert", cert)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cert of the Certificate in which the Certificate will add.
+        """
+        return pulumi.get(self, "cert")
+
+    @cert.setter
+    def cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key of the Certificate in which the Certificate will add.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key", value)
 
     @property
@@ -165,15 +221,15 @@ class Certificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CertificateArgs.__new__(CertificateArgs)
 
             if cert is None and not opts.urn:
                 raise TypeError("Missing required property 'cert'")
-            __props__['cert'] = cert
+            __props__.__dict__["cert"] = cert
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
-            __props__['key'] = key
-            __props__['name'] = name
+            __props__.__dict__["key"] = key
+            __props__.__dict__["name"] = name
         super(Certificate, __self__).__init__(
             'alicloud:cas/certificate:Certificate',
             resource_name,
@@ -200,11 +256,11 @@ class Certificate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _CertificateState.__new__(_CertificateState)
 
-        __props__["cert"] = cert
-        __props__["key"] = key
-        __props__["name"] = name
+        __props__.__dict__["cert"] = cert
+        __props__.__dict__["key"] = key
+        __props__.__dict__["name"] = name
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -230,10 +286,4 @@ class Certificate(pulumi.CustomResource):
         Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

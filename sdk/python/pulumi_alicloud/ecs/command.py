@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['CommandArgs', 'Command']
 
@@ -114,6 +114,126 @@ class CommandArgs:
     @timeout.setter
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        The execution path of the command in the ECS instance.
+        """
+        return pulumi.get(self, "working_dir")
+
+    @working_dir.setter
+    def working_dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "working_dir", value)
+
+
+@pulumi.input_type
+class _CommandState:
+    def __init__(__self__, *,
+                 command_content: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_parameter: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 working_dir: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Command resources.
+        :param pulumi.Input[str] command_content: The Base64-encoded content of the command.
+        :param pulumi.Input[str] description: The description of command.
+        :param pulumi.Input[bool] enable_parameter: Specifies whether to use custom parameters in the command to be created. Default to: false.
+        :param pulumi.Input[str] name: The name of the command, which supports all character sets. It can be up to 128 characters in length.
+        :param pulumi.Input[int] timeout: The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
+        :param pulumi.Input[str] type: The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
+        :param pulumi.Input[str] working_dir: The execution path of the command in the ECS instance.
+        """
+        if command_content is not None:
+            pulumi.set(__self__, "command_content", command_content)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_parameter is not None:
+            pulumi.set(__self__, "enable_parameter", enable_parameter)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter(name="commandContent")
+    def command_content(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Base64-encoded content of the command.
+        """
+        return pulumi.get(self, "command_content")
+
+    @command_content.setter
+    def command_content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "command_content", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of command.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableParameter")
+    def enable_parameter(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to use custom parameters in the command to be created. Default to: false.
+        """
+        return pulumi.get(self, "enable_parameter")
+
+    @enable_parameter.setter
+    def enable_parameter(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_parameter", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the command, which supports all character sets. It can be up to 128 characters in length.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="workingDir")
@@ -259,19 +379,19 @@ class Command(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CommandArgs.__new__(CommandArgs)
 
             if command_content is None and not opts.urn:
                 raise TypeError("Missing required property 'command_content'")
-            __props__['command_content'] = command_content
-            __props__['description'] = description
-            __props__['enable_parameter'] = enable_parameter
-            __props__['name'] = name
-            __props__['timeout'] = timeout
+            __props__.__dict__["command_content"] = command_content
+            __props__.__dict__["description"] = description
+            __props__.__dict__["enable_parameter"] = enable_parameter
+            __props__.__dict__["name"] = name
+            __props__.__dict__["timeout"] = timeout
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
-            __props__['working_dir'] = working_dir
+            __props__.__dict__["type"] = type
+            __props__.__dict__["working_dir"] = working_dir
         super(Command, __self__).__init__(
             'alicloud:ecs/command:Command',
             resource_name,
@@ -306,15 +426,15 @@ class Command(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _CommandState.__new__(_CommandState)
 
-        __props__["command_content"] = command_content
-        __props__["description"] = description
-        __props__["enable_parameter"] = enable_parameter
-        __props__["name"] = name
-        __props__["timeout"] = timeout
-        __props__["type"] = type
-        __props__["working_dir"] = working_dir
+        __props__.__dict__["command_content"] = command_content
+        __props__.__dict__["description"] = description
+        __props__.__dict__["enable_parameter"] = enable_parameter
+        __props__.__dict__["name"] = name
+        __props__.__dict__["timeout"] = timeout
+        __props__.__dict__["type"] = type
+        __props__.__dict__["working_dir"] = working_dir
         return Command(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -372,10 +492,4 @@ class Command(pulumi.CustomResource):
         The execution path of the command in the ECS instance.
         """
         return pulumi.get(self, "working_dir")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

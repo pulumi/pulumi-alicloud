@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -853,6 +853,940 @@ class InstanceArgs:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 auto_use_coupon: Optional[pulumi.Input[bool]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
+                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_time: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 business_info: Optional[pulumi.Input[str]] = None,
+                 capacity: Optional[pulumi.Input[int]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 connection_domain: Optional[pulumi.Input[str]] = None,
+                 connection_string: Optional[pulumi.Input[str]] = None,
+                 connection_string_prefix: Optional[pulumi.Input[str]] = None,
+                 coupon_no: Optional[pulumi.Input[str]] = None,
+                 db_instance_name: Optional[pulumi.Input[str]] = None,
+                 dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+                 enable_backup_log: Optional[pulumi.Input[int]] = None,
+                 enable_public: Optional[pulumi.Input[bool]] = None,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 engine_version: Optional[pulumi.Input[str]] = None,
+                 force_upgrade: Optional[pulumi.Input[bool]] = None,
+                 global_instance: Optional[pulumi.Input[bool]] = None,
+                 global_instance_id: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 instance_class: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_release_protection: Optional[pulumi.Input[bool]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 maintain_end_time: Optional[pulumi.Input[str]] = None,
+                 maintain_start_time: Optional[pulumi.Input[str]] = None,
+                 modify_mode: Optional[pulumi.Input[int]] = None,
+                 node_type: Optional[pulumi.Input[str]] = None,
+                 order_type: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 private_connection_prefix: Optional[pulumi.Input[str]] = None,
+                 private_ip: Optional[pulumi.Input[str]] = None,
+                 qps: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 restore_time: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 security_ip_group_attribute: Optional[pulumi.Input[str]] = None,
+                 security_ip_group_name: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 srcdb_instance_id: Optional[pulumi.Input[str]] = None,
+                 ssl_enable: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_auth_mode: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[bool] auto_renew: Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid value: [1~12], Default to `1`.
+        :param pulumi.Input[bool] auto_use_coupon: Specifies whether to use a coupon. Default to: `false`.
+        :param pulumi.Input[str] availability_zone: It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+        :param pulumi.Input[str] backup_id: The ID of the backup file of the source instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup period.
+        :param pulumi.Input[str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+        :param pulumi.Input[int] bandwidth: The bandwidth.
+        :param pulumi.Input[str] business_info: The ID of the event or the business information.
+        :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
+        :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        :param pulumi.Input[str] coupon_no: The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
+        :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
+        :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+        :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        :param pulumi.Input[str] end_time: The expiration time of the prepaid instance.
+        :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        :param pulumi.Input[bool] force_upgrade: Specifies whether to forcibly change the type. Default to: `true`.
+        :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default to: `false`.
+        :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
+        :param pulumi.Input[str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+        :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+        :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
+        :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
+        :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
+        :param pulumi.Input[int] modify_mode: The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+        :param pulumi.Input[str] node_type: "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        :param pulumi.Input[str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead..
+        :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+        :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
+        :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
+        :param pulumi.Input[str] private_ip: The internal IP address of the instance.
+        :param pulumi.Input[int] qps: Theoretical maximum QPS value.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
+        :param pulumi.Input[str] restore_time: The point in time of a backup file.
+        :param pulumi.Input[str] security_group_id: The ID of security groups.
+        :param pulumi.Input[str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
+        :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
+        :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        :param pulumi.Input[str] status: The status of KVStore DBInstance.
+               * `connection_domain`- Intranet connection address of the KVStore instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] vpc_auth_mode: Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
+        :param pulumi.Input[str] zone_id: The ID of the zone.
+        """
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if auto_use_coupon is not None:
+            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+        if availability_zone is not None:
+            warnings.warn("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""")
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if backup_id is not None:
+            pulumi.set(__self__, "backup_id", backup_id)
+        if backup_periods is not None:
+            pulumi.set(__self__, "backup_periods", backup_periods)
+        if backup_time is not None:
+            pulumi.set(__self__, "backup_time", backup_time)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if business_info is not None:
+            pulumi.set(__self__, "business_info", business_info)
+        if capacity is not None:
+            pulumi.set(__self__, "capacity", capacity)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if connection_domain is not None:
+            pulumi.set(__self__, "connection_domain", connection_domain)
+        if connection_string is not None:
+            warnings.warn("""Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
+            pulumi.log.warn("""connection_string is deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if connection_string_prefix is not None:
+            warnings.warn("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
+            pulumi.log.warn("""connection_string_prefix is deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
+        if connection_string_prefix is not None:
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
+        if coupon_no is not None:
+            pulumi.set(__self__, "coupon_no", coupon_no)
+        if db_instance_name is not None:
+            pulumi.set(__self__, "db_instance_name", db_instance_name)
+        if dedicated_host_group_id is not None:
+            pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
+        if enable_backup_log is not None:
+            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
+        if enable_public is not None:
+            warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
+            pulumi.log.warn("""enable_public is deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
+        if enable_public is not None:
+            pulumi.set(__self__, "enable_public", enable_public)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if engine_version is not None:
+            pulumi.set(__self__, "engine_version", engine_version)
+        if force_upgrade is not None:
+            pulumi.set(__self__, "force_upgrade", force_upgrade)
+        if global_instance is not None:
+            pulumi.set(__self__, "global_instance", global_instance)
+        if global_instance_id is not None:
+            pulumi.set(__self__, "global_instance_id", global_instance_id)
+        if instance_charge_type is not None:
+            warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_class is not None:
+            pulumi.set(__self__, "instance_class", instance_class)
+        if instance_name is not None:
+            warnings.warn("""Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.""")
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if instance_release_protection is not None:
+            pulumi.set(__self__, "instance_release_protection", instance_release_protection)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if kms_encrypted_password is not None:
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if kms_encryption_context is not None:
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if maintain_end_time is not None:
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+        if maintain_start_time is not None:
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+        if modify_mode is not None:
+            pulumi.set(__self__, "modify_mode", modify_mode)
+        if node_type is not None:
+            warnings.warn("""Field 'node_type' has been deprecated from version 1.120.1""", DeprecationWarning)
+            pulumi.log.warn("""node_type is deprecated: Field 'node_type' has been deprecated from version 1.120.1""")
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if order_type is not None:
+            pulumi.set(__self__, "order_type", order_type)
+        if parameters is not None:
+            warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
+            pulumi.log.warn("""parameters is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if private_connection_prefix is not None:
+            pulumi.set(__self__, "private_connection_prefix", private_connection_prefix)
+        if private_ip is not None:
+            pulumi.set(__self__, "private_ip", private_ip)
+        if qps is not None:
+            pulumi.set(__self__, "qps", qps)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if restore_time is not None:
+            pulumi.set(__self__, "restore_time", restore_time)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if security_ip_group_attribute is not None:
+            pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
+        if security_ip_group_name is not None:
+            pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
+        if security_ips is not None:
+            pulumi.set(__self__, "security_ips", security_ips)
+        if srcdb_instance_id is not None:
+            pulumi.set(__self__, "srcdb_instance_id", srcdb_instance_id)
+        if ssl_enable is not None:
+            pulumi.set(__self__, "ssl_enable", ssl_enable)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if vpc_auth_mode is not None:
+            pulumi.set(__self__, "vpc_auth_mode", vpc_auth_mode)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default to `false`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid value: [1~12], Default to `1`.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="autoUseCoupon")
+    def auto_use_coupon(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to use a coupon. Default to: `false`.
+        """
+        return pulumi.get(self, "auto_use_coupon")
+
+    @auto_use_coupon.setter
+    def auto_use_coupon(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_use_coupon", value)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the backup file of the source instance.
+        """
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_id", value)
+
+    @property
+    @pulumi.getter(name="backupPeriods")
+    def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Backup period.
+        """
+        return pulumi.get(self, "backup_periods")
+
+    @backup_periods.setter
+    def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "backup_periods", value)
+
+    @property
+    @pulumi.getter(name="backupTime")
+    def backup_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+        """
+        return pulumi.get(self, "backup_time")
+
+    @backup_time.setter
+    def backup_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_time", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The bandwidth.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="businessInfo")
+    def business_info(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the event or the business information.
+        """
+        return pulumi.get(self, "business_info")
+
+    @business_info.setter
+    def business_info(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "business_info", value)
+
+    @property
+    @pulumi.getter
+    def capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The storage capacity of the KVStore DBInstance. Unit: MB.
+        """
+        return pulumi.get(self, "capacity")
+
+    @capacity.setter
+    def capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "capacity", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="connectionDomain")
+    def connection_domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection_domain")
+
+    @connection_domain.setter
+    def connection_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_domain", value)
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string", value)
+
+    @property
+    @pulumi.getter(name="connectionStringPrefix")
+    def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        """
+        return pulumi.get(self, "connection_string_prefix")
+
+    @connection_string_prefix.setter
+    def connection_string_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string_prefix", value)
+
+    @property
+    @pulumi.getter(name="couponNo")
+    def coupon_no(self) -> Optional[pulumi.Input[str]]:
+        """
+        The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
+        """
+        return pulumi.get(self, "coupon_no")
+
+    @coupon_no.setter
+    def coupon_no(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "coupon_no", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceName")
+    def db_instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of KVStore DBInstance. It is a string of 2 to 256 characters.
+        """
+        return pulumi.get(self, "db_instance_name")
+
+    @db_instance_name.setter
+    def db_instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_name", value)
+
+    @property
+    @pulumi.getter(name="dedicatedHostGroupId")
+    def dedicated_host_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        """
+        return pulumi.get(self, "dedicated_host_group_id")
+
+    @dedicated_host_group_id.setter
+    def dedicated_host_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_host_group_id", value)
+
+    @property
+    @pulumi.getter(name="enableBackupLog")
+    def enable_backup_log(self) -> Optional[pulumi.Input[int]]:
+        """
+        Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
+        """
+        return pulumi.get(self, "enable_backup_log")
+
+    @enable_backup_log.setter
+    def enable_backup_log(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "enable_backup_log", value)
+
+    @property
+    @pulumi.getter(name="enablePublic")
+    def enable_public(self) -> Optional[pulumi.Input[bool]]:
+        """
+        It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        """
+        return pulumi.get(self, "enable_public")
+
+    @enable_public.setter
+    def enable_public(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_public", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expiration time of the prepaid instance.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @engine_version.setter
+    def engine_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "engine_version", value)
+
+    @property
+    @pulumi.getter(name="forceUpgrade")
+    def force_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to forcibly change the type. Default to: `true`.
+        """
+        return pulumi.get(self, "force_upgrade")
+
+    @force_upgrade.setter
+    def force_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_upgrade", value)
+
+    @property
+    @pulumi.getter(name="globalInstance")
+    def global_instance(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to create a distributed cache. Default to: `false`.
+        """
+        return pulumi.get(self, "global_instance")
+
+    @global_instance.setter
+    def global_instance(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "global_instance", value)
+
+    @property
+    @pulumi.getter(name="globalInstanceId")
+    def global_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of distributed cache.
+        """
+        return pulumi.get(self, "global_instance_id")
+
+    @global_instance_id.setter
+    def global_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "global_instance_id", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter(name="instanceClass")
+    def instance_class(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_class")
+
+    @instance_class.setter
+    def instance_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_class", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="instanceReleaseProtection")
+    def instance_release_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to open the release protection.
+        """
+        return pulumi.get(self, "instance_release_protection")
+
+    @instance_release_protection.setter
+    def instance_release_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "instance_release_protection", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Defaults to `Redis`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptedPassword")
+    def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_password")
+
+    @kms_encrypted_password.setter
+    def kms_encrypted_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_encrypted_password", value)
+
+    @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @kms_encryption_context.setter
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @maintain_end_time.setter
+    def maintain_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_end_time", value)
+
+    @property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
+        """
+        return pulumi.get(self, "maintain_start_time")
+
+    @maintain_start_time.setter
+    def maintain_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_start_time", value)
+
+    @property
+    @pulumi.getter(name="modifyMode")
+    def modify_mode(self) -> Optional[pulumi.Input[int]]:
+        """
+        The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default to `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
+        """
+        return pulumi.get(self, "modify_mode")
+
+    @modify_mode.setter
+    def modify_mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "modify_mode", value)
+
+    @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_type", value)
+
+    @property
+    @pulumi.getter(name="orderType")
+    def order_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
+        """
+        return pulumi.get(self, "order_type")
+
+    @order_type.setter
+    def order_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_type", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
+        """
+        It has been deprecated from provider version 1.101.0 and `config` instead..
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="privateConnectionPrefix")
+    def private_connection_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
+        """
+        return pulumi.get(self, "private_connection_prefix")
+
+    @private_connection_prefix.setter
+    def private_connection_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_connection_prefix", value)
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The internal IP address of the instance.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @private_ip.setter
+    def private_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip", value)
+
+    @property
+    @pulumi.getter
+    def qps(self) -> Optional[pulumi.Input[int]]:
+        """
+        Theoretical maximum QPS value.
+        """
+        return pulumi.get(self, "qps")
+
+    @qps.setter
+    def qps(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "qps", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of resource group which the resource belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="restoreTime")
+    def restore_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The point in time of a backup file.
+        """
+        return pulumi.get(self, "restore_time")
+
+    @restore_time.setter
+    def restore_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "restore_time", value)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of security groups.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityIpGroupAttribute")
+    def security_ip_group_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        """
+        return pulumi.get(self, "security_ip_group_attribute")
+
+    @security_ip_group_attribute.setter
+    def security_ip_group_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_group_attribute", value)
+
+    @property
+    @pulumi.getter(name="securityIpGroupName")
+    def security_ip_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the whitelist group.
+        """
+        return pulumi.get(self, "security_ip_group_name")
+
+    @security_ip_group_name.setter
+    def security_ip_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_group_name", value)
+
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
+        """
+        return pulumi.get(self, "security_ips")
+
+    @security_ips.setter
+    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_ips", value)
+
+    @property
+    @pulumi.getter(name="srcdbInstanceId")
+    def srcdb_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source instance.
+        """
+        return pulumi.get(self, "srcdb_instance_id")
+
+    @srcdb_instance_id.setter
+    def srcdb_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "srcdb_instance_id", value)
+
+    @property
+    @pulumi.getter(name="sslEnable")
+    def ssl_enable(self) -> Optional[pulumi.Input[str]]:
+        """
+        Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        """
+        return pulumi.get(self, "ssl_enable")
+
+    @ssl_enable.setter
+    def ssl_enable(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_enable", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of KVStore DBInstance.
+        * `connection_domain`- Intranet connection address of the KVStore instance.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vpcAuthMode")
+    def vpc_auth_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+        """
+        return pulumi.get(self, "vpc_auth_mode")
+
+    @vpc_auth_mode.setter
+    def vpc_auth_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_auth_mode", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of VSwitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the zone.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1233,86 +2167,86 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__['auto_renew'] = auto_renew
-            __props__['auto_renew_period'] = auto_renew_period
-            __props__['auto_use_coupon'] = auto_use_coupon
+            __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["auto_renew_period"] = auto_renew_period
+            __props__.__dict__["auto_use_coupon"] = auto_use_coupon
             if availability_zone is not None and not opts.urn:
                 warnings.warn("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""", DeprecationWarning)
                 pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""")
-            __props__['availability_zone'] = availability_zone
-            __props__['backup_id'] = backup_id
-            __props__['backup_periods'] = backup_periods
-            __props__['backup_time'] = backup_time
-            __props__['business_info'] = business_info
-            __props__['capacity'] = capacity
-            __props__['config'] = config
+            __props__.__dict__["availability_zone"] = availability_zone
+            __props__.__dict__["backup_id"] = backup_id
+            __props__.__dict__["backup_periods"] = backup_periods
+            __props__.__dict__["backup_time"] = backup_time
+            __props__.__dict__["business_info"] = business_info
+            __props__.__dict__["capacity"] = capacity
+            __props__.__dict__["config"] = config
             if connection_string_prefix is not None and not opts.urn:
                 warnings.warn("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
                 pulumi.log.warn("""connection_string_prefix is deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
-            __props__['connection_string_prefix'] = connection_string_prefix
-            __props__['coupon_no'] = coupon_no
-            __props__['db_instance_name'] = db_instance_name
-            __props__['dedicated_host_group_id'] = dedicated_host_group_id
-            __props__['enable_backup_log'] = enable_backup_log
+            __props__.__dict__["connection_string_prefix"] = connection_string_prefix
+            __props__.__dict__["coupon_no"] = coupon_no
+            __props__.__dict__["db_instance_name"] = db_instance_name
+            __props__.__dict__["dedicated_host_group_id"] = dedicated_host_group_id
+            __props__.__dict__["enable_backup_log"] = enable_backup_log
             if enable_public is not None and not opts.urn:
                 warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
                 pulumi.log.warn("""enable_public is deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
-            __props__['enable_public'] = enable_public
-            __props__['engine_version'] = engine_version
-            __props__['force_upgrade'] = force_upgrade
-            __props__['global_instance'] = global_instance
-            __props__['global_instance_id'] = global_instance_id
+            __props__.__dict__["enable_public"] = enable_public
+            __props__.__dict__["engine_version"] = engine_version
+            __props__.__dict__["force_upgrade"] = force_upgrade
+            __props__.__dict__["global_instance"] = global_instance
+            __props__.__dict__["global_instance_id"] = global_instance_id
             if instance_charge_type is not None and not opts.urn:
                 warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
                 pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
-            __props__['instance_charge_type'] = instance_charge_type
-            __props__['instance_class'] = instance_class
+            __props__.__dict__["instance_charge_type"] = instance_charge_type
+            __props__.__dict__["instance_class"] = instance_class
             if instance_name is not None and not opts.urn:
                 warnings.warn("""Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.""")
-            __props__['instance_name'] = instance_name
-            __props__['instance_release_protection'] = instance_release_protection
-            __props__['instance_type'] = instance_type
-            __props__['kms_encrypted_password'] = kms_encrypted_password
-            __props__['kms_encryption_context'] = kms_encryption_context
-            __props__['maintain_end_time'] = maintain_end_time
-            __props__['maintain_start_time'] = maintain_start_time
-            __props__['modify_mode'] = modify_mode
+            __props__.__dict__["instance_name"] = instance_name
+            __props__.__dict__["instance_release_protection"] = instance_release_protection
+            __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+            __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["maintain_end_time"] = maintain_end_time
+            __props__.__dict__["maintain_start_time"] = maintain_start_time
+            __props__.__dict__["modify_mode"] = modify_mode
             if node_type is not None and not opts.urn:
                 warnings.warn("""Field 'node_type' has been deprecated from version 1.120.1""", DeprecationWarning)
                 pulumi.log.warn("""node_type is deprecated: Field 'node_type' has been deprecated from version 1.120.1""")
-            __props__['node_type'] = node_type
-            __props__['order_type'] = order_type
+            __props__.__dict__["node_type"] = node_type
+            __props__.__dict__["order_type"] = order_type
             if parameters is not None and not opts.urn:
                 warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
                 pulumi.log.warn("""parameters is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
-            __props__['parameters'] = parameters
-            __props__['password'] = password
-            __props__['payment_type'] = payment_type
-            __props__['period'] = period
-            __props__['port'] = port
-            __props__['private_connection_prefix'] = private_connection_prefix
-            __props__['private_ip'] = private_ip
-            __props__['resource_group_id'] = resource_group_id
-            __props__['restore_time'] = restore_time
-            __props__['security_group_id'] = security_group_id
-            __props__['security_ip_group_attribute'] = security_ip_group_attribute
-            __props__['security_ip_group_name'] = security_ip_group_name
-            __props__['security_ips'] = security_ips
-            __props__['srcdb_instance_id'] = srcdb_instance_id
-            __props__['ssl_enable'] = ssl_enable
-            __props__['tags'] = tags
-            __props__['vpc_auth_mode'] = vpc_auth_mode
-            __props__['vswitch_id'] = vswitch_id
-            __props__['zone_id'] = zone_id
-            __props__['bandwidth'] = None
-            __props__['connection_domain'] = None
-            __props__['connection_string'] = None
-            __props__['end_time'] = None
-            __props__['qps'] = None
-            __props__['status'] = None
+            __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["password"] = password
+            __props__.__dict__["payment_type"] = payment_type
+            __props__.__dict__["period"] = period
+            __props__.__dict__["port"] = port
+            __props__.__dict__["private_connection_prefix"] = private_connection_prefix
+            __props__.__dict__["private_ip"] = private_ip
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["restore_time"] = restore_time
+            __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["security_ip_group_attribute"] = security_ip_group_attribute
+            __props__.__dict__["security_ip_group_name"] = security_ip_group_name
+            __props__.__dict__["security_ips"] = security_ips
+            __props__.__dict__["srcdb_instance_id"] = srcdb_instance_id
+            __props__.__dict__["ssl_enable"] = ssl_enable
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["vpc_auth_mode"] = vpc_auth_mode
+            __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["bandwidth"] = None
+            __props__.__dict__["connection_domain"] = None
+            __props__.__dict__["connection_string"] = None
+            __props__.__dict__["end_time"] = None
+            __props__.__dict__["qps"] = None
+            __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'alicloud:kvstore/instance:Instance',
             resource_name,
@@ -1445,65 +2379,65 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__["auto_renew"] = auto_renew
-        __props__["auto_renew_period"] = auto_renew_period
-        __props__["auto_use_coupon"] = auto_use_coupon
-        __props__["availability_zone"] = availability_zone
-        __props__["backup_id"] = backup_id
-        __props__["backup_periods"] = backup_periods
-        __props__["backup_time"] = backup_time
-        __props__["bandwidth"] = bandwidth
-        __props__["business_info"] = business_info
-        __props__["capacity"] = capacity
-        __props__["config"] = config
-        __props__["connection_domain"] = connection_domain
-        __props__["connection_string"] = connection_string
-        __props__["connection_string_prefix"] = connection_string_prefix
-        __props__["coupon_no"] = coupon_no
-        __props__["db_instance_name"] = db_instance_name
-        __props__["dedicated_host_group_id"] = dedicated_host_group_id
-        __props__["enable_backup_log"] = enable_backup_log
-        __props__["enable_public"] = enable_public
-        __props__["end_time"] = end_time
-        __props__["engine_version"] = engine_version
-        __props__["force_upgrade"] = force_upgrade
-        __props__["global_instance"] = global_instance
-        __props__["global_instance_id"] = global_instance_id
-        __props__["instance_charge_type"] = instance_charge_type
-        __props__["instance_class"] = instance_class
-        __props__["instance_name"] = instance_name
-        __props__["instance_release_protection"] = instance_release_protection
-        __props__["instance_type"] = instance_type
-        __props__["kms_encrypted_password"] = kms_encrypted_password
-        __props__["kms_encryption_context"] = kms_encryption_context
-        __props__["maintain_end_time"] = maintain_end_time
-        __props__["maintain_start_time"] = maintain_start_time
-        __props__["modify_mode"] = modify_mode
-        __props__["node_type"] = node_type
-        __props__["order_type"] = order_type
-        __props__["parameters"] = parameters
-        __props__["password"] = password
-        __props__["payment_type"] = payment_type
-        __props__["period"] = period
-        __props__["port"] = port
-        __props__["private_connection_prefix"] = private_connection_prefix
-        __props__["private_ip"] = private_ip
-        __props__["qps"] = qps
-        __props__["resource_group_id"] = resource_group_id
-        __props__["restore_time"] = restore_time
-        __props__["security_group_id"] = security_group_id
-        __props__["security_ip_group_attribute"] = security_ip_group_attribute
-        __props__["security_ip_group_name"] = security_ip_group_name
-        __props__["security_ips"] = security_ips
-        __props__["srcdb_instance_id"] = srcdb_instance_id
-        __props__["ssl_enable"] = ssl_enable
-        __props__["status"] = status
-        __props__["tags"] = tags
-        __props__["vpc_auth_mode"] = vpc_auth_mode
-        __props__["vswitch_id"] = vswitch_id
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["auto_use_coupon"] = auto_use_coupon
+        __props__.__dict__["availability_zone"] = availability_zone
+        __props__.__dict__["backup_id"] = backup_id
+        __props__.__dict__["backup_periods"] = backup_periods
+        __props__.__dict__["backup_time"] = backup_time
+        __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["business_info"] = business_info
+        __props__.__dict__["capacity"] = capacity
+        __props__.__dict__["config"] = config
+        __props__.__dict__["connection_domain"] = connection_domain
+        __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["connection_string_prefix"] = connection_string_prefix
+        __props__.__dict__["coupon_no"] = coupon_no
+        __props__.__dict__["db_instance_name"] = db_instance_name
+        __props__.__dict__["dedicated_host_group_id"] = dedicated_host_group_id
+        __props__.__dict__["enable_backup_log"] = enable_backup_log
+        __props__.__dict__["enable_public"] = enable_public
+        __props__.__dict__["end_time"] = end_time
+        __props__.__dict__["engine_version"] = engine_version
+        __props__.__dict__["force_upgrade"] = force_upgrade
+        __props__.__dict__["global_instance"] = global_instance
+        __props__.__dict__["global_instance_id"] = global_instance_id
+        __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["instance_class"] = instance_class
+        __props__.__dict__["instance_name"] = instance_name
+        __props__.__dict__["instance_release_protection"] = instance_release_protection
+        __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+        __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["maintain_end_time"] = maintain_end_time
+        __props__.__dict__["maintain_start_time"] = maintain_start_time
+        __props__.__dict__["modify_mode"] = modify_mode
+        __props__.__dict__["node_type"] = node_type
+        __props__.__dict__["order_type"] = order_type
+        __props__.__dict__["parameters"] = parameters
+        __props__.__dict__["password"] = password
+        __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["period"] = period
+        __props__.__dict__["port"] = port
+        __props__.__dict__["private_connection_prefix"] = private_connection_prefix
+        __props__.__dict__["private_ip"] = private_ip
+        __props__.__dict__["qps"] = qps
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["restore_time"] = restore_time
+        __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["security_ip_group_attribute"] = security_ip_group_attribute
+        __props__.__dict__["security_ip_group_name"] = security_ip_group_name
+        __props__.__dict__["security_ips"] = security_ips
+        __props__.__dict__["srcdb_instance_id"] = srcdb_instance_id
+        __props__.__dict__["ssl_enable"] = ssl_enable
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["vpc_auth_mode"] = vpc_auth_mode
+        __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1953,10 +2887,4 @@ class Instance(pulumi.CustomResource):
         The ID of the zone.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

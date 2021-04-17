@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['VbrHealthCheckArgs', 'VbrHealthCheck']
 
@@ -140,6 +140,142 @@ class VbrHealthCheckArgs:
     @vbr_instance_owner_id.setter
     def vbr_instance_owner_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vbr_instance_owner_id", value)
+
+
+@pulumi.input_type
+class _VbrHealthCheckState:
+    def __init__(__self__, *,
+                 cen_id: Optional[pulumi.Input[str]] = None,
+                 health_check_interval: Optional[pulumi.Input[int]] = None,
+                 health_check_source_ip: Optional[pulumi.Input[str]] = None,
+                 health_check_target_ip: Optional[pulumi.Input[str]] = None,
+                 healthy_threshold: Optional[pulumi.Input[int]] = None,
+                 vbr_instance_id: Optional[pulumi.Input[str]] = None,
+                 vbr_instance_owner_id: Optional[pulumi.Input[int]] = None,
+                 vbr_instance_region_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering VbrHealthCheck resources.
+        :param pulumi.Input[str] cen_id: The ID of the CEN instance.
+        :param pulumi.Input[int] health_check_interval: Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
+        :param pulumi.Input[str] health_check_source_ip: The source IP address of health checks.
+        :param pulumi.Input[str] health_check_target_ip: The destination IP address of health checks.
+        :param pulumi.Input[int] healthy_threshold: Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
+        :param pulumi.Input[str] vbr_instance_id: The ID of the VBR.
+        :param pulumi.Input[int] vbr_instance_owner_id: The ID of the account to which the VBR belongs.
+        :param pulumi.Input[str] vbr_instance_region_id: The ID of the region to which the VBR belongs.
+        """
+        if cen_id is not None:
+            pulumi.set(__self__, "cen_id", cen_id)
+        if health_check_interval is not None:
+            pulumi.set(__self__, "health_check_interval", health_check_interval)
+        if health_check_source_ip is not None:
+            pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
+        if health_check_target_ip is not None:
+            pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
+        if healthy_threshold is not None:
+            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        if vbr_instance_id is not None:
+            pulumi.set(__self__, "vbr_instance_id", vbr_instance_id)
+        if vbr_instance_owner_id is not None:
+            pulumi.set(__self__, "vbr_instance_owner_id", vbr_instance_owner_id)
+        if vbr_instance_region_id is not None:
+            pulumi.set(__self__, "vbr_instance_region_id", vbr_instance_region_id)
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the CEN instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @cen_id.setter
+    def cen_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cen_id", value)
+
+    @property
+    @pulumi.getter(name="healthCheckInterval")
+    def health_check_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
+        """
+        return pulumi.get(self, "health_check_interval")
+
+    @health_check_interval.setter
+    def health_check_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_interval", value)
+
+    @property
+    @pulumi.getter(name="healthCheckSourceIp")
+    def health_check_source_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source IP address of health checks.
+        """
+        return pulumi.get(self, "health_check_source_ip")
+
+    @health_check_source_ip.setter
+    def health_check_source_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_source_ip", value)
+
+    @property
+    @pulumi.getter(name="healthCheckTargetIp")
+    def health_check_target_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination IP address of health checks.
+        """
+        return pulumi.get(self, "health_check_target_ip")
+
+    @health_check_target_ip.setter
+    def health_check_target_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_target_ip", value)
+
+    @property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @healthy_threshold.setter
+    def healthy_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "healthy_threshold", value)
+
+    @property
+    @pulumi.getter(name="vbrInstanceId")
+    def vbr_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VBR.
+        """
+        return pulumi.get(self, "vbr_instance_id")
+
+    @vbr_instance_id.setter
+    def vbr_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vbr_instance_id", value)
+
+    @property
+    @pulumi.getter(name="vbrInstanceOwnerId")
+    def vbr_instance_owner_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the account to which the VBR belongs.
+        """
+        return pulumi.get(self, "vbr_instance_owner_id")
+
+    @vbr_instance_owner_id.setter
+    def vbr_instance_owner_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vbr_instance_owner_id", value)
+
+    @property
+    @pulumi.getter(name="vbrInstanceRegionId")
+    def vbr_instance_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the region to which the VBR belongs.
+        """
+        return pulumi.get(self, "vbr_instance_region_id")
+
+    @vbr_instance_region_id.setter
+    def vbr_instance_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vbr_instance_region_id", value)
 
 
 class VbrHealthCheck(pulumi.CustomResource):
@@ -300,24 +436,24 @@ class VbrHealthCheck(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VbrHealthCheckArgs.__new__(VbrHealthCheckArgs)
 
             if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
-            __props__['cen_id'] = cen_id
-            __props__['health_check_interval'] = health_check_interval
-            __props__['health_check_source_ip'] = health_check_source_ip
+            __props__.__dict__["cen_id"] = cen_id
+            __props__.__dict__["health_check_interval"] = health_check_interval
+            __props__.__dict__["health_check_source_ip"] = health_check_source_ip
             if health_check_target_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'health_check_target_ip'")
-            __props__['health_check_target_ip'] = health_check_target_ip
-            __props__['healthy_threshold'] = healthy_threshold
+            __props__.__dict__["health_check_target_ip"] = health_check_target_ip
+            __props__.__dict__["healthy_threshold"] = healthy_threshold
             if vbr_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vbr_instance_id'")
-            __props__['vbr_instance_id'] = vbr_instance_id
-            __props__['vbr_instance_owner_id'] = vbr_instance_owner_id
+            __props__.__dict__["vbr_instance_id"] = vbr_instance_id
+            __props__.__dict__["vbr_instance_owner_id"] = vbr_instance_owner_id
             if vbr_instance_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vbr_instance_region_id'")
-            __props__['vbr_instance_region_id'] = vbr_instance_region_id
+            __props__.__dict__["vbr_instance_region_id"] = vbr_instance_region_id
         super(VbrHealthCheck, __self__).__init__(
             'alicloud:cen/vbrHealthCheck:VbrHealthCheck',
             resource_name,
@@ -354,16 +490,16 @@ class VbrHealthCheck(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VbrHealthCheckState.__new__(_VbrHealthCheckState)
 
-        __props__["cen_id"] = cen_id
-        __props__["health_check_interval"] = health_check_interval
-        __props__["health_check_source_ip"] = health_check_source_ip
-        __props__["health_check_target_ip"] = health_check_target_ip
-        __props__["healthy_threshold"] = healthy_threshold
-        __props__["vbr_instance_id"] = vbr_instance_id
-        __props__["vbr_instance_owner_id"] = vbr_instance_owner_id
-        __props__["vbr_instance_region_id"] = vbr_instance_region_id
+        __props__.__dict__["cen_id"] = cen_id
+        __props__.__dict__["health_check_interval"] = health_check_interval
+        __props__.__dict__["health_check_source_ip"] = health_check_source_ip
+        __props__.__dict__["health_check_target_ip"] = health_check_target_ip
+        __props__.__dict__["healthy_threshold"] = healthy_threshold
+        __props__.__dict__["vbr_instance_id"] = vbr_instance_id
+        __props__.__dict__["vbr_instance_owner_id"] = vbr_instance_owner_id
+        __props__.__dict__["vbr_instance_region_id"] = vbr_instance_region_id
         return VbrHealthCheck(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -429,10 +565,4 @@ class VbrHealthCheck(pulumi.CustomResource):
         The ID of the region to which the VBR belongs.
         """
         return pulumi.get(self, "vbr_instance_region_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

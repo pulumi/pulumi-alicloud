@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['GatewayArgs', 'Gateway']
 
@@ -176,6 +176,222 @@ class GatewayArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.input_type
+class _GatewayState:
+    def __init__(__self__, *,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 business_status: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enable_ipsec: Optional[pulumi.Input[bool]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 internet_ip: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 ssl_connections: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Gateway resources.
+        :param pulumi.Input[str] business_status: The business status of the VPN gateway.
+        :param pulumi.Input[str] description: The description of the VPN instance.
+        :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
+        :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+        :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+               Default to PostPaid.
+        :param pulumi.Input[str] internet_ip: The internet ip of the VPN.
+        :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
+        :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
+        :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+               This field is ignored when enable_ssl is false.
+        :param pulumi.Input[str] status: The status of the VPN gateway.
+        :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
+        :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
+        """
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if business_status is not None:
+            pulumi.set(__self__, "business_status", business_status)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_ipsec is not None:
+            pulumi.set(__self__, "enable_ipsec", enable_ipsec)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if internet_ip is not None:
+            pulumi.set(__self__, "internet_ip", internet_ip)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if ssl_connections is not None:
+            pulumi.set(__self__, "ssl_connections", ssl_connections)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="businessStatus")
+    def business_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The business status of the VPN gateway.
+        """
+        return pulumi.get(self, "business_status")
+
+    @business_status.setter
+    def business_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "business_status", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the VPN instance.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableIpsec")
+    def enable_ipsec(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
+        """
+        return pulumi.get(self, "enable_ipsec")
+
+    @enable_ipsec.setter
+    def enable_ipsec(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ipsec", value)
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ssl", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        Default to PostPaid.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The internet ip of the VPN.
+        """
+        return pulumi.get(self, "internet_ip")
+
+    @internet_ip.setter
+    def internet_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_ip", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the VPN. Defaults to null.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="sslConnections")
+    def ssl_connections(self) -> Optional[pulumi.Input[int]]:
+        """
+        The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+        This field is ignored when enable_ssl is false.
+        """
+        return pulumi.get(self, "ssl_connections")
+
+    @ssl_connections.setter
+    def ssl_connections(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ssl_connections", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the VPN gateway.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPN belongs the vpc_id, the field can't be changed.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPN belongs the vswitch_id, the field can't be changed.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+
 class Gateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -275,25 +491,25 @@ class Gateway(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GatewayArgs.__new__(GatewayArgs)
 
             if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
-            __props__['bandwidth'] = bandwidth
-            __props__['description'] = description
-            __props__['enable_ipsec'] = enable_ipsec
-            __props__['enable_ssl'] = enable_ssl
-            __props__['instance_charge_type'] = instance_charge_type
-            __props__['name'] = name
-            __props__['period'] = period
-            __props__['ssl_connections'] = ssl_connections
+            __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["description"] = description
+            __props__.__dict__["enable_ipsec"] = enable_ipsec
+            __props__.__dict__["enable_ssl"] = enable_ssl
+            __props__.__dict__["instance_charge_type"] = instance_charge_type
+            __props__.__dict__["name"] = name
+            __props__.__dict__["period"] = period
+            __props__.__dict__["ssl_connections"] = ssl_connections
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
-            __props__['vpc_id'] = vpc_id
-            __props__['vswitch_id'] = vswitch_id
-            __props__['business_status'] = None
-            __props__['internet_ip'] = None
-            __props__['status'] = None
+            __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["business_status"] = None
+            __props__.__dict__["internet_ip"] = None
+            __props__.__dict__["status"] = None
         super(Gateway, __self__).__init__(
             'alicloud:vpn/gateway:Gateway',
             resource_name,
@@ -341,21 +557,21 @@ class Gateway(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GatewayState.__new__(_GatewayState)
 
-        __props__["bandwidth"] = bandwidth
-        __props__["business_status"] = business_status
-        __props__["description"] = description
-        __props__["enable_ipsec"] = enable_ipsec
-        __props__["enable_ssl"] = enable_ssl
-        __props__["instance_charge_type"] = instance_charge_type
-        __props__["internet_ip"] = internet_ip
-        __props__["name"] = name
-        __props__["period"] = period
-        __props__["ssl_connections"] = ssl_connections
-        __props__["status"] = status
-        __props__["vpc_id"] = vpc_id
-        __props__["vswitch_id"] = vswitch_id
+        __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["business_status"] = business_status
+        __props__.__dict__["description"] = description
+        __props__.__dict__["enable_ipsec"] = enable_ipsec
+        __props__.__dict__["enable_ssl"] = enable_ssl
+        __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["internet_ip"] = internet_ip
+        __props__.__dict__["name"] = name
+        __props__.__dict__["period"] = period
+        __props__.__dict__["ssl_connections"] = ssl_connections
+        __props__.__dict__["status"] = status
+        __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vswitch_id"] = vswitch_id
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -460,10 +676,4 @@ class Gateway(pulumi.CustomResource):
         The VPN belongs the vswitch_id, the field can't be changed.
         """
         return pulumi.get(self, "vswitch_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

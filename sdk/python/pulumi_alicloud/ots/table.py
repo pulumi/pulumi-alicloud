@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -109,6 +109,110 @@ class TableArgs:
     @deviation_cell_version_in_sec.setter
     def deviation_cell_version_in_sec(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "deviation_cell_version_in_sec", value)
+
+
+@pulumi.input_type
+class _TableState:
+    def __init__(__self__, *,
+                 deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 max_version: Optional[pulumi.Input[int]] = None,
+                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]] = None,
+                 table_name: Optional[pulumi.Input[str]] = None,
+                 time_to_live: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering Table resources.
+        :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
+        :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
+        :param pulumi.Input[int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
+        :param pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
+        :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
+        """
+        if deviation_cell_version_in_sec is not None:
+            pulumi.set(__self__, "deviation_cell_version_in_sec", deviation_cell_version_in_sec)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if max_version is not None:
+            pulumi.set(__self__, "max_version", max_version)
+        if primary_keys is not None:
+            pulumi.set(__self__, "primary_keys", primary_keys)
+        if table_name is not None:
+            pulumi.set(__self__, "table_name", table_name)
+        if time_to_live is not None:
+            pulumi.set(__self__, "time_to_live", time_to_live)
+
+    @property
+    @pulumi.getter(name="deviationCellVersionInSec")
+    def deviation_cell_version_in_sec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
+        """
+        return pulumi.get(self, "deviation_cell_version_in_sec")
+
+    @deviation_cell_version_in_sec.setter
+    def deviation_cell_version_in_sec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deviation_cell_version_in_sec", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the OTS instance in which table will located.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="maxVersion")
+    def max_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of versions stored in this table. The valid value is 1-2147483647.
+        """
+        return pulumi.get(self, "max_version")
+
+    @max_version.setter
+    def max_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_version", value)
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]]:
+        """
+        The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+        """
+        return pulumi.get(self, "primary_keys")
+
+    @primary_keys.setter
+    def primary_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]]):
+        pulumi.set(self, "primary_keys", value)
+
+    @property
+    @pulumi.getter(name="tableName")
+    def table_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The table name of the OTS instance. If changed, a new table would be created.
+        """
+        return pulumi.get(self, "table_name")
+
+    @table_name.setter
+    def table_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_name", value)
+
+    @property
+    @pulumi.getter(name="timeToLive")
+    def time_to_live(self) -> Optional[pulumi.Input[int]]:
+        """
+        The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
+        """
+        return pulumi.get(self, "time_to_live")
+
+    @time_to_live.setter
+    def time_to_live(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_to_live", value)
 
 
 class Table(pulumi.CustomResource):
@@ -285,24 +389,24 @@ class Table(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TableArgs.__new__(TableArgs)
 
-            __props__['deviation_cell_version_in_sec'] = deviation_cell_version_in_sec
+            __props__.__dict__["deviation_cell_version_in_sec"] = deviation_cell_version_in_sec
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
-            __props__['instance_name'] = instance_name
+            __props__.__dict__["instance_name"] = instance_name
             if max_version is None and not opts.urn:
                 raise TypeError("Missing required property 'max_version'")
-            __props__['max_version'] = max_version
+            __props__.__dict__["max_version"] = max_version
             if primary_keys is None and not opts.urn:
                 raise TypeError("Missing required property 'primary_keys'")
-            __props__['primary_keys'] = primary_keys
+            __props__.__dict__["primary_keys"] = primary_keys
             if table_name is None and not opts.urn:
                 raise TypeError("Missing required property 'table_name'")
-            __props__['table_name'] = table_name
+            __props__.__dict__["table_name"] = table_name
             if time_to_live is None and not opts.urn:
                 raise TypeError("Missing required property 'time_to_live'")
-            __props__['time_to_live'] = time_to_live
+            __props__.__dict__["time_to_live"] = time_to_live
         super(Table, __self__).__init__(
             'alicloud:ots/table:Table',
             resource_name,
@@ -335,14 +439,14 @@ class Table(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TableState.__new__(_TableState)
 
-        __props__["deviation_cell_version_in_sec"] = deviation_cell_version_in_sec
-        __props__["instance_name"] = instance_name
-        __props__["max_version"] = max_version
-        __props__["primary_keys"] = primary_keys
-        __props__["table_name"] = table_name
-        __props__["time_to_live"] = time_to_live
+        __props__.__dict__["deviation_cell_version_in_sec"] = deviation_cell_version_in_sec
+        __props__.__dict__["instance_name"] = instance_name
+        __props__.__dict__["max_version"] = max_version
+        __props__.__dict__["primary_keys"] = primary_keys
+        __props__.__dict__["table_name"] = table_name
+        __props__.__dict__["time_to_live"] = time_to_live
         return Table(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -392,10 +496,4 @@ class Table(pulumi.CustomResource):
         The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
         return pulumi.get(self, "time_to_live")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

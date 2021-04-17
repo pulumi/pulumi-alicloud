@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['AccessGroupArgs', 'AccessGroup']
 
@@ -21,6 +21,110 @@ class AccessGroupArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessGroup resource.
+        :param pulumi.Input[str] access_group_name: A Name of one Access Group.
+        :param pulumi.Input[str] access_group_type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        :param pulumi.Input[str] description: The Access Group description.
+        :param pulumi.Input[str] file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
+        :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
+        """
+        if access_group_name is not None:
+            pulumi.set(__self__, "access_group_name", access_group_name)
+        if access_group_type is not None:
+            pulumi.set(__self__, "access_group_type", access_group_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if file_system_type is not None:
+            pulumi.set(__self__, "file_system_type", file_system_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="accessGroupName")
+    def access_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A Name of one Access Group.
+        """
+        return pulumi.get(self, "access_group_name")
+
+    @access_group_name.setter
+    def access_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_group_name", value)
+
+    @property
+    @pulumi.getter(name="accessGroupType")
+    def access_group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        """
+        return pulumi.get(self, "access_group_type")
+
+    @access_group_type.setter
+    def access_group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_group_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Group description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        """
+        return pulumi.get(self, "file_system_type")
+
+    @file_system_type.setter
+    def file_system_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_system_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Replaced by `access_group_name` after version 1.92.0.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Replaced by `access_group_type` after version 1.92.0.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class _AccessGroupState:
+    def __init__(__self__, *,
+                 access_group_name: Optional[pulumi.Input[str]] = None,
+                 access_group_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 file_system_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccessGroup resources.
         :param pulumi.Input[str] access_group_name: A Name of one Access Group.
         :param pulumi.Input[str] access_group_type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
         :param pulumi.Input[str] description: The Access Group description.
@@ -266,14 +370,14 @@ class AccessGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessGroupArgs.__new__(AccessGroupArgs)
 
-            __props__['access_group_name'] = access_group_name
-            __props__['access_group_type'] = access_group_type
-            __props__['description'] = description
-            __props__['file_system_type'] = file_system_type
-            __props__['name'] = name
-            __props__['type'] = type
+            __props__.__dict__["access_group_name"] = access_group_name
+            __props__.__dict__["access_group_type"] = access_group_type
+            __props__.__dict__["description"] = description
+            __props__.__dict__["file_system_type"] = file_system_type
+            __props__.__dict__["name"] = name
+            __props__.__dict__["type"] = type
         super(AccessGroup, __self__).__init__(
             'alicloud:nas/accessGroup:AccessGroup',
             resource_name,
@@ -306,14 +410,14 @@ class AccessGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccessGroupState.__new__(_AccessGroupState)
 
-        __props__["access_group_name"] = access_group_name
-        __props__["access_group_type"] = access_group_type
-        __props__["description"] = description
-        __props__["file_system_type"] = file_system_type
-        __props__["name"] = name
-        __props__["type"] = type
+        __props__.__dict__["access_group_name"] = access_group_name
+        __props__.__dict__["access_group_type"] = access_group_type
+        __props__.__dict__["description"] = description
+        __props__.__dict__["file_system_type"] = file_system_type
+        __props__.__dict__["name"] = name
+        __props__.__dict__["type"] = type
         return AccessGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -363,10 +467,4 @@ class AccessGroup(pulumi.CustomResource):
         Replaced by `access_group_type` after version 1.92.0.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

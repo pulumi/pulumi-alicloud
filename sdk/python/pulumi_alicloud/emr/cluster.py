@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -361,6 +361,358 @@ class ClusterArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
+@pulumi.input_type
+class _ClusterState:
+    def __init__(__self__, *,
+                 bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]] = None,
+                 charge_type: Optional[pulumi.Input[str]] = None,
+                 cluster_type: Optional[pulumi.Input[str]] = None,
+                 deposit_type: Optional[pulumi.Input[str]] = None,
+                 eas_enable: Optional[pulumi.Input[bool]] = None,
+                 emr_ver: Optional[pulumi.Input[str]] = None,
+                 high_availability_enable: Optional[pulumi.Input[bool]] = None,
+                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]] = None,
+                 is_open_public_ip: Optional[pulumi.Input[bool]] = None,
+                 key_pair_name: Optional[pulumi.Input[str]] = None,
+                 master_pwd: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 related_cluster_id: Optional[pulumi.Input[str]] = None,
+                 security_group_id: Optional[pulumi.Input[str]] = None,
+                 ssh_enable: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 use_local_metadb: Optional[pulumi.Input[bool]] = None,
+                 user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
+        :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
+        :param pulumi.Input[bool] eas_enable: High security cluster (true) or not. Default value is false.
+        :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
+        :param pulumi.Input[bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[str] key_pair_name: Ssh key pair.
+        :param pulumi.Input[str] master_pwd: Master ssh password.
+        :param pulumi.Input[str] name: bootstrap action name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] option_software_lists: Optional software list.
+        :param pulumi.Input[int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+        :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
+        :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
+        :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[bool] use_local_metadb: Use local metadb. Default is false.
+        :param pulumi.Input[str] user_defined_emr_ecs_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+        :param pulumi.Input[str] vswitch_id: Global vswitch id, you can also specify it in host group.
+        :param pulumi.Input[str] zone_id: Zone ID, e.g. cn-huhehaote-a
+        """
+        if bootstrap_actions is not None:
+            pulumi.set(__self__, "bootstrap_actions", bootstrap_actions)
+        if charge_type is not None:
+            pulumi.set(__self__, "charge_type", charge_type)
+        if cluster_type is not None:
+            pulumi.set(__self__, "cluster_type", cluster_type)
+        if deposit_type is not None:
+            pulumi.set(__self__, "deposit_type", deposit_type)
+        if eas_enable is not None:
+            pulumi.set(__self__, "eas_enable", eas_enable)
+        if emr_ver is not None:
+            pulumi.set(__self__, "emr_ver", emr_ver)
+        if high_availability_enable is not None:
+            pulumi.set(__self__, "high_availability_enable", high_availability_enable)
+        if host_groups is not None:
+            pulumi.set(__self__, "host_groups", host_groups)
+        if is_open_public_ip is not None:
+            pulumi.set(__self__, "is_open_public_ip", is_open_public_ip)
+        if key_pair_name is not None:
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
+        if master_pwd is not None:
+            pulumi.set(__self__, "master_pwd", master_pwd)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if option_software_lists is not None:
+            pulumi.set(__self__, "option_software_lists", option_software_lists)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if related_cluster_id is not None:
+            pulumi.set(__self__, "related_cluster_id", related_cluster_id)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if ssh_enable is not None:
+            pulumi.set(__self__, "ssh_enable", ssh_enable)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if use_local_metadb is not None:
+            pulumi.set(__self__, "use_local_metadb", use_local_metadb)
+        if user_defined_emr_ecs_role is not None:
+            pulumi.set(__self__, "user_defined_emr_ecs_role", user_defined_emr_ecs_role)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="bootstrapActions")
+    def bootstrap_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]:
+        return pulumi.get(self, "bootstrap_actions")
+
+    @bootstrap_actions.setter
+    def bootstrap_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]):
+        pulumi.set(self, "bootstrap_actions", value)
+
+    @property
+    @pulumi.getter(name="chargeType")
+    def charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        """
+        return pulumi.get(self, "charge_type")
+
+    @charge_type.setter
+    def charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "charge_type", value)
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @cluster_type.setter
+    def cluster_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_type", value)
+
+    @property
+    @pulumi.getter(name="depositType")
+    def deposit_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
+        """
+        return pulumi.get(self, "deposit_type")
+
+    @deposit_type.setter
+    def deposit_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deposit_type", value)
+
+    @property
+    @pulumi.getter(name="easEnable")
+    def eas_enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        High security cluster (true) or not. Default value is false.
+        """
+        return pulumi.get(self, "eas_enable")
+
+    @eas_enable.setter
+    def eas_enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "eas_enable", value)
+
+    @property
+    @pulumi.getter(name="emrVer")
+    def emr_ver(self) -> Optional[pulumi.Input[str]]:
+        """
+        EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
+        """
+        return pulumi.get(self, "emr_ver")
+
+    @emr_ver.setter
+    def emr_ver(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "emr_ver", value)
+
+    @property
+    @pulumi.getter(name="highAvailabilityEnable")
+    def high_availability_enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
+        """
+        return pulumi.get(self, "high_availability_enable")
+
+    @high_availability_enable.setter
+    def high_availability_enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "high_availability_enable", value)
+
+    @property
+    @pulumi.getter(name="hostGroups")
+    def host_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]:
+        """
+        Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        """
+        return pulumi.get(self, "host_groups")
+
+    @host_groups.setter
+    def host_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]):
+        pulumi.set(self, "host_groups", value)
+
+    @property
+    @pulumi.getter(name="isOpenPublicIp")
+    def is_open_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_open_public_ip")
+
+    @is_open_public_ip.setter
+    def is_open_public_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_open_public_ip", value)
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ssh key pair.
+        """
+        return pulumi.get(self, "key_pair_name")
+
+    @key_pair_name.setter
+    def key_pair_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_pair_name", value)
+
+    @property
+    @pulumi.getter(name="masterPwd")
+    def master_pwd(self) -> Optional[pulumi.Input[str]]:
+        """
+        Master ssh password.
+        """
+        return pulumi.get(self, "master_pwd")
+
+    @master_pwd.setter
+    def master_pwd(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_pwd", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        bootstrap action name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="optionSoftwareLists")
+    def option_software_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional software list.
+        """
+        return pulumi.get(self, "option_software_lists")
+
+    @option_software_lists.setter
+    def option_software_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "option_software_lists", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="relatedClusterId")
+    def related_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This specify the related cluster id, if this cluster is a Gateway.
+        """
+        return pulumi.get(self, "related_cluster_id")
+
+    @related_cluster_id.setter
+    def related_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "related_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Security Group ID for Cluster, you can also specify this key for each host group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter(name="sshEnable")
+    def ssh_enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this is set true, we can ssh into cluster. Default value is false.
+        """
+        return pulumi.get(self, "ssh_enable")
+
+    @ssh_enable.setter
+    def ssh_enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ssh_enable", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="useLocalMetadb")
+    def use_local_metadb(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use local metadb. Default is false.
+        """
+        return pulumi.get(self, "use_local_metadb")
+
+    @use_local_metadb.setter
+    def use_local_metadb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_local_metadb", value)
+
+    @property
+    @pulumi.getter(name="userDefinedEmrEcsRole")
+    def user_defined_emr_ecs_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+        """
+        return pulumi.get(self, "user_defined_emr_ecs_role")
+
+    @user_defined_emr_ecs_role.setter
+    def user_defined_emr_ecs_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_defined_emr_ecs_role", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Global vswitch id, you can also specify it in host group.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone ID, e.g. cn-huhehaote-a
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
 class Cluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -505,36 +857,36 @@ class Cluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClusterArgs.__new__(ClusterArgs)
 
-            __props__['bootstrap_actions'] = bootstrap_actions
-            __props__['charge_type'] = charge_type
+            __props__.__dict__["bootstrap_actions"] = bootstrap_actions
+            __props__.__dict__["charge_type"] = charge_type
             if cluster_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_type'")
-            __props__['cluster_type'] = cluster_type
-            __props__['deposit_type'] = deposit_type
-            __props__['eas_enable'] = eas_enable
+            __props__.__dict__["cluster_type"] = cluster_type
+            __props__.__dict__["deposit_type"] = deposit_type
+            __props__.__dict__["eas_enable"] = eas_enable
             if emr_ver is None and not opts.urn:
                 raise TypeError("Missing required property 'emr_ver'")
-            __props__['emr_ver'] = emr_ver
-            __props__['high_availability_enable'] = high_availability_enable
-            __props__['host_groups'] = host_groups
-            __props__['is_open_public_ip'] = is_open_public_ip
-            __props__['key_pair_name'] = key_pair_name
-            __props__['master_pwd'] = master_pwd
-            __props__['name'] = name
-            __props__['option_software_lists'] = option_software_lists
-            __props__['period'] = period
-            __props__['related_cluster_id'] = related_cluster_id
-            __props__['security_group_id'] = security_group_id
-            __props__['ssh_enable'] = ssh_enable
-            __props__['tags'] = tags
-            __props__['use_local_metadb'] = use_local_metadb
-            __props__['user_defined_emr_ecs_role'] = user_defined_emr_ecs_role
-            __props__['vswitch_id'] = vswitch_id
+            __props__.__dict__["emr_ver"] = emr_ver
+            __props__.__dict__["high_availability_enable"] = high_availability_enable
+            __props__.__dict__["host_groups"] = host_groups
+            __props__.__dict__["is_open_public_ip"] = is_open_public_ip
+            __props__.__dict__["key_pair_name"] = key_pair_name
+            __props__.__dict__["master_pwd"] = master_pwd
+            __props__.__dict__["name"] = name
+            __props__.__dict__["option_software_lists"] = option_software_lists
+            __props__.__dict__["period"] = period
+            __props__.__dict__["related_cluster_id"] = related_cluster_id
+            __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["ssh_enable"] = ssh_enable
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["use_local_metadb"] = use_local_metadb
+            __props__.__dict__["user_defined_emr_ecs_role"] = user_defined_emr_ecs_role
+            __props__.__dict__["vswitch_id"] = vswitch_id
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(Cluster, __self__).__init__(
             'alicloud:emr/cluster:Cluster',
             resource_name,
@@ -597,30 +949,30 @@ class Cluster(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ClusterState.__new__(_ClusterState)
 
-        __props__["bootstrap_actions"] = bootstrap_actions
-        __props__["charge_type"] = charge_type
-        __props__["cluster_type"] = cluster_type
-        __props__["deposit_type"] = deposit_type
-        __props__["eas_enable"] = eas_enable
-        __props__["emr_ver"] = emr_ver
-        __props__["high_availability_enable"] = high_availability_enable
-        __props__["host_groups"] = host_groups
-        __props__["is_open_public_ip"] = is_open_public_ip
-        __props__["key_pair_name"] = key_pair_name
-        __props__["master_pwd"] = master_pwd
-        __props__["name"] = name
-        __props__["option_software_lists"] = option_software_lists
-        __props__["period"] = period
-        __props__["related_cluster_id"] = related_cluster_id
-        __props__["security_group_id"] = security_group_id
-        __props__["ssh_enable"] = ssh_enable
-        __props__["tags"] = tags
-        __props__["use_local_metadb"] = use_local_metadb
-        __props__["user_defined_emr_ecs_role"] = user_defined_emr_ecs_role
-        __props__["vswitch_id"] = vswitch_id
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["bootstrap_actions"] = bootstrap_actions
+        __props__.__dict__["charge_type"] = charge_type
+        __props__.__dict__["cluster_type"] = cluster_type
+        __props__.__dict__["deposit_type"] = deposit_type
+        __props__.__dict__["eas_enable"] = eas_enable
+        __props__.__dict__["emr_ver"] = emr_ver
+        __props__.__dict__["high_availability_enable"] = high_availability_enable
+        __props__.__dict__["host_groups"] = host_groups
+        __props__.__dict__["is_open_public_ip"] = is_open_public_ip
+        __props__.__dict__["key_pair_name"] = key_pair_name
+        __props__.__dict__["master_pwd"] = master_pwd
+        __props__.__dict__["name"] = name
+        __props__.__dict__["option_software_lists"] = option_software_lists
+        __props__.__dict__["period"] = period
+        __props__.__dict__["related_cluster_id"] = related_cluster_id
+        __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["ssh_enable"] = ssh_enable
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["use_local_metadb"] = use_local_metadb
+        __props__.__dict__["user_defined_emr_ecs_role"] = user_defined_emr_ecs_role
+        __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["zone_id"] = zone_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -792,10 +1144,4 @@ class Cluster(pulumi.CustomResource):
         Zone ID, e.g. cn-huhehaote-a
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

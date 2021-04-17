@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ResourceDirectoryArgs', 'ResourceDirectory']
 
@@ -20,6 +20,78 @@ class ResourceDirectoryArgs:
         """
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class _ResourceDirectoryState:
+    def __init__(__self__, *,
+                 master_account_id: Optional[pulumi.Input[str]] = None,
+                 master_account_name: Optional[pulumi.Input[str]] = None,
+                 root_folder_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ResourceDirectory resources.
+        :param pulumi.Input[str] master_account_id: The ID of the master account.
+        :param pulumi.Input[str] master_account_name: The name of the master account.
+        :param pulumi.Input[str] root_folder_id: The ID of the root folder.
+        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        """
+        if master_account_id is not None:
+            pulumi.set(__self__, "master_account_id", master_account_id)
+        if master_account_name is not None:
+            pulumi.set(__self__, "master_account_name", master_account_name)
+        if root_folder_id is not None:
+            pulumi.set(__self__, "root_folder_id", root_folder_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="masterAccountId")
+    def master_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the master account.
+        """
+        return pulumi.get(self, "master_account_id")
+
+    @master_account_id.setter
+    def master_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_account_id", value)
+
+    @property
+    @pulumi.getter(name="masterAccountName")
+    def master_account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the master account.
+        """
+        return pulumi.get(self, "master_account_name")
+
+    @master_account_name.setter
+    def master_account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_account_name", value)
+
+    @property
+    @pulumi.getter(name="rootFolderId")
+    def root_folder_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the root folder.
+        """
+        return pulumi.get(self, "root_folder_id")
+
+    @root_folder_id.setter
+    def root_folder_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "root_folder_id", value)
 
     @property
     @pulumi.getter
@@ -151,12 +223,12 @@ class ResourceDirectory(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ResourceDirectoryArgs.__new__(ResourceDirectoryArgs)
 
-            __props__['status'] = status
-            __props__['master_account_id'] = None
-            __props__['master_account_name'] = None
-            __props__['root_folder_id'] = None
+            __props__.__dict__["status"] = status
+            __props__.__dict__["master_account_id"] = None
+            __props__.__dict__["master_account_name"] = None
+            __props__.__dict__["root_folder_id"] = None
         super(ResourceDirectory, __self__).__init__(
             'alicloud:resourcemanager/resourceDirectory:ResourceDirectory',
             resource_name,
@@ -185,12 +257,12 @@ class ResourceDirectory(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ResourceDirectoryState.__new__(_ResourceDirectoryState)
 
-        __props__["master_account_id"] = master_account_id
-        __props__["master_account_name"] = master_account_name
-        __props__["root_folder_id"] = root_folder_id
-        __props__["status"] = status
+        __props__.__dict__["master_account_id"] = master_account_id
+        __props__.__dict__["master_account_name"] = master_account_name
+        __props__.__dict__["root_folder_id"] = root_folder_id
+        __props__.__dict__["status"] = status
         return ResourceDirectory(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -224,10 +296,4 @@ class ResourceDirectory(pulumi.CustomResource):
         The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

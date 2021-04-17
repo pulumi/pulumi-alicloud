@@ -4,7 +4,7 @@
 package dds
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetMongoInstances(ctx *pulumi.Context, args *GetMongoInstancesArgs, opts ...pulumi.InvokeOption) (*GetMongoInstancesResult, error) {

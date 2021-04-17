@@ -4,7 +4,7 @@
 package quotas
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetApplicationInfos(ctx *pulumi.Context, args *GetApplicationInfosArgs, opts ...pulumi.InvokeOption) (*GetApplicationInfosResult, error) {

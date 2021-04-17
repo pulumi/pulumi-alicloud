@@ -4,7 +4,7 @@
 package yundun
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
@@ -17,8 +17,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/yundun"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/yundun"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -60,8 +60,8 @@ type GetBastionHostInstancesArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v2/go/alicloud/yundun"
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/yundun"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {

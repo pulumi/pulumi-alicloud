@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['EndpointArgs', 'Endpoint']
 
@@ -115,6 +115,146 @@ class EndpointArgs:
     @ssl_enabled.setter
     def ssl_enabled(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssl_enabled", value)
+
+
+@pulumi.input_type
+class _EndpointState:
+    def __init__(__self__, *,
+                 auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
+                 db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
+                 net_type: Optional[pulumi.Input[str]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 read_write_mode: Optional[pulumi.Input[str]] = None,
+                 ssl_connection_string: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[str]] = None,
+                 ssl_expire_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Endpoint resources.
+        :param pulumi.Input[str] endpoint_type: Type of endpoint.
+        :param pulumi.Input[str] ssl_connection_string: (Available in v1.121.0+) The SSL connection string.
+        :param pulumi.Input[str] ssl_expire_time: (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        if auto_add_new_nodes is not None:
+            pulumi.set(__self__, "auto_add_new_nodes", auto_add_new_nodes)
+        if db_cluster_id is not None:
+            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if endpoint_config is not None:
+            pulumi.set(__self__, "endpoint_config", endpoint_config)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if net_type is not None:
+            pulumi.set(__self__, "net_type", net_type)
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
+        if read_write_mode is not None:
+            pulumi.set(__self__, "read_write_mode", read_write_mode)
+        if ssl_connection_string is not None:
+            pulumi.set(__self__, "ssl_connection_string", ssl_connection_string)
+        if ssl_enabled is not None:
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
+        if ssl_expire_time is not None:
+            pulumi.set(__self__, "ssl_expire_time", ssl_expire_time)
+
+    @property
+    @pulumi.getter(name="autoAddNewNodes")
+    def auto_add_new_nodes(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auto_add_new_nodes")
+
+    @auto_add_new_nodes.setter
+    def auto_add_new_nodes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_add_new_nodes", value)
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "db_cluster_id")
+
+    @db_cluster_id.setter
+    def db_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="endpointConfig")
+    def endpoint_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "endpoint_config")
+
+    @endpoint_config.setter
+    def endpoint_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "endpoint_config", value)
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of endpoint.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_type", value)
+
+    @property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "net_type")
+
+    @net_type.setter
+    def net_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "net_type", value)
+
+    @property
+    @pulumi.getter
+    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "nodes")
+
+    @nodes.setter
+    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "nodes", value)
+
+    @property
+    @pulumi.getter(name="readWriteMode")
+    def read_write_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "read_write_mode")
+
+    @read_write_mode.setter
+    def read_write_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_write_mode", value)
+
+    @property
+    @pulumi.getter(name="sslConnectionString")
+    def ssl_connection_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in v1.121.0+) The SSL connection string.
+        """
+        return pulumi.get(self, "ssl_connection_string")
+
+    @ssl_connection_string.setter
+    def ssl_connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_connection_string", value)
+
+    @property
+    @pulumi.getter(name="sslEnabled")
+    def ssl_enabled(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssl_enabled")
+
+    @ssl_enabled.setter
+    def ssl_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_enabled", value)
+
+    @property
+    @pulumi.getter(name="sslExpireTime")
+    def ssl_expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "ssl_expire_time")
+
+    @ssl_expire_time.setter
+    def ssl_expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_expire_time", value)
 
 
 class Endpoint(pulumi.CustomResource):
@@ -304,20 +444,20 @@ class Endpoint(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EndpointArgs.__new__(EndpointArgs)
 
-            __props__['auto_add_new_nodes'] = auto_add_new_nodes
+            __props__.__dict__["auto_add_new_nodes"] = auto_add_new_nodes
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
-            __props__['db_cluster_id'] = db_cluster_id
-            __props__['endpoint_config'] = endpoint_config
-            __props__['endpoint_type'] = endpoint_type
-            __props__['net_type'] = net_type
-            __props__['nodes'] = nodes
-            __props__['read_write_mode'] = read_write_mode
-            __props__['ssl_enabled'] = ssl_enabled
-            __props__['ssl_connection_string'] = None
-            __props__['ssl_expire_time'] = None
+            __props__.__dict__["db_cluster_id"] = db_cluster_id
+            __props__.__dict__["endpoint_config"] = endpoint_config
+            __props__.__dict__["endpoint_type"] = endpoint_type
+            __props__.__dict__["net_type"] = net_type
+            __props__.__dict__["nodes"] = nodes
+            __props__.__dict__["read_write_mode"] = read_write_mode
+            __props__.__dict__["ssl_enabled"] = ssl_enabled
+            __props__.__dict__["ssl_connection_string"] = None
+            __props__.__dict__["ssl_expire_time"] = None
         super(Endpoint, __self__).__init__(
             'alicloud:polardb/endpoint:Endpoint',
             resource_name,
@@ -351,18 +491,18 @@ class Endpoint(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EndpointState.__new__(_EndpointState)
 
-        __props__["auto_add_new_nodes"] = auto_add_new_nodes
-        __props__["db_cluster_id"] = db_cluster_id
-        __props__["endpoint_config"] = endpoint_config
-        __props__["endpoint_type"] = endpoint_type
-        __props__["net_type"] = net_type
-        __props__["nodes"] = nodes
-        __props__["read_write_mode"] = read_write_mode
-        __props__["ssl_connection_string"] = ssl_connection_string
-        __props__["ssl_enabled"] = ssl_enabled
-        __props__["ssl_expire_time"] = ssl_expire_time
+        __props__.__dict__["auto_add_new_nodes"] = auto_add_new_nodes
+        __props__.__dict__["db_cluster_id"] = db_cluster_id
+        __props__.__dict__["endpoint_config"] = endpoint_config
+        __props__.__dict__["endpoint_type"] = endpoint_type
+        __props__.__dict__["net_type"] = net_type
+        __props__.__dict__["nodes"] = nodes
+        __props__.__dict__["read_write_mode"] = read_write_mode
+        __props__.__dict__["ssl_connection_string"] = ssl_connection_string
+        __props__.__dict__["ssl_enabled"] = ssl_enabled
+        __props__.__dict__["ssl_expire_time"] = ssl_expire_time
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -423,10 +563,4 @@ class Endpoint(pulumi.CustomResource):
         (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "ssl_expire_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
