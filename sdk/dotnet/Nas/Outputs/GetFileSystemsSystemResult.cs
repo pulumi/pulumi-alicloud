@@ -22,6 +22,13 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
+        /// Valid values:
+        /// 0: The file system is not encrypted.
+        /// 1: The file system is encrypted with a managed secret key.
+        /// </summary>
+        public readonly int EncryptType;
+        /// <summary>
         /// ID of the FileSystem.
         /// </summary>
         public readonly string Id;
@@ -48,6 +55,8 @@ namespace Pulumi.AliCloud.Nas.Outputs
 
             string description,
 
+            int encryptType,
+
             string id,
 
             int meteredSize,
@@ -60,6 +69,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         {
             CreateTime = createTime;
             Description = description;
+            EncryptType = encryptType;
             Id = id;
             MeteredSize = meteredSize;
             ProtocolType = protocolType;

@@ -113,16 +113,18 @@ type DBCluster struct {
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory pulumi.StringOutput `pulumi:"dbClusterCategory"`
-	// The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	//
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrOutput `pulumi:"dbClusterClass"`
 	// The db cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion pulumi.StringPtrOutput `pulumi:"dbClusterVersion"`
-	// The db node class.
+	// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
 	// The db node count.
-	DbNodeCount pulumi.IntPtrOutput `pulumi:"dbNodeCount"`
+	DbNodeCount pulumi.IntOutput `pulumi:"dbNodeCount"`
 	// The db node storage.
-	DbNodeStorage pulumi.IntPtrOutput `pulumi:"dbNodeStorage"`
+	DbNodeStorage pulumi.IntOutput `pulumi:"dbNodeStorage"`
 	// The description of DBCluster.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The elastic io resource.
@@ -130,7 +132,7 @@ type DBCluster struct {
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
-	Mode pulumi.StringPtrOutput `pulumi:"mode"`
+	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The modify type.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
 	// Field `payType` has been deprecated. New field `paymentType` instead.
@@ -167,6 +169,9 @@ func NewDBCluster(ctx *pulumi.Context,
 	if args.DbClusterCategory == nil {
 		return nil, errors.New("invalid value for required argument 'DbClusterCategory'")
 	}
+	if args.Mode == nil {
+		return nil, errors.New("invalid value for required argument 'Mode'")
+	}
 	var resource DBCluster
 	err := ctx.RegisterResource("alicloud:adb/dBCluster:DBCluster", name, args, &resource, opts...)
 	if err != nil {
@@ -197,11 +202,13 @@ type dbclusterState struct {
 	ConnectionString *string `pulumi:"connectionString"`
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory *string `pulumi:"dbClusterCategory"`
-	// The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	//
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass *string `pulumi:"dbClusterClass"`
 	// The db cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
-	// The db node class.
+	// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
 	DbNodeClass *string `pulumi:"dbNodeClass"`
 	// The db node count.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
@@ -250,11 +257,13 @@ type DBClusterState struct {
 	ConnectionString pulumi.StringPtrInput
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory pulumi.StringPtrInput
-	// The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	//
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrInput
 	// The db cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion pulumi.StringPtrInput
-	// The db node class.
+	// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
 	DbNodeClass pulumi.StringPtrInput
 	// The db node count.
 	DbNodeCount pulumi.IntPtrInput
@@ -305,11 +314,13 @@ type dbclusterArgs struct {
 	ComputeResource *string `pulumi:"computeResource"`
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory string `pulumi:"dbClusterCategory"`
-	// The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	//
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass *string `pulumi:"dbClusterClass"`
 	// The db cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
-	// The db node class.
+	// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
 	DbNodeClass *string `pulumi:"dbNodeClass"`
 	// The db node count.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
@@ -322,7 +333,7 @@ type dbclusterArgs struct {
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime *string `pulumi:"maintainTime"`
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
-	Mode *string `pulumi:"mode"`
+	Mode string `pulumi:"mode"`
 	// The modify type.
 	ModifyType *string `pulumi:"modifyType"`
 	// Field `payType` has been deprecated. New field `paymentType` instead.
@@ -355,11 +366,13 @@ type DBClusterArgs struct {
 	ComputeResource pulumi.StringPtrInput
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory pulumi.StringInput
-	// The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	//
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrInput
 	// The db cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion pulumi.StringPtrInput
-	// The db node class.
+	// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
 	DbNodeClass pulumi.StringPtrInput
 	// The db node count.
 	DbNodeCount pulumi.IntPtrInput
@@ -372,7 +385,7 @@ type DBClusterArgs struct {
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime pulumi.StringPtrInput
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
-	Mode pulumi.StringPtrInput
+	Mode pulumi.StringInput
 	// The modify type.
 	ModifyType pulumi.StringPtrInput
 	// Field `payType` has been deprecated. New field `paymentType` instead.

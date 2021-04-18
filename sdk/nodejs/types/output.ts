@@ -10361,6 +10361,13 @@ export namespace nas {
          */
         description: string;
         /**
+         * (Optional, Available in v1.121.2+) Whether the file system is encrypted.
+         * Valid values:
+         * 0: The file system is not encrypted.
+         * 1: The file system is encrypted with a managed secret key.
+         */
+        encryptType: number;
+        /**
          * ID of the FileSystem.
          */
         id: string;
@@ -10596,6 +10603,10 @@ export namespace oss {
 
     export interface BucketLifecycleRule {
         /**
+         * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+         */
+        abortMultipartUploads?: outputs.oss.BucketLifecycleRuleAbortMultipartUpload[];
+        /**
          * Specifies lifecycle rule status.
          */
         enabled: boolean;
@@ -10608,6 +10619,14 @@ export namespace oss {
          */
         id: string;
         /**
+         * Specifies when noncurrent object versions expire (documented below).
+         */
+        noncurrentVersionExpirations?: outputs.oss.BucketLifecycleRuleNoncurrentVersionExpiration[];
+        /**
+         * Specifies when noncurrent object versions transitions (documented below).
+         */
+        noncurrentVersionTransitions?: outputs.oss.BucketLifecycleRuleNoncurrentVersionTransition[];
+        /**
          * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
          */
         prefix?: string;
@@ -10617,24 +10636,58 @@ export namespace oss {
         transitions?: outputs.oss.BucketLifecycleRuleTransition[];
     }
 
+    export interface BucketLifecycleRuleAbortMultipartUpload {
+        /**
+         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+         */
+        createdBeforeDate?: string;
+        /**
+         * Specifies the number of days noncurrent object versions transition.
+         */
+        days?: number;
+    }
+
     export interface BucketLifecycleRuleExpiration {
+        /**
+         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+         */
+        createdBeforeDate?: string;
         /**
          * Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
          */
         date?: string;
         /**
-         * Specifies the number of days after object creation when the specific rule action takes effect.
+         * Specifies the number of days noncurrent object versions transition.
          */
         days?: number;
+        expiredObjectDeleteMarker?: boolean;
+    }
+
+    export interface BucketLifecycleRuleNoncurrentVersionExpiration {
+        /**
+         * Specifies the number of days noncurrent object versions transition.
+         */
+        days: number;
+    }
+
+    export interface BucketLifecycleRuleNoncurrentVersionTransition {
+        /**
+         * Specifies the number of days noncurrent object versions transition.
+         */
+        days: number;
+        /**
+         * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+         */
+        storageClass: string;
     }
 
     export interface BucketLifecycleRuleTransition {
         /**
-         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
          */
         createdBeforeDate?: string;
         /**
-         * Specifies the number of days after object creation when the specific rule action takes effect.
+         * Specifies the number of days noncurrent object versions transition.
          */
         days?: number;
         /**

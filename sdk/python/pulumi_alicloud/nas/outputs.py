@@ -166,6 +166,7 @@ class GetFileSystemsSystemResult(dict):
     def __init__(__self__, *,
                  create_time: str,
                  description: str,
+                 encrypt_type: int,
                  id: str,
                  metered_size: int,
                  protocol_type: str,
@@ -174,6 +175,10 @@ class GetFileSystemsSystemResult(dict):
         """
         :param str create_time: Time of creation.
         :param str description: Destription of the FileSystem.
+        :param int encrypt_type: (Optional, Available in v1.121.2+) Whether the file system is encrypted.
+               Valid values:
+               0: The file system is not encrypted.
+               1: The file system is encrypted with a managed secret key.
         :param str id: ID of the FileSystem.
         :param int metered_size: MeteredSize of the FileSystem.
         :param str protocol_type: Filter results by a specific ProtocolType. Valid values: `NFS` and `SMB`.
@@ -182,6 +187,7 @@ class GetFileSystemsSystemResult(dict):
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encrypt_type", encrypt_type)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "metered_size", metered_size)
         pulumi.set(__self__, "protocol_type", protocol_type)
@@ -203,6 +209,17 @@ class GetFileSystemsSystemResult(dict):
         Destription of the FileSystem.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encryptType")
+    def encrypt_type(self) -> int:
+        """
+        (Optional, Available in v1.121.2+) Whether the file system is encrypted.
+        Valid values:
+        0: The file system is not encrypted.
+        1: The file system is encrypted with a managed secret key.
+        """
+        return pulumi.get(self, "encrypt_type")
 
     @property
     @pulumi.getter

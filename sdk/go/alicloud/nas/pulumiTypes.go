@@ -299,6 +299,11 @@ type GetFileSystemsSystem struct {
 	CreateTime string `pulumi:"createTime"`
 	// Destription of the FileSystem.
 	Description string `pulumi:"description"`
+	// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
+	// Valid values:
+	// 0: The file system is not encrypted.
+	// 1: The file system is encrypted with a managed secret key.
+	EncryptType int `pulumi:"encryptType"`
 	// ID of the FileSystem.
 	Id string `pulumi:"id"`
 	// MeteredSize of the FileSystem.
@@ -327,6 +332,11 @@ type GetFileSystemsSystemArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Destription of the FileSystem.
 	Description pulumi.StringInput `pulumi:"description"`
+	// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
+	// Valid values:
+	// 0: The file system is not encrypted.
+	// 1: The file system is encrypted with a managed secret key.
+	EncryptType pulumi.IntInput `pulumi:"encryptType"`
 	// ID of the FileSystem.
 	Id pulumi.StringInput `pulumi:"id"`
 	// MeteredSize of the FileSystem.
@@ -398,6 +408,14 @@ func (o GetFileSystemsSystemOutput) CreateTime() pulumi.StringOutput {
 // Destription of the FileSystem.
 func (o GetFileSystemsSystemOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
+// Valid values:
+// 0: The file system is not encrypted.
+// 1: The file system is encrypted with a managed secret key.
+func (o GetFileSystemsSystemOutput) EncryptType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.EncryptType }).(pulumi.IntOutput)
 }
 
 // ID of the FileSystem.

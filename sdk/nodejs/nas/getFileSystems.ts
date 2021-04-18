@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const fs = alicloud_nas_file_system_foo.description.apply(description => alicloud.nas.getFileSystems({
- *     description: description,
+ *     descriptionRegex: description,
  *     protocolType: "NFS",
  * }, { async: true }));
  *

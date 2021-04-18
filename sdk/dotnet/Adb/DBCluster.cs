@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> DbClusterCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        /// It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         /// </summary>
         [Output("dbClusterClass")]
         public Output<string?> DbClusterClass { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string?> DbClusterVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The db node class.
+        /// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         /// </summary>
         [Output("dbNodeClass")]
         public Output<string> DbNodeClass { get; private set; } = null!;
@@ -133,13 +133,13 @@ namespace Pulumi.AliCloud.Adb
         /// The db node count.
         /// </summary>
         [Output("dbNodeCount")]
-        public Output<int?> DbNodeCount { get; private set; } = null!;
+        public Output<int> DbNodeCount { get; private set; } = null!;
 
         /// <summary>
         /// The db node storage.
         /// </summary>
         [Output("dbNodeStorage")]
-        public Output<int?> DbNodeStorage { get; private set; } = null!;
+        public Output<int> DbNodeStorage { get; private set; } = null!;
 
         /// <summary>
         /// The description of DBCluster.
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Adb
         /// The mode of the cluster. Valid values: `reserver`, `flexible`.
         /// </summary>
         [Output("mode")]
-        public Output<string?> Mode { get; private set; } = null!;
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
         /// The modify type.
@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string> DbClusterCategory { get; set; } = null!;
 
         /// <summary>
-        /// The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        /// It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         /// </summary>
         [Input("dbClusterClass")]
         public Input<string>? DbClusterClass { get; set; }
@@ -310,7 +310,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterVersion { get; set; }
 
         /// <summary>
-        /// The db node class.
+        /// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }
@@ -348,8 +348,8 @@ namespace Pulumi.AliCloud.Adb
         /// <summary>
         /// The mode of the cluster. Valid values: `reserver`, `flexible`.
         /// </summary>
-        [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        [Input("mode", required: true)]
+        public Input<string> Mode { get; set; } = null!;
 
         /// <summary>
         /// The modify type.
@@ -457,7 +457,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterCategory { get; set; }
 
         /// <summary>
-        /// The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        /// It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         /// </summary>
         [Input("dbClusterClass")]
         public Input<string>? DbClusterClass { get; set; }
@@ -469,7 +469,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterVersion { get; set; }
 
         /// <summary>
-        /// The db node class.
+        /// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }

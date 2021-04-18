@@ -15,17 +15,24 @@ class FileSystemArgs:
     def __init__(__self__, *,
                  protocol_type: pulumi.Input[str],
                  storage_type: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 encrypt_type: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a FileSystem resource.
         :param pulumi.Input[str] protocol_type: The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
         :param pulumi.Input[str] storage_type: The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
         :param pulumi.Input[str] description: The File System description.
+        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+               Valid values:
+               0: The file system is not encrypted.
+               1: The file system is encrypted with a managed secret key.
         """
         pulumi.set(__self__, "protocol_type", protocol_type)
         pulumi.set(__self__, "storage_type", storage_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encrypt_type is not None:
+            pulumi.set(__self__, "encrypt_type", encrypt_type)
 
     @property
     @pulumi.getter(name="protocolType")
@@ -63,21 +70,43 @@ class FileSystemArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+    @property
+    @pulumi.getter(name="encryptType")
+    def encrypt_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+        Valid values:
+        0: The file system is not encrypted.
+        1: The file system is encrypted with a managed secret key.
+        """
+        return pulumi.get(self, "encrypt_type")
+
+    @encrypt_type.setter
+    def encrypt_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "encrypt_type", value)
+
 
 @pulumi.input_type
 class _FileSystemState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypt_type: Optional[pulumi.Input[int]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FileSystem resources.
         :param pulumi.Input[str] description: The File System description.
+        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+               Valid values:
+               0: The file system is not encrypted.
+               1: The file system is encrypted with a managed secret key.
         :param pulumi.Input[str] protocol_type: The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
         :param pulumi.Input[str] storage_type: The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encrypt_type is not None:
+            pulumi.set(__self__, "encrypt_type", encrypt_type)
         if protocol_type is not None:
             pulumi.set(__self__, "protocol_type", protocol_type)
         if storage_type is not None:
@@ -94,6 +123,21 @@ class _FileSystemState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="encryptType")
+    def encrypt_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+        Valid values:
+        0: The file system is not encrypted.
+        1: The file system is encrypted with a managed secret key.
+        """
+        return pulumi.get(self, "encrypt_type")
+
+    @encrypt_type.setter
+    def encrypt_type(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "encrypt_type", value)
 
     @property
     @pulumi.getter(name="protocolType")
@@ -126,6 +170,7 @@ class FileSystem(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypt_type: Optional[pulumi.Input[int]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -150,6 +195,7 @@ class FileSystem(pulumi.CustomResource):
 
         foo = alicloud.nas.FileSystem("foo",
             description="tf-testAccNasConfig",
+            encrypt_type=1,
             protocol_type="NFS",
             storage_type="Performance")
         ```
@@ -165,6 +211,10 @@ class FileSystem(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The File System description.
+        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+               Valid values:
+               0: The file system is not encrypted.
+               1: The file system is encrypted with a managed secret key.
         :param pulumi.Input[str] protocol_type: The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
         :param pulumi.Input[str] storage_type: The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
         """
@@ -193,6 +243,7 @@ class FileSystem(pulumi.CustomResource):
 
         foo = alicloud.nas.FileSystem("foo",
             description="tf-testAccNasConfig",
+            encrypt_type=1,
             protocol_type="NFS",
             storage_type="Performance")
         ```
@@ -221,6 +272,7 @@ class FileSystem(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypt_type: Optional[pulumi.Input[int]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -244,6 +296,7 @@ class FileSystem(pulumi.CustomResource):
             __props__ = FileSystemArgs.__new__(FileSystemArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["encrypt_type"] = encrypt_type
             if protocol_type is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol_type'")
             __props__.__dict__["protocol_type"] = protocol_type
@@ -261,6 +314,7 @@ class FileSystem(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            encrypt_type: Optional[pulumi.Input[int]] = None,
             protocol_type: Optional[pulumi.Input[str]] = None,
             storage_type: Optional[pulumi.Input[str]] = None) -> 'FileSystem':
         """
@@ -271,6 +325,10 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The File System description.
+        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+               Valid values:
+               0: The file system is not encrypted.
+               1: The file system is encrypted with a managed secret key.
         :param pulumi.Input[str] protocol_type: The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
         :param pulumi.Input[str] storage_type: The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
         """
@@ -279,6 +337,7 @@ class FileSystem(pulumi.CustomResource):
         __props__ = _FileSystemState.__new__(_FileSystemState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["encrypt_type"] = encrypt_type
         __props__.__dict__["protocol_type"] = protocol_type
         __props__.__dict__["storage_type"] = storage_type
         return FileSystem(resource_name, opts=opts, __props__=__props__)
@@ -290,6 +349,17 @@ class FileSystem(pulumi.CustomResource):
         The File System description.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encryptType")
+    def encrypt_type(self) -> pulumi.Output[Optional[int]]:
+        """
+        Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+        Valid values:
+        0: The file system is not encrypted.
+        1: The file system is encrypted with a managed secret key.
+        """
+        return pulumi.get(self, "encrypt_type")
 
     @property
     @pulumi.getter(name="protocolType")

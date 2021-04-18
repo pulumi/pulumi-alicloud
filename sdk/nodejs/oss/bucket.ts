@@ -87,20 +87,41 @@ import * as utilities from "../utilities";
  *     acl: "public-read",
  *     bucket: "bucket-170309-lifecycle",
  *     lifecycleRules: [{
+ *         abortMultipartUploads: [{
+ *             days: 128,
+ *         }],
  *         enabled: true,
- *         id: "rule-days-transition",
+ *         id: "rule-abort-multipart-upload",
  *         prefix: "path3/",
- *         transitions: [
+ *     }],
+ * });
+ * const bucket_versioning_lifecycle = new alicloud.oss.Bucket("bucket-versioning-lifecycle", {
+ *     acl: "private",
+ *     bucket: "bucket-170309-lifecycle",
+ *     lifecycleRules: [{
+ *         enabled: true,
+ *         expirations: [{
+ *             expiredObjectDeleteMarker: true,
+ *         }],
+ *         id: "rule-versioning",
+ *         noncurrentVersionExpirations: [{
+ *             days: 240,
+ *         }],
+ *         noncurrentVersionTransitions: [
  *             {
- *                 createdBeforeDate: "2020-11-11",
- *                 storageClass: "IA",
- *             },
- *             {
- *                 createdBeforeDate: "2021-11-11",
+ *                 days: 180,
  *                 storageClass: "Archive",
  *             },
+ *             {
+ *                 days: 60,
+ *                 storageClass: "IA",
+ *             },
  *         ],
+ *         prefix: "path1/",
  *     }],
+ *     versioning: {
+ *         status: "Enabled",
+ *     },
  * });
  * ```
  *

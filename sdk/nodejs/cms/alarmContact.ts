@@ -74,7 +74,7 @@ export class AlarmContact extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the alarm contact.
+     * The name of the alarm contact. The length should between 2 and 40 characters.
      */
     public readonly alarmContactName!: pulumi.Output<string>;
     /**
@@ -150,7 +150,7 @@ export class AlarmContact extends pulumi.CustomResource {
  */
 export interface AlarmContactState {
     /**
-     * The name of the alarm contact.
+     * The name of the alarm contact. The length should between 2 and 40 characters.
      */
     readonly alarmContactName?: pulumi.Input<string>;
     /**
@@ -184,7 +184,7 @@ export interface AlarmContactState {
  */
 export interface AlarmContactArgs {
     /**
-     * The name of the alarm contact.
+     * The name of the alarm contact. The length should between 2 and 40 characters.
      */
     readonly alarmContactName: pulumi.Input<string>;
     /**

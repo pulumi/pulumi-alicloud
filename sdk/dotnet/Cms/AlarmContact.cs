@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Cms
     public partial class AlarmContact : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the alarm contact.
+        /// The name of the alarm contact. The length should between 2 and 40 characters.
         /// </summary>
         [Output("alarmContactName")]
         public Output<string> AlarmContactName { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Cms
     public sealed class AlarmContactArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the alarm contact.
+        /// The name of the alarm contact. The length should between 2 and 40 characters.
         /// </summary>
         [Input("alarmContactName", required: true)]
         public Input<string> AlarmContactName { get; set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Cms
     public sealed class AlarmContactState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the alarm contact.
+        /// The name of the alarm contact. The length should between 2 and 40 characters.
         /// </summary>
         [Input("alarmContactName")]
         public Input<string>? AlarmContactName { get; set; }

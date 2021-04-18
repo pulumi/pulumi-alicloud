@@ -121,6 +121,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly internetChargeType!: pulumi.Output<string | undefined>;
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
+     *
+     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
      */
     public readonly internetMaxBandwidthIn!: pulumi.Output<number>;
     /**
@@ -468,6 +470,8 @@ export interface InstanceState {
     readonly internetChargeType?: pulumi.Input<string>;
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
+     *
+     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
      */
     readonly internetMaxBandwidthIn?: pulumi.Input<number>;
     /**
@@ -688,6 +692,8 @@ export interface InstanceArgs {
     readonly internetChargeType?: pulumi.Input<string>;
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
+     *
+     * @deprecated The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.
      */
     readonly internetMaxBandwidthIn?: pulumi.Input<number>;
     /**

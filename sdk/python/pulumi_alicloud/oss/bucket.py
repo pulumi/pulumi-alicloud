@@ -686,20 +686,40 @@ class Bucket(pulumi.CustomResource):
             acl="public-read",
             bucket="bucket-170309-lifecycle",
             lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                abort_multipart_uploads=[alicloud.oss.BucketLifecycleRuleAbortMultipartUploadArgs(
+                    days=128,
+                )],
                 enabled=True,
-                id="rule-days-transition",
+                id="rule-abort-multipart-upload",
                 prefix="path3/",
-                transitions=[
-                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
-                        created_before_date="2020-11-11",
-                        storage_class="IA",
-                    ),
-                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
-                        created_before_date="2021-11-11",
+            )])
+        bucket_versioning_lifecycle = alicloud.oss.Bucket("bucket-versioning-lifecycle",
+            acl="private",
+            bucket="bucket-170309-lifecycle",
+            lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                enabled=True,
+                expirations=[alicloud.oss.BucketLifecycleRuleExpirationArgs(
+                    expired_object_delete_marker=True,
+                )],
+                id="rule-versioning",
+                noncurrent_version_expirations=[alicloud.oss.BucketLifecycleRuleNoncurrentVersionExpirationArgs(
+                    days=240,
+                )],
+                noncurrent_version_transitions=[
+                    alicloud.oss.BucketLifecycleRuleNoncurrentVersionTransitionArgs(
+                        days=180,
                         storage_class="Archive",
                     ),
+                    alicloud.oss.BucketLifecycleRuleNoncurrentVersionTransitionArgs(
+                        days=60,
+                        storage_class="IA",
+                    ),
                 ],
-            )])
+                prefix="path1/",
+            )],
+            versioning=alicloud.oss.BucketVersioningArgs(
+                status="Enabled",
+            ))
         ```
 
         Set bucket policy
@@ -896,20 +916,40 @@ class Bucket(pulumi.CustomResource):
             acl="public-read",
             bucket="bucket-170309-lifecycle",
             lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                abort_multipart_uploads=[alicloud.oss.BucketLifecycleRuleAbortMultipartUploadArgs(
+                    days=128,
+                )],
                 enabled=True,
-                id="rule-days-transition",
+                id="rule-abort-multipart-upload",
                 prefix="path3/",
-                transitions=[
-                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
-                        created_before_date="2020-11-11",
-                        storage_class="IA",
-                    ),
-                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
-                        created_before_date="2021-11-11",
+            )])
+        bucket_versioning_lifecycle = alicloud.oss.Bucket("bucket-versioning-lifecycle",
+            acl="private",
+            bucket="bucket-170309-lifecycle",
+            lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                enabled=True,
+                expirations=[alicloud.oss.BucketLifecycleRuleExpirationArgs(
+                    expired_object_delete_marker=True,
+                )],
+                id="rule-versioning",
+                noncurrent_version_expirations=[alicloud.oss.BucketLifecycleRuleNoncurrentVersionExpirationArgs(
+                    days=240,
+                )],
+                noncurrent_version_transitions=[
+                    alicloud.oss.BucketLifecycleRuleNoncurrentVersionTransitionArgs(
+                        days=180,
                         storage_class="Archive",
                     ),
+                    alicloud.oss.BucketLifecycleRuleNoncurrentVersionTransitionArgs(
+                        days=60,
+                        storage_class="IA",
+                    ),
                 ],
-            )])
+                prefix="path1/",
+            )],
+            versioning=alicloud.oss.BucketVersioningArgs(
+                status="Enabled",
+            ))
         ```
 
         Set bucket policy

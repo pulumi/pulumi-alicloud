@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbNodeClass { get; private set; } = null!;
 
         /// <summary>
-        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
         /// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Output("dbNodeCount")]
@@ -175,10 +175,11 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.
+        /// The virtual switch ID to launch DB instances in one VPC.  
+        /// **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string?> VswitchId { get; private set; } = null!;
+        public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DB cluster. it supports multiple zone.
@@ -251,7 +252,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbNodeClass { get; set; } = null!;
 
         /// <summary>
-        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
         /// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Input("dbNodeCount")]
@@ -350,7 +351,8 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.
+        /// The virtual switch ID to launch DB instances in one VPC.  
+        /// **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -393,7 +395,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
-        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
         /// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Input("dbNodeCount")]
@@ -492,7 +494,8 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.
+        /// The virtual switch ID to launch DB instances in one VPC.  
+        /// **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

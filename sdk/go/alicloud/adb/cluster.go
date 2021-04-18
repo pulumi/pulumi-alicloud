@@ -27,22 +27,23 @@ type Cluster struct {
 	// (Available in 1.93.0+) The connection string of the ADB cluster.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// Cluster category. Value options: `Basic`, `Cluster`.
-	DbClusterCategory pulumi.StringOutput    `pulumi:"dbClusterCategory"`
-	DbClusterClass    pulumi.StringPtrOutput `pulumi:"dbClusterClass"`
+	DbClusterCategory pulumi.StringOutput `pulumi:"dbClusterCategory"`
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+	DbClusterClass pulumi.StringPtrOutput `pulumi:"dbClusterClass"`
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion pulumi.StringPtrOutput `pulumi:"dbClusterVersion"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
 	// The dbNodeCount of cluster node.
-	DbNodeCount pulumi.IntPtrOutput `pulumi:"dbNodeCount"`
+	DbNodeCount pulumi.IntOutput `pulumi:"dbNodeCount"`
 	// The dbNodeStorage of cluster node.
-	DbNodeStorage pulumi.IntPtrOutput `pulumi:"dbNodeStorage"`
+	DbNodeStorage pulumi.IntOutput `pulumi:"dbNodeStorage"`
 	// The description of cluster.
 	Description       pulumi.StringOutput `pulumi:"description"`
 	ElasticIoResource pulumi.IntPtrOutput `pulumi:"elasticIoResource"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput    `pulumi:"maintainTime"`
-	Mode         pulumi.StringPtrOutput `pulumi:"mode"`
+	Mode         pulumi.StringOutput    `pulumi:"mode"`
 	ModifyType   pulumi.StringPtrOutput `pulumi:"modifyType"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType     pulumi.StringOutput `pulumi:"payType"`
@@ -75,6 +76,9 @@ func NewCluster(ctx *pulumi.Context,
 	if args.DbClusterCategory == nil {
 		return nil, errors.New("invalid value for required argument 'DbClusterCategory'")
 	}
+	if args.Mode == nil {
+		return nil, errors.New("invalid value for required argument 'Mode'")
+	}
 	var resource Cluster
 	err := ctx.RegisterResource("alicloud:adb/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {
@@ -104,7 +108,8 @@ type clusterState struct {
 	ConnectionString *string `pulumi:"connectionString"`
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory *string `pulumi:"dbClusterCategory"`
-	DbClusterClass    *string `pulumi:"dbClusterClass"`
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+	DbClusterClass *string `pulumi:"dbClusterClass"`
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// The dbNodeClass of cluster node.
@@ -149,7 +154,8 @@ type ClusterState struct {
 	ConnectionString pulumi.StringPtrInput
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory pulumi.StringPtrInput
-	DbClusterClass    pulumi.StringPtrInput
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+	DbClusterClass pulumi.StringPtrInput
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
@@ -195,8 +201,9 @@ type clusterArgs struct {
 	AutoRenewPeriod *int    `pulumi:"autoRenewPeriod"`
 	ComputeResource *string `pulumi:"computeResource"`
 	// Cluster category. Value options: `Basic`, `Cluster`.
-	DbClusterCategory string  `pulumi:"dbClusterCategory"`
-	DbClusterClass    *string `pulumi:"dbClusterClass"`
+	DbClusterCategory string `pulumi:"dbClusterCategory"`
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+	DbClusterClass *string `pulumi:"dbClusterClass"`
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// The dbNodeClass of cluster node.
@@ -210,7 +217,7 @@ type clusterArgs struct {
 	ElasticIoResource *int    `pulumi:"elasticIoResource"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
-	Mode         *string `pulumi:"mode"`
+	Mode         string  `pulumi:"mode"`
 	ModifyType   *string `pulumi:"modifyType"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType     *string `pulumi:"payType"`
@@ -239,7 +246,8 @@ type ClusterArgs struct {
 	ComputeResource pulumi.StringPtrInput
 	// Cluster category. Value options: `Basic`, `Cluster`.
 	DbClusterCategory pulumi.StringInput
-	DbClusterClass    pulumi.StringPtrInput
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+	DbClusterClass pulumi.StringPtrInput
 	// Cluster version. Value options: `3.0`, Default to `3.0`.
 	DbClusterVersion pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
@@ -253,7 +261,7 @@ type ClusterArgs struct {
 	ElasticIoResource pulumi.IntPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
-	Mode         pulumi.StringPtrInput
+	Mode         pulumi.StringInput
 	ModifyType   pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType     pulumi.StringPtrInput

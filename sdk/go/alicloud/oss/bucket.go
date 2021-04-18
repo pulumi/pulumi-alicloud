@@ -149,20 +149,52 @@ import (
 // 			Bucket: pulumi.String("bucket-170309-lifecycle"),
 // 			LifecycleRules: oss.BucketLifecycleRuleArray{
 // 				&oss.BucketLifecycleRuleArgs{
-// 					Enabled: pulumi.Bool(true),
-// 					Id:      pulumi.String("rule-days-transition"),
-// 					Prefix:  pulumi.String("path3/"),
-// 					Transitions: oss.BucketLifecycleRuleTransitionArray{
-// 						&oss.BucketLifecycleRuleTransitionArgs{
-// 							CreatedBeforeDate: pulumi.String("2020-11-11"),
-// 							StorageClass:      pulumi.String("IA"),
-// 						},
-// 						&oss.BucketLifecycleRuleTransitionArgs{
-// 							CreatedBeforeDate: pulumi.String("2021-11-11"),
-// 							StorageClass:      pulumi.String("Archive"),
+// 					AbortMultipartUploads: oss.BucketLifecycleRuleAbortMultipartUploadArray{
+// 						&oss.BucketLifecycleRuleAbortMultipartUploadArgs{
+// 							Days: pulumi.Int(128),
 // 						},
 // 					},
+// 					Enabled: pulumi.Bool(true),
+// 					Id:      pulumi.String("rule-abort-multipart-upload"),
+// 					Prefix:  pulumi.String("path3/"),
 // 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = oss.NewBucket(ctx, "bucket_versioning_lifecycle", &oss.BucketArgs{
+// 			Acl:    pulumi.String("private"),
+// 			Bucket: pulumi.String("bucket-170309-lifecycle"),
+// 			LifecycleRules: oss.BucketLifecycleRuleArray{
+// 				&oss.BucketLifecycleRuleArgs{
+// 					Enabled: pulumi.Bool(true),
+// 					Expirations: oss.BucketLifecycleRuleExpirationArray{
+// 						&oss.BucketLifecycleRuleExpirationArgs{
+// 							ExpiredObjectDeleteMarker: pulumi.Bool(true),
+// 						},
+// 					},
+// 					Id: pulumi.String("rule-versioning"),
+// 					NoncurrentVersionExpirations: oss.BucketLifecycleRuleNoncurrentVersionExpirationArray{
+// 						&oss.BucketLifecycleRuleNoncurrentVersionExpirationArgs{
+// 							Days: pulumi.Int(240),
+// 						},
+// 					},
+// 					NoncurrentVersionTransitions: oss.BucketLifecycleRuleNoncurrentVersionTransitionArray{
+// 						&oss.BucketLifecycleRuleNoncurrentVersionTransitionArgs{
+// 							Days:         pulumi.Int(180),
+// 							StorageClass: pulumi.String("Archive"),
+// 						},
+// 						&oss.BucketLifecycleRuleNoncurrentVersionTransitionArgs{
+// 							Days:         pulumi.Int(60),
+// 							StorageClass: pulumi.String("IA"),
+// 						},
+// 					},
+// 					Prefix: pulumi.String("path1/"),
+// 				},
+// 			},
+// 			Versioning: &oss.BucketVersioningArgs{
+// 				Status: pulumi.String("Enabled"),
 // 			},
 // 		})
 // 		if err != nil {

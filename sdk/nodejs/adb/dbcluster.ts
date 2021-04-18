@@ -111,7 +111,9 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly dbClusterCategory!: pulumi.Output<string>;
     /**
-     * The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     *
+     * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      */
     public readonly dbClusterClass!: pulumi.Output<string | undefined>;
     /**
@@ -119,17 +121,17 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly dbClusterVersion!: pulumi.Output<string | undefined>;
     /**
-     * The db node class.
+     * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      */
     public readonly dbNodeClass!: pulumi.Output<string>;
     /**
      * The db node count.
      */
-    public readonly dbNodeCount!: pulumi.Output<number | undefined>;
+    public readonly dbNodeCount!: pulumi.Output<number>;
     /**
      * The db node storage.
      */
-    public readonly dbNodeStorage!: pulumi.Output<number | undefined>;
+    public readonly dbNodeStorage!: pulumi.Output<number>;
     /**
      * The description of DBCluster.
      */
@@ -145,7 +147,7 @@ export class DBCluster extends pulumi.CustomResource {
     /**
      * The mode of the cluster. Valid values: `reserver`, `flexible`.
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    public readonly mode!: pulumi.Output<string>;
     /**
      * The modify type.
      */
@@ -235,6 +237,9 @@ export class DBCluster extends pulumi.CustomResource {
             if ((!args || args.dbClusterCategory === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterCategory'");
             }
+            if ((!args || args.mode === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'mode'");
+            }
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["computeResource"] = args ? args.computeResource : undefined;
             inputs["dbClusterCategory"] = args ? args.dbClusterCategory : undefined;
@@ -288,7 +293,9 @@ export interface DBClusterState {
      */
     readonly dbClusterCategory?: pulumi.Input<string>;
     /**
-     * The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     *
+     * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      */
     readonly dbClusterClass?: pulumi.Input<string>;
     /**
@@ -296,7 +303,7 @@ export interface DBClusterState {
      */
     readonly dbClusterVersion?: pulumi.Input<string>;
     /**
-     * The db node class.
+     * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      */
     readonly dbNodeClass?: pulumi.Input<string>;
     /**
@@ -388,7 +395,9 @@ export interface DBClusterArgs {
      */
     readonly dbClusterCategory: pulumi.Input<string>;
     /**
-     * The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     *
+     * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      */
     readonly dbClusterClass?: pulumi.Input<string>;
     /**
@@ -396,7 +405,7 @@ export interface DBClusterArgs {
      */
     readonly dbClusterVersion?: pulumi.Input<string>;
     /**
-     * The db node class.
+     * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      */
     readonly dbNodeClass?: pulumi.Input<string>;
     /**
@@ -422,7 +431,7 @@ export interface DBClusterArgs {
     /**
      * The mode of the cluster. Valid values: `reserver`, `flexible`.
      */
-    readonly mode?: pulumi.Input<string>;
+    readonly mode: pulumi.Input<string>;
     /**
      * The modify type.
      */

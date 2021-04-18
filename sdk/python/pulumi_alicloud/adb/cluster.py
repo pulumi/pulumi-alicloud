@@ -14,6 +14,7 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  db_cluster_category: pulumi.Input[str],
+                 mode: pulumi.Input[str],
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  compute_resource: Optional[pulumi.Input[str]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
@@ -24,7 +25,6 @@ class ClusterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
-                 mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -56,10 +56,14 @@ class ClusterArgs:
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster.
         """
         pulumi.set(__self__, "db_cluster_category", db_cluster_category)
+        pulumi.set(__self__, "mode", mode)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if compute_resource is not None:
             pulumi.set(__self__, "compute_resource", compute_resource)
+        if db_cluster_class is not None:
+            warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
+            pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
         if db_cluster_class is not None:
             pulumi.set(__self__, "db_cluster_class", db_cluster_class)
         if db_cluster_version is not None:
@@ -76,8 +80,6 @@ class ClusterArgs:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
         if pay_type is not None:
@@ -110,6 +112,15 @@ class ClusterArgs:
     @db_cluster_category.setter
     def db_cluster_category(self, value: pulumi.Input[str]):
         pulumi.set(self, "db_cluster_category", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
@@ -221,15 +232,6 @@ class ClusterArgs:
     @maintain_time.setter
     def maintain_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "maintain_time", value)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter(name="modifyType")
@@ -401,6 +403,9 @@ class _ClusterState:
             pulumi.set(__self__, "connection_string", connection_string)
         if db_cluster_category is not None:
             pulumi.set(__self__, "db_cluster_category", db_cluster_category)
+        if db_cluster_class is not None:
+            warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
+            pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
         if db_cluster_class is not None:
             pulumi.set(__self__, "db_cluster_class", db_cluster_class)
         if db_cluster_version is not None:
@@ -845,6 +850,9 @@ class Cluster(pulumi.CustomResource):
             if db_cluster_category is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_category'")
             __props__.__dict__["db_cluster_category"] = db_cluster_category
+            if db_cluster_class is not None and not opts.urn:
+                warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
+                pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
             __props__.__dict__["db_cluster_class"] = db_cluster_class
             __props__.__dict__["db_cluster_version"] = db_cluster_version
             __props__.__dict__["db_node_class"] = db_node_class
@@ -853,6 +861,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["elastic_io_resource"] = elastic_io_resource
             __props__.__dict__["maintain_time"] = maintain_time
+            if mode is None and not opts.urn:
+                raise TypeError("Missing required property 'mode'")
             __props__.__dict__["mode"] = mode
             __props__.__dict__["modify_type"] = modify_type
             __props__.__dict__["pay_type"] = pay_type
@@ -1008,7 +1018,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNodeCount")
-    def db_node_count(self) -> pulumi.Output[Optional[int]]:
+    def db_node_count(self) -> pulumi.Output[int]:
         """
         The db_node_count of cluster node.
         """
@@ -1016,7 +1026,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNodeStorage")
-    def db_node_storage(self) -> pulumi.Output[Optional[int]]:
+    def db_node_storage(self) -> pulumi.Output[int]:
         """
         The db_node_storage of cluster node.
         """
@@ -1045,7 +1055,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> pulumi.Output[Optional[str]]:
+    def mode(self) -> pulumi.Output[str]:
         return pulumi.get(self, "mode")
 
     @property
