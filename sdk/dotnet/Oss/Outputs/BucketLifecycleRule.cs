@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketLifecycleRule
     {
         /// <summary>
+        /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.BucketLifecycleRuleAbortMultipartUpload> AbortMultipartUploads;
+        /// <summary>
         /// Specifies lifecycle rule status.
         /// </summary>
         public readonly bool Enabled;
@@ -26,6 +30,14 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// Specifies when noncurrent object versions expire (documented below).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.BucketLifecycleRuleNoncurrentVersionExpiration> NoncurrentVersionExpirations;
+        /// <summary>
+        /// Specifies when noncurrent object versions transitions (documented below).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.BucketLifecycleRuleNoncurrentVersionTransition> NoncurrentVersionTransitions;
+        /// <summary>
         /// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
         /// </summary>
         public readonly string? Prefix;
@@ -36,19 +48,28 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
         [OutputConstructor]
         private BucketLifecycleRule(
+            ImmutableArray<Outputs.BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads,
+
             bool enabled,
 
             ImmutableArray<Outputs.BucketLifecycleRuleExpiration> expirations,
 
             string? id,
 
+            ImmutableArray<Outputs.BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations,
+
+            ImmutableArray<Outputs.BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions,
+
             string? prefix,
 
             ImmutableArray<Outputs.BucketLifecycleRuleTransition> transitions)
         {
+            AbortMultipartUploads = abortMultipartUploads;
             Enabled = enabled;
             Expirations = expirations;
             Id = id;
+            NoncurrentVersionExpirations = noncurrentVersionExpirations;
+            NoncurrentVersionTransitions = noncurrentVersionTransitions;
             Prefix = prefix;
             Transitions = transitions;
         }

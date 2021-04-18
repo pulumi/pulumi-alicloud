@@ -14,6 +14,7 @@ __all__ = ['DBClusterArgs', 'DBCluster']
 class DBClusterArgs:
     def __init__(__self__, *,
                  db_cluster_category: pulumi.Input[str],
+                 mode: pulumi.Input[str],
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  compute_resource: Optional[pulumi.Input[str]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
@@ -24,7 +25,6 @@ class DBClusterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
-                 mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -38,17 +38,17 @@ class DBClusterArgs:
         """
         The set of arguments for constructing a DBCluster resource.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
+        :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
-        :param pulumi.Input[str] db_cluster_class: The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Value options: `3.0`, Default to `3.0`.
-        :param pulumi.Input[str] db_node_class: The db node class.
+        :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
         :param pulumi.Input[int] elastic_io_resource: The elastic io resource.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
-        :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
@@ -63,10 +63,14 @@ class DBClusterArgs:
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
         pulumi.set(__self__, "db_cluster_category", db_cluster_category)
+        pulumi.set(__self__, "mode", mode)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if compute_resource is not None:
             pulumi.set(__self__, "compute_resource", compute_resource)
+        if db_cluster_class is not None:
+            warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
+            pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
         if db_cluster_class is not None:
             pulumi.set(__self__, "db_cluster_class", db_cluster_class)
         if db_cluster_version is not None:
@@ -83,8 +87,6 @@ class DBClusterArgs:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
         if pay_type is not None:
@@ -119,6 +121,18 @@ class DBClusterArgs:
         pulumi.set(self, "db_cluster_category", value)
 
     @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        """
+        The mode of the cluster. Valid values: `reserver`, `flexible`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
+
+    @property
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -146,7 +160,7 @@ class DBClusterArgs:
     @pulumi.getter(name="dbClusterClass")
     def db_cluster_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
         return pulumi.get(self, "db_cluster_class")
 
@@ -170,7 +184,7 @@ class DBClusterArgs:
     @pulumi.getter(name="dbNodeClass")
     def db_node_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The db node class.
+        The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         """
         return pulumi.get(self, "db_node_class")
 
@@ -237,18 +251,6 @@ class DBClusterArgs:
     @maintain_time.setter
     def maintain_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "maintain_time", value)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        The mode of the cluster. Valid values: `reserver`, `flexible`.
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter(name="modifyType")
@@ -406,9 +408,9 @@ class _DBClusterState:
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
         :param pulumi.Input[str] connection_string: The endpoint of the cluster.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
-        :param pulumi.Input[str] db_cluster_class: The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Value options: `3.0`, Default to `3.0`.
-        :param pulumi.Input[str] db_node_class: The db node class.
+        :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
@@ -437,6 +439,9 @@ class _DBClusterState:
             pulumi.set(__self__, "connection_string", connection_string)
         if db_cluster_category is not None:
             pulumi.set(__self__, "db_cluster_category", db_cluster_category)
+        if db_cluster_class is not None:
+            warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
+            pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
         if db_cluster_class is not None:
             pulumi.set(__self__, "db_cluster_class", db_cluster_class)
         if db_cluster_version is not None:
@@ -530,7 +535,7 @@ class _DBClusterState:
     @pulumi.getter(name="dbClusterClass")
     def db_cluster_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
         return pulumi.get(self, "db_cluster_class")
 
@@ -554,7 +559,7 @@ class _DBClusterState:
     @pulumi.getter(name="dbNodeClass")
     def db_node_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The db node class.
+        The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         """
         return pulumi.get(self, "db_node_class")
 
@@ -865,9 +870,9 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
-        :param pulumi.Input[str] db_cluster_class: The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Value options: `3.0`, Default to `3.0`.
-        :param pulumi.Input[str] db_node_class: The db node class.
+        :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
@@ -1016,6 +1021,9 @@ class DBCluster(pulumi.CustomResource):
             if db_cluster_category is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_category'")
             __props__.__dict__["db_cluster_category"] = db_cluster_category
+            if db_cluster_class is not None and not opts.urn:
+                warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
+                pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
             __props__.__dict__["db_cluster_class"] = db_cluster_class
             __props__.__dict__["db_cluster_version"] = db_cluster_version
             __props__.__dict__["db_node_class"] = db_node_class
@@ -1024,6 +1032,8 @@ class DBCluster(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["elastic_io_resource"] = elastic_io_resource
             __props__.__dict__["maintain_time"] = maintain_time
+            if mode is None and not opts.urn:
+                raise TypeError("Missing required property 'mode'")
             __props__.__dict__["mode"] = mode
             __props__.__dict__["modify_type"] = modify_type
             __props__.__dict__["pay_type"] = pay_type
@@ -1082,9 +1092,9 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
         :param pulumi.Input[str] connection_string: The endpoint of the cluster.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
-        :param pulumi.Input[str] db_cluster_class: The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Value options: `3.0`, Default to `3.0`.
-        :param pulumi.Input[str] db_node_class: The db node class.
+        :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
@@ -1171,7 +1181,7 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterClass")
     def db_cluster_class(self) -> pulumi.Output[Optional[str]]:
         """
-        The db cluster class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
+        It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
         return pulumi.get(self, "db_cluster_class")
 
@@ -1187,13 +1197,13 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter(name="dbNodeClass")
     def db_node_class(self) -> pulumi.Output[str]:
         """
-        The db node class.
+        The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         """
         return pulumi.get(self, "db_node_class")
 
     @property
     @pulumi.getter(name="dbNodeCount")
-    def db_node_count(self) -> pulumi.Output[Optional[int]]:
+    def db_node_count(self) -> pulumi.Output[int]:
         """
         The db node count.
         """
@@ -1201,7 +1211,7 @@ class DBCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dbNodeStorage")
-    def db_node_storage(self) -> pulumi.Output[Optional[int]]:
+    def db_node_storage(self) -> pulumi.Output[int]:
         """
         The db node storage.
         """
@@ -1233,7 +1243,7 @@ class DBCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> pulumi.Output[Optional[str]]:
+    def mode(self) -> pulumi.Output[str]:
         """
         The mode of the cluster. Valid values: `reserver`, `flexible`.
         """

@@ -136,23 +136,62 @@ namespace Pulumi.AliCloud.Oss
     ///             {
     ///                 new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
     ///                 {
-    ///                     Enabled = true,
-    ///                     Id = "rule-days-transition",
-    ///                     Prefix = "path3/",
-    ///                     Transitions = 
+    ///                     AbortMultipartUploads = 
     ///                     {
-    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs
+    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleAbortMultipartUploadArgs
     ///                         {
-    ///                             CreatedBeforeDate = "2020-11-11",
-    ///                             StorageClass = "IA",
-    ///                         },
-    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs
-    ///                         {
-    ///                             CreatedBeforeDate = "2021-11-11",
-    ///                             StorageClass = "Archive",
+    ///                             Days = 128,
     ///                         },
     ///                     },
+    ///                     Enabled = true,
+    ///                     Id = "rule-abort-multipart-upload",
+    ///                     Prefix = "path3/",
     ///                 },
+    ///             },
+    ///         });
+    ///         var bucket_versioning_lifecycle = new AliCloud.Oss.Bucket("bucket-versioning-lifecycle", new AliCloud.Oss.BucketArgs
+    ///         {
+    ///             Acl = "private",
+    ///             Bucket = "bucket-170309-lifecycle",
+    ///             LifecycleRules = 
+    ///             {
+    ///                 new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     Expirations = 
+    ///                     {
+    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleExpirationArgs
+    ///                         {
+    ///                             ExpiredObjectDeleteMarker = true,
+    ///                         },
+    ///                     },
+    ///                     Id = "rule-versioning",
+    ///                     NoncurrentVersionExpirations = 
+    ///                     {
+    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleNoncurrentVersionExpirationArgs
+    ///                         {
+    ///                             Days = 240,
+    ///                         },
+    ///                     },
+    ///                     NoncurrentVersionTransitions = 
+    ///                     {
+    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs
+    ///                         {
+    ///                             Days = 180,
+    ///                             StorageClass = "Archive",
+    ///                         },
+    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs
+    ///                         {
+    ///                             Days = 60,
+    ///                             StorageClass = "IA",
+    ///                         },
+    ///                     },
+    ///                     Prefix = "path1/",
+    ///                 },
+    ///             },
+    ///             Versioning = new AliCloud.Oss.Inputs.BucketVersioningArgs
+    ///             {
+    ///                 Status = "Enabled",
     ///             },
     ///         });
     ///     }

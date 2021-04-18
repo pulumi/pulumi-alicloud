@@ -22,7 +22,7 @@ class AlarmContactArgs:
                  lang: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AlarmContact resource.
-        :param pulumi.Input[str] alarm_contact_name: The name of the alarm contact.
+        :param pulumi.Input[str] alarm_contact_name: The name of the alarm contact. The length should between 2 and 40 characters.
         :param pulumi.Input[str] describe: The description of the alarm contact.
         :param pulumi.Input[str] channels_aliim: The TradeManager ID of the alarm contact.
         :param pulumi.Input[str] channels_ding_web_hook: The webhook URL of the DingTalk chatbot.
@@ -47,7 +47,7 @@ class AlarmContactArgs:
     @pulumi.getter(name="alarmContactName")
     def alarm_contact_name(self) -> pulumi.Input[str]:
         """
-        The name of the alarm contact.
+        The name of the alarm contact. The length should between 2 and 40 characters.
         """
         return pulumi.get(self, "alarm_contact_name")
 
@@ -140,7 +140,7 @@ class _AlarmContactState:
                  lang: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AlarmContact resources.
-        :param pulumi.Input[str] alarm_contact_name: The name of the alarm contact.
+        :param pulumi.Input[str] alarm_contact_name: The name of the alarm contact. The length should between 2 and 40 characters.
         :param pulumi.Input[str] channels_aliim: The TradeManager ID of the alarm contact.
         :param pulumi.Input[str] channels_ding_web_hook: The webhook URL of the DingTalk chatbot.
         :param pulumi.Input[str] channels_mail: The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
@@ -167,7 +167,7 @@ class _AlarmContactState:
     @pulumi.getter(name="alarmContactName")
     def alarm_contact_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the alarm contact.
+        The name of the alarm contact. The length should between 2 and 40 characters.
         """
         return pulumi.get(self, "alarm_contact_name")
 
@@ -304,7 +304,7 @@ class AlarmContact(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alarm_contact_name: The name of the alarm contact.
+        :param pulumi.Input[str] alarm_contact_name: The name of the alarm contact. The length should between 2 and 40 characters.
         :param pulumi.Input[str] channels_aliim: The TradeManager ID of the alarm contact.
         :param pulumi.Input[str] channels_ding_web_hook: The webhook URL of the DingTalk chatbot.
         :param pulumi.Input[str] channels_mail: The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
@@ -434,7 +434,7 @@ class AlarmContact(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alarm_contact_name: The name of the alarm contact.
+        :param pulumi.Input[str] alarm_contact_name: The name of the alarm contact. The length should between 2 and 40 characters.
         :param pulumi.Input[str] channels_aliim: The TradeManager ID of the alarm contact.
         :param pulumi.Input[str] channels_ding_web_hook: The webhook URL of the DingTalk chatbot.
         :param pulumi.Input[str] channels_mail: The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
@@ -459,7 +459,7 @@ class AlarmContact(pulumi.CustomResource):
     @pulumi.getter(name="alarmContactName")
     def alarm_contact_name(self) -> pulumi.Output[str]:
         """
-        The name of the alarm contact.
+        The name of the alarm contact. The length should between 2 and 40 characters.
         """
         return pulumi.get(self, "alarm_contact_name")
 

@@ -171,6 +171,9 @@ class InstanceArgs:
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_in is not None:
+            warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""", DeprecationWarning)
+            pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""")
+        if internet_max_bandwidth_in is not None:
             pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
         if internet_max_bandwidth_out is not None:
             pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
@@ -976,6 +979,9 @@ class _InstanceState:
             pulumi.set(__self__, "instance_type", instance_type)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if internet_max_bandwidth_in is not None:
+            warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""", DeprecationWarning)
+            pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""")
         if internet_max_bandwidth_in is not None:
             pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
         if internet_max_bandwidth_out is not None:
@@ -1894,6 +1900,9 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
+            if internet_max_bandwidth_in is not None and not opts.urn:
+                warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""", DeprecationWarning)
+                pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated from version v1.121.2.""")
             __props__.__dict__["internet_max_bandwidth_in"] = internet_max_bandwidth_in
             __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
             if io_optimized is not None and not opts.urn:

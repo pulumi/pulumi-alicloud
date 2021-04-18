@@ -54,6 +54,9 @@ export class Cluster extends pulumi.CustomResource {
      * Cluster category. Value options: `Basic`, `Cluster`.
      */
     public readonly dbClusterCategory!: pulumi.Output<string>;
+    /**
+     * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     */
     public readonly dbClusterClass!: pulumi.Output<string | undefined>;
     /**
      * Cluster version. Value options: `3.0`, Default to `3.0`.
@@ -66,11 +69,11 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The dbNodeCount of cluster node.
      */
-    public readonly dbNodeCount!: pulumi.Output<number | undefined>;
+    public readonly dbNodeCount!: pulumi.Output<number>;
     /**
      * The dbNodeStorage of cluster node.
      */
-    public readonly dbNodeStorage!: pulumi.Output<number | undefined>;
+    public readonly dbNodeStorage!: pulumi.Output<number>;
     /**
      * The description of cluster.
      */
@@ -80,7 +83,7 @@ export class Cluster extends pulumi.CustomResource {
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     public readonly maintainTime!: pulumi.Output<string>;
-    public readonly mode!: pulumi.Output<string | undefined>;
+    public readonly mode!: pulumi.Output<string>;
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
@@ -158,6 +161,9 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.dbClusterCategory === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterCategory'");
             }
+            if ((!args || args.mode === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'mode'");
+            }
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["computeResource"] = args ? args.computeResource : undefined;
             inputs["dbClusterCategory"] = args ? args.dbClusterCategory : undefined;
@@ -207,6 +213,9 @@ export interface ClusterState {
      * Cluster category. Value options: `Basic`, `Cluster`.
      */
     readonly dbClusterCategory?: pulumi.Input<string>;
+    /**
+     * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     */
     readonly dbClusterClass?: pulumi.Input<string>;
     /**
      * Cluster version. Value options: `3.0`, Default to `3.0`.
@@ -283,6 +292,9 @@ export interface ClusterArgs {
      * Cluster category. Value options: `Basic`, `Cluster`.
      */
     readonly dbClusterCategory: pulumi.Input<string>;
+    /**
+     * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     */
     readonly dbClusterClass?: pulumi.Input<string>;
     /**
      * Cluster version. Value options: `3.0`, Default to `3.0`.
@@ -309,7 +321,7 @@ export interface ClusterArgs {
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     readonly maintainTime?: pulumi.Input<string>;
-    readonly mode?: pulumi.Input<string>;
+    readonly mode: pulumi.Input<string>;
     readonly modifyType?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.

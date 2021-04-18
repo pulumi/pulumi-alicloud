@@ -61,13 +61,13 @@ namespace Pulumi.AliCloud.Adb
         /// The db_node_count of cluster node.
         /// </summary>
         [Output("dbNodeCount")]
-        public Output<int?> DbNodeCount { get; private set; } = null!;
+        public Output<int> DbNodeCount { get; private set; } = null!;
 
         /// <summary>
         /// The db_node_storage of cluster node.
         /// </summary>
         [Output("dbNodeStorage")]
-        public Output<int?> DbNodeStorage { get; private set; } = null!;
+        public Output<int> DbNodeStorage { get; private set; } = null!;
 
         /// <summary>
         /// The description of cluster.
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> MaintainTime { get; private set; } = null!;
 
         [Output("mode")]
-        public Output<string?> Mode { get; private set; } = null!;
+        public Output<string> Mode { get; private set; } = null!;
 
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
@@ -246,8 +246,8 @@ namespace Pulumi.AliCloud.Adb
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }
 
-        [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        [Input("mode", required: true)]
+        public Input<string> Mode { get; set; } = null!;
 
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }

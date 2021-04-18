@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *
  * const foo = new alicloud.nas.FileSystem("foo", {
  *     description: "tf-testAccNasConfig",
+ *     encryptType: 1,
  *     protocolType: "NFS",
  *     storageType: "Performance",
  * });
@@ -69,6 +70,13 @@ export class FileSystem extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+     * Valid values:
+     * 0: The file system is not encrypted.
+     * 1: The file system is encrypted with a managed secret key.
+     */
+    public readonly encryptType!: pulumi.Output<number | undefined>;
+    /**
      * The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
      */
     public readonly protocolType!: pulumi.Output<string>;
@@ -91,6 +99,7 @@ export class FileSystem extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FileSystemState | undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["encryptType"] = state ? state.encryptType : undefined;
             inputs["protocolType"] = state ? state.protocolType : undefined;
             inputs["storageType"] = state ? state.storageType : undefined;
         } else {
@@ -102,6 +111,7 @@ export class FileSystem extends pulumi.CustomResource {
                 throw new Error("Missing required property 'storageType'");
             }
             inputs["description"] = args ? args.description : undefined;
+            inputs["encryptType"] = args ? args.encryptType : undefined;
             inputs["protocolType"] = args ? args.protocolType : undefined;
             inputs["storageType"] = args ? args.storageType : undefined;
         }
@@ -121,6 +131,13 @@ export interface FileSystemState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+     * Valid values:
+     * 0: The file system is not encrypted.
+     * 1: The file system is encrypted with a managed secret key.
+     */
+    readonly encryptType?: pulumi.Input<number>;
+    /**
      * The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
      */
     readonly protocolType?: pulumi.Input<string>;
@@ -138,6 +155,13 @@ export interface FileSystemArgs {
      * The File System description.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+     * Valid values:
+     * 0: The file system is not encrypted.
+     * 1: The file system is encrypted with a managed secret key.
+     */
+    readonly encryptType?: pulumi.Input<number>;
     /**
      * The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
      */

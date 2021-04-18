@@ -33,6 +33,7 @@ namespace Pulumi.AliCloud.Nas
     ///         var foo = new AliCloud.Nas.FileSystem("foo", new AliCloud.Nas.FileSystemArgs
     ///         {
     ///             Description = "tf-testAccNasConfig",
+    ///             EncryptType = 1,
     ///             ProtocolType = "NFS",
     ///             StorageType = "Performance",
     ///         });
@@ -57,6 +58,15 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+        /// Valid values:
+        /// 0: The file system is not encrypted.
+        /// 1: The file system is encrypted with a managed secret key.
+        /// </summary>
+        [Output("encryptType")]
+        public Output<int?> EncryptType { get; private set; } = null!;
 
         /// <summary>
         /// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
@@ -123,6 +133,15 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+        /// Valid values:
+        /// 0: The file system is not encrypted.
+        /// 1: The file system is encrypted with a managed secret key.
+        /// </summary>
+        [Input("encryptType")]
+        public Input<int>? EncryptType { get; set; }
+
+        /// <summary>
         /// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
         /// </summary>
         [Input("protocolType", required: true)]
@@ -146,6 +165,15 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+        /// Valid values:
+        /// 0: The file system is not encrypted.
+        /// 1: The file system is encrypted with a managed secret key.
+        /// </summary>
+        [Input("encryptType")]
+        public Input<int>? EncryptType { get; set; }
 
         /// <summary>
         /// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.

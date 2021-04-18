@@ -14,22 +14,33 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketLifecycleRuleExpiration
     {
         /// <summary>
+        /// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+        /// </summary>
+        public readonly string? CreatedBeforeDate;
+        /// <summary>
         /// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
         /// </summary>
         public readonly string? Date;
         /// <summary>
-        /// Specifies the number of days after object creation when the specific rule action takes effect.
+        /// Specifies the number of days noncurrent object versions transition.
         /// </summary>
         public readonly int? Days;
+        public readonly bool? ExpiredObjectDeleteMarker;
 
         [OutputConstructor]
         private BucketLifecycleRuleExpiration(
+            string? createdBeforeDate,
+
             string? date,
 
-            int? days)
+            int? days,
+
+            bool? expiredObjectDeleteMarker)
         {
+            CreatedBeforeDate = createdBeforeDate;
             Date = date;
             Days = days;
+            ExpiredObjectDeleteMarker = expiredObjectDeleteMarker;
         }
     }
 }

@@ -35,6 +35,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
 // 			Description:  pulumi.String("tf-testAccNasConfig"),
+// 			EncryptType:  pulumi.Int(1),
 // 			ProtocolType: pulumi.String("NFS"),
 // 			StorageType:  pulumi.String("Performance"),
 // 		})
@@ -58,6 +59,11 @@ type FileSystem struct {
 
 	// The File System description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+	// Valid values:
+	// 0: The file system is not encrypted.
+	// 1: The file system is encrypted with a managed secret key.
+	EncryptType pulumi.IntPtrOutput `pulumi:"encryptType"`
 	// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
 	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
 	// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
@@ -101,6 +107,11 @@ func GetFileSystem(ctx *pulumi.Context,
 type fileSystemState struct {
 	// The File System description.
 	Description *string `pulumi:"description"`
+	// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+	// Valid values:
+	// 0: The file system is not encrypted.
+	// 1: The file system is encrypted with a managed secret key.
+	EncryptType *int `pulumi:"encryptType"`
 	// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
 	ProtocolType *string `pulumi:"protocolType"`
 	// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
@@ -110,6 +121,11 @@ type fileSystemState struct {
 type FileSystemState struct {
 	// The File System description.
 	Description pulumi.StringPtrInput
+	// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+	// Valid values:
+	// 0: The file system is not encrypted.
+	// 1: The file system is encrypted with a managed secret key.
+	EncryptType pulumi.IntPtrInput
 	// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
 	ProtocolType pulumi.StringPtrInput
 	// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
@@ -123,6 +139,11 @@ func (FileSystemState) ElementType() reflect.Type {
 type fileSystemArgs struct {
 	// The File System description.
 	Description *string `pulumi:"description"`
+	// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+	// Valid values:
+	// 0: The file system is not encrypted.
+	// 1: The file system is encrypted with a managed secret key.
+	EncryptType *int `pulumi:"encryptType"`
 	// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
 	ProtocolType string `pulumi:"protocolType"`
 	// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
@@ -133,6 +154,11 @@ type fileSystemArgs struct {
 type FileSystemArgs struct {
 	// The File System description.
 	Description pulumi.StringPtrInput
+	// Whether the file system is encrypted.Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
+	// Valid values:
+	// 0: The file system is not encrypted.
+	// 1: The file system is encrypted with a managed secret key.
+	EncryptType pulumi.IntPtrInput
 	// The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
 	ProtocolType pulumi.StringInput
 	// The Storage Type of a File System. Valid values: `Capacity` and `Performance`.

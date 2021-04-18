@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Nas
         ///     {
         ///         var fs = Output.Create(AliCloud.Nas.GetFileSystems.InvokeAsync(new AliCloud.Nas.GetFileSystemsArgs
         ///         {
-        ///             Description = alicloud_nas_file_system.Foo.Description,
+        ///             DescriptionRegex = alicloud_nas_file_system.Foo.Description,
         ///             ProtocolType = "NFS",
         ///         }));
         ///         this.AlicloudNasFileSystemsId = fs.Apply(fs =&gt; fs.Systems[0].Id);

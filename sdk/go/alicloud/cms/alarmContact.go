@@ -75,7 +75,7 @@ import (
 type AlarmContact struct {
 	pulumi.CustomResourceState
 
-	// The name of the alarm contact.
+	// The name of the alarm contact. The length should between 2 and 40 characters.
 	AlarmContactName pulumi.StringOutput `pulumi:"alarmContactName"`
 	// The TradeManager ID of the alarm contact.
 	ChannelsAliim pulumi.StringPtrOutput `pulumi:"channelsAliim"`
@@ -126,7 +126,7 @@ func GetAlarmContact(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlarmContact resources.
 type alarmContactState struct {
-	// The name of the alarm contact.
+	// The name of the alarm contact. The length should between 2 and 40 characters.
 	AlarmContactName *string `pulumi:"alarmContactName"`
 	// The TradeManager ID of the alarm contact.
 	ChannelsAliim *string `pulumi:"channelsAliim"`
@@ -143,7 +143,7 @@ type alarmContactState struct {
 }
 
 type AlarmContactState struct {
-	// The name of the alarm contact.
+	// The name of the alarm contact. The length should between 2 and 40 characters.
 	AlarmContactName pulumi.StringPtrInput
 	// The TradeManager ID of the alarm contact.
 	ChannelsAliim pulumi.StringPtrInput
@@ -164,7 +164,7 @@ func (AlarmContactState) ElementType() reflect.Type {
 }
 
 type alarmContactArgs struct {
-	// The name of the alarm contact.
+	// The name of the alarm contact. The length should between 2 and 40 characters.
 	AlarmContactName string `pulumi:"alarmContactName"`
 	// The TradeManager ID of the alarm contact.
 	ChannelsAliim *string `pulumi:"channelsAliim"`
@@ -182,7 +182,7 @@ type alarmContactArgs struct {
 
 // The set of arguments for constructing a AlarmContact resource.
 type AlarmContactArgs struct {
-	// The name of the alarm contact.
+	// The name of the alarm contact. The length should between 2 and 40 characters.
 	AlarmContactName pulumi.StringInput
 	// The TradeManager ID of the alarm contact.
 	ChannelsAliim pulumi.StringPtrInput

@@ -94,7 +94,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly dbNodeClass!: pulumi.Output<string>;
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
      * **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     public readonly dbNodeCount!: pulumi.Output<number | undefined>;
@@ -149,9 +149,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The virtual switch ID to launch DB instances in one VPC.  
+     * **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    public readonly vswitchId!: pulumi.Output<string>;
     /**
      * The Zone to launch the DB cluster. it supports multiple zone.
      */
@@ -248,7 +249,7 @@ export interface ClusterState {
      */
     readonly dbNodeClass?: pulumi.Input<string>;
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
      * **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     readonly dbNodeCount?: pulumi.Input<number>;
@@ -303,7 +304,8 @@ export interface ClusterState {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The virtual switch ID to launch DB instances in one VPC.  
+     * **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
@@ -329,7 +331,7 @@ export interface ClusterArgs {
      */
     readonly dbNodeClass: pulumi.Input<string>;
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
      * **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     readonly dbNodeCount?: pulumi.Input<number>;
@@ -384,7 +386,8 @@ export interface ClusterArgs {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The virtual switch ID to launch DB instances in one VPC.  
+     * **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**

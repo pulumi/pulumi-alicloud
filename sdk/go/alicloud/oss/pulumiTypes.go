@@ -144,12 +144,18 @@ func (o BucketCorsRuleArrayOutput) Index(i pulumi.IntInput) BucketCorsRuleOutput
 }
 
 type BucketLifecycleRule struct {
+	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+	AbortMultipartUploads []BucketLifecycleRuleAbortMultipartUpload `pulumi:"abortMultipartUploads"`
 	// Specifies lifecycle rule status.
 	Enabled bool `pulumi:"enabled"`
 	// Specifies a period in the object's expire (documented below).
 	Expirations []BucketLifecycleRuleExpiration `pulumi:"expirations"`
 	// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 	Id *string `pulumi:"id"`
+	// Specifies when noncurrent object versions expire (documented below).
+	NoncurrentVersionExpirations []BucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpirations"`
+	// Specifies when noncurrent object versions transitions (documented below).
+	NoncurrentVersionTransitions []BucketLifecycleRuleNoncurrentVersionTransition `pulumi:"noncurrentVersionTransitions"`
 	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
 	Prefix *string `pulumi:"prefix"`
 	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
@@ -168,12 +174,18 @@ type BucketLifecycleRuleInput interface {
 }
 
 type BucketLifecycleRuleArgs struct {
+	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+	AbortMultipartUploads BucketLifecycleRuleAbortMultipartUploadArrayInput `pulumi:"abortMultipartUploads"`
 	// Specifies lifecycle rule status.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Specifies a period in the object's expire (documented below).
 	Expirations BucketLifecycleRuleExpirationArrayInput `pulumi:"expirations"`
 	// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Specifies when noncurrent object versions expire (documented below).
+	NoncurrentVersionExpirations BucketLifecycleRuleNoncurrentVersionExpirationArrayInput `pulumi:"noncurrentVersionExpirations"`
+	// Specifies when noncurrent object versions transitions (documented below).
+	NoncurrentVersionTransitions BucketLifecycleRuleNoncurrentVersionTransitionArrayInput `pulumi:"noncurrentVersionTransitions"`
 	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
@@ -231,6 +243,11 @@ func (o BucketLifecycleRuleOutput) ToBucketLifecycleRuleOutputWithContext(ctx co
 	return o
 }
 
+// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
+func (o BucketLifecycleRuleOutput) AbortMultipartUploads() BucketLifecycleRuleAbortMultipartUploadArrayOutput {
+	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleAbortMultipartUpload { return v.AbortMultipartUploads }).(BucketLifecycleRuleAbortMultipartUploadArrayOutput)
+}
+
 // Specifies lifecycle rule status.
 func (o BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -244,6 +261,20 @@ func (o BucketLifecycleRuleOutput) Expirations() BucketLifecycleRuleExpirationAr
 // Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 func (o BucketLifecycleRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Specifies when noncurrent object versions expire (documented below).
+func (o BucketLifecycleRuleOutput) NoncurrentVersionExpirations() BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput {
+	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleNoncurrentVersionExpiration {
+		return v.NoncurrentVersionExpirations
+	}).(BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput)
+}
+
+// Specifies when noncurrent object versions transitions (documented below).
+func (o BucketLifecycleRuleOutput) NoncurrentVersionTransitions() BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput {
+	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleNoncurrentVersionTransition {
+		return v.NoncurrentVersionTransitions
+	}).(BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput)
 }
 
 // Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
@@ -276,11 +307,120 @@ func (o BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) BucketLifecycle
 	}).(BucketLifecycleRuleOutput)
 }
 
+type BucketLifecycleRuleAbortMultipartUpload struct {
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
+	// Specifies the number of days noncurrent object versions transition.
+	Days *int `pulumi:"days"`
+}
+
+// BucketLifecycleRuleAbortMultipartUploadInput is an input type that accepts BucketLifecycleRuleAbortMultipartUploadArgs and BucketLifecycleRuleAbortMultipartUploadOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleAbortMultipartUploadInput` via:
+//
+//          BucketLifecycleRuleAbortMultipartUploadArgs{...}
+type BucketLifecycleRuleAbortMultipartUploadInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleAbortMultipartUploadOutput() BucketLifecycleRuleAbortMultipartUploadOutput
+	ToBucketLifecycleRuleAbortMultipartUploadOutputWithContext(context.Context) BucketLifecycleRuleAbortMultipartUploadOutput
+}
+
+type BucketLifecycleRuleAbortMultipartUploadArgs struct {
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
+	// Specifies the number of days noncurrent object versions transition.
+	Days pulumi.IntPtrInput `pulumi:"days"`
+}
+
+func (BucketLifecycleRuleAbortMultipartUploadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleAbortMultipartUpload)(nil)).Elem()
+}
+
+func (i BucketLifecycleRuleAbortMultipartUploadArgs) ToBucketLifecycleRuleAbortMultipartUploadOutput() BucketLifecycleRuleAbortMultipartUploadOutput {
+	return i.ToBucketLifecycleRuleAbortMultipartUploadOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleAbortMultipartUploadArgs) ToBucketLifecycleRuleAbortMultipartUploadOutputWithContext(ctx context.Context) BucketLifecycleRuleAbortMultipartUploadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleAbortMultipartUploadOutput)
+}
+
+// BucketLifecycleRuleAbortMultipartUploadArrayInput is an input type that accepts BucketLifecycleRuleAbortMultipartUploadArray and BucketLifecycleRuleAbortMultipartUploadArrayOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleAbortMultipartUploadArrayInput` via:
+//
+//          BucketLifecycleRuleAbortMultipartUploadArray{ BucketLifecycleRuleAbortMultipartUploadArgs{...} }
+type BucketLifecycleRuleAbortMultipartUploadArrayInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleAbortMultipartUploadArrayOutput() BucketLifecycleRuleAbortMultipartUploadArrayOutput
+	ToBucketLifecycleRuleAbortMultipartUploadArrayOutputWithContext(context.Context) BucketLifecycleRuleAbortMultipartUploadArrayOutput
+}
+
+type BucketLifecycleRuleAbortMultipartUploadArray []BucketLifecycleRuleAbortMultipartUploadInput
+
+func (BucketLifecycleRuleAbortMultipartUploadArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketLifecycleRuleAbortMultipartUpload)(nil)).Elem()
+}
+
+func (i BucketLifecycleRuleAbortMultipartUploadArray) ToBucketLifecycleRuleAbortMultipartUploadArrayOutput() BucketLifecycleRuleAbortMultipartUploadArrayOutput {
+	return i.ToBucketLifecycleRuleAbortMultipartUploadArrayOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleAbortMultipartUploadArray) ToBucketLifecycleRuleAbortMultipartUploadArrayOutputWithContext(ctx context.Context) BucketLifecycleRuleAbortMultipartUploadArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleAbortMultipartUploadArrayOutput)
+}
+
+type BucketLifecycleRuleAbortMultipartUploadOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleAbortMultipartUploadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleAbortMultipartUpload)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleAbortMultipartUploadOutput) ToBucketLifecycleRuleAbortMultipartUploadOutput() BucketLifecycleRuleAbortMultipartUploadOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleAbortMultipartUploadOutput) ToBucketLifecycleRuleAbortMultipartUploadOutputWithContext(ctx context.Context) BucketLifecycleRuleAbortMultipartUploadOutput {
+	return o
+}
+
+// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+func (o BucketLifecycleRuleAbortMultipartUploadOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleAbortMultipartUpload) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of days noncurrent object versions transition.
+func (o BucketLifecycleRuleAbortMultipartUploadOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleAbortMultipartUpload) *int { return v.Days }).(pulumi.IntPtrOutput)
+}
+
+type BucketLifecycleRuleAbortMultipartUploadArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleAbortMultipartUploadArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketLifecycleRuleAbortMultipartUpload)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleAbortMultipartUploadArrayOutput) ToBucketLifecycleRuleAbortMultipartUploadArrayOutput() BucketLifecycleRuleAbortMultipartUploadArrayOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleAbortMultipartUploadArrayOutput) ToBucketLifecycleRuleAbortMultipartUploadArrayOutputWithContext(ctx context.Context) BucketLifecycleRuleAbortMultipartUploadArrayOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleAbortMultipartUploadArrayOutput) Index(i pulumi.IntInput) BucketLifecycleRuleAbortMultipartUploadOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketLifecycleRuleAbortMultipartUpload {
+		return vs[0].([]BucketLifecycleRuleAbortMultipartUpload)[vs[1].(int)]
+	}).(BucketLifecycleRuleAbortMultipartUploadOutput)
+}
+
 type BucketLifecycleRuleExpiration struct {
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
 	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 	Date *string `pulumi:"date"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	Days *int `pulumi:"days"`
+	// Specifies the number of days noncurrent object versions transition.
+	Days                      *int  `pulumi:"days"`
+	ExpiredObjectDeleteMarker *bool `pulumi:"expiredObjectDeleteMarker"`
 }
 
 // BucketLifecycleRuleExpirationInput is an input type that accepts BucketLifecycleRuleExpirationArgs and BucketLifecycleRuleExpirationOutput values.
@@ -295,10 +435,13 @@ type BucketLifecycleRuleExpirationInput interface {
 }
 
 type BucketLifecycleRuleExpirationArgs struct {
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
 	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 	Date pulumi.StringPtrInput `pulumi:"date"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	Days pulumi.IntPtrInput `pulumi:"days"`
+	// Specifies the number of days noncurrent object versions transition.
+	Days                      pulumi.IntPtrInput  `pulumi:"days"`
+	ExpiredObjectDeleteMarker pulumi.BoolPtrInput `pulumi:"expiredObjectDeleteMarker"`
 }
 
 func (BucketLifecycleRuleExpirationArgs) ElementType() reflect.Type {
@@ -352,14 +495,23 @@ func (o BucketLifecycleRuleExpirationOutput) ToBucketLifecycleRuleExpirationOutp
 	return o
 }
 
+// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+func (o BucketLifecycleRuleExpirationOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
+}
+
 // Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 func (o BucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days after object creation when the specific rule action takes effect.
+// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+}
+
+func (o BucketLifecycleRuleExpirationOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *bool { return v.ExpiredObjectDeleteMarker }).(pulumi.BoolPtrOutput)
 }
 
 type BucketLifecycleRuleExpirationArrayOutput struct{ *pulumi.OutputState }
@@ -382,10 +534,213 @@ func (o BucketLifecycleRuleExpirationArrayOutput) Index(i pulumi.IntInput) Bucke
 	}).(BucketLifecycleRuleExpirationOutput)
 }
 
+type BucketLifecycleRuleNoncurrentVersionExpiration struct {
+	// Specifies the number of days noncurrent object versions transition.
+	Days int `pulumi:"days"`
+}
+
+// BucketLifecycleRuleNoncurrentVersionExpirationInput is an input type that accepts BucketLifecycleRuleNoncurrentVersionExpirationArgs and BucketLifecycleRuleNoncurrentVersionExpirationOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleNoncurrentVersionExpirationInput` via:
+//
+//          BucketLifecycleRuleNoncurrentVersionExpirationArgs{...}
+type BucketLifecycleRuleNoncurrentVersionExpirationInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleNoncurrentVersionExpirationOutput() BucketLifecycleRuleNoncurrentVersionExpirationOutput
+	ToBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(context.Context) BucketLifecycleRuleNoncurrentVersionExpirationOutput
+}
+
+type BucketLifecycleRuleNoncurrentVersionExpirationArgs struct {
+	// Specifies the number of days noncurrent object versions transition.
+	Days pulumi.IntInput `pulumi:"days"`
+}
+
+func (BucketLifecycleRuleNoncurrentVersionExpirationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (i BucketLifecycleRuleNoncurrentVersionExpirationArgs) ToBucketLifecycleRuleNoncurrentVersionExpirationOutput() BucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return i.ToBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleNoncurrentVersionExpirationArgs) ToBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(ctx context.Context) BucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleNoncurrentVersionExpirationOutput)
+}
+
+// BucketLifecycleRuleNoncurrentVersionExpirationArrayInput is an input type that accepts BucketLifecycleRuleNoncurrentVersionExpirationArray and BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleNoncurrentVersionExpirationArrayInput` via:
+//
+//          BucketLifecycleRuleNoncurrentVersionExpirationArray{ BucketLifecycleRuleNoncurrentVersionExpirationArgs{...} }
+type BucketLifecycleRuleNoncurrentVersionExpirationArrayInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleNoncurrentVersionExpirationArrayOutput() BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput
+	ToBucketLifecycleRuleNoncurrentVersionExpirationArrayOutputWithContext(context.Context) BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput
+}
+
+type BucketLifecycleRuleNoncurrentVersionExpirationArray []BucketLifecycleRuleNoncurrentVersionExpirationInput
+
+func (BucketLifecycleRuleNoncurrentVersionExpirationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (i BucketLifecycleRuleNoncurrentVersionExpirationArray) ToBucketLifecycleRuleNoncurrentVersionExpirationArrayOutput() BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput {
+	return i.ToBucketLifecycleRuleNoncurrentVersionExpirationArrayOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleNoncurrentVersionExpirationArray) ToBucketLifecycleRuleNoncurrentVersionExpirationArrayOutputWithContext(ctx context.Context) BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput)
+}
+
+type BucketLifecycleRuleNoncurrentVersionExpirationOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleNoncurrentVersionExpirationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) ToBucketLifecycleRuleNoncurrentVersionExpirationOutput() BucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) ToBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(ctx context.Context) BucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return o
+}
+
+// Specifies the number of days noncurrent object versions transition.
+func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) Days() pulumi.IntOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionExpiration) int { return v.Days }).(pulumi.IntOutput)
+}
+
+type BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput) ToBucketLifecycleRuleNoncurrentVersionExpirationArrayOutput() BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput) ToBucketLifecycleRuleNoncurrentVersionExpirationArrayOutputWithContext(ctx context.Context) BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput) Index(i pulumi.IntInput) BucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketLifecycleRuleNoncurrentVersionExpiration {
+		return vs[0].([]BucketLifecycleRuleNoncurrentVersionExpiration)[vs[1].(int)]
+	}).(BucketLifecycleRuleNoncurrentVersionExpirationOutput)
+}
+
+type BucketLifecycleRuleNoncurrentVersionTransition struct {
+	// Specifies the number of days noncurrent object versions transition.
+	Days int `pulumi:"days"`
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+	StorageClass string `pulumi:"storageClass"`
+}
+
+// BucketLifecycleRuleNoncurrentVersionTransitionInput is an input type that accepts BucketLifecycleRuleNoncurrentVersionTransitionArgs and BucketLifecycleRuleNoncurrentVersionTransitionOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleNoncurrentVersionTransitionInput` via:
+//
+//          BucketLifecycleRuleNoncurrentVersionTransitionArgs{...}
+type BucketLifecycleRuleNoncurrentVersionTransitionInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleNoncurrentVersionTransitionOutput() BucketLifecycleRuleNoncurrentVersionTransitionOutput
+	ToBucketLifecycleRuleNoncurrentVersionTransitionOutputWithContext(context.Context) BucketLifecycleRuleNoncurrentVersionTransitionOutput
+}
+
+type BucketLifecycleRuleNoncurrentVersionTransitionArgs struct {
+	// Specifies the number of days noncurrent object versions transition.
+	Days pulumi.IntInput `pulumi:"days"`
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+}
+
+func (BucketLifecycleRuleNoncurrentVersionTransitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionTransition)(nil)).Elem()
+}
+
+func (i BucketLifecycleRuleNoncurrentVersionTransitionArgs) ToBucketLifecycleRuleNoncurrentVersionTransitionOutput() BucketLifecycleRuleNoncurrentVersionTransitionOutput {
+	return i.ToBucketLifecycleRuleNoncurrentVersionTransitionOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleNoncurrentVersionTransitionArgs) ToBucketLifecycleRuleNoncurrentVersionTransitionOutputWithContext(ctx context.Context) BucketLifecycleRuleNoncurrentVersionTransitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleNoncurrentVersionTransitionOutput)
+}
+
+// BucketLifecycleRuleNoncurrentVersionTransitionArrayInput is an input type that accepts BucketLifecycleRuleNoncurrentVersionTransitionArray and BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput values.
+// You can construct a concrete instance of `BucketLifecycleRuleNoncurrentVersionTransitionArrayInput` via:
+//
+//          BucketLifecycleRuleNoncurrentVersionTransitionArray{ BucketLifecycleRuleNoncurrentVersionTransitionArgs{...} }
+type BucketLifecycleRuleNoncurrentVersionTransitionArrayInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleRuleNoncurrentVersionTransitionArrayOutput() BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput
+	ToBucketLifecycleRuleNoncurrentVersionTransitionArrayOutputWithContext(context.Context) BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput
+}
+
+type BucketLifecycleRuleNoncurrentVersionTransitionArray []BucketLifecycleRuleNoncurrentVersionTransitionInput
+
+func (BucketLifecycleRuleNoncurrentVersionTransitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketLifecycleRuleNoncurrentVersionTransition)(nil)).Elem()
+}
+
+func (i BucketLifecycleRuleNoncurrentVersionTransitionArray) ToBucketLifecycleRuleNoncurrentVersionTransitionArrayOutput() BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput {
+	return i.ToBucketLifecycleRuleNoncurrentVersionTransitionArrayOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleRuleNoncurrentVersionTransitionArray) ToBucketLifecycleRuleNoncurrentVersionTransitionArrayOutputWithContext(ctx context.Context) BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput)
+}
+
+type BucketLifecycleRuleNoncurrentVersionTransitionOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleNoncurrentVersionTransitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionTransition)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ToBucketLifecycleRuleNoncurrentVersionTransitionOutput() BucketLifecycleRuleNoncurrentVersionTransitionOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ToBucketLifecycleRuleNoncurrentVersionTransitionOutputWithContext(ctx context.Context) BucketLifecycleRuleNoncurrentVersionTransitionOutput {
+	return o
+}
+
+// Specifies the number of days noncurrent object versions transition.
+func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) Days() pulumi.IntOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) int { return v.Days }).(pulumi.IntOutput)
+}
+
+// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+type BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketLifecycleRuleNoncurrentVersionTransition)(nil)).Elem()
+}
+
+func (o BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput) ToBucketLifecycleRuleNoncurrentVersionTransitionArrayOutput() BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput) ToBucketLifecycleRuleNoncurrentVersionTransitionArrayOutputWithContext(ctx context.Context) BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput {
+	return o
+}
+
+func (o BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput) Index(i pulumi.IntInput) BucketLifecycleRuleNoncurrentVersionTransitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketLifecycleRuleNoncurrentVersionTransition {
+		return vs[0].([]BucketLifecycleRuleNoncurrentVersionTransition)[vs[1].(int)]
+	}).(BucketLifecycleRuleNoncurrentVersionTransitionOutput)
+}
+
 type BucketLifecycleRuleTransition struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
+	// Specifies the number of days noncurrent object versions transition.
 	Days *int `pulumi:"days"`
 	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
 	StorageClass *string `pulumi:"storageClass"`
@@ -403,9 +758,9 @@ type BucketLifecycleRuleTransitionInput interface {
 }
 
 type BucketLifecycleRuleTransitionArgs struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
+	// Specifies the number of days noncurrent object versions transition.
 	Days pulumi.IntPtrInput `pulumi:"days"`
 	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
@@ -462,12 +817,12 @@ func (o BucketLifecycleRuleTransitionOutput) ToBucketLifecycleRuleTransitionOutp
 	return o
 }
 
-// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 func (o BucketLifecycleRuleTransitionOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days after object creation when the specific rule action takes effect.
+// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleTransitionOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
@@ -2966,8 +3321,14 @@ func init() {
 	pulumi.RegisterOutputType(BucketCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleArrayOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleAbortMultipartUploadOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleAbortMultipartUploadArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleExpirationOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleExpirationArrayOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleNoncurrentVersionExpirationOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleNoncurrentVersionTransitionOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleTransitionOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleTransitionArrayOutput{})
 	pulumi.RegisterOutputType(BucketLoggingOutput{})

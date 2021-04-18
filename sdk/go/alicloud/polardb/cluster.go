@@ -97,7 +97,7 @@ type Cluster struct {
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].\
 	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrOutput `pulumi:"dbNodeCount"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -126,8 +126,9 @@ type Cluster struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The virtual switch ID to launch DB instances in one VPC.
-	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	// The virtual switch ID to launch DB instances in one VPC.\
+	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
+	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -178,7 +179,7 @@ type clusterState struct {
 	ConnectionString *string `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass *string `pulumi:"dbNodeClass"`
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].\
 	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -207,7 +208,8 @@ type clusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The virtual switch ID to launch DB instances in one VPC.
+	// The virtual switch ID to launch DB instances in one VPC.\
+	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId *string `pulumi:"zoneId"`
@@ -222,7 +224,7 @@ type ClusterState struct {
 	ConnectionString pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringPtrInput
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].\
 	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -251,7 +253,8 @@ type ClusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// The virtual switch ID to launch DB instances in one VPC.
+	// The virtual switch ID to launch DB instances in one VPC.\
+	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId pulumi.StringPtrInput
@@ -268,7 +271,7 @@ type clusterArgs struct {
 	CollectorStatus *string `pulumi:"collectorStatus"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass string `pulumi:"dbNodeClass"`
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].\
 	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -297,7 +300,8 @@ type clusterArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The virtual switch ID to launch DB instances in one VPC.
+	// The virtual switch ID to launch DB instances in one VPC.\
+	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId *string `pulumi:"zoneId"`
@@ -311,7 +315,7 @@ type ClusterArgs struct {
 	CollectorStatus pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringInput
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].\
 	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -340,7 +344,8 @@ type ClusterArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// The virtual switch ID to launch DB instances in one VPC.
+	// The virtual switch ID to launch DB instances in one VPC.\
+	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId pulumi.StringPtrInput
