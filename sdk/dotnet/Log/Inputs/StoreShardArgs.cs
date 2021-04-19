@@ -9,26 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Log.Inputs
 {
-
-    public sealed class StoreShardArgs : Pulumi.ResourceArgs
-    {
-        [Input("beginKey")]
-        public Input<string>? BeginKey { get; set; }
-
-        [Input("endKey")]
-        public Input<string>? EndKey { get; set; }
-
-        /// <summary>
-        /// The ID of the log project. It formats of `&lt;project&gt;:&lt;name&gt;`.
-        /// </summary>
-        [Input("id")]
-        public Input<int>? Id { get; set; }
-
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        public StoreShardArgs()
-        {
-        }
-    }
 }

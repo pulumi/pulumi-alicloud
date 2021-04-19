@@ -2,9 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.121.2 of the AliCloud Terraform Provider
+_(none)_
 
 ---
+
+## 3.0.0 (2021-04-19)
+* Upgrade to v1.121.2 of the AliCloud Terraform Provider
+* Depend on Pulumi 3.0, which includes improvements to Python resource arguments and key translation, Go SDK performance,
+  Node SDK performance, general availability of Automation API, and more.
 
 ## 2.39.1 (2021-04-14)
 * Upgrade to v1.121.1 of the AliCloud Terraform Provider

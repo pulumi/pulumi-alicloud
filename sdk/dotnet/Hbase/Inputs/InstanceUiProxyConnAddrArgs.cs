@@ -9,20 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Hbase.Inputs
 {
-
-    public sealed class InstanceUiProxyConnAddrArgs : Pulumi.ResourceArgs
-    {
-        [Input("connAddr")]
-        public Input<string>? ConnAddr { get; set; }
-
-        [Input("connAddrPort")]
-        public Input<string>? ConnAddrPort { get; set; }
-
-        [Input("netType")]
-        public Input<string>? NetType { get; set; }
-
-        public InstanceUiProxyConnAddrArgs()
-        {
-        }
-    }
 }

@@ -9,29 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CR.Inputs
 {
-
-    public sealed class RepoDomainListArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Domain of internal endpoint, only in some regions.
-        /// </summary>
-        [Input("internal")]
-        public Input<string>? Internal { get; set; }
-
-        /// <summary>
-        /// Domain of public endpoint.
-        /// </summary>
-        [Input("public")]
-        public Input<string>? Public { get; set; }
-
-        /// <summary>
-        /// Domain of vpc endpoint.
-        /// </summary>
-        [Input("vpc")]
-        public Input<string>? Vpc { get; set; }
-
-        public RepoDomainListArgs()
-        {
-        }
-    }
 }

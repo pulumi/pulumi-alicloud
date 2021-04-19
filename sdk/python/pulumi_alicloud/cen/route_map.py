@@ -945,9 +945,7 @@ class RouteMap(pulumi.CustomResource):
                  source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transmit_direction: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         This topic provides an overview of the route map function of Cloud Enterprise Networks (CENs).
         You can use the route map function to filter routes and modify route attributes.
@@ -1182,15 +1180,7 @@ class RouteMap(pulumi.CustomResource):
                  source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transmit_direction: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

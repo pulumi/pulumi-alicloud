@@ -161,9 +161,7 @@ class SamlProvider(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encodedsaml_metadata_document: Optional[pulumi.Input[str]] = None,
                  saml_provider_name: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Provides a RAM SAML Provider resource.
 
@@ -252,15 +250,7 @@ class SamlProvider(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encodedsaml_metadata_document: Optional[pulumi.Input[str]] = None,
                  saml_provider_name: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -421,9 +421,7 @@ class Rule(pulumi.CustomResource):
                  source_identifier: Optional[pulumi.Input[str]] = None,
                  source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  source_owner: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Provides a a Alicloud Config Rule resource. Cloud Config checks the validity of resources based on rules. You can create rules to evaluate resources as needed.
         For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/en/doc-detail/127388.htm).
@@ -552,15 +550,7 @@ class Rule(pulumi.CustomResource):
                  source_identifier: Optional[pulumi.Input[str]] = None,
                  source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  source_owner: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
