@@ -52,7 +52,6 @@ class DBClusterArgs:
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -291,9 +290,6 @@ class DBClusterArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -420,7 +416,6 @@ class _DBClusterState:
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -678,9 +673,6 @@ class _DBClusterState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -831,7 +823,7 @@ class DBCluster(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         this = alicloud.adb.DBCluster("this",
             db_cluster_category="Cluster",
@@ -880,7 +872,6 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -925,7 +916,7 @@ class DBCluster(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         this = alicloud.adb.DBCluster("this",
             db_cluster_category="Cluster",
@@ -1094,7 +1085,6 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1266,9 +1256,6 @@ class DBCluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
-        """
-        The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        """
         return pulumi.get(self, "period")
 
     @property

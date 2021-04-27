@@ -178,11 +178,6 @@ namespace Pulumi.AliCloud.Ecs
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
-        /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-        /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-        /// - [1-3] when `period_unit` in "Week"
-        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -542,11 +537,6 @@ namespace Pulumi.AliCloud.Ecs
         [Input("password")]
         public Input<string>? Password { get; set; }
 
-        /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-        /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-        /// - [1-3] when `period_unit` in "Week"
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -879,11 +869,6 @@ namespace Pulumi.AliCloud.Ecs
         [Input("password")]
         public Input<string>? Password { get; set; }
 
-        /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-        /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-        /// - [1-3] when `period_unit` in "Week"
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

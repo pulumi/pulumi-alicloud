@@ -206,7 +206,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         main_switch = alicloud.vpc.Switch("mainSwitch",
             vpc_id=main_network.id,
             cidr_block="172.16.0.0/16",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         group_security_group = alicloud.ecs.SecurityGroup("groupSecurityGroup", vpc_id=main_network.id)
         instance_instance = []
@@ -341,7 +341,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         main_switch = alicloud.vpc.Switch("mainSwitch",
             vpc_id=main_network.id,
             cidr_block="172.16.0.0/16",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         group_security_group = alicloud.ecs.SecurityGroup("groupSecurityGroup", vpc_id=main_network.id)
         instance_instance = []

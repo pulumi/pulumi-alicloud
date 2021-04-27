@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
     ///         {

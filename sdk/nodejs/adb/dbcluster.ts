@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *     vswitchName: name,
  * });
  * const _this = new alicloud.adb.DBCluster("this", {
@@ -160,9 +160,6 @@ export class DBCluster extends pulumi.CustomResource {
      * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
-    /**
-     * The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -342,9 +339,6 @@ export interface DBClusterState {
      * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
     readonly paymentType?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -444,9 +438,6 @@ export interface DBClusterArgs {
      * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
     readonly paymentType?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.

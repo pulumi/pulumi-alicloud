@@ -84,10 +84,10 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:            vpc.ID(),
-// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName:      pulumi.String(name),
+// 			VpcId:       vpc.ID(),
+// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
+// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+// 			VswitchName: pulumi.String(name),
 // 		}, pulumi.Provider(alicloud.Hz))
 // 		if err != nil {
 // 			return err

@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Adb
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///             VswitchName = name,
     ///         });
     ///         var @this = new AliCloud.Adb.DBCluster("this", new AliCloud.Adb.DBClusterArgs
@@ -183,9 +183,6 @@ namespace Pulumi.AliCloud.Adb
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
-        /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -369,9 +366,6 @@ namespace Pulumi.AliCloud.Adb
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
-        /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -528,9 +522,6 @@ namespace Pulumi.AliCloud.Adb
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
-        /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

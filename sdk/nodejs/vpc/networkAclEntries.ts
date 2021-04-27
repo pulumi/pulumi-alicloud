@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
  * const defaultNetworkAclAttachment = new alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment", {
  *     networkAclId: defaultNetworkAcl.id,

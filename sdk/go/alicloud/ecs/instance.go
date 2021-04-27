@@ -86,10 +86,7 @@ type Instance struct {
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
-	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
-	// - [1-3] when `periodUnit` in "Week"
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period   pulumi.IntPtrOutput    `pulumi:"period"`
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
@@ -250,10 +247,7 @@ type instanceState struct {
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password *string `pulumi:"password"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
-	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
-	// - [1-3] when `periodUnit` in "Week"
-	Period *int `pulumi:"period"`
+	Period   *int    `pulumi:"period"`
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
@@ -377,10 +371,7 @@ type InstanceState struct {
 	KmsEncryptionContext pulumi.MapInput
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
-	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
-	// - [1-3] when `periodUnit` in "Week"
-	Period pulumi.IntPtrInput
+	Period   pulumi.IntPtrInput
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit pulumi.StringPtrInput
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
@@ -508,10 +499,7 @@ type instanceArgs struct {
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password *string `pulumi:"password"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
-	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
-	// - [1-3] when `periodUnit` in "Week"
-	Period *int `pulumi:"period"`
+	Period   *int    `pulumi:"period"`
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
@@ -634,10 +622,7 @@ type InstanceArgs struct {
 	KmsEncryptionContext pulumi.MapInput
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
-	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
-	// - [1-3] when `periodUnit` in "Week"
-	Period pulumi.IntPtrInput
+	Period   pulumi.IntPtrInput
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit pulumi.StringPtrInput
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.

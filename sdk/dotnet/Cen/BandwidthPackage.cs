@@ -109,9 +109,6 @@ namespace Pulumi.AliCloud.Cen
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
-        /// <summary>
-        /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
-        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -228,9 +225,6 @@ namespace Pulumi.AliCloud.Cen
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
-        /// <summary>
-        /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -308,9 +302,6 @@ namespace Pulumi.AliCloud.Cen
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
-        /// <summary>
-        /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

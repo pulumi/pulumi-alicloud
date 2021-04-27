@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Slb
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/21",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///             VswitchName = name,
     ///         });
     ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
@@ -140,9 +140,6 @@ namespace Pulumi.AliCloud.Slb
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -286,9 +283,6 @@ namespace Pulumi.AliCloud.Slb
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -399,9 +393,6 @@ namespace Pulumi.AliCloud.Slb
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

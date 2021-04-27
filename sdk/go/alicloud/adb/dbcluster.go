@@ -58,10 +58,10 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:            defaultNetwork.ID(),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName:      pulumi.String(name),
+// 			VpcId:       defaultNetwork.ID(),
+// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
+// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+// 			VswitchName: pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -139,8 +139,7 @@ type DBCluster struct {
 	PayType pulumi.StringOutput `pulumi:"payType"`
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
 	// The ID of the resource group.
@@ -228,8 +227,7 @@ type dbclusterState struct {
 	PayType *string `pulumi:"payType"`
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period *int `pulumi:"period"`
+	Period      *int    `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of the resource group.
@@ -283,8 +281,7 @@ type DBClusterState struct {
 	PayType pulumi.StringPtrInput
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
-	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrInput
+	Period      pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of the resource group.
@@ -340,8 +337,7 @@ type dbclusterArgs struct {
 	PayType *string `pulumi:"payType"`
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period *int `pulumi:"period"`
+	Period      *int    `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of the resource group.
@@ -392,8 +388,7 @@ type DBClusterArgs struct {
 	PayType pulumi.StringPtrInput
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
-	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrInput
+	Period      pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of the resource group.

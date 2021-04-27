@@ -24,7 +24,6 @@ class DBAuditInstanceArgs:
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[str] plan_code: Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         :param pulumi.Input[str] vswitch_id: vSwtich ID configured to audit
-        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -77,9 +76,6 @@ class DBAuditInstanceArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -123,7 +119,6 @@ class _DBAuditInstanceState:
         """
         Input properties used for looking up and filtering DBAuditInstance resources.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] plan_code: Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -157,9 +152,6 @@ class _DBAuditInstanceState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -262,7 +254,6 @@ class DBAuditInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] plan_code: Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -375,7 +366,6 @@ class DBAuditInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] plan_code: Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -404,9 +394,6 @@ class DBAuditInstance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
-        """
-        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-        """
         return pulumi.get(self, "period")
 
     @property

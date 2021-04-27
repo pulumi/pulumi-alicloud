@@ -52,9 +52,9 @@ import (
 // 			return err
 // 		}
 // 		vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// 			CidrBlock:        pulumi.String("192.168.0.0/24"),
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			VpcId:            vpc.ID(),
+// 			CidrBlock: pulumi.String("192.168.0.0/24"),
+// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+// 			VpcId:     vpc.ID(),
 // 		})
 // 		if err != nil {
 // 			return err

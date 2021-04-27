@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
  *     cidrBlock: "192.168.0.0/24",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *     vpcId: vpc.id,
  * });
  * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});

@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
  * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
  *     dbType: "MySQL",
@@ -126,9 +126,6 @@ export class Cluster extends pulumi.CustomResource {
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
      */
     public readonly payType!: pulumi.Output<string | undefined>;
-    /**
-     * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -148,6 +145,12 @@ export class Cluster extends pulumi.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+     * **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     */
+    public readonly tdeStatus!: pulumi.Output<string | undefined>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.  
      * **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
@@ -188,6 +191,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityIps"] = state ? state.securityIps : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -217,6 +221,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityIps"] = args ? args.securityIps : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["connectionString"] = undefined /*out*/;
@@ -281,9 +286,6 @@ export interface ClusterState {
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
      */
     readonly payType?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -303,6 +305,12 @@ export interface ClusterState {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+     * **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     */
+    readonly tdeStatus?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.  
      * **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
@@ -363,9 +371,6 @@ export interface ClusterArgs {
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
      */
     readonly payType?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -385,6 +390,12 @@ export interface ClusterArgs {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+     * **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     */
+    readonly tdeStatus?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.  
      * **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.

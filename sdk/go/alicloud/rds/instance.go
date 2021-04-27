@@ -54,9 +54,9 @@ import (
 // 			return err
 // 		}
 // 		exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-// 			VpcId:            exampleNetwork.ID(),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
-// 			AvailabilityZone: pulumi.String(exampleZones.Zones[0].Id),
+// 			VpcId:     exampleNetwork.ID(),
+// 			CidrBlock: pulumi.String("172.16.0.0/24"),
+// 			ZoneId:    pulumi.String(exampleZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -134,8 +134,7 @@ type Instance struct {
 	MonitoringPeriod pulumi.IntOutput `pulumi:"monitoringPeriod"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
-	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period     pulumi.IntPtrOutput          `pulumi:"period"`
 	// RDS database connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The ID of resource group which the DB instance belongs.
@@ -262,8 +261,7 @@ type instanceState struct {
 	MonitoringPeriod *int `pulumi:"monitoringPeriod"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters []InstanceParameter `pulumi:"parameters"`
-	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period *int `pulumi:"period"`
+	Period     *int                `pulumi:"period"`
 	// RDS database connection port.
 	Port *string `pulumi:"port"`
 	// The ID of resource group which the DB instance belongs.
@@ -350,8 +348,7 @@ type InstanceState struct {
 	MonitoringPeriod pulumi.IntPtrInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayInput
-	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrInput
+	Period     pulumi.IntPtrInput
 	// RDS database connection port.
 	Port pulumi.StringPtrInput
 	// The ID of resource group which the DB instance belongs.
@@ -440,8 +437,7 @@ type instanceArgs struct {
 	MonitoringPeriod *int `pulumi:"monitoringPeriod"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters []InstanceParameter `pulumi:"parameters"`
-	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period *int `pulumi:"period"`
+	Period     *int                `pulumi:"period"`
 	// The ID of resource group which the DB instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
@@ -523,8 +519,7 @@ type InstanceArgs struct {
 	MonitoringPeriod pulumi.IntPtrInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayInput
-	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrInput
+	Period     pulumi.IntPtrInput
 	// The ID of resource group which the DB instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.

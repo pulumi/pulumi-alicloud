@@ -215,6 +215,8 @@ github.com/aliyun/terraform-provider-alicloud v1.121.1 h1:BM+4kVpHwe4pu5JoFfDgCD
 github.com/aliyun/terraform-provider-alicloud v1.121.1/go.mod h1:g+OmcVceU+I7TSnAR/g7eDMmhQxWnoQVdDroXf/95mM=
 github.com/aliyun/terraform-provider-alicloud v1.121.2 h1:zog5tNnFyYVXIjEEejO+88niVGtv/I7uw6rDHcZedPI=
 github.com/aliyun/terraform-provider-alicloud v1.121.2/go.mod h1:SB84kjt1wZ4bVI1t80OuXs+fMQpUfUfKMENKl/nOXeY=
+github.com/aliyun/terraform-provider-alicloud v1.121.3 h1:dcZY50mCDJwDySG5cv+9dh6B+0OpVFPSCdJJX0s6Q+M=
+github.com/aliyun/terraform-provider-alicloud v1.121.3/go.mod h1:SB84kjt1wZ4bVI1t80OuXs+fMQpUfUfKMENKl/nOXeY=
 github.com/andybalholm/brotli v1.0.1 h1:KqhlKozYbRtJvsPrrEeXcO+N2l6NYT5A2QAFmSULpEc=
 github.com/andybalholm/brotli v1.0.1/go.mod h1:loMXtMfwqflxFJPmdbJO0a3KNoPuLBgiu3qAvBg8x/Y=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239 h1:kFOfPq6dUM1hTo4JG6LR5AXSUEsOjtdm0kw0FtQtMJA=

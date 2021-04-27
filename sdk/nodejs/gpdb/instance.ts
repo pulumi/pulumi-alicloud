@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     vswitchName: "vpc-123456",

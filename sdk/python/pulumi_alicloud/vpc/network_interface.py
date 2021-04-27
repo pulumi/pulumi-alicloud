@@ -366,7 +366,7 @@ class NetworkInterface(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         vswitch = alicloud.vpc.Switch("vswitch",
             cidr_block="192.168.0.0/24",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vpc_id=vpc.id)
         group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
         default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
@@ -425,7 +425,7 @@ class NetworkInterface(pulumi.CustomResource):
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         vswitch = alicloud.vpc.Switch("vswitch",
             cidr_block="192.168.0.0/24",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vpc_id=vpc.id)
         group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
         default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",

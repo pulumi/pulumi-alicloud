@@ -45,7 +45,6 @@ class LoadBalancerArgs:
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
@@ -215,9 +214,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -322,7 +318,6 @@ class _LoadBalancerState:
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
@@ -492,9 +487,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -609,7 +601,7 @@ class LoadBalancer(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
             specification="slb.s2.small",
@@ -652,7 +644,6 @@ class LoadBalancer(pulumi.CustomResource):
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
@@ -690,7 +681,7 @@ class LoadBalancer(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
             specification="slb.s2.small",
@@ -826,7 +817,6 @@ class LoadBalancer(pulumi.CustomResource):
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
@@ -942,9 +932,6 @@ class LoadBalancer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-        """
         return pulumi.get(self, "period")
 
     @property

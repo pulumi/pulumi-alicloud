@@ -99,9 +99,6 @@ class InstanceArgs:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-               - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-               - [1-3] when `period_unit` in "Week"
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
@@ -557,11 +554,6 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-        - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-        - [1-3] when `period_unit` in "Week"
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -905,9 +897,6 @@ class _InstanceState:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-               - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-               - [1-3] when `period_unit` in "Week"
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] public_ip: The instance public ip.
@@ -1358,11 +1347,6 @@ class _InstanceState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-        - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-        - [1-3] when `period_unit` in "Week"
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -1741,9 +1725,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-               - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-               - [1-3] when `period_unit` in "Week"
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
@@ -2028,9 +2009,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-               - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-               - [1-3] when `period_unit` in "Week"
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] public_ip: The instance public ip.
@@ -2329,11 +2307,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-        - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-        - [1-3] when `period_unit` in "Week"
-        """
         return pulumi.get(self, "period")
 
     @property

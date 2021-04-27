@@ -69,10 +69,6 @@ export class Eip extends pulumi.CustomResource {
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
-     * Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The Id of resource group which the eip belongs.
@@ -164,10 +160,6 @@ export interface EipState {
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
-     * Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the eip belongs.
@@ -211,10 +203,6 @@ export interface EipArgs {
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
-     * Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the eip belongs.

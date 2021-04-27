@@ -51,10 +51,10 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:            defaultNetwork.ID(),
-// 			CidrBlock:        pulumi.String("172.16.0.0/21"),
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName:      pulumi.String(name),
+// 			VpcId:       defaultNetwork.ID(),
+// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
+// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+// 			VswitchName: pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -119,8 +119,7 @@ type LoadBalancer struct {
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	MasterZoneId pulumi.StringOutput `pulumi:"masterZoneId"`
 	Name         pulumi.StringOutput `pulumi:"name"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period       pulumi.IntPtrOutput `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -190,8 +189,7 @@ type loadBalancerState struct {
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	MasterZoneId *string `pulumi:"masterZoneId"`
 	Name         *string `pulumi:"name"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-	Period *int `pulumi:"period"`
+	Period       *int    `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -233,8 +231,7 @@ type LoadBalancerState struct {
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	MasterZoneId pulumi.StringPtrInput
 	Name         pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-	Period pulumi.IntPtrInput
+	Period       pulumi.IntPtrInput
 	// The Id of resource group which the SLB belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -280,8 +277,7 @@ type loadBalancerArgs struct {
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	MasterZoneId *string `pulumi:"masterZoneId"`
 	Name         *string `pulumi:"name"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-	Period *int `pulumi:"period"`
+	Period       *int    `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -324,8 +320,7 @@ type LoadBalancerArgs struct {
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	MasterZoneId pulumi.StringPtrInput
 	Name         pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-	Period pulumi.IntPtrInput
+	Period       pulumi.IntPtrInput
 	// The Id of resource group which the SLB belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.

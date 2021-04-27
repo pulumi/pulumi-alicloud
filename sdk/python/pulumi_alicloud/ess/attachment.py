@@ -160,7 +160,7 @@ class Attachment(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -260,7 +260,7 @@ class Attachment(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",

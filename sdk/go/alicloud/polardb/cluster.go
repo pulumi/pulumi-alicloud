@@ -56,9 +56,9 @@ import (
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:            defaultNetwork.ID(),
-// 			CidrBlock:        pulumi.String("172.16.0.0/24"),
-// 			AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// 			VpcId:     defaultNetwork.ID(),
+// 			CidrBlock: pulumi.String("172.16.0.0/24"),
+// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -114,8 +114,7 @@ type Cluster struct {
 	Parameters ClusterParameterArrayOutput `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType pulumi.StringPtrOutput `pulumi:"payType"`
-	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period  pulumi.IntPtrOutput    `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
@@ -126,6 +125,10 @@ type Cluster struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.\
 	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
@@ -196,8 +199,7 @@ type clusterState struct {
 	Parameters []ClusterParameter `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType *string `pulumi:"payType"`
-	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period *int `pulumi:"period"`
+	Period  *int    `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
@@ -208,6 +210,10 @@ type clusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.\
 	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -241,8 +247,7 @@ type ClusterState struct {
 	Parameters ClusterParameterArrayInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType pulumi.StringPtrInput
-	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrInput
+	Period  pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
@@ -253,6 +258,10 @@ type ClusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.\
 	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId pulumi.StringPtrInput
@@ -288,8 +297,7 @@ type clusterArgs struct {
 	Parameters []ClusterParameter `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType *string `pulumi:"payType"`
-	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period *int `pulumi:"period"`
+	Period  *int    `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
@@ -300,6 +308,10 @@ type clusterArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.\
 	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -332,8 +344,7 @@ type ClusterArgs struct {
 	Parameters ClusterParameterArrayInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
 	PayType pulumi.StringPtrInput
-	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrInput
+	Period  pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
@@ -344,6 +355,10 @@ type ClusterArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.\
 	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId pulumi.StringPtrInput

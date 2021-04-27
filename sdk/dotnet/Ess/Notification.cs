@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ess
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///             VswitchName = name,
     ///         });
     ///         var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new AliCloud.Ess.ScalingGroupArgs

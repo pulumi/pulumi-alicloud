@@ -63,10 +63,6 @@ namespace Pulumi.AliCloud.Ecs
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-        /// Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -170,10 +166,6 @@ namespace Pulumi.AliCloud.Ecs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-        /// Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -244,10 +236,6 @@ namespace Pulumi.AliCloud.Ecs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-        /// Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

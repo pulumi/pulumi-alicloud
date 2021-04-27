@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
  *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones[0].id),
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones[0].id),
  * });
  * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
  *     engine: "MySQL",
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
  *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     availabilityZone: data.alicloud_zones.example.zones[0].id,
+ *     zoneId: data.alicloud_zones.example.zones[0].id,
  * });
  * const _default = new alicloud.rds.Instance("default", {
  *     engine: "MySQL",
@@ -190,9 +190,6 @@ export class Instance extends pulumi.CustomResource {
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */
     public readonly parameters!: pulumi.Output<outputs.rds.InstanceParameter[]>;
-    /**
-     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * RDS database connection port.
@@ -447,9 +444,6 @@ export interface InstanceState {
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
-    /**
-     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * RDS database connection port.
@@ -600,9 +594,6 @@ export interface InstanceArgs {
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
-    /**
-     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The ID of resource group which the DB instance belongs.

@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// <summary>
         /// The ip address of the bind eip.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetNatGatewaysGatewayIpListResult> IpLists;
+        public readonly ImmutableArray<string> IpLists;
         /// <summary>
         /// Name of the NAT gateway.
         /// </summary>
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string internetChargeType,
 
-            ImmutableArray<Outputs.GetNatGatewaysGatewayIpListResult> ipLists,
+            ImmutableArray<string> ipLists,
 
             string name,
 
