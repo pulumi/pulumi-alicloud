@@ -1297,7 +1297,7 @@ type GetNatGatewaysGateway struct {
 	// The metering method of the NAT gateway.
 	InternetChargeType string `pulumi:"internetChargeType"`
 	// The ip address of the bind eip.
-	IpLists []GetNatGatewaysGatewayIpList `pulumi:"ipLists"`
+	IpLists []string `pulumi:"ipLists"`
 	// Name of the NAT gateway.
 	Name string `pulumi:"name"`
 	// The ID of the NAT gateway.
@@ -1355,7 +1355,7 @@ type GetNatGatewaysGatewayArgs struct {
 	// The metering method of the NAT gateway.
 	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
 	// The ip address of the bind eip.
-	IpLists GetNatGatewaysGatewayIpListArrayInput `pulumi:"ipLists"`
+	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// Name of the NAT gateway.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the NAT gateway.
@@ -1476,8 +1476,8 @@ func (o GetNatGatewaysGatewayOutput) InternetChargeType() pulumi.StringOutput {
 }
 
 // The ip address of the bind eip.
-func (o GetNatGatewaysGatewayOutput) IpLists() GetNatGatewaysGatewayIpListArrayOutput {
-	return o.ApplyT(func(v GetNatGatewaysGateway) []GetNatGatewaysGatewayIpList { return v.IpLists }).(GetNatGatewaysGatewayIpListArrayOutput)
+func (o GetNatGatewaysGatewayOutput) IpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
 
 // Name of the NAT gateway.
@@ -1563,106 +1563,6 @@ func (o GetNatGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetNatGateway
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNatGatewaysGateway {
 		return vs[0].([]GetNatGatewaysGateway)[vs[1].(int)]
 	}).(GetNatGatewaysGatewayOutput)
-}
-
-type GetNatGatewaysGatewayIpList struct {
-	IpAddress        string `pulumi:"ipAddress"`
-	SnatEntryEnabled bool   `pulumi:"snatEntryEnabled"`
-}
-
-// GetNatGatewaysGatewayIpListInput is an input type that accepts GetNatGatewaysGatewayIpListArgs and GetNatGatewaysGatewayIpListOutput values.
-// You can construct a concrete instance of `GetNatGatewaysGatewayIpListInput` via:
-//
-//          GetNatGatewaysGatewayIpListArgs{...}
-type GetNatGatewaysGatewayIpListInput interface {
-	pulumi.Input
-
-	ToGetNatGatewaysGatewayIpListOutput() GetNatGatewaysGatewayIpListOutput
-	ToGetNatGatewaysGatewayIpListOutputWithContext(context.Context) GetNatGatewaysGatewayIpListOutput
-}
-
-type GetNatGatewaysGatewayIpListArgs struct {
-	IpAddress        pulumi.StringInput `pulumi:"ipAddress"`
-	SnatEntryEnabled pulumi.BoolInput   `pulumi:"snatEntryEnabled"`
-}
-
-func (GetNatGatewaysGatewayIpListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNatGatewaysGatewayIpList)(nil)).Elem()
-}
-
-func (i GetNatGatewaysGatewayIpListArgs) ToGetNatGatewaysGatewayIpListOutput() GetNatGatewaysGatewayIpListOutput {
-	return i.ToGetNatGatewaysGatewayIpListOutputWithContext(context.Background())
-}
-
-func (i GetNatGatewaysGatewayIpListArgs) ToGetNatGatewaysGatewayIpListOutputWithContext(ctx context.Context) GetNatGatewaysGatewayIpListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNatGatewaysGatewayIpListOutput)
-}
-
-// GetNatGatewaysGatewayIpListArrayInput is an input type that accepts GetNatGatewaysGatewayIpListArray and GetNatGatewaysGatewayIpListArrayOutput values.
-// You can construct a concrete instance of `GetNatGatewaysGatewayIpListArrayInput` via:
-//
-//          GetNatGatewaysGatewayIpListArray{ GetNatGatewaysGatewayIpListArgs{...} }
-type GetNatGatewaysGatewayIpListArrayInput interface {
-	pulumi.Input
-
-	ToGetNatGatewaysGatewayIpListArrayOutput() GetNatGatewaysGatewayIpListArrayOutput
-	ToGetNatGatewaysGatewayIpListArrayOutputWithContext(context.Context) GetNatGatewaysGatewayIpListArrayOutput
-}
-
-type GetNatGatewaysGatewayIpListArray []GetNatGatewaysGatewayIpListInput
-
-func (GetNatGatewaysGatewayIpListArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNatGatewaysGatewayIpList)(nil)).Elem()
-}
-
-func (i GetNatGatewaysGatewayIpListArray) ToGetNatGatewaysGatewayIpListArrayOutput() GetNatGatewaysGatewayIpListArrayOutput {
-	return i.ToGetNatGatewaysGatewayIpListArrayOutputWithContext(context.Background())
-}
-
-func (i GetNatGatewaysGatewayIpListArray) ToGetNatGatewaysGatewayIpListArrayOutputWithContext(ctx context.Context) GetNatGatewaysGatewayIpListArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNatGatewaysGatewayIpListArrayOutput)
-}
-
-type GetNatGatewaysGatewayIpListOutput struct{ *pulumi.OutputState }
-
-func (GetNatGatewaysGatewayIpListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNatGatewaysGatewayIpList)(nil)).Elem()
-}
-
-func (o GetNatGatewaysGatewayIpListOutput) ToGetNatGatewaysGatewayIpListOutput() GetNatGatewaysGatewayIpListOutput {
-	return o
-}
-
-func (o GetNatGatewaysGatewayIpListOutput) ToGetNatGatewaysGatewayIpListOutputWithContext(ctx context.Context) GetNatGatewaysGatewayIpListOutput {
-	return o
-}
-
-func (o GetNatGatewaysGatewayIpListOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNatGatewaysGatewayIpList) string { return v.IpAddress }).(pulumi.StringOutput)
-}
-
-func (o GetNatGatewaysGatewayIpListOutput) SnatEntryEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetNatGatewaysGatewayIpList) bool { return v.SnatEntryEnabled }).(pulumi.BoolOutput)
-}
-
-type GetNatGatewaysGatewayIpListArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNatGatewaysGatewayIpListArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNatGatewaysGatewayIpList)(nil)).Elem()
-}
-
-func (o GetNatGatewaysGatewayIpListArrayOutput) ToGetNatGatewaysGatewayIpListArrayOutput() GetNatGatewaysGatewayIpListArrayOutput {
-	return o
-}
-
-func (o GetNatGatewaysGatewayIpListArrayOutput) ToGetNatGatewaysGatewayIpListArrayOutputWithContext(ctx context.Context) GetNatGatewaysGatewayIpListArrayOutput {
-	return o
-}
-
-func (o GetNatGatewaysGatewayIpListArrayOutput) Index(i pulumi.IntInput) GetNatGatewaysGatewayIpListOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNatGatewaysGatewayIpList {
-		return vs[0].([]GetNatGatewaysGatewayIpList)[vs[1].(int)]
-	}).(GetNatGatewaysGatewayIpListOutput)
 }
 
 type GetNetworksVpc struct {
@@ -3255,8 +3155,6 @@ func init() {
 	pulumi.RegisterOutputType(GetHavipsHavipArrayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayArrayOutput{})
-	pulumi.RegisterOutputType(GetNatGatewaysGatewayIpListOutput{})
-	pulumi.RegisterOutputType(GetNatGatewaysGatewayIpListArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworksVpcOutput{})
 	pulumi.RegisterOutputType(GetNetworksVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryOutput{})

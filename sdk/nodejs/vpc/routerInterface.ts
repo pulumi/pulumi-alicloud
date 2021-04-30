@@ -102,9 +102,6 @@ export class RouterInterface extends pulumi.CustomResource {
      * @deprecated Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
     public /*out*/ readonly oppositeRouterType!: pulumi.Output<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
@@ -257,9 +254,6 @@ export interface RouterInterfaceState {
      * @deprecated Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
     readonly oppositeRouterType?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
@@ -314,9 +308,6 @@ export interface RouterInterfaceArgs {
      * The Region of peer side.
      */
     readonly oppositeRegion: pulumi.Input<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.

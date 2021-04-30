@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
     ///         var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new AliCloud.PolarDB.ClusterArgs
     ///         {
@@ -142,9 +142,6 @@ namespace Pulumi.AliCloud.PolarDB
         [Output("payType")]
         public Output<string?> PayType { get; private set; } = null!;
 
-        /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -173,6 +170,14 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+        /// **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// </summary>
+        [Output("tdeStatus")]
+        public Output<string?> TdeStatus { get; private set; } = null!;
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.  
@@ -306,9 +311,6 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
-        /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -349,6 +351,14 @@ namespace Pulumi.AliCloud.PolarDB
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+        /// **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// </summary>
+        [Input("tdeStatus")]
+        public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.  
@@ -449,9 +459,6 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
-        /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -492,6 +499,14 @@ namespace Pulumi.AliCloud.PolarDB
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+        /// **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// </summary>
+        [Input("tdeStatus")]
+        public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.  

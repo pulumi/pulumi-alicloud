@@ -39,8 +39,7 @@ type NatGateway struct {
 	NatType pulumi.StringPtrOutput `pulumi:"natType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// The nat gateway will auto create a snat item.
 	SnatTableIds pulumi.StringOutput `pulumi:"snatTableIds"`
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
@@ -105,8 +104,7 @@ type natGatewayState struct {
 	NatType *string `pulumi:"natType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-	Period *int `pulumi:"period"`
+	Period      *int    `pulumi:"period"`
 	// The nat gateway will auto create a snat item.
 	SnatTableIds *string `pulumi:"snatTableIds"`
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
@@ -140,8 +138,7 @@ type NatGatewayState struct {
 	NatType pulumi.StringPtrInput
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-	Period pulumi.IntPtrInput
+	Period      pulumi.IntPtrInput
 	// The nat gateway will auto create a snat item.
 	SnatTableIds pulumi.StringPtrInput
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
@@ -177,8 +174,7 @@ type natGatewayArgs struct {
 	NatType *string `pulumi:"natType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-	Period *int `pulumi:"period"`
+	Period      *int    `pulumi:"period"`
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification *string `pulumi:"specification"`
 	// The tags of NAT gateway.
@@ -207,8 +203,7 @@ type NatGatewayArgs struct {
 	NatType pulumi.StringPtrInput
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-	Period pulumi.IntPtrInput
+	Period      pulumi.IntPtrInput
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification pulumi.StringPtrInput
 	// The tags of NAT gateway.

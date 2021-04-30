@@ -67,9 +67,6 @@ namespace Pulumi.AliCloud.Yundun
         [Output("licenseCode")]
         public Output<string> LicenseCode { get; private set; } = null!;
 
-        /// <summary>
-        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -155,9 +152,6 @@ namespace Pulumi.AliCloud.Yundun
         [Input("licenseCode", required: true)]
         public Input<string> LicenseCode { get; set; } = null!;
 
-        /// <summary>
-        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -216,9 +210,6 @@ namespace Pulumi.AliCloud.Yundun
         [Input("licenseCode")]
         public Input<string>? LicenseCode { get; set; }
 
-        /// <summary>
-        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

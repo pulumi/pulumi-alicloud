@@ -31,6 +31,7 @@ class ClusterArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -47,13 +48,15 @@ class ClusterArgs:
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+               **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.  
                **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -87,6 +90,8 @@ class ClusterArgs:
             pulumi.set(__self__, "security_ips", security_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tde_status is not None:
+            pulumi.set(__self__, "tde_status", tde_status)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -228,9 +233,6 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -288,6 +290,20 @@ class ClusterArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="tdeStatus")
+    def tde_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+        **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        """
+        return pulumi.get(self, "tde_status")
+
+    @tde_status.setter
+    def tde_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tde_status", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -333,6 +349,7 @@ class _ClusterState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -350,13 +367,15 @@ class _ClusterState:
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+               **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.  
                **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -395,6 +414,8 @@ class _ClusterState:
             pulumi.set(__self__, "security_ips", security_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tde_status is not None:
+            pulumi.set(__self__, "tde_status", tde_status)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -548,9 +569,6 @@ class _ClusterState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -608,6 +626,20 @@ class _ClusterState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="tdeStatus")
+    def tde_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+        **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        """
+        return pulumi.get(self, "tde_status")
+
+    @tde_status.setter
+    def tde_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tde_status", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -654,6 +686,7 @@ class Cluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -683,7 +716,7 @@ class Cluster(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id)
         default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
             db_version="5.6",
@@ -715,13 +748,15 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+               **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.  
                **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -758,7 +793,7 @@ class Cluster(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id)
         default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
             db_version="5.6",
@@ -807,6 +842,7 @@ class Cluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -843,6 +879,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_ips"] = security_ips
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
@@ -873,6 +910,7 @@ class Cluster(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tde_status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -895,13 +933,15 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+               **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.  
                **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -927,6 +967,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -1031,9 +1072,6 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
-        """
-        The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        """
         return pulumi.get(self, "period")
 
     @property
@@ -1069,6 +1107,16 @@ class Cluster(pulumi.CustomResource):
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tdeStatus")
+    def tde_status(self) -> pulumi.Output[Optional[str]]:
+        """
+        turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
+        **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        """
+        return pulumi.get(self, "tde_status")
 
     @property
     @pulumi.getter(name="vswitchId")

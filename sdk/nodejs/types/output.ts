@@ -14301,7 +14301,7 @@ export namespace vpc {
         /**
          * The ip address of the bind eip.
          */
-        ipLists: outputs.vpc.GetNatGatewaysGatewayIpList[];
+        ipLists: string[];
         /**
          * Name of the NAT gateway.
          */
@@ -14354,11 +14354,6 @@ export namespace vpc {
          * The ID of the vSwitch to which the NAT gateway belongs.
          */
         vswitchId: string;
-    }
-
-    export interface GetNatGatewaysGatewayIpList {
-        ipAddress: string;
-        snatEntryEnabled: boolean;
     }
 
     export interface GetNetworksVpc {

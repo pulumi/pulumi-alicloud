@@ -155,11 +155,6 @@ export class Instance extends pulumi.CustomResource {
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
     public readonly password!: pulumi.Output<string | undefined>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
-     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
-     * - [1-3] when `periodUnit` in "Week"
-     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -504,11 +499,6 @@ export interface InstanceState {
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly password?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
-     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
-     * - [1-3] when `periodUnit` in "Week"
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -726,11 +716,6 @@ export interface InstanceArgs {
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly password?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
-     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
-     * - [1-3] when `periodUnit` in "Week"
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".

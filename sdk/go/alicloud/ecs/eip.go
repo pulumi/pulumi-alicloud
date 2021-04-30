@@ -33,9 +33,7 @@ type Eip struct {
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp pulumi.StringOutput `pulumi:"isp"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
-	// Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	Name   pulumi.StringOutput `pulumi:"name"`
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -87,10 +85,8 @@ type eipState struct {
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp *string `pulumi:"isp"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	Name *string `pulumi:"name"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
-	// Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-	Period *int `pulumi:"period"`
+	Name   *string `pulumi:"name"`
+	Period *int    `pulumi:"period"`
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The EIP current status.
@@ -113,9 +109,7 @@ type EipState struct {
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp pulumi.StringPtrInput
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	Name pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
-	// Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	Name   pulumi.StringPtrInput
 	Period pulumi.IntPtrInput
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -141,10 +135,8 @@ type eipArgs struct {
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp *string `pulumi:"isp"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	Name *string `pulumi:"name"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
-	// Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-	Period *int `pulumi:"period"`
+	Name   *string `pulumi:"name"`
+	Period *int    `pulumi:"period"`
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
@@ -164,9 +156,7 @@ type EipArgs struct {
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 	Isp pulumi.StringPtrInput
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	Name pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
-	// Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	Name   pulumi.StringPtrInput
 	Period pulumi.IntPtrInput
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId pulumi.StringPtrInput

@@ -26,7 +26,6 @@ class BastionHostInstanceArgs:
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
-        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -92,9 +91,6 @@ class BastionHostInstanceArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -140,7 +136,6 @@ class _BastionHostInstanceState:
         Input properties used for looking up and filtering BastionHostInstance resources.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -188,9 +183,6 @@ class _BastionHostInstanceState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -297,7 +289,6 @@ class BastionHostInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -418,7 +409,6 @@ class BastionHostInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -456,9 +446,6 @@ class BastionHostInstance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
-        """
-        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-        """
         return pulumi.get(self, "period")
 
     @property

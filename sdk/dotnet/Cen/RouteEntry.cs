@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Cen
     ///         {
     ///             VpcId = vpc.Id,
     ///             CidrBlock = "172.16.0.0/21",
-    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///             VswitchName = name,
     ///         }, new CustomResourceOptions
     ///         {

@@ -75,9 +75,6 @@ export class NatGateway extends pulumi.CustomResource {
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The nat gateway will auto create a snat item.
@@ -202,9 +199,6 @@ export interface NatGatewayState {
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
     readonly paymentType?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The nat gateway will auto create a snat item.
@@ -266,9 +260,6 @@ export interface NatGatewayArgs {
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
     readonly paymentType?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internetChargeType` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).

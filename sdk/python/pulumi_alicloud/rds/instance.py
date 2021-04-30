@@ -75,7 +75,6 @@ class InstanceArgs:
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
@@ -351,9 +350,6 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -600,7 +596,6 @@ class _InstanceState:
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -900,9 +895,6 @@ class _InstanceState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -1166,7 +1158,7 @@ class Instance(pulumi.CustomResource):
         example_switch = alicloud.vpc.Switch("exampleSwitch",
             vpc_id=example_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=example_zones.zones[0].id)
+            zone_id=example_zones.zones[0].id)
         example_instance = alicloud.rds.Instance("exampleInstance",
             engine="MySQL",
             engine_version="5.6",
@@ -1216,7 +1208,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
@@ -1266,7 +1257,7 @@ class Instance(pulumi.CustomResource):
         example_switch = alicloud.vpc.Switch("exampleSwitch",
             vpc_id=example_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=example_zones.zones[0].id)
+            zone_id=example_zones.zones[0].id)
         example_instance = alicloud.rds.Instance("exampleInstance",
             engine="MySQL",
             engine_version="5.6",
@@ -1466,7 +1457,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
-        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -1671,9 +1661,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
-        """
-        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        """
         return pulumi.get(self, "period")
 
     @property

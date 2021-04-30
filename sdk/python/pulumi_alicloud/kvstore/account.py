@@ -361,7 +361,7 @@ class Account(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         default_instance = alicloud.kvstore.Instance("defaultInstance",
             instance_class="redis.master.small.default",
@@ -435,7 +435,7 @@ class Account(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         default_instance = alicloud.kvstore.Instance("defaultInstance",
             instance_class="redis.master.small.default",

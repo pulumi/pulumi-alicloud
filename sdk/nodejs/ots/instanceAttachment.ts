@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     vpcId: fooNetwork.id,
  *     vswitchName: "for-ots-instance",
  *     cidrBlock: "172.16.1.0/24",
- *     availabilityZone: fooZones.then(fooZones => fooZones.zones[0].id),
+ *     zoneId: fooZones.then(fooZones => fooZones.zones[0].id),
  * });
  * const fooInstanceAttachment = new alicloud.ots.InstanceAttachment("fooInstanceAttachment", {
  *     instanceName: fooInstance.name,

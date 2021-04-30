@@ -285,7 +285,7 @@ class Account(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         cluster = alicloud.polardb.Cluster("cluster",
             db_type="MySQL",
@@ -350,7 +350,7 @@ class Account(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         cluster = alicloud.polardb.Cluster("cluster",
             db_type="MySQL",

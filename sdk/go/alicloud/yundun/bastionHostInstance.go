@@ -63,8 +63,7 @@ type BastionHostInstance struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
-	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// security group IDs configured to Bastionhost.
@@ -120,8 +119,7 @@ type bastionHostInstanceState struct {
 	Description *string `pulumi:"description"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode *string `pulumi:"licenseCode"`
-	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-	Period *int `pulumi:"period"`
+	Period      *int    `pulumi:"period"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// security group IDs configured to Bastionhost.
@@ -137,8 +135,7 @@ type BastionHostInstanceState struct {
 	Description pulumi.StringPtrInput
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringPtrInput
-	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-	Period pulumi.IntPtrInput
+	Period      pulumi.IntPtrInput
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// security group IDs configured to Bastionhost.
@@ -158,8 +155,7 @@ type bastionHostInstanceArgs struct {
 	Description string `pulumi:"description"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode string `pulumi:"licenseCode"`
-	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-	Period *int `pulumi:"period"`
+	Period      *int   `pulumi:"period"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// security group IDs configured to Bastionhost.
@@ -176,8 +172,7 @@ type BastionHostInstanceArgs struct {
 	Description pulumi.StringInput
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringInput
-	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-	Period pulumi.IntPtrInput
+	Period      pulumi.IntPtrInput
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// security group IDs configured to Bastionhost.

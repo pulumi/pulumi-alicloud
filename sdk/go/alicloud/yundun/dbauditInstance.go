@@ -59,8 +59,7 @@ type DBAuditInstance struct {
 
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringOutput `pulumi:"planCode"`
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
@@ -111,8 +110,7 @@ func GetDBAuditInstance(ctx *pulumi.Context,
 type dbauditInstanceState struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description *string `pulumi:"description"`
-	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-	Period *int `pulumi:"period"`
+	Period      *int    `pulumi:"period"`
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode *string `pulumi:"planCode"`
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
@@ -126,8 +124,7 @@ type dbauditInstanceState struct {
 type DBAuditInstanceState struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringPtrInput
-	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-	Period pulumi.IntPtrInput
+	Period      pulumi.IntPtrInput
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringPtrInput
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
@@ -145,8 +142,7 @@ func (DBAuditInstanceState) ElementType() reflect.Type {
 type dbauditInstanceArgs struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description string `pulumi:"description"`
-	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-	Period *int `pulumi:"period"`
+	Period      *int   `pulumi:"period"`
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode string `pulumi:"planCode"`
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
@@ -161,8 +157,7 @@ type dbauditInstanceArgs struct {
 type DBAuditInstanceArgs struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringInput
-	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-	Period pulumi.IntPtrInput
+	Period      pulumi.IntPtrInput
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringInput
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.

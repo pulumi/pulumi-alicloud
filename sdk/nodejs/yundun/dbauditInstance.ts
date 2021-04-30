@@ -69,9 +69,6 @@ export class DBAuditInstance extends pulumi.CustomResource {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
@@ -142,9 +139,6 @@ export interface DBAuditInstanceState {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
@@ -172,9 +166,6 @@ export interface DBAuditInstanceArgs {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     readonly description: pulumi.Input<string>;
-    /**
-     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)

@@ -19,7 +19,6 @@ __all__ = [
     'GetForwardEntriesEntryResult',
     'GetHavipsHavipResult',
     'GetNatGatewaysGatewayResult',
-    'GetNatGatewaysGatewayIpListResult',
     'GetNetworksVpcResult',
     'GetRouteEntriesEntryResult',
     'GetRouteTablesTableResult',
@@ -848,7 +847,7 @@ class GetNatGatewaysGatewayResult(dict):
                  forward_table_ids: Sequence[str],
                  id: str,
                  internet_charge_type: str,
-                 ip_lists: Sequence['outputs.GetNatGatewaysGatewayIpListResult'],
+                 ip_lists: Sequence[str],
                  name: str,
                  nat_gateway_id: str,
                  nat_gateway_name: str,
@@ -871,7 +870,7 @@ class GetNatGatewaysGatewayResult(dict):
         :param Sequence[str] forward_table_ids: The ID of the DNAT table.
         :param str id: The ID of the NAT gateway.
         :param str internet_charge_type: The metering method of the NAT gateway.
-        :param Sequence['GetNatGatewaysGatewayIpListArgs'] ip_lists: The ip address of the bind eip.
+        :param Sequence[str] ip_lists: The ip address of the bind eip.
         :param str name: Name of the NAT gateway.
         :param str nat_gateway_id: The ID of the NAT gateway.
         :param str nat_gateway_name: The name of NAT gateway.
@@ -975,7 +974,7 @@ class GetNatGatewaysGatewayResult(dict):
 
     @property
     @pulumi.getter(name="ipLists")
-    def ip_lists(self) -> Sequence['outputs.GetNatGatewaysGatewayIpListResult']:
+    def ip_lists(self) -> Sequence[str]:
         """
         The ip address of the bind eip.
         """
@@ -1084,25 +1083,6 @@ class GetNatGatewaysGatewayResult(dict):
         The ID of the vSwitch to which the NAT gateway belongs.
         """
         return pulumi.get(self, "vswitch_id")
-
-
-@pulumi.output_type
-class GetNatGatewaysGatewayIpListResult(dict):
-    def __init__(__self__, *,
-                 ip_address: str,
-                 snat_entry_enabled: bool):
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "snat_entry_enabled", snat_entry_enabled)
-
-    @property
-    @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
-        return pulumi.get(self, "ip_address")
-
-    @property
-    @pulumi.getter(name="snatEntryEnabled")
-    def snat_entry_enabled(self) -> bool:
-        return pulumi.get(self, "snat_entry_enabled")
 
 
 @pulumi.output_type

@@ -163,7 +163,7 @@ class RouteEntry(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=vpc.id,
             cidr_block="172.16.0.0/21",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name,
             opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
@@ -256,7 +256,7 @@ class RouteEntry(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=vpc.id,
             cidr_block="172.16.0.0/21",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name,
             opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",

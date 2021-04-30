@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Rds
     ///         {
     ///             VpcId = exampleNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             AvailabilityZone = exampleZones.Apply(exampleZones =&gt; exampleZones.Zones[0].Id),
+    ///             ZoneId = exampleZones.Apply(exampleZones =&gt; exampleZones.Zones[0].Id),
     ///         });
     ///         var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new AliCloud.Rds.InstanceArgs
     ///         {
@@ -178,9 +178,6 @@ namespace Pulumi.AliCloud.Rds
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
 
-        /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -439,9 +436,6 @@ namespace Pulumi.AliCloud.Rds
             set => _parameters = value;
         }
 
-        /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -673,9 +667,6 @@ namespace Pulumi.AliCloud.Rds
             set => _parameters = value;
         }
 
-        /// <summary>
-        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

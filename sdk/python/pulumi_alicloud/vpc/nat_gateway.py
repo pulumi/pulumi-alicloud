@@ -37,7 +37,6 @@ class NatGatewayArgs:
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of NAT gateway.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
@@ -187,9 +186,6 @@ class NatGatewayArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -263,7 +259,6 @@ class _NatGatewayState:
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] snat_table_ids: The nat gateway will auto create a snat item.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         :param pulumi.Input[str] status: (Available in 1.121.0+) The status of NAT gateway.
@@ -423,9 +418,6 @@ class _NatGatewayState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -543,7 +535,6 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of NAT gateway.
         :param pulumi.Input[str] vpc_id: The VPC ID.
@@ -666,7 +657,6 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] nat_type: The type of NAT gateway. Default to `Normal`. Valid values: [`Normal`, `Enhanced`].
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] snat_table_ids: The nat gateway will auto create a snat item.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Effective when `internet_charge_type` is `PayBySpec`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         :param pulumi.Input[str] status: (Available in 1.121.0+) The status of NAT gateway.
@@ -774,9 +764,6 @@ class NatGateway(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        """
         return pulumi.get(self, "period")
 
     @property

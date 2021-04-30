@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *     vswitchName: name,
  * });
  * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
@@ -128,9 +128,6 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly masterZoneId!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The Id of resource group which the SLB belongs.
@@ -258,9 +255,6 @@ export interface LoadBalancerState {
      */
     readonly masterZoneId?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the SLB belongs.
@@ -334,9 +328,6 @@ export interface LoadBalancerArgs {
      */
     readonly masterZoneId?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the SLB belongs.

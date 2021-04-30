@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Slb
         ///         var mainSwitch = new AliCloud.Vpc.Switch("mainSwitch", new AliCloud.Vpc.SwitchArgs
         ///         {
         ///             VpcId = mainNetwork.Id,
-        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
         ///             VswitchName = name,
         ///             CidrBlock = "172.16.0.0/16",
         ///         });

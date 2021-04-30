@@ -79,8 +79,7 @@ type BandwidthPackage struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// The association status of the bandwidth package.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -143,8 +142,7 @@ type bandwidthPackageState struct {
 	Name *string `pulumi:"name"`
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType *string `pulumi:"paymentType"`
-	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
-	Period *int `pulumi:"period"`
+	Period      *int    `pulumi:"period"`
 	// The association status of the bandwidth package.
 	Status *string `pulumi:"status"`
 }
@@ -176,8 +174,7 @@ type BandwidthPackageState struct {
 	Name pulumi.StringPtrInput
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringPtrInput
-	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
-	Period pulumi.IntPtrInput
+	Period      pulumi.IntPtrInput
 	// The association status of the bandwidth package.
 	Status pulumi.StringPtrInput
 }
@@ -211,8 +208,7 @@ type bandwidthPackageArgs struct {
 	Name *string `pulumi:"name"`
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType *string `pulumi:"paymentType"`
-	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
-	Period *int `pulumi:"period"`
+	Period      *int    `pulumi:"period"`
 }
 
 // The set of arguments for constructing a BandwidthPackage resource.
@@ -241,8 +237,7 @@ type BandwidthPackageArgs struct {
 	Name pulumi.StringPtrInput
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringPtrInput
-	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`. Default to `1`.
-	Period pulumi.IntPtrInput
+	Period      pulumi.IntPtrInput
 }
 
 func (BandwidthPackageArgs) ElementType() reflect.Type {

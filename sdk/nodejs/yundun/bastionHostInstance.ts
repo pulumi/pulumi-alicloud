@@ -75,9 +75,6 @@ export class BastionHostInstance extends pulumi.CustomResource {
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
     public readonly licenseCode!: pulumi.Output<string>;
-    /**
-     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
@@ -157,9 +154,6 @@ export interface BastionHostInstanceState {
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
     readonly licenseCode?: pulumi.Input<string>;
-    /**
-     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
@@ -191,9 +185,6 @@ export interface BastionHostInstanceArgs {
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
     readonly licenseCode: pulumi.Input<string>;
-    /**
-     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
-     */
     readonly period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.

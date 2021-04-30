@@ -121,7 +121,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            availability_zone=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id)
         default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
             network_acl_id=default_network_acl.id,
             resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
@@ -164,7 +164,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            availability_zone=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id)
         default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
             network_acl_id=default_network_acl.id,
             resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(

@@ -30,8 +30,6 @@ class EipArgs:
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         :param pulumi.Input[str] name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-               Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -129,10 +127,6 @@ class EipArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-        Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -187,8 +181,6 @@ class _EipState:
         :param pulumi.Input[str] ip_address: The elastic ip address
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         :param pulumi.Input[str] name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-               Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[str] status: The EIP current status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -303,10 +295,6 @@ class _EipState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-        Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -382,8 +370,6 @@ class Eip(pulumi.CustomResource):
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         :param pulumi.Input[str] name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-               Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -484,8 +470,6 @@ class Eip(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address: The elastic ip address
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         :param pulumi.Input[str] name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-               Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[str] status: The EIP current status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -566,10 +550,6 @@ class Eip(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
-        """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
-        Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        """
         return pulumi.get(self, "period")
 
     @property

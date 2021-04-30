@@ -168,7 +168,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id)
         default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
         default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_load_balancer.id)
         default_listener = []
@@ -266,7 +266,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            availability_zone=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id)
         default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
         default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_load_balancer.id)
         default_listener = []
