@@ -5,65 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * Provides a network acl entries resource to create ingress and egress entries.
- *
- * > **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
- *
- * > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
- *
- * > **NOTE:** Using this resource need to open a whitelist.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "NetworkAclEntries";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
- * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("defaultNetworkAcl", {vpcId: defaultNetwork.id});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
- * });
- * const defaultNetworkAclAttachment = new alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment", {
- *     networkAclId: defaultNetworkAcl.id,
- *     resources: [{
- *         resourceId: defaultSwitch.id,
- *         resourceType: "VSwitch",
- *     }],
- * });
- * const defaultNetworkAclEntries = new alicloud.vpc.NetworkAclEntries("defaultNetworkAclEntries", {
- *     networkAclId: defaultNetworkAcl.id,
- *     ingresses: [{
- *         protocol: "all",
- *         port: "-1/-1",
- *         sourceCidrIp: "0.0.0.0/32",
- *         name: name,
- *         entryType: "custom",
- *         policy: "accept",
- *         description: name,
- *     }],
- *     egresses: [{
- *         protocol: "all",
- *         port: "-1/-1",
- *         destinationCidrIp: "0.0.0.0/32",
- *         name: name,
- *         entryType: "custom",
- *         policy: "accept",
- *         description: name,
- *     }],
- * });
- * ```
- */
 export class NetworkAclEntries extends pulumi.CustomResource {
     /**
      * Get an existing NetworkAclEntries resource's state with the given name, ID, and optional extra

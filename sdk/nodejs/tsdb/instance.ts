@@ -115,7 +115,7 @@ export class Instance extends pulumi.CustomResource {
      * - `tsdb.12x.standard` refers to standard edition I;
      * - `tsdb.24x.standard` refers to standard edition II;
      * - `tsdb.48x.large` refers to ultimate edition I;
-     * - `tsdb.94x.large` refers to ultimate edition II.
+     * - `tsdb.96x.large` refers to ultimate edition II.
      */
     public readonly instanceClass!: pulumi.Output<string>;
     /**
@@ -243,7 +243,7 @@ export interface InstanceState {
      * - `tsdb.12x.standard` refers to standard edition I;
      * - `tsdb.24x.standard` refers to standard edition II;
      * - `tsdb.48x.large` refers to ultimate edition I;
-     * - `tsdb.94x.large` refers to ultimate edition II.
+     * - `tsdb.96x.large` refers to ultimate edition II.
      */
     readonly instanceClass?: pulumi.Input<string>;
     /**
@@ -315,7 +315,7 @@ export interface InstanceArgs {
      * - `tsdb.12x.standard` refers to standard edition I;
      * - `tsdb.24x.standard` refers to standard edition II;
      * - `tsdb.48x.large` refers to ultimate edition I;
-     * - `tsdb.94x.large` refers to ultimate edition II.
+     * - `tsdb.96x.large` refers to ultimate edition II.
      */
     readonly instanceClass: pulumi.Input<string>;
     /**

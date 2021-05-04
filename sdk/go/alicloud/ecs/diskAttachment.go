@@ -11,66 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
-//
-// ## Example Usage
-//
-// Basic usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ecsSg, err := ecs.NewSecurityGroup(ctx, "ecsSg", &ecs.SecurityGroupArgs{
-// 			Description: pulumi.String("New security group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ecsDisk, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
-// 			AvailabilityZone: pulumi.String("cn-beijing-a"),
-// 			Size:             pulumi.Int(50),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("TerraformTest-disk"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ecsInstance, err := ecs.NewInstance(ctx, "ecsInstance", &ecs.InstanceArgs{
-// 			ImageId:          pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
-// 			InstanceType:     pulumi.String("ecs.n4.small"),
-// 			AvailabilityZone: pulumi.String("cn-beijing-a"),
-// 			SecurityGroups: pulumi.StringArray{
-// 				ecsSg.ID(),
-// 			},
-// 			InstanceName:       pulumi.String("Hello"),
-// 			InternetChargeType: pulumi.String("PayByBandwidth"),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("TerraformTest-instance"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ecs.NewDiskAttachment(ctx, "ecsDiskAtt", &ecs.DiskAttachmentArgs{
-// 			DiskId:     ecsDisk.ID(),
-// 			InstanceId: ecsInstance.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // The disk attachment can be imported using the id, e.g.
@@ -81,14 +21,15 @@ import (
 type DiskAttachment struct {
 	pulumi.CustomResourceState
 
-	// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-	//
-	// Deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
-	DeviceName pulumi.StringOutput `pulumi:"deviceName"`
+	Bootable           pulumi.BoolPtrOutput `pulumi:"bootable"`
+	DeleteWithInstance pulumi.BoolPtrOutput `pulumi:"deleteWithInstance"`
+	Device             pulumi.StringOutput  `pulumi:"device"`
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringOutput `pulumi:"diskId"`
 	// ID of the Instance to attach to.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	InstanceId  pulumi.StringOutput    `pulumi:"instanceId"`
+	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
+	Password    pulumi.StringPtrOutput `pulumi:"password"`
 }
 
 // NewDiskAttachment registers a new resource with the given unique name, arguments, and options.
@@ -126,25 +67,27 @@ func GetDiskAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DiskAttachment resources.
 type diskAttachmentState struct {
-	// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-	//
-	// Deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
-	DeviceName *string `pulumi:"deviceName"`
+	Bootable           *bool   `pulumi:"bootable"`
+	DeleteWithInstance *bool   `pulumi:"deleteWithInstance"`
+	Device             *string `pulumi:"device"`
 	// ID of the Disk to be attached.
 	DiskId *string `pulumi:"diskId"`
 	// ID of the Instance to attach to.
-	InstanceId *string `pulumi:"instanceId"`
+	InstanceId  *string `pulumi:"instanceId"`
+	KeyPairName *string `pulumi:"keyPairName"`
+	Password    *string `pulumi:"password"`
 }
 
 type DiskAttachmentState struct {
-	// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-	//
-	// Deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
-	DeviceName pulumi.StringPtrInput
+	Bootable           pulumi.BoolPtrInput
+	DeleteWithInstance pulumi.BoolPtrInput
+	Device             pulumi.StringPtrInput
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringPtrInput
 	// ID of the Instance to attach to.
-	InstanceId pulumi.StringPtrInput
+	InstanceId  pulumi.StringPtrInput
+	KeyPairName pulumi.StringPtrInput
+	Password    pulumi.StringPtrInput
 }
 
 func (DiskAttachmentState) ElementType() reflect.Type {
@@ -152,26 +95,26 @@ func (DiskAttachmentState) ElementType() reflect.Type {
 }
 
 type diskAttachmentArgs struct {
-	// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-	//
-	// Deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
-	DeviceName *string `pulumi:"deviceName"`
+	Bootable           *bool `pulumi:"bootable"`
+	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// ID of the Disk to be attached.
 	DiskId string `pulumi:"diskId"`
 	// ID of the Instance to attach to.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId  string  `pulumi:"instanceId"`
+	KeyPairName *string `pulumi:"keyPairName"`
+	Password    *string `pulumi:"password"`
 }
 
 // The set of arguments for constructing a DiskAttachment resource.
 type DiskAttachmentArgs struct {
-	// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-	//
-	// Deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
-	DeviceName pulumi.StringPtrInput
+	Bootable           pulumi.BoolPtrInput
+	DeleteWithInstance pulumi.BoolPtrInput
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringInput
 	// ID of the Instance to attach to.
-	InstanceId pulumi.StringInput
+	InstanceId  pulumi.StringInput
+	KeyPairName pulumi.StringPtrInput
+	Password    pulumi.StringPtrInput
 }
 
 func (DiskAttachmentArgs) ElementType() reflect.Type {

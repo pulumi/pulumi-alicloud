@@ -47,7 +47,7 @@ class InstanceArgs:
                - `tsdb.12x.standard` refers to standard edition I;
                - `tsdb.24x.standard` refers to standard edition II;
                - `tsdb.48x.large` refers to ultimate edition I;
-               - `tsdb.94x.large` refers to ultimate edition II.
+               - `tsdb.96x.large` refers to ultimate edition II.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
@@ -101,7 +101,7 @@ class InstanceArgs:
         - `tsdb.12x.standard` refers to standard edition I;
         - `tsdb.24x.standard` refers to standard edition II;
         - `tsdb.48x.large` refers to ultimate edition I;
-        - `tsdb.94x.large` refers to ultimate edition II.
+        - `tsdb.96x.large` refers to ultimate edition II.
         """
         return pulumi.get(self, "instance_class")
 
@@ -261,7 +261,7 @@ class _InstanceState:
                - `tsdb.12x.standard` refers to standard edition I;
                - `tsdb.24x.standard` refers to standard edition II;
                - `tsdb.48x.large` refers to ultimate edition I;
-               - `tsdb.94x.large` refers to ultimate edition II.
+               - `tsdb.96x.large` refers to ultimate edition II.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
         :param pulumi.Input[str] status: Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
@@ -377,7 +377,7 @@ class _InstanceState:
         - `tsdb.12x.standard` refers to standard edition I;
         - `tsdb.24x.standard` refers to standard edition II;
         - `tsdb.48x.large` refers to ultimate edition I;
-        - `tsdb.94x.large` refers to ultimate edition II.
+        - `tsdb.96x.large` refers to ultimate edition II.
         """
         return pulumi.get(self, "instance_class")
 
@@ -529,7 +529,7 @@ class Instance(pulumi.CustomResource):
                - `tsdb.12x.standard` refers to standard edition I;
                - `tsdb.24x.standard` refers to standard edition II;
                - `tsdb.48x.large` refers to ultimate edition I;
-               - `tsdb.94x.large` refers to ultimate edition II.
+               - `tsdb.96x.large` refers to ultimate edition II.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
@@ -690,7 +690,7 @@ class Instance(pulumi.CustomResource):
                - `tsdb.12x.standard` refers to standard edition I;
                - `tsdb.24x.standard` refers to standard edition II;
                - `tsdb.48x.large` refers to ultimate edition I;
-               - `tsdb.94x.large` refers to ultimate edition II.
+               - `tsdb.96x.large` refers to ultimate edition II.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
         :param pulumi.Input[str] status: Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
@@ -780,7 +780,7 @@ class Instance(pulumi.CustomResource):
         - `tsdb.12x.standard` refers to standard edition I;
         - `tsdb.24x.standard` refers to standard edition II;
         - `tsdb.48x.large` refers to ultimate edition I;
-        - `tsdb.94x.large` refers to ultimate edition II.
+        - `tsdb.96x.large` refers to ultimate edition II.
         """
         return pulumi.get(self, "instance_class")
 

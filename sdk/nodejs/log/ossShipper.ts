@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     logstoreName: alicloud_log_logstore.example.name,
  *     shipperName: "oss_shipper_name",
  *     ossBucket: "test_bucket",
- *     ossPrefix: "/root",
+ *     ossPrefix: "root",
  *     bufferInterval: 300,
  *     bufferSize: 250,
  *     compressType: "none",
@@ -113,7 +113,7 @@ export class OssShipper extends pulumi.CustomResource {
      * `csvConfigNullidentifier` - (Optional) Invalid field content.
      * `csvConfigQuote` - (Optional) Escape character under csv configuration.
      * `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     * `csvConfigLinefeed` - (Optional) Separator in csv configuration.
+     * `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
      * - format = `parquet`
      * `parquetConfig` - (Optional) Configure to use parquet storage format.
      * `name` - (Required) The name of the key.
@@ -269,7 +269,7 @@ export interface OssShipperState {
      * `csvConfigNullidentifier` - (Optional) Invalid field content.
      * `csvConfigQuote` - (Optional) Escape character under csv configuration.
      * `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     * `csvConfigLinefeed` - (Optional) Separator in csv configuration.
+     * `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
      * - format = `parquet`
      * `parquetConfig` - (Optional) Configure to use parquet storage format.
      * `name` - (Required) The name of the key.
@@ -341,7 +341,7 @@ export interface OssShipperArgs {
      * `csvConfigNullidentifier` - (Optional) Invalid field content.
      * `csvConfigQuote` - (Optional) Escape character under csv configuration.
      * `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     * `csvConfigLinefeed` - (Optional) Separator in csv configuration.
+     * `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
      * - format = `parquet`
      * `parquetConfig` - (Optional) Configure to use parquet storage format.
      * `name` - (Required) The name of the key.

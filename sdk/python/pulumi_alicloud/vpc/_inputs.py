@@ -10,8 +10,10 @@ from .. import _utilities
 
 __all__ = [
     'NetworkAclAttachmentResourceArgs',
+    'NetworkAclEgressAclEntryArgs',
     'NetworkAclEntriesEgressArgs',
     'NetworkAclEntriesIngressArgs',
+    'NetworkAclIngressAclEntryArgs',
 ]
 
 @pulumi.input_type
@@ -49,6 +51,109 @@ class NetworkAclAttachmentResourceArgs:
     @resource_type.setter
     def resource_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_type", value)
+
+
+@pulumi.input_type
+class NetworkAclEgressAclEntryArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 destination_cidr_ip: Optional[pulumi.Input[str]] = None,
+                 network_acl_entry_name: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: The description of egress entries.
+        :param pulumi.Input[str] destination_cidr_ip: The destination cidr ip of egress entries.
+        :param pulumi.Input[str] network_acl_entry_name: The entry name of egress entries.
+        :param pulumi.Input[str] policy: The policy of egress entries. Valid values `accept` and `drop`.
+        :param pulumi.Input[str] port: The port of egress entries.
+        :param pulumi.Input[str] protocol: The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if destination_cidr_ip is not None:
+            pulumi.set(__self__, "destination_cidr_ip", destination_cidr_ip)
+        if network_acl_entry_name is not None:
+            pulumi.set(__self__, "network_acl_entry_name", network_acl_entry_name)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of egress entries.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="destinationCidrIp")
+    def destination_cidr_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination cidr ip of egress entries.
+        """
+        return pulumi.get(self, "destination_cidr_ip")
+
+    @destination_cidr_ip.setter
+    def destination_cidr_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_cidr_ip", value)
+
+    @property
+    @pulumi.getter(name="networkAclEntryName")
+    def network_acl_entry_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The entry name of egress entries.
+        """
+        return pulumi.get(self, "network_acl_entry_name")
+
+    @network_acl_entry_name.setter
+    def network_acl_entry_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_acl_entry_name", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy of egress entries. Valid values `accept` and `drop`.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The port of egress entries.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
 
 
 @pulumi.input_type
@@ -281,6 +386,109 @@ class NetworkAclEntriesIngressArgs:
     def source_cidr_ip(self) -> Optional[pulumi.Input[str]]:
         """
         The source ip of the ingress entry.
+        """
+        return pulumi.get(self, "source_cidr_ip")
+
+    @source_cidr_ip.setter
+    def source_cidr_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_cidr_ip", value)
+
+
+@pulumi.input_type
+class NetworkAclIngressAclEntryArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 network_acl_entry_name: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 source_cidr_ip: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: The description of egress entries.
+        :param pulumi.Input[str] network_acl_entry_name: The entry name of egress entries.
+        :param pulumi.Input[str] policy: The policy of egress entries. Valid values `accept` and `drop`.
+        :param pulumi.Input[str] port: The port of egress entries.
+        :param pulumi.Input[str] protocol: The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        :param pulumi.Input[str] source_cidr_ip: The source cidr ip of ingress entries.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if network_acl_entry_name is not None:
+            pulumi.set(__self__, "network_acl_entry_name", network_acl_entry_name)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if source_cidr_ip is not None:
+            pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of egress entries.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="networkAclEntryName")
+    def network_acl_entry_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The entry name of egress entries.
+        """
+        return pulumi.get(self, "network_acl_entry_name")
+
+    @network_acl_entry_name.setter
+    def network_acl_entry_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_acl_entry_name", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy of egress entries. Valid values `accept` and `drop`.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The port of egress entries.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="sourceCidrIp")
+    def source_cidr_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source cidr ip of ingress entries.
         """
         return pulumi.get(self, "source_cidr_ip")
 

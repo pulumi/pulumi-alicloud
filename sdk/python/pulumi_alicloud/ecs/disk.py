@@ -13,24 +13,34 @@ __all__ = ['DiskArgs', 'Disk']
 @pulumi.input_type
 class DiskArgs:
     def __init__(__self__, *,
-                 availability_zone: pulumi.Input[str],
-                 size: pulumi.Input[int],
+                 advanced_features: Optional[pulumi.Input[str]] = None,
+                 availability_zone: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_name: Optional[pulumi.Input[str]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  enable_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+                 encrypt_algorithm: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 storage_set_id: Optional[pulumi.Input[str]] = None,
+                 storage_set_partition_number: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Disk resource.
         :param pulumi.Input[str] availability_zone: The Zone to create the disk in.
-        :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance: Default value: false.
@@ -45,59 +55,87 @@ class DiskArgs:
                * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs.
                > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "size", size)
+        if advanced_features is not None:
+            pulumi.set(__self__, "advanced_features", advanced_features)
+        if availability_zone is not None:
+            warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
+            pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if category is not None:
             pulumi.set(__self__, "category", category)
+        if dedicated_block_storage_cluster_id is not None:
+            pulumi.set(__self__, "dedicated_block_storage_cluster_id", dedicated_block_storage_cluster_id)
         if delete_auto_snapshot is not None:
             pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if delete_with_instance is not None:
             pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_name is not None:
+            pulumi.set(__self__, "disk_name", disk_name)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if enable_auto_snapshot is not None:
             pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
+        if encrypt_algorithm is not None:
+            pulumi.set(__self__, "encrypt_algorithm", encrypt_algorithm)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if performance_level is not None:
             pulumi.set(__self__, "performance_level", performance_level)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if storage_set_id is not None:
+            pulumi.set(__self__, "storage_set_id", storage_set_id)
+        if storage_set_partition_number is not None:
+            pulumi.set(__self__, "storage_set_partition_number", storage_set_partition_number)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="advancedFeatures")
+    def advanced_features(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "advanced_features")
+
+    @advanced_features.setter
+    def advanced_features(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "advanced_features", value)
 
     @property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> pulumi.Input[str]:
+    def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
         The Zone to create the disk in.
         """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: pulumi.Input[str]):
+    def availability_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "availability_zone", value)
-
-    @property
-    @pulumi.getter
-    def size(self) -> pulumi.Input[int]:
-        """
-        The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-        """
-        return pulumi.get(self, "size")
-
-    @size.setter
-    def size(self, value: pulumi.Input[int]):
-        pulumi.set(self, "size", value)
 
     @property
     @pulumi.getter
@@ -110,6 +148,15 @@ class DiskArgs:
     @category.setter
     def category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="dedicatedBlockStorageClusterId")
+    def dedicated_block_storage_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dedicated_block_storage_cluster_id")
+
+    @dedicated_block_storage_cluster_id.setter
+    def dedicated_block_storage_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_block_storage_cluster_id", value)
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")
@@ -148,6 +195,24 @@ class DiskArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "disk_name")
+
+    @disk_name.setter
+    def disk_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_name", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -160,6 +225,15 @@ class DiskArgs:
         pulumi.set(self, "enable_auto_snapshot", value)
 
     @property
+    @pulumi.getter(name="encryptAlgorithm")
+    def encrypt_algorithm(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "encrypt_algorithm")
+
+    @encrypt_algorithm.setter
+    def encrypt_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encrypt_algorithm", value)
+
+    @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -170,6 +244,15 @@ class DiskArgs:
     @encrypted.setter
     def encrypted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="kmsKeyId")
@@ -194,6 +277,15 @@ class DiskArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
 
     @property
     @pulumi.getter(name="performanceLevel")
@@ -224,6 +316,18 @@ class DiskArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -234,6 +338,24 @@ class DiskArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snapshot_id", value)
+
+    @property
+    @pulumi.getter(name="storageSetId")
+    def storage_set_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_set_id")
+
+    @storage_set_id.setter
+    def storage_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_set_id", value)
+
+    @property
+    @pulumi.getter(name="storageSetPartitionNumber")
+    def storage_set_partition_number(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "storage_set_partition_number")
+
+    @storage_set_partition_number.setter
+    def storage_set_partition_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_set_partition_number", value)
 
     @property
     @pulumi.getter
@@ -247,25 +369,54 @@ class DiskArgs:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class _DiskState:
     def __init__(__self__, *,
+                 advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_name: Optional[pulumi.Input[str]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  enable_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+                 encrypt_algorithm: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 storage_set_id: Optional[pulumi.Input[str]] = None,
+                 storage_set_partition_number: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Disk resources.
         :param pulumi.Input[str] availability_zone: The Zone to create the disk in.
@@ -288,24 +439,44 @@ class _DiskState:
         :param pulumi.Input[str] status: The disk status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        if advanced_features is not None:
+            pulumi.set(__self__, "advanced_features", advanced_features)
+        if availability_zone is not None:
+            warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
+            pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if category is not None:
             pulumi.set(__self__, "category", category)
+        if dedicated_block_storage_cluster_id is not None:
+            pulumi.set(__self__, "dedicated_block_storage_cluster_id", dedicated_block_storage_cluster_id)
         if delete_auto_snapshot is not None:
             pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
         if delete_with_instance is not None:
             pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_name is not None:
+            pulumi.set(__self__, "disk_name", disk_name)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if enable_auto_snapshot is not None:
             pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
+        if encrypt_algorithm is not None:
+            pulumi.set(__self__, "encrypt_algorithm", encrypt_algorithm)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if performance_level is not None:
             pulumi.set(__self__, "performance_level", performance_level)
         if resource_group_id is not None:
@@ -316,8 +487,25 @@ class _DiskState:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if storage_set_id is not None:
+            pulumi.set(__self__, "storage_set_id", storage_set_id)
+        if storage_set_partition_number is not None:
+            pulumi.set(__self__, "storage_set_partition_number", storage_set_partition_number)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="advancedFeatures")
+    def advanced_features(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "advanced_features")
+
+    @advanced_features.setter
+    def advanced_features(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "advanced_features", value)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -342,6 +530,15 @@ class _DiskState:
     @category.setter
     def category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="dedicatedBlockStorageClusterId")
+    def dedicated_block_storage_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dedicated_block_storage_cluster_id")
+
+    @dedicated_block_storage_cluster_id.setter
+    def dedicated_block_storage_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_block_storage_cluster_id", value)
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")
@@ -380,6 +577,24 @@ class _DiskState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "disk_name")
+
+    @disk_name.setter
+    def disk_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_name", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -392,6 +607,15 @@ class _DiskState:
         pulumi.set(self, "enable_auto_snapshot", value)
 
     @property
+    @pulumi.getter(name="encryptAlgorithm")
+    def encrypt_algorithm(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "encrypt_algorithm")
+
+    @encrypt_algorithm.setter
+    def encrypt_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encrypt_algorithm", value)
+
+    @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -402,6 +626,15 @@ class _DiskState:
     @encrypted.setter
     def encrypted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="kmsKeyId")
@@ -426,6 +659,15 @@ class _DiskState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
 
     @property
     @pulumi.getter(name="performanceLevel")
@@ -492,6 +734,24 @@ class _DiskState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="storageSetId")
+    def storage_set_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_set_id")
+
+    @storage_set_id.setter
+    def storage_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_set_id", value)
+
+    @property
+    @pulumi.getter(name="storageSetPartitionNumber")
+    def storage_set_partition_number(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "storage_set_partition_number")
+
+    @storage_set_partition_number.setter
+    def storage_set_partition_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_set_partition_number", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -503,51 +763,57 @@ class _DiskState:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 class Disk(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_name: Optional[pulumi.Input[str]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  enable_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+                 encrypt_algorithm: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
+                 storage_set_id: Optional[pulumi.Input[str]] = None,
+                 storage_set_partition_number: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a ECS disk resource.
-
-        > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new ECS disk.
-        ecs_disk = alicloud.ecs.Disk("ecsDisk",
-            availability_zone="cn-beijing-b",
-            category="cloud_efficiency",
-            description="Hello ecs disk.",
-            encrypted=True,
-            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
-            size=30,
-            tags={
-                "Name": "TerraformTest",
-            })
-        ```
-
         ## Import
 
         Cloud disk can be imported using the id, e.g.
@@ -581,32 +847,9 @@ class Disk(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DiskArgs,
+                 args: Optional[DiskArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ECS disk resource.
-
-        > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new ECS disk.
-        ecs_disk = alicloud.ecs.Disk("ecsDisk",
-            availability_zone="cn-beijing-b",
-            category="cloud_efficiency",
-            description="Hello ecs disk.",
-            encrypted=True,
-            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
-            size=30,
-            tags={
-                "Name": "TerraformTest",
-            })
-        ```
-
         ## Import
 
         Cloud disk can be imported using the id, e.g.
@@ -630,20 +873,31 @@ class Disk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_features: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_name: Optional[pulumi.Input[str]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  enable_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+                 encrypt_algorithm: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
+                 storage_set_id: Optional[pulumi.Input[str]] = None,
+                 storage_set_partition_number: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -656,24 +910,37 @@ class Disk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DiskArgs.__new__(DiskArgs)
 
-            if availability_zone is None and not opts.urn:
-                raise TypeError("Missing required property 'availability_zone'")
+            __props__.__dict__["advanced_features"] = advanced_features
+            if availability_zone is not None and not opts.urn:
+                warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
+                pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["category"] = category
+            __props__.__dict__["dedicated_block_storage_cluster_id"] = dedicated_block_storage_cluster_id
             __props__.__dict__["delete_auto_snapshot"] = delete_auto_snapshot
             __props__.__dict__["delete_with_instance"] = delete_with_instance
             __props__.__dict__["description"] = description
+            __props__.__dict__["disk_name"] = disk_name
+            __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["enable_auto_snapshot"] = enable_auto_snapshot
+            __props__.__dict__["encrypt_algorithm"] = encrypt_algorithm
             __props__.__dict__["encrypted"] = encrypted
+            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["kms_key_id"] = kms_key_id
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
             __props__.__dict__["name"] = name
+            __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["performance_level"] = performance_level
             __props__.__dict__["resource_group_id"] = resource_group_id
-            if size is None and not opts.urn:
-                raise TypeError("Missing required property 'size'")
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot_id"] = snapshot_id
+            __props__.__dict__["storage_set_id"] = storage_set_id
+            __props__.__dict__["storage_set_partition_number"] = storage_set_partition_number
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["type"] = type
+            __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["status"] = None
         super(Disk, __self__).__init__(
             'alicloud:ecs/disk:Disk',
@@ -685,21 +952,32 @@ class Disk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_features: Optional[pulumi.Input[str]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             category: Optional[pulumi.Input[str]] = None,
+            dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
             delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
             delete_with_instance: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disk_name: Optional[pulumi.Input[str]] = None,
+            dry_run: Optional[pulumi.Input[bool]] = None,
             enable_auto_snapshot: Optional[pulumi.Input[bool]] = None,
+            encrypt_algorithm: Optional[pulumi.Input[str]] = None,
             encrypted: Optional[pulumi.Input[bool]] = None,
+            instance_id: Optional[pulumi.Input[str]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            payment_type: Optional[pulumi.Input[str]] = None,
             performance_level: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
             snapshot_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Disk':
+            storage_set_id: Optional[pulumi.Input[str]] = None,
+            storage_set_partition_number: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'Disk':
         """
         Get an existing Disk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -731,22 +1009,38 @@ class Disk(pulumi.CustomResource):
 
         __props__ = _DiskState.__new__(_DiskState)
 
+        __props__.__dict__["advanced_features"] = advanced_features
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["category"] = category
+        __props__.__dict__["dedicated_block_storage_cluster_id"] = dedicated_block_storage_cluster_id
         __props__.__dict__["delete_auto_snapshot"] = delete_auto_snapshot
         __props__.__dict__["delete_with_instance"] = delete_with_instance
         __props__.__dict__["description"] = description
+        __props__.__dict__["disk_name"] = disk_name
+        __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["enable_auto_snapshot"] = enable_auto_snapshot
+        __props__.__dict__["encrypt_algorithm"] = encrypt_algorithm
         __props__.__dict__["encrypted"] = encrypted
+        __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["performance_level"] = performance_level
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["size"] = size
         __props__.__dict__["snapshot_id"] = snapshot_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["storage_set_id"] = storage_set_id
+        __props__.__dict__["storage_set_partition_number"] = storage_set_partition_number
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["type"] = type
+        __props__.__dict__["zone_id"] = zone_id
         return Disk(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="advancedFeatures")
+    def advanced_features(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "advanced_features")
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -763,6 +1057,11 @@ class Disk(pulumi.CustomResource):
         Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="dedicatedBlockStorageClusterId")
+    def dedicated_block_storage_cluster_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "dedicated_block_storage_cluster_id")
 
     @property
     @pulumi.getter(name="deleteAutoSnapshot")
@@ -789,6 +1088,16 @@ class Disk(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "disk_name")
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "dry_run")
+
+    @property
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -797,12 +1106,22 @@ class Disk(pulumi.CustomResource):
         return pulumi.get(self, "enable_auto_snapshot")
 
     @property
+    @pulumi.getter(name="encryptAlgorithm")
+    def encrypt_algorithm(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "encrypt_algorithm")
+
+    @property
     @pulumi.getter
     def encrypted(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, the disk will be encrypted, conflict with `snapshot_id`.
         """
         return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="kmsKeyId")
@@ -819,6 +1138,11 @@ class Disk(pulumi.CustomResource):
         Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter(name="performanceLevel")
@@ -842,7 +1166,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> pulumi.Output[int]:
+    def size(self) -> pulumi.Output[Optional[int]]:
         """
         The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         """
@@ -865,10 +1189,30 @@ class Disk(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="storageSetId")
+    def storage_set_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "storage_set_id")
+
+    @property
+    @pulumi.getter(name="storageSetPartitionNumber")
+    def storage_set_partition_number(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "storage_set_partition_number")
+
+    @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "zone_id")
 

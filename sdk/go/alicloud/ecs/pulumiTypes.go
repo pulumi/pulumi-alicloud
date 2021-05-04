@@ -2662,29 +2662,48 @@ func (o GetDedicatedHostsHostArrayOutput) Index(i pulumi.IntInput) GetDedicatedH
 
 type GetDisksDisk struct {
 	// Disk attachment time.
-	AttachedTime string `pulumi:"attachedTime"`
+	AttachedTime         string `pulumi:"attachedTime"`
+	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
 	// Availability zone of the disk.
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
 	Category string `pulumi:"category"`
 	// Disk creation time.
-	CreationTime string `pulumi:"creationTime"`
+	CreationTime       string `pulumi:"creationTime"`
+	DeleteAutoSnapshot bool   `pulumi:"deleteAutoSnapshot"`
+	DeleteWithInstance bool   `pulumi:"deleteWithInstance"`
 	// Disk description.
 	Description string `pulumi:"description"`
 	// Disk detachment time.
-	DetachedTime string `pulumi:"detachedTime"`
+	DetachedTime                  string `pulumi:"detachedTime"`
+	Device                        string `pulumi:"device"`
+	DiskId                        string `pulumi:"diskId"`
+	DiskName                      string `pulumi:"diskName"`
+	DiskType                      string `pulumi:"diskType"`
+	EnableAutoSnapshot            bool   `pulumi:"enableAutoSnapshot"`
+	EnableAutomatedSnapshotPolicy bool   `pulumi:"enableAutomatedSnapshotPolicy"`
 	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
-	Encrypted string `pulumi:"encrypted"`
-	// Disk expiration time.
-	ExpirationTime string `pulumi:"expirationTime"`
+	Encrypted   string `pulumi:"encrypted"`
+	ExpiredTime string `pulumi:"expiredTime"`
 	// ID of the disk.
 	Id string `pulumi:"id"`
 	// ID of the image from which the disk is created. It is null unless the disk is created using an image.
 	ImageId string `pulumi:"imageId"`
 	// Filter the results by the specified ECS instance ID.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId       string                      `pulumi:"instanceId"`
+	Iops             int                         `pulumi:"iops"`
+	IopsRead         int                         `pulumi:"iopsRead"`
+	IopsWrite        int                         `pulumi:"iopsWrite"`
+	KmsKeyId         string                      `pulumi:"kmsKeyId"`
+	MountInstanceNum int                         `pulumi:"mountInstanceNum"`
+	MountInstances   []GetDisksDiskMountInstance `pulumi:"mountInstances"`
 	// Disk name.
-	Name string `pulumi:"name"`
+	Name             string                      `pulumi:"name"`
+	OperationLocks   []GetDisksDiskOperationLock `pulumi:"operationLocks"`
+	PaymentType      string                      `pulumi:"paymentType"`
+	PerformanceLevel string                      `pulumi:"performanceLevel"`
+	Portable         bool                        `pulumi:"portable"`
+	ProductCode      string                      `pulumi:"productCode"`
 	// Region ID the disk belongs to.
 	RegionId string `pulumi:"regionId"`
 	// The Id of resource group which the disk belongs.
@@ -2721,7 +2740,8 @@ type GetDisksDisk struct {
 	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
-	Type string `pulumi:"type"`
+	Type   string `pulumi:"type"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // GetDisksDiskInput is an input type that accepts GetDisksDiskArgs and GetDisksDiskOutput values.
@@ -2737,29 +2757,48 @@ type GetDisksDiskInput interface {
 
 type GetDisksDiskArgs struct {
 	// Disk attachment time.
-	AttachedTime pulumi.StringInput `pulumi:"attachedTime"`
+	AttachedTime         pulumi.StringInput `pulumi:"attachedTime"`
+	AutoSnapshotPolicyId pulumi.StringInput `pulumi:"autoSnapshotPolicyId"`
 	// Availability zone of the disk.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
 	Category pulumi.StringInput `pulumi:"category"`
 	// Disk creation time.
-	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	CreationTime       pulumi.StringInput `pulumi:"creationTime"`
+	DeleteAutoSnapshot pulumi.BoolInput   `pulumi:"deleteAutoSnapshot"`
+	DeleteWithInstance pulumi.BoolInput   `pulumi:"deleteWithInstance"`
 	// Disk description.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Disk detachment time.
-	DetachedTime pulumi.StringInput `pulumi:"detachedTime"`
+	DetachedTime                  pulumi.StringInput `pulumi:"detachedTime"`
+	Device                        pulumi.StringInput `pulumi:"device"`
+	DiskId                        pulumi.StringInput `pulumi:"diskId"`
+	DiskName                      pulumi.StringInput `pulumi:"diskName"`
+	DiskType                      pulumi.StringInput `pulumi:"diskType"`
+	EnableAutoSnapshot            pulumi.BoolInput   `pulumi:"enableAutoSnapshot"`
+	EnableAutomatedSnapshotPolicy pulumi.BoolInput   `pulumi:"enableAutomatedSnapshotPolicy"`
 	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
-	Encrypted pulumi.StringInput `pulumi:"encrypted"`
-	// Disk expiration time.
-	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
+	Encrypted   pulumi.StringInput `pulumi:"encrypted"`
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
 	// ID of the disk.
 	Id pulumi.StringInput `pulumi:"id"`
 	// ID of the image from which the disk is created. It is null unless the disk is created using an image.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// Filter the results by the specified ECS instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	InstanceId       pulumi.StringInput                  `pulumi:"instanceId"`
+	Iops             pulumi.IntInput                     `pulumi:"iops"`
+	IopsRead         pulumi.IntInput                     `pulumi:"iopsRead"`
+	IopsWrite        pulumi.IntInput                     `pulumi:"iopsWrite"`
+	KmsKeyId         pulumi.StringInput                  `pulumi:"kmsKeyId"`
+	MountInstanceNum pulumi.IntInput                     `pulumi:"mountInstanceNum"`
+	MountInstances   GetDisksDiskMountInstanceArrayInput `pulumi:"mountInstances"`
 	// Disk name.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name             pulumi.StringInput                  `pulumi:"name"`
+	OperationLocks   GetDisksDiskOperationLockArrayInput `pulumi:"operationLocks"`
+	PaymentType      pulumi.StringInput                  `pulumi:"paymentType"`
+	PerformanceLevel pulumi.StringInput                  `pulumi:"performanceLevel"`
+	Portable         pulumi.BoolInput                    `pulumi:"portable"`
+	ProductCode      pulumi.StringInput                  `pulumi:"productCode"`
 	// Region ID the disk belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// The Id of resource group which the disk belongs.
@@ -2796,7 +2835,8 @@ type GetDisksDiskArgs struct {
 	// ```
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type   pulumi.StringInput `pulumi:"type"`
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetDisksDiskArgs) ElementType() reflect.Type {
@@ -2855,6 +2895,10 @@ func (o GetDisksDiskOutput) AttachedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.AttachedTime }).(pulumi.StringOutput)
 }
 
+func (o GetDisksDiskOutput) AutoSnapshotPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.AutoSnapshotPolicyId }).(pulumi.StringOutput)
+}
+
 // Availability zone of the disk.
 func (o GetDisksDiskOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.AvailabilityZone }).(pulumi.StringOutput)
@@ -2870,6 +2914,14 @@ func (o GetDisksDiskOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+func (o GetDisksDiskOutput) DeleteAutoSnapshot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDisksDisk) bool { return v.DeleteAutoSnapshot }).(pulumi.BoolOutput)
+}
+
+func (o GetDisksDiskOutput) DeleteWithInstance() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDisksDisk) bool { return v.DeleteWithInstance }).(pulumi.BoolOutput)
+}
+
 // Disk description.
 func (o GetDisksDiskOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.Description }).(pulumi.StringOutput)
@@ -2880,14 +2932,37 @@ func (o GetDisksDiskOutput) DetachedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.DetachedTime }).(pulumi.StringOutput)
 }
 
+func (o GetDisksDiskOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.Device }).(pulumi.StringOutput)
+}
+
+func (o GetDisksDiskOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+func (o GetDisksDiskOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.DiskName }).(pulumi.StringOutput)
+}
+
+func (o GetDisksDiskOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+func (o GetDisksDiskOutput) EnableAutoSnapshot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDisksDisk) bool { return v.EnableAutoSnapshot }).(pulumi.BoolOutput)
+}
+
+func (o GetDisksDiskOutput) EnableAutomatedSnapshotPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDisksDisk) bool { return v.EnableAutomatedSnapshotPolicy }).(pulumi.BoolOutput)
+}
+
 // Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 func (o GetDisksDiskOutput) Encrypted() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.Encrypted }).(pulumi.StringOutput)
 }
 
-// Disk expiration time.
-func (o GetDisksDiskOutput) ExpirationTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDisksDisk) string { return v.ExpirationTime }).(pulumi.StringOutput)
+func (o GetDisksDiskOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
 // ID of the disk.
@@ -2905,9 +2980,53 @@ func (o GetDisksDiskOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+func (o GetDisksDiskOutput) Iops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDisksDisk) int { return v.Iops }).(pulumi.IntOutput)
+}
+
+func (o GetDisksDiskOutput) IopsRead() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDisksDisk) int { return v.IopsRead }).(pulumi.IntOutput)
+}
+
+func (o GetDisksDiskOutput) IopsWrite() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDisksDisk) int { return v.IopsWrite }).(pulumi.IntOutput)
+}
+
+func (o GetDisksDiskOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+func (o GetDisksDiskOutput) MountInstanceNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDisksDisk) int { return v.MountInstanceNum }).(pulumi.IntOutput)
+}
+
+func (o GetDisksDiskOutput) MountInstances() GetDisksDiskMountInstanceArrayOutput {
+	return o.ApplyT(func(v GetDisksDisk) []GetDisksDiskMountInstance { return v.MountInstances }).(GetDisksDiskMountInstanceArrayOutput)
+}
+
 // Disk name.
 func (o GetDisksDiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDisksDiskOutput) OperationLocks() GetDisksDiskOperationLockArrayOutput {
+	return o.ApplyT(func(v GetDisksDisk) []GetDisksDiskOperationLock { return v.OperationLocks }).(GetDisksDiskOperationLockArrayOutput)
+}
+
+func (o GetDisksDiskOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+func (o GetDisksDiskOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.PerformanceLevel }).(pulumi.StringOutput)
+}
+
+func (o GetDisksDiskOutput) Portable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDisksDisk) bool { return v.Portable }).(pulumi.BoolOutput)
+}
+
+func (o GetDisksDiskOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
 // Region ID the disk belongs to.
@@ -2968,6 +3087,10 @@ func (o GetDisksDiskOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o GetDisksDiskOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDisk) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type GetDisksDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDisksDiskArrayOutput) ElementType() reflect.Type {
@@ -2986,6 +3109,1042 @@ func (o GetDisksDiskArrayOutput) Index(i pulumi.IntInput) GetDisksDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDisksDisk {
 		return vs[0].([]GetDisksDisk)[vs[1].(int)]
 	}).(GetDisksDiskOutput)
+}
+
+type GetDisksDiskMountInstance struct {
+	// Disk attachment time.
+	AttachedTime string `pulumi:"attachedTime"`
+	Device       string `pulumi:"device"`
+	// Filter the results by the specified ECS instance ID.
+	InstanceId string `pulumi:"instanceId"`
+}
+
+// GetDisksDiskMountInstanceInput is an input type that accepts GetDisksDiskMountInstanceArgs and GetDisksDiskMountInstanceOutput values.
+// You can construct a concrete instance of `GetDisksDiskMountInstanceInput` via:
+//
+//          GetDisksDiskMountInstanceArgs{...}
+type GetDisksDiskMountInstanceInput interface {
+	pulumi.Input
+
+	ToGetDisksDiskMountInstanceOutput() GetDisksDiskMountInstanceOutput
+	ToGetDisksDiskMountInstanceOutputWithContext(context.Context) GetDisksDiskMountInstanceOutput
+}
+
+type GetDisksDiskMountInstanceArgs struct {
+	// Disk attachment time.
+	AttachedTime pulumi.StringInput `pulumi:"attachedTime"`
+	Device       pulumi.StringInput `pulumi:"device"`
+	// Filter the results by the specified ECS instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+}
+
+func (GetDisksDiskMountInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDisksDiskMountInstance)(nil)).Elem()
+}
+
+func (i GetDisksDiskMountInstanceArgs) ToGetDisksDiskMountInstanceOutput() GetDisksDiskMountInstanceOutput {
+	return i.ToGetDisksDiskMountInstanceOutputWithContext(context.Background())
+}
+
+func (i GetDisksDiskMountInstanceArgs) ToGetDisksDiskMountInstanceOutputWithContext(ctx context.Context) GetDisksDiskMountInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDisksDiskMountInstanceOutput)
+}
+
+// GetDisksDiskMountInstanceArrayInput is an input type that accepts GetDisksDiskMountInstanceArray and GetDisksDiskMountInstanceArrayOutput values.
+// You can construct a concrete instance of `GetDisksDiskMountInstanceArrayInput` via:
+//
+//          GetDisksDiskMountInstanceArray{ GetDisksDiskMountInstanceArgs{...} }
+type GetDisksDiskMountInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetDisksDiskMountInstanceArrayOutput() GetDisksDiskMountInstanceArrayOutput
+	ToGetDisksDiskMountInstanceArrayOutputWithContext(context.Context) GetDisksDiskMountInstanceArrayOutput
+}
+
+type GetDisksDiskMountInstanceArray []GetDisksDiskMountInstanceInput
+
+func (GetDisksDiskMountInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDisksDiskMountInstance)(nil)).Elem()
+}
+
+func (i GetDisksDiskMountInstanceArray) ToGetDisksDiskMountInstanceArrayOutput() GetDisksDiskMountInstanceArrayOutput {
+	return i.ToGetDisksDiskMountInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDisksDiskMountInstanceArray) ToGetDisksDiskMountInstanceArrayOutputWithContext(ctx context.Context) GetDisksDiskMountInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDisksDiskMountInstanceArrayOutput)
+}
+
+type GetDisksDiskMountInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetDisksDiskMountInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDisksDiskMountInstance)(nil)).Elem()
+}
+
+func (o GetDisksDiskMountInstanceOutput) ToGetDisksDiskMountInstanceOutput() GetDisksDiskMountInstanceOutput {
+	return o
+}
+
+func (o GetDisksDiskMountInstanceOutput) ToGetDisksDiskMountInstanceOutputWithContext(ctx context.Context) GetDisksDiskMountInstanceOutput {
+	return o
+}
+
+// Disk attachment time.
+func (o GetDisksDiskMountInstanceOutput) AttachedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDiskMountInstance) string { return v.AttachedTime }).(pulumi.StringOutput)
+}
+
+func (o GetDisksDiskMountInstanceOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDiskMountInstance) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// Filter the results by the specified ECS instance ID.
+func (o GetDisksDiskMountInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDiskMountInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+type GetDisksDiskMountInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDisksDiskMountInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDisksDiskMountInstance)(nil)).Elem()
+}
+
+func (o GetDisksDiskMountInstanceArrayOutput) ToGetDisksDiskMountInstanceArrayOutput() GetDisksDiskMountInstanceArrayOutput {
+	return o
+}
+
+func (o GetDisksDiskMountInstanceArrayOutput) ToGetDisksDiskMountInstanceArrayOutputWithContext(ctx context.Context) GetDisksDiskMountInstanceArrayOutput {
+	return o
+}
+
+func (o GetDisksDiskMountInstanceArrayOutput) Index(i pulumi.IntInput) GetDisksDiskMountInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDisksDiskMountInstance {
+		return vs[0].([]GetDisksDiskMountInstance)[vs[1].(int)]
+	}).(GetDisksDiskMountInstanceOutput)
+}
+
+type GetDisksDiskOperationLock struct {
+	LockReason string `pulumi:"lockReason"`
+}
+
+// GetDisksDiskOperationLockInput is an input type that accepts GetDisksDiskOperationLockArgs and GetDisksDiskOperationLockOutput values.
+// You can construct a concrete instance of `GetDisksDiskOperationLockInput` via:
+//
+//          GetDisksDiskOperationLockArgs{...}
+type GetDisksDiskOperationLockInput interface {
+	pulumi.Input
+
+	ToGetDisksDiskOperationLockOutput() GetDisksDiskOperationLockOutput
+	ToGetDisksDiskOperationLockOutputWithContext(context.Context) GetDisksDiskOperationLockOutput
+}
+
+type GetDisksDiskOperationLockArgs struct {
+	LockReason pulumi.StringInput `pulumi:"lockReason"`
+}
+
+func (GetDisksDiskOperationLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDisksDiskOperationLock)(nil)).Elem()
+}
+
+func (i GetDisksDiskOperationLockArgs) ToGetDisksDiskOperationLockOutput() GetDisksDiskOperationLockOutput {
+	return i.ToGetDisksDiskOperationLockOutputWithContext(context.Background())
+}
+
+func (i GetDisksDiskOperationLockArgs) ToGetDisksDiskOperationLockOutputWithContext(ctx context.Context) GetDisksDiskOperationLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDisksDiskOperationLockOutput)
+}
+
+// GetDisksDiskOperationLockArrayInput is an input type that accepts GetDisksDiskOperationLockArray and GetDisksDiskOperationLockArrayOutput values.
+// You can construct a concrete instance of `GetDisksDiskOperationLockArrayInput` via:
+//
+//          GetDisksDiskOperationLockArray{ GetDisksDiskOperationLockArgs{...} }
+type GetDisksDiskOperationLockArrayInput interface {
+	pulumi.Input
+
+	ToGetDisksDiskOperationLockArrayOutput() GetDisksDiskOperationLockArrayOutput
+	ToGetDisksDiskOperationLockArrayOutputWithContext(context.Context) GetDisksDiskOperationLockArrayOutput
+}
+
+type GetDisksDiskOperationLockArray []GetDisksDiskOperationLockInput
+
+func (GetDisksDiskOperationLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDisksDiskOperationLock)(nil)).Elem()
+}
+
+func (i GetDisksDiskOperationLockArray) ToGetDisksDiskOperationLockArrayOutput() GetDisksDiskOperationLockArrayOutput {
+	return i.ToGetDisksDiskOperationLockArrayOutputWithContext(context.Background())
+}
+
+func (i GetDisksDiskOperationLockArray) ToGetDisksDiskOperationLockArrayOutputWithContext(ctx context.Context) GetDisksDiskOperationLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDisksDiskOperationLockArrayOutput)
+}
+
+type GetDisksDiskOperationLockOutput struct{ *pulumi.OutputState }
+
+func (GetDisksDiskOperationLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDisksDiskOperationLock)(nil)).Elem()
+}
+
+func (o GetDisksDiskOperationLockOutput) ToGetDisksDiskOperationLockOutput() GetDisksDiskOperationLockOutput {
+	return o
+}
+
+func (o GetDisksDiskOperationLockOutput) ToGetDisksDiskOperationLockOutputWithContext(ctx context.Context) GetDisksDiskOperationLockOutput {
+	return o
+}
+
+func (o GetDisksDiskOperationLockOutput) LockReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDisksDiskOperationLock) string { return v.LockReason }).(pulumi.StringOutput)
+}
+
+type GetDisksDiskOperationLockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDisksDiskOperationLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDisksDiskOperationLock)(nil)).Elem()
+}
+
+func (o GetDisksDiskOperationLockArrayOutput) ToGetDisksDiskOperationLockArrayOutput() GetDisksDiskOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDisksDiskOperationLockArrayOutput) ToGetDisksDiskOperationLockArrayOutputWithContext(ctx context.Context) GetDisksDiskOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDisksDiskOperationLockArrayOutput) Index(i pulumi.IntInput) GetDisksDiskOperationLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDisksDiskOperationLock {
+		return vs[0].([]GetDisksDiskOperationLock)[vs[1].(int)]
+	}).(GetDisksDiskOperationLockOutput)
+}
+
+type GetDisksOperationLock struct {
+	LockReason *string `pulumi:"lockReason"`
+}
+
+// GetDisksOperationLockInput is an input type that accepts GetDisksOperationLockArgs and GetDisksOperationLockOutput values.
+// You can construct a concrete instance of `GetDisksOperationLockInput` via:
+//
+//          GetDisksOperationLockArgs{...}
+type GetDisksOperationLockInput interface {
+	pulumi.Input
+
+	ToGetDisksOperationLockOutput() GetDisksOperationLockOutput
+	ToGetDisksOperationLockOutputWithContext(context.Context) GetDisksOperationLockOutput
+}
+
+type GetDisksOperationLockArgs struct {
+	LockReason pulumi.StringPtrInput `pulumi:"lockReason"`
+}
+
+func (GetDisksOperationLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDisksOperationLock)(nil)).Elem()
+}
+
+func (i GetDisksOperationLockArgs) ToGetDisksOperationLockOutput() GetDisksOperationLockOutput {
+	return i.ToGetDisksOperationLockOutputWithContext(context.Background())
+}
+
+func (i GetDisksOperationLockArgs) ToGetDisksOperationLockOutputWithContext(ctx context.Context) GetDisksOperationLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDisksOperationLockOutput)
+}
+
+// GetDisksOperationLockArrayInput is an input type that accepts GetDisksOperationLockArray and GetDisksOperationLockArrayOutput values.
+// You can construct a concrete instance of `GetDisksOperationLockArrayInput` via:
+//
+//          GetDisksOperationLockArray{ GetDisksOperationLockArgs{...} }
+type GetDisksOperationLockArrayInput interface {
+	pulumi.Input
+
+	ToGetDisksOperationLockArrayOutput() GetDisksOperationLockArrayOutput
+	ToGetDisksOperationLockArrayOutputWithContext(context.Context) GetDisksOperationLockArrayOutput
+}
+
+type GetDisksOperationLockArray []GetDisksOperationLockInput
+
+func (GetDisksOperationLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDisksOperationLock)(nil)).Elem()
+}
+
+func (i GetDisksOperationLockArray) ToGetDisksOperationLockArrayOutput() GetDisksOperationLockArrayOutput {
+	return i.ToGetDisksOperationLockArrayOutputWithContext(context.Background())
+}
+
+func (i GetDisksOperationLockArray) ToGetDisksOperationLockArrayOutputWithContext(ctx context.Context) GetDisksOperationLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDisksOperationLockArrayOutput)
+}
+
+type GetDisksOperationLockOutput struct{ *pulumi.OutputState }
+
+func (GetDisksOperationLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDisksOperationLock)(nil)).Elem()
+}
+
+func (o GetDisksOperationLockOutput) ToGetDisksOperationLockOutput() GetDisksOperationLockOutput {
+	return o
+}
+
+func (o GetDisksOperationLockOutput) ToGetDisksOperationLockOutputWithContext(ctx context.Context) GetDisksOperationLockOutput {
+	return o
+}
+
+func (o GetDisksOperationLockOutput) LockReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDisksOperationLock) *string { return v.LockReason }).(pulumi.StringPtrOutput)
+}
+
+type GetDisksOperationLockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDisksOperationLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDisksOperationLock)(nil)).Elem()
+}
+
+func (o GetDisksOperationLockArrayOutput) ToGetDisksOperationLockArrayOutput() GetDisksOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDisksOperationLockArrayOutput) ToGetDisksOperationLockArrayOutputWithContext(ctx context.Context) GetDisksOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDisksOperationLockArrayOutput) Index(i pulumi.IntInput) GetDisksOperationLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDisksOperationLock {
+		return vs[0].([]GetDisksOperationLock)[vs[1].(int)]
+	}).(GetDisksOperationLockOutput)
+}
+
+type GetEcsDisksDisk struct {
+	// A mount of time.
+	AttachedTime string `pulumi:"attachedTime"`
+	// Query cloud disks based on the automatic snapshot policy ID.
+	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
+	// Availability zone of the disk.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Disk category.
+	Category string `pulumi:"category"`
+	// Disk creation time.
+	CreationTime string `pulumi:"creationTime"`
+	// Indicates whether the automatic snapshot is deleted when the disk is released.
+	DeleteAutoSnapshot bool `pulumi:"deleteAutoSnapshot"`
+	// Indicates whether the disk is released together with the instance.
+	DeleteWithInstance bool `pulumi:"deleteWithInstance"`
+	// Disk description.
+	Description string `pulumi:"description"`
+	// Disk detachment time.
+	DetachedTime string `pulumi:"detachedTime"`
+	// The mount point of the disk.
+	Device string `pulumi:"device"`
+	// ID of the disk.
+	DiskId string `pulumi:"diskId"`
+	// The disk name.
+	DiskName string `pulumi:"diskName"`
+	// The disk type.
+	DiskType string `pulumi:"diskType"`
+	// Whether the disk implements an automatic snapshot policy.
+	EnableAutoSnapshot bool `pulumi:"enableAutoSnapshot"`
+	// Whether the disk implements an automatic snapshot policy.
+	EnableAutomatedSnapshotPolicy bool `pulumi:"enableAutomatedSnapshotPolicy"`
+	// Indicate whether the disk is encrypted or not.
+	Encrypted   string `pulumi:"encrypted"`
+	ExpiredTime string `pulumi:"expiredTime"`
+	// ID of the disk.
+	Id string `pulumi:"id"`
+	// ID of the image from which the disk is created. It is null unless the disk is created using an image.
+	ImageId string `pulumi:"imageId"`
+	// The instance ID of the disk mount.
+	InstanceId string `pulumi:"instanceId"`
+	Iops       int    `pulumi:"iops"`
+	IopsRead   int    `pulumi:"iopsRead"`
+	IopsWrite  int    `pulumi:"iopsWrite"`
+	// The kms key id.
+	KmsKeyId string `pulumi:"kmsKeyId"`
+	// Number of instances mounted on shared storage.
+	MountInstanceNum int `pulumi:"mountInstanceNum"`
+	// Disk mount instances.
+	MountInstances []GetEcsDisksDiskMountInstance `pulumi:"mountInstances"`
+	// Disk name.
+	Name           string                         `pulumi:"name"`
+	OperationLocks []GetEcsDisksDiskOperationLock `pulumi:"operationLocks"`
+	// Payment method for disk.
+	PaymentType string `pulumi:"paymentType"`
+	// Performance levels of ESSD cloud disk.
+	PerformanceLevel string `pulumi:"performanceLevel"`
+	// Whether the disk is unmountable.
+	Portable bool `pulumi:"portable"`
+	// The product logo of the cloud market.
+	ProductCode string `pulumi:"productCode"`
+	// Region ID the disk belongs to.
+	RegionId string `pulumi:"regionId"`
+	// The Id of resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Disk size in GiB.
+	Size int `pulumi:"size"`
+	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+	SnapshotId string `pulumi:"snapshotId"`
+	// Current status.
+	Status string `pulumi:"status"`
+	// A map of tags assigned to the disk.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Disk type.
+	Type string `pulumi:"type"`
+	// The zone id.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetEcsDisksDiskInput is an input type that accepts GetEcsDisksDiskArgs and GetEcsDisksDiskOutput values.
+// You can construct a concrete instance of `GetEcsDisksDiskInput` via:
+//
+//          GetEcsDisksDiskArgs{...}
+type GetEcsDisksDiskInput interface {
+	pulumi.Input
+
+	ToGetEcsDisksDiskOutput() GetEcsDisksDiskOutput
+	ToGetEcsDisksDiskOutputWithContext(context.Context) GetEcsDisksDiskOutput
+}
+
+type GetEcsDisksDiskArgs struct {
+	// A mount of time.
+	AttachedTime pulumi.StringInput `pulumi:"attachedTime"`
+	// Query cloud disks based on the automatic snapshot policy ID.
+	AutoSnapshotPolicyId pulumi.StringInput `pulumi:"autoSnapshotPolicyId"`
+	// Availability zone of the disk.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Disk category.
+	Category pulumi.StringInput `pulumi:"category"`
+	// Disk creation time.
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// Indicates whether the automatic snapshot is deleted when the disk is released.
+	DeleteAutoSnapshot pulumi.BoolInput `pulumi:"deleteAutoSnapshot"`
+	// Indicates whether the disk is released together with the instance.
+	DeleteWithInstance pulumi.BoolInput `pulumi:"deleteWithInstance"`
+	// Disk description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Disk detachment time.
+	DetachedTime pulumi.StringInput `pulumi:"detachedTime"`
+	// The mount point of the disk.
+	Device pulumi.StringInput `pulumi:"device"`
+	// ID of the disk.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// The disk name.
+	DiskName pulumi.StringInput `pulumi:"diskName"`
+	// The disk type.
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// Whether the disk implements an automatic snapshot policy.
+	EnableAutoSnapshot pulumi.BoolInput `pulumi:"enableAutoSnapshot"`
+	// Whether the disk implements an automatic snapshot policy.
+	EnableAutomatedSnapshotPolicy pulumi.BoolInput `pulumi:"enableAutomatedSnapshotPolicy"`
+	// Indicate whether the disk is encrypted or not.
+	Encrypted   pulumi.StringInput `pulumi:"encrypted"`
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// ID of the disk.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of the image from which the disk is created. It is null unless the disk is created using an image.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// The instance ID of the disk mount.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	Iops       pulumi.IntInput    `pulumi:"iops"`
+	IopsRead   pulumi.IntInput    `pulumi:"iopsRead"`
+	IopsWrite  pulumi.IntInput    `pulumi:"iopsWrite"`
+	// The kms key id.
+	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
+	// Number of instances mounted on shared storage.
+	MountInstanceNum pulumi.IntInput `pulumi:"mountInstanceNum"`
+	// Disk mount instances.
+	MountInstances GetEcsDisksDiskMountInstanceArrayInput `pulumi:"mountInstances"`
+	// Disk name.
+	Name           pulumi.StringInput                     `pulumi:"name"`
+	OperationLocks GetEcsDisksDiskOperationLockArrayInput `pulumi:"operationLocks"`
+	// Payment method for disk.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// Performance levels of ESSD cloud disk.
+	PerformanceLevel pulumi.StringInput `pulumi:"performanceLevel"`
+	// Whether the disk is unmountable.
+	Portable pulumi.BoolInput `pulumi:"portable"`
+	// The product logo of the cloud market.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// Region ID the disk belongs to.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The Id of resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Disk size in GiB.
+	Size pulumi.IntInput `pulumi:"size"`
+	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+	// Current status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// A map of tags assigned to the disk.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Disk type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The zone id.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetEcsDisksDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDisksDisk)(nil)).Elem()
+}
+
+func (i GetEcsDisksDiskArgs) ToGetEcsDisksDiskOutput() GetEcsDisksDiskOutput {
+	return i.ToGetEcsDisksDiskOutputWithContext(context.Background())
+}
+
+func (i GetEcsDisksDiskArgs) ToGetEcsDisksDiskOutputWithContext(ctx context.Context) GetEcsDisksDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDisksDiskOutput)
+}
+
+// GetEcsDisksDiskArrayInput is an input type that accepts GetEcsDisksDiskArray and GetEcsDisksDiskArrayOutput values.
+// You can construct a concrete instance of `GetEcsDisksDiskArrayInput` via:
+//
+//          GetEcsDisksDiskArray{ GetEcsDisksDiskArgs{...} }
+type GetEcsDisksDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsDisksDiskArrayOutput() GetEcsDisksDiskArrayOutput
+	ToGetEcsDisksDiskArrayOutputWithContext(context.Context) GetEcsDisksDiskArrayOutput
+}
+
+type GetEcsDisksDiskArray []GetEcsDisksDiskInput
+
+func (GetEcsDisksDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDisksDisk)(nil)).Elem()
+}
+
+func (i GetEcsDisksDiskArray) ToGetEcsDisksDiskArrayOutput() GetEcsDisksDiskArrayOutput {
+	return i.ToGetEcsDisksDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsDisksDiskArray) ToGetEcsDisksDiskArrayOutputWithContext(ctx context.Context) GetEcsDisksDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDisksDiskArrayOutput)
+}
+
+type GetEcsDisksDiskOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDisksDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDisksDisk)(nil)).Elem()
+}
+
+func (o GetEcsDisksDiskOutput) ToGetEcsDisksDiskOutput() GetEcsDisksDiskOutput {
+	return o
+}
+
+func (o GetEcsDisksDiskOutput) ToGetEcsDisksDiskOutputWithContext(ctx context.Context) GetEcsDisksDiskOutput {
+	return o
+}
+
+// A mount of time.
+func (o GetEcsDisksDiskOutput) AttachedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.AttachedTime }).(pulumi.StringOutput)
+}
+
+// Query cloud disks based on the automatic snapshot policy ID.
+func (o GetEcsDisksDiskOutput) AutoSnapshotPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.AutoSnapshotPolicyId }).(pulumi.StringOutput)
+}
+
+// Availability zone of the disk.
+func (o GetEcsDisksDiskOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Disk category.
+func (o GetEcsDisksDiskOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// Disk creation time.
+func (o GetEcsDisksDiskOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether the automatic snapshot is deleted when the disk is released.
+func (o GetEcsDisksDiskOutput) DeleteAutoSnapshot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) bool { return v.DeleteAutoSnapshot }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the disk is released together with the instance.
+func (o GetEcsDisksDiskOutput) DeleteWithInstance() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) bool { return v.DeleteWithInstance }).(pulumi.BoolOutput)
+}
+
+// Disk description.
+func (o GetEcsDisksDiskOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Disk detachment time.
+func (o GetEcsDisksDiskOutput) DetachedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.DetachedTime }).(pulumi.StringOutput)
+}
+
+// The mount point of the disk.
+func (o GetEcsDisksDiskOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// ID of the disk.
+func (o GetEcsDisksDiskOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The disk name.
+func (o GetEcsDisksDiskOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.DiskName }).(pulumi.StringOutput)
+}
+
+// The disk type.
+func (o GetEcsDisksDiskOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Whether the disk implements an automatic snapshot policy.
+func (o GetEcsDisksDiskOutput) EnableAutoSnapshot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) bool { return v.EnableAutoSnapshot }).(pulumi.BoolOutput)
+}
+
+// Whether the disk implements an automatic snapshot policy.
+func (o GetEcsDisksDiskOutput) EnableAutomatedSnapshotPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) bool { return v.EnableAutomatedSnapshotPolicy }).(pulumi.BoolOutput)
+}
+
+// Indicate whether the disk is encrypted or not.
+func (o GetEcsDisksDiskOutput) Encrypted() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.Encrypted }).(pulumi.StringOutput)
+}
+
+func (o GetEcsDisksDiskOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// ID of the disk.
+func (o GetEcsDisksDiskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of the image from which the disk is created. It is null unless the disk is created using an image.
+func (o GetEcsDisksDiskOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The instance ID of the disk mount.
+func (o GetEcsDisksDiskOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetEcsDisksDiskOutput) Iops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) int { return v.Iops }).(pulumi.IntOutput)
+}
+
+func (o GetEcsDisksDiskOutput) IopsRead() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) int { return v.IopsRead }).(pulumi.IntOutput)
+}
+
+func (o GetEcsDisksDiskOutput) IopsWrite() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) int { return v.IopsWrite }).(pulumi.IntOutput)
+}
+
+// The kms key id.
+func (o GetEcsDisksDiskOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+// Number of instances mounted on shared storage.
+func (o GetEcsDisksDiskOutput) MountInstanceNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) int { return v.MountInstanceNum }).(pulumi.IntOutput)
+}
+
+// Disk mount instances.
+func (o GetEcsDisksDiskOutput) MountInstances() GetEcsDisksDiskMountInstanceArrayOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) []GetEcsDisksDiskMountInstance { return v.MountInstances }).(GetEcsDisksDiskMountInstanceArrayOutput)
+}
+
+// Disk name.
+func (o GetEcsDisksDiskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetEcsDisksDiskOutput) OperationLocks() GetEcsDisksDiskOperationLockArrayOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) []GetEcsDisksDiskOperationLock { return v.OperationLocks }).(GetEcsDisksDiskOperationLockArrayOutput)
+}
+
+// Payment method for disk.
+func (o GetEcsDisksDiskOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Performance levels of ESSD cloud disk.
+func (o GetEcsDisksDiskOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.PerformanceLevel }).(pulumi.StringOutput)
+}
+
+// Whether the disk is unmountable.
+func (o GetEcsDisksDiskOutput) Portable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) bool { return v.Portable }).(pulumi.BoolOutput)
+}
+
+// The product logo of the cloud market.
+func (o GetEcsDisksDiskOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// Region ID the disk belongs to.
+func (o GetEcsDisksDiskOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The Id of resource group.
+func (o GetEcsDisksDiskOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Disk size in GiB.
+func (o GetEcsDisksDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+func (o GetEcsDisksDiskOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// Current status.
+func (o GetEcsDisksDiskOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A map of tags assigned to the disk.
+func (o GetEcsDisksDiskOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Disk type.
+func (o GetEcsDisksDiskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The zone id.
+func (o GetEcsDisksDiskOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetEcsDisksDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDisksDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDisksDisk)(nil)).Elem()
+}
+
+func (o GetEcsDisksDiskArrayOutput) ToGetEcsDisksDiskArrayOutput() GetEcsDisksDiskArrayOutput {
+	return o
+}
+
+func (o GetEcsDisksDiskArrayOutput) ToGetEcsDisksDiskArrayOutputWithContext(ctx context.Context) GetEcsDisksDiskArrayOutput {
+	return o
+}
+
+func (o GetEcsDisksDiskArrayOutput) Index(i pulumi.IntInput) GetEcsDisksDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsDisksDisk {
+		return vs[0].([]GetEcsDisksDisk)[vs[1].(int)]
+	}).(GetEcsDisksDiskOutput)
+}
+
+type GetEcsDisksDiskMountInstance struct {
+	// A mount of time.
+	AttachedTime string `pulumi:"attachedTime"`
+	// The mount point of the disk.
+	Device string `pulumi:"device"`
+	// The instance ID of the disk mount.
+	InstanceId string `pulumi:"instanceId"`
+}
+
+// GetEcsDisksDiskMountInstanceInput is an input type that accepts GetEcsDisksDiskMountInstanceArgs and GetEcsDisksDiskMountInstanceOutput values.
+// You can construct a concrete instance of `GetEcsDisksDiskMountInstanceInput` via:
+//
+//          GetEcsDisksDiskMountInstanceArgs{...}
+type GetEcsDisksDiskMountInstanceInput interface {
+	pulumi.Input
+
+	ToGetEcsDisksDiskMountInstanceOutput() GetEcsDisksDiskMountInstanceOutput
+	ToGetEcsDisksDiskMountInstanceOutputWithContext(context.Context) GetEcsDisksDiskMountInstanceOutput
+}
+
+type GetEcsDisksDiskMountInstanceArgs struct {
+	// A mount of time.
+	AttachedTime pulumi.StringInput `pulumi:"attachedTime"`
+	// The mount point of the disk.
+	Device pulumi.StringInput `pulumi:"device"`
+	// The instance ID of the disk mount.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+}
+
+func (GetEcsDisksDiskMountInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDisksDiskMountInstance)(nil)).Elem()
+}
+
+func (i GetEcsDisksDiskMountInstanceArgs) ToGetEcsDisksDiskMountInstanceOutput() GetEcsDisksDiskMountInstanceOutput {
+	return i.ToGetEcsDisksDiskMountInstanceOutputWithContext(context.Background())
+}
+
+func (i GetEcsDisksDiskMountInstanceArgs) ToGetEcsDisksDiskMountInstanceOutputWithContext(ctx context.Context) GetEcsDisksDiskMountInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDisksDiskMountInstanceOutput)
+}
+
+// GetEcsDisksDiskMountInstanceArrayInput is an input type that accepts GetEcsDisksDiskMountInstanceArray and GetEcsDisksDiskMountInstanceArrayOutput values.
+// You can construct a concrete instance of `GetEcsDisksDiskMountInstanceArrayInput` via:
+//
+//          GetEcsDisksDiskMountInstanceArray{ GetEcsDisksDiskMountInstanceArgs{...} }
+type GetEcsDisksDiskMountInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsDisksDiskMountInstanceArrayOutput() GetEcsDisksDiskMountInstanceArrayOutput
+	ToGetEcsDisksDiskMountInstanceArrayOutputWithContext(context.Context) GetEcsDisksDiskMountInstanceArrayOutput
+}
+
+type GetEcsDisksDiskMountInstanceArray []GetEcsDisksDiskMountInstanceInput
+
+func (GetEcsDisksDiskMountInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDisksDiskMountInstance)(nil)).Elem()
+}
+
+func (i GetEcsDisksDiskMountInstanceArray) ToGetEcsDisksDiskMountInstanceArrayOutput() GetEcsDisksDiskMountInstanceArrayOutput {
+	return i.ToGetEcsDisksDiskMountInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsDisksDiskMountInstanceArray) ToGetEcsDisksDiskMountInstanceArrayOutputWithContext(ctx context.Context) GetEcsDisksDiskMountInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDisksDiskMountInstanceArrayOutput)
+}
+
+type GetEcsDisksDiskMountInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDisksDiskMountInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDisksDiskMountInstance)(nil)).Elem()
+}
+
+func (o GetEcsDisksDiskMountInstanceOutput) ToGetEcsDisksDiskMountInstanceOutput() GetEcsDisksDiskMountInstanceOutput {
+	return o
+}
+
+func (o GetEcsDisksDiskMountInstanceOutput) ToGetEcsDisksDiskMountInstanceOutputWithContext(ctx context.Context) GetEcsDisksDiskMountInstanceOutput {
+	return o
+}
+
+// A mount of time.
+func (o GetEcsDisksDiskMountInstanceOutput) AttachedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDiskMountInstance) string { return v.AttachedTime }).(pulumi.StringOutput)
+}
+
+// The mount point of the disk.
+func (o GetEcsDisksDiskMountInstanceOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDiskMountInstance) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// The instance ID of the disk mount.
+func (o GetEcsDisksDiskMountInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDiskMountInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+type GetEcsDisksDiskMountInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDisksDiskMountInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDisksDiskMountInstance)(nil)).Elem()
+}
+
+func (o GetEcsDisksDiskMountInstanceArrayOutput) ToGetEcsDisksDiskMountInstanceArrayOutput() GetEcsDisksDiskMountInstanceArrayOutput {
+	return o
+}
+
+func (o GetEcsDisksDiskMountInstanceArrayOutput) ToGetEcsDisksDiskMountInstanceArrayOutputWithContext(ctx context.Context) GetEcsDisksDiskMountInstanceArrayOutput {
+	return o
+}
+
+func (o GetEcsDisksDiskMountInstanceArrayOutput) Index(i pulumi.IntInput) GetEcsDisksDiskMountInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsDisksDiskMountInstance {
+		return vs[0].([]GetEcsDisksDiskMountInstance)[vs[1].(int)]
+	}).(GetEcsDisksDiskMountInstanceOutput)
+}
+
+type GetEcsDisksDiskOperationLock struct {
+	LockReason string `pulumi:"lockReason"`
+}
+
+// GetEcsDisksDiskOperationLockInput is an input type that accepts GetEcsDisksDiskOperationLockArgs and GetEcsDisksDiskOperationLockOutput values.
+// You can construct a concrete instance of `GetEcsDisksDiskOperationLockInput` via:
+//
+//          GetEcsDisksDiskOperationLockArgs{...}
+type GetEcsDisksDiskOperationLockInput interface {
+	pulumi.Input
+
+	ToGetEcsDisksDiskOperationLockOutput() GetEcsDisksDiskOperationLockOutput
+	ToGetEcsDisksDiskOperationLockOutputWithContext(context.Context) GetEcsDisksDiskOperationLockOutput
+}
+
+type GetEcsDisksDiskOperationLockArgs struct {
+	LockReason pulumi.StringInput `pulumi:"lockReason"`
+}
+
+func (GetEcsDisksDiskOperationLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDisksDiskOperationLock)(nil)).Elem()
+}
+
+func (i GetEcsDisksDiskOperationLockArgs) ToGetEcsDisksDiskOperationLockOutput() GetEcsDisksDiskOperationLockOutput {
+	return i.ToGetEcsDisksDiskOperationLockOutputWithContext(context.Background())
+}
+
+func (i GetEcsDisksDiskOperationLockArgs) ToGetEcsDisksDiskOperationLockOutputWithContext(ctx context.Context) GetEcsDisksDiskOperationLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDisksDiskOperationLockOutput)
+}
+
+// GetEcsDisksDiskOperationLockArrayInput is an input type that accepts GetEcsDisksDiskOperationLockArray and GetEcsDisksDiskOperationLockArrayOutput values.
+// You can construct a concrete instance of `GetEcsDisksDiskOperationLockArrayInput` via:
+//
+//          GetEcsDisksDiskOperationLockArray{ GetEcsDisksDiskOperationLockArgs{...} }
+type GetEcsDisksDiskOperationLockArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsDisksDiskOperationLockArrayOutput() GetEcsDisksDiskOperationLockArrayOutput
+	ToGetEcsDisksDiskOperationLockArrayOutputWithContext(context.Context) GetEcsDisksDiskOperationLockArrayOutput
+}
+
+type GetEcsDisksDiskOperationLockArray []GetEcsDisksDiskOperationLockInput
+
+func (GetEcsDisksDiskOperationLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDisksDiskOperationLock)(nil)).Elem()
+}
+
+func (i GetEcsDisksDiskOperationLockArray) ToGetEcsDisksDiskOperationLockArrayOutput() GetEcsDisksDiskOperationLockArrayOutput {
+	return i.ToGetEcsDisksDiskOperationLockArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsDisksDiskOperationLockArray) ToGetEcsDisksDiskOperationLockArrayOutputWithContext(ctx context.Context) GetEcsDisksDiskOperationLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDisksDiskOperationLockArrayOutput)
+}
+
+type GetEcsDisksDiskOperationLockOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDisksDiskOperationLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDisksDiskOperationLock)(nil)).Elem()
+}
+
+func (o GetEcsDisksDiskOperationLockOutput) ToGetEcsDisksDiskOperationLockOutput() GetEcsDisksDiskOperationLockOutput {
+	return o
+}
+
+func (o GetEcsDisksDiskOperationLockOutput) ToGetEcsDisksDiskOperationLockOutputWithContext(ctx context.Context) GetEcsDisksDiskOperationLockOutput {
+	return o
+}
+
+func (o GetEcsDisksDiskOperationLockOutput) LockReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDisksDiskOperationLock) string { return v.LockReason }).(pulumi.StringOutput)
+}
+
+type GetEcsDisksDiskOperationLockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDisksDiskOperationLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDisksDiskOperationLock)(nil)).Elem()
+}
+
+func (o GetEcsDisksDiskOperationLockArrayOutput) ToGetEcsDisksDiskOperationLockArrayOutput() GetEcsDisksDiskOperationLockArrayOutput {
+	return o
+}
+
+func (o GetEcsDisksDiskOperationLockArrayOutput) ToGetEcsDisksDiskOperationLockArrayOutputWithContext(ctx context.Context) GetEcsDisksDiskOperationLockArrayOutput {
+	return o
+}
+
+func (o GetEcsDisksDiskOperationLockArrayOutput) Index(i pulumi.IntInput) GetEcsDisksDiskOperationLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsDisksDiskOperationLock {
+		return vs[0].([]GetEcsDisksDiskOperationLock)[vs[1].(int)]
+	}).(GetEcsDisksDiskOperationLockOutput)
+}
+
+type GetEcsDisksOperationLock struct {
+	LockReason *string `pulumi:"lockReason"`
+}
+
+// GetEcsDisksOperationLockInput is an input type that accepts GetEcsDisksOperationLockArgs and GetEcsDisksOperationLockOutput values.
+// You can construct a concrete instance of `GetEcsDisksOperationLockInput` via:
+//
+//          GetEcsDisksOperationLockArgs{...}
+type GetEcsDisksOperationLockInput interface {
+	pulumi.Input
+
+	ToGetEcsDisksOperationLockOutput() GetEcsDisksOperationLockOutput
+	ToGetEcsDisksOperationLockOutputWithContext(context.Context) GetEcsDisksOperationLockOutput
+}
+
+type GetEcsDisksOperationLockArgs struct {
+	LockReason pulumi.StringPtrInput `pulumi:"lockReason"`
+}
+
+func (GetEcsDisksOperationLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDisksOperationLock)(nil)).Elem()
+}
+
+func (i GetEcsDisksOperationLockArgs) ToGetEcsDisksOperationLockOutput() GetEcsDisksOperationLockOutput {
+	return i.ToGetEcsDisksOperationLockOutputWithContext(context.Background())
+}
+
+func (i GetEcsDisksOperationLockArgs) ToGetEcsDisksOperationLockOutputWithContext(ctx context.Context) GetEcsDisksOperationLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDisksOperationLockOutput)
+}
+
+// GetEcsDisksOperationLockArrayInput is an input type that accepts GetEcsDisksOperationLockArray and GetEcsDisksOperationLockArrayOutput values.
+// You can construct a concrete instance of `GetEcsDisksOperationLockArrayInput` via:
+//
+//          GetEcsDisksOperationLockArray{ GetEcsDisksOperationLockArgs{...} }
+type GetEcsDisksOperationLockArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsDisksOperationLockArrayOutput() GetEcsDisksOperationLockArrayOutput
+	ToGetEcsDisksOperationLockArrayOutputWithContext(context.Context) GetEcsDisksOperationLockArrayOutput
+}
+
+type GetEcsDisksOperationLockArray []GetEcsDisksOperationLockInput
+
+func (GetEcsDisksOperationLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDisksOperationLock)(nil)).Elem()
+}
+
+func (i GetEcsDisksOperationLockArray) ToGetEcsDisksOperationLockArrayOutput() GetEcsDisksOperationLockArrayOutput {
+	return i.ToGetEcsDisksOperationLockArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsDisksOperationLockArray) ToGetEcsDisksOperationLockArrayOutputWithContext(ctx context.Context) GetEcsDisksOperationLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDisksOperationLockArrayOutput)
+}
+
+type GetEcsDisksOperationLockOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDisksOperationLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDisksOperationLock)(nil)).Elem()
+}
+
+func (o GetEcsDisksOperationLockOutput) ToGetEcsDisksOperationLockOutput() GetEcsDisksOperationLockOutput {
+	return o
+}
+
+func (o GetEcsDisksOperationLockOutput) ToGetEcsDisksOperationLockOutputWithContext(ctx context.Context) GetEcsDisksOperationLockOutput {
+	return o
+}
+
+func (o GetEcsDisksOperationLockOutput) LockReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksOperationLock) *string { return v.LockReason }).(pulumi.StringPtrOutput)
+}
+
+type GetEcsDisksOperationLockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDisksOperationLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDisksOperationLock)(nil)).Elem()
+}
+
+func (o GetEcsDisksOperationLockArrayOutput) ToGetEcsDisksOperationLockArrayOutput() GetEcsDisksOperationLockArrayOutput {
+	return o
+}
+
+func (o GetEcsDisksOperationLockArrayOutput) ToGetEcsDisksOperationLockArrayOutputWithContext(ctx context.Context) GetEcsDisksOperationLockArrayOutput {
+	return o
+}
+
+func (o GetEcsDisksOperationLockArrayOutput) Index(i pulumi.IntInput) GetEcsDisksOperationLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsDisksOperationLock {
+		return vs[0].([]GetEcsDisksOperationLock)[vs[1].(int)]
+	}).(GetEcsDisksOperationLockOutput)
 }
 
 type GetEcsKeyPairsKeyPair struct {
@@ -8220,6 +9379,20 @@ func init() {
 	pulumi.RegisterOutputType(GetDedicatedHostsHostArrayOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetDisksDiskMountInstanceOutput{})
+	pulumi.RegisterOutputType(GetDisksDiskMountInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetDisksDiskOperationLockOutput{})
+	pulumi.RegisterOutputType(GetDisksDiskOperationLockArrayOutput{})
+	pulumi.RegisterOutputType(GetDisksOperationLockOutput{})
+	pulumi.RegisterOutputType(GetDisksOperationLockArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsDisksDiskOutput{})
+	pulumi.RegisterOutputType(GetEcsDisksDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsDisksDiskMountInstanceOutput{})
+	pulumi.RegisterOutputType(GetEcsDisksDiskMountInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsDisksDiskOperationLockOutput{})
+	pulumi.RegisterOutputType(GetEcsDisksDiskOperationLockArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsDisksOperationLockOutput{})
+	pulumi.RegisterOutputType(GetEcsDisksOperationLockArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairOutput{})
 	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairInstanceOutput{})

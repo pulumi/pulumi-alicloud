@@ -23,6 +23,7 @@ __all__ = [
     'KubernetesCertificateAuthority',
     'KubernetesConnections',
     'KubernetesMasterNode',
+    'KubernetesPermissionPermission',
     'KubernetesRuntime',
     'KubernetesTaint',
     'KubernetesWorkerDataDisk',
@@ -50,6 +51,7 @@ __all__ = [
     'GetKubernetesClustersClusterLogConfigResult',
     'GetKubernetesClustersClusterMasterNodeResult',
     'GetKubernetesClustersClusterWorkerNodeResult',
+    'GetKubernetesPermissionPermissionResult',
     'GetManagedKubernetesClustersClusterResult',
     'GetManagedKubernetesClustersClusterConnectionsResult',
     'GetManagedKubernetesClustersClusterLogConfigResult',
@@ -791,6 +793,105 @@ class KubernetesMasterNode(dict):
         The private IP address of node.
         """
         return pulumi.get(self, "private_ip")
+
+
+@pulumi.output_type
+class KubernetesPermissionPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "roleName":
+            suggest = "role_name"
+        elif key == "roleType":
+            suggest = "role_type"
+        elif key == "isCustom":
+            suggest = "is_custom"
+        elif key == "isRamRole":
+            suggest = "is_ram_role"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesPermissionPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesPermissionPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesPermissionPermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster: str,
+                 role_name: str,
+                 role_type: str,
+                 is_custom: Optional[bool] = None,
+                 is_ram_role: Optional[bool] = None,
+                 namespace: Optional[str] = None):
+        """
+        :param str cluster: The ID of the cluster that you want to manage.
+        :param str role_name: Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
+        :param str role_type: The authorization type. Valid values `cluster`, `namespace`.
+        :param bool is_custom: Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
+        :param bool is_ram_role: Specifies whether the permissions are granted to a RAM role.
+        :param str namespace: The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "role_name", role_name)
+        pulumi.set(__self__, "role_type", role_type)
+        if is_custom is not None:
+            pulumi.set(__self__, "is_custom", is_custom)
+        if is_ram_role is not None:
+            pulumi.set(__self__, "is_ram_role", is_ram_role)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> str:
+        """
+        The ID of the cluster that you want to manage.
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> str:
+        """
+        Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
+        """
+        return pulumi.get(self, "role_name")
+
+    @property
+    @pulumi.getter(name="roleType")
+    def role_type(self) -> str:
+        """
+        The authorization type. Valid values `cluster`, `namespace`.
+        """
+        return pulumi.get(self, "role_type")
+
+    @property
+    @pulumi.getter(name="isCustom")
+    def is_custom(self) -> Optional[bool]:
+        """
+        Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
+        """
+        return pulumi.get(self, "is_custom")
+
+    @property
+    @pulumi.getter(name="isRamRole")
+    def is_ram_role(self) -> Optional[bool]:
+        """
+        Specifies whether the permissions are granted to a RAM role.
+        """
+        return pulumi.get(self, "is_ram_role")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
+        """
+        return pulumi.get(self, "namespace")
 
 
 @pulumi.output_type
@@ -2694,6 +2795,80 @@ class GetKubernetesClustersClusterWorkerNodeResult(dict):
         The private IP address of node.
         """
         return pulumi.get(self, "private_ip")
+
+
+@pulumi.output_type
+class GetKubernetesPermissionPermissionResult(dict):
+    def __init__(__self__, *,
+                 resource_id: str,
+                 resource_type: str,
+                 role_name: str,
+                 is_owner: Optional[bool] = None,
+                 is_ram_role: Optional[bool] = None,
+                 role_type: Optional[str] = None):
+        """
+        :param str resource_id: The permission settings to manage ACK clusters.
+        :param str resource_type: The authorization type. Valid values `cluster`, `namespace` and `console`.
+        :param str role_name: The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+        :param bool is_owner: ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+               * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+        :param str role_type: The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "role_name", role_name)
+        if is_owner is not None:
+            pulumi.set(__self__, "is_owner", is_owner)
+        if is_ram_role is not None:
+            pulumi.set(__self__, "is_ram_role", is_ram_role)
+        if role_type is not None:
+            pulumi.set(__self__, "role_type", role_type)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The permission settings to manage ACK clusters.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The authorization type. Valid values `cluster`, `namespace` and `console`.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> str:
+        """
+        The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+        """
+        return pulumi.get(self, "role_name")
+
+    @property
+    @pulumi.getter(name="isOwner")
+    def is_owner(self) -> Optional[bool]:
+        """
+        ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+        * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+        """
+        return pulumi.get(self, "is_owner")
+
+    @property
+    @pulumi.getter(name="isRamRole")
+    def is_ram_role(self) -> Optional[bool]:
+        return pulumi.get(self, "is_ram_role")
+
+    @property
+    @pulumi.getter(name="roleType")
+    def role_type(self) -> Optional[str]:
+        """
+        The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+        """
+        return pulumi.get(self, "role_type")
 
 
 @pulumi.output_type

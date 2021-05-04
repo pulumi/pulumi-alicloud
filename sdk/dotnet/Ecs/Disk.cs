@@ -10,39 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a ECS disk resource.
-    /// 
-    /// &gt; **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new ECS disk.
-    ///         var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new AliCloud.Ecs.DiskArgs
-    ///         {
-    ///             AvailabilityZone = "cn-beijing-b",
-    ///             Category = "cloud_efficiency",
-    ///             Description = "Hello ecs disk.",
-    ///             Encrypted = true,
-    ///             KmsKeyId = "2a6767f0-a16c-4679-a60f-13bf*****",
-    ///             Size = 30,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "TerraformTest" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud disk can be imported using the id, e.g.
@@ -54,6 +21,9 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/disk:Disk")]
     public partial class Disk : Pulumi.CustomResource
     {
+        [Output("advancedFeatures")]
+        public Output<string?> AdvancedFeatures { get; private set; } = null!;
+
         /// <summary>
         /// The Zone to create the disk in.
         /// </summary>
@@ -65,6 +35,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
+
+        [Output("dedicatedBlockStorageClusterId")]
+        public Output<string?> DedicatedBlockStorageClusterId { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
@@ -84,17 +57,29 @@ namespace Pulumi.AliCloud.Ecs
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("diskName")]
+        public Output<string> DiskName { get; private set; } = null!;
+
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
+
         /// <summary>
         /// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
         /// </summary>
         [Output("enableAutoSnapshot")]
         public Output<bool?> EnableAutoSnapshot { get; private set; } = null!;
 
+        [Output("encryptAlgorithm")]
+        public Output<string?> EncryptAlgorithm { get; private set; } = null!;
+
         /// <summary>
         /// If true, the disk will be encrypted, conflict with `snapshot_id`.
         /// </summary>
         [Output("encrypted")]
         public Output<bool?> Encrypted { get; private set; } = null!;
+
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
@@ -107,6 +92,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
@@ -128,7 +116,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         /// </summary>
         [Output("size")]
-        public Output<int> Size { get; private set; } = null!;
+        public Output<int?> Size { get; private set; } = null!;
 
         /// <summary>
         /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
@@ -142,11 +130,23 @@ namespace Pulumi.AliCloud.Ecs
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        [Output("storageSetId")]
+        public Output<string?> StorageSetId { get; private set; } = null!;
+
+        [Output("storageSetPartitionNumber")]
+        public Output<int?> StorageSetPartitionNumber { get; private set; } = null!;
+
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
+
+        [Output("zoneId")]
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Disk(string name, DiskArgs args, CustomResourceOptions? options = null)
+        public Disk(string name, DiskArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:ecs/disk:Disk", name, args ?? new DiskArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -194,17 +194,23 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class DiskArgs : Pulumi.ResourceArgs
     {
+        [Input("advancedFeatures")]
+        public Input<string>? AdvancedFeatures { get; set; }
+
         /// <summary>
         /// The Zone to create the disk in.
         /// </summary>
-        [Input("availabilityZone", required: true)]
-        public Input<string> AvailabilityZone { get; set; } = null!;
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
         /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
+
+        [Input("dedicatedBlockStorageClusterId")]
+        public Input<string>? DedicatedBlockStorageClusterId { get; set; }
 
         /// <summary>
         /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
@@ -224,17 +230,29 @@ namespace Pulumi.AliCloud.Ecs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("diskName")]
+        public Input<string>? DiskName { get; set; }
+
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
         /// <summary>
         /// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
 
+        [Input("encryptAlgorithm")]
+        public Input<string>? EncryptAlgorithm { get; set; }
+
         /// <summary>
         /// If true, the disk will be encrypted, conflict with `snapshot_id`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
+
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
@@ -247,6 +265,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
@@ -267,14 +288,20 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         /// </summary>
-        [Input("size", required: true)]
-        public Input<int> Size { get; set; } = null!;
+        [Input("size")]
+        public Input<int>? Size { get; set; }
 
         /// <summary>
         /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
+
+        [Input("storageSetId")]
+        public Input<string>? StorageSetId { get; set; }
+
+        [Input("storageSetPartitionNumber")]
+        public Input<int>? StorageSetPartitionNumber { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -288,6 +315,12 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public DiskArgs()
         {
         }
@@ -295,6 +328,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class DiskState : Pulumi.ResourceArgs
     {
+        [Input("advancedFeatures")]
+        public Input<string>? AdvancedFeatures { get; set; }
+
         /// <summary>
         /// The Zone to create the disk in.
         /// </summary>
@@ -306,6 +342,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
+
+        [Input("dedicatedBlockStorageClusterId")]
+        public Input<string>? DedicatedBlockStorageClusterId { get; set; }
 
         /// <summary>
         /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
@@ -325,17 +364,29 @@ namespace Pulumi.AliCloud.Ecs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("diskName")]
+        public Input<string>? DiskName { get; set; }
+
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
         /// <summary>
         /// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
 
+        [Input("encryptAlgorithm")]
+        public Input<string>? EncryptAlgorithm { get; set; }
+
         /// <summary>
         /// If true, the disk will be encrypted, conflict with `snapshot_id`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
+
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
@@ -348,6 +399,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
@@ -383,6 +437,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("storageSetId")]
+        public Input<string>? StorageSetId { get; set; }
+
+        [Input("storageSetPartitionNumber")]
+        public Input<int>? StorageSetPartitionNumber { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -394,6 +454,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public DiskState()
         {

@@ -10,60 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a new ECS disk-attachment and use it attach one disk to a new instance.
-    ///         var ecsSg = new AliCloud.Ecs.SecurityGroup("ecsSg", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             Description = "New security group",
-    ///         });
-    ///         var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new AliCloud.Ecs.DiskArgs
-    ///         {
-    ///             AvailabilityZone = "cn-beijing-a",
-    ///             Size = 50,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "TerraformTest-disk" },
-    ///             },
-    ///         });
-    ///         var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new AliCloud.Ecs.InstanceArgs
-    ///         {
-    ///             ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
-    ///             InstanceType = "ecs.n4.small",
-    ///             AvailabilityZone = "cn-beijing-a",
-    ///             SecurityGroups = 
-    ///             {
-    ///                 ecsSg.Id,
-    ///             },
-    ///             InstanceName = "Hello",
-    ///             InternetChargeType = "PayByBandwidth",
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "TerraformTest-instance" },
-    ///             },
-    ///         });
-    ///         var ecsDiskAtt = new AliCloud.Ecs.DiskAttachment("ecsDiskAtt", new AliCloud.Ecs.DiskAttachmentArgs
-    ///         {
-    ///             DiskId = ecsDisk.Id,
-    ///             InstanceId = ecsInstance.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// The disk attachment can be imported using the id, e.g.
@@ -75,11 +21,14 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/diskAttachment:DiskAttachment")]
     public partial class DiskAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-        /// </summary>
-        [Output("deviceName")]
-        public Output<string> DeviceName { get; private set; } = null!;
+        [Output("bootable")]
+        public Output<bool?> Bootable { get; private set; } = null!;
+
+        [Output("deleteWithInstance")]
+        public Output<bool?> DeleteWithInstance { get; private set; } = null!;
+
+        [Output("device")]
+        public Output<string> Device { get; private set; } = null!;
 
         /// <summary>
         /// ID of the Disk to be attached.
@@ -92,6 +41,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
+
+        [Output("keyPairName")]
+        public Output<string?> KeyPairName { get; private set; } = null!;
+
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
 
 
         /// <summary>
@@ -139,11 +94,11 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class DiskAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-        /// </summary>
-        [Input("deviceName")]
-        public Input<string>? DeviceName { get; set; }
+        [Input("bootable")]
+        public Input<bool>? Bootable { get; set; }
+
+        [Input("deleteWithInstance")]
+        public Input<bool>? DeleteWithInstance { get; set; }
 
         /// <summary>
         /// ID of the Disk to be attached.
@@ -157,6 +112,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
+
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
         public DiskAttachmentArgs()
         {
         }
@@ -164,11 +125,14 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class DiskAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-        /// </summary>
-        [Input("deviceName")]
-        public Input<string>? DeviceName { get; set; }
+        [Input("bootable")]
+        public Input<bool>? Bootable { get; set; }
+
+        [Input("deleteWithInstance")]
+        public Input<bool>? DeleteWithInstance { get; set; }
+
+        [Input("device")]
+        public Input<string>? Device { get; set; }
 
         /// <summary>
         /// ID of the Disk to be attached.
@@ -181,6 +145,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
+
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         public DiskAttachmentState()
         {

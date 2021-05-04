@@ -108,7 +108,7 @@ type Instance struct {
 	// - `tsdb.12x.standard` refers to standard edition I;
 	// - `tsdb.24x.standard` refers to standard edition II;
 	// - `tsdb.48x.large` refers to ultimate edition I;
-	// - `tsdb.94x.large` refers to ultimate edition II.
+	// - `tsdb.96x.large` refers to ultimate edition II.
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
 	InstanceStorage pulumi.StringOutput `pulumi:"instanceStorage"`
@@ -195,7 +195,7 @@ type instanceState struct {
 	// - `tsdb.12x.standard` refers to standard edition I;
 	// - `tsdb.24x.standard` refers to standard edition II;
 	// - `tsdb.48x.large` refers to ultimate edition I;
-	// - `tsdb.94x.large` refers to ultimate edition II.
+	// - `tsdb.96x.large` refers to ultimate edition II.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
 	InstanceStorage *string `pulumi:"instanceStorage"`
@@ -242,7 +242,7 @@ type InstanceState struct {
 	// - `tsdb.12x.standard` refers to standard edition I;
 	// - `tsdb.24x.standard` refers to standard edition II;
 	// - `tsdb.48x.large` refers to ultimate edition I;
-	// - `tsdb.94x.large` refers to ultimate edition II.
+	// - `tsdb.96x.large` refers to ultimate edition II.
 	InstanceClass pulumi.StringPtrInput
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
 	InstanceStorage pulumi.StringPtrInput
@@ -293,7 +293,7 @@ type instanceArgs struct {
 	// - `tsdb.12x.standard` refers to standard edition I;
 	// - `tsdb.24x.standard` refers to standard edition II;
 	// - `tsdb.48x.large` refers to ultimate edition I;
-	// - `tsdb.94x.large` refers to ultimate edition II.
+	// - `tsdb.96x.large` refers to ultimate edition II.
 	InstanceClass string `pulumi:"instanceClass"`
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
 	InstanceStorage string `pulumi:"instanceStorage"`
@@ -339,7 +339,7 @@ type InstanceArgs struct {
 	// - `tsdb.12x.standard` refers to standard edition I;
 	// - `tsdb.24x.standard` refers to standard edition II;
 	// - `tsdb.48x.large` refers to ultimate edition I;
-	// - `tsdb.94x.large` refers to ultimate edition II.
+	// - `tsdb.96x.large` refers to ultimate edition II.
 	InstanceClass pulumi.StringInput
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
 	InstanceStorage pulumi.StringInput

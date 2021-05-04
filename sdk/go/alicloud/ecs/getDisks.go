@@ -7,32 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the disks of the current Alibaba Cloud user.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sample_disk"
-// 		disksDs, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
-// 			NameRegex: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstDiskId", disksDs.Disks[0].Id)
-// 		return nil
-// 	})
-// }
-// ```
 func GetDisks(ctx *pulumi.Context, args *GetDisksArgs, opts ...pulumi.InvokeOption) (*GetDisksResult, error) {
 	var rv GetDisksResult
 	err := ctx.Invoke("alicloud:ecs/getDisks:getDisks", args, &rv, opts...)
@@ -44,19 +18,41 @@ func GetDisks(ctx *pulumi.Context, args *GetDisksArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getDisks.
 type GetDisksArgs struct {
+	AdditionalAttributes []string `pulumi:"additionalAttributes"`
+	AutoSnapshotPolicyId *string  `pulumi:"autoSnapshotPolicyId"`
+	// Availability zone of the disk.
+	//
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
-	Category *string `pulumi:"category"`
+	Category                      *string `pulumi:"category"`
+	DeleteAutoSnapshot            *bool   `pulumi:"deleteAutoSnapshot"`
+	DeleteWithInstance            *bool   `pulumi:"deleteWithInstance"`
+	DiskName                      *string `pulumi:"diskName"`
+	DiskType                      *string `pulumi:"diskType"`
+	DryRun                        *bool   `pulumi:"dryRun"`
+	EnableAutoSnapshot            *bool   `pulumi:"enableAutoSnapshot"`
+	EnableAutomatedSnapshotPolicy *bool   `pulumi:"enableAutomatedSnapshotPolicy"`
+	EnableShared                  *bool   `pulumi:"enableShared"`
 	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 	Encrypted *string `pulumi:"encrypted"`
 	// A list of disks IDs.
 	Ids []string `pulumi:"ids"`
 	// Filter the results by the specified ECS instance ID.
 	InstanceId *string `pulumi:"instanceId"`
+	KmsKeyId   *string `pulumi:"kmsKeyId"`
 	// A regex string to filter results by disk name.
-	NameRegex  *string `pulumi:"nameRegex"`
-	OutputFile *string `pulumi:"outputFile"`
+	NameRegex      *string                 `pulumi:"nameRegex"`
+	OperationLocks []GetDisksOperationLock `pulumi:"operationLocks"`
+	OutputFile     *string                 `pulumi:"outputFile"`
+	PaymentType    *string                 `pulumi:"paymentType"`
+	Portable       *bool                   `pulumi:"portable"`
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+	SnapshotId *string `pulumi:"snapshotId"`
+	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+	Status *string `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
 	// ```go
 	// package main
@@ -83,28 +79,57 @@ type GetDisksArgs struct {
 	// ```
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
-	Type *string `pulumi:"type"`
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
+	Type   *string `pulumi:"type"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getDisks.
 type GetDisksResult struct {
+	AdditionalAttributes []string `pulumi:"additionalAttributes"`
+	AutoSnapshotPolicyId *string  `pulumi:"autoSnapshotPolicyId"`
+	// Availability zone of the disk.
+	//
+	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
-	Category *string `pulumi:"category"`
+	Category           *string `pulumi:"category"`
+	DeleteAutoSnapshot *bool   `pulumi:"deleteAutoSnapshot"`
+	DeleteWithInstance *bool   `pulumi:"deleteWithInstance"`
+	DiskName           *string `pulumi:"diskName"`
+	DiskType           *string `pulumi:"diskType"`
 	// A list of disks. Each element contains the following attributes:
-	Disks []GetDisksDisk `pulumi:"disks"`
+	Disks                         []GetDisksDisk `pulumi:"disks"`
+	DryRun                        *bool          `pulumi:"dryRun"`
+	EnableAutoSnapshot            *bool          `pulumi:"enableAutoSnapshot"`
+	EnableAutomatedSnapshotPolicy *bool          `pulumi:"enableAutomatedSnapshotPolicy"`
+	EnableShared                  *bool          `pulumi:"enableShared"`
 	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 	Encrypted *string `pulumi:"encrypted"`
 	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// ID of the related instance. It is `null` unless the `status` is `In_use`.
-	InstanceId *string `pulumi:"instanceId"`
-	NameRegex  *string `pulumi:"nameRegex"`
-	OutputFile *string `pulumi:"outputFile"`
+	InstanceId     *string                 `pulumi:"instanceId"`
+	KmsKeyId       *string                 `pulumi:"kmsKeyId"`
+	NameRegex      *string                 `pulumi:"nameRegex"`
+	Names          []string                `pulumi:"names"`
+	OperationLocks []GetDisksOperationLock `pulumi:"operationLocks"`
+	OutputFile     *string                 `pulumi:"outputFile"`
+	PaymentType    *string                 `pulumi:"paymentType"`
+	Portable       *bool                   `pulumi:"portable"`
 	// The Id of resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+	SnapshotId *string `pulumi:"snapshotId"`
+	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+	Status *string `pulumi:"status"`
 	// A map of tags assigned to the disk.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
-	Type *string `pulumi:"type"`
+	//
+	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
+	Type   *string `pulumi:"type"`
+	ZoneId *string `pulumi:"zoneId"`
 }

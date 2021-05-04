@@ -96,15 +96,15 @@ export class FlowLog extends pulumi.CustomResource {
      */
     public readonly resourceId!: pulumi.Output<string>;
     /**
-     * The type of the resource to capture traffic.
+     * The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
      */
     public readonly resourceType!: pulumi.Output<string>;
     /**
-     * The status of the VPC Flow Log.
+     * The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The type of traffic collected.
+     * The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
      */
     public readonly trafficType!: pulumi.Output<string>;
 
@@ -187,15 +187,15 @@ export interface FlowLogState {
      */
     readonly resourceId?: pulumi.Input<string>;
     /**
-     * The type of the resource to capture traffic.
+     * The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
      */
     readonly resourceType?: pulumi.Input<string>;
     /**
-     * The status of the VPC Flow Log.
+     * The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * The type of traffic collected.
+     * The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
      */
     readonly trafficType?: pulumi.Input<string>;
 }
@@ -225,15 +225,15 @@ export interface FlowLogArgs {
      */
     readonly resourceId: pulumi.Input<string>;
     /**
-     * The type of the resource to capture traffic.
+     * The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
      */
     readonly resourceType: pulumi.Input<string>;
     /**
-     * The status of the VPC Flow Log.
+     * The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * The type of traffic collected.
+     * The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
      */
     readonly trafficType: pulumi.Input<string>;
 }

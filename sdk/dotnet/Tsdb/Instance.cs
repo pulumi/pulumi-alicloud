@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Tsdb
         /// - `tsdb.12x.standard` refers to standard edition I;
         /// - `tsdb.24x.standard` refers to standard edition II;
         /// - `tsdb.48x.large` refers to ultimate edition I;
-        /// - `tsdb.94x.large` refers to ultimate edition II.
+        /// - `tsdb.96x.large` refers to ultimate edition II.
         /// </summary>
         [Output("instanceClass")]
         public Output<string> InstanceClass { get; private set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Tsdb
         /// - `tsdb.12x.standard` refers to standard edition I;
         /// - `tsdb.24x.standard` refers to standard edition II;
         /// - `tsdb.48x.large` refers to ultimate edition I;
-        /// - `tsdb.94x.large` refers to ultimate edition II.
+        /// - `tsdb.96x.large` refers to ultimate edition II.
         /// </summary>
         [Input("instanceClass", required: true)]
         public Input<string> InstanceClass { get; set; } = null!;
@@ -340,7 +340,7 @@ namespace Pulumi.AliCloud.Tsdb
         /// - `tsdb.12x.standard` refers to standard edition I;
         /// - `tsdb.24x.standard` refers to standard edition II;
         /// - `tsdb.48x.large` refers to ultimate edition I;
-        /// - `tsdb.94x.large` refers to ultimate edition II.
+        /// - `tsdb.96x.large` refers to ultimate edition II.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }

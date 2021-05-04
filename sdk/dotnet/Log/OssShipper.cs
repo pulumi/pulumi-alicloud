@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Log
     ///             LogstoreName = alicloud_log_logstore.Example.Name,
     ///             ShipperName = "oss_shipper_name",
     ///             OssBucket = "test_bucket",
-    ///             OssPrefix = "/root",
+    ///             OssPrefix = "root",
     ///             BufferInterval = 300,
     ///             BufferSize = 250,
     ///             CompressType = "none",
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Log
         /// `csv_config_nullidentifier` - (Optional) Invalid field content.
         /// `csv_config_quote` - (Optional) Escape character under csv configuration.
         /// `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-        /// `csv_config_linefeed` - (Optional) Separator in csv configuration.
+        /// `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
         /// - format = `parquet`
         /// `parquet_config` - (Optional) Configure to use parquet storage format.
         /// `name` - (Required) The name of the key.
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Log
         /// `csv_config_nullidentifier` - (Optional) Invalid field content.
         /// `csv_config_quote` - (Optional) Escape character under csv configuration.
         /// `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-        /// `csv_config_linefeed` - (Optional) Separator in csv configuration.
+        /// `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
         /// - format = `parquet`
         /// `parquet_config` - (Optional) Configure to use parquet storage format.
         /// `name` - (Required) The name of the key.
@@ -397,7 +397,7 @@ namespace Pulumi.AliCloud.Log
         /// `csv_config_nullidentifier` - (Optional) Invalid field content.
         /// `csv_config_quote` - (Optional) Escape character under csv configuration.
         /// `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-        /// `csv_config_linefeed` - (Optional) Separator in csv configuration.
+        /// `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
         /// - format = `parquet`
         /// `parquet_config` - (Optional) Configure to use parquet storage format.
         /// `name` - (Required) The name of the key.

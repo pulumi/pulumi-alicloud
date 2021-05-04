@@ -92,11 +92,11 @@ type FlowLog struct {
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
 	// The ID of the resource.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// The type of the resource to capture traffic.
+	// The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
-	// The status of the VPC Flow Log.
+	// The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The type of traffic collected.
+	// The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
 	TrafficType pulumi.StringOutput `pulumi:"trafficType"`
 }
 
@@ -154,11 +154,11 @@ type flowLogState struct {
 	ProjectName *string `pulumi:"projectName"`
 	// The ID of the resource.
 	ResourceId *string `pulumi:"resourceId"`
-	// The type of the resource to capture traffic.
+	// The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
 	ResourceType *string `pulumi:"resourceType"`
-	// The status of the VPC Flow Log.
+	// The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
 	Status *string `pulumi:"status"`
-	// The type of traffic collected.
+	// The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
 	TrafficType *string `pulumi:"trafficType"`
 }
 
@@ -173,11 +173,11 @@ type FlowLogState struct {
 	ProjectName pulumi.StringPtrInput
 	// The ID of the resource.
 	ResourceId pulumi.StringPtrInput
-	// The type of the resource to capture traffic.
+	// The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
 	ResourceType pulumi.StringPtrInput
-	// The status of the VPC Flow Log.
+	// The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
 	Status pulumi.StringPtrInput
-	// The type of traffic collected.
+	// The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
 	TrafficType pulumi.StringPtrInput
 }
 
@@ -196,11 +196,11 @@ type flowLogArgs struct {
 	ProjectName string `pulumi:"projectName"`
 	// The ID of the resource.
 	ResourceId string `pulumi:"resourceId"`
-	// The type of the resource to capture traffic.
+	// The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
 	ResourceType string `pulumi:"resourceType"`
-	// The status of the VPC Flow Log.
+	// The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
 	Status *string `pulumi:"status"`
-	// The type of traffic collected.
+	// The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
 	TrafficType string `pulumi:"trafficType"`
 }
 
@@ -216,11 +216,11 @@ type FlowLogArgs struct {
 	ProjectName pulumi.StringInput
 	// The ID of the resource.
 	ResourceId pulumi.StringInput
-	// The type of the resource to capture traffic.
+	// The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
 	ResourceType pulumi.StringInput
-	// The status of the VPC Flow Log.
+	// The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
 	Status pulumi.StringPtrInput
-	// The type of traffic collected.
+	// The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
 	TrafficType pulumi.StringInput
 }
 

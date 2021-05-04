@@ -1792,6 +1792,148 @@ func (o KubernetesMasterNodeArrayOutput) Index(i pulumi.IntInput) KubernetesMast
 	}).(KubernetesMasterNodeOutput)
 }
 
+type KubernetesPermissionPermission struct {
+	// The ID of the cluster that you want to manage.
+	Cluster string `pulumi:"cluster"`
+	// Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
+	IsCustom *bool `pulumi:"isCustom"`
+	// Specifies whether the permissions are granted to a RAM role.
+	IsRamRole *bool `pulumi:"isRamRole"`
+	// The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
+	Namespace *string `pulumi:"namespace"`
+	// Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
+	RoleName string `pulumi:"roleName"`
+	// The authorization type. Valid values `cluster`, `namespace`.
+	RoleType string `pulumi:"roleType"`
+}
+
+// KubernetesPermissionPermissionInput is an input type that accepts KubernetesPermissionPermissionArgs and KubernetesPermissionPermissionOutput values.
+// You can construct a concrete instance of `KubernetesPermissionPermissionInput` via:
+//
+//          KubernetesPermissionPermissionArgs{...}
+type KubernetesPermissionPermissionInput interface {
+	pulumi.Input
+
+	ToKubernetesPermissionPermissionOutput() KubernetesPermissionPermissionOutput
+	ToKubernetesPermissionPermissionOutputWithContext(context.Context) KubernetesPermissionPermissionOutput
+}
+
+type KubernetesPermissionPermissionArgs struct {
+	// The ID of the cluster that you want to manage.
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
+	IsCustom pulumi.BoolPtrInput `pulumi:"isCustom"`
+	// Specifies whether the permissions are granted to a RAM role.
+	IsRamRole pulumi.BoolPtrInput `pulumi:"isRamRole"`
+	// The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
+	RoleName pulumi.StringInput `pulumi:"roleName"`
+	// The authorization type. Valid values `cluster`, `namespace`.
+	RoleType pulumi.StringInput `pulumi:"roleType"`
+}
+
+func (KubernetesPermissionPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesPermissionPermission)(nil)).Elem()
+}
+
+func (i KubernetesPermissionPermissionArgs) ToKubernetesPermissionPermissionOutput() KubernetesPermissionPermissionOutput {
+	return i.ToKubernetesPermissionPermissionOutputWithContext(context.Background())
+}
+
+func (i KubernetesPermissionPermissionArgs) ToKubernetesPermissionPermissionOutputWithContext(ctx context.Context) KubernetesPermissionPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPermissionPermissionOutput)
+}
+
+// KubernetesPermissionPermissionArrayInput is an input type that accepts KubernetesPermissionPermissionArray and KubernetesPermissionPermissionArrayOutput values.
+// You can construct a concrete instance of `KubernetesPermissionPermissionArrayInput` via:
+//
+//          KubernetesPermissionPermissionArray{ KubernetesPermissionPermissionArgs{...} }
+type KubernetesPermissionPermissionArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesPermissionPermissionArrayOutput() KubernetesPermissionPermissionArrayOutput
+	ToKubernetesPermissionPermissionArrayOutputWithContext(context.Context) KubernetesPermissionPermissionArrayOutput
+}
+
+type KubernetesPermissionPermissionArray []KubernetesPermissionPermissionInput
+
+func (KubernetesPermissionPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesPermissionPermission)(nil)).Elem()
+}
+
+func (i KubernetesPermissionPermissionArray) ToKubernetesPermissionPermissionArrayOutput() KubernetesPermissionPermissionArrayOutput {
+	return i.ToKubernetesPermissionPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesPermissionPermissionArray) ToKubernetesPermissionPermissionArrayOutputWithContext(ctx context.Context) KubernetesPermissionPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPermissionPermissionArrayOutput)
+}
+
+type KubernetesPermissionPermissionOutput struct{ *pulumi.OutputState }
+
+func (KubernetesPermissionPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesPermissionPermission)(nil)).Elem()
+}
+
+func (o KubernetesPermissionPermissionOutput) ToKubernetesPermissionPermissionOutput() KubernetesPermissionPermissionOutput {
+	return o
+}
+
+func (o KubernetesPermissionPermissionOutput) ToKubernetesPermissionPermissionOutputWithContext(ctx context.Context) KubernetesPermissionPermissionOutput {
+	return o
+}
+
+// The ID of the cluster that you want to manage.
+func (o KubernetesPermissionPermissionOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesPermissionPermission) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
+func (o KubernetesPermissionPermissionOutput) IsCustom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubernetesPermissionPermission) *bool { return v.IsCustom }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the permissions are granted to a RAM role.
+func (o KubernetesPermissionPermissionOutput) IsRamRole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubernetesPermissionPermission) *bool { return v.IsRamRole }).(pulumi.BoolPtrOutput)
+}
+
+// The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
+func (o KubernetesPermissionPermissionOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesPermissionPermission) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
+func (o KubernetesPermissionPermissionOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesPermissionPermission) string { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// The authorization type. Valid values `cluster`, `namespace`.
+func (o KubernetesPermissionPermissionOutput) RoleType() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesPermissionPermission) string { return v.RoleType }).(pulumi.StringOutput)
+}
+
+type KubernetesPermissionPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesPermissionPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesPermissionPermission)(nil)).Elem()
+}
+
+func (o KubernetesPermissionPermissionArrayOutput) ToKubernetesPermissionPermissionArrayOutput() KubernetesPermissionPermissionArrayOutput {
+	return o
+}
+
+func (o KubernetesPermissionPermissionArrayOutput) ToKubernetesPermissionPermissionArrayOutputWithContext(ctx context.Context) KubernetesPermissionPermissionArrayOutput {
+	return o
+}
+
+func (o KubernetesPermissionPermissionArrayOutput) Index(i pulumi.IntInput) KubernetesPermissionPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesPermissionPermission {
+		return vs[0].([]KubernetesPermissionPermission)[vs[1].(int)]
+	}).(KubernetesPermissionPermissionOutput)
+}
+
 type KubernetesRuntime struct {
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
@@ -5680,6 +5822,148 @@ func (o GetKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi.IntInp
 	}).(GetKubernetesClustersClusterWorkerNodeOutput)
 }
 
+type GetKubernetesPermissionPermission struct {
+	// ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+	// * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+	IsOwner   *bool `pulumi:"isOwner"`
+	IsRamRole *bool `pulumi:"isRamRole"`
+	// The permission settings to manage ACK clusters.
+	ResourceId string `pulumi:"resourceId"`
+	// The authorization type. Valid values `cluster`, `namespace` and `console`.
+	ResourceType string `pulumi:"resourceType"`
+	// The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+	RoleName string `pulumi:"roleName"`
+	// The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+	RoleType *string `pulumi:"roleType"`
+}
+
+// GetKubernetesPermissionPermissionInput is an input type that accepts GetKubernetesPermissionPermissionArgs and GetKubernetesPermissionPermissionOutput values.
+// You can construct a concrete instance of `GetKubernetesPermissionPermissionInput` via:
+//
+//          GetKubernetesPermissionPermissionArgs{...}
+type GetKubernetesPermissionPermissionInput interface {
+	pulumi.Input
+
+	ToGetKubernetesPermissionPermissionOutput() GetKubernetesPermissionPermissionOutput
+	ToGetKubernetesPermissionPermissionOutputWithContext(context.Context) GetKubernetesPermissionPermissionOutput
+}
+
+type GetKubernetesPermissionPermissionArgs struct {
+	// ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+	// * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+	IsOwner   pulumi.BoolPtrInput `pulumi:"isOwner"`
+	IsRamRole pulumi.BoolPtrInput `pulumi:"isRamRole"`
+	// The permission settings to manage ACK clusters.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The authorization type. Valid values `cluster`, `namespace` and `console`.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+	RoleName pulumi.StringInput `pulumi:"roleName"`
+	// The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+	RoleType pulumi.StringPtrInput `pulumi:"roleType"`
+}
+
+func (GetKubernetesPermissionPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesPermissionPermission)(nil)).Elem()
+}
+
+func (i GetKubernetesPermissionPermissionArgs) ToGetKubernetesPermissionPermissionOutput() GetKubernetesPermissionPermissionOutput {
+	return i.ToGetKubernetesPermissionPermissionOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesPermissionPermissionArgs) ToGetKubernetesPermissionPermissionOutputWithContext(ctx context.Context) GetKubernetesPermissionPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesPermissionPermissionOutput)
+}
+
+// GetKubernetesPermissionPermissionArrayInput is an input type that accepts GetKubernetesPermissionPermissionArray and GetKubernetesPermissionPermissionArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesPermissionPermissionArrayInput` via:
+//
+//          GetKubernetesPermissionPermissionArray{ GetKubernetesPermissionPermissionArgs{...} }
+type GetKubernetesPermissionPermissionArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesPermissionPermissionArrayOutput() GetKubernetesPermissionPermissionArrayOutput
+	ToGetKubernetesPermissionPermissionArrayOutputWithContext(context.Context) GetKubernetesPermissionPermissionArrayOutput
+}
+
+type GetKubernetesPermissionPermissionArray []GetKubernetesPermissionPermissionInput
+
+func (GetKubernetesPermissionPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesPermissionPermission)(nil)).Elem()
+}
+
+func (i GetKubernetesPermissionPermissionArray) ToGetKubernetesPermissionPermissionArrayOutput() GetKubernetesPermissionPermissionArrayOutput {
+	return i.ToGetKubernetesPermissionPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesPermissionPermissionArray) ToGetKubernetesPermissionPermissionArrayOutputWithContext(ctx context.Context) GetKubernetesPermissionPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesPermissionPermissionArrayOutput)
+}
+
+type GetKubernetesPermissionPermissionOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesPermissionPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesPermissionPermission)(nil)).Elem()
+}
+
+func (o GetKubernetesPermissionPermissionOutput) ToGetKubernetesPermissionPermissionOutput() GetKubernetesPermissionPermissionOutput {
+	return o
+}
+
+func (o GetKubernetesPermissionPermissionOutput) ToGetKubernetesPermissionPermissionOutputWithContext(ctx context.Context) GetKubernetesPermissionPermissionOutput {
+	return o
+}
+
+// ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+// * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+func (o GetKubernetesPermissionPermissionOutput) IsOwner() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKubernetesPermissionPermission) *bool { return v.IsOwner }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetKubernetesPermissionPermissionOutput) IsRamRole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKubernetesPermissionPermission) *bool { return v.IsRamRole }).(pulumi.BoolPtrOutput)
+}
+
+// The permission settings to manage ACK clusters.
+func (o GetKubernetesPermissionPermissionOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesPermissionPermission) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The authorization type. Valid values `cluster`, `namespace` and `console`.
+func (o GetKubernetesPermissionPermissionOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesPermissionPermission) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+func (o GetKubernetesPermissionPermissionOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesPermissionPermission) string { return v.RoleName }).(pulumi.StringOutput)
+}
+
+// The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+func (o GetKubernetesPermissionPermissionOutput) RoleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKubernetesPermissionPermission) *string { return v.RoleType }).(pulumi.StringPtrOutput)
+}
+
+type GetKubernetesPermissionPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesPermissionPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesPermissionPermission)(nil)).Elem()
+}
+
+func (o GetKubernetesPermissionPermissionArrayOutput) ToGetKubernetesPermissionPermissionArrayOutput() GetKubernetesPermissionPermissionArrayOutput {
+	return o
+}
+
+func (o GetKubernetesPermissionPermissionArrayOutput) ToGetKubernetesPermissionPermissionArrayOutputWithContext(ctx context.Context) GetKubernetesPermissionPermissionArrayOutput {
+	return o
+}
+
+func (o GetKubernetesPermissionPermissionArrayOutput) Index(i pulumi.IntInput) GetKubernetesPermissionPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesPermissionPermission {
+		return vs[0].([]GetKubernetesPermissionPermission)[vs[1].(int)]
+	}).(GetKubernetesPermissionPermissionOutput)
+}
+
 type GetManagedKubernetesClustersCluster struct {
 	// The ID of availability zone.
 	AvailabilityZone   string `pulumi:"availabilityZone"`
@@ -7370,6 +7654,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesConnectionsPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesPermissionPermissionOutput{})
+	pulumi.RegisterOutputType(KubernetesPermissionPermissionArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesRuntimeOutput{})
 	pulumi.RegisterOutputType(KubernetesRuntimePtrOutput{})
 	pulumi.RegisterOutputType(KubernetesTaintOutput{})
@@ -7422,6 +7708,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterMasterNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterWorkerNodeOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterWorkerNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesPermissionPermissionOutput{})
+	pulumi.RegisterOutputType(GetKubernetesPermissionPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterConnectionsOutput{})

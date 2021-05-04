@@ -29,11 +29,37 @@ namespace Pulumi.AliCloud.Vpc
     ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
     ///             CidrBlock = "172.16.0.0/12",
+    ///             VpcName = "VpcConfig",
     ///         });
     ///         var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("defaultNetworkAcl", new AliCloud.Vpc.NetworkAclArgs
     ///         {
     ///             VpcId = defaultNetwork.Id,
+    ///             NetworkAclName = "network_acl",
     ///             Description = "network_acl",
+    ///             IngressAclEntries = 
+    ///             {
+    ///                 new AliCloud.Vpc.Inputs.NetworkAclIngressAclEntryArgs
+    ///                 {
+    ///                     Description = "tf-testacc",
+    ///                     NetworkAclEntryName = "tcp23",
+    ///                     SourceCidrIp = "196.168.2.0/21",
+    ///                     Policy = "accept",
+    ///                     Port = "22/80",
+    ///                     Protocol = "tcp",
+    ///                 },
+    ///             },
+    ///             EgressAclEntries = 
+    ///             {
+    ///                 new AliCloud.Vpc.Inputs.NetworkAclEgressAclEntryArgs
+    ///                 {
+    ///                     Description = "tf-testacc",
+    ///                     NetworkAclEntryName = "tcp23",
+    ///                     DestinationCidrIp = "0.0.0.0/0",
+    ///                     Policy = "accept",
+    ///                     Port = "-1/-1",
+    ///                     Protocol = "all",
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -52,16 +78,40 @@ namespace Pulumi.AliCloud.Vpc
     public partial class NetworkAcl : Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the network acl instance.
+        /// The description of egress entries.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the network acl.
+        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+        /// </summary>
+        [Output("egressAclEntries")]
+        public Output<ImmutableArray<Outputs.NetworkAclEgressAclEntry>> EgressAclEntries { get; private set; } = null!;
+
+        /// <summary>
+        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+        /// </summary>
+        [Output("ingressAclEntries")]
+        public Output<ImmutableArray<Outputs.NetworkAclIngressAclEntry>> IngressAclEntries { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the network acl.
+        /// </summary>
+        [Output("networkAclName")]
+        public Output<string> NetworkAclName { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.122.0+) The status of the network acl.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The vpc_id of the network acl, the field can't be changed.
@@ -116,16 +166,46 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NetworkAclArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the network acl instance.
+        /// The description of egress entries.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("egressAclEntries")]
+        private InputList<Inputs.NetworkAclEgressAclEntryArgs>? _egressAclEntries;
+
         /// <summary>
-        /// The name of the network acl.
+        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+        /// </summary>
+        public InputList<Inputs.NetworkAclEgressAclEntryArgs> EgressAclEntries
+        {
+            get => _egressAclEntries ?? (_egressAclEntries = new InputList<Inputs.NetworkAclEgressAclEntryArgs>());
+            set => _egressAclEntries = value;
+        }
+
+        [Input("ingressAclEntries")]
+        private InputList<Inputs.NetworkAclIngressAclEntryArgs>? _ingressAclEntries;
+
+        /// <summary>
+        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+        /// </summary>
+        public InputList<Inputs.NetworkAclIngressAclEntryArgs> IngressAclEntries
+        {
+            get => _ingressAclEntries ?? (_ingressAclEntries = new InputList<Inputs.NetworkAclIngressAclEntryArgs>());
+            set => _ingressAclEntries = value;
+        }
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The name of the network acl.
+        /// </summary>
+        [Input("networkAclName")]
+        public Input<string>? NetworkAclName { get; set; }
 
         /// <summary>
         /// The vpc_id of the network acl, the field can't be changed.
@@ -141,16 +221,52 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NetworkAclState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the network acl instance.
+        /// The description of egress entries.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("egressAclEntries")]
+        private InputList<Inputs.NetworkAclEgressAclEntryGetArgs>? _egressAclEntries;
+
         /// <summary>
-        /// The name of the network acl.
+        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+        /// </summary>
+        public InputList<Inputs.NetworkAclEgressAclEntryGetArgs> EgressAclEntries
+        {
+            get => _egressAclEntries ?? (_egressAclEntries = new InputList<Inputs.NetworkAclEgressAclEntryGetArgs>());
+            set => _egressAclEntries = value;
+        }
+
+        [Input("ingressAclEntries")]
+        private InputList<Inputs.NetworkAclIngressAclEntryGetArgs>? _ingressAclEntries;
+
+        /// <summary>
+        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+        /// </summary>
+        public InputList<Inputs.NetworkAclIngressAclEntryGetArgs> IngressAclEntries
+        {
+            get => _ingressAclEntries ?? (_ingressAclEntries = new InputList<Inputs.NetworkAclIngressAclEntryGetArgs>());
+            set => _ingressAclEntries = value;
+        }
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The name of the network acl.
+        /// </summary>
+        [Input("networkAclName")]
+        public Input<string>? NetworkAclName { get; set; }
+
+        /// <summary>
+        /// (Available in 1.122.0+) The status of the network acl.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The vpc_id of the network acl, the field can't be changed.
