@@ -90,7 +90,7 @@ export class RdsAccount extends pulumi.CustomResource {
      */
     public readonly accountDescription!: pulumi.Output<string>;
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
@@ -198,7 +198,7 @@ export interface RdsAccountState {
      */
     readonly accountDescription?: pulumi.Input<string>;
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
      */
     readonly accountName?: pulumi.Input<string>;
     /**
@@ -258,7 +258,7 @@ export interface RdsAccountArgs {
      */
     readonly accountDescription?: pulumi.Input<string>;
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
      */
     readonly accountName?: pulumi.Input<string>;
     /**
