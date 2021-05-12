@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.122.1 of the AliCloud Terraform Provider
+_(none)_
 
 ---
+
+## 3.1.0 (2021-05-12)
+* Upgrade to v1.122.1 of the AliCloud Terraform Provider
 
 ## 3.0.1 (2021-04-30)
 * Upgrade to v1.121.3 of the AliCloud Terraform Provider
