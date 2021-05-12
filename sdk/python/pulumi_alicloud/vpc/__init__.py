@@ -12,6 +12,7 @@ from .get_enhanced_nat_available_zones import *
 from .get_forward_entries import *
 from .get_havips import *
 from .get_nat_gateways import *
+from .get_network_acls import *
 from .get_networks import *
 from .get_route_entries import *
 from .get_route_tables import *
@@ -20,6 +21,7 @@ from .get_snat_entries import *
 from .get_ssl_vpn_client_certs import *
 from .get_ssl_vpn_servers import *
 from .get_switches import *
+from .get_vpc_flow_logs import *
 from .ha_vip import *
 from .ha_vip_attachment import *
 from .nat_gateway import *

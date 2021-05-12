@@ -11,14 +11,20 @@ from . import outputs
 
 __all__ = [
     'NetworkAclAttachmentResource',
+    'NetworkAclEgressAclEntry',
     'NetworkAclEntriesEgress',
     'NetworkAclEntriesIngress',
+    'NetworkAclIngressAclEntry',
     'GetCommonBandwidthPackagesPackageResult',
     'GetCommonBandwidthPackagesPackagePublicIpAddressResult',
     'GetEnhancedNatAvailableZonesZoneResult',
     'GetForwardEntriesEntryResult',
     'GetHavipsHavipResult',
     'GetNatGatewaysGatewayResult',
+    'GetNetworkAclsAclResult',
+    'GetNetworkAclsAclEgressAclEntryResult',
+    'GetNetworkAclsAclIngressAclEntryResult',
+    'GetNetworkAclsAclResourceResult',
     'GetNetworksVpcResult',
     'GetRouteEntriesEntryResult',
     'GetRouteTablesTableResult',
@@ -27,6 +33,7 @@ __all__ = [
     'GetSslVpnClientCertsCertResult',
     'GetSslVpnServersServerResult',
     'GetSwitchesVswitchResult',
+    'GetVpcFlowLogsLogResult',
 ]
 
 @pulumi.output_type
@@ -75,6 +82,104 @@ class NetworkAclAttachmentResource(dict):
         The resource id that the network acl will associate with. Only support `VSwitch` now.
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class NetworkAclEgressAclEntry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationCidrIp":
+            suggest = "destination_cidr_ip"
+        elif key == "networkAclEntryName":
+            suggest = "network_acl_entry_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAclEgressAclEntry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAclEgressAclEntry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAclEgressAclEntry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 destination_cidr_ip: Optional[str] = None,
+                 network_acl_entry_name: Optional[str] = None,
+                 policy: Optional[str] = None,
+                 port: Optional[str] = None,
+                 protocol: Optional[str] = None):
+        """
+        :param str description: The description of egress entries.
+        :param str destination_cidr_ip: The destination cidr ip of egress entries.
+        :param str network_acl_entry_name: The entry name of egress entries.
+        :param str policy: The policy of egress entries. Valid values `accept` and `drop`.
+        :param str port: The port of egress entries.
+        :param str protocol: The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if destination_cidr_ip is not None:
+            pulumi.set(__self__, "destination_cidr_ip", destination_cidr_ip)
+        if network_acl_entry_name is not None:
+            pulumi.set(__self__, "network_acl_entry_name", network_acl_entry_name)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of egress entries.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="destinationCidrIp")
+    def destination_cidr_ip(self) -> Optional[str]:
+        """
+        The destination cidr ip of egress entries.
+        """
+        return pulumi.get(self, "destination_cidr_ip")
+
+    @property
+    @pulumi.getter(name="networkAclEntryName")
+    def network_acl_entry_name(self) -> Optional[str]:
+        """
+        The entry name of egress entries.
+        """
+        return pulumi.get(self, "network_acl_entry_name")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        """
+        The policy of egress entries. Valid values `accept` and `drop`.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[str]:
+        """
+        The port of egress entries.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        """
+        return pulumi.get(self, "protocol")
 
 
 @pulumi.output_type
@@ -293,6 +398,104 @@ class NetworkAclEntriesIngress(dict):
     def source_cidr_ip(self) -> Optional[str]:
         """
         The source ip of the ingress entry.
+        """
+        return pulumi.get(self, "source_cidr_ip")
+
+
+@pulumi.output_type
+class NetworkAclIngressAclEntry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkAclEntryName":
+            suggest = "network_acl_entry_name"
+        elif key == "sourceCidrIp":
+            suggest = "source_cidr_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAclIngressAclEntry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAclIngressAclEntry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAclIngressAclEntry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 network_acl_entry_name: Optional[str] = None,
+                 policy: Optional[str] = None,
+                 port: Optional[str] = None,
+                 protocol: Optional[str] = None,
+                 source_cidr_ip: Optional[str] = None):
+        """
+        :param str description: The description of egress entries.
+        :param str network_acl_entry_name: The entry name of egress entries.
+        :param str policy: The policy of egress entries. Valid values `accept` and `drop`.
+        :param str port: The port of egress entries.
+        :param str protocol: The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        :param str source_cidr_ip: The source cidr ip of ingress entries.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if network_acl_entry_name is not None:
+            pulumi.set(__self__, "network_acl_entry_name", network_acl_entry_name)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if source_cidr_ip is not None:
+            pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of egress entries.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="networkAclEntryName")
+    def network_acl_entry_name(self) -> Optional[str]:
+        """
+        The entry name of egress entries.
+        """
+        return pulumi.get(self, "network_acl_entry_name")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        """
+        The policy of egress entries. Valid values `accept` and `drop`.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[str]:
+        """
+        The port of egress entries.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="sourceCidrIp")
+    def source_cidr_ip(self) -> Optional[str]:
+        """
+        The source cidr ip of ingress entries.
         """
         return pulumi.get(self, "source_cidr_ip")
 
@@ -1083,6 +1286,298 @@ class GetNatGatewaysGatewayResult(dict):
         The ID of the vSwitch to which the NAT gateway belongs.
         """
         return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetNetworkAclsAclResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 egress_acl_entries: Sequence['outputs.GetNetworkAclsAclEgressAclEntryResult'],
+                 id: str,
+                 ingress_acl_entries: Sequence['outputs.GetNetworkAclsAclIngressAclEntryResult'],
+                 network_acl_id: str,
+                 network_acl_name: str,
+                 resources: Sequence['outputs.GetNetworkAclsAclResourceResult'],
+                 status: str,
+                 vpc_id: str):
+        """
+        :param str description: Description of the entry direction rule.
+        :param Sequence['GetNetworkAclsAclEgressAclEntryArgs'] egress_acl_entries: Output direction rule information.
+        :param str id: The ID of the Network Acl.
+        :param Sequence['GetNetworkAclsAclIngressAclEntryArgs'] ingress_acl_entries: Entry direction rule information.
+        :param str network_acl_id: The first ID of the resource.
+        :param str network_acl_name: The name of the network ACL.
+        :param Sequence['GetNetworkAclsAclResourceArgs'] resources: The associated resource.
+        :param str status: The state of the network ACL.
+        :param str vpc_id: The ID of the associated VPC.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "egress_acl_entries", egress_acl_entries)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ingress_acl_entries", ingress_acl_entries)
+        pulumi.set(__self__, "network_acl_id", network_acl_id)
+        pulumi.set(__self__, "network_acl_name", network_acl_name)
+        pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the entry direction rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="egressAclEntries")
+    def egress_acl_entries(self) -> Sequence['outputs.GetNetworkAclsAclEgressAclEntryResult']:
+        """
+        Output direction rule information.
+        """
+        return pulumi.get(self, "egress_acl_entries")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Network Acl.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ingressAclEntries")
+    def ingress_acl_entries(self) -> Sequence['outputs.GetNetworkAclsAclIngressAclEntryResult']:
+        """
+        Entry direction rule information.
+        """
+        return pulumi.get(self, "ingress_acl_entries")
+
+    @property
+    @pulumi.getter(name="networkAclId")
+    def network_acl_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "network_acl_id")
+
+    @property
+    @pulumi.getter(name="networkAclName")
+    def network_acl_name(self) -> str:
+        """
+        The name of the network ACL.
+        """
+        return pulumi.get(self, "network_acl_name")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Sequence['outputs.GetNetworkAclsAclResourceResult']:
+        """
+        The associated resource.
+        """
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The state of the network ACL.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the associated VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GetNetworkAclsAclEgressAclEntryResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 destination_cidr_ip: str,
+                 network_acl_entry_name: str,
+                 policy: str,
+                 port: str,
+                 protocol: str):
+        """
+        :param str description: Description of the entry direction rule.
+        :param str destination_cidr_ip: The destination address segment.
+        :param str network_acl_entry_name: The name of the entry direction rule entry.
+        :param str policy: The authorization policy.
+        :param str port: Source port range.
+        :param str protocol: Transport layer protocol.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "destination_cidr_ip", destination_cidr_ip)
+        pulumi.set(__self__, "network_acl_entry_name", network_acl_entry_name)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the entry direction rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="destinationCidrIp")
+    def destination_cidr_ip(self) -> str:
+        """
+        The destination address segment.
+        """
+        return pulumi.get(self, "destination_cidr_ip")
+
+    @property
+    @pulumi.getter(name="networkAclEntryName")
+    def network_acl_entry_name(self) -> str:
+        """
+        The name of the entry direction rule entry.
+        """
+        return pulumi.get(self, "network_acl_entry_name")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        The authorization policy.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        Source port range.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Transport layer protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetNetworkAclsAclIngressAclEntryResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 network_acl_entry_name: str,
+                 policy: str,
+                 port: str,
+                 protocol: str,
+                 source_cidr_ip: str):
+        """
+        :param str description: Description of the entry direction rule.
+        :param str network_acl_entry_name: The name of the entry direction rule entry.
+        :param str policy: The authorization policy.
+        :param str port: Source port range.
+        :param str protocol: Transport layer protocol.
+        :param str source_cidr_ip: The source address field.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "network_acl_entry_name", network_acl_entry_name)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the entry direction rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="networkAclEntryName")
+    def network_acl_entry_name(self) -> str:
+        """
+        The name of the entry direction rule entry.
+        """
+        return pulumi.get(self, "network_acl_entry_name")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        The authorization policy.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        Source port range.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Transport layer protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="sourceCidrIp")
+    def source_cidr_ip(self) -> str:
+        """
+        The source address field.
+        """
+        return pulumi.get(self, "source_cidr_ip")
+
+
+@pulumi.output_type
+class GetNetworkAclsAclResourceResult(dict):
+    def __init__(__self__, *,
+                 resource_id: str,
+                 resource_type: str,
+                 status: str):
+        """
+        :param str resource_id: The ID of the associated resource.
+        :param str resource_type: The type of the associated resource.
+        :param str status: The state of the network ACL.
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The ID of the associated resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The type of the associated resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The state of the network ACL.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -2197,5 +2692,122 @@ class GetSwitchesVswitchResult(dict):
         The availability zone of the VSwitch.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetVpcFlowLogsLogResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 flow_log_id: str,
+                 flow_log_name: str,
+                 id: str,
+                 log_store_name: str,
+                 project_name: str,
+                 resource_id: str,
+                 resource_type: str,
+                 status: str,
+                 traffic_type: str):
+        """
+        :param str description: The Description of flow log.
+        :param str flow_log_id: The flow log ID.
+        :param str flow_log_name: The flow log name.
+        :param str id: The ID of the Flow Log.
+        :param str log_store_name: The log store name.
+        :param str project_name: The project name.
+        :param str resource_id: The resource id.
+        :param str resource_type: The resource type.
+        :param str status: The status of flow log.
+        :param str traffic_type: The traffic type.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "flow_log_id", flow_log_id)
+        pulumi.set(__self__, "flow_log_name", flow_log_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "log_store_name", log_store_name)
+        pulumi.set(__self__, "project_name", project_name)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "traffic_type", traffic_type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The Description of flow log.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="flowLogId")
+    def flow_log_id(self) -> str:
+        """
+        The flow log ID.
+        """
+        return pulumi.get(self, "flow_log_id")
+
+    @property
+    @pulumi.getter(name="flowLogName")
+    def flow_log_name(self) -> str:
+        """
+        The flow log name.
+        """
+        return pulumi.get(self, "flow_log_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Flow Log.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="logStoreName")
+    def log_store_name(self) -> str:
+        """
+        The log store name.
+        """
+        return pulumi.get(self, "log_store_name")
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> str:
+        """
+        The project name.
+        """
+        return pulumi.get(self, "project_name")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The resource id.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The resource type.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of flow log.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trafficType")
+    def traffic_type(self) -> str:
+        """
+        The traffic type.
+        """
+        return pulumi.get(self, "traffic_type")
 
 

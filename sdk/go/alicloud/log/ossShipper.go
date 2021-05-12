@@ -57,7 +57,7 @@ import (
 // 			LogstoreName:   pulumi.Any(alicloud_log_logstore.Example.Name),
 // 			ShipperName:    pulumi.String("oss_shipper_name"),
 // 			OssBucket:      pulumi.String("test_bucket"),
-// 			OssPrefix:      pulumi.String("/root"),
+// 			OssPrefix:      pulumi.String("root"),
 // 			BufferInterval: pulumi.Int(300),
 // 			BufferSize:     pulumi.Int(250),
 // 			CompressType:   pulumi.String("none"),
@@ -105,7 +105,7 @@ type OssShipper struct {
 	//   `csvConfigNullidentifier` - (Optional) Invalid field content.
 	//   `csvConfigQuote` - (Optional) Escape character under csv configuration.
 	//   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-	//   `csvConfigLinefeed` - (Optional) Separator in csv configuration.
+	//   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
 	// - format = `parquet`
 	//   `parquetConfig` - (Optional) Configure to use parquet storage format.
 	//   `name` - (Required) The name of the key.
@@ -204,7 +204,7 @@ type ossShipperState struct {
 	//   `csvConfigNullidentifier` - (Optional) Invalid field content.
 	//   `csvConfigQuote` - (Optional) Escape character under csv configuration.
 	//   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-	//   `csvConfigLinefeed` - (Optional) Separator in csv configuration.
+	//   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
 	// - format = `parquet`
 	//   `parquetConfig` - (Optional) Configure to use parquet storage format.
 	//   `name` - (Required) The name of the key.
@@ -251,7 +251,7 @@ type OssShipperState struct {
 	//   `csvConfigNullidentifier` - (Optional) Invalid field content.
 	//   `csvConfigQuote` - (Optional) Escape character under csv configuration.
 	//   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-	//   `csvConfigLinefeed` - (Optional) Separator in csv configuration.
+	//   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
 	// - format = `parquet`
 	//   `parquetConfig` - (Optional) Configure to use parquet storage format.
 	//   `name` - (Required) The name of the key.
@@ -302,7 +302,7 @@ type ossShipperArgs struct {
 	//   `csvConfigNullidentifier` - (Optional) Invalid field content.
 	//   `csvConfigQuote` - (Optional) Escape character under csv configuration.
 	//   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-	//   `csvConfigLinefeed` - (Optional) Separator in csv configuration.
+	//   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
 	// - format = `parquet`
 	//   `parquetConfig` - (Optional) Configure to use parquet storage format.
 	//   `name` - (Required) The name of the key.
@@ -350,7 +350,7 @@ type OssShipperArgs struct {
 	//   `csvConfigNullidentifier` - (Optional) Invalid field content.
 	//   `csvConfigQuote` - (Optional) Escape character under csv configuration.
 	//   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-	//   `csvConfigLinefeed` - (Optional) Separator in csv configuration.
+	//   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
 	// - format = `parquet`
 	//   `parquetConfig` - (Optional) Configure to use parquet storage format.
 	//   `name` - (Required) The name of the key.

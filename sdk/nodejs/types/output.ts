@@ -3043,6 +3043,31 @@ export namespace cs {
         privateIp: string;
     }
 
+    export interface GetKubernetesPermissionPermission {
+        /**
+         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         */
+        isOwner?: boolean;
+        isRamRole?: boolean;
+        /**
+         * The permission settings to manage ACK clusters.
+         */
+        resourceId: string;
+        /**
+         * The authorization type. Valid values `cluster`, `namespace` and `console`.
+         */
+        resourceType: string;
+        /**
+         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+         */
+        roleName: string;
+        /**
+         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+         */
+        roleType?: string;
+    }
+
     export interface GetManagedKubernetesClustersCluster {
         /**
          * The ID of availability zone.
@@ -3455,6 +3480,33 @@ export namespace cs {
          * The private IP address of node.
          */
         privateIp: string;
+    }
+
+    export interface KubernetesPermissionPermission {
+        /**
+         * The ID of the cluster that you want to manage.
+         */
+        cluster: string;
+        /**
+         * Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
+         */
+        isCustom?: boolean;
+        /**
+         * Specifies whether the permissions are granted to a RAM role.
+         */
+        isRamRole?: boolean;
+        /**
+         * The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
+         */
+        namespace?: string;
+        /**
+         * Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
+         */
+        roleName: string;
+        /**
+         * The authorization type. Valid values `cluster`, `namespace`.
+         */
+        roleType: string;
     }
 
     export interface KubernetesRuntime {
@@ -5692,6 +5744,7 @@ export namespace ecs {
          * Disk attachment time.
          */
         attachedTime: string;
+        autoSnapshotPolicyId: string;
         /**
          * Availability zone of the disk.
          */
@@ -5704,6 +5757,8 @@ export namespace ecs {
          * Disk creation time.
          */
         creationTime: string;
+        deleteAutoSnapshot: boolean;
+        deleteWithInstance: boolean;
         /**
          * Disk description.
          */
@@ -5712,14 +5767,17 @@ export namespace ecs {
          * Disk detachment time.
          */
         detachedTime: string;
+        device: string;
+        diskId: string;
+        diskName: string;
+        diskType: string;
+        enableAutoSnapshot: boolean;
+        enableAutomatedSnapshotPolicy: boolean;
         /**
          * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
          */
         encrypted: string;
-        /**
-         * Disk expiration time.
-         */
-        expirationTime: string;
+        expiredTime: string;
         /**
          * ID of the disk.
          */
@@ -5732,10 +5790,21 @@ export namespace ecs {
          * Filter the results by the specified ECS instance ID.
          */
         instanceId: string;
+        iops: number;
+        iopsRead: number;
+        iopsWrite: number;
+        kmsKeyId: string;
+        mountInstanceNum: number;
+        mountInstances: outputs.ecs.GetDisksDiskMountInstance[];
         /**
          * Disk name.
          */
         name: string;
+        operationLocks: outputs.ecs.GetDisksDiskOperationLock[];
+        paymentType: string;
+        performanceLevel: string;
+        portable: boolean;
+        productCode: string;
         /**
          * Region ID the disk belongs to.
          */
@@ -5770,11 +5839,203 @@ export namespace ecs {
          * }, { async: true }));
          * ```
          */
-        tags?: {[key: string]: any};
+        tags: {[key: string]: any};
         /**
          * Disk type. Possible values: `system` and `data`.
          */
         type: string;
+        zoneId: string;
+    }
+
+    export interface GetDisksDiskMountInstance {
+        /**
+         * Disk attachment time.
+         */
+        attachedTime: string;
+        device: string;
+        /**
+         * Filter the results by the specified ECS instance ID.
+         */
+        instanceId: string;
+    }
+
+    export interface GetDisksDiskOperationLock {
+        lockReason: string;
+    }
+
+    export interface GetDisksOperationLock {
+        lockReason?: string;
+    }
+
+    export interface GetEcsDisksDisk {
+        /**
+         * A mount of time.
+         */
+        attachedTime: string;
+        /**
+         * Query cloud disks based on the automatic snapshot policy ID.
+         */
+        autoSnapshotPolicyId: string;
+        /**
+         * Availability zone of the disk.
+         */
+        availabilityZone: string;
+        /**
+         * Disk category.
+         */
+        category: string;
+        /**
+         * Disk creation time.
+         */
+        creationTime: string;
+        /**
+         * Indicates whether the automatic snapshot is deleted when the disk is released.
+         */
+        deleteAutoSnapshot: boolean;
+        /**
+         * Indicates whether the disk is released together with the instance.
+         */
+        deleteWithInstance: boolean;
+        /**
+         * Disk description.
+         */
+        description: string;
+        /**
+         * Disk detachment time.
+         */
+        detachedTime: string;
+        /**
+         * The mount point of the disk.
+         */
+        device: string;
+        /**
+         * ID of the disk.
+         */
+        diskId: string;
+        /**
+         * The disk name.
+         */
+        diskName: string;
+        /**
+         * The disk type.
+         */
+        diskType: string;
+        /**
+         * Whether the disk implements an automatic snapshot policy.
+         */
+        enableAutoSnapshot: boolean;
+        /**
+         * Whether the disk implements an automatic snapshot policy.
+         */
+        enableAutomatedSnapshotPolicy: boolean;
+        /**
+         * Indicate whether the disk is encrypted or not.
+         */
+        encrypted: string;
+        expiredTime: string;
+        /**
+         * ID of the disk.
+         */
+        id: string;
+        /**
+         * ID of the image from which the disk is created. It is null unless the disk is created using an image.
+         */
+        imageId: string;
+        /**
+         * The instance ID of the disk mount.
+         */
+        instanceId: string;
+        iops: number;
+        iopsRead: number;
+        iopsWrite: number;
+        /**
+         * The kms key id.
+         */
+        kmsKeyId: string;
+        /**
+         * Number of instances mounted on shared storage.
+         */
+        mountInstanceNum: number;
+        /**
+         * Disk mount instances.
+         */
+        mountInstances: outputs.ecs.GetEcsDisksDiskMountInstance[];
+        /**
+         * Disk name.
+         */
+        name: string;
+        operationLocks: outputs.ecs.GetEcsDisksDiskOperationLock[];
+        /**
+         * Payment method for disk.
+         */
+        paymentType: string;
+        /**
+         * Performance levels of ESSD cloud disk.
+         */
+        performanceLevel: string;
+        /**
+         * Whether the disk is unmountable.
+         */
+        portable: boolean;
+        /**
+         * The product logo of the cloud market.
+         */
+        productCode: string;
+        /**
+         * Region ID the disk belongs to.
+         */
+        regionId: string;
+        /**
+         * The Id of resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * Disk size in GiB.
+         */
+        size: number;
+        /**
+         * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+         */
+        snapshotId: string;
+        /**
+         * Current status.
+         */
+        status: string;
+        /**
+         * A map of tags assigned to the disk.
+         */
+        tags: {[key: string]: any};
+        /**
+         * Disk type.
+         */
+        type: string;
+        /**
+         * The zone id.
+         */
+        zoneId: string;
+    }
+
+    export interface GetEcsDisksDiskMountInstance {
+        /**
+         * A mount of time.
+         */
+        attachedTime: string;
+        /**
+         * The mount point of the disk.
+         */
+        device: string;
+        /**
+         * The instance ID of the disk mount.
+         */
+        instanceId: string;
+    }
+
+    export interface GetEcsDisksDiskOperationLock {
+        lockReason: string;
+    }
+
+    export interface GetEcsDisksOperationLock {
+        lockReason?: string;
     }
 
     export interface GetEcsKeyPairsKeyPair {
@@ -14356,6 +14617,114 @@ export namespace vpc {
         vswitchId: string;
     }
 
+    export interface GetNetworkAclsAcl {
+        /**
+         * Description of the entry direction rule.
+         */
+        description: string;
+        /**
+         * Output direction rule information.
+         */
+        egressAclEntries: outputs.vpc.GetNetworkAclsAclEgressAclEntry[];
+        /**
+         * The ID of the Network Acl.
+         */
+        id: string;
+        /**
+         * Entry direction rule information.
+         */
+        ingressAclEntries: outputs.vpc.GetNetworkAclsAclIngressAclEntry[];
+        /**
+         * The first ID of the resource.
+         */
+        networkAclId: string;
+        /**
+         * The name of the network ACL.
+         */
+        networkAclName: string;
+        /**
+         * The associated resource.
+         */
+        resources: outputs.vpc.GetNetworkAclsAclResource[];
+        /**
+         * The state of the network ACL.
+         */
+        status: string;
+        /**
+         * The ID of the associated VPC.
+         */
+        vpcId: string;
+    }
+
+    export interface GetNetworkAclsAclEgressAclEntry {
+        /**
+         * Description of the entry direction rule.
+         */
+        description: string;
+        /**
+         * The destination address segment.
+         */
+        destinationCidrIp: string;
+        /**
+         * The name of the entry direction rule entry.
+         */
+        networkAclEntryName: string;
+        /**
+         * The authorization policy.
+         */
+        policy: string;
+        /**
+         * Source port range.
+         */
+        port: string;
+        /**
+         * Transport layer protocol.
+         */
+        protocol: string;
+    }
+
+    export interface GetNetworkAclsAclIngressAclEntry {
+        /**
+         * Description of the entry direction rule.
+         */
+        description: string;
+        /**
+         * The name of the entry direction rule entry.
+         */
+        networkAclEntryName: string;
+        /**
+         * The authorization policy.
+         */
+        policy: string;
+        /**
+         * Source port range.
+         */
+        port: string;
+        /**
+         * Transport layer protocol.
+         */
+        protocol: string;
+        /**
+         * The source address field.
+         */
+        sourceCidrIp: string;
+    }
+
+    export interface GetNetworkAclsAclResource {
+        /**
+         * The ID of the associated resource.
+         */
+        resourceId: string;
+        /**
+         * The type of the associated resource.
+         */
+        resourceType: string;
+        /**
+         * The state of the network ACL.
+         */
+        status: string;
+    }
+
     export interface GetNetworksVpc {
         /**
          * Filter results by a specific CIDR block. For example: "172.16.0.0/12".
@@ -14765,6 +15134,49 @@ export namespace vpc {
         zoneId: string;
     }
 
+    export interface GetVpcFlowLogsLog {
+        /**
+         * The Description of flow log.
+         */
+        description: string;
+        /**
+         * The flow log ID.
+         */
+        flowLogId: string;
+        /**
+         * The flow log name.
+         */
+        flowLogName: string;
+        /**
+         * The ID of the Flow Log.
+         */
+        id: string;
+        /**
+         * The log store name.
+         */
+        logStoreName: string;
+        /**
+         * The project name.
+         */
+        projectName: string;
+        /**
+         * The resource id.
+         */
+        resourceId: string;
+        /**
+         * The resource type.
+         */
+        resourceType: string;
+        /**
+         * The status of flow log.
+         */
+        status: string;
+        /**
+         * The traffic type.
+         */
+        trafficType: string;
+    }
+
     export interface NetworkAclAttachmentResource {
         /**
          * The resource id that the network acl will associate with.
@@ -14774,6 +15186,33 @@ export namespace vpc {
          * The resource id that the network acl will associate with. Only support `VSwitch` now.
          */
         resourceType: string;
+    }
+
+    export interface NetworkAclEgressAclEntry {
+        /**
+         * The description of egress entries.
+         */
+        description?: string;
+        /**
+         * The destination cidr ip of egress entries.
+         */
+        destinationCidrIp?: string;
+        /**
+         * The entry name of egress entries.
+         */
+        networkAclEntryName?: string;
+        /**
+         * The policy of egress entries. Valid values `accept` and `drop`.
+         */
+        policy?: string;
+        /**
+         * The port of egress entries.
+         */
+        port?: string;
+        /**
+         * The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+         */
+        protocol?: string;
     }
 
     export interface NetworkAclEntriesEgress {
@@ -14836,6 +15275,33 @@ export namespace vpc {
          * The source ip of the ingress entry.
          */
         sourceCidrIp: string;
+    }
+
+    export interface NetworkAclIngressAclEntry {
+        /**
+         * The description of egress entries.
+         */
+        description?: string;
+        /**
+         * The entry name of egress entries.
+         */
+        networkAclEntryName?: string;
+        /**
+         * The policy of egress entries. Valid values `accept` and `drop`.
+         */
+        policy?: string;
+        /**
+         * The port of egress entries.
+         */
+        port?: string;
+        /**
+         * The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+         */
+        protocol?: string;
+        /**
+         * The source cidr ip of ingress entries.
+         */
+        sourceCidrIp?: string;
     }
 }
 

@@ -26,11 +26,11 @@ class FlowLogArgs:
         :param pulumi.Input[str] log_store_name: The name of the logstore.
         :param pulumi.Input[str] project_name: The name of the project.
         :param pulumi.Input[str] resource_id: The ID of the resource.
-        :param pulumi.Input[str] resource_type: The type of the resource to capture traffic.
-        :param pulumi.Input[str] traffic_type: The type of traffic collected.
+        :param pulumi.Input[str] resource_type: The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
         :param pulumi.Input[str] description: The Description of the VPC Flow Log.
         :param pulumi.Input[str] flow_log_name: The Name of the VPC Flow Log.
-        :param pulumi.Input[str] status: The status of the VPC Flow Log.
+        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
         """
         pulumi.set(__self__, "log_store_name", log_store_name)
         pulumi.set(__self__, "project_name", project_name)
@@ -84,7 +84,7 @@ class FlowLogArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[str]:
         """
-        The type of the resource to capture traffic.
+        The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -96,7 +96,7 @@ class FlowLogArgs:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> pulumi.Input[str]:
         """
-        The type of traffic collected.
+        The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
         """
         return pulumi.get(self, "traffic_type")
 
@@ -132,7 +132,7 @@ class FlowLogArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the VPC Flow Log.
+        The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
         """
         return pulumi.get(self, "status")
 
@@ -159,9 +159,9 @@ class _FlowLogState:
         :param pulumi.Input[str] log_store_name: The name of the logstore.
         :param pulumi.Input[str] project_name: The name of the project.
         :param pulumi.Input[str] resource_id: The ID of the resource.
-        :param pulumi.Input[str] resource_type: The type of the resource to capture traffic.
-        :param pulumi.Input[str] status: The status of the VPC Flow Log.
-        :param pulumi.Input[str] traffic_type: The type of traffic collected.
+        :param pulumi.Input[str] resource_type: The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
+        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -244,7 +244,7 @@ class _FlowLogState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the resource to capture traffic.
+        The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -256,7 +256,7 @@ class _FlowLogState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the VPC Flow Log.
+        The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
         """
         return pulumi.get(self, "status")
 
@@ -268,7 +268,7 @@ class _FlowLogState:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of traffic collected.
+        The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
         """
         return pulumi.get(self, "traffic_type")
 
@@ -345,9 +345,9 @@ class FlowLog(pulumi.CustomResource):
         :param pulumi.Input[str] log_store_name: The name of the logstore.
         :param pulumi.Input[str] project_name: The name of the project.
         :param pulumi.Input[str] resource_id: The ID of the resource.
-        :param pulumi.Input[str] resource_type: The type of the resource to capture traffic.
-        :param pulumi.Input[str] status: The status of the VPC Flow Log.
-        :param pulumi.Input[str] traffic_type: The type of traffic collected.
+        :param pulumi.Input[str] resource_type: The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
+        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
         """
         ...
     @overload
@@ -485,9 +485,9 @@ class FlowLog(pulumi.CustomResource):
         :param pulumi.Input[str] log_store_name: The name of the logstore.
         :param pulumi.Input[str] project_name: The name of the project.
         :param pulumi.Input[str] resource_id: The ID of the resource.
-        :param pulumi.Input[str] resource_type: The type of the resource to capture traffic.
-        :param pulumi.Input[str] status: The status of the VPC Flow Log.
-        :param pulumi.Input[str] traffic_type: The type of traffic collected.
+        :param pulumi.Input[str] resource_type: The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
+        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -547,7 +547,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[str]:
         """
-        The type of the resource to capture traffic.
+        The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -555,7 +555,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the VPC Flow Log.
+        The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
         """
         return pulumi.get(self, "status")
 
@@ -563,7 +563,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> pulumi.Output[str]:
         """
-        The type of traffic collected.
+        The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
         """
         return pulumi.get(self, "traffic_type")
 

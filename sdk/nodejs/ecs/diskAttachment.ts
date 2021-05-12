@@ -5,42 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
- *
- * ## Example Usage
- *
- * Basic usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a new ECS disk-attachment and use it attach one disk to a new instance.
- * const ecsSg = new alicloud.ecs.SecurityGroup("ecsSg", {description: "New security group"});
- * const ecsDisk = new alicloud.ecs.Disk("ecsDisk", {
- *     availabilityZone: "cn-beijing-a",
- *     size: "50",
- *     tags: {
- *         Name: "TerraformTest-disk",
- *     },
- * });
- * const ecsInstance = new alicloud.ecs.Instance("ecsInstance", {
- *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
- *     instanceType: "ecs.n4.small",
- *     availabilityZone: "cn-beijing-a",
- *     securityGroups: [ecsSg.id],
- *     instanceName: "Hello",
- *     internetChargeType: "PayByBandwidth",
- *     tags: {
- *         Name: "TerraformTest-instance",
- *     },
- * });
- * const ecsDiskAtt = new alicloud.ecs.DiskAttachment("ecsDiskAtt", {
- *     diskId: ecsDisk.id,
- *     instanceId: ecsInstance.id,
- * });
- * ```
- *
  * ## Import
  *
  * The disk attachment can be imported using the id, e.g.
@@ -77,12 +41,9 @@ export class DiskAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === DiskAttachment.__pulumiType;
     }
 
-    /**
-     * The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-     *
-     * @deprecated Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
-     */
-    public readonly deviceName!: pulumi.Output<string>;
+    public readonly bootable!: pulumi.Output<boolean | undefined>;
+    public readonly deleteWithInstance!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly device!: pulumi.Output<string>;
     /**
      * ID of the Disk to be attached.
      */
@@ -91,6 +52,8 @@ export class DiskAttachment extends pulumi.CustomResource {
      * ID of the Instance to attach to.
      */
     public readonly instanceId!: pulumi.Output<string>;
+    public readonly keyPairName!: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
 
     /**
      * Create a DiskAttachment resource with the given unique name, arguments, and options.
@@ -105,9 +68,13 @@ export class DiskAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskAttachmentState | undefined;
-            inputs["deviceName"] = state ? state.deviceName : undefined;
+            inputs["bootable"] = state ? state.bootable : undefined;
+            inputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
+            inputs["device"] = state ? state.device : undefined;
             inputs["diskId"] = state ? state.diskId : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
+            inputs["keyPairName"] = state ? state.keyPairName : undefined;
+            inputs["password"] = state ? state.password : undefined;
         } else {
             const args = argsOrState as DiskAttachmentArgs | undefined;
             if ((!args || args.diskId === undefined) && !opts.urn) {
@@ -116,9 +83,13 @@ export class DiskAttachment extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["deviceName"] = args ? args.deviceName : undefined;
+            inputs["bootable"] = args ? args.bootable : undefined;
+            inputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
             inputs["diskId"] = args ? args.diskId : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["keyPairName"] = args ? args.keyPairName : undefined;
+            inputs["password"] = args ? args.password : undefined;
+            inputs["device"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -131,12 +102,9 @@ export class DiskAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DiskAttachment resources.
  */
 export interface DiskAttachmentState {
-    /**
-     * The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-     *
-     * @deprecated Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
-     */
-    readonly deviceName?: pulumi.Input<string>;
+    readonly bootable?: pulumi.Input<boolean>;
+    readonly deleteWithInstance?: pulumi.Input<boolean>;
+    readonly device?: pulumi.Input<string>;
     /**
      * ID of the Disk to be attached.
      */
@@ -145,18 +113,16 @@ export interface DiskAttachmentState {
      * ID of the Instance to attach to.
      */
     readonly instanceId?: pulumi.Input<string>;
+    readonly keyPairName?: pulumi.Input<string>;
+    readonly password?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a DiskAttachment resource.
  */
 export interface DiskAttachmentArgs {
-    /**
-     * The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-     *
-     * @deprecated Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
-     */
-    readonly deviceName?: pulumi.Input<string>;
+    readonly bootable?: pulumi.Input<boolean>;
+    readonly deleteWithInstance?: pulumi.Input<boolean>;
     /**
      * ID of the Disk to be attached.
      */
@@ -165,4 +131,6 @@ export interface DiskAttachmentArgs {
      * ID of the Instance to attach to.
      */
     readonly instanceId: pulumi.Input<string>;
+    readonly keyPairName?: pulumi.Input<string>;
+    readonly password?: pulumi.Input<string>;
 }

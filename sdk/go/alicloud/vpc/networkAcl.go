@@ -31,13 +31,35 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
 // 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 			VpcName:   pulumi.String("VpcConfig"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = vpc.NewNetworkAcl(ctx, "defaultNetworkAcl", &vpc.NetworkAclArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			Description: pulumi.String("network_acl"),
+// 			VpcId:          defaultNetwork.ID(),
+// 			NetworkAclName: pulumi.String("network_acl"),
+// 			Description:    pulumi.String("network_acl"),
+// 			IngressAclEntries: vpc.NetworkAclIngressAclEntryArray{
+// 				&vpc.NetworkAclIngressAclEntryArgs{
+// 					Description:         pulumi.String("tf-testacc"),
+// 					NetworkAclEntryName: pulumi.String("tcp23"),
+// 					SourceCidrIp:        pulumi.String("196.168.2.0/21"),
+// 					Policy:              pulumi.String("accept"),
+// 					Port:                pulumi.String("22/80"),
+// 					Protocol:            pulumi.String("tcp"),
+// 				},
+// 			},
+// 			EgressAclEntries: vpc.NetworkAclEgressAclEntryArray{
+// 				&vpc.NetworkAclEgressAclEntryArgs{
+// 					Description:         pulumi.String("tf-testacc"),
+// 					NetworkAclEntryName: pulumi.String("tcp23"),
+// 					DestinationCidrIp:   pulumi.String("0.0.0.0/0"),
+// 					Policy:              pulumi.String("accept"),
+// 					Port:                pulumi.String("-1/-1"),
+// 					Protocol:            pulumi.String("all"),
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -57,10 +79,20 @@ import (
 type NetworkAcl struct {
 	pulumi.CustomResourceState
 
-	// The description of the network acl instance.
+	// The description of egress entries.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the network acl.
+	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+	EgressAclEntries NetworkAclEgressAclEntryArrayOutput `pulumi:"egressAclEntries"`
+	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+	IngressAclEntries NetworkAclIngressAclEntryArrayOutput `pulumi:"ingressAclEntries"`
+	// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the network acl.
+	NetworkAclName pulumi.StringOutput `pulumi:"networkAclName"`
+	// (Available in 1.122.0+) The status of the network acl.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The vpcId of the network acl, the field can't be changed.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -97,19 +129,39 @@ func GetNetworkAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkAcl resources.
 type networkAclState struct {
-	// The description of the network acl instance.
+	// The description of egress entries.
 	Description *string `pulumi:"description"`
-	// The name of the network acl.
+	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
+	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+	IngressAclEntries []NetworkAclIngressAclEntry `pulumi:"ingressAclEntries"`
+	// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
 	Name *string `pulumi:"name"`
+	// The name of the network acl.
+	NetworkAclName *string `pulumi:"networkAclName"`
+	// (Available in 1.122.0+) The status of the network acl.
+	Status *string `pulumi:"status"`
 	// The vpcId of the network acl, the field can't be changed.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type NetworkAclState struct {
-	// The description of the network acl instance.
+	// The description of egress entries.
 	Description pulumi.StringPtrInput
-	// The name of the network acl.
+	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+	EgressAclEntries NetworkAclEgressAclEntryArrayInput
+	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+	IngressAclEntries NetworkAclIngressAclEntryArrayInput
+	// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
 	Name pulumi.StringPtrInput
+	// The name of the network acl.
+	NetworkAclName pulumi.StringPtrInput
+	// (Available in 1.122.0+) The status of the network acl.
+	Status pulumi.StringPtrInput
 	// The vpcId of the network acl, the field can't be changed.
 	VpcId pulumi.StringPtrInput
 }
@@ -119,20 +171,36 @@ func (NetworkAclState) ElementType() reflect.Type {
 }
 
 type networkAclArgs struct {
-	// The description of the network acl instance.
+	// The description of egress entries.
 	Description *string `pulumi:"description"`
-	// The name of the network acl.
+	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
+	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+	IngressAclEntries []NetworkAclIngressAclEntry `pulumi:"ingressAclEntries"`
+	// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
 	Name *string `pulumi:"name"`
+	// The name of the network acl.
+	NetworkAclName *string `pulumi:"networkAclName"`
 	// The vpcId of the network acl, the field can't be changed.
 	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a NetworkAcl resource.
 type NetworkAclArgs struct {
-	// The description of the network acl instance.
+	// The description of egress entries.
 	Description pulumi.StringPtrInput
-	// The name of the network acl.
+	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+	EgressAclEntries NetworkAclEgressAclEntryArrayInput
+	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+	IngressAclEntries NetworkAclIngressAclEntryArrayInput
+	// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
 	Name pulumi.StringPtrInput
+	// The name of the network acl.
+	NetworkAclName pulumi.StringPtrInput
 	// The vpcId of the network acl, the field can't be changed.
 	VpcId pulumi.StringInput
 }

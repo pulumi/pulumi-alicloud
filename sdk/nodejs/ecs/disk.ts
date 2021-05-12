@@ -5,31 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ECS disk resource.
- *
- * > **NOTE:** One of `size` or `snapshotId` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshotId` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a new ECS disk.
- * const ecsDisk = new alicloud.ecs.Disk("ecs_disk", {
- *     // cn-beijing
- *     availabilityZone: "cn-beijing-b",
- *     category: "cloud_efficiency",
- *     description: "Hello ecs disk.",
- *     encrypted: true,
- *     kmsKeyId: "2a6767f0-a16c-4679-a60f-13bf*****",
- *     size: 30,
- *     tags: {
- *         Name: "TerraformTest",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Cloud disk can be imported using the id, e.g.
@@ -66,14 +41,18 @@ export class Disk extends pulumi.CustomResource {
         return obj['__pulumiType'] === Disk.__pulumiType;
     }
 
+    public readonly advancedFeatures!: pulumi.Output<string | undefined>;
     /**
      * The Zone to create the disk in.
+     *
+     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
     public readonly category!: pulumi.Output<string | undefined>;
+    public readonly dedicatedBlockStorageClusterId!: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
      */
@@ -86,22 +65,29 @@ export class Disk extends pulumi.CustomResource {
      * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly diskName!: pulumi.Output<string>;
+    public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
      */
     public readonly enableAutoSnapshot!: pulumi.Output<boolean | undefined>;
+    public readonly encryptAlgorithm!: pulumi.Output<string | undefined>;
     /**
      * If true, the disk will be encrypted, conflict with `snapshotId`.
      */
     public readonly encrypted!: pulumi.Output<boolean | undefined>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
      */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly paymentType!: pulumi.Output<string>;
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
      * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
@@ -117,7 +103,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
      */
-    public readonly size!: pulumi.Output<number>;
+    public readonly size!: pulumi.Output<number | undefined>;
     /**
      * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
      */
@@ -126,10 +112,14 @@ export class Disk extends pulumi.CustomResource {
      * The disk status.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly storageSetId!: pulumi.Output<string | undefined>;
+    public readonly storageSetPartitionNumber!: pulumi.Output<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly type!: pulumi.Output<string | undefined>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Disk resource with the given unique name, arguments, and options.
@@ -138,49 +128,65 @@ export class Disk extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DiskArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: DiskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DiskArgs | DiskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskState | undefined;
+            inputs["advancedFeatures"] = state ? state.advancedFeatures : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["category"] = state ? state.category : undefined;
+            inputs["dedicatedBlockStorageClusterId"] = state ? state.dedicatedBlockStorageClusterId : undefined;
             inputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
             inputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["diskName"] = state ? state.diskName : undefined;
+            inputs["dryRun"] = state ? state.dryRun : undefined;
             inputs["enableAutoSnapshot"] = state ? state.enableAutoSnapshot : undefined;
+            inputs["encryptAlgorithm"] = state ? state.encryptAlgorithm : undefined;
             inputs["encrypted"] = state ? state.encrypted : undefined;
+            inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["performanceLevel"] = state ? state.performanceLevel : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
             inputs["status"] = state ? state.status : undefined;
+            inputs["storageSetId"] = state ? state.storageSetId : undefined;
+            inputs["storageSetPartitionNumber"] = state ? state.storageSetPartitionNumber : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["type"] = state ? state.type : undefined;
+            inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DiskArgs | undefined;
-            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'availabilityZone'");
-            }
-            if ((!args || args.size === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'size'");
-            }
+            inputs["advancedFeatures"] = args ? args.advancedFeatures : undefined;
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             inputs["category"] = args ? args.category : undefined;
+            inputs["dedicatedBlockStorageClusterId"] = args ? args.dedicatedBlockStorageClusterId : undefined;
             inputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
             inputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["diskName"] = args ? args.diskName : undefined;
+            inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["enableAutoSnapshot"] = args ? args.enableAutoSnapshot : undefined;
+            inputs["encryptAlgorithm"] = args ? args.encryptAlgorithm : undefined;
             inputs["encrypted"] = args ? args.encrypted : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["performanceLevel"] = args ? args.performanceLevel : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["snapshotId"] = args ? args.snapshotId : undefined;
+            inputs["storageSetId"] = args ? args.storageSetId : undefined;
+            inputs["storageSetPartitionNumber"] = args ? args.storageSetPartitionNumber : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["type"] = args ? args.type : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -194,14 +200,18 @@ export class Disk extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Disk resources.
  */
 export interface DiskState {
+    readonly advancedFeatures?: pulumi.Input<string>;
     /**
      * The Zone to create the disk in.
+     *
+     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
     readonly category?: pulumi.Input<string>;
+    readonly dedicatedBlockStorageClusterId?: pulumi.Input<string>;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
      */
@@ -214,22 +224,29 @@ export interface DiskState {
      * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     readonly description?: pulumi.Input<string>;
+    readonly diskName?: pulumi.Input<string>;
+    readonly dryRun?: pulumi.Input<boolean>;
     /**
      * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
      */
     readonly enableAutoSnapshot?: pulumi.Input<boolean>;
+    readonly encryptAlgorithm?: pulumi.Input<string>;
     /**
      * If true, the disk will be encrypted, conflict with `snapshotId`.
      */
     readonly encrypted?: pulumi.Input<boolean>;
+    readonly instanceId?: pulumi.Input<string>;
     /**
      * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
      */
     readonly kmsKeyId?: pulumi.Input<string>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    readonly paymentType?: pulumi.Input<string>;
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
      * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
@@ -254,24 +271,32 @@ export interface DiskState {
      * The disk status.
      */
     readonly status?: pulumi.Input<string>;
+    readonly storageSetId?: pulumi.Input<string>;
+    readonly storageSetPartitionNumber?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly type?: pulumi.Input<string>;
+    readonly zoneId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Disk resource.
  */
 export interface DiskArgs {
+    readonly advancedFeatures?: pulumi.Input<string>;
     /**
      * The Zone to create the disk in.
+     *
+     * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
-    readonly availabilityZone: pulumi.Input<string>;
+    readonly availabilityZone?: pulumi.Input<string>;
     /**
      * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
     readonly category?: pulumi.Input<string>;
+    readonly dedicatedBlockStorageClusterId?: pulumi.Input<string>;
     /**
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
      */
@@ -284,22 +309,29 @@ export interface DiskArgs {
      * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     readonly description?: pulumi.Input<string>;
+    readonly diskName?: pulumi.Input<string>;
+    readonly dryRun?: pulumi.Input<boolean>;
     /**
      * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
      */
     readonly enableAutoSnapshot?: pulumi.Input<boolean>;
+    readonly encryptAlgorithm?: pulumi.Input<string>;
     /**
      * If true, the disk will be encrypted, conflict with `snapshotId`.
      */
     readonly encrypted?: pulumi.Input<boolean>;
+    readonly instanceId?: pulumi.Input<string>;
     /**
      * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
      */
     readonly kmsKeyId?: pulumi.Input<string>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    readonly paymentType?: pulumi.Input<string>;
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
      * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
@@ -315,13 +347,17 @@ export interface DiskArgs {
     /**
      * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
      */
-    readonly size: pulumi.Input<number>;
+    readonly size?: pulumi.Input<number>;
     /**
      * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
      */
     readonly snapshotId?: pulumi.Input<string>;
+    readonly storageSetId?: pulumi.Input<string>;
+    readonly storageSetPartitionNumber?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly type?: pulumi.Input<string>;
+    readonly zoneId?: pulumi.Input<string>;
 }

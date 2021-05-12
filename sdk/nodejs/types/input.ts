@@ -709,6 +709,31 @@ export namespace cs {
         privateIp?: pulumi.Input<string>;
     }
 
+    export interface GetKubernetesPermissionPermission {
+        /**
+         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         */
+        isOwner?: boolean;
+        isRamRole?: boolean;
+        /**
+         * The permission settings to manage ACK clusters.
+         */
+        resourceId: string;
+        /**
+         * The authorization type. Valid values `cluster`, `namespace` and `console`.
+         */
+        resourceType: string;
+        /**
+         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+         */
+        roleName: string;
+        /**
+         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+         */
+        roleType?: string;
+    }
+
     export interface KubernetesAddon {
         config?: pulumi.Input<string>;
         disabled?: pulumi.Input<boolean>;
@@ -771,6 +796,33 @@ export namespace cs {
          * The private IP address of node.
          */
         privateIp?: pulumi.Input<string>;
+    }
+
+    export interface KubernetesPermissionPermission {
+        /**
+         * The ID of the cluster that you want to manage.
+         */
+        cluster: pulumi.Input<string>;
+        /**
+         * Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
+         */
+        isCustom?: pulumi.Input<boolean>;
+        /**
+         * Specifies whether the permissions are granted to a RAM role.
+         */
+        isRamRole?: pulumi.Input<boolean>;
+        /**
+         * The namespace to which the permissions are scoped. This parameter is required only if you set roleType to namespace.
+         */
+        namespace?: pulumi.Input<string>;
+        /**
+         * Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
+         */
+        roleName: pulumi.Input<string>;
+        /**
+         * The authorization type. Valid values `cluster`, `namespace`.
+         */
+        roleType: pulumi.Input<string>;
     }
 
     export interface KubernetesRuntime {
@@ -1549,6 +1601,14 @@ export namespace ecs {
          * The size of the data disk.
          */
         size?: pulumi.Input<number>;
+    }
+
+    export interface GetDisksOperationLock {
+        lockReason?: string;
+    }
+
+    export interface GetEcsDisksOperationLock {
+        lockReason?: string;
     }
 
     export interface ImageDiskDeviceMapping {
@@ -2811,6 +2871,33 @@ export namespace vpc {
         resourceType: pulumi.Input<string>;
     }
 
+    export interface NetworkAclEgressAclEntry {
+        /**
+         * The description of egress entries.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The destination cidr ip of egress entries.
+         */
+        destinationCidrIp?: pulumi.Input<string>;
+        /**
+         * The entry name of egress entries.
+         */
+        networkAclEntryName?: pulumi.Input<string>;
+        /**
+         * The policy of egress entries. Valid values `accept` and `drop`.
+         */
+        policy?: pulumi.Input<string>;
+        /**
+         * The port of egress entries.
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+         */
+        protocol?: pulumi.Input<string>;
+    }
+
     export interface NetworkAclEntriesEgress {
         /**
          * The description of the egress entry.
@@ -2869,6 +2956,33 @@ export namespace vpc {
         protocol?: pulumi.Input<string>;
         /**
          * The source ip of the ingress entry.
+         */
+        sourceCidrIp?: pulumi.Input<string>;
+    }
+
+    export interface NetworkAclIngressAclEntry {
+        /**
+         * The description of egress entries.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The entry name of egress entries.
+         */
+        networkAclEntryName?: pulumi.Input<string>;
+        /**
+         * The policy of egress entries. Valid values `accept` and `drop`.
+         */
+        policy?: pulumi.Input<string>;
+        /**
+         * The port of egress entries.
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+         */
+        protocol?: pulumi.Input<string>;
+        /**
+         * The source cidr ip of ingress entries.
          */
         sourceCidrIp?: pulumi.Input<string>;
     }

@@ -11,6 +11,7 @@ export * from "./edgeKubernetes";
 export * from "./getAckService";
 export * from "./getEdgeKubernetesClusters";
 export * from "./getKubernetesClusters";
+export * from "./getKubernetesPermission";
 export * from "./getManagedKubernetesClusters";
 export * from "./getRegistryEnterpriseInstances";
 export * from "./getRegistryEnterpriseNamespaces";
@@ -19,6 +20,7 @@ export * from "./getRegistryEnterpriseSyncRules";
 export * from "./getServerlessKubernetesClusters";
 export * from "./kubernetes";
 export * from "./kubernetesAutoscaler";
+export * from "./kubernetesPermission";
 export * from "./managedKubernetes";
 export * from "./nodePool";
 export * from "./registryEnterpriseNamespace";
@@ -33,6 +35,7 @@ import { Cluster } from "./cluster";
 import { EdgeKubernetes } from "./edgeKubernetes";
 import { Kubernetes } from "./kubernetes";
 import { KubernetesAutoscaler } from "./kubernetesAutoscaler";
+import { KubernetesPermission } from "./kubernetesPermission";
 import { ManagedKubernetes } from "./managedKubernetes";
 import { NodePool } from "./nodePool";
 import { RegistryEnterpriseNamespace } from "./registryEnterpriseNamespace";
@@ -55,6 +58,8 @@ const _module = {
                 return new Kubernetes(name, <any>undefined, { urn })
             case "alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler":
                 return new KubernetesAutoscaler(name, <any>undefined, { urn })
+            case "alicloud:cs/kubernetesPermission:KubernetesPermission":
+                return new KubernetesPermission(name, <any>undefined, { urn })
             case "alicloud:cs/managedKubernetes:ManagedKubernetes":
                 return new ManagedKubernetes(name, <any>undefined, { urn })
             case "alicloud:cs/nodePool:NodePool":
@@ -79,6 +84,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cs/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/edgeKubernetes", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetes", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetesAutoscaler", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetesPermission", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/managedKubernetes", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/nodePool", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/registryEnterpriseNamespace", _module)

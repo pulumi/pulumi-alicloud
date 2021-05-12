@@ -101,19 +101,19 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the resource to capture traffic.
+        /// The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the VPC Flow Log.
+        /// The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The type of traffic collected.
+        /// The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
         /// </summary>
         [Output("trafficType")]
         public Output<string> TrafficType { get; private set; } = null!;
@@ -195,19 +195,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the resource to capture traffic.
+        /// The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
 
         /// <summary>
-        /// The status of the VPC Flow Log.
+        /// The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type of traffic collected.
+        /// The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
         /// </summary>
         [Input("trafficType", required: true)]
         public Input<string> TrafficType { get; set; } = null!;
@@ -250,19 +250,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// The type of the resource to capture traffic.
+        /// The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// The status of the VPC Flow Log.
+        /// The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type of traffic collected.
+        /// The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }

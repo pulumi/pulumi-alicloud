@@ -116,6 +116,148 @@ func (o NetworkAclAttachmentResourceArrayOutput) Index(i pulumi.IntInput) Networ
 	}).(NetworkAclAttachmentResourceOutput)
 }
 
+type NetworkAclEgressAclEntry struct {
+	// The description of egress entries.
+	Description *string `pulumi:"description"`
+	// The destination cidr ip of egress entries.
+	DestinationCidrIp *string `pulumi:"destinationCidrIp"`
+	// The entry name of egress entries.
+	NetworkAclEntryName *string `pulumi:"networkAclEntryName"`
+	// The policy of egress entries. Valid values `accept` and `drop`.
+	Policy *string `pulumi:"policy"`
+	// The port of egress entries.
+	Port *string `pulumi:"port"`
+	// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// NetworkAclEgressAclEntryInput is an input type that accepts NetworkAclEgressAclEntryArgs and NetworkAclEgressAclEntryOutput values.
+// You can construct a concrete instance of `NetworkAclEgressAclEntryInput` via:
+//
+//          NetworkAclEgressAclEntryArgs{...}
+type NetworkAclEgressAclEntryInput interface {
+	pulumi.Input
+
+	ToNetworkAclEgressAclEntryOutput() NetworkAclEgressAclEntryOutput
+	ToNetworkAclEgressAclEntryOutputWithContext(context.Context) NetworkAclEgressAclEntryOutput
+}
+
+type NetworkAclEgressAclEntryArgs struct {
+	// The description of egress entries.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The destination cidr ip of egress entries.
+	DestinationCidrIp pulumi.StringPtrInput `pulumi:"destinationCidrIp"`
+	// The entry name of egress entries.
+	NetworkAclEntryName pulumi.StringPtrInput `pulumi:"networkAclEntryName"`
+	// The policy of egress entries. Valid values `accept` and `drop`.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// The port of egress entries.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (NetworkAclEgressAclEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclEgressAclEntry)(nil)).Elem()
+}
+
+func (i NetworkAclEgressAclEntryArgs) ToNetworkAclEgressAclEntryOutput() NetworkAclEgressAclEntryOutput {
+	return i.ToNetworkAclEgressAclEntryOutputWithContext(context.Background())
+}
+
+func (i NetworkAclEgressAclEntryArgs) ToNetworkAclEgressAclEntryOutputWithContext(ctx context.Context) NetworkAclEgressAclEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclEgressAclEntryOutput)
+}
+
+// NetworkAclEgressAclEntryArrayInput is an input type that accepts NetworkAclEgressAclEntryArray and NetworkAclEgressAclEntryArrayOutput values.
+// You can construct a concrete instance of `NetworkAclEgressAclEntryArrayInput` via:
+//
+//          NetworkAclEgressAclEntryArray{ NetworkAclEgressAclEntryArgs{...} }
+type NetworkAclEgressAclEntryArrayInput interface {
+	pulumi.Input
+
+	ToNetworkAclEgressAclEntryArrayOutput() NetworkAclEgressAclEntryArrayOutput
+	ToNetworkAclEgressAclEntryArrayOutputWithContext(context.Context) NetworkAclEgressAclEntryArrayOutput
+}
+
+type NetworkAclEgressAclEntryArray []NetworkAclEgressAclEntryInput
+
+func (NetworkAclEgressAclEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAclEgressAclEntry)(nil)).Elem()
+}
+
+func (i NetworkAclEgressAclEntryArray) ToNetworkAclEgressAclEntryArrayOutput() NetworkAclEgressAclEntryArrayOutput {
+	return i.ToNetworkAclEgressAclEntryArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkAclEgressAclEntryArray) ToNetworkAclEgressAclEntryArrayOutputWithContext(ctx context.Context) NetworkAclEgressAclEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclEgressAclEntryArrayOutput)
+}
+
+type NetworkAclEgressAclEntryOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclEgressAclEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclEgressAclEntry)(nil)).Elem()
+}
+
+func (o NetworkAclEgressAclEntryOutput) ToNetworkAclEgressAclEntryOutput() NetworkAclEgressAclEntryOutput {
+	return o
+}
+
+func (o NetworkAclEgressAclEntryOutput) ToNetworkAclEgressAclEntryOutputWithContext(ctx context.Context) NetworkAclEgressAclEntryOutput {
+	return o
+}
+
+// The description of egress entries.
+func (o NetworkAclEgressAclEntryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The destination cidr ip of egress entries.
+func (o NetworkAclEgressAclEntryOutput) DestinationCidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.DestinationCidrIp }).(pulumi.StringPtrOutput)
+}
+
+// The entry name of egress entries.
+func (o NetworkAclEgressAclEntryOutput) NetworkAclEntryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.NetworkAclEntryName }).(pulumi.StringPtrOutput)
+}
+
+// The policy of egress entries. Valid values `accept` and `drop`.
+func (o NetworkAclEgressAclEntryOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+// The port of egress entries.
+func (o NetworkAclEgressAclEntryOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+func (o NetworkAclEgressAclEntryOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type NetworkAclEgressAclEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclEgressAclEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAclEgressAclEntry)(nil)).Elem()
+}
+
+func (o NetworkAclEgressAclEntryArrayOutput) ToNetworkAclEgressAclEntryArrayOutput() NetworkAclEgressAclEntryArrayOutput {
+	return o
+}
+
+func (o NetworkAclEgressAclEntryArrayOutput) ToNetworkAclEgressAclEntryArrayOutputWithContext(ctx context.Context) NetworkAclEgressAclEntryArrayOutput {
+	return o
+}
+
+func (o NetworkAclEgressAclEntryArrayOutput) Index(i pulumi.IntInput) NetworkAclEgressAclEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAclEgressAclEntry {
+		return vs[0].([]NetworkAclEgressAclEntry)[vs[1].(int)]
+	}).(NetworkAclEgressAclEntryOutput)
+}
+
 type NetworkAclEntriesEgress struct {
 	// The description of the egress entry.
 	Description *string `pulumi:"description"`
@@ -416,6 +558,148 @@ func (o NetworkAclEntriesIngressArrayOutput) Index(i pulumi.IntInput) NetworkAcl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAclEntriesIngress {
 		return vs[0].([]NetworkAclEntriesIngress)[vs[1].(int)]
 	}).(NetworkAclEntriesIngressOutput)
+}
+
+type NetworkAclIngressAclEntry struct {
+	// The description of egress entries.
+	Description *string `pulumi:"description"`
+	// The entry name of egress entries.
+	NetworkAclEntryName *string `pulumi:"networkAclEntryName"`
+	// The policy of egress entries. Valid values `accept` and `drop`.
+	Policy *string `pulumi:"policy"`
+	// The port of egress entries.
+	Port *string `pulumi:"port"`
+	// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	Protocol *string `pulumi:"protocol"`
+	// The source cidr ip of ingress entries.
+	SourceCidrIp *string `pulumi:"sourceCidrIp"`
+}
+
+// NetworkAclIngressAclEntryInput is an input type that accepts NetworkAclIngressAclEntryArgs and NetworkAclIngressAclEntryOutput values.
+// You can construct a concrete instance of `NetworkAclIngressAclEntryInput` via:
+//
+//          NetworkAclIngressAclEntryArgs{...}
+type NetworkAclIngressAclEntryInput interface {
+	pulumi.Input
+
+	ToNetworkAclIngressAclEntryOutput() NetworkAclIngressAclEntryOutput
+	ToNetworkAclIngressAclEntryOutputWithContext(context.Context) NetworkAclIngressAclEntryOutput
+}
+
+type NetworkAclIngressAclEntryArgs struct {
+	// The description of egress entries.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The entry name of egress entries.
+	NetworkAclEntryName pulumi.StringPtrInput `pulumi:"networkAclEntryName"`
+	// The policy of egress entries. Valid values `accept` and `drop`.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// The port of egress entries.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// The source cidr ip of ingress entries.
+	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
+}
+
+func (NetworkAclIngressAclEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclIngressAclEntry)(nil)).Elem()
+}
+
+func (i NetworkAclIngressAclEntryArgs) ToNetworkAclIngressAclEntryOutput() NetworkAclIngressAclEntryOutput {
+	return i.ToNetworkAclIngressAclEntryOutputWithContext(context.Background())
+}
+
+func (i NetworkAclIngressAclEntryArgs) ToNetworkAclIngressAclEntryOutputWithContext(ctx context.Context) NetworkAclIngressAclEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclIngressAclEntryOutput)
+}
+
+// NetworkAclIngressAclEntryArrayInput is an input type that accepts NetworkAclIngressAclEntryArray and NetworkAclIngressAclEntryArrayOutput values.
+// You can construct a concrete instance of `NetworkAclIngressAclEntryArrayInput` via:
+//
+//          NetworkAclIngressAclEntryArray{ NetworkAclIngressAclEntryArgs{...} }
+type NetworkAclIngressAclEntryArrayInput interface {
+	pulumi.Input
+
+	ToNetworkAclIngressAclEntryArrayOutput() NetworkAclIngressAclEntryArrayOutput
+	ToNetworkAclIngressAclEntryArrayOutputWithContext(context.Context) NetworkAclIngressAclEntryArrayOutput
+}
+
+type NetworkAclIngressAclEntryArray []NetworkAclIngressAclEntryInput
+
+func (NetworkAclIngressAclEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAclIngressAclEntry)(nil)).Elem()
+}
+
+func (i NetworkAclIngressAclEntryArray) ToNetworkAclIngressAclEntryArrayOutput() NetworkAclIngressAclEntryArrayOutput {
+	return i.ToNetworkAclIngressAclEntryArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkAclIngressAclEntryArray) ToNetworkAclIngressAclEntryArrayOutputWithContext(ctx context.Context) NetworkAclIngressAclEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclIngressAclEntryArrayOutput)
+}
+
+type NetworkAclIngressAclEntryOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclIngressAclEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclIngressAclEntry)(nil)).Elem()
+}
+
+func (o NetworkAclIngressAclEntryOutput) ToNetworkAclIngressAclEntryOutput() NetworkAclIngressAclEntryOutput {
+	return o
+}
+
+func (o NetworkAclIngressAclEntryOutput) ToNetworkAclIngressAclEntryOutputWithContext(ctx context.Context) NetworkAclIngressAclEntryOutput {
+	return o
+}
+
+// The description of egress entries.
+func (o NetworkAclIngressAclEntryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The entry name of egress entries.
+func (o NetworkAclIngressAclEntryOutput) NetworkAclEntryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.NetworkAclEntryName }).(pulumi.StringPtrOutput)
+}
+
+// The policy of egress entries. Valid values `accept` and `drop`.
+func (o NetworkAclIngressAclEntryOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+// The port of egress entries.
+func (o NetworkAclIngressAclEntryOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+func (o NetworkAclIngressAclEntryOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The source cidr ip of ingress entries.
+func (o NetworkAclIngressAclEntryOutput) SourceCidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.SourceCidrIp }).(pulumi.StringPtrOutput)
+}
+
+type NetworkAclIngressAclEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclIngressAclEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAclIngressAclEntry)(nil)).Elem()
+}
+
+func (o NetworkAclIngressAclEntryArrayOutput) ToNetworkAclIngressAclEntryArrayOutput() NetworkAclIngressAclEntryArrayOutput {
+	return o
+}
+
+func (o NetworkAclIngressAclEntryArrayOutput) ToNetworkAclIngressAclEntryArrayOutputWithContext(ctx context.Context) NetworkAclIngressAclEntryArrayOutput {
+	return o
+}
+
+func (o NetworkAclIngressAclEntryArrayOutput) Index(i pulumi.IntInput) NetworkAclIngressAclEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAclIngressAclEntry {
+		return vs[0].([]NetworkAclIngressAclEntry)[vs[1].(int)]
+	}).(NetworkAclIngressAclEntryOutput)
 }
 
 type GetCommonBandwidthPackagesPackage struct {
@@ -1563,6 +1847,574 @@ func (o GetNatGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetNatGateway
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNatGatewaysGateway {
 		return vs[0].([]GetNatGatewaysGateway)[vs[1].(int)]
 	}).(GetNatGatewaysGatewayOutput)
+}
+
+type GetNetworkAclsAcl struct {
+	// Description of the entry direction rule.
+	Description string `pulumi:"description"`
+	// Output direction rule information.
+	EgressAclEntries []GetNetworkAclsAclEgressAclEntry `pulumi:"egressAclEntries"`
+	// The ID of the Network Acl.
+	Id string `pulumi:"id"`
+	// Entry direction rule information.
+	IngressAclEntries []GetNetworkAclsAclIngressAclEntry `pulumi:"ingressAclEntries"`
+	// The first ID of the resource.
+	NetworkAclId string `pulumi:"networkAclId"`
+	// The name of the network ACL.
+	NetworkAclName string `pulumi:"networkAclName"`
+	// The associated resource.
+	Resources []GetNetworkAclsAclResource `pulumi:"resources"`
+	// The state of the network ACL.
+	Status string `pulumi:"status"`
+	// The ID of the associated VPC.
+	VpcId string `pulumi:"vpcId"`
+}
+
+// GetNetworkAclsAclInput is an input type that accepts GetNetworkAclsAclArgs and GetNetworkAclsAclOutput values.
+// You can construct a concrete instance of `GetNetworkAclsAclInput` via:
+//
+//          GetNetworkAclsAclArgs{...}
+type GetNetworkAclsAclInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclsAclOutput() GetNetworkAclsAclOutput
+	ToGetNetworkAclsAclOutputWithContext(context.Context) GetNetworkAclsAclOutput
+}
+
+type GetNetworkAclsAclArgs struct {
+	// Description of the entry direction rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Output direction rule information.
+	EgressAclEntries GetNetworkAclsAclEgressAclEntryArrayInput `pulumi:"egressAclEntries"`
+	// The ID of the Network Acl.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Entry direction rule information.
+	IngressAclEntries GetNetworkAclsAclIngressAclEntryArrayInput `pulumi:"ingressAclEntries"`
+	// The first ID of the resource.
+	NetworkAclId pulumi.StringInput `pulumi:"networkAclId"`
+	// The name of the network ACL.
+	NetworkAclName pulumi.StringInput `pulumi:"networkAclName"`
+	// The associated resource.
+	Resources GetNetworkAclsAclResourceArrayInput `pulumi:"resources"`
+	// The state of the network ACL.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the associated VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (GetNetworkAclsAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsAcl)(nil)).Elem()
+}
+
+func (i GetNetworkAclsAclArgs) ToGetNetworkAclsAclOutput() GetNetworkAclsAclOutput {
+	return i.ToGetNetworkAclsAclOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclsAclArgs) ToGetNetworkAclsAclOutputWithContext(ctx context.Context) GetNetworkAclsAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclsAclOutput)
+}
+
+// GetNetworkAclsAclArrayInput is an input type that accepts GetNetworkAclsAclArray and GetNetworkAclsAclArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclsAclArrayInput` via:
+//
+//          GetNetworkAclsAclArray{ GetNetworkAclsAclArgs{...} }
+type GetNetworkAclsAclArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclsAclArrayOutput() GetNetworkAclsAclArrayOutput
+	ToGetNetworkAclsAclArrayOutputWithContext(context.Context) GetNetworkAclsAclArrayOutput
+}
+
+type GetNetworkAclsAclArray []GetNetworkAclsAclInput
+
+func (GetNetworkAclsAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclsAcl)(nil)).Elem()
+}
+
+func (i GetNetworkAclsAclArray) ToGetNetworkAclsAclArrayOutput() GetNetworkAclsAclArrayOutput {
+	return i.ToGetNetworkAclsAclArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclsAclArray) ToGetNetworkAclsAclArrayOutputWithContext(ctx context.Context) GetNetworkAclsAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclsAclArrayOutput)
+}
+
+type GetNetworkAclsAclOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsAcl)(nil)).Elem()
+}
+
+func (o GetNetworkAclsAclOutput) ToGetNetworkAclsAclOutput() GetNetworkAclsAclOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclOutput) ToGetNetworkAclsAclOutputWithContext(ctx context.Context) GetNetworkAclsAclOutput {
+	return o
+}
+
+// Description of the entry direction rule.
+func (o GetNetworkAclsAclOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAcl) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Output direction rule information.
+func (o GetNetworkAclsAclOutput) EgressAclEntries() GetNetworkAclsAclEgressAclEntryArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclsAcl) []GetNetworkAclsAclEgressAclEntry { return v.EgressAclEntries }).(GetNetworkAclsAclEgressAclEntryArrayOutput)
+}
+
+// The ID of the Network Acl.
+func (o GetNetworkAclsAclOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAcl) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Entry direction rule information.
+func (o GetNetworkAclsAclOutput) IngressAclEntries() GetNetworkAclsAclIngressAclEntryArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclsAcl) []GetNetworkAclsAclIngressAclEntry { return v.IngressAclEntries }).(GetNetworkAclsAclIngressAclEntryArrayOutput)
+}
+
+// The first ID of the resource.
+func (o GetNetworkAclsAclOutput) NetworkAclId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAcl) string { return v.NetworkAclId }).(pulumi.StringOutput)
+}
+
+// The name of the network ACL.
+func (o GetNetworkAclsAclOutput) NetworkAclName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAcl) string { return v.NetworkAclName }).(pulumi.StringOutput)
+}
+
+// The associated resource.
+func (o GetNetworkAclsAclOutput) Resources() GetNetworkAclsAclResourceArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclsAcl) []GetNetworkAclsAclResource { return v.Resources }).(GetNetworkAclsAclResourceArrayOutput)
+}
+
+// The state of the network ACL.
+func (o GetNetworkAclsAclOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAcl) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the associated VPC.
+func (o GetNetworkAclsAclOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAcl) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type GetNetworkAclsAclArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclsAcl)(nil)).Elem()
+}
+
+func (o GetNetworkAclsAclArrayOutput) ToGetNetworkAclsAclArrayOutput() GetNetworkAclsAclArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclArrayOutput) ToGetNetworkAclsAclArrayOutputWithContext(ctx context.Context) GetNetworkAclsAclArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclArrayOutput) Index(i pulumi.IntInput) GetNetworkAclsAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclsAcl {
+		return vs[0].([]GetNetworkAclsAcl)[vs[1].(int)]
+	}).(GetNetworkAclsAclOutput)
+}
+
+type GetNetworkAclsAclEgressAclEntry struct {
+	// Description of the entry direction rule.
+	Description string `pulumi:"description"`
+	// The destination address segment.
+	DestinationCidrIp string `pulumi:"destinationCidrIp"`
+	// The name of the entry direction rule entry.
+	NetworkAclEntryName string `pulumi:"networkAclEntryName"`
+	// The authorization policy.
+	Policy string `pulumi:"policy"`
+	// Source port range.
+	Port string `pulumi:"port"`
+	// Transport layer protocol.
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetNetworkAclsAclEgressAclEntryInput is an input type that accepts GetNetworkAclsAclEgressAclEntryArgs and GetNetworkAclsAclEgressAclEntryOutput values.
+// You can construct a concrete instance of `GetNetworkAclsAclEgressAclEntryInput` via:
+//
+//          GetNetworkAclsAclEgressAclEntryArgs{...}
+type GetNetworkAclsAclEgressAclEntryInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclsAclEgressAclEntryOutput() GetNetworkAclsAclEgressAclEntryOutput
+	ToGetNetworkAclsAclEgressAclEntryOutputWithContext(context.Context) GetNetworkAclsAclEgressAclEntryOutput
+}
+
+type GetNetworkAclsAclEgressAclEntryArgs struct {
+	// Description of the entry direction rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The destination address segment.
+	DestinationCidrIp pulumi.StringInput `pulumi:"destinationCidrIp"`
+	// The name of the entry direction rule entry.
+	NetworkAclEntryName pulumi.StringInput `pulumi:"networkAclEntryName"`
+	// The authorization policy.
+	Policy pulumi.StringInput `pulumi:"policy"`
+	// Source port range.
+	Port pulumi.StringInput `pulumi:"port"`
+	// Transport layer protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetNetworkAclsAclEgressAclEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsAclEgressAclEntry)(nil)).Elem()
+}
+
+func (i GetNetworkAclsAclEgressAclEntryArgs) ToGetNetworkAclsAclEgressAclEntryOutput() GetNetworkAclsAclEgressAclEntryOutput {
+	return i.ToGetNetworkAclsAclEgressAclEntryOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclsAclEgressAclEntryArgs) ToGetNetworkAclsAclEgressAclEntryOutputWithContext(ctx context.Context) GetNetworkAclsAclEgressAclEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclsAclEgressAclEntryOutput)
+}
+
+// GetNetworkAclsAclEgressAclEntryArrayInput is an input type that accepts GetNetworkAclsAclEgressAclEntryArray and GetNetworkAclsAclEgressAclEntryArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclsAclEgressAclEntryArrayInput` via:
+//
+//          GetNetworkAclsAclEgressAclEntryArray{ GetNetworkAclsAclEgressAclEntryArgs{...} }
+type GetNetworkAclsAclEgressAclEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclsAclEgressAclEntryArrayOutput() GetNetworkAclsAclEgressAclEntryArrayOutput
+	ToGetNetworkAclsAclEgressAclEntryArrayOutputWithContext(context.Context) GetNetworkAclsAclEgressAclEntryArrayOutput
+}
+
+type GetNetworkAclsAclEgressAclEntryArray []GetNetworkAclsAclEgressAclEntryInput
+
+func (GetNetworkAclsAclEgressAclEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclsAclEgressAclEntry)(nil)).Elem()
+}
+
+func (i GetNetworkAclsAclEgressAclEntryArray) ToGetNetworkAclsAclEgressAclEntryArrayOutput() GetNetworkAclsAclEgressAclEntryArrayOutput {
+	return i.ToGetNetworkAclsAclEgressAclEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclsAclEgressAclEntryArray) ToGetNetworkAclsAclEgressAclEntryArrayOutputWithContext(ctx context.Context) GetNetworkAclsAclEgressAclEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclsAclEgressAclEntryArrayOutput)
+}
+
+type GetNetworkAclsAclEgressAclEntryOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsAclEgressAclEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsAclEgressAclEntry)(nil)).Elem()
+}
+
+func (o GetNetworkAclsAclEgressAclEntryOutput) ToGetNetworkAclsAclEgressAclEntryOutput() GetNetworkAclsAclEgressAclEntryOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclEgressAclEntryOutput) ToGetNetworkAclsAclEgressAclEntryOutputWithContext(ctx context.Context) GetNetworkAclsAclEgressAclEntryOutput {
+	return o
+}
+
+// Description of the entry direction rule.
+func (o GetNetworkAclsAclEgressAclEntryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The destination address segment.
+func (o GetNetworkAclsAclEgressAclEntryOutput) DestinationCidrIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.DestinationCidrIp }).(pulumi.StringOutput)
+}
+
+// The name of the entry direction rule entry.
+func (o GetNetworkAclsAclEgressAclEntryOutput) NetworkAclEntryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.NetworkAclEntryName }).(pulumi.StringOutput)
+}
+
+// The authorization policy.
+func (o GetNetworkAclsAclEgressAclEntryOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+// Source port range.
+func (o GetNetworkAclsAclEgressAclEntryOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// Transport layer protocol.
+func (o GetNetworkAclsAclEgressAclEntryOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetNetworkAclsAclEgressAclEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsAclEgressAclEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclsAclEgressAclEntry)(nil)).Elem()
+}
+
+func (o GetNetworkAclsAclEgressAclEntryArrayOutput) ToGetNetworkAclsAclEgressAclEntryArrayOutput() GetNetworkAclsAclEgressAclEntryArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclEgressAclEntryArrayOutput) ToGetNetworkAclsAclEgressAclEntryArrayOutputWithContext(ctx context.Context) GetNetworkAclsAclEgressAclEntryArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclEgressAclEntryArrayOutput) Index(i pulumi.IntInput) GetNetworkAclsAclEgressAclEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclsAclEgressAclEntry {
+		return vs[0].([]GetNetworkAclsAclEgressAclEntry)[vs[1].(int)]
+	}).(GetNetworkAclsAclEgressAclEntryOutput)
+}
+
+type GetNetworkAclsAclIngressAclEntry struct {
+	// Description of the entry direction rule.
+	Description string `pulumi:"description"`
+	// The name of the entry direction rule entry.
+	NetworkAclEntryName string `pulumi:"networkAclEntryName"`
+	// The authorization policy.
+	Policy string `pulumi:"policy"`
+	// Source port range.
+	Port string `pulumi:"port"`
+	// Transport layer protocol.
+	Protocol string `pulumi:"protocol"`
+	// The source address field.
+	SourceCidrIp string `pulumi:"sourceCidrIp"`
+}
+
+// GetNetworkAclsAclIngressAclEntryInput is an input type that accepts GetNetworkAclsAclIngressAclEntryArgs and GetNetworkAclsAclIngressAclEntryOutput values.
+// You can construct a concrete instance of `GetNetworkAclsAclIngressAclEntryInput` via:
+//
+//          GetNetworkAclsAclIngressAclEntryArgs{...}
+type GetNetworkAclsAclIngressAclEntryInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclsAclIngressAclEntryOutput() GetNetworkAclsAclIngressAclEntryOutput
+	ToGetNetworkAclsAclIngressAclEntryOutputWithContext(context.Context) GetNetworkAclsAclIngressAclEntryOutput
+}
+
+type GetNetworkAclsAclIngressAclEntryArgs struct {
+	// Description of the entry direction rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The name of the entry direction rule entry.
+	NetworkAclEntryName pulumi.StringInput `pulumi:"networkAclEntryName"`
+	// The authorization policy.
+	Policy pulumi.StringInput `pulumi:"policy"`
+	// Source port range.
+	Port pulumi.StringInput `pulumi:"port"`
+	// Transport layer protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The source address field.
+	SourceCidrIp pulumi.StringInput `pulumi:"sourceCidrIp"`
+}
+
+func (GetNetworkAclsAclIngressAclEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsAclIngressAclEntry)(nil)).Elem()
+}
+
+func (i GetNetworkAclsAclIngressAclEntryArgs) ToGetNetworkAclsAclIngressAclEntryOutput() GetNetworkAclsAclIngressAclEntryOutput {
+	return i.ToGetNetworkAclsAclIngressAclEntryOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclsAclIngressAclEntryArgs) ToGetNetworkAclsAclIngressAclEntryOutputWithContext(ctx context.Context) GetNetworkAclsAclIngressAclEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclsAclIngressAclEntryOutput)
+}
+
+// GetNetworkAclsAclIngressAclEntryArrayInput is an input type that accepts GetNetworkAclsAclIngressAclEntryArray and GetNetworkAclsAclIngressAclEntryArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclsAclIngressAclEntryArrayInput` via:
+//
+//          GetNetworkAclsAclIngressAclEntryArray{ GetNetworkAclsAclIngressAclEntryArgs{...} }
+type GetNetworkAclsAclIngressAclEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclsAclIngressAclEntryArrayOutput() GetNetworkAclsAclIngressAclEntryArrayOutput
+	ToGetNetworkAclsAclIngressAclEntryArrayOutputWithContext(context.Context) GetNetworkAclsAclIngressAclEntryArrayOutput
+}
+
+type GetNetworkAclsAclIngressAclEntryArray []GetNetworkAclsAclIngressAclEntryInput
+
+func (GetNetworkAclsAclIngressAclEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclsAclIngressAclEntry)(nil)).Elem()
+}
+
+func (i GetNetworkAclsAclIngressAclEntryArray) ToGetNetworkAclsAclIngressAclEntryArrayOutput() GetNetworkAclsAclIngressAclEntryArrayOutput {
+	return i.ToGetNetworkAclsAclIngressAclEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclsAclIngressAclEntryArray) ToGetNetworkAclsAclIngressAclEntryArrayOutputWithContext(ctx context.Context) GetNetworkAclsAclIngressAclEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclsAclIngressAclEntryArrayOutput)
+}
+
+type GetNetworkAclsAclIngressAclEntryOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsAclIngressAclEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsAclIngressAclEntry)(nil)).Elem()
+}
+
+func (o GetNetworkAclsAclIngressAclEntryOutput) ToGetNetworkAclsAclIngressAclEntryOutput() GetNetworkAclsAclIngressAclEntryOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclIngressAclEntryOutput) ToGetNetworkAclsAclIngressAclEntryOutputWithContext(ctx context.Context) GetNetworkAclsAclIngressAclEntryOutput {
+	return o
+}
+
+// Description of the entry direction rule.
+func (o GetNetworkAclsAclIngressAclEntryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclIngressAclEntry) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name of the entry direction rule entry.
+func (o GetNetworkAclsAclIngressAclEntryOutput) NetworkAclEntryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclIngressAclEntry) string { return v.NetworkAclEntryName }).(pulumi.StringOutput)
+}
+
+// The authorization policy.
+func (o GetNetworkAclsAclIngressAclEntryOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclIngressAclEntry) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+// Source port range.
+func (o GetNetworkAclsAclIngressAclEntryOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclIngressAclEntry) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// Transport layer protocol.
+func (o GetNetworkAclsAclIngressAclEntryOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclIngressAclEntry) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The source address field.
+func (o GetNetworkAclsAclIngressAclEntryOutput) SourceCidrIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclIngressAclEntry) string { return v.SourceCidrIp }).(pulumi.StringOutput)
+}
+
+type GetNetworkAclsAclIngressAclEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsAclIngressAclEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclsAclIngressAclEntry)(nil)).Elem()
+}
+
+func (o GetNetworkAclsAclIngressAclEntryArrayOutput) ToGetNetworkAclsAclIngressAclEntryArrayOutput() GetNetworkAclsAclIngressAclEntryArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclIngressAclEntryArrayOutput) ToGetNetworkAclsAclIngressAclEntryArrayOutputWithContext(ctx context.Context) GetNetworkAclsAclIngressAclEntryArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclIngressAclEntryArrayOutput) Index(i pulumi.IntInput) GetNetworkAclsAclIngressAclEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclsAclIngressAclEntry {
+		return vs[0].([]GetNetworkAclsAclIngressAclEntry)[vs[1].(int)]
+	}).(GetNetworkAclsAclIngressAclEntryOutput)
+}
+
+type GetNetworkAclsAclResource struct {
+	// The ID of the associated resource.
+	ResourceId string `pulumi:"resourceId"`
+	// The type of the associated resource.
+	ResourceType string `pulumi:"resourceType"`
+	// The state of the network ACL.
+	Status string `pulumi:"status"`
+}
+
+// GetNetworkAclsAclResourceInput is an input type that accepts GetNetworkAclsAclResourceArgs and GetNetworkAclsAclResourceOutput values.
+// You can construct a concrete instance of `GetNetworkAclsAclResourceInput` via:
+//
+//          GetNetworkAclsAclResourceArgs{...}
+type GetNetworkAclsAclResourceInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclsAclResourceOutput() GetNetworkAclsAclResourceOutput
+	ToGetNetworkAclsAclResourceOutputWithContext(context.Context) GetNetworkAclsAclResourceOutput
+}
+
+type GetNetworkAclsAclResourceArgs struct {
+	// The ID of the associated resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The type of the associated resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The state of the network ACL.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetNetworkAclsAclResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsAclResource)(nil)).Elem()
+}
+
+func (i GetNetworkAclsAclResourceArgs) ToGetNetworkAclsAclResourceOutput() GetNetworkAclsAclResourceOutput {
+	return i.ToGetNetworkAclsAclResourceOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclsAclResourceArgs) ToGetNetworkAclsAclResourceOutputWithContext(ctx context.Context) GetNetworkAclsAclResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclsAclResourceOutput)
+}
+
+// GetNetworkAclsAclResourceArrayInput is an input type that accepts GetNetworkAclsAclResourceArray and GetNetworkAclsAclResourceArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclsAclResourceArrayInput` via:
+//
+//          GetNetworkAclsAclResourceArray{ GetNetworkAclsAclResourceArgs{...} }
+type GetNetworkAclsAclResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclsAclResourceArrayOutput() GetNetworkAclsAclResourceArrayOutput
+	ToGetNetworkAclsAclResourceArrayOutputWithContext(context.Context) GetNetworkAclsAclResourceArrayOutput
+}
+
+type GetNetworkAclsAclResourceArray []GetNetworkAclsAclResourceInput
+
+func (GetNetworkAclsAclResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclsAclResource)(nil)).Elem()
+}
+
+func (i GetNetworkAclsAclResourceArray) ToGetNetworkAclsAclResourceArrayOutput() GetNetworkAclsAclResourceArrayOutput {
+	return i.ToGetNetworkAclsAclResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclsAclResourceArray) ToGetNetworkAclsAclResourceArrayOutputWithContext(ctx context.Context) GetNetworkAclsAclResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclsAclResourceArrayOutput)
+}
+
+type GetNetworkAclsAclResourceOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsAclResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsAclResource)(nil)).Elem()
+}
+
+func (o GetNetworkAclsAclResourceOutput) ToGetNetworkAclsAclResourceOutput() GetNetworkAclsAclResourceOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclResourceOutput) ToGetNetworkAclsAclResourceOutputWithContext(ctx context.Context) GetNetworkAclsAclResourceOutput {
+	return o
+}
+
+// The ID of the associated resource.
+func (o GetNetworkAclsAclResourceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclResource) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The type of the associated resource.
+func (o GetNetworkAclsAclResourceOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclResource) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The state of the network ACL.
+func (o GetNetworkAclsAclResourceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsAclResource) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetNetworkAclsAclResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsAclResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclsAclResource)(nil)).Elem()
+}
+
+func (o GetNetworkAclsAclResourceArrayOutput) ToGetNetworkAclsAclResourceArrayOutput() GetNetworkAclsAclResourceArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclResourceArrayOutput) ToGetNetworkAclsAclResourceArrayOutputWithContext(ctx context.Context) GetNetworkAclsAclResourceArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclsAclResourceArrayOutput) Index(i pulumi.IntInput) GetNetworkAclsAclResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclsAclResource {
+		return vs[0].([]GetNetworkAclsAclResource)[vs[1].(int)]
+	}).(GetNetworkAclsAclResourceOutput)
 }
 
 type GetNetworksVpc struct {
@@ -3136,13 +3988,195 @@ func (o GetSwitchesVswitchArrayOutput) Index(i pulumi.IntInput) GetSwitchesVswit
 	}).(GetSwitchesVswitchOutput)
 }
 
+type GetVpcFlowLogsLog struct {
+	// The Description of flow log.
+	Description string `pulumi:"description"`
+	// The flow log ID.
+	FlowLogId string `pulumi:"flowLogId"`
+	// The flow log name.
+	FlowLogName string `pulumi:"flowLogName"`
+	// The ID of the Flow Log.
+	Id string `pulumi:"id"`
+	// The log store name.
+	LogStoreName string `pulumi:"logStoreName"`
+	// The project name.
+	ProjectName string `pulumi:"projectName"`
+	// The resource id.
+	ResourceId string `pulumi:"resourceId"`
+	// The resource type.
+	ResourceType string `pulumi:"resourceType"`
+	// The status of flow log.
+	Status string `pulumi:"status"`
+	// The traffic type.
+	TrafficType string `pulumi:"trafficType"`
+}
+
+// GetVpcFlowLogsLogInput is an input type that accepts GetVpcFlowLogsLogArgs and GetVpcFlowLogsLogOutput values.
+// You can construct a concrete instance of `GetVpcFlowLogsLogInput` via:
+//
+//          GetVpcFlowLogsLogArgs{...}
+type GetVpcFlowLogsLogInput interface {
+	pulumi.Input
+
+	ToGetVpcFlowLogsLogOutput() GetVpcFlowLogsLogOutput
+	ToGetVpcFlowLogsLogOutputWithContext(context.Context) GetVpcFlowLogsLogOutput
+}
+
+type GetVpcFlowLogsLogArgs struct {
+	// The Description of flow log.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The flow log ID.
+	FlowLogId pulumi.StringInput `pulumi:"flowLogId"`
+	// The flow log name.
+	FlowLogName pulumi.StringInput `pulumi:"flowLogName"`
+	// The ID of the Flow Log.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The log store name.
+	LogStoreName pulumi.StringInput `pulumi:"logStoreName"`
+	// The project name.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// The resource id.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The resource type.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The status of flow log.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The traffic type.
+	TrafficType pulumi.StringInput `pulumi:"trafficType"`
+}
+
+func (GetVpcFlowLogsLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFlowLogsLog)(nil)).Elem()
+}
+
+func (i GetVpcFlowLogsLogArgs) ToGetVpcFlowLogsLogOutput() GetVpcFlowLogsLogOutput {
+	return i.ToGetVpcFlowLogsLogOutputWithContext(context.Background())
+}
+
+func (i GetVpcFlowLogsLogArgs) ToGetVpcFlowLogsLogOutputWithContext(ctx context.Context) GetVpcFlowLogsLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFlowLogsLogOutput)
+}
+
+// GetVpcFlowLogsLogArrayInput is an input type that accepts GetVpcFlowLogsLogArray and GetVpcFlowLogsLogArrayOutput values.
+// You can construct a concrete instance of `GetVpcFlowLogsLogArrayInput` via:
+//
+//          GetVpcFlowLogsLogArray{ GetVpcFlowLogsLogArgs{...} }
+type GetVpcFlowLogsLogArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFlowLogsLogArrayOutput() GetVpcFlowLogsLogArrayOutput
+	ToGetVpcFlowLogsLogArrayOutputWithContext(context.Context) GetVpcFlowLogsLogArrayOutput
+}
+
+type GetVpcFlowLogsLogArray []GetVpcFlowLogsLogInput
+
+func (GetVpcFlowLogsLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFlowLogsLog)(nil)).Elem()
+}
+
+func (i GetVpcFlowLogsLogArray) ToGetVpcFlowLogsLogArrayOutput() GetVpcFlowLogsLogArrayOutput {
+	return i.ToGetVpcFlowLogsLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFlowLogsLogArray) ToGetVpcFlowLogsLogArrayOutputWithContext(ctx context.Context) GetVpcFlowLogsLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFlowLogsLogArrayOutput)
+}
+
+type GetVpcFlowLogsLogOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFlowLogsLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFlowLogsLog)(nil)).Elem()
+}
+
+func (o GetVpcFlowLogsLogOutput) ToGetVpcFlowLogsLogOutput() GetVpcFlowLogsLogOutput {
+	return o
+}
+
+func (o GetVpcFlowLogsLogOutput) ToGetVpcFlowLogsLogOutputWithContext(ctx context.Context) GetVpcFlowLogsLogOutput {
+	return o
+}
+
+// The Description of flow log.
+func (o GetVpcFlowLogsLogOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFlowLogsLog) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The flow log ID.
+func (o GetVpcFlowLogsLogOutput) FlowLogId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFlowLogsLog) string { return v.FlowLogId }).(pulumi.StringOutput)
+}
+
+// The flow log name.
+func (o GetVpcFlowLogsLogOutput) FlowLogName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFlowLogsLog) string { return v.FlowLogName }).(pulumi.StringOutput)
+}
+
+// The ID of the Flow Log.
+func (o GetVpcFlowLogsLogOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFlowLogsLog) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The log store name.
+func (o GetVpcFlowLogsLogOutput) LogStoreName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFlowLogsLog) string { return v.LogStoreName }).(pulumi.StringOutput)
+}
+
+// The project name.
+func (o GetVpcFlowLogsLogOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFlowLogsLog) string { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// The resource id.
+func (o GetVpcFlowLogsLogOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFlowLogsLog) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The resource type.
+func (o GetVpcFlowLogsLogOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFlowLogsLog) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The status of flow log.
+func (o GetVpcFlowLogsLogOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFlowLogsLog) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The traffic type.
+func (o GetVpcFlowLogsLogOutput) TrafficType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFlowLogsLog) string { return v.TrafficType }).(pulumi.StringOutput)
+}
+
+type GetVpcFlowLogsLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFlowLogsLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFlowLogsLog)(nil)).Elem()
+}
+
+func (o GetVpcFlowLogsLogArrayOutput) ToGetVpcFlowLogsLogArrayOutput() GetVpcFlowLogsLogArrayOutput {
+	return o
+}
+
+func (o GetVpcFlowLogsLogArrayOutput) ToGetVpcFlowLogsLogArrayOutputWithContext(ctx context.Context) GetVpcFlowLogsLogArrayOutput {
+	return o
+}
+
+func (o GetVpcFlowLogsLogArrayOutput) Index(i pulumi.IntInput) GetVpcFlowLogsLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFlowLogsLog {
+		return vs[0].([]GetVpcFlowLogsLog)[vs[1].(int)]
+	}).(GetVpcFlowLogsLogOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkAclAttachmentResourceOutput{})
 	pulumi.RegisterOutputType(NetworkAclAttachmentResourceArrayOutput{})
+	pulumi.RegisterOutputType(NetworkAclEgressAclEntryOutput{})
+	pulumi.RegisterOutputType(NetworkAclEgressAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclEntriesEgressOutput{})
 	pulumi.RegisterOutputType(NetworkAclEntriesEgressArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclEntriesIngressOutput{})
 	pulumi.RegisterOutputType(NetworkAclEntriesIngressArrayOutput{})
+	pulumi.RegisterOutputType(NetworkAclIngressAclEntryOutput{})
+	pulumi.RegisterOutputType(NetworkAclIngressAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackageOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackagePublicIpAddressOutput{})
@@ -3155,6 +4189,14 @@ func init() {
 	pulumi.RegisterOutputType(GetHavipsHavipArrayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclsAclOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclsAclArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclsAclEgressAclEntryOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclsAclEgressAclEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclsAclIngressAclEntryOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclsAclIngressAclEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclsAclResourceOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclsAclResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworksVpcOutput{})
 	pulumi.RegisterOutputType(GetNetworksVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryOutput{})
@@ -3171,4 +4213,6 @@ func init() {
 	pulumi.RegisterOutputType(GetSslVpnServersServerArrayOutput{})
 	pulumi.RegisterOutputType(GetSwitchesVswitchOutput{})
 	pulumi.RegisterOutputType(GetSwitchesVswitchArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFlowLogsLogOutput{})
+	pulumi.RegisterOutputType(GetVpcFlowLogsLogArrayOutput{})
 }

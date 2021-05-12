@@ -9,6 +9,7 @@ from .edge_kubernetes import *
 from .get_ack_service import *
 from .get_edge_kubernetes_clusters import *
 from .get_kubernetes_clusters import *
+from .get_kubernetes_permission import *
 from .get_managed_kubernetes_clusters import *
 from .get_registry_enterprise_instances import *
 from .get_registry_enterprise_namespaces import *
@@ -17,6 +18,7 @@ from .get_registry_enterprise_sync_rules import *
 from .get_serverless_kubernetes_clusters import *
 from .kubernetes import *
 from .kubernetes_autoscaler import *
+from .kubernetes_permission import *
 from .managed_kubernetes import *
 from .node_pool import *
 from .registry_enterprise_namespace import *
@@ -49,6 +51,8 @@ def _register_module():
                 return Kubernetes(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler":
                 return KubernetesAutoscaler(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cs/kubernetesPermission:KubernetesPermission":
+                return KubernetesPermission(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cs/managedKubernetes:ManagedKubernetes":
                 return ManagedKubernetes(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cs/nodePool:NodePool":
@@ -73,6 +77,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "cs/edgeKubernetes", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/kubernetes", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/kubernetesAutoscaler", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cs/kubernetesPermission", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/managedKubernetes", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/nodePool", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/registryEnterpriseNamespace", _module_instance)

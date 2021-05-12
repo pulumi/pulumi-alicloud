@@ -25,6 +25,13 @@ __all__ = [
     'GetCommandsCommandResult',
     'GetDedicatedHostsHostResult',
     'GetDisksDiskResult',
+    'GetDisksDiskMountInstanceResult',
+    'GetDisksDiskOperationLockResult',
+    'GetDisksOperationLockResult',
+    'GetEcsDisksDiskResult',
+    'GetEcsDisksDiskMountInstanceResult',
+    'GetEcsDisksDiskOperationLockResult',
+    'GetEcsDisksOperationLockResult',
     'GetEcsKeyPairsKeyPairResult',
     'GetEcsKeyPairsKeyPairInstanceResult',
     'GetEcsKeyPairsPairResult',
@@ -1696,24 +1703,45 @@ class GetDedicatedHostsHostResult(dict):
 class GetDisksDiskResult(dict):
     def __init__(__self__, *,
                  attached_time: str,
+                 auto_snapshot_policy_id: str,
                  availability_zone: str,
                  category: str,
                  creation_time: str,
+                 delete_auto_snapshot: bool,
+                 delete_with_instance: bool,
                  description: str,
                  detached_time: str,
+                 device: str,
+                 disk_id: str,
+                 disk_name: str,
+                 disk_type: str,
+                 enable_auto_snapshot: bool,
+                 enable_automated_snapshot_policy: bool,
                  encrypted: str,
-                 expiration_time: str,
+                 expired_time: str,
                  id: str,
                  image_id: str,
                  instance_id: str,
+                 iops: int,
+                 iops_read: int,
+                 iops_write: int,
+                 kms_key_id: str,
+                 mount_instance_num: int,
+                 mount_instances: Sequence['outputs.GetDisksDiskMountInstanceResult'],
                  name: str,
+                 operation_locks: Sequence['outputs.GetDisksDiskOperationLockResult'],
+                 payment_type: str,
+                 performance_level: str,
+                 portable: bool,
+                 product_code: str,
                  region_id: str,
                  resource_group_id: str,
                  size: int,
                  snapshot_id: str,
                  status: str,
+                 tags: Mapping[str, Any],
                  type: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 zone_id: str):
         """
         :param str attached_time: Disk attachment time.
         :param str availability_zone: Availability zone of the disk.
@@ -1722,7 +1750,6 @@ class GetDisksDiskResult(dict):
         :param str description: Disk description.
         :param str detached_time: Disk detachment time.
         :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
-        :param str expiration_time: Disk expiration time.
         :param str id: ID of the disk.
         :param str image_id: ID of the image from which the disk is created. It is null unless the disk is created using an image.
         :param str instance_id: Filter the results by the specified ECS instance ID.
@@ -1732,7 +1759,6 @@ class GetDisksDiskResult(dict):
         :param int size: Disk size in GiB.
         :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
         :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
-        :param str type: Disk type. Possible values: `system` and `data`.
         :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
                ```python
                import pulumi
@@ -1743,27 +1769,48 @@ class GetDisksDiskResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
+        :param str type: Disk type. Possible values: `system` and `data`.
         """
         pulumi.set(__self__, "attached_time", attached_time)
+        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
+        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "detached_time", detached_time)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
+        pulumi.set(__self__, "enable_automated_snapshot_policy", enable_automated_snapshot_policy)
         pulumi.set(__self__, "encrypted", encrypted)
-        pulumi.set(__self__, "expiration_time", expiration_time)
+        pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "iops", iops)
+        pulumi.set(__self__, "iops_read", iops_read)
+        pulumi.set(__self__, "iops_write", iops_write)
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
+        pulumi.set(__self__, "mount_instance_num", mount_instance_num)
+        pulumi.set(__self__, "mount_instances", mount_instances)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operation_locks", operation_locks)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "portable", portable)
+        pulumi.set(__self__, "product_code", product_code)
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "snapshot_id", snapshot_id)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "type", type)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="attachedTime")
@@ -1772,6 +1819,11 @@ class GetDisksDiskResult(dict):
         Disk attachment time.
         """
         return pulumi.get(self, "attached_time")
+
+    @property
+    @pulumi.getter(name="autoSnapshotPolicyId")
+    def auto_snapshot_policy_id(self) -> str:
+        return pulumi.get(self, "auto_snapshot_policy_id")
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -1798,6 +1850,16 @@ class GetDisksDiskResult(dict):
         return pulumi.get(self, "creation_time")
 
     @property
+    @pulumi.getter(name="deleteAutoSnapshot")
+    def delete_auto_snapshot(self) -> bool:
+        return pulumi.get(self, "delete_auto_snapshot")
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> bool:
+        return pulumi.get(self, "delete_with_instance")
+
+    @property
     @pulumi.getter
     def description(self) -> str:
         """
@@ -1815,6 +1877,36 @@ class GetDisksDiskResult(dict):
 
     @property
     @pulumi.getter
+    def device(self) -> str:
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> str:
+        return pulumi.get(self, "disk_name")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="enableAutoSnapshot")
+    def enable_auto_snapshot(self) -> bool:
+        return pulumi.get(self, "enable_auto_snapshot")
+
+    @property
+    @pulumi.getter(name="enableAutomatedSnapshotPolicy")
+    def enable_automated_snapshot_policy(self) -> bool:
+        return pulumi.get(self, "enable_automated_snapshot_policy")
+
+    @property
+    @pulumi.getter
     def encrypted(self) -> str:
         """
         Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
@@ -1822,12 +1914,9 @@ class GetDisksDiskResult(dict):
         return pulumi.get(self, "encrypted")
 
     @property
-    @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> str:
-        """
-        Disk expiration time.
-        """
-        return pulumi.get(self, "expiration_time")
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        return pulumi.get(self, "expired_time")
 
     @property
     @pulumi.getter
@@ -1855,11 +1944,66 @@ class GetDisksDiskResult(dict):
 
     @property
     @pulumi.getter
+    def iops(self) -> int:
+        return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter(name="iopsRead")
+    def iops_read(self) -> int:
+        return pulumi.get(self, "iops_read")
+
+    @property
+    @pulumi.getter(name="iopsWrite")
+    def iops_write(self) -> int:
+        return pulumi.get(self, "iops_write")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> str:
+        return pulumi.get(self, "kms_key_id")
+
+    @property
+    @pulumi.getter(name="mountInstanceNum")
+    def mount_instance_num(self) -> int:
+        return pulumi.get(self, "mount_instance_num")
+
+    @property
+    @pulumi.getter(name="mountInstances")
+    def mount_instances(self) -> Sequence['outputs.GetDisksDiskMountInstanceResult']:
+        return pulumi.get(self, "mount_instances")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         Disk name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="operationLocks")
+    def operation_locks(self) -> Sequence['outputs.GetDisksDiskOperationLockResult']:
+        return pulumi.get(self, "operation_locks")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> str:
+        return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter
+    def portable(self) -> bool:
+        return pulumi.get(self, "portable")
+
+    @property
+    @pulumi.getter(name="productCode")
+    def product_code(self) -> str:
+        return pulumi.get(self, "product_code")
 
     @property
     @pulumi.getter(name="regionId")
@@ -1903,15 +2047,7 @@ class GetDisksDiskResult(dict):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
-        """
-        Disk type. Possible values: `system` and `data`.
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Mapping[str, Any]:
         """
         A map of tags assigned to the disks. It must be in the format:
         ```python
@@ -1925,6 +2061,572 @@ class GetDisksDiskResult(dict):
         ```
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Disk type. Possible values: `system` and `data`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetDisksDiskMountInstanceResult(dict):
+    def __init__(__self__, *,
+                 attached_time: str,
+                 device: str,
+                 instance_id: str):
+        """
+        :param str attached_time: Disk attachment time.
+        :param str instance_id: Filter the results by the specified ECS instance ID.
+        """
+        pulumi.set(__self__, "attached_time", attached_time)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter(name="attachedTime")
+    def attached_time(self) -> str:
+        """
+        Disk attachment time.
+        """
+        return pulumi.get(self, "attached_time")
+
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        Filter the results by the specified ECS instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetDisksDiskOperationLockResult(dict):
+    def __init__(__self__, *,
+                 lock_reason: str):
+        pulumi.set(__self__, "lock_reason", lock_reason)
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> str:
+        return pulumi.get(self, "lock_reason")
+
+
+@pulumi.output_type
+class GetDisksOperationLockResult(dict):
+    def __init__(__self__, *,
+                 lock_reason: Optional[str] = None):
+        if lock_reason is not None:
+            pulumi.set(__self__, "lock_reason", lock_reason)
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> Optional[str]:
+        return pulumi.get(self, "lock_reason")
+
+
+@pulumi.output_type
+class GetEcsDisksDiskResult(dict):
+    def __init__(__self__, *,
+                 attached_time: str,
+                 auto_snapshot_policy_id: str,
+                 availability_zone: str,
+                 category: str,
+                 creation_time: str,
+                 delete_auto_snapshot: bool,
+                 delete_with_instance: bool,
+                 description: str,
+                 detached_time: str,
+                 device: str,
+                 disk_id: str,
+                 disk_name: str,
+                 disk_type: str,
+                 enable_auto_snapshot: bool,
+                 enable_automated_snapshot_policy: bool,
+                 encrypted: str,
+                 expired_time: str,
+                 id: str,
+                 image_id: str,
+                 instance_id: str,
+                 iops: int,
+                 iops_read: int,
+                 iops_write: int,
+                 kms_key_id: str,
+                 mount_instance_num: int,
+                 mount_instances: Sequence['outputs.GetEcsDisksDiskMountInstanceResult'],
+                 name: str,
+                 operation_locks: Sequence['outputs.GetEcsDisksDiskOperationLockResult'],
+                 payment_type: str,
+                 performance_level: str,
+                 portable: bool,
+                 product_code: str,
+                 region_id: str,
+                 resource_group_id: str,
+                 size: int,
+                 snapshot_id: str,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 type: str,
+                 zone_id: str):
+        """
+        :param str attached_time: A mount of time.
+        :param str auto_snapshot_policy_id: Query cloud disks based on the automatic snapshot policy ID.
+        :param str availability_zone: Availability zone of the disk.
+        :param str category: Disk category.
+        :param str creation_time: Disk creation time.
+        :param bool delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
+        :param bool delete_with_instance: Indicates whether the disk is released together with the instance.
+        :param str description: Disk description.
+        :param str detached_time: Disk detachment time.
+        :param str device: The mount point of the disk.
+        :param str disk_id: ID of the disk.
+        :param str disk_name: The disk name.
+        :param str disk_type: The disk type.
+        :param bool enable_auto_snapshot: Whether the disk implements an automatic snapshot policy.
+        :param bool enable_automated_snapshot_policy: Whether the disk implements an automatic snapshot policy.
+        :param str encrypted: Indicate whether the disk is encrypted or not.
+        :param str id: ID of the disk.
+        :param str image_id: ID of the image from which the disk is created. It is null unless the disk is created using an image.
+        :param str instance_id: The instance ID of the disk mount.
+        :param str kms_key_id: The kms key id.
+        :param int mount_instance_num: Number of instances mounted on shared storage.
+        :param Sequence['GetEcsDisksDiskMountInstanceArgs'] mount_instances: Disk mount instances.
+        :param str name: Disk name.
+        :param str payment_type: Payment method for disk.
+        :param str performance_level: Performance levels of ESSD cloud disk.
+        :param bool portable: Whether the disk is unmountable.
+        :param str product_code: The product logo of the cloud market.
+        :param str region_id: Region ID the disk belongs to.
+        :param str resource_group_id: The Id of resource group.
+        :param int size: Disk size in GiB.
+        :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        :param str status: Current status.
+        :param Mapping[str, Any] tags: A map of tags assigned to the disk.
+        :param str type: Disk type.
+        :param str zone_id: The zone id.
+        """
+        pulumi.set(__self__, "attached_time", attached_time)
+        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
+        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "detached_time", detached_time)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
+        pulumi.set(__self__, "enable_automated_snapshot_policy", enable_automated_snapshot_policy)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "iops", iops)
+        pulumi.set(__self__, "iops_read", iops_read)
+        pulumi.set(__self__, "iops_write", iops_write)
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
+        pulumi.set(__self__, "mount_instance_num", mount_instance_num)
+        pulumi.set(__self__, "mount_instances", mount_instances)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operation_locks", operation_locks)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "portable", portable)
+        pulumi.set(__self__, "product_code", product_code)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="attachedTime")
+    def attached_time(self) -> str:
+        """
+        A mount of time.
+        """
+        return pulumi.get(self, "attached_time")
+
+    @property
+    @pulumi.getter(name="autoSnapshotPolicyId")
+    def auto_snapshot_policy_id(self) -> str:
+        """
+        Query cloud disks based on the automatic snapshot policy ID.
+        """
+        return pulumi.get(self, "auto_snapshot_policy_id")
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        """
+        Availability zone of the disk.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        """
+        Disk category.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> str:
+        """
+        Disk creation time.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="deleteAutoSnapshot")
+    def delete_auto_snapshot(self) -> bool:
+        """
+        Indicates whether the automatic snapshot is deleted when the disk is released.
+        """
+        return pulumi.get(self, "delete_auto_snapshot")
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> bool:
+        """
+        Indicates whether the disk is released together with the instance.
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Disk description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="detachedTime")
+    def detached_time(self) -> str:
+        """
+        Disk detachment time.
+        """
+        return pulumi.get(self, "detached_time")
+
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        """
+        The mount point of the disk.
+        """
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        """
+        ID of the disk.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> str:
+        """
+        The disk name.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        The disk type.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="enableAutoSnapshot")
+    def enable_auto_snapshot(self) -> bool:
+        """
+        Whether the disk implements an automatic snapshot policy.
+        """
+        return pulumi.get(self, "enable_auto_snapshot")
+
+    @property
+    @pulumi.getter(name="enableAutomatedSnapshotPolicy")
+    def enable_automated_snapshot_policy(self) -> bool:
+        """
+        Whether the disk implements an automatic snapshot policy.
+        """
+        return pulumi.get(self, "enable_automated_snapshot_policy")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> str:
+        """
+        Indicate whether the disk is encrypted or not.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the disk.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        """
+        ID of the image from which the disk is created. It is null unless the disk is created using an image.
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The instance ID of the disk mount.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def iops(self) -> int:
+        return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter(name="iopsRead")
+    def iops_read(self) -> int:
+        return pulumi.get(self, "iops_read")
+
+    @property
+    @pulumi.getter(name="iopsWrite")
+    def iops_write(self) -> int:
+        return pulumi.get(self, "iops_write")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> str:
+        """
+        The kms key id.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @property
+    @pulumi.getter(name="mountInstanceNum")
+    def mount_instance_num(self) -> int:
+        """
+        Number of instances mounted on shared storage.
+        """
+        return pulumi.get(self, "mount_instance_num")
+
+    @property
+    @pulumi.getter(name="mountInstances")
+    def mount_instances(self) -> Sequence['outputs.GetEcsDisksDiskMountInstanceResult']:
+        """
+        Disk mount instances.
+        """
+        return pulumi.get(self, "mount_instances")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Disk name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="operationLocks")
+    def operation_locks(self) -> Sequence['outputs.GetEcsDisksDiskOperationLockResult']:
+        return pulumi.get(self, "operation_locks")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        Payment method for disk.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> str:
+        """
+        Performance levels of ESSD cloud disk.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter
+    def portable(self) -> bool:
+        """
+        Whether the disk is unmountable.
+        """
+        return pulumi.get(self, "portable")
+
+    @property
+    @pulumi.getter(name="productCode")
+    def product_code(self) -> str:
+        """
+        The product logo of the cloud market.
+        """
+        return pulumi.get(self, "product_code")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        Region ID the disk belongs to.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The Id of resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        Disk size in GiB.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
+        """
+        Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Current status.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the disk.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Disk type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone id.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetEcsDisksDiskMountInstanceResult(dict):
+    def __init__(__self__, *,
+                 attached_time: str,
+                 device: str,
+                 instance_id: str):
+        """
+        :param str attached_time: A mount of time.
+        :param str device: The mount point of the disk.
+        :param str instance_id: The instance ID of the disk mount.
+        """
+        pulumi.set(__self__, "attached_time", attached_time)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter(name="attachedTime")
+    def attached_time(self) -> str:
+        """
+        A mount of time.
+        """
+        return pulumi.get(self, "attached_time")
+
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        """
+        The mount point of the disk.
+        """
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The instance ID of the disk mount.
+        """
+        return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetEcsDisksDiskOperationLockResult(dict):
+    def __init__(__self__, *,
+                 lock_reason: str):
+        pulumi.set(__self__, "lock_reason", lock_reason)
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> str:
+        return pulumi.get(self, "lock_reason")
+
+
+@pulumi.output_type
+class GetEcsDisksOperationLockResult(dict):
+    def __init__(__self__, *,
+                 lock_reason: Optional[str] = None):
+        if lock_reason is not None:
+            pulumi.set(__self__, "lock_reason", lock_reason)
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> Optional[str]:
+        return pulumi.get(self, "lock_reason")
 
 
 @pulumi.output_type

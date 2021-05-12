@@ -15,20 +15,25 @@ class DiskAttachmentArgs:
     def __init__(__self__, *,
                  disk_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
-                 device_name: Optional[pulumi.Input[str]] = None):
+                 bootable: Optional[pulumi.Input[bool]] = None,
+                 delete_with_instance: Optional[pulumi.Input[bool]] = None,
+                 key_pair_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DiskAttachment resource.
         :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
-        :param pulumi.Input[str] device_name: The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
         """
         pulumi.set(__self__, "disk_id", disk_id)
         pulumi.set(__self__, "instance_id", instance_id)
-        if device_name is not None:
-            warnings.warn("""Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
-            pulumi.log.warn("""device_name is deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""")
-        if device_name is not None:
-            pulumi.set(__self__, "device_name", device_name)
+        if bootable is not None:
+            pulumi.set(__self__, "bootable", bootable)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        if key_pair_name is not None:
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter(name="diskId")
@@ -55,51 +60,98 @@ class DiskAttachmentArgs:
         pulumi.set(self, "instance_id", value)
 
     @property
-    @pulumi.getter(name="deviceName")
-    def device_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-        """
-        return pulumi.get(self, "device_name")
+    @pulumi.getter
+    def bootable(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "bootable")
 
-    @device_name.setter
-    def device_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "device_name", value)
+    @bootable.setter
+    def bootable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bootable", value)
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "delete_with_instance")
+
+    @delete_with_instance.setter
+    def delete_with_instance(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_with_instance", value)
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key_pair_name")
+
+    @key_pair_name.setter
+    def key_pair_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_pair_name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
 
 
 @pulumi.input_type
 class _DiskAttachmentState:
     def __init__(__self__, *,
-                 device_name: Optional[pulumi.Input[str]] = None,
+                 bootable: Optional[pulumi.Input[bool]] = None,
+                 delete_with_instance: Optional[pulumi.Input[bool]] = None,
+                 device: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None):
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 key_pair_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DiskAttachment resources.
-        :param pulumi.Input[str] device_name: The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
         :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
         """
-        if device_name is not None:
-            warnings.warn("""Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
-            pulumi.log.warn("""device_name is deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""")
-        if device_name is not None:
-            pulumi.set(__self__, "device_name", device_name)
+        if bootable is not None:
+            pulumi.set(__self__, "bootable", bootable)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if key_pair_name is not None:
+            pulumi.set(__self__, "key_pair_name", key_pair_name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
 
     @property
-    @pulumi.getter(name="deviceName")
-    def device_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-        """
-        return pulumi.get(self, "device_name")
+    @pulumi.getter
+    def bootable(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "bootable")
 
-    @device_name.setter
-    def device_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "device_name", value)
+    @bootable.setter
+    def bootable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bootable", value)
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "delete_with_instance")
+
+    @delete_with_instance.setter
+    def delete_with_instance(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_with_instance", value)
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "device")
+
+    @device.setter
+    def device(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device", value)
 
     @property
     @pulumi.getter(name="diskId")
@@ -125,50 +177,38 @@ class _DiskAttachmentState:
     def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
 
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key_pair_name")
+
+    @key_pair_name.setter
+    def key_pair_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_pair_name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
 
 class DiskAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_name: Optional[pulumi.Input[str]] = None,
+                 bootable: Optional[pulumi.Input[bool]] = None,
+                 delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 key_pair_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
-
-        ## Example Usage
-
-        Basic usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new ECS disk-attachment and use it attach one disk to a new instance.
-        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
-        ecs_disk = alicloud.ecs.Disk("ecsDisk",
-            availability_zone="cn-beijing-a",
-            size=50,
-            tags={
-                "Name": "TerraformTest-disk",
-            })
-        ecs_instance = alicloud.ecs.Instance("ecsInstance",
-            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
-            instance_type="ecs.n4.small",
-            availability_zone="cn-beijing-a",
-            security_groups=[ecs_sg.id],
-            instance_name="Hello",
-            internet_charge_type="PayByBandwidth",
-            tags={
-                "Name": "TerraformTest-instance",
-            })
-        ecs_disk_att = alicloud.ecs.DiskAttachment("ecsDiskAtt",
-            disk_id=ecs_disk.id,
-            instance_id=ecs_instance.id)
-        ```
-
         ## Import
 
         The disk attachment can be imported using the id, e.g.
@@ -179,7 +219,6 @@ class DiskAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] device_name: The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
         :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
         """
@@ -190,39 +229,6 @@ class DiskAttachment(pulumi.CustomResource):
                  args: DiskAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
-
-        ## Example Usage
-
-        Basic usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new ECS disk-attachment and use it attach one disk to a new instance.
-        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
-        ecs_disk = alicloud.ecs.Disk("ecsDisk",
-            availability_zone="cn-beijing-a",
-            size=50,
-            tags={
-                "Name": "TerraformTest-disk",
-            })
-        ecs_instance = alicloud.ecs.Instance("ecsInstance",
-            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
-            instance_type="ecs.n4.small",
-            availability_zone="cn-beijing-a",
-            security_groups=[ecs_sg.id],
-            instance_name="Hello",
-            internet_charge_type="PayByBandwidth",
-            tags={
-                "Name": "TerraformTest-instance",
-            })
-        ecs_disk_att = alicloud.ecs.DiskAttachment("ecsDiskAtt",
-            disk_id=ecs_disk.id,
-            instance_id=ecs_instance.id)
-        ```
-
         ## Import
 
         The disk attachment can be imported using the id, e.g.
@@ -246,9 +252,12 @@ class DiskAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_name: Optional[pulumi.Input[str]] = None,
+                 bootable: Optional[pulumi.Input[bool]] = None,
+                 delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 key_pair_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -261,16 +270,17 @@ class DiskAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DiskAttachmentArgs.__new__(DiskAttachmentArgs)
 
-            if device_name is not None and not opts.urn:
-                warnings.warn("""Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
-                pulumi.log.warn("""device_name is deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.""")
-            __props__.__dict__["device_name"] = device_name
+            __props__.__dict__["bootable"] = bootable
+            __props__.__dict__["delete_with_instance"] = delete_with_instance
             if disk_id is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_id'")
             __props__.__dict__["disk_id"] = disk_id
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["key_pair_name"] = key_pair_name
+            __props__.__dict__["password"] = password
+            __props__.__dict__["device"] = None
         super(DiskAttachment, __self__).__init__(
             'alicloud:ecs/diskAttachment:DiskAttachment',
             resource_name,
@@ -281,9 +291,13 @@ class DiskAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            device_name: Optional[pulumi.Input[str]] = None,
+            bootable: Optional[pulumi.Input[bool]] = None,
+            delete_with_instance: Optional[pulumi.Input[bool]] = None,
+            device: Optional[pulumi.Input[str]] = None,
             disk_id: Optional[pulumi.Input[str]] = None,
-            instance_id: Optional[pulumi.Input[str]] = None) -> 'DiskAttachment':
+            instance_id: Optional[pulumi.Input[str]] = None,
+            key_pair_name: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None) -> 'DiskAttachment':
         """
         Get an existing DiskAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -291,7 +305,6 @@ class DiskAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] device_name: The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
         :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
         """
@@ -299,18 +312,29 @@ class DiskAttachment(pulumi.CustomResource):
 
         __props__ = _DiskAttachmentState.__new__(_DiskAttachmentState)
 
-        __props__.__dict__["device_name"] = device_name
+        __props__.__dict__["bootable"] = bootable
+        __props__.__dict__["delete_with_instance"] = delete_with_instance
+        __props__.__dict__["device"] = device
         __props__.__dict__["disk_id"] = disk_id
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["key_pair_name"] = key_pair_name
+        __props__.__dict__["password"] = password
         return DiskAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="deviceName")
-    def device_name(self) -> pulumi.Output[str]:
-        """
-        The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-        """
-        return pulumi.get(self, "device_name")
+    @pulumi.getter
+    def bootable(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "bootable")
+
+    @property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "delete_with_instance")
+
+    @property
+    @pulumi.getter
+    def device(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "device")
 
     @property
     @pulumi.getter(name="diskId")
@@ -327,4 +351,14 @@ class DiskAttachment(pulumi.CustomResource):
         ID of the Instance to attach to.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="keyPairName")
+    def key_pair_name(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "key_pair_name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "password")
 

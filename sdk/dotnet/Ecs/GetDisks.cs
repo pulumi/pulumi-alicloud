@@ -11,35 +11,6 @@ namespace Pulumi.AliCloud.Ecs
 {
     public static class GetDisks
     {
-        /// <summary>
-        /// This data source provides the disks of the current Alibaba Cloud user.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var disksDs = Output.Create(AliCloud.Ecs.GetDisks.InvokeAsync(new AliCloud.Ecs.GetDisksArgs
-        ///         {
-        ///             NameRegex = "sample_disk",
-        ///         }));
-        ///         this.FirstDiskId = disksDs.Apply(disksDs =&gt; disksDs.Disks[0].Id);
-        ///     }
-        /// 
-        ///     [Output("firstDiskId")]
-        ///     public Output&lt;string&gt; FirstDiskId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetDisksResult> InvokeAsync(GetDisksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksArgs(), options.WithVersion());
     }
@@ -47,11 +18,52 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class GetDisksArgs : Pulumi.InvokeArgs
     {
+        [Input("additionalAttributes")]
+        private List<string>? _additionalAttributes;
+        public List<string> AdditionalAttributes
+        {
+            get => _additionalAttributes ?? (_additionalAttributes = new List<string>());
+            set => _additionalAttributes = value;
+        }
+
+        [Input("autoSnapshotPolicyId")]
+        public string? AutoSnapshotPolicyId { get; set; }
+
+        /// <summary>
+        /// Availability zone of the disk.
+        /// </summary>
+        [Input("availabilityZone")]
+        public string? AvailabilityZone { get; set; }
+
         /// <summary>
         /// Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
+
+        [Input("deleteAutoSnapshot")]
+        public bool? DeleteAutoSnapshot { get; set; }
+
+        [Input("deleteWithInstance")]
+        public bool? DeleteWithInstance { get; set; }
+
+        [Input("diskName")]
+        public string? DiskName { get; set; }
+
+        [Input("diskType")]
+        public string? DiskType { get; set; }
+
+        [Input("dryRun")]
+        public bool? DryRun { get; set; }
+
+        [Input("enableAutoSnapshot")]
+        public bool? EnableAutoSnapshot { get; set; }
+
+        [Input("enableAutomatedSnapshotPolicy")]
+        public bool? EnableAutomatedSnapshotPolicy { get; set; }
+
+        [Input("enableShared")]
+        public bool? EnableShared { get; set; }
 
         /// <summary>
         /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
@@ -77,20 +89,49 @@ namespace Pulumi.AliCloud.Ecs
         [Input("instanceId")]
         public string? InstanceId { get; set; }
 
+        [Input("kmsKeyId")]
+        public string? KmsKeyId { get; set; }
+
         /// <summary>
         /// A regex string to filter results by disk name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        [Input("operationLocks")]
+        private List<Inputs.GetDisksOperationLockArgs>? _operationLocks;
+        public List<Inputs.GetDisksOperationLockArgs> OperationLocks
+        {
+            get => _operationLocks ?? (_operationLocks = new List<Inputs.GetDisksOperationLockArgs>());
+            set => _operationLocks = value;
+        }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        [Input("paymentType")]
+        public string? PaymentType { get; set; }
+
+        [Input("portable")]
+        public bool? Portable { get; set; }
 
         /// <summary>
         /// The Id of resource group which the disk belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        /// </summary>
+        [Input("snapshotId")]
+        public string? SnapshotId { get; set; }
+
+        /// <summary>
+        /// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
@@ -130,6 +171,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("type")]
         public string? Type { get; set; }
 
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
+
         public GetDisksArgs()
         {
         }
@@ -139,14 +183,28 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetDisksResult
     {
+        public readonly ImmutableArray<string> AdditionalAttributes;
+        public readonly string? AutoSnapshotPolicyId;
+        /// <summary>
+        /// Availability zone of the disk.
+        /// </summary>
+        public readonly string? AvailabilityZone;
         /// <summary>
         /// Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
         /// </summary>
         public readonly string? Category;
+        public readonly bool? DeleteAutoSnapshot;
+        public readonly bool? DeleteWithInstance;
+        public readonly string? DiskName;
+        public readonly string? DiskType;
         /// <summary>
         /// A list of disks. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDisksDiskResult> Disks;
+        public readonly bool? DryRun;
+        public readonly bool? EnableAutoSnapshot;
+        public readonly bool? EnableAutomatedSnapshotPolicy;
+        public readonly bool? EnableShared;
         /// <summary>
         /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
         /// </summary>
@@ -160,12 +218,25 @@ namespace Pulumi.AliCloud.Ecs
         /// ID of the related instance. It is `null` unless the `status` is `In_use`.
         /// </summary>
         public readonly string? InstanceId;
+        public readonly string? KmsKeyId;
         public readonly string? NameRegex;
+        public readonly ImmutableArray<string> Names;
+        public readonly ImmutableArray<Outputs.GetDisksOperationLockResult> OperationLocks;
         public readonly string? OutputFile;
+        public readonly string? PaymentType;
+        public readonly bool? Portable;
         /// <summary>
         /// The Id of resource group.
         /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        /// </summary>
+        public readonly string? SnapshotId;
+        /// <summary>
+        /// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+        /// </summary>
+        public readonly string? Status;
         /// <summary>
         /// A map of tags assigned to the disk.
         /// </summary>
@@ -174,12 +245,35 @@ namespace Pulumi.AliCloud.Ecs
         /// Disk type. Possible values: `system` and `data`.
         /// </summary>
         public readonly string? Type;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetDisksResult(
+            ImmutableArray<string> additionalAttributes,
+
+            string? autoSnapshotPolicyId,
+
+            string? availabilityZone,
+
             string? category,
 
+            bool? deleteAutoSnapshot,
+
+            bool? deleteWithInstance,
+
+            string? diskName,
+
+            string? diskType,
+
             ImmutableArray<Outputs.GetDisksDiskResult> disks,
+
+            bool? dryRun,
+
+            bool? enableAutoSnapshot,
+
+            bool? enableAutomatedSnapshotPolicy,
+
+            bool? enableShared,
 
             string? encrypted,
 
@@ -189,27 +283,62 @@ namespace Pulumi.AliCloud.Ecs
 
             string? instanceId,
 
+            string? kmsKeyId,
+
             string? nameRegex,
+
+            ImmutableArray<string> names,
+
+            ImmutableArray<Outputs.GetDisksOperationLockResult> operationLocks,
 
             string? outputFile,
 
+            string? paymentType,
+
+            bool? portable,
+
             string? resourceGroupId,
+
+            string? snapshotId,
+
+            string? status,
 
             ImmutableDictionary<string, object>? tags,
 
-            string? type)
+            string? type,
+
+            string? zoneId)
         {
+            AdditionalAttributes = additionalAttributes;
+            AutoSnapshotPolicyId = autoSnapshotPolicyId;
+            AvailabilityZone = availabilityZone;
             Category = category;
+            DeleteAutoSnapshot = deleteAutoSnapshot;
+            DeleteWithInstance = deleteWithInstance;
+            DiskName = diskName;
+            DiskType = diskType;
             Disks = disks;
+            DryRun = dryRun;
+            EnableAutoSnapshot = enableAutoSnapshot;
+            EnableAutomatedSnapshotPolicy = enableAutomatedSnapshotPolicy;
+            EnableShared = enableShared;
             Encrypted = encrypted;
             Id = id;
             Ids = ids;
             InstanceId = instanceId;
+            KmsKeyId = kmsKeyId;
             NameRegex = nameRegex;
+            Names = names;
+            OperationLocks = operationLocks;
             OutputFile = outputFile;
+            PaymentType = paymentType;
+            Portable = portable;
             ResourceGroupId = resourceGroupId;
+            SnapshotId = snapshotId;
+            Status = status;
             Tags = tags;
             Type = type;
+            ZoneId = zoneId;
         }
     }
 }

@@ -91,6 +91,7 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
      * The dbNodeClass of cluster node.
+     * **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      */
     public readonly dbNodeClass!: pulumi.Output<string>;
     /**
@@ -251,6 +252,7 @@ export interface ClusterState {
     readonly connectionString?: pulumi.Input<string>;
     /**
      * The dbNodeClass of cluster node.
+     * **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      */
     readonly dbNodeClass?: pulumi.Input<string>;
     /**
@@ -336,6 +338,7 @@ export interface ClusterArgs {
     readonly collectorStatus?: pulumi.Input<string>;
     /**
      * The dbNodeClass of cluster node.
+     * **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      */
     readonly dbNodeClass: pulumi.Input<string>;
     /**
