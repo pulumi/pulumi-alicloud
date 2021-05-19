@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk size of worker node.
+        /// The security group id for worker node.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -374,7 +374,7 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.NodePoolScalingConfigArgs>? ScalingConfig { get; set; }
 
         /// <summary>
-        /// The system disk size of worker node.
+        /// The security group id for worker node.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -588,7 +588,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
-        /// The system disk size of worker node.
+        /// The security group id for worker node.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }

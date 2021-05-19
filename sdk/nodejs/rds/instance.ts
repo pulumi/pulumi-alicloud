@@ -141,7 +141,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
-     * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+     * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
     public readonly encryptionKey!: pulumi.Output<string | undefined>;
     /**
@@ -395,7 +395,7 @@ export interface InstanceState {
      */
     readonly dbInstanceStorageType?: pulumi.Input<string>;
     /**
-     * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+     * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
     readonly encryptionKey?: pulumi.Input<string>;
     /**
@@ -545,7 +545,7 @@ export interface InstanceArgs {
      */
     readonly dbInstanceStorageType?: pulumi.Input<string>;
     /**
-     * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+     * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
     readonly encryptionKey?: pulumi.Input<string>;
     /**

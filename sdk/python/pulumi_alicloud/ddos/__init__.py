@@ -5,8 +5,12 @@
 # Export this package's modules as members:
 from .ddos_bgp_instance import *
 from .ddos_coo_instance import *
+from .domain_resource import *
 from .get_ddos_bgp_instances import *
+from .get_ddos_coo_domain_resources import *
 from .get_ddos_coo_instances import *
+from .get_ddos_coo_ports import *
+from .port import *
 from .scheduler_rule import *
 from ._inputs import *
 from . import outputs
@@ -27,6 +31,10 @@ def _register_module():
                 return DdosBgpInstance(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ddos/ddosCooInstance:DdosCooInstance":
                 return DdosCooInstance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ddos/domainResource:DomainResource":
+                return DomainResource(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ddos/port:Port":
+                return Port(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ddos/schedulerRule:SchedulerRule":
                 return SchedulerRule(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -36,6 +44,8 @@ def _register_module():
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "ddos/ddosBgpInstance", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ddos/ddosCooInstance", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ddos/domainResource", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ddos/port", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ddos/schedulerRule", _module_instance)
 
 _register_module()

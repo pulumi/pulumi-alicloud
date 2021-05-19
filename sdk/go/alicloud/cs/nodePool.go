@@ -61,7 +61,7 @@ type NodePool struct {
 	ScalingConfig NodePoolScalingConfigOutput `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
-	// The system disk size of worker node.
+	// The security group id for worker node.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory         pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
@@ -159,7 +159,7 @@ type nodePoolState struct {
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
-	// The system disk size of worker node.
+	// The security group id for worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory         *string `pulumi:"systemDiskCategory"`
@@ -220,7 +220,7 @@ type NodePoolState struct {
 	ScalingConfig NodePoolScalingConfigPtrInput
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringPtrInput
-	// The system disk size of worker node.
+	// The security group id for worker node.
 	SecurityGroupId pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory         pulumi.StringPtrInput
@@ -283,7 +283,7 @@ type nodePoolArgs struct {
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
-	// The system disk size of worker node.
+	// The security group id for worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory         *string `pulumi:"systemDiskCategory"`
@@ -342,7 +342,7 @@ type NodePoolArgs struct {
 	PeriodUnit pulumi.StringPtrInput
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig NodePoolScalingConfigPtrInput
-	// The system disk size of worker node.
+	// The security group id for worker node.
 	SecurityGroupId pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory         pulumi.StringPtrInput

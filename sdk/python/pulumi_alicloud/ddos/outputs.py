@@ -7,12 +7,67 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'DomainResourceProxyType',
     'SchedulerRuleRule',
     'GetDdosBgpInstancesInstanceResult',
+    'GetDdosCooDomainResourcesResourceResult',
+    'GetDdosCooDomainResourcesResourceProxyTypeResult',
     'GetDdosCooInstancesInstanceResult',
+    'GetDdosCooPortsPortResult',
 ]
+
+@pulumi.output_type
+class DomainResourceProxyType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "proxyPorts":
+            suggest = "proxy_ports"
+        elif key == "proxyType":
+            suggest = "proxy_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainResourceProxyType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainResourceProxyType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainResourceProxyType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 proxy_ports: Optional[Sequence[int]] = None,
+                 proxy_type: Optional[str] = None):
+        """
+        :param Sequence[int] proxy_ports: the port number. This field is required and must be an integer.
+        :param str proxy_type: the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+        """
+        if proxy_ports is not None:
+            pulumi.set(__self__, "proxy_ports", proxy_ports)
+        if proxy_type is not None:
+            pulumi.set(__self__, "proxy_type", proxy_type)
+
+    @property
+    @pulumi.getter(name="proxyPorts")
+    def proxy_ports(self) -> Optional[Sequence[int]]:
+        """
+        the port number. This field is required and must be an integer.
+        """
+        return pulumi.get(self, "proxy_ports")
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> Optional[str]:
+        """
+        the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+        """
+        return pulumi.get(self, "proxy_type")
+
 
 @pulumi.output_type
 class SchedulerRuleRule(dict):
@@ -182,6 +237,240 @@ class GetDdosBgpInstancesInstanceResult(dict):
 
 
 @pulumi.output_type
+class GetDdosCooDomainResourcesResourceResult(dict):
+    def __init__(__self__, *,
+                 black_lists: Sequence[str],
+                 cc_enabled: bool,
+                 cc_rule_enabled: bool,
+                 cc_template: str,
+                 cert_name: str,
+                 domain: str,
+                 http2_enable: bool,
+                 https_ext: str,
+                 id: str,
+                 instance_ids: Sequence[str],
+                 policy_mode: str,
+                 proxy_enabled: bool,
+                 proxy_types: Sequence['outputs.GetDdosCooDomainResourcesResourceProxyTypeResult'],
+                 real_servers: Sequence[str],
+                 rs_type: int,
+                 ssl_ciphers: str,
+                 ssl_protocols: str,
+                 white_lists: Sequence[str]):
+        """
+        :param Sequence[str] black_lists: The IP addresses in the blacklist for the domain name.
+        :param bool cc_enabled: Whether frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+        :param bool cc_rule_enabled: Whether custom frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+        :param str cc_template: The mode of the Frequency Control policy.
+        :param str cert_name: The name of the certificate.
+        :param str domain: The domain name of the website that you want to add to the instance.
+        :param bool http2_enable: Whether Http2.0 is enabled.
+        :param str https_ext: The advanced HTTPS settings.
+        :param str id: The ID of the Domain Resource.
+        :param Sequence[str] instance_ids: A list ID of instance that you want to associate.
+        :param str policy_mode: The type of backload algorithm.
+        :param bool proxy_enabled: Whether the website service forwarding rules have been turned on.
+        :param Sequence['GetDdosCooDomainResourcesResourceProxyTypeArgs'] proxy_types: Protocol type and port number information.
+        :param Sequence[str] real_servers: Server address information of the source station.
+        :param int rs_type: Server address type.
+        :param str ssl_ciphers: The type of the cipher suite.
+        :param str ssl_protocols: The version of the TLS protocol.
+        :param Sequence[str] white_lists: The IP addresses in the whitelist for the domain name.
+        """
+        pulumi.set(__self__, "black_lists", black_lists)
+        pulumi.set(__self__, "cc_enabled", cc_enabled)
+        pulumi.set(__self__, "cc_rule_enabled", cc_rule_enabled)
+        pulumi.set(__self__, "cc_template", cc_template)
+        pulumi.set(__self__, "cert_name", cert_name)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "http2_enable", http2_enable)
+        pulumi.set(__self__, "https_ext", https_ext)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_ids", instance_ids)
+        pulumi.set(__self__, "policy_mode", policy_mode)
+        pulumi.set(__self__, "proxy_enabled", proxy_enabled)
+        pulumi.set(__self__, "proxy_types", proxy_types)
+        pulumi.set(__self__, "real_servers", real_servers)
+        pulumi.set(__self__, "rs_type", rs_type)
+        pulumi.set(__self__, "ssl_ciphers", ssl_ciphers)
+        pulumi.set(__self__, "ssl_protocols", ssl_protocols)
+        pulumi.set(__self__, "white_lists", white_lists)
+
+    @property
+    @pulumi.getter(name="blackLists")
+    def black_lists(self) -> Sequence[str]:
+        """
+        The IP addresses in the blacklist for the domain name.
+        """
+        return pulumi.get(self, "black_lists")
+
+    @property
+    @pulumi.getter(name="ccEnabled")
+    def cc_enabled(self) -> bool:
+        """
+        Whether frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+        """
+        return pulumi.get(self, "cc_enabled")
+
+    @property
+    @pulumi.getter(name="ccRuleEnabled")
+    def cc_rule_enabled(self) -> bool:
+        """
+        Whether custom frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+        """
+        return pulumi.get(self, "cc_rule_enabled")
+
+    @property
+    @pulumi.getter(name="ccTemplate")
+    def cc_template(self) -> str:
+        """
+        The mode of the Frequency Control policy.
+        """
+        return pulumi.get(self, "cc_template")
+
+    @property
+    @pulumi.getter(name="certName")
+    def cert_name(self) -> str:
+        """
+        The name of the certificate.
+        """
+        return pulumi.get(self, "cert_name")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The domain name of the website that you want to add to the instance.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="http2Enable")
+    def http2_enable(self) -> bool:
+        """
+        Whether Http2.0 is enabled.
+        """
+        return pulumi.get(self, "http2_enable")
+
+    @property
+    @pulumi.getter(name="httpsExt")
+    def https_ext(self) -> str:
+        """
+        The advanced HTTPS settings.
+        """
+        return pulumi.get(self, "https_ext")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Domain Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> Sequence[str]:
+        """
+        A list ID of instance that you want to associate.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @property
+    @pulumi.getter(name="policyMode")
+    def policy_mode(self) -> str:
+        """
+        The type of backload algorithm.
+        """
+        return pulumi.get(self, "policy_mode")
+
+    @property
+    @pulumi.getter(name="proxyEnabled")
+    def proxy_enabled(self) -> bool:
+        """
+        Whether the website service forwarding rules have been turned on.
+        """
+        return pulumi.get(self, "proxy_enabled")
+
+    @property
+    @pulumi.getter(name="proxyTypes")
+    def proxy_types(self) -> Sequence['outputs.GetDdosCooDomainResourcesResourceProxyTypeResult']:
+        """
+        Protocol type and port number information.
+        """
+        return pulumi.get(self, "proxy_types")
+
+    @property
+    @pulumi.getter(name="realServers")
+    def real_servers(self) -> Sequence[str]:
+        """
+        Server address information of the source station.
+        """
+        return pulumi.get(self, "real_servers")
+
+    @property
+    @pulumi.getter(name="rsType")
+    def rs_type(self) -> int:
+        """
+        Server address type.
+        """
+        return pulumi.get(self, "rs_type")
+
+    @property
+    @pulumi.getter(name="sslCiphers")
+    def ssl_ciphers(self) -> str:
+        """
+        The type of the cipher suite.
+        """
+        return pulumi.get(self, "ssl_ciphers")
+
+    @property
+    @pulumi.getter(name="sslProtocols")
+    def ssl_protocols(self) -> str:
+        """
+        The version of the TLS protocol.
+        """
+        return pulumi.get(self, "ssl_protocols")
+
+    @property
+    @pulumi.getter(name="whiteLists")
+    def white_lists(self) -> Sequence[str]:
+        """
+        The IP addresses in the whitelist for the domain name.
+        """
+        return pulumi.get(self, "white_lists")
+
+
+@pulumi.output_type
+class GetDdosCooDomainResourcesResourceProxyTypeResult(dict):
+    def __init__(__self__, *,
+                 proxy_ports: Sequence[int],
+                 proxy_type: str):
+        """
+        :param Sequence[int] proxy_ports: The forwarding port.
+        :param str proxy_type: Protocol type.
+        """
+        pulumi.set(__self__, "proxy_ports", proxy_ports)
+        pulumi.set(__self__, "proxy_type", proxy_type)
+
+    @property
+    @pulumi.getter(name="proxyPorts")
+    def proxy_ports(self) -> Sequence[int]:
+        """
+        The forwarding port.
+        """
+        return pulumi.get(self, "proxy_ports")
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> str:
+        """
+        Protocol type.
+        """
+        return pulumi.get(self, "proxy_type")
+
+
+@pulumi.output_type
 class GetDdosCooInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  bandwidth: int,
@@ -263,5 +552,78 @@ class GetDdosCooInstancesInstanceResult(dict):
         The instance's business bandwidth.
         """
         return pulumi.get(self, "service_bandwidth")
+
+
+@pulumi.output_type
+class GetDdosCooPortsPortResult(dict):
+    def __init__(__self__, *,
+                 backend_port: str,
+                 frontend_port: str,
+                 frontend_protocol: str,
+                 id: str,
+                 instance_id: str,
+                 real_servers: Sequence[str]):
+        """
+        :param str backend_port: The source station port.
+        :param str frontend_port: The forwarding port.
+        :param str frontend_protocol: The forwarding protocol.
+        :param str id: The ID of the Port.
+        :param str instance_id: The Ddoscoo instance ID.
+        :param Sequence[str] real_servers: List of source IP addresses.
+        """
+        pulumi.set(__self__, "backend_port", backend_port)
+        pulumi.set(__self__, "frontend_port", frontend_port)
+        pulumi.set(__self__, "frontend_protocol", frontend_protocol)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "real_servers", real_servers)
+
+    @property
+    @pulumi.getter(name="backendPort")
+    def backend_port(self) -> str:
+        """
+        The source station port.
+        """
+        return pulumi.get(self, "backend_port")
+
+    @property
+    @pulumi.getter(name="frontendPort")
+    def frontend_port(self) -> str:
+        """
+        The forwarding port.
+        """
+        return pulumi.get(self, "frontend_port")
+
+    @property
+    @pulumi.getter(name="frontendProtocol")
+    def frontend_protocol(self) -> str:
+        """
+        The forwarding protocol.
+        """
+        return pulumi.get(self, "frontend_protocol")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Port.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The Ddoscoo instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="realServers")
+    def real_servers(self) -> Sequence[str]:
+        """
+        List of source IP addresses.
+        """
+        return pulumi.get(self, "real_servers")
 
 

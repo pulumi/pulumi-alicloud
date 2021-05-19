@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DbInstanceStorageType { get; private set; } = null!;
 
         /// <summary>
-        /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+        /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         /// </summary>
         [Output("encryptionKey")]
         public Output<string?> EncryptionKey { get; private set; } = null!;
@@ -359,7 +359,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
-        /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+        /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
@@ -590,7 +590,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
-        /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+        /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }

@@ -10,6 +10,112 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DomainResourceProxyType struct {
+	// the port number. This field is required and must be an integer.
+	ProxyPorts []int `pulumi:"proxyPorts"`
+	// the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+	ProxyType *string `pulumi:"proxyType"`
+}
+
+// DomainResourceProxyTypeInput is an input type that accepts DomainResourceProxyTypeArgs and DomainResourceProxyTypeOutput values.
+// You can construct a concrete instance of `DomainResourceProxyTypeInput` via:
+//
+//          DomainResourceProxyTypeArgs{...}
+type DomainResourceProxyTypeInput interface {
+	pulumi.Input
+
+	ToDomainResourceProxyTypeOutput() DomainResourceProxyTypeOutput
+	ToDomainResourceProxyTypeOutputWithContext(context.Context) DomainResourceProxyTypeOutput
+}
+
+type DomainResourceProxyTypeArgs struct {
+	// the port number. This field is required and must be an integer.
+	ProxyPorts pulumi.IntArrayInput `pulumi:"proxyPorts"`
+	// the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+	ProxyType pulumi.StringPtrInput `pulumi:"proxyType"`
+}
+
+func (DomainResourceProxyTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainResourceProxyType)(nil)).Elem()
+}
+
+func (i DomainResourceProxyTypeArgs) ToDomainResourceProxyTypeOutput() DomainResourceProxyTypeOutput {
+	return i.ToDomainResourceProxyTypeOutputWithContext(context.Background())
+}
+
+func (i DomainResourceProxyTypeArgs) ToDomainResourceProxyTypeOutputWithContext(ctx context.Context) DomainResourceProxyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainResourceProxyTypeOutput)
+}
+
+// DomainResourceProxyTypeArrayInput is an input type that accepts DomainResourceProxyTypeArray and DomainResourceProxyTypeArrayOutput values.
+// You can construct a concrete instance of `DomainResourceProxyTypeArrayInput` via:
+//
+//          DomainResourceProxyTypeArray{ DomainResourceProxyTypeArgs{...} }
+type DomainResourceProxyTypeArrayInput interface {
+	pulumi.Input
+
+	ToDomainResourceProxyTypeArrayOutput() DomainResourceProxyTypeArrayOutput
+	ToDomainResourceProxyTypeArrayOutputWithContext(context.Context) DomainResourceProxyTypeArrayOutput
+}
+
+type DomainResourceProxyTypeArray []DomainResourceProxyTypeInput
+
+func (DomainResourceProxyTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainResourceProxyType)(nil)).Elem()
+}
+
+func (i DomainResourceProxyTypeArray) ToDomainResourceProxyTypeArrayOutput() DomainResourceProxyTypeArrayOutput {
+	return i.ToDomainResourceProxyTypeArrayOutputWithContext(context.Background())
+}
+
+func (i DomainResourceProxyTypeArray) ToDomainResourceProxyTypeArrayOutputWithContext(ctx context.Context) DomainResourceProxyTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainResourceProxyTypeArrayOutput)
+}
+
+type DomainResourceProxyTypeOutput struct{ *pulumi.OutputState }
+
+func (DomainResourceProxyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainResourceProxyType)(nil)).Elem()
+}
+
+func (o DomainResourceProxyTypeOutput) ToDomainResourceProxyTypeOutput() DomainResourceProxyTypeOutput {
+	return o
+}
+
+func (o DomainResourceProxyTypeOutput) ToDomainResourceProxyTypeOutputWithContext(ctx context.Context) DomainResourceProxyTypeOutput {
+	return o
+}
+
+// the port number. This field is required and must be an integer.
+func (o DomainResourceProxyTypeOutput) ProxyPorts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DomainResourceProxyType) []int { return v.ProxyPorts }).(pulumi.IntArrayOutput)
+}
+
+// the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+func (o DomainResourceProxyTypeOutput) ProxyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainResourceProxyType) *string { return v.ProxyType }).(pulumi.StringPtrOutput)
+}
+
+type DomainResourceProxyTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (DomainResourceProxyTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainResourceProxyType)(nil)).Elem()
+}
+
+func (o DomainResourceProxyTypeArrayOutput) ToDomainResourceProxyTypeArrayOutput() DomainResourceProxyTypeArrayOutput {
+	return o
+}
+
+func (o DomainResourceProxyTypeArrayOutput) ToDomainResourceProxyTypeArrayOutputWithContext(ctx context.Context) DomainResourceProxyTypeArrayOutput {
+	return o
+}
+
+func (o DomainResourceProxyTypeArrayOutput) Index(i pulumi.IntInput) DomainResourceProxyTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainResourceProxyType {
+		return vs[0].([]DomainResourceProxyType)[vs[1].(int)]
+	}).(DomainResourceProxyTypeOutput)
+}
+
 type SchedulerRuleRule struct {
 	Priority  *int    `pulumi:"priority"`
 	RegionId  *string `pulumi:"regionId"`
@@ -294,6 +400,364 @@ func (o GetDdosBgpInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDdos
 	}).(GetDdosBgpInstancesInstanceOutput)
 }
 
+type GetDdosCooDomainResourcesResource struct {
+	// The IP addresses in the blacklist for the domain name.
+	BlackLists []string `pulumi:"blackLists"`
+	// Whether frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+	CcEnabled bool `pulumi:"ccEnabled"`
+	// Whether custom frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+	CcRuleEnabled bool `pulumi:"ccRuleEnabled"`
+	// The mode of the Frequency Control policy.
+	CcTemplate string `pulumi:"ccTemplate"`
+	// The name of the certificate.
+	CertName string `pulumi:"certName"`
+	// The domain name of the website that you want to add to the instance.
+	Domain string `pulumi:"domain"`
+	// Whether Http2.0 is enabled.
+	Http2Enable bool `pulumi:"http2Enable"`
+	// The advanced HTTPS settings.
+	HttpsExt string `pulumi:"httpsExt"`
+	// The ID of the Domain Resource.
+	Id string `pulumi:"id"`
+	// A list ID of instance that you want to associate.
+	InstanceIds []string `pulumi:"instanceIds"`
+	// The type of backload algorithm.
+	PolicyMode string `pulumi:"policyMode"`
+	// Whether the website service forwarding rules have been turned on.
+	ProxyEnabled bool `pulumi:"proxyEnabled"`
+	// Protocol type and port number information.
+	ProxyTypes []GetDdosCooDomainResourcesResourceProxyType `pulumi:"proxyTypes"`
+	// Server address information of the source station.
+	RealServers []string `pulumi:"realServers"`
+	// Server address type.
+	RsType int `pulumi:"rsType"`
+	// The type of the cipher suite.
+	SslCiphers string `pulumi:"sslCiphers"`
+	// The version of the TLS protocol.
+	SslProtocols string `pulumi:"sslProtocols"`
+	// The IP addresses in the whitelist for the domain name.
+	WhiteLists []string `pulumi:"whiteLists"`
+}
+
+// GetDdosCooDomainResourcesResourceInput is an input type that accepts GetDdosCooDomainResourcesResourceArgs and GetDdosCooDomainResourcesResourceOutput values.
+// You can construct a concrete instance of `GetDdosCooDomainResourcesResourceInput` via:
+//
+//          GetDdosCooDomainResourcesResourceArgs{...}
+type GetDdosCooDomainResourcesResourceInput interface {
+	pulumi.Input
+
+	ToGetDdosCooDomainResourcesResourceOutput() GetDdosCooDomainResourcesResourceOutput
+	ToGetDdosCooDomainResourcesResourceOutputWithContext(context.Context) GetDdosCooDomainResourcesResourceOutput
+}
+
+type GetDdosCooDomainResourcesResourceArgs struct {
+	// The IP addresses in the blacklist for the domain name.
+	BlackLists pulumi.StringArrayInput `pulumi:"blackLists"`
+	// Whether frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+	CcEnabled pulumi.BoolInput `pulumi:"ccEnabled"`
+	// Whether custom frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+	CcRuleEnabled pulumi.BoolInput `pulumi:"ccRuleEnabled"`
+	// The mode of the Frequency Control policy.
+	CcTemplate pulumi.StringInput `pulumi:"ccTemplate"`
+	// The name of the certificate.
+	CertName pulumi.StringInput `pulumi:"certName"`
+	// The domain name of the website that you want to add to the instance.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// Whether Http2.0 is enabled.
+	Http2Enable pulumi.BoolInput `pulumi:"http2Enable"`
+	// The advanced HTTPS settings.
+	HttpsExt pulumi.StringInput `pulumi:"httpsExt"`
+	// The ID of the Domain Resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A list ID of instance that you want to associate.
+	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
+	// The type of backload algorithm.
+	PolicyMode pulumi.StringInput `pulumi:"policyMode"`
+	// Whether the website service forwarding rules have been turned on.
+	ProxyEnabled pulumi.BoolInput `pulumi:"proxyEnabled"`
+	// Protocol type and port number information.
+	ProxyTypes GetDdosCooDomainResourcesResourceProxyTypeArrayInput `pulumi:"proxyTypes"`
+	// Server address information of the source station.
+	RealServers pulumi.StringArrayInput `pulumi:"realServers"`
+	// Server address type.
+	RsType pulumi.IntInput `pulumi:"rsType"`
+	// The type of the cipher suite.
+	SslCiphers pulumi.StringInput `pulumi:"sslCiphers"`
+	// The version of the TLS protocol.
+	SslProtocols pulumi.StringInput `pulumi:"sslProtocols"`
+	// The IP addresses in the whitelist for the domain name.
+	WhiteLists pulumi.StringArrayInput `pulumi:"whiteLists"`
+}
+
+func (GetDdosCooDomainResourcesResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooDomainResourcesResource)(nil)).Elem()
+}
+
+func (i GetDdosCooDomainResourcesResourceArgs) ToGetDdosCooDomainResourcesResourceOutput() GetDdosCooDomainResourcesResourceOutput {
+	return i.ToGetDdosCooDomainResourcesResourceOutputWithContext(context.Background())
+}
+
+func (i GetDdosCooDomainResourcesResourceArgs) ToGetDdosCooDomainResourcesResourceOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooDomainResourcesResourceOutput)
+}
+
+// GetDdosCooDomainResourcesResourceArrayInput is an input type that accepts GetDdosCooDomainResourcesResourceArray and GetDdosCooDomainResourcesResourceArrayOutput values.
+// You can construct a concrete instance of `GetDdosCooDomainResourcesResourceArrayInput` via:
+//
+//          GetDdosCooDomainResourcesResourceArray{ GetDdosCooDomainResourcesResourceArgs{...} }
+type GetDdosCooDomainResourcesResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetDdosCooDomainResourcesResourceArrayOutput() GetDdosCooDomainResourcesResourceArrayOutput
+	ToGetDdosCooDomainResourcesResourceArrayOutputWithContext(context.Context) GetDdosCooDomainResourcesResourceArrayOutput
+}
+
+type GetDdosCooDomainResourcesResourceArray []GetDdosCooDomainResourcesResourceInput
+
+func (GetDdosCooDomainResourcesResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDdosCooDomainResourcesResource)(nil)).Elem()
+}
+
+func (i GetDdosCooDomainResourcesResourceArray) ToGetDdosCooDomainResourcesResourceArrayOutput() GetDdosCooDomainResourcesResourceArrayOutput {
+	return i.ToGetDdosCooDomainResourcesResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDdosCooDomainResourcesResourceArray) ToGetDdosCooDomainResourcesResourceArrayOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooDomainResourcesResourceArrayOutput)
+}
+
+type GetDdosCooDomainResourcesResourceOutput struct{ *pulumi.OutputState }
+
+func (GetDdosCooDomainResourcesResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooDomainResourcesResource)(nil)).Elem()
+}
+
+func (o GetDdosCooDomainResourcesResourceOutput) ToGetDdosCooDomainResourcesResourceOutput() GetDdosCooDomainResourcesResourceOutput {
+	return o
+}
+
+func (o GetDdosCooDomainResourcesResourceOutput) ToGetDdosCooDomainResourcesResourceOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceOutput {
+	return o
+}
+
+// The IP addresses in the blacklist for the domain name.
+func (o GetDdosCooDomainResourcesResourceOutput) BlackLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) []string { return v.BlackLists }).(pulumi.StringArrayOutput)
+}
+
+// Whether frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+func (o GetDdosCooDomainResourcesResourceOutput) CcEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) bool { return v.CcEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether custom frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+func (o GetDdosCooDomainResourcesResourceOutput) CcRuleEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) bool { return v.CcRuleEnabled }).(pulumi.BoolOutput)
+}
+
+// The mode of the Frequency Control policy.
+func (o GetDdosCooDomainResourcesResourceOutput) CcTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) string { return v.CcTemplate }).(pulumi.StringOutput)
+}
+
+// The name of the certificate.
+func (o GetDdosCooDomainResourcesResourceOutput) CertName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) string { return v.CertName }).(pulumi.StringOutput)
+}
+
+// The domain name of the website that you want to add to the instance.
+func (o GetDdosCooDomainResourcesResourceOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Whether Http2.0 is enabled.
+func (o GetDdosCooDomainResourcesResourceOutput) Http2Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) bool { return v.Http2Enable }).(pulumi.BoolOutput)
+}
+
+// The advanced HTTPS settings.
+func (o GetDdosCooDomainResourcesResourceOutput) HttpsExt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) string { return v.HttpsExt }).(pulumi.StringOutput)
+}
+
+// The ID of the Domain Resource.
+func (o GetDdosCooDomainResourcesResourceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list ID of instance that you want to associate.
+func (o GetDdosCooDomainResourcesResourceOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// The type of backload algorithm.
+func (o GetDdosCooDomainResourcesResourceOutput) PolicyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) string { return v.PolicyMode }).(pulumi.StringOutput)
+}
+
+// Whether the website service forwarding rules have been turned on.
+func (o GetDdosCooDomainResourcesResourceOutput) ProxyEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) bool { return v.ProxyEnabled }).(pulumi.BoolOutput)
+}
+
+// Protocol type and port number information.
+func (o GetDdosCooDomainResourcesResourceOutput) ProxyTypes() GetDdosCooDomainResourcesResourceProxyTypeArrayOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) []GetDdosCooDomainResourcesResourceProxyType {
+		return v.ProxyTypes
+	}).(GetDdosCooDomainResourcesResourceProxyTypeArrayOutput)
+}
+
+// Server address information of the source station.
+func (o GetDdosCooDomainResourcesResourceOutput) RealServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) []string { return v.RealServers }).(pulumi.StringArrayOutput)
+}
+
+// Server address type.
+func (o GetDdosCooDomainResourcesResourceOutput) RsType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) int { return v.RsType }).(pulumi.IntOutput)
+}
+
+// The type of the cipher suite.
+func (o GetDdosCooDomainResourcesResourceOutput) SslCiphers() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) string { return v.SslCiphers }).(pulumi.StringOutput)
+}
+
+// The version of the TLS protocol.
+func (o GetDdosCooDomainResourcesResourceOutput) SslProtocols() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) string { return v.SslProtocols }).(pulumi.StringOutput)
+}
+
+// The IP addresses in the whitelist for the domain name.
+func (o GetDdosCooDomainResourcesResourceOutput) WhiteLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResource) []string { return v.WhiteLists }).(pulumi.StringArrayOutput)
+}
+
+type GetDdosCooDomainResourcesResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDdosCooDomainResourcesResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDdosCooDomainResourcesResource)(nil)).Elem()
+}
+
+func (o GetDdosCooDomainResourcesResourceArrayOutput) ToGetDdosCooDomainResourcesResourceArrayOutput() GetDdosCooDomainResourcesResourceArrayOutput {
+	return o
+}
+
+func (o GetDdosCooDomainResourcesResourceArrayOutput) ToGetDdosCooDomainResourcesResourceArrayOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceArrayOutput {
+	return o
+}
+
+func (o GetDdosCooDomainResourcesResourceArrayOutput) Index(i pulumi.IntInput) GetDdosCooDomainResourcesResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDdosCooDomainResourcesResource {
+		return vs[0].([]GetDdosCooDomainResourcesResource)[vs[1].(int)]
+	}).(GetDdosCooDomainResourcesResourceOutput)
+}
+
+type GetDdosCooDomainResourcesResourceProxyType struct {
+	// The forwarding port.
+	ProxyPorts []int `pulumi:"proxyPorts"`
+	// Protocol type.
+	ProxyType string `pulumi:"proxyType"`
+}
+
+// GetDdosCooDomainResourcesResourceProxyTypeInput is an input type that accepts GetDdosCooDomainResourcesResourceProxyTypeArgs and GetDdosCooDomainResourcesResourceProxyTypeOutput values.
+// You can construct a concrete instance of `GetDdosCooDomainResourcesResourceProxyTypeInput` via:
+//
+//          GetDdosCooDomainResourcesResourceProxyTypeArgs{...}
+type GetDdosCooDomainResourcesResourceProxyTypeInput interface {
+	pulumi.Input
+
+	ToGetDdosCooDomainResourcesResourceProxyTypeOutput() GetDdosCooDomainResourcesResourceProxyTypeOutput
+	ToGetDdosCooDomainResourcesResourceProxyTypeOutputWithContext(context.Context) GetDdosCooDomainResourcesResourceProxyTypeOutput
+}
+
+type GetDdosCooDomainResourcesResourceProxyTypeArgs struct {
+	// The forwarding port.
+	ProxyPorts pulumi.IntArrayInput `pulumi:"proxyPorts"`
+	// Protocol type.
+	ProxyType pulumi.StringInput `pulumi:"proxyType"`
+}
+
+func (GetDdosCooDomainResourcesResourceProxyTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooDomainResourcesResourceProxyType)(nil)).Elem()
+}
+
+func (i GetDdosCooDomainResourcesResourceProxyTypeArgs) ToGetDdosCooDomainResourcesResourceProxyTypeOutput() GetDdosCooDomainResourcesResourceProxyTypeOutput {
+	return i.ToGetDdosCooDomainResourcesResourceProxyTypeOutputWithContext(context.Background())
+}
+
+func (i GetDdosCooDomainResourcesResourceProxyTypeArgs) ToGetDdosCooDomainResourcesResourceProxyTypeOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceProxyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooDomainResourcesResourceProxyTypeOutput)
+}
+
+// GetDdosCooDomainResourcesResourceProxyTypeArrayInput is an input type that accepts GetDdosCooDomainResourcesResourceProxyTypeArray and GetDdosCooDomainResourcesResourceProxyTypeArrayOutput values.
+// You can construct a concrete instance of `GetDdosCooDomainResourcesResourceProxyTypeArrayInput` via:
+//
+//          GetDdosCooDomainResourcesResourceProxyTypeArray{ GetDdosCooDomainResourcesResourceProxyTypeArgs{...} }
+type GetDdosCooDomainResourcesResourceProxyTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetDdosCooDomainResourcesResourceProxyTypeArrayOutput() GetDdosCooDomainResourcesResourceProxyTypeArrayOutput
+	ToGetDdosCooDomainResourcesResourceProxyTypeArrayOutputWithContext(context.Context) GetDdosCooDomainResourcesResourceProxyTypeArrayOutput
+}
+
+type GetDdosCooDomainResourcesResourceProxyTypeArray []GetDdosCooDomainResourcesResourceProxyTypeInput
+
+func (GetDdosCooDomainResourcesResourceProxyTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDdosCooDomainResourcesResourceProxyType)(nil)).Elem()
+}
+
+func (i GetDdosCooDomainResourcesResourceProxyTypeArray) ToGetDdosCooDomainResourcesResourceProxyTypeArrayOutput() GetDdosCooDomainResourcesResourceProxyTypeArrayOutput {
+	return i.ToGetDdosCooDomainResourcesResourceProxyTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetDdosCooDomainResourcesResourceProxyTypeArray) ToGetDdosCooDomainResourcesResourceProxyTypeArrayOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceProxyTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooDomainResourcesResourceProxyTypeArrayOutput)
+}
+
+type GetDdosCooDomainResourcesResourceProxyTypeOutput struct{ *pulumi.OutputState }
+
+func (GetDdosCooDomainResourcesResourceProxyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooDomainResourcesResourceProxyType)(nil)).Elem()
+}
+
+func (o GetDdosCooDomainResourcesResourceProxyTypeOutput) ToGetDdosCooDomainResourcesResourceProxyTypeOutput() GetDdosCooDomainResourcesResourceProxyTypeOutput {
+	return o
+}
+
+func (o GetDdosCooDomainResourcesResourceProxyTypeOutput) ToGetDdosCooDomainResourcesResourceProxyTypeOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceProxyTypeOutput {
+	return o
+}
+
+// The forwarding port.
+func (o GetDdosCooDomainResourcesResourceProxyTypeOutput) ProxyPorts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResourceProxyType) []int { return v.ProxyPorts }).(pulumi.IntArrayOutput)
+}
+
+// Protocol type.
+func (o GetDdosCooDomainResourcesResourceProxyTypeOutput) ProxyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResourceProxyType) string { return v.ProxyType }).(pulumi.StringOutput)
+}
+
+type GetDdosCooDomainResourcesResourceProxyTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDdosCooDomainResourcesResourceProxyTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDdosCooDomainResourcesResourceProxyType)(nil)).Elem()
+}
+
+func (o GetDdosCooDomainResourcesResourceProxyTypeArrayOutput) ToGetDdosCooDomainResourcesResourceProxyTypeArrayOutput() GetDdosCooDomainResourcesResourceProxyTypeArrayOutput {
+	return o
+}
+
+func (o GetDdosCooDomainResourcesResourceProxyTypeArrayOutput) ToGetDdosCooDomainResourcesResourceProxyTypeArrayOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResourceProxyTypeArrayOutput {
+	return o
+}
+
+func (o GetDdosCooDomainResourcesResourceProxyTypeArrayOutput) Index(i pulumi.IntInput) GetDdosCooDomainResourcesResourceProxyTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDdosCooDomainResourcesResourceProxyType {
+		return vs[0].([]GetDdosCooDomainResourcesResourceProxyType)[vs[1].(int)]
+	}).(GetDdosCooDomainResourcesResourceProxyTypeOutput)
+}
+
 type GetDdosCooInstancesInstance struct {
 	// The instance's elastic defend bandwidth.
 	Bandwidth int `pulumi:"bandwidth"`
@@ -445,11 +909,161 @@ func (o GetDdosCooInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDdos
 	}).(GetDdosCooInstancesInstanceOutput)
 }
 
+type GetDdosCooPortsPort struct {
+	// The source station port.
+	BackendPort string `pulumi:"backendPort"`
+	// The forwarding port.
+	FrontendPort string `pulumi:"frontendPort"`
+	// The forwarding protocol.
+	FrontendProtocol string `pulumi:"frontendProtocol"`
+	// The ID of the Port.
+	Id string `pulumi:"id"`
+	// The Ddoscoo instance ID.
+	InstanceId string `pulumi:"instanceId"`
+	// List of source IP addresses.
+	RealServers []string `pulumi:"realServers"`
+}
+
+// GetDdosCooPortsPortInput is an input type that accepts GetDdosCooPortsPortArgs and GetDdosCooPortsPortOutput values.
+// You can construct a concrete instance of `GetDdosCooPortsPortInput` via:
+//
+//          GetDdosCooPortsPortArgs{...}
+type GetDdosCooPortsPortInput interface {
+	pulumi.Input
+
+	ToGetDdosCooPortsPortOutput() GetDdosCooPortsPortOutput
+	ToGetDdosCooPortsPortOutputWithContext(context.Context) GetDdosCooPortsPortOutput
+}
+
+type GetDdosCooPortsPortArgs struct {
+	// The source station port.
+	BackendPort pulumi.StringInput `pulumi:"backendPort"`
+	// The forwarding port.
+	FrontendPort pulumi.StringInput `pulumi:"frontendPort"`
+	// The forwarding protocol.
+	FrontendProtocol pulumi.StringInput `pulumi:"frontendProtocol"`
+	// The ID of the Port.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Ddoscoo instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// List of source IP addresses.
+	RealServers pulumi.StringArrayInput `pulumi:"realServers"`
+}
+
+func (GetDdosCooPortsPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooPortsPort)(nil)).Elem()
+}
+
+func (i GetDdosCooPortsPortArgs) ToGetDdosCooPortsPortOutput() GetDdosCooPortsPortOutput {
+	return i.ToGetDdosCooPortsPortOutputWithContext(context.Background())
+}
+
+func (i GetDdosCooPortsPortArgs) ToGetDdosCooPortsPortOutputWithContext(ctx context.Context) GetDdosCooPortsPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooPortsPortOutput)
+}
+
+// GetDdosCooPortsPortArrayInput is an input type that accepts GetDdosCooPortsPortArray and GetDdosCooPortsPortArrayOutput values.
+// You can construct a concrete instance of `GetDdosCooPortsPortArrayInput` via:
+//
+//          GetDdosCooPortsPortArray{ GetDdosCooPortsPortArgs{...} }
+type GetDdosCooPortsPortArrayInput interface {
+	pulumi.Input
+
+	ToGetDdosCooPortsPortArrayOutput() GetDdosCooPortsPortArrayOutput
+	ToGetDdosCooPortsPortArrayOutputWithContext(context.Context) GetDdosCooPortsPortArrayOutput
+}
+
+type GetDdosCooPortsPortArray []GetDdosCooPortsPortInput
+
+func (GetDdosCooPortsPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDdosCooPortsPort)(nil)).Elem()
+}
+
+func (i GetDdosCooPortsPortArray) ToGetDdosCooPortsPortArrayOutput() GetDdosCooPortsPortArrayOutput {
+	return i.ToGetDdosCooPortsPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetDdosCooPortsPortArray) ToGetDdosCooPortsPortArrayOutputWithContext(ctx context.Context) GetDdosCooPortsPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooPortsPortArrayOutput)
+}
+
+type GetDdosCooPortsPortOutput struct{ *pulumi.OutputState }
+
+func (GetDdosCooPortsPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooPortsPort)(nil)).Elem()
+}
+
+func (o GetDdosCooPortsPortOutput) ToGetDdosCooPortsPortOutput() GetDdosCooPortsPortOutput {
+	return o
+}
+
+func (o GetDdosCooPortsPortOutput) ToGetDdosCooPortsPortOutputWithContext(ctx context.Context) GetDdosCooPortsPortOutput {
+	return o
+}
+
+// The source station port.
+func (o GetDdosCooPortsPortOutput) BackendPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooPortsPort) string { return v.BackendPort }).(pulumi.StringOutput)
+}
+
+// The forwarding port.
+func (o GetDdosCooPortsPortOutput) FrontendPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooPortsPort) string { return v.FrontendPort }).(pulumi.StringOutput)
+}
+
+// The forwarding protocol.
+func (o GetDdosCooPortsPortOutput) FrontendProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooPortsPort) string { return v.FrontendProtocol }).(pulumi.StringOutput)
+}
+
+// The ID of the Port.
+func (o GetDdosCooPortsPortOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooPortsPort) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Ddoscoo instance ID.
+func (o GetDdosCooPortsPortOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooPortsPort) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// List of source IP addresses.
+func (o GetDdosCooPortsPortOutput) RealServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosCooPortsPort) []string { return v.RealServers }).(pulumi.StringArrayOutput)
+}
+
+type GetDdosCooPortsPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDdosCooPortsPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDdosCooPortsPort)(nil)).Elem()
+}
+
+func (o GetDdosCooPortsPortArrayOutput) ToGetDdosCooPortsPortArrayOutput() GetDdosCooPortsPortArrayOutput {
+	return o
+}
+
+func (o GetDdosCooPortsPortArrayOutput) ToGetDdosCooPortsPortArrayOutputWithContext(ctx context.Context) GetDdosCooPortsPortArrayOutput {
+	return o
+}
+
+func (o GetDdosCooPortsPortArrayOutput) Index(i pulumi.IntInput) GetDdosCooPortsPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDdosCooPortsPort {
+		return vs[0].([]GetDdosCooPortsPort)[vs[1].(int)]
+	}).(GetDdosCooPortsPortOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(DomainResourceProxyTypeOutput{})
+	pulumi.RegisterOutputType(DomainResourceProxyTypeArrayOutput{})
 	pulumi.RegisterOutputType(SchedulerRuleRuleOutput{})
 	pulumi.RegisterOutputType(SchedulerRuleRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetDdosBgpInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetDdosBgpInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetDdosCooDomainResourcesResourceOutput{})
+	pulumi.RegisterOutputType(GetDdosCooDomainResourcesResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetDdosCooDomainResourcesResourceProxyTypeOutput{})
+	pulumi.RegisterOutputType(GetDdosCooDomainResourcesResourceProxyTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetDdosCooInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetDdosCooInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetDdosCooPortsPortOutput{})
+	pulumi.RegisterOutputType(GetDdosCooPortsPortArrayOutput{})
 }

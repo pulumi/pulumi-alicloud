@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DdosBgpInstance{}
 	case "alicloud:ddos/ddosCooInstance:DdosCooInstance":
 		r = &DdosCooInstance{}
+	case "alicloud:ddos/domainResource:DomainResource":
+		r = &DomainResource{}
+	case "alicloud:ddos/port:Port":
+		r = &Port{}
 	case "alicloud:ddos/schedulerRule:SchedulerRule":
 		r = &SchedulerRule{}
 	default:
@@ -48,6 +52,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ddos/ddosCooInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ddos/domainResource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ddos/port",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

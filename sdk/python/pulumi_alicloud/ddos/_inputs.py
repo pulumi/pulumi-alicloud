@@ -9,8 +9,48 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'DomainResourceProxyTypeArgs',
     'SchedulerRuleRuleArgs',
 ]
+
+@pulumi.input_type
+class DomainResourceProxyTypeArgs:
+    def __init__(__self__, *,
+                 proxy_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 proxy_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] proxy_ports: the port number. This field is required and must be an integer.
+        :param pulumi.Input[str] proxy_type: the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+        """
+        if proxy_ports is not None:
+            pulumi.set(__self__, "proxy_ports", proxy_ports)
+        if proxy_type is not None:
+            pulumi.set(__self__, "proxy_type", proxy_type)
+
+    @property
+    @pulumi.getter(name="proxyPorts")
+    def proxy_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        the port number. This field is required and must be an integer.
+        """
+        return pulumi.get(self, "proxy_ports")
+
+    @proxy_ports.setter
+    def proxy_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "proxy_ports", value)
+
+    @property
+    @pulumi.getter(name="proxyType")
+    def proxy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+        """
+        return pulumi.get(self, "proxy_type")
+
+    @proxy_type.setter
+    def proxy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_type", value)
+
 
 @pulumi.input_type
 class SchedulerRuleRuleArgs:
