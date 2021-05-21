@@ -311,7 +311,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dcdn_domain": {Tok: resource(dcdnMod, "Domain")},
 
 			// DDOS
-			"alicloud_ddoscoo_scheduler_rule": {Tok: resource(ddosMod, "SchedulerRule")},
+			"alicloud_ddoscoo_scheduler_rule":  {Tok: resource(ddosMod, "SchedulerRule")},
+			"alicloud_ddoscoo_domain_resource": {Tok: resource(ddosMod, "DomainResource")},
+			"alicloud_ddoscoo_port":            {Tok: resource(ddosMod, "Port")},
 
 			// DMS
 			"alicloud_dms_enterprise_instance": {Tok: resource(dmsMod, "EnterpriseInstance")},
@@ -821,8 +823,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_mongo_instances": {Tok: dataSource(ddsMod, "getMongoInstances")},
 
 			// Ddos
-			"alicloud_ddoscoo_instances": {Tok: dataSource(ddosMod, "getDdosCooInstances")},
-			"alicloud_ddosbgp_instances": {Tok: dataSource(ddosMod, "getDdosBgpInstances")},
+			"alicloud_ddoscoo_instances":        {Tok: dataSource(ddosMod, "getDdosCooInstances")},
+			"alicloud_ddosbgp_instances":        {Tok: dataSource(ddosMod, "getDdosBgpInstances")},
+			"alicloud_ddoscoo_domain_resources": {Tok: dataSource(ddosMod, "getDdosCooDomainResources")},
+			"alicloud_ddoscoo_ports":            {Tok: dataSource(ddosMod, "getDdosCooPorts")},
 
 			// Dms
 			"alicloud_dms_enterprise_instances": {Tok: dataSource(dmsMod, "getEnterpriseInstances")},

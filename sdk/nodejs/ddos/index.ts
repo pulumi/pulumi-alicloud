@@ -7,13 +7,19 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./ddosBgpInstance";
 export * from "./ddosCooInstance";
+export * from "./domainResource";
 export * from "./getDdosBgpInstances";
+export * from "./getDdosCooDomainResources";
 export * from "./getDdosCooInstances";
+export * from "./getDdosCooPorts";
+export * from "./port";
 export * from "./schedulerRule";
 
 // Import resources to register:
 import { DdosBgpInstance } from "./ddosBgpInstance";
 import { DdosCooInstance } from "./ddosCooInstance";
+import { DomainResource } from "./domainResource";
+import { Port } from "./port";
 import { SchedulerRule } from "./schedulerRule";
 
 const _module = {
@@ -24,6 +30,10 @@ const _module = {
                 return new DdosBgpInstance(name, <any>undefined, { urn })
             case "alicloud:ddos/ddosCooInstance:DdosCooInstance":
                 return new DdosCooInstance(name, <any>undefined, { urn })
+            case "alicloud:ddos/domainResource:DomainResource":
+                return new DomainResource(name, <any>undefined, { urn })
+            case "alicloud:ddos/port:Port":
+                return new Port(name, <any>undefined, { urn })
             case "alicloud:ddos/schedulerRule:SchedulerRule":
                 return new SchedulerRule(name, <any>undefined, { urn })
             default:
@@ -33,4 +43,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "ddos/ddosBgpInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/ddosCooInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ddos/domainResource", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ddos/port", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/schedulerRule", _module)

@@ -3920,6 +3920,17 @@ export namespace dcdn {
 }
 
 export namespace ddos {
+    export interface DomainResourceProxyType {
+        /**
+         * the port number. This field is required and must be an integer.
+         */
+        proxyPorts?: number[];
+        /**
+         * the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+         */
+        proxyType?: string;
+    }
+
     export interface GetDdosBgpInstancesInstance {
         /**
          * The instance's elastic defend bandwidth.
@@ -3955,6 +3966,92 @@ export namespace ddos {
         type: string;
     }
 
+    export interface GetDdosCooDomainResourcesResource {
+        /**
+         * The IP addresses in the blacklist for the domain name.
+         */
+        blackLists: string[];
+        /**
+         * Whether frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+         */
+        ccEnabled: boolean;
+        /**
+         * Whether custom frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
+         */
+        ccRuleEnabled: boolean;
+        /**
+         * The mode of the Frequency Control policy.
+         */
+        ccTemplate: string;
+        /**
+         * The name of the certificate.
+         */
+        certName: string;
+        /**
+         * The domain name of the website that you want to add to the instance.
+         */
+        domain: string;
+        /**
+         * Whether Http2.0 is enabled.
+         */
+        http2Enable: boolean;
+        /**
+         * The advanced HTTPS settings.
+         */
+        httpsExt: string;
+        /**
+         * The ID of the Domain Resource.
+         */
+        id: string;
+        /**
+         * A list ID of instance that you want to associate.
+         */
+        instanceIds: string[];
+        /**
+         * The type of backload algorithm.
+         */
+        policyMode: string;
+        /**
+         * Whether the website service forwarding rules have been turned on.
+         */
+        proxyEnabled: boolean;
+        /**
+         * Protocol type and port number information.
+         */
+        proxyTypes: outputs.ddos.GetDdosCooDomainResourcesResourceProxyType[];
+        /**
+         * Server address information of the source station.
+         */
+        realServers: string[];
+        /**
+         * Server address type.
+         */
+        rsType: number;
+        /**
+         * The type of the cipher suite.
+         */
+        sslCiphers: string;
+        /**
+         * The version of the TLS protocol.
+         */
+        sslProtocols: string;
+        /**
+         * The IP addresses in the whitelist for the domain name.
+         */
+        whiteLists: string[];
+    }
+
+    export interface GetDdosCooDomainResourcesResourceProxyType {
+        /**
+         * The forwarding port.
+         */
+        proxyPorts: number[];
+        /**
+         * Protocol type.
+         */
+        proxyType: string;
+    }
+
     export interface GetDdosCooInstancesInstance {
         /**
          * The instance's elastic defend bandwidth.
@@ -3984,6 +4081,33 @@ export namespace ddos {
          * The instance's business bandwidth.
          */
         serviceBandwidth: number;
+    }
+
+    export interface GetDdosCooPortsPort {
+        /**
+         * The source station port.
+         */
+        backendPort: string;
+        /**
+         * The forwarding port.
+         */
+        frontendPort: string;
+        /**
+         * The forwarding protocol.
+         */
+        frontendProtocol: string;
+        /**
+         * The ID of the Port.
+         */
+        id: string;
+        /**
+         * The Ddoscoo instance ID.
+         */
+        instanceId: string;
+        /**
+         * List of source IP addresses.
+         */
+        realServers: string[];
     }
 
     export interface SchedulerRuleRule {

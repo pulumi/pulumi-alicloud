@@ -106,7 +106,7 @@ type Instance struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
-	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine pulumi.StringOutput `pulumi:"engine"`
@@ -233,7 +233,7 @@ type instanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
-	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine *string `pulumi:"engine"`
@@ -320,7 +320,7 @@ type InstanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringPtrInput
-	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine pulumi.StringPtrInput
@@ -409,7 +409,7 @@ type instanceArgs struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
-	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine string `pulumi:"engine"`
@@ -491,7 +491,7 @@ type InstanceArgs struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringPtrInput
-	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL.
+	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine pulumi.StringInput

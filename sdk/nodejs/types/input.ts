@@ -1159,6 +1159,17 @@ export namespace dcdn {
 }
 
 export namespace ddos {
+    export interface DomainResourceProxyType {
+        /**
+         * the port number. This field is required and must be an integer.
+         */
+        proxyPorts?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+         */
+        proxyType?: pulumi.Input<string>;
+    }
+
     export interface SchedulerRuleRule {
         priority?: pulumi.Input<number>;
         regionId?: pulumi.Input<string>;

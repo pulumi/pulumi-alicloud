@@ -123,7 +123,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly scalingGroupId!: pulumi.Output<string>;
     /**
-     * The system disk size of worker node.
+     * The security group id for worker node.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
@@ -334,7 +334,7 @@ export interface NodePoolState {
      */
     readonly scalingGroupId?: pulumi.Input<string>;
     /**
-     * The system disk size of worker node.
+     * The security group id for worker node.
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
@@ -450,7 +450,7 @@ export interface NodePoolArgs {
      */
     readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
     /**
-     * The system disk size of worker node.
+     * The security group id for worker node.
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
