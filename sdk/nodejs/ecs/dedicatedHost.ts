@@ -106,6 +106,14 @@ export class DedicatedHost extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
+     * CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+     */
+    public readonly cpuOverCommitRatio!: pulumi.Output<number | undefined>;
+    /**
+     * The dedicated host cluster ID to which the dedicated host belongs.
+     */
+    public readonly dedicatedHostClusterId!: pulumi.Output<string | undefined>;
+    /**
      * The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
     public readonly dedicatedHostName!: pulumi.Output<string | undefined>;
@@ -130,9 +138,13 @@ export class DedicatedHost extends pulumi.CustomResource {
      */
     public readonly expiredTime!: pulumi.Output<string>;
     /**
+     * Specify the minimum purchase quantity of a dedicated host.
+     */
+    public readonly minQuantity!: pulumi.Output<number | undefined>;
+    /**
      * dedicated host network parameters. contains the following attributes:
      */
-    public readonly networkAttributes!: pulumi.Output<outputs.ecs.DedicatedHostNetworkAttribute[] | undefined>;
+    public readonly networkAttributes!: pulumi.Output<outputs.ecs.DedicatedHostNetworkAttributes | undefined>;
     /**
      * The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
      */
@@ -176,12 +188,15 @@ export class DedicatedHost extends pulumi.CustomResource {
             inputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
             inputs["autoRenew"] = state ? state.autoRenew : undefined;
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            inputs["cpuOverCommitRatio"] = state ? state.cpuOverCommitRatio : undefined;
+            inputs["dedicatedHostClusterId"] = state ? state.dedicatedHostClusterId : undefined;
             inputs["dedicatedHostName"] = state ? state.dedicatedHostName : undefined;
             inputs["dedicatedHostType"] = state ? state.dedicatedHostType : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["detailFee"] = state ? state.detailFee : undefined;
             inputs["dryRun"] = state ? state.dryRun : undefined;
             inputs["expiredTime"] = state ? state.expiredTime : undefined;
+            inputs["minQuantity"] = state ? state.minQuantity : undefined;
             inputs["networkAttributes"] = state ? state.networkAttributes : undefined;
             inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -199,12 +214,15 @@ export class DedicatedHost extends pulumi.CustomResource {
             inputs["autoReleaseTime"] = args ? args.autoReleaseTime : undefined;
             inputs["autoRenew"] = args ? args.autoRenew : undefined;
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            inputs["cpuOverCommitRatio"] = args ? args.cpuOverCommitRatio : undefined;
+            inputs["dedicatedHostClusterId"] = args ? args.dedicatedHostClusterId : undefined;
             inputs["dedicatedHostName"] = args ? args.dedicatedHostName : undefined;
             inputs["dedicatedHostType"] = args ? args.dedicatedHostType : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["detailFee"] = args ? args.detailFee : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["expiredTime"] = args ? args.expiredTime : undefined;
+            inputs["minQuantity"] = args ? args.minQuantity : undefined;
             inputs["networkAttributes"] = args ? args.networkAttributes : undefined;
             inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -245,6 +263,14 @@ export interface DedicatedHostState {
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
     /**
+     * CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+     */
+    readonly cpuOverCommitRatio?: pulumi.Input<number>;
+    /**
+     * The dedicated host cluster ID to which the dedicated host belongs.
+     */
+    readonly dedicatedHostClusterId?: pulumi.Input<string>;
+    /**
      * The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
     readonly dedicatedHostName?: pulumi.Input<string>;
@@ -269,9 +295,13 @@ export interface DedicatedHostState {
      */
     readonly expiredTime?: pulumi.Input<string>;
     /**
+     * Specify the minimum purchase quantity of a dedicated host.
+     */
+    readonly minQuantity?: pulumi.Input<number>;
+    /**
      * dedicated host network parameters. contains the following attributes:
      */
-    readonly networkAttributes?: pulumi.Input<pulumi.Input<inputs.ecs.DedicatedHostNetworkAttribute>[]>;
+    readonly networkAttributes?: pulumi.Input<inputs.ecs.DedicatedHostNetworkAttributes>;
     /**
      * The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
      */
@@ -323,6 +353,14 @@ export interface DedicatedHostArgs {
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
     /**
+     * CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+     */
+    readonly cpuOverCommitRatio?: pulumi.Input<number>;
+    /**
+     * The dedicated host cluster ID to which the dedicated host belongs.
+     */
+    readonly dedicatedHostClusterId?: pulumi.Input<string>;
+    /**
      * The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
     readonly dedicatedHostName?: pulumi.Input<string>;
@@ -347,9 +385,13 @@ export interface DedicatedHostArgs {
      */
     readonly expiredTime?: pulumi.Input<string>;
     /**
+     * Specify the minimum purchase quantity of a dedicated host.
+     */
+    readonly minQuantity?: pulumi.Input<number>;
+    /**
      * dedicated host network parameters. contains the following attributes:
      */
-    readonly networkAttributes?: pulumi.Input<pulumi.Input<inputs.ecs.DedicatedHostNetworkAttribute>[]>;
+    readonly networkAttributes?: pulumi.Input<inputs.ecs.DedicatedHostNetworkAttributes>;
     /**
      * The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
      */

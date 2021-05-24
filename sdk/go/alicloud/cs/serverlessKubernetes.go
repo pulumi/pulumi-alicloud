@@ -21,6 +21,7 @@ import (
 type ServerlessKubernetes struct {
 	pulumi.CustomResourceState
 
+	// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
 	Addons ServerlessKubernetesAddonArrayOutput `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
@@ -40,19 +41,31 @@ type ServerlessKubernetes struct {
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrOutput `pulumi:"loadBalancerSpec"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// Enable log service, Valid value `SLS`.
+	LoggingType pulumi.StringPtrOutput `pulumi:"loggingType"`
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
-	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+	// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	//
+	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone pulumi.BoolPtrOutput `pulumi:"privateZone"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
+	// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
+	// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+	ServiceDiscoveryTypes pulumi.StringArrayOutput `pulumi:"serviceDiscoveryTypes"`
+	// If you use an existing SLS project, you must specify `slsProjectName`.
+	SlsProjectName pulumi.StringOutput `pulumi:"slsProjectName"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The time zone of the cluster.
+	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
@@ -63,6 +76,8 @@ type ServerlessKubernetes struct {
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
+	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewServerlessKubernetes registers a new resource with the given unique name, arguments, and options.
@@ -97,6 +112,7 @@ func GetServerlessKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerlessKubernetes resources.
 type serverlessKubernetesState struct {
+	// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -116,19 +132,31 @@ type serverlessKubernetesState struct {
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// Enable log service, Valid value `SLS`.
+	LoggingType *string `pulumi:"loggingType"`
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
-	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+	// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	//
+	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone *bool `pulumi:"privateZone"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+	ServiceCidr *string `pulumi:"serviceCidr"`
+	// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+	ServiceDiscoveryTypes []string `pulumi:"serviceDiscoveryTypes"`
+	// If you use an existing SLS project, you must specify `slsProjectName`.
+	SlsProjectName *string `pulumi:"slsProjectName"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The time zone of the cluster.
+	TimeZone *string `pulumi:"timeZone"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version *string `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
@@ -139,9 +167,12 @@ type serverlessKubernetesState struct {
 	VswitchId *string `pulumi:"vswitchId"`
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds []string `pulumi:"vswitchIds"`
+	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ServerlessKubernetesState struct {
+	// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
 	Addons ServerlessKubernetesAddonArrayInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -161,19 +192,31 @@ type ServerlessKubernetesState struct {
 	KubeConfig pulumi.StringPtrInput
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrInput
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// Enable log service, Valid value `SLS`.
+	LoggingType pulumi.StringPtrInput
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrInput
-	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+	// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	//
+	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone pulumi.BoolPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
+	// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+	ServiceCidr pulumi.StringPtrInput
+	// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+	ServiceDiscoveryTypes pulumi.StringArrayInput
+	// If you use an existing SLS project, you must specify `slsProjectName`.
+	SlsProjectName pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags pulumi.MapInput
+	// The time zone of the cluster.
+	TimeZone pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version pulumi.StringPtrInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
@@ -184,6 +227,8 @@ type ServerlessKubernetesState struct {
 	VswitchId pulumi.StringPtrInput
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds pulumi.StringArrayInput
+	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (ServerlessKubernetesState) ElementType() reflect.Type {
@@ -191,6 +236,7 @@ func (ServerlessKubernetesState) ElementType() reflect.Type {
 }
 
 type serverlessKubernetesArgs struct {
+	// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -210,19 +256,31 @@ type serverlessKubernetesArgs struct {
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// Enable log service, Valid value `SLS`.
+	LoggingType *string `pulumi:"loggingType"`
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
-	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+	// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	//
+	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone *bool `pulumi:"privateZone"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+	ServiceCidr *string `pulumi:"serviceCidr"`
+	// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+	ServiceDiscoveryTypes []string `pulumi:"serviceDiscoveryTypes"`
+	// If you use an existing SLS project, you must specify `slsProjectName`.
+	SlsProjectName *string `pulumi:"slsProjectName"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The time zone of the cluster.
+	TimeZone *string `pulumi:"timeZone"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version *string `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
@@ -233,10 +291,13 @@ type serverlessKubernetesArgs struct {
 	VswitchId *string `pulumi:"vswitchId"`
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds []string `pulumi:"vswitchIds"`
+	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ServerlessKubernetes resource.
 type ServerlessKubernetesArgs struct {
+	// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
 	Addons ServerlessKubernetesAddonArrayInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -256,19 +317,31 @@ type ServerlessKubernetesArgs struct {
 	KubeConfig pulumi.StringPtrInput
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrInput
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// Enable log service, Valid value `SLS`.
+	LoggingType pulumi.StringPtrInput
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrInput
-	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+	// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	//
+	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone pulumi.BoolPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
+	// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+	ServiceCidr pulumi.StringPtrInput
+	// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+	ServiceDiscoveryTypes pulumi.StringArrayInput
+	// If you use an existing SLS project, you must specify `slsProjectName`.
+	SlsProjectName pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags pulumi.MapInput
+	// The time zone of the cluster.
+	TimeZone pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version pulumi.StringPtrInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
@@ -279,6 +352,8 @@ type ServerlessKubernetesArgs struct {
 	VswitchId pulumi.StringPtrInput
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds pulumi.StringArrayInput
+	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (ServerlessKubernetesArgs) ElementType() reflect.Type {

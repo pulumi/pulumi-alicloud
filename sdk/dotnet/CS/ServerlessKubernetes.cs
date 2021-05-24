@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.CS
     [AliCloudResourceType("alicloud:cs/serverlessKubernetes:ServerlessKubernetes")]
     public partial class ServerlessKubernetes : Pulumi.CustomResource
     {
+        /// <summary>
+        /// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.ServerlessKubernetesAddon>> Addons { get; private set; } = null!;
 
@@ -75,7 +78,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> LoadBalancerSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// Enable log service, Valid value `SLS`.
+        /// </summary>
+        [Output("loggingType")]
+        public Output<string?> LoggingType { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -84,13 +93,13 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> NamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         /// </summary>
         [Output("newNatGateway")]
         public Output<bool?> NewNatGateway { get; private set; } = null!;
 
         /// <summary>
-        /// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+        /// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         /// </summary>
         [Output("privateZone")]
         public Output<bool?> PrivateZone { get; private set; } = null!;
@@ -108,10 +117,34 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+        /// </summary>
+        [Output("serviceCidr")]
+        public Output<string?> ServiceCidr { get; private set; } = null!;
+
+        /// <summary>
+        /// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+        /// </summary>
+        [Output("serviceDiscoveryTypes")]
+        public Output<ImmutableArray<string>> ServiceDiscoveryTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// If you use an existing SLS project, you must specify `sls_project_name`.
+        /// </summary>
+        [Output("slsProjectName")]
+        public Output<string> SlsProjectName { get; private set; } = null!;
+
+        /// <summary>
         /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The time zone of the cluster.
+        /// </summary>
+        [Output("timeZone")]
+        public Output<string> TimeZone { get; private set; } = null!;
 
         /// <summary>
         /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
@@ -136,6 +169,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("vswitchIds")]
         public Output<ImmutableArray<string>> VswitchIds { get; private set; } = null!;
+
+        /// <summary>
+        /// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -185,6 +224,10 @@ namespace Pulumi.AliCloud.CS
     {
         [Input("addons")]
         private InputList<Inputs.ServerlessKubernetesAddonArgs>? _addons;
+
+        /// <summary>
+        /// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        /// </summary>
         public InputList<Inputs.ServerlessKubernetesAddonArgs> Addons
         {
             get => _addons ?? (_addons = new InputList<Inputs.ServerlessKubernetesAddonArgs>());
@@ -242,7 +285,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// Enable log service, Valid value `SLS`.
+        /// </summary>
+        [Input("loggingType")]
+        public Input<string>? LoggingType { get; set; }
+
+        /// <summary>
+        /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -251,13 +300,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+        /// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
@@ -274,6 +323,30 @@ namespace Pulumi.AliCloud.CS
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        /// <summary>
+        /// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+        /// </summary>
+        [Input("serviceCidr")]
+        public Input<string>? ServiceCidr { get; set; }
+
+        [Input("serviceDiscoveryTypes")]
+        private InputList<string>? _serviceDiscoveryTypes;
+
+        /// <summary>
+        /// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+        /// </summary>
+        public InputList<string> ServiceDiscoveryTypes
+        {
+            get => _serviceDiscoveryTypes ?? (_serviceDiscoveryTypes = new InputList<string>());
+            set => _serviceDiscoveryTypes = value;
+        }
+
+        /// <summary>
+        /// If you use an existing SLS project, you must specify `sls_project_name`.
+        /// </summary>
+        [Input("slsProjectName")]
+        public Input<string>? SlsProjectName { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -285,6 +358,12 @@ namespace Pulumi.AliCloud.CS
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The time zone of the cluster.
+        /// </summary>
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
 
         /// <summary>
         /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
@@ -316,6 +395,12 @@ namespace Pulumi.AliCloud.CS
             set => _vswitchIds = value;
         }
 
+        /// <summary>
+        /// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public ServerlessKubernetesArgs()
         {
         }
@@ -325,6 +410,10 @@ namespace Pulumi.AliCloud.CS
     {
         [Input("addons")]
         private InputList<Inputs.ServerlessKubernetesAddonGetArgs>? _addons;
+
+        /// <summary>
+        /// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+        /// </summary>
         public InputList<Inputs.ServerlessKubernetesAddonGetArgs> Addons
         {
             get => _addons ?? (_addons = new InputList<Inputs.ServerlessKubernetesAddonGetArgs>());
@@ -382,7 +471,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// Enable log service, Valid value `SLS`.
+        /// </summary>
+        [Input("loggingType")]
+        public Input<string>? LoggingType { get; set; }
+
+        /// <summary>
+        /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -391,13 +486,13 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+        /// (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
@@ -414,6 +509,30 @@ namespace Pulumi.AliCloud.CS
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        /// <summary>
+        /// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+        /// </summary>
+        [Input("serviceCidr")]
+        public Input<string>? ServiceCidr { get; set; }
+
+        [Input("serviceDiscoveryTypes")]
+        private InputList<string>? _serviceDiscoveryTypes;
+
+        /// <summary>
+        /// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+        /// </summary>
+        public InputList<string> ServiceDiscoveryTypes
+        {
+            get => _serviceDiscoveryTypes ?? (_serviceDiscoveryTypes = new InputList<string>());
+            set => _serviceDiscoveryTypes = value;
+        }
+
+        /// <summary>
+        /// If you use an existing SLS project, you must specify `sls_project_name`.
+        /// </summary>
+        [Input("slsProjectName")]
+        public Input<string>? SlsProjectName { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -425,6 +544,12 @@ namespace Pulumi.AliCloud.CS
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The time zone of the cluster.
+        /// </summary>
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
 
         /// <summary>
         /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
@@ -455,6 +580,12 @@ namespace Pulumi.AliCloud.CS
             get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
             set => _vswitchIds = value;
         }
+
+        /// <summary>
+        /// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public ServerlessKubernetesState()
         {

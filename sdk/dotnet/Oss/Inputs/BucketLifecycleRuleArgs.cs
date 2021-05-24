@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         }
 
         /// <summary>
-        /// Specifies lifecycle rule status.
+        /// Specifies the accelerate status of a bucket.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

@@ -137,60 +137,6 @@ class BackendServer(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.53.0+
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "slbbackendservertest"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/16",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
-                image_id=default_images.images[0].id,
-                instance_type=default_instance_types.instance_types[0].id,
-                instance_name=name,
-                security_groups=[__item.id for __item in [default_security_group]],
-                internet_charge_type="PayByTraffic",
-                internet_max_bandwidth_out=10,
-                availability_zone=default_zones.zones[0].id,
-                instance_charge_type="PostPaid",
-                system_disk_category="cloud_efficiency",
-                vswitch_id=default_switch.id))
-        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
-        default_backend_server = alicloud.slb.BackendServer("defaultBackendServer",
-            load_balancer_id=default_load_balancer.id,
-            backend_servers=[
-                alicloud.slb.BackendServerBackendServerArgs(
-                    server_id=default_instance[0].id,
-                    weight=100,
-                ),
-                alicloud.slb.BackendServerBackendServerArgs(
-                    server_id=default_instance[1].id,
-                    weight=100,
-                ),
-            ])
-        ```
         ## Block servers
 
         The servers mapping supports the following:
@@ -225,60 +171,6 @@ class BackendServer(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.53.0+
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "slbbackendservertest"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/16",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
-                image_id=default_images.images[0].id,
-                instance_type=default_instance_types.instance_types[0].id,
-                instance_name=name,
-                security_groups=[__item.id for __item in [default_security_group]],
-                internet_charge_type="PayByTraffic",
-                internet_max_bandwidth_out=10,
-                availability_zone=default_zones.zones[0].id,
-                instance_charge_type="PostPaid",
-                system_disk_category="cloud_efficiency",
-                vswitch_id=default_switch.id))
-        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
-        default_backend_server = alicloud.slb.BackendServer("defaultBackendServer",
-            load_balancer_id=default_load_balancer.id,
-            backend_servers=[
-                alicloud.slb.BackendServerBackendServerArgs(
-                    server_id=default_instance[0].id,
-                    weight=100,
-                ),
-                alicloud.slb.BackendServerBackendServerArgs(
-                    server_id=default_instance[1].id,
-                    weight=100,
-                ),
-            ])
-        ```
         ## Block servers
 
         The servers mapping supports the following:

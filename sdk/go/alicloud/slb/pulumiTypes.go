@@ -1223,10 +1223,12 @@ func (o GetBackendServersBackendServerArrayOutput) Index(i pulumi.IntInput) GetB
 }
 
 type GetCaCertificatesCertificate struct {
+	// (Available in v1.123.1+) CA certificate ID.
+	CaCertificateId string `pulumi:"caCertificateId"`
+	// (Available in v1.123.1+) CA certificate name.
+	CaCertificateName string `pulumi:"caCertificateName"`
 	// CA certificate common name.
 	CommonName string `pulumi:"commonName"`
-	// CA certificate created time.
-	CreatedTime string `pulumi:"createdTime"`
 	// CA certificate created timestamp.
 	CreatedTimestamp int `pulumi:"createdTimestamp"`
 	// CA certificate expired time.
@@ -1237,10 +1239,8 @@ type GetCaCertificatesCertificate struct {
 	Fingerprint string `pulumi:"fingerprint"`
 	// CA certificate ID.
 	Id string `pulumi:"id"`
-	// CA certificate name.
+	// (Deprecated from v1.123.1) Deprecated and replace by `caCertificateName`.
 	Name string `pulumi:"name"`
-	// The region Id of CA certificate.
-	RegionId string `pulumi:"regionId"`
 	// The Id of resource group which ca certificates belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
@@ -1259,10 +1259,12 @@ type GetCaCertificatesCertificateInput interface {
 }
 
 type GetCaCertificatesCertificateArgs struct {
+	// (Available in v1.123.1+) CA certificate ID.
+	CaCertificateId pulumi.StringInput `pulumi:"caCertificateId"`
+	// (Available in v1.123.1+) CA certificate name.
+	CaCertificateName pulumi.StringInput `pulumi:"caCertificateName"`
 	// CA certificate common name.
 	CommonName pulumi.StringInput `pulumi:"commonName"`
-	// CA certificate created time.
-	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
 	// CA certificate created timestamp.
 	CreatedTimestamp pulumi.IntInput `pulumi:"createdTimestamp"`
 	// CA certificate expired time.
@@ -1273,10 +1275,8 @@ type GetCaCertificatesCertificateArgs struct {
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
 	// CA certificate ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// CA certificate name.
+	// (Deprecated from v1.123.1) Deprecated and replace by `caCertificateName`.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The region Id of CA certificate.
-	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// The Id of resource group which ca certificates belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
@@ -1334,14 +1334,19 @@ func (o GetCaCertificatesCertificateOutput) ToGetCaCertificatesCertificateOutput
 	return o
 }
 
+// (Available in v1.123.1+) CA certificate ID.
+func (o GetCaCertificatesCertificateOutput) CaCertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.CaCertificateId }).(pulumi.StringOutput)
+}
+
+// (Available in v1.123.1+) CA certificate name.
+func (o GetCaCertificatesCertificateOutput) CaCertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.CaCertificateName }).(pulumi.StringOutput)
+}
+
 // CA certificate common name.
 func (o GetCaCertificatesCertificateOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.CommonName }).(pulumi.StringOutput)
-}
-
-// CA certificate created time.
-func (o GetCaCertificatesCertificateOutput) CreatedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
 // CA certificate created timestamp.
@@ -1369,14 +1374,9 @@ func (o GetCaCertificatesCertificateOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// CA certificate name.
+// (Deprecated from v1.123.1) Deprecated and replace by `caCertificateName`.
 func (o GetCaCertificatesCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The region Id of CA certificate.
-func (o GetCaCertificatesCertificateOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The Id of resource group which ca certificates belongs.
@@ -1958,6 +1958,713 @@ func (o GetListenersSlbListenerArrayOutput) Index(i pulumi.IntInput) GetListener
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersSlbListener {
 		return vs[0].([]GetListenersSlbListener)[vs[1].(int)]
 	}).(GetListenersSlbListenerOutput)
+}
+
+type GetLoadBalancersBalancer struct {
+	// Service address of the SLBs.
+	Address          string                                  `pulumi:"address"`
+	AddressIpVersion string                                  `pulumi:"addressIpVersion"`
+	AddressType      string                                  `pulumi:"addressType"`
+	AutoReleaseTime  int                                     `pulumi:"autoReleaseTime"`
+	BackendServers   []GetLoadBalancersBalancerBackendServer `pulumi:"backendServers"`
+	Bandwidth        int                                     `pulumi:"bandwidth"`
+	CreateTimeStamp  int                                     `pulumi:"createTimeStamp"`
+	DeleteProtection string                                  `pulumi:"deleteProtection"`
+	EndTime          string                                  `pulumi:"endTime"`
+	EndTimeStamp     int                                     `pulumi:"endTimeStamp"`
+	// ID of the SLB.
+	Id                           string                                             `pulumi:"id"`
+	InternetChargeType           string                                             `pulumi:"internetChargeType"`
+	ListenerPortsAndProtocals    []GetLoadBalancersBalancerListenerPortsAndProtocal `pulumi:"listenerPortsAndProtocals"`
+	ListenerPortsAndProtocols    []GetLoadBalancersBalancerListenerPortsAndProtocol `pulumi:"listenerPortsAndProtocols"`
+	LoadBalancerId               string                                             `pulumi:"loadBalancerId"`
+	LoadBalancerName             string                                             `pulumi:"loadBalancerName"`
+	LoadBalancerSpec             string                                             `pulumi:"loadBalancerSpec"`
+	MasterZoneId                 string                                             `pulumi:"masterZoneId"`
+	ModificationProtectionReason string                                             `pulumi:"modificationProtectionReason"`
+	ModificationProtectionStatus string                                             `pulumi:"modificationProtectionStatus"`
+	// Network type of the SLBs. Valid values: `vpc` and `classic`.
+	NetworkType     string `pulumi:"networkType"`
+	PaymentType     string `pulumi:"paymentType"`
+	RegionIdAlias   string `pulumi:"regionIdAlias"`
+	RenewalCycUnit  string `pulumi:"renewalCycUnit"`
+	RenewalDuration int    `pulumi:"renewalDuration"`
+	RenewalStatus   string `pulumi:"renewalStatus"`
+	// The Id of resource group which SLB belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	SlaveZoneId     string `pulumi:"slaveZoneId"`
+	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	Status string `pulumi:"status"`
+	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	Tags map[string]interface{} `pulumi:"tags"`
+	// ID of the VPC linked to the SLBs.
+	VpcId string `pulumi:"vpcId"`
+	// ID of the VSwitch linked to the SLBs.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetLoadBalancersBalancerInput is an input type that accepts GetLoadBalancersBalancerArgs and GetLoadBalancersBalancerOutput values.
+// You can construct a concrete instance of `GetLoadBalancersBalancerInput` via:
+//
+//          GetLoadBalancersBalancerArgs{...}
+type GetLoadBalancersBalancerInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersBalancerOutput() GetLoadBalancersBalancerOutput
+	ToGetLoadBalancersBalancerOutputWithContext(context.Context) GetLoadBalancersBalancerOutput
+}
+
+type GetLoadBalancersBalancerArgs struct {
+	// Service address of the SLBs.
+	Address          pulumi.StringInput                              `pulumi:"address"`
+	AddressIpVersion pulumi.StringInput                              `pulumi:"addressIpVersion"`
+	AddressType      pulumi.StringInput                              `pulumi:"addressType"`
+	AutoReleaseTime  pulumi.IntInput                                 `pulumi:"autoReleaseTime"`
+	BackendServers   GetLoadBalancersBalancerBackendServerArrayInput `pulumi:"backendServers"`
+	Bandwidth        pulumi.IntInput                                 `pulumi:"bandwidth"`
+	CreateTimeStamp  pulumi.IntInput                                 `pulumi:"createTimeStamp"`
+	DeleteProtection pulumi.StringInput                              `pulumi:"deleteProtection"`
+	EndTime          pulumi.StringInput                              `pulumi:"endTime"`
+	EndTimeStamp     pulumi.IntInput                                 `pulumi:"endTimeStamp"`
+	// ID of the SLB.
+	Id                           pulumi.StringInput                                         `pulumi:"id"`
+	InternetChargeType           pulumi.StringInput                                         `pulumi:"internetChargeType"`
+	ListenerPortsAndProtocals    GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput `pulumi:"listenerPortsAndProtocals"`
+	ListenerPortsAndProtocols    GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput `pulumi:"listenerPortsAndProtocols"`
+	LoadBalancerId               pulumi.StringInput                                         `pulumi:"loadBalancerId"`
+	LoadBalancerName             pulumi.StringInput                                         `pulumi:"loadBalancerName"`
+	LoadBalancerSpec             pulumi.StringInput                                         `pulumi:"loadBalancerSpec"`
+	MasterZoneId                 pulumi.StringInput                                         `pulumi:"masterZoneId"`
+	ModificationProtectionReason pulumi.StringInput                                         `pulumi:"modificationProtectionReason"`
+	ModificationProtectionStatus pulumi.StringInput                                         `pulumi:"modificationProtectionStatus"`
+	// Network type of the SLBs. Valid values: `vpc` and `classic`.
+	NetworkType     pulumi.StringInput `pulumi:"networkType"`
+	PaymentType     pulumi.StringInput `pulumi:"paymentType"`
+	RegionIdAlias   pulumi.StringInput `pulumi:"regionIdAlias"`
+	RenewalCycUnit  pulumi.StringInput `pulumi:"renewalCycUnit"`
+	RenewalDuration pulumi.IntInput    `pulumi:"renewalDuration"`
+	RenewalStatus   pulumi.StringInput `pulumi:"renewalStatus"`
+	// The Id of resource group which SLB belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	SlaveZoneId     pulumi.StringInput `pulumi:"slaveZoneId"`
+	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
+	// 			Tags: map[string]interface{}{
+	// 				"tagKey1": "tagValue1",
+	// 				"tagKey2": "tagValue2",
+	// 			},
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// ID of the VPC linked to the SLBs.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// ID of the VSwitch linked to the SLBs.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetLoadBalancersBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersBalancer)(nil)).Elem()
+}
+
+func (i GetLoadBalancersBalancerArgs) ToGetLoadBalancersBalancerOutput() GetLoadBalancersBalancerOutput {
+	return i.ToGetLoadBalancersBalancerOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersBalancerArgs) ToGetLoadBalancersBalancerOutputWithContext(ctx context.Context) GetLoadBalancersBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerOutput)
+}
+
+// GetLoadBalancersBalancerArrayInput is an input type that accepts GetLoadBalancersBalancerArray and GetLoadBalancersBalancerArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancersBalancerArrayInput` via:
+//
+//          GetLoadBalancersBalancerArray{ GetLoadBalancersBalancerArgs{...} }
+type GetLoadBalancersBalancerArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersBalancerArrayOutput() GetLoadBalancersBalancerArrayOutput
+	ToGetLoadBalancersBalancerArrayOutputWithContext(context.Context) GetLoadBalancersBalancerArrayOutput
+}
+
+type GetLoadBalancersBalancerArray []GetLoadBalancersBalancerInput
+
+func (GetLoadBalancersBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancersBalancer)(nil)).Elem()
+}
+
+func (i GetLoadBalancersBalancerArray) ToGetLoadBalancersBalancerArrayOutput() GetLoadBalancersBalancerArrayOutput {
+	return i.ToGetLoadBalancersBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersBalancerArray) ToGetLoadBalancersBalancerArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerArrayOutput)
+}
+
+type GetLoadBalancersBalancerOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersBalancer)(nil)).Elem()
+}
+
+func (o GetLoadBalancersBalancerOutput) ToGetLoadBalancersBalancerOutput() GetLoadBalancersBalancerOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerOutput) ToGetLoadBalancersBalancerOutputWithContext(ctx context.Context) GetLoadBalancersBalancerOutput {
+	return o
+}
+
+// Service address of the SLBs.
+func (o GetLoadBalancersBalancerOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) AddressIpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.AddressIpVersion }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) AddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.AddressType }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) AutoReleaseTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.AutoReleaseTime }).(pulumi.IntOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) BackendServers() GetLoadBalancersBalancerBackendServerArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) []GetLoadBalancersBalancerBackendServer { return v.BackendServers }).(GetLoadBalancersBalancerBackendServerArrayOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) CreateTimeStamp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.CreateTimeStamp }).(pulumi.IntOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) DeleteProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.DeleteProtection }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) EndTimeStamp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.EndTimeStamp }).(pulumi.IntOutput)
+}
+
+// ID of the SLB.
+func (o GetLoadBalancersBalancerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) ListenerPortsAndProtocals() GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) []GetLoadBalancersBalancerListenerPortsAndProtocal {
+		return v.ListenerPortsAndProtocals
+	}).(GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) ListenerPortsAndProtocols() GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) []GetLoadBalancersBalancerListenerPortsAndProtocol {
+		return v.ListenerPortsAndProtocols
+	}).(GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) LoadBalancerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerName }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) LoadBalancerSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerSpec }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) MasterZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.MasterZoneId }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) ModificationProtectionReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.ModificationProtectionReason }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) ModificationProtectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.ModificationProtectionStatus }).(pulumi.StringOutput)
+}
+
+// Network type of the SLBs. Valid values: `vpc` and `classic`.
+func (o GetLoadBalancersBalancerOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) RegionIdAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.RegionIdAlias }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) RenewalCycUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.RenewalCycUnit }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) RenewalDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) int { return v.RenewalDuration }).(pulumi.IntOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which SLB belongs.
+func (o GetLoadBalancersBalancerOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerOutput) SlaveZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.SlaveZoneId }).(pulumi.StringOutput)
+}
+
+// SLB current status. Possible values: `inactive`, `active` and `locked`.
+func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
+// 			Tags: map[string]interface{}{
+// 				"tagKey1": "tagValue1",
+// 				"tagKey2": "tagValue2",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+func (o GetLoadBalancersBalancerOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// ID of the VPC linked to the SLBs.
+func (o GetLoadBalancersBalancerOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// ID of the VSwitch linked to the SLBs.
+func (o GetLoadBalancersBalancerOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetLoadBalancersBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancersBalancer)(nil)).Elem()
+}
+
+func (o GetLoadBalancersBalancerArrayOutput) ToGetLoadBalancersBalancerArrayOutput() GetLoadBalancersBalancerArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerArrayOutput) ToGetLoadBalancersBalancerArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancersBalancer {
+		return vs[0].([]GetLoadBalancersBalancer)[vs[1].(int)]
+	}).(GetLoadBalancersBalancerOutput)
+}
+
+type GetLoadBalancersBalancerBackendServer struct {
+	Description string `pulumi:"description"`
+	ServerId    string `pulumi:"serverId"`
+	Type        string `pulumi:"type"`
+	Weight      int    `pulumi:"weight"`
+}
+
+// GetLoadBalancersBalancerBackendServerInput is an input type that accepts GetLoadBalancersBalancerBackendServerArgs and GetLoadBalancersBalancerBackendServerOutput values.
+// You can construct a concrete instance of `GetLoadBalancersBalancerBackendServerInput` via:
+//
+//          GetLoadBalancersBalancerBackendServerArgs{...}
+type GetLoadBalancersBalancerBackendServerInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersBalancerBackendServerOutput() GetLoadBalancersBalancerBackendServerOutput
+	ToGetLoadBalancersBalancerBackendServerOutputWithContext(context.Context) GetLoadBalancersBalancerBackendServerOutput
+}
+
+type GetLoadBalancersBalancerBackendServerArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	ServerId    pulumi.StringInput `pulumi:"serverId"`
+	Type        pulumi.StringInput `pulumi:"type"`
+	Weight      pulumi.IntInput    `pulumi:"weight"`
+}
+
+func (GetLoadBalancersBalancerBackendServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersBalancerBackendServer)(nil)).Elem()
+}
+
+func (i GetLoadBalancersBalancerBackendServerArgs) ToGetLoadBalancersBalancerBackendServerOutput() GetLoadBalancersBalancerBackendServerOutput {
+	return i.ToGetLoadBalancersBalancerBackendServerOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersBalancerBackendServerArgs) ToGetLoadBalancersBalancerBackendServerOutputWithContext(ctx context.Context) GetLoadBalancersBalancerBackendServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerBackendServerOutput)
+}
+
+// GetLoadBalancersBalancerBackendServerArrayInput is an input type that accepts GetLoadBalancersBalancerBackendServerArray and GetLoadBalancersBalancerBackendServerArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancersBalancerBackendServerArrayInput` via:
+//
+//          GetLoadBalancersBalancerBackendServerArray{ GetLoadBalancersBalancerBackendServerArgs{...} }
+type GetLoadBalancersBalancerBackendServerArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersBalancerBackendServerArrayOutput() GetLoadBalancersBalancerBackendServerArrayOutput
+	ToGetLoadBalancersBalancerBackendServerArrayOutputWithContext(context.Context) GetLoadBalancersBalancerBackendServerArrayOutput
+}
+
+type GetLoadBalancersBalancerBackendServerArray []GetLoadBalancersBalancerBackendServerInput
+
+func (GetLoadBalancersBalancerBackendServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancersBalancerBackendServer)(nil)).Elem()
+}
+
+func (i GetLoadBalancersBalancerBackendServerArray) ToGetLoadBalancersBalancerBackendServerArrayOutput() GetLoadBalancersBalancerBackendServerArrayOutput {
+	return i.ToGetLoadBalancersBalancerBackendServerArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersBalancerBackendServerArray) ToGetLoadBalancersBalancerBackendServerArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerBackendServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerBackendServerArrayOutput)
+}
+
+type GetLoadBalancersBalancerBackendServerOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersBalancerBackendServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersBalancerBackendServer)(nil)).Elem()
+}
+
+func (o GetLoadBalancersBalancerBackendServerOutput) ToGetLoadBalancersBalancerBackendServerOutput() GetLoadBalancersBalancerBackendServerOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerBackendServerOutput) ToGetLoadBalancersBalancerBackendServerOutputWithContext(ctx context.Context) GetLoadBalancersBalancerBackendServerOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerBackendServerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerBackendServer) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerBackendServerOutput) ServerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerBackendServer) string { return v.ServerId }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerBackendServerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerBackendServer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerBackendServerOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerBackendServer) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetLoadBalancersBalancerBackendServerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersBalancerBackendServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancersBalancerBackendServer)(nil)).Elem()
+}
+
+func (o GetLoadBalancersBalancerBackendServerArrayOutput) ToGetLoadBalancersBalancerBackendServerArrayOutput() GetLoadBalancersBalancerBackendServerArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerBackendServerArrayOutput) ToGetLoadBalancersBalancerBackendServerArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerBackendServerArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerBackendServerArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersBalancerBackendServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancersBalancerBackendServer {
+		return vs[0].([]GetLoadBalancersBalancerBackendServer)[vs[1].(int)]
+	}).(GetLoadBalancersBalancerBackendServerOutput)
+}
+
+type GetLoadBalancersBalancerListenerPortsAndProtocal struct {
+	ListenerPort     int    `pulumi:"listenerPort"`
+	ListenerProtocal string `pulumi:"listenerProtocal"`
+}
+
+// GetLoadBalancersBalancerListenerPortsAndProtocalInput is an input type that accepts GetLoadBalancersBalancerListenerPortsAndProtocalArgs and GetLoadBalancersBalancerListenerPortsAndProtocalOutput values.
+// You can construct a concrete instance of `GetLoadBalancersBalancerListenerPortsAndProtocalInput` via:
+//
+//          GetLoadBalancersBalancerListenerPortsAndProtocalArgs{...}
+type GetLoadBalancersBalancerListenerPortsAndProtocalInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersBalancerListenerPortsAndProtocalOutput() GetLoadBalancersBalancerListenerPortsAndProtocalOutput
+	ToGetLoadBalancersBalancerListenerPortsAndProtocalOutputWithContext(context.Context) GetLoadBalancersBalancerListenerPortsAndProtocalOutput
+}
+
+type GetLoadBalancersBalancerListenerPortsAndProtocalArgs struct {
+	ListenerPort     pulumi.IntInput    `pulumi:"listenerPort"`
+	ListenerProtocal pulumi.StringInput `pulumi:"listenerProtocal"`
+}
+
+func (GetLoadBalancersBalancerListenerPortsAndProtocalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersBalancerListenerPortsAndProtocal)(nil)).Elem()
+}
+
+func (i GetLoadBalancersBalancerListenerPortsAndProtocalArgs) ToGetLoadBalancersBalancerListenerPortsAndProtocalOutput() GetLoadBalancersBalancerListenerPortsAndProtocalOutput {
+	return i.ToGetLoadBalancersBalancerListenerPortsAndProtocalOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersBalancerListenerPortsAndProtocalArgs) ToGetLoadBalancersBalancerListenerPortsAndProtocalOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerListenerPortsAndProtocalOutput)
+}
+
+// GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput is an input type that accepts GetLoadBalancersBalancerListenerPortsAndProtocalArray and GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput` via:
+//
+//          GetLoadBalancersBalancerListenerPortsAndProtocalArray{ GetLoadBalancersBalancerListenerPortsAndProtocalArgs{...} }
+type GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput() GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput
+	ToGetLoadBalancersBalancerListenerPortsAndProtocalArrayOutputWithContext(context.Context) GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput
+}
+
+type GetLoadBalancersBalancerListenerPortsAndProtocalArray []GetLoadBalancersBalancerListenerPortsAndProtocalInput
+
+func (GetLoadBalancersBalancerListenerPortsAndProtocalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancersBalancerListenerPortsAndProtocal)(nil)).Elem()
+}
+
+func (i GetLoadBalancersBalancerListenerPortsAndProtocalArray) ToGetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput() GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput {
+	return i.ToGetLoadBalancersBalancerListenerPortsAndProtocalArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersBalancerListenerPortsAndProtocalArray) ToGetLoadBalancersBalancerListenerPortsAndProtocalArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput)
+}
+
+type GetLoadBalancersBalancerListenerPortsAndProtocalOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersBalancerListenerPortsAndProtocal)(nil)).Elem()
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocalOutput() GetLoadBalancersBalancerListenerPortsAndProtocalOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocalOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocalOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ListenerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocal) int { return v.ListenerPort }).(pulumi.IntOutput)
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocalOutput) ListenerProtocal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocal) string { return v.ListenerProtocal }).(pulumi.StringOutput)
+}
+
+type GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancersBalancerListenerPortsAndProtocal)(nil)).Elem()
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput() GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocalArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersBalancerListenerPortsAndProtocalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancersBalancerListenerPortsAndProtocal {
+		return vs[0].([]GetLoadBalancersBalancerListenerPortsAndProtocal)[vs[1].(int)]
+	}).(GetLoadBalancersBalancerListenerPortsAndProtocalOutput)
+}
+
+type GetLoadBalancersBalancerListenerPortsAndProtocol struct {
+	Description      string `pulumi:"description"`
+	ForwardPort      int    `pulumi:"forwardPort"`
+	ListenerForward  string `pulumi:"listenerForward"`
+	ListenerPort     int    `pulumi:"listenerPort"`
+	ListenerProtocol string `pulumi:"listenerProtocol"`
+}
+
+// GetLoadBalancersBalancerListenerPortsAndProtocolInput is an input type that accepts GetLoadBalancersBalancerListenerPortsAndProtocolArgs and GetLoadBalancersBalancerListenerPortsAndProtocolOutput values.
+// You can construct a concrete instance of `GetLoadBalancersBalancerListenerPortsAndProtocolInput` via:
+//
+//          GetLoadBalancersBalancerListenerPortsAndProtocolArgs{...}
+type GetLoadBalancersBalancerListenerPortsAndProtocolInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersBalancerListenerPortsAndProtocolOutput() GetLoadBalancersBalancerListenerPortsAndProtocolOutput
+	ToGetLoadBalancersBalancerListenerPortsAndProtocolOutputWithContext(context.Context) GetLoadBalancersBalancerListenerPortsAndProtocolOutput
+}
+
+type GetLoadBalancersBalancerListenerPortsAndProtocolArgs struct {
+	Description      pulumi.StringInput `pulumi:"description"`
+	ForwardPort      pulumi.IntInput    `pulumi:"forwardPort"`
+	ListenerForward  pulumi.StringInput `pulumi:"listenerForward"`
+	ListenerPort     pulumi.IntInput    `pulumi:"listenerPort"`
+	ListenerProtocol pulumi.StringInput `pulumi:"listenerProtocol"`
+}
+
+func (GetLoadBalancersBalancerListenerPortsAndProtocolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersBalancerListenerPortsAndProtocol)(nil)).Elem()
+}
+
+func (i GetLoadBalancersBalancerListenerPortsAndProtocolArgs) ToGetLoadBalancersBalancerListenerPortsAndProtocolOutput() GetLoadBalancersBalancerListenerPortsAndProtocolOutput {
+	return i.ToGetLoadBalancersBalancerListenerPortsAndProtocolOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersBalancerListenerPortsAndProtocolArgs) ToGetLoadBalancersBalancerListenerPortsAndProtocolOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerListenerPortsAndProtocolOutput)
+}
+
+// GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput is an input type that accepts GetLoadBalancersBalancerListenerPortsAndProtocolArray and GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput values.
+// You can construct a concrete instance of `GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput` via:
+//
+//          GetLoadBalancersBalancerListenerPortsAndProtocolArray{ GetLoadBalancersBalancerListenerPortsAndProtocolArgs{...} }
+type GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput() GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput
+	ToGetLoadBalancersBalancerListenerPortsAndProtocolArrayOutputWithContext(context.Context) GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput
+}
+
+type GetLoadBalancersBalancerListenerPortsAndProtocolArray []GetLoadBalancersBalancerListenerPortsAndProtocolInput
+
+func (GetLoadBalancersBalancerListenerPortsAndProtocolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancersBalancerListenerPortsAndProtocol)(nil)).Elem()
+}
+
+func (i GetLoadBalancersBalancerListenerPortsAndProtocolArray) ToGetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput() GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput {
+	return i.ToGetLoadBalancersBalancerListenerPortsAndProtocolArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadBalancersBalancerListenerPortsAndProtocolArray) ToGetLoadBalancersBalancerListenerPortsAndProtocolArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput)
+}
+
+type GetLoadBalancersBalancerListenerPortsAndProtocolOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadBalancersBalancerListenerPortsAndProtocol)(nil)).Elem()
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocolOutput() GetLoadBalancersBalancerListenerPortsAndProtocolOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocolOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocolOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocol) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ForwardPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocol) int { return v.ForwardPort }).(pulumi.IntOutput)
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ListenerForward() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocol) string { return v.ListenerForward }).(pulumi.StringOutput)
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ListenerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocol) int { return v.ListenerPort }).(pulumi.IntOutput)
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolOutput) ListenerProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancerListenerPortsAndProtocol) string { return v.ListenerProtocol }).(pulumi.StringOutput)
+}
+
+type GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadBalancersBalancerListenerPortsAndProtocol)(nil)).Elem()
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput() GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) ToGetLoadBalancersBalancerListenerPortsAndProtocolArrayOutputWithContext(ctx context.Context) GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput {
+	return o
+}
+
+func (o GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersBalancerListenerPortsAndProtocolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancersBalancerListenerPortsAndProtocol {
+		return vs[0].([]GetLoadBalancersBalancerListenerPortsAndProtocol)[vs[1].(int)]
+	}).(GetLoadBalancersBalancerListenerPortsAndProtocolOutput)
 }
 
 type GetLoadBalancersSlb struct {
@@ -3183,6 +3890,14 @@ func init() {
 	pulumi.RegisterOutputType(GetDomainExtensionsExtensionArrayOutput{})
 	pulumi.RegisterOutputType(GetListenersSlbListenerOutput{})
 	pulumi.RegisterOutputType(GetListenersSlbListenerArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersBalancerOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersBalancerArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersBalancerBackendServerOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersBalancerBackendServerArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersBalancerListenerPortsAndProtocalOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersBalancerListenerPortsAndProtocalArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersBalancerListenerPortsAndProtocolOutput{})
+	pulumi.RegisterOutputType(GetLoadBalancersBalancerListenerPortsAndProtocolArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersSlbOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersSlbArrayOutput{})
 	pulumi.RegisterOutputType(GetMasterSlaveServerGroupsGroupOutput{})

@@ -17,62 +17,6 @@ import * as utilities from "../utilities";
  * * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
  * * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "testcreatehttplistener";
- * const ipVersion = config.get("ipVersion") || "ipv4";
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
- *     internetChargeType: "PayByTraffic",
- *     internet: true,
- * });
- * const defaultAcl = new alicloud.slb.Acl("defaultAcl", {
- *     ipVersion: ipVersion,
- *     entryLists: [
- *         {
- *             entry: "10.10.10.0/24",
- *             comment: "first",
- *         },
- *         {
- *             entry: "168.10.10.0/24",
- *             comment: "second",
- *         },
- *     ],
- * });
- * const defaultListener = new alicloud.slb.Listener("defaultListener", {
- *     loadBalancerId: defaultLoadBalancer.id,
- *     backendPort: 80,
- *     frontendPort: 80,
- *     protocol: "http",
- *     bandwidth: 10,
- *     stickySession: "on",
- *     stickySessionType: "insert",
- *     cookieTimeout: 86400,
- *     cookie: "testslblistenercookie",
- *     healthCheck: "on",
- *     healthCheckDomain: "ali.com",
- *     healthCheckUri: "/cons",
- *     healthCheckConnectPort: 20,
- *     healthyThreshold: 8,
- *     unhealthyThreshold: 8,
- *     healthCheckTimeout: 8,
- *     healthCheckInterval: 5,
- *     healthCheckHttpCode: "http_2xx,http_3xx",
- *     xForwardedFor: {
- *         retriveSlbIp: true,
- *         retriveSlbId: true,
- *     },
- *     aclStatus: "on",
- *     aclType: "white",
- *     aclId: defaultAcl.id,
- *     requestTimeout: 80,
- *     idleTimeout: 30,
- * });
- * ```
  * ## Listener fields and protocol mapping
  *
  * load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:

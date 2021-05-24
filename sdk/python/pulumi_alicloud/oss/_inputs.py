@@ -19,6 +19,7 @@ __all__ = [
     'BucketLoggingArgs',
     'BucketRefererConfigArgs',
     'BucketServerSideEncryptionRuleArgs',
+    'BucketTransferAccelerationArgs',
     'BucketVersioningArgs',
     'BucketWebsiteArgs',
 ]
@@ -120,7 +121,7 @@ class BucketLifecycleRuleArgs:
                  prefix: Optional[pulumi.Input[str]] = None,
                  transitions: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]] = None):
         """
-        :param pulumi.Input[bool] enabled: Specifies lifecycle rule status.
+        :param pulumi.Input[bool] enabled: Specifies the accelerate status of a bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleAbortMultipartUploadArgs']]] abort_multipart_uploads: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgs']]] expirations: Specifies a period in the object's expire (documented below).
         :param pulumi.Input[str] id: Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
@@ -149,7 +150,7 @@ class BucketLifecycleRuleArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Specifies lifecycle rule status.
+        Specifies the accelerate status of a bucket.
         """
         return pulumi.get(self, "enabled")
 
@@ -574,6 +575,28 @@ class BucketServerSideEncryptionRuleArgs:
     @kms_master_key_id.setter
     def kms_master_key_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_master_key_id", value)
+
+
+@pulumi.input_type
+class BucketTransferAccelerationArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Specifies the accelerate status of a bucket.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Specifies the accelerate status of a bucket.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

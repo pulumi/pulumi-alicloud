@@ -4123,7 +4123,7 @@ func (o NodePoolManagementPtrOutput) SurgePercentage() pulumi.IntPtrOutput {
 type NodePoolScalingConfig struct {
 	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
 	EipBandwidth *int `pulumi:"eipBandwidth"`
-	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
 	EipInternetChargeType *string `pulumi:"eipInternetChargeType"`
 	// Whether to bind EIP for an instance. Default: `false`.
 	IsBondEip *bool `pulumi:"isBondEip"`
@@ -4149,7 +4149,7 @@ type NodePoolScalingConfigInput interface {
 type NodePoolScalingConfigArgs struct {
 	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
 	EipBandwidth pulumi.IntPtrInput `pulumi:"eipBandwidth"`
-	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
 	EipInternetChargeType pulumi.StringPtrInput `pulumi:"eipInternetChargeType"`
 	// Whether to bind EIP for an instance. Default: `false`.
 	IsBondEip pulumi.BoolPtrInput `pulumi:"isBondEip"`
@@ -4243,7 +4243,7 @@ func (o NodePoolScalingConfigOutput) EipBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolScalingConfig) *int { return v.EipBandwidth }).(pulumi.IntPtrOutput)
 }
 
-// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
 func (o NodePoolScalingConfigOutput) EipInternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolScalingConfig) *string { return v.EipInternetChargeType }).(pulumi.StringPtrOutput)
 }
@@ -4296,7 +4296,7 @@ func (o NodePoolScalingConfigPtrOutput) EipBandwidth() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
 func (o NodePoolScalingConfigPtrOutput) EipInternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolScalingConfig) *string {
 		if v == nil {
@@ -4344,6 +4344,112 @@ func (o NodePoolScalingConfigPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type NodePoolSpotPriceLimit struct {
+	// Spot instance type.
+	InstanceType *string `pulumi:"instanceType"`
+	// The maximum hourly price of the spot instance.
+	PriceLimit *string `pulumi:"priceLimit"`
+}
+
+// NodePoolSpotPriceLimitInput is an input type that accepts NodePoolSpotPriceLimitArgs and NodePoolSpotPriceLimitOutput values.
+// You can construct a concrete instance of `NodePoolSpotPriceLimitInput` via:
+//
+//          NodePoolSpotPriceLimitArgs{...}
+type NodePoolSpotPriceLimitInput interface {
+	pulumi.Input
+
+	ToNodePoolSpotPriceLimitOutput() NodePoolSpotPriceLimitOutput
+	ToNodePoolSpotPriceLimitOutputWithContext(context.Context) NodePoolSpotPriceLimitOutput
+}
+
+type NodePoolSpotPriceLimitArgs struct {
+	// Spot instance type.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// The maximum hourly price of the spot instance.
+	PriceLimit pulumi.StringPtrInput `pulumi:"priceLimit"`
+}
+
+func (NodePoolSpotPriceLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolSpotPriceLimit)(nil)).Elem()
+}
+
+func (i NodePoolSpotPriceLimitArgs) ToNodePoolSpotPriceLimitOutput() NodePoolSpotPriceLimitOutput {
+	return i.ToNodePoolSpotPriceLimitOutputWithContext(context.Background())
+}
+
+func (i NodePoolSpotPriceLimitArgs) ToNodePoolSpotPriceLimitOutputWithContext(ctx context.Context) NodePoolSpotPriceLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolSpotPriceLimitOutput)
+}
+
+// NodePoolSpotPriceLimitArrayInput is an input type that accepts NodePoolSpotPriceLimitArray and NodePoolSpotPriceLimitArrayOutput values.
+// You can construct a concrete instance of `NodePoolSpotPriceLimitArrayInput` via:
+//
+//          NodePoolSpotPriceLimitArray{ NodePoolSpotPriceLimitArgs{...} }
+type NodePoolSpotPriceLimitArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolSpotPriceLimitArrayOutput() NodePoolSpotPriceLimitArrayOutput
+	ToNodePoolSpotPriceLimitArrayOutputWithContext(context.Context) NodePoolSpotPriceLimitArrayOutput
+}
+
+type NodePoolSpotPriceLimitArray []NodePoolSpotPriceLimitInput
+
+func (NodePoolSpotPriceLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolSpotPriceLimit)(nil)).Elem()
+}
+
+func (i NodePoolSpotPriceLimitArray) ToNodePoolSpotPriceLimitArrayOutput() NodePoolSpotPriceLimitArrayOutput {
+	return i.ToNodePoolSpotPriceLimitArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolSpotPriceLimitArray) ToNodePoolSpotPriceLimitArrayOutputWithContext(ctx context.Context) NodePoolSpotPriceLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolSpotPriceLimitArrayOutput)
+}
+
+type NodePoolSpotPriceLimitOutput struct{ *pulumi.OutputState }
+
+func (NodePoolSpotPriceLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolSpotPriceLimit)(nil)).Elem()
+}
+
+func (o NodePoolSpotPriceLimitOutput) ToNodePoolSpotPriceLimitOutput() NodePoolSpotPriceLimitOutput {
+	return o
+}
+
+func (o NodePoolSpotPriceLimitOutput) ToNodePoolSpotPriceLimitOutputWithContext(ctx context.Context) NodePoolSpotPriceLimitOutput {
+	return o
+}
+
+// Spot instance type.
+func (o NodePoolSpotPriceLimitOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolSpotPriceLimit) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The maximum hourly price of the spot instance.
+func (o NodePoolSpotPriceLimitOutput) PriceLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolSpotPriceLimit) *string { return v.PriceLimit }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolSpotPriceLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolSpotPriceLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolSpotPriceLimit)(nil)).Elem()
+}
+
+func (o NodePoolSpotPriceLimitArrayOutput) ToNodePoolSpotPriceLimitArrayOutput() NodePoolSpotPriceLimitArrayOutput {
+	return o
+}
+
+func (o NodePoolSpotPriceLimitArrayOutput) ToNodePoolSpotPriceLimitArrayOutputWithContext(ctx context.Context) NodePoolSpotPriceLimitArrayOutput {
+	return o
+}
+
+func (o NodePoolSpotPriceLimitArrayOutput) Index(i pulumi.IntInput) NodePoolSpotPriceLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolSpotPriceLimit {
+		return vs[0].([]NodePoolSpotPriceLimit)[vs[1].(int)]
+	}).(NodePoolSpotPriceLimitOutput)
 }
 
 type NodePoolTaint struct {
@@ -4459,9 +4565,11 @@ func (o NodePoolTaintArrayOutput) Index(i pulumi.IntInput) NodePoolTaintOutput {
 }
 
 type ServerlessKubernetesAddon struct {
-	Config   *string `pulumi:"config"`
-	Disabled *bool   `pulumi:"disabled"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// The ACK add-on configurations.
+	Config *string `pulumi:"config"`
+	// Disables the automatic installation of a component. Default is `false`.
+	Disabled *bool `pulumi:"disabled"`
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name *string `pulumi:"name"`
 }
 
@@ -4477,9 +4585,11 @@ type ServerlessKubernetesAddonInput interface {
 }
 
 type ServerlessKubernetesAddonArgs struct {
-	Config   pulumi.StringPtrInput `pulumi:"config"`
-	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// The ACK add-on configurations.
+	Config pulumi.StringPtrInput `pulumi:"config"`
+	// Disables the automatic installation of a component. Default is `false`.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -4534,15 +4644,17 @@ func (o ServerlessKubernetesAddonOutput) ToServerlessKubernetesAddonOutputWithCo
 	return o
 }
 
+// The ACK add-on configurations.
 func (o ServerlessKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
+// Disables the automatic installation of a component. Default is `false`.
 func (o ServerlessKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerlessKubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The kubernetes cluster's name. It is the only in one Alicloud account.
+// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 func (o ServerlessKubernetesAddonOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -7688,6 +7800,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolScalingConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolScalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolSpotPriceLimitOutput{})
+	pulumi.RegisterOutputType(NodePoolSpotPriceLimitArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolTaintOutput{})
 	pulumi.RegisterOutputType(NodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonOutput{})

@@ -11,22 +11,22 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 {
 
     [OutputType]
-    public sealed class DedicatedHostNetworkAttribute
+    public sealed class GetDedicatedHostsHostNetworkAttributeResult
     {
         /// <summary>
-        /// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
+        /// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
         /// </summary>
-        public readonly int? SlbUdpTimeout;
+        public readonly int SlbUdpTimeout;
         /// <summary>
-        /// The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
+        /// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
         /// </summary>
-        public readonly int? UdpTimeout;
+        public readonly int UdpTimeout;
 
         [OutputConstructor]
-        private DedicatedHostNetworkAttribute(
-            int? slbUdpTimeout,
+        private GetDedicatedHostsHostNetworkAttributeResult(
+            int slbUdpTimeout,
 
-            int? udpTimeout)
+            int udpTimeout)
         {
             SlbUdpTimeout = slbUdpTimeout;
             UdpTimeout = udpTimeout;

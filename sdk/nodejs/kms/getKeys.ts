@@ -34,6 +34,8 @@ export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promis
     }
     return pulumi.runtime.invoke("alicloud:kms/getKeys:getKeys", {
         "descriptionRegex": args.descriptionRegex,
+        "enableDetails": args.enableDetails,
+        "filters": args.filters,
         "ids": args.ids,
         "outputFile": args.outputFile,
         "status": args.status,
@@ -48,6 +50,8 @@ export interface GetKeysArgs {
      * A regex string to filter the results by the KMS key description.
      */
     readonly descriptionRegex?: string;
+    readonly enableDetails?: boolean;
+    readonly filters?: string;
     /**
      * A list of KMS key IDs.
      */
@@ -64,6 +68,8 @@ export interface GetKeysArgs {
  */
 export interface GetKeysResult {
     readonly descriptionRegex?: string;
+    readonly enableDetails?: boolean;
+    readonly filters?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

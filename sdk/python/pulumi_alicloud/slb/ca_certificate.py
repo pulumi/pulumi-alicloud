@@ -14,17 +14,23 @@ __all__ = ['CaCertificateArgs', 'CaCertificate']
 class CaCertificateArgs:
     def __init__(__self__, *,
                  ca_certificate: pulumi.Input[str],
+                 ca_certificate_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a CaCertificate resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
-        :param pulumi.Input[str] name: Name of the CA Certificate.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if ca_certificate_name is not None:
+            pulumi.set(__self__, "ca_certificate_name", ca_certificate_name)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
@@ -45,10 +51,19 @@ class CaCertificateArgs:
         pulumi.set(self, "ca_certificate", value)
 
     @property
+    @pulumi.getter(name="caCertificateName")
+    def ca_certificate_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ca_certificate_name")
+
+    @ca_certificate_name.setter
+    def ca_certificate_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_certificate_name", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the CA Certificate.
+        Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         """
         return pulumi.get(self, "name")
 
@@ -85,18 +100,24 @@ class CaCertificateArgs:
 class _CaCertificateState:
     def __init__(__self__, *,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
+                 ca_certificate_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering CaCertificate resources.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
-        :param pulumi.Input[str] name: Name of the CA Certificate.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if ca_certificate is not None:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if ca_certificate_name is not None:
+            pulumi.set(__self__, "ca_certificate_name", ca_certificate_name)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
@@ -117,10 +138,19 @@ class _CaCertificateState:
         pulumi.set(self, "ca_certificate", value)
 
     @property
+    @pulumi.getter(name="caCertificateName")
+    def ca_certificate_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ca_certificate_name")
+
+    @ca_certificate_name.setter
+    def ca_certificate_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_certificate_name", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the CA Certificate.
+        Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         """
         return pulumi.get(self, "name")
 
@@ -159,6 +189,7 @@ class CaCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
+                 ca_certificate_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -179,10 +210,12 @@ class CaCertificate(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # create a CA certificate
-        foo = alicloud.slb.CaCertificate("foo", ca_certificate=\"\"\"-----BEGIN CERTIFICATE-----
+        foo = alicloud.slb.CaCertificate("foo",
+            ca_certificate=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
         -----END CERTIFICATE-----
-        \"\"\")
+        \"\"\",
+            ca_certificate_name="tf-testAccSlbCACertificate")
         ```
 
         * using CA certificate file
@@ -191,7 +224,9 @@ class CaCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_file = alicloud.slb.CaCertificate("foo-file", ca_certificate=(lambda path: open(path).read())(f"{path['module']}/ca_certificate.pem"))
+        foo_file = alicloud.slb.CaCertificate("foo-file",
+            ca_certificate_name="tf-testAccSlbCACertificate",
+            ca_certificate=(lambda path: open(path).read())(f"{path['module']}/ca_certificate.pem"))
         ```
 
         ## Import
@@ -205,7 +240,7 @@ class CaCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
-        :param pulumi.Input[str] name: Name of the CA Certificate.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -231,10 +266,12 @@ class CaCertificate(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # create a CA certificate
-        foo = alicloud.slb.CaCertificate("foo", ca_certificate=\"\"\"-----BEGIN CERTIFICATE-----
+        foo = alicloud.slb.CaCertificate("foo",
+            ca_certificate=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
         -----END CERTIFICATE-----
-        \"\"\")
+        \"\"\",
+            ca_certificate_name="tf-testAccSlbCACertificate")
         ```
 
         * using CA certificate file
@@ -243,7 +280,9 @@ class CaCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_file = alicloud.slb.CaCertificate("foo-file", ca_certificate=(lambda path: open(path).read())(f"{path['module']}/ca_certificate.pem"))
+        foo_file = alicloud.slb.CaCertificate("foo-file",
+            ca_certificate_name="tf-testAccSlbCACertificate",
+            ca_certificate=(lambda path: open(path).read())(f"{path['module']}/ca_certificate.pem"))
         ```
 
         ## Import
@@ -270,6 +309,7 @@ class CaCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
+                 ca_certificate_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -288,6 +328,10 @@ class CaCertificate(pulumi.CustomResource):
             if ca_certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'ca_certificate'")
             __props__.__dict__["ca_certificate"] = ca_certificate
+            __props__.__dict__["ca_certificate_name"] = ca_certificate_name
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
             __props__.__dict__["name"] = name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
@@ -302,6 +346,7 @@ class CaCertificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ca_certificate: Optional[pulumi.Input[str]] = None,
+            ca_certificate_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'CaCertificate':
@@ -313,7 +358,7 @@ class CaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
-        :param pulumi.Input[str] name: Name of the CA Certificate.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -322,6 +367,7 @@ class CaCertificate(pulumi.CustomResource):
         __props__ = _CaCertificateState.__new__(_CaCertificateState)
 
         __props__.__dict__["ca_certificate"] = ca_certificate
+        __props__.__dict__["ca_certificate_name"] = ca_certificate_name
         __props__.__dict__["name"] = name
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["tags"] = tags
@@ -336,10 +382,15 @@ class CaCertificate(pulumi.CustomResource):
         return pulumi.get(self, "ca_certificate")
 
     @property
+    @pulumi.getter(name="caCertificateName")
+    def ca_certificate_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "ca_certificate_name")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the CA Certificate.
+        Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         """
         return pulumi.get(self, "name")
 

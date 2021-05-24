@@ -20,19 +20,37 @@ class GetLoadBalancersResult:
     """
     A collection of values returned by getLoadBalancers.
     """
-    def __init__(__self__, address=None, id=None, ids=None, master_availability_zone=None, name_regex=None, names=None, network_type=None, output_file=None, resource_group_id=None, slave_availability_zone=None, slbs=None, tags=None, vpc_id=None, vswitch_id=None):
+    def __init__(__self__, address=None, address_ip_version=None, address_type=None, balancers=None, enable_details=None, id=None, ids=None, internet_charge_type=None, load_balancer_name=None, master_zone_id=None, name_regex=None, names=None, network_type=None, output_file=None, payment_type=None, resource_group_id=None, server_id=None, server_intranet_address=None, slave_zone_id=None, slbs=None, status=None, tags=None, vpc_id=None, vswitch_id=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
+        if address_ip_version and not isinstance(address_ip_version, str):
+            raise TypeError("Expected argument 'address_ip_version' to be a str")
+        pulumi.set(__self__, "address_ip_version", address_ip_version)
+        if address_type and not isinstance(address_type, str):
+            raise TypeError("Expected argument 'address_type' to be a str")
+        pulumi.set(__self__, "address_type", address_type)
+        if balancers and not isinstance(balancers, list):
+            raise TypeError("Expected argument 'balancers' to be a list")
+        pulumi.set(__self__, "balancers", balancers)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
-        if master_availability_zone and not isinstance(master_availability_zone, str):
-            raise TypeError("Expected argument 'master_availability_zone' to be a str")
-        pulumi.set(__self__, "master_availability_zone", master_availability_zone)
+        if internet_charge_type and not isinstance(internet_charge_type, str):
+            raise TypeError("Expected argument 'internet_charge_type' to be a str")
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if load_balancer_name and not isinstance(load_balancer_name, str):
+            raise TypeError("Expected argument 'load_balancer_name' to be a str")
+        pulumi.set(__self__, "load_balancer_name", load_balancer_name)
+        if master_zone_id and not isinstance(master_zone_id, str):
+            raise TypeError("Expected argument 'master_zone_id' to be a str")
+        pulumi.set(__self__, "master_zone_id", master_zone_id)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         pulumi.set(__self__, "name_regex", name_regex)
@@ -45,15 +63,31 @@ class GetLoadBalancersResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if payment_type and not isinstance(payment_type, str):
+            raise TypeError("Expected argument 'payment_type' to be a str")
+        pulumi.set(__self__, "payment_type", payment_type)
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
         pulumi.set(__self__, "resource_group_id", resource_group_id)
-        if slave_availability_zone and not isinstance(slave_availability_zone, str):
-            raise TypeError("Expected argument 'slave_availability_zone' to be a str")
-        pulumi.set(__self__, "slave_availability_zone", slave_availability_zone)
+        if server_id and not isinstance(server_id, str):
+            raise TypeError("Expected argument 'server_id' to be a str")
+        pulumi.set(__self__, "server_id", server_id)
+        if server_intranet_address and not isinstance(server_intranet_address, str):
+            raise TypeError("Expected argument 'server_intranet_address' to be a str")
+        pulumi.set(__self__, "server_intranet_address", server_intranet_address)
+        if slave_zone_id and not isinstance(slave_zone_id, str):
+            raise TypeError("Expected argument 'slave_zone_id' to be a str")
+        pulumi.set(__self__, "slave_zone_id", slave_zone_id)
         if slbs and not isinstance(slbs, list):
             raise TypeError("Expected argument 'slbs' to be a list")
+        if slbs is not None:
+            warnings.warn("""Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""", DeprecationWarning)
+            pulumi.log.warn("""slbs is deprecated: Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""")
+
         pulumi.set(__self__, "slbs", slbs)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
@@ -73,6 +107,26 @@ class GetLoadBalancersResult:
         return pulumi.get(self, "address")
 
     @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> Optional[str]:
+        return pulumi.get(self, "address_ip_version")
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> Optional[str]:
+        return pulumi.get(self, "address_type")
+
+    @property
+    @pulumi.getter
+    def balancers(self) -> Sequence['outputs.GetLoadBalancersBalancerResult']:
+        return pulumi.get(self, "balancers")
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -89,12 +143,19 @@ class GetLoadBalancersResult:
         return pulumi.get(self, "ids")
 
     @property
-    @pulumi.getter(name="masterAvailabilityZone")
-    def master_availability_zone(self) -> Optional[str]:
-        """
-        Master availability zone of the SLBs.
-        """
-        return pulumi.get(self, "master_availability_zone")
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> Optional[str]:
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="loadBalancerName")
+    def load_balancer_name(self) -> Optional[str]:
+        return pulumi.get(self, "load_balancer_name")
+
+    @property
+    @pulumi.getter(name="masterZoneId")
+    def master_zone_id(self) -> Optional[str]:
+        return pulumi.get(self, "master_zone_id")
 
     @property
     @pulumi.getter(name="nameRegex")
@@ -123,17 +184,29 @@ class GetLoadBalancersResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[str]:
+        return pulumi.get(self, "payment_type")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
         return pulumi.get(self, "resource_group_id")
 
     @property
-    @pulumi.getter(name="slaveAvailabilityZone")
-    def slave_availability_zone(self) -> Optional[str]:
-        """
-        Slave availability zone of the SLBs.
-        """
-        return pulumi.get(self, "slave_availability_zone")
+    @pulumi.getter(name="serverId")
+    def server_id(self) -> Optional[str]:
+        return pulumi.get(self, "server_id")
+
+    @property
+    @pulumi.getter(name="serverIntranetAddress")
+    def server_intranet_address(self) -> Optional[str]:
+        return pulumi.get(self, "server_intranet_address")
+
+    @property
+    @pulumi.getter(name="slaveZoneId")
+    def slave_zone_id(self) -> Optional[str]:
+        return pulumi.get(self, "slave_zone_id")
 
     @property
     @pulumi.getter
@@ -142,6 +215,14 @@ class GetLoadBalancersResult:
         A list of SLBs. Each element contains the following attributes:
         """
         return pulumi.get(self, "slbs")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        SLB current status. Possible values: `inactive`, `active` and `locked`.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
@@ -175,55 +256,61 @@ class AwaitableGetLoadBalancersResult(GetLoadBalancersResult):
             yield self
         return GetLoadBalancersResult(
             address=self.address,
+            address_ip_version=self.address_ip_version,
+            address_type=self.address_type,
+            balancers=self.balancers,
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
-            master_availability_zone=self.master_availability_zone,
+            internet_charge_type=self.internet_charge_type,
+            load_balancer_name=self.load_balancer_name,
+            master_zone_id=self.master_zone_id,
             name_regex=self.name_regex,
             names=self.names,
             network_type=self.network_type,
             output_file=self.output_file,
+            payment_type=self.payment_type,
             resource_group_id=self.resource_group_id,
-            slave_availability_zone=self.slave_availability_zone,
+            server_id=self.server_id,
+            server_intranet_address=self.server_intranet_address,
+            slave_zone_id=self.slave_zone_id,
             slbs=self.slbs,
+            status=self.status,
             tags=self.tags,
             vpc_id=self.vpc_id,
             vswitch_id=self.vswitch_id)
 
 
 def get_load_balancers(address: Optional[str] = None,
+                       address_ip_version: Optional[str] = None,
+                       address_type: Optional[str] = None,
+                       enable_details: Optional[bool] = None,
                        ids: Optional[Sequence[str]] = None,
-                       master_availability_zone: Optional[str] = None,
+                       internet_charge_type: Optional[str] = None,
+                       load_balancer_name: Optional[str] = None,
+                       master_zone_id: Optional[str] = None,
                        name_regex: Optional[str] = None,
                        network_type: Optional[str] = None,
                        output_file: Optional[str] = None,
+                       payment_type: Optional[str] = None,
                        resource_group_id: Optional[str] = None,
-                       slave_availability_zone: Optional[str] = None,
+                       server_id: Optional[str] = None,
+                       server_intranet_address: Optional[str] = None,
+                       slave_zone_id: Optional[str] = None,
+                       status: Optional[str] = None,
                        tags: Optional[Mapping[str, Any]] = None,
                        vpc_id: Optional[str] = None,
                        vswitch_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancersResult:
     """
-    This data source provides the server load balancers of the current Alibaba Cloud user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.slb.LoadBalancer("default")
-    slbs_ds = alicloud.slb.get_load_balancers(name_regex="sample_slb")
-    pulumi.export("firstSlbId", slbs_ds.slbs[0].id)
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str address: Service address of the SLBs.
     :param Sequence[str] ids: A list of SLBs IDs.
-    :param str master_availability_zone: Master availability zone of the SLBs.
     :param str name_regex: A regex string to filter results by SLB name.
     :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
     :param str resource_group_id: The Id of resource group which SLB belongs.
-    :param str slave_availability_zone: Slave availability zone of the SLBs.
+    :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
     :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
            ```python
            import pulumi
@@ -239,13 +326,22 @@ def get_load_balancers(address: Optional[str] = None,
     """
     __args__ = dict()
     __args__['address'] = address
+    __args__['addressIpVersion'] = address_ip_version
+    __args__['addressType'] = address_type
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
-    __args__['masterAvailabilityZone'] = master_availability_zone
+    __args__['internetChargeType'] = internet_charge_type
+    __args__['loadBalancerName'] = load_balancer_name
+    __args__['masterZoneId'] = master_zone_id
     __args__['nameRegex'] = name_regex
     __args__['networkType'] = network_type
     __args__['outputFile'] = output_file
+    __args__['paymentType'] = payment_type
     __args__['resourceGroupId'] = resource_group_id
-    __args__['slaveAvailabilityZone'] = slave_availability_zone
+    __args__['serverId'] = server_id
+    __args__['serverIntranetAddress'] = server_intranet_address
+    __args__['slaveZoneId'] = slave_zone_id
+    __args__['status'] = status
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
     __args__['vswitchId'] = vswitch_id
@@ -257,16 +353,26 @@ def get_load_balancers(address: Optional[str] = None,
 
     return AwaitableGetLoadBalancersResult(
         address=__ret__.address,
+        address_ip_version=__ret__.address_ip_version,
+        address_type=__ret__.address_type,
+        balancers=__ret__.balancers,
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
-        master_availability_zone=__ret__.master_availability_zone,
+        internet_charge_type=__ret__.internet_charge_type,
+        load_balancer_name=__ret__.load_balancer_name,
+        master_zone_id=__ret__.master_zone_id,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         network_type=__ret__.network_type,
         output_file=__ret__.output_file,
+        payment_type=__ret__.payment_type,
         resource_group_id=__ret__.resource_group_id,
-        slave_availability_zone=__ret__.slave_availability_zone,
+        server_id=__ret__.server_id,
+        server_intranet_address=__ret__.server_intranet_address,
+        slave_zone_id=__ret__.slave_zone_id,
         slbs=__ret__.slbs,
+        status=__ret__.status,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id,
         vswitch_id=__ret__.vswitch_id)

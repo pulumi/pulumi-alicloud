@@ -146,7 +146,7 @@ func (o BucketCorsRuleArrayOutput) Index(i pulumi.IntInput) BucketCorsRuleOutput
 type BucketLifecycleRule struct {
 	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
 	AbortMultipartUploads []BucketLifecycleRuleAbortMultipartUpload `pulumi:"abortMultipartUploads"`
-	// Specifies lifecycle rule status.
+	// Specifies the accelerate status of a bucket.
 	Enabled bool `pulumi:"enabled"`
 	// Specifies a period in the object's expire (documented below).
 	Expirations []BucketLifecycleRuleExpiration `pulumi:"expirations"`
@@ -176,7 +176,7 @@ type BucketLifecycleRuleInput interface {
 type BucketLifecycleRuleArgs struct {
 	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
 	AbortMultipartUploads BucketLifecycleRuleAbortMultipartUploadArrayInput `pulumi:"abortMultipartUploads"`
-	// Specifies lifecycle rule status.
+	// Specifies the accelerate status of a bucket.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Specifies a period in the object's expire (documented below).
 	Expirations BucketLifecycleRuleExpirationArrayInput `pulumi:"expirations"`
@@ -248,7 +248,7 @@ func (o BucketLifecycleRuleOutput) AbortMultipartUploads() BucketLifecycleRuleAb
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleAbortMultipartUpload { return v.AbortMultipartUploads }).(BucketLifecycleRuleAbortMultipartUploadArrayOutput)
 }
 
-// Specifies lifecycle rule status.
+// Specifies the accelerate status of a bucket.
 func (o BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1300,6 +1300,137 @@ func (o BucketServerSideEncryptionRulePtrOutput) SseAlgorithm() pulumi.StringPtr
 		}
 		return &v.SseAlgorithm
 	}).(pulumi.StringPtrOutput)
+}
+
+type BucketTransferAcceleration struct {
+	// Specifies the accelerate status of a bucket.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// BucketTransferAccelerationInput is an input type that accepts BucketTransferAccelerationArgs and BucketTransferAccelerationOutput values.
+// You can construct a concrete instance of `BucketTransferAccelerationInput` via:
+//
+//          BucketTransferAccelerationArgs{...}
+type BucketTransferAccelerationInput interface {
+	pulumi.Input
+
+	ToBucketTransferAccelerationOutput() BucketTransferAccelerationOutput
+	ToBucketTransferAccelerationOutputWithContext(context.Context) BucketTransferAccelerationOutput
+}
+
+type BucketTransferAccelerationArgs struct {
+	// Specifies the accelerate status of a bucket.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (BucketTransferAccelerationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketTransferAcceleration)(nil)).Elem()
+}
+
+func (i BucketTransferAccelerationArgs) ToBucketTransferAccelerationOutput() BucketTransferAccelerationOutput {
+	return i.ToBucketTransferAccelerationOutputWithContext(context.Background())
+}
+
+func (i BucketTransferAccelerationArgs) ToBucketTransferAccelerationOutputWithContext(ctx context.Context) BucketTransferAccelerationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketTransferAccelerationOutput)
+}
+
+func (i BucketTransferAccelerationArgs) ToBucketTransferAccelerationPtrOutput() BucketTransferAccelerationPtrOutput {
+	return i.ToBucketTransferAccelerationPtrOutputWithContext(context.Background())
+}
+
+func (i BucketTransferAccelerationArgs) ToBucketTransferAccelerationPtrOutputWithContext(ctx context.Context) BucketTransferAccelerationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketTransferAccelerationOutput).ToBucketTransferAccelerationPtrOutputWithContext(ctx)
+}
+
+// BucketTransferAccelerationPtrInput is an input type that accepts BucketTransferAccelerationArgs, BucketTransferAccelerationPtr and BucketTransferAccelerationPtrOutput values.
+// You can construct a concrete instance of `BucketTransferAccelerationPtrInput` via:
+//
+//          BucketTransferAccelerationArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketTransferAccelerationPtrInput interface {
+	pulumi.Input
+
+	ToBucketTransferAccelerationPtrOutput() BucketTransferAccelerationPtrOutput
+	ToBucketTransferAccelerationPtrOutputWithContext(context.Context) BucketTransferAccelerationPtrOutput
+}
+
+type bucketTransferAccelerationPtrType BucketTransferAccelerationArgs
+
+func BucketTransferAccelerationPtr(v *BucketTransferAccelerationArgs) BucketTransferAccelerationPtrInput {
+	return (*bucketTransferAccelerationPtrType)(v)
+}
+
+func (*bucketTransferAccelerationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketTransferAcceleration)(nil)).Elem()
+}
+
+func (i *bucketTransferAccelerationPtrType) ToBucketTransferAccelerationPtrOutput() BucketTransferAccelerationPtrOutput {
+	return i.ToBucketTransferAccelerationPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketTransferAccelerationPtrType) ToBucketTransferAccelerationPtrOutputWithContext(ctx context.Context) BucketTransferAccelerationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketTransferAccelerationPtrOutput)
+}
+
+type BucketTransferAccelerationOutput struct{ *pulumi.OutputState }
+
+func (BucketTransferAccelerationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketTransferAcceleration)(nil)).Elem()
+}
+
+func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationOutput() BucketTransferAccelerationOutput {
+	return o
+}
+
+func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationOutputWithContext(ctx context.Context) BucketTransferAccelerationOutput {
+	return o
+}
+
+func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationPtrOutput() BucketTransferAccelerationPtrOutput {
+	return o.ToBucketTransferAccelerationPtrOutputWithContext(context.Background())
+}
+
+func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationPtrOutputWithContext(ctx context.Context) BucketTransferAccelerationPtrOutput {
+	return o.ApplyT(func(v BucketTransferAcceleration) *BucketTransferAcceleration {
+		return &v
+	}).(BucketTransferAccelerationPtrOutput)
+}
+
+// Specifies the accelerate status of a bucket.
+func (o BucketTransferAccelerationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BucketTransferAcceleration) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type BucketTransferAccelerationPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketTransferAccelerationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketTransferAcceleration)(nil)).Elem()
+}
+
+func (o BucketTransferAccelerationPtrOutput) ToBucketTransferAccelerationPtrOutput() BucketTransferAccelerationPtrOutput {
+	return o
+}
+
+func (o BucketTransferAccelerationPtrOutput) ToBucketTransferAccelerationPtrOutputWithContext(ctx context.Context) BucketTransferAccelerationPtrOutput {
+	return o
+}
+
+func (o BucketTransferAccelerationPtrOutput) Elem() BucketTransferAccelerationOutput {
+	return o.ApplyT(func(v *BucketTransferAcceleration) BucketTransferAcceleration { return *v }).(BucketTransferAccelerationOutput)
+}
+
+// Specifies the accelerate status of a bucket.
+func (o BucketTransferAccelerationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketTransferAcceleration) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type BucketVersioning struct {
@@ -3337,6 +3468,8 @@ func init() {
 	pulumi.RegisterOutputType(BucketRefererConfigPtrOutput{})
 	pulumi.RegisterOutputType(BucketServerSideEncryptionRuleOutput{})
 	pulumi.RegisterOutputType(BucketServerSideEncryptionRulePtrOutput{})
+	pulumi.RegisterOutputType(BucketTransferAccelerationOutput{})
+	pulumi.RegisterOutputType(BucketTransferAccelerationPtrOutput{})
 	pulumi.RegisterOutputType(BucketVersioningOutput{})
 	pulumi.RegisterOutputType(BucketVersioningPtrOutput{})
 	pulumi.RegisterOutputType(BucketWebsiteOutput{})

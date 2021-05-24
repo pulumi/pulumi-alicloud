@@ -14,13 +14,17 @@ namespace Pulumi.AliCloud.Slb.Outputs
     public sealed class GetCaCertificatesCertificateResult
     {
         /// <summary>
+        /// (Available in v1.123.1+) CA certificate ID.
+        /// </summary>
+        public readonly string CaCertificateId;
+        /// <summary>
+        /// (Available in v1.123.1+) CA certificate name.
+        /// </summary>
+        public readonly string CaCertificateName;
+        /// <summary>
         /// CA certificate common name.
         /// </summary>
         public readonly string CommonName;
-        /// <summary>
-        /// CA certificate created time.
-        /// </summary>
-        public readonly string CreatedTime;
         /// <summary>
         /// CA certificate created timestamp.
         /// </summary>
@@ -42,13 +46,9 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// CA certificate name.
+        /// (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The region Id of CA certificate.
-        /// </summary>
-        public readonly string RegionId;
         /// <summary>
         /// The Id of resource group which ca certificates belongs.
         /// </summary>
@@ -56,13 +56,15 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, object> Tags;
 
         [OutputConstructor]
         private GetCaCertificatesCertificateResult(
-            string commonName,
+            string caCertificateId,
 
-            string createdTime,
+            string caCertificateName,
+
+            string commonName,
 
             int createdTimestamp,
 
@@ -76,21 +78,19 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
             string name,
 
-            string regionId,
-
             string resourceGroupId,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, object> tags)
         {
+            CaCertificateId = caCertificateId;
+            CaCertificateName = caCertificateName;
             CommonName = commonName;
-            CreatedTime = createdTime;
             CreatedTimestamp = createdTimestamp;
             ExpiredTime = expiredTime;
             ExpiredTimestamp = expiredTimestamp;
             Fingerprint = fingerprint;
             Id = id;
             Name = name;
-            RegionId = regionId;
             ResourceGroupId = resourceGroupId;
             Tags = tags;
         }

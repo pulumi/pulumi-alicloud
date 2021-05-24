@@ -7,36 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the server load balancers of the current Alibaba Cloud user.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.NewLoadBalancer(ctx, "_default", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt0 := "sample_slb"
-// 		slbsDs, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-// 			NameRegex: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstSlbId", slbsDs.Slbs[0].Id)
-// 		return nil
-// 	})
-// }
-// ```
 func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancersResult, error) {
 	var rv GetLoadBalancersResult
 	err := ctx.Invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", args, &rv, opts...)
@@ -49,20 +19,28 @@ func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...p
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersArgs struct {
 	// Service address of the SLBs.
-	Address *string `pulumi:"address"`
+	Address          *string `pulumi:"address"`
+	AddressIpVersion *string `pulumi:"addressIpVersion"`
+	AddressType      *string `pulumi:"addressType"`
+	EnableDetails    *bool   `pulumi:"enableDetails"`
 	// A list of SLBs IDs.
-	Ids []string `pulumi:"ids"`
-	// Master availability zone of the SLBs.
-	MasterAvailabilityZone *string `pulumi:"masterAvailabilityZone"`
+	Ids                []string `pulumi:"ids"`
+	InternetChargeType *string  `pulumi:"internetChargeType"`
+	LoadBalancerName   *string  `pulumi:"loadBalancerName"`
+	MasterZoneId       *string  `pulumi:"masterZoneId"`
 	// A regex string to filter results by SLB name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType *string `pulumi:"networkType"`
 	OutputFile  *string `pulumi:"outputFile"`
+	PaymentType *string `pulumi:"paymentType"`
 	// The Id of resource group which SLB belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Slave availability zone of the SLBs.
-	SlaveAvailabilityZone *string `pulumi:"slaveAvailabilityZone"`
+	ResourceGroupId       *string `pulumi:"resourceGroupId"`
+	ServerId              *string `pulumi:"serverId"`
+	ServerIntranetAddress *string `pulumi:"serverIntranetAddress"`
+	SlaveZoneId           *string `pulumi:"slaveZoneId"`
+	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	Status *string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
 	// ```go
 	// package main
@@ -97,24 +75,35 @@ type GetLoadBalancersArgs struct {
 // A collection of values returned by getLoadBalancers.
 type GetLoadBalancersResult struct {
 	// Service address of the SLB.
-	Address *string `pulumi:"address"`
+	Address          *string                    `pulumi:"address"`
+	AddressIpVersion *string                    `pulumi:"addressIpVersion"`
+	AddressType      *string                    `pulumi:"addressType"`
+	Balancers        []GetLoadBalancersBalancer `pulumi:"balancers"`
+	EnableDetails    *bool                      `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of slb IDs.
-	Ids []string `pulumi:"ids"`
-	// Master availability zone of the SLBs.
-	MasterAvailabilityZone *string `pulumi:"masterAvailabilityZone"`
-	NameRegex              *string `pulumi:"nameRegex"`
+	Ids                []string `pulumi:"ids"`
+	InternetChargeType *string  `pulumi:"internetChargeType"`
+	LoadBalancerName   *string  `pulumi:"loadBalancerName"`
+	MasterZoneId       *string  `pulumi:"masterZoneId"`
+	NameRegex          *string  `pulumi:"nameRegex"`
 	// A list of slb names.
 	Names []string `pulumi:"names"`
 	// Network type of the SLB. Possible values: `vpc` and `classic`.
-	NetworkType     *string `pulumi:"networkType"`
-	OutputFile      *string `pulumi:"outputFile"`
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Slave availability zone of the SLBs.
-	SlaveAvailabilityZone *string `pulumi:"slaveAvailabilityZone"`
+	NetworkType           *string `pulumi:"networkType"`
+	OutputFile            *string `pulumi:"outputFile"`
+	PaymentType           *string `pulumi:"paymentType"`
+	ResourceGroupId       *string `pulumi:"resourceGroupId"`
+	ServerId              *string `pulumi:"serverId"`
+	ServerIntranetAddress *string `pulumi:"serverIntranetAddress"`
+	SlaveZoneId           *string `pulumi:"slaveZoneId"`
 	// A list of SLBs. Each element contains the following attributes:
+	//
+	// Deprecated: Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.
 	Slbs []GetLoadBalancersSlb `pulumi:"slbs"`
+	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	Status *string `pulumi:"status"`
 	// A map of tags assigned to the SLB instance.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC the SLB belongs to.

@@ -48,6 +48,8 @@ func GetKeys(ctx *pulumi.Context, args *GetKeysArgs, opts ...pulumi.InvokeOption
 type GetKeysArgs struct {
 	// A regex string to filter the results by the KMS key description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
+	EnableDetails    *bool   `pulumi:"enableDetails"`
+	Filters          *string `pulumi:"filters"`
 	// A list of KMS key IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -58,6 +60,8 @@ type GetKeysArgs struct {
 // A collection of values returned by getKeys.
 type GetKeysResult struct {
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
+	EnableDetails    *bool   `pulumi:"enableDetails"`
+	Filters          *string `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of KMS key IDs.

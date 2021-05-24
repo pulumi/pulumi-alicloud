@@ -26,55 +26,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Resource `alicloud.ess.ScalingGroupVServerGroups` is available in 1.53.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "testAccEssVserverGroupsAttachment";
- * const defaultZones = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
- * });
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {vswitchId: defaultSwitch.id});
- * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultLoadBalancer.id});
- * const defaultListener: alicloud.slb.Listener[];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultListener.push(new alicloud.slb.Listener(`defaultListener-${range.value}`, {
- *         loadBalancerId: [defaultLoadBalancer].map(__item => __item.id)[range.value],
- *         backendPort: "22",
- *         frontendPort: "22",
- *         protocol: "tcp",
- *         bandwidth: "10",
- *         healthCheckType: "tcp",
- *     }));
- * }
- * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
- *     minSize: "2",
- *     maxSize: "2",
- *     scalingGroupName: name,
- *     vswitchIds: [defaultSwitch.id],
- * });
- * const defaultScalingGroupVServerGroups = new alicloud.ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups", {
- *     scalingGroupId: defaultScalingGroup.id,
- *     vserverGroups: [{
- *         loadbalancerId: defaultLoadBalancer.id,
- *         vserverAttributes: [{
- *             vserverGroupId: defaultServerGroup.id,
- *             port: "100",
- *             weight: "60",
- *         }],
- *     }],
- * });
- * ```
  * ## Block vserverGroup
  *
  * the vserverGroup supports the following:

@@ -111,27 +111,60 @@ class GetKeyVersionsVersionResult(dict):
 class GetKeysKeyResult(dict):
     def __init__(__self__, *,
                  arn: str,
+                 automatic_rotation: str,
                  creation_date: str,
                  creator: str,
                  delete_date: str,
                  description: str,
                  id: str,
+                 key_id: str,
+                 key_spec: str,
+                 key_usage: str,
+                 last_rotation_date: str,
+                 material_expire_time: str,
+                 next_rotation_date: str,
+                 origin: str,
+                 primary_key_version: str,
+                 protection_level: str,
+                 rotation_interval: str,
                  status: str):
         """
         :param str arn: The Alibaba Cloud Resource Name (ARN) of the key.
         :param str creation_date: Creation date of key.
         :param str creator: The owner of the key.
+               * `automatic_rotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+               * `key_id` -(Available in 1.123.1+)  ID of the key.
+               * `key_spec` -(Available in 1.123.1+)  The type of the CMK.
+               * `key_usage` -(Available in 1.123.1+)  The usage of CMK.
+               * `last_rotation_date` -(Available in 1.123.1+)  The date and time the last rotation was performed.
+               * `material_expire_time` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
+               * `next_rotation_date` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+               * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
+               * `protection_level` -(Available in 1.123.1+)  The protection level of the CMK.
+               * `rotation_interval` -(Available in 1.123.1+)  The period of automatic key rotation.
+               * `primary_key_version` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
         :param str delete_date: Deletion date of key.
         :param str description: Description of the key.
         :param str id: ID of the key.
         :param str status: Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
         """
         pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "automatic_rotation", automatic_rotation)
         pulumi.set(__self__, "creation_date", creation_date)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "delete_date", delete_date)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "key_spec", key_spec)
+        pulumi.set(__self__, "key_usage", key_usage)
+        pulumi.set(__self__, "last_rotation_date", last_rotation_date)
+        pulumi.set(__self__, "material_expire_time", material_expire_time)
+        pulumi.set(__self__, "next_rotation_date", next_rotation_date)
+        pulumi.set(__self__, "origin", origin)
+        pulumi.set(__self__, "primary_key_version", primary_key_version)
+        pulumi.set(__self__, "protection_level", protection_level)
+        pulumi.set(__self__, "rotation_interval", rotation_interval)
         pulumi.set(__self__, "status", status)
 
     @property
@@ -141,6 +174,11 @@ class GetKeysKeyResult(dict):
         The Alibaba Cloud Resource Name (ARN) of the key.
         """
         return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter(name="automaticRotation")
+    def automatic_rotation(self) -> str:
+        return pulumi.get(self, "automatic_rotation")
 
     @property
     @pulumi.getter(name="creationDate")
@@ -155,6 +193,17 @@ class GetKeysKeyResult(dict):
     def creator(self) -> str:
         """
         The owner of the key.
+        * `automatic_rotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+        * `key_id` -(Available in 1.123.1+)  ID of the key.
+        * `key_spec` -(Available in 1.123.1+)  The type of the CMK.
+        * `key_usage` -(Available in 1.123.1+)  The usage of CMK.
+        * `last_rotation_date` -(Available in 1.123.1+)  The date and time the last rotation was performed.
+        * `material_expire_time` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
+        * `next_rotation_date` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+        * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
+        * `protection_level` -(Available in 1.123.1+)  The protection level of the CMK.
+        * `rotation_interval` -(Available in 1.123.1+)  The period of automatic key rotation.
+        * `primary_key_version` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
         """
         return pulumi.get(self, "creator")
 
@@ -181,6 +230,56 @@ class GetKeysKeyResult(dict):
         ID of the key.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> str:
+        return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter(name="keySpec")
+    def key_spec(self) -> str:
+        return pulumi.get(self, "key_spec")
+
+    @property
+    @pulumi.getter(name="keyUsage")
+    def key_usage(self) -> str:
+        return pulumi.get(self, "key_usage")
+
+    @property
+    @pulumi.getter(name="lastRotationDate")
+    def last_rotation_date(self) -> str:
+        return pulumi.get(self, "last_rotation_date")
+
+    @property
+    @pulumi.getter(name="materialExpireTime")
+    def material_expire_time(self) -> str:
+        return pulumi.get(self, "material_expire_time")
+
+    @property
+    @pulumi.getter(name="nextRotationDate")
+    def next_rotation_date(self) -> str:
+        return pulumi.get(self, "next_rotation_date")
+
+    @property
+    @pulumi.getter
+    def origin(self) -> str:
+        return pulumi.get(self, "origin")
+
+    @property
+    @pulumi.getter(name="primaryKeyVersion")
+    def primary_key_version(self) -> str:
+        return pulumi.get(self, "primary_key_version")
+
+    @property
+    @pulumi.getter(name="protectionLevel")
+    def protection_level(self) -> str:
+        return pulumi.get(self, "protection_level")
+
+    @property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> str:
+        return pulumi.get(self, "rotation_interval")
 
     @property
     @pulumi.getter

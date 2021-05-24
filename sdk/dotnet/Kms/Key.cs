@@ -29,8 +29,8 @@ namespace Pulumi.AliCloud.Kms
     ///         var key = new AliCloud.Kms.Key("key", new AliCloud.Kms.KeyArgs
     ///         {
     ///             Description = "Hello KMS",
-    ///             KeyState = "Enabled",
     ///             PendingWindowInDays = 7,
+    ///             Status = "Enabled",
     ///         });
     ///     }
     /// 
@@ -73,10 +73,10 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> DeleteDate { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+        /// Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         /// </summary>
         [Output("deletionWindowInDays")]
-        public Output<int?> DeletionWindowInDays { get; private set; } = null!;
+        public Output<int> DeletionWindowInDays { get; private set; } = null!;
 
         /// <summary>
         /// The description of the key as viewed in Alicloud console.
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+        /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
         /// </summary>
         [Output("isEnabled")]
         public Output<bool?> IsEnabled { get; private set; } = null!;
@@ -97,13 +97,13 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> KeySpec { get; private set; } = null!;
 
         /// <summary>
-        /// The status of CMK. Defaults to Enabled.
+        /// Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         /// </summary>
         [Output("keyState")]
-        public Output<string?> KeyStatus { get; private set; } = null!;
+        public Output<string> KeyStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
+        /// Specifies the usage of CMK. Currently, default to `ENCRYPT/DECRYPT`, indicating that CMK is used for encryption and decryption.
         /// </summary>
         [Output("keyUsage")]
         public Output<string?> KeyUsage { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Kms
         /// Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
         /// </summary>
         [Output("pendingWindowInDays")]
-        public Output<int?> PendingWindowInDays { get; private set; } = null!;
+        public Output<int> PendingWindowInDays { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the current primary key version of the symmetric CMK.
@@ -155,6 +155,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Output("rotationInterval")]
         public Output<string?> RotationInterval { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of CMK. Defaults to Enabled. Valid Values: `Disabled`, `Enabled`, `PendingDeletion`.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -209,7 +215,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? AutomaticRotation { get; set; }
 
         /// <summary>
-        /// Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+        /// Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         /// </summary>
         [Input("deletionWindowInDays")]
         public Input<int>? DeletionWindowInDays { get; set; }
@@ -221,7 +227,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+        /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
@@ -233,13 +239,13 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? KeySpec { get; set; }
 
         /// <summary>
-        /// The status of CMK. Defaults to Enabled.
+        /// Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         /// </summary>
         [Input("keyState")]
         public Input<string>? KeyStatus { get; set; }
 
         /// <summary>
-        /// Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
+        /// Specifies the usage of CMK. Currently, default to `ENCRYPT/DECRYPT`, indicating that CMK is used for encryption and decryption.
         /// </summary>
         [Input("keyUsage")]
         public Input<string>? KeyUsage { get; set; }
@@ -267,6 +273,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
+
+        /// <summary>
+        /// The status of CMK. Defaults to Enabled. Valid Values: `Disabled`, `Enabled`, `PendingDeletion`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public KeyArgs()
         {
@@ -300,7 +312,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DeleteDate { get; set; }
 
         /// <summary>
-        /// Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+        /// Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         /// </summary>
         [Input("deletionWindowInDays")]
         public Input<int>? DeletionWindowInDays { get; set; }
@@ -312,7 +324,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+        /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
@@ -324,13 +336,13 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? KeySpec { get; set; }
 
         /// <summary>
-        /// The status of CMK. Defaults to Enabled.
+        /// Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         /// </summary>
         [Input("keyState")]
         public Input<string>? KeyStatus { get; set; }
 
         /// <summary>
-        /// Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
+        /// Specifies the usage of CMK. Currently, default to `ENCRYPT/DECRYPT`, indicating that CMK is used for encryption and decryption.
         /// </summary>
         [Input("keyUsage")]
         public Input<string>? KeyUsage { get; set; }
@@ -382,6 +394,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
+
+        /// <summary>
+        /// The status of CMK. Defaults to Enabled. Valid Values: `Disabled`, `Enabled`, `PendingDeletion`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public KeyState()
         {

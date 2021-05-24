@@ -37,26 +37,30 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Name of the ENI.
         /// </summary>
         public readonly string Name;
+        public readonly string NetworkInterfaceId;
+        public readonly string NetworkInterfaceName;
+        public readonly string PrimaryIpAddress;
         /// <summary>
         /// Primary private IP of the ENI.
         /// </summary>
         public readonly string PrivateIp;
+        public readonly ImmutableArray<string> PrivateIpAddresses;
         /// <summary>
         /// A list of secondary private IP address that is assigned to the ENI.
         /// </summary>
         public readonly ImmutableArray<string> PrivateIps;
-        /// <summary>
-        /// Public IP of the ENI.
-        /// </summary>
-        public readonly string PublicIp;
+        public readonly int QueueNumber;
         /// <summary>
         /// The Id of resource group.
         /// </summary>
         public readonly string ResourceGroupId;
+        public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
         /// A list of security group that the ENI belongs to.
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroups;
+        public readonly int ServiceId;
+        public readonly bool ServiceManaged;
         /// <summary>
         /// Current status of the ENI.
         /// </summary>
@@ -64,7 +68,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// A map of tags assigned to the ENI.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly string Type;
         /// <summary>
         /// ID of the VPC that the ENI belongs to.
         /// </summary>
@@ -92,19 +97,35 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string name,
 
+            string networkInterfaceId,
+
+            string networkInterfaceName,
+
+            string primaryIpAddress,
+
             string privateIp,
+
+            ImmutableArray<string> privateIpAddresses,
 
             ImmutableArray<string> privateIps,
 
-            string publicIp,
+            int queueNumber,
 
             string resourceGroupId,
 
+            ImmutableArray<string> securityGroupIds,
+
             ImmutableArray<string> securityGroups,
+
+            int serviceId,
+
+            bool serviceManaged,
 
             string status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, object> tags,
+
+            string type,
 
             string vpcId,
 
@@ -118,13 +139,21 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             InstanceId = instanceId;
             Mac = mac;
             Name = name;
+            NetworkInterfaceId = networkInterfaceId;
+            NetworkInterfaceName = networkInterfaceName;
+            PrimaryIpAddress = primaryIpAddress;
             PrivateIp = privateIp;
+            PrivateIpAddresses = privateIpAddresses;
             PrivateIps = privateIps;
-            PublicIp = publicIp;
+            QueueNumber = queueNumber;
             ResourceGroupId = resourceGroupId;
+            SecurityGroupIds = securityGroupIds;
             SecurityGroups = securityGroups;
+            ServiceId = serviceId;
+            ServiceManaged = serviceManaged;
             Status = status;
             Tags = tags;
+            Type = type;
             VpcId = vpcId;
             VswitchId = vswitchId;
             ZoneId = zoneId;

@@ -20,6 +20,7 @@ __all__ = [
     'BucketLogging',
     'BucketRefererConfig',
     'BucketServerSideEncryptionRule',
+    'BucketTransferAcceleration',
     'BucketVersioning',
     'BucketWebsite',
     'GetBucketObjectsObjectResult',
@@ -161,7 +162,7 @@ class BucketLifecycleRule(dict):
                  prefix: Optional[str] = None,
                  transitions: Optional[Sequence['outputs.BucketLifecycleRuleTransition']] = None):
         """
-        :param bool enabled: Specifies lifecycle rule status.
+        :param bool enabled: Specifies the accelerate status of a bucket.
         :param Sequence['BucketLifecycleRuleAbortMultipartUploadArgs'] abort_multipart_uploads: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
         :param Sequence['BucketLifecycleRuleExpirationArgs'] expirations: Specifies a period in the object's expire (documented below).
         :param str id: Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
@@ -190,7 +191,7 @@ class BucketLifecycleRule(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Specifies lifecycle rule status.
+        Specifies the accelerate status of a bucket.
         """
         return pulumi.get(self, "enabled")
 
@@ -638,6 +639,24 @@ class BucketServerSideEncryptionRule(dict):
         The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
         """
         return pulumi.get(self, "kms_master_key_id")
+
+
+@pulumi.output_type
+class BucketTransferAcceleration(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Specifies the accelerate status of a bucket.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Specifies the accelerate status of a bucket.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

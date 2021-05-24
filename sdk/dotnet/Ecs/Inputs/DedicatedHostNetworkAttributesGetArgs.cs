@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class DedicatedHostNetworkAttributeArgs : Pulumi.ResourceArgs
+    public sealed class DedicatedHostNetworkAttributesGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         [Input("udpTimeout")]
         public Input<int>? UdpTimeout { get; set; }
 
-        public DedicatedHostNetworkAttributeArgs()
+        public DedicatedHostNetworkAttributesGetArgs()
         {
         }
     }

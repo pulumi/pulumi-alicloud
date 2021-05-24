@@ -7,36 +7,6 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.slb.LoadBalancer("default", {});
- * const tcp = new alicloud.slb.Listener("tcp", {
- *     loadBalancerId: _default.id,
- *     backendPort: "22",
- *     frontendPort: "22",
- *     protocol: "tcp",
- *     bandwidth: "10",
- *     healthCheckType: "tcp",
- *     persistenceTimeout: 3600,
- *     healthyThreshold: 8,
- *     unhealthyThreshold: 8,
- *     healthCheckTimeout: 8,
- *     healthCheckInterval: 5,
- *     healthCheckHttpCode: "http_2xx",
- *     healthCheckConnectPort: 20,
- *     healthCheckUri: "/console",
- *     establishedTimeout: 600,
- * });
- * const sampleDs = _default.id.apply(id => alicloud.slb.getListeners({
- *     loadBalancerId: id,
- * }));
- * export const firstSlbListenerProtocol = sampleDs.slbListeners[0].protocol;
- * ```
  */
 export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
     if (!opts) {

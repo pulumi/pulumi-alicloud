@@ -19,14 +19,19 @@ class LoadBalancerArgs:
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  delete_protection: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
-                 internet: Optional[pulumi.Input[bool]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 load_balancer_name: Optional[pulumi.Input[str]] = None,
+                 load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  master_zone_id: Optional[pulumi.Input[str]] = None,
+                 modification_protection_reason: Optional[pulumi.Input[str]] = None,
+                 modification_protection_status: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  slave_zone_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
@@ -40,7 +45,6 @@ class LoadBalancerArgs:
                value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[str] instance_charge_type: The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[bool] internet: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
         :param pulumi.Input[str] internet_charge_type: Valid
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
@@ -64,18 +68,29 @@ class LoadBalancerArgs:
         if delete_protection is not None:
             pulumi.set(__self__, "delete_protection", delete_protection)
         if instance_charge_type is not None:
+            warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""")
+        if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
-        if internet is not None:
-            warnings.warn("""Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("""internet is deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.""")
-        if internet is not None:
-            pulumi.set(__self__, "internet", internet)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if load_balancer_name is not None:
+            pulumi.set(__self__, "load_balancer_name", load_balancer_name)
+        if load_balancer_spec is not None:
+            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         if master_zone_id is not None:
             pulumi.set(__self__, "master_zone_id", master_zone_id)
+        if modification_protection_reason is not None:
+            pulumi.set(__self__, "modification_protection_reason", modification_protection_reason)
+        if modification_protection_status is not None:
+            pulumi.set(__self__, "modification_protection_status", modification_protection_status)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
@@ -83,7 +98,12 @@ class LoadBalancerArgs:
         if slave_zone_id is not None:
             pulumi.set(__self__, "slave_zone_id", slave_zone_id)
         if specification is not None:
+            warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
+            pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
+        if specification is not None:
             pulumi.set(__self__, "specification", specification)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
@@ -165,18 +185,6 @@ class LoadBalancerArgs:
         pulumi.set(self, "instance_charge_type", value)
 
     @property
-    @pulumi.getter
-    def internet(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-        """
-        return pulumi.get(self, "internet")
-
-    @internet.setter
-    def internet(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "internet", value)
-
-    @property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -191,6 +199,24 @@ class LoadBalancerArgs:
         pulumi.set(self, "internet_charge_type", value)
 
     @property
+    @pulumi.getter(name="loadBalancerName")
+    def load_balancer_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "load_balancer_name")
+
+    @load_balancer_name.setter
+    def load_balancer_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_name", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerSpec")
+    def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "load_balancer_spec")
+
+    @load_balancer_spec.setter
+    def load_balancer_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_spec", value)
+
+    @property
     @pulumi.getter(name="masterZoneId")
     def master_zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -203,6 +229,24 @@ class LoadBalancerArgs:
         pulumi.set(self, "master_zone_id", value)
 
     @property
+    @pulumi.getter(name="modificationProtectionReason")
+    def modification_protection_reason(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "modification_protection_reason")
+
+    @modification_protection_reason.setter
+    def modification_protection_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modification_protection_reason", value)
+
+    @property
+    @pulumi.getter(name="modificationProtectionStatus")
+    def modification_protection_status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "modification_protection_status")
+
+    @modification_protection_status.setter
+    def modification_protection_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modification_protection_status", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "name")
@@ -210,6 +254,15 @@ class LoadBalancerArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
 
     @property
     @pulumi.getter
@@ -257,6 +310,15 @@ class LoadBalancerArgs:
     @specification.setter
     def specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "specification", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -292,14 +354,19 @@ class _LoadBalancerState:
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  delete_protection: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
-                 internet: Optional[pulumi.Input[bool]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 load_balancer_name: Optional[pulumi.Input[str]] = None,
+                 load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  master_zone_id: Optional[pulumi.Input[str]] = None,
+                 modification_protection_reason: Optional[pulumi.Input[str]] = None,
+                 modification_protection_status: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  slave_zone_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
@@ -313,7 +380,6 @@ class _LoadBalancerState:
                value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[str] instance_charge_type: The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[bool] internet: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
         :param pulumi.Input[str] internet_charge_type: Valid
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
@@ -337,18 +403,29 @@ class _LoadBalancerState:
         if delete_protection is not None:
             pulumi.set(__self__, "delete_protection", delete_protection)
         if instance_charge_type is not None:
+            warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""")
+        if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
-        if internet is not None:
-            warnings.warn("""Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("""internet is deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.""")
-        if internet is not None:
-            pulumi.set(__self__, "internet", internet)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if load_balancer_name is not None:
+            pulumi.set(__self__, "load_balancer_name", load_balancer_name)
+        if load_balancer_spec is not None:
+            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         if master_zone_id is not None:
             pulumi.set(__self__, "master_zone_id", master_zone_id)
+        if modification_protection_reason is not None:
+            pulumi.set(__self__, "modification_protection_reason", modification_protection_reason)
+        if modification_protection_status is not None:
+            pulumi.set(__self__, "modification_protection_status", modification_protection_status)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
@@ -356,7 +433,12 @@ class _LoadBalancerState:
         if slave_zone_id is not None:
             pulumi.set(__self__, "slave_zone_id", slave_zone_id)
         if specification is not None:
+            warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
+            pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
+        if specification is not None:
             pulumi.set(__self__, "specification", specification)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
@@ -438,18 +520,6 @@ class _LoadBalancerState:
         pulumi.set(self, "instance_charge_type", value)
 
     @property
-    @pulumi.getter
-    def internet(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-        """
-        return pulumi.get(self, "internet")
-
-    @internet.setter
-    def internet(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "internet", value)
-
-    @property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -464,6 +534,24 @@ class _LoadBalancerState:
         pulumi.set(self, "internet_charge_type", value)
 
     @property
+    @pulumi.getter(name="loadBalancerName")
+    def load_balancer_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "load_balancer_name")
+
+    @load_balancer_name.setter
+    def load_balancer_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_name", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerSpec")
+    def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "load_balancer_spec")
+
+    @load_balancer_spec.setter
+    def load_balancer_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balancer_spec", value)
+
+    @property
     @pulumi.getter(name="masterZoneId")
     def master_zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -476,6 +564,24 @@ class _LoadBalancerState:
         pulumi.set(self, "master_zone_id", value)
 
     @property
+    @pulumi.getter(name="modificationProtectionReason")
+    def modification_protection_reason(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "modification_protection_reason")
+
+    @modification_protection_reason.setter
+    def modification_protection_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modification_protection_reason", value)
+
+    @property
+    @pulumi.getter(name="modificationProtectionStatus")
+    def modification_protection_status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "modification_protection_status")
+
+    @modification_protection_status.setter
+    def modification_protection_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modification_protection_status", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "name")
@@ -483,6 +589,15 @@ class _LoadBalancerState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
 
     @property
     @pulumi.getter
@@ -530,6 +645,15 @@ class _LoadBalancerState:
     @specification.setter
     def specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "specification", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -567,59 +691,23 @@ class LoadBalancer(pulumi.CustomResource):
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  delete_protection: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
-                 internet: Optional[pulumi.Input[bool]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 load_balancer_name: Optional[pulumi.Input[str]] = None,
+                 load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  master_zone_id: Optional[pulumi.Input[str]] = None,
+                 modification_protection_reason: Optional[pulumi.Input[str]] = None,
+                 modification_protection_status: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  slave_zone_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an Application Load Balancer resource.
-
-        > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
-
-        > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
-        For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraformtestslbconfig"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
-            specification="slb.s2.small",
-            vswitch_id=default_switch.id,
-            tags={
-                "tag_a": 1,
-                "tag_b": 2,
-                "tag_c": 3,
-                "tag_d": 4,
-                "tag_e": 5,
-                "tag_f": 6,
-                "tag_g": 7,
-                "tag_h": 8,
-                "tag_i": 9,
-                "tag_j": 10,
-            })
-        ```
-
         ## Import
 
         Load balancer can be imported using the id, e.g.
@@ -639,7 +727,6 @@ class LoadBalancer(pulumi.CustomResource):
                value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[str] instance_charge_type: The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[bool] internet: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
         :param pulumi.Input[str] internet_charge_type: Valid
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
@@ -659,47 +746,6 @@ class LoadBalancer(pulumi.CustomResource):
                  args: Optional[LoadBalancerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Application Load Balancer resource.
-
-        > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
-
-        > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
-        For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraformtestslbconfig"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer",
-            specification="slb.s2.small",
-            vswitch_id=default_switch.id,
-            tags={
-                "tag_a": 1,
-                "tag_b": 2,
-                "tag_c": 3,
-                "tag_d": 4,
-                "tag_e": 5,
-                "tag_f": 6,
-                "tag_g": 7,
-                "tag_h": 8,
-                "tag_i": 9,
-                "tag_j": 10,
-            })
-        ```
-
         ## Import
 
         Load balancer can be imported using the id, e.g.
@@ -729,14 +775,19 @@ class LoadBalancer(pulumi.CustomResource):
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  delete_protection: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
-                 internet: Optional[pulumi.Input[bool]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 load_balancer_name: Optional[pulumi.Input[str]] = None,
+                 load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  master_zone_id: Optional[pulumi.Input[str]] = None,
+                 modification_protection_reason: Optional[pulumi.Input[str]] = None,
+                 modification_protection_status: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  slave_zone_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -756,18 +807,29 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["address_type"] = address_type
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["delete_protection"] = delete_protection
+            if instance_charge_type is not None and not opts.urn:
+                warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""", DeprecationWarning)
+                pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""")
             __props__.__dict__["instance_charge_type"] = instance_charge_type
-            if internet is not None and not opts.urn:
-                warnings.warn("""Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.""", DeprecationWarning)
-                pulumi.log.warn("""internet is deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.""")
-            __props__.__dict__["internet"] = internet
             __props__.__dict__["internet_charge_type"] = internet_charge_type
+            __props__.__dict__["load_balancer_name"] = load_balancer_name
+            __props__.__dict__["load_balancer_spec"] = load_balancer_spec
             __props__.__dict__["master_zone_id"] = master_zone_id
+            __props__.__dict__["modification_protection_reason"] = modification_protection_reason
+            __props__.__dict__["modification_protection_status"] = modification_protection_status
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
             __props__.__dict__["name"] = name
+            __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["slave_zone_id"] = slave_zone_id
+            if specification is not None and not opts.urn:
+                warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
+                pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
             __props__.__dict__["specification"] = specification
+            __props__.__dict__["status"] = status
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vswitch_id"] = vswitch_id
         super(LoadBalancer, __self__).__init__(
@@ -786,14 +848,19 @@ class LoadBalancer(pulumi.CustomResource):
             bandwidth: Optional[pulumi.Input[int]] = None,
             delete_protection: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
-            internet: Optional[pulumi.Input[bool]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
+            load_balancer_name: Optional[pulumi.Input[str]] = None,
+            load_balancer_spec: Optional[pulumi.Input[str]] = None,
             master_zone_id: Optional[pulumi.Input[str]] = None,
+            modification_protection_reason: Optional[pulumi.Input[str]] = None,
+            modification_protection_status: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             slave_zone_id: Optional[pulumi.Input[str]] = None,
             specification: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'LoadBalancer':
         """
@@ -812,7 +879,6 @@ class LoadBalancer(pulumi.CustomResource):
                value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
         :param pulumi.Input[str] instance_charge_type: The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[bool] internet: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
         :param pulumi.Input[str] internet_charge_type: Valid
                values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
                Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
@@ -835,14 +901,19 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["delete_protection"] = delete_protection
         __props__.__dict__["instance_charge_type"] = instance_charge_type
-        __props__.__dict__["internet"] = internet
         __props__.__dict__["internet_charge_type"] = internet_charge_type
+        __props__.__dict__["load_balancer_name"] = load_balancer_name
+        __props__.__dict__["load_balancer_spec"] = load_balancer_spec
         __props__.__dict__["master_zone_id"] = master_zone_id
+        __props__.__dict__["modification_protection_reason"] = modification_protection_reason
+        __props__.__dict__["modification_protection_status"] = modification_protection_status
         __props__.__dict__["name"] = name
+        __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["slave_zone_id"] = slave_zone_id
         __props__.__dict__["specification"] = specification
+        __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
@@ -892,19 +963,11 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
+    def instance_charge_type(self) -> pulumi.Output[str]:
         """
         The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
         return pulumi.get(self, "instance_charge_type")
-
-    @property
-    @pulumi.getter
-    def internet(self) -> pulumi.Output[bool]:
-        """
-        Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-        """
-        return pulumi.get(self, "internet")
 
     @property
     @pulumi.getter(name="internetChargeType")
@@ -917,6 +980,16 @@ class LoadBalancer(pulumi.CustomResource):
         return pulumi.get(self, "internet_charge_type")
 
     @property
+    @pulumi.getter(name="loadBalancerName")
+    def load_balancer_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "load_balancer_name")
+
+    @property
+    @pulumi.getter(name="loadBalancerSpec")
+    def load_balancer_spec(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "load_balancer_spec")
+
+    @property
     @pulumi.getter(name="masterZoneId")
     def master_zone_id(self) -> pulumi.Output[str]:
         """
@@ -925,9 +998,24 @@ class LoadBalancer(pulumi.CustomResource):
         return pulumi.get(self, "master_zone_id")
 
     @property
+    @pulumi.getter(name="modificationProtectionReason")
+    def modification_protection_reason(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "modification_protection_reason")
+
+    @property
+    @pulumi.getter(name="modificationProtectionStatus")
+    def modification_protection_status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "modification_protection_status")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter
@@ -952,13 +1040,18 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def specification(self) -> pulumi.Output[Optional[str]]:
+    def specification(self) -> pulumi.Output[str]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
         Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
         "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
         """
         return pulumi.get(self, "specification")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter

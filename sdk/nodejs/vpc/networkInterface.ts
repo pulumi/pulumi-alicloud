@@ -5,41 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ECS Elastic Network Interface resource.
- *
- * For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
- *
- * > **NOTE** Only one of privateIps or privateIpsCount can be specified when assign private IPs.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "networkInterfaceName";
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     vpcName: name,
- *     cidrBlock: "192.168.0.0/24",
- * });
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     cidrBlock: "192.168.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
- *     vpcId: vpc.id,
- * });
- * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
- * const defaultNetworkInterface = new alicloud.vpc.NetworkInterface("defaultNetworkInterface", {
- *     vswitchId: vswitch.id,
- *     securityGroups: [group.id],
- *     privateIp: "192.168.0.2",
- *     privateIpsCount: 3,
- * });
- * ```
- *
  * ## Import
  *
  * ENI can be imported using the id, e.g.
@@ -86,28 +51,45 @@ export class NetworkInterface extends pulumi.CustomResource {
     public /*out*/ readonly mac!: pulumi.Output<string>;
     /**
      * Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly networkInterfaceName!: pulumi.Output<string>;
+    public readonly primaryIpAddress!: pulumi.Output<string>;
     /**
      * The primary private IP of the ENI.
+     *
+     * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
     public readonly privateIp!: pulumi.Output<string>;
+    public readonly privateIpAddresses!: pulumi.Output<string[]>;
     /**
      * List of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+     *
+     * @deprecated Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
      */
     public readonly privateIps!: pulumi.Output<string[]>;
     /**
      * Number of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+     *
+     * @deprecated Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
      */
     public readonly privateIpsCount!: pulumi.Output<number>;
+    public readonly queueNumber!: pulumi.Output<number>;
     /**
      * The Id of resource group which the network interface belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly secondaryPrivateIpAddressCount!: pulumi.Output<number>;
+    public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
      * A list of security group ids to associate with.
+     *
+     * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -133,31 +115,42 @@ export class NetworkInterface extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["mac"] = state ? state.mac : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["networkInterfaceName"] = state ? state.networkInterfaceName : undefined;
+            inputs["primaryIpAddress"] = state ? state.primaryIpAddress : undefined;
             inputs["privateIp"] = state ? state.privateIp : undefined;
+            inputs["privateIpAddresses"] = state ? state.privateIpAddresses : undefined;
             inputs["privateIps"] = state ? state.privateIps : undefined;
             inputs["privateIpsCount"] = state ? state.privateIpsCount : undefined;
+            inputs["queueNumber"] = state ? state.queueNumber : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["secondaryPrivateIpAddressCount"] = state ? state.secondaryPrivateIpAddressCount : undefined;
+            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as NetworkInterfaceArgs | undefined;
-            if ((!args || args.securityGroups === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'securityGroups'");
-            }
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
+            inputs["primaryIpAddress"] = args ? args.primaryIpAddress : undefined;
             inputs["privateIp"] = args ? args.privateIp : undefined;
+            inputs["privateIpAddresses"] = args ? args.privateIpAddresses : undefined;
             inputs["privateIps"] = args ? args.privateIps : undefined;
             inputs["privateIpsCount"] = args ? args.privateIpsCount : undefined;
+            inputs["queueNumber"] = args ? args.queueNumber : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["secondaryPrivateIpAddressCount"] = args ? args.secondaryPrivateIpAddressCount : undefined;
+            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["mac"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -180,28 +173,45 @@ export interface NetworkInterfaceState {
     readonly mac?: pulumi.Input<string>;
     /**
      * Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
     readonly name?: pulumi.Input<string>;
+    readonly networkInterfaceName?: pulumi.Input<string>;
+    readonly primaryIpAddress?: pulumi.Input<string>;
     /**
      * The primary private IP of the ENI.
+     *
+     * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
     readonly privateIp?: pulumi.Input<string>;
+    readonly privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+     *
+     * @deprecated Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
      */
     readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+     *
+     * @deprecated Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
      */
     readonly privateIpsCount?: pulumi.Input<number>;
+    readonly queueNumber?: pulumi.Input<number>;
     /**
      * The Id of resource group which the network interface belongs.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    readonly secondaryPrivateIpAddressCount?: pulumi.Input<number>;
+    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of security group ids to associate with.
+     *
+     * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -222,28 +232,44 @@ export interface NetworkInterfaceArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
     readonly name?: pulumi.Input<string>;
+    readonly networkInterfaceName?: pulumi.Input<string>;
+    readonly primaryIpAddress?: pulumi.Input<string>;
     /**
      * The primary private IP of the ENI.
+     *
+     * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
     readonly privateIp?: pulumi.Input<string>;
+    readonly privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+     *
+     * @deprecated Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
      */
     readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+     *
+     * @deprecated Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
      */
     readonly privateIpsCount?: pulumi.Input<number>;
+    readonly queueNumber?: pulumi.Input<number>;
     /**
      * The Id of resource group which the network interface belongs.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    readonly secondaryPrivateIpAddressCount?: pulumi.Input<number>;
+    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of security group ids to associate with.
+     *
+     * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
-    readonly securityGroups: pulumi.Input<pulumi.Input<string>[]>;
+    readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */

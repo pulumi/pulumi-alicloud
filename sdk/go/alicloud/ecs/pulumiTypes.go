@@ -128,110 +128,154 @@ func (o AutoProvisioningGroupLaunchTemplateConfigArrayOutput) Index(i pulumi.Int
 	}).(AutoProvisioningGroupLaunchTemplateConfigOutput)
 }
 
-type DedicatedHostNetworkAttribute struct {
+type DedicatedHostNetworkAttributes struct {
 	// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
 	SlbUdpTimeout *int `pulumi:"slbUdpTimeout"`
 	// The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
 	UdpTimeout *int `pulumi:"udpTimeout"`
 }
 
-// DedicatedHostNetworkAttributeInput is an input type that accepts DedicatedHostNetworkAttributeArgs and DedicatedHostNetworkAttributeOutput values.
-// You can construct a concrete instance of `DedicatedHostNetworkAttributeInput` via:
+// DedicatedHostNetworkAttributesInput is an input type that accepts DedicatedHostNetworkAttributesArgs and DedicatedHostNetworkAttributesOutput values.
+// You can construct a concrete instance of `DedicatedHostNetworkAttributesInput` via:
 //
-//          DedicatedHostNetworkAttributeArgs{...}
-type DedicatedHostNetworkAttributeInput interface {
+//          DedicatedHostNetworkAttributesArgs{...}
+type DedicatedHostNetworkAttributesInput interface {
 	pulumi.Input
 
-	ToDedicatedHostNetworkAttributeOutput() DedicatedHostNetworkAttributeOutput
-	ToDedicatedHostNetworkAttributeOutputWithContext(context.Context) DedicatedHostNetworkAttributeOutput
+	ToDedicatedHostNetworkAttributesOutput() DedicatedHostNetworkAttributesOutput
+	ToDedicatedHostNetworkAttributesOutputWithContext(context.Context) DedicatedHostNetworkAttributesOutput
 }
 
-type DedicatedHostNetworkAttributeArgs struct {
+type DedicatedHostNetworkAttributesArgs struct {
 	// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
 	SlbUdpTimeout pulumi.IntPtrInput `pulumi:"slbUdpTimeout"`
 	// The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
 	UdpTimeout pulumi.IntPtrInput `pulumi:"udpTimeout"`
 }
 
-func (DedicatedHostNetworkAttributeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostNetworkAttribute)(nil)).Elem()
+func (DedicatedHostNetworkAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedHostNetworkAttributes)(nil)).Elem()
 }
 
-func (i DedicatedHostNetworkAttributeArgs) ToDedicatedHostNetworkAttributeOutput() DedicatedHostNetworkAttributeOutput {
-	return i.ToDedicatedHostNetworkAttributeOutputWithContext(context.Background())
+func (i DedicatedHostNetworkAttributesArgs) ToDedicatedHostNetworkAttributesOutput() DedicatedHostNetworkAttributesOutput {
+	return i.ToDedicatedHostNetworkAttributesOutputWithContext(context.Background())
 }
 
-func (i DedicatedHostNetworkAttributeArgs) ToDedicatedHostNetworkAttributeOutputWithContext(ctx context.Context) DedicatedHostNetworkAttributeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostNetworkAttributeOutput)
+func (i DedicatedHostNetworkAttributesArgs) ToDedicatedHostNetworkAttributesOutputWithContext(ctx context.Context) DedicatedHostNetworkAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostNetworkAttributesOutput)
 }
 
-// DedicatedHostNetworkAttributeArrayInput is an input type that accepts DedicatedHostNetworkAttributeArray and DedicatedHostNetworkAttributeArrayOutput values.
-// You can construct a concrete instance of `DedicatedHostNetworkAttributeArrayInput` via:
+func (i DedicatedHostNetworkAttributesArgs) ToDedicatedHostNetworkAttributesPtrOutput() DedicatedHostNetworkAttributesPtrOutput {
+	return i.ToDedicatedHostNetworkAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i DedicatedHostNetworkAttributesArgs) ToDedicatedHostNetworkAttributesPtrOutputWithContext(ctx context.Context) DedicatedHostNetworkAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostNetworkAttributesOutput).ToDedicatedHostNetworkAttributesPtrOutputWithContext(ctx)
+}
+
+// DedicatedHostNetworkAttributesPtrInput is an input type that accepts DedicatedHostNetworkAttributesArgs, DedicatedHostNetworkAttributesPtr and DedicatedHostNetworkAttributesPtrOutput values.
+// You can construct a concrete instance of `DedicatedHostNetworkAttributesPtrInput` via:
 //
-//          DedicatedHostNetworkAttributeArray{ DedicatedHostNetworkAttributeArgs{...} }
-type DedicatedHostNetworkAttributeArrayInput interface {
+//          DedicatedHostNetworkAttributesArgs{...}
+//
+//  or:
+//
+//          nil
+type DedicatedHostNetworkAttributesPtrInput interface {
 	pulumi.Input
 
-	ToDedicatedHostNetworkAttributeArrayOutput() DedicatedHostNetworkAttributeArrayOutput
-	ToDedicatedHostNetworkAttributeArrayOutputWithContext(context.Context) DedicatedHostNetworkAttributeArrayOutput
+	ToDedicatedHostNetworkAttributesPtrOutput() DedicatedHostNetworkAttributesPtrOutput
+	ToDedicatedHostNetworkAttributesPtrOutputWithContext(context.Context) DedicatedHostNetworkAttributesPtrOutput
 }
 
-type DedicatedHostNetworkAttributeArray []DedicatedHostNetworkAttributeInput
+type dedicatedHostNetworkAttributesPtrType DedicatedHostNetworkAttributesArgs
 
-func (DedicatedHostNetworkAttributeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DedicatedHostNetworkAttribute)(nil)).Elem()
+func DedicatedHostNetworkAttributesPtr(v *DedicatedHostNetworkAttributesArgs) DedicatedHostNetworkAttributesPtrInput {
+	return (*dedicatedHostNetworkAttributesPtrType)(v)
 }
 
-func (i DedicatedHostNetworkAttributeArray) ToDedicatedHostNetworkAttributeArrayOutput() DedicatedHostNetworkAttributeArrayOutput {
-	return i.ToDedicatedHostNetworkAttributeArrayOutputWithContext(context.Background())
+func (*dedicatedHostNetworkAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DedicatedHostNetworkAttributes)(nil)).Elem()
 }
 
-func (i DedicatedHostNetworkAttributeArray) ToDedicatedHostNetworkAttributeArrayOutputWithContext(ctx context.Context) DedicatedHostNetworkAttributeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostNetworkAttributeArrayOutput)
+func (i *dedicatedHostNetworkAttributesPtrType) ToDedicatedHostNetworkAttributesPtrOutput() DedicatedHostNetworkAttributesPtrOutput {
+	return i.ToDedicatedHostNetworkAttributesPtrOutputWithContext(context.Background())
 }
 
-type DedicatedHostNetworkAttributeOutput struct{ *pulumi.OutputState }
-
-func (DedicatedHostNetworkAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostNetworkAttribute)(nil)).Elem()
+func (i *dedicatedHostNetworkAttributesPtrType) ToDedicatedHostNetworkAttributesPtrOutputWithContext(ctx context.Context) DedicatedHostNetworkAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostNetworkAttributesPtrOutput)
 }
 
-func (o DedicatedHostNetworkAttributeOutput) ToDedicatedHostNetworkAttributeOutput() DedicatedHostNetworkAttributeOutput {
+type DedicatedHostNetworkAttributesOutput struct{ *pulumi.OutputState }
+
+func (DedicatedHostNetworkAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedHostNetworkAttributes)(nil)).Elem()
+}
+
+func (o DedicatedHostNetworkAttributesOutput) ToDedicatedHostNetworkAttributesOutput() DedicatedHostNetworkAttributesOutput {
 	return o
 }
 
-func (o DedicatedHostNetworkAttributeOutput) ToDedicatedHostNetworkAttributeOutputWithContext(ctx context.Context) DedicatedHostNetworkAttributeOutput {
+func (o DedicatedHostNetworkAttributesOutput) ToDedicatedHostNetworkAttributesOutputWithContext(ctx context.Context) DedicatedHostNetworkAttributesOutput {
 	return o
+}
+
+func (o DedicatedHostNetworkAttributesOutput) ToDedicatedHostNetworkAttributesPtrOutput() DedicatedHostNetworkAttributesPtrOutput {
+	return o.ToDedicatedHostNetworkAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o DedicatedHostNetworkAttributesOutput) ToDedicatedHostNetworkAttributesPtrOutputWithContext(ctx context.Context) DedicatedHostNetworkAttributesPtrOutput {
+	return o.ApplyT(func(v DedicatedHostNetworkAttributes) *DedicatedHostNetworkAttributes {
+		return &v
+	}).(DedicatedHostNetworkAttributesPtrOutput)
 }
 
 // The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
-func (o DedicatedHostNetworkAttributeOutput) SlbUdpTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DedicatedHostNetworkAttribute) *int { return v.SlbUdpTimeout }).(pulumi.IntPtrOutput)
+func (o DedicatedHostNetworkAttributesOutput) SlbUdpTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DedicatedHostNetworkAttributes) *int { return v.SlbUdpTimeout }).(pulumi.IntPtrOutput)
 }
 
 // The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
-func (o DedicatedHostNetworkAttributeOutput) UdpTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DedicatedHostNetworkAttribute) *int { return v.UdpTimeout }).(pulumi.IntPtrOutput)
+func (o DedicatedHostNetworkAttributesOutput) UdpTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DedicatedHostNetworkAttributes) *int { return v.UdpTimeout }).(pulumi.IntPtrOutput)
 }
 
-type DedicatedHostNetworkAttributeArrayOutput struct{ *pulumi.OutputState }
+type DedicatedHostNetworkAttributesPtrOutput struct{ *pulumi.OutputState }
 
-func (DedicatedHostNetworkAttributeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DedicatedHostNetworkAttribute)(nil)).Elem()
+func (DedicatedHostNetworkAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DedicatedHostNetworkAttributes)(nil)).Elem()
 }
 
-func (o DedicatedHostNetworkAttributeArrayOutput) ToDedicatedHostNetworkAttributeArrayOutput() DedicatedHostNetworkAttributeArrayOutput {
+func (o DedicatedHostNetworkAttributesPtrOutput) ToDedicatedHostNetworkAttributesPtrOutput() DedicatedHostNetworkAttributesPtrOutput {
 	return o
 }
 
-func (o DedicatedHostNetworkAttributeArrayOutput) ToDedicatedHostNetworkAttributeArrayOutputWithContext(ctx context.Context) DedicatedHostNetworkAttributeArrayOutput {
+func (o DedicatedHostNetworkAttributesPtrOutput) ToDedicatedHostNetworkAttributesPtrOutputWithContext(ctx context.Context) DedicatedHostNetworkAttributesPtrOutput {
 	return o
 }
 
-func (o DedicatedHostNetworkAttributeArrayOutput) Index(i pulumi.IntInput) DedicatedHostNetworkAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DedicatedHostNetworkAttribute {
-		return vs[0].([]DedicatedHostNetworkAttribute)[vs[1].(int)]
-	}).(DedicatedHostNetworkAttributeOutput)
+func (o DedicatedHostNetworkAttributesPtrOutput) Elem() DedicatedHostNetworkAttributesOutput {
+	return o.ApplyT(func(v *DedicatedHostNetworkAttributes) DedicatedHostNetworkAttributes { return *v }).(DedicatedHostNetworkAttributesOutput)
+}
+
+// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
+func (o DedicatedHostNetworkAttributesPtrOutput) SlbUdpTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DedicatedHostNetworkAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SlbUdpTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
+func (o DedicatedHostNetworkAttributesPtrOutput) UdpTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DedicatedHostNetworkAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UdpTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type EcsLaunchTemplateDataDisk struct {
@@ -2390,8 +2434,12 @@ type GetDedicatedHostsHost struct {
 	AutoPlacement string `pulumi:"autoPlacement"`
 	// The automatic release time of the dedicated host.
 	AutoReleaseTime string `pulumi:"autoReleaseTime"`
+	// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+	Capacities []GetDedicatedHostsHostCapacity `pulumi:"capacities"`
 	// A mapping of tags to assign to the resource.
 	Cores int `pulumi:"cores"`
+	// (Available in 1.123.1+) CPU oversold ratio.
+	CpuOverCommitRatio float64 `pulumi:"cpuOverCommitRatio"`
 	// The ID of ECS Dedicated Host.
 	DedicatedHostId string `pulumi:"dedicatedHostId"`
 	// The name of ECS Dedicated Host.
@@ -2408,6 +2456,10 @@ type GetDedicatedHostsHost struct {
 	Id string `pulumi:"id"`
 	// The machine code of the dedicated host.
 	MachineId string `pulumi:"machineId"`
+	// dedicated host network parameters. contains the following attributes:
+	NetworkAttributes []GetDedicatedHostsHostNetworkAttribute `pulumi:"networkAttributes"`
+	// The reason why the dedicated host resource is locked.
+	OperationLocks []GetDedicatedHostsHostOperationLock `pulumi:"operationLocks"`
 	// The billing method of the dedicated host.
 	PaymentType string `pulumi:"paymentType"`
 	// The number of physical GPUs.
@@ -2420,7 +2472,11 @@ type GetDedicatedHostsHost struct {
 	Sockets int `pulumi:"sockets"`
 	// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
 	Status string `pulumi:"status"`
-	// The list of ECS instanc
+	// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+	SupportedCustomInstanceTypeFamilies []string `pulumi:"supportedCustomInstanceTypeFamilies"`
+	// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+	SupportedInstanceTypeFamilies []string `pulumi:"supportedInstanceTypeFamilies"`
+	// The list of ECS instance
 	SupportedInstanceTypesLists []string `pulumi:"supportedInstanceTypesLists"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -2446,8 +2502,12 @@ type GetDedicatedHostsHostArgs struct {
 	AutoPlacement pulumi.StringInput `pulumi:"autoPlacement"`
 	// The automatic release time of the dedicated host.
 	AutoReleaseTime pulumi.StringInput `pulumi:"autoReleaseTime"`
+	// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+	Capacities GetDedicatedHostsHostCapacityArrayInput `pulumi:"capacities"`
 	// A mapping of tags to assign to the resource.
 	Cores pulumi.IntInput `pulumi:"cores"`
+	// (Available in 1.123.1+) CPU oversold ratio.
+	CpuOverCommitRatio pulumi.Float64Input `pulumi:"cpuOverCommitRatio"`
 	// The ID of ECS Dedicated Host.
 	DedicatedHostId pulumi.StringInput `pulumi:"dedicatedHostId"`
 	// The name of ECS Dedicated Host.
@@ -2464,6 +2524,10 @@ type GetDedicatedHostsHostArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The machine code of the dedicated host.
 	MachineId pulumi.StringInput `pulumi:"machineId"`
+	// dedicated host network parameters. contains the following attributes:
+	NetworkAttributes GetDedicatedHostsHostNetworkAttributeArrayInput `pulumi:"networkAttributes"`
+	// The reason why the dedicated host resource is locked.
+	OperationLocks GetDedicatedHostsHostOperationLockArrayInput `pulumi:"operationLocks"`
 	// The billing method of the dedicated host.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// The number of physical GPUs.
@@ -2476,7 +2540,11 @@ type GetDedicatedHostsHostArgs struct {
 	Sockets pulumi.IntInput `pulumi:"sockets"`
 	// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The list of ECS instanc
+	// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+	SupportedCustomInstanceTypeFamilies pulumi.StringArrayInput `pulumi:"supportedCustomInstanceTypeFamilies"`
+	// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+	SupportedInstanceTypeFamilies pulumi.StringArrayInput `pulumi:"supportedInstanceTypeFamilies"`
+	// The list of ECS instance
 	SupportedInstanceTypesLists pulumi.StringArrayInput `pulumi:"supportedInstanceTypesLists"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -2550,9 +2618,19 @@ func (o GetDedicatedHostsHostOutput) AutoReleaseTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.AutoReleaseTime }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+func (o GetDedicatedHostsHostOutput) Capacities() GetDedicatedHostsHostCapacityArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []GetDedicatedHostsHostCapacity { return v.Capacities }).(GetDedicatedHostsHostCapacityArrayOutput)
+}
+
 // A mapping of tags to assign to the resource.
 func (o GetDedicatedHostsHostOutput) Cores() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) int { return v.Cores }).(pulumi.IntOutput)
+}
+
+// (Available in 1.123.1+) CPU oversold ratio.
+func (o GetDedicatedHostsHostOutput) CpuOverCommitRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDedicatedHostsHost) float64 { return v.CpuOverCommitRatio }).(pulumi.Float64Output)
 }
 
 // The ID of ECS Dedicated Host.
@@ -2595,6 +2673,16 @@ func (o GetDedicatedHostsHostOutput) MachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.MachineId }).(pulumi.StringOutput)
 }
 
+// dedicated host network parameters. contains the following attributes:
+func (o GetDedicatedHostsHostOutput) NetworkAttributes() GetDedicatedHostsHostNetworkAttributeArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []GetDedicatedHostsHostNetworkAttribute { return v.NetworkAttributes }).(GetDedicatedHostsHostNetworkAttributeArrayOutput)
+}
+
+// The reason why the dedicated host resource is locked.
+func (o GetDedicatedHostsHostOutput) OperationLocks() GetDedicatedHostsHostOperationLockArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []GetDedicatedHostsHostOperationLock { return v.OperationLocks }).(GetDedicatedHostsHostOperationLockArrayOutput)
+}
+
 // The billing method of the dedicated host.
 func (o GetDedicatedHostsHostOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.PaymentType }).(pulumi.StringOutput)
@@ -2625,7 +2713,17 @@ func (o GetDedicatedHostsHostOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The list of ECS instanc
+// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+func (o GetDedicatedHostsHostOutput) SupportedCustomInstanceTypeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []string { return v.SupportedCustomInstanceTypeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+func (o GetDedicatedHostsHostOutput) SupportedInstanceTypeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []string { return v.SupportedInstanceTypeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// The list of ECS instance
 func (o GetDedicatedHostsHostOutput) SupportedInstanceTypesLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) []string { return v.SupportedInstanceTypesLists }).(pulumi.StringArrayOutput)
 }
@@ -2658,6 +2756,475 @@ func (o GetDedicatedHostsHostArrayOutput) Index(i pulumi.IntInput) GetDedicatedH
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHost {
 		return vs[0].([]GetDedicatedHostsHost)[vs[1].(int)]
 	}).(GetDedicatedHostsHostOutput)
+}
+
+type GetDedicatedHostsHostCapacity struct {
+	// The remaining local disk capacity. Unit: GiB.
+	AvailableLocalStorage int `pulumi:"availableLocalStorage"`
+	// The remaining memory capacity, unit: GiB.
+	AvailableMemory float64 `pulumi:"availableMemory"`
+	// The number of remaining vCPU cores.
+	AvailableVcpus int `pulumi:"availableVcpus"`
+	// The number of available virtual GPUs.
+	AvailableVgpus int `pulumi:"availableVgpus"`
+	// Local disk type.
+	LocalStorageCategory string `pulumi:"localStorageCategory"`
+	// The total capacity of the local disk, in GiB.
+	TotalLocalStorage int `pulumi:"totalLocalStorage"`
+	// The total memory capacity, unit: GiB.
+	TotalMemory float64 `pulumi:"totalMemory"`
+	// The total number of vCPU cores.
+	TotalVcpus int `pulumi:"totalVcpus"`
+	// The total number of virtual GPUs.
+	TotalVgpus int `pulumi:"totalVgpus"`
+}
+
+// GetDedicatedHostsHostCapacityInput is an input type that accepts GetDedicatedHostsHostCapacityArgs and GetDedicatedHostsHostCapacityOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostCapacityInput` via:
+//
+//          GetDedicatedHostsHostCapacityArgs{...}
+type GetDedicatedHostsHostCapacityInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostCapacityOutput() GetDedicatedHostsHostCapacityOutput
+	ToGetDedicatedHostsHostCapacityOutputWithContext(context.Context) GetDedicatedHostsHostCapacityOutput
+}
+
+type GetDedicatedHostsHostCapacityArgs struct {
+	// The remaining local disk capacity. Unit: GiB.
+	AvailableLocalStorage pulumi.IntInput `pulumi:"availableLocalStorage"`
+	// The remaining memory capacity, unit: GiB.
+	AvailableMemory pulumi.Float64Input `pulumi:"availableMemory"`
+	// The number of remaining vCPU cores.
+	AvailableVcpus pulumi.IntInput `pulumi:"availableVcpus"`
+	// The number of available virtual GPUs.
+	AvailableVgpus pulumi.IntInput `pulumi:"availableVgpus"`
+	// Local disk type.
+	LocalStorageCategory pulumi.StringInput `pulumi:"localStorageCategory"`
+	// The total capacity of the local disk, in GiB.
+	TotalLocalStorage pulumi.IntInput `pulumi:"totalLocalStorage"`
+	// The total memory capacity, unit: GiB.
+	TotalMemory pulumi.Float64Input `pulumi:"totalMemory"`
+	// The total number of vCPU cores.
+	TotalVcpus pulumi.IntInput `pulumi:"totalVcpus"`
+	// The total number of virtual GPUs.
+	TotalVgpus pulumi.IntInput `pulumi:"totalVgpus"`
+}
+
+func (GetDedicatedHostsHostCapacityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostCapacity)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostCapacityArgs) ToGetDedicatedHostsHostCapacityOutput() GetDedicatedHostsHostCapacityOutput {
+	return i.ToGetDedicatedHostsHostCapacityOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostCapacityArgs) ToGetDedicatedHostsHostCapacityOutputWithContext(ctx context.Context) GetDedicatedHostsHostCapacityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostCapacityOutput)
+}
+
+// GetDedicatedHostsHostCapacityArrayInput is an input type that accepts GetDedicatedHostsHostCapacityArray and GetDedicatedHostsHostCapacityArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostCapacityArrayInput` via:
+//
+//          GetDedicatedHostsHostCapacityArray{ GetDedicatedHostsHostCapacityArgs{...} }
+type GetDedicatedHostsHostCapacityArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostCapacityArrayOutput() GetDedicatedHostsHostCapacityArrayOutput
+	ToGetDedicatedHostsHostCapacityArrayOutputWithContext(context.Context) GetDedicatedHostsHostCapacityArrayOutput
+}
+
+type GetDedicatedHostsHostCapacityArray []GetDedicatedHostsHostCapacityInput
+
+func (GetDedicatedHostsHostCapacityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostCapacity)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostCapacityArray) ToGetDedicatedHostsHostCapacityArrayOutput() GetDedicatedHostsHostCapacityArrayOutput {
+	return i.ToGetDedicatedHostsHostCapacityArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostCapacityArray) ToGetDedicatedHostsHostCapacityArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostCapacityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostCapacityArrayOutput)
+}
+
+type GetDedicatedHostsHostCapacityOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostCapacityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostCapacity)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostCapacityOutput) ToGetDedicatedHostsHostCapacityOutput() GetDedicatedHostsHostCapacityOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostCapacityOutput) ToGetDedicatedHostsHostCapacityOutputWithContext(ctx context.Context) GetDedicatedHostsHostCapacityOutput {
+	return o
+}
+
+// The remaining local disk capacity. Unit: GiB.
+func (o GetDedicatedHostsHostCapacityOutput) AvailableLocalStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.AvailableLocalStorage }).(pulumi.IntOutput)
+}
+
+// The remaining memory capacity, unit: GiB.
+func (o GetDedicatedHostsHostCapacityOutput) AvailableMemory() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) float64 { return v.AvailableMemory }).(pulumi.Float64Output)
+}
+
+// The number of remaining vCPU cores.
+func (o GetDedicatedHostsHostCapacityOutput) AvailableVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.AvailableVcpus }).(pulumi.IntOutput)
+}
+
+// The number of available virtual GPUs.
+func (o GetDedicatedHostsHostCapacityOutput) AvailableVgpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.AvailableVgpus }).(pulumi.IntOutput)
+}
+
+// Local disk type.
+func (o GetDedicatedHostsHostCapacityOutput) LocalStorageCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) string { return v.LocalStorageCategory }).(pulumi.StringOutput)
+}
+
+// The total capacity of the local disk, in GiB.
+func (o GetDedicatedHostsHostCapacityOutput) TotalLocalStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.TotalLocalStorage }).(pulumi.IntOutput)
+}
+
+// The total memory capacity, unit: GiB.
+func (o GetDedicatedHostsHostCapacityOutput) TotalMemory() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) float64 { return v.TotalMemory }).(pulumi.Float64Output)
+}
+
+// The total number of vCPU cores.
+func (o GetDedicatedHostsHostCapacityOutput) TotalVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.TotalVcpus }).(pulumi.IntOutput)
+}
+
+// The total number of virtual GPUs.
+func (o GetDedicatedHostsHostCapacityOutput) TotalVgpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.TotalVgpus }).(pulumi.IntOutput)
+}
+
+type GetDedicatedHostsHostCapacityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostCapacityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostCapacity)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostCapacityArrayOutput) ToGetDedicatedHostsHostCapacityArrayOutput() GetDedicatedHostsHostCapacityArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostCapacityArrayOutput) ToGetDedicatedHostsHostCapacityArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostCapacityArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostCapacityArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsHostCapacityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHostCapacity {
+		return vs[0].([]GetDedicatedHostsHostCapacity)[vs[1].(int)]
+	}).(GetDedicatedHostsHostCapacityOutput)
+}
+
+type GetDedicatedHostsHostNetworkAttribute struct {
+	// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
+	SlbUdpTimeout int `pulumi:"slbUdpTimeout"`
+	// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+	UdpTimeout int `pulumi:"udpTimeout"`
+}
+
+// GetDedicatedHostsHostNetworkAttributeInput is an input type that accepts GetDedicatedHostsHostNetworkAttributeArgs and GetDedicatedHostsHostNetworkAttributeOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostNetworkAttributeInput` via:
+//
+//          GetDedicatedHostsHostNetworkAttributeArgs{...}
+type GetDedicatedHostsHostNetworkAttributeInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostNetworkAttributeOutput() GetDedicatedHostsHostNetworkAttributeOutput
+	ToGetDedicatedHostsHostNetworkAttributeOutputWithContext(context.Context) GetDedicatedHostsHostNetworkAttributeOutput
+}
+
+type GetDedicatedHostsHostNetworkAttributeArgs struct {
+	// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
+	SlbUdpTimeout pulumi.IntInput `pulumi:"slbUdpTimeout"`
+	// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+	UdpTimeout pulumi.IntInput `pulumi:"udpTimeout"`
+}
+
+func (GetDedicatedHostsHostNetworkAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostNetworkAttribute)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostNetworkAttributeArgs) ToGetDedicatedHostsHostNetworkAttributeOutput() GetDedicatedHostsHostNetworkAttributeOutput {
+	return i.ToGetDedicatedHostsHostNetworkAttributeOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostNetworkAttributeArgs) ToGetDedicatedHostsHostNetworkAttributeOutputWithContext(ctx context.Context) GetDedicatedHostsHostNetworkAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostNetworkAttributeOutput)
+}
+
+// GetDedicatedHostsHostNetworkAttributeArrayInput is an input type that accepts GetDedicatedHostsHostNetworkAttributeArray and GetDedicatedHostsHostNetworkAttributeArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostNetworkAttributeArrayInput` via:
+//
+//          GetDedicatedHostsHostNetworkAttributeArray{ GetDedicatedHostsHostNetworkAttributeArgs{...} }
+type GetDedicatedHostsHostNetworkAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostNetworkAttributeArrayOutput() GetDedicatedHostsHostNetworkAttributeArrayOutput
+	ToGetDedicatedHostsHostNetworkAttributeArrayOutputWithContext(context.Context) GetDedicatedHostsHostNetworkAttributeArrayOutput
+}
+
+type GetDedicatedHostsHostNetworkAttributeArray []GetDedicatedHostsHostNetworkAttributeInput
+
+func (GetDedicatedHostsHostNetworkAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostNetworkAttribute)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostNetworkAttributeArray) ToGetDedicatedHostsHostNetworkAttributeArrayOutput() GetDedicatedHostsHostNetworkAttributeArrayOutput {
+	return i.ToGetDedicatedHostsHostNetworkAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostNetworkAttributeArray) ToGetDedicatedHostsHostNetworkAttributeArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostNetworkAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostNetworkAttributeArrayOutput)
+}
+
+type GetDedicatedHostsHostNetworkAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostNetworkAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostNetworkAttribute)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostNetworkAttributeOutput) ToGetDedicatedHostsHostNetworkAttributeOutput() GetDedicatedHostsHostNetworkAttributeOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostNetworkAttributeOutput) ToGetDedicatedHostsHostNetworkAttributeOutputWithContext(ctx context.Context) GetDedicatedHostsHostNetworkAttributeOutput {
+	return o
+}
+
+// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
+func (o GetDedicatedHostsHostNetworkAttributeOutput) SlbUdpTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostNetworkAttribute) int { return v.SlbUdpTimeout }).(pulumi.IntOutput)
+}
+
+// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+func (o GetDedicatedHostsHostNetworkAttributeOutput) UdpTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostNetworkAttribute) int { return v.UdpTimeout }).(pulumi.IntOutput)
+}
+
+type GetDedicatedHostsHostNetworkAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostNetworkAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostNetworkAttribute)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostNetworkAttributeArrayOutput) ToGetDedicatedHostsHostNetworkAttributeArrayOutput() GetDedicatedHostsHostNetworkAttributeArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostNetworkAttributeArrayOutput) ToGetDedicatedHostsHostNetworkAttributeArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostNetworkAttributeArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostNetworkAttributeArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsHostNetworkAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHostNetworkAttribute {
+		return vs[0].([]GetDedicatedHostsHostNetworkAttribute)[vs[1].(int)]
+	}).(GetDedicatedHostsHostNetworkAttributeOutput)
+}
+
+type GetDedicatedHostsHostOperationLock struct {
+	// The reason why the dedicated host resource is locked.
+	LockReason string `pulumi:"lockReason"`
+}
+
+// GetDedicatedHostsHostOperationLockInput is an input type that accepts GetDedicatedHostsHostOperationLockArgs and GetDedicatedHostsHostOperationLockOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostOperationLockInput` via:
+//
+//          GetDedicatedHostsHostOperationLockArgs{...}
+type GetDedicatedHostsHostOperationLockInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostOperationLockOutput() GetDedicatedHostsHostOperationLockOutput
+	ToGetDedicatedHostsHostOperationLockOutputWithContext(context.Context) GetDedicatedHostsHostOperationLockOutput
+}
+
+type GetDedicatedHostsHostOperationLockArgs struct {
+	// The reason why the dedicated host resource is locked.
+	LockReason pulumi.StringInput `pulumi:"lockReason"`
+}
+
+func (GetDedicatedHostsHostOperationLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostOperationLock)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostOperationLockArgs) ToGetDedicatedHostsHostOperationLockOutput() GetDedicatedHostsHostOperationLockOutput {
+	return i.ToGetDedicatedHostsHostOperationLockOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostOperationLockArgs) ToGetDedicatedHostsHostOperationLockOutputWithContext(ctx context.Context) GetDedicatedHostsHostOperationLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostOperationLockOutput)
+}
+
+// GetDedicatedHostsHostOperationLockArrayInput is an input type that accepts GetDedicatedHostsHostOperationLockArray and GetDedicatedHostsHostOperationLockArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostOperationLockArrayInput` via:
+//
+//          GetDedicatedHostsHostOperationLockArray{ GetDedicatedHostsHostOperationLockArgs{...} }
+type GetDedicatedHostsHostOperationLockArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostOperationLockArrayOutput() GetDedicatedHostsHostOperationLockArrayOutput
+	ToGetDedicatedHostsHostOperationLockArrayOutputWithContext(context.Context) GetDedicatedHostsHostOperationLockArrayOutput
+}
+
+type GetDedicatedHostsHostOperationLockArray []GetDedicatedHostsHostOperationLockInput
+
+func (GetDedicatedHostsHostOperationLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostOperationLock)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostOperationLockArray) ToGetDedicatedHostsHostOperationLockArrayOutput() GetDedicatedHostsHostOperationLockArrayOutput {
+	return i.ToGetDedicatedHostsHostOperationLockArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostOperationLockArray) ToGetDedicatedHostsHostOperationLockArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostOperationLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostOperationLockArrayOutput)
+}
+
+type GetDedicatedHostsHostOperationLockOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostOperationLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostOperationLock)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostOperationLockOutput) ToGetDedicatedHostsHostOperationLockOutput() GetDedicatedHostsHostOperationLockOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostOperationLockOutput) ToGetDedicatedHostsHostOperationLockOutputWithContext(ctx context.Context) GetDedicatedHostsHostOperationLockOutput {
+	return o
+}
+
+// The reason why the dedicated host resource is locked.
+func (o GetDedicatedHostsHostOperationLockOutput) LockReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostOperationLock) string { return v.LockReason }).(pulumi.StringOutput)
+}
+
+type GetDedicatedHostsHostOperationLockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostOperationLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostOperationLock)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostOperationLockArrayOutput) ToGetDedicatedHostsHostOperationLockArrayOutput() GetDedicatedHostsHostOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostOperationLockArrayOutput) ToGetDedicatedHostsHostOperationLockArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostOperationLockArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsHostOperationLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHostOperationLock {
+		return vs[0].([]GetDedicatedHostsHostOperationLock)[vs[1].(int)]
+	}).(GetDedicatedHostsHostOperationLockOutput)
+}
+
+type GetDedicatedHostsOperationLock struct {
+	// The reason why the dedicated host resource is locked.
+	LockReason *string `pulumi:"lockReason"`
+}
+
+// GetDedicatedHostsOperationLockInput is an input type that accepts GetDedicatedHostsOperationLockArgs and GetDedicatedHostsOperationLockOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsOperationLockInput` via:
+//
+//          GetDedicatedHostsOperationLockArgs{...}
+type GetDedicatedHostsOperationLockInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsOperationLockOutput() GetDedicatedHostsOperationLockOutput
+	ToGetDedicatedHostsOperationLockOutputWithContext(context.Context) GetDedicatedHostsOperationLockOutput
+}
+
+type GetDedicatedHostsOperationLockArgs struct {
+	// The reason why the dedicated host resource is locked.
+	LockReason pulumi.StringPtrInput `pulumi:"lockReason"`
+}
+
+func (GetDedicatedHostsOperationLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsOperationLock)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsOperationLockArgs) ToGetDedicatedHostsOperationLockOutput() GetDedicatedHostsOperationLockOutput {
+	return i.ToGetDedicatedHostsOperationLockOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsOperationLockArgs) ToGetDedicatedHostsOperationLockOutputWithContext(ctx context.Context) GetDedicatedHostsOperationLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsOperationLockOutput)
+}
+
+// GetDedicatedHostsOperationLockArrayInput is an input type that accepts GetDedicatedHostsOperationLockArray and GetDedicatedHostsOperationLockArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsOperationLockArrayInput` via:
+//
+//          GetDedicatedHostsOperationLockArray{ GetDedicatedHostsOperationLockArgs{...} }
+type GetDedicatedHostsOperationLockArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsOperationLockArrayOutput() GetDedicatedHostsOperationLockArrayOutput
+	ToGetDedicatedHostsOperationLockArrayOutputWithContext(context.Context) GetDedicatedHostsOperationLockArrayOutput
+}
+
+type GetDedicatedHostsOperationLockArray []GetDedicatedHostsOperationLockInput
+
+func (GetDedicatedHostsOperationLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsOperationLock)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsOperationLockArray) ToGetDedicatedHostsOperationLockArrayOutput() GetDedicatedHostsOperationLockArrayOutput {
+	return i.ToGetDedicatedHostsOperationLockArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsOperationLockArray) ToGetDedicatedHostsOperationLockArrayOutputWithContext(ctx context.Context) GetDedicatedHostsOperationLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsOperationLockArrayOutput)
+}
+
+type GetDedicatedHostsOperationLockOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsOperationLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsOperationLock)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsOperationLockOutput) ToGetDedicatedHostsOperationLockOutput() GetDedicatedHostsOperationLockOutput {
+	return o
+}
+
+func (o GetDedicatedHostsOperationLockOutput) ToGetDedicatedHostsOperationLockOutputWithContext(ctx context.Context) GetDedicatedHostsOperationLockOutput {
+	return o
+}
+
+// The reason why the dedicated host resource is locked.
+func (o GetDedicatedHostsOperationLockOutput) LockReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDedicatedHostsOperationLock) *string { return v.LockReason }).(pulumi.StringPtrOutput)
+}
+
+type GetDedicatedHostsOperationLockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsOperationLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsOperationLock)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsOperationLockArrayOutput) ToGetDedicatedHostsOperationLockArrayOutput() GetDedicatedHostsOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsOperationLockArrayOutput) ToGetDedicatedHostsOperationLockArrayOutputWithContext(ctx context.Context) GetDedicatedHostsOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsOperationLockArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsOperationLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsOperationLock {
+		return vs[0].([]GetDedicatedHostsOperationLock)[vs[1].(int)]
+	}).(GetDedicatedHostsOperationLockOutput)
 }
 
 type GetDisksDisk struct {
@@ -8396,21 +8963,28 @@ type GetNetworkInterfacesInterface struct {
 	// MAC address of the ENI.
 	Mac string `pulumi:"mac"`
 	// Name of the ENI.
-	Name string `pulumi:"name"`
+	Name                 string `pulumi:"name"`
+	NetworkInterfaceId   string `pulumi:"networkInterfaceId"`
+	NetworkInterfaceName string `pulumi:"networkInterfaceName"`
+	PrimaryIpAddress     string `pulumi:"primaryIpAddress"`
 	// Primary private IP of the ENI.
-	PrivateIp string `pulumi:"privateIp"`
+	PrivateIp          string   `pulumi:"privateIp"`
+	PrivateIpAddresses []string `pulumi:"privateIpAddresses"`
 	// A list of secondary private IP address that is assigned to the ENI.
-	PrivateIps []string `pulumi:"privateIps"`
-	// Public IP of the ENI.
-	PublicIp string `pulumi:"publicIp"`
+	PrivateIps  []string `pulumi:"privateIps"`
+	QueueNumber int      `pulumi:"queueNumber"`
 	// The Id of resource group.
-	ResourceGroupId string `pulumi:"resourceGroupId"`
+	ResourceGroupId  string   `pulumi:"resourceGroupId"`
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A list of security group that the ENI belongs to.
 	SecurityGroups []string `pulumi:"securityGroups"`
+	ServiceId      int      `pulumi:"serviceId"`
+	ServiceManaged bool     `pulumi:"serviceManaged"`
 	// Current status of the ENI.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the ENI.
 	Tags map[string]interface{} `pulumi:"tags"`
+	Type string                 `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId string `pulumi:"vpcId"`
 	// ID of the VSwitch that the ENI is linked to.
@@ -8442,21 +9016,28 @@ type GetNetworkInterfacesInterfaceArgs struct {
 	// MAC address of the ENI.
 	Mac pulumi.StringInput `pulumi:"mac"`
 	// Name of the ENI.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name                 pulumi.StringInput `pulumi:"name"`
+	NetworkInterfaceId   pulumi.StringInput `pulumi:"networkInterfaceId"`
+	NetworkInterfaceName pulumi.StringInput `pulumi:"networkInterfaceName"`
+	PrimaryIpAddress     pulumi.StringInput `pulumi:"primaryIpAddress"`
 	// Primary private IP of the ENI.
-	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
+	PrivateIp          pulumi.StringInput      `pulumi:"privateIp"`
+	PrivateIpAddresses pulumi.StringArrayInput `pulumi:"privateIpAddresses"`
 	// A list of secondary private IP address that is assigned to the ENI.
-	PrivateIps pulumi.StringArrayInput `pulumi:"privateIps"`
-	// Public IP of the ENI.
-	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+	PrivateIps  pulumi.StringArrayInput `pulumi:"privateIps"`
+	QueueNumber pulumi.IntInput         `pulumi:"queueNumber"`
 	// The Id of resource group.
-	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	ResourceGroupId  pulumi.StringInput      `pulumi:"resourceGroupId"`
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
 	// A list of security group that the ENI belongs to.
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
+	ServiceId      pulumi.IntInput         `pulumi:"serviceId"`
+	ServiceManaged pulumi.BoolInput        `pulumi:"serviceManaged"`
 	// Current status of the ENI.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the ENI.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.MapInput    `pulumi:"tags"`
+	Type pulumi.StringInput `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// ID of the VSwitch that the ENI is linked to.
@@ -8546,9 +9127,25 @@ func (o GetNetworkInterfacesInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o GetNetworkInterfacesInterfaceOutput) NetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) NetworkInterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.NetworkInterfaceName }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) PrimaryIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PrimaryIpAddress }).(pulumi.StringOutput)
+}
+
 // Primary private IP of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) PrivateIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.PrivateIpAddresses }).(pulumi.StringArrayOutput)
 }
 
 // A list of secondary private IP address that is assigned to the ENI.
@@ -8556,9 +9153,8 @@ func (o GetNetworkInterfacesInterfaceOutput) PrivateIps() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }
 
-// Public IP of the ENI.
-func (o GetNetworkInterfacesInterfaceOutput) PublicIp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PublicIp }).(pulumi.StringOutput)
+func (o GetNetworkInterfacesInterfaceOutput) QueueNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) int { return v.QueueNumber }).(pulumi.IntOutput)
 }
 
 // The Id of resource group.
@@ -8566,9 +9162,21 @@ func (o GetNetworkInterfacesInterfaceOutput) ResourceGroupId() pulumi.StringOutp
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+func (o GetNetworkInterfacesInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
 // A list of security group that the ENI belongs to.
 func (o GetNetworkInterfacesInterfaceOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) ServiceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) int { return v.ServiceId }).(pulumi.IntOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) ServiceManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) bool { return v.ServiceManaged }).(pulumi.BoolOutput)
 }
 
 // Current status of the ENI.
@@ -8579,6 +9187,10 @@ func (o GetNetworkInterfacesInterfaceOutput) Status() pulumi.StringOutput {
 // A map of tags assigned to the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // ID of the VPC that the ENI belongs to.
@@ -9351,8 +9963,8 @@ func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSn
 func init() {
 	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigOutput{})
 	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigArrayOutput{})
-	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeOutput{})
-	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeArrayOutput{})
+	pulumi.RegisterOutputType(DedicatedHostNetworkAttributesOutput{})
+	pulumi.RegisterOutputType(DedicatedHostNetworkAttributesPtrOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateDataDiskOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateNetworkInterfacesOutput{})
@@ -9377,6 +9989,14 @@ func init() {
 	pulumi.RegisterOutputType(GetCommandsCommandArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostCapacityOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostCapacityArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostNetworkAttributeOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostNetworkAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostOperationLockOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostOperationLockArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsOperationLockOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsOperationLockArrayOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskMountInstanceOutput{})

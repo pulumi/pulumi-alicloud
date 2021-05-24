@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Slb
         ///     {
         ///         var sampleDs = Output.Create(AliCloud.Slb.GetBackendServers.InvokeAsync(new AliCloud.Slb.GetBackendServersArgs
         ///         {
-        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///             LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
         ///         }));
         ///         this.FirstSlbBackendServerId = sampleDs.Apply(sampleDs =&gt; sampleDs.BackendServers[0].Id);
         ///     }

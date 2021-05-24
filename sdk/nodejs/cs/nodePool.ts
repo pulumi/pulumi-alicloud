@@ -75,6 +75,14 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly instanceTypes!: pulumi.Output<string[]>;
     /**
+     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+     */
+    public readonly internetChargeType!: pulumi.Output<string>;
+    /**
+     * The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+     */
+    public readonly internetMaxBandwidthOut!: pulumi.Output<number>;
+    /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
     public readonly keyName!: pulumi.Output<string | undefined>;
@@ -115,6 +123,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`.
      */
     public readonly scalingConfig!: pulumi.Output<outputs.cs.NodePoolScalingConfig>;
@@ -126,6 +138,14 @@ export class NodePool extends pulumi.CustomResource {
      * The security group id for worker node.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
+    /**
+     * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+     */
+    public readonly spotPriceLimits!: pulumi.Output<outputs.cs.NodePoolSpotPriceLimit[]>;
+    /**
+     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+     */
+    public readonly spotStrategy!: pulumi.Output<string>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
@@ -178,6 +198,8 @@ export class NodePool extends pulumi.CustomResource {
             inputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
+            inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
+            inputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -188,9 +210,12 @@ export class NodePool extends pulumi.CustomResource {
             inputs["password"] = state ? state.password : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["periodUnit"] = state ? state.periodUnit : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["scalingConfig"] = state ? state.scalingConfig : undefined;
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            inputs["spotPriceLimits"] = state ? state.spotPriceLimits : undefined;
+            inputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
             inputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
             inputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
@@ -219,6 +244,8 @@ export class NodePool extends pulumi.CustomResource {
             inputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
+            inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
+            inputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -229,8 +256,11 @@ export class NodePool extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["periodUnit"] = args ? args.periodUnit : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["scalingConfig"] = args ? args.scalingConfig : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            inputs["spotPriceLimits"] = args ? args.spotPriceLimits : undefined;
+            inputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             inputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
             inputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
@@ -286,6 +316,14 @@ export interface NodePoolState {
      */
     readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+     */
+    readonly internetChargeType?: pulumi.Input<string>;
+    /**
+     * The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+     */
+    readonly internetMaxBandwidthOut?: pulumi.Input<number>;
+    /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
     readonly keyName?: pulumi.Input<string>;
@@ -326,6 +364,10 @@ export interface NodePoolState {
      */
     readonly periodUnit?: pulumi.Input<string>;
     /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`.
      */
     readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
@@ -337,6 +379,14 @@ export interface NodePoolState {
      * The security group id for worker node.
      */
     readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+     */
+    readonly spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
+    /**
+     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+     */
+    readonly spotStrategy?: pulumi.Input<string>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
@@ -406,6 +456,14 @@ export interface NodePoolArgs {
      */
     readonly instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+     */
+    readonly internetChargeType?: pulumi.Input<string>;
+    /**
+     * The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+     */
+    readonly internetMaxBandwidthOut?: pulumi.Input<number>;
+    /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
     readonly keyName?: pulumi.Input<string>;
@@ -446,6 +504,10 @@ export interface NodePoolArgs {
      */
     readonly periodUnit?: pulumi.Input<string>;
     /**
+     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`.
      */
     readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
@@ -453,6 +515,14 @@ export interface NodePoolArgs {
      * The security group id for worker node.
      */
     readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+     */
+    readonly spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
+    /**
+     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+     */
+    readonly spotStrategy?: pulumi.Input<string>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */

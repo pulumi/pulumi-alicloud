@@ -13,53 +13,6 @@ namespace Pulumi.AliCloud.Slb
     {
         /// <summary>
         /// This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = new AliCloud.Slb.LoadBalancer("default", new AliCloud.Slb.LoadBalancerArgs
-        ///         {
-        ///         });
-        ///         var tcp = new AliCloud.Slb.Listener("tcp", new AliCloud.Slb.ListenerArgs
-        ///         {
-        ///             LoadBalancerId = @default.Id,
-        ///             BackendPort = 22,
-        ///             FrontendPort = 22,
-        ///             Protocol = "tcp",
-        ///             Bandwidth = 10,
-        ///             HealthCheckType = "tcp",
-        ///             PersistenceTimeout = 3600,
-        ///             HealthyThreshold = 8,
-        ///             UnhealthyThreshold = 8,
-        ///             HealthCheckTimeout = 8,
-        ///             HealthCheckInterval = 5,
-        ///             HealthCheckHttpCode = "http_2xx",
-        ///             HealthCheckConnectPort = 20,
-        ///             HealthCheckUri = "/console",
-        ///             EstablishedTimeout = 600,
-        ///         });
-        ///         var sampleDs = @default.Id.Apply(id =&gt; AliCloud.Slb.GetListeners.InvokeAsync(new AliCloud.Slb.GetListenersArgs
-        ///         {
-        ///             LoadBalancerId = id,
-        ///         }));
-        ///         this.FirstSlbListenerProtocol = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbListeners[0].Protocol);
-        ///     }
-        /// 
-        ///     [Output("firstSlbListenerProtocol")]
-        ///     public Output&lt;string&gt; FirstSlbListenerProtocol { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetListenersResult> InvokeAsync(GetListenersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:slb/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithVersion());

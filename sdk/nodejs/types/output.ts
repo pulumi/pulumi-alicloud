@@ -3762,7 +3762,7 @@ export namespace cs {
          */
         eipBandwidth?: number;
         /**
-         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
          */
         eipInternetChargeType?: string;
         /**
@@ -3783,6 +3783,17 @@ export namespace cs {
         type?: string;
     }
 
+    export interface NodePoolSpotPriceLimit {
+        /**
+         * Spot instance type.
+         */
+        instanceType?: string;
+        /**
+         * The maximum hourly price of the spot instance.
+         */
+        priceLimit?: string;
+    }
+
     export interface NodePoolTaint {
         effect?: string;
         /**
@@ -3796,10 +3807,16 @@ export namespace cs {
     }
 
     export interface ServerlessKubernetesAddon {
+        /**
+         * The ACK add-on configurations.
+         */
         config?: string;
+        /**
+         * Disables the automatic installation of a component. Default is `false`.
+         */
         disabled?: boolean;
         /**
-         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: string;
     }
@@ -5578,7 +5595,7 @@ export namespace ecs {
         weightedCapacity: string;
     }
 
-    export interface DedicatedHostNetworkAttribute {
+    export interface DedicatedHostNetworkAttributes {
         /**
          * The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
          */
@@ -5790,9 +5807,17 @@ export namespace ecs {
          */
         autoReleaseTime: string;
         /**
+         * (Available in 1.123.1+) A collection of proprietary host performance indicators.
+         */
+        capacities: outputs.ecs.GetDedicatedHostsHostCapacity[];
+        /**
          * A mapping of tags to assign to the resource.
          */
         cores: number;
+        /**
+         * (Available in 1.123.1+) CPU oversold ratio.
+         */
+        cpuOverCommitRatio: number;
         /**
          * The ID of ECS Dedicated Host.
          */
@@ -5826,6 +5851,14 @@ export namespace ecs {
          */
         machineId: string;
         /**
+         * dedicated host network parameters. contains the following attributes:
+         */
+        networkAttributes: outputs.ecs.GetDedicatedHostsHostNetworkAttribute[];
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        operationLocks: outputs.ecs.GetDedicatedHostsHostOperationLock[];
+        /**
          * The billing method of the dedicated host.
          */
         paymentType: string;
@@ -5850,7 +5883,15 @@ export namespace ecs {
          */
         status: string;
         /**
-         * The list of ECS instanc
+         * (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+         */
+        supportedCustomInstanceTypeFamilies: string[];
+        /**
+         * (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+         */
+        supportedInstanceTypeFamilies: string[];
+        /**
+         * The list of ECS instance
          */
         supportedInstanceTypesLists: string[];
         /**
@@ -5861,6 +5902,70 @@ export namespace ecs {
          * The zone ID of the ECS Dedicated Host.
          */
         zoneId: string;
+    }
+
+    export interface GetDedicatedHostsHostCapacity {
+        /**
+         * The remaining local disk capacity. Unit: GiB.
+         */
+        availableLocalStorage: number;
+        /**
+         * The remaining memory capacity, unit: GiB.
+         */
+        availableMemory: number;
+        /**
+         * The number of remaining vCPU cores.
+         */
+        availableVcpus: number;
+        /**
+         * The number of available virtual GPUs.
+         */
+        availableVgpus: number;
+        /**
+         * Local disk type.
+         */
+        localStorageCategory: string;
+        /**
+         * The total capacity of the local disk, in GiB.
+         */
+        totalLocalStorage: number;
+        /**
+         * The total memory capacity, unit: GiB.
+         */
+        totalMemory: number;
+        /**
+         * The total number of vCPU cores.
+         */
+        totalVcpus: number;
+        /**
+         * The total number of virtual GPUs.
+         */
+        totalVgpus: number;
+    }
+
+    export interface GetDedicatedHostsHostNetworkAttribute {
+        /**
+         * The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
+         */
+        slbUdpTimeout: number;
+        /**
+         * (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+         */
+        udpTimeout: number;
+    }
+
+    export interface GetDedicatedHostsHostOperationLock {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        lockReason: string;
+    }
+
+    export interface GetDedicatedHostsOperationLock {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        lockReason?: string;
     }
 
     export interface GetDisksDisk {
@@ -7181,26 +7286,30 @@ export namespace ecs {
          * Name of the ENI.
          */
         name: string;
+        networkInterfaceId: string;
+        networkInterfaceName: string;
+        primaryIpAddress: string;
         /**
          * Primary private IP of the ENI.
          */
         privateIp: string;
+        privateIpAddresses: string[];
         /**
          * A list of secondary private IP address that is assigned to the ENI.
          */
         privateIps: string[];
-        /**
-         * Public IP of the ENI.
-         */
-        publicIp: string;
+        queueNumber: number;
         /**
          * The Id of resource group.
          */
         resourceGroupId: string;
+        securityGroupIds: string[];
         /**
          * A list of security group that the ENI belongs to.
          */
         securityGroups: string[];
+        serviceId: number;
+        serviceManaged: boolean;
         /**
          * Current status of the ENI.
          */
@@ -7208,7 +7317,8 @@ export namespace ecs {
         /**
          * A map of tags assigned to the ENI.
          */
-        tags?: {[key: string]: any};
+        tags: {[key: string]: any};
+        type: string;
         /**
          * ID of the VPC that the ENI belongs to.
          */
@@ -9662,12 +9772,24 @@ export namespace kms {
          * The Alibaba Cloud Resource Name (ARN) of the key.
          */
         arn: string;
+        automaticRotation: string;
         /**
          * Creation date of key.
          */
         creationDate: string;
         /**
          * The owner of the key.
+         * * `automaticRotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+         * * `keyId` -(Available in 1.123.1+)  ID of the key.
+         * * `keySpec` -(Available in 1.123.1+)  The type of the CMK.
+         * * `keyUsage` -(Available in 1.123.1+)  The usage of CMK.
+         * * `lastRotationDate` -(Available in 1.123.1+)  The date and time the last rotation was performed.
+         * * `materialExpireTime` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
+         * * `nextRotationDate` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+         * * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
+         * * `protectionLevel` -(Available in 1.123.1+)  The protection level of the CMK.
+         * * `rotationInterval` -(Available in 1.123.1+)  The period of automatic key rotation.
+         * * `primaryKeyVersion` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
          */
         creator: string;
         /**
@@ -9682,6 +9804,16 @@ export namespace kms {
          * ID of the key.
          */
         id: string;
+        keyId: string;
+        keySpec: string;
+        keyUsage: string;
+        lastRotationDate: string;
+        materialExpireTime: string;
+        nextRotationDate: string;
+        origin: string;
+        primaryKeyVersion: string;
+        protectionLevel: string;
+        rotationInterval: string;
         /**
          * Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
          */
@@ -10992,7 +11124,7 @@ export namespace oss {
          */
         abortMultipartUploads?: outputs.oss.BucketLifecycleRuleAbortMultipartUpload[];
         /**
-         * Specifies lifecycle rule status.
+         * Specifies the accelerate status of a bucket.
          */
         enabled: boolean;
         /**
@@ -11112,6 +11244,13 @@ export namespace oss {
          * The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
          */
         sseAlgorithm: string;
+    }
+
+    export interface BucketTransferAcceleration {
+        /**
+         * Specifies the accelerate status of a bucket.
+         */
+        enabled: boolean;
     }
 
     export interface BucketVersioning {
@@ -13897,13 +14036,17 @@ export namespace slb {
 
     export interface GetCaCertificatesCertificate {
         /**
+         * (Available in v1.123.1+) CA certificate ID.
+         */
+        caCertificateId: string;
+        /**
+         * (Available in v1.123.1+) CA certificate name.
+         */
+        caCertificateName: string;
+        /**
          * CA certificate common name.
          */
         commonName: string;
-        /**
-         * CA certificate created time.
-         */
-        createdTime: string;
         /**
          * CA certificate created timestamp.
          */
@@ -13925,13 +14068,9 @@ export namespace slb {
          */
         id: string;
         /**
-         * CA certificate name.
+         * (Deprecated from v1.123.1) Deprecated and replace by `caCertificateName`.
          */
         name: string;
-        /**
-         * The region Id of CA certificate.
-         */
-        regionId: string;
         /**
          * The Id of resource group which ca certificates belongs.
          */
@@ -13939,7 +14078,7 @@ export namespace slb {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags: {[key: string]: any};
     }
 
     export interface GetDomainExtensionsExtension {
@@ -14111,6 +14250,96 @@ export namespace slb {
          * Indicate whether the HTTP header field "X-Forwarded-For_proto" is added or not; it allows the backend server to know about the user's protocol. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
          */
         xForwardedForSlbProto: string;
+    }
+
+    export interface GetLoadBalancersBalancer {
+        /**
+         * Service address of the SLBs.
+         */
+        address: string;
+        addressIpVersion: string;
+        addressType: string;
+        autoReleaseTime: number;
+        backendServers: outputs.slb.GetLoadBalancersBalancerBackendServer[];
+        bandwidth: number;
+        createTimeStamp: number;
+        deleteProtection: string;
+        endTime: string;
+        endTimeStamp: number;
+        /**
+         * ID of the SLB.
+         */
+        id: string;
+        internetChargeType: string;
+        listenerPortsAndProtocals: outputs.slb.GetLoadBalancersBalancerListenerPortsAndProtocal[];
+        listenerPortsAndProtocols: outputs.slb.GetLoadBalancersBalancerListenerPortsAndProtocol[];
+        loadBalancerId: string;
+        loadBalancerName: string;
+        loadBalancerSpec: string;
+        masterZoneId: string;
+        modificationProtectionReason: string;
+        modificationProtectionStatus: string;
+        /**
+         * Network type of the SLBs. Valid values: `vpc` and `classic`.
+         */
+        networkType: string;
+        paymentType: string;
+        regionIdAlias: string;
+        renewalCycUnit: string;
+        renewalDuration: number;
+        renewalStatus: string;
+        /**
+         * The Id of resource group which SLB belongs.
+         */
+        resourceGroupId: string;
+        slaveZoneId: string;
+        /**
+         * SLB current status. Possible values: `inactive`, `active` and `locked`.
+         */
+        status: string;
+        /**
+         * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const taggedInstances = pulumi.output(alicloud.slb.getLoadBalancers({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * }, { async: true }));
+         * ```
+         */
+        tags: {[key: string]: any};
+        /**
+         * ID of the VPC linked to the SLBs.
+         */
+        vpcId: string;
+        /**
+         * ID of the VSwitch linked to the SLBs.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetLoadBalancersBalancerBackendServer {
+        description: string;
+        serverId: string;
+        type: string;
+        weight: number;
+    }
+
+    export interface GetLoadBalancersBalancerListenerPortsAndProtocal {
+        listenerPort: number;
+        listenerProtocal: string;
+    }
+
+    export interface GetLoadBalancersBalancerListenerPortsAndProtocol {
+        description: string;
+        forwardPort: number;
+        listenerForward: string;
+        listenerPort: number;
+        listenerProtocol: string;
     }
 
     export interface GetLoadBalancersSlb {

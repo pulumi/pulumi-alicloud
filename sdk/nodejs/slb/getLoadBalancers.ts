@@ -5,22 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * This data source provides the server load balancers of the current Alibaba Cloud user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.slb.LoadBalancer("default", {});
- * const slbsDs = alicloud.slb.getLoadBalancers({
- *     nameRegex: "sample_slb",
- * });
- * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs[0].id);
- * ```
- */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};
     if (!opts) {
@@ -32,13 +16,22 @@ export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.Invo
     }
     return pulumi.runtime.invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", {
         "address": args.address,
+        "addressIpVersion": args.addressIpVersion,
+        "addressType": args.addressType,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
-        "masterAvailabilityZone": args.masterAvailabilityZone,
+        "internetChargeType": args.internetChargeType,
+        "loadBalancerName": args.loadBalancerName,
+        "masterZoneId": args.masterZoneId,
         "nameRegex": args.nameRegex,
         "networkType": args.networkType,
         "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
         "resourceGroupId": args.resourceGroupId,
-        "slaveAvailabilityZone": args.slaveAvailabilityZone,
+        "serverId": args.serverId,
+        "serverIntranetAddress": args.serverIntranetAddress,
+        "slaveZoneId": args.slaveZoneId,
+        "status": args.status,
         "tags": args.tags,
         "vpcId": args.vpcId,
         "vswitchId": args.vswitchId,
@@ -53,14 +46,16 @@ export interface GetLoadBalancersArgs {
      * Service address of the SLBs.
      */
     readonly address?: string;
+    readonly addressIpVersion?: string;
+    readonly addressType?: string;
+    readonly enableDetails?: boolean;
     /**
      * A list of SLBs IDs.
      */
     readonly ids?: string[];
-    /**
-     * Master availability zone of the SLBs.
-     */
-    readonly masterAvailabilityZone?: string;
+    readonly internetChargeType?: string;
+    readonly loadBalancerName?: string;
+    readonly masterZoneId?: string;
     /**
      * A regex string to filter results by SLB name.
      */
@@ -70,14 +65,18 @@ export interface GetLoadBalancersArgs {
      */
     readonly networkType?: string;
     readonly outputFile?: string;
+    readonly paymentType?: string;
     /**
      * The Id of resource group which SLB belongs.
      */
     readonly resourceGroupId?: string;
+    readonly serverId?: string;
+    readonly serverIntranetAddress?: string;
+    readonly slaveZoneId?: string;
     /**
-     * Slave availability zone of the SLBs.
+     * SLB current status. Possible values: `inactive`, `active` and `locked`.
      */
-    readonly slaveAvailabilityZone?: string;
+    readonly status?: string;
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
      * ```typescript
@@ -111,6 +110,10 @@ export interface GetLoadBalancersResult {
      * Service address of the SLB.
      */
     readonly address?: string;
+    readonly addressIpVersion?: string;
+    readonly addressType?: string;
+    readonly balancers: outputs.slb.GetLoadBalancersBalancer[];
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -119,10 +122,9 @@ export interface GetLoadBalancersResult {
      * A list of slb IDs.
      */
     readonly ids: string[];
-    /**
-     * Master availability zone of the SLBs.
-     */
-    readonly masterAvailabilityZone?: string;
+    readonly internetChargeType?: string;
+    readonly loadBalancerName?: string;
+    readonly masterZoneId?: string;
     readonly nameRegex?: string;
     /**
      * A list of slb names.
@@ -133,15 +135,21 @@ export interface GetLoadBalancersResult {
      */
     readonly networkType?: string;
     readonly outputFile?: string;
+    readonly paymentType?: string;
     readonly resourceGroupId?: string;
-    /**
-     * Slave availability zone of the SLBs.
-     */
-    readonly slaveAvailabilityZone?: string;
+    readonly serverId?: string;
+    readonly serverIntranetAddress?: string;
+    readonly slaveZoneId?: string;
     /**
      * A list of SLBs. Each element contains the following attributes:
+     *
+     * @deprecated Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.
      */
     readonly slbs: outputs.slb.GetLoadBalancersSlb[];
+    /**
+     * SLB current status. Possible values: `inactive`, `active` and `locked`.
+     */
+    readonly status?: string;
     /**
      * A map of tags assigned to the SLB instance.
      */

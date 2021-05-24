@@ -10,58 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides an ECS Elastic Network Interface resource.
-    /// 
-    /// For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
-    /// 
-    /// &gt; **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "networkInterfaceName";
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "192.168.0.0/24",
-    ///         });
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             CidrBlock = "192.168.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             VpcId = vpc.Id,
-    ///         });
-    ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///         });
-    ///         var defaultNetworkInterface = new AliCloud.Vpc.NetworkInterface("defaultNetworkInterface", new AliCloud.Vpc.NetworkInterfaceArgs
-    ///         {
-    ///             VswitchId = vswitch.Id,
-    ///             SecurityGroups = 
-    ///             {
-    ///                 @group.Id,
-    ///             },
-    ///             PrivateIp = "192.168.0.2",
-    ///             PrivateIpsCount = 3,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ENI can be imported using the id, e.g.
@@ -91,11 +39,20 @@ namespace Pulumi.AliCloud.Vpc
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("networkInterfaceName")]
+        public Output<string> NetworkInterfaceName { get; private set; } = null!;
+
+        [Output("primaryIpAddress")]
+        public Output<string> PrimaryIpAddress { get; private set; } = null!;
+
         /// <summary>
         /// The primary private IP of the ENI.
         /// </summary>
         [Output("privateIp")]
         public Output<string> PrivateIp { get; private set; } = null!;
+
+        [Output("privateIpAddresses")]
+        public Output<ImmutableArray<string>> PrivateIpAddresses { get; private set; } = null!;
 
         /// <summary>
         /// List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
@@ -109,17 +66,29 @@ namespace Pulumi.AliCloud.Vpc
         [Output("privateIpsCount")]
         public Output<int> PrivateIpsCount { get; private set; } = null!;
 
+        [Output("queueNumber")]
+        public Output<int> QueueNumber { get; private set; } = null!;
+
         /// <summary>
         /// The Id of resource group which the network interface belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
+        [Output("secondaryPrivateIpAddressCount")]
+        public Output<int> SecondaryPrivateIpAddressCount { get; private set; } = null!;
+
+        [Output("securityGroupIds")]
+        public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
         /// <summary>
         /// A list of security group ids to associate with.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
+
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -191,11 +160,25 @@ namespace Pulumi.AliCloud.Vpc
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("networkInterfaceName")]
+        public Input<string>? NetworkInterfaceName { get; set; }
+
+        [Input("primaryIpAddress")]
+        public Input<string>? PrimaryIpAddress { get; set; }
+
         /// <summary>
         /// The primary private IP of the ENI.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
+
+        [Input("privateIpAddresses")]
+        private InputList<string>? _privateIpAddresses;
+        public InputList<string> PrivateIpAddresses
+        {
+            get => _privateIpAddresses ?? (_privateIpAddresses = new InputList<string>());
+            set => _privateIpAddresses = value;
+        }
 
         [Input("privateIps")]
         private InputList<string>? _privateIps;
@@ -203,6 +186,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         /// </summary>
+        [Obsolete(@"Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead")]
         public InputList<string> PrivateIps
         {
             get => _privateIps ?? (_privateIps = new InputList<string>());
@@ -215,18 +199,33 @@ namespace Pulumi.AliCloud.Vpc
         [Input("privateIpsCount")]
         public Input<int>? PrivateIpsCount { get; set; }
 
+        [Input("queueNumber")]
+        public Input<int>? QueueNumber { get; set; }
+
         /// <summary>
         /// The Id of resource group which the network interface belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
-        [Input("securityGroups", required: true)]
+        [Input("secondaryPrivateIpAddressCount")]
+        public Input<int>? SecondaryPrivateIpAddressCount { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
+
+        [Input("securityGroups")]
         private InputList<string>? _securityGroups;
 
         /// <summary>
         /// A list of security group ids to associate with.
         /// </summary>
+        [Obsolete(@"Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead")]
         public InputList<string> SecurityGroups
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
@@ -276,11 +275,25 @@ namespace Pulumi.AliCloud.Vpc
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("networkInterfaceName")]
+        public Input<string>? NetworkInterfaceName { get; set; }
+
+        [Input("primaryIpAddress")]
+        public Input<string>? PrimaryIpAddress { get; set; }
+
         /// <summary>
         /// The primary private IP of the ENI.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
+
+        [Input("privateIpAddresses")]
+        private InputList<string>? _privateIpAddresses;
+        public InputList<string> PrivateIpAddresses
+        {
+            get => _privateIpAddresses ?? (_privateIpAddresses = new InputList<string>());
+            set => _privateIpAddresses = value;
+        }
 
         [Input("privateIps")]
         private InputList<string>? _privateIps;
@@ -288,6 +301,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         /// </summary>
+        [Obsolete(@"Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead")]
         public InputList<string> PrivateIps
         {
             get => _privateIps ?? (_privateIps = new InputList<string>());
@@ -300,11 +314,25 @@ namespace Pulumi.AliCloud.Vpc
         [Input("privateIpsCount")]
         public Input<int>? PrivateIpsCount { get; set; }
 
+        [Input("queueNumber")]
+        public Input<int>? QueueNumber { get; set; }
+
         /// <summary>
         /// The Id of resource group which the network interface belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("secondaryPrivateIpAddressCount")]
+        public Input<int>? SecondaryPrivateIpAddressCount { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
@@ -312,11 +340,15 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// A list of security group ids to associate with.
         /// </summary>
+        [Obsolete(@"Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead")]
         public InputList<string> SecurityGroups
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
         }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

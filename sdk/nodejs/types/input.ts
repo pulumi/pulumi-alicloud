@@ -1078,7 +1078,7 @@ export namespace cs {
          */
         eipBandwidth?: pulumi.Input<number>;
         /**
-         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
          */
         eipInternetChargeType?: pulumi.Input<string>;
         /**
@@ -1099,6 +1099,17 @@ export namespace cs {
         type?: pulumi.Input<string>;
     }
 
+    export interface NodePoolSpotPriceLimit {
+        /**
+         * Spot instance type.
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * The maximum hourly price of the spot instance.
+         */
+        priceLimit?: pulumi.Input<string>;
+    }
+
     export interface NodePoolTaint {
         effect?: pulumi.Input<string>;
         /**
@@ -1112,10 +1123,16 @@ export namespace cs {
     }
 
     export interface ServerlessKubernetesAddon {
+        /**
+         * The ACK add-on configurations.
+         */
         config?: pulumi.Input<string>;
+        /**
+         * Disables the automatic installation of a component. Default is `false`.
+         */
         disabled?: pulumi.Input<boolean>;
         /**
-         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: pulumi.Input<string>;
     }
@@ -1514,7 +1531,7 @@ export namespace ecs {
         weightedCapacity: pulumi.Input<string>;
     }
 
-    export interface DedicatedHostNetworkAttribute {
+    export interface DedicatedHostNetworkAttributes {
         /**
          * The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
          */
@@ -1612,6 +1629,13 @@ export namespace ecs {
          * The size of the data disk.
          */
         size?: pulumi.Input<number>;
+    }
+
+    export interface GetDedicatedHostsOperationLock {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        lockReason?: string;
     }
 
     export interface GetDisksOperationLock {
@@ -2481,7 +2505,7 @@ export namespace oss {
          */
         abortMultipartUploads?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleAbortMultipartUpload>[]>;
         /**
-         * Specifies lifecycle rule status.
+         * Specifies the accelerate status of a bucket.
          */
         enabled: pulumi.Input<boolean>;
         /**
@@ -2601,6 +2625,13 @@ export namespace oss {
          * The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
          */
         sseAlgorithm: pulumi.Input<string>;
+    }
+
+    export interface BucketTransferAcceleration {
+        /**
+         * Specifies the accelerate status of a bucket.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface BucketVersioning {

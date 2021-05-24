@@ -28,8 +28,11 @@ type CaCertificate struct {
 	pulumi.CustomResourceState
 
 	// the content of the CA certificate.
-	CaCertificate pulumi.StringOutput `pulumi:"caCertificate"`
-	// Name of the CA Certificate.
+	CaCertificate     pulumi.StringOutput `pulumi:"caCertificate"`
+	CaCertificateName pulumi.StringOutput `pulumi:"caCertificateName"`
+	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Id of resource group which the slbCa certificate belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -70,8 +73,11 @@ func GetCaCertificate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CaCertificate resources.
 type caCertificateState struct {
 	// the content of the CA certificate.
-	CaCertificate *string `pulumi:"caCertificate"`
-	// Name of the CA Certificate.
+	CaCertificate     *string `pulumi:"caCertificate"`
+	CaCertificateName *string `pulumi:"caCertificateName"`
+	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 	Name *string `pulumi:"name"`
 	// The Id of resource group which the slbCa certificate belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -81,8 +87,11 @@ type caCertificateState struct {
 
 type CaCertificateState struct {
 	// the content of the CA certificate.
-	CaCertificate pulumi.StringPtrInput
-	// Name of the CA Certificate.
+	CaCertificate     pulumi.StringPtrInput
+	CaCertificateName pulumi.StringPtrInput
+	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 	Name pulumi.StringPtrInput
 	// The Id of resource group which the slbCa certificate belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -96,8 +105,11 @@ func (CaCertificateState) ElementType() reflect.Type {
 
 type caCertificateArgs struct {
 	// the content of the CA certificate.
-	CaCertificate string `pulumi:"caCertificate"`
-	// Name of the CA Certificate.
+	CaCertificate     string  `pulumi:"caCertificate"`
+	CaCertificateName *string `pulumi:"caCertificateName"`
+	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 	Name *string `pulumi:"name"`
 	// The Id of resource group which the slbCa certificate belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -108,8 +120,11 @@ type caCertificateArgs struct {
 // The set of arguments for constructing a CaCertificate resource.
 type CaCertificateArgs struct {
 	// the content of the CA certificate.
-	CaCertificate pulumi.StringInput
-	// Name of the CA Certificate.
+	CaCertificate     pulumi.StringInput
+	CaCertificateName pulumi.StringPtrInput
+	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 	Name pulumi.StringPtrInput
 	// The Id of resource group which the slbCa certificate belongs.
 	ResourceGroupId pulumi.StringPtrInput

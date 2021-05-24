@@ -42,6 +42,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServerlessKubernetes.__pulumiType;
     }
 
+    /**
+     * ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+     */
     public readonly addons!: pulumi.Output<outputs.cs.ServerlessKubernetesAddon[]>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -78,16 +81,22 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly loadBalancerSpec!: pulumi.Output<string | undefined>;
     /**
-     * The kubernetes cluster's name. It is the only in one Alicloud account.
+     * Enable log service, Valid value `SLS`.
+     */
+    public readonly loggingType!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
      */
     public readonly name!: pulumi.Output<string>;
     public readonly namePrefix!: pulumi.Output<string | undefined>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+     * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
     public readonly newNatGateway!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+     * (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+     *
+     * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
     public readonly privateZone!: pulumi.Output<boolean | undefined>;
     /**
@@ -99,9 +108,25 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
+     * CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+     */
+    public readonly serviceCidr!: pulumi.Output<string | undefined>;
+    /**
+     * Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+     */
+    public readonly serviceDiscoveryTypes!: pulumi.Output<string[] | undefined>;
+    /**
+     * If you use an existing SLS project, you must specify `slsProjectName`.
+     */
+    public readonly slsProjectName!: pulumi.Output<string>;
+    /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The time zone of the cluster.
+     */
+    public readonly timeZone!: pulumi.Output<string>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
      */
@@ -120,6 +145,10 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      * The vswitches where new kubernetes cluster will be located.
      */
     public readonly vswitchIds!: pulumi.Output<string[]>;
+    /**
+     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+     */
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServerlessKubernetes resource with the given unique name, arguments, and options.
@@ -143,17 +172,23 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
             inputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
+            inputs["loggingType"] = state ? state.loggingType : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
             inputs["newNatGateway"] = state ? state.newNatGateway : undefined;
             inputs["privateZone"] = state ? state.privateZone : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            inputs["serviceCidr"] = state ? state.serviceCidr : undefined;
+            inputs["serviceDiscoveryTypes"] = state ? state.serviceDiscoveryTypes : undefined;
+            inputs["slsProjectName"] = state ? state.slsProjectName : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["timeZone"] = state ? state.timeZone : undefined;
             inputs["version"] = state ? state.version : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
+            inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ServerlessKubernetesArgs | undefined;
             if ((!args || args.vpcId === undefined) && !opts.urn) {
@@ -168,17 +203,23 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             inputs["kubeConfig"] = args ? args.kubeConfig : undefined;
             inputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
+            inputs["loggingType"] = args ? args.loggingType : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["newNatGateway"] = args ? args.newNatGateway : undefined;
             inputs["privateZone"] = args ? args.privateZone : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
+            inputs["serviceDiscoveryTypes"] = args ? args.serviceDiscoveryTypes : undefined;
+            inputs["slsProjectName"] = args ? args.slsProjectName : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["timeZone"] = args ? args.timeZone : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["vswitchIds"] = args ? args.vswitchIds : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -191,6 +232,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServerlessKubernetes resources.
  */
 export interface ServerlessKubernetesState {
+    /**
+     * ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+     */
     readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -227,16 +271,22 @@ export interface ServerlessKubernetesState {
      */
     readonly loadBalancerSpec?: pulumi.Input<string>;
     /**
-     * The kubernetes cluster's name. It is the only in one Alicloud account.
+     * Enable log service, Valid value `SLS`.
+     */
+    readonly loggingType?: pulumi.Input<string>;
+    /**
+     * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
      */
     readonly name?: pulumi.Input<string>;
     readonly namePrefix?: pulumi.Input<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+     * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
     readonly newNatGateway?: pulumi.Input<boolean>;
     /**
-     * Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+     * (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+     *
+     * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
     readonly privateZone?: pulumi.Input<boolean>;
     /**
@@ -248,9 +298,25 @@ export interface ServerlessKubernetesState {
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
+     * CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+     */
+    readonly serviceCidr?: pulumi.Input<string>;
+    /**
+     * Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+     */
+    readonly serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If you use an existing SLS project, you must specify `slsProjectName`.
+     */
+    readonly slsProjectName?: pulumi.Input<string>;
+    /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The time zone of the cluster.
+     */
+    readonly timeZone?: pulumi.Input<string>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
      */
@@ -269,12 +335,19 @@ export interface ServerlessKubernetesState {
      * The vswitches where new kubernetes cluster will be located.
      */
     readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ServerlessKubernetes resource.
  */
 export interface ServerlessKubernetesArgs {
+    /**
+     * ) You can specific network plugin,log component,ingress component and so on.Detailed below.
+     */
     readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -311,16 +384,22 @@ export interface ServerlessKubernetesArgs {
      */
     readonly loadBalancerSpec?: pulumi.Input<string>;
     /**
-     * The kubernetes cluster's name. It is the only in one Alicloud account.
+     * Enable log service, Valid value `SLS`.
+     */
+    readonly loggingType?: pulumi.Input<string>;
+    /**
+     * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
      */
     readonly name?: pulumi.Input<string>;
     readonly namePrefix?: pulumi.Input<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+     * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
     readonly newNatGateway?: pulumi.Input<boolean>;
     /**
-     * Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+     * (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+     *
+     * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
     readonly privateZone?: pulumi.Input<boolean>;
     /**
@@ -332,9 +411,25 @@ export interface ServerlessKubernetesArgs {
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
+     * CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
+     */
+    readonly serviceCidr?: pulumi.Input<string>;
+    /**
+     * Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+     */
+    readonly serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If you use an existing SLS project, you must specify `slsProjectName`.
+     */
+    readonly slsProjectName?: pulumi.Input<string>;
+    /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The time zone of the cluster.
+     */
+    readonly timeZone?: pulumi.Input<string>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
      */
@@ -353,4 +448,8 @@ export interface ServerlessKubernetesArgs {
      * The vswitches where new kubernetes cluster will be located.
      */
     readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }

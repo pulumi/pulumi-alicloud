@@ -26,9 +26,17 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string AutoReleaseTime;
         /// <summary>
+        /// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDedicatedHostsHostCapacityResult> Capacities;
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly int Cores;
+        /// <summary>
+        /// (Available in 1.123.1+) CPU oversold ratio.
+        /// </summary>
+        public readonly double CpuOverCommitRatio;
         /// <summary>
         /// The ID of ECS Dedicated Host.
         /// </summary>
@@ -62,6 +70,14 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string MachineId;
         /// <summary>
+        /// dedicated host network parameters. contains the following attributes:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDedicatedHostsHostNetworkAttributeResult> NetworkAttributes;
+        /// <summary>
+        /// The reason why the dedicated host resource is locked.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDedicatedHostsHostOperationLockResult> OperationLocks;
+        /// <summary>
         /// The billing method of the dedicated host.
         /// </summary>
         public readonly string PaymentType;
@@ -86,7 +102,15 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The list of ECS instanc
+        /// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+        /// </summary>
+        public readonly ImmutableArray<string> SupportedCustomInstanceTypeFamilies;
+        /// <summary>
+        /// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+        /// </summary>
+        public readonly ImmutableArray<string> SupportedInstanceTypeFamilies;
+        /// <summary>
+        /// The list of ECS instance
         /// </summary>
         public readonly ImmutableArray<string> SupportedInstanceTypesLists;
         /// <summary>
@@ -106,7 +130,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string autoReleaseTime,
 
+            ImmutableArray<Outputs.GetDedicatedHostsHostCapacityResult> capacities,
+
             int cores,
+
+            double cpuOverCommitRatio,
 
             string dedicatedHostId,
 
@@ -124,6 +152,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string machineId,
 
+            ImmutableArray<Outputs.GetDedicatedHostsHostNetworkAttributeResult> networkAttributes,
+
+            ImmutableArray<Outputs.GetDedicatedHostsHostOperationLockResult> operationLocks,
+
             string paymentType,
 
             int physicalGpus,
@@ -136,6 +168,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string status,
 
+            ImmutableArray<string> supportedCustomInstanceTypeFamilies,
+
+            ImmutableArray<string> supportedInstanceTypeFamilies,
+
             ImmutableArray<string> supportedInstanceTypesLists,
 
             ImmutableDictionary<string, object> tags,
@@ -145,7 +181,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             ActionOnMaintenance = actionOnMaintenance;
             AutoPlacement = autoPlacement;
             AutoReleaseTime = autoReleaseTime;
+            Capacities = capacities;
             Cores = cores;
+            CpuOverCommitRatio = cpuOverCommitRatio;
             DedicatedHostId = dedicatedHostId;
             DedicatedHostName = dedicatedHostName;
             DedicatedHostType = dedicatedHostType;
@@ -154,12 +192,16 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             GpuSpec = gpuSpec;
             Id = id;
             MachineId = machineId;
+            NetworkAttributes = networkAttributes;
+            OperationLocks = operationLocks;
             PaymentType = paymentType;
             PhysicalGpus = physicalGpus;
             ResourceGroupId = resourceGroupId;
             SaleCycle = saleCycle;
             Sockets = sockets;
             Status = status;
+            SupportedCustomInstanceTypeFamilies = supportedCustomInstanceTypeFamilies;
+            SupportedInstanceTypeFamilies = supportedInstanceTypeFamilies;
             SupportedInstanceTypesLists = supportedInstanceTypesLists;
             Tags = tags;
             ZoneId = zoneId;

@@ -54,6 +54,12 @@ namespace Pulumi.AliCloud.Kms
         [Input("descriptionRegex")]
         public string? DescriptionRegex { get; set; }
 
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
+        [Input("filters")]
+        public string? Filters { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -85,6 +91,8 @@ namespace Pulumi.AliCloud.Kms
     public sealed class GetKeysResult
     {
         public readonly string? DescriptionRegex;
+        public readonly bool? EnableDetails;
+        public readonly string? Filters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -107,6 +115,10 @@ namespace Pulumi.AliCloud.Kms
         private GetKeysResult(
             string? descriptionRegex,
 
+            bool? enableDetails,
+
+            string? filters,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -118,6 +130,8 @@ namespace Pulumi.AliCloud.Kms
             string? status)
         {
             DescriptionRegex = descriptionRegex;
+            EnableDetails = enableDetails;
+            Filters = filters;
             Id = id;
             Ids = ids;
             Keys = keys;
