@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableArray<Outputs.ClusterParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         /// </summary>
         [Output("payType")]
         public Output<string?> PayType { get; private set; } = null!;
@@ -308,7 +308,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
@@ -457,7 +457,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }

@@ -95,7 +95,7 @@ def get_attachments(instance_ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    sample_ds = alicloud.slb.get_attachments(load_balancer_id=alicloud_slb["sample_slb"]["id"])
+    sample_ds = alicloud.slb.get_attachments(load_balancer_id=alicloud_slb_load_balancer["sample_slb"]["id"])
     pulumi.export("firstSlbAttachmentInstanceId", sample_ds.slb_attachments[0].instance_id)
     ```
 

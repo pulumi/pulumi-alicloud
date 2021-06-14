@@ -86,7 +86,7 @@ export class AlidnsInstance extends pulumi.CustomResource {
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
      */
-    public readonly renewalStatus!: pulumi.Output<string | undefined>;
+    public readonly renewalStatus!: pulumi.Output<string>;
     /**
      * Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
      */

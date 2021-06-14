@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  *
  * const key = new alicloud.kms.Key("key", {
  *     description: "Hello KMS",
- *     keyState: "Enabled",
  *     pendingWindowInDays: 7,
+ *     status: "Enabled",
  * });
  * ```
  *
@@ -75,17 +75,17 @@ export class Key extends pulumi.CustomResource {
     public /*out*/ readonly creator!: pulumi.Output<string>;
     public /*out*/ readonly deleteDate!: pulumi.Output<string>;
     /**
-     * Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
      * @deprecated Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
      */
-    public readonly deletionWindowInDays!: pulumi.Output<number | undefined>;
+    public readonly deletionWindowInDays!: pulumi.Output<number>;
     /**
      * The description of the key as viewed in Alicloud console.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      *
      * @deprecated Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
      */
@@ -95,11 +95,13 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly keySpec!: pulumi.Output<string>;
     /**
-     * The status of CMK. Defaults to Enabled.
+     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+     *
+     * @deprecated Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
      */
-    public readonly keyState!: pulumi.Output<string | undefined>;
+    public readonly keyState!: pulumi.Output<string>;
     /**
-     * Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
+     * Specifies the usage of CMK. Currently, default to `ENCRYPT/DECRYPT`, indicating that CMK is used for encryption and decryption.
      */
     public readonly keyUsage!: pulumi.Output<string | undefined>;
     /**
@@ -121,7 +123,7 @@ export class Key extends pulumi.CustomResource {
     /**
      * Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
      */
-    public readonly pendingWindowInDays!: pulumi.Output<number | undefined>;
+    public readonly pendingWindowInDays!: pulumi.Output<number>;
     /**
      * The ID of the current primary key version of the symmetric CMK.
      */
@@ -134,6 +136,10 @@ export class Key extends pulumi.CustomResource {
      * The period of automatic key rotation. Unit: seconds.
      */
     public readonly rotationInterval!: pulumi.Output<string | undefined>;
+    /**
+     * The status of CMK. Defaults to Enabled. Valid Values: `Disabled`, `Enabled`, `PendingDeletion`.
+     */
+    public readonly status!: pulumi.Output<string>;
 
     /**
      * Create a Key resource with the given unique name, arguments, and options.
@@ -167,6 +173,7 @@ export class Key extends pulumi.CustomResource {
             inputs["primaryKeyVersion"] = state ? state.primaryKeyVersion : undefined;
             inputs["protectionLevel"] = state ? state.protectionLevel : undefined;
             inputs["rotationInterval"] = state ? state.rotationInterval : undefined;
+            inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as KeyArgs | undefined;
             inputs["automaticRotation"] = args ? args.automaticRotation : undefined;
@@ -180,6 +187,7 @@ export class Key extends pulumi.CustomResource {
             inputs["pendingWindowInDays"] = args ? args.pendingWindowInDays : undefined;
             inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
             inputs["rotationInterval"] = args ? args.rotationInterval : undefined;
+            inputs["status"] = args ? args.status : undefined;
             inputs["arn"] = undefined /*out*/;
             inputs["creationDate"] = undefined /*out*/;
             inputs["creator"] = undefined /*out*/;
@@ -215,7 +223,7 @@ export interface KeyState {
     readonly creator?: pulumi.Input<string>;
     readonly deleteDate?: pulumi.Input<string>;
     /**
-     * Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
      * @deprecated Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
      */
@@ -225,7 +233,7 @@ export interface KeyState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      *
      * @deprecated Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
      */
@@ -235,11 +243,13 @@ export interface KeyState {
      */
     readonly keySpec?: pulumi.Input<string>;
     /**
-     * The status of CMK. Defaults to Enabled.
+     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+     *
+     * @deprecated Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
      */
     readonly keyState?: pulumi.Input<string>;
     /**
-     * Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
+     * Specifies the usage of CMK. Currently, default to `ENCRYPT/DECRYPT`, indicating that CMK is used for encryption and decryption.
      */
     readonly keyUsage?: pulumi.Input<string>;
     /**
@@ -274,6 +284,10 @@ export interface KeyState {
      * The period of automatic key rotation. Unit: seconds.
      */
     readonly rotationInterval?: pulumi.Input<string>;
+    /**
+     * The status of CMK. Defaults to Enabled. Valid Values: `Disabled`, `Enabled`, `PendingDeletion`.
+     */
+    readonly status?: pulumi.Input<string>;
 }
 
 /**
@@ -285,7 +299,7 @@ export interface KeyArgs {
      */
     readonly automaticRotation?: pulumi.Input<string>;
     /**
-     * Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
      * @deprecated Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
      */
@@ -295,7 +309,7 @@ export interface KeyArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      *
      * @deprecated Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
      */
@@ -305,11 +319,13 @@ export interface KeyArgs {
      */
     readonly keySpec?: pulumi.Input<string>;
     /**
-     * The status of CMK. Defaults to Enabled.
+     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+     *
+     * @deprecated Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
      */
     readonly keyState?: pulumi.Input<string>;
     /**
-     * Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
+     * Specifies the usage of CMK. Currently, default to `ENCRYPT/DECRYPT`, indicating that CMK is used for encryption and decryption.
      */
     readonly keyUsage?: pulumi.Input<string>;
     /**
@@ -328,4 +344,8 @@ export interface KeyArgs {
      * The period of automatic key rotation. Unit: seconds.
      */
     readonly rotationInterval?: pulumi.Input<string>;
+    /**
+     * The status of CMK. Defaults to Enabled. Valid Values: `Disabled`, `Enabled`, `PendingDeletion`.
+     */
+    readonly status?: pulumi.Input<string>;
 }

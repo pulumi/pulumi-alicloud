@@ -121,7 +121,7 @@ def get_listeners(description_regex: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.slb.LoadBalancer("default")
+    default = alicloud.slb.ApplicationLoadBalancer("default", load_balancer_name="tf-testAccSlbListenertcp")
     tcp = alicloud.slb.Listener("tcp",
         load_balancer_id=default.id,
         backend_port=22,

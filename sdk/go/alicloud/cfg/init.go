@@ -21,6 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack":
+		r = &AggregateCompliancePack{}
+	case "alicloud:cfg/aggregateConfigRule:AggregateConfigRule":
+		r = &AggregateConfigRule{}
+	case "alicloud:cfg/aggregator:Aggregator":
+		r = &Aggregator{}
+	case "alicloud:cfg/compliancePack:CompliancePack":
+		r = &CompliancePack{}
 	case "alicloud:cfg/configurationRecorder:ConfigurationRecorder":
 		r = &ConfigurationRecorder{}
 	case "alicloud:cfg/deliveryChannel:DeliveryChannel":
@@ -40,6 +48,26 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cfg/aggregateCompliancePack",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cfg/aggregateConfigRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cfg/aggregator",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cfg/compliancePack",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cfg/configurationRecorder",

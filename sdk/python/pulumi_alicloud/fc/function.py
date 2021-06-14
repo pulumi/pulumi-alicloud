@@ -49,7 +49,7 @@ class FunctionArgs:
         :param pulumi.Input[str] initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
         :param pulumi.Input[int] instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
         :param pulumi.Input[str] instance_type: The instance type of the function.
-        :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         :param pulumi.Input[str] name: The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only function name. It is conflict with "name".
         :param pulumi.Input[str] oss_bucket: The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
@@ -252,7 +252,7 @@ class FunctionArgs:
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         """
         return pulumi.get(self, "memory_size")
 
@@ -360,7 +360,7 @@ class _FunctionState:
         :param pulumi.Input[int] instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
         :param pulumi.Input[str] instance_type: The instance type of the function.
         :param pulumi.Input[str] last_modified: The date this resource was last modified.
-        :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         :param pulumi.Input[str] name: The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only function name. It is conflict with "name".
         :param pulumi.Input[str] oss_bucket: The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
@@ -572,7 +572,7 @@ class _FunctionState:
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         """
         return pulumi.get(self, "memory_size")
 
@@ -712,7 +712,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
         :param pulumi.Input[int] instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
         :param pulumi.Input[str] instance_type: The instance type of the function.
-        :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         :param pulumi.Input[str] name: The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only function name. It is conflict with "name".
         :param pulumi.Input[str] oss_bucket: The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
@@ -860,7 +860,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
         :param pulumi.Input[str] instance_type: The instance type of the function.
         :param pulumi.Input[str] last_modified: The date this resource was last modified.
-        :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         :param pulumi.Input[str] name: The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only function name. It is conflict with "name".
         :param pulumi.Input[str] oss_bucket: The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
@@ -1004,7 +1004,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> pulumi.Output[Optional[int]]:
         """
-        Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         """
         return pulumi.get(self, "memory_size")
 

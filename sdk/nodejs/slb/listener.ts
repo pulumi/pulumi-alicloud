@@ -26,7 +26,8 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "testcreatehttplistener";
  * const ipVersion = config.get("ipVersion") || "ipv4";
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: "tf-testAccSlbListenerHttp",
  *     internetChargeType: "PayByTraffic",
  *     internet: true,
  * });
@@ -44,7 +45,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * const defaultListener = new alicloud.slb.Listener("defaultListener", {
- *     loadBalancerId: defaultLoadBalancer.id,
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
  *     backendPort: 80,
  *     frontendPort: 80,
  *     protocol: "http",

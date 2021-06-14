@@ -53,14 +53,15 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultLoadBalancer, err := slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
-// 			VswitchId: defaultSwitch.ID(),
+// 		defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "defaultApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+// 			LoadBalancerName: pulumi.String(name),
+// 			VswitchId:        defaultSwitch.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultListener, err := slb.NewListener(ctx, "defaultListener", &slb.ListenerArgs{
-// 			LoadBalancerId:         defaultLoadBalancer.ID(),
+// 			LoadBalancerId:         defaultApplicationLoadBalancer.ID(),
 // 			BackendPort:            pulumi.Int(22),
 // 			FrontendPort:           pulumi.Int(22),
 // 			Protocol:               pulumi.String("http"),
@@ -71,13 +72,13 @@ import (
 // 			return err
 // 		}
 // 		defaultServerGroup, err := slb.NewServerGroup(ctx, "defaultServerGroup", &slb.ServerGroupArgs{
-// 			LoadBalancerId: defaultLoadBalancer.ID(),
+// 			LoadBalancerId: defaultApplicationLoadBalancer.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = slb.NewRule(ctx, "defaultRule", &slb.RuleArgs{
-// 			LoadBalancerId: defaultLoadBalancer.ID(),
+// 			LoadBalancerId: defaultApplicationLoadBalancer.ID(),
 // 			FrontendPort:   defaultListener.FrontendPort,
 // 			Domain:         pulumi.String("*.aliyun.com"),
 // 			Url:            pulumi.String("/image"),

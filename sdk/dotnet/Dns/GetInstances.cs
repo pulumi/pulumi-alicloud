@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.Dns
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
+        [Input("domainType")]
+        public string? DomainType { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -48,6 +51,7 @@ namespace Pulumi.AliCloud.Dns
     [OutputType]
     public sealed class GetInstancesResult
     {
+        public readonly string? DomainType;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -66,6 +70,8 @@ namespace Pulumi.AliCloud.Dns
 
         [OutputConstructor]
         private GetInstancesResult(
+            string? domainType,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -78,6 +84,7 @@ namespace Pulumi.AliCloud.Dns
 
             string? userClientIp)
         {
+            DomainType = domainType;
             Id = id;
             Ids = ids;
             Instances = instances;

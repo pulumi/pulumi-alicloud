@@ -177,9 +177,11 @@ class BackendServer(pulumi.CustomResource):
                 instance_charge_type="PostPaid",
                 system_disk_category="cloud_efficiency",
                 vswitch_id=default_switch.id))
-        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id)
         default_backend_server = alicloud.slb.BackendServer("defaultBackendServer",
-            load_balancer_id=default_load_balancer.id,
+            load_balancer_id=default_application_load_balancer.id,
             backend_servers=[
                 alicloud.slb.BackendServerBackendServerArgs(
                     server_id=default_instance[0].id,
@@ -265,9 +267,11 @@ class BackendServer(pulumi.CustomResource):
                 instance_charge_type="PostPaid",
                 system_disk_category="cloud_efficiency",
                 vswitch_id=default_switch.id))
-        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id)
         default_backend_server = alicloud.slb.BackendServer("defaultBackendServer",
-            load_balancer_id=default_load_balancer.id,
+            load_balancer_id=default_application_load_balancer.id,
             backend_servers=[
                 alicloud.slb.BackendServerBackendServerArgs(
                     server_id=default_instance[0].id,

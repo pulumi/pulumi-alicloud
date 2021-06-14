@@ -1112,10 +1112,25 @@ func (o GetInstanceEnginesInstanceEngineZoneIdArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetInstancesInstance struct {
+	// (Available in 1.124.1+) The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	Acl string `pulumi:"acl"`
 	// Availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`
+	// (Available in 1.124.1+) The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+	// - aliyun: a cloud certificate
+	// - custom: a custom certificate
+	CaType string `pulumi:"caType"`
 	// Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
 	ChargeType string `pulumi:"chargeType"`
+	// (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ClientCaCert           string `pulumi:"clientCaCert"`
+	ClientCaCertExpireTime string `pulumi:"clientCaCertExpireTime"`
+	// (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ClientCertRevocationList string `pulumi:"clientCertRevocationList"`
 	// `Standard` for standard access mode and `Safe` for high security access mode.
 	ConnectionMode string `pulumi:"connectionMode"`
 	// (Available in 1.70.3+) RDS database connection string.
@@ -1140,10 +1155,17 @@ type GetInstancesInstance struct {
 	InstanceStorage int `pulumi:"instanceStorage"`
 	// Sizing of the RDS instance.
 	InstanceType string `pulumi:"instanceType"`
+	// (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+	// - success
+	// - setting
+	// - failed
+	LastModifyStatus string `pulumi:"lastModifyStatus"`
 	// ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
 	MasterInstanceId string `pulumi:"masterInstanceId"`
 	// (Available in 1.101.0+) The master zone of the instance.
 	MasterZone string `pulumi:"masterZone"`
+	// (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ModifyStatusReason string `pulumi:"modifyStatusReason"`
 	// The name of the RDS instance.
 	Name string `pulumi:"name"`
 	// `Internet` for public network or `Intranet` for private network.
@@ -1154,6 +1176,38 @@ type GetInstancesInstance struct {
 	ReadonlyInstanceIds []string `pulumi:"readonlyInstanceIds"`
 	// Region ID the instance belongs to.
 	RegionId string `pulumi:"regionId"`
+	// (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	ReplicationAcl string `pulumi:"replicationAcl"`
+	// (Available in 1.124.1+) Indicates whether the server certificate needs to be updated.
+	// - Valid values for ApsaraDB RDS for MySQL and ApsaraDB RDS for SQL Server:
+	// - No
+	// - Yes
+	// - Valid values for ApsaraDB RDS for PostgreSQL:
+	// - 0: no
+	// - 1: yes
+	RequireUpdate string `pulumi:"requireUpdate"`
+	// (Available in 1.124.1+) The server certificate that needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	RequireUpdateItem string `pulumi:"requireUpdateItem"`
+	// (Available in 1.124.1+) The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	RequireUpdateReason string `pulumi:"requireUpdateReason"`
+	// (Available in 1.124.1+) The URL of the CA that issues the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ServerCaUrl string `pulumi:"serverCaUrl"`
+	// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ServerCert string `pulumi:"serverCert"`
+	// (Available in 1.124.1+) The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ServerKey string `pulumi:"serverKey"`
+	// (Available in 1.124.1+) The time when the server certificate was created. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is valid only when the CAType parameter is set to aliyun.
+	SslCreateTime string `pulumi:"sslCreateTime"`
+	// (Available in 1.124.1+) Indicates whether SSL encryption is enabled. Valid values:
+	// - on: enabled
+	// - off: disabled
+	SslEnabled string `pulumi:"sslEnabled"`
+	// (Available in 1.124.1+) The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	SslExpireTime string `pulumi:"sslExpireTime"`
 	// Status of the instance.
 	Status string `pulumi:"status"`
 	// If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
@@ -1180,10 +1234,25 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
+	// (Available in 1.124.1+) The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	Acl pulumi.StringInput `pulumi:"acl"`
 	// Availability zone.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// (Available in 1.124.1+) The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+	// - aliyun: a cloud certificate
+	// - custom: a custom certificate
+	CaType pulumi.StringInput `pulumi:"caType"`
 	// Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
+	// (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ClientCaCert           pulumi.StringInput `pulumi:"clientCaCert"`
+	ClientCaCertExpireTime pulumi.StringInput `pulumi:"clientCaCertExpireTime"`
+	// (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ClientCertRevocationList pulumi.StringInput `pulumi:"clientCertRevocationList"`
 	// `Standard` for standard access mode and `Safe` for high security access mode.
 	ConnectionMode pulumi.StringInput `pulumi:"connectionMode"`
 	// (Available in 1.70.3+) RDS database connection string.
@@ -1208,10 +1277,17 @@ type GetInstancesInstanceArgs struct {
 	InstanceStorage pulumi.IntInput `pulumi:"instanceStorage"`
 	// Sizing of the RDS instance.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+	// - success
+	// - setting
+	// - failed
+	LastModifyStatus pulumi.StringInput `pulumi:"lastModifyStatus"`
 	// ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
 	MasterInstanceId pulumi.StringInput `pulumi:"masterInstanceId"`
 	// (Available in 1.101.0+) The master zone of the instance.
 	MasterZone pulumi.StringInput `pulumi:"masterZone"`
+	// (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ModifyStatusReason pulumi.StringInput `pulumi:"modifyStatusReason"`
 	// The name of the RDS instance.
 	Name pulumi.StringInput `pulumi:"name"`
 	// `Internet` for public network or `Intranet` for private network.
@@ -1222,6 +1298,38 @@ type GetInstancesInstanceArgs struct {
 	ReadonlyInstanceIds pulumi.StringArrayInput `pulumi:"readonlyInstanceIds"`
 	// Region ID the instance belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	ReplicationAcl pulumi.StringInput `pulumi:"replicationAcl"`
+	// (Available in 1.124.1+) Indicates whether the server certificate needs to be updated.
+	// - Valid values for ApsaraDB RDS for MySQL and ApsaraDB RDS for SQL Server:
+	// - No
+	// - Yes
+	// - Valid values for ApsaraDB RDS for PostgreSQL:
+	// - 0: no
+	// - 1: yes
+	RequireUpdate pulumi.StringInput `pulumi:"requireUpdate"`
+	// (Available in 1.124.1+) The server certificate that needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	RequireUpdateItem pulumi.StringInput `pulumi:"requireUpdateItem"`
+	// (Available in 1.124.1+) The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	RequireUpdateReason pulumi.StringInput `pulumi:"requireUpdateReason"`
+	// (Available in 1.124.1+) The URL of the CA that issues the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ServerCaUrl pulumi.StringInput `pulumi:"serverCaUrl"`
+	// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ServerCert pulumi.StringInput `pulumi:"serverCert"`
+	// (Available in 1.124.1+) The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+	ServerKey pulumi.StringInput `pulumi:"serverKey"`
+	// (Available in 1.124.1+) The time when the server certificate was created. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is valid only when the CAType parameter is set to aliyun.
+	SslCreateTime pulumi.StringInput `pulumi:"sslCreateTime"`
+	// (Available in 1.124.1+) Indicates whether SSL encryption is enabled. Valid values:
+	// - on: enabled
+	// - off: disabled
+	SslEnabled pulumi.StringInput `pulumi:"sslEnabled"`
+	// (Available in 1.124.1+) The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	SslExpireTime pulumi.StringInput `pulumi:"sslExpireTime"`
 	// Status of the instance.
 	Status pulumi.StringInput `pulumi:"status"`
 	// If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
@@ -1287,14 +1395,44 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
+// (Available in 1.124.1+) The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+// - cert
+// - perfer
+// - verify-ca
+// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+func (o GetInstancesInstanceOutput) Acl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Acl }).(pulumi.StringOutput)
+}
+
 // Availability zone.
 func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// (Available in 1.124.1+) The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+// - aliyun: a cloud certificate
+// - custom: a custom certificate
+func (o GetInstancesInstanceOutput) CaType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CaType }).(pulumi.StringOutput)
+}
+
 // Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
 func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+func (o GetInstancesInstanceOutput) ClientCaCert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ClientCaCert }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) ClientCaCertExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ClientCaCertExpireTime }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+func (o GetInstancesInstanceOutput) ClientCertRevocationList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ClientCertRevocationList }).(pulumi.StringOutput)
 }
 
 // `Standard` for standard access mode and `Safe` for high security access mode.
@@ -1357,6 +1495,14 @@ func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+// - success
+// - setting
+// - failed
+func (o GetInstancesInstanceOutput) LastModifyStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.LastModifyStatus }).(pulumi.StringOutput)
+}
+
 // ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
 func (o GetInstancesInstanceOutput) MasterInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MasterInstanceId }).(pulumi.StringOutput)
@@ -1365,6 +1511,11 @@ func (o GetInstancesInstanceOutput) MasterInstanceId() pulumi.StringOutput {
 // (Available in 1.101.0+) The master zone of the instance.
 func (o GetInstancesInstanceOutput) MasterZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MasterZone }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+func (o GetInstancesInstanceOutput) ModifyStatusReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ModifyStatusReason }).(pulumi.StringOutput)
 }
 
 // The name of the RDS instance.
@@ -1390,6 +1541,68 @@ func (o GetInstancesInstanceOutput) ReadonlyInstanceIds() pulumi.StringArrayOutp
 // Region ID the instance belongs to.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+// - cert
+// - perfer
+// - verify-ca
+// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+func (o GetInstancesInstanceOutput) ReplicationAcl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ReplicationAcl }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) Indicates whether the server certificate needs to be updated.
+// - Valid values for ApsaraDB RDS for MySQL and ApsaraDB RDS for SQL Server:
+// - No
+// - Yes
+// - Valid values for ApsaraDB RDS for PostgreSQL:
+// - 0: no
+// - 1: yes
+func (o GetInstancesInstanceOutput) RequireUpdate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RequireUpdate }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The server certificate that needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+func (o GetInstancesInstanceOutput) RequireUpdateItem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RequireUpdateItem }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+func (o GetInstancesInstanceOutput) RequireUpdateReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RequireUpdateReason }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The URL of the CA that issues the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+func (o GetInstancesInstanceOutput) ServerCaUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ServerCaUrl }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+func (o GetInstancesInstanceOutput) ServerCert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ServerCert }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+func (o GetInstancesInstanceOutput) ServerKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ServerKey }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The time when the server certificate was created. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is valid only when the CAType parameter is set to aliyun.
+func (o GetInstancesInstanceOutput) SslCreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SslCreateTime }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) Indicates whether SSL encryption is enabled. Valid values:
+// - on: enabled
+// - off: disabled
+func (o GetInstancesInstanceOutput) SslEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SslEnabled }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o GetInstancesInstanceOutput) SslExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SslExpireTime }).(pulumi.StringOutput)
 }
 
 // Status of the instance.

@@ -15,49 +15,80 @@ class RuleArgs:
     def __init__(__self__, *,
                  risk_level: pulumi.Input[int],
                  rule_name: pulumi.Input[str],
-                 scope_compliance_resource_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 source_detail_message_type: pulumi.Input[str],
                  source_identifier: pulumi.Input[str],
                  source_owner: pulumi.Input[str],
+                 config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
                  input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 member_id: Optional[pulumi.Input[int]] = None,
-                 multi_account: Optional[pulumi.Input[bool]] = None,
-                 scope_compliance_resource_id: Optional[pulumi.Input[str]] = None,
-                 source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None):
+                 maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+                 region_ids_scope: Optional[pulumi.Input[str]] = None,
+                 resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
+                 resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 scope_compliance_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_detail_message_type: Optional[pulumi.Input[str]] = None,
+                 source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+                 tag_key_scope: Optional[pulumi.Input[str]] = None,
+                 tag_value_scope: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Rule resource.
         :param pulumi.Input[int] risk_level: The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         :param pulumi.Input[str] rule_name: The name of the Config Rule.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-        :param pulumi.Input[str] source_detail_message_type: Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
-        :param pulumi.Input[str] source_identifier: The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
-        :param pulumi.Input[str] source_owner: The source owner of the Config Rule. Values: `CUSTOM_FC`: Custom rules, `ALIYUN`: Trusteeship rules.
+        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the Config Rule.
+        :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
         :param pulumi.Input[Mapping[str, Any]] input_parameters: Threshold value for managed rule triggering.
-        :param pulumi.Input[int] member_id: The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
-        :param pulumi.Input[bool] multi_account: Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
-        :param pulumi.Input[str] scope_compliance_resource_id: The ID of the resource to be evaluated. If not set, all resources are evaluated.
-        :param pulumi.Input[str] source_maximum_execution_frequency: Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
+        :param pulumi.Input[str] maximum_execution_frequency: The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+        :param pulumi.Input[str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
+        :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+        :param pulumi.Input[str] source_detail_message_type: Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+        :param pulumi.Input[str] source_maximum_execution_frequency: Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+        :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
         """
         pulumi.set(__self__, "risk_level", risk_level)
         pulumi.set(__self__, "rule_name", rule_name)
-        pulumi.set(__self__, "scope_compliance_resource_types", scope_compliance_resource_types)
-        pulumi.set(__self__, "source_detail_message_type", source_detail_message_type)
         pulumi.set(__self__, "source_identifier", source_identifier)
         pulumi.set(__self__, "source_owner", source_owner)
+        if config_rule_trigger_types is not None:
+            pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if exclude_resource_ids_scope is not None:
+            pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
         if input_parameters is not None:
             pulumi.set(__self__, "input_parameters", input_parameters)
-        if member_id is not None:
-            pulumi.set(__self__, "member_id", member_id)
-        if multi_account is not None:
-            pulumi.set(__self__, "multi_account", multi_account)
-        if scope_compliance_resource_id is not None:
-            pulumi.set(__self__, "scope_compliance_resource_id", scope_compliance_resource_id)
+        if maximum_execution_frequency is not None:
+            pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
+        if region_ids_scope is not None:
+            pulumi.set(__self__, "region_ids_scope", region_ids_scope)
+        if resource_group_ids_scope is not None:
+            pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
+        if resource_types_scopes is not None:
+            pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
+        if scope_compliance_resource_types is not None:
+            warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
+            pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
+        if scope_compliance_resource_types is not None:
+            pulumi.set(__self__, "scope_compliance_resource_types", scope_compliance_resource_types)
+        if source_detail_message_type is not None:
+            warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
+            pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
+        if source_detail_message_type is not None:
+            pulumi.set(__self__, "source_detail_message_type", source_detail_message_type)
+        if source_maximum_execution_frequency is not None:
+            warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
+            pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
         if source_maximum_execution_frequency is not None:
             pulumi.set(__self__, "source_maximum_execution_frequency", source_maximum_execution_frequency)
+        if tag_key_scope is not None:
+            pulumi.set(__self__, "tag_key_scope", tag_key_scope)
+        if tag_value_scope is not None:
+            pulumi.set(__self__, "tag_value_scope", tag_value_scope)
 
     @property
     @pulumi.getter(name="riskLevel")
@@ -84,34 +115,10 @@ class RuleArgs:
         pulumi.set(self, "rule_name", value)
 
     @property
-    @pulumi.getter(name="scopeComplianceResourceTypes")
-    def scope_compliance_resource_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-        """
-        return pulumi.get(self, "scope_compliance_resource_types")
-
-    @scope_compliance_resource_types.setter
-    def scope_compliance_resource_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "scope_compliance_resource_types", value)
-
-    @property
-    @pulumi.getter(name="sourceDetailMessageType")
-    def source_detail_message_type(self) -> pulumi.Input[str]:
-        """
-        Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
-        """
-        return pulumi.get(self, "source_detail_message_type")
-
-    @source_detail_message_type.setter
-    def source_detail_message_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "source_detail_message_type", value)
-
-    @property
     @pulumi.getter(name="sourceIdentifier")
     def source_identifier(self) -> pulumi.Input[str]:
         """
-        The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         """
         return pulumi.get(self, "source_identifier")
 
@@ -123,7 +130,7 @@ class RuleArgs:
     @pulumi.getter(name="sourceOwner")
     def source_owner(self) -> pulumi.Input[str]:
         """
-        The source owner of the Config Rule. Values: `CUSTOM_FC`: Custom rules, `ALIYUN`: Trusteeship rules.
+        Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
         """
         return pulumi.get(self, "source_owner")
 
@@ -132,6 +139,18 @@ class RuleArgs:
         pulumi.set(self, "source_owner", value)
 
     @property
+    @pulumi.getter(name="configRuleTriggerTypes")
+    def config_rule_trigger_types(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+        """
+        return pulumi.get(self, "config_rule_trigger_types")
+
+    @config_rule_trigger_types.setter
+    def config_rule_trigger_types(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_rule_trigger_types", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -142,6 +161,18 @@ class RuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="excludeResourceIdsScope")
+    def exclude_resource_ids_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+        """
+        return pulumi.get(self, "exclude_resource_ids_scope")
+
+    @exclude_resource_ids_scope.setter
+    def exclude_resource_ids_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exclude_resource_ids_scope", value)
 
     @property
     @pulumi.getter(name="inputParameters")
@@ -156,46 +187,82 @@ class RuleArgs:
         pulumi.set(self, "input_parameters", value)
 
     @property
-    @pulumi.getter(name="memberId")
-    def member_id(self) -> Optional[pulumi.Input[int]]:
+    @pulumi.getter(name="maximumExecutionFrequency")
+    def maximum_execution_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
+        The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
         """
-        return pulumi.get(self, "member_id")
+        return pulumi.get(self, "maximum_execution_frequency")
 
-    @member_id.setter
-    def member_id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "member_id", value)
-
-    @property
-    @pulumi.getter(name="multiAccount")
-    def multi_account(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
-        """
-        return pulumi.get(self, "multi_account")
-
-    @multi_account.setter
-    def multi_account(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "multi_account", value)
+    @maximum_execution_frequency.setter
+    def maximum_execution_frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maximum_execution_frequency", value)
 
     @property
-    @pulumi.getter(name="scopeComplianceResourceId")
-    def scope_compliance_resource_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="regionIdsScope")
+    def region_ids_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource to be evaluated. If not set, all resources are evaluated.
+        The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         """
-        return pulumi.get(self, "scope_compliance_resource_id")
+        return pulumi.get(self, "region_ids_scope")
 
-    @scope_compliance_resource_id.setter
-    def scope_compliance_resource_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "scope_compliance_resource_id", value)
+    @region_ids_scope.setter
+    def region_ids_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_ids_scope", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupIdsScope")
+    def resource_group_ids_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
+        """
+        return pulumi.get(self, "resource_group_ids_scope")
+
+    @resource_group_ids_scope.setter
+    def resource_group_ids_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_ids_scope", value)
+
+    @property
+    @pulumi.getter(name="resourceTypesScopes")
+    def resource_types_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        """
+        return pulumi.get(self, "resource_types_scopes")
+
+    @resource_types_scopes.setter
+    def resource_types_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_types_scopes", value)
+
+    @property
+    @pulumi.getter(name="scopeComplianceResourceTypes")
+    def scope_compliance_resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+        """
+        return pulumi.get(self, "scope_compliance_resource_types")
+
+    @scope_compliance_resource_types.setter
+    def scope_compliance_resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scope_compliance_resource_types", value)
+
+    @property
+    @pulumi.getter(name="sourceDetailMessageType")
+    def source_detail_message_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+        """
+        return pulumi.get(self, "source_detail_message_type")
+
+    @source_detail_message_type.setter
+    def source_detail_message_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_detail_message_type", value)
 
     @property
     @pulumi.getter(name="sourceMaximumExecutionFrequency")
     def source_maximum_execution_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
+        Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
         """
         return pulumi.get(self, "source_maximum_execution_frequency")
 
@@ -203,61 +270,129 @@ class RuleArgs:
     def source_maximum_execution_frequency(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_maximum_execution_frequency", value)
 
+    @property
+    @pulumi.getter(name="tagKeyScope")
+    def tag_key_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule monitors the tag key, only applies to rules created based on managed rules.
+        """
+        return pulumi.get(self, "tag_key_scope")
+
+    @tag_key_scope.setter
+    def tag_key_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_key_scope", value)
+
+    @property
+    @pulumi.getter(name="tagValueScope")
+    def tag_value_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        """
+        return pulumi.get(self, "tag_value_scope")
+
+    @tag_value_scope.setter
+    def tag_value_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_value_scope", value)
+
 
 @pulumi.input_type
 class _RuleState:
     def __init__(__self__, *,
+                 config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
                  input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 member_id: Optional[pulumi.Input[int]] = None,
-                 multi_account: Optional[pulumi.Input[bool]] = None,
+                 maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+                 region_ids_scope: Optional[pulumi.Input[str]] = None,
+                 resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
+                 resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  risk_level: Optional[pulumi.Input[int]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
-                 scope_compliance_resource_id: Optional[pulumi.Input[str]] = None,
                  scope_compliance_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_detail_message_type: Optional[pulumi.Input[str]] = None,
                  source_identifier: Optional[pulumi.Input[str]] = None,
                  source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
-                 source_owner: Optional[pulumi.Input[str]] = None):
+                 source_owner: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tag_key_scope: Optional[pulumi.Input[str]] = None,
+                 tag_value_scope: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
+        :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the Config Rule.
+        :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
         :param pulumi.Input[Mapping[str, Any]] input_parameters: Threshold value for managed rule triggering.
-        :param pulumi.Input[int] member_id: The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
-        :param pulumi.Input[bool] multi_account: Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
+        :param pulumi.Input[str] maximum_execution_frequency: The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+        :param pulumi.Input[str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
+        :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[int] risk_level: The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         :param pulumi.Input[str] rule_name: The name of the Config Rule.
-        :param pulumi.Input[str] scope_compliance_resource_id: The ID of the resource to be evaluated. If not set, all resources are evaluated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-        :param pulumi.Input[str] source_detail_message_type: Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
-        :param pulumi.Input[str] source_identifier: The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
-        :param pulumi.Input[str] source_maximum_execution_frequency: Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
-        :param pulumi.Input[str] source_owner: The source owner of the Config Rule. Values: `CUSTOM_FC`: Custom rules, `ALIYUN`: Trusteeship rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+        :param pulumi.Input[str] source_detail_message_type: Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        :param pulumi.Input[str] source_maximum_execution_frequency: Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+        :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
         """
+        if config_rule_trigger_types is not None:
+            pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if exclude_resource_ids_scope is not None:
+            pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
         if input_parameters is not None:
             pulumi.set(__self__, "input_parameters", input_parameters)
-        if member_id is not None:
-            pulumi.set(__self__, "member_id", member_id)
-        if multi_account is not None:
-            pulumi.set(__self__, "multi_account", multi_account)
+        if maximum_execution_frequency is not None:
+            pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
+        if region_ids_scope is not None:
+            pulumi.set(__self__, "region_ids_scope", region_ids_scope)
+        if resource_group_ids_scope is not None:
+            pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
+        if resource_types_scopes is not None:
+            pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
         if risk_level is not None:
             pulumi.set(__self__, "risk_level", risk_level)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
-        if scope_compliance_resource_id is not None:
-            pulumi.set(__self__, "scope_compliance_resource_id", scope_compliance_resource_id)
+        if scope_compliance_resource_types is not None:
+            warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
+            pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
         if scope_compliance_resource_types is not None:
             pulumi.set(__self__, "scope_compliance_resource_types", scope_compliance_resource_types)
+        if source_detail_message_type is not None:
+            warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
+            pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
         if source_detail_message_type is not None:
             pulumi.set(__self__, "source_detail_message_type", source_detail_message_type)
         if source_identifier is not None:
             pulumi.set(__self__, "source_identifier", source_identifier)
         if source_maximum_execution_frequency is not None:
+            warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
+            pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
+        if source_maximum_execution_frequency is not None:
             pulumi.set(__self__, "source_maximum_execution_frequency", source_maximum_execution_frequency)
         if source_owner is not None:
             pulumi.set(__self__, "source_owner", source_owner)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tag_key_scope is not None:
+            pulumi.set(__self__, "tag_key_scope", tag_key_scope)
+        if tag_value_scope is not None:
+            pulumi.set(__self__, "tag_value_scope", tag_value_scope)
+
+    @property
+    @pulumi.getter(name="configRuleTriggerTypes")
+    def config_rule_trigger_types(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+        """
+        return pulumi.get(self, "config_rule_trigger_types")
+
+    @config_rule_trigger_types.setter
+    def config_rule_trigger_types(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_rule_trigger_types", value)
 
     @property
     @pulumi.getter
@@ -272,6 +407,18 @@ class _RuleState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="excludeResourceIdsScope")
+    def exclude_resource_ids_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+        """
+        return pulumi.get(self, "exclude_resource_ids_scope")
+
+    @exclude_resource_ids_scope.setter
+    def exclude_resource_ids_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exclude_resource_ids_scope", value)
+
+    @property
     @pulumi.getter(name="inputParameters")
     def input_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -284,28 +431,52 @@ class _RuleState:
         pulumi.set(self, "input_parameters", value)
 
     @property
-    @pulumi.getter(name="memberId")
-    def member_id(self) -> Optional[pulumi.Input[int]]:
+    @pulumi.getter(name="maximumExecutionFrequency")
+    def maximum_execution_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
+        The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
         """
-        return pulumi.get(self, "member_id")
+        return pulumi.get(self, "maximum_execution_frequency")
 
-    @member_id.setter
-    def member_id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "member_id", value)
+    @maximum_execution_frequency.setter
+    def maximum_execution_frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maximum_execution_frequency", value)
 
     @property
-    @pulumi.getter(name="multiAccount")
-    def multi_account(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="regionIdsScope")
+    def region_ids_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
+        The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         """
-        return pulumi.get(self, "multi_account")
+        return pulumi.get(self, "region_ids_scope")
 
-    @multi_account.setter
-    def multi_account(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "multi_account", value)
+    @region_ids_scope.setter
+    def region_ids_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_ids_scope", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupIdsScope")
+    def resource_group_ids_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
+        """
+        return pulumi.get(self, "resource_group_ids_scope")
+
+    @resource_group_ids_scope.setter
+    def resource_group_ids_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_ids_scope", value)
+
+    @property
+    @pulumi.getter(name="resourceTypesScopes")
+    def resource_types_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        """
+        return pulumi.get(self, "resource_types_scopes")
+
+    @resource_types_scopes.setter
+    def resource_types_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_types_scopes", value)
 
     @property
     @pulumi.getter(name="riskLevel")
@@ -332,22 +503,10 @@ class _RuleState:
         pulumi.set(self, "rule_name", value)
 
     @property
-    @pulumi.getter(name="scopeComplianceResourceId")
-    def scope_compliance_resource_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the resource to be evaluated. If not set, all resources are evaluated.
-        """
-        return pulumi.get(self, "scope_compliance_resource_id")
-
-    @scope_compliance_resource_id.setter
-    def scope_compliance_resource_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "scope_compliance_resource_id", value)
-
-    @property
     @pulumi.getter(name="scopeComplianceResourceTypes")
     def scope_compliance_resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
         """
         return pulumi.get(self, "scope_compliance_resource_types")
 
@@ -359,7 +518,7 @@ class _RuleState:
     @pulumi.getter(name="sourceDetailMessageType")
     def source_detail_message_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
+        Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
         """
         return pulumi.get(self, "source_detail_message_type")
 
@@ -371,7 +530,7 @@ class _RuleState:
     @pulumi.getter(name="sourceIdentifier")
     def source_identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         """
         return pulumi.get(self, "source_identifier")
 
@@ -383,7 +542,7 @@ class _RuleState:
     @pulumi.getter(name="sourceMaximumExecutionFrequency")
     def source_maximum_execution_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
+        Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
         """
         return pulumi.get(self, "source_maximum_execution_frequency")
 
@@ -395,7 +554,7 @@ class _RuleState:
     @pulumi.getter(name="sourceOwner")
     def source_owner(self) -> Optional[pulumi.Input[str]]:
         """
-        The source owner of the Config Rule. Values: `CUSTOM_FC`: Custom rules, `ALIYUN`: Trusteeship rules.
+        Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
         """
         return pulumi.get(self, "source_owner")
 
@@ -403,24 +562,62 @@ class _RuleState:
     def source_owner(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_owner", value)
 
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="tagKeyScope")
+    def tag_key_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule monitors the tag key, only applies to rules created based on managed rules.
+        """
+        return pulumi.get(self, "tag_key_scope")
+
+    @tag_key_scope.setter
+    def tag_key_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_key_scope", value)
+
+    @property
+    @pulumi.getter(name="tagValueScope")
+    def tag_value_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        """
+        return pulumi.get(self, "tag_value_scope")
+
+    @tag_value_scope.setter
+    def tag_value_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_value_scope", value)
+
 
 class Rule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
                  input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 member_id: Optional[pulumi.Input[int]] = None,
-                 multi_account: Optional[pulumi.Input[bool]] = None,
+                 maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+                 region_ids_scope: Optional[pulumi.Input[str]] = None,
+                 resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
+                 resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  risk_level: Optional[pulumi.Input[int]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
-                 scope_compliance_resource_id: Optional[pulumi.Input[str]] = None,
                  scope_compliance_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_detail_message_type: Optional[pulumi.Input[str]] = None,
                  source_identifier: Optional[pulumi.Input[str]] = None,
                  source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  source_owner: Optional[pulumi.Input[str]] = None,
+                 tag_key_scope: Optional[pulumi.Input[str]] = None,
+                 tag_value_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a a Alicloud Config Rule resource. Cloud Config checks the validity of resources based on rules. You can create rules to evaluate resources as needed.
@@ -440,17 +637,15 @@ class Rule(pulumi.CustomResource):
 
         # Audit ECS instances under VPC using preset rules
         example = alicloud.cfg.Rule("example",
+            config_rule_trigger_types="ConfigurationItemChangeNotification",
             description="ecs instances in vpc",
             input_parameters={
                 "vpc_ids": "vpc-uf6gksw4ctjd******",
             },
+            resource_types_scopes=["ACS::ECS::Instance"],
             risk_level=1,
             rule_name="instances-in-vpc",
-            scope_compliance_resource_id="i-uf6j6rl141ps******",
-            scope_compliance_resource_types=["ACS::ECS::Instance"],
-            source_detail_message_type="ConfigurationItemChangeNotification",
             source_identifier="ecs-instances-in-vpc",
-            source_maximum_execution_frequency="Twelve_Hours",
             source_owner="ALIYUN")
         ```
 
@@ -464,18 +659,23 @@ class Rule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the Config Rule.
+        :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
         :param pulumi.Input[Mapping[str, Any]] input_parameters: Threshold value for managed rule triggering.
-        :param pulumi.Input[int] member_id: The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
-        :param pulumi.Input[bool] multi_account: Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
+        :param pulumi.Input[str] maximum_execution_frequency: The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+        :param pulumi.Input[str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
+        :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[int] risk_level: The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         :param pulumi.Input[str] rule_name: The name of the Config Rule.
-        :param pulumi.Input[str] scope_compliance_resource_id: The ID of the resource to be evaluated. If not set, all resources are evaluated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-        :param pulumi.Input[str] source_detail_message_type: Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
-        :param pulumi.Input[str] source_identifier: The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
-        :param pulumi.Input[str] source_maximum_execution_frequency: Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
-        :param pulumi.Input[str] source_owner: The source owner of the Config Rule. Values: `CUSTOM_FC`: Custom rules, `ALIYUN`: Trusteeship rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+        :param pulumi.Input[str] source_detail_message_type: Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        :param pulumi.Input[str] source_maximum_execution_frequency: Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+        :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
         """
         ...
     @overload
@@ -501,17 +701,15 @@ class Rule(pulumi.CustomResource):
 
         # Audit ECS instances under VPC using preset rules
         example = alicloud.cfg.Rule("example",
+            config_rule_trigger_types="ConfigurationItemChangeNotification",
             description="ecs instances in vpc",
             input_parameters={
                 "vpc_ids": "vpc-uf6gksw4ctjd******",
             },
+            resource_types_scopes=["ACS::ECS::Instance"],
             risk_level=1,
             rule_name="instances-in-vpc",
-            scope_compliance_resource_id="i-uf6j6rl141ps******",
-            scope_compliance_resource_types=["ACS::ECS::Instance"],
-            source_detail_message_type="ConfigurationItemChangeNotification",
             source_identifier="ecs-instances-in-vpc",
-            source_maximum_execution_frequency="Twelve_Hours",
             source_owner="ALIYUN")
         ```
 
@@ -538,18 +736,23 @@ class Rule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
                  input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 member_id: Optional[pulumi.Input[int]] = None,
-                 multi_account: Optional[pulumi.Input[bool]] = None,
+                 maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+                 region_ids_scope: Optional[pulumi.Input[str]] = None,
+                 resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
+                 resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  risk_level: Optional[pulumi.Input[int]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
-                 scope_compliance_resource_id: Optional[pulumi.Input[str]] = None,
                  scope_compliance_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_detail_message_type: Optional[pulumi.Input[str]] = None,
                  source_identifier: Optional[pulumi.Input[str]] = None,
                  source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  source_owner: Optional[pulumi.Input[str]] = None,
+                 tag_key_scope: Optional[pulumi.Input[str]] = None,
+                 tag_value_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -562,30 +765,41 @@ class Rule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RuleArgs.__new__(RuleArgs)
 
+            __props__.__dict__["config_rule_trigger_types"] = config_rule_trigger_types
             __props__.__dict__["description"] = description
+            __props__.__dict__["exclude_resource_ids_scope"] = exclude_resource_ids_scope
             __props__.__dict__["input_parameters"] = input_parameters
-            __props__.__dict__["member_id"] = member_id
-            __props__.__dict__["multi_account"] = multi_account
+            __props__.__dict__["maximum_execution_frequency"] = maximum_execution_frequency
+            __props__.__dict__["region_ids_scope"] = region_ids_scope
+            __props__.__dict__["resource_group_ids_scope"] = resource_group_ids_scope
+            __props__.__dict__["resource_types_scopes"] = resource_types_scopes
             if risk_level is None and not opts.urn:
                 raise TypeError("Missing required property 'risk_level'")
             __props__.__dict__["risk_level"] = risk_level
             if rule_name is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_name'")
             __props__.__dict__["rule_name"] = rule_name
-            __props__.__dict__["scope_compliance_resource_id"] = scope_compliance_resource_id
-            if scope_compliance_resource_types is None and not opts.urn:
-                raise TypeError("Missing required property 'scope_compliance_resource_types'")
+            if scope_compliance_resource_types is not None and not opts.urn:
+                warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
+                pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
             __props__.__dict__["scope_compliance_resource_types"] = scope_compliance_resource_types
-            if source_detail_message_type is None and not opts.urn:
-                raise TypeError("Missing required property 'source_detail_message_type'")
+            if source_detail_message_type is not None and not opts.urn:
+                warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
+                pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
             __props__.__dict__["source_detail_message_type"] = source_detail_message_type
             if source_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'source_identifier'")
             __props__.__dict__["source_identifier"] = source_identifier
+            if source_maximum_execution_frequency is not None and not opts.urn:
+                warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
+                pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
             __props__.__dict__["source_maximum_execution_frequency"] = source_maximum_execution_frequency
             if source_owner is None and not opts.urn:
                 raise TypeError("Missing required property 'source_owner'")
             __props__.__dict__["source_owner"] = source_owner
+            __props__.__dict__["tag_key_scope"] = tag_key_scope
+            __props__.__dict__["tag_value_scope"] = tag_value_scope
+            __props__.__dict__["status"] = None
         super(Rule, __self__).__init__(
             'alicloud:cfg/rule:Rule',
             resource_name,
@@ -596,18 +810,24 @@ class Rule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
             input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            member_id: Optional[pulumi.Input[int]] = None,
-            multi_account: Optional[pulumi.Input[bool]] = None,
+            maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+            region_ids_scope: Optional[pulumi.Input[str]] = None,
+            resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
+            resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             risk_level: Optional[pulumi.Input[int]] = None,
             rule_name: Optional[pulumi.Input[str]] = None,
-            scope_compliance_resource_id: Optional[pulumi.Input[str]] = None,
             scope_compliance_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             source_detail_message_type: Optional[pulumi.Input[str]] = None,
             source_identifier: Optional[pulumi.Input[str]] = None,
             source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
-            source_owner: Optional[pulumi.Input[str]] = None) -> 'Rule':
+            source_owner: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            tag_key_scope: Optional[pulumi.Input[str]] = None,
+            tag_value_scope: Optional[pulumi.Input[str]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -615,36 +835,55 @@ class Rule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the Config Rule.
+        :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
         :param pulumi.Input[Mapping[str, Any]] input_parameters: Threshold value for managed rule triggering.
-        :param pulumi.Input[int] member_id: The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
-        :param pulumi.Input[bool] multi_account: Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
+        :param pulumi.Input[str] maximum_execution_frequency: The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+        :param pulumi.Input[str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
+        :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[int] risk_level: The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         :param pulumi.Input[str] rule_name: The name of the Config Rule.
-        :param pulumi.Input[str] scope_compliance_resource_id: The ID of the resource to be evaluated. If not set, all resources are evaluated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-        :param pulumi.Input[str] source_detail_message_type: Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
-        :param pulumi.Input[str] source_identifier: The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
-        :param pulumi.Input[str] source_maximum_execution_frequency: Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
-        :param pulumi.Input[str] source_owner: The source owner of the Config Rule. Values: `CUSTOM_FC`: Custom rules, `ALIYUN`: Trusteeship rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+        :param pulumi.Input[str] source_detail_message_type: Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        :param pulumi.Input[str] source_maximum_execution_frequency: Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+        :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RuleState.__new__(_RuleState)
 
+        __props__.__dict__["config_rule_trigger_types"] = config_rule_trigger_types
         __props__.__dict__["description"] = description
+        __props__.__dict__["exclude_resource_ids_scope"] = exclude_resource_ids_scope
         __props__.__dict__["input_parameters"] = input_parameters
-        __props__.__dict__["member_id"] = member_id
-        __props__.__dict__["multi_account"] = multi_account
+        __props__.__dict__["maximum_execution_frequency"] = maximum_execution_frequency
+        __props__.__dict__["region_ids_scope"] = region_ids_scope
+        __props__.__dict__["resource_group_ids_scope"] = resource_group_ids_scope
+        __props__.__dict__["resource_types_scopes"] = resource_types_scopes
         __props__.__dict__["risk_level"] = risk_level
         __props__.__dict__["rule_name"] = rule_name
-        __props__.__dict__["scope_compliance_resource_id"] = scope_compliance_resource_id
         __props__.__dict__["scope_compliance_resource_types"] = scope_compliance_resource_types
         __props__.__dict__["source_detail_message_type"] = source_detail_message_type
         __props__.__dict__["source_identifier"] = source_identifier
         __props__.__dict__["source_maximum_execution_frequency"] = source_maximum_execution_frequency
         __props__.__dict__["source_owner"] = source_owner
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tag_key_scope"] = tag_key_scope
+        __props__.__dict__["tag_value_scope"] = tag_value_scope
         return Rule(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="configRuleTriggerTypes")
+    def config_rule_trigger_types(self) -> pulumi.Output[str]:
+        """
+        The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+        """
+        return pulumi.get(self, "config_rule_trigger_types")
 
     @property
     @pulumi.getter
@@ -655,6 +894,14 @@ class Rule(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="excludeResourceIdsScope")
+    def exclude_resource_ids_scope(self) -> pulumi.Output[Optional[str]]:
+        """
+        The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+        """
+        return pulumi.get(self, "exclude_resource_ids_scope")
+
+    @property
     @pulumi.getter(name="inputParameters")
     def input_parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
@@ -663,20 +910,36 @@ class Rule(pulumi.CustomResource):
         return pulumi.get(self, "input_parameters")
 
     @property
-    @pulumi.getter(name="memberId")
-    def member_id(self) -> pulumi.Output[Optional[int]]:
+    @pulumi.getter(name="maximumExecutionFrequency")
+    def maximum_execution_frequency(self) -> pulumi.Output[str]:
         """
-        The ID of the member account to which the rule to be created or modified belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
+        The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
         """
-        return pulumi.get(self, "member_id")
+        return pulumi.get(self, "maximum_execution_frequency")
 
     @property
-    @pulumi.getter(name="multiAccount")
-    def multi_account(self) -> pulumi.Output[Optional[bool]]:
+    @pulumi.getter(name="regionIdsScope")
+    def region_ids_scope(self) -> pulumi.Output[Optional[str]]:
         """
-        Whether the enterprise management account is a member account to create or modify rules. Valid values: `true`: Enterprise management accounts create or modify rules for all member accounts in the resource directory. `false`:The enterprise management account creates or modifies rules for this account. Default value is `false`.
+        The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         """
-        return pulumi.get(self, "multi_account")
+        return pulumi.get(self, "region_ids_scope")
+
+    @property
+    @pulumi.getter(name="resourceGroupIdsScope")
+    def resource_group_ids_scope(self) -> pulumi.Output[Optional[str]]:
+        """
+        The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
+        """
+        return pulumi.get(self, "resource_group_ids_scope")
+
+    @property
+    @pulumi.getter(name="resourceTypesScopes")
+    def resource_types_scopes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        """
+        return pulumi.get(self, "resource_types_scopes")
 
     @property
     @pulumi.getter(name="riskLevel")
@@ -695,18 +958,10 @@ class Rule(pulumi.CustomResource):
         return pulumi.get(self, "rule_name")
 
     @property
-    @pulumi.getter(name="scopeComplianceResourceId")
-    def scope_compliance_resource_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ID of the resource to be evaluated. If not set, all resources are evaluated.
-        """
-        return pulumi.get(self, "scope_compliance_resource_id")
-
-    @property
     @pulumi.getter(name="scopeComplianceResourceTypes")
     def scope_compliance_resource_types(self) -> pulumi.Output[Sequence[str]]:
         """
-        Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
         """
         return pulumi.get(self, "scope_compliance_resource_types")
 
@@ -714,7 +969,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="sourceDetailMessageType")
     def source_detail_message_type(self) -> pulumi.Output[str]:
         """
-        Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
+        Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
         """
         return pulumi.get(self, "source_detail_message_type")
 
@@ -722,15 +977,15 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="sourceIdentifier")
     def source_identifier(self) -> pulumi.Output[str]:
         """
-        The name of the custom rule or managed rules. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         """
         return pulumi.get(self, "source_identifier")
 
     @property
     @pulumi.getter(name="sourceMaximumExecutionFrequency")
-    def source_maximum_execution_frequency(self) -> pulumi.Output[Optional[str]]:
+    def source_maximum_execution_frequency(self) -> pulumi.Output[str]:
         """
-        Rule execution cycle. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours` and `TwentyFour_Hours`.
+        Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
         """
         return pulumi.get(self, "source_maximum_execution_frequency")
 
@@ -738,7 +993,28 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="sourceOwner")
     def source_owner(self) -> pulumi.Output[str]:
         """
-        The source owner of the Config Rule. Values: `CUSTOM_FC`: Custom rules, `ALIYUN`: Trusteeship rules.
+        Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
         """
         return pulumi.get(self, "source_owner")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tagKeyScope")
+    def tag_key_scope(self) -> pulumi.Output[Optional[str]]:
+        """
+        The rule monitors the tag key, only applies to rules created based on managed rules.
+        """
+        return pulumi.get(self, "tag_key_scope")
+
+    @property
+    @pulumi.getter(name="tagValueScope")
+    def tag_value_scope(self) -> pulumi.Output[Optional[str]]:
+        """
+        The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        """
+        return pulumi.get(self, "tag_value_scope")
 

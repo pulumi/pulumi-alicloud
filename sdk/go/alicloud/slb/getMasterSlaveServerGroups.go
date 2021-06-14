@@ -107,15 +107,16 @@ import (
 // 			}
 // 			instanceInstance = append(instanceInstance, __res)
 // 		}
-// 		instanceLoadBalancer, err := slb.NewLoadBalancer(ctx, "instanceLoadBalancer", &slb.LoadBalancerArgs{
-// 			VswitchId:     mainSwitch.ID(),
-// 			Specification: pulumi.String("slb.s2.small"),
+// 		instanceApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "instanceApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+// 			LoadBalancerName: pulumi.String(name),
+// 			VswitchId:        mainSwitch.ID(),
+// 			LoadBalancerSpec: pulumi.String("slb.s2.small"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = slb.NewMasterSlaveServerGroup(ctx, "groupMasterSlaveServerGroup", &slb.MasterSlaveServerGroupArgs{
-// 			LoadBalancerId: instanceLoadBalancer.ID(),
+// 			LoadBalancerId: instanceApplicationLoadBalancer.ID(),
 // 			Servers: slb.MasterSlaveServerGroupServerArray{
 // 				&slb.MasterSlaveServerGroupServerArgs{
 // 					ServerId:   instanceInstance[0].ID(),

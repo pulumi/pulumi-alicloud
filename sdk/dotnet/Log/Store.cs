@@ -22,22 +22,28 @@ namespace Pulumi.AliCloud.Log
     public partial class Store : Pulumi.CustomResource
     {
         /// <summary>
-        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         /// </summary>
         [Output("appendMeta")]
         public Output<bool?> AppendMeta { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether to automatically split a shard. Default to true.
+        /// Determines whether to automatically split a shard. Default to `true`.
         /// </summary>
         [Output("autoSplit")]
         public Output<bool?> AutoSplit { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether to enable Web Tracking. Default false.
+        /// Determines whether to enable Web Tracking. Default `false`.
         /// </summary>
         [Output("enableWebTracking")]
         public Output<bool?> EnableWebTracking { get; private set; } = null!;
+
+        /// <summary>
+        /// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        /// </summary>
+        [Output("encryptConf")]
+        public Output<Outputs.StoreEncryptConf?> EncryptConf { get; private set; } = null!;
 
         /// <summary>
         /// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
@@ -58,7 +64,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+        /// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         /// </summary>
         [Output("retentionPeriod")]
         public Output<int?> RetentionPeriod { get; private set; } = null!;
@@ -119,22 +125,28 @@ namespace Pulumi.AliCloud.Log
     public sealed class StoreArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         /// </summary>
         [Input("appendMeta")]
         public Input<bool>? AppendMeta { get; set; }
 
         /// <summary>
-        /// Determines whether to automatically split a shard. Default to true.
+        /// Determines whether to automatically split a shard. Default to `true`.
         /// </summary>
         [Input("autoSplit")]
         public Input<bool>? AutoSplit { get; set; }
 
         /// <summary>
-        /// Determines whether to enable Web Tracking. Default false.
+        /// Determines whether to enable Web Tracking. Default `false`.
         /// </summary>
         [Input("enableWebTracking")]
         public Input<bool>? EnableWebTracking { get; set; }
+
+        /// <summary>
+        /// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        /// </summary>
+        [Input("encryptConf")]
+        public Input<Inputs.StoreEncryptConfArgs>? EncryptConf { get; set; }
 
         /// <summary>
         /// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
@@ -155,7 +167,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+        /// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
@@ -174,22 +186,28 @@ namespace Pulumi.AliCloud.Log
     public sealed class StoreState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+        /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         /// </summary>
         [Input("appendMeta")]
         public Input<bool>? AppendMeta { get; set; }
 
         /// <summary>
-        /// Determines whether to automatically split a shard. Default to true.
+        /// Determines whether to automatically split a shard. Default to `true`.
         /// </summary>
         [Input("autoSplit")]
         public Input<bool>? AutoSplit { get; set; }
 
         /// <summary>
-        /// Determines whether to enable Web Tracking. Default false.
+        /// Determines whether to enable Web Tracking. Default `false`.
         /// </summary>
         [Input("enableWebTracking")]
         public Input<bool>? EnableWebTracking { get; set; }
+
+        /// <summary>
+        /// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        /// </summary>
+        [Input("encryptConf")]
+        public Input<Inputs.StoreEncryptConfGetArgs>? EncryptConf { get; set; }
 
         /// <summary>
         /// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
@@ -210,7 +228,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+        /// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }

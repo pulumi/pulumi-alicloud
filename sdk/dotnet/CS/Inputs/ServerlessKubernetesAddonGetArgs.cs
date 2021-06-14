@@ -12,14 +12,20 @@ namespace Pulumi.AliCloud.CS.Inputs
 
     public sealed class ServerlessKubernetesAddonGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ACK add-on configurations.
+        /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
 
+        /// <summary>
+        /// Disables the automatic installation of a component. Default is `false`.
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

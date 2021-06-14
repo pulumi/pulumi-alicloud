@@ -31,7 +31,7 @@ class ClusterArgs:
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
         :param pulumi.Input[int] instance_count: The count of instance.
-        :param pulumi.Input[str] net_type: The type of network. Range limit: 1~5.
+        :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
@@ -112,7 +112,7 @@ class ClusterArgs:
     @pulumi.getter(name="netType")
     def net_type(self) -> pulumi.Input[str]:
         """
-        The type of network. Range limit: 1~5.
+        The type of network. Valid values: "privatenet" and "pubnet".
         """
         return pulumi.get(self, "net_type")
 
@@ -230,7 +230,7 @@ class _ClusterState:
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance.
-        :param pulumi.Input[str] net_type: The type of network. Range limit: 1~5.
+        :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
@@ -352,7 +352,7 @@ class _ClusterState:
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of network. Range limit: 1~5.
+        The type of network. Valid values: "privatenet" and "pubnet".
         """
         return pulumi.get(self, "net_type")
 
@@ -479,7 +479,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance.
-        :param pulumi.Input[str] net_type: The type of network. Range limit: 1~5.
+        :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
@@ -621,7 +621,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance.
-        :param pulumi.Input[str] net_type: The type of network. Range limit: 1~5.
+        :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
@@ -707,7 +707,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="netType")
     def net_type(self) -> pulumi.Output[str]:
         """
-        The type of network. Range limit: 1~5.
+        The type of network. Valid values: "privatenet" and "pubnet".
         """
         return pulumi.get(self, "net_type")
 

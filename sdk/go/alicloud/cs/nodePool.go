@@ -37,6 +37,10 @@ type NodePool struct {
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
+	// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+	InternetMaxBandwidthOut pulumi.IntOutput `pulumi:"internetMaxBandwidthOut"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -57,12 +61,18 @@ type NodePool struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
+	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig NodePoolScalingConfigOutput `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
 	// The security group id for worker node.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+	SpotPriceLimits NodePoolSpotPriceLimitArrayOutput `pulumi:"spotPriceLimits"`
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory         pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
 	SystemDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"systemDiskPerformanceLevel"`
@@ -135,6 +145,10 @@ type nodePoolState struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The instance type of worker node.
 	InstanceTypes []string `pulumi:"instanceTypes"`
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+	InternetChargeType *string `pulumi:"internetChargeType"`
+	// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -155,12 +169,18 @@ type nodePoolState struct {
 	Period *int `pulumi:"period"`
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit *string `pulumi:"periodUnit"`
+	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// The security group id for worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory         *string `pulumi:"systemDiskCategory"`
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
@@ -196,6 +216,10 @@ type NodePoolState struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayInput
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+	InternetChargeType pulumi.StringPtrInput
+	// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -216,12 +240,18 @@ type NodePoolState struct {
 	Period pulumi.IntPtrInput
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit pulumi.StringPtrInput
+	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig NodePoolScalingConfigPtrInput
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringPtrInput
 	// The security group id for worker node.
 	SecurityGroupId pulumi.StringPtrInput
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+	SpotStrategy pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory         pulumi.StringPtrInput
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
@@ -261,6 +291,10 @@ type nodePoolArgs struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The instance type of worker node.
 	InstanceTypes []string `pulumi:"instanceTypes"`
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+	InternetChargeType *string `pulumi:"internetChargeType"`
+	// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -281,10 +315,16 @@ type nodePoolArgs struct {
 	Period *int `pulumi:"period"`
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit *string `pulumi:"periodUnit"`
+	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// The security group id for worker node.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory         *string `pulumi:"systemDiskCategory"`
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
@@ -320,6 +360,10 @@ type NodePoolArgs struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// The instance type of worker node.
 	InstanceTypes pulumi.StringArrayInput
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+	InternetChargeType pulumi.StringPtrInput
+	// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -340,10 +384,16 @@ type NodePoolArgs struct {
 	Period pulumi.IntPtrInput
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit pulumi.StringPtrInput
+	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`.
 	ScalingConfig NodePoolScalingConfigPtrInput
 	// The security group id for worker node.
 	SecurityGroupId pulumi.StringPtrInput
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+	SpotStrategy pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory         pulumi.StringPtrInput
 	SystemDiskPerformanceLevel pulumi.StringPtrInput

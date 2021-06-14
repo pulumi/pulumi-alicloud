@@ -21,11 +21,14 @@ class DedicatedHostArgs:
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cpu_over_commit_ratio: Optional[pulumi.Input[float]] = None,
+                 dedicated_host_cluster_id: Optional[pulumi.Input[str]] = None,
                  dedicated_host_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detail_fee: Optional[pulumi.Input[bool]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  expired_time: Optional[pulumi.Input[str]] = None,
+                 min_quantity: Optional[pulumi.Input[int]] = None,
                  network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -40,11 +43,14 @@ class DedicatedHostArgs:
         :param pulumi.Input[str] auto_release_time: The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         :param pulumi.Input[bool] auto_renew: Specifies whether to automatically renew the subscription dedicated host.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
+        :param pulumi.Input[float] cpu_over_commit_ratio: CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+        :param pulumi.Input[str] dedicated_host_cluster_id: The dedicated host cluster ID to which the dedicated host belongs.
         :param pulumi.Input[str] dedicated_host_name: The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] description: The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[bool] detail_fee: Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
         :param pulumi.Input[bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
+        :param pulumi.Input[int] min_quantity: Specify the minimum purchase quantity of a dedicated host.
         :param pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]] network_attributes: dedicated host network parameters. contains the following attributes:
         :param pulumi.Input[str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
@@ -63,6 +69,10 @@ class DedicatedHostArgs:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if cpu_over_commit_ratio is not None:
+            pulumi.set(__self__, "cpu_over_commit_ratio", cpu_over_commit_ratio)
+        if dedicated_host_cluster_id is not None:
+            pulumi.set(__self__, "dedicated_host_cluster_id", dedicated_host_cluster_id)
         if dedicated_host_name is not None:
             pulumi.set(__self__, "dedicated_host_name", dedicated_host_name)
         if description is not None:
@@ -73,6 +83,8 @@ class DedicatedHostArgs:
             pulumi.set(__self__, "dry_run", dry_run)
         if expired_time is not None:
             pulumi.set(__self__, "expired_time", expired_time)
+        if min_quantity is not None:
+            pulumi.set(__self__, "min_quantity", min_quantity)
         if network_attributes is not None:
             pulumi.set(__self__, "network_attributes", network_attributes)
         if payment_type is not None:
@@ -159,6 +171,30 @@ class DedicatedHostArgs:
         pulumi.set(self, "auto_renew_period", value)
 
     @property
+    @pulumi.getter(name="cpuOverCommitRatio")
+    def cpu_over_commit_ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+        """
+        return pulumi.get(self, "cpu_over_commit_ratio")
+
+    @cpu_over_commit_ratio.setter
+    def cpu_over_commit_ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu_over_commit_ratio", value)
+
+    @property
+    @pulumi.getter(name="dedicatedHostClusterId")
+    def dedicated_host_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dedicated host cluster ID to which the dedicated host belongs.
+        """
+        return pulumi.get(self, "dedicated_host_cluster_id")
+
+    @dedicated_host_cluster_id.setter
+    def dedicated_host_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_host_cluster_id", value)
+
+    @property
     @pulumi.getter(name="dedicatedHostName")
     def dedicated_host_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -217,6 +253,18 @@ class DedicatedHostArgs:
     @expired_time.setter
     def expired_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "expired_time", value)
+
+    @property
+    @pulumi.getter(name="minQuantity")
+    def min_quantity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specify the minimum purchase quantity of a dedicated host.
+        """
+        return pulumi.get(self, "min_quantity")
+
+    @min_quantity.setter
+    def min_quantity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_quantity", value)
 
     @property
     @pulumi.getter(name="networkAttributes")
@@ -299,12 +347,15 @@ class _DedicatedHostState:
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cpu_over_commit_ratio: Optional[pulumi.Input[float]] = None,
+                 dedicated_host_cluster_id: Optional[pulumi.Input[str]] = None,
                  dedicated_host_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detail_fee: Optional[pulumi.Input[bool]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  expired_time: Optional[pulumi.Input[str]] = None,
+                 min_quantity: Optional[pulumi.Input[int]] = None,
                  network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -319,12 +370,15 @@ class _DedicatedHostState:
         :param pulumi.Input[str] auto_release_time: The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         :param pulumi.Input[bool] auto_renew: Specifies whether to automatically renew the subscription dedicated host.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
+        :param pulumi.Input[float] cpu_over_commit_ratio: CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+        :param pulumi.Input[str] dedicated_host_cluster_id: The dedicated host cluster ID to which the dedicated host belongs.
         :param pulumi.Input[str] dedicated_host_name: The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] dedicated_host_type: The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
         :param pulumi.Input[str] description: The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[bool] detail_fee: Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
         :param pulumi.Input[bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
+        :param pulumi.Input[int] min_quantity: Specify the minimum purchase quantity of a dedicated host.
         :param pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]] network_attributes: dedicated host network parameters. contains the following attributes:
         :param pulumi.Input[str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
@@ -343,6 +397,10 @@ class _DedicatedHostState:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if cpu_over_commit_ratio is not None:
+            pulumi.set(__self__, "cpu_over_commit_ratio", cpu_over_commit_ratio)
+        if dedicated_host_cluster_id is not None:
+            pulumi.set(__self__, "dedicated_host_cluster_id", dedicated_host_cluster_id)
         if dedicated_host_name is not None:
             pulumi.set(__self__, "dedicated_host_name", dedicated_host_name)
         if dedicated_host_type is not None:
@@ -355,6 +413,8 @@ class _DedicatedHostState:
             pulumi.set(__self__, "dry_run", dry_run)
         if expired_time is not None:
             pulumi.set(__self__, "expired_time", expired_time)
+        if min_quantity is not None:
+            pulumi.set(__self__, "min_quantity", min_quantity)
         if network_attributes is not None:
             pulumi.set(__self__, "network_attributes", network_attributes)
         if payment_type is not None:
@@ -431,6 +491,30 @@ class _DedicatedHostState:
         pulumi.set(self, "auto_renew_period", value)
 
     @property
+    @pulumi.getter(name="cpuOverCommitRatio")
+    def cpu_over_commit_ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+        """
+        return pulumi.get(self, "cpu_over_commit_ratio")
+
+    @cpu_over_commit_ratio.setter
+    def cpu_over_commit_ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu_over_commit_ratio", value)
+
+    @property
+    @pulumi.getter(name="dedicatedHostClusterId")
+    def dedicated_host_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dedicated host cluster ID to which the dedicated host belongs.
+        """
+        return pulumi.get(self, "dedicated_host_cluster_id")
+
+    @dedicated_host_cluster_id.setter
+    def dedicated_host_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_host_cluster_id", value)
+
+    @property
     @pulumi.getter(name="dedicatedHostName")
     def dedicated_host_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -501,6 +585,18 @@ class _DedicatedHostState:
     @expired_time.setter
     def expired_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "expired_time", value)
+
+    @property
+    @pulumi.getter(name="minQuantity")
+    def min_quantity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specify the minimum purchase quantity of a dedicated host.
+        """
+        return pulumi.get(self, "min_quantity")
+
+    @min_quantity.setter
+    def min_quantity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_quantity", value)
 
     @property
     @pulumi.getter(name="networkAttributes")
@@ -597,12 +693,15 @@ class DedicatedHost(pulumi.CustomResource):
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cpu_over_commit_ratio: Optional[pulumi.Input[float]] = None,
+                 dedicated_host_cluster_id: Optional[pulumi.Input[str]] = None,
                  dedicated_host_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detail_fee: Optional[pulumi.Input[bool]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  expired_time: Optional[pulumi.Input[str]] = None,
+                 min_quantity: Optional[pulumi.Input[int]] = None,
                  network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -667,12 +766,15 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[str] auto_release_time: The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         :param pulumi.Input[bool] auto_renew: Specifies whether to automatically renew the subscription dedicated host.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
+        :param pulumi.Input[float] cpu_over_commit_ratio: CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+        :param pulumi.Input[str] dedicated_host_cluster_id: The dedicated host cluster ID to which the dedicated host belongs.
         :param pulumi.Input[str] dedicated_host_name: The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] dedicated_host_type: The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
         :param pulumi.Input[str] description: The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[bool] detail_fee: Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
         :param pulumi.Input[bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
+        :param pulumi.Input[int] min_quantity: Specify the minimum purchase quantity of a dedicated host.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]] network_attributes: dedicated host network parameters. contains the following attributes:
         :param pulumi.Input[str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
@@ -756,12 +858,15 @@ class DedicatedHost(pulumi.CustomResource):
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cpu_over_commit_ratio: Optional[pulumi.Input[float]] = None,
+                 dedicated_host_cluster_id: Optional[pulumi.Input[str]] = None,
                  dedicated_host_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detail_fee: Optional[pulumi.Input[bool]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  expired_time: Optional[pulumi.Input[str]] = None,
+                 min_quantity: Optional[pulumi.Input[int]] = None,
                  network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -785,6 +890,8 @@ class DedicatedHost(pulumi.CustomResource):
             __props__.__dict__["auto_release_time"] = auto_release_time
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
+            __props__.__dict__["cpu_over_commit_ratio"] = cpu_over_commit_ratio
+            __props__.__dict__["dedicated_host_cluster_id"] = dedicated_host_cluster_id
             __props__.__dict__["dedicated_host_name"] = dedicated_host_name
             if dedicated_host_type is None and not opts.urn:
                 raise TypeError("Missing required property 'dedicated_host_type'")
@@ -793,6 +900,7 @@ class DedicatedHost(pulumi.CustomResource):
             __props__.__dict__["detail_fee"] = detail_fee
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["expired_time"] = expired_time
+            __props__.__dict__["min_quantity"] = min_quantity
             __props__.__dict__["network_attributes"] = network_attributes
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -815,12 +923,15 @@ class DedicatedHost(pulumi.CustomResource):
             auto_release_time: Optional[pulumi.Input[str]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
+            cpu_over_commit_ratio: Optional[pulumi.Input[float]] = None,
+            dedicated_host_cluster_id: Optional[pulumi.Input[str]] = None,
             dedicated_host_name: Optional[pulumi.Input[str]] = None,
             dedicated_host_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             detail_fee: Optional[pulumi.Input[bool]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             expired_time: Optional[pulumi.Input[str]] = None,
+            min_quantity: Optional[pulumi.Input[int]] = None,
             network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -840,12 +951,15 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[str] auto_release_time: The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         :param pulumi.Input[bool] auto_renew: Specifies whether to automatically renew the subscription dedicated host.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
+        :param pulumi.Input[float] cpu_over_commit_ratio: CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+        :param pulumi.Input[str] dedicated_host_cluster_id: The dedicated host cluster ID to which the dedicated host belongs.
         :param pulumi.Input[str] dedicated_host_name: The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] dedicated_host_type: The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
         :param pulumi.Input[str] description: The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[bool] detail_fee: Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
         :param pulumi.Input[bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
+        :param pulumi.Input[int] min_quantity: Specify the minimum purchase quantity of a dedicated host.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]] network_attributes: dedicated host network parameters. contains the following attributes:
         :param pulumi.Input[str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
@@ -863,12 +977,15 @@ class DedicatedHost(pulumi.CustomResource):
         __props__.__dict__["auto_release_time"] = auto_release_time
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["cpu_over_commit_ratio"] = cpu_over_commit_ratio
+        __props__.__dict__["dedicated_host_cluster_id"] = dedicated_host_cluster_id
         __props__.__dict__["dedicated_host_name"] = dedicated_host_name
         __props__.__dict__["dedicated_host_type"] = dedicated_host_type
         __props__.__dict__["description"] = description
         __props__.__dict__["detail_fee"] = detail_fee
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["expired_time"] = expired_time
+        __props__.__dict__["min_quantity"] = min_quantity
         __props__.__dict__["network_attributes"] = network_attributes
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -919,6 +1036,22 @@ class DedicatedHost(pulumi.CustomResource):
         return pulumi.get(self, "auto_renew_period")
 
     @property
+    @pulumi.getter(name="cpuOverCommitRatio")
+    def cpu_over_commit_ratio(self) -> pulumi.Output[Optional[float]]:
+        """
+        CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+        """
+        return pulumi.get(self, "cpu_over_commit_ratio")
+
+    @property
+    @pulumi.getter(name="dedicatedHostClusterId")
+    def dedicated_host_cluster_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The dedicated host cluster ID to which the dedicated host belongs.
+        """
+        return pulumi.get(self, "dedicated_host_cluster_id")
+
+    @property
     @pulumi.getter(name="dedicatedHostName")
     def dedicated_host_name(self) -> pulumi.Output[Optional[str]]:
         """
@@ -965,6 +1098,14 @@ class DedicatedHost(pulumi.CustomResource):
         The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         """
         return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="minQuantity")
+    def min_quantity(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specify the minimum purchase quantity of a dedicated host.
+        """
+        return pulumi.get(self, "min_quantity")
 
     @property
     @pulumi.getter(name="networkAttributes")

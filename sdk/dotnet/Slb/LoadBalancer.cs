@@ -10,63 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb
 {
     /// <summary>
-    /// Provides an Application Load Balancer resource.
-    /// 
-    /// &gt; **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
-    /// 
-    /// &gt; **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
-    /// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "terraformtestslbconfig";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
-    ///         {
-    ///             Specification = "slb.s2.small",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Tags = 
-    ///             {
-    ///                 { "tag_a", 1 },
-    ///                 { "tag_b", 2 },
-    ///                 { "tag_c", 3 },
-    ///                 { "tag_d", 4 },
-    ///                 { "tag_e", 5 },
-    ///                 { "tag_f", 6 },
-    ///                 { "tag_g", 7 },
-    ///                 { "tag_h", 8 },
-    ///                 { "tag_i", 9 },
-    ///                 { "tag_j", 10 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Load balancer can be imported using the id, e.g.
@@ -75,6 +18,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
     /// ```
     /// </summary>
+    [Obsolete(@"This resource has been deprecated in favour of the application load balancer")]
     [AliCloudResourceType("alicloud:slb/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : Pulumi.CustomResource
     {
@@ -115,13 +59,7 @@ namespace Pulumi.AliCloud.Slb
         /// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         /// </summary>
         [Output("instanceChargeType")]
-        public Output<string?> InstanceChargeType { get; private set; } = null!;
-
-        /// <summary>
-        /// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-        /// </summary>
-        [Output("internet")]
-        public Output<bool> Internet { get; private set; } = null!;
+        public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
         /// Valid
@@ -131,14 +69,29 @@ namespace Pulumi.AliCloud.Slb
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
+        [Output("loadBalancerName")]
+        public Output<string> LoadBalancerName { get; private set; } = null!;
+
+        [Output("loadBalancerSpec")]
+        public Output<string> LoadBalancerSpec { get; private set; } = null!;
+
         /// <summary>
         /// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         /// </summary>
         [Output("masterZoneId")]
         public Output<string> MasterZoneId { get; private set; } = null!;
 
+        [Output("modificationProtectionReason")]
+        public Output<string?> ModificationProtectionReason { get; private set; } = null!;
+
+        [Output("modificationProtectionStatus")]
+        public Output<string> ModificationProtectionStatus { get; private set; } = null!;
+
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
 
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -161,7 +114,10 @@ namespace Pulumi.AliCloud.Slb
         /// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
         /// </summary>
         [Output("specification")]
-        public Output<string?> Specification { get; private set; } = null!;
+        public Output<string> Specification { get; private set; } = null!;
+
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
@@ -261,12 +217,6 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-        /// </summary>
-        [Input("internet")]
-        public Input<bool>? Internet { get; set; }
-
-        /// <summary>
         /// Valid
         /// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
         /// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
@@ -274,14 +224,29 @@ namespace Pulumi.AliCloud.Slb
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
+        [Input("loadBalancerName")]
+        public Input<string>? LoadBalancerName { get; set; }
+
+        [Input("loadBalancerSpec")]
+        public Input<string>? LoadBalancerSpec { get; set; }
+
         /// <summary>
         /// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         /// </summary>
         [Input("masterZoneId")]
         public Input<string>? MasterZoneId { get; set; }
 
+        [Input("modificationProtectionReason")]
+        public Input<string>? ModificationProtectionReason { get; set; }
+
+        [Input("modificationProtectionStatus")]
+        public Input<string>? ModificationProtectionStatus { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -305,6 +270,9 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -371,12 +339,6 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-        /// </summary>
-        [Input("internet")]
-        public Input<bool>? Internet { get; set; }
-
-        /// <summary>
         /// Valid
         /// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
         /// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
@@ -384,14 +346,29 @@ namespace Pulumi.AliCloud.Slb
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
+        [Input("loadBalancerName")]
+        public Input<string>? LoadBalancerName { get; set; }
+
+        [Input("loadBalancerSpec")]
+        public Input<string>? LoadBalancerSpec { get; set; }
+
         /// <summary>
         /// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         /// </summary>
         [Input("masterZoneId")]
         public Input<string>? MasterZoneId { get; set; }
 
+        [Input("modificationProtectionReason")]
+        public Input<string>? ModificationProtectionReason { get; set; }
+
+        [Input("modificationProtectionStatus")]
+        public Input<string>? ModificationProtectionStatus { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -415,6 +392,9 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

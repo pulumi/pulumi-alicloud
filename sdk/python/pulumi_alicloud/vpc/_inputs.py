@@ -14,6 +14,7 @@ __all__ = [
     'NetworkAclEntriesEgressArgs',
     'NetworkAclEntriesIngressArgs',
     'NetworkAclIngressAclEntryArgs',
+    'NetworkAclResourceArgs',
 ]
 
 @pulumi.input_type
@@ -495,5 +496,44 @@ class NetworkAclIngressAclEntryArgs:
     @source_cidr_ip.setter
     def source_cidr_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_cidr_ip", value)
+
+
+@pulumi.input_type
+class NetworkAclResourceArgs:
+    def __init__(__self__, *,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource_id: The ID of the associated resource.
+        :param pulumi.Input[str] resource_type: The type of the associated resource. Valid values `VSwitch`.
+        """
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the associated resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the associated resource. Valid values `VSwitch`.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
 
 

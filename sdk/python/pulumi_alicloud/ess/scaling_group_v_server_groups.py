@@ -169,12 +169,14 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id)
-        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
-        default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_load_balancer.id)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id)
+        default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
         default_listener = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_listener.append(alicloud.slb.Listener(f"defaultListener-{range['value']}",
-                load_balancer_id=[__item.id for __item in [default_load_balancer]][range["value"]],
+                load_balancer_id=[__item.id for __item in [default_application_load_balancer]][range["value"]],
                 backend_port=22,
                 frontend_port=22,
                 protocol="tcp",
@@ -188,7 +190,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         default_scaling_group_v_server_groups = alicloud.ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups",
             scaling_group_id=default_scaling_group.id,
             vserver_groups=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupArgs(
-                loadbalancer_id=default_load_balancer.id,
+                loadbalancer_id=default_application_load_balancer.id,
                 vserver_attributes=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs(
                     vserver_group_id=default_server_group.id,
                     port=100,
@@ -267,12 +269,14 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default_zones.zones[0].id)
-        default_load_balancer = alicloud.slb.LoadBalancer("defaultLoadBalancer", vswitch_id=default_switch.id)
-        default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_load_balancer.id)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id)
+        default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
         default_listener = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_listener.append(alicloud.slb.Listener(f"defaultListener-{range['value']}",
-                load_balancer_id=[__item.id for __item in [default_load_balancer]][range["value"]],
+                load_balancer_id=[__item.id for __item in [default_application_load_balancer]][range["value"]],
                 backend_port=22,
                 frontend_port=22,
                 protocol="tcp",
@@ -286,7 +290,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         default_scaling_group_v_server_groups = alicloud.ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups",
             scaling_group_id=default_scaling_group.id,
             vserver_groups=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupArgs(
-                loadbalancer_id=default_load_balancer.id,
+                loadbalancer_id=default_application_load_balancer.id,
                 vserver_attributes=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs(
                     vserver_group_id=default_server_group.id,
                     port=100,

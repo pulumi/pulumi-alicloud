@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *     caCertificate: `-----BEGIN CERTIFICATE-----
  * MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
  * -----END CERTIFICATE-----`,
+ *     caCertificateName: "tf-testAccSlbCACertificate",
  * });
  * ```
  *
@@ -34,7 +35,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * from "fs";
  *
- * const foo_file = new alicloud.slb.CaCertificate("foo-file", {caCertificate: fs.readFileSync(`${path.module}/ca_certificate.pem`)});
+ * const foo_file = new alicloud.slb.CaCertificate("foo-file", {
+ *     caCertificateName: "tf-testAccSlbCACertificate",
+ *     caCertificate: fs.readFileSync(`${path.module}/ca_certificate.pem`),
+ * });
  * ```
  *
  * ## Import
@@ -77,8 +81,11 @@ export class CaCertificate extends pulumi.CustomResource {
      * the content of the CA certificate.
      */
     public readonly caCertificate!: pulumi.Output<string>;
+    public readonly caCertificateName!: pulumi.Output<string>;
     /**
-     * Name of the CA Certificate.
+     * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -104,6 +111,7 @@ export class CaCertificate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CaCertificateState | undefined;
             inputs["caCertificate"] = state ? state.caCertificate : undefined;
+            inputs["caCertificateName"] = state ? state.caCertificateName : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -113,6 +121,7 @@ export class CaCertificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'caCertificate'");
             }
             inputs["caCertificate"] = args ? args.caCertificate : undefined;
+            inputs["caCertificateName"] = args ? args.caCertificateName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -132,8 +141,11 @@ export interface CaCertificateState {
      * the content of the CA certificate.
      */
     readonly caCertificate?: pulumi.Input<string>;
+    readonly caCertificateName?: pulumi.Input<string>;
     /**
-     * Name of the CA Certificate.
+     * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -154,8 +166,11 @@ export interface CaCertificateArgs {
      * the content of the CA certificate.
      */
     readonly caCertificate: pulumi.Input<string>;
+    readonly caCertificateName?: pulumi.Input<string>;
     /**
-     * Name of the CA Certificate.
+     * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */
     readonly name?: pulumi.Input<string>;
     /**

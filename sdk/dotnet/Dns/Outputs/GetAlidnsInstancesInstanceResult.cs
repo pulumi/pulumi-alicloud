@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// </summary>
         public readonly string DnsSecurity;
         /// <summary>
+        /// (Available in 1.124.1+) The domain name.
+        /// </summary>
+        public readonly string Domain;
+        /// <summary>
         /// Number of domain names bound.
         /// </summary>
         public readonly string DomainNumbers;
@@ -29,6 +33,10 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// Id of the instance resource.
         /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// (Available in 1.124.1+) The payment type of alidns instance.
+        /// </summary>
+        public readonly string PaymentType;
         /// <summary>
         /// Paid package version.
         /// </summary>
@@ -42,20 +50,26 @@ namespace Pulumi.AliCloud.Dns.Outputs
         private GetAlidnsInstancesInstanceResult(
             string dnsSecurity,
 
+            string domain,
+
             string domainNumbers,
 
             string id,
 
             string instanceId,
 
+            string paymentType,
+
             string versionCode,
 
             string versionName)
         {
             DnsSecurity = dnsSecurity;
+            Domain = domain;
             DomainNumbers = domainNumbers;
             Id = id;
             InstanceId = instanceId;
+            PaymentType = paymentType;
             VersionCode = versionCode;
             VersionName = versionName;
         }

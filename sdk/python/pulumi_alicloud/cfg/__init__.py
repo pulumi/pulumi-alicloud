@@ -3,12 +3,21 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .aggregate_compliance_pack import *
+from .aggregate_config_rule import *
+from .aggregator import *
+from .compliance_pack import *
 from .configuration_recorder import *
 from .delivery_channel import *
+from .get_aggregate_compliance_packs import *
+from .get_aggregate_config_rules import *
+from .get_aggregators import *
+from .get_compliance_packs import *
 from .get_configuration_recorders import *
 from .get_delivery_channels import *
 from .get_rules import *
 from .rule import *
+from ._inputs import *
 from . import outputs
 
 def _register_module():
@@ -23,7 +32,15 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "alicloud:cfg/configurationRecorder:ConfigurationRecorder":
+            if typ == "alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack":
+                return AggregateCompliancePack(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cfg/aggregateConfigRule:AggregateConfigRule":
+                return AggregateConfigRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cfg/aggregator:Aggregator":
+                return Aggregator(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cfg/compliancePack:CompliancePack":
+                return CompliancePack(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cfg/configurationRecorder:ConfigurationRecorder":
                 return ConfigurationRecorder(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cfg/deliveryChannel:DeliveryChannel":
                 return DeliveryChannel(name, pulumi.ResourceOptions(urn=urn))
@@ -34,6 +51,10 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("alicloud", "cfg/aggregateCompliancePack", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cfg/aggregateConfigRule", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cfg/aggregator", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cfg/compliancePack", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cfg/configurationRecorder", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cfg/deliveryChannel", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cfg/rule", _module_instance)

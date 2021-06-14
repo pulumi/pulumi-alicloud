@@ -79,7 +79,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
      */
-    public readonly servers!: pulumi.Output<outputs.slb.ServerGroupServer[] | undefined>;
+    public readonly servers!: pulumi.Output<outputs.slb.ServerGroupServer[]>;
 
     /**
      * Create a ServerGroup resource with the given unique name, arguments, and options.

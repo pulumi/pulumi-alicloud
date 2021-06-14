@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDedicatedHostsResult',
@@ -20,7 +21,7 @@ class GetDedicatedHostsResult:
     """
     A collection of values returned by getDedicatedHosts.
     """
-    def __init__(__self__, dedicated_host_id=None, dedicated_host_name=None, dedicated_host_type=None, hosts=None, id=None, ids=None, name_regex=None, names=None, output_file=None, resource_group_id=None, status=None, tags=None, zone_id=None):
+    def __init__(__self__, dedicated_host_id=None, dedicated_host_name=None, dedicated_host_type=None, hosts=None, id=None, ids=None, name_regex=None, names=None, operation_locks=None, output_file=None, resource_group_id=None, status=None, tags=None, zone_id=None):
         if dedicated_host_id and not isinstance(dedicated_host_id, str):
             raise TypeError("Expected argument 'dedicated_host_id' to be a str")
         pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
@@ -45,6 +46,9 @@ class GetDedicatedHostsResult:
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
         pulumi.set(__self__, "names", names)
+        if operation_locks and not isinstance(operation_locks, list):
+            raise TypeError("Expected argument 'operation_locks' to be a list")
+        pulumi.set(__self__, "operation_locks", operation_locks)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
@@ -123,6 +127,14 @@ class GetDedicatedHostsResult:
         return pulumi.get(self, "names")
 
     @property
+    @pulumi.getter(name="operationLocks")
+    def operation_locks(self) -> Optional[Sequence['outputs.GetDedicatedHostsOperationLockResult']]:
+        """
+        (Available in 1.123.1+) The operation_locks. contains the following attribute:
+        """
+        return pulumi.get(self, "operation_locks")
+
+    @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
@@ -168,6 +180,7 @@ class AwaitableGetDedicatedHostsResult(GetDedicatedHostsResult):
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
+            operation_locks=self.operation_locks,
             output_file=self.output_file,
             resource_group_id=self.resource_group_id,
             status=self.status,
@@ -180,6 +193,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
                         dedicated_host_type: Optional[str] = None,
                         ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
+                        operation_locks: Optional[Sequence[pulumi.InputType['GetDedicatedHostsOperationLockArgs']]] = None,
                         output_file: Optional[str] = None,
                         resource_group_id: Optional[str] = None,
                         status: Optional[str] = None,
@@ -209,6 +223,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
     :param str dedicated_host_type: The type of the dedicated host.
     :param Sequence[str] ids: A list of ECS Dedicated Host ids.
     :param str name_regex: A regex string to filter results by the ECS Dedicated Host name.
+    :param Sequence[pulumi.InputType['GetDedicatedHostsOperationLockArgs']] operation_locks: The reason why the dedicated host resource is locked.
     :param str output_file: Save the result to the file.
     :param str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
     :param str status: The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
@@ -221,6 +236,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
     __args__['dedicatedHostType'] = dedicated_host_type
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
+    __args__['operationLocks'] = operation_locks
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
@@ -241,6 +257,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
         ids=__ret__.ids,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
+        operation_locks=__ret__.operation_locks,
         output_file=__ret__.output_file,
         resource_group_id=__ret__.resource_group_id,
         status=__ret__.status,

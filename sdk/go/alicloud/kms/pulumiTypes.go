@@ -251,17 +251,39 @@ func (o GetKeyVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetKeyVersion
 
 type GetKeysKey struct {
 	// The Alibaba Cloud Resource Name (ARN) of the key.
-	Arn string `pulumi:"arn"`
+	Arn               string `pulumi:"arn"`
+	AutomaticRotation string `pulumi:"automaticRotation"`
 	// Creation date of key.
 	CreationDate string `pulumi:"creationDate"`
 	// The owner of the key.
+	// * `automaticRotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+	// * `keyId` -(Available in 1.123.1+)  ID of the key.
+	// * `keySpec` -(Available in 1.123.1+)  The type of the CMK.
+	// * `keyUsage` -(Available in 1.123.1+)  The usage of CMK.
+	// * `lastRotationDate` -(Available in 1.123.1+)  The date and time the last rotation was performed.
+	// * `materialExpireTime` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
+	// * `nextRotationDate` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+	// * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
+	// * `protectionLevel` -(Available in 1.123.1+)  The protection level of the CMK.
+	// * `rotationInterval` -(Available in 1.123.1+)  The period of automatic key rotation.
+	// * `primaryKeyVersion` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
 	Creator string `pulumi:"creator"`
 	// Deletion date of key.
 	DeleteDate string `pulumi:"deleteDate"`
 	// Description of the key.
 	Description string `pulumi:"description"`
 	// ID of the key.
-	Id string `pulumi:"id"`
+	Id                 string `pulumi:"id"`
+	KeyId              string `pulumi:"keyId"`
+	KeySpec            string `pulumi:"keySpec"`
+	KeyUsage           string `pulumi:"keyUsage"`
+	LastRotationDate   string `pulumi:"lastRotationDate"`
+	MaterialExpireTime string `pulumi:"materialExpireTime"`
+	NextRotationDate   string `pulumi:"nextRotationDate"`
+	Origin             string `pulumi:"origin"`
+	PrimaryKeyVersion  string `pulumi:"primaryKeyVersion"`
+	ProtectionLevel    string `pulumi:"protectionLevel"`
+	RotationInterval   string `pulumi:"rotationInterval"`
 	// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status string `pulumi:"status"`
 }
@@ -279,17 +301,39 @@ type GetKeysKeyInput interface {
 
 type GetKeysKeyArgs struct {
 	// The Alibaba Cloud Resource Name (ARN) of the key.
-	Arn pulumi.StringInput `pulumi:"arn"`
+	Arn               pulumi.StringInput `pulumi:"arn"`
+	AutomaticRotation pulumi.StringInput `pulumi:"automaticRotation"`
 	// Creation date of key.
 	CreationDate pulumi.StringInput `pulumi:"creationDate"`
 	// The owner of the key.
+	// * `automaticRotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+	// * `keyId` -(Available in 1.123.1+)  ID of the key.
+	// * `keySpec` -(Available in 1.123.1+)  The type of the CMK.
+	// * `keyUsage` -(Available in 1.123.1+)  The usage of CMK.
+	// * `lastRotationDate` -(Available in 1.123.1+)  The date and time the last rotation was performed.
+	// * `materialExpireTime` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
+	// * `nextRotationDate` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+	// * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
+	// * `protectionLevel` -(Available in 1.123.1+)  The protection level of the CMK.
+	// * `rotationInterval` -(Available in 1.123.1+)  The period of automatic key rotation.
+	// * `primaryKeyVersion` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
 	Creator pulumi.StringInput `pulumi:"creator"`
 	// Deletion date of key.
 	DeleteDate pulumi.StringInput `pulumi:"deleteDate"`
 	// Description of the key.
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the key.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id                 pulumi.StringInput `pulumi:"id"`
+	KeyId              pulumi.StringInput `pulumi:"keyId"`
+	KeySpec            pulumi.StringInput `pulumi:"keySpec"`
+	KeyUsage           pulumi.StringInput `pulumi:"keyUsage"`
+	LastRotationDate   pulumi.StringInput `pulumi:"lastRotationDate"`
+	MaterialExpireTime pulumi.StringInput `pulumi:"materialExpireTime"`
+	NextRotationDate   pulumi.StringInput `pulumi:"nextRotationDate"`
+	Origin             pulumi.StringInput `pulumi:"origin"`
+	PrimaryKeyVersion  pulumi.StringInput `pulumi:"primaryKeyVersion"`
+	ProtectionLevel    pulumi.StringInput `pulumi:"protectionLevel"`
+	RotationInterval   pulumi.StringInput `pulumi:"rotationInterval"`
 	// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
@@ -350,12 +394,27 @@ func (o GetKeysKeyOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.Arn }).(pulumi.StringOutput)
 }
 
+func (o GetKeysKeyOutput) AutomaticRotation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.AutomaticRotation }).(pulumi.StringOutput)
+}
+
 // Creation date of key.
 func (o GetKeysKeyOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
 // The owner of the key.
+// * `automaticRotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+// * `keyId` -(Available in 1.123.1+)  ID of the key.
+// * `keySpec` -(Available in 1.123.1+)  The type of the CMK.
+// * `keyUsage` -(Available in 1.123.1+)  The usage of CMK.
+// * `lastRotationDate` -(Available in 1.123.1+)  The date and time the last rotation was performed.
+// * `materialExpireTime` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
+// * `nextRotationDate` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+// * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
+// * `protectionLevel` -(Available in 1.123.1+)  The protection level of the CMK.
+// * `rotationInterval` -(Available in 1.123.1+)  The period of automatic key rotation.
+// * `primaryKeyVersion` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
 func (o GetKeysKeyOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.Creator }).(pulumi.StringOutput)
 }
@@ -373,6 +432,46 @@ func (o GetKeysKeyOutput) Description() pulumi.StringOutput {
 // ID of the key.
 func (o GetKeysKeyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeyOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeyOutput) KeySpec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.KeySpec }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeyOutput) KeyUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.KeyUsage }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeyOutput) LastRotationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.LastRotationDate }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeyOutput) MaterialExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.MaterialExpireTime }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeyOutput) NextRotationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.NextRotationDate }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeyOutput) Origin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.Origin }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeyOutput) PrimaryKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.PrimaryKeyVersion }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeyOutput) ProtectionLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.ProtectionLevel }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeyOutput) RotationInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKey) string { return v.RotationInterval }).(pulumi.StringOutput)
 }
 
 // Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
@@ -534,14 +633,30 @@ func (o GetSecretVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetSecretV
 }
 
 type GetSecretsSecret struct {
+	// (Available in 1.124.0+) A mapping of tags to assign to the resource.
+	Arn string `pulumi:"arn"`
+	// (Available in 1.124.0+)  The description of the secret.
+	Description string `pulumi:"description"`
+	// (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+	EncryptionKeyId string `pulumi:"encryptionKeyId"`
 	// ID of the Kms Secret. The value is same as KMS secret_name.
 	Id string `pulumi:"id"`
 	// Schedule deletion time.
 	PlannedDeleteTime string `pulumi:"plannedDeleteTime"`
+	// (Available in 1.124.0+)  The value of the secret that you want to create.
+	SecretData string `pulumi:"secretData"`
+	// (Available in 1.124.0+)  The type of the secret data value.
+	SecretDataType string `pulumi:"secretDataType"`
 	// Name of the KMS Secret.
 	SecretName string `pulumi:"secretName"`
+	// (Available in 1.124.0+)  The type of the secret.
+	SecretType string `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// (Available in 1.124.0+)  The version number of the initial version.
+	VersionId string `pulumi:"versionId"`
+	// (Available in 1.124.0+)  The stage labels that mark the new secret version.
+	VersionStages []string `pulumi:"versionStages"`
 }
 
 // GetSecretsSecretInput is an input type that accepts GetSecretsSecretArgs and GetSecretsSecretOutput values.
@@ -556,14 +671,30 @@ type GetSecretsSecretInput interface {
 }
 
 type GetSecretsSecretArgs struct {
+	// (Available in 1.124.0+) A mapping of tags to assign to the resource.
+	Arn pulumi.StringInput `pulumi:"arn"`
+	// (Available in 1.124.0+)  The description of the secret.
+	Description pulumi.StringInput `pulumi:"description"`
+	// (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+	EncryptionKeyId pulumi.StringInput `pulumi:"encryptionKeyId"`
 	// ID of the Kms Secret. The value is same as KMS secret_name.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Schedule deletion time.
 	PlannedDeleteTime pulumi.StringInput `pulumi:"plannedDeleteTime"`
+	// (Available in 1.124.0+)  The value of the secret that you want to create.
+	SecretData pulumi.StringInput `pulumi:"secretData"`
+	// (Available in 1.124.0+)  The type of the secret data value.
+	SecretDataType pulumi.StringInput `pulumi:"secretDataType"`
 	// Name of the KMS Secret.
 	SecretName pulumi.StringInput `pulumi:"secretName"`
+	// (Available in 1.124.0+)  The type of the secret.
+	SecretType pulumi.StringInput `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
+	// (Available in 1.124.0+)  The version number of the initial version.
+	VersionId pulumi.StringInput `pulumi:"versionId"`
+	// (Available in 1.124.0+)  The stage labels that mark the new secret version.
+	VersionStages pulumi.StringArrayInput `pulumi:"versionStages"`
 }
 
 func (GetSecretsSecretArgs) ElementType() reflect.Type {
@@ -617,6 +748,21 @@ func (o GetSecretsSecretOutput) ToGetSecretsSecretOutputWithContext(ctx context.
 	return o
 }
 
+// (Available in 1.124.0+) A mapping of tags to assign to the resource.
+func (o GetSecretsSecretOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.0+)  The description of the secret.
+func (o GetSecretsSecretOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+func (o GetSecretsSecretOutput) EncryptionKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.EncryptionKeyId }).(pulumi.StringOutput)
+}
+
 // ID of the Kms Secret. The value is same as KMS secret_name.
 func (o GetSecretsSecretOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.Id }).(pulumi.StringOutput)
@@ -627,14 +773,39 @@ func (o GetSecretsSecretOutput) PlannedDeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.PlannedDeleteTime }).(pulumi.StringOutput)
 }
 
+// (Available in 1.124.0+)  The value of the secret that you want to create.
+func (o GetSecretsSecretOutput) SecretData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretData }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.0+)  The type of the secret data value.
+func (o GetSecretsSecretOutput) SecretDataType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretDataType }).(pulumi.StringOutput)
+}
+
 // Name of the KMS Secret.
 func (o GetSecretsSecretOutput) SecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretName }).(pulumi.StringOutput)
 }
 
+// (Available in 1.124.0+)  The type of the secret.
+func (o GetSecretsSecretOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
 // A mapping of tags to assign to the resource.
 func (o GetSecretsSecretOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetSecretsSecret) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// (Available in 1.124.0+)  The version number of the initial version.
+func (o GetSecretsSecretOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.VersionId }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.0+)  The stage labels that mark the new secret version.
+func (o GetSecretsSecretOutput) VersionStages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecretsSecret) []string { return v.VersionStages }).(pulumi.StringArrayOutput)
 }
 
 type GetSecretsSecretArrayOutput struct{ *pulumi.OutputState }

@@ -199,7 +199,7 @@ class _ZoneRecordState:
     def __init__(__self__, *,
                  lang: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 record_id: Optional[pulumi.Input[int]] = None,
+                 record_id: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_record: Optional[pulumi.Input[str]] = None,
                  rr: Optional[pulumi.Input[str]] = None,
@@ -213,7 +213,7 @@ class _ZoneRecordState:
         Input properties used for looking up and filtering ZoneRecord resources.
         :param pulumi.Input[str] lang: User language.
         :param pulumi.Input[int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
-        :param pulumi.Input[int] record_id: The Private Zone Record ID.
+        :param pulumi.Input[str] record_id: The Private Zone Record ID.
         :param pulumi.Input[str] remark: The remark of the Private Zone Record.
         :param pulumi.Input[str] resource_record: The resource record of the Private Zone Record.
         :param pulumi.Input[str] rr: The rr of the Private Zone Record.
@@ -279,14 +279,14 @@ class _ZoneRecordState:
 
     @property
     @pulumi.getter(name="recordId")
-    def record_id(self) -> Optional[pulumi.Input[int]]:
+    def record_id(self) -> Optional[pulumi.Input[str]]:
         """
         The Private Zone Record ID.
         """
         return pulumi.get(self, "record_id")
 
     @record_id.setter
-    def record_id(self, value: Optional[pulumi.Input[int]]):
+    def record_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "record_id", value)
 
     @property
@@ -524,7 +524,7 @@ class ZoneRecord(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             lang: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
-            record_id: Optional[pulumi.Input[int]] = None,
+            record_id: Optional[pulumi.Input[str]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             resource_record: Optional[pulumi.Input[str]] = None,
             rr: Optional[pulumi.Input[str]] = None,
@@ -543,7 +543,7 @@ class ZoneRecord(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lang: User language.
         :param pulumi.Input[int] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
-        :param pulumi.Input[int] record_id: The Private Zone Record ID.
+        :param pulumi.Input[str] record_id: The Private Zone Record ID.
         :param pulumi.Input[str] remark: The remark of the Private Zone Record.
         :param pulumi.Input[str] resource_record: The resource record of the Private Zone Record.
         :param pulumi.Input[str] rr: The rr of the Private Zone Record.
@@ -591,7 +591,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recordId")
-    def record_id(self) -> pulumi.Output[int]:
+    def record_id(self) -> pulumi.Output[str]:
         """
         The Private Zone Record ID.
         """

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Log.Outputs
     public sealed class EtlEtlSink
     {
         /// <summary>
-        /// Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        /// Delivery target logstore access key id.
         /// </summary>
         public readonly string? AccessKeyId;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Sts role info.
+        /// Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         /// </summary>
         public readonly string? RoleArn;
         /// <summary>

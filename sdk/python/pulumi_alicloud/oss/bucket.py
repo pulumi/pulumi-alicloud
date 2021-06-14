@@ -28,6 +28,7 @@ class BucketArgs:
                  server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transfer_acceleration: Optional[pulumi.Input['BucketTransferAccelerationArgs']] = None,
                  versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
@@ -44,6 +45,7 @@ class BucketArgs:
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption (documented below).
         :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+        :param pulumi.Input['BucketTransferAccelerationArgs'] transfer_acceleration: A transfer acceleration status of a bucket (documented below).
         :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning (documented below).
         :param pulumi.Input['BucketWebsiteArgs'] website: A website object(documented below).
         """
@@ -76,6 +78,8 @@ class BucketArgs:
             pulumi.set(__self__, "storage_class", storage_class)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if transfer_acceleration is not None:
+            pulumi.set(__self__, "transfer_acceleration", transfer_acceleration)
         if versioning is not None:
             pulumi.set(__self__, "versioning", versioning)
         if website is not None:
@@ -235,6 +239,18 @@ class BucketArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="transferAcceleration")
+    def transfer_acceleration(self) -> Optional[pulumi.Input['BucketTransferAccelerationArgs']]:
+        """
+        A transfer acceleration status of a bucket (documented below).
+        """
+        return pulumi.get(self, "transfer_acceleration")
+
+    @transfer_acceleration.setter
+    def transfer_acceleration(self, value: Optional[pulumi.Input['BucketTransferAccelerationArgs']]):
+        pulumi.set(self, "transfer_acceleration", value)
+
+    @property
     @pulumi.getter
     def versioning(self) -> Optional[pulumi.Input['BucketVersioningArgs']]:
         """
@@ -280,6 +296,7 @@ class _BucketState:
                  server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transfer_acceleration: Optional[pulumi.Input['BucketTransferAccelerationArgs']] = None,
                  versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
@@ -301,6 +318,7 @@ class _BucketState:
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption (documented below).
         :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+        :param pulumi.Input['BucketTransferAccelerationArgs'] transfer_acceleration: A transfer acceleration status of a bucket (documented below).
         :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning (documented below).
         :param pulumi.Input['BucketWebsiteArgs'] website: A website object(documented below).
         """
@@ -343,6 +361,8 @@ class _BucketState:
             pulumi.set(__self__, "storage_class", storage_class)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if transfer_acceleration is not None:
+            pulumi.set(__self__, "transfer_acceleration", transfer_acceleration)
         if versioning is not None:
             pulumi.set(__self__, "versioning", versioning)
         if website is not None:
@@ -562,6 +582,18 @@ class _BucketState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="transferAcceleration")
+    def transfer_acceleration(self) -> Optional[pulumi.Input['BucketTransferAccelerationArgs']]:
+        """
+        A transfer acceleration status of a bucket (documented below).
+        """
+        return pulumi.get(self, "transfer_acceleration")
+
+    @transfer_acceleration.setter
+    def transfer_acceleration(self, value: Optional[pulumi.Input['BucketTransferAccelerationArgs']]):
+        pulumi.set(self, "transfer_acceleration", value)
+
+    @property
     @pulumi.getter
     def versioning(self) -> Optional[pulumi.Input['BucketVersioningArgs']]:
         """
@@ -604,6 +636,7 @@ class Bucket(pulumi.CustomResource):
                  server_side_encryption_rule: Optional[pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transfer_acceleration: Optional[pulumi.Input[pulumi.InputType['BucketTransferAccelerationArgs']]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
                  website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
                  __props__=None):
@@ -806,6 +839,19 @@ class Bucket(pulumi.CustomResource):
             redundancy_type="ZRS")
         ```
 
+        Set bucket accelerate configuration
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_accelerate = alicloud.oss.Bucket("bucket-accelerate",
+            bucket="bucket_name",
+            transfer_acceleration=alicloud.oss.BucketTransferAccelerationArgs(
+                enabled=False,
+            ))
+        ```
+
         ## Import
 
         OSS bucket can be imported using the bucket name, e.g.
@@ -828,6 +874,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']] server_side_encryption_rule: A configuration of server-side encryption (documented below).
         :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+        :param pulumi.Input[pulumi.InputType['BucketTransferAccelerationArgs']] transfer_acceleration: A transfer acceleration status of a bucket (documented below).
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: A state of versioning (documented below).
         :param pulumi.Input[pulumi.InputType['BucketWebsiteArgs']] website: A website object(documented below).
         """
@@ -1036,6 +1083,19 @@ class Bucket(pulumi.CustomResource):
             redundancy_type="ZRS")
         ```
 
+        Set bucket accelerate configuration
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_accelerate = alicloud.oss.Bucket("bucket-accelerate",
+            bucket="bucket_name",
+            transfer_acceleration=alicloud.oss.BucketTransferAccelerationArgs(
+                enabled=False,
+            ))
+        ```
+
         ## Import
 
         OSS bucket can be imported using the bucket name, e.g.
@@ -1072,6 +1132,7 @@ class Bucket(pulumi.CustomResource):
                  server_side_encryption_rule: Optional[pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transfer_acceleration: Optional[pulumi.Input[pulumi.InputType['BucketTransferAccelerationArgs']]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
                  website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
                  __props__=None):
@@ -1102,6 +1163,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["server_side_encryption_rule"] = server_side_encryption_rule
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["transfer_acceleration"] = transfer_acceleration
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["website"] = website
             __props__.__dict__["creation_date"] = None
@@ -1137,6 +1199,7 @@ class Bucket(pulumi.CustomResource):
             server_side_encryption_rule: Optional[pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']]] = None,
             storage_class: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            transfer_acceleration: Optional[pulumi.Input[pulumi.InputType['BucketTransferAccelerationArgs']]] = None,
             versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
             website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None) -> 'Bucket':
         """
@@ -1163,6 +1226,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']] server_side_encryption_rule: A configuration of server-side encryption (documented below).
         :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+        :param pulumi.Input[pulumi.InputType['BucketTransferAccelerationArgs']] transfer_acceleration: A transfer acceleration status of a bucket (documented below).
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: A state of versioning (documented below).
         :param pulumi.Input[pulumi.InputType['BucketWebsiteArgs']] website: A website object(documented below).
         """
@@ -1188,6 +1252,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["server_side_encryption_rule"] = server_side_encryption_rule
         __props__.__dict__["storage_class"] = storage_class
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["transfer_acceleration"] = transfer_acceleration
         __props__.__dict__["versioning"] = versioning
         __props__.__dict__["website"] = website
         return Bucket(resource_name, opts=opts, __props__=__props__)
@@ -1332,6 +1397,14 @@ class Bucket(pulumi.CustomResource):
         A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="transferAcceleration")
+    def transfer_acceleration(self) -> pulumi.Output[Optional['outputs.BucketTransferAcceleration']]:
+        """
+        A transfer acceleration status of a bucket (documented below).
+        """
+        return pulumi.get(self, "transfer_acceleration")
 
     @property
     @pulumi.getter

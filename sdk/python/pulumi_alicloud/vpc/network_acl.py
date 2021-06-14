@@ -20,7 +20,8 @@ class NetworkAclArgs:
                  egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]] = None,
                  ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_acl_name: Optional[pulumi.Input[str]] = None):
+                 network_acl_name: Optional[pulumi.Input[str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None):
         """
         The set of arguments for constructing a NetworkAcl resource.
         :param pulumi.Input[str] vpc_id: The vpc_id of the network acl, the field can't be changed.
@@ -29,6 +30,7 @@ class NetworkAclArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]] ingress_acl_entries: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         :param pulumi.Input[str] network_acl_name: The name of the network acl.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resources.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if description is not None:
@@ -44,6 +46,8 @@ class NetworkAclArgs:
             pulumi.set(__self__, "name", name)
         if network_acl_name is not None:
             pulumi.set(__self__, "network_acl_name", network_acl_name)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -117,6 +121,18 @@ class NetworkAclArgs:
     def network_acl_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_acl_name", value)
 
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]:
+        """
+        The associated resources.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]):
+        pulumi.set(self, "resources", value)
+
 
 @pulumi.input_type
 class _NetworkAclState:
@@ -126,6 +142,7 @@ class _NetworkAclState:
                  ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_acl_name: Optional[pulumi.Input[str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
@@ -135,6 +152,7 @@ class _NetworkAclState:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]] ingress_acl_entries: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         :param pulumi.Input[str] network_acl_name: The name of the network acl.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resources.
         :param pulumi.Input[str] status: (Available in 1.122.0+) The status of the network acl.
         :param pulumi.Input[str] vpc_id: The vpc_id of the network acl, the field can't be changed.
         """
@@ -151,6 +169,8 @@ class _NetworkAclState:
             pulumi.set(__self__, "name", name)
         if network_acl_name is not None:
             pulumi.set(__self__, "network_acl_name", network_acl_name)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if vpc_id is not None:
@@ -218,6 +238,18 @@ class _NetworkAclState:
 
     @property
     @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]:
+        """
+        The associated resources.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]):
+        pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         (Available in 1.122.0+) The status of the network acl.
@@ -251,45 +283,13 @@ class NetworkAcl(pulumi.CustomResource):
                  ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_acl_name: Optional[pulumi.Input[str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a network acl resource to add network acls.
 
         > **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            cidr_block="172.16.0.0/12",
-            vpc_name="VpcConfig")
-        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl",
-            vpc_id=default_network.id,
-            network_acl_name="network_acl",
-            description="network_acl",
-            ingress_acl_entries=[alicloud.vpc.NetworkAclIngressAclEntryArgs(
-                description="tf-testacc",
-                network_acl_entry_name="tcp23",
-                source_cidr_ip="196.168.2.0/21",
-                policy="accept",
-                port="22/80",
-                protocol="tcp",
-            )],
-            egress_acl_entries=[alicloud.vpc.NetworkAclEgressAclEntryArgs(
-                description="tf-testacc",
-                network_acl_entry_name="tcp23",
-                destination_cidr_ip="0.0.0.0/0",
-                policy="accept",
-                port="-1/-1",
-                protocol="all",
-            )])
-        ```
 
         ## Import
 
@@ -306,6 +306,7 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]] ingress_acl_entries: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         :param pulumi.Input[str] network_acl_name: The name of the network acl.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]] resources: The associated resources.
         :param pulumi.Input[str] vpc_id: The vpc_id of the network acl, the field can't be changed.
         """
         ...
@@ -318,39 +319,6 @@ class NetworkAcl(pulumi.CustomResource):
         Provides a network acl resource to add network acls.
 
         > **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            cidr_block="172.16.0.0/12",
-            vpc_name="VpcConfig")
-        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl",
-            vpc_id=default_network.id,
-            network_acl_name="network_acl",
-            description="network_acl",
-            ingress_acl_entries=[alicloud.vpc.NetworkAclIngressAclEntryArgs(
-                description="tf-testacc",
-                network_acl_entry_name="tcp23",
-                source_cidr_ip="196.168.2.0/21",
-                policy="accept",
-                port="22/80",
-                protocol="tcp",
-            )],
-            egress_acl_entries=[alicloud.vpc.NetworkAclEgressAclEntryArgs(
-                description="tf-testacc",
-                network_acl_entry_name="tcp23",
-                destination_cidr_ip="0.0.0.0/0",
-                policy="accept",
-                port="-1/-1",
-                protocol="all",
-            )])
-        ```
 
         ## Import
 
@@ -380,6 +348,7 @@ class NetworkAcl(pulumi.CustomResource):
                  ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_acl_name: Optional[pulumi.Input[str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -401,6 +370,7 @@ class NetworkAcl(pulumi.CustomResource):
                 pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead""")
             __props__.__dict__["name"] = name
             __props__.__dict__["network_acl_name"] = network_acl_name
+            __props__.__dict__["resources"] = resources
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
@@ -420,6 +390,7 @@ class NetworkAcl(pulumi.CustomResource):
             ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_acl_name: Optional[pulumi.Input[str]] = None,
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'NetworkAcl':
         """
@@ -434,6 +405,7 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]] ingress_acl_entries: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
         :param pulumi.Input[str] network_acl_name: The name of the network acl.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]] resources: The associated resources.
         :param pulumi.Input[str] status: (Available in 1.122.0+) The status of the network acl.
         :param pulumi.Input[str] vpc_id: The vpc_id of the network acl, the field can't be changed.
         """
@@ -446,6 +418,7 @@ class NetworkAcl(pulumi.CustomResource):
         __props__.__dict__["ingress_acl_entries"] = ingress_acl_entries
         __props__.__dict__["name"] = name
         __props__.__dict__["network_acl_name"] = network_acl_name
+        __props__.__dict__["resources"] = resources
         __props__.__dict__["status"] = status
         __props__.__dict__["vpc_id"] = vpc_id
         return NetworkAcl(resource_name, opts=opts, __props__=__props__)
@@ -489,6 +462,14 @@ class NetworkAcl(pulumi.CustomResource):
         The name of the network acl.
         """
         return pulumi.get(self, "network_acl_name")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> pulumi.Output[Optional[Sequence['outputs.NetworkAclResource']]]:
+        """
+        The associated resources.
+        """
+        return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter

@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Mse
         public Output<int> InstanceCount { get; private set; } = null!;
 
         /// <summary>
-        /// The type of network. Range limit: 1~5.
+        /// The type of network. Valid values: "privatenet" and "pubnet".
         /// </summary>
         [Output("netType")]
         public Output<string> NetType { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<int> InstanceCount { get; set; } = null!;
 
         /// <summary>
-        /// The type of network. Range limit: 1~5.
+        /// The type of network. Valid values: "privatenet" and "pubnet".
         /// </summary>
         [Input("netType", required: true)]
         public Input<string> NetType { get; set; } = null!;
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<int>? InstanceCount { get; set; }
 
         /// <summary>
-        /// The type of network. Range limit: 1~5.
+        /// The type of network. Valid values: "privatenet" and "pubnet".
         /// </summary>
         [Input("netType")]
         public Input<string>? NetType { get; set; }

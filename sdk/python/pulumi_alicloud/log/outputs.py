@@ -14,6 +14,8 @@ __all__ = [
     'AlertQueryList',
     'EtlEtlSink',
     'OssShipperParquetConfig',
+    'StoreEncryptConf',
+    'StoreEncryptConfUserCmkInfo',
     'StoreIndexFieldSearch',
     'StoreIndexFieldSearchJsonKey',
     'StoreIndexFullText',
@@ -242,11 +244,11 @@ class EtlEtlSink(dict):
         :param str logstore: Delivery target logstore.
         :param str name: Delivery target name.
         :param str project: The project where the target logstore is delivered.
-        :param str access_key_id: Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        :param str access_key_id: Delivery target logstore access key id.
         :param str access_key_secret: Delivery target logstore access key secret.
         :param str kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param str kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
-        :param str role_arn: Sts role info.
+        :param str role_arn: Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         :param str type: ETL sinks type, the default value is AliyunLOG.
         """
         pulumi.set(__self__, "endpoint", endpoint)
@@ -302,7 +304,7 @@ class EtlEtlSink(dict):
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> Optional[str]:
         """
-        Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        Delivery target logstore access key id.
         """
         return pulumi.get(self, "access_key_id")
 
@@ -334,7 +336,7 @@ class EtlEtlSink(dict):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         """
-        Sts role info.
+        Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         """
         return pulumi.get(self, "role_arn")
 
@@ -364,6 +366,127 @@ class OssShipperParquetConfig(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class StoreEncryptConf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptType":
+            suggest = "encrypt_type"
+        elif key == "userCmkInfo":
+            suggest = "user_cmk_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StoreEncryptConf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StoreEncryptConf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StoreEncryptConf.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable: Optional[bool] = None,
+                 encrypt_type: Optional[str] = None,
+                 user_cmk_info: Optional['outputs.StoreEncryptConfUserCmkInfo'] = None):
+        """
+        :param bool enable: enable encryption. Default `false`
+        :param str encrypt_type: Supported encryption type, only supports `default(AES)`,` m4`
+        :param 'StoreEncryptConfUserCmkInfoArgs' user_cmk_info: User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if encrypt_type is not None:
+            pulumi.set(__self__, "encrypt_type", encrypt_type)
+        if user_cmk_info is not None:
+            pulumi.set(__self__, "user_cmk_info", user_cmk_info)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        """
+        enable encryption. Default `false`
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="encryptType")
+    def encrypt_type(self) -> Optional[str]:
+        """
+        Supported encryption type, only supports `default(AES)`,` m4`
+        """
+        return pulumi.get(self, "encrypt_type")
+
+    @property
+    @pulumi.getter(name="userCmkInfo")
+    def user_cmk_info(self) -> Optional['outputs.StoreEncryptConfUserCmkInfo']:
+        """
+        User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+        """
+        return pulumi.get(self, "user_cmk_info")
+
+
+@pulumi.output_type
+class StoreEncryptConfUserCmkInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cmkKeyId":
+            suggest = "cmk_key_id"
+        elif key == "regionId":
+            suggest = "region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StoreEncryptConfUserCmkInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StoreEncryptConfUserCmkInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StoreEncryptConfUserCmkInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arn: str,
+                 cmk_key_id: str,
+                 region_id: str):
+        """
+        :param str arn: role arn
+        :param str cmk_key_id: User master key id
+        :param str region_id: Region id where the  user master key id is located
+        """
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "cmk_key_id", cmk_key_id)
+        pulumi.set(__self__, "region_id", region_id)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> str:
+        """
+        role arn
+        """
+        return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter(name="cmkKeyId")
+    def cmk_key_id(self) -> str:
+        """
+        User master key id
+        """
+        return pulumi.get(self, "cmk_key_id")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        Region id where the  user master key id is located
+        """
+        return pulumi.get(self, "region_id")
 
 
 @pulumi.output_type

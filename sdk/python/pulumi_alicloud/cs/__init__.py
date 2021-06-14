@@ -21,6 +21,7 @@ from .kubernetes_autoscaler import *
 from .kubernetes_permission import *
 from .managed_kubernetes import *
 from .node_pool import *
+from .registry_enterprise_instance import *
 from .registry_enterprise_namespace import *
 from .registry_enterprise_repo import *
 from .registry_enterprise_sync_rule import *
@@ -57,6 +58,8 @@ def _register_module():
                 return ManagedKubernetes(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cs/nodePool:NodePool":
                 return NodePool(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance":
+                return RegistryEnterpriseInstance(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace":
                 return RegistryEnterpriseNamespace(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo":
@@ -80,6 +83,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "cs/kubernetesPermission", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/managedKubernetes", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/nodePool", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cs/registryEnterpriseInstance", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/registryEnterpriseNamespace", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/registryEnterpriseRepo", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cs/registryEnterpriseSyncRule", _module_instance)

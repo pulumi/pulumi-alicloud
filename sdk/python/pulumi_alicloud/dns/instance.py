@@ -435,7 +435,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> pulumi.Output[Optional[str]]:
+    def renewal_status(self) -> pulumi.Output[str]:
         """
         Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
         """

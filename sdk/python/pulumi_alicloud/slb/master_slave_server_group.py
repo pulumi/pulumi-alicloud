@@ -222,9 +222,10 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                 instance_charge_type="PostPaid",
                 system_disk_category="cloud_efficiency",
                 vswitch_id=main_switch.id))
-        instance_load_balancer = alicloud.slb.LoadBalancer("instanceLoadBalancer",
+        instance_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("instanceApplicationLoadBalancer",
+            load_balancer_name=name,
             vswitch_id=main_switch.id,
-            specification="slb.s2.small")
+            load_balancer_spec="slb.s2.small")
         default_network_interface = []
         for range in [{"value": i} for i in range(0, number)]:
             default_network_interface.append(alicloud.vpc.NetworkInterface(f"defaultNetworkInterface-{range['value']}",
@@ -236,7 +237,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                 instance_id=instance_instance[0].id,
                 network_interface_id=[__item.id for __item in default_network_interface][range["index"]]))
         group_master_slave_server_group = alicloud.slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup",
-            load_balancer_id=instance_load_balancer.id,
+            load_balancer_id=instance_application_load_balancer.id,
             servers=[
                 alicloud.slb.MasterSlaveServerGroupServerArgs(
                     server_id=instance_instance[0].id,
@@ -252,7 +253,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                 ),
             ])
         tcp = alicloud.slb.Listener("tcp",
-            load_balancer_id=instance_load_balancer.id,
+            load_balancer_id=instance_application_load_balancer.id,
             master_slave_server_group_id=group_master_slave_server_group.id,
             frontend_port=22,
             protocol="tcp",
@@ -357,9 +358,10 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                 instance_charge_type="PostPaid",
                 system_disk_category="cloud_efficiency",
                 vswitch_id=main_switch.id))
-        instance_load_balancer = alicloud.slb.LoadBalancer("instanceLoadBalancer",
+        instance_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("instanceApplicationLoadBalancer",
+            load_balancer_name=name,
             vswitch_id=main_switch.id,
-            specification="slb.s2.small")
+            load_balancer_spec="slb.s2.small")
         default_network_interface = []
         for range in [{"value": i} for i in range(0, number)]:
             default_network_interface.append(alicloud.vpc.NetworkInterface(f"defaultNetworkInterface-{range['value']}",
@@ -371,7 +373,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                 instance_id=instance_instance[0].id,
                 network_interface_id=[__item.id for __item in default_network_interface][range["index"]]))
         group_master_slave_server_group = alicloud.slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup",
-            load_balancer_id=instance_load_balancer.id,
+            load_balancer_id=instance_application_load_balancer.id,
             servers=[
                 alicloud.slb.MasterSlaveServerGroupServerArgs(
                     server_id=instance_instance[0].id,
@@ -387,7 +389,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                 ),
             ])
         tcp = alicloud.slb.Listener("tcp",
-            load_balancer_id=instance_load_balancer.id,
+            load_balancer_id=instance_application_load_balancer.id,
             master_slave_server_group_id=group_master_slave_server_group.id,
             frontend_port=22,
             protocol="tcp",

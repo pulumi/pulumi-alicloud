@@ -5,49 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Application Load Balancer resource.
- *
- * > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
- *
- * > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
- * For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraformtestslbconfig";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
- *     vswitchName: name,
- * });
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
- *     specification: "slb.s2.small",
- *     vswitchId: defaultSwitch.id,
- *     tags: {
- *         tag_a: 1,
- *         tag_b: 2,
- *         tag_c: 3,
- *         tag_d: 4,
- *         tag_e: 5,
- *         tag_f: 6,
- *         tag_g: 7,
- *         tag_h: 8,
- *         tag_i: 9,
- *         tag_j: 10,
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Load balancer can be imported using the id, e.g.
@@ -55,6 +12,8 @@ import * as utilities from "../utilities";
  * ```sh
  *  $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
  * ```
+ *
+ * @deprecated This resource has been deprecated in favour of the application load balancer
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
@@ -67,6 +26,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LoadBalancerState, opts?: pulumi.CustomResourceOptions): LoadBalancer {
+        pulumi.log.warn("LoadBalancer is deprecated: This resource has been deprecated in favour of the application load balancer")
         return new LoadBalancer(name, <any>state, { ...opts, id: id });
     }
 
@@ -109,25 +69,29 @@ export class LoadBalancer extends pulumi.CustomResource {
     public readonly deleteProtection!: pulumi.Output<string | undefined>;
     /**
      * The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-     */
-    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
-    /**
-     * Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
      *
-     * @deprecated Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
      */
-    public readonly internet!: pulumi.Output<boolean>;
+    public readonly instanceChargeType!: pulumi.Output<string>;
     /**
      * Valid
      * values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
      * Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
      */
     public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    public readonly loadBalancerName!: pulumi.Output<string>;
+    public readonly loadBalancerSpec!: pulumi.Output<string>;
     /**
      * The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      */
     public readonly masterZoneId!: pulumi.Output<string>;
+    public readonly modificationProtectionReason!: pulumi.Output<string | undefined>;
+    public readonly modificationProtectionStatus!: pulumi.Output<string>;
+    /**
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
+     */
     public readonly name!: pulumi.Output<string>;
+    public readonly paymentType!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The Id of resource group which the SLB belongs.
@@ -141,8 +105,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
      * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
      * "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+     *
+     * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
-    public readonly specification!: pulumi.Output<string | undefined>;
+    public readonly specification!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      */
@@ -159,8 +126,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated This resource has been deprecated in favour of the application load balancer */
     constructor(name: string, args?: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated This resource has been deprecated in favour of the application load balancer */
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LoadBalancer is deprecated: This resource has been deprecated in favour of the application load balancer")
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -171,14 +141,19 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["deleteProtection"] = state ? state.deleteProtection : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            inputs["internet"] = state ? state.internet : undefined;
             inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
+            inputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
+            inputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
             inputs["masterZoneId"] = state ? state.masterZoneId : undefined;
+            inputs["modificationProtectionReason"] = state ? state.modificationProtectionReason : undefined;
+            inputs["modificationProtectionStatus"] = state ? state.modificationProtectionStatus : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["slaveZoneId"] = state ? state.slaveZoneId : undefined;
             inputs["specification"] = state ? state.specification : undefined;
+            inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
@@ -189,14 +164,19 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
             inputs["deleteProtection"] = args ? args.deleteProtection : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            inputs["internet"] = args ? args.internet : undefined;
             inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
+            inputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
+            inputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
             inputs["masterZoneId"] = args ? args.masterZoneId : undefined;
+            inputs["modificationProtectionReason"] = args ? args.modificationProtectionReason : undefined;
+            inputs["modificationProtectionStatus"] = args ? args.modificationProtectionStatus : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["slaveZoneId"] = args ? args.slaveZoneId : undefined;
             inputs["specification"] = args ? args.specification : undefined;
+            inputs["status"] = args ? args.status : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
@@ -236,25 +216,29 @@ export interface LoadBalancerState {
     readonly deleteProtection?: pulumi.Input<string>;
     /**
      * The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
-    /**
-     * Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-     *
-     * @deprecated Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-     */
-    readonly internet?: pulumi.Input<boolean>;
     /**
      * Valid
      * values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
      * Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
      */
     readonly internetChargeType?: pulumi.Input<string>;
+    readonly loadBalancerName?: pulumi.Input<string>;
+    readonly loadBalancerSpec?: pulumi.Input<string>;
     /**
      * The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      */
     readonly masterZoneId?: pulumi.Input<string>;
+    readonly modificationProtectionReason?: pulumi.Input<string>;
+    readonly modificationProtectionStatus?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
+     */
     readonly name?: pulumi.Input<string>;
+    readonly paymentType?: pulumi.Input<string>;
     readonly period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the SLB belongs.
@@ -268,8 +252,11 @@ export interface LoadBalancerState {
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
      * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
      * "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+     *
+     * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
     readonly specification?: pulumi.Input<string>;
+    readonly status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      */
@@ -309,25 +296,29 @@ export interface LoadBalancerArgs {
     readonly deleteProtection?: pulumi.Input<string>;
     /**
      * The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
-    /**
-     * Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-     *
-     * @deprecated Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-     */
-    readonly internet?: pulumi.Input<boolean>;
     /**
      * Valid
      * values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
      * Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
      */
     readonly internetChargeType?: pulumi.Input<string>;
+    readonly loadBalancerName?: pulumi.Input<string>;
+    readonly loadBalancerSpec?: pulumi.Input<string>;
     /**
      * The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      */
     readonly masterZoneId?: pulumi.Input<string>;
+    readonly modificationProtectionReason?: pulumi.Input<string>;
+    readonly modificationProtectionStatus?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
+     */
     readonly name?: pulumi.Input<string>;
+    readonly paymentType?: pulumi.Input<string>;
     readonly period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the SLB belongs.
@@ -341,8 +332,11 @@ export interface LoadBalancerArgs {
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
      * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
      * "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+     *
+     * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
     readonly specification?: pulumi.Input<string>;
+    readonly status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      */

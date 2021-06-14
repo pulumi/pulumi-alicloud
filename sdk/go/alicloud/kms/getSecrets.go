@@ -52,8 +52,12 @@ func GetSecrets(ctx *pulumi.Context, args *GetSecretsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getSecrets.
 type GetSecretsArgs struct {
+	// Default to `false`. Set it to true can output more details.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// Whether to include the predetermined resource tag in the return value. Default to `false`.
 	FetchTags *bool `pulumi:"fetchTags"`
+	// Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+	Filters *string `pulumi:"filters"`
 	// A list of KMS Secret ids. The value is same as KMS secret_name.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter the results by the KMS secret_name.
@@ -65,7 +69,9 @@ type GetSecretsArgs struct {
 
 // A collection of values returned by getSecrets.
 type GetSecretsResult struct {
-	FetchTags *bool `pulumi:"fetchTags"`
+	EnableDetails *bool   `pulumi:"enableDetails"`
+	FetchTags     *bool   `pulumi:"fetchTags"`
+	Filters       *string `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Kms Secret ids. The value is same as KMS secret_name.
@@ -76,6 +82,6 @@ type GetSecretsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of KMS Secrets. Each element contains the following attributes:
 	Secrets []GetSecretsSecret `pulumi:"secrets"`
-	// A mapping of tags to assign to the resource.
+	// (Optional) A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }

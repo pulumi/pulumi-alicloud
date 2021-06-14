@@ -63,6 +63,12 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable automatic key rotation.
+        /// </summary>
+        [Output("enableAutomaticRotation")]
+        public Output<bool?> EnableAutomaticRotation { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         /// </summary>
         [Output("encryptionKeyId")]
@@ -85,6 +91,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Output("recoveryWindowInDays")]
         public Output<int?> RecoveryWindowInDays { get; private set; } = null!;
+
+        /// <summary>
+        /// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+        /// </summary>
+        [Output("rotationInterval")]
+        public Output<string?> RotationInterval { get; private set; } = null!;
 
         /// <summary>
         /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
@@ -175,6 +187,12 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Whether to enable automatic key rotation.
+        /// </summary>
+        [Input("enableAutomaticRotation")]
+        public Input<bool>? EnableAutomaticRotation { get; set; }
+
+        /// <summary>
         /// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         /// </summary>
         [Input("encryptionKeyId")]
@@ -191,6 +209,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }
+
+        /// <summary>
+        /// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+        /// </summary>
+        [Input("rotationInterval")]
+        public Input<string>? RotationInterval { get; set; }
 
         /// <summary>
         /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
@@ -260,6 +284,12 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Whether to enable automatic key rotation.
+        /// </summary>
+        [Input("enableAutomaticRotation")]
+        public Input<bool>? EnableAutomaticRotation { get; set; }
+
+        /// <summary>
         /// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         /// </summary>
         [Input("encryptionKeyId")]
@@ -282,6 +312,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }
+
+        /// <summary>
+        /// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+        /// </summary>
+        [Input("rotationInterval")]
+        public Input<string>? RotationInterval { get; set; }
 
         /// <summary>
         /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.

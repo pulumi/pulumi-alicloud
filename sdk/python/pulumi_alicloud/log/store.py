@@ -19,6 +19,7 @@ class StoreArgs:
                  append_meta: Optional[pulumi.Input[bool]] = None,
                  auto_split: Optional[pulumi.Input[bool]] = None,
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
+                 encrypt_conf: Optional[pulumi.Input['StoreEncryptConfArgs']] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
@@ -26,12 +27,13 @@ class StoreArgs:
         """
         The set of arguments for constructing a Store resource.
         :param pulumi.Input[str] project: The project name to the log store belongs.
-        :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
-        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to true.
-        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default false.
+        :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
+        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `true`.
+        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
+        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
-        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
         """
         pulumi.set(__self__, "project", project)
@@ -41,6 +43,8 @@ class StoreArgs:
             pulumi.set(__self__, "auto_split", auto_split)
         if enable_web_tracking is not None:
             pulumi.set(__self__, "enable_web_tracking", enable_web_tracking)
+        if encrypt_conf is not None:
+            pulumi.set(__self__, "encrypt_conf", encrypt_conf)
         if max_split_shard_count is not None:
             pulumi.set(__self__, "max_split_shard_count", max_split_shard_count)
         if name is not None:
@@ -66,7 +70,7 @@ class StoreArgs:
     @pulumi.getter(name="appendMeta")
     def append_meta(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+        Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         """
         return pulumi.get(self, "append_meta")
 
@@ -78,7 +82,7 @@ class StoreArgs:
     @pulumi.getter(name="autoSplit")
     def auto_split(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether to automatically split a shard. Default to true.
+        Determines whether to automatically split a shard. Default to `true`.
         """
         return pulumi.get(self, "auto_split")
 
@@ -90,13 +94,25 @@ class StoreArgs:
     @pulumi.getter(name="enableWebTracking")
     def enable_web_tracking(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether to enable Web Tracking. Default false.
+        Determines whether to enable Web Tracking. Default `false`.
         """
         return pulumi.get(self, "enable_web_tracking")
 
     @enable_web_tracking.setter
     def enable_web_tracking(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_web_tracking", value)
+
+    @property
+    @pulumi.getter(name="encryptConf")
+    def encrypt_conf(self) -> Optional[pulumi.Input['StoreEncryptConfArgs']]:
+        """
+        Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        """
+        return pulumi.get(self, "encrypt_conf")
+
+    @encrypt_conf.setter
+    def encrypt_conf(self, value: Optional[pulumi.Input['StoreEncryptConfArgs']]):
+        pulumi.set(self, "encrypt_conf", value)
 
     @property
     @pulumi.getter(name="maxSplitShardCount")
@@ -126,7 +142,7 @@ class StoreArgs:
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+        The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         """
         return pulumi.get(self, "retention_period")
 
@@ -153,6 +169,7 @@ class _StoreState:
                  append_meta: Optional[pulumi.Input[bool]] = None,
                  auto_split: Optional[pulumi.Input[bool]] = None,
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
+                 encrypt_conf: Optional[pulumi.Input['StoreEncryptConfArgs']] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -161,13 +178,14 @@ class _StoreState:
                  shards: Optional[pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]]] = None):
         """
         Input properties used for looking up and filtering Store resources.
-        :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
-        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to true.
-        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default false.
+        :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
+        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `true`.
+        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
+        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
-        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
         """
         if append_meta is not None:
@@ -176,6 +194,8 @@ class _StoreState:
             pulumi.set(__self__, "auto_split", auto_split)
         if enable_web_tracking is not None:
             pulumi.set(__self__, "enable_web_tracking", enable_web_tracking)
+        if encrypt_conf is not None:
+            pulumi.set(__self__, "encrypt_conf", encrypt_conf)
         if max_split_shard_count is not None:
             pulumi.set(__self__, "max_split_shard_count", max_split_shard_count)
         if name is not None:
@@ -193,7 +213,7 @@ class _StoreState:
     @pulumi.getter(name="appendMeta")
     def append_meta(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+        Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         """
         return pulumi.get(self, "append_meta")
 
@@ -205,7 +225,7 @@ class _StoreState:
     @pulumi.getter(name="autoSplit")
     def auto_split(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether to automatically split a shard. Default to true.
+        Determines whether to automatically split a shard. Default to `true`.
         """
         return pulumi.get(self, "auto_split")
 
@@ -217,13 +237,25 @@ class _StoreState:
     @pulumi.getter(name="enableWebTracking")
     def enable_web_tracking(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether to enable Web Tracking. Default false.
+        Determines whether to enable Web Tracking. Default `false`.
         """
         return pulumi.get(self, "enable_web_tracking")
 
     @enable_web_tracking.setter
     def enable_web_tracking(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_web_tracking", value)
+
+    @property
+    @pulumi.getter(name="encryptConf")
+    def encrypt_conf(self) -> Optional[pulumi.Input['StoreEncryptConfArgs']]:
+        """
+        Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        """
+        return pulumi.get(self, "encrypt_conf")
+
+    @encrypt_conf.setter
+    def encrypt_conf(self, value: Optional[pulumi.Input['StoreEncryptConfArgs']]):
+        pulumi.set(self, "encrypt_conf", value)
 
     @property
     @pulumi.getter(name="maxSplitShardCount")
@@ -265,7 +297,7 @@ class _StoreState:
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+        The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         """
         return pulumi.get(self, "retention_period")
 
@@ -303,6 +335,7 @@ class Store(pulumi.CustomResource):
                  append_meta: Optional[pulumi.Input[bool]] = None,
                  auto_split: Optional[pulumi.Input[bool]] = None,
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
+                 encrypt_conf: Optional[pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -320,13 +353,14 @@ class Store(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
-        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to true.
-        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default false.
+        :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
+        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `true`.
+        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
+        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
-        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
         """
         ...
@@ -362,6 +396,7 @@ class Store(pulumi.CustomResource):
                  append_meta: Optional[pulumi.Input[bool]] = None,
                  auto_split: Optional[pulumi.Input[bool]] = None,
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
+                 encrypt_conf: Optional[pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -382,6 +417,7 @@ class Store(pulumi.CustomResource):
             __props__.__dict__["append_meta"] = append_meta
             __props__.__dict__["auto_split"] = auto_split
             __props__.__dict__["enable_web_tracking"] = enable_web_tracking
+            __props__.__dict__["encrypt_conf"] = encrypt_conf
             __props__.__dict__["max_split_shard_count"] = max_split_shard_count
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
@@ -403,6 +439,7 @@ class Store(pulumi.CustomResource):
             append_meta: Optional[pulumi.Input[bool]] = None,
             auto_split: Optional[pulumi.Input[bool]] = None,
             enable_web_tracking: Optional[pulumi.Input[bool]] = None,
+            encrypt_conf: Optional[pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']]] = None,
             max_split_shard_count: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -416,13 +453,14 @@ class Store(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
-        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to true.
-        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default false.
+        :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
+        :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `true`.
+        :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
+        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
-        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+        :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -432,6 +470,7 @@ class Store(pulumi.CustomResource):
         __props__.__dict__["append_meta"] = append_meta
         __props__.__dict__["auto_split"] = auto_split
         __props__.__dict__["enable_web_tracking"] = enable_web_tracking
+        __props__.__dict__["encrypt_conf"] = encrypt_conf
         __props__.__dict__["max_split_shard_count"] = max_split_shard_count
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -444,7 +483,7 @@ class Store(pulumi.CustomResource):
     @pulumi.getter(name="appendMeta")
     def append_meta(self) -> pulumi.Output[Optional[bool]]:
         """
-        Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+        Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         """
         return pulumi.get(self, "append_meta")
 
@@ -452,7 +491,7 @@ class Store(pulumi.CustomResource):
     @pulumi.getter(name="autoSplit")
     def auto_split(self) -> pulumi.Output[Optional[bool]]:
         """
-        Determines whether to automatically split a shard. Default to true.
+        Determines whether to automatically split a shard. Default to `true`.
         """
         return pulumi.get(self, "auto_split")
 
@@ -460,9 +499,17 @@ class Store(pulumi.CustomResource):
     @pulumi.getter(name="enableWebTracking")
     def enable_web_tracking(self) -> pulumi.Output[Optional[bool]]:
         """
-        Determines whether to enable Web Tracking. Default false.
+        Determines whether to enable Web Tracking. Default `false`.
         """
         return pulumi.get(self, "enable_web_tracking")
+
+    @property
+    @pulumi.getter(name="encryptConf")
+    def encrypt_conf(self) -> pulumi.Output[Optional['outputs.StoreEncryptConf']]:
+        """
+        Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        """
+        return pulumi.get(self, "encrypt_conf")
 
     @property
     @pulumi.getter(name="maxSplitShardCount")
@@ -492,7 +539,7 @@ class Store(pulumi.CustomResource):
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> pulumi.Output[Optional[int]]:
         """
-        The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+        The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         """
         return pulumi.get(self, "retention_period")
 

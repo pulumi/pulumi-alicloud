@@ -15,60 +15,6 @@ import (
 //
 // > **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
 //
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			CidrBlock: pulumi.String("172.16.0.0/12"),
-// 			VpcName:   pulumi.String("VpcConfig"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewNetworkAcl(ctx, "defaultNetworkAcl", &vpc.NetworkAclArgs{
-// 			VpcId:          defaultNetwork.ID(),
-// 			NetworkAclName: pulumi.String("network_acl"),
-// 			Description:    pulumi.String("network_acl"),
-// 			IngressAclEntries: vpc.NetworkAclIngressAclEntryArray{
-// 				&vpc.NetworkAclIngressAclEntryArgs{
-// 					Description:         pulumi.String("tf-testacc"),
-// 					NetworkAclEntryName: pulumi.String("tcp23"),
-// 					SourceCidrIp:        pulumi.String("196.168.2.0/21"),
-// 					Policy:              pulumi.String("accept"),
-// 					Port:                pulumi.String("22/80"),
-// 					Protocol:            pulumi.String("tcp"),
-// 				},
-// 			},
-// 			EgressAclEntries: vpc.NetworkAclEgressAclEntryArray{
-// 				&vpc.NetworkAclEgressAclEntryArgs{
-// 					Description:         pulumi.String("tf-testacc"),
-// 					NetworkAclEntryName: pulumi.String("tcp23"),
-// 					DestinationCidrIp:   pulumi.String("0.0.0.0/0"),
-// 					Policy:              pulumi.String("accept"),
-// 					Port:                pulumi.String("-1/-1"),
-// 					Protocol:            pulumi.String("all"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // The network acl can be imported using the id, e.g.
@@ -91,6 +37,8 @@ type NetworkAcl struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the network acl.
 	NetworkAclName pulumi.StringOutput `pulumi:"networkAclName"`
+	// The associated resources.
+	Resources NetworkAclResourceArrayOutput `pulumi:"resources"`
 	// (Available in 1.122.0+) The status of the network acl.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The vpcId of the network acl, the field can't be changed.
@@ -141,6 +89,8 @@ type networkAclState struct {
 	Name *string `pulumi:"name"`
 	// The name of the network acl.
 	NetworkAclName *string `pulumi:"networkAclName"`
+	// The associated resources.
+	Resources []NetworkAclResource `pulumi:"resources"`
 	// (Available in 1.122.0+) The status of the network acl.
 	Status *string `pulumi:"status"`
 	// The vpcId of the network acl, the field can't be changed.
@@ -160,6 +110,8 @@ type NetworkAclState struct {
 	Name pulumi.StringPtrInput
 	// The name of the network acl.
 	NetworkAclName pulumi.StringPtrInput
+	// The associated resources.
+	Resources NetworkAclResourceArrayInput
 	// (Available in 1.122.0+) The status of the network acl.
 	Status pulumi.StringPtrInput
 	// The vpcId of the network acl, the field can't be changed.
@@ -183,6 +135,8 @@ type networkAclArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the network acl.
 	NetworkAclName *string `pulumi:"networkAclName"`
+	// The associated resources.
+	Resources []NetworkAclResource `pulumi:"resources"`
 	// The vpcId of the network acl, the field can't be changed.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -201,6 +155,8 @@ type NetworkAclArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the network acl.
 	NetworkAclName pulumi.StringPtrInput
+	// The associated resources.
+	Resources NetworkAclResourceArrayInput
 	// The vpcId of the network acl, the field can't be changed.
 	VpcId pulumi.StringInput
 }

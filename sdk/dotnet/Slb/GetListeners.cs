@@ -26,8 +26,9 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     public MyStack()
         ///     {
-        ///         var @default = new AliCloud.Slb.LoadBalancer("default", new AliCloud.Slb.LoadBalancerArgs
+        ///         var @default = new AliCloud.Slb.ApplicationLoadBalancer("default", new AliCloud.Slb.ApplicationLoadBalancerArgs
         ///         {
+        ///             LoadBalancerName = "tf-testAccSlbListenertcp",
         ///         });
         ///         var tcp = new AliCloud.Slb.Listener("tcp", new AliCloud.Slb.ListenerArgs
         ///         {

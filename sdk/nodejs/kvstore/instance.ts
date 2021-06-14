@@ -298,6 +298,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
+     * Private network connection port, used to modify the private network connection port.
+     */
+    public readonly privateConnectionPort!: pulumi.Output<string>;
+    /**
      * Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
      */
     public readonly privateConnectionPrefix!: pulumi.Output<string | undefined>;
@@ -338,7 +342,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly srcdbInstanceId!: pulumi.Output<string | undefined>;
     /**
-     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+     * Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
      */
     public readonly sslEnable!: pulumi.Output<string | undefined>;
     /**
@@ -417,6 +422,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["port"] = state ? state.port : undefined;
+            inputs["privateConnectionPort"] = state ? state.privateConnectionPort : undefined;
             inputs["privateConnectionPrefix"] = state ? state.privateConnectionPrefix : undefined;
             inputs["privateIp"] = state ? state.privateIp : undefined;
             inputs["qps"] = state ? state.qps : undefined;
@@ -472,6 +478,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["port"] = args ? args.port : undefined;
+            inputs["privateConnectionPort"] = args ? args.privateConnectionPort : undefined;
             inputs["privateConnectionPrefix"] = args ? args.privateConnectionPrefix : undefined;
             inputs["privateIp"] = args ? args.privateIp : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -677,6 +684,10 @@ export interface InstanceState {
      */
     readonly port?: pulumi.Input<number>;
     /**
+     * Private network connection port, used to modify the private network connection port.
+     */
+    readonly privateConnectionPort?: pulumi.Input<string>;
+    /**
      * Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
      */
     readonly privateConnectionPrefix?: pulumi.Input<string>;
@@ -717,7 +728,8 @@ export interface InstanceState {
      */
     readonly srcdbInstanceId?: pulumi.Input<string>;
     /**
-     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+     * Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
      */
     readonly sslEnable?: pulumi.Input<string>;
     /**
@@ -907,6 +919,10 @@ export interface InstanceArgs {
      */
     readonly port?: pulumi.Input<number>;
     /**
+     * Private network connection port, used to modify the private network connection port.
+     */
+    readonly privateConnectionPort?: pulumi.Input<string>;
+    /**
      * Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
      */
     readonly privateConnectionPrefix?: pulumi.Input<string>;
@@ -943,7 +959,8 @@ export interface InstanceArgs {
      */
     readonly srcdbInstanceId?: pulumi.Input<string>;
     /**
-     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+     * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+     * Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
      */
     readonly sslEnable?: pulumi.Input<string>;
     /**

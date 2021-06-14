@@ -13,18 +13,23 @@ __all__ = ['NetworkInterfaceArgs', 'NetworkInterface']
 @pulumi.input_type
 class NetworkInterfaceArgs:
     def __init__(__self__, *,
-                 security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
                  vswitch_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_interface_name: Optional[pulumi.Input[str]] = None,
+                 primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
+                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ips_count: Optional[pulumi.Input[int]] = None,
+                 queue_number: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a NetworkInterface resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
         :param pulumi.Input[str] vswitch_id: The VSwitch to create the ENI in.
         :param pulumi.Input[str] description: Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] name: Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -32,36 +37,53 @@ class NetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         :param pulumi.Input[int] private_ips_count: Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the network interface belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "security_groups", security_groups)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_interface_name is not None:
+            pulumi.set(__self__, "network_interface_name", network_interface_name)
+        if primary_ip_address is not None:
+            pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+        if private_ip is not None:
+            warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
+            pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
+        if private_ip_addresses is not None:
+            pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+        if private_ips is not None:
+            warnings.warn("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""", DeprecationWarning)
+            pulumi.log.warn("""private_ips is deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
         if private_ips is not None:
             pulumi.set(__self__, "private_ips", private_ips)
         if private_ips_count is not None:
+            warnings.warn("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""", DeprecationWarning)
+            pulumi.log.warn("""private_ips_count is deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
+        if private_ips_count is not None:
             pulumi.set(__self__, "private_ips_count", private_ips_count)
+        if queue_number is not None:
+            pulumi.set(__self__, "queue_number", queue_number)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if secondary_private_ip_address_count is not None:
+            pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if security_groups is not None:
+            warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
+            pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        A list of security group ids to associate with.
-        """
-        return pulumi.get(self, "security_groups")
-
-    @security_groups.setter
-    def security_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "security_groups", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -100,6 +122,24 @@ class NetworkInterfaceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkInterfaceName")
+    def network_interface_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_interface_name")
+
+    @network_interface_name.setter
+    def network_interface_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_interface_name", value)
+
+    @property
+    @pulumi.getter(name="primaryIpAddress")
+    def primary_ip_address(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "primary_ip_address")
+
+    @primary_ip_address.setter
+    def primary_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_ip_address", value)
+
+    @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
         """
@@ -110,6 +150,15 @@ class NetworkInterfaceArgs:
     @private_ip.setter
     def private_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "private_ip", value)
+
+    @property
+    @pulumi.getter(name="privateIpAddresses")
+    def private_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "private_ip_addresses")
+
+    @private_ip_addresses.setter
+    def private_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "private_ip_addresses", value)
 
     @property
     @pulumi.getter(name="privateIps")
@@ -136,6 +185,15 @@ class NetworkInterfaceArgs:
         pulumi.set(self, "private_ips_count", value)
 
     @property
+    @pulumi.getter(name="queueNumber")
+    def queue_number(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "queue_number")
+
+    @queue_number.setter
+    def queue_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queue_number", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -146,6 +204,36 @@ class NetworkInterfaceArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="secondaryPrivateIpAddressCount")
+    def secondary_private_ip_address_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "secondary_private_ip_address_count")
+
+    @secondary_private_ip_address_count.setter
+    def secondary_private_ip_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "secondary_private_ip_address_count", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of security group ids to associate with.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_groups", value)
 
     @property
     @pulumi.getter
@@ -166,11 +254,18 @@ class _NetworkInterfaceState:
                  description: Optional[pulumi.Input[str]] = None,
                  mac: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_interface_name: Optional[pulumi.Input[str]] = None,
+                 primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
+                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ips_count: Optional[pulumi.Input[int]] = None,
+                 queue_number: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
@@ -191,17 +286,46 @@ class _NetworkInterfaceState:
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_interface_name is not None:
+            pulumi.set(__self__, "network_interface_name", network_interface_name)
+        if primary_ip_address is not None:
+            pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+        if private_ip is not None:
+            warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
+            pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
         if private_ip is not None:
             pulumi.set(__self__, "private_ip", private_ip)
+        if private_ip_addresses is not None:
+            pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+        if private_ips is not None:
+            warnings.warn("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""", DeprecationWarning)
+            pulumi.log.warn("""private_ips is deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
         if private_ips is not None:
             pulumi.set(__self__, "private_ips", private_ips)
         if private_ips_count is not None:
+            warnings.warn("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""", DeprecationWarning)
+            pulumi.log.warn("""private_ips_count is deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
+        if private_ips_count is not None:
             pulumi.set(__self__, "private_ips_count", private_ips_count)
+        if queue_number is not None:
+            pulumi.set(__self__, "queue_number", queue_number)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if secondary_private_ip_address_count is not None:
+            pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if security_groups is not None:
+            warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
+            pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
@@ -244,6 +368,24 @@ class _NetworkInterfaceState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkInterfaceName")
+    def network_interface_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_interface_name")
+
+    @network_interface_name.setter
+    def network_interface_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_interface_name", value)
+
+    @property
+    @pulumi.getter(name="primaryIpAddress")
+    def primary_ip_address(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "primary_ip_address")
+
+    @primary_ip_address.setter
+    def primary_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_ip_address", value)
+
+    @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
         """
@@ -254,6 +396,15 @@ class _NetworkInterfaceState:
     @private_ip.setter
     def private_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "private_ip", value)
+
+    @property
+    @pulumi.getter(name="privateIpAddresses")
+    def private_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "private_ip_addresses")
+
+    @private_ip_addresses.setter
+    def private_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "private_ip_addresses", value)
 
     @property
     @pulumi.getter(name="privateIps")
@@ -280,6 +431,15 @@ class _NetworkInterfaceState:
         pulumi.set(self, "private_ips_count", value)
 
     @property
+    @pulumi.getter(name="queueNumber")
+    def queue_number(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "queue_number")
+
+    @queue_number.setter
+    def queue_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queue_number", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -292,6 +452,24 @@ class _NetworkInterfaceState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="secondaryPrivateIpAddressCount")
+    def secondary_private_ip_address_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "secondary_private_ip_address_count")
+
+    @secondary_private_ip_address_count.setter
+    def secondary_private_ip_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "secondary_private_ip_address_count", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -302,6 +480,15 @@ class _NetworkInterfaceState:
     @security_groups.setter
     def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_groups", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -335,47 +522,21 @@ class NetworkInterface(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_interface_name: Optional[pulumi.Input[str]] = None,
+                 primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
+                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ips_count: Optional[pulumi.Input[int]] = None,
+                 queue_number: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an ECS Elastic Network Interface resource.
-
-        For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
-
-        > **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "networkInterfaceName"
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name=name,
-            cidr_block="192.168.0.0/24")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        vswitch = alicloud.vpc.Switch("vswitch",
-            cidr_block="192.168.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vpc_id=vpc.id)
-        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
-        default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
-            vswitch_id=vswitch.id,
-            security_groups=[group.id],
-            private_ip="192.168.0.2",
-            private_ips_count=3)
-        ```
-
         ## Import
 
         ENI can be imported using the id, e.g.
@@ -403,38 +564,6 @@ class NetworkInterface(pulumi.CustomResource):
                  args: NetworkInterfaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an ECS Elastic Network Interface resource.
-
-        For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
-
-        > **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "networkInterfaceName"
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name=name,
-            cidr_block="192.168.0.0/24")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        vswitch = alicloud.vpc.Switch("vswitch",
-            cidr_block="192.168.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vpc_id=vpc.id)
-        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
-        default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
-            vswitch_id=vswitch.id,
-            security_groups=[group.id],
-            private_ip="192.168.0.2",
-            private_ips_count=3)
-        ```
-
         ## Import
 
         ENI can be imported using the id, e.g.
@@ -460,10 +589,16 @@ class NetworkInterface(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_interface_name: Optional[pulumi.Input[str]] = None,
+                 primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
+                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ips_count: Optional[pulumi.Input[int]] = None,
+                 queue_number: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -480,19 +615,39 @@ class NetworkInterface(pulumi.CustomResource):
             __props__ = NetworkInterfaceArgs.__new__(NetworkInterfaceArgs)
 
             __props__.__dict__["description"] = description
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
             __props__.__dict__["name"] = name
+            __props__.__dict__["network_interface_name"] = network_interface_name
+            __props__.__dict__["primary_ip_address"] = primary_ip_address
+            if private_ip is not None and not opts.urn:
+                warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
+                pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
             __props__.__dict__["private_ip"] = private_ip
+            __props__.__dict__["private_ip_addresses"] = private_ip_addresses
+            if private_ips is not None and not opts.urn:
+                warnings.warn("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""", DeprecationWarning)
+                pulumi.log.warn("""private_ips is deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
             __props__.__dict__["private_ips"] = private_ips
+            if private_ips_count is not None and not opts.urn:
+                warnings.warn("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""", DeprecationWarning)
+                pulumi.log.warn("""private_ips_count is deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
             __props__.__dict__["private_ips_count"] = private_ips_count
+            __props__.__dict__["queue_number"] = queue_number
             __props__.__dict__["resource_group_id"] = resource_group_id
-            if security_groups is None and not opts.urn:
-                raise TypeError("Missing required property 'security_groups'")
+            __props__.__dict__["secondary_private_ip_address_count"] = secondary_private_ip_address_count
+            __props__.__dict__["security_group_ids"] = security_group_ids
+            if security_groups is not None and not opts.urn:
+                warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
+                pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
             __props__.__dict__["security_groups"] = security_groups
             __props__.__dict__["tags"] = tags
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["mac"] = None
+            __props__.__dict__["status"] = None
         super(NetworkInterface, __self__).__init__(
             'alicloud:vpc/networkInterface:NetworkInterface',
             resource_name,
@@ -506,11 +661,18 @@ class NetworkInterface(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             mac: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network_interface_name: Optional[pulumi.Input[str]] = None,
+            primary_ip_address: Optional[pulumi.Input[str]] = None,
             private_ip: Optional[pulumi.Input[str]] = None,
+            private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             private_ips_count: Optional[pulumi.Input[int]] = None,
+            queue_number: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
+            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'NetworkInterface':
         """
@@ -538,11 +700,18 @@ class NetworkInterface(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["mac"] = mac
         __props__.__dict__["name"] = name
+        __props__.__dict__["network_interface_name"] = network_interface_name
+        __props__.__dict__["primary_ip_address"] = primary_ip_address
         __props__.__dict__["private_ip"] = private_ip
+        __props__.__dict__["private_ip_addresses"] = private_ip_addresses
         __props__.__dict__["private_ips"] = private_ips
         __props__.__dict__["private_ips_count"] = private_ips_count
+        __props__.__dict__["queue_number"] = queue_number
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["secondary_private_ip_address_count"] = secondary_private_ip_address_count
+        __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["security_groups"] = security_groups
+        __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         return NetworkInterface(resource_name, opts=opts, __props__=__props__)
@@ -572,12 +741,27 @@ class NetworkInterface(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkInterfaceName")
+    def network_interface_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "network_interface_name")
+
+    @property
+    @pulumi.getter(name="primaryIpAddress")
+    def primary_ip_address(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "primary_ip_address")
+
+    @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[str]:
         """
         The primary private IP of the ENI.
         """
         return pulumi.get(self, "private_ip")
+
+    @property
+    @pulumi.getter(name="privateIpAddresses")
+    def private_ip_addresses(self) -> pulumi.Output[Sequence[str]]:
+        return pulumi.get(self, "private_ip_addresses")
 
     @property
     @pulumi.getter(name="privateIps")
@@ -596,6 +780,11 @@ class NetworkInterface(pulumi.CustomResource):
         return pulumi.get(self, "private_ips_count")
 
     @property
+    @pulumi.getter(name="queueNumber")
+    def queue_number(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "queue_number")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -604,12 +793,27 @@ class NetworkInterface(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="secondaryPrivateIpAddressCount")
+    def secondary_private_ip_address_count(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "secondary_private_ip_address_count")
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
+        return pulumi.get(self, "security_group_ids")
+
+    @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of security group ids to associate with.
         """
         return pulumi.get(self, "security_groups")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter

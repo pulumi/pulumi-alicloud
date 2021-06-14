@@ -93,7 +93,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly instanceCount!: pulumi.Output<number>;
     /**
-     * The type of network. Range limit: 1~5.
+     * The type of network. Valid values: "privatenet" and "pubnet".
      */
     public readonly netType!: pulumi.Output<string>;
     /**
@@ -214,7 +214,7 @@ export interface ClusterState {
      */
     readonly instanceCount?: pulumi.Input<number>;
     /**
-     * The type of network. Range limit: 1~5.
+     * The type of network. Valid values: "privatenet" and "pubnet".
      */
     readonly netType?: pulumi.Input<string>;
     /**
@@ -272,7 +272,7 @@ export interface ClusterArgs {
      */
     readonly instanceCount: pulumi.Input<number>;
     /**
-     * The type of network. Range limit: 1~5.
+     * The type of network. Valid values: "privatenet" and "pubnet".
      */
     readonly netType: pulumi.Input<string>;
     /**

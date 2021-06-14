@@ -14,58 +14,6 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///             VpcName = "VpcConfig",
-    ///         });
-    ///         var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("defaultNetworkAcl", new AliCloud.Vpc.NetworkAclArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             NetworkAclName = "network_acl",
-    ///             Description = "network_acl",
-    ///             IngressAclEntries = 
-    ///             {
-    ///                 new AliCloud.Vpc.Inputs.NetworkAclIngressAclEntryArgs
-    ///                 {
-    ///                     Description = "tf-testacc",
-    ///                     NetworkAclEntryName = "tcp23",
-    ///                     SourceCidrIp = "196.168.2.0/21",
-    ///                     Policy = "accept",
-    ///                     Port = "22/80",
-    ///                     Protocol = "tcp",
-    ///                 },
-    ///             },
-    ///             EgressAclEntries = 
-    ///             {
-    ///                 new AliCloud.Vpc.Inputs.NetworkAclEgressAclEntryArgs
-    ///                 {
-    ///                     Description = "tf-testacc",
-    ///                     NetworkAclEntryName = "tcp23",
-    ///                     DestinationCidrIp = "0.0.0.0/0",
-    ///                     Policy = "accept",
-    ///                     Port = "-1/-1",
-    ///                     Protocol = "all",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// The network acl can be imported using the id, e.g.
@@ -106,6 +54,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("networkAclName")]
         public Output<string> NetworkAclName { get; private set; } = null!;
+
+        /// <summary>
+        /// The associated resources.
+        /// </summary>
+        [Output("resources")]
+        public Output<ImmutableArray<Outputs.NetworkAclResource>> Resources { get; private set; } = null!;
 
         /// <summary>
         /// (Available in 1.122.0+) The status of the network acl.
@@ -207,6 +161,18 @@ namespace Pulumi.AliCloud.Vpc
         [Input("networkAclName")]
         public Input<string>? NetworkAclName { get; set; }
 
+        [Input("resources")]
+        private InputList<Inputs.NetworkAclResourceArgs>? _resources;
+
+        /// <summary>
+        /// The associated resources.
+        /// </summary>
+        public InputList<Inputs.NetworkAclResourceArgs> Resources
+        {
+            get => _resources ?? (_resources = new InputList<Inputs.NetworkAclResourceArgs>());
+            set => _resources = value;
+        }
+
         /// <summary>
         /// The vpc_id of the network acl, the field can't be changed.
         /// </summary>
@@ -261,6 +227,18 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("networkAclName")]
         public Input<string>? NetworkAclName { get; set; }
+
+        [Input("resources")]
+        private InputList<Inputs.NetworkAclResourceGetArgs>? _resources;
+
+        /// <summary>
+        /// The associated resources.
+        /// </summary>
+        public InputList<Inputs.NetworkAclResourceGetArgs> Resources
+        {
+            get => _resources ?? (_resources = new InputList<Inputs.NetworkAclResourceGetArgs>());
+            set => _resources = value;
+        }
 
         /// <summary>
         /// (Available in 1.122.0+) The status of the network acl.

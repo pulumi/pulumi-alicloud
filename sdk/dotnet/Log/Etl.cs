@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Log
     public partial class Etl : Pulumi.CustomResource
     {
         /// <summary>
-        /// Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        /// Delivery target logstore access key id.
         /// </summary>
         [Output("accessKeyId")]
         public Output<string?> AccessKeyId { get; private set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Sts role info.
+        /// Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         /// </summary>
         [Output("roleArn")]
         public Output<string?> RoleArn { get; private set; } = null!;
@@ -332,7 +332,7 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> ToTime { get; private set; } = null!;
 
         /// <summary>
-        /// Log etl job version. the default value is 2.
+        /// Log etl job version. the default value is `2`.
         /// </summary>
         [Output("version")]
         public Output<int?> Version { get; private set; } = null!;
@@ -384,7 +384,7 @@ namespace Pulumi.AliCloud.Log
     public sealed class EtlArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        /// Delivery target logstore access key id.
         /// </summary>
         [Input("accessKeyId")]
         public Input<string>? AccessKeyId { get; set; }
@@ -510,7 +510,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Sts role info.
+        /// Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
@@ -540,7 +540,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? ToTime { get; set; }
 
         /// <summary>
-        /// Log etl job version. the default value is 2.
+        /// Log etl job version. the default value is `2`.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
@@ -553,7 +553,7 @@ namespace Pulumi.AliCloud.Log
     public sealed class EtlState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        /// Delivery target logstore access key id.
         /// </summary>
         [Input("accessKeyId")]
         public Input<string>? AccessKeyId { get; set; }
@@ -679,7 +679,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Sts role info.
+        /// Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
@@ -709,7 +709,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? ToTime { get; set; }
 
         /// <summary>
-        /// Log etl job version. the default value is 2.
+        /// Log etl job version. the default value is `2`.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

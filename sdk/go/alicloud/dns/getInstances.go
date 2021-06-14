@@ -18,6 +18,7 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
+	DomainType *string `pulumi:"domainType"`
 	// A list of instance IDs.
 	Ids          []string `pulumi:"ids"`
 	Lang         *string  `pulumi:"lang"`
@@ -27,6 +28,7 @@ type GetInstancesArgs struct {
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
+	DomainType *string `pulumi:"domainType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of instance IDs.

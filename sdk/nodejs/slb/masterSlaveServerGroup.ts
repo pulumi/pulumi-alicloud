@@ -67,9 +67,10 @@ import * as utilities from "../utilities";
  *         vswitchId: mainSwitch.id,
  *     }));
  * }
- * const instanceLoadBalancer = new alicloud.slb.LoadBalancer("instanceLoadBalancer", {
+ * const instanceApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("instanceApplicationLoadBalancer", {
+ *     loadBalancerName: name,
  *     vswitchId: mainSwitch.id,
- *     specification: "slb.s2.small",
+ *     loadBalancerSpec: "slb.s2.small",
  * });
  * const defaultNetworkInterface: alicloud.vpc.NetworkInterface[];
  * for (const range = {value: 0}; range.value < number; range.value++) {
@@ -86,7 +87,7 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * const groupMasterSlaveServerGroup = new alicloud.slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup", {
- *     loadBalancerId: instanceLoadBalancer.id,
+ *     loadBalancerId: instanceApplicationLoadBalancer.id,
  *     servers: [
  *         {
  *             serverId: instanceInstance[0].id,
@@ -103,7 +104,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * const tcp = new alicloud.slb.Listener("tcp", {
- *     loadBalancerId: instanceLoadBalancer.id,
+ *     loadBalancerId: instanceApplicationLoadBalancer.id,
  *     masterSlaveServerGroupId: groupMasterSlaveServerGroup.id,
  *     frontendPort: "22",
  *     protocol: "tcp",

@@ -113,6 +113,18 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+        /// </summary>
+        [Output("cpuOverCommitRatio")]
+        public Output<double?> CpuOverCommitRatio { get; private set; } = null!;
+
+        /// <summary>
+        /// The dedicated host cluster ID to which the dedicated host belongs.
+        /// </summary>
+        [Output("dedicatedHostClusterId")]
+        public Output<string?> DedicatedHostClusterId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Output("dedicatedHostName")]
@@ -147,6 +159,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("expiredTime")]
         public Output<string> ExpiredTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specify the minimum purchase quantity of a dedicated host.
+        /// </summary>
+        [Output("minQuantity")]
+        public Output<int?> MinQuantity { get; private set; } = null!;
 
         /// <summary>
         /// dedicated host network parameters. contains the following attributes:
@@ -267,6 +285,18 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
+        /// CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+        /// </summary>
+        [Input("cpuOverCommitRatio")]
+        public Input<double>? CpuOverCommitRatio { get; set; }
+
+        /// <summary>
+        /// The dedicated host cluster ID to which the dedicated host belongs.
+        /// </summary>
+        [Input("dedicatedHostClusterId")]
+        public Input<string>? DedicatedHostClusterId { get; set; }
+
+        /// <summary>
         /// The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Input("dedicatedHostName")]
@@ -301,6 +331,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("expiredTime")]
         public Input<string>? ExpiredTime { get; set; }
+
+        /// <summary>
+        /// Specify the minimum purchase quantity of a dedicated host.
+        /// </summary>
+        [Input("minQuantity")]
+        public Input<int>? MinQuantity { get; set; }
 
         [Input("networkAttributes")]
         private InputList<Inputs.DedicatedHostNetworkAttributeArgs>? _networkAttributes;
@@ -388,6 +424,18 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
+        /// CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+        /// </summary>
+        [Input("cpuOverCommitRatio")]
+        public Input<double>? CpuOverCommitRatio { get; set; }
+
+        /// <summary>
+        /// The dedicated host cluster ID to which the dedicated host belongs.
+        /// </summary>
+        [Input("dedicatedHostClusterId")]
+        public Input<string>? DedicatedHostClusterId { get; set; }
+
+        /// <summary>
         /// The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Input("dedicatedHostName")]
@@ -422,6 +470,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("expiredTime")]
         public Input<string>? ExpiredTime { get; set; }
+
+        /// <summary>
+        /// Specify the minimum purchase quantity of a dedicated host.
+        /// </summary>
+        [Input("minQuantity")]
+        public Input<int>? MinQuantity { get; set; }
 
         [Input("networkAttributes")]
         private InputList<Inputs.DedicatedHostNetworkAttributeGetArgs>? _networkAttributes;

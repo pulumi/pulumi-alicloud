@@ -24,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		sampleDs, err := slb.GetBackendServers(ctx, &slb.GetBackendServersArgs{
-// 			LoadBalancerId: alicloud_slb.Sample_slb.Id,
+// 			LoadBalancerId: alicloud_slb_load_balancer.Sample_slb.Id,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -1920,6 +1920,356 @@ export namespace cen {
 }
 
 export namespace cfg {
+    export interface AggregateCompliancePackConfigRule {
+        /**
+         * A list of parameter rules.
+         */
+        configRuleParameters: outputs.cfg.AggregateCompliancePackConfigRuleConfigRuleParameter[];
+        /**
+         * The Managed Rule Identifier.
+         */
+        managedRuleIdentifier: string;
+    }
+
+    export interface AggregateCompliancePackConfigRuleConfigRuleParameter {
+        /**
+         * The Parameter Name.
+         */
+        parameterName: string;
+        /**
+         * The Parameter Value.
+         */
+        parameterValue: string;
+    }
+
+    export interface AggregatorAggregatorAccount {
+        /**
+         * Aggregator account Uid.
+         */
+        accountId: string;
+        /**
+         * Aggregator account name.
+         */
+        accountName: string;
+        /**
+         * Aggregator account source type. Valid values: `ResourceDirectory`.
+         */
+        accountType: string;
+    }
+
+    export interface CompliancePackConfigRule {
+        /**
+         * A list of Config Rule Parameters.
+         */
+        configRuleParameters: outputs.cfg.CompliancePackConfigRuleConfigRuleParameter[];
+        /**
+         * The Managed Rule Identifier.
+         */
+        managedRuleIdentifier: string;
+    }
+
+    export interface CompliancePackConfigRuleConfigRuleParameter {
+        /**
+         * The parameter name.
+         */
+        parameterName: string;
+        /**
+         * The parameter value.
+         */
+        parameterValue?: string;
+    }
+
+    export interface GetAggregateCompliancePacksPack {
+        /**
+         * The Aliyun User Id.
+         */
+        accountId: string;
+        /**
+         * -The Aggregate Compliance Package Name.
+         */
+        aggregateCompliancePackName: string;
+        /**
+         * The first ID of the resource.
+         */
+        aggregatorCompliancePackId: string;
+        /**
+         * The template ID of the Compliance Package.
+         */
+        compliancePackTemplateId: string;
+        /**
+         * A list of The Aggregate Compliance Package Rules.
+         */
+        configRules: outputs.cfg.GetAggregateCompliancePacksPackConfigRule[];
+        /**
+         * The description of aggregate compliance pack.
+         */
+        description: string;
+        /**
+         * The ID of the Aggregate Compliance Pack.
+         */
+        id: string;
+        /**
+         * The Risk Level.
+         */
+        riskLevel: number;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
+    export interface GetAggregateCompliancePacksPackConfigRule {
+        /**
+         * The ID of the rule.
+         */
+        configRuleId: string;
+        /**
+         * A list of parameter rules.
+         */
+        configRuleParameters: outputs.cfg.GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter[];
+        /**
+         * Managed Rule Identifier.
+         */
+        managedRuleIdentifier: string;
+    }
+
+    export interface GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter {
+        /**
+         * The Parameter Name.
+         */
+        parameterName: string;
+        /**
+         * The Parameter Value.
+         */
+        parameterValue: string;
+        /**
+         * Required.
+         */
+        required: boolean;
+    }
+
+    export interface GetAggregateConfigRulesRule {
+        /**
+         * The Aliyun User ID.
+         */
+        accountId: string;
+        /**
+         * The name of the rule.
+         */
+        aggregateConfigRuleName: string;
+        /**
+         * The ID of Compliance Package.
+         */
+        compliancePackId: string;
+        /**
+         * -The Compliance information.
+         */
+        compliances: outputs.cfg.GetAggregateConfigRulesRuleCompliance[];
+        /**
+         * The config rule arn.
+         */
+        configRuleArn: string;
+        /**
+         * The ID of the rule.
+         */
+        configRuleId: string;
+        /**
+         * The trigger types of config rules.
+         */
+        configRuleTriggerTypes: string;
+        /**
+         * The description of the rule.
+         */
+        description: string;
+        /**
+         * Event source of the Config Rule.
+         */
+        eventSource: string;
+        /**
+         * The types of the resources to be evaluated against the rule.
+         */
+        excludeResourceIdsScope: string;
+        /**
+         * The ID of the Aggregate Config Rule.
+         */
+        id: string;
+        /**
+         * The settings of the input parameters for the rule.
+         */
+        inputParameters: {[key: string]: any};
+        /**
+         * The frequency of the compliance evaluations.
+         */
+        maximumExecutionFrequency: string;
+        /**
+         * The timestamp when the rule was last modified.
+         */
+        modifiedTimestamp: string;
+        /**
+         * The Exclude ResourceId List.
+         */
+        regionIdsScope: string;
+        /**
+         * The scope of resource group ids.
+         */
+        resourceGroupIdsScope: string;
+        resourceTypesScopes: string[];
+        /**
+         * The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+         */
+        riskLevel: number;
+        /**
+         * The name of the custom rule or managed rule.
+         */
+        sourceIdentifier: string;
+        /**
+         * The source owner of the Config Rule.
+         */
+        sourceOwner: string;
+        /**
+         * The status of the rule.
+         */
+        status: string;
+        /**
+         * The scope of tay key.
+         */
+        tagKeyScope: string;
+        /**
+         * The scope of tay value.
+         */
+        tagValueScope: string;
+    }
+
+    export interface GetAggregateConfigRulesRuleCompliance {
+        /**
+         * The Compliance Type.
+         */
+        complianceType: string;
+        /**
+         * The Count.
+         */
+        count: number;
+    }
+
+    export interface GetAggregatorsAggregator {
+        /**
+         * Aggregator account uid.
+         */
+        accountId: string;
+        /**
+         * Account information in aggregator.
+         */
+        aggregatorAccounts: outputs.cfg.GetAggregatorsAggregatorAggregatorAccount[];
+        /**
+         * The id of aggregator.
+         */
+        aggregatorId: string;
+        /**
+         * The name of aggregator.
+         */
+        aggregatorName: string;
+        /**
+         * The type of aggregator.
+         */
+        aggregatorType: string;
+        /**
+         * The description of aggregator.
+         */
+        description: string;
+        /**
+         * The id of the aggregator.
+         */
+        id: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
+    export interface GetAggregatorsAggregatorAggregatorAccount {
+        /**
+         * Aggregator account uid.
+         */
+        accountId: string;
+        /**
+         * Aggregator account name.
+         */
+        accountName: string;
+        /**
+         * Aggregator account source type.
+         */
+        accountType: string;
+    }
+
+    export interface GetCompliancePacksPack {
+        /**
+         * The Aliyun User Id.
+         */
+        accountId: string;
+        /**
+         * The Compliance Package ID.
+         */
+        compliancePackId: string;
+        /**
+         * The Compliance Package Name.
+         */
+        compliancePackName: string;
+        /**
+         * The template ID of the Compliance Package.
+         */
+        compliancePackTemplateId: string;
+        /**
+         * A list of The Compliance Package Rules.
+         */
+        configRules: outputs.cfg.GetCompliancePacksPackConfigRule[];
+        /**
+         * The description of compliance pack.
+         */
+        description: string;
+        /**
+         * The ID of the Compliance Pack.
+         */
+        id: string;
+        /**
+         * The Ris Level.
+         */
+        riskLevel: number;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
+    export interface GetCompliancePacksPackConfigRule {
+        /**
+         * The ID of the rule.
+         */
+        configRuleId: string;
+        /**
+         * A list of parameter rules.
+         */
+        configRuleParameters: outputs.cfg.GetCompliancePacksPackConfigRuleConfigRuleParameter[];
+        /**
+         * Managed Rule Identifier.
+         */
+        managedRuleIdentifier: string;
+    }
+
+    export interface GetCompliancePacksPackConfigRuleConfigRuleParameter {
+        /**
+         * The Parameter Name.
+         */
+        parameterName: string;
+        /**
+         * The Parameter Value.
+         */
+        parameterValue: string;
+        /**
+         * Required.
+         */
+        required: boolean;
+    }
+
     export interface GetConfigurationRecordersRecorder {
         accountId: string;
         /**
@@ -1985,7 +2335,8 @@ export namespace cfg {
     }
 
     export interface GetRulesRule {
-        accountId: number;
+        accountId: string;
+        compliancePackId: string;
         /**
          * The information about the compliance evaluations based on the rule.
          */
@@ -1993,40 +2344,61 @@ export namespace cfg {
         configRuleArn: string;
         configRuleId: string;
         /**
-         * The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
+         * Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
          */
         configRuleState: string;
-        createTimestamp: number;
+        /**
+         * (Available in 1.124.1+) A list of trigger types of config rule.
+         */
+        configRuleTriggerTypes: string;
         description: string;
         /**
          * Event source of the Config Rule.
          */
         eventSource: string;
         /**
+         * (Available in 1.124.1+) The scope of exclude of resource ids.
+         */
+        excludeResourceIdsScope: string;
+        /**
          * The ID of the Config Rule.
          * * `accountId`- The ID of the Alicloud account.
          * * `configRuleArn`- The ARN of the Config Rule.
          * * `configRuleId`- The ID of the Config Rule.
          * * `configRuleState`- The state of the Config Rule.
-         * * `createTimestamp`- The timestamp of the Config Rule created.
          * * `description`- The description of the Config Rule.
-         * * `inputParameters`- The input paramrters of the Config Rule.
+         * * `inputParameters`- The input parameters of the Config Rule.
          * * `modifiedTimestamp`- the timestamp of the Config Rule modified.
          * * `riskLevel`- The risk level of the Config Rule.
          * * `ruleName`- The name of the Config Rule.
          */
         id: string;
         inputParameters: {[key: string]: any};
-        modifiedTimestamp: number;
+        /**
+         * (Available in 1.124.1+) The frequency of maximum execution.
+         */
+        maximumExecutionFrequency: string;
+        modifiedTimestamp: string;
+        /**
+         * (Available in 1.124.1+) The scope of region ids.
+         */
+        regionIdsScope: string;
+        /**
+         * (Available in 1.124.1+) The scope of resource ids.
+         */
+        resourceGroupIdsScope: string;
+        /**
+         * (Available in 1.124.1+) The scope of resource types.
+         */
+        resourceTypesScopes: string[];
         /**
          * The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
          */
         riskLevel: number;
-        ruleName: string;
         /**
-         * The ID of the resource to be evaluated.
+         * The name of config rule.
          */
-        scopeComplianceResourceId: string;
+        ruleName: string;
         /**
          * The types of the resources to be evaluated against the rule.
          */
@@ -2043,6 +2415,18 @@ export namespace cfg {
          */
         sourceMaximumExecutionFrequency: string;
         sourceOwner: string;
+        /**
+         * The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
+         */
+        status: string;
+        /**
+         * (Available in 1.124.1+) The scope of tag key.
+         */
+        tagKeyScope: string;
+        /**
+         * (Available in 1.124.1+) The scope of tag value.
+         */
+        tagValueScope: string;
     }
 
     export interface GetRulesRuleCompliance {
@@ -3762,7 +4146,7 @@ export namespace cs {
          */
         eipBandwidth?: number;
         /**
-         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
          */
         eipInternetChargeType?: string;
         /**
@@ -3783,6 +4167,17 @@ export namespace cs {
         type?: string;
     }
 
+    export interface NodePoolSpotPriceLimit {
+        /**
+         * Spot instance type.
+         */
+        instanceType?: string;
+        /**
+         * The maximum hourly price of the spot instance.
+         */
+        priceLimit?: string;
+    }
+
     export interface NodePoolTaint {
         effect?: string;
         /**
@@ -3796,10 +4191,16 @@ export namespace cs {
     }
 
     export interface ServerlessKubernetesAddon {
+        /**
+         * The ACK add-on configurations.
+         */
         config?: string;
+        /**
+         * Disables the automatic installation of a component. Default is `false`.
+         */
         disabled?: boolean;
         /**
-         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: string;
     }
@@ -4426,6 +4827,10 @@ export namespace dns {
          */
         dnsSecurity: string;
         /**
+         * (Available in 1.124.1+) The domain name.
+         */
+        domain: string;
+        /**
          * Number of domain names bound.
          */
         domainNumbers: string;
@@ -4437,6 +4842,10 @@ export namespace dns {
          * Id of the instance resource.
          */
         instanceId: string;
+        /**
+         * (Available in 1.124.1+) The payment type of alidns instance.
+         */
+        paymentType: string;
         /**
          * Paid package version.
          */
@@ -4618,6 +5027,7 @@ export namespace dns {
          * DNS security level.
          */
         dnsSecurity: string;
+        domain: string;
         /**
          * Number of domain names bound.
          */
@@ -4630,6 +5040,7 @@ export namespace dns {
          * Id of the instance resource.
          */
         instanceId: string;
+        paymentType: string;
         /**
          * Paid package version.
          */
@@ -5790,9 +6201,17 @@ export namespace ecs {
          */
         autoReleaseTime: string;
         /**
+         * (Available in 1.123.1+) A collection of proprietary host performance indicators.
+         */
+        capacities: outputs.ecs.GetDedicatedHostsHostCapacity[];
+        /**
          * A mapping of tags to assign to the resource.
          */
         cores: number;
+        /**
+         * (Available in 1.123.1+) CPU oversold ratio.
+         */
+        cpuOverCommitRatio: number;
         /**
          * The ID of ECS Dedicated Host.
          */
@@ -5826,6 +6245,14 @@ export namespace ecs {
          */
         machineId: string;
         /**
+         * dedicated host network parameters. contains the following attributes:
+         */
+        networkAttributes: outputs.ecs.GetDedicatedHostsHostNetworkAttribute[];
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        operationLocks: outputs.ecs.GetDedicatedHostsHostOperationLock[];
+        /**
          * The billing method of the dedicated host.
          */
         paymentType: string;
@@ -5850,7 +6277,15 @@ export namespace ecs {
          */
         status: string;
         /**
-         * The list of ECS instanc
+         * (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+         */
+        supportedCustomInstanceTypeFamilies: string[];
+        /**
+         * (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+         */
+        supportedInstanceTypeFamilies: string[];
+        /**
+         * The list of ECS instance
          */
         supportedInstanceTypesLists: string[];
         /**
@@ -5861,6 +6296,70 @@ export namespace ecs {
          * The zone ID of the ECS Dedicated Host.
          */
         zoneId: string;
+    }
+
+    export interface GetDedicatedHostsHostCapacity {
+        /**
+         * The remaining local disk capacity. Unit: GiB.
+         */
+        availableLocalStorage: number;
+        /**
+         * The remaining memory capacity, unit: GiB.
+         */
+        availableMemory: number;
+        /**
+         * The number of remaining vCPU cores.
+         */
+        availableVcpus: number;
+        /**
+         * The number of available virtual GPUs.
+         */
+        availableVgpus: number;
+        /**
+         * Local disk type.
+         */
+        localStorageCategory: string;
+        /**
+         * The total capacity of the local disk, in GiB.
+         */
+        totalLocalStorage: number;
+        /**
+         * The total memory capacity, unit: GiB.
+         */
+        totalMemory: number;
+        /**
+         * The total number of vCPU cores.
+         */
+        totalVcpus: number;
+        /**
+         * The total number of virtual GPUs.
+         */
+        totalVgpus: number;
+    }
+
+    export interface GetDedicatedHostsHostNetworkAttribute {
+        /**
+         * The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
+         */
+        slbUdpTimeout: number;
+        /**
+         * (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+         */
+        udpTimeout: number;
+    }
+
+    export interface GetDedicatedHostsHostOperationLock {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        lockReason: string;
+    }
+
+    export interface GetDedicatedHostsOperationLock {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        lockReason?: string;
     }
 
     export interface GetDisksDisk {
@@ -6554,6 +7053,102 @@ export namespace ecs {
         size: number;
     }
 
+    export interface GetEcsNetworkInterfacesInterface {
+        /**
+         * The creation time.
+         */
+        creationTime: string;
+        /**
+         * The description of the ENI.
+         */
+        description: string;
+        /**
+         * The ID of the Network Interface.
+         */
+        id: string;
+        /**
+         * The instance id.
+         */
+        instanceId: string;
+        /**
+         * The MAC address of the ENI.
+         */
+        mac: string;
+        /**
+         * The network interface name.
+         */
+        name: string;
+        /**
+         * The network interface id.
+         */
+        networkInterfaceId: string;
+        /**
+         * The network interface name.
+         */
+        networkInterfaceName: string;
+        /**
+         * The primary private IP address of the ENI.
+         */
+        primaryIpAddress: string;
+        /**
+         * The primary private IP address of the ENI.
+         */
+        privateIp: string;
+        privateIpAddresses: string[];
+        /**
+         * A list of secondary private IP address that is assigned to the ENI.
+         */
+        privateIps: string[];
+        /**
+         * Number of network card queues.
+         */
+        queueNumber: number;
+        /**
+         * The resource group id.
+         */
+        resourceGroupId: string;
+        /**
+         * The security group ids.
+         */
+        securityGroupIds: string[];
+        /**
+         * The security groups.
+         */
+        securityGroups: string[];
+        /**
+         * The service id.
+         */
+        serviceId: number;
+        /**
+         * Whether the user of the elastic network card is a cloud product or a virtual vendor.
+         */
+        serviceManaged: boolean;
+        /**
+         * The status of the ENI.
+         */
+        status: string;
+        /**
+         * The tags.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The type of the ENI.
+         */
+        type: string;
+        /**
+         * The Vpc Id.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * The zone id.
+         */
+        zoneId: string;
+    }
+
     export interface GetEcsSnapshotsSnapshot {
         /**
          * The category of the snapshot.
@@ -7181,26 +7776,30 @@ export namespace ecs {
          * Name of the ENI.
          */
         name: string;
+        networkInterfaceId: string;
+        networkInterfaceName: string;
+        primaryIpAddress: string;
         /**
          * Primary private IP of the ENI.
          */
         privateIp: string;
+        privateIpAddresses: string[];
         /**
          * A list of secondary private IP address that is assigned to the ENI.
          */
         privateIps: string[];
-        /**
-         * Public IP of the ENI.
-         */
-        publicIp: string;
+        queueNumber: number;
         /**
          * The Id of resource group.
          */
         resourceGroupId: string;
+        securityGroupIds: string[];
         /**
          * A list of security group that the ENI belongs to.
          */
         securityGroups: string[];
+        serviceId: number;
+        serviceManaged: boolean;
         /**
          * Current status of the ENI.
          */
@@ -7208,7 +7807,8 @@ export namespace ecs {
         /**
          * A map of tags assigned to the ENI.
          */
-        tags?: {[key: string]: any};
+        tags: {[key: string]: any};
+        type: string;
         /**
          * ID of the VPC that the ENI belongs to.
          */
@@ -9662,12 +10262,24 @@ export namespace kms {
          * The Alibaba Cloud Resource Name (ARN) of the key.
          */
         arn: string;
+        automaticRotation: string;
         /**
          * Creation date of key.
          */
         creationDate: string;
         /**
          * The owner of the key.
+         * * `automaticRotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+         * * `keyId` -(Available in 1.123.1+)  ID of the key.
+         * * `keySpec` -(Available in 1.123.1+)  The type of the CMK.
+         * * `keyUsage` -(Available in 1.123.1+)  The usage of CMK.
+         * * `lastRotationDate` -(Available in 1.123.1+)  The date and time the last rotation was performed.
+         * * `materialExpireTime` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
+         * * `nextRotationDate` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+         * * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
+         * * `protectionLevel` -(Available in 1.123.1+)  The protection level of the CMK.
+         * * `rotationInterval` -(Available in 1.123.1+)  The period of automatic key rotation.
+         * * `primaryKeyVersion` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
          */
         creator: string;
         /**
@@ -9682,6 +10294,16 @@ export namespace kms {
          * ID of the key.
          */
         id: string;
+        keyId: string;
+        keySpec: string;
+        keyUsage: string;
+        lastRotationDate: string;
+        materialExpireTime: string;
+        nextRotationDate: string;
+        origin: string;
+        primaryKeyVersion: string;
+        protectionLevel: string;
+        rotationInterval: string;
         /**
          * Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
          */
@@ -9713,6 +10335,18 @@ export namespace kms {
 
     export interface GetSecretsSecret {
         /**
+         * (Available in 1.124.0+) A mapping of tags to assign to the resource.
+         */
+        arn: string;
+        /**
+         * (Available in 1.124.0+)  The description of the secret.
+         */
+        description: string;
+        /**
+         * (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+         */
+        encryptionKeyId: string;
+        /**
          * ID of the Kms Secret. The value is same as KMS secret_name.
          */
         id: string;
@@ -9721,13 +10355,33 @@ export namespace kms {
          */
         plannedDeleteTime: string;
         /**
+         * (Available in 1.124.0+)  The value of the secret that you want to create.
+         */
+        secretData: string;
+        /**
+         * (Available in 1.124.0+)  The type of the secret data value.
+         */
+        secretDataType: string;
+        /**
          * Name of the KMS Secret.
          */
         secretName: string;
         /**
+         * (Available in 1.124.0+)  The type of the secret.
+         */
+        secretType: string;
+        /**
          * A mapping of tags to assign to the resource.
          */
         tags: {[key: string]: any};
+        /**
+         * (Available in 1.124.0+)  The version number of the initial version.
+         */
+        versionId: string;
+        /**
+         * (Available in 1.124.0+)  The stage labels that mark the new secret version.
+         */
+        versionStages: string[];
     }
 }
 
@@ -10075,7 +10729,7 @@ export namespace log {
 
     export interface EtlEtlSink {
         /**
-         * Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+         * Delivery target logstore access key id.
          */
         accessKeyId?: string;
         /**
@@ -10107,7 +10761,7 @@ export namespace log {
          */
         project: string;
         /**
-         * Sts role info.
+         * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
          */
         roleArn?: string;
         /**
@@ -10119,6 +10773,36 @@ export namespace log {
     export interface OssShipperParquetConfig {
         name: string;
         type: string;
+    }
+
+    export interface StoreEncryptConf {
+        /**
+         * enable encryption. Default `false`
+         */
+        enable?: boolean;
+        /**
+         * Supported encryption type, only supports `default(AES)`,` m4`
+         */
+        encryptType?: string;
+        /**
+         * User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+         */
+        userCmkInfo?: outputs.log.StoreEncryptConfUserCmkInfo;
+    }
+
+    export interface StoreEncryptConfUserCmkInfo {
+        /**
+         * role arn
+         */
+        arn: string;
+        /**
+         * User master key id
+         */
+        cmkKeyId: string;
+        /**
+         * Region id where the  user master key id is located
+         */
+        regionId: string;
     }
 
     export interface StoreIndexFieldSearch {
@@ -10992,7 +11676,7 @@ export namespace oss {
          */
         abortMultipartUploads?: outputs.oss.BucketLifecycleRuleAbortMultipartUpload[];
         /**
-         * Specifies lifecycle rule status.
+         * Specifies the accelerate status of a bucket.
          */
         enabled: boolean;
         /**
@@ -11112,6 +11796,13 @@ export namespace oss {
          * The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
          */
         sseAlgorithm: string;
+    }
+
+    export interface BucketTransferAcceleration {
+        /**
+         * Specifies the accelerate status of a bucket.
+         */
+        enabled: boolean;
     }
 
     export interface BucketVersioning {
@@ -12123,7 +12814,7 @@ export namespace pvtz {
         /**
          * RecordId of the Private Zone Record.
          */
-        recordId: number;
+        recordId: string;
         /**
          * Remark of the Private Zone Record.
          */
@@ -12797,13 +13488,36 @@ export namespace rds {
 
     export interface GetInstancesInstance {
         /**
+         * (Available in 1.124.1+) The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+         * - cert
+         * - perfer
+         * - verify-ca
+         * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+         */
+        acl: string;
+        /**
          * Availability zone.
          */
         availabilityZone: string;
         /**
+         * (Available in 1.124.1+) The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+         * - aliyun: a cloud certificate
+         * - custom: a custom certificate
+         */
+        caType: string;
+        /**
          * Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
          */
         chargeType: string;
+        /**
+         * (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+         */
+        clientCaCert: string;
+        clientCaCertExpireTime: string;
+        /**
+         * (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+         */
+        clientCertRevocationList: string;
         /**
          * `Standard` for standard access mode and `Safe` for high security access mode.
          */
@@ -12853,6 +13567,13 @@ export namespace rds {
          */
         instanceType: string;
         /**
+         * (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+         * - success
+         * - setting
+         * - failed
+         */
+        lastModifyStatus: string;
+        /**
          * ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
          */
         masterInstanceId: string;
@@ -12860,6 +13581,10 @@ export namespace rds {
          * (Available in 1.101.0+) The master zone of the instance.
          */
         masterZone: string;
+        /**
+         * (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+         */
+        modifyStatusReason: string;
         /**
          * The name of the RDS instance.
          */
@@ -12880,6 +13605,58 @@ export namespace rds {
          * Region ID the instance belongs to.
          */
         regionId: string;
+        /**
+         * (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+         * - cert
+         * - perfer
+         * - verify-ca
+         * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+         */
+        replicationAcl: string;
+        /**
+         * (Available in 1.124.1+) Indicates whether the server certificate needs to be updated.
+         * - Valid values for ApsaraDB RDS for MySQL and ApsaraDB RDS for SQL Server:
+         * - No
+         * - Yes
+         * - Valid values for ApsaraDB RDS for PostgreSQL:
+         * - 0: no
+         * - 1: yes
+         */
+        requireUpdate: string;
+        /**
+         * (Available in 1.124.1+) The server certificate that needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+         */
+        requireUpdateItem: string;
+        /**
+         * (Available in 1.124.1+) The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+         */
+        requireUpdateReason: string;
+        /**
+         * (Available in 1.124.1+) The URL of the CA that issues the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+         */
+        serverCaUrl: string;
+        /**
+         * (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+         */
+        serverCert: string;
+        /**
+         * (Available in 1.124.1+) The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+         */
+        serverKey: string;
+        /**
+         * (Available in 1.124.1+) The time when the server certificate was created. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is valid only when the CAType parameter is set to aliyun.
+         */
+        sslCreateTime: string;
+        /**
+         * (Available in 1.124.1+) Indicates whether SSL encryption is enabled. Valid values:
+         * - on: enabled
+         * - off: disabled
+         */
+        sslEnabled: string;
+        /**
+         * (Available in 1.124.1+) The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         */
+        sslExpireTime: string;
         /**
          * Status of the instance.
          */
@@ -13869,6 +14646,227 @@ export namespace slb {
         protocol: string;
     }
 
+    export interface GetApplicationLoadBalancersBalancer {
+        /**
+         * Service address of the SLBs.
+         */
+        address: string;
+        /**
+         * The address ip version. Valid values `ipv4` and `ipv6`.
+         */
+        addressIpVersion: string;
+        /**
+         * The address type of the SLB. Valid values `internet` and `intranet`.
+         */
+        addressType: string;
+        /**
+         * The auto release time.
+         */
+        autoReleaseTime: number;
+        /**
+         * The backend servers of the SLB.
+         */
+        backendServers: outputs.slb.GetApplicationLoadBalancersBalancerBackendServer[];
+        /**
+         * The bandwidth of the SLB.
+         */
+        bandwidth: number;
+        /**
+         * The create time stamp of the SLB.
+         */
+        createTimeStamp: number;
+        /**
+         * Whether the SLB should delete protection.
+         */
+        deleteProtection: string;
+        /**
+         * The end time of the SLB.
+         */
+        endTime: string;
+        /**
+         * The end time stamp of the SLB.
+         */
+        endTimeStamp: number;
+        /**
+         * ID of the SLB.
+         */
+        id: string;
+        /**
+         * The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+         */
+        internetChargeType: string;
+        /**
+         * The listener ports and protocal of the SLB.
+         */
+        listenerPortsAndProtocals: outputs.slb.GetApplicationLoadBalancersBalancerListenerPortsAndProtocal[];
+        /**
+         * The listener ports and protocol of the SLB.
+         */
+        listenerPortsAndProtocols: outputs.slb.GetApplicationLoadBalancersBalancerListenerPortsAndProtocol[];
+        /**
+         * Thd ID of the SLB.
+         */
+        loadBalancerId: string;
+        /**
+         * The name of the SLB.
+         */
+        loadBalancerName: string;
+        /**
+         * The specification of the SLB.
+         */
+        loadBalancerSpec: string;
+        /**
+         * The master zone id of the SLB.
+         */
+        masterZoneId: string;
+        /**
+         * The reason of modification protection.
+         */
+        modificationProtectionReason: string;
+        /**
+         * The status of modification protection.
+         */
+        modificationProtectionStatus: string;
+        /**
+         * Network type of the SLBs. Valid values: `vpc` and `classic`.
+         */
+        networkType: string;
+        /**
+         * The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+         */
+        paymentType: string;
+        /**
+         * Region ID the SLB belongs to.
+         */
+        regionIdAlias: string;
+        /**
+         * The renewal cyc unit of the SLB.
+         */
+        renewalCycUnit: string;
+        /**
+         * The renewal duration of the SLB.
+         */
+        renewalDuration: number;
+        /**
+         * The renewal status of the SLB.
+         */
+        renewalStatus: string;
+        /**
+         * The Id of resource group which SLB belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * The slave zone id of the SLB.
+         */
+        slaveZoneId: string;
+        /**
+         * SLB current status. Possible values: `inactive`, `active` and `locked`.
+         */
+        status: string;
+        /**
+         * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+         */
+        tags: {[key: string]: any};
+        /**
+         * ID of the VPC linked to the SLBs.
+         */
+        vpcId: string;
+        /**
+         * ID of the VSwitch linked to the SLBs.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetApplicationLoadBalancersBalancerBackendServer {
+        /**
+         * The description of protocol.
+         */
+        description: string;
+        /**
+         * The server ID.
+         */
+        serverId: string;
+        /**
+         * The type of servers.
+         */
+        type: string;
+        /**
+         * The weight of servers.
+         */
+        weight: number;
+    }
+
+    export interface GetApplicationLoadBalancersBalancerListenerPortsAndProtocal {
+        /**
+         * The listener port.
+         */
+        listenerPort: number;
+        /**
+         * The listener protoal.
+         */
+        listenerProtocal: string;
+    }
+
+    export interface GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
+        /**
+         * The description of protocol.
+         */
+        description: string;
+        /**
+         * The forward port.
+         */
+        forwardPort: number;
+        /**
+         * The listener forward.
+         */
+        listenerForward: string;
+        /**
+         * The listener port.
+         */
+        listenerPort: number;
+        /**
+         * The listener protocol.
+         */
+        listenerProtocol: string;
+    }
+
+    export interface GetApplicationLoadBalancersSlb {
+        /**
+         * Service address of the SLBs.
+         */
+        address: string;
+        creationTime: string;
+        /**
+         * ID of the SLB.
+         */
+        id: string;
+        internet: boolean;
+        masterAvailabilityZone: string;
+        name: string;
+        /**
+         * Network type of the SLBs. Valid values: `vpc` and `classic`.
+         */
+        networkType: string;
+        regionId: string;
+        slaveAvailabilityZone: string;
+        /**
+         * SLB current status. Possible values: `inactive`, `active` and `locked`.
+         */
+        status: string;
+        /**
+         * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+         */
+        tags: {[key: string]: any};
+        /**
+         * ID of the VPC linked to the SLBs.
+         */
+        vpcId: string;
+        /**
+         * ID of the VSwitch linked to the SLBs.
+         */
+        vswitchId: string;
+    }
+
     export interface GetAttachmentsSlbAttachment {
         /**
          * ID of the attached ECS instance.
@@ -13897,13 +14895,17 @@ export namespace slb {
 
     export interface GetCaCertificatesCertificate {
         /**
+         * (Available in v1.123.1+) CA certificate ID.
+         */
+        caCertificateId: string;
+        /**
+         * (Available in v1.123.1+) CA certificate name.
+         */
+        caCertificateName: string;
+        /**
          * CA certificate common name.
          */
         commonName: string;
-        /**
-         * CA certificate created time.
-         */
-        createdTime: string;
         /**
          * CA certificate created timestamp.
          */
@@ -13925,13 +14927,9 @@ export namespace slb {
          */
         id: string;
         /**
-         * CA certificate name.
+         * (Deprecated from v1.123.1) Deprecated and replace by `caCertificateName`.
          */
         name: string;
-        /**
-         * The region Id of CA certificate.
-         */
-        regionId: string;
         /**
          * The Id of resource group which ca certificates belongs.
          */
@@ -13939,7 +14937,7 @@ export namespace slb {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags: {[key: string]: any};
     }
 
     export interface GetDomainExtensionsExtension {
@@ -14111,6 +15109,96 @@ export namespace slb {
          * Indicate whether the HTTP header field "X-Forwarded-For_proto" is added or not; it allows the backend server to know about the user's protocol. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
          */
         xForwardedForSlbProto: string;
+    }
+
+    export interface GetLoadBalancersBalancer {
+        /**
+         * Service address of the SLBs.
+         */
+        address: string;
+        addressIpVersion: string;
+        addressType: string;
+        autoReleaseTime: number;
+        backendServers: outputs.slb.GetLoadBalancersBalancerBackendServer[];
+        bandwidth: number;
+        createTimeStamp: number;
+        deleteProtection: string;
+        endTime: string;
+        endTimeStamp: number;
+        /**
+         * ID of the SLB.
+         */
+        id: string;
+        internetChargeType: string;
+        listenerPortsAndProtocals: outputs.slb.GetLoadBalancersBalancerListenerPortsAndProtocal[];
+        listenerPortsAndProtocols: outputs.slb.GetLoadBalancersBalancerListenerPortsAndProtocol[];
+        loadBalancerId: string;
+        loadBalancerName: string;
+        loadBalancerSpec: string;
+        masterZoneId: string;
+        modificationProtectionReason: string;
+        modificationProtectionStatus: string;
+        /**
+         * Network type of the SLBs. Valid values: `vpc` and `classic`.
+         */
+        networkType: string;
+        paymentType: string;
+        regionIdAlias: string;
+        renewalCycUnit: string;
+        renewalDuration: number;
+        renewalStatus: string;
+        /**
+         * The Id of resource group which SLB belongs.
+         */
+        resourceGroupId: string;
+        slaveZoneId: string;
+        /**
+         * SLB current status. Possible values: `inactive`, `active` and `locked`.
+         */
+        status: string;
+        /**
+         * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         *
+         * const taggedInstances = pulumi.output(alicloud.slb.getLoadBalancers({
+         *     tags: {
+         *         tagKey1: "tagValue1",
+         *         tagKey2: "tagValue2",
+         *     },
+         * }, { async: true }));
+         * ```
+         */
+        tags: {[key: string]: any};
+        /**
+         * ID of the VPC linked to the SLBs.
+         */
+        vpcId: string;
+        /**
+         * ID of the VSwitch linked to the SLBs.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetLoadBalancersBalancerBackendServer {
+        description: string;
+        serverId: string;
+        type: string;
+        weight: number;
+    }
+
+    export interface GetLoadBalancersBalancerListenerPortsAndProtocal {
+        listenerPort: number;
+        listenerProtocal: string;
+    }
+
+    export interface GetLoadBalancersBalancerListenerPortsAndProtocol {
+        description: string;
+        forwardPort: number;
+        listenerForward: string;
+        listenerPort: number;
+        listenerProtocol: string;
     }
 
     export interface GetLoadBalancersSlb {
@@ -15426,6 +16514,17 @@ export namespace vpc {
          * The source cidr ip of ingress entries.
          */
         sourceCidrIp?: string;
+    }
+
+    export interface NetworkAclResource {
+        /**
+         * The ID of the associated resource.
+         */
+        resourceId?: string;
+        /**
+         * The type of the associated resource. Valid values `VSwitch`.
+         */
+        resourceType?: string;
     }
 }
 

@@ -95,7 +95,7 @@ export class Function extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModified!: pulumi.Output<string>;
     /**
-     * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+     * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      */
     public readonly memorySize!: pulumi.Output<number | undefined>;
     /**
@@ -258,7 +258,7 @@ export interface FunctionState {
      */
     readonly lastModified?: pulumi.Input<string>;
     /**
-     * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+     * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      */
     readonly memorySize?: pulumi.Input<number>;
     /**
@@ -340,7 +340,7 @@ export interface FunctionArgs {
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
-     * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+     * Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
      */
     readonly memorySize?: pulumi.Input<number>;
     /**

@@ -48,7 +48,7 @@ class ClusterArgs:
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
-        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -224,7 +224,7 @@ class ClusterArgs:
     @pulumi.getter(name="payType")
     def pay_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         """
         return pulumi.get(self, "pay_type")
 
@@ -369,7 +369,7 @@ class _ClusterState:
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
-        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -562,7 +562,7 @@ class _ClusterState:
     @pulumi.getter(name="payType")
     def pay_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         """
         return pulumi.get(self, "pay_type")
 
@@ -752,7 +752,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
-        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -938,7 +938,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
-        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1072,7 +1072,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="payType")
     def pay_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         """
         return pulumi.get(self, "pay_type")
 

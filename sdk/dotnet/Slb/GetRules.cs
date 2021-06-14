@@ -44,13 +44,14 @@ namespace Pulumi.AliCloud.Slb
         ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
         ///             VswitchName = name,
         ///         });
-        ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+        ///         var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
         ///         {
+        ///             LoadBalancerName = name,
         ///             VswitchId = defaultSwitch.Id,
         ///         });
         ///         var defaultListener = new AliCloud.Slb.Listener("defaultListener", new AliCloud.Slb.ListenerArgs
         ///         {
-        ///             LoadBalancerId = defaultLoadBalancer.Id,
+        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
         ///             BackendPort = 22,
         ///             FrontendPort = 22,
         ///             Protocol = "http",
@@ -59,17 +60,17 @@ namespace Pulumi.AliCloud.Slb
         ///         });
         ///         var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new AliCloud.Slb.ServerGroupArgs
         ///         {
-        ///             LoadBalancerId = defaultLoadBalancer.Id,
+        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
         ///         });
         ///         var defaultRule = new AliCloud.Slb.Rule("defaultRule", new AliCloud.Slb.RuleArgs
         ///         {
-        ///             LoadBalancerId = defaultLoadBalancer.Id,
+        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
         ///             FrontendPort = defaultListener.FrontendPort,
         ///             Domain = "*.aliyun.com",
         ///             Url = "/image",
         ///             ServerGroupId = defaultServerGroup.Id,
         ///         });
-        ///         var sampleDs = defaultLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetRules.InvokeAsync(new AliCloud.Slb.GetRulesArgs
+        ///         var sampleDs = defaultApplicationLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetRules.InvokeAsync(new AliCloud.Slb.GetRulesArgs
         ///         {
         ///             LoadBalancerId = id,
         ///             FrontendPort = 22,

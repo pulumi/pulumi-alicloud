@@ -18,6 +18,8 @@ export * from "./ecsDiskAttachment";
 export * from "./ecsKeyPair";
 export * from "./ecsKeyPairAttachment";
 export * from "./ecsLaunchTemplate";
+export * from "./ecsNetworkInterface";
+export * from "./ecsNetworkInterfaceAttachment";
 export * from "./ecsSnapshot";
 export * from "./eip";
 export * from "./eipAssociation";
@@ -28,6 +30,7 @@ export * from "./getDisks";
 export * from "./getEcsDisks";
 export * from "./getEcsKeyPairs";
 export * from "./getEcsLaunchTemplates";
+export * from "./getEcsNetworkInterfaces";
 export * from "./getEcsSnapshots";
 export * from "./getEips";
 export * from "./getHpcClusters";
@@ -70,6 +73,8 @@ import { EcsDiskAttachment } from "./ecsDiskAttachment";
 import { EcsKeyPair } from "./ecsKeyPair";
 import { EcsKeyPairAttachment } from "./ecsKeyPairAttachment";
 import { EcsLaunchTemplate } from "./ecsLaunchTemplate";
+import { EcsNetworkInterface } from "./ecsNetworkInterface";
+import { EcsNetworkInterfaceAttachment } from "./ecsNetworkInterfaceAttachment";
 import { EcsSnapshot } from "./ecsSnapshot";
 import { Eip } from "./eip";
 import { EipAssociation } from "./eipAssociation";
@@ -119,6 +124,10 @@ const _module = {
                 return new EcsKeyPairAttachment(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate":
                 return new EcsLaunchTemplate(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface":
+                return new EcsNetworkInterface(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment":
+                return new EcsNetworkInterfaceAttachment(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsSnapshot:EcsSnapshot":
                 return new EcsSnapshot(name, <any>undefined, { urn })
             case "alicloud:ecs/eip:Eip":
@@ -173,6 +182,8 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDiskAttachment", _modu
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsKeyPair", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsKeyPairAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsLaunchTemplate", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterface", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterfaceAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSnapshot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAssociation", _module)

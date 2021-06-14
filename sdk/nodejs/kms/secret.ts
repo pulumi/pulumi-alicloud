@@ -71,6 +71,10 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Whether to enable automatic key rotation.
+     */
+    public readonly enableAutomaticRotation!: pulumi.Output<boolean | undefined>;
+    /**
      * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
      */
     public readonly encryptionKeyId!: pulumi.Output<string | undefined>;
@@ -86,6 +90,10 @@ export class Secret extends pulumi.CustomResource {
      * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
      */
     public readonly recoveryWindowInDays!: pulumi.Output<number | undefined>;
+    /**
+     * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+     */
+    public readonly rotationInterval!: pulumi.Output<string | undefined>;
     /**
      * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
      */
@@ -126,10 +134,12 @@ export class Secret extends pulumi.CustomResource {
             const state = argsOrState as SecretState | undefined;
             inputs["arn"] = state ? state.arn : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["enableAutomaticRotation"] = state ? state.enableAutomaticRotation : undefined;
             inputs["encryptionKeyId"] = state ? state.encryptionKeyId : undefined;
             inputs["forceDeleteWithoutRecovery"] = state ? state.forceDeleteWithoutRecovery : undefined;
             inputs["plannedDeleteTime"] = state ? state.plannedDeleteTime : undefined;
             inputs["recoveryWindowInDays"] = state ? state.recoveryWindowInDays : undefined;
+            inputs["rotationInterval"] = state ? state.rotationInterval : undefined;
             inputs["secretData"] = state ? state.secretData : undefined;
             inputs["secretDataType"] = state ? state.secretDataType : undefined;
             inputs["secretName"] = state ? state.secretName : undefined;
@@ -148,9 +158,11 @@ export class Secret extends pulumi.CustomResource {
                 throw new Error("Missing required property 'versionId'");
             }
             inputs["description"] = args ? args.description : undefined;
+            inputs["enableAutomaticRotation"] = args ? args.enableAutomaticRotation : undefined;
             inputs["encryptionKeyId"] = args ? args.encryptionKeyId : undefined;
             inputs["forceDeleteWithoutRecovery"] = args ? args.forceDeleteWithoutRecovery : undefined;
             inputs["recoveryWindowInDays"] = args ? args.recoveryWindowInDays : undefined;
+            inputs["rotationInterval"] = args ? args.rotationInterval : undefined;
             inputs["secretData"] = args ? args.secretData : undefined;
             inputs["secretDataType"] = args ? args.secretDataType : undefined;
             inputs["secretName"] = args ? args.secretName : undefined;
@@ -180,6 +192,10 @@ export interface SecretState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Whether to enable automatic key rotation.
+     */
+    readonly enableAutomaticRotation?: pulumi.Input<boolean>;
+    /**
      * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
      */
     readonly encryptionKeyId?: pulumi.Input<string>;
@@ -195,6 +211,10 @@ export interface SecretState {
      * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
      */
     readonly recoveryWindowInDays?: pulumi.Input<number>;
+    /**
+     * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+     */
+    readonly rotationInterval?: pulumi.Input<string>;
     /**
      * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
      */
@@ -230,6 +250,10 @@ export interface SecretArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Whether to enable automatic key rotation.
+     */
+    readonly enableAutomaticRotation?: pulumi.Input<boolean>;
+    /**
      * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
      */
     readonly encryptionKeyId?: pulumi.Input<string>;
@@ -241,6 +265,10 @@ export interface SecretArgs {
      * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
      */
     readonly recoveryWindowInDays?: pulumi.Input<number>;
+    /**
+     * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+     */
+    readonly rotationInterval?: pulumi.Input<string>;
     /**
      * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
      */

@@ -82,13 +82,14 @@ namespace Pulumi.AliCloud.Slb
     ///                 VswitchId = defaultSwitch.Id,
     ///             }));
     ///         }
-    ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+    ///         var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
     ///         {
+    ///             LoadBalancerName = name,
     ///             VswitchId = defaultSwitch.Id,
     ///         });
     ///         var defaultBackendServer = new AliCloud.Slb.BackendServer("defaultBackendServer", new AliCloud.Slb.BackendServerArgs
     ///         {
-    ///             LoadBalancerId = defaultLoadBalancer.Id,
+    ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
     ///             BackendServers = 
     ///             {
     ///                 new AliCloud.Slb.Inputs.BackendServerBackendServerArgs

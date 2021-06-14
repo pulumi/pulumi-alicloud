@@ -72,7 +72,7 @@ type Cluster struct {
 	DiskType pulumi.StringPtrOutput `pulumi:"diskType"`
 	// The count of instance.
 	InstanceCount pulumi.IntOutput `pulumi:"instanceCount"`
-	// The type of network. Range limit: 1~5.
+	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringOutput `pulumi:"netType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrOutput `pulumi:"privateSlbSpecification"`
@@ -144,7 +144,7 @@ type clusterState struct {
 	DiskType *string `pulumi:"diskType"`
 	// The count of instance.
 	InstanceCount *int `pulumi:"instanceCount"`
-	// The type of network. Range limit: 1~5.
+	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType *string `pulumi:"netType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification *string `pulumi:"privateSlbSpecification"`
@@ -173,7 +173,7 @@ type ClusterState struct {
 	DiskType pulumi.StringPtrInput
 	// The count of instance.
 	InstanceCount pulumi.IntPtrInput
-	// The type of network. Range limit: 1~5.
+	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringPtrInput
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrInput
@@ -206,7 +206,7 @@ type clusterArgs struct {
 	DiskType *string `pulumi:"diskType"`
 	// The count of instance.
 	InstanceCount int `pulumi:"instanceCount"`
-	// The type of network. Range limit: 1~5.
+	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType string `pulumi:"netType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification *string `pulumi:"privateSlbSpecification"`
@@ -234,7 +234,7 @@ type ClusterArgs struct {
 	DiskType pulumi.StringPtrInput
 	// The count of instance.
 	InstanceCount pulumi.IntInput
-	// The type of network. Range limit: 1~5.
+	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringInput
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrInput

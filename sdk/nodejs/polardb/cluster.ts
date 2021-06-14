@@ -124,7 +124,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly parameters!: pulumi.Output<outputs.polardb.ClusterParameter[]>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
     public readonly payType!: pulumi.Output<string | undefined>;
     public readonly period!: pulumi.Output<number | undefined>;
@@ -285,7 +285,7 @@ export interface ClusterState {
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterParameter>[]>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
     readonly payType?: pulumi.Input<string>;
     readonly period?: pulumi.Input<number>;
@@ -371,7 +371,7 @@ export interface ClusterArgs {
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterParameter>[]>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
     readonly payType?: pulumi.Input<string>;
     readonly period?: pulumi.Input<number>;

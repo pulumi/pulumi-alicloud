@@ -39,11 +39,12 @@ export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Prom
         "enableDetails": args.enableDetails,
         "ids": args.ids,
         "memberId": args.memberId,
-        "messageType": args.messageType,
         "multiAccount": args.multiAccount,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "riskLevel": args.riskLevel,
+        "ruleName": args.ruleName,
+        "status": args.status,
     }, opts);
 }
 
@@ -52,7 +53,9 @@ export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetRulesArgs {
     /**
-     * The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
+     * Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
+     *
+     * @deprecated Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
      */
     readonly configRuleState?: string;
     /**
@@ -68,10 +71,6 @@ export interface GetRulesArgs {
      */
     readonly memberId?: number;
     /**
-     * Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
-     */
-    readonly messageType?: string;
-    /**
      * Whether the enterprise management account queries the rule details of member accounts.
      */
     readonly multiAccount?: boolean;
@@ -84,12 +83,23 @@ export interface GetRulesArgs {
      * The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
      */
     readonly riskLevel?: number;
+    /**
+     * The name of config rule.
+     */
+    readonly ruleName?: string;
+    /**
+     * The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
+     */
+    readonly status?: string;
 }
 
 /**
  * A collection of values returned by getRules.
  */
 export interface GetRulesResult {
+    /**
+     * @deprecated Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
+     */
     readonly configRuleState?: string;
     readonly enableDetails?: boolean;
     /**
@@ -101,7 +111,6 @@ export interface GetRulesResult {
      */
     readonly ids: string[];
     readonly memberId?: number;
-    readonly messageType?: string;
     readonly multiAccount?: boolean;
     readonly nameRegex?: string;
     /**
@@ -110,8 +119,13 @@ export interface GetRulesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly riskLevel?: number;
+    readonly ruleName?: string;
     /**
      * A list of Config Rules. Each element contains the following attributes:
      */
     readonly rules: outputs.cfg.GetRulesRule[];
+    /**
+     * (Available in 1.124.1+) The status of config rule.
+     */
+    readonly status?: string;
 }

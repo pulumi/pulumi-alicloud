@@ -93,10 +93,11 @@ namespace Pulumi.AliCloud.Slb
     ///                 VswitchId = mainSwitch.Id,
     ///             }));
     ///         }
-    ///         var instanceLoadBalancer = new AliCloud.Slb.LoadBalancer("instanceLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+    ///         var instanceApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("instanceApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
     ///         {
+    ///             LoadBalancerName = name,
     ///             VswitchId = mainSwitch.Id,
-    ///             Specification = "slb.s2.small",
+    ///             LoadBalancerSpec = "slb.s2.small",
     ///         });
     ///         var defaultNetworkInterface = new List&lt;AliCloud.Vpc.NetworkInterface&gt;();
     ///         for (var rangeIndex = 0; rangeIndex &lt; number; rangeIndex++)
@@ -123,7 +124,7 @@ namespace Pulumi.AliCloud.Slb
     ///         }
     ///         var groupMasterSlaveServerGroup = new AliCloud.Slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup", new AliCloud.Slb.MasterSlaveServerGroupArgs
     ///         {
-    ///             LoadBalancerId = instanceLoadBalancer.Id,
+    ///             LoadBalancerId = instanceApplicationLoadBalancer.Id,
     ///             Servers = 
     ///             {
     ///                 new AliCloud.Slb.Inputs.MasterSlaveServerGroupServerArgs
@@ -144,7 +145,7 @@ namespace Pulumi.AliCloud.Slb
     ///         });
     ///         var tcp = new AliCloud.Slb.Listener("tcp", new AliCloud.Slb.ListenerArgs
     ///         {
-    ///             LoadBalancerId = instanceLoadBalancer.Id,
+    ///             LoadBalancerId = instanceApplicationLoadBalancer.Id,
     ///             MasterSlaveServerGroupId = groupMasterSlaveServerGroup.Id,
     ///             FrontendPort = 22,
     ///             Protocol = "tcp",

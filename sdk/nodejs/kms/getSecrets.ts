@@ -39,7 +39,9 @@ export function getSecrets(args?: GetSecretsArgs, opts?: pulumi.InvokeOptions): 
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:kms/getSecrets:getSecrets", {
+        "enableDetails": args.enableDetails,
         "fetchTags": args.fetchTags,
+        "filters": args.filters,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -52,9 +54,17 @@ export function getSecrets(args?: GetSecretsArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetSecretsArgs {
     /**
+     * Default to `false`. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
+    /**
      * Whether to include the predetermined resource tag in the return value. Default to `false`.
      */
     readonly fetchTags?: boolean;
+    /**
+     * Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+     */
+    readonly filters?: string;
     /**
      * A list of KMS Secret ids. The value is same as KMS secret_name.
      */
@@ -74,7 +84,9 @@ export interface GetSecretsArgs {
  * A collection of values returned by getSecrets.
  */
 export interface GetSecretsResult {
+    readonly enableDetails?: boolean;
     readonly fetchTags?: boolean;
+    readonly filters?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -94,7 +106,7 @@ export interface GetSecretsResult {
      */
     readonly secrets: outputs.kms.GetSecretsSecret[];
     /**
-     * A mapping of tags to assign to the resource.
+     * (Optional) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
 }

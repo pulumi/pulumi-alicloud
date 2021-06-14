@@ -84,14 +84,15 @@ namespace Pulumi.AliCloud.Slb
         ///                 VswitchId = mainSwitch.Id,
         ///             }));
         ///         }
-        ///         var instanceLoadBalancer = new AliCloud.Slb.LoadBalancer("instanceLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+        ///         var instanceApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("instanceApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
         ///         {
+        ///             LoadBalancerName = name,
         ///             VswitchId = mainSwitch.Id,
-        ///             Specification = "slb.s2.small",
+        ///             LoadBalancerSpec = "slb.s2.small",
         ///         });
         ///         var groupMasterSlaveServerGroup = new AliCloud.Slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup", new AliCloud.Slb.MasterSlaveServerGroupArgs
         ///         {
-        ///             LoadBalancerId = instanceLoadBalancer.Id,
+        ///             LoadBalancerId = instanceApplicationLoadBalancer.Id,
         ///             Servers = 
         ///             {
         ///                 new AliCloud.Slb.Inputs.MasterSlaveServerGroupServerArgs
@@ -110,7 +111,7 @@ namespace Pulumi.AliCloud.Slb
         ///                 },
         ///             },
         ///         });
-        ///         var sampleDs = instanceLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetMasterSlaveServerGroups.InvokeAsync(new AliCloud.Slb.GetMasterSlaveServerGroupsArgs
+        ///         var sampleDs = instanceApplicationLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetMasterSlaveServerGroups.InvokeAsync(new AliCloud.Slb.GetMasterSlaveServerGroupsArgs
         ///         {
         ///             LoadBalancerId = id,
         ///         }));

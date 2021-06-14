@@ -182,7 +182,7 @@ export class Etl extends pulumi.CustomResource {
     }
 
     /**
-     * Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+     * Delivery target logstore access key id.
      */
     public readonly accessKeyId!: pulumi.Output<string | undefined>;
     /**
@@ -250,7 +250,7 @@ export class Etl extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Sts role info.
+     * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      */
     public readonly roleArn!: pulumi.Output<string | undefined>;
     /**
@@ -270,7 +270,7 @@ export class Etl extends pulumi.CustomResource {
      */
     public readonly toTime!: pulumi.Output<number | undefined>;
     /**
-     * Log etl job version. the default value is 2.
+     * Log etl job version. the default value is `2`.
      */
     public readonly version!: pulumi.Output<number | undefined>;
 
@@ -366,7 +366,7 @@ export class Etl extends pulumi.CustomResource {
  */
 export interface EtlState {
     /**
-     * Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+     * Delivery target logstore access key id.
      */
     readonly accessKeyId?: pulumi.Input<string>;
     /**
@@ -434,7 +434,7 @@ export interface EtlState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Sts role info.
+     * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      */
     readonly roleArn?: pulumi.Input<string>;
     /**
@@ -454,7 +454,7 @@ export interface EtlState {
      */
     readonly toTime?: pulumi.Input<number>;
     /**
-     * Log etl job version. the default value is 2.
+     * Log etl job version. the default value is `2`.
      */
     readonly version?: pulumi.Input<number>;
 }
@@ -464,7 +464,7 @@ export interface EtlState {
  */
 export interface EtlArgs {
     /**
-     * Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+     * Delivery target logstore access key id.
      */
     readonly accessKeyId?: pulumi.Input<string>;
     /**
@@ -532,7 +532,7 @@ export interface EtlArgs {
      */
     readonly project: pulumi.Input<string>;
     /**
-     * Sts role info.
+     * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      */
     readonly roleArn?: pulumi.Input<string>;
     /**
@@ -552,7 +552,7 @@ export interface EtlArgs {
      */
     readonly toTime?: pulumi.Input<number>;
     /**
-     * Log etl job version. the default value is 2.
+     * Log etl job version. the default value is `2`.
      */
     readonly version?: pulumi.Input<number>;
 }

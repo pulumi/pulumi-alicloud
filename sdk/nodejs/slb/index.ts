@@ -6,11 +6,13 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./acl";
+export * from "./applicationLoadBalancer";
 export * from "./attachment";
 export * from "./backendServer";
 export * from "./caCertificate";
 export * from "./domainExtension";
 export * from "./getAcls";
+export * from "./getApplicationLoadBalancers";
 export * from "./getAttachments";
 export * from "./getBackendServers";
 export * from "./getCaCertificates";
@@ -31,6 +33,7 @@ export * from "./serverGroup";
 
 // Import resources to register:
 import { Acl } from "./acl";
+import { ApplicationLoadBalancer } from "./applicationLoadBalancer";
 import { Attachment } from "./attachment";
 import { BackendServer } from "./backendServer";
 import { CaCertificate } from "./caCertificate";
@@ -48,6 +51,8 @@ const _module = {
         switch (type) {
             case "alicloud:slb/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
+            case "alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer":
+                return new ApplicationLoadBalancer(name, <any>undefined, { urn })
             case "alicloud:slb/attachment:Attachment":
                 return new Attachment(name, <any>undefined, { urn })
             case "alicloud:slb/backendServer:BackendServer":
@@ -74,6 +79,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "slb/acl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "slb/applicationLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/attachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/backendServer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/caCertificate", _module)

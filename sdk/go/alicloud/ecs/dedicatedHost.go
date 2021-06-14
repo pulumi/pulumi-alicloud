@@ -98,6 +98,10 @@ type DedicatedHost struct {
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
+	// CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+	CpuOverCommitRatio pulumi.Float64PtrOutput `pulumi:"cpuOverCommitRatio"`
+	// The dedicated host cluster ID to which the dedicated host belongs.
+	DedicatedHostClusterId pulumi.StringPtrOutput `pulumi:"dedicatedHostClusterId"`
 	// The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	DedicatedHostName pulumi.StringPtrOutput `pulumi:"dedicatedHostName"`
 	// The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
@@ -110,6 +114,8 @@ type DedicatedHost struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
 	ExpiredTime pulumi.StringOutput `pulumi:"expiredTime"`
+	// Specify the minimum purchase quantity of a dedicated host.
+	MinQuantity pulumi.IntPtrOutput `pulumi:"minQuantity"`
 	// dedicated host network parameters. contains the following attributes:
 	NetworkAttributes DedicatedHostNetworkAttributeArrayOutput `pulumi:"networkAttributes"`
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
@@ -168,6 +174,10 @@ type dedicatedHostState struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+	CpuOverCommitRatio *float64 `pulumi:"cpuOverCommitRatio"`
+	// The dedicated host cluster ID to which the dedicated host belongs.
+	DedicatedHostClusterId *string `pulumi:"dedicatedHostClusterId"`
 	// The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	DedicatedHostName *string `pulumi:"dedicatedHostName"`
 	// The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
@@ -180,6 +190,8 @@ type dedicatedHostState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
 	ExpiredTime *string `pulumi:"expiredTime"`
+	// Specify the minimum purchase quantity of a dedicated host.
+	MinQuantity *int `pulumi:"minQuantity"`
 	// dedicated host network parameters. contains the following attributes:
 	NetworkAttributes []DedicatedHostNetworkAttribute `pulumi:"networkAttributes"`
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
@@ -207,6 +219,10 @@ type DedicatedHostState struct {
 	AutoRenew pulumi.BoolPtrInput
 	// The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+	CpuOverCommitRatio pulumi.Float64PtrInput
+	// The dedicated host cluster ID to which the dedicated host belongs.
+	DedicatedHostClusterId pulumi.StringPtrInput
 	// The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	DedicatedHostName pulumi.StringPtrInput
 	// The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
@@ -219,6 +235,8 @@ type DedicatedHostState struct {
 	DryRun pulumi.BoolPtrInput
 	// The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
 	ExpiredTime pulumi.StringPtrInput
+	// Specify the minimum purchase quantity of a dedicated host.
+	MinQuantity pulumi.IntPtrInput
 	// dedicated host network parameters. contains the following attributes:
 	NetworkAttributes DedicatedHostNetworkAttributeArrayInput
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
@@ -250,6 +268,10 @@ type dedicatedHostArgs struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+	CpuOverCommitRatio *float64 `pulumi:"cpuOverCommitRatio"`
+	// The dedicated host cluster ID to which the dedicated host belongs.
+	DedicatedHostClusterId *string `pulumi:"dedicatedHostClusterId"`
 	// The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	DedicatedHostName *string `pulumi:"dedicatedHostName"`
 	// The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
@@ -262,6 +284,8 @@ type dedicatedHostArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
 	ExpiredTime *string `pulumi:"expiredTime"`
+	// Specify the minimum purchase quantity of a dedicated host.
+	MinQuantity *int `pulumi:"minQuantity"`
 	// dedicated host network parameters. contains the following attributes:
 	NetworkAttributes []DedicatedHostNetworkAttribute `pulumi:"networkAttributes"`
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
@@ -288,6 +312,10 @@ type DedicatedHostArgs struct {
 	AutoRenew pulumi.BoolPtrInput
 	// The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
+	CpuOverCommitRatio pulumi.Float64PtrInput
+	// The dedicated host cluster ID to which the dedicated host belongs.
+	DedicatedHostClusterId pulumi.StringPtrInput
 	// The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	DedicatedHostName pulumi.StringPtrInput
 	// The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
@@ -300,6 +328,8 @@ type DedicatedHostArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
 	ExpiredTime pulumi.StringPtrInput
+	// Specify the minimum purchase quantity of a dedicated host.
+	MinQuantity pulumi.IntPtrInput
 	// dedicated host network parameters. contains the following attributes:
 	NetworkAttributes DedicatedHostNetworkAttributeArrayInput
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.

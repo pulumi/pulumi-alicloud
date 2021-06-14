@@ -60,6 +60,8 @@ type GetDedicatedHostsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the ECS Dedicated Host name.
 	NameRegex *string `pulumi:"nameRegex"`
+	// The reason why the dedicated host resource is locked.
+	OperationLocks []GetDedicatedHostsOperationLock `pulumi:"operationLocks"`
 	// Save the result to the file.
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group to which the ECS Dedicated Host belongs.
@@ -88,8 +90,10 @@ type GetDedicatedHostsResult struct {
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of ECS Dedicated Host names.
-	Names      []string `pulumi:"names"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Names []string `pulumi:"names"`
+	// (Available in 1.123.1+) The operation_locks. contains the following attribute:
+	OperationLocks []GetDedicatedHostsOperationLock `pulumi:"operationLocks"`
+	OutputFile     *string                          `pulumi:"outputFile"`
 	// The ID of the resource group to which the dedicated host belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The service status of the dedicated host.

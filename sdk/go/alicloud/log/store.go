@@ -21,19 +21,21 @@ import (
 type Store struct {
 	pulumi.CustomResourceState
 
-	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta pulumi.BoolPtrOutput `pulumi:"appendMeta"`
-	// Determines whether to automatically split a shard. Default to true.
+	// Determines whether to automatically split a shard. Default to `true`.
 	AutoSplit pulumi.BoolPtrOutput `pulumi:"autoSplit"`
-	// Determines whether to enable Web Tracking. Default false.
+	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking pulumi.BoolPtrOutput `pulumi:"enableWebTracking"`
+	// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+	EncryptConf StoreEncryptConfPtrOutput `pulumi:"encryptConf"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrOutput `pulumi:"maxSplitShardCount"`
 	// The log store, which is unique in the same project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project name to the log store belongs.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+	// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
 	RetentionPeriod pulumi.IntPtrOutput `pulumi:"retentionPeriod"`
 	// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
 	ShardCount pulumi.IntPtrOutput   `pulumi:"shardCount"`
@@ -72,19 +74,21 @@ func GetStore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Store resources.
 type storeState struct {
-	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta *bool `pulumi:"appendMeta"`
-	// Determines whether to automatically split a shard. Default to true.
+	// Determines whether to automatically split a shard. Default to `true`.
 	AutoSplit *bool `pulumi:"autoSplit"`
-	// Determines whether to enable Web Tracking. Default false.
+	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking *bool `pulumi:"enableWebTracking"`
+	// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+	EncryptConf *StoreEncryptConf `pulumi:"encryptConf"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount *int `pulumi:"maxSplitShardCount"`
 	// The log store, which is unique in the same project.
 	Name *string `pulumi:"name"`
 	// The project name to the log store belongs.
 	Project *string `pulumi:"project"`
-	// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+	// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 	// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
 	ShardCount *int         `pulumi:"shardCount"`
@@ -92,19 +96,21 @@ type storeState struct {
 }
 
 type StoreState struct {
-	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta pulumi.BoolPtrInput
-	// Determines whether to automatically split a shard. Default to true.
+	// Determines whether to automatically split a shard. Default to `true`.
 	AutoSplit pulumi.BoolPtrInput
-	// Determines whether to enable Web Tracking. Default false.
+	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking pulumi.BoolPtrInput
+	// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+	EncryptConf StoreEncryptConfPtrInput
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrInput
 	// The log store, which is unique in the same project.
 	Name pulumi.StringPtrInput
 	// The project name to the log store belongs.
 	Project pulumi.StringPtrInput
-	// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+	// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
 	RetentionPeriod pulumi.IntPtrInput
 	// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
 	ShardCount pulumi.IntPtrInput
@@ -116,19 +122,21 @@ func (StoreState) ElementType() reflect.Type {
 }
 
 type storeArgs struct {
-	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta *bool `pulumi:"appendMeta"`
-	// Determines whether to automatically split a shard. Default to true.
+	// Determines whether to automatically split a shard. Default to `true`.
 	AutoSplit *bool `pulumi:"autoSplit"`
-	// Determines whether to enable Web Tracking. Default false.
+	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking *bool `pulumi:"enableWebTracking"`
+	// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+	EncryptConf *StoreEncryptConf `pulumi:"encryptConf"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount *int `pulumi:"maxSplitShardCount"`
 	// The log store, which is unique in the same project.
 	Name *string `pulumi:"name"`
 	// The project name to the log store belongs.
 	Project string `pulumi:"project"`
-	// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+	// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 	// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
 	ShardCount *int `pulumi:"shardCount"`
@@ -136,19 +144,21 @@ type storeArgs struct {
 
 // The set of arguments for constructing a Store resource.
 type StoreArgs struct {
-	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
 	AppendMeta pulumi.BoolPtrInput
-	// Determines whether to automatically split a shard. Default to true.
+	// Determines whether to automatically split a shard. Default to `true`.
 	AutoSplit pulumi.BoolPtrInput
-	// Determines whether to enable Web Tracking. Default false.
+	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking pulumi.BoolPtrInput
+	// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+	EncryptConf StoreEncryptConfPtrInput
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrInput
 	// The log store, which is unique in the same project.
 	Name pulumi.StringPtrInput
 	// The project name to the log store belongs.
 	Project pulumi.StringInput
-	// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+	// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
 	RetentionPeriod pulumi.IntPtrInput
 	// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
 	ShardCount pulumi.IntPtrInput

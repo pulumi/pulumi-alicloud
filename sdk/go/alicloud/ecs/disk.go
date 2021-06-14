@@ -53,7 +53,7 @@ type Disk struct {
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
 	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
 	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
-	PerformanceLevel pulumi.StringPtrOutput `pulumi:"performanceLevel"`
+	PerformanceLevel pulumi.StringOutput `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`

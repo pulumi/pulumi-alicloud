@@ -66,7 +66,7 @@ type AlidnsInstance struct {
 	// Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
 	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
-	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
+	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
 	VersionCode pulumi.StringOutput `pulumi:"versionCode"`
 	// Paid package version name.

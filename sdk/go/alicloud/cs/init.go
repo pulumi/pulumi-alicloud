@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ManagedKubernetes{}
 	case "alicloud:cs/nodePool:NodePool":
 		r = &NodePool{}
+	case "alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance":
+		r = &RegistryEnterpriseInstance{}
 	case "alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace":
 		r = &RegistryEnterpriseNamespace{}
 	case "alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo":
@@ -98,6 +100,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cs/nodePool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cs/registryEnterpriseInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

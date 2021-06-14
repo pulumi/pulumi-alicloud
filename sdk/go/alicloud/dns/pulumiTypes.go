@@ -550,12 +550,16 @@ func (o GetAlidnsDomainsDomainRecordLineArrayOutput) Index(i pulumi.IntInput) Ge
 type GetAlidnsInstancesInstance struct {
 	// DNS security level.
 	DnsSecurity string `pulumi:"dnsSecurity"`
+	// (Available in 1.124.1+) The domain name.
+	Domain string `pulumi:"domain"`
 	// Number of domain names bound.
 	DomainNumbers string `pulumi:"domainNumbers"`
 	// Id of the instance.
 	Id string `pulumi:"id"`
 	// Id of the instance resource.
 	InstanceId string `pulumi:"instanceId"`
+	// (Available in 1.124.1+) The payment type of alidns instance.
+	PaymentType string `pulumi:"paymentType"`
 	// Paid package version.
 	VersionCode string `pulumi:"versionCode"`
 	// Paid package version name.
@@ -576,12 +580,16 @@ type GetAlidnsInstancesInstanceInput interface {
 type GetAlidnsInstancesInstanceArgs struct {
 	// DNS security level.
 	DnsSecurity pulumi.StringInput `pulumi:"dnsSecurity"`
+	// (Available in 1.124.1+) The domain name.
+	Domain pulumi.StringInput `pulumi:"domain"`
 	// Number of domain names bound.
 	DomainNumbers pulumi.StringInput `pulumi:"domainNumbers"`
 	// Id of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Id of the instance resource.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// (Available in 1.124.1+) The payment type of alidns instance.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// Paid package version.
 	VersionCode pulumi.StringInput `pulumi:"versionCode"`
 	// Paid package version name.
@@ -644,6 +652,11 @@ func (o GetAlidnsInstancesInstanceOutput) DnsSecurity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.DnsSecurity }).(pulumi.StringOutput)
 }
 
+// (Available in 1.124.1+) The domain name.
+func (o GetAlidnsInstancesInstanceOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.Domain }).(pulumi.StringOutput)
+}
+
 // Number of domain names bound.
 func (o GetAlidnsInstancesInstanceOutput) DomainNumbers() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.DomainNumbers }).(pulumi.StringOutput)
@@ -657,6 +670,11 @@ func (o GetAlidnsInstancesInstanceOutput) Id() pulumi.StringOutput {
 // Id of the instance resource.
 func (o GetAlidnsInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.1+) The payment type of alidns instance.
+func (o GetAlidnsInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // Paid package version.
@@ -1628,12 +1646,14 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 type GetInstancesInstance struct {
 	// DNS security level.
 	DnsSecurity string `pulumi:"dnsSecurity"`
+	Domain      string `pulumi:"domain"`
 	// Number of domain names bound.
 	DomainNumbers string `pulumi:"domainNumbers"`
 	// Id of the instance.
 	Id string `pulumi:"id"`
 	// Id of the instance resource.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId  string `pulumi:"instanceId"`
+	PaymentType string `pulumi:"paymentType"`
 	// Paid package version.
 	VersionCode string `pulumi:"versionCode"`
 	// Paid package version name.
@@ -1654,12 +1674,14 @@ type GetInstancesInstanceInput interface {
 type GetInstancesInstanceArgs struct {
 	// DNS security level.
 	DnsSecurity pulumi.StringInput `pulumi:"dnsSecurity"`
+	Domain      pulumi.StringInput `pulumi:"domain"`
 	// Number of domain names bound.
 	DomainNumbers pulumi.StringInput `pulumi:"domainNumbers"`
 	// Id of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Id of the instance resource.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	InstanceId  pulumi.StringInput `pulumi:"instanceId"`
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// Paid package version.
 	VersionCode pulumi.StringInput `pulumi:"versionCode"`
 	// Paid package version name.
@@ -1722,6 +1744,10 @@ func (o GetInstancesInstanceOutput) DnsSecurity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DnsSecurity }).(pulumi.StringOutput)
 }
 
+func (o GetInstancesInstanceOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Domain }).(pulumi.StringOutput)
+}
+
 // Number of domain names bound.
 func (o GetInstancesInstanceOutput) DomainNumbers() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DomainNumbers }).(pulumi.StringOutput)
@@ -1735,6 +1761,10 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 // Id of the instance resource.
 func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // Paid package version.

@@ -113,7 +113,7 @@ type Cluster struct {
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
 	Parameters ClusterParameterArrayOutput `pulumi:"parameters"`
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	PayType pulumi.StringPtrOutput `pulumi:"payType"`
 	Period  pulumi.IntPtrOutput    `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -199,7 +199,7 @@ type clusterState struct {
 	ModifyType *string `pulumi:"modifyType"`
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
 	Parameters []ClusterParameter `pulumi:"parameters"`
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	PayType *string `pulumi:"payType"`
 	Period  *int    `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -248,7 +248,7 @@ type ClusterState struct {
 	ModifyType pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
 	Parameters ClusterParameterArrayInput
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	PayType pulumi.StringPtrInput
 	Period  pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -299,7 +299,7 @@ type clusterArgs struct {
 	ModifyType *string `pulumi:"modifyType"`
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
 	Parameters []ClusterParameter `pulumi:"parameters"`
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	PayType *string `pulumi:"payType"`
 	Period  *int    `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -347,7 +347,7 @@ type ClusterArgs struct {
 	ModifyType pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
 	Parameters ClusterParameterArrayInput
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	PayType pulumi.StringPtrInput
 	Period  pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.

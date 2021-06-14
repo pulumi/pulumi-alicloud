@@ -21,7 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.NewLoadBalancer(ctx, "_default", nil)
+// 		_, err := slb.NewApplicationLoadBalancer(ctx, "_default", &slb.ApplicationLoadBalancerArgs{
+// 			LoadBalancerName: pulumi.String("tf-testAccSlbListenertcp"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

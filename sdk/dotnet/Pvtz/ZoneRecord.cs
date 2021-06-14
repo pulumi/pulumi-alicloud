@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The Private Zone Record ID.
         /// </summary>
         [Output("recordId")]
-        public Output<int> RecordId { get; private set; } = null!;
+        public Output<string> RecordId { get; private set; } = null!;
 
         /// <summary>
         /// The remark of the Private Zone Record.
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The Private Zone Record ID.
         /// </summary>
         [Input("recordId")]
-        public Input<int>? RecordId { get; set; }
+        public Input<string>? RecordId { get; set; }
 
         /// <summary>
         /// The remark of the Private Zone Record.
