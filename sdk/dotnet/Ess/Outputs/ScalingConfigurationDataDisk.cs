@@ -21,6 +21,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         public readonly bool? Encrypted;
         public readonly string? KmsKeyId;
         public readonly string? Name;
+        public readonly string? PerformanceLevel;
         public readonly int? Size;
         public readonly string? SnapshotId;
 
@@ -42,6 +43,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             string? name,
 
+            string? performanceLevel,
+
             int? size,
 
             string? snapshotId)
@@ -54,6 +57,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
             Encrypted = encrypted;
             KmsKeyId = kmsKeyId;
             Name = name;
+            PerformanceLevel = performanceLevel;
             Size = size;
             SnapshotId = snapshotId;
         }

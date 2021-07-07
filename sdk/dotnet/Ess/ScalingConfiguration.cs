@@ -214,6 +214,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> SystemDiskName { get; private set; } = null!;
 
         /// <summary>
+        /// The performance level of the ESSD used as the system disk.
+        /// </summary>
+        [Output("systemDiskPerformanceLevel")]
+        public Output<string?> SystemDiskPerformanceLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
         /// </summary>
         [Output("systemDiskSize")]
@@ -503,6 +509,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
+        /// The performance level of the ESSD used as the system disk.
+        /// </summary>
+        [Input("systemDiskPerformanceLevel")]
+        public Input<string>? SystemDiskPerformanceLevel { get; set; }
+
+        /// <summary>
         /// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
         /// </summary>
         [Input("systemDiskSize")]
@@ -757,6 +769,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("systemDiskName")]
         public Input<string>? SystemDiskName { get; set; }
+
+        /// <summary>
+        /// The performance level of the ESSD used as the system disk.
+        /// </summary>
+        [Input("systemDiskPerformanceLevel")]
+        public Input<string>? SystemDiskPerformanceLevel { get; set; }
 
         /// <summary>
         /// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.

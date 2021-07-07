@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.124.2 of the AliCloud Terraform Provider  
+* Upgrade to v1.125.0 of the AliCloud Terraform Provider  
   **PLEASE NOTE:* There are a number of breaking changes in this provider update:
   * `alicloud.cfg.Rule` has had `memberId` `multiAccount` and `scopeComplianceResourceId` input and output properties removed
   * `alicloud.cfg.getRules` has had `scopeComplianceResourceId` and `createTimestamp` removed from the Rule property and `messageType` input and output property removed.

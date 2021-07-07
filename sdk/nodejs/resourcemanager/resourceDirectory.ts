@@ -80,9 +80,9 @@ export class ResourceDirectory extends pulumi.CustomResource {
      */
     public /*out*/ readonly rootFolderId!: pulumi.Output<string>;
     /**
-     * The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+     * The status of control policy. Valid values:`Enabled` and `Disabled`.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    public readonly status!: pulumi.Output<string>;
 
     /**
      * Create a ResourceDirectory resource with the given unique name, arguments, and options.
@@ -132,7 +132,7 @@ export interface ResourceDirectoryState {
      */
     readonly rootFolderId?: pulumi.Input<string>;
     /**
-     * The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+     * The status of control policy. Valid values:`Enabled` and `Disabled`.
      */
     readonly status?: pulumi.Input<string>;
 }
@@ -142,7 +142,7 @@ export interface ResourceDirectoryState {
  */
 export interface ResourceDirectoryArgs {
     /**
-     * The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+     * The status of control policy. Valid values:`Enabled` and `Disabled`.
      */
     readonly status?: pulumi.Input<string>;
 }

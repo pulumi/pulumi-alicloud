@@ -46,6 +46,12 @@ namespace Pulumi.AliCloud.ResourceManager
 
     public sealed class GetAccountsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -80,6 +86,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// A list of accounts. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountsAccountResult> Accounts;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -98,6 +105,8 @@ namespace Pulumi.AliCloud.ResourceManager
         private GetAccountsResult(
             ImmutableArray<Outputs.GetAccountsAccountResult> accounts,
 
+            bool? enableDetails,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -107,6 +116,7 @@ namespace Pulumi.AliCloud.ResourceManager
             string? status)
         {
             Accounts = accounts;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             OutputFile = outputFile;

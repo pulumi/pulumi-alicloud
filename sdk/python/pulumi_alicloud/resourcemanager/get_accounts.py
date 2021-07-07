@@ -20,10 +20,13 @@ class GetAccountsResult:
     """
     A collection of values returned by getAccounts.
     """
-    def __init__(__self__, accounts=None, id=None, ids=None, output_file=None, status=None):
+    def __init__(__self__, accounts=None, enable_details=None, id=None, ids=None, output_file=None, status=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -44,6 +47,11 @@ class GetAccountsResult:
         A list of accounts. Each element contains the following attributes:
         """
         return pulumi.get(self, "accounts")
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -82,13 +90,15 @@ class AwaitableGetAccountsResult(GetAccountsResult):
             yield self
         return GetAccountsResult(
             accounts=self.accounts,
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             output_file=self.output_file,
             status=self.status)
 
 
-def get_accounts(ids: Optional[Sequence[str]] = None,
+def get_accounts(enable_details: Optional[bool] = None,
+                 ids: Optional[Sequence[str]] = None,
                  output_file: Optional[str] = None,
                  status: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
@@ -108,10 +118,12 @@ def get_accounts(ids: Optional[Sequence[str]] = None,
     ```
 
 
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of account IDs.
     :param str status: The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
@@ -123,6 +135,7 @@ def get_accounts(ids: Optional[Sequence[str]] = None,
 
     return AwaitableGetAccountsResult(
         accounts=__ret__.accounts,
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
         output_file=__ret__.output_file,

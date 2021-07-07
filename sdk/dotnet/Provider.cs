@@ -63,6 +63,18 @@ namespace Pulumi.AliCloud
         public Input<Inputs.ProviderAssumeRoleArgs>? AssumeRole { get; set; }
 
         /// <summary>
+        /// The maximum timeout of the client connection server.
+        /// </summary>
+        [Input("clientConnectTimeout", json: true)]
+        public Input<int>? ClientConnectTimeout { get; set; }
+
+        /// <summary>
+        /// The maximum timeout of the client read request.
+        /// </summary>
+        [Input("clientReadTimeout", json: true)]
+        public Input<int>? ClientReadTimeout { get; set; }
+
+        /// <summary>
         /// Use this to mark a terraform configuration file source.
         /// </summary>
         [Input("configurationSource")]

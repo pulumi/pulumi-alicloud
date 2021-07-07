@@ -43,6 +43,8 @@ func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getAccounts.
 type GetAccountsArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of account IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -53,7 +55,8 @@ type GetAccountsArgs struct {
 // A collection of values returned by getAccounts.
 type GetAccountsResult struct {
 	// A list of accounts. Each element contains the following attributes:
-	Accounts []GetAccountsAccount `pulumi:"accounts"`
+	Accounts      []GetAccountsAccount `pulumi:"accounts"`
+	EnableDetails *bool                `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of account IDs.

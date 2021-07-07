@@ -73,7 +73,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterAliasName!: pulumi.Output<string | undefined>;
     /**
-     * The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+     * The engine specification of MSE Cluster. Valid values:
+     * `MSE_SC_1_2_200_c`：1C2G
+     * `MSE_SC_2_4_200_c`：2C4G
+     * `MSE_SC_4_8_200_c`：4C8G
+     * `MSE_SC_8_16_200_c`：8C16G
      */
     public readonly clusterSpecification!: pulumi.Output<string>;
     /**
@@ -194,7 +198,11 @@ export interface ClusterState {
      */
     readonly clusterAliasName?: pulumi.Input<string>;
     /**
-     * The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+     * The engine specification of MSE Cluster. Valid values:
+     * `MSE_SC_1_2_200_c`：1C2G
+     * `MSE_SC_2_4_200_c`：2C4G
+     * `MSE_SC_4_8_200_c`：4C8G
+     * `MSE_SC_8_16_200_c`：8C16G
      */
     readonly clusterSpecification?: pulumi.Input<string>;
     /**
@@ -252,7 +260,11 @@ export interface ClusterArgs {
      */
     readonly clusterAliasName?: pulumi.Input<string>;
     /**
-     * The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+     * The engine specification of MSE Cluster. Valid values:
+     * `MSE_SC_1_2_200_c`：1C2G
+     * `MSE_SC_2_4_200_c`：2C4G
+     * `MSE_SC_4_8_200_c`：4C8G
+     * `MSE_SC_8_16_200_c`：8C16G
      */
     readonly clusterSpecification: pulumi.Input<string>;
     /**

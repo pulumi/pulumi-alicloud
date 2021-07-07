@@ -33,6 +33,7 @@ export interface ProviderEndpoint {
     ddosbgp?: pulumi.Input<string>;
     ddoscoo?: pulumi.Input<string>;
     dds?: pulumi.Input<string>;
+    dm?: pulumi.Input<string>;
     dmsEnterprise?: pulumi.Input<string>;
     dns?: pulumi.Input<string>;
     drds?: pulumi.Input<string>;
@@ -1259,6 +1260,9 @@ export namespace ddos {
 export namespace dds {
 }
 
+export namespace directmail {
+}
+
 export namespace dms {
 }
 
@@ -2003,6 +2007,7 @@ export namespace ess {
         encrypted?: pulumi.Input<boolean>;
         kmsKeyId?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
+        performanceLevel?: pulumi.Input<string>;
         size?: pulumi.Input<number>;
         snapshotId?: pulumi.Input<string>;
     }

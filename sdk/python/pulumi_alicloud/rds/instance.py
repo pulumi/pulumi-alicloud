@@ -28,20 +28,25 @@ class InstanceArgs:
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+                 db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ip_mode: Optional[pulumi.Input[str]] = None,
+                 security_ip_type: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
@@ -51,6 +56,7 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_a: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_b: Optional[pulumi.Input[str]] = None):
@@ -87,6 +93,8 @@ class InstanceArgs:
         :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
+        :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+        :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
         :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
                - local_ssd: specifies to use local SSDs. This value is recommended.
                - cloud_ssd: specifies to use standard SSDs.
@@ -98,8 +106,13 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+               - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+               - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+               - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
                - perfer
@@ -109,6 +122,7 @@ class InstanceArgs:
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
@@ -120,6 +134,10 @@ class InstanceArgs:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
+               - Classic: classic network in enhanced whitelist mode
+               - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+               - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
@@ -148,6 +166,10 @@ class InstanceArgs:
             pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
+        if db_instance_ip_array_attribute is not None:
+            pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
+        if db_instance_ip_array_name is not None:
+            pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if encryption_key is not None:
@@ -160,12 +182,16 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_name", instance_name)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
+        if modify_mode is not None:
+            pulumi.set(__self__, "modify_mode", modify_mode)
         if monitoring_period is not None:
             pulumi.set(__self__, "monitoring_period", monitoring_period)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if replication_acl is not None:
             pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
@@ -179,6 +205,8 @@ class InstanceArgs:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if security_ip_mode is not None:
             pulumi.set(__self__, "security_ip_mode", security_ip_mode)
+        if security_ip_type is not None:
+            pulumi.set(__self__, "security_ip_type", security_ip_type)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
         if server_cert is not None:
@@ -197,6 +225,8 @@ class InstanceArgs:
             pulumi.set(__self__, "tde_status", tde_status)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if whitelist_network_type is not None:
+            pulumi.set(__self__, "whitelist_network_type", whitelist_network_type)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
         if zone_id_slave_a is not None:
@@ -379,6 +409,30 @@ class InstanceArgs:
         pulumi.set(self, "client_crl_enabled", value)
 
     @property
+    @pulumi.getter(name="dbInstanceIpArrayAttribute")
+    def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute of the IP address whitelist. By default, this parameter is empty.
+        """
+        return pulumi.get(self, "db_instance_ip_array_attribute")
+
+    @db_instance_ip_array_attribute.setter
+    def db_instance_ip_array_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_ip_array_attribute", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceIpArrayName")
+    def db_instance_ip_array_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the IP address whitelist. Default value: Default.
+        """
+        return pulumi.get(self, "db_instance_ip_array_name")
+
+    @db_instance_ip_array_name.setter
+    def db_instance_ip_array_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_ip_array_name", value)
+
+    @property
     @pulumi.getter(name="dbInstanceStorageType")
     def db_instance_storage_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -456,6 +510,21 @@ class InstanceArgs:
         pulumi.set(self, "maintain_time", value)
 
     @property
+    @pulumi.getter(name="modifyMode")
+    def modify_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        """
+        return pulumi.get(self, "modify_mode")
+
+    @modify_mode.setter
+    def modify_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modify_mode", value)
+
+    @property
     @pulumi.getter(name="monitoringPeriod")
     def monitoring_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -487,6 +556,18 @@ class InstanceArgs:
     @period.setter
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
 
     @property
     @pulumi.getter(name="replicationAcl")
@@ -551,6 +632,18 @@ class InstanceArgs:
     @security_ip_mode.setter
     def security_ip_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_ip_mode", value)
+
+    @property
+    @pulumi.getter(name="securityIpType")
+    def security_ip_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of IP address in the IP address whitelist.
+        """
+        return pulumi.get(self, "security_ip_type")
+
+    @security_ip_type.setter
+    def security_ip_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_type", value)
 
     @property
     @pulumi.getter(name="securityIps")
@@ -663,6 +756,21 @@ class InstanceArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="whitelistNetworkType")
+    def whitelist_network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the IP address whitelist. Default value: MIX. Valid values:
+        - Classic: classic network in enhanced whitelist mode
+        - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        - MIX: standard whitelist mode
+        """
+        return pulumi.get(self, "whitelist_network_type")
+
+    @whitelist_network_type.setter
+    def whitelist_network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "whitelist_network_type", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -714,6 +822,8 @@ class _InstanceState:
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
+                 db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+                 db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
@@ -724,15 +834,18 @@ class _InstanceState:
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ip_mode: Optional[pulumi.Input[str]] = None,
+                 security_ip_type: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
@@ -743,6 +856,7 @@ class _InstanceState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_a: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_b: Optional[pulumi.Input[str]] = None):
@@ -770,6 +884,8 @@ class _InstanceState:
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
+        :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+        :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
         :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
                - local_ssd: specifies to use local SSDs. This value is recommended.
                - cloud_ssd: specifies to use standard SSDs.
@@ -791,9 +907,14 @@ class _InstanceState:
                Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+               - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+               - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+               - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[str] port: RDS database connection port.
+        :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
                - perfer
@@ -803,6 +924,7 @@ class _InstanceState:
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
@@ -815,6 +937,10 @@ class _InstanceState:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
+               - Classic: classic network in enhanced whitelist mode
+               - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+               - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
@@ -841,6 +967,10 @@ class _InstanceState:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
+        if db_instance_ip_array_attribute is not None:
+            pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
+        if db_instance_ip_array_name is not None:
+            pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if encryption_key is not None:
@@ -861,6 +991,8 @@ class _InstanceState:
             pulumi.set(__self__, "instance_type", instance_type)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
+        if modify_mode is not None:
+            pulumi.set(__self__, "modify_mode", modify_mode)
         if monitoring_period is not None:
             pulumi.set(__self__, "monitoring_period", monitoring_period)
         if parameters is not None:
@@ -869,6 +1001,8 @@ class _InstanceState:
             pulumi.set(__self__, "period", period)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if replication_acl is not None:
             pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
@@ -882,6 +1016,8 @@ class _InstanceState:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if security_ip_mode is not None:
             pulumi.set(__self__, "security_ip_mode", security_ip_mode)
+        if security_ip_type is not None:
+            pulumi.set(__self__, "security_ip_type", security_ip_type)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
         if server_cert is not None:
@@ -902,6 +1038,8 @@ class _InstanceState:
             pulumi.set(__self__, "tde_status", tde_status)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if whitelist_network_type is not None:
+            pulumi.set(__self__, "whitelist_network_type", whitelist_network_type)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
         if zone_id_slave_a is not None:
@@ -1042,6 +1180,30 @@ class _InstanceState:
         pulumi.set(self, "connection_string", value)
 
     @property
+    @pulumi.getter(name="dbInstanceIpArrayAttribute")
+    def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute of the IP address whitelist. By default, this parameter is empty.
+        """
+        return pulumi.get(self, "db_instance_ip_array_attribute")
+
+    @db_instance_ip_array_attribute.setter
+    def db_instance_ip_array_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_ip_array_attribute", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceIpArrayName")
+    def db_instance_ip_array_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the IP address whitelist. Default value: Default.
+        """
+        return pulumi.get(self, "db_instance_ip_array_name")
+
+    @db_instance_ip_array_name.setter
+    def db_instance_ip_array_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_ip_array_name", value)
+
+    @property
     @pulumi.getter(name="dbInstanceStorageType")
     def db_instance_storage_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1173,6 +1335,21 @@ class _InstanceState:
         pulumi.set(self, "maintain_time", value)
 
     @property
+    @pulumi.getter(name="modifyMode")
+    def modify_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        """
+        return pulumi.get(self, "modify_mode")
+
+    @modify_mode.setter
+    def modify_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modify_mode", value)
+
+    @property
     @pulumi.getter(name="monitoringPeriod")
     def monitoring_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1216,6 +1393,18 @@ class _InstanceState:
     @port.setter
     def port(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
 
     @property
     @pulumi.getter(name="replicationAcl")
@@ -1280,6 +1469,18 @@ class _InstanceState:
     @security_ip_mode.setter
     def security_ip_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_ip_mode", value)
+
+    @property
+    @pulumi.getter(name="securityIpType")
+    def security_ip_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of IP address in the IP address whitelist.
+        """
+        return pulumi.get(self, "security_ip_type")
+
+    @security_ip_type.setter
+    def security_ip_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_type", value)
 
     @property
     @pulumi.getter(name="securityIps")
@@ -1404,6 +1605,21 @@ class _InstanceState:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="whitelistNetworkType")
+    def whitelist_network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the IP address whitelist. Default value: MIX. Valid values:
+        - Classic: classic network in enhanced whitelist mode
+        - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        - MIX: standard whitelist mode
+        """
+        return pulumi.get(self, "whitelist_network_type")
+
+    @whitelist_network_type.setter
+    def whitelist_network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "whitelist_network_type", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1456,6 +1672,8 @@ class Instance(pulumi.CustomResource):
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+                 db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
@@ -1466,14 +1684,17 @@ class Instance(pulumi.CustomResource):
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ip_mode: Optional[pulumi.Input[str]] = None,
+                 security_ip_type: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
@@ -1483,6 +1704,7 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_a: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_b: Optional[pulumi.Input[str]] = None,
@@ -1554,6 +1776,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
+        :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+        :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
         :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
                - local_ssd: specifies to use local SSDs. This value is recommended.
                - cloud_ssd: specifies to use standard SSDs.
@@ -1575,8 +1799,13 @@ class Instance(pulumi.CustomResource):
                Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+               - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+               - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+               - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
                - perfer
@@ -1586,6 +1815,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
@@ -1597,6 +1827,10 @@ class Instance(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
+               - Classic: classic network in enhanced whitelist mode
+               - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+               - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
@@ -1677,6 +1911,8 @@ class Instance(pulumi.CustomResource):
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+                 db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
@@ -1687,14 +1923,17 @@ class Instance(pulumi.CustomResource):
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ip_mode: Optional[pulumi.Input[str]] = None,
+                 security_ip_type: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
@@ -1704,6 +1943,7 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_a: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_b: Optional[pulumi.Input[str]] = None,
@@ -1728,6 +1968,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["client_ca_enabled"] = client_ca_enabled
             __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
             __props__.__dict__["client_crl_enabled"] = client_crl_enabled
+            __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
+            __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
             __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
             __props__.__dict__["encryption_key"] = encryption_key
             if engine is None and not opts.urn:
@@ -1746,9 +1988,11 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["maintain_time"] = maintain_time
+            __props__.__dict__["modify_mode"] = modify_mode
             __props__.__dict__["monitoring_period"] = monitoring_period
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["period"] = period
+            __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["replication_acl"] = replication_acl
             __props__.__dict__["resource_group_id"] = resource_group_id
             if security_group_id is not None and not opts.urn:
@@ -1757,6 +2001,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["security_ip_mode"] = security_ip_mode
+            __props__.__dict__["security_ip_type"] = security_ip_type
             __props__.__dict__["security_ips"] = security_ips
             __props__.__dict__["server_cert"] = server_cert
             __props__.__dict__["server_key"] = server_key
@@ -1766,6 +2011,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["whitelist_network_type"] = whitelist_network_type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["zone_id_slave_a"] = zone_id_slave_a
             __props__.__dict__["zone_id_slave_b"] = zone_id_slave_b
@@ -1792,6 +2038,8 @@ class Instance(pulumi.CustomResource):
             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
             client_crl_enabled: Optional[pulumi.Input[int]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
+            db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+            db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
             encryption_key: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
@@ -1802,15 +2050,18 @@ class Instance(pulumi.CustomResource):
             instance_storage: Optional[pulumi.Input[int]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
+            modify_mode: Optional[pulumi.Input[str]] = None,
             monitoring_period: Optional[pulumi.Input[int]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
             period: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[str]] = None,
+            private_ip_address: Optional[pulumi.Input[str]] = None,
             replication_acl: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_ip_mode: Optional[pulumi.Input[str]] = None,
+            security_ip_type: Optional[pulumi.Input[str]] = None,
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             server_cert: Optional[pulumi.Input[str]] = None,
             server_key: Optional[pulumi.Input[str]] = None,
@@ -1821,6 +2072,7 @@ class Instance(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
+            whitelist_network_type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None,
             zone_id_slave_a: Optional[pulumi.Input[str]] = None,
             zone_id_slave_b: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -1853,6 +2105,8 @@ class Instance(pulumi.CustomResource):
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
+        :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+        :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
         :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
                - local_ssd: specifies to use local SSDs. This value is recommended.
                - cloud_ssd: specifies to use standard SSDs.
@@ -1874,9 +2128,14 @@ class Instance(pulumi.CustomResource):
                Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+               - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+               - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+               - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[str] port: RDS database connection port.
+        :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
                - perfer
@@ -1886,6 +2145,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
@@ -1898,6 +2158,10 @@ class Instance(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
+               - Classic: classic network in enhanced whitelist mode
+               - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+               - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
@@ -1918,6 +2182,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
         __props__.__dict__["client_crl_enabled"] = client_crl_enabled
         __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
+        __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
         __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["engine"] = engine
@@ -1928,15 +2194,18 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["instance_storage"] = instance_storage
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["maintain_time"] = maintain_time
+        __props__.__dict__["modify_mode"] = modify_mode
         __props__.__dict__["monitoring_period"] = monitoring_period
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
+        __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["replication_acl"] = replication_acl
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["security_ip_mode"] = security_ip_mode
+        __props__.__dict__["security_ip_type"] = security_ip_type
         __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["server_cert"] = server_cert
         __props__.__dict__["server_key"] = server_key
@@ -1947,6 +2216,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["whitelist_network_type"] = whitelist_network_type
         __props__.__dict__["zone_id"] = zone_id
         __props__.__dict__["zone_id_slave_a"] = zone_id_slave_a
         __props__.__dict__["zone_id_slave_b"] = zone_id_slave_b
@@ -2045,6 +2315,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "connection_string")
 
     @property
+    @pulumi.getter(name="dbInstanceIpArrayAttribute")
+    def db_instance_ip_array_attribute(self) -> pulumi.Output[Optional[str]]:
+        """
+        The attribute of the IP address whitelist. By default, this parameter is empty.
+        """
+        return pulumi.get(self, "db_instance_ip_array_attribute")
+
+    @property
+    @pulumi.getter(name="dbInstanceIpArrayName")
+    def db_instance_ip_array_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the IP address whitelist. Default value: Default.
+        """
+        return pulumi.get(self, "db_instance_ip_array_name")
+
+    @property
     @pulumi.getter(name="dbInstanceStorageType")
     def db_instance_storage_type(self) -> pulumi.Output[str]:
         """
@@ -2136,6 +2422,17 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "maintain_time")
 
     @property
+    @pulumi.getter(name="modifyMode")
+    def modify_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        """
+        return pulumi.get(self, "modify_mode")
+
+    @property
     @pulumi.getter(name="monitoringPeriod")
     def monitoring_period(self) -> pulumi.Output[int]:
         """
@@ -2163,6 +2460,14 @@ class Instance(pulumi.CustomResource):
         RDS database connection port.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> pulumi.Output[str]:
+        """
+        The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        """
+        return pulumi.get(self, "private_ip_address")
 
     @property
     @pulumi.getter(name="replicationAcl")
@@ -2207,6 +2512,14 @@ class Instance(pulumi.CustomResource):
         Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
         """
         return pulumi.get(self, "security_ip_mode")
+
+    @property
+    @pulumi.getter(name="securityIpType")
+    def security_ip_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of IP address in the IP address whitelist.
+        """
+        return pulumi.get(self, "security_ip_type")
 
     @property
     @pulumi.getter(name="securityIps")
@@ -2289,6 +2602,17 @@ class Instance(pulumi.CustomResource):
         The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         """
         return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="whitelistNetworkType")
+    def whitelist_network_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The network type of the IP address whitelist. Default value: MIX. Valid values:
+        - Classic: classic network in enhanced whitelist mode
+        - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        - MIX: standard whitelist mode
+        """
+        return pulumi.get(self, "whitelist_network_type")
 
     @property
     @pulumi.getter(name="zoneId")

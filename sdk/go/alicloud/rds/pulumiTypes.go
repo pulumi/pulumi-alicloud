@@ -1137,10 +1137,22 @@ type GetInstancesInstance struct {
 	ConnectionString string `pulumi:"connectionString"`
 	// Creation time of the instance.
 	CreateTime string `pulumi:"createTime"`
+	// (Available in 1.124.3+) The creator of the encryption key.
+	Creator string `pulumi:"creator"`
 	// (Available in 1.70.3+) The storage type of the instance.
 	DbInstanceStorageType string `pulumi:"dbInstanceStorageType"`
 	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
 	DbType string `pulumi:"dbType"`
+	// (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	DeleteDate string `pulumi:"deleteDate"`
+	// (Available in 1.124.3+) The description of the encryption key.
+	Description string `pulumi:"description"`
+	// (Available in 1.124.3+) The ID of the encryption key.
+	EncryptionKey string `pulumi:"encryptionKey"`
+	// (Available in 1.124.3+) The status of the encryption key. Valid values:
+	// - Enabled
+	// - Disabled
+	EncryptionKeyStatus string `pulumi:"encryptionKeyStatus"`
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
 	Engine string `pulumi:"engine"`
 	// Database version.
@@ -1155,6 +1167,8 @@ type GetInstancesInstance struct {
 	InstanceStorage int `pulumi:"instanceStorage"`
 	// Sizing of the RDS instance.
 	InstanceType string `pulumi:"instanceType"`
+	// (Available in 1.124.3+) The purpose of the encryption key.
+	KeyUsage string `pulumi:"keyUsage"`
 	// (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
 	// - success
 	// - setting
@@ -1164,12 +1178,16 @@ type GetInstancesInstance struct {
 	MasterInstanceId string `pulumi:"masterInstanceId"`
 	// (Available in 1.101.0+) The master zone of the instance.
 	MasterZone string `pulumi:"masterZone"`
+	// (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	MaterialExpireTime string `pulumi:"materialExpireTime"`
 	// (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
 	ModifyStatusReason string `pulumi:"modifyStatusReason"`
 	// The name of the RDS instance.
 	Name string `pulumi:"name"`
 	// `Internet` for public network or `Intranet` for private network.
 	NetType string `pulumi:"netType"`
+	// (Available in 1.124.3+) The source of the encryption key.
+	Origin string `pulumi:"origin"`
 	// (Available in 1.70.3+) RDS database connection port.
 	Port string `pulumi:"port"`
 	// A list of IDs of read-only instances attached to the primary instance.
@@ -1259,10 +1277,22 @@ type GetInstancesInstanceArgs struct {
 	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
 	// Creation time of the instance.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (Available in 1.124.3+) The creator of the encryption key.
+	Creator pulumi.StringInput `pulumi:"creator"`
 	// (Available in 1.70.3+) The storage type of the instance.
 	DbInstanceStorageType pulumi.StringInput `pulumi:"dbInstanceStorageType"`
 	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
 	DbType pulumi.StringInput `pulumi:"dbType"`
+	// (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	DeleteDate pulumi.StringInput `pulumi:"deleteDate"`
+	// (Available in 1.124.3+) The description of the encryption key.
+	Description pulumi.StringInput `pulumi:"description"`
+	// (Available in 1.124.3+) The ID of the encryption key.
+	EncryptionKey pulumi.StringInput `pulumi:"encryptionKey"`
+	// (Available in 1.124.3+) The status of the encryption key. Valid values:
+	// - Enabled
+	// - Disabled
+	EncryptionKeyStatus pulumi.StringInput `pulumi:"encryptionKeyStatus"`
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// Database version.
@@ -1277,6 +1307,8 @@ type GetInstancesInstanceArgs struct {
 	InstanceStorage pulumi.IntInput `pulumi:"instanceStorage"`
 	// Sizing of the RDS instance.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// (Available in 1.124.3+) The purpose of the encryption key.
+	KeyUsage pulumi.StringInput `pulumi:"keyUsage"`
 	// (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
 	// - success
 	// - setting
@@ -1286,12 +1318,16 @@ type GetInstancesInstanceArgs struct {
 	MasterInstanceId pulumi.StringInput `pulumi:"masterInstanceId"`
 	// (Available in 1.101.0+) The master zone of the instance.
 	MasterZone pulumi.StringInput `pulumi:"masterZone"`
+	// (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	MaterialExpireTime pulumi.StringInput `pulumi:"materialExpireTime"`
 	// (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
 	ModifyStatusReason pulumi.StringInput `pulumi:"modifyStatusReason"`
 	// The name of the RDS instance.
 	Name pulumi.StringInput `pulumi:"name"`
 	// `Internet` for public network or `Intranet` for private network.
 	NetType pulumi.StringInput `pulumi:"netType"`
+	// (Available in 1.124.3+) The source of the encryption key.
+	Origin pulumi.StringInput `pulumi:"origin"`
 	// (Available in 1.70.3+) RDS database connection port.
 	Port pulumi.StringInput `pulumi:"port"`
 	// A list of IDs of read-only instances attached to the primary instance.
@@ -1450,6 +1486,11 @@ func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// (Available in 1.124.3+) The creator of the encryption key.
+func (o GetInstancesInstanceOutput) Creator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Creator }).(pulumi.StringOutput)
+}
+
 // (Available in 1.70.3+) The storage type of the instance.
 func (o GetInstancesInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceStorageType }).(pulumi.StringOutput)
@@ -1458,6 +1499,28 @@ func (o GetInstancesInstanceOutput) DbInstanceStorageType() pulumi.StringOutput 
 // `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
 func (o GetInstancesInstanceOutput) DbType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o GetInstancesInstanceOutput) DeleteDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DeleteDate }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.3+) The description of the encryption key.
+func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.3+) The ID of the encryption key.
+func (o GetInstancesInstanceOutput) EncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.EncryptionKey }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.3+) The status of the encryption key. Valid values:
+// - Enabled
+// - Disabled
+func (o GetInstancesInstanceOutput) EncryptionKeyStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.EncryptionKeyStatus }).(pulumi.StringOutput)
 }
 
 // Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
@@ -1495,6 +1558,11 @@ func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// (Available in 1.124.3+) The purpose of the encryption key.
+func (o GetInstancesInstanceOutput) KeyUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.KeyUsage }).(pulumi.StringOutput)
+}
+
 // (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
 // - success
 // - setting
@@ -1513,6 +1581,11 @@ func (o GetInstancesInstanceOutput) MasterZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MasterZone }).(pulumi.StringOutput)
 }
 
+// (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o GetInstancesInstanceOutput) MaterialExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaterialExpireTime }).(pulumi.StringOutput)
+}
+
 // (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
 func (o GetInstancesInstanceOutput) ModifyStatusReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ModifyStatusReason }).(pulumi.StringOutput)
@@ -1526,6 +1599,11 @@ func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 // `Internet` for public network or `Intranet` for private network.
 func (o GetInstancesInstanceOutput) NetType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.NetType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.124.3+) The source of the encryption key.
+func (o GetInstancesInstanceOutput) Origin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Origin }).(pulumi.StringOutput)
 }
 
 // (Available in 1.70.3+) RDS database connection port.

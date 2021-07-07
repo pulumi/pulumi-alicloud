@@ -112,6 +112,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     */
+    public readonly encryptNewTables!: pulumi.Output<string | undefined>;
+    /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     public readonly maintainTime!: pulumi.Output<string>;
@@ -149,7 +154,6 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
      * **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
-     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
     /**
@@ -183,6 +187,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["dbType"] = state ? state.dbType : undefined;
             inputs["dbVersion"] = state ? state.dbVersion : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["encryptNewTables"] = state ? state.encryptNewTables : undefined;
             inputs["maintainTime"] = state ? state.maintainTime : undefined;
             inputs["modifyType"] = state ? state.modifyType : undefined;
             inputs["parameters"] = state ? state.parameters : undefined;
@@ -213,6 +218,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["dbType"] = args ? args.dbType : undefined;
             inputs["dbVersion"] = args ? args.dbVersion : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["encryptNewTables"] = args ? args.encryptNewTables : undefined;
             inputs["maintainTime"] = args ? args.maintainTime : undefined;
             inputs["modifyType"] = args ? args.modifyType : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
@@ -273,6 +279,11 @@ export interface ClusterState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     */
+    readonly encryptNewTables?: pulumi.Input<string>;
+    /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     readonly maintainTime?: pulumi.Input<string>;
@@ -310,7 +321,6 @@ export interface ClusterState {
     /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
      * **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
-     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
     readonly tdeStatus?: pulumi.Input<string>;
     /**
@@ -359,6 +369,11 @@ export interface ClusterArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     */
+    readonly encryptNewTables?: pulumi.Input<string>;
+    /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     readonly maintainTime?: pulumi.Input<string>;
@@ -396,7 +411,6 @@ export interface ClusterArgs {
     /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
      * **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
-     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
     readonly tdeStatus?: pulumi.Input<string>;
     /**

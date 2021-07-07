@@ -35,6 +35,7 @@ from . import (
     dcdn,
     ddos,
     dds,
+    directmail,
     dms,
     dns,
     drds,

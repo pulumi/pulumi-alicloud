@@ -37,6 +37,7 @@ namespace Pulumi.AliCloud.Dns
     ///             DomainCount = "50",
     ///             Period = 1,
     ///             PortCount = "50",
+    ///             ProductType = "ddoscoo",
     ///             ServiceBandwidth = "100",
     ///         });
     ///     }
@@ -91,6 +92,15 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         [Output("portCount")]
         public Output<string> PortCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        /// - ddoscoo: Only supports domestic account.
+        /// - ddoscoo_intl: Only supports to international account.
+        /// Default to ddoscoo.
+        /// </summary>
+        [Output("productType")]
+        public Output<string?> ProductType { get; private set; } = null!;
 
         /// <summary>
         /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
@@ -181,6 +191,15 @@ namespace Pulumi.AliCloud.Dns
         public Input<string> PortCount { get; set; } = null!;
 
         /// <summary>
+        /// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        /// - ddoscoo: Only supports domestic account.
+        /// - ddoscoo_intl: Only supports to international account.
+        /// Default to ddoscoo.
+        /// </summary>
+        [Input("productType")]
+        public Input<string>? ProductType { get; set; }
+
+        /// <summary>
         /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         /// </summary>
         [Input("serviceBandwidth", required: true)]
@@ -228,6 +247,15 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         [Input("portCount")]
         public Input<string>? PortCount { get; set; }
+
+        /// <summary>
+        /// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        /// - ddoscoo: Only supports domestic account.
+        /// - ddoscoo_intl: Only supports to international account.
+        /// Default to ddoscoo.
+        /// </summary>
+        [Input("productType")]
+        public Input<string>? ProductType { get; set; }
 
         /// <summary>
         /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.

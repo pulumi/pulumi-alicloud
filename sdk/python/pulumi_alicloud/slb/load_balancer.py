@@ -680,11 +680,11 @@ class _LoadBalancerState:
         pulumi.set(self, "vswitch_id", value)
 
 
-warnings.warn("""This resource has been deprecated in favour of the application load balancer""", DeprecationWarning)
+warnings.warn("""This resource has been deprecated in favour of the ApplicationLoadBalancer resource""", DeprecationWarning)
 
 
 class LoadBalancer(pulumi.CustomResource):
-    warnings.warn("""This resource has been deprecated in favour of the application load balancer""", DeprecationWarning)
+    warnings.warn("""This resource has been deprecated in favour of the ApplicationLoadBalancer resource""", DeprecationWarning)
 
     @overload
     def __init__(__self__,
@@ -796,7 +796,7 @@ class LoadBalancer(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        pulumi.log.warn("""LoadBalancer is deprecated: This resource has been deprecated in favour of the application load balancer""")
+        pulumi.log.warn("""LoadBalancer is deprecated: This resource has been deprecated in favour of the ApplicationLoadBalancer resource""")
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

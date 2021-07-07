@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const my_instance = new alicloud.cs.RegistryEnterpriseInstance("my-instance", {
+ * const my_instance = new alicloud.cr.RegistryEnterpriseInstance("my-instance", {
  *     instanceName: "test",
  *     instanceType: "Standard",
  *     paymentType: "Subscription",
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+ *  $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
  * ```
  */
 export class RegistryEnterpriseInstance extends pulumi.CustomResource {
@@ -52,7 +52,7 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance';
+    public static readonly __pulumiType = 'alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance';
 
     /**
      * Returns true if the given object is an instance of RegistryEnterpriseInstance.  This is designed to work even

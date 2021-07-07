@@ -16,6 +16,10 @@ namespace Pulumi.AliCloud.Kms.Outputs
         /// <summary>
         /// Date and time when the key version was created (UTC time).
         /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
+        /// (Removed from v1.124.4) It has been removed and using `create_time` instead.
+        /// </summary>
         public readonly string CreationDate;
         /// <summary>
         /// ID of the KMS KeyVersion resource.
@@ -32,6 +36,8 @@ namespace Pulumi.AliCloud.Kms.Outputs
 
         [OutputConstructor]
         private GetKeyVersionsVersionResult(
+            string createTime,
+
             string creationDate,
 
             string id,
@@ -40,6 +46,7 @@ namespace Pulumi.AliCloud.Kms.Outputs
 
             string keyVersionId)
         {
+            CreateTime = createTime;
             CreationDate = creationDate;
             Id = id;
             KeyId = keyId;

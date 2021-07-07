@@ -324,7 +324,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        my_instance = alicloud.cs.RegistryEnterpriseInstance("my-instance",
+        my_instance = alicloud.cr.RegistryEnterpriseInstance("my-instance",
             instance_name="test",
             instance_type="Standard",
             payment_type="Subscription",
@@ -338,7 +338,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+         $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
         ```
 
         :param str resource_name: The name of the resource.
@@ -372,7 +372,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        my_instance = alicloud.cs.RegistryEnterpriseInstance("my-instance",
+        my_instance = alicloud.cr.RegistryEnterpriseInstance("my-instance",
             instance_name="test",
             instance_type="Standard",
             payment_type="Subscription",
@@ -386,7 +386,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+         $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
         ```
 
         :param str resource_name: The name of the resource.
@@ -438,7 +438,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             __props__.__dict__["end_time"] = None
             __props__.__dict__["status"] = None
         super(RegistryEnterpriseInstance, __self__).__init__(
-            'alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance',
+            'alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance',
             resource_name,
             __props__,
             opts)

@@ -46,6 +46,12 @@ export class Eip extends pulumi.CustomResource {
      */
     public readonly bandwidth!: pulumi.Output<number | undefined>;
     /**
+     * Whether enable the deletion protection or not. Default value: `false`.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
      * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -97,6 +103,7 @@ export class Eip extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EipState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
@@ -110,6 +117,7 @@ export class Eip extends pulumi.CustomResource {
         } else {
             const args = argsOrState as EipArgs | undefined;
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
@@ -136,6 +144,12 @@ export interface EipState {
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
      */
     readonly bandwidth?: pulumi.Input<number>;
+    /**
+     * Whether enable the deletion protection or not. Default value: `false`.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
@@ -183,6 +197,12 @@ export interface EipArgs {
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
      */
     readonly bandwidth?: pulumi.Input<number>;
+    /**
+     * Whether enable the deletion protection or not. Default value: `false`.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */

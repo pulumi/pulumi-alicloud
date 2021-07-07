@@ -7,6 +7,7 @@ from .get_namespaces import *
 from .get_repos import *
 from .get_service import *
 from .namespace import *
+from .registry_enterprise_instance import *
 from .repo import *
 from ._inputs import *
 from . import outputs
@@ -25,6 +26,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:cr/namespace:Namespace":
                 return Namespace(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance":
+                return RegistryEnterpriseInstance(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cr/repo:Repo":
                 return Repo(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -33,6 +36,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "cr/namespace", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cr/registryEnterpriseInstance", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cr/repo", _module_instance)
 
 _register_module()

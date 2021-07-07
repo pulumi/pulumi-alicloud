@@ -127,6 +127,8 @@ func (o GetAliasesAliasArrayOutput) Index(i pulumi.IntInput) GetAliasesAliasOutp
 
 type GetKeyVersionsVersion struct {
 	// Date and time when the key version was created (UTC time).
+	CreateTime string `pulumi:"createTime"`
+	// (Removed from v1.124.4) It has been removed and using `createTime` instead.
 	CreationDate string `pulumi:"creationDate"`
 	// ID of the KMS KeyVersion resource.
 	Id string `pulumi:"id"`
@@ -149,6 +151,8 @@ type GetKeyVersionsVersionInput interface {
 
 type GetKeyVersionsVersionArgs struct {
 	// Date and time when the key version was created (UTC time).
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (Removed from v1.124.4) It has been removed and using `createTime` instead.
 	CreationDate pulumi.StringInput `pulumi:"creationDate"`
 	// ID of the KMS KeyVersion resource.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -210,6 +214,11 @@ func (o GetKeyVersionsVersionOutput) ToGetKeyVersionsVersionOutputWithContext(ct
 }
 
 // Date and time when the key version was created (UTC time).
+func (o GetKeyVersionsVersionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyVersionsVersion) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (Removed from v1.124.4) It has been removed and using `createTime` instead.
 func (o GetKeyVersionsVersionOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyVersionsVersion) string { return v.CreationDate }).(pulumi.StringOutput)
 }

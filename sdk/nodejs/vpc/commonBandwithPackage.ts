@@ -50,6 +50,12 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public readonly bandwidthPackageName!: pulumi.Output<string>;
     /**
+     * Whether enable the deletion protection or not. Default value: `false`.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
      * The description of the common bandwidth package instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -100,6 +106,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             const state = argsOrState as CommonBandwithPackageState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["bandwidthPackageName"] = state ? state.bandwidthPackageName : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["force"] = state ? state.force : undefined;
             inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
@@ -116,6 +123,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             }
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
             inputs["bandwidthPackageName"] = args ? args.bandwidthPackageName : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["force"] = args ? args.force : undefined;
             inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
@@ -145,6 +153,12 @@ export interface CommonBandwithPackageState {
      * The name of the common bandwidth package.
      */
     readonly bandwidthPackageName?: pulumi.Input<string>;
+    /**
+     * Whether enable the deletion protection or not. Default value: `false`.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * The description of the common bandwidth package instance.
      */
@@ -194,6 +208,12 @@ export interface CommonBandwithPackageArgs {
      * The name of the common bandwidth package.
      */
     readonly bandwidthPackageName?: pulumi.Input<string>;
+    /**
+     * Whether enable the deletion protection or not. Default value: `false`.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * The description of the common bandwidth package instance.
      */

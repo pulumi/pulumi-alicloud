@@ -77,6 +77,7 @@ export interface ProviderEndpoint {
     ddosbgp?: string;
     ddoscoo?: string;
     dds?: string;
+    dm?: string;
     dmsEnterprise?: string;
     dns?: string;
     drds?: string;
@@ -2946,6 +2947,7 @@ export namespace config {
         ddosbgp?: string;
         ddoscoo?: string;
         dds?: string;
+        dm?: string;
         dmsEnterprise?: string;
         dns?: string;
         drds?: string;
@@ -4555,6 +4557,39 @@ export namespace dds {
         description: string;
         nodeId: string;
         storage: number;
+    }
+}
+
+export namespace directmail {
+    export interface GetReceiversReceiverse {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The description.
+         */
+        description: string;
+        /**
+         * The ID of the Receivers.
+         */
+        id: string;
+        /**
+         * -The Receivers Alias.
+         */
+        receiversAlias: string;
+        /**
+         * The first ID of the resource.
+         */
+        receiversId: string;
+        /**
+         * The name of the resource.
+         */
+        receiversName: string;
+        /**
+         * The status of the resource.
+         */
+        status: number;
     }
 }
 
@@ -7254,6 +7289,10 @@ export namespace ecs {
          */
         creationTime: string;
         /**
+         * (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+         */
+        deletionProtection: boolean;
+        /**
          * ID of the EIP.
          */
         id: string;
@@ -8738,6 +8777,10 @@ export namespace ess {
          */
         systemDiskCategory: string;
         /**
+         * The performance level of the ESSD used as the system disk.
+         */
+        systemDiskPerformanceLevel: string;
+        /**
          * System disk size of the scaling configuration.
          */
         systemDiskSize: number;
@@ -8756,6 +8799,10 @@ export namespace ess {
          * Device attribute of data disk.
          */
         device?: string;
+        /**
+         * The performance level of the ESSD used as data disk.
+         */
+        performanceLevel?: string;
         /**
          * Size of data disk.
          */
@@ -8936,6 +8983,7 @@ export namespace ess {
         encrypted?: boolean;
         kmsKeyId?: string;
         name?: string;
+        performanceLevel?: string;
         size?: number;
         snapshotId?: string;
     }
@@ -10241,6 +10289,10 @@ export namespace kms {
     export interface GetKeyVersionsVersion {
         /**
          * Date and time when the key version was created (UTC time).
+         */
+        createTime: string;
+        /**
+         * (Removed from v1.124.4) It has been removed and using `createTime` instead.
          */
         creationDate: string;
         /**
@@ -13531,6 +13583,10 @@ export namespace rds {
          */
         createTime: string;
         /**
+         * (Available in 1.124.3+) The creator of the encryption key.
+         */
+        creator: string;
+        /**
          * (Available in 1.70.3+) The storage type of the instance.
          */
         dbInstanceStorageType: string;
@@ -13538,6 +13594,24 @@ export namespace rds {
          * `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
          */
         dbType: string;
+        /**
+         * (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         */
+        deleteDate: string;
+        /**
+         * (Available in 1.124.3+) The description of the encryption key.
+         */
+        description: string;
+        /**
+         * (Available in 1.124.3+) The ID of the encryption key.
+         */
+        encryptionKey: string;
+        /**
+         * (Available in 1.124.3+) The status of the encryption key. Valid values:
+         * - Enabled
+         * - Disabled
+         */
+        encryptionKeyStatus: string;
         /**
          * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
          */
@@ -13567,6 +13641,10 @@ export namespace rds {
          */
         instanceType: string;
         /**
+         * (Available in 1.124.3+) The purpose of the encryption key.
+         */
+        keyUsage: string;
+        /**
          * (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
          * - success
          * - setting
@@ -13582,6 +13660,10 @@ export namespace rds {
          */
         masterZone: string;
         /**
+         * (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         */
+        materialExpireTime: string;
+        /**
          * (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
          */
         modifyStatusReason: string;
@@ -13593,6 +13675,10 @@ export namespace rds {
          * `Internet` for public network or `Intranet` for private network.
          */
         netType: string;
+        /**
+         * (Available in 1.124.3+) The source of the encryption key.
+         */
+        origin: string;
         /**
          * (Available in 1.70.3+) RDS database connection port.
          */
@@ -13737,6 +13823,10 @@ export namespace rds {
 export namespace resourcemanager {
     export interface GetAccountsAccount {
         accountId: string;
+        /**
+         * (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+         */
+        accountName: string;
         displayName: string;
         /**
          * The ID of the folder.
@@ -13760,6 +13850,10 @@ export namespace resourcemanager {
          * The time when the member account was modified.
          */
         modifyTime: string;
+        /**
+         * (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+         */
+        payerAccountId: string;
         /**
          * The ID of the resource directory.
          */

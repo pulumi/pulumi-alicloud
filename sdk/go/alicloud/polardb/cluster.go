@@ -107,6 +107,9 @@ type Cluster struct {
 	DbVersion pulumi.StringOutput `pulumi:"dbVersion"`
 	// The description of cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	EncryptNewTables pulumi.StringPtrOutput `pulumi:"encryptNewTables"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
@@ -128,7 +131,6 @@ type Cluster struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
-	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.\
 	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
@@ -193,6 +195,9 @@ type clusterState struct {
 	DbVersion *string `pulumi:"dbVersion"`
 	// The description of cluster.
 	Description *string `pulumi:"description"`
+	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	EncryptNewTables *string `pulumi:"encryptNewTables"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
@@ -214,7 +219,6 @@ type clusterState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
-	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.\
 	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
@@ -242,6 +246,9 @@ type ClusterState struct {
 	DbVersion pulumi.StringPtrInput
 	// The description of cluster.
 	Description pulumi.StringPtrInput
+	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	EncryptNewTables pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
@@ -263,7 +270,6 @@ type ClusterState struct {
 	Tags pulumi.MapInput
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
-	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.\
 	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
@@ -293,6 +299,9 @@ type clusterArgs struct {
 	DbVersion string `pulumi:"dbVersion"`
 	// The description of cluster.
 	Description *string `pulumi:"description"`
+	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	EncryptNewTables *string `pulumi:"encryptNewTables"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
@@ -314,7 +323,6 @@ type clusterArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
-	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.\
 	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
@@ -341,6 +349,9 @@ type ClusterArgs struct {
 	DbVersion pulumi.StringInput
 	// The description of cluster.
 	Description pulumi.StringPtrInput
+	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	EncryptNewTables pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
@@ -362,7 +373,6 @@ type ClusterArgs struct {
 	Tags pulumi.MapInput
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
-	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.\
 	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.

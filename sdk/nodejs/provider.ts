@@ -41,6 +41,8 @@ export class Provider extends pulumi.ProviderResource {
             inputs["accessKey"] = args ? args.accessKey : undefined;
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["assumeRole"] = pulumi.output(args ? args.assumeRole : undefined).apply(JSON.stringify);
+            inputs["clientConnectTimeout"] = pulumi.output(args ? args.clientConnectTimeout : undefined).apply(JSON.stringify);
+            inputs["clientReadTimeout"] = pulumi.output(args ? args.clientReadTimeout : undefined).apply(JSON.stringify);
             inputs["configurationSource"] = args ? args.configurationSource : undefined;
             inputs["ecsRoleName"] = (args ? args.ecsRoleName : undefined) ?? utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
             inputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
@@ -79,6 +81,14 @@ export interface ProviderArgs {
      */
     readonly accountId?: pulumi.Input<string>;
     readonly assumeRole?: pulumi.Input<inputs.ProviderAssumeRole>;
+    /**
+     * The maximum timeout of the client connection server.
+     */
+    readonly clientConnectTimeout?: pulumi.Input<number>;
+    /**
+     * The maximum timeout of the client read request.
+     */
+    readonly clientReadTimeout?: pulumi.Input<number>;
     /**
      * Use this to mark a terraform configuration file source.
      */

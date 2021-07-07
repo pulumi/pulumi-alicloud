@@ -35,6 +35,8 @@ class ScalingConfigurationDataDisk(dict):
             suggest = "delete_with_instance"
         elif key == "kmsKeyId":
             suggest = "kms_key_id"
+        elif key == "performanceLevel":
+            suggest = "performance_level"
         elif key == "snapshotId":
             suggest = "snapshot_id"
 
@@ -58,6 +60,7 @@ class ScalingConfigurationDataDisk(dict):
                  encrypted: Optional[bool] = None,
                  kms_key_id: Optional[str] = None,
                  name: Optional[str] = None,
+                 performance_level: Optional[str] = None,
                  size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         if auto_snapshot_policy_id is not None:
@@ -76,6 +79,8 @@ class ScalingConfigurationDataDisk(dict):
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -120,6 +125,11 @@ class ScalingConfigurationDataDisk(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        return pulumi.get(self, "performance_level")
 
     @property
     @pulumi.getter
@@ -609,6 +619,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
                  scaling_group_id: str,
                  security_group_id: str,
                  system_disk_category: str,
+                 system_disk_performance_level: str,
                  system_disk_size: int):
         """
         :param str creation_time: Creation time of the scaling configuration.
@@ -625,6 +636,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
         :param str scaling_group_id: Scaling group id the scaling configurations belong to.
         :param str security_group_id: Security group ID of the scaling configuration.
         :param str system_disk_category: System disk category of the scaling configuration.
+        :param str system_disk_performance_level: The performance level of the ESSD used as the system disk.
         :param int system_disk_size: System disk size of the scaling configuration.
         """
         pulumi.set(__self__, "creation_time", creation_time)
@@ -641,6 +653,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "system_disk_category", system_disk_category)
+        pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
         pulumi.set(__self__, "system_disk_size", system_disk_size)
 
     @property
@@ -756,6 +769,14 @@ class GetScalingConfigurationsConfigurationResult(dict):
         return pulumi.get(self, "system_disk_category")
 
     @property
+    @pulumi.getter(name="systemDiskPerformanceLevel")
+    def system_disk_performance_level(self) -> str:
+        """
+        The performance level of the ESSD used as the system disk.
+        """
+        return pulumi.get(self, "system_disk_performance_level")
+
+    @property
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> int:
         """
@@ -770,12 +791,14 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
                  device: Optional[str] = None,
+                 performance_level: Optional[str] = None,
                  size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         """
         :param str category: Category of data disk.
         :param bool delete_with_instance: Delete_with_instance attribute of data disk.
         :param str device: Device attribute of data disk.
+        :param str performance_level: The performance level of the ESSD used as data disk.
         :param int size: Size of data disk.
         :param str snapshot_id: Size of data disk.
         """
@@ -785,6 +808,8 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
             pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if device is not None:
             pulumi.set(__self__, "device", device)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -813,6 +838,14 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
         Device attribute of data disk.
         """
         return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        """
+        The performance level of the ESSD used as data disk.
+        """
+        return pulumi.get(self, "performance_level")
 
     @property
     @pulumi.getter

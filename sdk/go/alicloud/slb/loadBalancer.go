@@ -18,7 +18,7 @@ import (
 //  $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
 // ```
 //
-// Deprecated: This resource has been deprecated in favour of the application load balancer
+// Deprecated: This resource has been deprecated in favour of the ApplicationLoadBalancer resource
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Slb
     ///  $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
     /// ```
     /// </summary>
-    [Obsolete(@"This resource has been deprecated in favour of the application load balancer")]
+    [Obsolete(@"This resource has been deprecated in favour of the ApplicationLoadBalancer resource")]
     [AliCloudResourceType("alicloud:slb/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : Pulumi.CustomResource
     {

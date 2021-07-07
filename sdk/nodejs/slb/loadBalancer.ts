@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *  $ pulumi import alicloud:slb/loadBalancer:LoadBalancer example lb-abc123456
  * ```
  *
- * @deprecated This resource has been deprecated in favour of the application load balancer
+ * @deprecated This resource has been deprecated in favour of the ApplicationLoadBalancer resource
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
@@ -26,7 +26,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LoadBalancerState, opts?: pulumi.CustomResourceOptions): LoadBalancer {
-        pulumi.log.warn("LoadBalancer is deprecated: This resource has been deprecated in favour of the application load balancer")
+        pulumi.log.warn("LoadBalancer is deprecated: This resource has been deprecated in favour of the ApplicationLoadBalancer resource")
         return new LoadBalancer(name, <any>state, { ...opts, id: id });
     }
 
@@ -126,11 +126,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated This resource has been deprecated in favour of the application load balancer */
+    /** @deprecated This resource has been deprecated in favour of the ApplicationLoadBalancer resource */
     constructor(name: string, args?: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated This resource has been deprecated in favour of the application load balancer */
+    /** @deprecated This resource has been deprecated in favour of the ApplicationLoadBalancer resource */
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("LoadBalancer is deprecated: This resource has been deprecated in favour of the application load balancer")
+        pulumi.log.warn("LoadBalancer is deprecated: This resource has been deprecated in favour of the ApplicationLoadBalancer resource")
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

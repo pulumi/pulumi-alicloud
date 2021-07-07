@@ -6865,6 +6865,8 @@ type GetEipsEip struct {
 	Bandwidth string `pulumi:"bandwidth"`
 	// Time of creation.
 	CreationTime string `pulumi:"creationTime"`
+	// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// ID of the EIP.
 	Id string `pulumi:"id"`
 	// The ID of the instance that is being bound.
@@ -6895,6 +6897,8 @@ type GetEipsEipArgs struct {
 	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
 	// Time of creation.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// ID of the EIP.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the instance that is being bound.
@@ -6968,6 +6972,11 @@ func (o GetEipsEipOutput) Bandwidth() pulumi.StringOutput {
 // Time of creation.
 func (o GetEipsEipOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+func (o GetEipsEipOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEipsEip) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // ID of the EIP.

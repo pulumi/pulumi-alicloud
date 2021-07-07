@@ -4540,6 +4540,7 @@ class GetEipsEipResult(dict):
     def __init__(__self__, *,
                  bandwidth: str,
                  creation_time: str,
+                 deletion_protection: bool,
                  id: str,
                  instance_id: str,
                  instance_type: str,
@@ -4549,6 +4550,7 @@ class GetEipsEipResult(dict):
         """
         :param str bandwidth: EIP internet max bandwidth in Mbps.
         :param str creation_time: Time of creation.
+        :param bool deletion_protection: (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
         :param str id: ID of the EIP.
         :param str instance_id: The ID of the instance that is being bound.
         :param str instance_type: The instance type of that the EIP is bound.
@@ -4558,6 +4560,7 @@ class GetEipsEipResult(dict):
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -4580,6 +4583,14 @@ class GetEipsEipResult(dict):
         Time of creation.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        """
+        (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

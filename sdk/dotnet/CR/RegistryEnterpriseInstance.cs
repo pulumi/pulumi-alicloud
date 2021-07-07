@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.CS
+namespace Pulumi.AliCloud.CR
 {
     /// <summary>
     /// This resource will help you to manager Container Registry Enterprise Edition instances.
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.CS
     /// {
     ///     public MyStack()
     ///     {
-    ///         var my_instance = new AliCloud.CS.RegistryEnterpriseInstance("my-instance", new AliCloud.CS.RegistryEnterpriseInstanceArgs
+    ///         var my_instance = new AliCloud.CR.RegistryEnterpriseInstance("my-instance", new AliCloud.CR.RegistryEnterpriseInstanceArgs
     ///         {
     ///             InstanceName = "test",
     ///             InstanceType = "Standard",
@@ -47,10 +47,10 @@ namespace Pulumi.AliCloud.CS
     /// Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+    ///  $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
     /// ```
     /// </summary>
-    [AliCloudResourceType("alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance")]
+    [AliCloudResourceType("alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance")]
     public partial class RegistryEnterpriseInstance : Pulumi.CustomResource
     {
         /// <summary>
@@ -122,12 +122,12 @@ namespace Pulumi.AliCloud.CS
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegistryEnterpriseInstance(string name, RegistryEnterpriseInstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance", name, args ?? new RegistryEnterpriseInstanceArgs(), MakeResourceOptions(options, ""))
+            : base("alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance", name, args ?? new RegistryEnterpriseInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegistryEnterpriseInstance(string name, Input<string> id, RegistryEnterpriseInstanceState? state = null, CustomResourceOptions? options = null)
-            : base("alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance", name, state, MakeResourceOptions(options, id))
+            : base("alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance", name, state, MakeResourceOptions(options, id))
         {
         }
 

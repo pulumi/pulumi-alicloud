@@ -22,6 +22,7 @@ class ClusterArgs:
                  collector_status: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
@@ -45,6 +46,8 @@ class ClusterArgs:
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] description: The description of cluster.
+        :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
@@ -57,7 +60,6 @@ class ClusterArgs:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
                **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
-               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.  
                **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -73,6 +75,8 @@ class ClusterArgs:
             pulumi.set(__self__, "db_node_count", db_node_count)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encrypt_new_tables is not None:
+            pulumi.set(__self__, "encrypt_new_tables", encrypt_new_tables)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if modify_type is not None:
@@ -183,6 +187,19 @@ class ClusterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="encryptNewTables")
+    def encrypt_new_tables(self) -> Optional[pulumi.Input[str]]:
+        """
+        turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+        > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        """
+        return pulumi.get(self, "encrypt_new_tables")
+
+    @encrypt_new_tables.setter
+    def encrypt_new_tables(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encrypt_new_tables", value)
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -297,7 +314,6 @@ class ClusterArgs:
         """
         turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
         **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
-        > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         """
         return pulumi.get(self, "tde_status")
 
@@ -342,6 +358,7 @@ class _ClusterState:
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
@@ -366,6 +383,8 @@ class _ClusterState:
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         :param pulumi.Input[str] description: The description of cluster.
+        :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
@@ -378,7 +397,6 @@ class _ClusterState:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
                **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
-               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.  
                **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -399,6 +417,8 @@ class _ClusterState:
             pulumi.set(__self__, "db_version", db_version)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encrypt_new_tables is not None:
+            pulumi.set(__self__, "encrypt_new_tables", encrypt_new_tables)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if modify_type is not None:
@@ -523,6 +543,19 @@ class _ClusterState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="encryptNewTables")
+    def encrypt_new_tables(self) -> Optional[pulumi.Input[str]]:
+        """
+        turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+        > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        """
+        return pulumi.get(self, "encrypt_new_tables")
+
+    @encrypt_new_tables.setter
+    def encrypt_new_tables(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encrypt_new_tables", value)
+
+    @property
     @pulumi.getter(name="maintainTime")
     def maintain_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -635,7 +668,6 @@ class _ClusterState:
         """
         turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
         **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
-        > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         """
         return pulumi.get(self, "tde_status")
 
@@ -681,6 +713,7 @@ class Cluster(pulumi.CustomResource):
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
@@ -749,6 +782,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         :param pulumi.Input[str] description: The description of cluster.
+        :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
@@ -761,7 +796,6 @@ class Cluster(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
                **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
-               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.  
                **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -838,6 +872,7 @@ class Cluster(pulumi.CustomResource):
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
@@ -875,6 +910,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'db_version'")
             __props__.__dict__["db_version"] = db_version
             __props__.__dict__["description"] = description
+            __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
             __props__.__dict__["maintain_time"] = maintain_time
             __props__.__dict__["modify_type"] = modify_type
             __props__.__dict__["parameters"] = parameters
@@ -906,6 +942,7 @@ class Cluster(pulumi.CustomResource):
             db_type: Optional[pulumi.Input[str]] = None,
             db_version: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            encrypt_new_tables: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             modify_type: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
@@ -935,6 +972,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         :param pulumi.Input[str] description: The description of cluster.
+        :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
@@ -947,7 +986,6 @@ class Cluster(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
                **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
-               > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.  
                **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
@@ -964,6 +1002,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["db_type"] = db_type
         __props__.__dict__["db_version"] = db_version
         __props__.__dict__["description"] = description
+        __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["modify_type"] = modify_type
         __props__.__dict__["parameters"] = parameters
@@ -1045,6 +1084,15 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="encryptNewTables")
+    def encrypt_new_tables(self) -> pulumi.Output[Optional[str]]:
+        """
+        turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+        > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        """
+        return pulumi.get(self, "encrypt_new_tables")
+
+    @property
     @pulumi.getter(name="maintainTime")
     def maintain_time(self) -> pulumi.Output[str]:
         """
@@ -1121,7 +1169,6 @@ class Cluster(pulumi.CustomResource):
         """
         turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
         **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
-        > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         """
         return pulumi.get(self, "tde_status")
 

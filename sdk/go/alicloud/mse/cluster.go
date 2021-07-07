@@ -62,7 +62,11 @@ type Cluster struct {
 	AclEntryLists pulumi.StringArrayOutput `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrOutput `pulumi:"clusterAliasName"`
-	// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+	// The engine specification of MSE Cluster. Valid values:
+	// `MSE_SC_1_2_200_c`：1C2G
+	// `MSE_SC_2_4_200_c`：2C4G
+	// `MSE_SC_4_8_200_c`：4C8G
+	// `MSE_SC_8_16_200_c`：8C16G
 	ClusterSpecification pulumi.StringOutput `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
@@ -134,7 +138,11 @@ type clusterState struct {
 	AclEntryLists []string `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
-	// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+	// The engine specification of MSE Cluster. Valid values:
+	// `MSE_SC_1_2_200_c`：1C2G
+	// `MSE_SC_2_4_200_c`：2C4G
+	// `MSE_SC_4_8_200_c`：4C8G
+	// `MSE_SC_8_16_200_c`：8C16G
 	ClusterSpecification *string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType *string `pulumi:"clusterType"`
@@ -163,7 +171,11 @@ type ClusterState struct {
 	AclEntryLists pulumi.StringArrayInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
-	// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+	// The engine specification of MSE Cluster. Valid values:
+	// `MSE_SC_1_2_200_c`：1C2G
+	// `MSE_SC_2_4_200_c`：2C4G
+	// `MSE_SC_4_8_200_c`：4C8G
+	// `MSE_SC_8_16_200_c`：8C16G
 	ClusterSpecification pulumi.StringPtrInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringPtrInput
@@ -196,7 +208,11 @@ type clusterArgs struct {
 	AclEntryLists []string `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
-	// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+	// The engine specification of MSE Cluster. Valid values:
+	// `MSE_SC_1_2_200_c`：1C2G
+	// `MSE_SC_2_4_200_c`：2C4G
+	// `MSE_SC_4_8_200_c`：4C8G
+	// `MSE_SC_8_16_200_c`：8C16G
 	ClusterSpecification string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType string `pulumi:"clusterType"`
@@ -224,7 +240,11 @@ type ClusterArgs struct {
 	AclEntryLists pulumi.StringArrayInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
-	// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+	// The engine specification of MSE Cluster. Valid values:
+	// `MSE_SC_1_2_200_c`：1C2G
+	// `MSE_SC_2_4_200_c`：2C4G
+	// `MSE_SC_4_8_200_c`：4C8G
+	// `MSE_SC_8_16_200_c`：8C16G
 	ClusterSpecification pulumi.StringInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringInput

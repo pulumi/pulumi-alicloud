@@ -14,6 +14,7 @@ __all__ = ['EipArgs', 'Eip']
 class EipArgs:
     def __init__(__self__, *,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -25,6 +26,9 @@ class EipArgs:
         """
         The set of arguments for constructing a Eip resource.
         :param pulumi.Input[int] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] instance_charge_type: Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
@@ -35,6 +39,8 @@ class EipArgs:
         """
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_charge_type is not None:
@@ -63,6 +69,20 @@ class EipArgs:
     @bandwidth.setter
     def bandwidth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable the deletion protection or not. Default value: `false`.
+        - true: Enable deletion protection.
+        - false: Disable deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -162,6 +182,7 @@ class EipArgs:
 class _EipState:
     def __init__(__self__, *,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -175,6 +196,9 @@ class _EipState:
         """
         Input properties used for looking up and filtering Eip resources.
         :param pulumi.Input[int] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] instance_charge_type: Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
@@ -187,6 +211,8 @@ class _EipState:
         """
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_charge_type is not None:
@@ -219,6 +245,20 @@ class _EipState:
     @bandwidth.setter
     def bandwidth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable the deletion protection or not. Default value: `false`.
+        - true: Enable deletion protection.
+        - false: Disable deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -344,6 +384,7 @@ class Eip(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -365,6 +406,9 @@ class Eip(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] instance_charge_type: Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
@@ -404,6 +448,7 @@ class Eip(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -425,6 +470,7 @@ class Eip(pulumi.CustomResource):
             __props__ = EipArgs.__new__(EipArgs)
 
             __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -446,6 +492,7 @@ class Eip(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -464,6 +511,9 @@ class Eip(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] instance_charge_type: Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
@@ -479,6 +529,7 @@ class Eip(pulumi.CustomResource):
         __props__ = _EipState.__new__(_EipState)
 
         __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -498,6 +549,16 @@ class Eip(pulumi.CustomResource):
         Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         """
         return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        Whether enable the deletion protection or not. Default value: `false`.
+        - true: Enable deletion protection.
+        - false: Disable deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

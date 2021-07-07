@@ -58,10 +58,6 @@ export class KeyVersion extends pulumi.CustomResource {
     }
 
     /**
-     * The date and time (UTC time) when the Alikms key version was created.
-     */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
-    /**
      * The id of the master key (CMK).
      */
     public readonly keyId!: pulumi.Output<string>;
@@ -83,7 +79,6 @@ export class KeyVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyVersionState | undefined;
-            inputs["creationDate"] = state ? state.creationDate : undefined;
             inputs["keyId"] = state ? state.keyId : undefined;
             inputs["keyVersionId"] = state ? state.keyVersionId : undefined;
         } else {
@@ -92,7 +87,6 @@ export class KeyVersion extends pulumi.CustomResource {
                 throw new Error("Missing required property 'keyId'");
             }
             inputs["keyId"] = args ? args.keyId : undefined;
-            inputs["creationDate"] = undefined /*out*/;
             inputs["keyVersionId"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -106,10 +100,6 @@ export class KeyVersion extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KeyVersion resources.
  */
 export interface KeyVersionState {
-    /**
-     * The date and time (UTC time) when the Alikms key version was created.
-     */
-    readonly creationDate?: pulumi.Input<string>;
     /**
      * The id of the master key (CMK).
      */

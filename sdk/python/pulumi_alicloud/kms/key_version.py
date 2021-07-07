@@ -36,33 +36,17 @@ class KeyVersionArgs:
 @pulumi.input_type
 class _KeyVersionState:
     def __init__(__self__, *,
-                 creation_date: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
                  key_version_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KeyVersion resources.
-        :param pulumi.Input[str] creation_date: The date and time (UTC time) when the Alikms key version was created.
         :param pulumi.Input[str] key_id: The id of the master key (CMK).
         :param pulumi.Input[str] key_version_id: The id of the Alikms key version.
         """
-        if creation_date is not None:
-            pulumi.set(__self__, "creation_date", creation_date)
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
         if key_version_id is not None:
             pulumi.set(__self__, "key_version_id", key_version_id)
-
-    @property
-    @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[str]]:
-        """
-        The date and time (UTC time) when the Alikms key version was created.
-        """
-        return pulumi.get(self, "creation_date")
-
-    @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "creation_date", value)
 
     @property
     @pulumi.getter(name="keyId")
@@ -187,7 +171,6 @@ class KeyVersion(pulumi.CustomResource):
             if key_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_id'")
             __props__.__dict__["key_id"] = key_id
-            __props__.__dict__["creation_date"] = None
             __props__.__dict__["key_version_id"] = None
         super(KeyVersion, __self__).__init__(
             'alicloud:kms/keyVersion:KeyVersion',
@@ -199,7 +182,6 @@ class KeyVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_date: Optional[pulumi.Input[str]] = None,
             key_id: Optional[pulumi.Input[str]] = None,
             key_version_id: Optional[pulumi.Input[str]] = None) -> 'KeyVersion':
         """
@@ -209,7 +191,6 @@ class KeyVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] creation_date: The date and time (UTC time) when the Alikms key version was created.
         :param pulumi.Input[str] key_id: The id of the master key (CMK).
         :param pulumi.Input[str] key_version_id: The id of the Alikms key version.
         """
@@ -217,18 +198,9 @@ class KeyVersion(pulumi.CustomResource):
 
         __props__ = _KeyVersionState.__new__(_KeyVersionState)
 
-        __props__.__dict__["creation_date"] = creation_date
         __props__.__dict__["key_id"] = key_id
         __props__.__dict__["key_version_id"] = key_version_id
         return KeyVersion(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="creationDate")
-    def creation_date(self) -> pulumi.Output[str]:
-        """
-        The date and time (UTC time) when the Alikms key version was created.
-        """
-        return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter(name="keyId")

@@ -13,6 +13,8 @@ __all__ = [
     'access_key',
     'account_id',
     'assume_role',
+    'client_connect_timeout',
+    'client_read_timeout',
     'configuration_source',
     'ecs_role_name',
     'endpoints',
@@ -45,6 +47,16 @@ Alibaba Cloud console.
 """
 
 assume_role = __config__.get('assumeRole')
+
+client_connect_timeout = __config__.get('clientConnectTimeout')
+"""
+The maximum timeout of the client connection server.
+"""
+
+client_read_timeout = __config__.get('clientReadTimeout')
+"""
+The maximum timeout of the client read request.
+"""
 
 configuration_source = __config__.get('configurationSource')
 """

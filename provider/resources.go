@@ -54,6 +54,7 @@ const (
 	dcdnMod                = "Dcdn"
 	ddsMod                 = "Dds"
 	ddosMod                = "Ddos"
+	directMailMod          = "DirectMail"
 	dmsMod                 = "Dms"
 	dnsMod                 = "Dns"
 	drdsMod                = "Drds"
@@ -276,8 +277,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_config_compliance_pack":           {Tok: resource(cfgMod, "CompliancePack")},
 
 			// CR
-			"alicloud_cr_repo":      {Tok: resource(crMod, "Repo")},
-			"alicloud_cr_namespace": {Tok: resource(crMod, "Namespace")},
+			"alicloud_cr_repo":        {Tok: resource(crMod, "Repo")},
+			"alicloud_cr_namespace":   {Tok: resource(crMod, "Namespace")},
+			"alicloud_cr_ee_instance": {Tok: resource(crMod, "RegistryEnterpriseInstance")},
 
 			// CS
 			"alicloud_container_cluster":         {Tok: resource(csMod, "Cluster")},
@@ -293,7 +295,6 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cs_kubernetes_node_pool":   {Tok: resource(csMod, "NodePool")},
 			"alicloud_cs_edge_kubernetes":        {Tok: resource(csMod, "EdgeKubernetes")},
 			"alicloud_cs_kubernetes_permissions": {Tok: resource(csMod, "KubernetesPermission")},
-			"alicloud_cr_ee_instance":            {Tok: resource(csMod, "RegistryEnterpriseInstance")},
 
 			// DataHub
 			"alicloud_datahub_project":      {Tok: resource(datahubMod, "Project")},
@@ -319,6 +320,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ddoscoo_scheduler_rule":  {Tok: resource(ddosMod, "SchedulerRule")},
 			"alicloud_ddoscoo_domain_resource": {Tok: resource(ddosMod, "DomainResource")},
 			"alicloud_ddoscoo_port":            {Tok: resource(ddosMod, "Port")},
+
+			// Direct Mail
+			"alicloud_direct_mail_receivers": {Tok: resource(directMailMod, "Receivers")},
 
 			// DMS
 			"alicloud_dms_enterprise_instance": {Tok: resource(dmsMod, "EnterpriseInstance")},
@@ -650,7 +654,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Slb
 			"alicloud_slb": {
 				Tok:                resource(slbMod, "LoadBalancer"),
-				DeprecationMessage: "This resource has been deprecated in favour of the application load balancer",
+				DeprecationMessage: "This resource has been deprecated in favour of the ApplicationLoadBalancer resource",
 			},
 			"alicloud_slb_acl":            {Tok: resource(slbMod, "Acl")},
 			"alicloud_slb_attachment":     {Tok: resource(slbMod, "Attachment")},
@@ -850,6 +854,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ddosbgp_instances":        {Tok: dataSource(ddosMod, "getDdosBgpInstances")},
 			"alicloud_ddoscoo_domain_resources": {Tok: dataSource(ddosMod, "getDdosCooDomainResources")},
 			"alicloud_ddoscoo_ports":            {Tok: dataSource(ddosMod, "getDdosCooPorts")},
+
+			// Direct Mail
+			"alicloud_direct_mail_receiverses": {Tok: dataSource(directMailMod, "getReceivers")},
 
 			// Dms
 			"alicloud_dms_enterprise_instances": {Tok: dataSource(dmsMod, "getEnterpriseInstances")},
@@ -1194,8 +1201,7 @@ func Provider() tfbridge.ProviderInfo {
 
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
 		},

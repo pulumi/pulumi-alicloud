@@ -50,6 +50,10 @@ type providerArgs struct {
 	// Alibaba Cloud console.
 	AccountId  *string             `pulumi:"accountId"`
 	AssumeRole *ProviderAssumeRole `pulumi:"assumeRole"`
+	// The maximum timeout of the client connection server.
+	ClientConnectTimeout *int `pulumi:"clientConnectTimeout"`
+	// The maximum timeout of the client read request.
+	ClientReadTimeout *int `pulumi:"clientReadTimeout"`
 	// Use this to mark a terraform configuration file source.
 	ConfigurationSource *string `pulumi:"configurationSource"`
 	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
@@ -93,6 +97,10 @@ type ProviderArgs struct {
 	// Alibaba Cloud console.
 	AccountId  pulumi.StringPtrInput
 	AssumeRole ProviderAssumeRolePtrInput
+	// The maximum timeout of the client connection server.
+	ClientConnectTimeout pulumi.IntPtrInput
+	// The maximum timeout of the client read request.
+	ClientReadTimeout pulumi.IntPtrInput
 	// Use this to mark a terraform configuration file source.
 	ConfigurationSource pulumi.StringPtrInput
 	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section

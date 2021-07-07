@@ -117,6 +117,7 @@ class Endpoints(dict):
                  ddosbgp: Optional[str] = None,
                  ddoscoo: Optional[str] = None,
                  dds: Optional[str] = None,
+                 dm: Optional[str] = None,
                  dms_enterprise: Optional[str] = None,
                  dns: Optional[str] = None,
                  drds: Optional[str] = None,
@@ -202,6 +203,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "ddoscoo", ddoscoo)
         if dds is not None:
             pulumi.set(__self__, "dds", dds)
+        if dm is not None:
+            pulumi.set(__self__, "dm", dm)
         if dms_enterprise is not None:
             pulumi.set(__self__, "dms_enterprise", dms_enterprise)
         if dns is not None:
@@ -393,6 +396,11 @@ class Endpoints(dict):
     @pulumi.getter
     def dds(self) -> Optional[str]:
         return pulumi.get(self, "dds")
+
+    @property
+    @pulumi.getter
+    def dm(self) -> Optional[str]:
+        return pulumi.get(self, "dm")
 
     @property
     @pulumi.getter(name="dmsEnterprise")

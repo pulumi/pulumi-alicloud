@@ -23,6 +23,16 @@ namespace Pulumi.AliCloud
         public static Pulumi.AliCloud.Config.Types.AssumeRole? AssumeRole { get; set; } = __config.GetObject<Pulumi.AliCloud.Config.Types.AssumeRole>("assumeRole");
 
         /// <summary>
+        /// The maximum timeout of the client connection server.
+        /// </summary>
+        public static int? ClientConnectTimeout { get; set; } = __config.GetInt32("clientConnectTimeout");
+
+        /// <summary>
+        /// The maximum timeout of the client read request.
+        /// </summary>
+        public static int? ClientReadTimeout { get; set; } = __config.GetInt32("clientReadTimeout");
+
+        /// <summary>
         /// Use this to mark a terraform configuration file source.
         /// </summary>
         public static string? ConfigurationSource { get; set; } = __config.Get("configurationSource");
@@ -117,6 +127,7 @@ namespace Pulumi.AliCloud
                 public string? Ddosbgp { get; set; } = null!;
                 public string? Ddoscoo { get; set; } = null!;
                 public string? Dds { get; set; } = null!;
+                public string? Dm { get; set; } = null!;
                 public string? DmsEnterprise { get; set; } = null!;
                 public string? Dns { get; set; } = null!;
                 public string? Drds { get; set; } = null!;

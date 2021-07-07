@@ -14,6 +14,7 @@ __all__ = ['NatGatewayArgs', 'NatGateway']
 class NatGatewayArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[str],
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -30,6 +31,9 @@ class NatGatewayArgs:
         """
         The set of arguments for constructing a NatGateway resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
@@ -42,6 +46,8 @@ class NatGatewayArgs:
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
@@ -80,6 +86,20 @@ class NatGatewayArgs:
     @vpc_id.setter
     def vpc_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable the deletion protection or not. Default value: `false`.
+        - true: Enable deletion protection.
+        - false: Disable deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -232,6 +252,7 @@ class NatGatewayArgs:
 @pulumi.input_type
 class _NatGatewayState:
     def __init__(__self__, *,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -251,6 +272,9 @@ class _NatGatewayState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NatGateway resources.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] forward_table_ids: The nat gateway will auto create a forward item.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
@@ -266,6 +290,8 @@ class _NatGatewayState:
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
@@ -300,6 +326,20 @@ class _NatGatewayState:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable the deletion protection or not. Default value: `false`.
+        - true: Enable deletion protection.
+        - false: Disable deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -502,6 +542,7 @@ class NatGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -528,6 +569,9 @@ class NatGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`, default value is `PayBySpec`. The `PayByLcu` is only support enhanced NAT.
@@ -570,6 +614,7 @@ class NatGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -596,6 +641,7 @@ class NatGateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NatGatewayArgs.__new__(NatGatewayArgs)
 
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["force"] = force
@@ -625,6 +671,7 @@ class NatGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             force: Optional[pulumi.Input[bool]] = None,
@@ -649,6 +696,9 @@ class NatGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         :param pulumi.Input[str] forward_table_ids: The nat gateway will auto create a forward item.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
@@ -668,6 +718,7 @@ class NatGateway(pulumi.CustomResource):
 
         __props__ = _NatGatewayState.__new__(_NatGatewayState)
 
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["force"] = force
@@ -686,6 +737,16 @@ class NatGateway(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         return NatGateway(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        Whether enable the deletion protection or not. Default value: `false`.
+        - true: Enable deletion protection.
+        - false: Disable deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

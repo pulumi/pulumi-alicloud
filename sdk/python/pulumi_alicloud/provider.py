@@ -17,6 +17,8 @@ class ProviderArgs:
                  access_key: Optional[pulumi.Input[str]] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  assume_role: Optional[pulumi.Input['ProviderAssumeRoleArgs']] = None,
+                 client_connect_timeout: Optional[pulumi.Input[int]] = None,
+                 client_read_timeout: Optional[pulumi.Input[int]] = None,
                  configuration_source: Optional[pulumi.Input[str]] = None,
                  ecs_role_name: Optional[pulumi.Input[str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None,
@@ -38,6 +40,8 @@ class ProviderArgs:
                console.
         :param pulumi.Input[str] account_id: The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
                Alibaba Cloud console.
+        :param pulumi.Input[int] client_connect_timeout: The maximum timeout of the client connection server.
+        :param pulumi.Input[int] client_read_timeout: The maximum timeout of the client read request.
         :param pulumi.Input[str] configuration_source: Use this to mark a terraform configuration file source.
         :param pulumi.Input[str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
                of the Alibaba Cloud console.
@@ -58,6 +62,10 @@ class ProviderArgs:
             pulumi.set(__self__, "account_id", account_id)
         if assume_role is not None:
             pulumi.set(__self__, "assume_role", assume_role)
+        if client_connect_timeout is not None:
+            pulumi.set(__self__, "client_connect_timeout", client_connect_timeout)
+        if client_read_timeout is not None:
+            pulumi.set(__self__, "client_read_timeout", client_read_timeout)
         if configuration_source is not None:
             pulumi.set(__self__, "configuration_source", configuration_source)
         if ecs_role_name is None:
@@ -141,6 +149,30 @@ class ProviderArgs:
     @assume_role.setter
     def assume_role(self, value: Optional[pulumi.Input['ProviderAssumeRoleArgs']]):
         pulumi.set(self, "assume_role", value)
+
+    @property
+    @pulumi.getter(name="clientConnectTimeout")
+    def client_connect_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum timeout of the client connection server.
+        """
+        return pulumi.get(self, "client_connect_timeout")
+
+    @client_connect_timeout.setter
+    def client_connect_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_connect_timeout", value)
+
+    @property
+    @pulumi.getter(name="clientReadTimeout")
+    def client_read_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum timeout of the client read request.
+        """
+        return pulumi.get(self, "client_read_timeout")
+
+    @client_read_timeout.setter
+    def client_read_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_read_timeout", value)
 
     @property
     @pulumi.getter(name="configurationSource")
@@ -317,6 +349,8 @@ class Provider(pulumi.ProviderResource):
                  access_key: Optional[pulumi.Input[str]] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  assume_role: Optional[pulumi.Input[pulumi.InputType['ProviderAssumeRoleArgs']]] = None,
+                 client_connect_timeout: Optional[pulumi.Input[int]] = None,
+                 client_read_timeout: Optional[pulumi.Input[int]] = None,
                  configuration_source: Optional[pulumi.Input[str]] = None,
                  ecs_role_name: Optional[pulumi.Input[str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
@@ -345,6 +379,8 @@ class Provider(pulumi.ProviderResource):
                console.
         :param pulumi.Input[str] account_id: The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
                Alibaba Cloud console.
+        :param pulumi.Input[int] client_connect_timeout: The maximum timeout of the client connection server.
+        :param pulumi.Input[int] client_read_timeout: The maximum timeout of the client read request.
         :param pulumi.Input[str] configuration_source: Use this to mark a terraform configuration file source.
         :param pulumi.Input[str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
                of the Alibaba Cloud console.
@@ -389,6 +425,8 @@ class Provider(pulumi.ProviderResource):
                  access_key: Optional[pulumi.Input[str]] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  assume_role: Optional[pulumi.Input[pulumi.InputType['ProviderAssumeRoleArgs']]] = None,
+                 client_connect_timeout: Optional[pulumi.Input[int]] = None,
+                 client_read_timeout: Optional[pulumi.Input[int]] = None,
                  configuration_source: Optional[pulumi.Input[str]] = None,
                  ecs_role_name: Optional[pulumi.Input[str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
@@ -419,6 +457,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["access_key"] = access_key
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["assume_role"] = pulumi.Output.from_input(assume_role).apply(pulumi.runtime.to_json) if assume_role is not None else None
+            __props__.__dict__["client_connect_timeout"] = pulumi.Output.from_input(client_connect_timeout).apply(pulumi.runtime.to_json) if client_connect_timeout is not None else None
+            __props__.__dict__["client_read_timeout"] = pulumi.Output.from_input(client_read_timeout).apply(pulumi.runtime.to_json) if client_read_timeout is not None else None
             __props__.__dict__["configuration_source"] = configuration_source
             if ecs_role_name is None:
                 ecs_role_name = _utilities.get_env('ALICLOUD_ECS_ROLE_NAME')

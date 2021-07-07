@@ -166,6 +166,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
+     * The attribute of the IP address whitelist. By default, this parameter is empty.
+     */
+    public readonly dbInstanceIpArrayAttribute!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the IP address whitelist. Default value: Default.
+     */
+    public readonly dbInstanceIpArrayName!: pulumi.Output<string | undefined>;
+    /**
      * The storage type of the instance. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
@@ -217,6 +225,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly maintainTime!: pulumi.Output<string>;
     /**
+     * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+     * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+     * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+     * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+     */
+    public readonly modifyMode!: pulumi.Output<string | undefined>;
+    /**
      * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
      */
     public readonly monitoringPeriod!: pulumi.Output<number>;
@@ -229,6 +244,10 @@ export class Instance extends pulumi.CustomResource {
      * RDS database connection port.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
+    /**
+     * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+     */
+    public readonly privateIpAddress!: pulumi.Output<string>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - cert
@@ -255,6 +274,10 @@ export class Instance extends pulumi.CustomResource {
      * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
      */
     public readonly securityIpMode!: pulumi.Output<string | undefined>;
+    /**
+     * The type of IP address in the IP address whitelist.
+     */
+    public readonly securityIpType!: pulumi.Output<string | undefined>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
@@ -298,6 +321,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
+     * The network type of the IP address whitelist. Default value: MIX. Valid values:
+     * - Classic: classic network in enhanced whitelist mode
+     * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+     * - MIX: standard whitelist mode
+     */
+    public readonly whitelistNetworkType!: pulumi.Output<string | undefined>;
+    /**
      * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
@@ -335,6 +365,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["clientCertRevocationList"] = state ? state.clientCertRevocationList : undefined;
             inputs["clientCrlEnabled"] = state ? state.clientCrlEnabled : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
+            inputs["dbInstanceIpArrayAttribute"] = state ? state.dbInstanceIpArrayAttribute : undefined;
+            inputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
             inputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
             inputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             inputs["engine"] = state ? state.engine : undefined;
@@ -345,15 +377,18 @@ export class Instance extends pulumi.CustomResource {
             inputs["instanceStorage"] = state ? state.instanceStorage : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
             inputs["maintainTime"] = state ? state.maintainTime : undefined;
+            inputs["modifyMode"] = state ? state.modifyMode : undefined;
             inputs["monitoringPeriod"] = state ? state.monitoringPeriod : undefined;
             inputs["parameters"] = state ? state.parameters : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["port"] = state ? state.port : undefined;
+            inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             inputs["replicationAcl"] = state ? state.replicationAcl : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["securityIpMode"] = state ? state.securityIpMode : undefined;
+            inputs["securityIpType"] = state ? state.securityIpType : undefined;
             inputs["securityIps"] = state ? state.securityIps : undefined;
             inputs["serverCert"] = state ? state.serverCert : undefined;
             inputs["serverKey"] = state ? state.serverKey : undefined;
@@ -364,6 +399,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
             inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            inputs["whitelistNetworkType"] = state ? state.whitelistNetworkType : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
             inputs["zoneIdSlaveA"] = state ? state.zoneIdSlaveA : undefined;
             inputs["zoneIdSlaveB"] = state ? state.zoneIdSlaveB : undefined;
@@ -390,6 +426,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
             inputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
             inputs["clientCrlEnabled"] = args ? args.clientCrlEnabled : undefined;
+            inputs["dbInstanceIpArrayAttribute"] = args ? args.dbInstanceIpArrayAttribute : undefined;
+            inputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
             inputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
             inputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             inputs["engine"] = args ? args.engine : undefined;
@@ -400,14 +438,17 @@ export class Instance extends pulumi.CustomResource {
             inputs["instanceStorage"] = args ? args.instanceStorage : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["maintainTime"] = args ? args.maintainTime : undefined;
+            inputs["modifyMode"] = args ? args.modifyMode : undefined;
             inputs["monitoringPeriod"] = args ? args.monitoringPeriod : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["period"] = args ? args.period : undefined;
+            inputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             inputs["replicationAcl"] = args ? args.replicationAcl : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["securityIpMode"] = args ? args.securityIpMode : undefined;
+            inputs["securityIpType"] = args ? args.securityIpType : undefined;
             inputs["securityIps"] = args ? args.securityIps : undefined;
             inputs["serverCert"] = args ? args.serverCert : undefined;
             inputs["serverKey"] = args ? args.serverKey : undefined;
@@ -417,6 +458,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            inputs["whitelistNetworkType"] = args ? args.whitelistNetworkType : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["zoneIdSlaveA"] = args ? args.zoneIdSlaveA : undefined;
             inputs["zoneIdSlaveB"] = args ? args.zoneIdSlaveB : undefined;
@@ -488,6 +530,14 @@ export interface InstanceState {
      */
     readonly connectionString?: pulumi.Input<string>;
     /**
+     * The attribute of the IP address whitelist. By default, this parameter is empty.
+     */
+    readonly dbInstanceIpArrayAttribute?: pulumi.Input<string>;
+    /**
+     * The name of the IP address whitelist. Default value: Default.
+     */
+    readonly dbInstanceIpArrayName?: pulumi.Input<string>;
+    /**
      * The storage type of the instance. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
@@ -539,6 +589,13 @@ export interface InstanceState {
      */
     readonly maintainTime?: pulumi.Input<string>;
     /**
+     * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+     * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+     * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+     * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+     */
+    readonly modifyMode?: pulumi.Input<string>;
+    /**
      * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
      */
     readonly monitoringPeriod?: pulumi.Input<number>;
@@ -551,6 +608,10 @@ export interface InstanceState {
      * RDS database connection port.
      */
     readonly port?: pulumi.Input<string>;
+    /**
+     * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+     */
+    readonly privateIpAddress?: pulumi.Input<string>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - cert
@@ -577,6 +638,10 @@ export interface InstanceState {
      * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
      */
     readonly securityIpMode?: pulumi.Input<string>;
+    /**
+     * The type of IP address in the IP address whitelist.
+     */
+    readonly securityIpType?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
@@ -619,6 +684,13 @@ export interface InstanceState {
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     readonly vswitchId?: pulumi.Input<string>;
+    /**
+     * The network type of the IP address whitelist. Default value: MIX. Valid values:
+     * - Classic: classic network in enhanced whitelist mode
+     * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+     * - MIX: standard whitelist mode
+     */
+    readonly whitelistNetworkType?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
@@ -688,6 +760,14 @@ export interface InstanceArgs {
      */
     readonly clientCrlEnabled?: pulumi.Input<number>;
     /**
+     * The attribute of the IP address whitelist. By default, this parameter is empty.
+     */
+    readonly dbInstanceIpArrayAttribute?: pulumi.Input<string>;
+    /**
+     * The name of the IP address whitelist. Default value: Default.
+     */
+    readonly dbInstanceIpArrayName?: pulumi.Input<string>;
+    /**
      * The storage type of the instance. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
@@ -739,6 +819,13 @@ export interface InstanceArgs {
      */
     readonly maintainTime?: pulumi.Input<string>;
     /**
+     * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+     * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+     * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+     * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+     */
+    readonly modifyMode?: pulumi.Input<string>;
+    /**
      * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
      */
     readonly monitoringPeriod?: pulumi.Input<number>;
@@ -747,6 +834,10 @@ export interface InstanceArgs {
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     readonly period?: pulumi.Input<number>;
+    /**
+     * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+     */
+    readonly privateIpAddress?: pulumi.Input<string>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - cert
@@ -773,6 +864,10 @@ export interface InstanceArgs {
      * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
      */
     readonly securityIpMode?: pulumi.Input<string>;
+    /**
+     * The type of IP address in the IP address whitelist.
+     */
+    readonly securityIpType?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
@@ -811,6 +906,13 @@ export interface InstanceArgs {
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     readonly vswitchId?: pulumi.Input<string>;
+    /**
+     * The network type of the IP address whitelist. Default value: MIX. Valid values:
+     * - Classic: classic network in enhanced whitelist mode
+     * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+     * - MIX: standard whitelist mode
+     */
+    readonly whitelistNetworkType?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.

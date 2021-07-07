@@ -57,6 +57,10 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// (Available in 1.124.3+) The creator of the encryption key.
+        /// </summary>
+        public readonly string Creator;
+        /// <summary>
         /// (Available in 1.70.3+) The storage type of the instance.
         /// </summary>
         public readonly string DbInstanceStorageType;
@@ -64,6 +68,24 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
         /// </summary>
         public readonly string DbType;
+        /// <summary>
+        /// (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// </summary>
+        public readonly string DeleteDate;
+        /// <summary>
+        /// (Available in 1.124.3+) The description of the encryption key.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
+        /// (Available in 1.124.3+) The ID of the encryption key.
+        /// </summary>
+        public readonly string EncryptionKey;
+        /// <summary>
+        /// (Available in 1.124.3+) The status of the encryption key. Valid values:
+        /// - Enabled
+        /// - Disabled
+        /// </summary>
+        public readonly string EncryptionKeyStatus;
         /// <summary>
         /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
         /// </summary>
@@ -93,6 +115,10 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
+        /// (Available in 1.124.3+) The purpose of the encryption key.
+        /// </summary>
+        public readonly string KeyUsage;
+        /// <summary>
         /// (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
         /// - success
         /// - setting
@@ -108,6 +134,10 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string MasterZone;
         /// <summary>
+        /// (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// </summary>
+        public readonly string MaterialExpireTime;
+        /// <summary>
         /// (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
         /// </summary>
         public readonly string ModifyStatusReason;
@@ -119,6 +149,10 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// `Internet` for public network or `Intranet` for private network.
         /// </summary>
         public readonly string NetType;
+        /// <summary>
+        /// (Available in 1.124.3+) The source of the encryption key.
+        /// </summary>
+        public readonly string Origin;
         /// <summary>
         /// (Available in 1.70.3+) RDS database connection port.
         /// </summary>
@@ -230,9 +264,19 @@ namespace Pulumi.AliCloud.Rds.Outputs
 
             string createTime,
 
+            string creator,
+
             string dbInstanceStorageType,
 
             string dbType,
+
+            string deleteDate,
+
+            string description,
+
+            string encryptionKey,
+
+            string encryptionKeyStatus,
 
             string engine,
 
@@ -248,17 +292,23 @@ namespace Pulumi.AliCloud.Rds.Outputs
 
             string instanceType,
 
+            string keyUsage,
+
             string lastModifyStatus,
 
             string masterInstanceId,
 
             string masterZone,
 
+            string materialExpireTime,
+
             string modifyStatusReason,
 
             string name,
 
             string netType,
+
+            string origin,
 
             string port,
 
@@ -308,8 +358,13 @@ namespace Pulumi.AliCloud.Rds.Outputs
             ConnectionMode = connectionMode;
             ConnectionString = connectionString;
             CreateTime = createTime;
+            Creator = creator;
             DbInstanceStorageType = dbInstanceStorageType;
             DbType = dbType;
+            DeleteDate = deleteDate;
+            Description = description;
+            EncryptionKey = encryptionKey;
+            EncryptionKeyStatus = encryptionKeyStatus;
             Engine = engine;
             EngineVersion = engineVersion;
             ExpireTime = expireTime;
@@ -317,12 +372,15 @@ namespace Pulumi.AliCloud.Rds.Outputs
             Id = id;
             InstanceStorage = instanceStorage;
             InstanceType = instanceType;
+            KeyUsage = keyUsage;
             LastModifyStatus = lastModifyStatus;
             MasterInstanceId = masterInstanceId;
             MasterZone = masterZone;
+            MaterialExpireTime = materialExpireTime;
             ModifyStatusReason = modifyStatusReason;
             Name = name;
             NetType = netType;
+            Origin = origin;
             Port = port;
             ReadonlyInstanceIds = readonlyInstanceIds;
             RegionId = regionId;

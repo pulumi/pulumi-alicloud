@@ -21,6 +21,10 @@ import (
 type NatGateway struct {
 	pulumi.CustomResourceState
 
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	DryRun      pulumi.BoolPtrOutput   `pulumi:"dryRun"`
@@ -86,6 +90,10 @@ func GetNatGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NatGateway resources.
 type natGatewayState struct {
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description *string `pulumi:"description"`
 	DryRun      *bool   `pulumi:"dryRun"`
@@ -120,6 +128,10 @@ type natGatewayState struct {
 }
 
 type NatGatewayState struct {
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description pulumi.StringPtrInput
 	DryRun      pulumi.BoolPtrInput
@@ -158,6 +170,10 @@ func (NatGatewayState) ElementType() reflect.Type {
 }
 
 type natGatewayArgs struct {
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description *string `pulumi:"description"`
 	DryRun      *bool   `pulumi:"dryRun"`
@@ -187,6 +203,10 @@ type natGatewayArgs struct {
 
 // The set of arguments for constructing a NatGateway resource.
 type NatGatewayArgs struct {
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description pulumi.StringPtrInput
 	DryRun      pulumi.BoolPtrInput

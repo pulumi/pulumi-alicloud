@@ -142,6 +142,18 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
+        /// The attribute of the IP address whitelist. By default, this parameter is empty.
+        /// </summary>
+        [Output("dbInstanceIpArrayAttribute")]
+        public Output<string?> DbInstanceIpArrayAttribute { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the IP address whitelist. Default value: Default.
+        /// </summary>
+        [Output("dbInstanceIpArrayName")]
+        public Output<string?> DbInstanceIpArrayName { get; private set; } = null!;
+
+        /// <summary>
         /// The storage type of the instance. Valid values:
         /// - local_ssd: specifies to use local SSDs. This value is recommended.
         /// - cloud_ssd: specifies to use standard SSDs.
@@ -213,6 +225,15 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
+        /// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        /// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        /// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        /// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        /// </summary>
+        [Output("modifyMode")]
+        public Output<string?> ModifyMode { get; private set; } = null!;
+
+        /// <summary>
         /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         /// </summary>
         [Output("monitoringPeriod")]
@@ -232,6 +253,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        /// </summary>
+        [Output("privateIpAddress")]
+        public Output<string> PrivateIpAddress { get; private set; } = null!;
 
         /// <summary>
         /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -266,6 +293,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("securityIpMode")]
         public Output<string?> SecurityIpMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of IP address in the IP address whitelist.
+        /// </summary>
+        [Output("securityIpType")]
+        public Output<string?> SecurityIpType { get; private set; } = null!;
 
         /// <summary>
         /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -328,6 +361,15 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The network type of the IP address whitelist. Default value: MIX. Valid values:
+        /// - Classic: classic network in enhanced whitelist mode
+        /// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        /// - MIX: standard whitelist mode
+        /// </summary>
+        [Output("whitelistNetworkType")]
+        public Output<string?> WhitelistNetworkType { get; private set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
@@ -462,6 +504,18 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? ClientCrlEnabled { get; set; }
 
         /// <summary>
+        /// The attribute of the IP address whitelist. By default, this parameter is empty.
+        /// </summary>
+        [Input("dbInstanceIpArrayAttribute")]
+        public Input<string>? DbInstanceIpArrayAttribute { get; set; }
+
+        /// <summary>
+        /// The name of the IP address whitelist. Default value: Default.
+        /// </summary>
+        [Input("dbInstanceIpArrayName")]
+        public Input<string>? DbInstanceIpArrayName { get; set; }
+
+        /// <summary>
         /// The storage type of the instance. Valid values:
         /// - local_ssd: specifies to use local SSDs. This value is recommended.
         /// - cloud_ssd: specifies to use standard SSDs.
@@ -533,6 +587,15 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
+        /// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        /// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        /// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        /// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        /// </summary>
+        [Input("modifyMode")]
+        public Input<string>? ModifyMode { get; set; }
+
+        /// <summary>
         /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         /// </summary>
         [Input("monitoringPeriod")]
@@ -552,6 +615,12 @@ namespace Pulumi.AliCloud.Rds
 
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
         /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -592,6 +661,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
+
+        /// <summary>
+        /// The type of IP address in the IP address whitelist.
+        /// </summary>
+        [Input("securityIpType")]
+        public Input<string>? SecurityIpType { get; set; }
 
         [Input("securityIps")]
         private InputList<string>? _securityIps;
@@ -660,6 +735,15 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The network type of the IP address whitelist. Default value: MIX. Valid values:
+        /// - Classic: classic network in enhanced whitelist mode
+        /// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        /// - MIX: standard whitelist mode
+        /// </summary>
+        [Input("whitelistNetworkType")]
+        public Input<string>? WhitelistNetworkType { get; set; }
 
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
@@ -761,6 +845,18 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
+        /// The attribute of the IP address whitelist. By default, this parameter is empty.
+        /// </summary>
+        [Input("dbInstanceIpArrayAttribute")]
+        public Input<string>? DbInstanceIpArrayAttribute { get; set; }
+
+        /// <summary>
+        /// The name of the IP address whitelist. Default value: Default.
+        /// </summary>
+        [Input("dbInstanceIpArrayName")]
+        public Input<string>? DbInstanceIpArrayName { get; set; }
+
+        /// <summary>
         /// The storage type of the instance. Valid values:
         /// - local_ssd: specifies to use local SSDs. This value is recommended.
         /// - cloud_ssd: specifies to use standard SSDs.
@@ -832,6 +928,15 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
+        /// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        /// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        /// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        /// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        /// </summary>
+        [Input("modifyMode")]
+        public Input<string>? ModifyMode { get; set; }
+
+        /// <summary>
         /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         /// </summary>
         [Input("monitoringPeriod")]
@@ -857,6 +962,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
+
+        /// <summary>
+        /// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
         /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -897,6 +1008,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
+
+        /// <summary>
+        /// The type of IP address in the IP address whitelist.
+        /// </summary>
+        [Input("securityIpType")]
+        public Input<string>? SecurityIpType { get; set; }
 
         [Input("securityIps")]
         private InputList<string>? _securityIps;
@@ -971,6 +1088,15 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The network type of the IP address whitelist. Default value: MIX. Valid values:
+        /// - Classic: classic network in enhanced whitelist mode
+        /// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        /// - MIX: standard whitelist mode
+        /// </summary>
+        [Input("whitelistNetworkType")]
+        public Input<string>? WhitelistNetworkType { get; set; }
 
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.

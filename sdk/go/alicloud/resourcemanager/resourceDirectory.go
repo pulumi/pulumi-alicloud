@@ -63,8 +63,8 @@ type ResourceDirectory struct {
 	MasterAccountName pulumi.StringOutput `pulumi:"masterAccountName"`
 	// The ID of the root folder.
 	RootFolderId pulumi.StringOutput `pulumi:"rootFolderId"`
-	// The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
-	Status pulumi.StringPtrOutput `pulumi:"status"`
+	// The status of control policy. Valid values:`Enabled` and `Disabled`.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewResourceDirectory registers a new resource with the given unique name, arguments, and options.
@@ -102,7 +102,7 @@ type resourceDirectoryState struct {
 	MasterAccountName *string `pulumi:"masterAccountName"`
 	// The ID of the root folder.
 	RootFolderId *string `pulumi:"rootFolderId"`
-	// The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+	// The status of control policy. Valid values:`Enabled` and `Disabled`.
 	Status *string `pulumi:"status"`
 }
 
@@ -113,7 +113,7 @@ type ResourceDirectoryState struct {
 	MasterAccountName pulumi.StringPtrInput
 	// The ID of the root folder.
 	RootFolderId pulumi.StringPtrInput
-	// The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+	// The status of control policy. Valid values:`Enabled` and `Disabled`.
 	Status pulumi.StringPtrInput
 }
 
@@ -122,13 +122,13 @@ func (ResourceDirectoryState) ElementType() reflect.Type {
 }
 
 type resourceDirectoryArgs struct {
-	// The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+	// The status of control policy. Valid values:`Enabled` and `Disabled`.
 	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a ResourceDirectory resource.
 type ResourceDirectoryArgs struct {
-	// The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+	// The status of control policy. Valid values:`Enabled` and `Disabled`.
 	Status pulumi.StringPtrInput
 }
 

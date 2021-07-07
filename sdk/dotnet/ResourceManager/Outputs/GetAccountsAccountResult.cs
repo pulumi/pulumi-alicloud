@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     public sealed class GetAccountsAccountResult
     {
         public readonly string AccountId;
+        /// <summary>
+        /// (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+        /// </summary>
+        public readonly string AccountName;
         public readonly string DisplayName;
         /// <summary>
         /// The ID of the folder.
@@ -38,6 +42,10 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string ModifyTime;
         /// <summary>
+        /// (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+        /// </summary>
+        public readonly string PayerAccountId;
+        /// <summary>
         /// The ID of the resource directory.
         /// </summary>
         public readonly string ResourceDirectoryId;
@@ -54,6 +62,8 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         private GetAccountsAccountResult(
             string accountId,
 
+            string accountName,
+
             string displayName,
 
             string folderId,
@@ -66,6 +76,8 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
 
             string modifyTime,
 
+            string payerAccountId,
+
             string resourceDirectoryId,
 
             string status,
@@ -73,12 +85,14 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
             string type)
         {
             AccountId = accountId;
+            AccountName = accountName;
             DisplayName = displayName;
             FolderId = folderId;
             Id = id;
             JoinMethod = joinMethod;
             JoinTime = joinTime;
             ModifyTime = modifyTime;
+            PayerAccountId = payerAccountId;
             ResourceDirectoryId = resourceDirectoryId;
             Status = status;
             Type = type;

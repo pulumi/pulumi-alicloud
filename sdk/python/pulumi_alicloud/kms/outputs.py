@@ -59,26 +59,37 @@ class GetAliasesAliasResult(dict):
 @pulumi.output_type
 class GetKeyVersionsVersionResult(dict):
     def __init__(__self__, *,
+                 create_time: str,
                  creation_date: str,
                  id: str,
                  key_id: str,
                  key_version_id: str):
         """
-        :param str creation_date: Date and time when the key version was created (UTC time).
+        :param str create_time: Date and time when the key version was created (UTC time).
+        :param str creation_date: (Removed from v1.124.4) It has been removed and using `create_time` instead.
         :param str id: ID of the KMS KeyVersion resource.
         :param str key_id: The id of kms key.
         :param str key_version_id: ID of the key version.
         """
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creation_date", creation_date)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "key_id", key_id)
         pulumi.set(__self__, "key_version_id", key_version_id)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Date and time when the key version was created (UTC time).
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
         """
-        Date and time when the key version was created (UTC time).
+        (Removed from v1.124.4) It has been removed and using `create_time` instead.
         """
         return pulumi.get(self, "creation_date")
 

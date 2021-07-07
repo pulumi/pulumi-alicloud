@@ -186,6 +186,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
+     * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+     */
+    public readonly settingConfig!: pulumi.Output<{[key: string]: any}>;
+    /**
      * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -248,6 +252,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["protocol"] = state ? state.protocol : undefined;
             inputs["publicWhitelists"] = state ? state.publicWhitelists : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["settingConfig"] = state ? state.settingConfig : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["version"] = state ? state.version : undefined;
@@ -296,6 +301,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["publicWhitelists"] = args ? args.publicWhitelists : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["settingConfig"] = args ? args.settingConfig : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -427,6 +433,10 @@ export interface InstanceState {
      */
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
+     * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+     */
+    readonly settingConfig?: pulumi.Input<{[key: string]: any}>;
+    /**
      * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
      */
     readonly status?: pulumi.Input<string>;
@@ -547,6 +557,10 @@ export interface InstanceArgs {
      * The Id of resource group which the Elasticsearch instance belongs.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+     */
+    readonly settingConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * A mapping of tags to assign to the resource. 
      * - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.

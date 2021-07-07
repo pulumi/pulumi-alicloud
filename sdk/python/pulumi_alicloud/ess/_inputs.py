@@ -26,6 +26,7 @@ class ScalingConfigurationDataDiskArgs:
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         if auto_snapshot_policy_id is not None:
@@ -47,6 +48,8 @@ class ScalingConfigurationDataDiskArgs:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -123,6 +126,15 @@ class ScalingConfigurationDataDiskArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_level", value)
 
     @property
     @pulumi.getter

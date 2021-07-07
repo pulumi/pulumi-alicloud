@@ -123,6 +123,8 @@ type Instance struct {
 	PublicWhitelists pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+	SettingConfig pulumi.MapOutput `pulumi:"settingConfig"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -239,6 +241,8 @@ type instanceState struct {
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+	SettingConfig map[string]interface{} `pulumi:"settingConfig"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -309,6 +313,8 @@ type InstanceState struct {
 	PublicWhitelists pulumi.StringArrayInput
 	// The Id of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+	SettingConfig pulumi.MapInput
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -375,6 +381,8 @@ type instanceArgs struct {
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+	SettingConfig map[string]interface{} `pulumi:"settingConfig"`
 	// A mapping of tags to assign to the resource.
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
@@ -436,6 +444,8 @@ type InstanceArgs struct {
 	PublicWhitelists pulumi.StringArrayInput
 	// The Id of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+	SettingConfig pulumi.MapInput
 	// A mapping of tags to assign to the resource.
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.

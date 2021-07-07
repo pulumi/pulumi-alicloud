@@ -23,7 +23,6 @@ export * from "./kubernetesAutoscaler";
 export * from "./kubernetesPermission";
 export * from "./managedKubernetes";
 export * from "./nodePool";
-export * from "./registryEnterpriseInstance";
 export * from "./registryEnterpriseNamespace";
 export * from "./registryEnterpriseRepo";
 export * from "./registryEnterpriseSyncRule";
@@ -39,7 +38,6 @@ import { KubernetesAutoscaler } from "./kubernetesAutoscaler";
 import { KubernetesPermission } from "./kubernetesPermission";
 import { ManagedKubernetes } from "./managedKubernetes";
 import { NodePool } from "./nodePool";
-import { RegistryEnterpriseInstance } from "./registryEnterpriseInstance";
 import { RegistryEnterpriseNamespace } from "./registryEnterpriseNamespace";
 import { RegistryEnterpriseRepo } from "./registryEnterpriseRepo";
 import { RegistryEnterpriseSyncRule } from "./registryEnterpriseSyncRule";
@@ -66,8 +64,6 @@ const _module = {
                 return new ManagedKubernetes(name, <any>undefined, { urn })
             case "alicloud:cs/nodePool:NodePool":
                 return new NodePool(name, <any>undefined, { urn })
-            case "alicloud:cs/registryEnterpriseInstance:RegistryEnterpriseInstance":
-                return new RegistryEnterpriseInstance(name, <any>undefined, { urn })
             case "alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace":
                 return new RegistryEnterpriseNamespace(name, <any>undefined, { urn })
             case "alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo":
@@ -91,7 +87,6 @@ pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetesAutoscaler", _mo
 pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetesPermission", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/managedKubernetes", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/nodePool", _module)
-pulumi.runtime.registerResourceModule("alicloud", "cs/registryEnterpriseInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/registryEnterpriseNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/registryEnterpriseRepo", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/registryEnterpriseSyncRule", _module)

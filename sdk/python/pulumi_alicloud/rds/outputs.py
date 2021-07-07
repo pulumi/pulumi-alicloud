@@ -445,8 +445,13 @@ class GetInstancesInstanceResult(dict):
                  connection_mode: str,
                  connection_string: str,
                  create_time: str,
+                 creator: str,
                  db_instance_storage_type: str,
                  db_type: str,
+                 delete_date: str,
+                 description: str,
+                 encryption_key: str,
+                 encryption_key_status: str,
                  engine: str,
                  engine_version: str,
                  expire_time: str,
@@ -454,12 +459,15 @@ class GetInstancesInstanceResult(dict):
                  id: str,
                  instance_storage: int,
                  instance_type: str,
+                 key_usage: str,
                  last_modify_status: str,
                  master_instance_id: str,
                  master_zone: str,
+                 material_expire_time: str,
                  modify_status_reason: str,
                  name: str,
                  net_type: str,
+                 origin: str,
                  port: str,
                  readonly_instance_ids: Sequence[str],
                  region_id: str,
@@ -495,8 +503,15 @@ class GetInstancesInstanceResult(dict):
         :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
         :param str connection_string: (Available in 1.70.3+) RDS database connection string.
         :param str create_time: Creation time of the instance.
+        :param str creator: (Available in 1.124.3+) The creator of the encryption key.
         :param str db_instance_storage_type: (Available in 1.70.3+) The storage type of the instance.
         :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+        :param str delete_date: (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param str description: (Available in 1.124.3+) The description of the encryption key.
+        :param str encryption_key: (Available in 1.124.3+) The ID of the encryption key.
+        :param str encryption_key_status: (Available in 1.124.3+) The status of the encryption key. Valid values:
+               - Enabled
+               - Disabled
         :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
         :param str engine_version: Database version.
         :param str expire_time: Expiration time. Pay-As-You-Go instances never expire.
@@ -504,15 +519,18 @@ class GetInstancesInstanceResult(dict):
         :param str id: The ID of the RDS instance.
         :param int instance_storage: (Available in 1.70.3+) User-defined DB instance storage space.
         :param str instance_type: Sizing of the RDS instance.
+        :param str key_usage: (Available in 1.124.3+) The purpose of the encryption key.
         :param str last_modify_status: (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
                - success
                - setting
                - failed
         :param str master_instance_id: ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
         :param str master_zone: (Available in 1.101.0+) The master zone of the instance.
+        :param str material_expire_time: (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param str modify_status_reason: (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
         :param str name: The name of the RDS instance.
         :param str net_type: `Internet` for public network or `Intranet` for private network.
+        :param str origin: (Available in 1.124.3+) The source of the encryption key.
         :param str port: (Available in 1.70.3+) RDS database connection port.
         :param Sequence[str] readonly_instance_ids: A list of IDs of read-only instances attached to the primary instance.
         :param str region_id: Region ID the instance belongs to.
@@ -555,8 +573,13 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "connection_mode", connection_mode)
         pulumi.set(__self__, "connection_string", connection_string)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         pulumi.set(__self__, "db_type", db_type)
+        pulumi.set(__self__, "delete_date", delete_date)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encryption_key", encryption_key)
+        pulumi.set(__self__, "encryption_key_status", encryption_key_status)
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "engine_version", engine_version)
         pulumi.set(__self__, "expire_time", expire_time)
@@ -564,12 +587,15 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_storage", instance_storage)
         pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "key_usage", key_usage)
         pulumi.set(__self__, "last_modify_status", last_modify_status)
         pulumi.set(__self__, "master_instance_id", master_instance_id)
         pulumi.set(__self__, "master_zone", master_zone)
+        pulumi.set(__self__, "material_expire_time", material_expire_time)
         pulumi.set(__self__, "modify_status_reason", modify_status_reason)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "net_type", net_type)
+        pulumi.set(__self__, "origin", origin)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "readonly_instance_ids", readonly_instance_ids)
         pulumi.set(__self__, "region_id", region_id)
@@ -674,6 +700,14 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter
+    def creator(self) -> str:
+        """
+        (Available in 1.124.3+) The creator of the encryption key.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
     @pulumi.getter(name="dbInstanceStorageType")
     def db_instance_storage_type(self) -> str:
         """
@@ -688,6 +722,40 @@ class GetInstancesInstanceResult(dict):
         `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
         """
         return pulumi.get(self, "db_type")
+
+    @property
+    @pulumi.getter(name="deleteDate")
+    def delete_date(self) -> str:
+        """
+        (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "delete_date")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        (Available in 1.124.3+) The description of the encryption key.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> str:
+        """
+        (Available in 1.124.3+) The ID of the encryption key.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="encryptionKeyStatus")
+    def encryption_key_status(self) -> str:
+        """
+        (Available in 1.124.3+) The status of the encryption key. Valid values:
+        - Enabled
+        - Disabled
+        """
+        return pulumi.get(self, "encryption_key_status")
 
     @property
     @pulumi.getter
@@ -746,6 +814,14 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "instance_type")
 
     @property
+    @pulumi.getter(name="keyUsage")
+    def key_usage(self) -> str:
+        """
+        (Available in 1.124.3+) The purpose of the encryption key.
+        """
+        return pulumi.get(self, "key_usage")
+
+    @property
     @pulumi.getter(name="lastModifyStatus")
     def last_modify_status(self) -> str:
         """
@@ -773,6 +849,14 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "master_zone")
 
     @property
+    @pulumi.getter(name="materialExpireTime")
+    def material_expire_time(self) -> str:
+        """
+        (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "material_expire_time")
+
+    @property
     @pulumi.getter(name="modifyStatusReason")
     def modify_status_reason(self) -> str:
         """
@@ -795,6 +879,14 @@ class GetInstancesInstanceResult(dict):
         `Internet` for public network or `Intranet` for private network.
         """
         return pulumi.get(self, "net_type")
+
+    @property
+    @pulumi.getter
+    def origin(self) -> str:
+        """
+        (Available in 1.124.3+) The source of the encryption key.
+        """
+        return pulumi.get(self, "origin")
 
     @property
     @pulumi.getter

@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
+        /// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+        /// </summary>
+        public readonly bool DeletionProtection;
+        /// <summary>
         /// ID of the EIP.
         /// </summary>
         public readonly string Id;
@@ -52,6 +56,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string creationTime,
 
+            bool deletionProtection,
+
             string id,
 
             string instanceId,
@@ -66,6 +72,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         {
             Bandwidth = bandwidth;
             CreationTime = creationTime;
+            DeletionProtection = deletionProtection;
             Id = id;
             InstanceId = instanceId;
             InstanceType = instanceType;

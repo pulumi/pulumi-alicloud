@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:cr/namespace:Namespace":
 		r = &Namespace{}
+	case "alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance":
+		r = &RegistryEnterpriseInstance{}
 	case "alicloud:cr/repo:Repo":
 		r = &Repo{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cr/namespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cr/registryEnterpriseInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
