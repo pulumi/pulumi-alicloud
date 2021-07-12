@@ -383,23 +383,29 @@ class GetAlidnsDomainsDomainRecordLineResult(dict):
 class GetAlidnsInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  dns_security: str,
+                 domain: str,
                  domain_numbers: str,
                  id: str,
                  instance_id: str,
+                 payment_type: str,
                  version_code: str,
                  version_name: str):
         """
         :param str dns_security: DNS security level.
+        :param str domain: (Available in 1.124.1+) The domain name.
         :param str domain_numbers: Number of domain names bound.
         :param str id: Id of the instance.
         :param str instance_id: Id of the instance resource.
+        :param str payment_type: (Available in 1.124.1+) The payment type of alidns instance.
         :param str version_code: Paid package version.
         :param str version_name: Paid package version name.
         """
         pulumi.set(__self__, "dns_security", dns_security)
+        pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domain_numbers", domain_numbers)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "version_code", version_code)
         pulumi.set(__self__, "version_name", version_name)
 
@@ -410,6 +416,14 @@ class GetAlidnsInstancesInstanceResult(dict):
         DNS security level.
         """
         return pulumi.get(self, "dns_security")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        (Available in 1.124.1+) The domain name.
+        """
+        return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter(name="domainNumbers")
@@ -434,6 +448,14 @@ class GetAlidnsInstancesInstanceResult(dict):
         Id of the instance resource.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        (Available in 1.124.1+) The payment type of alidns instance.
+        """
+        return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter(name="versionCode")
@@ -984,9 +1006,11 @@ class GetGroupsGroupResult(dict):
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  dns_security: str,
+                 domain: str,
                  domain_numbers: str,
                  id: str,
                  instance_id: str,
+                 payment_type: str,
                  version_code: str,
                  version_name: str):
         """
@@ -998,9 +1022,11 @@ class GetInstancesInstanceResult(dict):
         :param str version_name: Paid package version name.
         """
         pulumi.set(__self__, "dns_security", dns_security)
+        pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domain_numbers", domain_numbers)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "version_code", version_code)
         pulumi.set(__self__, "version_name", version_name)
 
@@ -1011,6 +1037,11 @@ class GetInstancesInstanceResult(dict):
         DNS security level.
         """
         return pulumi.get(self, "dns_security")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter(name="domainNumbers")
@@ -1035,6 +1066,11 @@ class GetInstancesInstanceResult(dict):
         Id of the instance resource.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter(name="versionCode")

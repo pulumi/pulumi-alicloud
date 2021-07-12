@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Ecs
         /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Output("performanceLevel")]
-        public Output<string?> PerformanceLevel { get; private set; } = null!;
+        public Output<string> PerformanceLevel { get; private set; } = null!;
 
         /// <summary>
         /// The Id of resource group which the disk belongs.

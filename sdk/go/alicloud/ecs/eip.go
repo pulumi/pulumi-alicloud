@@ -22,6 +22,10 @@ type Eip struct {
 
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
@@ -74,6 +78,10 @@ func GetEip(ctx *pulumi.Context,
 type eipState struct {
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth *int `pulumi:"bandwidth"`
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
 	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
@@ -98,6 +106,10 @@ type eipState struct {
 type EipState struct {
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth pulumi.IntPtrInput
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
 	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
@@ -126,6 +138,10 @@ func (EipState) ElementType() reflect.Type {
 type eipArgs struct {
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth *int `pulumi:"bandwidth"`
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
 	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
@@ -147,6 +163,10 @@ type eipArgs struct {
 type EipArgs struct {
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth pulumi.IntPtrInput
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
 	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".

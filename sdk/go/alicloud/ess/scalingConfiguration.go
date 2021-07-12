@@ -89,6 +89,8 @@ type ScalingConfiguration struct {
 	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName pulumi.StringPtrOutput `pulumi:"systemDiskName"`
+	// The performance level of the ESSD used as the system disk.
+	SystemDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"systemDiskPerformanceLevel"`
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -199,6 +201,8 @@ type scalingConfigurationState struct {
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName *string `pulumi:"systemDiskName"`
+	// The performance level of the ESSD used as the system disk.
+	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -278,6 +282,8 @@ type ScalingConfigurationState struct {
 	SystemDiskDescription pulumi.StringPtrInput
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName pulumi.StringPtrInput
+	// The performance level of the ESSD used as the system disk.
+	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -361,6 +367,8 @@ type scalingConfigurationArgs struct {
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName *string `pulumi:"systemDiskName"`
+	// The performance level of the ESSD used as the system disk.
+	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -441,6 +449,8 @@ type ScalingConfigurationArgs struct {
 	SystemDiskDescription pulumi.StringPtrInput
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName pulumi.StringPtrInput
+	// The performance level of the ESSD used as the system disk.
+	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.

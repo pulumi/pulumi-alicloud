@@ -229,6 +229,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        /// </summary>
+        [Output("settingConfig")]
+        public Output<ImmutableDictionary<string, object>> SettingConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
         /// </summary>
         [Output("status")]
@@ -475,6 +481,18 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("settingConfig")]
+        private InputMap<object>? _settingConfig;
+
+        /// <summary>
+        /// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        /// </summary>
+        public InputMap<object> SettingConfig
+        {
+            get => _settingConfig ?? (_settingConfig = new InputMap<object>());
+            set => _settingConfig = value;
+        }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -706,6 +724,18 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("settingConfig")]
+        private InputMap<object>? _settingConfig;
+
+        /// <summary>
+        /// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        /// </summary>
+        public InputMap<object> SettingConfig
+        {
+            get => _settingConfig ?? (_settingConfig = new InputMap<object>());
+            set => _settingConfig = value;
+        }
 
         /// <summary>
         /// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.

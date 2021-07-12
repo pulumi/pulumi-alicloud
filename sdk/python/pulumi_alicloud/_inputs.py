@@ -89,6 +89,7 @@ class ProviderEndpointArgs:
                  ddosbgp: Optional[pulumi.Input[str]] = None,
                  ddoscoo: Optional[pulumi.Input[str]] = None,
                  dds: Optional[pulumi.Input[str]] = None,
+                 dm: Optional[pulumi.Input[str]] = None,
                  dms_enterprise: Optional[pulumi.Input[str]] = None,
                  dns: Optional[pulumi.Input[str]] = None,
                  drds: Optional[pulumi.Input[str]] = None,
@@ -174,6 +175,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "ddoscoo", ddoscoo)
         if dds is not None:
             pulumi.set(__self__, "dds", dds)
+        if dm is not None:
+            pulumi.set(__self__, "dm", dm)
         if dms_enterprise is not None:
             pulumi.set(__self__, "dms_enterprise", dms_enterprise)
         if dns is not None:
@@ -449,6 +452,15 @@ class ProviderEndpointArgs:
     @dds.setter
     def dds(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dds", value)
+
+    @property
+    @pulumi.getter
+    def dm(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dm")
+
+    @dm.setter
+    def dm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dm", value)
 
     @property
     @pulumi.getter(name="dmsEnterprise")

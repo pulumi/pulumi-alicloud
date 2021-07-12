@@ -10,11 +10,1072 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AggregateCompliancePackConfigRule',
+    'AggregateCompliancePackConfigRuleConfigRuleParameter',
+    'AggregatorAggregatorAccount',
+    'CompliancePackConfigRule',
+    'CompliancePackConfigRuleConfigRuleParameter',
+    'GetAggregateCompliancePacksPackResult',
+    'GetAggregateCompliancePacksPackConfigRuleResult',
+    'GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult',
+    'GetAggregateConfigRulesRuleResult',
+    'GetAggregateConfigRulesRuleComplianceResult',
+    'GetAggregatorsAggregatorResult',
+    'GetAggregatorsAggregatorAggregatorAccountResult',
+    'GetCompliancePacksPackResult',
+    'GetCompliancePacksPackConfigRuleResult',
+    'GetCompliancePacksPackConfigRuleConfigRuleParameterResult',
     'GetConfigurationRecordersRecorderResult',
     'GetDeliveryChannelsChannelResult',
     'GetRulesRuleResult',
     'GetRulesRuleComplianceResult',
 ]
+
+@pulumi.output_type
+class AggregateCompliancePackConfigRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configRuleParameters":
+            suggest = "config_rule_parameters"
+        elif key == "managedRuleIdentifier":
+            suggest = "managed_rule_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregateCompliancePackConfigRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregateCompliancePackConfigRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregateCompliancePackConfigRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_rule_parameters: Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter'],
+                 managed_rule_identifier: str):
+        """
+        :param Sequence['AggregateCompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules.
+        :param str managed_rule_identifier: The Managed Rule Identifier.
+        """
+        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
+        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+
+    @property
+    @pulumi.getter(name="configRuleParameters")
+    def config_rule_parameters(self) -> Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter']:
+        """
+        A list of parameter rules.
+        """
+        return pulumi.get(self, "config_rule_parameters")
+
+    @property
+    @pulumi.getter(name="managedRuleIdentifier")
+    def managed_rule_identifier(self) -> str:
+        """
+        The Managed Rule Identifier.
+        """
+        return pulumi.get(self, "managed_rule_identifier")
+
+
+@pulumi.output_type
+class AggregateCompliancePackConfigRuleConfigRuleParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterName":
+            suggest = "parameter_name"
+        elif key == "parameterValue":
+            suggest = "parameter_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregateCompliancePackConfigRuleConfigRuleParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregateCompliancePackConfigRuleConfigRuleParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregateCompliancePackConfigRuleConfigRuleParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter_name: str,
+                 parameter_value: str):
+        """
+        :param str parameter_name: The Parameter Name.
+        :param str parameter_value: The Parameter Value.
+        """
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> str:
+        """
+        The Parameter Name.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> str:
+        """
+        The Parameter Value.
+        """
+        return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class AggregatorAggregatorAccount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountId":
+            suggest = "account_id"
+        elif key == "accountName":
+            suggest = "account_name"
+        elif key == "accountType":
+            suggest = "account_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregatorAggregatorAccount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregatorAggregatorAccount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregatorAggregatorAccount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_id: str,
+                 account_name: str,
+                 account_type: str):
+        """
+        :param str account_id: Aggregator account Uid.
+        :param str account_name: Aggregator account name.
+        :param str account_type: Aggregator account source type. Valid values: `ResourceDirectory`.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "account_type", account_type)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        Aggregator account Uid.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> str:
+        """
+        Aggregator account name.
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> str:
+        """
+        Aggregator account source type. Valid values: `ResourceDirectory`.
+        """
+        return pulumi.get(self, "account_type")
+
+
+@pulumi.output_type
+class CompliancePackConfigRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configRuleParameters":
+            suggest = "config_rule_parameters"
+        elif key == "managedRuleIdentifier":
+            suggest = "managed_rule_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompliancePackConfigRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompliancePackConfigRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompliancePackConfigRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_rule_parameters: Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter'],
+                 managed_rule_identifier: str):
+        """
+        :param Sequence['CompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of Config Rule Parameters.
+        :param str managed_rule_identifier: The Managed Rule Identifier.
+        """
+        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
+        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+
+    @property
+    @pulumi.getter(name="configRuleParameters")
+    def config_rule_parameters(self) -> Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter']:
+        """
+        A list of Config Rule Parameters.
+        """
+        return pulumi.get(self, "config_rule_parameters")
+
+    @property
+    @pulumi.getter(name="managedRuleIdentifier")
+    def managed_rule_identifier(self) -> str:
+        """
+        The Managed Rule Identifier.
+        """
+        return pulumi.get(self, "managed_rule_identifier")
+
+
+@pulumi.output_type
+class CompliancePackConfigRuleConfigRuleParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterName":
+            suggest = "parameter_name"
+        elif key == "parameterValue":
+            suggest = "parameter_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompliancePackConfigRuleConfigRuleParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompliancePackConfigRuleConfigRuleParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompliancePackConfigRuleConfigRuleParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter_name: str,
+                 parameter_value: Optional[str] = None):
+        """
+        :param str parameter_name: The parameter name.
+        :param str parameter_value: The parameter value.
+        """
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        if parameter_value is not None:
+            pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> str:
+        """
+        The parameter name.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> Optional[str]:
+        """
+        The parameter value.
+        """
+        return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class GetAggregateCompliancePacksPackResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 aggregate_compliance_pack_name: str,
+                 aggregator_compliance_pack_id: str,
+                 compliance_pack_template_id: str,
+                 config_rules: Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleResult'],
+                 description: str,
+                 id: str,
+                 risk_level: int,
+                 status: str):
+        """
+        :param str account_id: The Aliyun User Id.
+        :param str aggregate_compliance_pack_name: -The Aggregate Compliance Package Name.
+        :param str aggregator_compliance_pack_id: The first ID of the resource.
+        :param str compliance_pack_template_id: The template ID of the Compliance Package.
+        :param Sequence['GetAggregateCompliancePacksPackConfigRuleArgs'] config_rules: A list of The Aggregate Compliance Package Rules.
+        :param str description: The description of aggregate compliance pack.
+        :param str id: The ID of the Aggregate Compliance Pack.
+        :param int risk_level: The Risk Level.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "aggregate_compliance_pack_name", aggregate_compliance_pack_name)
+        pulumi.set(__self__, "aggregator_compliance_pack_id", aggregator_compliance_pack_id)
+        pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
+        pulumi.set(__self__, "config_rules", config_rules)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "risk_level", risk_level)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The Aliyun User Id.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="aggregateCompliancePackName")
+    def aggregate_compliance_pack_name(self) -> str:
+        """
+        -The Aggregate Compliance Package Name.
+        """
+        return pulumi.get(self, "aggregate_compliance_pack_name")
+
+    @property
+    @pulumi.getter(name="aggregatorCompliancePackId")
+    def aggregator_compliance_pack_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "aggregator_compliance_pack_id")
+
+    @property
+    @pulumi.getter(name="compliancePackTemplateId")
+    def compliance_pack_template_id(self) -> str:
+        """
+        The template ID of the Compliance Package.
+        """
+        return pulumi.get(self, "compliance_pack_template_id")
+
+    @property
+    @pulumi.getter(name="configRules")
+    def config_rules(self) -> Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleResult']:
+        """
+        A list of The Aggregate Compliance Package Rules.
+        """
+        return pulumi.get(self, "config_rules")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of aggregate compliance pack.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Aggregate Compliance Pack.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> int:
+        """
+        The Risk Level.
+        """
+        return pulumi.get(self, "risk_level")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAggregateCompliancePacksPackConfigRuleResult(dict):
+    def __init__(__self__, *,
+                 config_rule_id: str,
+                 config_rule_parameters: Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult'],
+                 managed_rule_identifier: str):
+        """
+        :param str config_rule_id: The ID of the rule.
+        :param Sequence['GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules.
+        :param str managed_rule_identifier: Managed Rule Identifier.
+        """
+        pulumi.set(__self__, "config_rule_id", config_rule_id)
+        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
+        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+
+    @property
+    @pulumi.getter(name="configRuleId")
+    def config_rule_id(self) -> str:
+        """
+        The ID of the rule.
+        """
+        return pulumi.get(self, "config_rule_id")
+
+    @property
+    @pulumi.getter(name="configRuleParameters")
+    def config_rule_parameters(self) -> Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult']:
+        """
+        A list of parameter rules.
+        """
+        return pulumi.get(self, "config_rule_parameters")
+
+    @property
+    @pulumi.getter(name="managedRuleIdentifier")
+    def managed_rule_identifier(self) -> str:
+        """
+        Managed Rule Identifier.
+        """
+        return pulumi.get(self, "managed_rule_identifier")
+
+
+@pulumi.output_type
+class GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult(dict):
+    def __init__(__self__, *,
+                 parameter_name: str,
+                 parameter_value: str,
+                 required: bool):
+        """
+        :param str parameter_name: The Parameter Name.
+        :param str parameter_value: The Parameter Value.
+        :param bool required: Required.
+        """
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        pulumi.set(__self__, "parameter_value", parameter_value)
+        pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> str:
+        """
+        The Parameter Name.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> str:
+        """
+        The Parameter Value.
+        """
+        return pulumi.get(self, "parameter_value")
+
+    @property
+    @pulumi.getter
+    def required(self) -> bool:
+        """
+        Required.
+        """
+        return pulumi.get(self, "required")
+
+
+@pulumi.output_type
+class GetAggregateConfigRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 aggregate_config_rule_name: str,
+                 compliance_pack_id: str,
+                 compliances: Sequence['outputs.GetAggregateConfigRulesRuleComplianceResult'],
+                 config_rule_arn: str,
+                 config_rule_id: str,
+                 config_rule_trigger_types: str,
+                 description: str,
+                 event_source: str,
+                 exclude_resource_ids_scope: str,
+                 id: str,
+                 input_parameters: Mapping[str, Any],
+                 maximum_execution_frequency: str,
+                 modified_timestamp: str,
+                 region_ids_scope: str,
+                 resource_group_ids_scope: str,
+                 resource_types_scopes: Sequence[str],
+                 risk_level: int,
+                 source_identifier: str,
+                 source_owner: str,
+                 status: str,
+                 tag_key_scope: str,
+                 tag_value_scope: str):
+        """
+        :param str account_id: The Aliyun User ID.
+        :param str aggregate_config_rule_name: The name of the rule.
+        :param str compliance_pack_id: The ID of Compliance Package.
+        :param Sequence['GetAggregateConfigRulesRuleComplianceArgs'] compliances: -The Compliance information.
+        :param str config_rule_arn: The config rule arn.
+        :param str config_rule_id: The ID of the rule.
+        :param str config_rule_trigger_types: The trigger types of config rules.
+        :param str description: The description of the rule.
+        :param str event_source: Event source of the Config Rule.
+        :param str exclude_resource_ids_scope: The types of the resources to be evaluated against the rule.
+        :param str id: The ID of the Aggregate Config Rule.
+        :param Mapping[str, Any] input_parameters: The settings of the input parameters for the rule.
+        :param str maximum_execution_frequency: The frequency of the compliance evaluations.
+        :param str modified_timestamp: The timestamp when the rule was last modified.
+        :param str region_ids_scope: The Exclude ResourceId List.
+        :param str resource_group_ids_scope: The scope of resource group ids.
+        :param int risk_level: The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+        :param str source_identifier: The name of the custom rule or managed rule.
+        :param str source_owner: The source owner of the Config Rule.
+        :param str status: The status of the rule.
+        :param str tag_key_scope: The scope of tay key.
+        :param str tag_value_scope: The scope of tay value.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "aggregate_config_rule_name", aggregate_config_rule_name)
+        pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
+        pulumi.set(__self__, "compliances", compliances)
+        pulumi.set(__self__, "config_rule_arn", config_rule_arn)
+        pulumi.set(__self__, "config_rule_id", config_rule_id)
+        pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "event_source", event_source)
+        pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "input_parameters", input_parameters)
+        pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
+        pulumi.set(__self__, "modified_timestamp", modified_timestamp)
+        pulumi.set(__self__, "region_ids_scope", region_ids_scope)
+        pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
+        pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
+        pulumi.set(__self__, "risk_level", risk_level)
+        pulumi.set(__self__, "source_identifier", source_identifier)
+        pulumi.set(__self__, "source_owner", source_owner)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tag_key_scope", tag_key_scope)
+        pulumi.set(__self__, "tag_value_scope", tag_value_scope)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The Aliyun User ID.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="aggregateConfigRuleName")
+    def aggregate_config_rule_name(self) -> str:
+        """
+        The name of the rule.
+        """
+        return pulumi.get(self, "aggregate_config_rule_name")
+
+    @property
+    @pulumi.getter(name="compliancePackId")
+    def compliance_pack_id(self) -> str:
+        """
+        The ID of Compliance Package.
+        """
+        return pulumi.get(self, "compliance_pack_id")
+
+    @property
+    @pulumi.getter
+    def compliances(self) -> Sequence['outputs.GetAggregateConfigRulesRuleComplianceResult']:
+        """
+        -The Compliance information.
+        """
+        return pulumi.get(self, "compliances")
+
+    @property
+    @pulumi.getter(name="configRuleArn")
+    def config_rule_arn(self) -> str:
+        """
+        The config rule arn.
+        """
+        return pulumi.get(self, "config_rule_arn")
+
+    @property
+    @pulumi.getter(name="configRuleId")
+    def config_rule_id(self) -> str:
+        """
+        The ID of the rule.
+        """
+        return pulumi.get(self, "config_rule_id")
+
+    @property
+    @pulumi.getter(name="configRuleTriggerTypes")
+    def config_rule_trigger_types(self) -> str:
+        """
+        The trigger types of config rules.
+        """
+        return pulumi.get(self, "config_rule_trigger_types")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="eventSource")
+    def event_source(self) -> str:
+        """
+        Event source of the Config Rule.
+        """
+        return pulumi.get(self, "event_source")
+
+    @property
+    @pulumi.getter(name="excludeResourceIdsScope")
+    def exclude_resource_ids_scope(self) -> str:
+        """
+        The types of the resources to be evaluated against the rule.
+        """
+        return pulumi.get(self, "exclude_resource_ids_scope")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Aggregate Config Rule.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="inputParameters")
+    def input_parameters(self) -> Mapping[str, Any]:
+        """
+        The settings of the input parameters for the rule.
+        """
+        return pulumi.get(self, "input_parameters")
+
+    @property
+    @pulumi.getter(name="maximumExecutionFrequency")
+    def maximum_execution_frequency(self) -> str:
+        """
+        The frequency of the compliance evaluations.
+        """
+        return pulumi.get(self, "maximum_execution_frequency")
+
+    @property
+    @pulumi.getter(name="modifiedTimestamp")
+    def modified_timestamp(self) -> str:
+        """
+        The timestamp when the rule was last modified.
+        """
+        return pulumi.get(self, "modified_timestamp")
+
+    @property
+    @pulumi.getter(name="regionIdsScope")
+    def region_ids_scope(self) -> str:
+        """
+        The Exclude ResourceId List.
+        """
+        return pulumi.get(self, "region_ids_scope")
+
+    @property
+    @pulumi.getter(name="resourceGroupIdsScope")
+    def resource_group_ids_scope(self) -> str:
+        """
+        The scope of resource group ids.
+        """
+        return pulumi.get(self, "resource_group_ids_scope")
+
+    @property
+    @pulumi.getter(name="resourceTypesScopes")
+    def resource_types_scopes(self) -> Sequence[str]:
+        return pulumi.get(self, "resource_types_scopes")
+
+    @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> int:
+        """
+        The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+        """
+        return pulumi.get(self, "risk_level")
+
+    @property
+    @pulumi.getter(name="sourceIdentifier")
+    def source_identifier(self) -> str:
+        """
+        The name of the custom rule or managed rule.
+        """
+        return pulumi.get(self, "source_identifier")
+
+    @property
+    @pulumi.getter(name="sourceOwner")
+    def source_owner(self) -> str:
+        """
+        The source owner of the Config Rule.
+        """
+        return pulumi.get(self, "source_owner")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the rule.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tagKeyScope")
+    def tag_key_scope(self) -> str:
+        """
+        The scope of tay key.
+        """
+        return pulumi.get(self, "tag_key_scope")
+
+    @property
+    @pulumi.getter(name="tagValueScope")
+    def tag_value_scope(self) -> str:
+        """
+        The scope of tay value.
+        """
+        return pulumi.get(self, "tag_value_scope")
+
+
+@pulumi.output_type
+class GetAggregateConfigRulesRuleComplianceResult(dict):
+    def __init__(__self__, *,
+                 compliance_type: str,
+                 count: int):
+        """
+        :param str compliance_type: The Compliance Type.
+        :param int count: The Count.
+        """
+        pulumi.set(__self__, "compliance_type", compliance_type)
+        pulumi.set(__self__, "count", count)
+
+    @property
+    @pulumi.getter(name="complianceType")
+    def compliance_type(self) -> str:
+        """
+        The Compliance Type.
+        """
+        return pulumi.get(self, "compliance_type")
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The Count.
+        """
+        return pulumi.get(self, "count")
+
+
+@pulumi.output_type
+class GetAggregatorsAggregatorResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 aggregator_accounts: Sequence['outputs.GetAggregatorsAggregatorAggregatorAccountResult'],
+                 aggregator_id: str,
+                 aggregator_name: str,
+                 aggregator_type: str,
+                 description: str,
+                 id: str,
+                 status: str):
+        """
+        :param str account_id: Aggregator account uid.
+        :param Sequence['GetAggregatorsAggregatorAggregatorAccountArgs'] aggregator_accounts: Account information in aggregator.
+        :param str aggregator_id: The id of aggregator.
+        :param str aggregator_name: The name of aggregator.
+        :param str aggregator_type: The type of aggregator.
+        :param str description: The description of aggregator.
+        :param str id: The id of the aggregator.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
+        pulumi.set(__self__, "aggregator_id", aggregator_id)
+        pulumi.set(__self__, "aggregator_name", aggregator_name)
+        pulumi.set(__self__, "aggregator_type", aggregator_type)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        Aggregator account uid.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="aggregatorAccounts")
+    def aggregator_accounts(self) -> Sequence['outputs.GetAggregatorsAggregatorAggregatorAccountResult']:
+        """
+        Account information in aggregator.
+        """
+        return pulumi.get(self, "aggregator_accounts")
+
+    @property
+    @pulumi.getter(name="aggregatorId")
+    def aggregator_id(self) -> str:
+        """
+        The id of aggregator.
+        """
+        return pulumi.get(self, "aggregator_id")
+
+    @property
+    @pulumi.getter(name="aggregatorName")
+    def aggregator_name(self) -> str:
+        """
+        The name of aggregator.
+        """
+        return pulumi.get(self, "aggregator_name")
+
+    @property
+    @pulumi.getter(name="aggregatorType")
+    def aggregator_type(self) -> str:
+        """
+        The type of aggregator.
+        """
+        return pulumi.get(self, "aggregator_type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of aggregator.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the aggregator.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAggregatorsAggregatorAggregatorAccountResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 account_name: str,
+                 account_type: str):
+        """
+        :param str account_id: Aggregator account uid.
+        :param str account_name: Aggregator account name.
+        :param str account_type: Aggregator account source type.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "account_type", account_type)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        Aggregator account uid.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> str:
+        """
+        Aggregator account name.
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> str:
+        """
+        Aggregator account source type.
+        """
+        return pulumi.get(self, "account_type")
+
+
+@pulumi.output_type
+class GetCompliancePacksPackResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 compliance_pack_id: str,
+                 compliance_pack_name: str,
+                 compliance_pack_template_id: str,
+                 config_rules: Sequence['outputs.GetCompliancePacksPackConfigRuleResult'],
+                 description: str,
+                 id: str,
+                 risk_level: int,
+                 status: str):
+        """
+        :param str account_id: The Aliyun User Id.
+        :param str compliance_pack_id: The Compliance Package ID.
+        :param str compliance_pack_name: The Compliance Package Name.
+        :param str compliance_pack_template_id: The template ID of the Compliance Package.
+        :param Sequence['GetCompliancePacksPackConfigRuleArgs'] config_rules: A list of The Compliance Package Rules.
+        :param str description: The description of compliance pack.
+        :param str id: The ID of the Compliance Pack.
+        :param int risk_level: The Ris Level.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
+        pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
+        pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
+        pulumi.set(__self__, "config_rules", config_rules)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "risk_level", risk_level)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The Aliyun User Id.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="compliancePackId")
+    def compliance_pack_id(self) -> str:
+        """
+        The Compliance Package ID.
+        """
+        return pulumi.get(self, "compliance_pack_id")
+
+    @property
+    @pulumi.getter(name="compliancePackName")
+    def compliance_pack_name(self) -> str:
+        """
+        The Compliance Package Name.
+        """
+        return pulumi.get(self, "compliance_pack_name")
+
+    @property
+    @pulumi.getter(name="compliancePackTemplateId")
+    def compliance_pack_template_id(self) -> str:
+        """
+        The template ID of the Compliance Package.
+        """
+        return pulumi.get(self, "compliance_pack_template_id")
+
+    @property
+    @pulumi.getter(name="configRules")
+    def config_rules(self) -> Sequence['outputs.GetCompliancePacksPackConfigRuleResult']:
+        """
+        A list of The Compliance Package Rules.
+        """
+        return pulumi.get(self, "config_rules")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of compliance pack.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Compliance Pack.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> int:
+        """
+        The Ris Level.
+        """
+        return pulumi.get(self, "risk_level")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCompliancePacksPackConfigRuleResult(dict):
+    def __init__(__self__, *,
+                 config_rule_id: str,
+                 config_rule_parameters: Sequence['outputs.GetCompliancePacksPackConfigRuleConfigRuleParameterResult'],
+                 managed_rule_identifier: str):
+        """
+        :param str config_rule_id: The ID of the rule.
+        :param Sequence['GetCompliancePacksPackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules.
+        :param str managed_rule_identifier: Managed Rule Identifier.
+        """
+        pulumi.set(__self__, "config_rule_id", config_rule_id)
+        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
+        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+
+    @property
+    @pulumi.getter(name="configRuleId")
+    def config_rule_id(self) -> str:
+        """
+        The ID of the rule.
+        """
+        return pulumi.get(self, "config_rule_id")
+
+    @property
+    @pulumi.getter(name="configRuleParameters")
+    def config_rule_parameters(self) -> Sequence['outputs.GetCompliancePacksPackConfigRuleConfigRuleParameterResult']:
+        """
+        A list of parameter rules.
+        """
+        return pulumi.get(self, "config_rule_parameters")
+
+    @property
+    @pulumi.getter(name="managedRuleIdentifier")
+    def managed_rule_identifier(self) -> str:
+        """
+        Managed Rule Identifier.
+        """
+        return pulumi.get(self, "managed_rule_identifier")
+
+
+@pulumi.output_type
+class GetCompliancePacksPackConfigRuleConfigRuleParameterResult(dict):
+    def __init__(__self__, *,
+                 parameter_name: str,
+                 parameter_value: str,
+                 required: bool):
+        """
+        :param str parameter_name: The Parameter Name.
+        :param str parameter_value: The Parameter Value.
+        :param bool required: Required.
+        """
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        pulumi.set(__self__, "parameter_value", parameter_value)
+        pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> str:
+        """
+        The Parameter Name.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> str:
+        """
+        The Parameter Value.
+        """
+        return pulumi.get(self, "parameter_value")
+
+    @property
+    @pulumi.getter
+    def required(self) -> bool:
+        """
+        Required.
+        """
+        return pulumi.get(self, "required")
+
 
 @pulumi.output_type
 class GetConfigurationRecordersRecorderResult(dict):
@@ -196,72 +1257,101 @@ class GetDeliveryChannelsChannelResult(dict):
 @pulumi.output_type
 class GetRulesRuleResult(dict):
     def __init__(__self__, *,
-                 account_id: int,
+                 account_id: str,
+                 compliance_pack_id: str,
                  compliances: Sequence['outputs.GetRulesRuleComplianceResult'],
                  config_rule_arn: str,
                  config_rule_id: str,
                  config_rule_state: str,
-                 create_timestamp: int,
+                 config_rule_trigger_types: str,
                  description: str,
                  event_source: str,
+                 exclude_resource_ids_scope: str,
                  id: str,
                  input_parameters: Mapping[str, Any],
-                 modified_timestamp: int,
+                 maximum_execution_frequency: str,
+                 modified_timestamp: str,
+                 region_ids_scope: str,
+                 resource_group_ids_scope: str,
+                 resource_types_scopes: Sequence[str],
                  risk_level: int,
                  rule_name: str,
-                 scope_compliance_resource_id: str,
                  scope_compliance_resource_types: Sequence[str],
                  source_detail_message_type: str,
                  source_identifier: str,
                  source_maximum_execution_frequency: str,
-                 source_owner: str):
+                 source_owner: str,
+                 status: str,
+                 tag_key_scope: str,
+                 tag_value_scope: str):
         """
         :param Sequence['GetRulesRuleComplianceArgs'] compliances: The information about the compliance evaluations based on the rule.
-        :param str config_rule_state: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
+        :param str config_rule_state: Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+        :param str config_rule_trigger_types: (Available in 1.124.1+) A list of trigger types of config rule.
         :param str event_source: Event source of the Config Rule.
+        :param str exclude_resource_ids_scope: (Available in 1.124.1+) The scope of exclude of resource ids.
         :param str id: The ID of the Config Rule.
                * `account_id`- The ID of the Alicloud account.
                * `config_rule_arn`- The ARN of the Config Rule.
                * `config_rule_id`- The ID of the Config Rule.
                * `config_rule_state`- The state of the Config Rule.
-               * `create_timestamp`- The timestamp of the Config Rule created.
                * `description`- The description of the Config Rule.
-               * `input_parameters`- The input paramrters of the Config Rule.
+               * `input_parameters`- The input parameters of the Config Rule.
                * `modified_timestamp`- the timestamp of the Config Rule modified.
                * `risk_level`- The risk level of the Config Rule.
                * `rule_name`- The name of the Config Rule.
+        :param str maximum_execution_frequency: (Available in 1.124.1+) The frequency of maximum execution.
+        :param str region_ids_scope: (Available in 1.124.1+) The scope of region ids.
+        :param str resource_group_ids_scope: (Available in 1.124.1+) The scope of resource ids.
+        :param Sequence[str] resource_types_scopes: (Available in 1.124.1+) The scope of resource types.
         :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
-        :param str scope_compliance_resource_id: The ID of the resource to be evaluated.
+        :param str rule_name: The name of config rule.
         :param Sequence[str] scope_compliance_resource_types: The types of the resources to be evaluated against the rule.
         :param str source_detail_message_type: Rule trigger mechanism.
         :param str source_maximum_execution_frequency: Rule execution cycle. 
                * `source_identifier`- The name of the custom rule or managed rule.
                * `source_owner`- The source owner of the Config Rule.
+        :param str status: The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
+        :param str tag_key_scope: (Available in 1.124.1+) The scope of tag key.
+        :param str tag_value_scope: (Available in 1.124.1+) The scope of tag value.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
         pulumi.set(__self__, "compliances", compliances)
         pulumi.set(__self__, "config_rule_arn", config_rule_arn)
         pulumi.set(__self__, "config_rule_id", config_rule_id)
         pulumi.set(__self__, "config_rule_state", config_rule_state)
-        pulumi.set(__self__, "create_timestamp", create_timestamp)
+        pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "event_source", event_source)
+        pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "input_parameters", input_parameters)
+        pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
         pulumi.set(__self__, "modified_timestamp", modified_timestamp)
+        pulumi.set(__self__, "region_ids_scope", region_ids_scope)
+        pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
+        pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
         pulumi.set(__self__, "risk_level", risk_level)
         pulumi.set(__self__, "rule_name", rule_name)
-        pulumi.set(__self__, "scope_compliance_resource_id", scope_compliance_resource_id)
         pulumi.set(__self__, "scope_compliance_resource_types", scope_compliance_resource_types)
         pulumi.set(__self__, "source_detail_message_type", source_detail_message_type)
         pulumi.set(__self__, "source_identifier", source_identifier)
         pulumi.set(__self__, "source_maximum_execution_frequency", source_maximum_execution_frequency)
         pulumi.set(__self__, "source_owner", source_owner)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tag_key_scope", tag_key_scope)
+        pulumi.set(__self__, "tag_value_scope", tag_value_scope)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> int:
+    def account_id(self) -> str:
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="compliancePackId")
+    def compliance_pack_id(self) -> str:
+        return pulumi.get(self, "compliance_pack_id")
 
     @property
     @pulumi.getter
@@ -285,14 +1375,17 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="configRuleState")
     def config_rule_state(self) -> str:
         """
-        The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
+        Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
         """
         return pulumi.get(self, "config_rule_state")
 
     @property
-    @pulumi.getter(name="createTimestamp")
-    def create_timestamp(self) -> int:
-        return pulumi.get(self, "create_timestamp")
+    @pulumi.getter(name="configRuleTriggerTypes")
+    def config_rule_trigger_types(self) -> str:
+        """
+        (Available in 1.124.1+) A list of trigger types of config rule.
+        """
+        return pulumi.get(self, "config_rule_trigger_types")
 
     @property
     @pulumi.getter
@@ -308,6 +1401,14 @@ class GetRulesRuleResult(dict):
         return pulumi.get(self, "event_source")
 
     @property
+    @pulumi.getter(name="excludeResourceIdsScope")
+    def exclude_resource_ids_scope(self) -> str:
+        """
+        (Available in 1.124.1+) The scope of exclude of resource ids.
+        """
+        return pulumi.get(self, "exclude_resource_ids_scope")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -316,9 +1417,8 @@ class GetRulesRuleResult(dict):
         * `config_rule_arn`- The ARN of the Config Rule.
         * `config_rule_id`- The ID of the Config Rule.
         * `config_rule_state`- The state of the Config Rule.
-        * `create_timestamp`- The timestamp of the Config Rule created.
         * `description`- The description of the Config Rule.
-        * `input_parameters`- The input paramrters of the Config Rule.
+        * `input_parameters`- The input parameters of the Config Rule.
         * `modified_timestamp`- the timestamp of the Config Rule modified.
         * `risk_level`- The risk level of the Config Rule.
         * `rule_name`- The name of the Config Rule.
@@ -331,9 +1431,41 @@ class GetRulesRuleResult(dict):
         return pulumi.get(self, "input_parameters")
 
     @property
+    @pulumi.getter(name="maximumExecutionFrequency")
+    def maximum_execution_frequency(self) -> str:
+        """
+        (Available in 1.124.1+) The frequency of maximum execution.
+        """
+        return pulumi.get(self, "maximum_execution_frequency")
+
+    @property
     @pulumi.getter(name="modifiedTimestamp")
-    def modified_timestamp(self) -> int:
+    def modified_timestamp(self) -> str:
         return pulumi.get(self, "modified_timestamp")
+
+    @property
+    @pulumi.getter(name="regionIdsScope")
+    def region_ids_scope(self) -> str:
+        """
+        (Available in 1.124.1+) The scope of region ids.
+        """
+        return pulumi.get(self, "region_ids_scope")
+
+    @property
+    @pulumi.getter(name="resourceGroupIdsScope")
+    def resource_group_ids_scope(self) -> str:
+        """
+        (Available in 1.124.1+) The scope of resource ids.
+        """
+        return pulumi.get(self, "resource_group_ids_scope")
+
+    @property
+    @pulumi.getter(name="resourceTypesScopes")
+    def resource_types_scopes(self) -> Sequence[str]:
+        """
+        (Available in 1.124.1+) The scope of resource types.
+        """
+        return pulumi.get(self, "resource_types_scopes")
 
     @property
     @pulumi.getter(name="riskLevel")
@@ -346,15 +1478,10 @@ class GetRulesRuleResult(dict):
     @property
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> str:
+        """
+        The name of config rule.
+        """
         return pulumi.get(self, "rule_name")
-
-    @property
-    @pulumi.getter(name="scopeComplianceResourceId")
-    def scope_compliance_resource_id(self) -> str:
-        """
-        The ID of the resource to be evaluated.
-        """
-        return pulumi.get(self, "scope_compliance_resource_id")
 
     @property
     @pulumi.getter(name="scopeComplianceResourceTypes")
@@ -391,6 +1518,30 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="sourceOwner")
     def source_owner(self) -> str:
         return pulumi.get(self, "source_owner")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tagKeyScope")
+    def tag_key_scope(self) -> str:
+        """
+        (Available in 1.124.1+) The scope of tag key.
+        """
+        return pulumi.get(self, "tag_key_scope")
+
+    @property
+    @pulumi.getter(name="tagValueScope")
+    def tag_value_scope(self) -> str:
+        """
+        (Available in 1.124.1+) The scope of tag value.
+        """
+        return pulumi.get(self, "tag_value_scope")
 
 
 @pulumi.output_type

@@ -51,7 +51,9 @@ func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getRules.
 type GetRulesArgs struct {
-	// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
+	// Field `configRuleState` has been deprecated from provider version 1.124.1. New field `status` instead.
+	//
+	// Deprecated: Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
 	ConfigRuleState *string `pulumi:"configRuleState"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
@@ -59,8 +61,6 @@ type GetRulesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The ID of the member account to which the rule to be queried belongs. The default is empty. When `multiAccount` is set to true, this parameter is valid.
 	MemberId *int `pulumi:"memberId"`
-	// Trigger mechanism of rules. Valid values: `ConfigurationItemChangeNotification`,`OversizedConfigurationItemChangeNotification` and `ScheduledNotification`.
-	MessageType *string `pulumi:"messageType"`
 	// Whether the enterprise management account queries the rule details of member accounts.
 	MultiAccount *bool `pulumi:"multiAccount"`
 	// A regex string to filter results by rule name.
@@ -68,10 +68,15 @@ type GetRulesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
 	RiskLevel *int `pulumi:"riskLevel"`
+	// The name of config rule.
+	RuleName *string `pulumi:"ruleName"`
+	// The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getRules.
 type GetRulesResult struct {
+	// Deprecated: Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
 	ConfigRuleState *string `pulumi:"configRuleState"`
 	EnableDetails   *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
@@ -79,13 +84,15 @@ type GetRulesResult struct {
 	// A list of Config Rule IDs.
 	Ids          []string `pulumi:"ids"`
 	MemberId     *int     `pulumi:"memberId"`
-	MessageType  *string  `pulumi:"messageType"`
 	MultiAccount *bool    `pulumi:"multiAccount"`
 	NameRegex    *string  `pulumi:"nameRegex"`
 	// A list of Config Rule names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	RiskLevel  *int     `pulumi:"riskLevel"`
+	RuleName   *string  `pulumi:"ruleName"`
 	// A list of Config Rules. Each element contains the following attributes:
 	Rules []GetRulesRule `pulumi:"rules"`
+	// (Available in 1.124.1+) The status of config rule.
+	Status *string `pulumi:"status"`
 }

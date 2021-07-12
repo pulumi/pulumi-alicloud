@@ -70,6 +70,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string SystemDiskCategory;
         /// <summary>
+        /// The performance level of the ESSD used as the system disk.
+        /// </summary>
+        public readonly string SystemDiskPerformanceLevel;
+        /// <summary>
         /// System disk size of the scaling configuration.
         /// </summary>
         public readonly int SystemDiskSize;
@@ -104,6 +108,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             string systemDiskCategory,
 
+            string systemDiskPerformanceLevel,
+
             int systemDiskSize)
         {
             CreationTime = creationTime;
@@ -120,6 +126,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
             ScalingGroupId = scalingGroupId;
             SecurityGroupId = securityGroupId;
             SystemDiskCategory = systemDiskCategory;
+            SystemDiskPerformanceLevel = systemDiskPerformanceLevel;
             SystemDiskSize = systemDiskSize;
         }
     }

@@ -87,6 +87,18 @@ namespace Pulumi.AliCloud.Ecs
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        [Input("operationLocks")]
+        private List<Inputs.GetDedicatedHostsOperationLockArgs>? _operationLocks;
+
+        /// <summary>
+        /// The reason why the dedicated host resource is locked.
+        /// </summary>
+        public List<Inputs.GetDedicatedHostsOperationLockArgs> OperationLocks
+        {
+            get => _operationLocks ?? (_operationLocks = new List<Inputs.GetDedicatedHostsOperationLockArgs>());
+            set => _operationLocks = value;
+        }
+
         /// <summary>
         /// Save the result to the file.
         /// </summary>
@@ -161,6 +173,10 @@ namespace Pulumi.AliCloud.Ecs
         /// A list of ECS Dedicated Host names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// (Available in 1.123.1+) The operation_locks. contains the following attribute:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDedicatedHostsOperationLockResult> OperationLocks;
         public readonly string? OutputFile;
         /// <summary>
         /// The ID of the resource group to which the dedicated host belongs.
@@ -191,6 +207,8 @@ namespace Pulumi.AliCloud.Ecs
 
             ImmutableArray<string> names,
 
+            ImmutableArray<Outputs.GetDedicatedHostsOperationLockResult> operationLocks,
+
             string? outputFile,
 
             string? resourceGroupId,
@@ -209,6 +227,7 @@ namespace Pulumi.AliCloud.Ecs
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
+            OperationLocks = operationLocks;
             OutputFile = outputFile;
             ResourceGroupId = resourceGroupId;
             Status = status;

@@ -20,10 +20,16 @@ class GetSecretsResult:
     """
     A collection of values returned by getSecrets.
     """
-    def __init__(__self__, fetch_tags=None, id=None, ids=None, name_regex=None, names=None, output_file=None, secrets=None, tags=None):
+    def __init__(__self__, enable_details=None, fetch_tags=None, filters=None, id=None, ids=None, name_regex=None, names=None, output_file=None, secrets=None, tags=None):
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if fetch_tags and not isinstance(fetch_tags, bool):
             raise TypeError("Expected argument 'fetch_tags' to be a bool")
         pulumi.set(__self__, "fetch_tags", fetch_tags)
+        if filters and not isinstance(filters, str):
+            raise TypeError("Expected argument 'filters' to be a str")
+        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -47,9 +53,19 @@ class GetSecretsResult:
         pulumi.set(__self__, "tags", tags)
 
     @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
+
+    @property
     @pulumi.getter(name="fetchTags")
     def fetch_tags(self) -> Optional[bool]:
         return pulumi.get(self, "fetch_tags")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[str]:
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
@@ -97,7 +113,7 @@ class GetSecretsResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
-        A mapping of tags to assign to the resource.
+        (Optional) A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -108,7 +124,9 @@ class AwaitableGetSecretsResult(GetSecretsResult):
         if False:
             yield self
         return GetSecretsResult(
+            enable_details=self.enable_details,
             fetch_tags=self.fetch_tags,
+            filters=self.filters,
             id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
@@ -118,7 +136,9 @@ class AwaitableGetSecretsResult(GetSecretsResult):
             tags=self.tags)
 
 
-def get_secrets(fetch_tags: Optional[bool] = None,
+def get_secrets(enable_details: Optional[bool] = None,
+                fetch_tags: Optional[bool] = None,
+                filters: Optional[str] = None,
                 ids: Optional[Sequence[str]] = None,
                 name_regex: Optional[str] = None,
                 output_file: Optional[str] = None,
@@ -145,13 +165,17 @@ def get_secrets(fetch_tags: Optional[bool] = None,
     ```
 
 
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param bool fetch_tags: Whether to include the predetermined resource tag in the return value. Default to `false`.
+    :param str filters: Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
     :param Sequence[str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
     :param str name_regex: A regex string to filter the results by the KMS secret_name.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['fetchTags'] = fetch_tags
+    __args__['filters'] = filters
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -163,7 +187,9 @@ def get_secrets(fetch_tags: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kms/getSecrets:getSecrets', __args__, opts=opts, typ=GetSecretsResult).value
 
     return AwaitableGetSecretsResult(
+        enable_details=__ret__.enable_details,
         fetch_tags=__ret__.fetch_tags,
+        filters=__ret__.filters,
         id=__ret__.id,
         ids=__ret__.ids,
         name_regex=__ret__.name_regex,

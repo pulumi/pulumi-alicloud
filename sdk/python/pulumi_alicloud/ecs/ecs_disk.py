@@ -49,14 +49,14 @@ class EcsDiskArgs:
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
                * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
                * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
-        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically. Default value: `false`.
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-               * You cannot specify both the `zone_id` and `instance_id` parameters.
+               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
-        :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -69,7 +69,7 @@ class EcsDiskArgs:
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
                * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
                * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
-        :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs.
+        :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         if advanced_features is not None:
             pulumi.set(__self__, "advanced_features", advanced_features)
@@ -236,7 +236,7 @@ class EcsDiskArgs:
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        Indicates whether to enable creating snapshot automatically. Default value: `false`.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
@@ -271,7 +271,7 @@ class EcsDiskArgs:
         """
         The ID of the instance to which the created subscription disk is automatically attached.
         * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-        * You cannot specify both the `zone_id` and `instance_id` parameters.
+        * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         return pulumi.get(self, "instance_id")
 
@@ -307,7 +307,7 @@ class EcsDiskArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+        Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         """
         return pulumi.get(self, "payment_type")
 
@@ -417,7 +417,7 @@ class EcsDiskArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the free zone to which the disk belongs.
+        ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         return pulumi.get(self, "zone_id")
 
@@ -466,14 +466,14 @@ class _EcsDiskState:
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
                * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
                * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
-        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically. Default value: `false`.
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-               * You cannot specify both the `zone_id` and `instance_id` parameters.
+               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
-        :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -487,7 +487,7 @@ class _EcsDiskState:
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
                * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
                * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
-        :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs.
+        :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         if advanced_features is not None:
             pulumi.set(__self__, "advanced_features", advanced_features)
@@ -656,7 +656,7 @@ class _EcsDiskState:
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        Indicates whether to enable creating snapshot automatically. Default value: `false`.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
@@ -691,7 +691,7 @@ class _EcsDiskState:
         """
         The ID of the instance to which the created subscription disk is automatically attached.
         * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-        * You cannot specify both the `zone_id` and `instance_id` parameters.
+        * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         return pulumi.get(self, "instance_id")
 
@@ -727,7 +727,7 @@ class _EcsDiskState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+        Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         """
         return pulumi.get(self, "payment_type")
 
@@ -849,7 +849,7 @@ class _EcsDiskState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the free zone to which the disk belongs.
+        ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         return pulumi.get(self, "zone_id")
 
@@ -907,6 +907,7 @@ class EcsDisk(pulumi.CustomResource):
         example = alicloud.ecs.EcsDisk("example",
             category="cloud_efficiency",
             description="Hello ecs disk.",
+            disk_name="tf-test",
             encrypted=True,
             kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
             size=30,
@@ -935,14 +936,14 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
                * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
                * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
-        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically. Default value: `false`.
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-               * You cannot specify both the `zone_id` and `instance_id` parameters.
+               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
-        :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -955,7 +956,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
                * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
                * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
-        :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs.
+        :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         ...
     @overload
@@ -981,6 +982,7 @@ class EcsDisk(pulumi.CustomResource):
         example = alicloud.ecs.EcsDisk("example",
             category="cloud_efficiency",
             description="Hello ecs disk.",
+            disk_name="tf-test",
             encrypted=True,
             kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
             size=30,
@@ -1134,14 +1136,14 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
                * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
                * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
-        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically. Default value: `false`.
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-               * You cannot specify both the `zone_id` and `instance_id` parameters.
+               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
-        :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+        :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -1155,7 +1157,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
                * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
                * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
-        :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs.
+        :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1261,7 +1263,7 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        Indicates whether to enable creating snapshot automatically. Default value: `false`.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
@@ -1284,7 +1286,7 @@ class EcsDisk(pulumi.CustomResource):
         """
         The ID of the instance to which the created subscription disk is automatically attached.
         * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-        * You cannot specify both the `zone_id` and `instance_id` parameters.
+        * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         return pulumi.get(self, "instance_id")
 
@@ -1308,13 +1310,13 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+        Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         """
         return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> pulumi.Output[Optional[str]]:
+    def performance_level(self) -> pulumi.Output[str]:
         """
         Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
         * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
@@ -1390,7 +1392,7 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        ID of the free zone to which the disk belongs.
+        ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
         return pulumi.get(self, "zone_id")
 

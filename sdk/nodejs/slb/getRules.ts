@@ -27,24 +27,27 @@ import * as utilities from "../utilities";
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *     vswitchName: name,
  * });
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {vswitchId: defaultSwitch.id});
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: name,
+ *     vswitchId: defaultSwitch.id,
+ * });
  * const defaultListener = new alicloud.slb.Listener("defaultListener", {
- *     loadBalancerId: defaultLoadBalancer.id,
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
  *     backendPort: 22,
  *     frontendPort: 22,
  *     protocol: "http",
  *     bandwidth: 5,
  *     healthCheckConnectPort: "20",
  * });
- * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultLoadBalancer.id});
+ * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultApplicationLoadBalancer.id});
  * const defaultRule = new alicloud.slb.Rule("defaultRule", {
- *     loadBalancerId: defaultLoadBalancer.id,
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
  *     frontendPort: defaultListener.frontendPort,
  *     domain: "*.aliyun.com",
  *     url: "/image",
  *     serverGroupId: defaultServerGroup.id,
  * });
- * const sampleDs = defaultLoadBalancer.id.apply(id => alicloud.slb.getRules({
+ * const sampleDs = defaultApplicationLoadBalancer.id.apply(id => alicloud.slb.getRules({
  *     loadBalancerId: id,
  *     frontendPort: 22,
  * }));

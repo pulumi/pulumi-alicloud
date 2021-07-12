@@ -239,6 +239,8 @@ type Instance struct {
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
+	// Private network connection port, used to modify the private network connection port.
+	PrivateConnectionPort pulumi.StringOutput `pulumi:"privateConnectionPort"`
 	// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
 	PrivateConnectionPrefix pulumi.StringPtrOutput `pulumi:"privateConnectionPrefix"`
 	// The internal IP address of the instance.
@@ -260,6 +262,7 @@ type Instance struct {
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrOutput `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
 	SslEnable pulumi.StringPtrOutput `pulumi:"sslEnable"`
 	// The status of KVStore DBInstance.
 	// * `connectionDomain`- Intranet connection address of the KVStore instance.
@@ -397,6 +400,8 @@ type instanceState struct {
 	Period *string `pulumi:"period"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port *int `pulumi:"port"`
+	// Private network connection port, used to modify the private network connection port.
+	PrivateConnectionPort *string `pulumi:"privateConnectionPort"`
 	// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
 	PrivateConnectionPrefix *string `pulumi:"privateConnectionPrefix"`
 	// The internal IP address of the instance.
@@ -418,6 +423,7 @@ type instanceState struct {
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
 	SslEnable *string `pulumi:"sslEnable"`
 	// The status of KVStore DBInstance.
 	// * `connectionDomain`- Intranet connection address of the KVStore instance.
@@ -527,6 +533,8 @@ type InstanceState struct {
 	Period pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port pulumi.IntPtrInput
+	// Private network connection port, used to modify the private network connection port.
+	PrivateConnectionPort pulumi.StringPtrInput
 	// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
 	PrivateConnectionPrefix pulumi.StringPtrInput
 	// The internal IP address of the instance.
@@ -548,6 +556,7 @@ type InstanceState struct {
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
 	SslEnable pulumi.StringPtrInput
 	// The status of KVStore DBInstance.
 	// * `connectionDomain`- Intranet connection address of the KVStore instance.
@@ -654,6 +663,8 @@ type instanceArgs struct {
 	Period *string `pulumi:"period"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port *int `pulumi:"port"`
+	// Private network connection port, used to modify the private network connection port.
+	PrivateConnectionPort *string `pulumi:"privateConnectionPort"`
 	// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
 	PrivateConnectionPrefix *string `pulumi:"privateConnectionPrefix"`
 	// The internal IP address of the instance.
@@ -673,6 +684,7 @@ type instanceArgs struct {
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
 	SslEnable *string `pulumi:"sslEnable"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -773,6 +785,8 @@ type InstanceArgs struct {
 	Period pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	Port pulumi.IntPtrInput
+	// Private network connection port, used to modify the private network connection port.
+	PrivateConnectionPort pulumi.StringPtrInput
 	// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
 	PrivateConnectionPrefix pulumi.StringPtrInput
 	// The internal IP address of the instance.
@@ -792,6 +806,7 @@ type InstanceArgs struct {
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+	// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
 	SslEnable pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput

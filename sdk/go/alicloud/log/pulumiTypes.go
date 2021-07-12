@@ -286,7 +286,7 @@ func (o AlertQueryListArrayOutput) Index(i pulumi.IntInput) AlertQueryListOutput
 }
 
 type EtlEtlSink struct {
-	// Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+	// Delivery target logstore access key id.
 	AccessKeyId *string `pulumi:"accessKeyId"`
 	// Delivery target logstore access key secret.
 	AccessKeySecret *string `pulumi:"accessKeySecret"`
@@ -302,7 +302,7 @@ type EtlEtlSink struct {
 	Name string `pulumi:"name"`
 	// The project where the target logstore is delivered.
 	Project string `pulumi:"project"`
-	// Sts role info.
+	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 	RoleArn *string `pulumi:"roleArn"`
 	// ETL sinks type, the default value is AliyunLOG.
 	Type *string `pulumi:"type"`
@@ -320,7 +320,7 @@ type EtlEtlSinkInput interface {
 }
 
 type EtlEtlSinkArgs struct {
-	// Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+	// Delivery target logstore access key id.
 	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
 	// Delivery target logstore access key secret.
 	AccessKeySecret pulumi.StringPtrInput `pulumi:"accessKeySecret"`
@@ -336,7 +336,7 @@ type EtlEtlSinkArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project where the target logstore is delivered.
 	Project pulumi.StringInput `pulumi:"project"`
-	// Sts role info.
+	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// ETL sinks type, the default value is AliyunLOG.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -393,7 +393,7 @@ func (o EtlEtlSinkOutput) ToEtlEtlSinkOutputWithContext(ctx context.Context) Etl
 	return o
 }
 
-// Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+// Delivery target logstore access key id.
 func (o EtlEtlSinkOutput) AccessKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EtlEtlSink) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
 }
@@ -433,7 +433,7 @@ func (o EtlEtlSinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v EtlEtlSink) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Sts role info.
+// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 func (o EtlEtlSinkOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EtlEtlSink) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
@@ -561,6 +561,344 @@ func (o OssShipperParquetConfigArrayOutput) Index(i pulumi.IntInput) OssShipperP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OssShipperParquetConfig {
 		return vs[0].([]OssShipperParquetConfig)[vs[1].(int)]
 	}).(OssShipperParquetConfigOutput)
+}
+
+type StoreEncryptConf struct {
+	// enable encryption. Default `false`
+	Enable *bool `pulumi:"enable"`
+	// Supported encryption type, only supports `default(AES)`,`  m4 `
+	EncryptType *string `pulumi:"encryptType"`
+	// User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+	UserCmkInfo *StoreEncryptConfUserCmkInfo `pulumi:"userCmkInfo"`
+}
+
+// StoreEncryptConfInput is an input type that accepts StoreEncryptConfArgs and StoreEncryptConfOutput values.
+// You can construct a concrete instance of `StoreEncryptConfInput` via:
+//
+//          StoreEncryptConfArgs{...}
+type StoreEncryptConfInput interface {
+	pulumi.Input
+
+	ToStoreEncryptConfOutput() StoreEncryptConfOutput
+	ToStoreEncryptConfOutputWithContext(context.Context) StoreEncryptConfOutput
+}
+
+type StoreEncryptConfArgs struct {
+	// enable encryption. Default `false`
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Supported encryption type, only supports `default(AES)`,`  m4 `
+	EncryptType pulumi.StringPtrInput `pulumi:"encryptType"`
+	// User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+	UserCmkInfo StoreEncryptConfUserCmkInfoPtrInput `pulumi:"userCmkInfo"`
+}
+
+func (StoreEncryptConfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreEncryptConf)(nil)).Elem()
+}
+
+func (i StoreEncryptConfArgs) ToStoreEncryptConfOutput() StoreEncryptConfOutput {
+	return i.ToStoreEncryptConfOutputWithContext(context.Background())
+}
+
+func (i StoreEncryptConfArgs) ToStoreEncryptConfOutputWithContext(ctx context.Context) StoreEncryptConfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreEncryptConfOutput)
+}
+
+func (i StoreEncryptConfArgs) ToStoreEncryptConfPtrOutput() StoreEncryptConfPtrOutput {
+	return i.ToStoreEncryptConfPtrOutputWithContext(context.Background())
+}
+
+func (i StoreEncryptConfArgs) ToStoreEncryptConfPtrOutputWithContext(ctx context.Context) StoreEncryptConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreEncryptConfOutput).ToStoreEncryptConfPtrOutputWithContext(ctx)
+}
+
+// StoreEncryptConfPtrInput is an input type that accepts StoreEncryptConfArgs, StoreEncryptConfPtr and StoreEncryptConfPtrOutput values.
+// You can construct a concrete instance of `StoreEncryptConfPtrInput` via:
+//
+//          StoreEncryptConfArgs{...}
+//
+//  or:
+//
+//          nil
+type StoreEncryptConfPtrInput interface {
+	pulumi.Input
+
+	ToStoreEncryptConfPtrOutput() StoreEncryptConfPtrOutput
+	ToStoreEncryptConfPtrOutputWithContext(context.Context) StoreEncryptConfPtrOutput
+}
+
+type storeEncryptConfPtrType StoreEncryptConfArgs
+
+func StoreEncryptConfPtr(v *StoreEncryptConfArgs) StoreEncryptConfPtrInput {
+	return (*storeEncryptConfPtrType)(v)
+}
+
+func (*storeEncryptConfPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoreEncryptConf)(nil)).Elem()
+}
+
+func (i *storeEncryptConfPtrType) ToStoreEncryptConfPtrOutput() StoreEncryptConfPtrOutput {
+	return i.ToStoreEncryptConfPtrOutputWithContext(context.Background())
+}
+
+func (i *storeEncryptConfPtrType) ToStoreEncryptConfPtrOutputWithContext(ctx context.Context) StoreEncryptConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreEncryptConfPtrOutput)
+}
+
+type StoreEncryptConfOutput struct{ *pulumi.OutputState }
+
+func (StoreEncryptConfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreEncryptConf)(nil)).Elem()
+}
+
+func (o StoreEncryptConfOutput) ToStoreEncryptConfOutput() StoreEncryptConfOutput {
+	return o
+}
+
+func (o StoreEncryptConfOutput) ToStoreEncryptConfOutputWithContext(ctx context.Context) StoreEncryptConfOutput {
+	return o
+}
+
+func (o StoreEncryptConfOutput) ToStoreEncryptConfPtrOutput() StoreEncryptConfPtrOutput {
+	return o.ToStoreEncryptConfPtrOutputWithContext(context.Background())
+}
+
+func (o StoreEncryptConfOutput) ToStoreEncryptConfPtrOutputWithContext(ctx context.Context) StoreEncryptConfPtrOutput {
+	return o.ApplyT(func(v StoreEncryptConf) *StoreEncryptConf {
+		return &v
+	}).(StoreEncryptConfPtrOutput)
+}
+
+// enable encryption. Default `false`
+func (o StoreEncryptConfOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StoreEncryptConf) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Supported encryption type, only supports `default(AES)`,`  m4 `
+func (o StoreEncryptConfOutput) EncryptType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StoreEncryptConf) *string { return v.EncryptType }).(pulumi.StringPtrOutput)
+}
+
+// User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+func (o StoreEncryptConfOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrOutput {
+	return o.ApplyT(func(v StoreEncryptConf) *StoreEncryptConfUserCmkInfo { return v.UserCmkInfo }).(StoreEncryptConfUserCmkInfoPtrOutput)
+}
+
+type StoreEncryptConfPtrOutput struct{ *pulumi.OutputState }
+
+func (StoreEncryptConfPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoreEncryptConf)(nil)).Elem()
+}
+
+func (o StoreEncryptConfPtrOutput) ToStoreEncryptConfPtrOutput() StoreEncryptConfPtrOutput {
+	return o
+}
+
+func (o StoreEncryptConfPtrOutput) ToStoreEncryptConfPtrOutputWithContext(ctx context.Context) StoreEncryptConfPtrOutput {
+	return o
+}
+
+func (o StoreEncryptConfPtrOutput) Elem() StoreEncryptConfOutput {
+	return o.ApplyT(func(v *StoreEncryptConf) StoreEncryptConf { return *v }).(StoreEncryptConfOutput)
+}
+
+// enable encryption. Default `false`
+func (o StoreEncryptConfPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StoreEncryptConf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Supported encryption type, only supports `default(AES)`,`  m4 `
+func (o StoreEncryptConfPtrOutput) EncryptType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StoreEncryptConf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptType
+	}).(pulumi.StringPtrOutput)
+}
+
+// User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+func (o StoreEncryptConfPtrOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrOutput {
+	return o.ApplyT(func(v *StoreEncryptConf) *StoreEncryptConfUserCmkInfo {
+		if v == nil {
+			return nil
+		}
+		return v.UserCmkInfo
+	}).(StoreEncryptConfUserCmkInfoPtrOutput)
+}
+
+type StoreEncryptConfUserCmkInfo struct {
+	// role arn
+	Arn string `pulumi:"arn"`
+	// User master key id
+	CmkKeyId string `pulumi:"cmkKeyId"`
+	// Region id where the  user master key id is located
+	RegionId string `pulumi:"regionId"`
+}
+
+// StoreEncryptConfUserCmkInfoInput is an input type that accepts StoreEncryptConfUserCmkInfoArgs and StoreEncryptConfUserCmkInfoOutput values.
+// You can construct a concrete instance of `StoreEncryptConfUserCmkInfoInput` via:
+//
+//          StoreEncryptConfUserCmkInfoArgs{...}
+type StoreEncryptConfUserCmkInfoInput interface {
+	pulumi.Input
+
+	ToStoreEncryptConfUserCmkInfoOutput() StoreEncryptConfUserCmkInfoOutput
+	ToStoreEncryptConfUserCmkInfoOutputWithContext(context.Context) StoreEncryptConfUserCmkInfoOutput
+}
+
+type StoreEncryptConfUserCmkInfoArgs struct {
+	// role arn
+	Arn pulumi.StringInput `pulumi:"arn"`
+	// User master key id
+	CmkKeyId pulumi.StringInput `pulumi:"cmkKeyId"`
+	// Region id where the  user master key id is located
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+}
+
+func (StoreEncryptConfUserCmkInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreEncryptConfUserCmkInfo)(nil)).Elem()
+}
+
+func (i StoreEncryptConfUserCmkInfoArgs) ToStoreEncryptConfUserCmkInfoOutput() StoreEncryptConfUserCmkInfoOutput {
+	return i.ToStoreEncryptConfUserCmkInfoOutputWithContext(context.Background())
+}
+
+func (i StoreEncryptConfUserCmkInfoArgs) ToStoreEncryptConfUserCmkInfoOutputWithContext(ctx context.Context) StoreEncryptConfUserCmkInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreEncryptConfUserCmkInfoOutput)
+}
+
+func (i StoreEncryptConfUserCmkInfoArgs) ToStoreEncryptConfUserCmkInfoPtrOutput() StoreEncryptConfUserCmkInfoPtrOutput {
+	return i.ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(context.Background())
+}
+
+func (i StoreEncryptConfUserCmkInfoArgs) ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx context.Context) StoreEncryptConfUserCmkInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreEncryptConfUserCmkInfoOutput).ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx)
+}
+
+// StoreEncryptConfUserCmkInfoPtrInput is an input type that accepts StoreEncryptConfUserCmkInfoArgs, StoreEncryptConfUserCmkInfoPtr and StoreEncryptConfUserCmkInfoPtrOutput values.
+// You can construct a concrete instance of `StoreEncryptConfUserCmkInfoPtrInput` via:
+//
+//          StoreEncryptConfUserCmkInfoArgs{...}
+//
+//  or:
+//
+//          nil
+type StoreEncryptConfUserCmkInfoPtrInput interface {
+	pulumi.Input
+
+	ToStoreEncryptConfUserCmkInfoPtrOutput() StoreEncryptConfUserCmkInfoPtrOutput
+	ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(context.Context) StoreEncryptConfUserCmkInfoPtrOutput
+}
+
+type storeEncryptConfUserCmkInfoPtrType StoreEncryptConfUserCmkInfoArgs
+
+func StoreEncryptConfUserCmkInfoPtr(v *StoreEncryptConfUserCmkInfoArgs) StoreEncryptConfUserCmkInfoPtrInput {
+	return (*storeEncryptConfUserCmkInfoPtrType)(v)
+}
+
+func (*storeEncryptConfUserCmkInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoreEncryptConfUserCmkInfo)(nil)).Elem()
+}
+
+func (i *storeEncryptConfUserCmkInfoPtrType) ToStoreEncryptConfUserCmkInfoPtrOutput() StoreEncryptConfUserCmkInfoPtrOutput {
+	return i.ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *storeEncryptConfUserCmkInfoPtrType) ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx context.Context) StoreEncryptConfUserCmkInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StoreEncryptConfUserCmkInfoPtrOutput)
+}
+
+type StoreEncryptConfUserCmkInfoOutput struct{ *pulumi.OutputState }
+
+func (StoreEncryptConfUserCmkInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoreEncryptConfUserCmkInfo)(nil)).Elem()
+}
+
+func (o StoreEncryptConfUserCmkInfoOutput) ToStoreEncryptConfUserCmkInfoOutput() StoreEncryptConfUserCmkInfoOutput {
+	return o
+}
+
+func (o StoreEncryptConfUserCmkInfoOutput) ToStoreEncryptConfUserCmkInfoOutputWithContext(ctx context.Context) StoreEncryptConfUserCmkInfoOutput {
+	return o
+}
+
+func (o StoreEncryptConfUserCmkInfoOutput) ToStoreEncryptConfUserCmkInfoPtrOutput() StoreEncryptConfUserCmkInfoPtrOutput {
+	return o.ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(context.Background())
+}
+
+func (o StoreEncryptConfUserCmkInfoOutput) ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx context.Context) StoreEncryptConfUserCmkInfoPtrOutput {
+	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) *StoreEncryptConfUserCmkInfo {
+		return &v
+	}).(StoreEncryptConfUserCmkInfoPtrOutput)
+}
+
+// role arn
+func (o StoreEncryptConfUserCmkInfoOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// User master key id
+func (o StoreEncryptConfUserCmkInfoOutput) CmkKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) string { return v.CmkKeyId }).(pulumi.StringOutput)
+}
+
+// Region id where the  user master key id is located
+func (o StoreEncryptConfUserCmkInfoOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+type StoreEncryptConfUserCmkInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (StoreEncryptConfUserCmkInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoreEncryptConfUserCmkInfo)(nil)).Elem()
+}
+
+func (o StoreEncryptConfUserCmkInfoPtrOutput) ToStoreEncryptConfUserCmkInfoPtrOutput() StoreEncryptConfUserCmkInfoPtrOutput {
+	return o
+}
+
+func (o StoreEncryptConfUserCmkInfoPtrOutput) ToStoreEncryptConfUserCmkInfoPtrOutputWithContext(ctx context.Context) StoreEncryptConfUserCmkInfoPtrOutput {
+	return o
+}
+
+func (o StoreEncryptConfUserCmkInfoPtrOutput) Elem() StoreEncryptConfUserCmkInfoOutput {
+	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) StoreEncryptConfUserCmkInfo { return *v }).(StoreEncryptConfUserCmkInfoOutput)
+}
+
+// role arn
+func (o StoreEncryptConfUserCmkInfoPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+// User master key id
+func (o StoreEncryptConfUserCmkInfoPtrOutput) CmkKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CmkKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region id where the  user master key id is located
+func (o StoreEncryptConfUserCmkInfoPtrOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegionId
+	}).(pulumi.StringPtrOutput)
 }
 
 type StoreIndexFieldSearch struct {
@@ -1140,6 +1478,10 @@ func init() {
 	pulumi.RegisterOutputType(EtlEtlSinkArrayOutput{})
 	pulumi.RegisterOutputType(OssShipperParquetConfigOutput{})
 	pulumi.RegisterOutputType(OssShipperParquetConfigArrayOutput{})
+	pulumi.RegisterOutputType(StoreEncryptConfOutput{})
+	pulumi.RegisterOutputType(StoreEncryptConfPtrOutput{})
+	pulumi.RegisterOutputType(StoreEncryptConfUserCmkInfoOutput{})
+	pulumi.RegisterOutputType(StoreEncryptConfUserCmkInfoPtrOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchArrayOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchJsonKeyOutput{})

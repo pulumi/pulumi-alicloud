@@ -54,8 +54,6 @@ import (
 type KeyVersion struct {
 	pulumi.CustomResourceState
 
-	// The date and time (UTC time) when the Alikms key version was created.
-	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// The id of the master key (CMK).
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
 	// The id of the Alikms key version.
@@ -94,8 +92,6 @@ func GetKeyVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyVersion resources.
 type keyVersionState struct {
-	// The date and time (UTC time) when the Alikms key version was created.
-	CreationDate *string `pulumi:"creationDate"`
 	// The id of the master key (CMK).
 	KeyId *string `pulumi:"keyId"`
 	// The id of the Alikms key version.
@@ -103,8 +99,6 @@ type keyVersionState struct {
 }
 
 type KeyVersionState struct {
-	// The date and time (UTC time) when the Alikms key version was created.
-	CreationDate pulumi.StringPtrInput
 	// The id of the master key (CMK).
 	KeyId pulumi.StringPtrInput
 	// The id of the Alikms key version.

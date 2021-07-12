@@ -47,6 +47,8 @@ func GetAlidnsInstances(ctx *pulumi.Context, args *GetAlidnsInstancesArgs, opts 
 
 // A collection of arguments for invoking getAlidnsInstances.
 type GetAlidnsInstancesArgs struct {
+	// The type of domain.
+	DomainType *string `pulumi:"domainType"`
 	// A list of instance IDs.
 	Ids []string `pulumi:"ids"`
 	// Language.
@@ -58,6 +60,7 @@ type GetAlidnsInstancesArgs struct {
 
 // A collection of values returned by getAlidnsInstances.
 type GetAlidnsInstancesResult struct {
+	DomainType *string `pulumi:"domainType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of instance IDs.

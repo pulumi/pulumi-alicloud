@@ -16,7 +16,7 @@ class ResourceDirectoryArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ResourceDirectory resource.
-        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
         if status is not None:
             pulumi.set(__self__, "status", status)
@@ -25,7 +25,7 @@ class ResourceDirectoryArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
         return pulumi.get(self, "status")
 
@@ -46,7 +46,7 @@ class _ResourceDirectoryState:
         :param pulumi.Input[str] master_account_id: The ID of the master account.
         :param pulumi.Input[str] master_account_name: The name of the master account.
         :param pulumi.Input[str] root_folder_id: The ID of the root folder.
-        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
         if master_account_id is not None:
             pulumi.set(__self__, "master_account_id", master_account_id)
@@ -97,7 +97,7 @@ class _ResourceDirectoryState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
         return pulumi.get(self, "status")
 
@@ -147,7 +147,7 @@ class ResourceDirectory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
         ...
     @overload
@@ -243,7 +243,7 @@ class ResourceDirectory(pulumi.CustomResource):
         :param pulumi.Input[str] master_account_id: The ID of the master account.
         :param pulumi.Input[str] master_account_name: The name of the master account.
         :param pulumi.Input[str] root_folder_id: The ID of the root folder.
-        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -281,9 +281,9 @@ class ResourceDirectory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional[str]]:
+    def status(self) -> pulumi.Output[str]:
         """
-        The status of control policy. Valid values:`Enabled` and `Disabled`. Default value is `Disabled`.
+        The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
         return pulumi.get(self, "status")
 

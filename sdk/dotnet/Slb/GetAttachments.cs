@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Slb
         ///     {
         ///         var sampleDs = Output.Create(AliCloud.Slb.GetAttachments.InvokeAsync(new AliCloud.Slb.GetAttachmentsArgs
         ///         {
-        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///             LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
         ///         }));
         ///         this.FirstSlbAttachmentInstanceId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbAttachments[0].InstanceId);
         ///     }

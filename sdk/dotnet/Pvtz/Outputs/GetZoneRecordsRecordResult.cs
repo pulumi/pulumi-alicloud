@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
         /// <summary>
         /// RecordId of the Private Zone Record.
         /// </summary>
-        public readonly int RecordId;
+        public readonly string RecordId;
         /// <summary>
         /// Remark of the Private Zone Record.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
 
             int priority,
 
-            int recordId,
+            string recordId,
 
             string remark,
 

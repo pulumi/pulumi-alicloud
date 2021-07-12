@@ -55,12 +55,13 @@ import * as utilities from "../utilities";
  *         vswitchId: mainSwitch.id,
  *     }));
  * }
- * const instanceLoadBalancer = new alicloud.slb.LoadBalancer("instanceLoadBalancer", {
+ * const instanceApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("instanceApplicationLoadBalancer", {
+ *     loadBalancerName: name,
  *     vswitchId: mainSwitch.id,
- *     specification: "slb.s2.small",
+ *     loadBalancerSpec: "slb.s2.small",
  * });
  * const groupMasterSlaveServerGroup = new alicloud.slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup", {
- *     loadBalancerId: instanceLoadBalancer.id,
+ *     loadBalancerId: instanceApplicationLoadBalancer.id,
  *     servers: [
  *         {
  *             serverId: instanceInstance[0].id,
@@ -76,7 +77,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const sampleDs = instanceLoadBalancer.id.apply(id => alicloud.slb.getMasterSlaveServerGroups({
+ * const sampleDs = instanceApplicationLoadBalancer.id.apply(id => alicloud.slb.getMasterSlaveServerGroups({
  *     loadBalancerId: id,
  * }));
  * export const firstSlbServerGroupId = sampleDs.groups[0].id;

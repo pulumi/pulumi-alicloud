@@ -54,14 +54,15 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultLoadBalancer, err := slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
-// 			VswitchId: defaultSwitch.ID(),
+// 		defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "defaultApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+// 			LoadBalancerName: pulumi.String(name),
+// 			VswitchId:        defaultSwitch.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = slb.NewServerGroup(ctx, "defaultServerGroup", &slb.ServerGroupArgs{
-// 			LoadBalancerId: defaultLoadBalancer.ID(),
+// 			LoadBalancerId: defaultApplicationLoadBalancer.ID(),
 // 		})
 // 		if err != nil {
 // 			return err

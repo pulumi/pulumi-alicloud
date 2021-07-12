@@ -34,6 +34,14 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> BandwidthPackageName { get; private set; } = null!;
 
         /// <summary>
+        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// - true: Enable deletion protection.
+        /// - false: Disable deletion protection.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the common bandwidth package instance.
         /// </summary>
         [Output("description")]
@@ -143,6 +151,14 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? BandwidthPackageName { get; set; }
 
         /// <summary>
+        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// - true: Enable deletion protection.
+        /// - false: Disable deletion protection.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// The description of the common bandwidth package instance.
         /// </summary>
         [Input("description")]
@@ -205,6 +221,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("bandwidthPackageName")]
         public Input<string>? BandwidthPackageName { get; set; }
+
+        /// <summary>
+        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// - true: Enable deletion protection.
+        /// - false: Disable deletion protection.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The description of the common bandwidth package instance.

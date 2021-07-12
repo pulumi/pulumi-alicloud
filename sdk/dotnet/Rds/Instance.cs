@@ -70,6 +70,16 @@ namespace Pulumi.AliCloud.Rds
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        /// - cert
+        /// - perfer
+        /// - verify-ca
+        /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        /// </summary>
+        [Output("acl")]
+        public Output<string?> Acl { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
         /// </summary>
         [Output("autoRenew")]
@@ -90,10 +100,58 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> AutoUpgradeMinorVersion { get; private set; } = null!;
 
         /// <summary>
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        /// - aliyun: a cloud certificate
+        /// - custom: a custom certificate
+        /// </summary>
+        [Output("caType")]
+        public Output<string?> CaType { get; private set; } = null!;
+
+        /// <summary>
+        /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
+        /// </summary>
+        [Output("clientCaCert")]
+        public Output<string?> ClientCaCert { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+        /// - 1: enables the public key
+        /// - 0: disables the public key
+        /// </summary>
+        [Output("clientCaEnabled")]
+        public Output<int?> ClientCaEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter.
+        /// </summary>
+        [Output("clientCertRevocationList")]
+        public Output<string?> ClientCertRevocationList { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        /// - 1: enables the CRL
+        /// - 0: disables the CRL
+        /// </summary>
+        [Output("clientCrlEnabled")]
+        public Output<int?> ClientCrlEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// RDS database connection string.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
+
+        /// <summary>
+        /// The attribute of the IP address whitelist. By default, this parameter is empty.
+        /// </summary>
+        [Output("dbInstanceIpArrayAttribute")]
+        public Output<string?> DbInstanceIpArrayAttribute { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the IP address whitelist. Default value: Default.
+        /// </summary>
+        [Output("dbInstanceIpArrayName")]
+        public Output<string?> DbInstanceIpArrayName { get; private set; } = null!;
 
         /// <summary>
         /// The storage type of the instance. Valid values:
@@ -167,6 +225,15 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
+        /// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        /// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        /// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        /// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        /// </summary>
+        [Output("modifyMode")]
+        public Output<string?> ModifyMode { get; private set; } = null!;
+
+        /// <summary>
         /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         /// </summary>
         [Output("monitoringPeriod")]
@@ -186,6 +253,22 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        /// </summary>
+        [Output("privateIpAddress")]
+        public Output<string> PrivateIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        /// - cert
+        /// - perfer
+        /// - verify-ca
+        /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        /// </summary>
+        [Output("replicationAcl")]
+        public Output<string?> ReplicationAcl { get; private set; } = null!;
 
         /// <summary>
         /// The ID of resource group which the DB instance belongs.
@@ -212,10 +295,28 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> SecurityIpMode { get; private set; } = null!;
 
         /// <summary>
+        /// The type of IP address in the IP address whitelist.
+        /// </summary>
+        [Output("securityIpType")]
+        public Output<string?> SecurityIpType { get; private set; } = null!;
+
+        /// <summary>
         /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         /// </summary>
         [Output("securityIps")]
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
+
+        /// <summary>
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// </summary>
+        [Output("serverCert")]
+        public Output<string> ServerCert { get; private set; } = null!;
+
+        /// <summary>
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// </summary>
+        [Output("serverKey")]
+        public Output<string> ServerKey { get; private set; } = null!;
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
@@ -260,6 +361,15 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The network type of the IP address whitelist. Default value: MIX. Valid values:
+        /// - Classic: classic network in enhanced whitelist mode
+        /// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        /// - MIX: standard whitelist mode
+        /// </summary>
+        [Output("whitelistNetworkType")]
+        public Output<string?> WhitelistNetworkType { get; private set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
@@ -328,6 +438,16 @@ namespace Pulumi.AliCloud.Rds
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        /// - cert
+        /// - perfer
+        /// - verify-ca
+        /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        /// </summary>
+        [Input("acl")]
+        public Input<string>? Acl { get; set; }
+
+        /// <summary>
         /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
         /// </summary>
         [Input("autoRenew")]
@@ -346,6 +466,54 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("autoUpgradeMinorVersion")]
         public Input<string>? AutoUpgradeMinorVersion { get; set; }
+
+        /// <summary>
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        /// - aliyun: a cloud certificate
+        /// - custom: a custom certificate
+        /// </summary>
+        [Input("caType")]
+        public Input<string>? CaType { get; set; }
+
+        /// <summary>
+        /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
+        /// </summary>
+        [Input("clientCaCert")]
+        public Input<string>? ClientCaCert { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+        /// - 1: enables the public key
+        /// - 0: disables the public key
+        /// </summary>
+        [Input("clientCaEnabled")]
+        public Input<int>? ClientCaEnabled { get; set; }
+
+        /// <summary>
+        /// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter.
+        /// </summary>
+        [Input("clientCertRevocationList")]
+        public Input<string>? ClientCertRevocationList { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        /// - 1: enables the CRL
+        /// - 0: disables the CRL
+        /// </summary>
+        [Input("clientCrlEnabled")]
+        public Input<int>? ClientCrlEnabled { get; set; }
+
+        /// <summary>
+        /// The attribute of the IP address whitelist. By default, this parameter is empty.
+        /// </summary>
+        [Input("dbInstanceIpArrayAttribute")]
+        public Input<string>? DbInstanceIpArrayAttribute { get; set; }
+
+        /// <summary>
+        /// The name of the IP address whitelist. Default value: Default.
+        /// </summary>
+        [Input("dbInstanceIpArrayName")]
+        public Input<string>? DbInstanceIpArrayName { get; set; }
 
         /// <summary>
         /// The storage type of the instance. Valid values:
@@ -419,6 +587,15 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
+        /// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        /// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        /// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        /// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        /// </summary>
+        [Input("modifyMode")]
+        public Input<string>? ModifyMode { get; set; }
+
+        /// <summary>
         /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         /// </summary>
         [Input("monitoringPeriod")]
@@ -438,6 +615,22 @@ namespace Pulumi.AliCloud.Rds
 
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        /// - cert
+        /// - perfer
+        /// - verify-ca
+        /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        /// </summary>
+        [Input("replicationAcl")]
+        public Input<string>? ReplicationAcl { get; set; }
 
         /// <summary>
         /// The ID of resource group which the DB instance belongs.
@@ -469,6 +662,12 @@ namespace Pulumi.AliCloud.Rds
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
 
+        /// <summary>
+        /// The type of IP address in the IP address whitelist.
+        /// </summary>
+        [Input("securityIpType")]
+        public Input<string>? SecurityIpType { get; set; }
+
         [Input("securityIps")]
         private InputList<string>? _securityIps;
 
@@ -480,6 +679,18 @@ namespace Pulumi.AliCloud.Rds
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// </summary>
+        [Input("serverCert")]
+        public Input<string>? ServerCert { get; set; }
+
+        /// <summary>
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// </summary>
+        [Input("serverKey")]
+        public Input<string>? ServerKey { get; set; }
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
@@ -526,6 +737,15 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
+        /// The network type of the IP address whitelist. Default value: MIX. Valid values:
+        /// - Classic: classic network in enhanced whitelist mode
+        /// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        /// - MIX: standard whitelist mode
+        /// </summary>
+        [Input("whitelistNetworkType")]
+        public Input<string>? WhitelistNetworkType { get; set; }
+
+        /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
         /// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
@@ -553,6 +773,16 @@ namespace Pulumi.AliCloud.Rds
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        /// - cert
+        /// - perfer
+        /// - verify-ca
+        /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        /// </summary>
+        [Input("acl")]
+        public Input<string>? Acl { get; set; }
+
+        /// <summary>
         /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
         /// </summary>
         [Input("autoRenew")]
@@ -573,10 +803,58 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? AutoUpgradeMinorVersion { get; set; }
 
         /// <summary>
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        /// - aliyun: a cloud certificate
+        /// - custom: a custom certificate
+        /// </summary>
+        [Input("caType")]
+        public Input<string>? CaType { get; set; }
+
+        /// <summary>
+        /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
+        /// </summary>
+        [Input("clientCaCert")]
+        public Input<string>? ClientCaCert { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+        /// - 1: enables the public key
+        /// - 0: disables the public key
+        /// </summary>
+        [Input("clientCaEnabled")]
+        public Input<int>? ClientCaEnabled { get; set; }
+
+        /// <summary>
+        /// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter.
+        /// </summary>
+        [Input("clientCertRevocationList")]
+        public Input<string>? ClientCertRevocationList { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        /// - 1: enables the CRL
+        /// - 0: disables the CRL
+        /// </summary>
+        [Input("clientCrlEnabled")]
+        public Input<int>? ClientCrlEnabled { get; set; }
+
+        /// <summary>
         /// RDS database connection string.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
+
+        /// <summary>
+        /// The attribute of the IP address whitelist. By default, this parameter is empty.
+        /// </summary>
+        [Input("dbInstanceIpArrayAttribute")]
+        public Input<string>? DbInstanceIpArrayAttribute { get; set; }
+
+        /// <summary>
+        /// The name of the IP address whitelist. Default value: Default.
+        /// </summary>
+        [Input("dbInstanceIpArrayName")]
+        public Input<string>? DbInstanceIpArrayName { get; set; }
 
         /// <summary>
         /// The storage type of the instance. Valid values:
@@ -650,6 +928,15 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? MaintainTime { get; set; }
 
         /// <summary>
+        /// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        /// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        /// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        /// - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        /// </summary>
+        [Input("modifyMode")]
+        public Input<string>? ModifyMode { get; set; }
+
+        /// <summary>
         /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         /// </summary>
         [Input("monitoringPeriod")]
@@ -675,6 +962,22 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
+
+        /// <summary>
+        /// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
+        /// - cert
+        /// - perfer
+        /// - verify-ca
+        /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        /// </summary>
+        [Input("replicationAcl")]
+        public Input<string>? ReplicationAcl { get; set; }
 
         /// <summary>
         /// The ID of resource group which the DB instance belongs.
@@ -706,6 +1009,12 @@ namespace Pulumi.AliCloud.Rds
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
 
+        /// <summary>
+        /// The type of IP address in the IP address whitelist.
+        /// </summary>
+        [Input("securityIpType")]
+        public Input<string>? SecurityIpType { get; set; }
+
         [Input("securityIps")]
         private InputList<string>? _securityIps;
 
@@ -717,6 +1026,18 @@ namespace Pulumi.AliCloud.Rds
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// </summary>
+        [Input("serverCert")]
+        public Input<string>? ServerCert { get; set; }
+
+        /// <summary>
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// </summary>
+        [Input("serverKey")]
+        public Input<string>? ServerKey { get; set; }
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
@@ -767,6 +1088,15 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The network type of the IP address whitelist. Default value: MIX. Valid values:
+        /// - Classic: classic network in enhanced whitelist mode
+        /// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        /// - MIX: standard whitelist mode
+        /// </summary>
+        [Input("whitelistNetworkType")]
+        public Input<string>? WhitelistNetworkType { get; set; }
 
         /// <summary>
         /// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.

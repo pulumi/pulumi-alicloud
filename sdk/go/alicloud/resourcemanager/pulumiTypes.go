@@ -117,7 +117,9 @@ func (o ResourceGroupRegionStatusArrayOutput) Index(i pulumi.IntInput) ResourceG
 }
 
 type GetAccountsAccount struct {
-	AccountId   string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
+	// (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+	AccountName string `pulumi:"accountName"`
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the folder.
 	FolderId string `pulumi:"folderId"`
@@ -131,6 +133,8 @@ type GetAccountsAccount struct {
 	JoinTime string `pulumi:"joinTime"`
 	// The time when the member account was modified.
 	ModifyTime string `pulumi:"modifyTime"`
+	// (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+	PayerAccountId string `pulumi:"payerAccountId"`
 	// The ID of the resource directory.
 	ResourceDirectoryId string `pulumi:"resourceDirectoryId"`
 	// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
@@ -151,7 +155,9 @@ type GetAccountsAccountInput interface {
 }
 
 type GetAccountsAccountArgs struct {
-	AccountId   pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The ID of the folder.
 	FolderId pulumi.StringInput `pulumi:"folderId"`
@@ -165,6 +171,8 @@ type GetAccountsAccountArgs struct {
 	JoinTime pulumi.StringInput `pulumi:"joinTime"`
 	// The time when the member account was modified.
 	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+	PayerAccountId pulumi.StringInput `pulumi:"payerAccountId"`
 	// The ID of the resource directory.
 	ResourceDirectoryId pulumi.StringInput `pulumi:"resourceDirectoryId"`
 	// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
@@ -228,6 +236,11 @@ func (o GetAccountsAccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+func (o GetAccountsAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
 func (o GetAccountsAccountOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -257,6 +270,11 @@ func (o GetAccountsAccountOutput) JoinTime() pulumi.StringOutput {
 // The time when the member account was modified.
 func (o GetAccountsAccountOutput) ModifyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+func (o GetAccountsAccountOutput) PayerAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.PayerAccountId }).(pulumi.StringOutput)
 }
 
 // The ID of the resource directory.

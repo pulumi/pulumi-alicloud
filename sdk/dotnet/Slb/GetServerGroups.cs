@@ -45,15 +45,16 @@ namespace Pulumi.AliCloud.Slb
         ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
         ///             VswitchName = name,
         ///         });
-        ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+        ///         var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
         ///         {
+        ///             LoadBalancerName = name,
         ///             VswitchId = defaultSwitch.Id,
         ///         });
         ///         var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new AliCloud.Slb.ServerGroupArgs
         ///         {
-        ///             LoadBalancerId = defaultLoadBalancer.Id,
+        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
         ///         });
-        ///         var sampleDs = defaultLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetServerGroups.InvokeAsync(new AliCloud.Slb.GetServerGroupsArgs
+        ///         var sampleDs = defaultApplicationLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetServerGroups.InvokeAsync(new AliCloud.Slb.GetServerGroupsArgs
         ///         {
         ///             LoadBalancerId = id,
         ///         }));

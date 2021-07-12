@@ -52,6 +52,7 @@ class InstanceArgs:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 private_connection_port: Optional[pulumi.Input[str]] = None,
                  private_connection_prefix: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -104,6 +105,7 @@ class InstanceArgs:
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        :param pulumi.Input[str] private_connection_port: Private network connection port, used to modify the private network connection port.
         :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         :param pulumi.Input[str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
@@ -113,7 +115,8 @@ class InstanceArgs:
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
-        :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+               Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_auth_mode: Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
@@ -214,6 +217,8 @@ class InstanceArgs:
             pulumi.set(__self__, "period", period)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if private_connection_port is not None:
+            pulumi.set(__self__, "private_connection_port", private_connection_port)
         if private_connection_prefix is not None:
             pulumi.set(__self__, "private_connection_prefix", private_connection_prefix)
         if private_ip is not None:
@@ -685,6 +690,18 @@ class InstanceArgs:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter(name="privateConnectionPort")
+    def private_connection_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Private network connection port, used to modify the private network connection port.
+        """
+        return pulumi.get(self, "private_connection_port")
+
+    @private_connection_port.setter
+    def private_connection_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_connection_port", value)
+
+    @property
     @pulumi.getter(name="privateConnectionPrefix")
     def private_connection_prefix(self) -> Optional[pulumi.Input[str]]:
         """
@@ -796,7 +813,8 @@ class InstanceArgs:
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+        Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         """
         return pulumi.get(self, "ssl_enable")
 
@@ -897,6 +915,7 @@ class _InstanceState:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 private_connection_port: Optional[pulumi.Input[str]] = None,
                  private_connection_prefix: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  qps: Optional[pulumi.Input[int]] = None,
@@ -953,6 +972,7 @@ class _InstanceState:
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        :param pulumi.Input[str] private_connection_port: Private network connection port, used to modify the private network connection port.
         :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         :param pulumi.Input[str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[int] qps: Theoretical maximum QPS value.
@@ -963,7 +983,8 @@ class _InstanceState:
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
-        :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+               Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         :param pulumi.Input[str] status: The status of KVStore DBInstance.
                * `connection_domain`- Intranet connection address of the KVStore instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -1077,6 +1098,8 @@ class _InstanceState:
             pulumi.set(__self__, "period", period)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if private_connection_port is not None:
+            pulumi.set(__self__, "private_connection_port", private_connection_port)
         if private_connection_prefix is not None:
             pulumi.set(__self__, "private_connection_prefix", private_connection_prefix)
         if private_ip is not None:
@@ -1594,6 +1617,18 @@ class _InstanceState:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter(name="privateConnectionPort")
+    def private_connection_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Private network connection port, used to modify the private network connection port.
+        """
+        return pulumi.get(self, "private_connection_port")
+
+    @private_connection_port.setter
+    def private_connection_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_connection_port", value)
+
+    @property
     @pulumi.getter(name="privateConnectionPrefix")
     def private_connection_prefix(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1717,7 +1752,8 @@ class _InstanceState:
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+        Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         """
         return pulumi.get(self, "ssl_enable")
 
@@ -1829,6 +1865,7 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 private_connection_port: Optional[pulumi.Input[str]] = None,
                  private_connection_prefix: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1971,6 +2008,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        :param pulumi.Input[str] private_connection_port: Private network connection port, used to modify the private network connection port.
         :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         :param pulumi.Input[str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
@@ -1980,7 +2018,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
-        :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+               Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_auth_mode: Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
@@ -2133,6 +2172,7 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 private_connection_port: Optional[pulumi.Input[str]] = None,
                  private_connection_prefix: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -2217,6 +2257,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["port"] = port
+            __props__.__dict__["private_connection_port"] = private_connection_port
             __props__.__dict__["private_connection_prefix"] = private_connection_prefix
             __props__.__dict__["private_ip"] = private_ip
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -2288,6 +2329,7 @@ class Instance(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
+            private_connection_port: Optional[pulumi.Input[str]] = None,
             private_connection_prefix: Optional[pulumi.Input[str]] = None,
             private_ip: Optional[pulumi.Input[str]] = None,
             qps: Optional[pulumi.Input[int]] = None,
@@ -2349,6 +2391,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+        :param pulumi.Input[str] private_connection_port: Private network connection port, used to modify the private network connection port.
         :param pulumi.Input[str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         :param pulumi.Input[str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[int] qps: Theoretical maximum QPS value.
@@ -2359,7 +2402,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] security_ip_group_name: The name of the whitelist group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
-        :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+               Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         :param pulumi.Input[str] status: The status of KVStore DBInstance.
                * `connection_domain`- Intranet connection address of the KVStore instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -2412,6 +2456,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
+        __props__.__dict__["private_connection_port"] = private_connection_port
         __props__.__dict__["private_connection_prefix"] = private_connection_prefix
         __props__.__dict__["private_ip"] = private_ip
         __props__.__dict__["qps"] = qps
@@ -2750,6 +2795,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="privateConnectionPort")
+    def private_connection_port(self) -> pulumi.Output[str]:
+        """
+        Private network connection port, used to modify the private network connection port.
+        """
+        return pulumi.get(self, "private_connection_port")
+
+    @property
     @pulumi.getter(name="privateConnectionPrefix")
     def private_connection_prefix(self) -> pulumi.Output[Optional[str]]:
         """
@@ -2833,7 +2886,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+        Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         """
         return pulumi.get(self, "ssl_enable")
 

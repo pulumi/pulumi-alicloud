@@ -28,6 +28,14 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int?> Bandwidth { get; private set; } = null!;
 
         /// <summary>
+        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// - true: Enable deletion protection.
+        /// - false: Disable deletion protection.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
         [Output("description")]
@@ -137,6 +145,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
+        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// - true: Enable deletion protection.
+        /// - false: Disable deletion protection.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
         [Input("description")]
@@ -199,6 +215,14 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
+
+        /// <summary>
+        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// - true: Enable deletion protection.
+        /// - false: Disable deletion protection.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.

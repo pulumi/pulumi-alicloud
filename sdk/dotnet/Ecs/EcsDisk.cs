@@ -32,6 +32,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         {
     ///             Category = "cloud_efficiency",
     ///             Description = "Hello ecs disk.",
+    ///             DiskName = "tf-test",
     ///             Encrypted = true,
     ///             KmsKeyId = "2a6767f0-a16c-4679-a60f-13bf*****",
     ///             Size = 30,
@@ -108,7 +109,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        /// Indicates whether to enable creating snapshot automatically. Default value: `false`.
         /// </summary>
         [Output("enableAutoSnapshot")]
         public Output<bool?> EnableAutoSnapshot { get; private set; } = null!;
@@ -125,7 +126,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The ID of the instance to which the created subscription disk is automatically attached.
         /// * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-        /// * You cannot specify both the `zone_id` and `instance_id` parameters.
+        /// * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -143,7 +144,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+        /// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -155,7 +156,7 @@ namespace Pulumi.AliCloud.Ecs
         /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Output("performanceLevel")]
-        public Output<string?> PerformanceLevel { get; private set; } = null!;
+        public Output<string> PerformanceLevel { get; private set; } = null!;
 
         /// <summary>
         /// The Id of resource group which the disk belongs.
@@ -205,7 +206,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the free zone to which the disk belongs.
+        /// ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -307,7 +308,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        /// Indicates whether to enable creating snapshot automatically. Default value: `false`.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
@@ -324,7 +325,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The ID of the instance to which the created subscription disk is automatically attached.
         /// * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-        /// * You cannot specify both the `zone_id` and `instance_id` parameters.
+        /// * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -342,7 +343,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+        /// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -403,7 +404,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// ID of the free zone to which the disk belongs.
+        /// ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -466,7 +467,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        /// Indicates whether to enable creating snapshot automatically. Default value: `false`.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
@@ -483,7 +484,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The ID of the instance to which the created subscription disk is automatically attached.
         /// * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-        /// * You cannot specify both the `zone_id` and `instance_id` parameters.
+        /// * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -501,7 +502,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+        /// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -568,7 +569,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// ID of the free zone to which the disk belongs.
+        /// ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

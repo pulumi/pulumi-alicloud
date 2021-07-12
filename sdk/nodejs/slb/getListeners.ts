@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.slb.LoadBalancer("default", {});
+ * const _default = new alicloud.slb.ApplicationLoadBalancer("default", {loadBalancerName: "tf-testAccSlbListenertcp"});
  * const tcp = new alicloud.slb.Listener("tcp", {
  *     loadBalancerId: _default.id,
  *     backendPort: "22",

@@ -33,6 +33,7 @@ import (
 // 		_, err := ecs.NewEcsDisk(ctx, "example", &ecs.EcsDiskArgs{
 // 			Category:    pulumi.String("cloud_efficiency"),
 // 			Description: pulumi.String("Hello ecs disk."),
+// 			DiskName:    pulumi.String("tf-test"),
 // 			Encrypted:   pulumi.Bool(true),
 // 			KmsKeyId:    pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
 // 			Size:        pulumi.Int(30),
@@ -79,14 +80,14 @@ type EcsDisk struct {
 	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+	// Indicates whether to enable creating snapshot automatically. Default value: `false`.
 	EnableAutoSnapshot pulumi.BoolPtrOutput   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-	// * You cannot specify both the `zoneId` and `instanceId` parameters.
+	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
@@ -94,13 +95,13 @@ type EcsDisk struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
 	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
 	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
-	PerformanceLevel pulumi.StringPtrOutput `pulumi:"performanceLevel"`
+	PerformanceLevel pulumi.StringOutput `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
@@ -118,7 +119,7 @@ type EcsDisk struct {
 	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
 	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// ID of the free zone to which the disk belongs.
+	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -171,14 +172,14 @@ type ecsDiskState struct {
 	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun *bool `pulumi:"dryRun"`
-	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+	// Indicates whether to enable creating snapshot automatically. Default value: `false`.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-	// * You cannot specify both the `zoneId` and `instanceId` parameters.
+	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId *string `pulumi:"instanceId"`
 	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -186,7 +187,7 @@ type ecsDiskState struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
 	Name *string `pulumi:"name"`
-	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
@@ -210,7 +211,7 @@ type ecsDiskState struct {
 	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
 	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 	Type *string `pulumi:"type"`
-	// ID of the free zone to which the disk belongs.
+	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -235,14 +236,14 @@ type EcsDiskState struct {
 	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun pulumi.BoolPtrInput
-	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+	// Indicates whether to enable creating snapshot automatically. Default value: `false`.
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	EncryptAlgorithm   pulumi.StringPtrInput
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted pulumi.BoolPtrInput
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-	// * You cannot specify both the `zoneId` and `instanceId` parameters.
+	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId pulumi.StringPtrInput
 	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
 	KmsKeyId pulumi.StringPtrInput
@@ -250,7 +251,7 @@ type EcsDiskState struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
 	Name pulumi.StringPtrInput
-	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
@@ -274,7 +275,7 @@ type EcsDiskState struct {
 	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
 	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 	Type pulumi.StringPtrInput
-	// ID of the free zone to which the disk belongs.
+	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -303,14 +304,14 @@ type ecsDiskArgs struct {
 	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun *bool `pulumi:"dryRun"`
-	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+	// Indicates whether to enable creating snapshot automatically. Default value: `false`.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-	// * You cannot specify both the `zoneId` and `instanceId` parameters.
+	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId *string `pulumi:"instanceId"`
 	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -318,7 +319,7 @@ type ecsDiskArgs struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
 	Name *string `pulumi:"name"`
-	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
@@ -340,7 +341,7 @@ type ecsDiskArgs struct {
 	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
 	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 	Type *string `pulumi:"type"`
-	// ID of the free zone to which the disk belongs.
+	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -366,14 +367,14 @@ type EcsDiskArgs struct {
 	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun pulumi.BoolPtrInput
-	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+	// Indicates whether to enable creating snapshot automatically. Default value: `false`.
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	EncryptAlgorithm   pulumi.StringPtrInput
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted pulumi.BoolPtrInput
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-	// * You cannot specify both the `zoneId` and `instanceId` parameters.
+	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId pulumi.StringPtrInput
 	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
 	KmsKeyId pulumi.StringPtrInput
@@ -381,7 +382,7 @@ type EcsDiskArgs struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.
 	Name pulumi.StringPtrInput
-	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
@@ -403,7 +404,7 @@ type EcsDiskArgs struct {
 	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
 	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 	Type pulumi.StringPtrInput
-	// ID of the free zone to which the disk belongs.
+	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId pulumi.StringPtrInput
 }
 

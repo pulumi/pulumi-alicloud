@@ -339,7 +339,7 @@ class ServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def servers(self) -> pulumi.Output[Optional[Sequence['outputs.ServerGroupServer']]]:
+    def servers(self) -> pulumi.Output[Sequence['outputs.ServerGroupServer']]:
         """
         A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         """

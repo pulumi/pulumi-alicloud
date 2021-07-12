@@ -15,6 +15,7 @@ class CommonBandwithPackageArgs:
     def __init__(__self__, *,
                  bandwidth: pulumi.Input[str],
                  bandwidth_package_name: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,9 @@ class CommonBandwithPackageArgs:
         The set of arguments for constructing a CommonBandwithPackage resource.
         :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
         :param pulumi.Input[str] bandwidth_package_name: The name of the common bandwidth package.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: The description of the common bandwidth package instance.
         :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
         :param pulumi.Input[str] isp: The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
@@ -38,6 +42,8 @@ class CommonBandwithPackageArgs:
         pulumi.set(__self__, "bandwidth", bandwidth)
         if bandwidth_package_name is not None:
             pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if force is not None:
@@ -81,6 +87,20 @@ class CommonBandwithPackageArgs:
     @bandwidth_package_name.setter
     def bandwidth_package_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bandwidth_package_name", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable the deletion protection or not. Default value: `false`.
+        - true: Enable deletion protection.
+        - false: Disable deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -181,6 +201,7 @@ class _CommonBandwithPackageState:
     def __init__(__self__, *,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_name: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -194,6 +215,9 @@ class _CommonBandwithPackageState:
         Input properties used for looking up and filtering CommonBandwithPackage resources.
         :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
         :param pulumi.Input[str] bandwidth_package_name: The name of the common bandwidth package.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: The description of the common bandwidth package instance.
         :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
         :param pulumi.Input[str] isp: The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
@@ -207,6 +231,8 @@ class _CommonBandwithPackageState:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if bandwidth_package_name is not None:
             pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if force is not None:
@@ -252,6 +278,20 @@ class _CommonBandwithPackageState:
     @bandwidth_package_name.setter
     def bandwidth_package_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bandwidth_package_name", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable the deletion protection or not. Default value: `false`.
+        - true: Enable deletion protection.
+        - false: Disable deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -366,6 +406,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_name: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -388,6 +429,9 @@ class CommonBandwithPackage(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
         :param pulumi.Input[str] bandwidth_package_name: The name of the common bandwidth package.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: The description of the common bandwidth package instance.
         :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
         :param pulumi.Input[str] isp: The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
@@ -428,6 +472,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_name: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -452,6 +497,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bandwidth'")
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["bandwidth_package_name"] = bandwidth_package_name
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["force"] = force
             __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -476,6 +522,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bandwidth: Optional[pulumi.Input[str]] = None,
             bandwidth_package_name: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[str]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -494,6 +541,9 @@ class CommonBandwithPackage(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
         :param pulumi.Input[str] bandwidth_package_name: The name of the common bandwidth package.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+               - true: Enable deletion protection.
+               - false: Disable deletion protection.
         :param pulumi.Input[str] description: The description of the common bandwidth package instance.
         :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
         :param pulumi.Input[str] isp: The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
@@ -509,6 +559,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
 
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["bandwidth_package_name"] = bandwidth_package_name
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["force"] = force
         __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -535,6 +586,16 @@ class CommonBandwithPackage(pulumi.CustomResource):
         The name of the common bandwidth package.
         """
         return pulumi.get(self, "bandwidth_package_name")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        Whether enable the deletion protection or not. Default value: `false`.
+        - true: Enable deletion protection.
+        - false: Disable deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

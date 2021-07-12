@@ -36,6 +36,9 @@ namespace Pulumi.AliCloud.Ess.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("performanceLevel")]
+        public Input<string>? PerformanceLevel { get; set; }
+
         [Input("size")]
         public Input<int>? Size { get; set; }
 

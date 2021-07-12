@@ -4,11 +4,13 @@
 
 # Export this package's modules as members:
 from .acl import *
+from .application_load_balancer import *
 from .attachment import *
 from .backend_server import *
 from .ca_certificate import *
 from .domain_extension import *
 from .get_acls import *
+from .get_application_load_balancers import *
 from .get_attachments import *
 from .get_backend_servers import *
 from .get_ca_certificates import *
@@ -43,6 +45,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:slb/acl:Acl":
                 return Acl(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer":
+                return ApplicationLoadBalancer(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:slb/attachment:Attachment":
                 return Attachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:slb/backendServer:BackendServer":
@@ -69,6 +73,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "slb/acl", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "slb/applicationLoadBalancer", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "slb/attachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "slb/backendServer", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "slb/caCertificate", _module_instance)

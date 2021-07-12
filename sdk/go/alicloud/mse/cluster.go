@@ -62,7 +62,11 @@ type Cluster struct {
 	AclEntryLists pulumi.StringArrayOutput `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrOutput `pulumi:"clusterAliasName"`
-	// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+	// The engine specification of MSE Cluster. Valid values:
+	// `MSE_SC_1_2_200_c`：1C2G
+	// `MSE_SC_2_4_200_c`：2C4G
+	// `MSE_SC_4_8_200_c`：4C8G
+	// `MSE_SC_8_16_200_c`：8C16G
 	ClusterSpecification pulumi.StringOutput `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
@@ -72,7 +76,7 @@ type Cluster struct {
 	DiskType pulumi.StringPtrOutput `pulumi:"diskType"`
 	// The count of instance.
 	InstanceCount pulumi.IntOutput `pulumi:"instanceCount"`
-	// The type of network. Range limit: 1~5.
+	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringOutput `pulumi:"netType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrOutput `pulumi:"privateSlbSpecification"`
@@ -134,7 +138,11 @@ type clusterState struct {
 	AclEntryLists []string `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
-	// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+	// The engine specification of MSE Cluster. Valid values:
+	// `MSE_SC_1_2_200_c`：1C2G
+	// `MSE_SC_2_4_200_c`：2C4G
+	// `MSE_SC_4_8_200_c`：4C8G
+	// `MSE_SC_8_16_200_c`：8C16G
 	ClusterSpecification *string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType *string `pulumi:"clusterType"`
@@ -144,7 +152,7 @@ type clusterState struct {
 	DiskType *string `pulumi:"diskType"`
 	// The count of instance.
 	InstanceCount *int `pulumi:"instanceCount"`
-	// The type of network. Range limit: 1~5.
+	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType *string `pulumi:"netType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification *string `pulumi:"privateSlbSpecification"`
@@ -163,7 +171,11 @@ type ClusterState struct {
 	AclEntryLists pulumi.StringArrayInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
-	// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+	// The engine specification of MSE Cluster. Valid values:
+	// `MSE_SC_1_2_200_c`：1C2G
+	// `MSE_SC_2_4_200_c`：2C4G
+	// `MSE_SC_4_8_200_c`：4C8G
+	// `MSE_SC_8_16_200_c`：8C16G
 	ClusterSpecification pulumi.StringPtrInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringPtrInput
@@ -173,7 +185,7 @@ type ClusterState struct {
 	DiskType pulumi.StringPtrInput
 	// The count of instance.
 	InstanceCount pulumi.IntPtrInput
-	// The type of network. Range limit: 1~5.
+	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringPtrInput
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrInput
@@ -196,7 +208,11 @@ type clusterArgs struct {
 	AclEntryLists []string `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
-	// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+	// The engine specification of MSE Cluster. Valid values:
+	// `MSE_SC_1_2_200_c`：1C2G
+	// `MSE_SC_2_4_200_c`：2C4G
+	// `MSE_SC_4_8_200_c`：4C8G
+	// `MSE_SC_8_16_200_c`：8C16G
 	ClusterSpecification string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType string `pulumi:"clusterType"`
@@ -206,7 +222,7 @@ type clusterArgs struct {
 	DiskType *string `pulumi:"diskType"`
 	// The count of instance.
 	InstanceCount int `pulumi:"instanceCount"`
-	// The type of network. Range limit: 1~5.
+	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType string `pulumi:"netType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification *string `pulumi:"privateSlbSpecification"`
@@ -224,7 +240,11 @@ type ClusterArgs struct {
 	AclEntryLists pulumi.StringArrayInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
-	// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+	// The engine specification of MSE Cluster. Valid values:
+	// `MSE_SC_1_2_200_c`：1C2G
+	// `MSE_SC_2_4_200_c`：2C4G
+	// `MSE_SC_4_8_200_c`：4C8G
+	// `MSE_SC_8_16_200_c`：8C16G
 	ClusterSpecification pulumi.StringInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringInput
@@ -234,7 +254,7 @@ type ClusterArgs struct {
 	DiskType pulumi.StringPtrInput
 	// The count of instance.
 	InstanceCount pulumi.IntInput
-	// The type of network. Range limit: 1~5.
+	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringInput
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrInput

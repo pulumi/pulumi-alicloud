@@ -17,6 +17,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// DNS security level.
         /// </summary>
         public readonly string DnsSecurity;
+        public readonly string Domain;
         /// <summary>
         /// Number of domain names bound.
         /// </summary>
@@ -29,6 +30,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// Id of the instance resource.
         /// </summary>
         public readonly string InstanceId;
+        public readonly string PaymentType;
         /// <summary>
         /// Paid package version.
         /// </summary>
@@ -42,20 +44,26 @@ namespace Pulumi.AliCloud.Dns.Outputs
         private GetInstancesInstanceResult(
             string dnsSecurity,
 
+            string domain,
+
             string domainNumbers,
 
             string id,
 
             string instanceId,
 
+            string paymentType,
+
             string versionCode,
 
             string versionName)
         {
             DnsSecurity = dnsSecurity;
+            Domain = domain;
             DomainNumbers = domainNumbers;
             Id = id;
             InstanceId = instanceId;
+            PaymentType = paymentType;
             VersionCode = versionCode;
             VersionName = versionName;
         }

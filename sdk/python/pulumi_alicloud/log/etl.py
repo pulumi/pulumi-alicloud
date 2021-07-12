@@ -46,7 +46,7 @@ class EtlArgs:
         :param pulumi.Input[str] logstore: Delivery target logstore.
         :param pulumi.Input[str] project: The project where the target logstore is delivered.
         :param pulumi.Input[str] script: Processing operation grammar.
-        :param pulumi.Input[str] access_key_id: Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        :param pulumi.Input[str] access_key_id: Delivery target logstore access key id.
         :param pulumi.Input[str] access_key_secret: Delivery target logstore access key secret.
         :param pulumi.Input[int] create_time: The etl job create time.
         :param pulumi.Input[str] description: Description of the log etl job.
@@ -58,11 +58,11 @@ class EtlArgs:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[int] last_modified_time: ETL job last modified time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Advanced parameter configuration of processing operations.
-        :param pulumi.Input[str] role_arn: Sts role info.
+        :param pulumi.Input[str] role_arn: Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         :param pulumi.Input[str] schedule: Job scheduling type, the default value is Resident.
         :param pulumi.Input[str] status: Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
         :param pulumi.Input[int] to_time: Deadline of processing job, the default value is None.
-        :param pulumi.Input[int] version: Log etl job version. the default value is 2.
+        :param pulumi.Input[int] version: Log etl job version. the default value is `2`.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "etl_name", etl_name)
@@ -181,7 +181,7 @@ class EtlArgs:
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        Delivery target logstore access key id.
         """
         return pulumi.get(self, "access_key_id")
 
@@ -325,7 +325,7 @@ class EtlArgs:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        Sts role info.
+        Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         """
         return pulumi.get(self, "role_arn")
 
@@ -373,7 +373,7 @@ class EtlArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[int]]:
         """
-        Log etl job version. the default value is 2.
+        Log etl job version. the default value is `2`.
         """
         return pulumi.get(self, "version")
 
@@ -410,7 +410,7 @@ class _EtlState:
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Etl resources.
-        :param pulumi.Input[str] access_key_id: Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        :param pulumi.Input[str] access_key_id: Delivery target logstore access key id.
         :param pulumi.Input[str] access_key_secret: Delivery target logstore access key secret.
         :param pulumi.Input[int] create_time: The etl job create time.
         :param pulumi.Input[str] description: Description of the log etl job.
@@ -427,12 +427,12 @@ class _EtlState:
         :param pulumi.Input[str] logstore: Delivery target logstore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Advanced parameter configuration of processing operations.
         :param pulumi.Input[str] project: The project where the target logstore is delivered.
-        :param pulumi.Input[str] role_arn: Sts role info.
+        :param pulumi.Input[str] role_arn: Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         :param pulumi.Input[str] schedule: Job scheduling type, the default value is Resident.
         :param pulumi.Input[str] script: Processing operation grammar.
         :param pulumi.Input[str] status: Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
         :param pulumi.Input[int] to_time: Deadline of processing job, the default value is None.
-        :param pulumi.Input[int] version: Log etl job version. the default value is 2.
+        :param pulumi.Input[int] version: Log etl job version. the default value is `2`.
         """
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
@@ -485,7 +485,7 @@ class _EtlState:
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        Delivery target logstore access key id.
         """
         return pulumi.get(self, "access_key_id")
 
@@ -689,7 +689,7 @@ class _EtlState:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        Sts role info.
+        Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         """
         return pulumi.get(self, "role_arn")
 
@@ -749,7 +749,7 @@ class _EtlState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[int]]:
         """
-        Log etl job version. the default value is 2.
+        Log etl job version. the default value is `2`.
         """
         return pulumi.get(self, "version")
 
@@ -931,7 +931,7 @@ class Etl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_key_id: Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        :param pulumi.Input[str] access_key_id: Delivery target logstore access key id.
         :param pulumi.Input[str] access_key_secret: Delivery target logstore access key secret.
         :param pulumi.Input[int] create_time: The etl job create time.
         :param pulumi.Input[str] description: Description of the log etl job.
@@ -948,12 +948,12 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[str] logstore: Delivery target logstore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Advanced parameter configuration of processing operations.
         :param pulumi.Input[str] project: The project where the target logstore is delivered.
-        :param pulumi.Input[str] role_arn: Sts role info.
+        :param pulumi.Input[str] role_arn: Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         :param pulumi.Input[str] schedule: Job scheduling type, the default value is Resident.
         :param pulumi.Input[str] script: Processing operation grammar.
         :param pulumi.Input[str] status: Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
         :param pulumi.Input[int] to_time: Deadline of processing job, the default value is None.
-        :param pulumi.Input[int] version: Log etl job version. the default value is 2.
+        :param pulumi.Input[int] version: Log etl job version. the default value is `2`.
         """
         ...
     @overload
@@ -1228,7 +1228,7 @@ class Etl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_key_id: Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        :param pulumi.Input[str] access_key_id: Delivery target logstore access key id.
         :param pulumi.Input[str] access_key_secret: Delivery target logstore access key secret.
         :param pulumi.Input[int] create_time: The etl job create time.
         :param pulumi.Input[str] description: Description of the log etl job.
@@ -1245,12 +1245,12 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[str] logstore: Delivery target logstore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Advanced parameter configuration of processing operations.
         :param pulumi.Input[str] project: The project where the target logstore is delivered.
-        :param pulumi.Input[str] role_arn: Sts role info.
+        :param pulumi.Input[str] role_arn: Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         :param pulumi.Input[str] schedule: Job scheduling type, the default value is Resident.
         :param pulumi.Input[str] script: Processing operation grammar.
         :param pulumi.Input[str] status: Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
         :param pulumi.Input[int] to_time: Deadline of processing job, the default value is None.
-        :param pulumi.Input[int] version: Log etl job version. the default value is 2.
+        :param pulumi.Input[int] version: Log etl job version. the default value is `2`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1285,7 +1285,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+        Delivery target logstore access key id.
         """
         return pulumi.get(self, "access_key_id")
 
@@ -1421,7 +1421,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[Optional[str]]:
         """
-        Sts role info.
+        Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         """
         return pulumi.get(self, "role_arn")
 
@@ -1461,7 +1461,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[Optional[int]]:
         """
-        Log etl job version. the default value is 2.
+        Log etl job version. the default value is `2`.
         """
         return pulumi.get(self, "version")
 

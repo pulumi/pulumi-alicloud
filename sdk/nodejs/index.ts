@@ -34,6 +34,7 @@ import * as dataworks from "./dataworks";
 import * as dcdn from "./dcdn";
 import * as ddos from "./ddos";
 import * as dds from "./dds";
+import * as directmail from "./directmail";
 import * as dms from "./dms";
 import * as dns from "./dns";
 import * as drds from "./drds";
@@ -104,6 +105,7 @@ export {
     dcdn,
     ddos,
     dds,
+    directmail,
     dms,
     dns,
     drds,

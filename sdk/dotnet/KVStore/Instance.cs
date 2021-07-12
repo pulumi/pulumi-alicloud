@@ -381,6 +381,12 @@ namespace Pulumi.AliCloud.KVStore
         public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
+        /// Private network connection port, used to modify the private network connection port.
+        /// </summary>
+        [Output("privateConnectionPort")]
+        public Output<string> PrivateConnectionPort { get; private set; } = null!;
+
+        /// <summary>
         /// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         /// </summary>
         [Output("privateConnectionPrefix")]
@@ -441,7 +447,8 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> SrcdbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+        /// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         /// </summary>
         [Output("sslEnable")]
         public Output<string?> SslEnable { get; private set; } = null!;
@@ -768,6 +775,12 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? Port { get; set; }
 
         /// <summary>
+        /// Private network connection port, used to modify the private network connection port.
+        /// </summary>
+        [Input("privateConnectionPort")]
+        public Input<string>? PrivateConnectionPort { get; set; }
+
+        /// <summary>
         /// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         /// </summary>
         [Input("privateConnectionPrefix")]
@@ -828,7 +841,8 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? SrcdbInstanceId { get; set; }
 
         /// <summary>
-        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+        /// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         /// </summary>
         [Input("sslEnable")]
         public Input<string>? SslEnable { get; set; }
@@ -1133,6 +1147,12 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? Port { get; set; }
 
         /// <summary>
+        /// Private network connection port, used to modify the private network connection port.
+        /// </summary>
+        [Input("privateConnectionPort")]
+        public Input<string>? PrivateConnectionPort { get; set; }
+
+        /// <summary>
         /// Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         /// </summary>
         [Input("privateConnectionPrefix")]
@@ -1199,7 +1219,8 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? SrcdbInstanceId { get; set; }
 
         /// <summary>
-        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
+        /// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
+        /// Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         /// </summary>
         [Input("sslEnable")]
         public Input<string>? SslEnable { get; set; }

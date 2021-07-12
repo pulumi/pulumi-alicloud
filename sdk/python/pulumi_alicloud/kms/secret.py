@@ -17,9 +17,11 @@ class SecretArgs:
                  secret_name: pulumi.Input[str],
                  version_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  recovery_window_in_days: Optional[pulumi.Input[int]] = None,
+                 rotation_interval: Optional[pulumi.Input[str]] = None,
                  secret_data_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -29,9 +31,11 @@ class SecretArgs:
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
         :param pulumi.Input[str] description: The description of the secret.
+        :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         :param pulumi.Input[int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+        :param pulumi.Input[str] rotation_interval: The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
@@ -41,12 +45,16 @@ class SecretArgs:
         pulumi.set(__self__, "version_id", version_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_automatic_rotation is not None:
+            pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
         if encryption_key_id is not None:
             pulumi.set(__self__, "encryption_key_id", encryption_key_id)
         if force_delete_without_recovery is not None:
             pulumi.set(__self__, "force_delete_without_recovery", force_delete_without_recovery)
         if recovery_window_in_days is not None:
             pulumi.set(__self__, "recovery_window_in_days", recovery_window_in_days)
+        if rotation_interval is not None:
+            pulumi.set(__self__, "rotation_interval", rotation_interval)
         if secret_data_type is not None:
             pulumi.set(__self__, "secret_data_type", secret_data_type)
         if tags is not None:
@@ -103,6 +111,18 @@ class SecretArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="enableAutomaticRotation")
+    def enable_automatic_rotation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable automatic key rotation.
+        """
+        return pulumi.get(self, "enable_automatic_rotation")
+
+    @enable_automatic_rotation.setter
+    def enable_automatic_rotation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_automatic_rotation", value)
+
+    @property
     @pulumi.getter(name="encryptionKeyId")
     def encryption_key_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -137,6 +157,18 @@ class SecretArgs:
     @recovery_window_in_days.setter
     def recovery_window_in_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "recovery_window_in_days", value)
+
+    @property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+        """
+        return pulumi.get(self, "rotation_interval")
+
+    @rotation_interval.setter
+    def rotation_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rotation_interval", value)
 
     @property
     @pulumi.getter(name="secretDataType")
@@ -180,10 +212,12 @@ class _SecretState:
     def __init__(__self__, *,
                  arn: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  planned_delete_time: Optional[pulumi.Input[str]] = None,
                  recovery_window_in_days: Optional[pulumi.Input[int]] = None,
+                 rotation_interval: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_data_type: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
@@ -194,10 +228,12 @@ class _SecretState:
         Input properties used for looking up and filtering Secret resources.
         :param pulumi.Input[str] arn: The Alicloud Resource Name (ARN) of the secret.
         :param pulumi.Input[str] description: The description of the secret.
+        :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         :param pulumi.Input[str] planned_delete_time: The time when the secret is scheduled to be deleted.
         :param pulumi.Input[int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+        :param pulumi.Input[str] rotation_interval: The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
         :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
@@ -209,6 +245,8 @@ class _SecretState:
             pulumi.set(__self__, "arn", arn)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_automatic_rotation is not None:
+            pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
         if encryption_key_id is not None:
             pulumi.set(__self__, "encryption_key_id", encryption_key_id)
         if force_delete_without_recovery is not None:
@@ -217,6 +255,8 @@ class _SecretState:
             pulumi.set(__self__, "planned_delete_time", planned_delete_time)
         if recovery_window_in_days is not None:
             pulumi.set(__self__, "recovery_window_in_days", recovery_window_in_days)
+        if rotation_interval is not None:
+            pulumi.set(__self__, "rotation_interval", rotation_interval)
         if secret_data is not None:
             pulumi.set(__self__, "secret_data", secret_data)
         if secret_data_type is not None:
@@ -253,6 +293,18 @@ class _SecretState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableAutomaticRotation")
+    def enable_automatic_rotation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable automatic key rotation.
+        """
+        return pulumi.get(self, "enable_automatic_rotation")
+
+    @enable_automatic_rotation.setter
+    def enable_automatic_rotation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_automatic_rotation", value)
 
     @property
     @pulumi.getter(name="encryptionKeyId")
@@ -301,6 +353,18 @@ class _SecretState:
     @recovery_window_in_days.setter
     def recovery_window_in_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "recovery_window_in_days", value)
+
+    @property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+        """
+        return pulumi.get(self, "rotation_interval")
+
+    @rotation_interval.setter
+    def rotation_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rotation_interval", value)
 
     @property
     @pulumi.getter(name="secretData")
@@ -381,9 +445,11 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  recovery_window_in_days: Optional[pulumi.Input[int]] = None,
+                 rotation_interval: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_data_type: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
@@ -423,9 +489,11 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the secret.
+        :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         :param pulumi.Input[int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+        :param pulumi.Input[str] rotation_interval: The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
         :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
@@ -484,9 +552,11 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  recovery_window_in_days: Optional[pulumi.Input[int]] = None,
+                 rotation_interval: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_data_type: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
@@ -506,9 +576,11 @@ class Secret(pulumi.CustomResource):
             __props__ = SecretArgs.__new__(SecretArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_automatic_rotation"] = enable_automatic_rotation
             __props__.__dict__["encryption_key_id"] = encryption_key_id
             __props__.__dict__["force_delete_without_recovery"] = force_delete_without_recovery
             __props__.__dict__["recovery_window_in_days"] = recovery_window_in_days
+            __props__.__dict__["rotation_interval"] = rotation_interval
             if secret_data is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_data'")
             __props__.__dict__["secret_data"] = secret_data
@@ -535,10 +607,12 @@ class Secret(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
             encryption_key_id: Optional[pulumi.Input[str]] = None,
             force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
             planned_delete_time: Optional[pulumi.Input[str]] = None,
             recovery_window_in_days: Optional[pulumi.Input[int]] = None,
+            rotation_interval: Optional[pulumi.Input[str]] = None,
             secret_data: Optional[pulumi.Input[str]] = None,
             secret_data_type: Optional[pulumi.Input[str]] = None,
             secret_name: Optional[pulumi.Input[str]] = None,
@@ -554,10 +628,12 @@ class Secret(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Alicloud Resource Name (ARN) of the secret.
         :param pulumi.Input[str] description: The description of the secret.
+        :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         :param pulumi.Input[str] planned_delete_time: The time when the secret is scheduled to be deleted.
         :param pulumi.Input[int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+        :param pulumi.Input[str] rotation_interval: The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
         :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
@@ -571,10 +647,12 @@ class Secret(pulumi.CustomResource):
 
         __props__.__dict__["arn"] = arn
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_automatic_rotation"] = enable_automatic_rotation
         __props__.__dict__["encryption_key_id"] = encryption_key_id
         __props__.__dict__["force_delete_without_recovery"] = force_delete_without_recovery
         __props__.__dict__["planned_delete_time"] = planned_delete_time
         __props__.__dict__["recovery_window_in_days"] = recovery_window_in_days
+        __props__.__dict__["rotation_interval"] = rotation_interval
         __props__.__dict__["secret_data"] = secret_data
         __props__.__dict__["secret_data_type"] = secret_data_type
         __props__.__dict__["secret_name"] = secret_name
@@ -598,6 +676,14 @@ class Secret(pulumi.CustomResource):
         The description of the secret.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableAutomaticRotation")
+    def enable_automatic_rotation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable automatic key rotation.
+        """
+        return pulumi.get(self, "enable_automatic_rotation")
 
     @property
     @pulumi.getter(name="encryptionKeyId")
@@ -630,6 +716,14 @@ class Secret(pulumi.CustomResource):
         Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
         """
         return pulumi.get(self, "recovery_window_in_days")
+
+    @property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> pulumi.Output[Optional[str]]:
+        """
+        The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+        """
+        return pulumi.get(self, "rotation_interval")
 
     @property
     @pulumi.getter(name="secretData")

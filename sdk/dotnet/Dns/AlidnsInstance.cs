@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Dns
         /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
         /// </summary>
         [Output("renewalStatus")]
-        public Output<string?> RenewalStatus { get; private set; } = null!;
+        public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
         /// Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.

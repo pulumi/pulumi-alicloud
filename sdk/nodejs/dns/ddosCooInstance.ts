@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *     domainCount: "50",
  *     period: 1,
  *     portCount: "50",
+ *     productType: "ddoscoo",
  *     serviceBandwidth: "100",
  * });
  * ```
@@ -95,6 +96,13 @@ export class DdosCooInstance extends pulumi.CustomResource {
      */
     public readonly portCount!: pulumi.Output<string>;
     /**
+     * The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+     * - ddoscoo: Only supports domestic account.
+     * - ddoscoo_intl: Only supports to international account.
+     * Default to ddoscoo.
+     */
+    public readonly productType!: pulumi.Output<string | undefined>;
+    /**
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
      */
     public readonly serviceBandwidth!: pulumi.Output<string>;
@@ -121,6 +129,7 @@ export class DdosCooInstance extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["portCount"] = state ? state.portCount : undefined;
+            inputs["productType"] = state ? state.productType : undefined;
             inputs["serviceBandwidth"] = state ? state.serviceBandwidth : undefined;
         } else {
             const args = argsOrState as DdosCooInstanceArgs | undefined;
@@ -145,6 +154,7 @@ export class DdosCooInstance extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["portCount"] = args ? args.portCount : undefined;
+            inputs["productType"] = args ? args.productType : undefined;
             inputs["serviceBandwidth"] = args ? args.serviceBandwidth : undefined;
         }
         if (!opts.version) {
@@ -183,6 +193,13 @@ export interface DdosCooInstanceState {
      */
     readonly portCount?: pulumi.Input<string>;
     /**
+     * The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+     * - ddoscoo: Only supports domestic account.
+     * - ddoscoo_intl: Only supports to international account.
+     * Default to ddoscoo.
+     */
+    readonly productType?: pulumi.Input<string>;
+    /**
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
      */
     readonly serviceBandwidth?: pulumi.Input<string>;
@@ -216,6 +233,13 @@ export interface DdosCooInstanceArgs {
      * Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
     readonly portCount: pulumi.Input<string>;
+    /**
+     * The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+     * - ddoscoo: Only supports domestic account.
+     * - ddoscoo_intl: Only supports to international account.
+     * Default to ddoscoo.
+     */
+    readonly productType?: pulumi.Input<string>;
     /**
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
      */

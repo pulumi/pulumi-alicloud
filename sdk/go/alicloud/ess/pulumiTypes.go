@@ -16,12 +16,13 @@ type ScalingConfigurationDataDisk struct {
 	DeleteWithInstance   *bool   `pulumi:"deleteWithInstance"`
 	Description          *string `pulumi:"description"`
 	// Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
-	Device     *string `pulumi:"device"`
-	Encrypted  *bool   `pulumi:"encrypted"`
-	KmsKeyId   *string `pulumi:"kmsKeyId"`
-	Name       *string `pulumi:"name"`
-	Size       *int    `pulumi:"size"`
-	SnapshotId *string `pulumi:"snapshotId"`
+	Device           *string `pulumi:"device"`
+	Encrypted        *bool   `pulumi:"encrypted"`
+	KmsKeyId         *string `pulumi:"kmsKeyId"`
+	Name             *string `pulumi:"name"`
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	Size             *int    `pulumi:"size"`
+	SnapshotId       *string `pulumi:"snapshotId"`
 }
 
 // ScalingConfigurationDataDiskInput is an input type that accepts ScalingConfigurationDataDiskArgs and ScalingConfigurationDataDiskOutput values.
@@ -41,12 +42,13 @@ type ScalingConfigurationDataDiskArgs struct {
 	DeleteWithInstance   pulumi.BoolPtrInput   `pulumi:"deleteWithInstance"`
 	Description          pulumi.StringPtrInput `pulumi:"description"`
 	// Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
-	Device     pulumi.StringPtrInput `pulumi:"device"`
-	Encrypted  pulumi.BoolPtrInput   `pulumi:"encrypted"`
-	KmsKeyId   pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Size       pulumi.IntPtrInput    `pulumi:"size"`
-	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	Device           pulumi.StringPtrInput `pulumi:"device"`
+	Encrypted        pulumi.BoolPtrInput   `pulumi:"encrypted"`
+	KmsKeyId         pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	Size             pulumi.IntPtrInput    `pulumi:"size"`
+	SnapshotId       pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 
 func (ScalingConfigurationDataDiskArgs) ElementType() reflect.Type {
@@ -131,6 +133,10 @@ func (o ScalingConfigurationDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 
 func (o ScalingConfigurationDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ScalingConfigurationDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
 func (o ScalingConfigurationDataDiskOutput) Size() pulumi.IntPtrOutput {
@@ -1020,6 +1026,8 @@ type GetScalingConfigurationsConfiguration struct {
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// System disk category of the scaling configuration.
 	SystemDiskCategory string `pulumi:"systemDiskCategory"`
+	// The performance level of the ESSD used as the system disk.
+	SystemDiskPerformanceLevel string `pulumi:"systemDiskPerformanceLevel"`
 	// System disk size of the scaling configuration.
 	SystemDiskSize int `pulumi:"systemDiskSize"`
 }
@@ -1064,6 +1072,8 @@ type GetScalingConfigurationsConfigurationArgs struct {
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
 	// System disk category of the scaling configuration.
 	SystemDiskCategory pulumi.StringInput `pulumi:"systemDiskCategory"`
+	// The performance level of the ESSD used as the system disk.
+	SystemDiskPerformanceLevel pulumi.StringInput `pulumi:"systemDiskPerformanceLevel"`
 	// System disk size of the scaling configuration.
 	SystemDiskSize pulumi.IntInput `pulumi:"systemDiskSize"`
 }
@@ -1191,6 +1201,11 @@ func (o GetScalingConfigurationsConfigurationOutput) SystemDiskCategory() pulumi
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.SystemDiskCategory }).(pulumi.StringOutput)
 }
 
+// The performance level of the ESSD used as the system disk.
+func (o GetScalingConfigurationsConfigurationOutput) SystemDiskPerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.SystemDiskPerformanceLevel }).(pulumi.StringOutput)
+}
+
 // System disk size of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) SystemDiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) int { return v.SystemDiskSize }).(pulumi.IntOutput)
@@ -1223,6 +1238,8 @@ type GetScalingConfigurationsConfigurationDataDisk struct {
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// Device attribute of data disk.
 	Device *string `pulumi:"device"`
+	// The performance level of the ESSD used as data disk.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// Size of data disk.
 	Size *int `pulumi:"size"`
 	// Size of data disk.
@@ -1247,6 +1264,8 @@ type GetScalingConfigurationsConfigurationDataDiskArgs struct {
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// Device attribute of data disk.
 	Device pulumi.StringPtrInput `pulumi:"device"`
+	// The performance level of the ESSD used as data disk.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// Size of data disk.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 	// Size of data disk.
@@ -1317,6 +1336,11 @@ func (o GetScalingConfigurationsConfigurationDataDiskOutput) DeleteWithInstance(
 // Device attribute of data disk.
 func (o GetScalingConfigurationsConfigurationDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+// The performance level of the ESSD used as data disk.
+func (o GetScalingConfigurationsConfigurationDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
 // Size of data disk.

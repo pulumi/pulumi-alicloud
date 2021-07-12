@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<int>? EipBandwidth { get; set; }
 
         /// <summary>
-        /// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+        /// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
         /// </summary>
         [Input("eipInternetChargeType")]
         public Input<string>? EipInternetChargeType { get; set; }

@@ -25,6 +25,10 @@ type CommonBandwithPackage struct {
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// The name of the common bandwidth package.
 	BandwidthPackageName pulumi.StringOutput `pulumi:"bandwidthPackageName"`
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// The description of the common bandwidth package instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	Force       pulumi.StringPtrOutput `pulumi:"force"`
@@ -82,6 +86,10 @@ type commonBandwithPackageState struct {
 	Bandwidth *string `pulumi:"bandwidth"`
 	// The name of the common bandwidth package.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The description of the common bandwidth package instance.
 	Description *string `pulumi:"description"`
 	Force       *string `pulumi:"force"`
@@ -108,6 +116,10 @@ type CommonBandwithPackageState struct {
 	Bandwidth pulumi.StringPtrInput
 	// The name of the common bandwidth package.
 	BandwidthPackageName pulumi.StringPtrInput
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection pulumi.BoolPtrInput
 	// The description of the common bandwidth package instance.
 	Description pulumi.StringPtrInput
 	Force       pulumi.StringPtrInput
@@ -138,6 +150,10 @@ type commonBandwithPackageArgs struct {
 	Bandwidth string `pulumi:"bandwidth"`
 	// The name of the common bandwidth package.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The description of the common bandwidth package instance.
 	Description *string `pulumi:"description"`
 	Force       *string `pulumi:"force"`
@@ -163,6 +179,10 @@ type CommonBandwithPackageArgs struct {
 	Bandwidth pulumi.StringInput
 	// The name of the common bandwidth package.
 	BandwidthPackageName pulumi.StringPtrInput
+	// Whether enable the deletion protection or not. Default value: `false`.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection pulumi.BoolPtrInput
 	// The description of the common bandwidth package instance.
 	Description pulumi.StringPtrInput
 	Force       pulumi.StringPtrInput

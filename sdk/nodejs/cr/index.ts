@@ -9,10 +9,12 @@ export * from "./getNamespaces";
 export * from "./getRepos";
 export * from "./getService";
 export * from "./namespace";
+export * from "./registryEnterpriseInstance";
 export * from "./repo";
 
 // Import resources to register:
 import { Namespace } from "./namespace";
+import { RegistryEnterpriseInstance } from "./registryEnterpriseInstance";
 import { Repo } from "./repo";
 
 const _module = {
@@ -21,6 +23,8 @@ const _module = {
         switch (type) {
             case "alicloud:cr/namespace:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
+            case "alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance":
+                return new RegistryEnterpriseInstance(name, <any>undefined, { urn })
             case "alicloud:cr/repo:Repo":
                 return new Repo(name, <any>undefined, { urn })
             default:
@@ -29,4 +33,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "cr/namespace", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cr/registryEnterpriseInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/repo", _module)

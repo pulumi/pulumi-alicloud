@@ -13,7 +13,8 @@ namespace Pulumi.AliCloud.Cfg.Outputs
     [OutputType]
     public sealed class GetRulesRuleResult
     {
-        public readonly int AccountId;
+        public readonly string AccountId;
+        public readonly string CompliancePackId;
         /// <summary>
         /// The information about the compliance evaluations based on the rule.
         /// </summary>
@@ -21,40 +22,61 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         public readonly string ConfigRuleArn;
         public readonly string ConfigRuleId;
         /// <summary>
-        /// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `DELETING_RESULTS`, `EVALUATING` and `INACTIVE`.
+        /// Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
         /// </summary>
         public readonly string ConfigRuleState;
-        public readonly int CreateTimestamp;
+        /// <summary>
+        /// (Available in 1.124.1+) A list of trigger types of config rule.
+        /// </summary>
+        public readonly string ConfigRuleTriggerTypes;
         public readonly string Description;
         /// <summary>
         /// Event source of the Config Rule.
         /// </summary>
         public readonly string EventSource;
         /// <summary>
+        /// (Available in 1.124.1+) The scope of exclude of resource ids.
+        /// </summary>
+        public readonly string ExcludeResourceIdsScope;
+        /// <summary>
         /// The ID of the Config Rule.
         /// * `account_id`- The ID of the Alicloud account.
         /// * `config_rule_arn`- The ARN of the Config Rule.
         /// * `config_rule_id`- The ID of the Config Rule.
         /// * `config_rule_state`- The state of the Config Rule.
-        /// * `create_timestamp`- The timestamp of the Config Rule created.
         /// * `description`- The description of the Config Rule.
-        /// * `input_parameters`- The input paramrters of the Config Rule.
+        /// * `input_parameters`- The input parameters of the Config Rule.
         /// * `modified_timestamp`- the timestamp of the Config Rule modified.
         /// * `risk_level`- The risk level of the Config Rule.
         /// * `rule_name`- The name of the Config Rule.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableDictionary<string, object> InputParameters;
-        public readonly int ModifiedTimestamp;
+        /// <summary>
+        /// (Available in 1.124.1+) The frequency of maximum execution.
+        /// </summary>
+        public readonly string MaximumExecutionFrequency;
+        public readonly string ModifiedTimestamp;
+        /// <summary>
+        /// (Available in 1.124.1+) The scope of region ids.
+        /// </summary>
+        public readonly string RegionIdsScope;
+        /// <summary>
+        /// (Available in 1.124.1+) The scope of resource ids.
+        /// </summary>
+        public readonly string ResourceGroupIdsScope;
+        /// <summary>
+        /// (Available in 1.124.1+) The scope of resource types.
+        /// </summary>
+        public readonly ImmutableArray<string> ResourceTypesScopes;
         /// <summary>
         /// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         /// </summary>
         public readonly int RiskLevel;
-        public readonly string RuleName;
         /// <summary>
-        /// The ID of the resource to be evaluated.
+        /// The name of config rule.
         /// </summary>
-        public readonly string ScopeComplianceResourceId;
+        public readonly string RuleName;
         /// <summary>
         /// The types of the resources to be evaluated against the rule.
         /// </summary>
@@ -71,10 +93,24 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string SourceMaximumExecutionFrequency;
         public readonly string SourceOwner;
+        /// <summary>
+        /// The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
+        /// (Available in 1.124.1+) The scope of tag key.
+        /// </summary>
+        public readonly string TagKeyScope;
+        /// <summary>
+        /// (Available in 1.124.1+) The scope of tag value.
+        /// </summary>
+        public readonly string TagValueScope;
 
         [OutputConstructor]
         private GetRulesRuleResult(
-            int accountId,
+            string accountId,
+
+            string compliancePackId,
 
             ImmutableArray<Outputs.GetRulesRuleComplianceResult> compliances,
 
@@ -84,23 +120,31 @@ namespace Pulumi.AliCloud.Cfg.Outputs
 
             string configRuleState,
 
-            int createTimestamp,
+            string configRuleTriggerTypes,
 
             string description,
 
             string eventSource,
 
+            string excludeResourceIdsScope,
+
             string id,
 
             ImmutableDictionary<string, object> inputParameters,
 
-            int modifiedTimestamp,
+            string maximumExecutionFrequency,
+
+            string modifiedTimestamp,
+
+            string regionIdsScope,
+
+            string resourceGroupIdsScope,
+
+            ImmutableArray<string> resourceTypesScopes,
 
             int riskLevel,
 
             string ruleName,
-
-            string scopeComplianceResourceId,
 
             ImmutableArray<string> scopeComplianceResourceTypes,
 
@@ -110,27 +154,41 @@ namespace Pulumi.AliCloud.Cfg.Outputs
 
             string sourceMaximumExecutionFrequency,
 
-            string sourceOwner)
+            string sourceOwner,
+
+            string status,
+
+            string tagKeyScope,
+
+            string tagValueScope)
         {
             AccountId = accountId;
+            CompliancePackId = compliancePackId;
             Compliances = compliances;
             ConfigRuleArn = configRuleArn;
             ConfigRuleId = configRuleId;
             ConfigRuleState = configRuleState;
-            CreateTimestamp = createTimestamp;
+            ConfigRuleTriggerTypes = configRuleTriggerTypes;
             Description = description;
             EventSource = eventSource;
+            ExcludeResourceIdsScope = excludeResourceIdsScope;
             Id = id;
             InputParameters = inputParameters;
+            MaximumExecutionFrequency = maximumExecutionFrequency;
             ModifiedTimestamp = modifiedTimestamp;
+            RegionIdsScope = regionIdsScope;
+            ResourceGroupIdsScope = resourceGroupIdsScope;
+            ResourceTypesScopes = resourceTypesScopes;
             RiskLevel = riskLevel;
             RuleName = ruleName;
-            ScopeComplianceResourceId = scopeComplianceResourceId;
             ScopeComplianceResourceTypes = scopeComplianceResourceTypes;
             SourceDetailMessageType = sourceDetailMessageType;
             SourceIdentifier = sourceIdentifier;
             SourceMaximumExecutionFrequency = sourceMaximumExecutionFrequency;
             SourceOwner = sourceOwner;
+            Status = status;
+            TagKeyScope = tagKeyScope;
+            TagValueScope = tagValueScope;
         }
     }
 }

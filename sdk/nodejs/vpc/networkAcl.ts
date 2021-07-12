@@ -10,41 +10,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     cidrBlock: "172.16.0.0/12",
- *     vpcName: "VpcConfig",
- * });
- * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("defaultNetworkAcl", {
- *     vpcId: defaultNetwork.id,
- *     networkAclName: "network_acl",
- *     description: "network_acl",
- *     ingressAclEntries: [{
- *         description: "tf-testacc",
- *         networkAclEntryName: "tcp23",
- *         sourceCidrIp: "196.168.2.0/21",
- *         policy: "accept",
- *         port: "22/80",
- *         protocol: "tcp",
- *     }],
- *     egressAclEntries: [{
- *         description: "tf-testacc",
- *         networkAclEntryName: "tcp23",
- *         destinationCidrIp: "0.0.0.0/0",
- *         policy: "accept",
- *         port: "-1/-1",
- *         protocol: "all",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * The network acl can be imported using the id, e.g.
@@ -104,6 +69,10 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     public readonly networkAclName!: pulumi.Output<string>;
     /**
+     * The associated resources.
+     */
+    public readonly resources!: pulumi.Output<outputs.vpc.NetworkAclResource[] | undefined>;
+    /**
      * (Available in 1.122.0+) The status of the network acl.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -130,6 +99,7 @@ export class NetworkAcl extends pulumi.CustomResource {
             inputs["ingressAclEntries"] = state ? state.ingressAclEntries : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkAclName"] = state ? state.networkAclName : undefined;
+            inputs["resources"] = state ? state.resources : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
@@ -142,6 +112,7 @@ export class NetworkAcl extends pulumi.CustomResource {
             inputs["ingressAclEntries"] = args ? args.ingressAclEntries : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkAclName"] = args ? args.networkAclName : undefined;
+            inputs["resources"] = args ? args.resources : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
             inputs["status"] = undefined /*out*/;
         }
@@ -179,6 +150,10 @@ export interface NetworkAclState {
      */
     readonly networkAclName?: pulumi.Input<string>;
     /**
+     * The associated resources.
+     */
+    readonly resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
+    /**
      * (Available in 1.122.0+) The status of the network acl.
      */
     readonly status?: pulumi.Input<string>;
@@ -214,6 +189,10 @@ export interface NetworkAclArgs {
      * The name of the network acl.
      */
     readonly networkAclName?: pulumi.Input<string>;
+    /**
+     * The associated resources.
+     */
+    readonly resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
     /**
      * The vpcId of the network acl, the field can't be changed.
      */

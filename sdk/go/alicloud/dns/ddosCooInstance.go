@@ -39,6 +39,7 @@ import (
 // 			DomainCount:      pulumi.String("50"),
 // 			Period:           pulumi.Int(1),
 // 			PortCount:        pulumi.String("50"),
+// 			ProductType:      pulumi.String("ddoscoo"),
 // 			ServiceBandwidth: pulumi.String("100"),
 // 		})
 // 		if err != nil {
@@ -73,6 +74,11 @@ type DdosCooInstance struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount pulumi.StringOutput `pulumi:"portCount"`
+	// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+	// - ddoscoo: Only supports domestic account.
+	// - ddoscoo_intl: Only supports to international account.
+	//   Default to ddoscoo.
+	ProductType pulumi.StringPtrOutput `pulumi:"productType"`
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
 	ServiceBandwidth pulumi.StringOutput `pulumi:"serviceBandwidth"`
 }
@@ -133,6 +139,11 @@ type ddosCooInstanceState struct {
 	Period *int `pulumi:"period"`
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount *string `pulumi:"portCount"`
+	// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+	// - ddoscoo: Only supports domestic account.
+	// - ddoscoo_intl: Only supports to international account.
+	//   Default to ddoscoo.
+	ProductType *string `pulumi:"productType"`
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
 	ServiceBandwidth *string `pulumi:"serviceBandwidth"`
 }
@@ -150,6 +161,11 @@ type DdosCooInstanceState struct {
 	Period pulumi.IntPtrInput
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount pulumi.StringPtrInput
+	// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+	// - ddoscoo: Only supports domestic account.
+	// - ddoscoo_intl: Only supports to international account.
+	//   Default to ddoscoo.
+	ProductType pulumi.StringPtrInput
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
 	ServiceBandwidth pulumi.StringPtrInput
 }
@@ -171,6 +187,11 @@ type ddosCooInstanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount string `pulumi:"portCount"`
+	// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+	// - ddoscoo: Only supports domestic account.
+	// - ddoscoo_intl: Only supports to international account.
+	//   Default to ddoscoo.
+	ProductType *string `pulumi:"productType"`
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
 	ServiceBandwidth string `pulumi:"serviceBandwidth"`
 }
@@ -189,6 +210,11 @@ type DdosCooInstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount pulumi.StringInput
+	// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+	// - ddoscoo: Only supports domestic account.
+	// - ddoscoo_intl: Only supports to international account.
+	//   Default to ddoscoo.
+	ProductType pulumi.StringPtrInput
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
 	ServiceBandwidth pulumi.StringInput
 }

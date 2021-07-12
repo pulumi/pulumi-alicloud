@@ -2390,8 +2390,12 @@ type GetDedicatedHostsHost struct {
 	AutoPlacement string `pulumi:"autoPlacement"`
 	// The automatic release time of the dedicated host.
 	AutoReleaseTime string `pulumi:"autoReleaseTime"`
+	// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+	Capacities []GetDedicatedHostsHostCapacity `pulumi:"capacities"`
 	// A mapping of tags to assign to the resource.
 	Cores int `pulumi:"cores"`
+	// (Available in 1.123.1+) CPU oversold ratio.
+	CpuOverCommitRatio float64 `pulumi:"cpuOverCommitRatio"`
 	// The ID of ECS Dedicated Host.
 	DedicatedHostId string `pulumi:"dedicatedHostId"`
 	// The name of ECS Dedicated Host.
@@ -2408,6 +2412,10 @@ type GetDedicatedHostsHost struct {
 	Id string `pulumi:"id"`
 	// The machine code of the dedicated host.
 	MachineId string `pulumi:"machineId"`
+	// dedicated host network parameters. contains the following attributes:
+	NetworkAttributes []GetDedicatedHostsHostNetworkAttribute `pulumi:"networkAttributes"`
+	// The reason why the dedicated host resource is locked.
+	OperationLocks []GetDedicatedHostsHostOperationLock `pulumi:"operationLocks"`
 	// The billing method of the dedicated host.
 	PaymentType string `pulumi:"paymentType"`
 	// The number of physical GPUs.
@@ -2420,7 +2428,11 @@ type GetDedicatedHostsHost struct {
 	Sockets int `pulumi:"sockets"`
 	// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
 	Status string `pulumi:"status"`
-	// The list of ECS instanc
+	// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+	SupportedCustomInstanceTypeFamilies []string `pulumi:"supportedCustomInstanceTypeFamilies"`
+	// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+	SupportedInstanceTypeFamilies []string `pulumi:"supportedInstanceTypeFamilies"`
+	// The list of ECS instance
 	SupportedInstanceTypesLists []string `pulumi:"supportedInstanceTypesLists"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -2446,8 +2458,12 @@ type GetDedicatedHostsHostArgs struct {
 	AutoPlacement pulumi.StringInput `pulumi:"autoPlacement"`
 	// The automatic release time of the dedicated host.
 	AutoReleaseTime pulumi.StringInput `pulumi:"autoReleaseTime"`
+	// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+	Capacities GetDedicatedHostsHostCapacityArrayInput `pulumi:"capacities"`
 	// A mapping of tags to assign to the resource.
 	Cores pulumi.IntInput `pulumi:"cores"`
+	// (Available in 1.123.1+) CPU oversold ratio.
+	CpuOverCommitRatio pulumi.Float64Input `pulumi:"cpuOverCommitRatio"`
 	// The ID of ECS Dedicated Host.
 	DedicatedHostId pulumi.StringInput `pulumi:"dedicatedHostId"`
 	// The name of ECS Dedicated Host.
@@ -2464,6 +2480,10 @@ type GetDedicatedHostsHostArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The machine code of the dedicated host.
 	MachineId pulumi.StringInput `pulumi:"machineId"`
+	// dedicated host network parameters. contains the following attributes:
+	NetworkAttributes GetDedicatedHostsHostNetworkAttributeArrayInput `pulumi:"networkAttributes"`
+	// The reason why the dedicated host resource is locked.
+	OperationLocks GetDedicatedHostsHostOperationLockArrayInput `pulumi:"operationLocks"`
 	// The billing method of the dedicated host.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// The number of physical GPUs.
@@ -2476,7 +2496,11 @@ type GetDedicatedHostsHostArgs struct {
 	Sockets pulumi.IntInput `pulumi:"sockets"`
 	// The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The list of ECS instanc
+	// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+	SupportedCustomInstanceTypeFamilies pulumi.StringArrayInput `pulumi:"supportedCustomInstanceTypeFamilies"`
+	// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+	SupportedInstanceTypeFamilies pulumi.StringArrayInput `pulumi:"supportedInstanceTypeFamilies"`
+	// The list of ECS instance
 	SupportedInstanceTypesLists pulumi.StringArrayInput `pulumi:"supportedInstanceTypesLists"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -2550,9 +2574,19 @@ func (o GetDedicatedHostsHostOutput) AutoReleaseTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.AutoReleaseTime }).(pulumi.StringOutput)
 }
 
+// (Available in 1.123.1+) A collection of proprietary host performance indicators.
+func (o GetDedicatedHostsHostOutput) Capacities() GetDedicatedHostsHostCapacityArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []GetDedicatedHostsHostCapacity { return v.Capacities }).(GetDedicatedHostsHostCapacityArrayOutput)
+}
+
 // A mapping of tags to assign to the resource.
 func (o GetDedicatedHostsHostOutput) Cores() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) int { return v.Cores }).(pulumi.IntOutput)
+}
+
+// (Available in 1.123.1+) CPU oversold ratio.
+func (o GetDedicatedHostsHostOutput) CpuOverCommitRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDedicatedHostsHost) float64 { return v.CpuOverCommitRatio }).(pulumi.Float64Output)
 }
 
 // The ID of ECS Dedicated Host.
@@ -2595,6 +2629,16 @@ func (o GetDedicatedHostsHostOutput) MachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.MachineId }).(pulumi.StringOutput)
 }
 
+// dedicated host network parameters. contains the following attributes:
+func (o GetDedicatedHostsHostOutput) NetworkAttributes() GetDedicatedHostsHostNetworkAttributeArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []GetDedicatedHostsHostNetworkAttribute { return v.NetworkAttributes }).(GetDedicatedHostsHostNetworkAttributeArrayOutput)
+}
+
+// The reason why the dedicated host resource is locked.
+func (o GetDedicatedHostsHostOutput) OperationLocks() GetDedicatedHostsHostOperationLockArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []GetDedicatedHostsHostOperationLock { return v.OperationLocks }).(GetDedicatedHostsHostOperationLockArrayOutput)
+}
+
 // The billing method of the dedicated host.
 func (o GetDedicatedHostsHostOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.PaymentType }).(pulumi.StringOutput)
@@ -2625,7 +2669,17 @@ func (o GetDedicatedHostsHostOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The list of ECS instanc
+// (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+func (o GetDedicatedHostsHostOutput) SupportedCustomInstanceTypeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []string { return v.SupportedCustomInstanceTypeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+func (o GetDedicatedHostsHostOutput) SupportedInstanceTypeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) []string { return v.SupportedInstanceTypeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// The list of ECS instance
 func (o GetDedicatedHostsHostOutput) SupportedInstanceTypesLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsHost) []string { return v.SupportedInstanceTypesLists }).(pulumi.StringArrayOutput)
 }
@@ -2658,6 +2712,475 @@ func (o GetDedicatedHostsHostArrayOutput) Index(i pulumi.IntInput) GetDedicatedH
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHost {
 		return vs[0].([]GetDedicatedHostsHost)[vs[1].(int)]
 	}).(GetDedicatedHostsHostOutput)
+}
+
+type GetDedicatedHostsHostCapacity struct {
+	// The remaining local disk capacity. Unit: GiB.
+	AvailableLocalStorage int `pulumi:"availableLocalStorage"`
+	// The remaining memory capacity, unit: GiB.
+	AvailableMemory float64 `pulumi:"availableMemory"`
+	// The number of remaining vCPU cores.
+	AvailableVcpus int `pulumi:"availableVcpus"`
+	// The number of available virtual GPUs.
+	AvailableVgpus int `pulumi:"availableVgpus"`
+	// Local disk type.
+	LocalStorageCategory string `pulumi:"localStorageCategory"`
+	// The total capacity of the local disk, in GiB.
+	TotalLocalStorage int `pulumi:"totalLocalStorage"`
+	// The total memory capacity, unit: GiB.
+	TotalMemory float64 `pulumi:"totalMemory"`
+	// The total number of vCPU cores.
+	TotalVcpus int `pulumi:"totalVcpus"`
+	// The total number of virtual GPUs.
+	TotalVgpus int `pulumi:"totalVgpus"`
+}
+
+// GetDedicatedHostsHostCapacityInput is an input type that accepts GetDedicatedHostsHostCapacityArgs and GetDedicatedHostsHostCapacityOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostCapacityInput` via:
+//
+//          GetDedicatedHostsHostCapacityArgs{...}
+type GetDedicatedHostsHostCapacityInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostCapacityOutput() GetDedicatedHostsHostCapacityOutput
+	ToGetDedicatedHostsHostCapacityOutputWithContext(context.Context) GetDedicatedHostsHostCapacityOutput
+}
+
+type GetDedicatedHostsHostCapacityArgs struct {
+	// The remaining local disk capacity. Unit: GiB.
+	AvailableLocalStorage pulumi.IntInput `pulumi:"availableLocalStorage"`
+	// The remaining memory capacity, unit: GiB.
+	AvailableMemory pulumi.Float64Input `pulumi:"availableMemory"`
+	// The number of remaining vCPU cores.
+	AvailableVcpus pulumi.IntInput `pulumi:"availableVcpus"`
+	// The number of available virtual GPUs.
+	AvailableVgpus pulumi.IntInput `pulumi:"availableVgpus"`
+	// Local disk type.
+	LocalStorageCategory pulumi.StringInput `pulumi:"localStorageCategory"`
+	// The total capacity of the local disk, in GiB.
+	TotalLocalStorage pulumi.IntInput `pulumi:"totalLocalStorage"`
+	// The total memory capacity, unit: GiB.
+	TotalMemory pulumi.Float64Input `pulumi:"totalMemory"`
+	// The total number of vCPU cores.
+	TotalVcpus pulumi.IntInput `pulumi:"totalVcpus"`
+	// The total number of virtual GPUs.
+	TotalVgpus pulumi.IntInput `pulumi:"totalVgpus"`
+}
+
+func (GetDedicatedHostsHostCapacityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostCapacity)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostCapacityArgs) ToGetDedicatedHostsHostCapacityOutput() GetDedicatedHostsHostCapacityOutput {
+	return i.ToGetDedicatedHostsHostCapacityOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostCapacityArgs) ToGetDedicatedHostsHostCapacityOutputWithContext(ctx context.Context) GetDedicatedHostsHostCapacityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostCapacityOutput)
+}
+
+// GetDedicatedHostsHostCapacityArrayInput is an input type that accepts GetDedicatedHostsHostCapacityArray and GetDedicatedHostsHostCapacityArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostCapacityArrayInput` via:
+//
+//          GetDedicatedHostsHostCapacityArray{ GetDedicatedHostsHostCapacityArgs{...} }
+type GetDedicatedHostsHostCapacityArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostCapacityArrayOutput() GetDedicatedHostsHostCapacityArrayOutput
+	ToGetDedicatedHostsHostCapacityArrayOutputWithContext(context.Context) GetDedicatedHostsHostCapacityArrayOutput
+}
+
+type GetDedicatedHostsHostCapacityArray []GetDedicatedHostsHostCapacityInput
+
+func (GetDedicatedHostsHostCapacityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostCapacity)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostCapacityArray) ToGetDedicatedHostsHostCapacityArrayOutput() GetDedicatedHostsHostCapacityArrayOutput {
+	return i.ToGetDedicatedHostsHostCapacityArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostCapacityArray) ToGetDedicatedHostsHostCapacityArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostCapacityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostCapacityArrayOutput)
+}
+
+type GetDedicatedHostsHostCapacityOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostCapacityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostCapacity)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostCapacityOutput) ToGetDedicatedHostsHostCapacityOutput() GetDedicatedHostsHostCapacityOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostCapacityOutput) ToGetDedicatedHostsHostCapacityOutputWithContext(ctx context.Context) GetDedicatedHostsHostCapacityOutput {
+	return o
+}
+
+// The remaining local disk capacity. Unit: GiB.
+func (o GetDedicatedHostsHostCapacityOutput) AvailableLocalStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.AvailableLocalStorage }).(pulumi.IntOutput)
+}
+
+// The remaining memory capacity, unit: GiB.
+func (o GetDedicatedHostsHostCapacityOutput) AvailableMemory() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) float64 { return v.AvailableMemory }).(pulumi.Float64Output)
+}
+
+// The number of remaining vCPU cores.
+func (o GetDedicatedHostsHostCapacityOutput) AvailableVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.AvailableVcpus }).(pulumi.IntOutput)
+}
+
+// The number of available virtual GPUs.
+func (o GetDedicatedHostsHostCapacityOutput) AvailableVgpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.AvailableVgpus }).(pulumi.IntOutput)
+}
+
+// Local disk type.
+func (o GetDedicatedHostsHostCapacityOutput) LocalStorageCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) string { return v.LocalStorageCategory }).(pulumi.StringOutput)
+}
+
+// The total capacity of the local disk, in GiB.
+func (o GetDedicatedHostsHostCapacityOutput) TotalLocalStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.TotalLocalStorage }).(pulumi.IntOutput)
+}
+
+// The total memory capacity, unit: GiB.
+func (o GetDedicatedHostsHostCapacityOutput) TotalMemory() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) float64 { return v.TotalMemory }).(pulumi.Float64Output)
+}
+
+// The total number of vCPU cores.
+func (o GetDedicatedHostsHostCapacityOutput) TotalVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.TotalVcpus }).(pulumi.IntOutput)
+}
+
+// The total number of virtual GPUs.
+func (o GetDedicatedHostsHostCapacityOutput) TotalVgpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostCapacity) int { return v.TotalVgpus }).(pulumi.IntOutput)
+}
+
+type GetDedicatedHostsHostCapacityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostCapacityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostCapacity)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostCapacityArrayOutput) ToGetDedicatedHostsHostCapacityArrayOutput() GetDedicatedHostsHostCapacityArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostCapacityArrayOutput) ToGetDedicatedHostsHostCapacityArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostCapacityArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostCapacityArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsHostCapacityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHostCapacity {
+		return vs[0].([]GetDedicatedHostsHostCapacity)[vs[1].(int)]
+	}).(GetDedicatedHostsHostCapacityOutput)
+}
+
+type GetDedicatedHostsHostNetworkAttribute struct {
+	// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
+	SlbUdpTimeout int `pulumi:"slbUdpTimeout"`
+	// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+	UdpTimeout int `pulumi:"udpTimeout"`
+}
+
+// GetDedicatedHostsHostNetworkAttributeInput is an input type that accepts GetDedicatedHostsHostNetworkAttributeArgs and GetDedicatedHostsHostNetworkAttributeOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostNetworkAttributeInput` via:
+//
+//          GetDedicatedHostsHostNetworkAttributeArgs{...}
+type GetDedicatedHostsHostNetworkAttributeInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostNetworkAttributeOutput() GetDedicatedHostsHostNetworkAttributeOutput
+	ToGetDedicatedHostsHostNetworkAttributeOutputWithContext(context.Context) GetDedicatedHostsHostNetworkAttributeOutput
+}
+
+type GetDedicatedHostsHostNetworkAttributeArgs struct {
+	// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
+	SlbUdpTimeout pulumi.IntInput `pulumi:"slbUdpTimeout"`
+	// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+	UdpTimeout pulumi.IntInput `pulumi:"udpTimeout"`
+}
+
+func (GetDedicatedHostsHostNetworkAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostNetworkAttribute)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostNetworkAttributeArgs) ToGetDedicatedHostsHostNetworkAttributeOutput() GetDedicatedHostsHostNetworkAttributeOutput {
+	return i.ToGetDedicatedHostsHostNetworkAttributeOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostNetworkAttributeArgs) ToGetDedicatedHostsHostNetworkAttributeOutputWithContext(ctx context.Context) GetDedicatedHostsHostNetworkAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostNetworkAttributeOutput)
+}
+
+// GetDedicatedHostsHostNetworkAttributeArrayInput is an input type that accepts GetDedicatedHostsHostNetworkAttributeArray and GetDedicatedHostsHostNetworkAttributeArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostNetworkAttributeArrayInput` via:
+//
+//          GetDedicatedHostsHostNetworkAttributeArray{ GetDedicatedHostsHostNetworkAttributeArgs{...} }
+type GetDedicatedHostsHostNetworkAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostNetworkAttributeArrayOutput() GetDedicatedHostsHostNetworkAttributeArrayOutput
+	ToGetDedicatedHostsHostNetworkAttributeArrayOutputWithContext(context.Context) GetDedicatedHostsHostNetworkAttributeArrayOutput
+}
+
+type GetDedicatedHostsHostNetworkAttributeArray []GetDedicatedHostsHostNetworkAttributeInput
+
+func (GetDedicatedHostsHostNetworkAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostNetworkAttribute)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostNetworkAttributeArray) ToGetDedicatedHostsHostNetworkAttributeArrayOutput() GetDedicatedHostsHostNetworkAttributeArrayOutput {
+	return i.ToGetDedicatedHostsHostNetworkAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostNetworkAttributeArray) ToGetDedicatedHostsHostNetworkAttributeArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostNetworkAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostNetworkAttributeArrayOutput)
+}
+
+type GetDedicatedHostsHostNetworkAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostNetworkAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostNetworkAttribute)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostNetworkAttributeOutput) ToGetDedicatedHostsHostNetworkAttributeOutput() GetDedicatedHostsHostNetworkAttributeOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostNetworkAttributeOutput) ToGetDedicatedHostsHostNetworkAttributeOutputWithContext(ctx context.Context) GetDedicatedHostsHostNetworkAttributeOutput {
+	return o
+}
+
+// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
+func (o GetDedicatedHostsHostNetworkAttributeOutput) SlbUdpTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostNetworkAttribute) int { return v.SlbUdpTimeout }).(pulumi.IntOutput)
+}
+
+// (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+func (o GetDedicatedHostsHostNetworkAttributeOutput) UdpTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostNetworkAttribute) int { return v.UdpTimeout }).(pulumi.IntOutput)
+}
+
+type GetDedicatedHostsHostNetworkAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostNetworkAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostNetworkAttribute)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostNetworkAttributeArrayOutput) ToGetDedicatedHostsHostNetworkAttributeArrayOutput() GetDedicatedHostsHostNetworkAttributeArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostNetworkAttributeArrayOutput) ToGetDedicatedHostsHostNetworkAttributeArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostNetworkAttributeArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostNetworkAttributeArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsHostNetworkAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHostNetworkAttribute {
+		return vs[0].([]GetDedicatedHostsHostNetworkAttribute)[vs[1].(int)]
+	}).(GetDedicatedHostsHostNetworkAttributeOutput)
+}
+
+type GetDedicatedHostsHostOperationLock struct {
+	// The reason why the dedicated host resource is locked.
+	LockReason string `pulumi:"lockReason"`
+}
+
+// GetDedicatedHostsHostOperationLockInput is an input type that accepts GetDedicatedHostsHostOperationLockArgs and GetDedicatedHostsHostOperationLockOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostOperationLockInput` via:
+//
+//          GetDedicatedHostsHostOperationLockArgs{...}
+type GetDedicatedHostsHostOperationLockInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostOperationLockOutput() GetDedicatedHostsHostOperationLockOutput
+	ToGetDedicatedHostsHostOperationLockOutputWithContext(context.Context) GetDedicatedHostsHostOperationLockOutput
+}
+
+type GetDedicatedHostsHostOperationLockArgs struct {
+	// The reason why the dedicated host resource is locked.
+	LockReason pulumi.StringInput `pulumi:"lockReason"`
+}
+
+func (GetDedicatedHostsHostOperationLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostOperationLock)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostOperationLockArgs) ToGetDedicatedHostsHostOperationLockOutput() GetDedicatedHostsHostOperationLockOutput {
+	return i.ToGetDedicatedHostsHostOperationLockOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostOperationLockArgs) ToGetDedicatedHostsHostOperationLockOutputWithContext(ctx context.Context) GetDedicatedHostsHostOperationLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostOperationLockOutput)
+}
+
+// GetDedicatedHostsHostOperationLockArrayInput is an input type that accepts GetDedicatedHostsHostOperationLockArray and GetDedicatedHostsHostOperationLockArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostOperationLockArrayInput` via:
+//
+//          GetDedicatedHostsHostOperationLockArray{ GetDedicatedHostsHostOperationLockArgs{...} }
+type GetDedicatedHostsHostOperationLockArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostOperationLockArrayOutput() GetDedicatedHostsHostOperationLockArrayOutput
+	ToGetDedicatedHostsHostOperationLockArrayOutputWithContext(context.Context) GetDedicatedHostsHostOperationLockArrayOutput
+}
+
+type GetDedicatedHostsHostOperationLockArray []GetDedicatedHostsHostOperationLockInput
+
+func (GetDedicatedHostsHostOperationLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostOperationLock)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostOperationLockArray) ToGetDedicatedHostsHostOperationLockArrayOutput() GetDedicatedHostsHostOperationLockArrayOutput {
+	return i.ToGetDedicatedHostsHostOperationLockArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostOperationLockArray) ToGetDedicatedHostsHostOperationLockArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostOperationLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostOperationLockArrayOutput)
+}
+
+type GetDedicatedHostsHostOperationLockOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostOperationLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHostOperationLock)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostOperationLockOutput) ToGetDedicatedHostsHostOperationLockOutput() GetDedicatedHostsHostOperationLockOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostOperationLockOutput) ToGetDedicatedHostsHostOperationLockOutputWithContext(ctx context.Context) GetDedicatedHostsHostOperationLockOutput {
+	return o
+}
+
+// The reason why the dedicated host resource is locked.
+func (o GetDedicatedHostsHostOperationLockOutput) LockReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHostOperationLock) string { return v.LockReason }).(pulumi.StringOutput)
+}
+
+type GetDedicatedHostsHostOperationLockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostOperationLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHostOperationLock)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostOperationLockArrayOutput) ToGetDedicatedHostsHostOperationLockArrayOutput() GetDedicatedHostsHostOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostOperationLockArrayOutput) ToGetDedicatedHostsHostOperationLockArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostOperationLockArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsHostOperationLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHostOperationLock {
+		return vs[0].([]GetDedicatedHostsHostOperationLock)[vs[1].(int)]
+	}).(GetDedicatedHostsHostOperationLockOutput)
+}
+
+type GetDedicatedHostsOperationLock struct {
+	// The reason why the dedicated host resource is locked.
+	LockReason *string `pulumi:"lockReason"`
+}
+
+// GetDedicatedHostsOperationLockInput is an input type that accepts GetDedicatedHostsOperationLockArgs and GetDedicatedHostsOperationLockOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsOperationLockInput` via:
+//
+//          GetDedicatedHostsOperationLockArgs{...}
+type GetDedicatedHostsOperationLockInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsOperationLockOutput() GetDedicatedHostsOperationLockOutput
+	ToGetDedicatedHostsOperationLockOutputWithContext(context.Context) GetDedicatedHostsOperationLockOutput
+}
+
+type GetDedicatedHostsOperationLockArgs struct {
+	// The reason why the dedicated host resource is locked.
+	LockReason pulumi.StringPtrInput `pulumi:"lockReason"`
+}
+
+func (GetDedicatedHostsOperationLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsOperationLock)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsOperationLockArgs) ToGetDedicatedHostsOperationLockOutput() GetDedicatedHostsOperationLockOutput {
+	return i.ToGetDedicatedHostsOperationLockOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsOperationLockArgs) ToGetDedicatedHostsOperationLockOutputWithContext(ctx context.Context) GetDedicatedHostsOperationLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsOperationLockOutput)
+}
+
+// GetDedicatedHostsOperationLockArrayInput is an input type that accepts GetDedicatedHostsOperationLockArray and GetDedicatedHostsOperationLockArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsOperationLockArrayInput` via:
+//
+//          GetDedicatedHostsOperationLockArray{ GetDedicatedHostsOperationLockArgs{...} }
+type GetDedicatedHostsOperationLockArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsOperationLockArrayOutput() GetDedicatedHostsOperationLockArrayOutput
+	ToGetDedicatedHostsOperationLockArrayOutputWithContext(context.Context) GetDedicatedHostsOperationLockArrayOutput
+}
+
+type GetDedicatedHostsOperationLockArray []GetDedicatedHostsOperationLockInput
+
+func (GetDedicatedHostsOperationLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsOperationLock)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsOperationLockArray) ToGetDedicatedHostsOperationLockArrayOutput() GetDedicatedHostsOperationLockArrayOutput {
+	return i.ToGetDedicatedHostsOperationLockArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsOperationLockArray) ToGetDedicatedHostsOperationLockArrayOutputWithContext(ctx context.Context) GetDedicatedHostsOperationLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsOperationLockArrayOutput)
+}
+
+type GetDedicatedHostsOperationLockOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsOperationLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsOperationLock)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsOperationLockOutput) ToGetDedicatedHostsOperationLockOutput() GetDedicatedHostsOperationLockOutput {
+	return o
+}
+
+func (o GetDedicatedHostsOperationLockOutput) ToGetDedicatedHostsOperationLockOutputWithContext(ctx context.Context) GetDedicatedHostsOperationLockOutput {
+	return o
+}
+
+// The reason why the dedicated host resource is locked.
+func (o GetDedicatedHostsOperationLockOutput) LockReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDedicatedHostsOperationLock) *string { return v.LockReason }).(pulumi.StringPtrOutput)
+}
+
+type GetDedicatedHostsOperationLockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsOperationLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsOperationLock)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsOperationLockArrayOutput) ToGetDedicatedHostsOperationLockArrayOutput() GetDedicatedHostsOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsOperationLockArrayOutput) ToGetDedicatedHostsOperationLockArrayOutputWithContext(ctx context.Context) GetDedicatedHostsOperationLockArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsOperationLockArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsOperationLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsOperationLock {
+		return vs[0].([]GetDedicatedHostsOperationLock)[vs[1].(int)]
+	}).(GetDedicatedHostsOperationLockOutput)
 }
 
 type GetDisksDisk struct {
@@ -5726,6 +6249,307 @@ func (o GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput) Index(i pulumi.IntIn
 	}).(GetEcsLaunchTemplatesTemplateSystemDiskOutput)
 }
 
+type GetEcsNetworkInterfacesInterface struct {
+	// The creation time.
+	CreationTime string `pulumi:"creationTime"`
+	// The description of the ENI.
+	Description string `pulumi:"description"`
+	// The ID of the Network Interface.
+	Id string `pulumi:"id"`
+	// The instance id.
+	InstanceId string `pulumi:"instanceId"`
+	// The MAC address of the ENI.
+	Mac string `pulumi:"mac"`
+	// The network interface name.
+	Name string `pulumi:"name"`
+	// The network interface id.
+	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
+	// The network interface name.
+	NetworkInterfaceName string `pulumi:"networkInterfaceName"`
+	// The primary private IP address of the ENI.
+	PrimaryIpAddress string `pulumi:"primaryIpAddress"`
+	// The primary private IP address of the ENI.
+	PrivateIp          string   `pulumi:"privateIp"`
+	PrivateIpAddresses []string `pulumi:"privateIpAddresses"`
+	// A list of secondary private IP address that is assigned to the ENI.
+	PrivateIps []string `pulumi:"privateIps"`
+	// Number of network card queues.
+	QueueNumber int `pulumi:"queueNumber"`
+	// The resource group id.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The security group ids.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The security groups.
+	SecurityGroups []string `pulumi:"securityGroups"`
+	// The service id.
+	ServiceId int `pulumi:"serviceId"`
+	// Whether the user of the elastic network card is a cloud product or a virtual vendor.
+	ServiceManaged bool `pulumi:"serviceManaged"`
+	// The status of the ENI.
+	Status string `pulumi:"status"`
+	// The tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The type of the ENI.
+	Type string `pulumi:"type"`
+	// The Vpc Id.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The zone id.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetEcsNetworkInterfacesInterfaceInput is an input type that accepts GetEcsNetworkInterfacesInterfaceArgs and GetEcsNetworkInterfacesInterfaceOutput values.
+// You can construct a concrete instance of `GetEcsNetworkInterfacesInterfaceInput` via:
+//
+//          GetEcsNetworkInterfacesInterfaceArgs{...}
+type GetEcsNetworkInterfacesInterfaceInput interface {
+	pulumi.Input
+
+	ToGetEcsNetworkInterfacesInterfaceOutput() GetEcsNetworkInterfacesInterfaceOutput
+	ToGetEcsNetworkInterfacesInterfaceOutputWithContext(context.Context) GetEcsNetworkInterfacesInterfaceOutput
+}
+
+type GetEcsNetworkInterfacesInterfaceArgs struct {
+	// The creation time.
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// The description of the ENI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Network Interface.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The instance id.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The MAC address of the ENI.
+	Mac pulumi.StringInput `pulumi:"mac"`
+	// The network interface name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network interface id.
+	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
+	// The network interface name.
+	NetworkInterfaceName pulumi.StringInput `pulumi:"networkInterfaceName"`
+	// The primary private IP address of the ENI.
+	PrimaryIpAddress pulumi.StringInput `pulumi:"primaryIpAddress"`
+	// The primary private IP address of the ENI.
+	PrivateIp          pulumi.StringInput      `pulumi:"privateIp"`
+	PrivateIpAddresses pulumi.StringArrayInput `pulumi:"privateIpAddresses"`
+	// A list of secondary private IP address that is assigned to the ENI.
+	PrivateIps pulumi.StringArrayInput `pulumi:"privateIps"`
+	// Number of network card queues.
+	QueueNumber pulumi.IntInput `pulumi:"queueNumber"`
+	// The resource group id.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The security group ids.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// The security groups.
+	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
+	// The service id.
+	ServiceId pulumi.IntInput `pulumi:"serviceId"`
+	// Whether the user of the elastic network card is a cloud product or a virtual vendor.
+	ServiceManaged pulumi.BoolInput `pulumi:"serviceManaged"`
+	// The status of the ENI.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tags.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The type of the ENI.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The Vpc Id.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The zone id.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetEcsNetworkInterfacesInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsNetworkInterfacesInterface)(nil)).Elem()
+}
+
+func (i GetEcsNetworkInterfacesInterfaceArgs) ToGetEcsNetworkInterfacesInterfaceOutput() GetEcsNetworkInterfacesInterfaceOutput {
+	return i.ToGetEcsNetworkInterfacesInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetEcsNetworkInterfacesInterfaceArgs) ToGetEcsNetworkInterfacesInterfaceOutputWithContext(ctx context.Context) GetEcsNetworkInterfacesInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsNetworkInterfacesInterfaceOutput)
+}
+
+// GetEcsNetworkInterfacesInterfaceArrayInput is an input type that accepts GetEcsNetworkInterfacesInterfaceArray and GetEcsNetworkInterfacesInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetEcsNetworkInterfacesInterfaceArrayInput` via:
+//
+//          GetEcsNetworkInterfacesInterfaceArray{ GetEcsNetworkInterfacesInterfaceArgs{...} }
+type GetEcsNetworkInterfacesInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsNetworkInterfacesInterfaceArrayOutput() GetEcsNetworkInterfacesInterfaceArrayOutput
+	ToGetEcsNetworkInterfacesInterfaceArrayOutputWithContext(context.Context) GetEcsNetworkInterfacesInterfaceArrayOutput
+}
+
+type GetEcsNetworkInterfacesInterfaceArray []GetEcsNetworkInterfacesInterfaceInput
+
+func (GetEcsNetworkInterfacesInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsNetworkInterfacesInterface)(nil)).Elem()
+}
+
+func (i GetEcsNetworkInterfacesInterfaceArray) ToGetEcsNetworkInterfacesInterfaceArrayOutput() GetEcsNetworkInterfacesInterfaceArrayOutput {
+	return i.ToGetEcsNetworkInterfacesInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsNetworkInterfacesInterfaceArray) ToGetEcsNetworkInterfacesInterfaceArrayOutputWithContext(ctx context.Context) GetEcsNetworkInterfacesInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsNetworkInterfacesInterfaceArrayOutput)
+}
+
+type GetEcsNetworkInterfacesInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetEcsNetworkInterfacesInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsNetworkInterfacesInterface)(nil)).Elem()
+}
+
+func (o GetEcsNetworkInterfacesInterfaceOutput) ToGetEcsNetworkInterfacesInterfaceOutput() GetEcsNetworkInterfacesInterfaceOutput {
+	return o
+}
+
+func (o GetEcsNetworkInterfacesInterfaceOutput) ToGetEcsNetworkInterfacesInterfaceOutputWithContext(ctx context.Context) GetEcsNetworkInterfacesInterfaceOutput {
+	return o
+}
+
+// The creation time.
+func (o GetEcsNetworkInterfacesInterfaceOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// The description of the ENI.
+func (o GetEcsNetworkInterfacesInterfaceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Network Interface.
+func (o GetEcsNetworkInterfacesInterfaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The instance id.
+func (o GetEcsNetworkInterfacesInterfaceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The MAC address of the ENI.
+func (o GetEcsNetworkInterfacesInterfaceOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.Mac }).(pulumi.StringOutput)
+}
+
+// The network interface name.
+func (o GetEcsNetworkInterfacesInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network interface id.
+func (o GetEcsNetworkInterfacesInterfaceOutput) NetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+// The network interface name.
+func (o GetEcsNetworkInterfacesInterfaceOutput) NetworkInterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.NetworkInterfaceName }).(pulumi.StringOutput)
+}
+
+// The primary private IP address of the ENI.
+func (o GetEcsNetworkInterfacesInterfaceOutput) PrimaryIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.PrimaryIpAddress }).(pulumi.StringOutput)
+}
+
+// The primary private IP address of the ENI.
+func (o GetEcsNetworkInterfacesInterfaceOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+func (o GetEcsNetworkInterfacesInterfaceOutput) PrivateIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) []string { return v.PrivateIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// A list of secondary private IP address that is assigned to the ENI.
+func (o GetEcsNetworkInterfacesInterfaceOutput) PrivateIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) []string { return v.PrivateIps }).(pulumi.StringArrayOutput)
+}
+
+// Number of network card queues.
+func (o GetEcsNetworkInterfacesInterfaceOutput) QueueNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) int { return v.QueueNumber }).(pulumi.IntOutput)
+}
+
+// The resource group id.
+func (o GetEcsNetworkInterfacesInterfaceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The security group ids.
+func (o GetEcsNetworkInterfacesInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The security groups.
+func (o GetEcsNetworkInterfacesInterfaceOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+// The service id.
+func (o GetEcsNetworkInterfacesInterfaceOutput) ServiceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) int { return v.ServiceId }).(pulumi.IntOutput)
+}
+
+// Whether the user of the elastic network card is a cloud product or a virtual vendor.
+func (o GetEcsNetworkInterfacesInterfaceOutput) ServiceManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) bool { return v.ServiceManaged }).(pulumi.BoolOutput)
+}
+
+// The status of the ENI.
+func (o GetEcsNetworkInterfacesInterfaceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags.
+func (o GetEcsNetworkInterfacesInterfaceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The type of the ENI.
+func (o GetEcsNetworkInterfacesInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The Vpc Id.
+func (o GetEcsNetworkInterfacesInterfaceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetEcsNetworkInterfacesInterfaceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone id.
+func (o GetEcsNetworkInterfacesInterfaceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetEcsNetworkInterfacesInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsNetworkInterfacesInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsNetworkInterfacesInterface)(nil)).Elem()
+}
+
+func (o GetEcsNetworkInterfacesInterfaceArrayOutput) ToGetEcsNetworkInterfacesInterfaceArrayOutput() GetEcsNetworkInterfacesInterfaceArrayOutput {
+	return o
+}
+
+func (o GetEcsNetworkInterfacesInterfaceArrayOutput) ToGetEcsNetworkInterfacesInterfaceArrayOutputWithContext(ctx context.Context) GetEcsNetworkInterfacesInterfaceArrayOutput {
+	return o
+}
+
+func (o GetEcsNetworkInterfacesInterfaceArrayOutput) Index(i pulumi.IntInput) GetEcsNetworkInterfacesInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsNetworkInterfacesInterface {
+		return vs[0].([]GetEcsNetworkInterfacesInterface)[vs[1].(int)]
+	}).(GetEcsNetworkInterfacesInterfaceOutput)
+}
+
 type GetEcsSnapshotsSnapshot struct {
 	// The category of the snapshot.
 	Category     string `pulumi:"category"`
@@ -6041,6 +6865,8 @@ type GetEipsEip struct {
 	Bandwidth string `pulumi:"bandwidth"`
 	// Time of creation.
 	CreationTime string `pulumi:"creationTime"`
+	// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// ID of the EIP.
 	Id string `pulumi:"id"`
 	// The ID of the instance that is being bound.
@@ -6071,6 +6897,8 @@ type GetEipsEipArgs struct {
 	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
 	// Time of creation.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// ID of the EIP.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the instance that is being bound.
@@ -6144,6 +6972,11 @@ func (o GetEipsEipOutput) Bandwidth() pulumi.StringOutput {
 // Time of creation.
 func (o GetEipsEipOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+func (o GetEipsEipOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEipsEip) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // ID of the EIP.
@@ -8396,21 +9229,28 @@ type GetNetworkInterfacesInterface struct {
 	// MAC address of the ENI.
 	Mac string `pulumi:"mac"`
 	// Name of the ENI.
-	Name string `pulumi:"name"`
+	Name                 string `pulumi:"name"`
+	NetworkInterfaceId   string `pulumi:"networkInterfaceId"`
+	NetworkInterfaceName string `pulumi:"networkInterfaceName"`
+	PrimaryIpAddress     string `pulumi:"primaryIpAddress"`
 	// Primary private IP of the ENI.
-	PrivateIp string `pulumi:"privateIp"`
+	PrivateIp          string   `pulumi:"privateIp"`
+	PrivateIpAddresses []string `pulumi:"privateIpAddresses"`
 	// A list of secondary private IP address that is assigned to the ENI.
-	PrivateIps []string `pulumi:"privateIps"`
-	// Public IP of the ENI.
-	PublicIp string `pulumi:"publicIp"`
+	PrivateIps  []string `pulumi:"privateIps"`
+	QueueNumber int      `pulumi:"queueNumber"`
 	// The Id of resource group.
-	ResourceGroupId string `pulumi:"resourceGroupId"`
+	ResourceGroupId  string   `pulumi:"resourceGroupId"`
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A list of security group that the ENI belongs to.
 	SecurityGroups []string `pulumi:"securityGroups"`
+	ServiceId      int      `pulumi:"serviceId"`
+	ServiceManaged bool     `pulumi:"serviceManaged"`
 	// Current status of the ENI.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the ENI.
 	Tags map[string]interface{} `pulumi:"tags"`
+	Type string                 `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId string `pulumi:"vpcId"`
 	// ID of the VSwitch that the ENI is linked to.
@@ -8442,21 +9282,28 @@ type GetNetworkInterfacesInterfaceArgs struct {
 	// MAC address of the ENI.
 	Mac pulumi.StringInput `pulumi:"mac"`
 	// Name of the ENI.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name                 pulumi.StringInput `pulumi:"name"`
+	NetworkInterfaceId   pulumi.StringInput `pulumi:"networkInterfaceId"`
+	NetworkInterfaceName pulumi.StringInput `pulumi:"networkInterfaceName"`
+	PrimaryIpAddress     pulumi.StringInput `pulumi:"primaryIpAddress"`
 	// Primary private IP of the ENI.
-	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
+	PrivateIp          pulumi.StringInput      `pulumi:"privateIp"`
+	PrivateIpAddresses pulumi.StringArrayInput `pulumi:"privateIpAddresses"`
 	// A list of secondary private IP address that is assigned to the ENI.
-	PrivateIps pulumi.StringArrayInput `pulumi:"privateIps"`
-	// Public IP of the ENI.
-	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+	PrivateIps  pulumi.StringArrayInput `pulumi:"privateIps"`
+	QueueNumber pulumi.IntInput         `pulumi:"queueNumber"`
 	// The Id of resource group.
-	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	ResourceGroupId  pulumi.StringInput      `pulumi:"resourceGroupId"`
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
 	// A list of security group that the ENI belongs to.
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
+	ServiceId      pulumi.IntInput         `pulumi:"serviceId"`
+	ServiceManaged pulumi.BoolInput        `pulumi:"serviceManaged"`
 	// Current status of the ENI.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the ENI.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.MapInput    `pulumi:"tags"`
+	Type pulumi.StringInput `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// ID of the VSwitch that the ENI is linked to.
@@ -8546,9 +9393,25 @@ func (o GetNetworkInterfacesInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o GetNetworkInterfacesInterfaceOutput) NetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) NetworkInterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.NetworkInterfaceName }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) PrimaryIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PrimaryIpAddress }).(pulumi.StringOutput)
+}
+
 // Primary private IP of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) PrivateIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.PrivateIpAddresses }).(pulumi.StringArrayOutput)
 }
 
 // A list of secondary private IP address that is assigned to the ENI.
@@ -8556,9 +9419,8 @@ func (o GetNetworkInterfacesInterfaceOutput) PrivateIps() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }
 
-// Public IP of the ENI.
-func (o GetNetworkInterfacesInterfaceOutput) PublicIp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PublicIp }).(pulumi.StringOutput)
+func (o GetNetworkInterfacesInterfaceOutput) QueueNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) int { return v.QueueNumber }).(pulumi.IntOutput)
 }
 
 // The Id of resource group.
@@ -8566,9 +9428,21 @@ func (o GetNetworkInterfacesInterfaceOutput) ResourceGroupId() pulumi.StringOutp
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+func (o GetNetworkInterfacesInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
 // A list of security group that the ENI belongs to.
 func (o GetNetworkInterfacesInterfaceOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) ServiceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) int { return v.ServiceId }).(pulumi.IntOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) ServiceManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) bool { return v.ServiceManaged }).(pulumi.BoolOutput)
 }
 
 // Current status of the ENI.
@@ -8579,6 +9453,10 @@ func (o GetNetworkInterfacesInterfaceOutput) Status() pulumi.StringOutput {
 // A map of tags assigned to the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // ID of the VPC that the ENI belongs to.
@@ -9377,6 +10255,14 @@ func init() {
 	pulumi.RegisterOutputType(GetCommandsCommandArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostCapacityOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostCapacityArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostNetworkAttributeOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostNetworkAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostOperationLockOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostOperationLockArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsOperationLockOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsOperationLockArrayOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetDisksDiskMountInstanceOutput{})
@@ -9409,6 +10295,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateSystemDiskOutput{})
 	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsNetworkInterfacesInterfaceOutput{})
+	pulumi.RegisterOutputType(GetEcsNetworkInterfacesInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsSnapshotsSnapshotOutput{})
 	pulumi.RegisterOutputType(GetEcsSnapshotsSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(GetEipsEipOutput{})

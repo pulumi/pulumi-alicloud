@@ -122,7 +122,7 @@ type GetZoneRecordsRecord struct {
 	// Priority of the Private Zone Record.
 	Priority int `pulumi:"priority"`
 	// RecordId of the Private Zone Record.
-	RecordId int `pulumi:"recordId"`
+	RecordId string `pulumi:"recordId"`
 	// Remark of the Private Zone Record.
 	Remark string `pulumi:"remark"`
 	// Resource record of the Private Zone Record.
@@ -158,7 +158,7 @@ type GetZoneRecordsRecordArgs struct {
 	// Priority of the Private Zone Record.
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// RecordId of the Private Zone Record.
-	RecordId pulumi.IntInput `pulumi:"recordId"`
+	RecordId pulumi.StringInput `pulumi:"recordId"`
 	// Remark of the Private Zone Record.
 	Remark pulumi.StringInput `pulumi:"remark"`
 	// Resource record of the Private Zone Record.
@@ -239,8 +239,8 @@ func (o GetZoneRecordsRecordOutput) Priority() pulumi.IntOutput {
 }
 
 // RecordId of the Private Zone Record.
-func (o GetZoneRecordsRecordOutput) RecordId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetZoneRecordsRecord) int { return v.RecordId }).(pulumi.IntOutput)
+func (o GetZoneRecordsRecordOutput) RecordId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.RecordId }).(pulumi.StringOutput)
 }
 
 // Remark of the Private Zone Record.

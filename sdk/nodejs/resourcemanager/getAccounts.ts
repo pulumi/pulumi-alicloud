@@ -31,6 +31,7 @@ export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions)
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:resourcemanager/getAccounts:getAccounts", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "outputFile": args.outputFile,
         "status": args.status,
@@ -41,6 +42,10 @@ export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getAccounts.
  */
 export interface GetAccountsArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    readonly enableDetails?: boolean;
     /**
      * A list of account IDs.
      */
@@ -60,6 +65,7 @@ export interface GetAccountsResult {
      * A list of accounts. Each element contains the following attributes:
      */
     readonly accounts: outputs.resourcemanager.GetAccountsAccount[];
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

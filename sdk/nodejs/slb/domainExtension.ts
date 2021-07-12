@@ -19,7 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Create a new load balancer and domain extension
- * const instance = new alicloud.slb.LoadBalancer("instance", {
+ * const instance = new alicloud.slb.ApplicationLoadBalancer("instance", {
+ *     loadBalancerName: "tffTestDomainExtension",
  *     internetChargeType: "PayByTraffic",
  *     internet: "true",
  * });

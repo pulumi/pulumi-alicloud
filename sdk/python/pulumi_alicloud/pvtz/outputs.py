@@ -70,7 +70,7 @@ class GetZoneRecordsRecordResult(dict):
     def __init__(__self__, *,
                  id: str,
                  priority: int,
-                 record_id: int,
+                 record_id: str,
                  remark: str,
                  resource_record: str,
                  rr: str,
@@ -81,7 +81,7 @@ class GetZoneRecordsRecordResult(dict):
         """
         :param str id: ID of the Private Zone Record.
         :param int priority: Priority of the Private Zone Record.
-        :param int record_id: RecordId of the Private Zone Record.
+        :param str record_id: RecordId of the Private Zone Record.
         :param str remark: Remark of the Private Zone Record.
         :param str resource_record: Resource record of the Private Zone Record.
         :param str rr: Rr of the Private Zone Record.
@@ -121,7 +121,7 @@ class GetZoneRecordsRecordResult(dict):
 
     @property
     @pulumi.getter(name="recordId")
-    def record_id(self) -> int:
+    def record_id(self) -> str:
         """
         RecordId of the Private Zone Record.
         """

@@ -19,6 +19,14 @@ export let accessKey: string | undefined = __config.get("accessKey");
 export let accountId: string | undefined = __config.get("accountId");
 export let assumeRole: outputs.config.AssumeRole | undefined = __config.getObject<outputs.config.AssumeRole>("assumeRole");
 /**
+ * The maximum timeout of the client connection server.
+ */
+export let clientConnectTimeout: number | undefined = __config.getObject<number>("clientConnectTimeout");
+/**
+ * The maximum timeout of the client read request.
+ */
+export let clientReadTimeout: number | undefined = __config.getObject<number>("clientReadTimeout");
+/**
  * Use this to mark a terraform configuration file source.
  */
 export let configurationSource: string | undefined = __config.get("configurationSource");

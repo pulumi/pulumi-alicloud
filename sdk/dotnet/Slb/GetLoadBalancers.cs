@@ -11,38 +11,6 @@ namespace Pulumi.AliCloud.Slb
 {
     public static class GetLoadBalancers
     {
-        /// <summary>
-        /// This data source provides the server load balancers of the current Alibaba Cloud user.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = new AliCloud.Slb.LoadBalancer("default", new AliCloud.Slb.LoadBalancerArgs
-        ///         {
-        ///         });
-        ///         var slbsDs = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
-        ///         {
-        ///             NameRegex = "sample_slb",
-        ///         }));
-        ///         this.FirstSlbId = slbsDs.Apply(slbsDs =&gt; slbsDs.Slbs[0].Id);
-        ///     }
-        /// 
-        ///     [Output("firstSlbId")]
-        ///     public Output&lt;string&gt; FirstSlbId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithVersion());
     }
@@ -56,6 +24,15 @@ namespace Pulumi.AliCloud.Slb
         [Input("address")]
         public string? Address { get; set; }
 
+        [Input("addressIpVersion")]
+        public string? AddressIpVersion { get; set; }
+
+        [Input("addressType")]
+        public string? AddressType { get; set; }
+
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -68,11 +45,14 @@ namespace Pulumi.AliCloud.Slb
             set => _ids = value;
         }
 
-        /// <summary>
-        /// Master availability zone of the SLBs.
-        /// </summary>
-        [Input("masterAvailabilityZone")]
-        public string? MasterAvailabilityZone { get; set; }
+        [Input("internetChargeType")]
+        public string? InternetChargeType { get; set; }
+
+        [Input("loadBalancerName")]
+        public string? LoadBalancerName { get; set; }
+
+        [Input("masterZoneId")]
+        public string? MasterZoneId { get; set; }
 
         /// <summary>
         /// A regex string to filter results by SLB name.
@@ -89,17 +69,29 @@ namespace Pulumi.AliCloud.Slb
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("paymentType")]
+        public string? PaymentType { get; set; }
+
         /// <summary>
         /// The Id of resource group which SLB belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
+        [Input("serverId")]
+        public string? ServerId { get; set; }
+
+        [Input("serverIntranetAddress")]
+        public string? ServerIntranetAddress { get; set; }
+
+        [Input("slaveZoneId")]
+        public string? SlaveZoneId { get; set; }
+
         /// <summary>
-        /// Slave availability zone of the SLBs.
+        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
         /// </summary>
-        [Input("slaveAvailabilityZone")]
-        public string? SlaveAvailabilityZone { get; set; }
+        [Input("status")]
+        public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
@@ -158,6 +150,10 @@ namespace Pulumi.AliCloud.Slb
         /// Service address of the SLB.
         /// </summary>
         public readonly string? Address;
+        public readonly string? AddressIpVersion;
+        public readonly string? AddressType;
+        public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerResult> Balancers;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -166,10 +162,9 @@ namespace Pulumi.AliCloud.Slb
         /// A list of slb IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        /// <summary>
-        /// Master availability zone of the SLBs.
-        /// </summary>
-        public readonly string? MasterAvailabilityZone;
+        public readonly string? InternetChargeType;
+        public readonly string? LoadBalancerName;
+        public readonly string? MasterZoneId;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of slb names.
@@ -180,15 +175,19 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public readonly string? NetworkType;
         public readonly string? OutputFile;
+        public readonly string? PaymentType;
         public readonly string? ResourceGroupId;
-        /// <summary>
-        /// Slave availability zone of the SLBs.
-        /// </summary>
-        public readonly string? SlaveAvailabilityZone;
+        public readonly string? ServerId;
+        public readonly string? ServerIntranetAddress;
+        public readonly string? SlaveZoneId;
         /// <summary>
         /// A list of SLBs. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersSlbResult> Slbs;
+        /// <summary>
+        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
+        /// </summary>
+        public readonly string? Status;
         /// <summary>
         /// A map of tags assigned to the SLB instance.
         /// </summary>
@@ -206,11 +205,23 @@ namespace Pulumi.AliCloud.Slb
         private GetLoadBalancersResult(
             string? address,
 
+            string? addressIpVersion,
+
+            string? addressType,
+
+            ImmutableArray<Outputs.GetLoadBalancersBalancerResult> balancers,
+
+            bool? enableDetails,
+
             string id,
 
             ImmutableArray<string> ids,
 
-            string? masterAvailabilityZone,
+            string? internetChargeType,
+
+            string? loadBalancerName,
+
+            string? masterZoneId,
 
             string? nameRegex,
 
@@ -220,11 +231,19 @@ namespace Pulumi.AliCloud.Slb
 
             string? outputFile,
 
+            string? paymentType,
+
             string? resourceGroupId,
 
-            string? slaveAvailabilityZone,
+            string? serverId,
+
+            string? serverIntranetAddress,
+
+            string? slaveZoneId,
 
             ImmutableArray<Outputs.GetLoadBalancersSlbResult> slbs,
+
+            string? status,
 
             ImmutableDictionary<string, object>? tags,
 
@@ -233,16 +252,26 @@ namespace Pulumi.AliCloud.Slb
             string? vswitchId)
         {
             Address = address;
+            AddressIpVersion = addressIpVersion;
+            AddressType = addressType;
+            Balancers = balancers;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
-            MasterAvailabilityZone = masterAvailabilityZone;
+            InternetChargeType = internetChargeType;
+            LoadBalancerName = loadBalancerName;
+            MasterZoneId = masterZoneId;
             NameRegex = nameRegex;
             Names = names;
             NetworkType = networkType;
             OutputFile = outputFile;
+            PaymentType = paymentType;
             ResourceGroupId = resourceGroupId;
-            SlaveAvailabilityZone = slaveAvailabilityZone;
+            ServerId = serverId;
+            ServerIntranetAddress = serverIntranetAddress;
+            SlaveZoneId = slaveZoneId;
             Slbs = slbs;
+            Status = status;
             Tags = tags;
             VpcId = vpcId;
             VswitchId = vswitchId;

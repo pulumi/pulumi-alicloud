@@ -435,13 +435,23 @@ class GetInstanceEnginesInstanceEngineZoneIdResult(dict):
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
+                 acl: str,
                  availability_zone: str,
+                 ca_type: str,
                  charge_type: str,
+                 client_ca_cert: str,
+                 client_ca_cert_expire_time: str,
+                 client_cert_revocation_list: str,
                  connection_mode: str,
                  connection_string: str,
                  create_time: str,
+                 creator: str,
                  db_instance_storage_type: str,
                  db_type: str,
+                 delete_date: str,
+                 description: str,
+                 encryption_key: str,
+                 encryption_key_status: str,
                  engine: str,
                  engine_version: str,
                  expire_time: str,
@@ -449,13 +459,28 @@ class GetInstancesInstanceResult(dict):
                  id: str,
                  instance_storage: int,
                  instance_type: str,
+                 key_usage: str,
+                 last_modify_status: str,
                  master_instance_id: str,
                  master_zone: str,
+                 material_expire_time: str,
+                 modify_status_reason: str,
                  name: str,
                  net_type: str,
+                 origin: str,
                  port: str,
                  readonly_instance_ids: Sequence[str],
                  region_id: str,
+                 replication_acl: str,
+                 require_update: str,
+                 require_update_item: str,
+                 require_update_reason: str,
+                 server_ca_url: str,
+                 server_cert: str,
+                 server_key: str,
+                 ssl_create_time: str,
+                 ssl_enabled: str,
+                 ssl_expire_time: str,
                  status: str,
                  temp_instance_id: str,
                  vpc_id: str,
@@ -463,13 +488,30 @@ class GetInstancesInstanceResult(dict):
                  zone_id_slave_a: str,
                  zone_id_slave_b: str):
         """
+        :param str acl: (Available in 1.124.1+) The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+               - cert
+               - perfer
+               - verify-ca
+               - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         :param str availability_zone: Availability zone.
+        :param str ca_type: (Available in 1.124.1+) The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+               - aliyun: a cloud certificate
+               - custom: a custom certificate
         :param str charge_type: Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
+        :param str client_ca_cert: (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        :param str client_cert_revocation_list: (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
         :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
         :param str connection_string: (Available in 1.70.3+) RDS database connection string.
         :param str create_time: Creation time of the instance.
+        :param str creator: (Available in 1.124.3+) The creator of the encryption key.
         :param str db_instance_storage_type: (Available in 1.70.3+) The storage type of the instance.
         :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+        :param str delete_date: (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param str description: (Available in 1.124.3+) The description of the encryption key.
+        :param str encryption_key: (Available in 1.124.3+) The ID of the encryption key.
+        :param str encryption_key_status: (Available in 1.124.3+) The status of the encryption key. Valid values:
+               - Enabled
+               - Disabled
         :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
         :param str engine_version: Database version.
         :param str expire_time: Expiration time. Pay-As-You-Go instances never expire.
@@ -477,13 +519,43 @@ class GetInstancesInstanceResult(dict):
         :param str id: The ID of the RDS instance.
         :param int instance_storage: (Available in 1.70.3+) User-defined DB instance storage space.
         :param str instance_type: Sizing of the RDS instance.
+        :param str key_usage: (Available in 1.124.3+) The purpose of the encryption key.
+        :param str last_modify_status: (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+               - success
+               - setting
+               - failed
         :param str master_instance_id: ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
         :param str master_zone: (Available in 1.101.0+) The master zone of the instance.
+        :param str material_expire_time: (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param str modify_status_reason: (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
         :param str name: The name of the RDS instance.
         :param str net_type: `Internet` for public network or `Intranet` for private network.
+        :param str origin: (Available in 1.124.3+) The source of the encryption key.
         :param str port: (Available in 1.70.3+) RDS database connection port.
         :param Sequence[str] readonly_instance_ids: A list of IDs of read-only instances attached to the primary instance.
         :param str region_id: Region ID the instance belongs to.
+        :param str replication_acl: (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+               - cert
+               - perfer
+               - verify-ca
+               - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        :param str require_update: (Available in 1.124.1+) Indicates whether the server certificate needs to be updated.
+               - Valid values for ApsaraDB RDS for MySQL and ApsaraDB RDS for SQL Server:
+               - No
+               - Yes
+               - Valid values for ApsaraDB RDS for PostgreSQL:
+               - 0: no
+               - 1: yes
+        :param str require_update_item: (Available in 1.124.1+) The server certificate that needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        :param str require_update_reason: (Available in 1.124.1+) The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        :param str server_ca_url: (Available in 1.124.1+) The URL of the CA that issues the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        :param str server_cert: (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        :param str server_key: (Available in 1.124.1+) The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        :param str ssl_create_time: (Available in 1.124.1+) The time when the server certificate was created. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is valid only when the CAType parameter is set to aliyun.
+        :param str ssl_enabled: (Available in 1.124.1+) Indicates whether SSL encryption is enabled. Valid values:
+               - on: enabled
+               - off: disabled
+        :param str ssl_expire_time: (Available in 1.124.1+) The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param str status: Status of the instance.
         :param str temp_instance_id: If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
         :param str vpc_id: Used to retrieve instances belong to specified VPC.
@@ -491,13 +563,23 @@ class GetInstancesInstanceResult(dict):
         :param str zone_id_slave_a: (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param str zone_id_slave_b: (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
+        pulumi.set(__self__, "acl", acl)
         pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "ca_type", ca_type)
         pulumi.set(__self__, "charge_type", charge_type)
+        pulumi.set(__self__, "client_ca_cert", client_ca_cert)
+        pulumi.set(__self__, "client_ca_cert_expire_time", client_ca_cert_expire_time)
+        pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         pulumi.set(__self__, "connection_mode", connection_mode)
         pulumi.set(__self__, "connection_string", connection_string)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         pulumi.set(__self__, "db_type", db_type)
+        pulumi.set(__self__, "delete_date", delete_date)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encryption_key", encryption_key)
+        pulumi.set(__self__, "encryption_key_status", encryption_key_status)
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "engine_version", engine_version)
         pulumi.set(__self__, "expire_time", expire_time)
@@ -505,19 +587,46 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_storage", instance_storage)
         pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "key_usage", key_usage)
+        pulumi.set(__self__, "last_modify_status", last_modify_status)
         pulumi.set(__self__, "master_instance_id", master_instance_id)
         pulumi.set(__self__, "master_zone", master_zone)
+        pulumi.set(__self__, "material_expire_time", material_expire_time)
+        pulumi.set(__self__, "modify_status_reason", modify_status_reason)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "net_type", net_type)
+        pulumi.set(__self__, "origin", origin)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "readonly_instance_ids", readonly_instance_ids)
         pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "replication_acl", replication_acl)
+        pulumi.set(__self__, "require_update", require_update)
+        pulumi.set(__self__, "require_update_item", require_update_item)
+        pulumi.set(__self__, "require_update_reason", require_update_reason)
+        pulumi.set(__self__, "server_ca_url", server_ca_url)
+        pulumi.set(__self__, "server_cert", server_cert)
+        pulumi.set(__self__, "server_key", server_key)
+        pulumi.set(__self__, "ssl_create_time", ssl_create_time)
+        pulumi.set(__self__, "ssl_enabled", ssl_enabled)
+        pulumi.set(__self__, "ssl_expire_time", ssl_expire_time)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "temp_instance_id", temp_instance_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
         pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> str:
+        """
+        (Available in 1.124.1+) The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+        - cert
+        - perfer
+        - verify-ca
+        - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        """
+        return pulumi.get(self, "acl")
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -528,12 +637,43 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "availability_zone")
 
     @property
+    @pulumi.getter(name="caType")
+    def ca_type(self) -> str:
+        """
+        (Available in 1.124.1+) The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+        - aliyun: a cloud certificate
+        - custom: a custom certificate
+        """
+        return pulumi.get(self, "ca_type")
+
+    @property
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> str:
         """
         Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
         """
         return pulumi.get(self, "charge_type")
+
+    @property
+    @pulumi.getter(name="clientCaCert")
+    def client_ca_cert(self) -> str:
+        """
+        (Available in 1.124.1+) The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        """
+        return pulumi.get(self, "client_ca_cert")
+
+    @property
+    @pulumi.getter(name="clientCaCertExpireTime")
+    def client_ca_cert_expire_time(self) -> str:
+        return pulumi.get(self, "client_ca_cert_expire_time")
+
+    @property
+    @pulumi.getter(name="clientCertRevocationList")
+    def client_cert_revocation_list(self) -> str:
+        """
+        (Available in 1.124.1+) The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        """
+        return pulumi.get(self, "client_cert_revocation_list")
 
     @property
     @pulumi.getter(name="connectionMode")
@@ -560,6 +700,14 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter
+    def creator(self) -> str:
+        """
+        (Available in 1.124.3+) The creator of the encryption key.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
     @pulumi.getter(name="dbInstanceStorageType")
     def db_instance_storage_type(self) -> str:
         """
@@ -574,6 +722,40 @@ class GetInstancesInstanceResult(dict):
         `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
         """
         return pulumi.get(self, "db_type")
+
+    @property
+    @pulumi.getter(name="deleteDate")
+    def delete_date(self) -> str:
+        """
+        (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "delete_date")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        (Available in 1.124.3+) The description of the encryption key.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> str:
+        """
+        (Available in 1.124.3+) The ID of the encryption key.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="encryptionKeyStatus")
+    def encryption_key_status(self) -> str:
+        """
+        (Available in 1.124.3+) The status of the encryption key. Valid values:
+        - Enabled
+        - Disabled
+        """
+        return pulumi.get(self, "encryption_key_status")
 
     @property
     @pulumi.getter
@@ -632,6 +814,25 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "instance_type")
 
     @property
+    @pulumi.getter(name="keyUsage")
+    def key_usage(self) -> str:
+        """
+        (Available in 1.124.3+) The purpose of the encryption key.
+        """
+        return pulumi.get(self, "key_usage")
+
+    @property
+    @pulumi.getter(name="lastModifyStatus")
+    def last_modify_status(self) -> str:
+        """
+        (Available in 1.124.1+) The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+        - success
+        - setting
+        - failed
+        """
+        return pulumi.get(self, "last_modify_status")
+
+    @property
     @pulumi.getter(name="masterInstanceId")
     def master_instance_id(self) -> str:
         """
@@ -648,6 +849,22 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "master_zone")
 
     @property
+    @pulumi.getter(name="materialExpireTime")
+    def material_expire_time(self) -> str:
+        """
+        (Available in 1.124.3+) The time when the encryption key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "material_expire_time")
+
+    @property
+    @pulumi.getter(name="modifyStatusReason")
+    def modify_status_reason(self) -> str:
+        """
+        (Available in 1.124.1+) The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        """
+        return pulumi.get(self, "modify_status_reason")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -662,6 +879,14 @@ class GetInstancesInstanceResult(dict):
         `Internet` for public network or `Intranet` for private network.
         """
         return pulumi.get(self, "net_type")
+
+    @property
+    @pulumi.getter
+    def origin(self) -> str:
+        """
+        (Available in 1.124.3+) The source of the encryption key.
+        """
+        return pulumi.get(self, "origin")
 
     @property
     @pulumi.getter
@@ -686,6 +911,98 @@ class GetInstancesInstanceResult(dict):
         Region ID the instance belongs to.
         """
         return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="replicationAcl")
+    def replication_acl(self) -> str:
+        """
+        (Available in 1.124.1+) The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
+        - cert
+        - perfer
+        - verify-ca
+        - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        """
+        return pulumi.get(self, "replication_acl")
+
+    @property
+    @pulumi.getter(name="requireUpdate")
+    def require_update(self) -> str:
+        """
+        (Available in 1.124.1+) Indicates whether the server certificate needs to be updated.
+        - Valid values for ApsaraDB RDS for MySQL and ApsaraDB RDS for SQL Server:
+        - No
+        - Yes
+        - Valid values for ApsaraDB RDS for PostgreSQL:
+        - 0: no
+        - 1: yes
+        """
+        return pulumi.get(self, "require_update")
+
+    @property
+    @pulumi.getter(name="requireUpdateItem")
+    def require_update_item(self) -> str:
+        """
+        (Available in 1.124.1+) The server certificate that needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        """
+        return pulumi.get(self, "require_update_item")
+
+    @property
+    @pulumi.getter(name="requireUpdateReason")
+    def require_update_reason(self) -> str:
+        """
+        (Available in 1.124.1+) The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        """
+        return pulumi.get(self, "require_update_reason")
+
+    @property
+    @pulumi.getter(name="serverCaUrl")
+    def server_ca_url(self) -> str:
+        """
+        (Available in 1.124.1+) The URL of the CA that issues the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        """
+        return pulumi.get(self, "server_ca_url")
+
+    @property
+    @pulumi.getter(name="serverCert")
+    def server_cert(self) -> str:
+        """
+        (Available in 1.124.1+) The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        """
+        return pulumi.get(self, "server_cert")
+
+    @property
+    @pulumi.getter(name="serverKey")
+    def server_key(self) -> str:
+        """
+        (Available in 1.124.1+) The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs.
+        """
+        return pulumi.get(self, "server_key")
+
+    @property
+    @pulumi.getter(name="sslCreateTime")
+    def ssl_create_time(self) -> str:
+        """
+        (Available in 1.124.1+) The time when the server certificate was created. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is valid only when the CAType parameter is set to aliyun.
+        """
+        return pulumi.get(self, "ssl_create_time")
+
+    @property
+    @pulumi.getter(name="sslEnabled")
+    def ssl_enabled(self) -> str:
+        """
+        (Available in 1.124.1+) Indicates whether SSL encryption is enabled. Valid values:
+        - on: enabled
+        - off: disabled
+        """
+        return pulumi.get(self, "ssl_enabled")
+
+    @property
+    @pulumi.getter(name="sslExpireTime")
+    def ssl_expire_time(self) -> str:
+        """
+        (Available in 1.124.1+) The time when the server certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "ssl_expire_time")
 
     @property
     @pulumi.getter

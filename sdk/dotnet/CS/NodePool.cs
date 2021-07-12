@@ -70,6 +70,18 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
+        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        /// </summary>
+        [Output("internetChargeType")]
+        public Output<string> InternetChargeType { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+        /// </summary>
+        [Output("internetMaxBandwidthOut")]
+        public Output<int> InternetMaxBandwidthOut { get; private set; } = null!;
+
+        /// <summary>
         /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         /// </summary>
         [Output("keyName")]
@@ -130,6 +142,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// Auto scaling node pool configuration. For more details, see `scaling_config`.
         /// </summary>
         [Output("scalingConfig")]
@@ -146,6 +164,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+        /// </summary>
+        [Output("spotPriceLimits")]
+        public Output<ImmutableArray<Outputs.NodePoolSpotPriceLimit>> SpotPriceLimits { get; private set; } = null!;
+
+        /// <summary>
+        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+        /// </summary>
+        [Output("spotStrategy")]
+        public Output<string> SpotStrategy { get; private set; } = null!;
 
         /// <summary>
         /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -302,6 +332,18 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        /// </summary>
+        [Input("internetChargeType")]
+        public Input<string>? InternetChargeType { get; set; }
+
+        /// <summary>
+        /// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+        /// </summary>
+        [Input("internetMaxBandwidthOut")]
+        public Input<int>? InternetMaxBandwidthOut { get; set; }
+
+        /// <summary>
         /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         /// </summary>
         [Input("keyName")]
@@ -368,6 +410,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// Auto scaling node pool configuration. For more details, see `scaling_config`.
         /// </summary>
         [Input("scalingConfig")]
@@ -378,6 +426,24 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        [Input("spotPriceLimits")]
+        private InputList<Inputs.NodePoolSpotPriceLimitArgs>? _spotPriceLimits;
+
+        /// <summary>
+        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+        /// </summary>
+        public InputList<Inputs.NodePoolSpotPriceLimitArgs> SpotPriceLimits
+        {
+            get => _spotPriceLimits ?? (_spotPriceLimits = new InputList<Inputs.NodePoolSpotPriceLimitArgs>());
+            set => _spotPriceLimits = value;
+        }
+
+        /// <summary>
+        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
         /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -510,6 +576,18 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        /// </summary>
+        [Input("internetChargeType")]
+        public Input<string>? InternetChargeType { get; set; }
+
+        /// <summary>
+        /// The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+        /// </summary>
+        [Input("internetMaxBandwidthOut")]
+        public Input<int>? InternetMaxBandwidthOut { get; set; }
+
+        /// <summary>
         /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         /// </summary>
         [Input("keyName")]
@@ -576,6 +654,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
+        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// Auto scaling node pool configuration. For more details, see `scaling_config`.
         /// </summary>
         [Input("scalingConfig")]
@@ -592,6 +676,24 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        [Input("spotPriceLimits")]
+        private InputList<Inputs.NodePoolSpotPriceLimitGetArgs>? _spotPriceLimits;
+
+        /// <summary>
+        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+        /// </summary>
+        public InputList<Inputs.NodePoolSpotPriceLimitGetArgs> SpotPriceLimits
+        {
+            get => _spotPriceLimits ?? (_spotPriceLimits = new InputList<Inputs.NodePoolSpotPriceLimitGetArgs>());
+            set => _spotPriceLimits = value;
+        }
+
+        /// <summary>
+        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
         /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.

@@ -7,26 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
-//
-// For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
-//
-// ## Argument Reference
-//
-// The following arguments are supported:
-//
-// * `ids` - (Optional)  A list of ENI IDs.
-// * `nameRegex` - (Optional) A regex string to filter results by ENI name.
-// * `vpcId` - (Optional) The VPC ID linked to ENIs.
-// * `vswitchId` - (Optional) The VSwitch ID linked to ENIs.
-// * `privateIp` - (Optional) The primary private IP address of the ENI.
-// * `securityGroupId` - (Optional) The security group ID linked to ENIs.
-// * `name` - (Optional) The name of the ENIs.
-// * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
-// * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
-// * `tags` - (Optional) A map of tags assigned to ENIs.
-// * `outputFile` - (Optional) The name of output file that saves the filter results.
-// * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 func GetNetworkInterfaces(ctx *pulumi.Context, args *GetNetworkInterfacesArgs, opts ...pulumi.InvokeOption) (*GetNetworkInterfacesResult, error) {
 	var rv GetNetworkInterfacesResult
 	err := ctx.Invoke("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", args, &rv, opts...)
@@ -41,13 +21,24 @@ type GetNetworkInterfacesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// ID of the instance that the ENI is attached to.
 	InstanceId *string `pulumi:"instanceId"`
-	NameRegex  *string `pulumi:"nameRegex"`
-	OutputFile *string `pulumi:"outputFile"`
+	// Name of the ENI.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+	Name                 *string `pulumi:"name"`
+	NameRegex            *string `pulumi:"nameRegex"`
+	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+	OutputFile           *string `pulumi:"outputFile"`
+	PrimaryIpAddress     *string `pulumi:"primaryIpAddress"`
 	// Primary private IP of the ENI.
+	//
+	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
 	PrivateIp *string `pulumi:"privateIp"`
 	// The Id of resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	ServiceManaged  *bool   `pulumi:"serviceManaged"`
+	// Current status of the ENI.
+	Status *string `pulumi:"status"`
 	// A map of tags assigned to the ENI.
 	Tags map[string]interface{} `pulumi:"tags"`
 	Type *string                `pulumi:"type"`
@@ -66,14 +57,25 @@ type GetNetworkInterfacesResult struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// A list of ENIs. Each element contains the following attributes:
 	Interfaces []GetNetworkInterfacesInterface `pulumi:"interfaces"`
-	NameRegex  *string                         `pulumi:"nameRegex"`
-	Names      []string                        `pulumi:"names"`
-	OutputFile *string                         `pulumi:"outputFile"`
+	// Name of the ENI.
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+	Name                 *string  `pulumi:"name"`
+	NameRegex            *string  `pulumi:"nameRegex"`
+	Names                []string `pulumi:"names"`
+	NetworkInterfaceName *string  `pulumi:"networkInterfaceName"`
+	OutputFile           *string  `pulumi:"outputFile"`
+	PrimaryIpAddress     *string  `pulumi:"primaryIpAddress"`
 	// Primary private IP of the ENI.
+	//
+	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
 	PrivateIp *string `pulumi:"privateIp"`
 	// The Id of resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	ServiceManaged  *bool   `pulumi:"serviceManaged"`
+	// Current status of the ENI.
+	Status *string `pulumi:"status"`
 	// A map of tags assigned to the ENI.
 	Tags map[string]interface{} `pulumi:"tags"`
 	Type *string                `pulumi:"type"`

@@ -26,6 +26,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? Device;
         /// <summary>
+        /// The performance level of the ESSD used as data disk.
+        /// </summary>
+        public readonly string? PerformanceLevel;
+        /// <summary>
         /// Size of data disk.
         /// </summary>
         public readonly int? Size;
@@ -42,6 +46,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             string? device,
 
+            string? performanceLevel,
+
             int? size,
 
             string? snapshotId)
@@ -49,6 +55,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
             Category = category;
             DeleteWithInstance = deleteWithInstance;
             Device = device;
+            PerformanceLevel = performanceLevel;
             Size = size;
             SnapshotId = snapshotId;
         }

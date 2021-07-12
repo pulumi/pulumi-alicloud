@@ -47,7 +47,7 @@ type Function struct {
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
 	// The date this resource was last modified.
 	LastModified pulumi.StringOutput `pulumi:"lastModified"`
-	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 	MemorySize pulumi.IntPtrOutput `pulumi:"memorySize"`
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -129,7 +129,7 @@ type functionState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// The date this resource was last modified.
 	LastModified *string `pulumi:"lastModified"`
-	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 	MemorySize *int `pulumi:"memorySize"`
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
 	Name *string `pulumi:"name"`
@@ -174,7 +174,7 @@ type FunctionState struct {
 	InstanceType pulumi.StringPtrInput
 	// The date this resource was last modified.
 	LastModified pulumi.StringPtrInput
-	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 	MemorySize pulumi.IntPtrInput
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
 	Name pulumi.StringPtrInput
@@ -219,7 +219,7 @@ type functionArgs struct {
 	InstanceConcurrency *int `pulumi:"instanceConcurrency"`
 	// The instance type of the function.
 	InstanceType *string `pulumi:"instanceType"`
-	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 	MemorySize *int `pulumi:"memorySize"`
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
 	Name *string `pulumi:"name"`
@@ -261,7 +261,7 @@ type FunctionArgs struct {
 	InstanceConcurrency pulumi.IntPtrInput
 	// The instance type of the function.
 	InstanceType pulumi.StringPtrInput
-	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+	// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
 	MemorySize pulumi.IntPtrInput
 	// The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
 	Name pulumi.StringPtrInput

@@ -59,13 +59,14 @@ namespace Pulumi.AliCloud.Ess
     ///             CidrBlock = "172.16.0.0/24",
     ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
     ///         });
-    ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+    ///         var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
     ///         {
+    ///             LoadBalancerName = name,
     ///             VswitchId = defaultSwitch.Id,
     ///         });
     ///         var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new AliCloud.Slb.ServerGroupArgs
     ///         {
-    ///             LoadBalancerId = defaultLoadBalancer.Id,
+    ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
     ///         });
     ///         var defaultListener = new List&lt;AliCloud.Slb.Listener&gt;();
     ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
@@ -75,7 +76,7 @@ namespace Pulumi.AliCloud.Ess
     ///             {
     ///                 LoadBalancerId = 
     ///                 {
-    ///                     defaultLoadBalancer,
+    ///                     defaultApplicationLoadBalancer,
     ///                 }.Select(__item =&gt; __item.Id).ToList()[range.Value],
     ///                 BackendPort = 22,
     ///                 FrontendPort = 22,
@@ -101,7 +102,7 @@ namespace Pulumi.AliCloud.Ess
     ///             {
     ///                 new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupArgs
     ///                 {
-    ///                     LoadbalancerId = defaultLoadBalancer.Id,
+    ///                     LoadbalancerId = defaultApplicationLoadBalancer.Id,
     ///                     VserverAttributes = 
     ///                     {
     ///                         new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs

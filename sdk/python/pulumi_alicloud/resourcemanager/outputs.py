@@ -80,16 +80,19 @@ class ResourceGroupRegionStatus(dict):
 class GetAccountsAccountResult(dict):
     def __init__(__self__, *,
                  account_id: str,
+                 account_name: str,
                  display_name: str,
                  folder_id: str,
                  id: str,
                  join_method: str,
                  join_time: str,
                  modify_time: str,
+                 payer_account_id: str,
                  resource_directory_id: str,
                  status: str,
                  type: str):
         """
+        :param str account_name: (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
         :param str folder_id: The ID of the folder.
         :param str id: The ID of the resource.
                * `account_id`- The ID of the account.
@@ -97,17 +100,20 @@ class GetAccountsAccountResult(dict):
         :param str join_method: The way in which the member account joined the resource directory.
         :param str join_time: The time when the member account joined the resource directory.
         :param str modify_time: The time when the member account was modified.
+        :param str payer_account_id: (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
         :param str resource_directory_id: The ID of the resource directory.
         :param str status: The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
         :param str type: The type of the member account.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "folder_id", folder_id)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "join_method", join_method)
         pulumi.set(__self__, "join_time", join_time)
         pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "payer_account_id", payer_account_id)
         pulumi.set(__self__, "resource_directory_id", resource_directory_id)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
@@ -116,6 +122,14 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> str:
+        """
+        (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+        """
+        return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="displayName")
@@ -163,6 +177,14 @@ class GetAccountsAccountResult(dict):
         The time when the member account was modified.
         """
         return pulumi.get(self, "modify_time")
+
+    @property
+    @pulumi.getter(name="payerAccountId")
+    def payer_account_id(self) -> str:
+        """
+        (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+        """
+        return pulumi.get(self, "payer_account_id")
 
     @property
     @pulumi.getter(name="resourceDirectoryId")

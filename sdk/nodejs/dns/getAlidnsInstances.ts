@@ -33,6 +33,7 @@ export function getAlidnsInstances(args?: GetAlidnsInstancesArgs, opts?: pulumi.
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsInstances:getAlidnsInstances", {
+        "domainType": args.domainType,
         "ids": args.ids,
         "lang": args.lang,
         "outputFile": args.outputFile,
@@ -44,6 +45,10 @@ export function getAlidnsInstances(args?: GetAlidnsInstancesArgs, opts?: pulumi.
  * A collection of arguments for invoking getAlidnsInstances.
  */
 export interface GetAlidnsInstancesArgs {
+    /**
+     * The type of domain.
+     */
+    readonly domainType?: string;
     /**
      * A list of instance IDs.
      */
@@ -63,6 +68,7 @@ export interface GetAlidnsInstancesArgs {
  * A collection of values returned by getAlidnsInstances.
  */
 export interface GetAlidnsInstancesResult {
+    readonly domainType?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

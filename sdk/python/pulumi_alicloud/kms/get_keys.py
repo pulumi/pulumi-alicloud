@@ -20,10 +20,16 @@ class GetKeysResult:
     """
     A collection of values returned by getKeys.
     """
-    def __init__(__self__, description_regex=None, id=None, ids=None, keys=None, output_file=None, status=None):
+    def __init__(__self__, description_regex=None, enable_details=None, filters=None, id=None, ids=None, keys=None, output_file=None, status=None):
         if description_regex and not isinstance(description_regex, str):
             raise TypeError("Expected argument 'description_regex' to be a str")
         pulumi.set(__self__, "description_regex", description_regex)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
+        if filters and not isinstance(filters, str):
+            raise TypeError("Expected argument 'filters' to be a str")
+        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -44,6 +50,16 @@ class GetKeysResult:
     @pulumi.getter(name="descriptionRegex")
     def description_regex(self) -> Optional[str]:
         return pulumi.get(self, "description_regex")
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[str]:
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
@@ -90,6 +106,8 @@ class AwaitableGetKeysResult(GetKeysResult):
             yield self
         return GetKeysResult(
             description_regex=self.description_regex,
+            enable_details=self.enable_details,
+            filters=self.filters,
             id=self.id,
             ids=self.ids,
             keys=self.keys,
@@ -98,6 +116,8 @@ class AwaitableGetKeysResult(GetKeysResult):
 
 
 def get_keys(description_regex: Optional[str] = None,
+             enable_details: Optional[bool] = None,
+             filters: Optional[str] = None,
              ids: Optional[Sequence[str]] = None,
              output_file: Optional[str] = None,
              status: Optional[str] = None,
@@ -123,6 +143,8 @@ def get_keys(description_regex: Optional[str] = None,
     """
     __args__ = dict()
     __args__['descriptionRegex'] = description_regex
+    __args__['enableDetails'] = enable_details
+    __args__['filters'] = filters
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
@@ -134,6 +156,8 @@ def get_keys(description_regex: Optional[str] = None,
 
     return AwaitableGetKeysResult(
         description_regex=__ret__.description_regex,
+        enable_details=__ret__.enable_details,
+        filters=__ret__.filters,
         id=__ret__.id,
         ids=__ret__.ids,
         keys=__ret__.keys,

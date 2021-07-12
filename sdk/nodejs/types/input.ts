@@ -33,6 +33,7 @@ export interface ProviderEndpoint {
     ddosbgp?: pulumi.Input<string>;
     ddoscoo?: pulumi.Input<string>;
     dds?: pulumi.Input<string>;
+    dm?: pulumi.Input<string>;
     dmsEnterprise?: pulumi.Input<string>;
     dns?: pulumi.Input<string>;
     drds?: pulumi.Input<string>;
@@ -429,6 +430,65 @@ export namespace cen {
 }
 
 export namespace cfg {
+    export interface AggregateCompliancePackConfigRule {
+        /**
+         * A list of parameter rules.
+         */
+        configRuleParameters: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRuleConfigRuleParameter>[]>;
+        /**
+         * The Managed Rule Identifier.
+         */
+        managedRuleIdentifier: pulumi.Input<string>;
+    }
+
+    export interface AggregateCompliancePackConfigRuleConfigRuleParameter {
+        /**
+         * The Parameter Name.
+         */
+        parameterName: pulumi.Input<string>;
+        /**
+         * The Parameter Value.
+         */
+        parameterValue: pulumi.Input<string>;
+    }
+
+    export interface AggregatorAggregatorAccount {
+        /**
+         * Aggregator account Uid.
+         */
+        accountId: pulumi.Input<string>;
+        /**
+         * Aggregator account name.
+         */
+        accountName: pulumi.Input<string>;
+        /**
+         * Aggregator account source type. Valid values: `ResourceDirectory`.
+         */
+        accountType: pulumi.Input<string>;
+    }
+
+    export interface CompliancePackConfigRule {
+        /**
+         * A list of Config Rule Parameters.
+         */
+        configRuleParameters: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleConfigRuleParameter>[]>;
+        /**
+         * The Managed Rule Identifier.
+         */
+        managedRuleIdentifier: pulumi.Input<string>;
+    }
+
+    export interface CompliancePackConfigRuleConfigRuleParameter {
+        /**
+         * The parameter name.
+         */
+        parameterName: pulumi.Input<string>;
+        /**
+         * The parameter value.
+         */
+        parameterValue?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace cloudconnect {
@@ -1078,7 +1138,7 @@ export namespace cs {
          */
         eipBandwidth?: pulumi.Input<number>;
         /**
-         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
          */
         eipInternetChargeType?: pulumi.Input<string>;
         /**
@@ -1099,6 +1159,17 @@ export namespace cs {
         type?: pulumi.Input<string>;
     }
 
+    export interface NodePoolSpotPriceLimit {
+        /**
+         * Spot instance type.
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * The maximum hourly price of the spot instance.
+         */
+        priceLimit?: pulumi.Input<string>;
+    }
+
     export interface NodePoolTaint {
         effect?: pulumi.Input<string>;
         /**
@@ -1112,10 +1183,16 @@ export namespace cs {
     }
 
     export interface ServerlessKubernetesAddon {
+        /**
+         * The ACK add-on configurations.
+         */
         config?: pulumi.Input<string>;
+        /**
+         * Disables the automatic installation of a component. Default is `false`.
+         */
         disabled?: pulumi.Input<boolean>;
         /**
-         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: pulumi.Input<string>;
     }
@@ -1181,6 +1258,9 @@ export namespace ddos {
 }
 
 export namespace dds {
+}
+
+export namespace directmail {
 }
 
 export namespace dms {
@@ -1614,6 +1694,13 @@ export namespace ecs {
         size?: pulumi.Input<number>;
     }
 
+    export interface GetDedicatedHostsOperationLock {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        lockReason?: string;
+    }
+
     export interface GetDisksOperationLock {
         lockReason?: string;
     }
@@ -1920,6 +2007,7 @@ export namespace ess {
         encrypted?: pulumi.Input<boolean>;
         kmsKeyId?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
+        performanceLevel?: pulumi.Input<string>;
         size?: pulumi.Input<number>;
         snapshotId?: pulumi.Input<string>;
     }
@@ -2272,7 +2360,7 @@ export namespace log {
 
     export interface EtlEtlSink {
         /**
-         * Dekms_encryption_access_key_id_contextlivery target logstore access key id.
+         * Delivery target logstore access key id.
          */
         accessKeyId?: pulumi.Input<string>;
         /**
@@ -2304,7 +2392,7 @@ export namespace log {
          */
         project: pulumi.Input<string>;
         /**
-         * Sts role info.
+         * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
          */
         roleArn?: pulumi.Input<string>;
         /**
@@ -2316,6 +2404,36 @@ export namespace log {
     export interface OssShipperParquetConfig {
         name: pulumi.Input<string>;
         type: pulumi.Input<string>;
+    }
+
+    export interface StoreEncryptConf {
+        /**
+         * enable encryption. Default `false`
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * Supported encryption type, only supports `default(AES)`,` m4`
+         */
+        encryptType?: pulumi.Input<string>;
+        /**
+         * User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+         */
+        userCmkInfo?: pulumi.Input<inputs.log.StoreEncryptConfUserCmkInfo>;
+    }
+
+    export interface StoreEncryptConfUserCmkInfo {
+        /**
+         * role arn
+         */
+        arn: pulumi.Input<string>;
+        /**
+         * User master key id
+         */
+        cmkKeyId: pulumi.Input<string>;
+        /**
+         * Region id where the  user master key id is located
+         */
+        regionId: pulumi.Input<string>;
     }
 
     export interface StoreIndexFieldSearch {
@@ -2481,7 +2599,7 @@ export namespace oss {
          */
         abortMultipartUploads?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleAbortMultipartUpload>[]>;
         /**
-         * Specifies lifecycle rule status.
+         * Specifies the accelerate status of a bucket.
          */
         enabled: pulumi.Input<boolean>;
         /**
@@ -2601,6 +2719,13 @@ export namespace oss {
          * The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
          */
         sseAlgorithm: pulumi.Input<string>;
+    }
+
+    export interface BucketTransferAcceleration {
+        /**
+         * Specifies the accelerate status of a bucket.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface BucketVersioning {
@@ -2996,6 +3121,17 @@ export namespace vpc {
          * The source cidr ip of ingress entries.
          */
         sourceCidrIp?: pulumi.Input<string>;
+    }
+
+    export interface NetworkAclResource {
+        /**
+         * The ID of the associated resource.
+         */
+        resourceId?: pulumi.Input<string>;
+        /**
+         * The type of the associated resource. Valid values `VSwitch`.
+         */
+        resourceType?: pulumi.Input<string>;
     }
 }
 

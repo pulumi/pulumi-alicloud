@@ -5,92 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
- *
- * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "networkInterfacesName";
- *
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "192.168.0.0/24",
- *     vpcName: name,
- * });
- * const defaultZones = pulumi.output(alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
- * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "192.168.0.0/24",
- *     vpcId: vpc.id,
- *     vswitchName: name,
- * });
- * const group = new alicloud.ecs.SecurityGroup("group", {
- *     vpcId: vpc.id,
- * });
- * const interfaceNetworkInterface = new alicloud.vpc.NetworkInterface("interface", {
- *     description: "Basic test",
- *     privateIp: "192.168.0.2",
- *     securityGroups: [group.id],
- *     tags: {
- *         "TF-VER": "0.11.3",
- *     },
- *     vswitchId: vswitch.id,
- * });
- * const instance = new alicloud.ecs.Instance("instance", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     imageId: "centos_7_04_64_20G_alibase_201701015.vhd",
- *     instanceName: name,
- *     instanceType: "ecs.e3.xlarge",
- *     internetMaxBandwidthOut: 10,
- *     securityGroups: [group.id],
- *     systemDiskCategory: "cloud_efficiency",
- *     vswitchId: vswitch.id,
- * });
- * const attachment = new alicloud.vpc.NetworkInterfaceAttachment("attachment", {
- *     instanceId: instance.id,
- *     networkInterfaceId: interfaceNetworkInterface.id,
- * });
- * const defaultNetworkInterfaces = pulumi.all([attachment.networkInterfaceId, instance.id, group.id, vpc.id, vswitch.id]).apply(([networkInterfaceId, instanceId, groupId, vpcId, vswitchId]) => alicloud.ecs.getNetworkInterfaces({
- *     ids: [networkInterfaceId],
- *     instanceId: instanceId,
- *     nameRegex: name,
- *     privateIp: "192.168.0.2",
- *     securityGroupId: groupId,
- *     tags: {
- *         "TF-VER": "0.11.3",
- *     },
- *     type: "Secondary",
- *     vpcId: vpcId,
- *     vswitchId: vswitchId,
- * }, { async: true }));
- *
- * export const eni0Name = defaultNetworkInterfaces.interfaces[0].name;
- * ```
- * ## Argument Reference
- *
- * The following arguments are supported:
- *
- * * `ids` - (Optional)  A list of ENI IDs.
- * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
- * * `vpcId` - (Optional) The VPC ID linked to ENIs.
- * * `vswitchId` - (Optional) The VSwitch ID linked to ENIs.
- * * `privateIp` - (Optional) The primary private IP address of the ENI.
- * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
- * * `name` - (Optional) The name of the ENIs.
- * * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
- * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
- * * `tags` - (Optional) A map of tags assigned to ENIs.
- * * `outputFile` - (Optional) The name of output file that saves the filter results.
- * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
- */
 export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfacesResult> {
     args = args || {};
     if (!opts) {
@@ -103,11 +17,16 @@ export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pul
     return pulumi.runtime.invoke("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", {
         "ids": args.ids,
         "instanceId": args.instanceId,
+        "name": args.name,
         "nameRegex": args.nameRegex,
+        "networkInterfaceName": args.networkInterfaceName,
         "outputFile": args.outputFile,
+        "primaryIpAddress": args.primaryIpAddress,
         "privateIp": args.privateIp,
         "resourceGroupId": args.resourceGroupId,
         "securityGroupId": args.securityGroupId,
+        "serviceManaged": args.serviceManaged,
+        "status": args.status,
         "tags": args.tags,
         "type": args.type,
         "vpcId": args.vpcId,
@@ -124,10 +43,20 @@ export interface GetNetworkInterfacesArgs {
      * ID of the instance that the ENI is attached to.
      */
     readonly instanceId?: string;
+    /**
+     * Name of the ENI.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+     */
+    readonly name?: string;
     readonly nameRegex?: string;
+    readonly networkInterfaceName?: string;
     readonly outputFile?: string;
+    readonly primaryIpAddress?: string;
     /**
      * Primary private IP of the ENI.
+     *
+     * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
     readonly privateIp?: string;
     /**
@@ -135,6 +64,11 @@ export interface GetNetworkInterfacesArgs {
      */
     readonly resourceGroupId?: string;
     readonly securityGroupId?: string;
+    readonly serviceManaged?: boolean;
+    /**
+     * Current status of the ENI.
+     */
+    readonly status?: string;
     /**
      * A map of tags assigned to the ENI.
      */
@@ -167,11 +101,21 @@ export interface GetNetworkInterfacesResult {
      * A list of ENIs. Each element contains the following attributes:
      */
     readonly interfaces: outputs.ecs.GetNetworkInterfacesInterface[];
+    /**
+     * Name of the ENI.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+     */
+    readonly name?: string;
     readonly nameRegex?: string;
     readonly names: string[];
+    readonly networkInterfaceName?: string;
     readonly outputFile?: string;
+    readonly primaryIpAddress?: string;
     /**
      * Primary private IP of the ENI.
+     *
+     * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
     readonly privateIp?: string;
     /**
@@ -179,6 +123,11 @@ export interface GetNetworkInterfacesResult {
      */
     readonly resourceGroupId?: string;
     readonly securityGroupId?: string;
+    readonly serviceManaged?: boolean;
+    /**
+     * Current status of the ENI.
+     */
+    readonly status?: string;
     /**
      * A map of tags assigned to the ENI.
      */

@@ -22,6 +22,14 @@ namespace Pulumi.AliCloud.Vpc
     public partial class NatGateway : Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// - true: Enable deletion protection.
+        /// - false: Disable deletion protection.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         /// </summary>
         [Output("description")]
@@ -161,6 +169,14 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NatGatewayArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// - true: Enable deletion protection.
+        /// - false: Disable deletion protection.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         /// </summary>
         [Input("description")]
@@ -248,6 +264,14 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class NatGatewayState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// - true: Enable deletion protection.
+        /// - false: Disable deletion protection.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         /// </summary>

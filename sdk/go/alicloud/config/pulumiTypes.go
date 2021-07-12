@@ -99,6 +99,7 @@ type Endpoints struct {
 	Ddosbgp         *string `pulumi:"ddosbgp"`
 	Ddoscoo         *string `pulumi:"ddoscoo"`
 	Dds             *string `pulumi:"dds"`
+	Dm              *string `pulumi:"dm"`
 	DmsEnterprise   *string `pulumi:"dmsEnterprise"`
 	Dns             *string `pulumi:"dns"`
 	Drds            *string `pulumi:"drds"`
@@ -177,6 +178,7 @@ type EndpointsArgs struct {
 	Ddosbgp         pulumi.StringPtrInput `pulumi:"ddosbgp"`
 	Ddoscoo         pulumi.StringPtrInput `pulumi:"ddoscoo"`
 	Dds             pulumi.StringPtrInput `pulumi:"dds"`
+	Dm              pulumi.StringPtrInput `pulumi:"dm"`
 	DmsEnterprise   pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
 	Dns             pulumi.StringPtrInput `pulumi:"dns"`
 	Drds            pulumi.StringPtrInput `pulumi:"drds"`
@@ -355,6 +357,10 @@ func (o EndpointsOutput) Ddoscoo() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Dds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Dds }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Dm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Dm }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) DmsEnterprise() pulumi.StringPtrOutput {

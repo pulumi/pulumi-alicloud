@@ -216,6 +216,20 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Set bucket accelerate configuration
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const bucket_accelerate = new alicloud.oss.Bucket("bucket-accelerate", {
+ *     bucket: "bucket_name",
+ *     transferAcceleration: {
+ *         enabled: false,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * OSS bucket can be imported using the bucket name, e.g.
@@ -324,6 +338,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * A transfer acceleration status of a bucket (documented below).
+     */
+    public readonly transferAcceleration!: pulumi.Output<outputs.oss.BucketTransferAcceleration | undefined>;
+    /**
      * A state of versioning (documented below).
      */
     public readonly versioning!: pulumi.Output<outputs.oss.BucketVersioning | undefined>;
@@ -363,6 +381,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["serverSideEncryptionRule"] = state ? state.serverSideEncryptionRule : undefined;
             inputs["storageClass"] = state ? state.storageClass : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["transferAcceleration"] = state ? state.transferAcceleration : undefined;
             inputs["versioning"] = state ? state.versioning : undefined;
             inputs["website"] = state ? state.website : undefined;
         } else {
@@ -380,6 +399,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["serverSideEncryptionRule"] = args ? args.serverSideEncryptionRule : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["transferAcceleration"] = args ? args.transferAcceleration : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
             inputs["website"] = args ? args.website : undefined;
             inputs["creationDate"] = undefined /*out*/;
@@ -471,6 +491,10 @@ export interface BucketState {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
+     * A transfer acceleration status of a bucket (documented below).
+     */
+    readonly transferAcceleration?: pulumi.Input<inputs.oss.BucketTransferAcceleration>;
+    /**
      * A state of versioning (documented below).
      */
     readonly versioning?: pulumi.Input<inputs.oss.BucketVersioning>;
@@ -535,6 +559,10 @@ export interface BucketArgs {
      * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A transfer acceleration status of a bucket (documented below).
+     */
+    readonly transferAcceleration?: pulumi.Input<inputs.oss.BucketTransferAcceleration>;
     /**
      * A state of versioning (documented below).
      */

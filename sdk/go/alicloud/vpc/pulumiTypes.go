@@ -702,6 +702,112 @@ func (o NetworkAclIngressAclEntryArrayOutput) Index(i pulumi.IntInput) NetworkAc
 	}).(NetworkAclIngressAclEntryOutput)
 }
 
+type NetworkAclResource struct {
+	// The ID of the associated resource.
+	ResourceId *string `pulumi:"resourceId"`
+	// The type of the associated resource. Valid values `VSwitch`.
+	ResourceType *string `pulumi:"resourceType"`
+}
+
+// NetworkAclResourceInput is an input type that accepts NetworkAclResourceArgs and NetworkAclResourceOutput values.
+// You can construct a concrete instance of `NetworkAclResourceInput` via:
+//
+//          NetworkAclResourceArgs{...}
+type NetworkAclResourceInput interface {
+	pulumi.Input
+
+	ToNetworkAclResourceOutput() NetworkAclResourceOutput
+	ToNetworkAclResourceOutputWithContext(context.Context) NetworkAclResourceOutput
+}
+
+type NetworkAclResourceArgs struct {
+	// The ID of the associated resource.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// The type of the associated resource. Valid values `VSwitch`.
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+}
+
+func (NetworkAclResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclResource)(nil)).Elem()
+}
+
+func (i NetworkAclResourceArgs) ToNetworkAclResourceOutput() NetworkAclResourceOutput {
+	return i.ToNetworkAclResourceOutputWithContext(context.Background())
+}
+
+func (i NetworkAclResourceArgs) ToNetworkAclResourceOutputWithContext(ctx context.Context) NetworkAclResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclResourceOutput)
+}
+
+// NetworkAclResourceArrayInput is an input type that accepts NetworkAclResourceArray and NetworkAclResourceArrayOutput values.
+// You can construct a concrete instance of `NetworkAclResourceArrayInput` via:
+//
+//          NetworkAclResourceArray{ NetworkAclResourceArgs{...} }
+type NetworkAclResourceArrayInput interface {
+	pulumi.Input
+
+	ToNetworkAclResourceArrayOutput() NetworkAclResourceArrayOutput
+	ToNetworkAclResourceArrayOutputWithContext(context.Context) NetworkAclResourceArrayOutput
+}
+
+type NetworkAclResourceArray []NetworkAclResourceInput
+
+func (NetworkAclResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAclResource)(nil)).Elem()
+}
+
+func (i NetworkAclResourceArray) ToNetworkAclResourceArrayOutput() NetworkAclResourceArrayOutput {
+	return i.ToNetworkAclResourceArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkAclResourceArray) ToNetworkAclResourceArrayOutputWithContext(ctx context.Context) NetworkAclResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclResourceArrayOutput)
+}
+
+type NetworkAclResourceOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclResource)(nil)).Elem()
+}
+
+func (o NetworkAclResourceOutput) ToNetworkAclResourceOutput() NetworkAclResourceOutput {
+	return o
+}
+
+func (o NetworkAclResourceOutput) ToNetworkAclResourceOutputWithContext(ctx context.Context) NetworkAclResourceOutput {
+	return o
+}
+
+// The ID of the associated resource.
+func (o NetworkAclResourceOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclResource) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the associated resource. Valid values `VSwitch`.
+func (o NetworkAclResourceOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclResource) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+type NetworkAclResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkAclResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAclResource)(nil)).Elem()
+}
+
+func (o NetworkAclResourceArrayOutput) ToNetworkAclResourceArrayOutput() NetworkAclResourceArrayOutput {
+	return o
+}
+
+func (o NetworkAclResourceArrayOutput) ToNetworkAclResourceArrayOutputWithContext(ctx context.Context) NetworkAclResourceArrayOutput {
+	return o
+}
+
+func (o NetworkAclResourceArrayOutput) Index(i pulumi.IntInput) NetworkAclResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAclResource {
+		return vs[0].([]NetworkAclResource)[vs[1].(int)]
+	}).(NetworkAclResourceOutput)
+}
+
 type GetCommonBandwidthPackagesPackage struct {
 	// The peak bandwidth of the Internet Shared Bandwidth instance.
 	Bandwidth string `pulumi:"bandwidth"`
@@ -4177,6 +4283,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkAclEntriesIngressArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclIngressAclEntryOutput{})
 	pulumi.RegisterOutputType(NetworkAclIngressAclEntryArrayOutput{})
+	pulumi.RegisterOutputType(NetworkAclResourceOutput{})
+	pulumi.RegisterOutputType(NetworkAclResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackageOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackagePublicIpAddressOutput{})

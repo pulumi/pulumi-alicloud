@@ -120,6 +120,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// </summary>
+        [Output("encryptNewTables")]
+        public Output<string?> EncryptNewTables { get; private set; } = null!;
+
+        /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         /// </summary>
         [Output("maintainTime")]
@@ -138,7 +145,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableArray<Outputs.ClusterParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         /// </summary>
         [Output("payType")]
         public Output<string?> PayType { get; private set; } = null!;
@@ -175,7 +182,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
         /// **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
-        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         /// </summary>
         [Output("tdeStatus")]
         public Output<string?> TdeStatus { get; private set; } = null!;
@@ -284,6 +290,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// </summary>
+        [Input("encryptNewTables")]
+        public Input<string>? EncryptNewTables { get; set; }
+
+        /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         /// </summary>
         [Input("maintainTime")]
@@ -308,7 +321,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
@@ -357,7 +370,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
         /// **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
-        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
@@ -433,6 +445,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// </summary>
+        [Input("encryptNewTables")]
+        public Input<string>? EncryptNewTables { get; set; }
+
+        /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         /// </summary>
         [Input("maintainTime")]
@@ -457,7 +476,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
@@ -506,7 +525,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
         /// **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
-        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }

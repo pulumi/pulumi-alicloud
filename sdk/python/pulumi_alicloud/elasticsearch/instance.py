@@ -38,6 +38,7 @@ class InstanceArgs:
                  protocol: Optional[pulumi.Input[str]] = None,
                  public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  zone_count: Optional[pulumi.Input[int]] = None):
         """
@@ -68,6 +69,7 @@ class InstanceArgs:
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
+        :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
                - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
                - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
@@ -117,6 +119,8 @@ class InstanceArgs:
             pulumi.set(__self__, "public_whitelists", public_whitelists)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if setting_config is not None:
+            pulumi.set(__self__, "setting_config", setting_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if zone_count is not None:
@@ -424,6 +428,18 @@ class InstanceArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="settingConfig")
+    def setting_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        """
+        return pulumi.get(self, "setting_config")
+
+    @setting_config.setter
+    def setting_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "setting_config", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -480,6 +496,7 @@ class _InstanceState:
                  protocol: Optional[pulumi.Input[str]] = None,
                  public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -515,6 +532,7 @@ class _InstanceState:
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
+        :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
                - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
@@ -577,6 +595,8 @@ class _InstanceState:
             pulumi.set(__self__, "public_whitelists", public_whitelists)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if setting_config is not None:
+            pulumi.set(__self__, "setting_config", setting_config)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -914,6 +934,18 @@ class _InstanceState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="settingConfig")
+    def setting_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        """
+        return pulumi.get(self, "setting_config")
+
+    @setting_config.setter
+    def setting_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "setting_config", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1004,6 +1036,7 @@ class Instance(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1078,6 +1111,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
+        :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
                - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
                - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
@@ -1172,6 +1206,7 @@ class Instance(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1219,6 +1254,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["public_whitelists"] = public_whitelists
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["setting_config"] = setting_config
             __props__.__dict__["tags"] = tags
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
@@ -1269,6 +1305,7 @@ class Instance(pulumi.CustomResource):
             protocol: Optional[pulumi.Input[str]] = None,
             public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             version: Optional[pulumi.Input[str]] = None,
@@ -1309,6 +1346,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
+        :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. 
                - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
@@ -1348,6 +1386,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["public_whitelists"] = public_whitelists
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["setting_config"] = setting_config
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["version"] = version
@@ -1571,6 +1610,14 @@ class Instance(pulumi.CustomResource):
         The Id of resource group which the Elasticsearch instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="settingConfig")
+    def setting_config(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        """
+        return pulumi.get(self, "setting_config")
 
     @property
     @pulumi.getter

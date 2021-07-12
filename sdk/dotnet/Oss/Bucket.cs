@@ -342,6 +342,29 @@ namespace Pulumi.AliCloud.Oss
     /// }
     /// ```
     /// 
+    /// Set bucket accelerate configuration
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket_accelerate = new AliCloud.Oss.Bucket("bucket-accelerate", new AliCloud.Oss.BucketArgs
+    ///         {
+    ///             Bucket = "bucket_name",
+    ///             TransferAcceleration = new AliCloud.Oss.Inputs.BucketTransferAccelerationArgs
+    ///             {
+    ///                 Enabled = false,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// OSS bucket can be imported using the bucket name, e.g.
@@ -457,6 +480,12 @@ namespace Pulumi.AliCloud.Oss
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// A transfer acceleration status of a bucket (documented below).
+        /// </summary>
+        [Output("transferAcceleration")]
+        public Output<Outputs.BucketTransferAcceleration?> TransferAcceleration { get; private set; } = null!;
 
         /// <summary>
         /// A state of versioning (documented below).
@@ -610,6 +639,12 @@ namespace Pulumi.AliCloud.Oss
         }
 
         /// <summary>
+        /// A transfer acceleration status of a bucket (documented below).
+        /// </summary>
+        [Input("transferAcceleration")]
+        public Input<Inputs.BucketTransferAccelerationArgs>? TransferAcceleration { get; set; }
+
+        /// <summary>
         /// A state of versioning (documented below).
         /// </summary>
         [Input("versioning")]
@@ -750,6 +785,12 @@ namespace Pulumi.AliCloud.Oss
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// A transfer acceleration status of a bucket (documented below).
+        /// </summary>
+        [Input("transferAcceleration")]
+        public Input<Inputs.BucketTransferAccelerationGetArgs>? TransferAcceleration { get; set; }
 
         /// <summary>
         /// A state of versioning (documented below).

@@ -24,6 +24,10 @@ __all__ = [
     'GetAutoSnapshotPoliciesPolicyResult',
     'GetCommandsCommandResult',
     'GetDedicatedHostsHostResult',
+    'GetDedicatedHostsHostCapacityResult',
+    'GetDedicatedHostsHostNetworkAttributeResult',
+    'GetDedicatedHostsHostOperationLockResult',
+    'GetDedicatedHostsOperationLockResult',
     'GetDisksDiskResult',
     'GetDisksDiskMountInstanceResult',
     'GetDisksDiskOperationLockResult',
@@ -40,6 +44,7 @@ __all__ = [
     'GetEcsLaunchTemplatesTemplateDataDiskResult',
     'GetEcsLaunchTemplatesTemplateNetworkInterfaceResult',
     'GetEcsLaunchTemplatesTemplateSystemDiskResult',
+    'GetEcsNetworkInterfacesInterfaceResult',
     'GetEcsSnapshotsSnapshotResult',
     'GetEipsEipResult',
     'GetHpcClustersClusterResult',
@@ -1467,7 +1472,9 @@ class GetDedicatedHostsHostResult(dict):
                  action_on_maintenance: str,
                  auto_placement: str,
                  auto_release_time: str,
+                 capacities: Sequence['outputs.GetDedicatedHostsHostCapacityResult'],
                  cores: int,
+                 cpu_over_commit_ratio: float,
                  dedicated_host_id: str,
                  dedicated_host_name: str,
                  dedicated_host_type: str,
@@ -1476,12 +1483,16 @@ class GetDedicatedHostsHostResult(dict):
                  gpu_spec: str,
                  id: str,
                  machine_id: str,
+                 network_attributes: Sequence['outputs.GetDedicatedHostsHostNetworkAttributeResult'],
+                 operation_locks: Sequence['outputs.GetDedicatedHostsHostOperationLockResult'],
                  payment_type: str,
                  physical_gpus: int,
                  resource_group_id: str,
                  sale_cycle: str,
                  sockets: int,
                  status: str,
+                 supported_custom_instance_type_families: Sequence[str],
+                 supported_instance_type_families: Sequence[str],
                  supported_instance_types_lists: Sequence[str],
                  tags: Mapping[str, Any],
                  zone_id: str):
@@ -1489,7 +1500,9 @@ class GetDedicatedHostsHostResult(dict):
         :param str action_on_maintenance: The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online.
         :param str auto_placement: Specifies whether to add the dedicated host to the resource pool for automatic deployment.
         :param str auto_release_time: The automatic release time of the dedicated host.
+        :param Sequence['GetDedicatedHostsHostCapacityArgs'] capacities: (Available in 1.123.1+) A collection of proprietary host performance indicators.
         :param int cores: A mapping of tags to assign to the resource.
+        :param float cpu_over_commit_ratio: (Available in 1.123.1+) CPU oversold ratio.
         :param str dedicated_host_id: The ID of ECS Dedicated Host.
         :param str dedicated_host_name: The name of ECS Dedicated Host.
         :param str dedicated_host_type: The type of the dedicated host.
@@ -1498,20 +1511,26 @@ class GetDedicatedHostsHostResult(dict):
         :param str gpu_spec: The GPU model.
         :param str id: ID of the ECS Dedicated Host.
         :param str machine_id: The machine code of the dedicated host.
+        :param Sequence['GetDedicatedHostsHostNetworkAttributeArgs'] network_attributes: dedicated host network parameters. contains the following attributes:
+        :param Sequence['GetDedicatedHostsHostOperationLockArgs'] operation_locks: The reason why the dedicated host resource is locked.
         :param str payment_type: The billing method of the dedicated host.
         :param int physical_gpus: The number of physical GPUs.
         :param str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
         :param str sale_cycle: The unit of the subscription billing method.
         :param int sockets: The number of physical CPUs.
         :param str status: The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
-        :param Sequence[str] supported_instance_types_lists: The list of ECS instanc
+        :param Sequence[str] supported_custom_instance_type_families: (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+        :param Sequence[str] supported_instance_type_families: (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+        :param Sequence[str] supported_instance_types_lists: The list of ECS instance
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str zone_id: The zone ID of the ECS Dedicated Host.
         """
         pulumi.set(__self__, "action_on_maintenance", action_on_maintenance)
         pulumi.set(__self__, "auto_placement", auto_placement)
         pulumi.set(__self__, "auto_release_time", auto_release_time)
+        pulumi.set(__self__, "capacities", capacities)
         pulumi.set(__self__, "cores", cores)
+        pulumi.set(__self__, "cpu_over_commit_ratio", cpu_over_commit_ratio)
         pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
         pulumi.set(__self__, "dedicated_host_name", dedicated_host_name)
         pulumi.set(__self__, "dedicated_host_type", dedicated_host_type)
@@ -1520,12 +1539,16 @@ class GetDedicatedHostsHostResult(dict):
         pulumi.set(__self__, "gpu_spec", gpu_spec)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "machine_id", machine_id)
+        pulumi.set(__self__, "network_attributes", network_attributes)
+        pulumi.set(__self__, "operation_locks", operation_locks)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "physical_gpus", physical_gpus)
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "sale_cycle", sale_cycle)
         pulumi.set(__self__, "sockets", sockets)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "supported_custom_instance_type_families", supported_custom_instance_type_families)
+        pulumi.set(__self__, "supported_instance_type_families", supported_instance_type_families)
         pulumi.set(__self__, "supported_instance_types_lists", supported_instance_types_lists)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -1556,11 +1579,27 @@ class GetDedicatedHostsHostResult(dict):
 
     @property
     @pulumi.getter
+    def capacities(self) -> Sequence['outputs.GetDedicatedHostsHostCapacityResult']:
+        """
+        (Available in 1.123.1+) A collection of proprietary host performance indicators.
+        """
+        return pulumi.get(self, "capacities")
+
+    @property
+    @pulumi.getter
     def cores(self) -> int:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "cores")
+
+    @property
+    @pulumi.getter(name="cpuOverCommitRatio")
+    def cpu_over_commit_ratio(self) -> float:
+        """
+        (Available in 1.123.1+) CPU oversold ratio.
+        """
+        return pulumi.get(self, "cpu_over_commit_ratio")
 
     @property
     @pulumi.getter(name="dedicatedHostId")
@@ -1627,6 +1666,22 @@ class GetDedicatedHostsHostResult(dict):
         return pulumi.get(self, "machine_id")
 
     @property
+    @pulumi.getter(name="networkAttributes")
+    def network_attributes(self) -> Sequence['outputs.GetDedicatedHostsHostNetworkAttributeResult']:
+        """
+        dedicated host network parameters. contains the following attributes:
+        """
+        return pulumi.get(self, "network_attributes")
+
+    @property
+    @pulumi.getter(name="operationLocks")
+    def operation_locks(self) -> Sequence['outputs.GetDedicatedHostsHostOperationLockResult']:
+        """
+        The reason why the dedicated host resource is locked.
+        """
+        return pulumi.get(self, "operation_locks")
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> str:
         """
@@ -1675,10 +1730,26 @@ class GetDedicatedHostsHostResult(dict):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="supportedCustomInstanceTypeFamilies")
+    def supported_custom_instance_type_families(self) -> Sequence[str]:
+        """
+        (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
+        """
+        return pulumi.get(self, "supported_custom_instance_type_families")
+
+    @property
+    @pulumi.getter(name="supportedInstanceTypeFamilies")
+    def supported_instance_type_families(self) -> Sequence[str]:
+        """
+        (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
+        """
+        return pulumi.get(self, "supported_instance_type_families")
+
+    @property
     @pulumi.getter(name="supportedInstanceTypesLists")
     def supported_instance_types_lists(self) -> Sequence[str]:
         """
-        The list of ECS instanc
+        The list of ECS instance
         """
         return pulumi.get(self, "supported_instance_types_lists")
 
@@ -1697,6 +1768,178 @@ class GetDedicatedHostsHostResult(dict):
         The zone ID of the ECS Dedicated Host.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetDedicatedHostsHostCapacityResult(dict):
+    def __init__(__self__, *,
+                 available_local_storage: int,
+                 available_memory: float,
+                 available_vcpus: int,
+                 available_vgpus: int,
+                 local_storage_category: str,
+                 total_local_storage: int,
+                 total_memory: float,
+                 total_vcpus: int,
+                 total_vgpus: int):
+        """
+        :param int available_local_storage: The remaining local disk capacity. Unit: GiB.
+        :param float available_memory: The remaining memory capacity, unit: GiB.
+        :param int available_vcpus: The number of remaining vCPU cores.
+        :param int available_vgpus: The number of available virtual GPUs.
+        :param str local_storage_category: Local disk type.
+        :param int total_local_storage: The total capacity of the local disk, in GiB.
+        :param float total_memory: The total memory capacity, unit: GiB.
+        :param int total_vcpus: The total number of vCPU cores.
+        :param int total_vgpus: The total number of virtual GPUs.
+        """
+        pulumi.set(__self__, "available_local_storage", available_local_storage)
+        pulumi.set(__self__, "available_memory", available_memory)
+        pulumi.set(__self__, "available_vcpus", available_vcpus)
+        pulumi.set(__self__, "available_vgpus", available_vgpus)
+        pulumi.set(__self__, "local_storage_category", local_storage_category)
+        pulumi.set(__self__, "total_local_storage", total_local_storage)
+        pulumi.set(__self__, "total_memory", total_memory)
+        pulumi.set(__self__, "total_vcpus", total_vcpus)
+        pulumi.set(__self__, "total_vgpus", total_vgpus)
+
+    @property
+    @pulumi.getter(name="availableLocalStorage")
+    def available_local_storage(self) -> int:
+        """
+        The remaining local disk capacity. Unit: GiB.
+        """
+        return pulumi.get(self, "available_local_storage")
+
+    @property
+    @pulumi.getter(name="availableMemory")
+    def available_memory(self) -> float:
+        """
+        The remaining memory capacity, unit: GiB.
+        """
+        return pulumi.get(self, "available_memory")
+
+    @property
+    @pulumi.getter(name="availableVcpus")
+    def available_vcpus(self) -> int:
+        """
+        The number of remaining vCPU cores.
+        """
+        return pulumi.get(self, "available_vcpus")
+
+    @property
+    @pulumi.getter(name="availableVgpus")
+    def available_vgpus(self) -> int:
+        """
+        The number of available virtual GPUs.
+        """
+        return pulumi.get(self, "available_vgpus")
+
+    @property
+    @pulumi.getter(name="localStorageCategory")
+    def local_storage_category(self) -> str:
+        """
+        Local disk type.
+        """
+        return pulumi.get(self, "local_storage_category")
+
+    @property
+    @pulumi.getter(name="totalLocalStorage")
+    def total_local_storage(self) -> int:
+        """
+        The total capacity of the local disk, in GiB.
+        """
+        return pulumi.get(self, "total_local_storage")
+
+    @property
+    @pulumi.getter(name="totalMemory")
+    def total_memory(self) -> float:
+        """
+        The total memory capacity, unit: GiB.
+        """
+        return pulumi.get(self, "total_memory")
+
+    @property
+    @pulumi.getter(name="totalVcpus")
+    def total_vcpus(self) -> int:
+        """
+        The total number of vCPU cores.
+        """
+        return pulumi.get(self, "total_vcpus")
+
+    @property
+    @pulumi.getter(name="totalVgpus")
+    def total_vgpus(self) -> int:
+        """
+        The total number of virtual GPUs.
+        """
+        return pulumi.get(self, "total_vgpus")
+
+
+@pulumi.output_type
+class GetDedicatedHostsHostNetworkAttributeResult(dict):
+    def __init__(__self__, *,
+                 slb_udp_timeout: int,
+                 udp_timeout: int):
+        """
+        :param int slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
+        :param int udp_timeout: (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+        """
+        pulumi.set(__self__, "slb_udp_timeout", slb_udp_timeout)
+        pulumi.set(__self__, "udp_timeout", udp_timeout)
+
+    @property
+    @pulumi.getter(name="slbUdpTimeout")
+    def slb_udp_timeout(self) -> int:
+        """
+        The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
+        """
+        return pulumi.get(self, "slb_udp_timeout")
+
+    @property
+    @pulumi.getter(name="udpTimeout")
+    def udp_timeout(self) -> int:
+        """
+        (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
+        """
+        return pulumi.get(self, "udp_timeout")
+
+
+@pulumi.output_type
+class GetDedicatedHostsHostOperationLockResult(dict):
+    def __init__(__self__, *,
+                 lock_reason: str):
+        """
+        :param str lock_reason: The reason why the dedicated host resource is locked.
+        """
+        pulumi.set(__self__, "lock_reason", lock_reason)
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> str:
+        """
+        The reason why the dedicated host resource is locked.
+        """
+        return pulumi.get(self, "lock_reason")
+
+
+@pulumi.output_type
+class GetDedicatedHostsOperationLockResult(dict):
+    def __init__(__self__, *,
+                 lock_reason: Optional[str] = None):
+        """
+        :param str lock_reason: The reason why the dedicated host resource is locked.
+        """
+        if lock_reason is not None:
+            pulumi.set(__self__, "lock_reason", lock_reason)
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> Optional[str]:
+        """
+        The reason why the dedicated host resource is locked.
+        """
+        return pulumi.get(self, "lock_reason")
 
 
 @pulumi.output_type
@@ -3749,6 +3992,273 @@ class GetEcsLaunchTemplatesTemplateSystemDiskResult(dict):
 
 
 @pulumi.output_type
+class GetEcsNetworkInterfacesInterfaceResult(dict):
+    def __init__(__self__, *,
+                 creation_time: str,
+                 description: str,
+                 id: str,
+                 instance_id: str,
+                 mac: str,
+                 name: str,
+                 network_interface_id: str,
+                 network_interface_name: str,
+                 primary_ip_address: str,
+                 private_ip: str,
+                 private_ip_addresses: Sequence[str],
+                 private_ips: Sequence[str],
+                 queue_number: int,
+                 resource_group_id: str,
+                 security_group_ids: Sequence[str],
+                 security_groups: Sequence[str],
+                 service_id: int,
+                 service_managed: bool,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 type: str,
+                 vpc_id: str,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param str creation_time: The creation time.
+        :param str description: The description of the ENI.
+        :param str id: The ID of the Network Interface.
+        :param str instance_id: The instance id.
+        :param str mac: The MAC address of the ENI.
+        :param str name: The network interface name.
+        :param str network_interface_id: The network interface id.
+        :param str network_interface_name: The network interface name.
+        :param str primary_ip_address: The primary private IP address of the ENI.
+        :param str private_ip: The primary private IP address of the ENI.
+        :param Sequence[str] private_ips: A list of secondary private IP address that is assigned to the ENI.
+        :param int queue_number: Number of network card queues.
+        :param str resource_group_id: The resource group id.
+        :param Sequence[str] security_group_ids: The security group ids.
+        :param Sequence[str] security_groups: The security groups.
+        :param int service_id: The service id.
+        :param bool service_managed: Whether the user of the elastic network card is a cloud product or a virtual vendor.
+        :param str status: The status of the ENI.
+        :param Mapping[str, Any] tags: The tags.
+        :param str type: The type of the ENI.
+        :param str vpc_id: The Vpc Id.
+        :param str vswitch_id: The vswitch id.
+        :param str zone_id: The zone id.
+        """
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "network_interface_name", network_interface_name)
+        pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+        pulumi.set(__self__, "private_ips", private_ips)
+        pulumi.set(__self__, "queue_number", queue_number)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "service_managed", service_managed)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the ENI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Network Interface.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The instance id.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def mac(self) -> str:
+        """
+        The MAC address of the ENI.
+        """
+        return pulumi.get(self, "mac")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The network interface name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkInterfaceId")
+    def network_interface_id(self) -> str:
+        """
+        The network interface id.
+        """
+        return pulumi.get(self, "network_interface_id")
+
+    @property
+    @pulumi.getter(name="networkInterfaceName")
+    def network_interface_name(self) -> str:
+        """
+        The network interface name.
+        """
+        return pulumi.get(self, "network_interface_name")
+
+    @property
+    @pulumi.getter(name="primaryIpAddress")
+    def primary_ip_address(self) -> str:
+        """
+        The primary private IP address of the ENI.
+        """
+        return pulumi.get(self, "primary_ip_address")
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> str:
+        """
+        The primary private IP address of the ENI.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @property
+    @pulumi.getter(name="privateIpAddresses")
+    def private_ip_addresses(self) -> Sequence[str]:
+        return pulumi.get(self, "private_ip_addresses")
+
+    @property
+    @pulumi.getter(name="privateIps")
+    def private_ips(self) -> Sequence[str]:
+        """
+        A list of secondary private IP address that is assigned to the ENI.
+        """
+        return pulumi.get(self, "private_ips")
+
+    @property
+    @pulumi.getter(name="queueNumber")
+    def queue_number(self) -> int:
+        """
+        Number of network card queues.
+        """
+        return pulumi.get(self, "queue_number")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The resource group id.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Sequence[str]:
+        """
+        The security group ids.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Sequence[str]:
+        """
+        The security groups.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> int:
+        """
+        The service id.
+        """
+        return pulumi.get(self, "service_id")
+
+    @property
+    @pulumi.getter(name="serviceManaged")
+    def service_managed(self) -> bool:
+        """
+        Whether the user of the elastic network card is a cloud product or a virtual vendor.
+        """
+        return pulumi.get(self, "service_managed")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the ENI.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the ENI.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The Vpc Id.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone id.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
 class GetEcsSnapshotsSnapshotResult(dict):
     def __init__(__self__, *,
                  category: str,
@@ -4030,6 +4540,7 @@ class GetEipsEipResult(dict):
     def __init__(__self__, *,
                  bandwidth: str,
                  creation_time: str,
+                 deletion_protection: bool,
                  id: str,
                  instance_id: str,
                  instance_type: str,
@@ -4039,6 +4550,7 @@ class GetEipsEipResult(dict):
         """
         :param str bandwidth: EIP internet max bandwidth in Mbps.
         :param str creation_time: Time of creation.
+        :param bool deletion_protection: (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
         :param str id: ID of the EIP.
         :param str instance_id: The ID of the instance that is being bound.
         :param str instance_type: The instance type of that the EIP is bound.
@@ -4048,6 +4560,7 @@ class GetEipsEipResult(dict):
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -4070,6 +4583,14 @@ class GetEipsEipResult(dict):
         Time of creation.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        """
+        (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -5474,16 +5995,24 @@ class GetNetworkInterfacesInterfaceResult(dict):
                  instance_id: str,
                  mac: str,
                  name: str,
+                 network_interface_id: str,
+                 network_interface_name: str,
+                 primary_ip_address: str,
                  private_ip: str,
+                 private_ip_addresses: Sequence[str],
                  private_ips: Sequence[str],
-                 public_ip: str,
+                 queue_number: int,
                  resource_group_id: str,
+                 security_group_ids: Sequence[str],
                  security_groups: Sequence[str],
+                 service_id: int,
+                 service_managed: bool,
                  status: str,
+                 tags: Mapping[str, Any],
+                 type: str,
                  vpc_id: str,
                  vswitch_id: str,
-                 zone_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 zone_id: str):
         """
         :param str creation_time: Creation time of the ENI.
         :param str description: Description of the ENI.
@@ -5493,14 +6022,13 @@ class GetNetworkInterfacesInterfaceResult(dict):
         :param str name: Name of the ENI.
         :param str private_ip: Primary private IP of the ENI.
         :param Sequence[str] private_ips: A list of secondary private IP address that is assigned to the ENI.
-        :param str public_ip: Public IP of the ENI.
         :param str resource_group_id: The Id of resource group.
         :param Sequence[str] security_groups: A list of security group that the ENI belongs to.
         :param str status: Current status of the ENI.
+        :param Mapping[str, Any] tags: A map of tags assigned to the ENI.
         :param str vpc_id: ID of the VPC that the ENI belongs to.
         :param str vswitch_id: ID of the VSwitch that the ENI is linked to.
         :param str zone_id: ID of the availability zone that the ENI belongs to.
-        :param Mapping[str, Any] tags: A map of tags assigned to the ENI.
         """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
@@ -5508,17 +6036,24 @@ class GetNetworkInterfacesInterfaceResult(dict):
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "network_interface_name", network_interface_name)
+        pulumi.set(__self__, "primary_ip_address", primary_ip_address)
         pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
         pulumi.set(__self__, "private_ips", private_ips)
-        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "queue_number", queue_number)
         pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "service_managed", service_managed)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -5569,12 +6104,32 @@ class GetNetworkInterfacesInterfaceResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkInterfaceId")
+    def network_interface_id(self) -> str:
+        return pulumi.get(self, "network_interface_id")
+
+    @property
+    @pulumi.getter(name="networkInterfaceName")
+    def network_interface_name(self) -> str:
+        return pulumi.get(self, "network_interface_name")
+
+    @property
+    @pulumi.getter(name="primaryIpAddress")
+    def primary_ip_address(self) -> str:
+        return pulumi.get(self, "primary_ip_address")
+
+    @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
         """
         Primary private IP of the ENI.
         """
         return pulumi.get(self, "private_ip")
+
+    @property
+    @pulumi.getter(name="privateIpAddresses")
+    def private_ip_addresses(self) -> Sequence[str]:
+        return pulumi.get(self, "private_ip_addresses")
 
     @property
     @pulumi.getter(name="privateIps")
@@ -5585,12 +6140,9 @@ class GetNetworkInterfacesInterfaceResult(dict):
         return pulumi.get(self, "private_ips")
 
     @property
-    @pulumi.getter(name="publicIp")
-    def public_ip(self) -> str:
-        """
-        Public IP of the ENI.
-        """
-        return pulumi.get(self, "public_ip")
+    @pulumi.getter(name="queueNumber")
+    def queue_number(self) -> int:
+        return pulumi.get(self, "queue_number")
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -5601,6 +6153,11 @@ class GetNetworkInterfacesInterfaceResult(dict):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Sequence[str]:
+        return pulumi.get(self, "security_group_ids")
+
+    @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Sequence[str]:
         """
@@ -5609,12 +6166,35 @@ class GetNetworkInterfacesInterfaceResult(dict):
         return pulumi.get(self, "security_groups")
 
     @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> int:
+        return pulumi.get(self, "service_id")
+
+    @property
+    @pulumi.getter(name="serviceManaged")
+    def service_managed(self) -> bool:
+        return pulumi.get(self, "service_managed")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
         Current status of the ENI.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the ENI.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="vpcId")
@@ -5639,14 +6219,6 @@ class GetNetworkInterfacesInterfaceResult(dict):
         ID of the availability zone that the ENI belongs to.
         """
         return pulumi.get(self, "zone_id")
-
-    @property
-    @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
-        """
-        A map of tags assigned to the ENI.
-        """
-        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * const example = new alicloud.ecs.EcsDisk("example", {
  *     category: "cloud_efficiency",
  *     description: "Hello ecs disk.",
+ *     diskName: "tf-test",
  *     encrypted: true,
  *     kmsKeyId: "2a6767f0-a16c-4679-a60f-13bf*****",
  *     size: 30,
@@ -103,7 +104,7 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+     * Indicates whether to enable creating snapshot automatically. Default value: `false`.
      */
     public readonly enableAutoSnapshot!: pulumi.Output<boolean | undefined>;
     public readonly encryptAlgorithm!: pulumi.Output<string | undefined>;
@@ -114,7 +115,7 @@ export class EcsDisk extends pulumi.CustomResource {
     /**
      * The ID of the instance to which the created subscription disk is automatically attached.
      * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-     * * You cannot specify both the `zoneId` and `instanceId` parameters.
+     * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -128,7 +129,7 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+     * Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -137,7 +138,7 @@ export class EcsDisk extends pulumi.CustomResource {
      * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
      * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
-    public readonly performanceLevel!: pulumi.Output<string | undefined>;
+    public readonly performanceLevel!: pulumi.Output<string>;
     /**
      * The Id of resource group which the disk belongs.
      */
@@ -170,7 +171,7 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
-     * ID of the free zone to which the disk belongs.
+     * ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -288,7 +289,7 @@ export interface EcsDiskState {
      */
     readonly dryRun?: pulumi.Input<boolean>;
     /**
-     * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+     * Indicates whether to enable creating snapshot automatically. Default value: `false`.
      */
     readonly enableAutoSnapshot?: pulumi.Input<boolean>;
     readonly encryptAlgorithm?: pulumi.Input<string>;
@@ -299,7 +300,7 @@ export interface EcsDiskState {
     /**
      * The ID of the instance to which the created subscription disk is automatically attached.
      * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-     * * You cannot specify both the `zoneId` and `instanceId` parameters.
+     * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
@@ -313,7 +314,7 @@ export interface EcsDiskState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+     * Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
      */
     readonly paymentType?: pulumi.Input<string>;
     /**
@@ -355,7 +356,7 @@ export interface EcsDiskState {
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * ID of the free zone to which the disk belongs.
+     * ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -399,7 +400,7 @@ export interface EcsDiskArgs {
      */
     readonly dryRun?: pulumi.Input<boolean>;
     /**
-     * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+     * Indicates whether to enable creating snapshot automatically. Default value: `false`.
      */
     readonly enableAutoSnapshot?: pulumi.Input<boolean>;
     readonly encryptAlgorithm?: pulumi.Input<string>;
@@ -410,7 +411,7 @@ export interface EcsDiskArgs {
     /**
      * The ID of the instance to which the created subscription disk is automatically attached.
      * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
-     * * You cannot specify both the `zoneId` and `instanceId` parameters.
+     * * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
@@ -424,7 +425,7 @@ export interface EcsDiskArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`.
+     * Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
      */
     readonly paymentType?: pulumi.Input<string>;
     /**
@@ -462,7 +463,7 @@ export interface EcsDiskArgs {
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * ID of the free zone to which the disk belongs.
+     * ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
      */
     readonly zoneId?: pulumi.Input<string>;
 }

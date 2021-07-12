@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> LastModified { get; private set; } = null!;
 
         /// <summary>
-        /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         /// </summary>
         [Output("memorySize")]
         public Output<int?> MemorySize { get; private set; } = null!;
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         /// </summary>
         [Input("memorySize")]
         public Input<int>? MemorySize { get; set; }
@@ -405,7 +405,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? LastModified { get; set; }
 
         /// <summary>
-        /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 3072].
+        /// Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         /// </summary>
         [Input("memorySize")]
         public Input<int>? MemorySize { get; set; }

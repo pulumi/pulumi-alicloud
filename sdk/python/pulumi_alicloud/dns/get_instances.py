@@ -20,7 +20,10 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, id=None, ids=None, instances=None, lang=None, output_file=None, user_client_ip=None):
+    def __init__(__self__, domain_type=None, id=None, ids=None, instances=None, lang=None, output_file=None, user_client_ip=None):
+        if domain_type and not isinstance(domain_type, str):
+            raise TypeError("Expected argument 'domain_type' to be a str")
+        pulumi.set(__self__, "domain_type", domain_type)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +42,11 @@ class GetInstancesResult:
         if user_client_ip and not isinstance(user_client_ip, str):
             raise TypeError("Expected argument 'user_client_ip' to be a str")
         pulumi.set(__self__, "user_client_ip", user_client_ip)
+
+    @property
+    @pulumi.getter(name="domainType")
+    def domain_type(self) -> Optional[str]:
+        return pulumi.get(self, "domain_type")
 
     @property
     @pulumi.getter
@@ -86,6 +94,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
         if False:
             yield self
         return GetInstancesResult(
+            domain_type=self.domain_type,
             id=self.id,
             ids=self.ids,
             instances=self.instances,
@@ -94,7 +103,8 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             user_client_ip=self.user_client_ip)
 
 
-def get_instances(ids: Optional[Sequence[str]] = None,
+def get_instances(domain_type: Optional[str] = None,
+                  ids: Optional[Sequence[str]] = None,
                   lang: Optional[str] = None,
                   output_file: Optional[str] = None,
                   user_client_ip: Optional[str] = None,
@@ -105,6 +115,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of instance IDs.
     """
     __args__ = dict()
+    __args__['domainType'] = domain_type
     __args__['ids'] = ids
     __args__['lang'] = lang
     __args__['outputFile'] = output_file
@@ -116,6 +127,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dns/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
+        domain_type=__ret__.domain_type,
         id=__ret__.id,
         ids=__ret__.ids,
         instances=__ret__.instances,

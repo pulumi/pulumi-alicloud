@@ -30,9 +30,12 @@ import * as utilities from "../utilities";
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  *     vswitchName: name,
  * });
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {vswitchId: defaultSwitch.id});
- * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultLoadBalancer.id});
- * const sampleDs = defaultLoadBalancer.id.apply(id => alicloud.slb.getServerGroups({
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: name,
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultApplicationLoadBalancer.id});
+ * const sampleDs = defaultApplicationLoadBalancer.id.apply(id => alicloud.slb.getServerGroups({
  *     loadBalancerId: id,
  * }));
  * export const firstSlbServerGroupId = sampleDs.slbServerGroups[0].id;

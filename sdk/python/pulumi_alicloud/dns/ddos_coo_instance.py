@@ -19,7 +19,8 @@ class DdosCooInstanceArgs:
                  port_count: pulumi.Input[str],
                  service_bandwidth: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[int]] = None):
+                 period: Optional[pulumi.Input[int]] = None,
+                 product_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DdosCooInstance resource.
         :param pulumi.Input[str] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
@@ -29,6 +30,10 @@ class DdosCooInstanceArgs:
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+        :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+               - ddoscoo: Only supports domestic account.
+               - ddoscoo_intl: Only supports to international account.
+               Default to ddoscoo.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "base_bandwidth", base_bandwidth)
@@ -39,6 +44,8 @@ class DdosCooInstanceArgs:
             pulumi.set(__self__, "name", name)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if product_type is not None:
+            pulumi.set(__self__, "product_type", product_type)
 
     @property
     @pulumi.getter
@@ -124,6 +131,21 @@ class DdosCooInstanceArgs:
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
+    @property
+    @pulumi.getter(name="productType")
+    def product_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        - ddoscoo: Only supports domestic account.
+        - ddoscoo_intl: Only supports to international account.
+        Default to ddoscoo.
+        """
+        return pulumi.get(self, "product_type")
+
+    @product_type.setter
+    def product_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product_type", value)
+
 
 @pulumi.input_type
 class _DdosCooInstanceState:
@@ -134,6 +156,7 @@ class _DdosCooInstanceState:
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  port_count: Optional[pulumi.Input[str]] = None,
+                 product_type: Optional[pulumi.Input[str]] = None,
                  service_bandwidth: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DdosCooInstance resources.
@@ -143,6 +166,10 @@ class _DdosCooInstanceState:
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
+        :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+               - ddoscoo: Only supports domestic account.
+               - ddoscoo_intl: Only supports to international account.
+               Default to ddoscoo.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
         if bandwidth is not None:
@@ -157,6 +184,8 @@ class _DdosCooInstanceState:
             pulumi.set(__self__, "period", period)
         if port_count is not None:
             pulumi.set(__self__, "port_count", port_count)
+        if product_type is not None:
+            pulumi.set(__self__, "product_type", product_type)
         if service_bandwidth is not None:
             pulumi.set(__self__, "service_bandwidth", service_bandwidth)
 
@@ -233,6 +262,21 @@ class _DdosCooInstanceState:
         pulumi.set(self, "port_count", value)
 
     @property
+    @pulumi.getter(name="productType")
+    def product_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        - ddoscoo: Only supports domestic account.
+        - ddoscoo_intl: Only supports to international account.
+        Default to ddoscoo.
+        """
+        return pulumi.get(self, "product_type")
+
+    @product_type.setter
+    def product_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product_type", value)
+
+    @property
     @pulumi.getter(name="serviceBandwidth")
     def service_bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
@@ -261,6 +305,7 @@ class DdosCooInstance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  port_count: Optional[pulumi.Input[str]] = None,
+                 product_type: Optional[pulumi.Input[str]] = None,
                  service_bandwidth: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -286,6 +331,7 @@ class DdosCooInstance(pulumi.CustomResource):
             domain_count="50",
             period=1,
             port_count="50",
+            product_type="ddoscoo",
             service_bandwidth="100")
         ```
 
@@ -305,6 +351,10 @@ class DdosCooInstance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
+        :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+               - ddoscoo: Only supports domestic account.
+               - ddoscoo_intl: Only supports to international account.
+               Default to ddoscoo.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
         ...
@@ -336,6 +386,7 @@ class DdosCooInstance(pulumi.CustomResource):
             domain_count="50",
             period=1,
             port_count="50",
+            product_type="ddoscoo",
             service_bandwidth="100")
         ```
 
@@ -368,6 +419,7 @@ class DdosCooInstance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  port_count: Optional[pulumi.Input[str]] = None,
+                 product_type: Optional[pulumi.Input[str]] = None,
                  service_bandwidth: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         pulumi.log.warn("""DdosCooInstance is deprecated: alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance""")
@@ -396,6 +448,7 @@ class DdosCooInstance(pulumi.CustomResource):
             if port_count is None and not opts.urn:
                 raise TypeError("Missing required property 'port_count'")
             __props__.__dict__["port_count"] = port_count
+            __props__.__dict__["product_type"] = product_type
             if service_bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'service_bandwidth'")
             __props__.__dict__["service_bandwidth"] = service_bandwidth
@@ -415,6 +468,7 @@ class DdosCooInstance(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             port_count: Optional[pulumi.Input[str]] = None,
+            product_type: Optional[pulumi.Input[str]] = None,
             service_bandwidth: Optional[pulumi.Input[str]] = None) -> 'DdosCooInstance':
         """
         Get an existing DdosCooInstance resource's state with the given name, id, and optional extra
@@ -429,6 +483,10 @@ class DdosCooInstance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[int] period: The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
         :param pulumi.Input[str] port_count: Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
+        :param pulumi.Input[str] product_type: The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+               - ddoscoo: Only supports domestic account.
+               - ddoscoo_intl: Only supports to international account.
+               Default to ddoscoo.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -441,6 +499,7 @@ class DdosCooInstance(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["period"] = period
         __props__.__dict__["port_count"] = port_count
+        __props__.__dict__["product_type"] = product_type
         __props__.__dict__["service_bandwidth"] = service_bandwidth
         return DdosCooInstance(resource_name, opts=opts, __props__=__props__)
 
@@ -491,6 +550,17 @@ class DdosCooInstance(pulumi.CustomResource):
         Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         """
         return pulumi.get(self, "port_count")
+
+    @property
+    @pulumi.getter(name="productType")
+    def product_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        - ddoscoo: Only supports domestic account.
+        - ddoscoo_intl: Only supports to international account.
+        Default to ddoscoo.
+        """
+        return pulumi.get(self, "product_type")
 
     @property
     @pulumi.getter(name="serviceBandwidth")

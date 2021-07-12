@@ -68,7 +68,11 @@ namespace Pulumi.AliCloud.Mse
         public Output<string?> ClusterAliasName { get; private set; } = null!;
 
         /// <summary>
-        /// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+        /// The engine specification of MSE Cluster. Valid values:
+        /// `MSE_SC_1_2_200_c`：1C2G
+        /// `MSE_SC_2_4_200_c`：2C4G
+        /// `MSE_SC_4_8_200_c`：4C8G
+        /// `MSE_SC_8_16_200_c`：8C16G
         /// </summary>
         [Output("clusterSpecification")]
         public Output<string> ClusterSpecification { get; private set; } = null!;
@@ -98,7 +102,7 @@ namespace Pulumi.AliCloud.Mse
         public Output<int> InstanceCount { get; private set; } = null!;
 
         /// <summary>
-        /// The type of network. Range limit: 1~5.
+        /// The type of network. Valid values: "privatenet" and "pubnet".
         /// </summary>
         [Output("netType")]
         public Output<string> NetType { get; private set; } = null!;
@@ -198,7 +202,11 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? ClusterAliasName { get; set; }
 
         /// <summary>
-        /// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+        /// The engine specification of MSE Cluster. Valid values:
+        /// `MSE_SC_1_2_200_c`：1C2G
+        /// `MSE_SC_2_4_200_c`：2C4G
+        /// `MSE_SC_4_8_200_c`：4C8G
+        /// `MSE_SC_8_16_200_c`：8C16G
         /// </summary>
         [Input("clusterSpecification", required: true)]
         public Input<string> ClusterSpecification { get; set; } = null!;
@@ -228,7 +236,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<int> InstanceCount { get; set; } = null!;
 
         /// <summary>
-        /// The type of network. Range limit: 1~5.
+        /// The type of network. Valid values: "privatenet" and "pubnet".
         /// </summary>
         [Input("netType", required: true)]
         public Input<string> NetType { get; set; } = null!;
@@ -283,7 +291,11 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? ClusterAliasName { get; set; }
 
         /// <summary>
-        /// The engine specification of MSE Cluster. Valid values: `MSE_SC_1_2_200_c`, `MSE_SC_2`, `MSE_SC_4_8_200_c_4_200_c`, `MSE_SC_8_16_200_c`.
+        /// The engine specification of MSE Cluster. Valid values:
+        /// `MSE_SC_1_2_200_c`：1C2G
+        /// `MSE_SC_2_4_200_c`：2C4G
+        /// `MSE_SC_4_8_200_c`：4C8G
+        /// `MSE_SC_8_16_200_c`：8C16G
         /// </summary>
         [Input("clusterSpecification")]
         public Input<string>? ClusterSpecification { get; set; }
@@ -313,7 +325,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<int>? InstanceCount { get; set; }
 
         /// <summary>
-        /// The type of network. Range limit: 1~5.
+        /// The type of network. Valid values: "privatenet" and "pubnet".
         /// </summary>
         [Input("netType")]
         public Input<string>? NetType { get; set; }

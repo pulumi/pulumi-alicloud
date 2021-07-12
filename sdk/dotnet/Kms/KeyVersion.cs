@@ -50,12 +50,6 @@ namespace Pulumi.AliCloud.Kms
     public partial class KeyVersion : Pulumi.CustomResource
     {
         /// <summary>
-        /// The date and time (UTC time) when the Alikms key version was created.
-        /// </summary>
-        [Output("creationDate")]
-        public Output<string> CreationDate { get; private set; } = null!;
-
-        /// <summary>
         /// The id of the master key (CMK).
         /// </summary>
         [Output("keyId")]
@@ -126,12 +120,6 @@ namespace Pulumi.AliCloud.Kms
 
     public sealed class KeyVersionState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The date and time (UTC time) when the Alikms key version was created.
-        /// </summary>
-        [Input("creationDate")]
-        public Input<string>? CreationDate { get; set; }
-
         /// <summary>
         /// The id of the master key (CMK).
         /// </summary>

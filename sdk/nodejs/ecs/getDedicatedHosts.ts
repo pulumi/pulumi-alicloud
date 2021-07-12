@@ -41,6 +41,7 @@ export function getDedicatedHosts(args?: GetDedicatedHostsArgs, opts?: pulumi.In
         "dedicatedHostType": args.dedicatedHostType,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
+        "operationLocks": args.operationLocks,
         "outputFile": args.outputFile,
         "resourceGroupId": args.resourceGroupId,
         "status": args.status,
@@ -73,6 +74,10 @@ export interface GetDedicatedHostsArgs {
      * A regex string to filter results by the ECS Dedicated Host name.
      */
     readonly nameRegex?: string;
+    /**
+     * The reason why the dedicated host resource is locked.
+     */
+    readonly operationLocks?: inputs.ecs.GetDedicatedHostsOperationLock[];
     /**
      * Save the result to the file.
      */
@@ -128,6 +133,10 @@ export interface GetDedicatedHostsResult {
      * A list of ECS Dedicated Host names.
      */
     readonly names: string[];
+    /**
+     * (Available in 1.123.1+) The operation_locks. contains the following attribute:
+     */
+    readonly operationLocks?: outputs.ecs.GetDedicatedHostsOperationLock[];
     readonly outputFile?: string;
     /**
      * The ID of the resource group to which the dedicated host belongs.

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleAbortMultipartUpload> AbortMultipartUploads;
         /// <summary>
-        /// Specifies lifecycle rule status.
+        /// Specifies the accelerate status of a bucket.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

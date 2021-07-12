@@ -56,10 +56,22 @@ namespace Pulumi.AliCloud.Kms
     public sealed class GetSecretsArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
+        /// <summary>
         /// Whether to include the predetermined resource tag in the return value. Default to `false`.
         /// </summary>
         [Input("fetchTags")]
         public bool? FetchTags { get; set; }
+
+        /// <summary>
+        /// Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+        /// </summary>
+        [Input("filters")]
+        public string? Filters { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
@@ -103,7 +115,9 @@ namespace Pulumi.AliCloud.Kms
     [OutputType]
     public sealed class GetSecretsResult
     {
+        public readonly bool? EnableDetails;
         public readonly bool? FetchTags;
+        public readonly string? Filters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -123,13 +137,17 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecretsSecretResult> Secrets;
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// (Optional) A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]
         private GetSecretsResult(
+            bool? enableDetails,
+
             bool? fetchTags,
+
+            string? filters,
 
             string id,
 
@@ -145,7 +163,9 @@ namespace Pulumi.AliCloud.Kms
 
             ImmutableDictionary<string, object>? tags)
         {
+            EnableDetails = enableDetails;
             FetchTags = fetchTags;
+            Filters = filters;
             Id = id;
             Ids = ids;
             NameRegex = nameRegex;

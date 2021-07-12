@@ -175,6 +175,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly systemDiskName!: pulumi.Output<string | undefined>;
     /**
+     * The performance level of the ESSD used as the system disk.
+     */
+    public readonly systemDiskPerformanceLevel!: pulumi.Output<string | undefined>;
+    /**
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
      */
     public readonly systemDiskSize!: pulumi.Output<number | undefined>;
@@ -234,6 +238,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
             inputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
             inputs["systemDiskName"] = state ? state.systemDiskName : undefined;
+            inputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
             inputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
@@ -274,6 +279,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             inputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
             inputs["systemDiskName"] = args ? args.systemDiskName : undefined;
+            inputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
             inputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
@@ -421,6 +427,10 @@ export interface ScalingConfigurationState {
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */
     readonly systemDiskName?: pulumi.Input<string>;
+    /**
+     * The performance level of the ESSD used as the system disk.
+     */
+    readonly systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
      */
@@ -573,6 +583,10 @@ export interface ScalingConfigurationArgs {
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */
     readonly systemDiskName?: pulumi.Input<string>;
+    /**
+     * The performance level of the ESSD used as the system disk.
+     */
+    readonly systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
      */

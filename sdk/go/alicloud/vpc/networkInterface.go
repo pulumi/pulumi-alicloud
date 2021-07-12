@@ -11,76 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an ECS Elastic Network Interface resource.
-//
-// For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
-//
-// > **NOTE** Only one of privateIps or privateIpsCount can be specified when assign private IPs.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		name := "networkInterfaceName"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("192.168.0.0/24"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// 			CidrBlock: pulumi.String("192.168.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-// 			VpcId:     vpc.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
-// 			VpcId: vpc.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vpc.NewNetworkInterface(ctx, "defaultNetworkInterface", &vpc.NetworkInterfaceArgs{
-// 			VswitchId: vswitch.ID(),
-// 			SecurityGroups: pulumi.StringArray{
-// 				group.ID(),
-// 			},
-// 			PrivateIp:       pulumi.String("192.168.0.2"),
-// 			PrivateIpsCount: pulumi.Int(3),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // ENI can be imported using the id, e.g.
@@ -96,17 +26,34 @@ type NetworkInterface struct {
 	// (Available in 1.54.0+) The MAC address of an ENI.
 	Mac pulumi.StringOutput `pulumi:"mac"`
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-	Name pulumi.StringOutput `pulumi:"name"`
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+	Name                 pulumi.StringOutput `pulumi:"name"`
+	NetworkInterfaceName pulumi.StringOutput `pulumi:"networkInterfaceName"`
+	PrimaryIpAddress     pulumi.StringOutput `pulumi:"primaryIpAddress"`
 	// The primary private IP of the ENI.
-	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
+	//
+	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+	PrivateIp          pulumi.StringOutput      `pulumi:"privateIp"`
+	PrivateIpAddresses pulumi.StringArrayOutput `pulumi:"privateIpAddresses"`
 	// List of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+	//
+	// Deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
 	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
 	// Number of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+	//
+	// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
 	PrivateIpsCount pulumi.IntOutput `pulumi:"privateIpsCount"`
+	QueueNumber     pulumi.IntOutput `pulumi:"queueNumber"`
 	// The Id of resource group which the network interface belongs.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId                pulumi.StringPtrOutput   `pulumi:"resourceGroupId"`
+	SecondaryPrivateIpAddressCount pulumi.IntOutput         `pulumi:"secondaryPrivateIpAddressCount"`
+	SecurityGroupIds               pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// A list of security group ids to associate with.
+	//
+	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
+	Status         pulumi.StringOutput      `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The VSwitch to create the ENI in.
@@ -120,9 +67,6 @@ func NewNetworkInterface(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.SecurityGroups == nil {
-		return nil, errors.New("invalid value for required argument 'SecurityGroups'")
-	}
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
@@ -153,17 +97,34 @@ type networkInterfaceState struct {
 	// (Available in 1.54.0+) The MAC address of an ENI.
 	Mac *string `pulumi:"mac"`
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-	Name *string `pulumi:"name"`
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+	Name                 *string `pulumi:"name"`
+	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+	PrimaryIpAddress     *string `pulumi:"primaryIpAddress"`
 	// The primary private IP of the ENI.
-	PrivateIp *string `pulumi:"privateIp"`
+	//
+	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+	PrivateIp          *string  `pulumi:"privateIp"`
+	PrivateIpAddresses []string `pulumi:"privateIpAddresses"`
 	// List of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+	//
+	// Deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
 	PrivateIps []string `pulumi:"privateIps"`
 	// Number of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+	//
+	// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
 	PrivateIpsCount *int `pulumi:"privateIpsCount"`
+	QueueNumber     *int `pulumi:"queueNumber"`
 	// The Id of resource group which the network interface belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	ResourceGroupId                *string  `pulumi:"resourceGroupId"`
+	SecondaryPrivateIpAddressCount *int     `pulumi:"secondaryPrivateIpAddressCount"`
+	SecurityGroupIds               []string `pulumi:"securityGroupIds"`
 	// A list of security group ids to associate with.
+	//
+	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups []string `pulumi:"securityGroups"`
+	Status         *string  `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VSwitch to create the ENI in.
@@ -176,17 +137,34 @@ type NetworkInterfaceState struct {
 	// (Available in 1.54.0+) The MAC address of an ENI.
 	Mac pulumi.StringPtrInput
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-	Name pulumi.StringPtrInput
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+	Name                 pulumi.StringPtrInput
+	NetworkInterfaceName pulumi.StringPtrInput
+	PrimaryIpAddress     pulumi.StringPtrInput
 	// The primary private IP of the ENI.
-	PrivateIp pulumi.StringPtrInput
+	//
+	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+	PrivateIp          pulumi.StringPtrInput
+	PrivateIpAddresses pulumi.StringArrayInput
 	// List of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+	//
+	// Deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
 	PrivateIps pulumi.StringArrayInput
 	// Number of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+	//
+	// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
 	PrivateIpsCount pulumi.IntPtrInput
+	QueueNumber     pulumi.IntPtrInput
 	// The Id of resource group which the network interface belongs.
-	ResourceGroupId pulumi.StringPtrInput
+	ResourceGroupId                pulumi.StringPtrInput
+	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
+	SecurityGroupIds               pulumi.StringArrayInput
 	// A list of security group ids to associate with.
+	//
+	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayInput
+	Status         pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The VSwitch to create the ENI in.
@@ -201,16 +179,32 @@ type networkInterfaceArgs struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-	Name *string `pulumi:"name"`
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+	Name                 *string `pulumi:"name"`
+	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+	PrimaryIpAddress     *string `pulumi:"primaryIpAddress"`
 	// The primary private IP of the ENI.
-	PrivateIp *string `pulumi:"privateIp"`
+	//
+	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+	PrivateIp          *string  `pulumi:"privateIp"`
+	PrivateIpAddresses []string `pulumi:"privateIpAddresses"`
 	// List of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+	//
+	// Deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
 	PrivateIps []string `pulumi:"privateIps"`
 	// Number of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+	//
+	// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
 	PrivateIpsCount *int `pulumi:"privateIpsCount"`
+	QueueNumber     *int `pulumi:"queueNumber"`
 	// The Id of resource group which the network interface belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	ResourceGroupId                *string  `pulumi:"resourceGroupId"`
+	SecondaryPrivateIpAddressCount *int     `pulumi:"secondaryPrivateIpAddressCount"`
+	SecurityGroupIds               []string `pulumi:"securityGroupIds"`
 	// A list of security group ids to associate with.
+	//
+	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -223,16 +217,32 @@ type NetworkInterfaceArgs struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-	Name pulumi.StringPtrInput
+	//
+	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
+	Name                 pulumi.StringPtrInput
+	NetworkInterfaceName pulumi.StringPtrInput
+	PrimaryIpAddress     pulumi.StringPtrInput
 	// The primary private IP of the ENI.
-	PrivateIp pulumi.StringPtrInput
+	//
+	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
+	PrivateIp          pulumi.StringPtrInput
+	PrivateIpAddresses pulumi.StringArrayInput
 	// List of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+	//
+	// Deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
 	PrivateIps pulumi.StringArrayInput
 	// Number of secondary private IPs to assign to the ENI. Don't use both privateIps and privateIpsCount in the same ENI resource block.
+	//
+	// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
 	PrivateIpsCount pulumi.IntPtrInput
+	QueueNumber     pulumi.IntPtrInput
 	// The Id of resource group which the network interface belongs.
-	ResourceGroupId pulumi.StringPtrInput
+	ResourceGroupId                pulumi.StringPtrInput
+	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
+	SecurityGroupIds               pulumi.StringArrayInput
 	// A list of security group ids to associate with.
+	//
+	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput

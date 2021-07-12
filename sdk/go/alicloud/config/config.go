@@ -23,6 +23,16 @@ func GetAssumeRole(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:assumeRole")
 }
 
+// The maximum timeout of the client connection server.
+func GetClientConnectTimeout(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "alicloud:clientConnectTimeout")
+}
+
+// The maximum timeout of the client read request.
+func GetClientReadTimeout(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "alicloud:clientReadTimeout")
+}
+
 // Use this to mark a terraform configuration file source.
 func GetConfigurationSource(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:configurationSource")

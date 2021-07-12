@@ -58,6 +58,8 @@ type Secret struct {
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// The description of the secret.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Whether to enable automatic key rotation.
+	EnableAutomaticRotation pulumi.BoolPtrOutput `pulumi:"enableAutomaticRotation"`
 	// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
 	EncryptionKeyId pulumi.StringPtrOutput `pulumi:"encryptionKeyId"`
 	// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
@@ -66,6 +68,8 @@ type Secret struct {
 	PlannedDeleteTime pulumi.StringOutput `pulumi:"plannedDeleteTime"`
 	// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
 	RecoveryWindowInDays pulumi.IntPtrOutput `pulumi:"recoveryWindowInDays"`
+	// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+	RotationInterval pulumi.StringPtrOutput `pulumi:"rotationInterval"`
 	// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
 	SecretData pulumi.StringOutput `pulumi:"secretData"`
 	// The type of the secret value. Valid values: text, binary. Default to "text".
@@ -122,6 +126,8 @@ type secretState struct {
 	Arn *string `pulumi:"arn"`
 	// The description of the secret.
 	Description *string `pulumi:"description"`
+	// Whether to enable automatic key rotation.
+	EnableAutomaticRotation *bool `pulumi:"enableAutomaticRotation"`
 	// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
 	EncryptionKeyId *string `pulumi:"encryptionKeyId"`
 	// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
@@ -130,6 +136,8 @@ type secretState struct {
 	PlannedDeleteTime *string `pulumi:"plannedDeleteTime"`
 	// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
 	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
+	// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+	RotationInterval *string `pulumi:"rotationInterval"`
 	// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
 	SecretData *string `pulumi:"secretData"`
 	// The type of the secret value. Valid values: text, binary. Default to "text".
@@ -149,6 +157,8 @@ type SecretState struct {
 	Arn pulumi.StringPtrInput
 	// The description of the secret.
 	Description pulumi.StringPtrInput
+	// Whether to enable automatic key rotation.
+	EnableAutomaticRotation pulumi.BoolPtrInput
 	// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
 	EncryptionKeyId pulumi.StringPtrInput
 	// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
@@ -157,6 +167,8 @@ type SecretState struct {
 	PlannedDeleteTime pulumi.StringPtrInput
 	// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
 	RecoveryWindowInDays pulumi.IntPtrInput
+	// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+	RotationInterval pulumi.StringPtrInput
 	// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
 	SecretData pulumi.StringPtrInput
 	// The type of the secret value. Valid values: text, binary. Default to "text".
@@ -178,12 +190,16 @@ func (SecretState) ElementType() reflect.Type {
 type secretArgs struct {
 	// The description of the secret.
 	Description *string `pulumi:"description"`
+	// Whether to enable automatic key rotation.
+	EnableAutomaticRotation *bool `pulumi:"enableAutomaticRotation"`
 	// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
 	EncryptionKeyId *string `pulumi:"encryptionKeyId"`
 	// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
 	ForceDeleteWithoutRecovery *bool `pulumi:"forceDeleteWithoutRecovery"`
 	// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
 	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
+	// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+	RotationInterval *string `pulumi:"rotationInterval"`
 	// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
 	SecretData string `pulumi:"secretData"`
 	// The type of the secret value. Valid values: text, binary. Default to "text".
@@ -202,12 +218,16 @@ type secretArgs struct {
 type SecretArgs struct {
 	// The description of the secret.
 	Description pulumi.StringPtrInput
+	// Whether to enable automatic key rotation.
+	EnableAutomaticRotation pulumi.BoolPtrInput
 	// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
 	EncryptionKeyId pulumi.StringPtrInput
 	// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
 	ForceDeleteWithoutRecovery pulumi.BoolPtrInput
 	// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
 	RecoveryWindowInDays pulumi.IntPtrInput
+	// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+	RotationInterval pulumi.StringPtrInput
 	// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
 	SecretData pulumi.StringInput
 	// The type of the secret value. Valid values: text, binary. Default to "text".

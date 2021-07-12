@@ -26,7 +26,7 @@ type ZoneRecord struct {
 	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The Private Zone Record ID.
-	RecordId pulumi.IntOutput `pulumi:"recordId"`
+	RecordId pulumi.StringOutput `pulumi:"recordId"`
 	// The remark of the Private Zone Record.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The resource record of the Private Zone Record.
@@ -93,7 +93,7 @@ type zoneRecordState struct {
 	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
 	Priority *int `pulumi:"priority"`
 	// The Private Zone Record ID.
-	RecordId *int `pulumi:"recordId"`
+	RecordId *string `pulumi:"recordId"`
 	// The remark of the Private Zone Record.
 	Remark *string `pulumi:"remark"`
 	// The resource record of the Private Zone Record.
@@ -123,7 +123,7 @@ type ZoneRecordState struct {
 	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
 	Priority pulumi.IntPtrInput
 	// The Private Zone Record ID.
-	RecordId pulumi.IntPtrInput
+	RecordId pulumi.StringPtrInput
 	// The remark of the Private Zone Record.
 	Remark pulumi.StringPtrInput
 	// The resource record of the Private Zone Record.

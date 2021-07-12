@@ -19,10 +19,20 @@ class ReadOnlyInstanceArgs:
                  instance_storage: pulumi.Input[int],
                  instance_type: pulumi.Input[str],
                  master_db_instance_id: pulumi.Input[str],
+                 acl: Optional[pulumi.Input[str]] = None,
+                 ca_type: Optional[pulumi.Input[str]] = None,
+                 client_ca_cert: Optional[pulumi.Input[str]] = None,
+                 client_ca_enabled: Optional[pulumi.Input[int]] = None,
+                 client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
+                 client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
+                 replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 server_cert: Optional[pulumi.Input[str]] = None,
+                 server_key: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -32,10 +42,37 @@ class ReadOnlyInstanceArgs:
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
+        :param pulumi.Input[str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - cert
+               - perfer
+               - verify-ca
+               - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+               - aliyun: a cloud certificate
+               - custom: a custom certificate
+        :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - 1: enables the public key
+               - 0: disables the public key
+        :param pulumi.Input[str] client_cert_revocation_list: The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - 1: enables the CRL
+               - 0: disables the CRL
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - cert
+               - perfer
+               - verify-ca
+               - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+               > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
+        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
+               - 1: enables SSL encryption
+               - 0: disables SSL encryption
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -46,14 +83,34 @@ class ReadOnlyInstanceArgs:
         pulumi.set(__self__, "instance_storage", instance_storage)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "master_db_instance_id", master_db_instance_id)
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if ca_type is not None:
+            pulumi.set(__self__, "ca_type", ca_type)
+        if client_ca_cert is not None:
+            pulumi.set(__self__, "client_ca_cert", client_ca_cert)
+        if client_ca_enabled is not None:
+            pulumi.set(__self__, "client_ca_enabled", client_ca_enabled)
+        if client_cert_revocation_list is not None:
+            pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
+        if client_crl_enabled is not None:
+            pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if replication_acl is not None:
+            pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if server_cert is not None:
+            pulumi.set(__self__, "server_cert", server_cert)
+        if server_key is not None:
+            pulumi.set(__self__, "server_key", server_key)
+        if ssl_enabled is not None:
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
@@ -110,6 +167,88 @@ class ReadOnlyInstanceArgs:
         pulumi.set(self, "master_db_instance_id", value)
 
     @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - cert
+        - perfer
+        - verify-ca
+        - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter(name="caType")
+    def ca_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+        - aliyun: a cloud certificate
+        - custom: a custom certificate
+        """
+        return pulumi.get(self, "ca_type")
+
+    @ca_type.setter
+    def ca_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_type", value)
+
+    @property
+    @pulumi.getter(name="clientCaCert")
+    def client_ca_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "client_ca_cert")
+
+    @client_ca_cert.setter
+    def client_ca_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_ca_cert", value)
+
+    @property
+    @pulumi.getter(name="clientCaEnabled")
+    def client_ca_enabled(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - 1: enables the public key
+        - 0: disables the public key
+        """
+        return pulumi.get(self, "client_ca_enabled")
+
+    @client_ca_enabled.setter
+    def client_ca_enabled(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_ca_enabled", value)
+
+    @property
+    @pulumi.getter(name="clientCertRevocationList")
+    def client_cert_revocation_list(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "client_cert_revocation_list")
+
+    @client_cert_revocation_list.setter
+    def client_cert_revocation_list(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_cert_revocation_list", value)
+
+    @property
+    @pulumi.getter(name="clientCrlEnabled")
+    def client_crl_enabled(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - 1: enables the CRL
+        - 0: disables the CRL
+        """
+        return pulumi.get(self, "client_crl_enabled")
+
+    @client_crl_enabled.setter
+    def client_crl_enabled(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_crl_enabled", value)
+
+    @property
     @pulumi.getter(name="forceRestart")
     def force_restart(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -146,6 +285,23 @@ class ReadOnlyInstanceArgs:
         pulumi.set(self, "parameters", value)
 
     @property
+    @pulumi.getter(name="replicationAcl")
+    def replication_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - cert
+        - perfer
+        - verify-ca
+        - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        """
+        return pulumi.get(self, "replication_acl")
+
+    @replication_acl.setter
+    def replication_acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replication_acl", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -156,6 +312,44 @@ class ReadOnlyInstanceArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="serverCert")
+    def server_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "server_cert")
+
+    @server_cert.setter
+    def server_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_cert", value)
+
+    @property
+    @pulumi.getter(name="serverKey")
+    def server_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "server_key")
+
+    @server_key.setter
+    def server_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_key", value)
+
+    @property
+    @pulumi.getter(name="sslEnabled")
+    def ssl_enabled(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether to enable or disable SSL encryption. Valid values:
+        - 1: enables SSL encryption
+        - 0: disables SSL encryption
+        """
+        return pulumi.get(self, "ssl_enabled")
+
+    @ssl_enabled.setter
+    def ssl_enabled(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ssl_enabled", value)
 
     @property
     @pulumi.getter
@@ -199,6 +393,12 @@ class ReadOnlyInstanceArgs:
 @pulumi.input_type
 class _ReadOnlyInstanceState:
     def __init__(__self__, *,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 ca_type: Optional[pulumi.Input[str]] = None,
+                 client_ca_cert: Optional[pulumi.Input[str]] = None,
+                 client_ca_enabled: Optional[pulumi.Input[int]] = None,
+                 client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
+                 client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -209,12 +409,32 @@ class _ReadOnlyInstanceState:
                  master_db_instance_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
+                 replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 server_cert: Optional[pulumi.Input[str]] = None,
+                 server_key: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ReadOnlyInstance resources.
+        :param pulumi.Input[str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - cert
+               - perfer
+               - verify-ca
+               - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+               - aliyun: a cloud certificate
+               - custom: a custom certificate
+        :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - 1: enables the public key
+               - 0: disables the public key
+        :param pulumi.Input[str] client_cert_revocation_list: The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - 1: enables the CRL
+               - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
         :param pulumi.Input[str] engine: Database type.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -225,13 +445,36 @@ class _ReadOnlyInstanceState:
         :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
         :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] port: RDS database connection port.
+        :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - cert
+               - perfer
+               - verify-ca
+               - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+               > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
+        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
+               - 1: enables SSL encryption
+               - 0: disables SSL encryption
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
+        if ca_type is not None:
+            pulumi.set(__self__, "ca_type", ca_type)
+        if client_ca_cert is not None:
+            pulumi.set(__self__, "client_ca_cert", client_ca_cert)
+        if client_ca_enabled is not None:
+            pulumi.set(__self__, "client_ca_enabled", client_ca_enabled)
+        if client_cert_revocation_list is not None:
+            pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
+        if client_crl_enabled is not None:
+            pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
         if engine is not None:
@@ -252,14 +495,104 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "parameters", parameters)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if replication_acl is not None:
+            pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if server_cert is not None:
+            pulumi.set(__self__, "server_cert", server_cert)
+        if server_key is not None:
+            pulumi.set(__self__, "server_key", server_key)
+        if ssl_enabled is not None:
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - cert
+        - perfer
+        - verify-ca
+        - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        """
+        return pulumi.get(self, "acl")
+
+    @acl.setter
+    def acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter(name="caType")
+    def ca_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+        - aliyun: a cloud certificate
+        - custom: a custom certificate
+        """
+        return pulumi.get(self, "ca_type")
+
+    @ca_type.setter
+    def ca_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_type", value)
+
+    @property
+    @pulumi.getter(name="clientCaCert")
+    def client_ca_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "client_ca_cert")
+
+    @client_ca_cert.setter
+    def client_ca_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_ca_cert", value)
+
+    @property
+    @pulumi.getter(name="clientCaEnabled")
+    def client_ca_enabled(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - 1: enables the public key
+        - 0: disables the public key
+        """
+        return pulumi.get(self, "client_ca_enabled")
+
+    @client_ca_enabled.setter
+    def client_ca_enabled(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_ca_enabled", value)
+
+    @property
+    @pulumi.getter(name="clientCertRevocationList")
+    def client_cert_revocation_list(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "client_cert_revocation_list")
+
+    @client_cert_revocation_list.setter
+    def client_cert_revocation_list(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_cert_revocation_list", value)
+
+    @property
+    @pulumi.getter(name="clientCrlEnabled")
+    def client_crl_enabled(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - 1: enables the CRL
+        - 0: disables the CRL
+        """
+        return pulumi.get(self, "client_crl_enabled")
+
+    @client_crl_enabled.setter
+    def client_crl_enabled(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_crl_enabled", value)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -382,6 +715,23 @@ class _ReadOnlyInstanceState:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter(name="replicationAcl")
+    def replication_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - cert
+        - perfer
+        - verify-ca
+        - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        """
+        return pulumi.get(self, "replication_acl")
+
+    @replication_acl.setter
+    def replication_acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replication_acl", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -392,6 +742,44 @@ class _ReadOnlyInstanceState:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="serverCert")
+    def server_cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "server_cert")
+
+    @server_cert.setter
+    def server_cert(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_cert", value)
+
+    @property
+    @pulumi.getter(name="serverKey")
+    def server_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "server_key")
+
+    @server_key.setter
+    def server_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_key", value)
+
+    @property
+    @pulumi.getter(name="sslEnabled")
+    def ssl_enabled(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether to enable or disable SSL encryption. Valid values:
+        - 1: enables SSL encryption
+        - 0: disables SSL encryption
+        """
+        return pulumi.get(self, "ssl_enabled")
+
+    @ssl_enabled.setter
+    def ssl_enabled(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ssl_enabled", value)
 
     @property
     @pulumi.getter
@@ -437,6 +825,12 @@ class ReadOnlyInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 ca_type: Optional[pulumi.Input[str]] = None,
+                 client_ca_cert: Optional[pulumi.Input[str]] = None,
+                 client_ca_enabled: Optional[pulumi.Input[int]] = None,
+                 client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
+                 client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -444,7 +838,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input[str]] = None,
                  master_db_instance_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]]] = None,
+                 replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 server_cert: Optional[pulumi.Input[str]] = None,
+                 server_key: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -504,6 +902,22 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - cert
+               - perfer
+               - verify-ca
+               - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+               - aliyun: a cloud certificate
+               - custom: a custom certificate
+        :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - 1: enables the public key
+               - 0: disables the public key
+        :param pulumi.Input[str] client_cert_revocation_list: The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - 1: enables the CRL
+               - 0: disables the CRL
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
@@ -511,7 +925,18 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - cert
+               - perfer
+               - verify-ca
+               - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+               > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
+        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
+               - 1: enables SSL encryption
+               - 0: disables SSL encryption
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -592,6 +1017,12 @@ class ReadOnlyInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl: Optional[pulumi.Input[str]] = None,
+                 ca_type: Optional[pulumi.Input[str]] = None,
+                 client_ca_cert: Optional[pulumi.Input[str]] = None,
+                 client_ca_enabled: Optional[pulumi.Input[int]] = None,
+                 client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
+                 client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -599,7 +1030,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input[str]] = None,
                  master_db_instance_id: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]]] = None,
+                 replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 server_cert: Optional[pulumi.Input[str]] = None,
+                 server_key: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -615,6 +1050,12 @@ class ReadOnlyInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ReadOnlyInstanceArgs.__new__(ReadOnlyInstanceArgs)
 
+            __props__.__dict__["acl"] = acl
+            __props__.__dict__["ca_type"] = ca_type
+            __props__.__dict__["client_ca_cert"] = client_ca_cert
+            __props__.__dict__["client_ca_enabled"] = client_ca_enabled
+            __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
+            __props__.__dict__["client_crl_enabled"] = client_crl_enabled
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
@@ -630,7 +1071,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'master_db_instance_id'")
             __props__.__dict__["master_db_instance_id"] = master_db_instance_id
             __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["replication_acl"] = replication_acl
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["server_cert"] = server_cert
+            __props__.__dict__["server_key"] = server_key
+            __props__.__dict__["ssl_enabled"] = ssl_enabled
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
@@ -647,6 +1092,12 @@ class ReadOnlyInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acl: Optional[pulumi.Input[str]] = None,
+            ca_type: Optional[pulumi.Input[str]] = None,
+            client_ca_cert: Optional[pulumi.Input[str]] = None,
+            client_ca_enabled: Optional[pulumi.Input[int]] = None,
+            client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
+            client_crl_enabled: Optional[pulumi.Input[int]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
@@ -657,7 +1108,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
             master_db_instance_id: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]]] = None,
             port: Optional[pulumi.Input[str]] = None,
+            replication_acl: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            server_cert: Optional[pulumi.Input[str]] = None,
+            server_key: Optional[pulumi.Input[str]] = None,
+            ssl_enabled: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ReadOnlyInstance':
@@ -668,6 +1123,22 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - cert
+               - perfer
+               - verify-ca
+               - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+               - aliyun: a cloud certificate
+               - custom: a custom certificate
+        :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - 1: enables the public key
+               - 0: disables the public key
+        :param pulumi.Input[str] client_cert_revocation_list: The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - 1: enables the CRL
+               - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
         :param pulumi.Input[str] engine: Database type.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -678,7 +1149,18 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] port: RDS database connection port.
+        :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+               - cert
+               - perfer
+               - verify-ca
+               - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+               > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
+        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
+               - 1: enables SSL encryption
+               - 0: disables SSL encryption
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -689,6 +1171,12 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
         __props__ = _ReadOnlyInstanceState.__new__(_ReadOnlyInstanceState)
 
+        __props__.__dict__["acl"] = acl
+        __props__.__dict__["ca_type"] = ca_type
+        __props__.__dict__["client_ca_cert"] = client_ca_cert
+        __props__.__dict__["client_ca_enabled"] = client_ca_enabled
+        __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
+        __props__.__dict__["client_crl_enabled"] = client_crl_enabled
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
@@ -699,11 +1187,73 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__.__dict__["master_db_instance_id"] = master_db_instance_id
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["port"] = port
+        __props__.__dict__["replication_acl"] = replication_acl
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["server_cert"] = server_cert
+        __props__.__dict__["server_key"] = server_key
+        __props__.__dict__["ssl_enabled"] = ssl_enabled
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return ReadOnlyInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> pulumi.Output[str]:
+        """
+        The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - cert
+        - perfer
+        - verify-ca
+        - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        """
+        return pulumi.get(self, "acl")
+
+    @property
+    @pulumi.getter(name="caType")
+    def ca_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
+        - aliyun: a cloud certificate
+        - custom: a custom certificate
+        """
+        return pulumi.get(self, "ca_type")
+
+    @property
+    @pulumi.getter(name="clientCaCert")
+    def client_ca_cert(self) -> pulumi.Output[Optional[str]]:
+        """
+        The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "client_ca_cert")
+
+    @property
+    @pulumi.getter(name="clientCaEnabled")
+    def client_ca_enabled(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - 1: enables the public key
+        - 0: disables the public key
+        """
+        return pulumi.get(self, "client_ca_enabled")
+
+    @property
+    @pulumi.getter(name="clientCertRevocationList")
+    def client_cert_revocation_list(self) -> pulumi.Output[Optional[str]]:
+        """
+        The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "client_cert_revocation_list")
+
+    @property
+    @pulumi.getter(name="clientCrlEnabled")
+    def client_crl_enabled(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - 1: enables the CRL
+        - 0: disables the CRL
+        """
+        return pulumi.get(self, "client_crl_enabled")
 
     @property
     @pulumi.getter(name="connectionString")
@@ -786,12 +1336,51 @@ class ReadOnlyInstance(pulumi.CustomResource):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="replicationAcl")
+    def replication_acl(self) -> pulumi.Output[str]:
+        """
+        The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
+        - cert
+        - perfer
+        - verify-ca
+        - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        """
+        return pulumi.get(self, "replication_acl")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
         The ID of resource group which the DB read-only instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="serverCert")
+    def server_cert(self) -> pulumi.Output[str]:
+        """
+        The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "server_cert")
+
+    @property
+    @pulumi.getter(name="serverKey")
+    def server_key(self) -> pulumi.Output[str]:
+        """
+        The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
+        """
+        return pulumi.get(self, "server_key")
+
+    @property
+    @pulumi.getter(name="sslEnabled")
+    def ssl_enabled(self) -> pulumi.Output[int]:
+        """
+        Specifies whether to enable or disable SSL encryption. Valid values:
+        - 1: enables SSL encryption
+        - 0: disables SSL encryption
+        """
+        return pulumi.get(self, "ssl_enabled")
 
     @property
     @pulumi.getter

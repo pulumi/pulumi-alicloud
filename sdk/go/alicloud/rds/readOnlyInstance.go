@@ -104,6 +104,28 @@ import (
 type ReadOnlyInstance struct {
 	pulumi.CustomResourceState
 
+	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	Acl pulumi.StringOutput `pulumi:"acl"`
+	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
+	// - aliyun: a cloud certificate
+	// - custom: a custom certificate
+	CaType pulumi.StringPtrOutput `pulumi:"caType"`
+	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ClientCaCert pulumi.StringPtrOutput `pulumi:"clientCaCert"`
+	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - 1: enables the public key
+	// - 0: disables the public key
+	ClientCaEnabled pulumi.IntPtrOutput `pulumi:"clientCaEnabled"`
+	// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ClientCertRevocationList pulumi.StringPtrOutput `pulumi:"clientCertRevocationList"`
+	// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - 1: enables the CRL
+	// - 0: disables the CRL
+	ClientCrlEnabled pulumi.IntPtrOutput `pulumi:"clientCrlEnabled"`
 	// RDS database connection string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// Database type.
@@ -124,8 +146,23 @@ type ReadOnlyInstance struct {
 	Parameters ReadOnlyInstanceParameterArrayOutput `pulumi:"parameters"`
 	// RDS database connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
+	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	ReplicationAcl pulumi.StringOutput `pulumi:"replicationAcl"`
 	// The ID of resource group which the DB read-only instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ServerCert pulumi.StringOutput `pulumi:"serverCert"`
+	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ServerKey pulumi.StringOutput `pulumi:"serverKey"`
+	// Specifies whether to enable or disable SSL encryption. Valid values:
+	// - 1: enables SSL encryption
+	// - 0: disables SSL encryption
+	SslEnabled pulumi.IntOutput `pulumi:"sslEnabled"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -177,6 +214,28 @@ func GetReadOnlyInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ReadOnlyInstance resources.
 type readOnlyInstanceState struct {
+	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	Acl *string `pulumi:"acl"`
+	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
+	// - aliyun: a cloud certificate
+	// - custom: a custom certificate
+	CaType *string `pulumi:"caType"`
+	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ClientCaCert *string `pulumi:"clientCaCert"`
+	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - 1: enables the public key
+	// - 0: disables the public key
+	ClientCaEnabled *int `pulumi:"clientCaEnabled"`
+	// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ClientCertRevocationList *string `pulumi:"clientCertRevocationList"`
+	// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - 1: enables the CRL
+	// - 0: disables the CRL
+	ClientCrlEnabled *int `pulumi:"clientCrlEnabled"`
 	// RDS database connection string.
 	ConnectionString *string `pulumi:"connectionString"`
 	// Database type.
@@ -197,8 +256,23 @@ type readOnlyInstanceState struct {
 	Parameters []ReadOnlyInstanceParameter `pulumi:"parameters"`
 	// RDS database connection port.
 	Port *string `pulumi:"port"`
+	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	ReplicationAcl *string `pulumi:"replicationAcl"`
 	// The ID of resource group which the DB read-only instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ServerCert *string `pulumi:"serverCert"`
+	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ServerKey *string `pulumi:"serverKey"`
+	// Specifies whether to enable or disable SSL encryption. Valid values:
+	// - 1: enables SSL encryption
+	// - 0: disables SSL encryption
+	SslEnabled *int `pulumi:"sslEnabled"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -210,6 +284,28 @@ type readOnlyInstanceState struct {
 }
 
 type ReadOnlyInstanceState struct {
+	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	Acl pulumi.StringPtrInput
+	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
+	// - aliyun: a cloud certificate
+	// - custom: a custom certificate
+	CaType pulumi.StringPtrInput
+	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ClientCaCert pulumi.StringPtrInput
+	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - 1: enables the public key
+	// - 0: disables the public key
+	ClientCaEnabled pulumi.IntPtrInput
+	// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ClientCertRevocationList pulumi.StringPtrInput
+	// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - 1: enables the CRL
+	// - 0: disables the CRL
+	ClientCrlEnabled pulumi.IntPtrInput
 	// RDS database connection string.
 	ConnectionString pulumi.StringPtrInput
 	// Database type.
@@ -230,8 +326,23 @@ type ReadOnlyInstanceState struct {
 	Parameters ReadOnlyInstanceParameterArrayInput
 	// RDS database connection port.
 	Port pulumi.StringPtrInput
+	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	ReplicationAcl pulumi.StringPtrInput
 	// The ID of resource group which the DB read-only instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ServerCert pulumi.StringPtrInput
+	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ServerKey pulumi.StringPtrInput
+	// Specifies whether to enable or disable SSL encryption. Valid values:
+	// - 1: enables SSL encryption
+	// - 0: disables SSL encryption
+	SslEnabled pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -247,6 +358,28 @@ func (ReadOnlyInstanceState) ElementType() reflect.Type {
 }
 
 type readOnlyInstanceArgs struct {
+	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	Acl *string `pulumi:"acl"`
+	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
+	// - aliyun: a cloud certificate
+	// - custom: a custom certificate
+	CaType *string `pulumi:"caType"`
+	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ClientCaCert *string `pulumi:"clientCaCert"`
+	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - 1: enables the public key
+	// - 0: disables the public key
+	ClientCaEnabled *int `pulumi:"clientCaEnabled"`
+	// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ClientCertRevocationList *string `pulumi:"clientCertRevocationList"`
+	// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - 1: enables the CRL
+	// - 0: disables the CRL
+	ClientCrlEnabled *int `pulumi:"clientCrlEnabled"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -261,8 +394,23 @@ type readOnlyInstanceArgs struct {
 	MasterDbInstanceId string `pulumi:"masterDbInstanceId"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters []ReadOnlyInstanceParameter `pulumi:"parameters"`
+	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	ReplicationAcl *string `pulumi:"replicationAcl"`
 	// The ID of resource group which the DB read-only instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ServerCert *string `pulumi:"serverCert"`
+	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ServerKey *string `pulumi:"serverKey"`
+	// Specifies whether to enable or disable SSL encryption. Valid values:
+	// - 1: enables SSL encryption
+	// - 0: disables SSL encryption
+	SslEnabled *int `pulumi:"sslEnabled"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -275,6 +423,28 @@ type readOnlyInstanceArgs struct {
 
 // The set of arguments for constructing a ReadOnlyInstance resource.
 type ReadOnlyInstanceArgs struct {
+	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	Acl pulumi.StringPtrInput
+	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
+	// - aliyun: a cloud certificate
+	// - custom: a custom certificate
+	CaType pulumi.StringPtrInput
+	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ClientCaCert pulumi.StringPtrInput
+	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - 1: enables the public key
+	// - 0: disables the public key
+	ClientCaEnabled pulumi.IntPtrInput
+	// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ClientCertRevocationList pulumi.StringPtrInput
+	// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - 1: enables the CRL
+	// - 0: disables the CRL
+	ClientCrlEnabled pulumi.IntPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -289,8 +459,23 @@ type ReadOnlyInstanceArgs struct {
 	MasterDbInstanceId pulumi.StringInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters ReadOnlyInstanceParameterArrayInput
+	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
+	// - cert
+	// - perfer
+	// - verify-ca
+	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+	// > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	ReplicationAcl pulumi.StringPtrInput
 	// The ID of resource group which the DB read-only instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ServerCert pulumi.StringPtrInput
+	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
+	ServerKey pulumi.StringPtrInput
+	// Specifies whether to enable or disable SSL encryption. Valid values:
+	// - 1: enables SSL encryption
+	// - 0: disables SSL encryption
+	SslEnabled pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.

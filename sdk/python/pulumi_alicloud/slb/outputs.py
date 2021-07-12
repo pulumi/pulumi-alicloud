@@ -18,11 +18,20 @@ __all__ = [
     'GetAclsAclResult',
     'GetAclsAclEntryListResult',
     'GetAclsAclRelatedListenerResult',
+    'GetApplicationLoadBalancersBalancerResult',
+    'GetApplicationLoadBalancersBalancerBackendServerResult',
+    'GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult',
+    'GetApplicationLoadBalancersBalancerListenerPortsAndProtocolResult',
+    'GetApplicationLoadBalancersSlbResult',
     'GetAttachmentsSlbAttachmentResult',
     'GetBackendServersBackendServerResult',
     'GetCaCertificatesCertificateResult',
     'GetDomainExtensionsExtensionResult',
     'GetListenersSlbListenerResult',
+    'GetLoadBalancersBalancerResult',
+    'GetLoadBalancersBalancerBackendServerResult',
+    'GetLoadBalancersBalancerListenerPortsAndProtocalResult',
+    'GetLoadBalancersBalancerListenerPortsAndProtocolResult',
     'GetLoadBalancersSlbResult',
     'GetMasterSlaveServerGroupsGroupResult',
     'GetMasterSlaveServerGroupsGroupServerResult',
@@ -439,6 +448,633 @@ class GetAclsAclRelatedListenerResult(dict):
 
 
 @pulumi.output_type
+class GetApplicationLoadBalancersBalancerResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 address_ip_version: str,
+                 address_type: str,
+                 auto_release_time: int,
+                 backend_servers: Sequence['outputs.GetApplicationLoadBalancersBalancerBackendServerResult'],
+                 bandwidth: int,
+                 create_time_stamp: int,
+                 delete_protection: str,
+                 end_time: str,
+                 end_time_stamp: int,
+                 id: str,
+                 internet_charge_type: str,
+                 listener_ports_and_protocals: Sequence['outputs.GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult'],
+                 listener_ports_and_protocols: Sequence['outputs.GetApplicationLoadBalancersBalancerListenerPortsAndProtocolResult'],
+                 load_balancer_id: str,
+                 load_balancer_name: str,
+                 load_balancer_spec: str,
+                 master_zone_id: str,
+                 modification_protection_reason: str,
+                 modification_protection_status: str,
+                 network_type: str,
+                 payment_type: str,
+                 region_id_alias: str,
+                 renewal_cyc_unit: str,
+                 renewal_duration: int,
+                 renewal_status: str,
+                 resource_group_id: str,
+                 slave_zone_id: str,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param str address: Service address of the SLBs.
+        :param str address_ip_version: The address ip version. Valid values `ipv4` and `ipv6`.
+        :param str address_type: The address type of the SLB. Valid values `internet` and `intranet`.
+        :param int auto_release_time: The auto release time.
+        :param Sequence['GetApplicationLoadBalancersBalancerBackendServerArgs'] backend_servers: The backend servers of the SLB.
+        :param int bandwidth: The bandwidth of the SLB.
+        :param int create_time_stamp: The create time stamp of the SLB.
+        :param str delete_protection: Whether the SLB should delete protection.
+        :param str end_time: The end time of the SLB.
+        :param int end_time_stamp: The end time stamp of the SLB.
+        :param str id: ID of the SLB.
+        :param str internet_charge_type: The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+        :param Sequence['GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs'] listener_ports_and_protocals: The listener ports and protocal of the SLB.
+        :param Sequence['GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs'] listener_ports_and_protocols: The listener ports and protocol of the SLB.
+        :param str load_balancer_id: Thd ID of the SLB.
+        :param str load_balancer_name: The name of the SLB.
+        :param str load_balancer_spec: The specification of the SLB.
+        :param str master_zone_id: The master zone id of the SLB.
+        :param str modification_protection_reason: The reason of modification protection.
+        :param str modification_protection_status: The status of modification protection.
+        :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
+        :param str payment_type: The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+        :param str region_id_alias: Region ID the SLB belongs to.
+        :param str renewal_cyc_unit: The renewal cyc unit of the SLB.
+        :param int renewal_duration: The renewal duration of the SLB.
+        :param str renewal_status: The renewal status of the SLB.
+        :param str resource_group_id: The Id of resource group which SLB belongs.
+        :param str slave_zone_id: The slave zone id of the SLB.
+        :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+        :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        :param str vpc_id: ID of the VPC linked to the SLBs.
+        :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "address_ip_version", address_ip_version)
+        pulumi.set(__self__, "address_type", address_type)
+        pulumi.set(__self__, "auto_release_time", auto_release_time)
+        pulumi.set(__self__, "backend_servers", backend_servers)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "create_time_stamp", create_time_stamp)
+        pulumi.set(__self__, "delete_protection", delete_protection)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "end_time_stamp", end_time_stamp)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "listener_ports_and_protocals", listener_ports_and_protocals)
+        pulumi.set(__self__, "listener_ports_and_protocols", listener_ports_and_protocols)
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        pulumi.set(__self__, "load_balancer_name", load_balancer_name)
+        pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
+        pulumi.set(__self__, "master_zone_id", master_zone_id)
+        pulumi.set(__self__, "modification_protection_reason", modification_protection_reason)
+        pulumi.set(__self__, "modification_protection_status", modification_protection_status)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "region_id_alias", region_id_alias)
+        pulumi.set(__self__, "renewal_cyc_unit", renewal_cyc_unit)
+        pulumi.set(__self__, "renewal_duration", renewal_duration)
+        pulumi.set(__self__, "renewal_status", renewal_status)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "slave_zone_id", slave_zone_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Service address of the SLBs.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> str:
+        """
+        The address ip version. Valid values `ipv4` and `ipv6`.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> str:
+        """
+        The address type of the SLB. Valid values `internet` and `intranet`.
+        """
+        return pulumi.get(self, "address_type")
+
+    @property
+    @pulumi.getter(name="autoReleaseTime")
+    def auto_release_time(self) -> int:
+        """
+        The auto release time.
+        """
+        return pulumi.get(self, "auto_release_time")
+
+    @property
+    @pulumi.getter(name="backendServers")
+    def backend_servers(self) -> Sequence['outputs.GetApplicationLoadBalancersBalancerBackendServerResult']:
+        """
+        The backend servers of the SLB.
+        """
+        return pulumi.get(self, "backend_servers")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The bandwidth of the SLB.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="createTimeStamp")
+    def create_time_stamp(self) -> int:
+        """
+        The create time stamp of the SLB.
+        """
+        return pulumi.get(self, "create_time_stamp")
+
+    @property
+    @pulumi.getter(name="deleteProtection")
+    def delete_protection(self) -> str:
+        """
+        Whether the SLB should delete protection.
+        """
+        return pulumi.get(self, "delete_protection")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The end time of the SLB.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="endTimeStamp")
+    def end_time_stamp(self) -> int:
+        """
+        The end time stamp of the SLB.
+        """
+        return pulumi.get(self, "end_time_stamp")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the SLB.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        """
+        The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="listenerPortsAndProtocals")
+    def listener_ports_and_protocals(self) -> Sequence['outputs.GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult']:
+        """
+        The listener ports and protocal of the SLB.
+        """
+        return pulumi.get(self, "listener_ports_and_protocals")
+
+    @property
+    @pulumi.getter(name="listenerPortsAndProtocols")
+    def listener_ports_and_protocols(self) -> Sequence['outputs.GetApplicationLoadBalancersBalancerListenerPortsAndProtocolResult']:
+        """
+        The listener ports and protocol of the SLB.
+        """
+        return pulumi.get(self, "listener_ports_and_protocols")
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> str:
+        """
+        Thd ID of the SLB.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @property
+    @pulumi.getter(name="loadBalancerName")
+    def load_balancer_name(self) -> str:
+        """
+        The name of the SLB.
+        """
+        return pulumi.get(self, "load_balancer_name")
+
+    @property
+    @pulumi.getter(name="loadBalancerSpec")
+    def load_balancer_spec(self) -> str:
+        """
+        The specification of the SLB.
+        """
+        return pulumi.get(self, "load_balancer_spec")
+
+    @property
+    @pulumi.getter(name="masterZoneId")
+    def master_zone_id(self) -> str:
+        """
+        The master zone id of the SLB.
+        """
+        return pulumi.get(self, "master_zone_id")
+
+    @property
+    @pulumi.getter(name="modificationProtectionReason")
+    def modification_protection_reason(self) -> str:
+        """
+        The reason of modification protection.
+        """
+        return pulumi.get(self, "modification_protection_reason")
+
+    @property
+    @pulumi.getter(name="modificationProtectionStatus")
+    def modification_protection_status(self) -> str:
+        """
+        The status of modification protection.
+        """
+        return pulumi.get(self, "modification_protection_status")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        Network type of the SLBs. Valid values: `vpc` and `classic`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="regionIdAlias")
+    def region_id_alias(self) -> str:
+        """
+        Region ID the SLB belongs to.
+        """
+        return pulumi.get(self, "region_id_alias")
+
+    @property
+    @pulumi.getter(name="renewalCycUnit")
+    def renewal_cyc_unit(self) -> str:
+        """
+        The renewal cyc unit of the SLB.
+        """
+        return pulumi.get(self, "renewal_cyc_unit")
+
+    @property
+    @pulumi.getter(name="renewalDuration")
+    def renewal_duration(self) -> int:
+        """
+        The renewal duration of the SLB.
+        """
+        return pulumi.get(self, "renewal_duration")
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> str:
+        """
+        The renewal status of the SLB.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The Id of resource group which SLB belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="slaveZoneId")
+    def slave_zone_id(self) -> str:
+        """
+        The slave zone id of the SLB.
+        """
+        return pulumi.get(self, "slave_zone_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        SLB current status. Possible values: `inactive`, `active` and `locked`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        ID of the VPC linked to the SLBs.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        ID of the VSwitch linked to the SLBs.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetApplicationLoadBalancersBalancerBackendServerResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 server_id: str,
+                 type: str,
+                 weight: int):
+        """
+        :param str description: The description of protocol.
+        :param str server_id: The server ID.
+        :param str type: The type of servers.
+        :param int weight: The weight of servers.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "server_id", server_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of protocol.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="serverId")
+    def server_id(self) -> str:
+        """
+        The server ID.
+        """
+        return pulumi.get(self, "server_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of servers.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        """
+        The weight of servers.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult(dict):
+    def __init__(__self__, *,
+                 listener_port: int,
+                 listener_protocal: str):
+        """
+        :param int listener_port: The listener port.
+        :param str listener_protocal: The listener protoal.
+        """
+        pulumi.set(__self__, "listener_port", listener_port)
+        pulumi.set(__self__, "listener_protocal", listener_protocal)
+
+    @property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> int:
+        """
+        The listener port.
+        """
+        return pulumi.get(self, "listener_port")
+
+    @property
+    @pulumi.getter(name="listenerProtocal")
+    def listener_protocal(self) -> str:
+        """
+        The listener protoal.
+        """
+        return pulumi.get(self, "listener_protocal")
+
+
+@pulumi.output_type
+class GetApplicationLoadBalancersBalancerListenerPortsAndProtocolResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 forward_port: int,
+                 listener_forward: str,
+                 listener_port: int,
+                 listener_protocol: str):
+        """
+        :param str description: The description of protocol.
+        :param int forward_port: The forward port.
+        :param str listener_forward: The listener forward.
+        :param int listener_port: The listener port.
+        :param str listener_protocol: The listener protocol.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "forward_port", forward_port)
+        pulumi.set(__self__, "listener_forward", listener_forward)
+        pulumi.set(__self__, "listener_port", listener_port)
+        pulumi.set(__self__, "listener_protocol", listener_protocol)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of protocol.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="forwardPort")
+    def forward_port(self) -> int:
+        """
+        The forward port.
+        """
+        return pulumi.get(self, "forward_port")
+
+    @property
+    @pulumi.getter(name="listenerForward")
+    def listener_forward(self) -> str:
+        """
+        The listener forward.
+        """
+        return pulumi.get(self, "listener_forward")
+
+    @property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> int:
+        """
+        The listener port.
+        """
+        return pulumi.get(self, "listener_port")
+
+    @property
+    @pulumi.getter(name="listenerProtocol")
+    def listener_protocol(self) -> str:
+        """
+        The listener protocol.
+        """
+        return pulumi.get(self, "listener_protocol")
+
+
+@pulumi.output_type
+class GetApplicationLoadBalancersSlbResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 creation_time: str,
+                 id: str,
+                 internet: bool,
+                 master_availability_zone: str,
+                 name: str,
+                 network_type: str,
+                 region_id: str,
+                 slave_availability_zone: str,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param str address: Service address of the SLBs.
+        :param str id: ID of the SLB.
+        :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
+        :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+        :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        :param str vpc_id: ID of the VPC linked to the SLBs.
+        :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "internet", internet)
+        pulumi.set(__self__, "master_availability_zone", master_availability_zone)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "slave_availability_zone", slave_availability_zone)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Service address of the SLBs.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> str:
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the SLB.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def internet(self) -> bool:
+        return pulumi.get(self, "internet")
+
+    @property
+    @pulumi.getter(name="masterAvailabilityZone")
+    def master_availability_zone(self) -> str:
+        return pulumi.get(self, "master_availability_zone")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        Network type of the SLBs. Valid values: `vpc` and `classic`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="slaveAvailabilityZone")
+    def slave_availability_zone(self) -> str:
+        return pulumi.get(self, "slave_availability_zone")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        SLB current status. Possible values: `inactive`, `active` and `locked`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        ID of the VPC linked to the SLBs.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        ID of the VSwitch linked to the SLBs.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
 class GetAttachmentsSlbAttachmentResult(dict):
     def __init__(__self__, *,
                  instance_id: str,
@@ -510,42 +1146,57 @@ class GetBackendServersBackendServerResult(dict):
 @pulumi.output_type
 class GetCaCertificatesCertificateResult(dict):
     def __init__(__self__, *,
+                 ca_certificate_id: str,
+                 ca_certificate_name: str,
                  common_name: str,
-                 created_time: str,
                  created_timestamp: int,
                  expired_time: str,
                  expired_timestamp: int,
                  fingerprint: str,
                  id: str,
                  name: str,
-                 region_id: str,
                  resource_group_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Mapping[str, Any]):
         """
+        :param str ca_certificate_id: (Available in v1.123.1+) CA certificate ID.
+        :param str ca_certificate_name: (Available in v1.123.1+) CA certificate name.
         :param str common_name: CA certificate common name.
-        :param str created_time: CA certificate created time.
         :param int created_timestamp: CA certificate created timestamp.
         :param str expired_time: CA certificate expired time.
         :param int expired_timestamp: CA certificate expired timestamp.
         :param str fingerprint: CA certificate fingerprint.
         :param str id: CA certificate ID.
-        :param str name: CA certificate name.
-        :param str region_id: The region Id of CA certificate.
+        :param str name: (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
         :param str resource_group_id: The Id of resource group which ca certificates belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
+        pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
+        pulumi.set(__self__, "ca_certificate_name", ca_certificate_name)
         pulumi.set(__self__, "common_name", common_name)
-        pulumi.set(__self__, "created_time", created_time)
         pulumi.set(__self__, "created_timestamp", created_timestamp)
         pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "expired_timestamp", expired_timestamp)
         pulumi.set(__self__, "fingerprint", fingerprint)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "resource_group_id", resource_group_id)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="caCertificateId")
+    def ca_certificate_id(self) -> str:
+        """
+        (Available in v1.123.1+) CA certificate ID.
+        """
+        return pulumi.get(self, "ca_certificate_id")
+
+    @property
+    @pulumi.getter(name="caCertificateName")
+    def ca_certificate_name(self) -> str:
+        """
+        (Available in v1.123.1+) CA certificate name.
+        """
+        return pulumi.get(self, "ca_certificate_name")
 
     @property
     @pulumi.getter(name="commonName")
@@ -554,14 +1205,6 @@ class GetCaCertificatesCertificateResult(dict):
         CA certificate common name.
         """
         return pulumi.get(self, "common_name")
-
-    @property
-    @pulumi.getter(name="createdTime")
-    def created_time(self) -> str:
-        """
-        CA certificate created time.
-        """
-        return pulumi.get(self, "created_time")
 
     @property
     @pulumi.getter(name="createdTimestamp")
@@ -607,17 +1250,9 @@ class GetCaCertificatesCertificateResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        CA certificate name.
+        (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="regionId")
-    def region_id(self) -> str:
-        """
-        The region Id of CA certificate.
-        """
-        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -629,7 +1264,7 @@ class GetCaCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Mapping[str, Any]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -1106,6 +1741,379 @@ class GetListenersSlbListenerResult(dict):
         Indicate whether the HTTP header field "X-Forwarded-For_proto" is added or not; it allows the backend server to know about the user's protocol. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
         """
         return pulumi.get(self, "x_forwarded_for_slb_proto")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 address_ip_version: str,
+                 address_type: str,
+                 auto_release_time: int,
+                 backend_servers: Sequence['outputs.GetLoadBalancersBalancerBackendServerResult'],
+                 bandwidth: int,
+                 create_time_stamp: int,
+                 delete_protection: str,
+                 end_time: str,
+                 end_time_stamp: int,
+                 id: str,
+                 internet_charge_type: str,
+                 listener_ports_and_protocals: Sequence['outputs.GetLoadBalancersBalancerListenerPortsAndProtocalResult'],
+                 listener_ports_and_protocols: Sequence['outputs.GetLoadBalancersBalancerListenerPortsAndProtocolResult'],
+                 load_balancer_id: str,
+                 load_balancer_name: str,
+                 load_balancer_spec: str,
+                 master_zone_id: str,
+                 modification_protection_reason: str,
+                 modification_protection_status: str,
+                 network_type: str,
+                 payment_type: str,
+                 region_id_alias: str,
+                 renewal_cyc_unit: str,
+                 renewal_duration: int,
+                 renewal_status: str,
+                 resource_group_id: str,
+                 slave_zone_id: str,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param str address: Service address of the SLBs.
+        :param str id: ID of the SLB.
+        :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
+        :param str resource_group_id: The Id of resource group which SLB belongs.
+        :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+        :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+               ```python
+               import pulumi
+               import pulumi_alicloud as alicloud
+               
+               tagged_instances = alicloud.slb.get_load_balancers(tags={
+                   "tagKey1": "tagValue1",
+                   "tagKey2": "tagValue2",
+               })
+               ```
+        :param str vpc_id: ID of the VPC linked to the SLBs.
+        :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "address_ip_version", address_ip_version)
+        pulumi.set(__self__, "address_type", address_type)
+        pulumi.set(__self__, "auto_release_time", auto_release_time)
+        pulumi.set(__self__, "backend_servers", backend_servers)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "create_time_stamp", create_time_stamp)
+        pulumi.set(__self__, "delete_protection", delete_protection)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "end_time_stamp", end_time_stamp)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "listener_ports_and_protocals", listener_ports_and_protocals)
+        pulumi.set(__self__, "listener_ports_and_protocols", listener_ports_and_protocols)
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        pulumi.set(__self__, "load_balancer_name", load_balancer_name)
+        pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
+        pulumi.set(__self__, "master_zone_id", master_zone_id)
+        pulumi.set(__self__, "modification_protection_reason", modification_protection_reason)
+        pulumi.set(__self__, "modification_protection_status", modification_protection_status)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "region_id_alias", region_id_alias)
+        pulumi.set(__self__, "renewal_cyc_unit", renewal_cyc_unit)
+        pulumi.set(__self__, "renewal_duration", renewal_duration)
+        pulumi.set(__self__, "renewal_status", renewal_status)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "slave_zone_id", slave_zone_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Service address of the SLBs.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> str:
+        return pulumi.get(self, "address_ip_version")
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> str:
+        return pulumi.get(self, "address_type")
+
+    @property
+    @pulumi.getter(name="autoReleaseTime")
+    def auto_release_time(self) -> int:
+        return pulumi.get(self, "auto_release_time")
+
+    @property
+    @pulumi.getter(name="backendServers")
+    def backend_servers(self) -> Sequence['outputs.GetLoadBalancersBalancerBackendServerResult']:
+        return pulumi.get(self, "backend_servers")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="createTimeStamp")
+    def create_time_stamp(self) -> int:
+        return pulumi.get(self, "create_time_stamp")
+
+    @property
+    @pulumi.getter(name="deleteProtection")
+    def delete_protection(self) -> str:
+        return pulumi.get(self, "delete_protection")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="endTimeStamp")
+    def end_time_stamp(self) -> int:
+        return pulumi.get(self, "end_time_stamp")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the SLB.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="listenerPortsAndProtocals")
+    def listener_ports_and_protocals(self) -> Sequence['outputs.GetLoadBalancersBalancerListenerPortsAndProtocalResult']:
+        return pulumi.get(self, "listener_ports_and_protocals")
+
+    @property
+    @pulumi.getter(name="listenerPortsAndProtocols")
+    def listener_ports_and_protocols(self) -> Sequence['outputs.GetLoadBalancersBalancerListenerPortsAndProtocolResult']:
+        return pulumi.get(self, "listener_ports_and_protocols")
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> str:
+        return pulumi.get(self, "load_balancer_id")
+
+    @property
+    @pulumi.getter(name="loadBalancerName")
+    def load_balancer_name(self) -> str:
+        return pulumi.get(self, "load_balancer_name")
+
+    @property
+    @pulumi.getter(name="loadBalancerSpec")
+    def load_balancer_spec(self) -> str:
+        return pulumi.get(self, "load_balancer_spec")
+
+    @property
+    @pulumi.getter(name="masterZoneId")
+    def master_zone_id(self) -> str:
+        return pulumi.get(self, "master_zone_id")
+
+    @property
+    @pulumi.getter(name="modificationProtectionReason")
+    def modification_protection_reason(self) -> str:
+        return pulumi.get(self, "modification_protection_reason")
+
+    @property
+    @pulumi.getter(name="modificationProtectionStatus")
+    def modification_protection_status(self) -> str:
+        return pulumi.get(self, "modification_protection_status")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        Network type of the SLBs. Valid values: `vpc` and `classic`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="regionIdAlias")
+    def region_id_alias(self) -> str:
+        return pulumi.get(self, "region_id_alias")
+
+    @property
+    @pulumi.getter(name="renewalCycUnit")
+    def renewal_cyc_unit(self) -> str:
+        return pulumi.get(self, "renewal_cyc_unit")
+
+    @property
+    @pulumi.getter(name="renewalDuration")
+    def renewal_duration(self) -> int:
+        return pulumi.get(self, "renewal_duration")
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> str:
+        return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The Id of resource group which SLB belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="slaveZoneId")
+    def slave_zone_id(self) -> str:
+        return pulumi.get(self, "slave_zone_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        SLB current status. Possible values: `inactive`, `active` and `locked`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        tagged_instances = alicloud.slb.get_load_balancers(tags={
+            "tagKey1": "tagValue1",
+            "tagKey2": "tagValue2",
+        })
+        ```
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        ID of the VPC linked to the SLBs.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        ID of the VSwitch linked to the SLBs.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerBackendServerResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 server_id: str,
+                 type: str,
+                 weight: int):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "server_id", server_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="serverId")
+    def server_id(self) -> str:
+        return pulumi.get(self, "server_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerListenerPortsAndProtocalResult(dict):
+    def __init__(__self__, *,
+                 listener_port: int,
+                 listener_protocal: str):
+        pulumi.set(__self__, "listener_port", listener_port)
+        pulumi.set(__self__, "listener_protocal", listener_protocal)
+
+    @property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> int:
+        return pulumi.get(self, "listener_port")
+
+    @property
+    @pulumi.getter(name="listenerProtocal")
+    def listener_protocal(self) -> str:
+        return pulumi.get(self, "listener_protocal")
+
+
+@pulumi.output_type
+class GetLoadBalancersBalancerListenerPortsAndProtocolResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 forward_port: int,
+                 listener_forward: str,
+                 listener_port: int,
+                 listener_protocol: str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "forward_port", forward_port)
+        pulumi.set(__self__, "listener_forward", listener_forward)
+        pulumi.set(__self__, "listener_port", listener_port)
+        pulumi.set(__self__, "listener_protocol", listener_protocol)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="forwardPort")
+    def forward_port(self) -> int:
+        return pulumi.get(self, "forward_port")
+
+    @property
+    @pulumi.getter(name="listenerForward")
+    def listener_forward(self) -> str:
+        return pulumi.get(self, "listener_forward")
+
+    @property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> int:
+        return pulumi.get(self, "listener_port")
+
+    @property
+    @pulumi.getter(name="listenerProtocol")
+    def listener_protocol(self) -> str:
+        return pulumi.get(self, "listener_protocol")
 
 
 @pulumi.output_type

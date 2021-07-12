@@ -43,17 +43,21 @@ export class Store extends pulumi.CustomResource {
     }
 
     /**
-     * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+     * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
      */
     public readonly appendMeta!: pulumi.Output<boolean | undefined>;
     /**
-     * Determines whether to automatically split a shard. Default to true.
+     * Determines whether to automatically split a shard. Default to `true`.
      */
     public readonly autoSplit!: pulumi.Output<boolean | undefined>;
     /**
-     * Determines whether to enable Web Tracking. Default false.
+     * Determines whether to enable Web Tracking. Default `false`.
      */
     public readonly enableWebTracking!: pulumi.Output<boolean | undefined>;
+    /**
+     * Encrypted storage of data, providing data static protection capability, only supported at creation time.
+     */
+    public readonly encryptConf!: pulumi.Output<outputs.log.StoreEncryptConf | undefined>;
     /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
      */
@@ -67,7 +71,7 @@ export class Store extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+     * The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
      */
     public readonly retentionPeriod!: pulumi.Output<number | undefined>;
     /**
@@ -92,6 +96,7 @@ export class Store extends pulumi.CustomResource {
             inputs["appendMeta"] = state ? state.appendMeta : undefined;
             inputs["autoSplit"] = state ? state.autoSplit : undefined;
             inputs["enableWebTracking"] = state ? state.enableWebTracking : undefined;
+            inputs["encryptConf"] = state ? state.encryptConf : undefined;
             inputs["maxSplitShardCount"] = state ? state.maxSplitShardCount : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -106,6 +111,7 @@ export class Store extends pulumi.CustomResource {
             inputs["appendMeta"] = args ? args.appendMeta : undefined;
             inputs["autoSplit"] = args ? args.autoSplit : undefined;
             inputs["enableWebTracking"] = args ? args.enableWebTracking : undefined;
+            inputs["encryptConf"] = args ? args.encryptConf : undefined;
             inputs["maxSplitShardCount"] = args ? args.maxSplitShardCount : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -125,17 +131,21 @@ export class Store extends pulumi.CustomResource {
  */
 export interface StoreState {
     /**
-     * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+     * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
      */
     readonly appendMeta?: pulumi.Input<boolean>;
     /**
-     * Determines whether to automatically split a shard. Default to true.
+     * Determines whether to automatically split a shard. Default to `true`.
      */
     readonly autoSplit?: pulumi.Input<boolean>;
     /**
-     * Determines whether to enable Web Tracking. Default false.
+     * Determines whether to enable Web Tracking. Default `false`.
      */
     readonly enableWebTracking?: pulumi.Input<boolean>;
+    /**
+     * Encrypted storage of data, providing data static protection capability, only supported at creation time.
+     */
+    readonly encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
     /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
      */
@@ -149,7 +159,7 @@ export interface StoreState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+     * The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
      */
     readonly retentionPeriod?: pulumi.Input<number>;
     /**
@@ -164,17 +174,21 @@ export interface StoreState {
  */
 export interface StoreArgs {
     /**
-     * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+     * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
      */
     readonly appendMeta?: pulumi.Input<boolean>;
     /**
-     * Determines whether to automatically split a shard. Default to true.
+     * Determines whether to automatically split a shard. Default to `true`.
      */
     readonly autoSplit?: pulumi.Input<boolean>;
     /**
-     * Determines whether to enable Web Tracking. Default false.
+     * Determines whether to enable Web Tracking. Default `false`.
      */
     readonly enableWebTracking?: pulumi.Input<boolean>;
+    /**
+     * Encrypted storage of data, providing data static protection capability, only supported at creation time.
+     */
+    readonly encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
     /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
      */
@@ -188,7 +202,7 @@ export interface StoreArgs {
      */
     readonly project: pulumi.Input<string>;
     /**
-     * The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
+     * The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
      */
     readonly retentionPeriod?: pulumi.Input<number>;
     /**

@@ -39,6 +39,7 @@ __all__ = [
     'NodePoolLabelArgs',
     'NodePoolManagementArgs',
     'NodePoolScalingConfigArgs',
+    'NodePoolSpotPriceLimitArgs',
     'NodePoolTaintArgs',
     'ServerlessKubernetesAddonArgs',
     'SwarmNodeArgs',
@@ -1969,7 +1970,7 @@ class NodePoolScalingConfigArgs:
         :param pulumi.Input[int] max_size: Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
         :param pulumi.Input[int] min_size: Min number of instances in a auto scaling group, its valid value range [0~1000].
         :param pulumi.Input[int] eip_bandwidth: Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
-        :param pulumi.Input[str] eip_internet_charge_type: EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+        :param pulumi.Input[str] eip_internet_charge_type: EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
         :param pulumi.Input[bool] is_bond_eip: Whether to bind EIP for an instance. Default: `false`.
         :param pulumi.Input[str] type: Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
         """
@@ -2024,7 +2025,7 @@ class NodePoolScalingConfigArgs:
     @pulumi.getter(name="eipInternetChargeType")
     def eip_internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`.
+        EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
         """
         return pulumi.get(self, "eip_internet_charge_type")
 
@@ -2055,6 +2056,45 @@ class NodePoolScalingConfigArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class NodePoolSpotPriceLimitArgs:
+    def __init__(__self__, *,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 price_limit: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance_type: Spot instance type.
+        :param pulumi.Input[str] price_limit: The maximum hourly price of the spot instance.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if price_limit is not None:
+            pulumi.set(__self__, "price_limit", price_limit)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Spot instance type.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="priceLimit")
+    def price_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum hourly price of the spot instance.
+        """
+        return pulumi.get(self, "price_limit")
+
+    @price_limit.setter
+    def price_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "price_limit", value)
 
 
 @pulumi.input_type
@@ -2114,7 +2154,9 @@ class ServerlessKubernetesAddonArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
+        :param pulumi.Input[str] config: The ACK add-on configurations.
+        :param pulumi.Input[bool] disabled: Disables the automatic installation of a component. Default is `false`.
+        :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -2126,6 +2168,9 @@ class ServerlessKubernetesAddonArgs:
     @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ACK add-on configurations.
+        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -2135,6 +2180,9 @@ class ServerlessKubernetesAddonArgs:
     @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables the automatic installation of a component. Default is `false`.
+        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -2145,7 +2193,7 @@ class ServerlessKubernetesAddonArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The kubernetes cluster's name. It is the only in one Alicloud account.
+        Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
         return pulumi.get(self, "name")
 

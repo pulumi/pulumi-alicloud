@@ -13,10 +13,16 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class ServerlessKubernetesAddon
     {
+        /// <summary>
+        /// The ACK add-on configurations.
+        /// </summary>
         public readonly string? Config;
+        /// <summary>
+        /// Disables the automatic installation of a component. Default is `false`.
+        /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         /// </summary>
         public readonly string? Name;
 

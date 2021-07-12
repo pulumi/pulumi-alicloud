@@ -20,6 +20,7 @@ __all__ = [
     'LaunchTemplateDataDiskArgs',
     'LaunchTemplateNetworkInterfacesArgs',
     'LaunchTemplateSystemDiskArgs',
+    'GetDedicatedHostsOperationLockArgs',
     'GetDisksOperationLockArgs',
     'GetEcsDisksOperationLockArgs',
 ]
@@ -1189,6 +1190,29 @@ class LaunchTemplateSystemDiskArgs:
     @size.setter
     def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
+
+
+@pulumi.input_type
+class GetDedicatedHostsOperationLockArgs:
+    def __init__(__self__, *,
+                 lock_reason: Optional[str] = None):
+        """
+        :param str lock_reason: The reason why the dedicated host resource is locked.
+        """
+        if lock_reason is not None:
+            pulumi.set(__self__, "lock_reason", lock_reason)
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> Optional[str]:
+        """
+        The reason why the dedicated host resource is locked.
+        """
+        return pulumi.get(self, "lock_reason")
+
+    @lock_reason.setter
+    def lock_reason(self, value: Optional[str]):
+        pulumi.set(self, "lock_reason", value)
 
 
 @pulumi.input_type

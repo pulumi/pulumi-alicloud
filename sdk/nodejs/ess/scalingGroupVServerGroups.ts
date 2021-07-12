@@ -44,12 +44,15 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
  * });
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {vswitchId: defaultSwitch.id});
- * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultLoadBalancer.id});
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: name,
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultApplicationLoadBalancer.id});
  * const defaultListener: alicloud.slb.Listener[];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     defaultListener.push(new alicloud.slb.Listener(`defaultListener-${range.value}`, {
- *         loadBalancerId: [defaultLoadBalancer].map(__item => __item.id)[range.value],
+ *         loadBalancerId: [defaultApplicationLoadBalancer].map(__item => __item.id)[range.value],
  *         backendPort: "22",
  *         frontendPort: "22",
  *         protocol: "tcp",
@@ -66,7 +69,7 @@ import * as utilities from "../utilities";
  * const defaultScalingGroupVServerGroups = new alicloud.ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups", {
  *     scalingGroupId: defaultScalingGroup.id,
  *     vserverGroups: [{
- *         loadbalancerId: defaultLoadBalancer.id,
+ *         loadbalancerId: defaultApplicationLoadBalancer.id,
  *         vserverAttributes: [{
  *             vserverGroupId: defaultServerGroup.id,
  *             port: "100",

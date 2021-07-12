@@ -363,6 +363,32 @@ import (
 // }
 // ```
 //
+// Set bucket accelerate configuration
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := oss.NewBucket(ctx, "bucket_accelerate", &oss.BucketArgs{
+// 			Bucket: pulumi.String("bucket_name"),
+// 			TransferAcceleration: &oss.BucketTransferAccelerationArgs{
+// 				Enabled: pulumi.Bool(false),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // OSS bucket can be imported using the bucket name, e.g.
@@ -410,6 +436,8 @@ type Bucket struct {
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// A transfer acceleration status of a bucket (documented below).
+	TransferAcceleration BucketTransferAccelerationPtrOutput `pulumi:"transferAcceleration"`
 	// A state of versioning (documented below).
 	Versioning BucketVersioningPtrOutput `pulumi:"versioning"`
 	// A website object(documented below).
@@ -482,6 +510,8 @@ type bucketState struct {
 	StorageClass *string `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// A transfer acceleration status of a bucket (documented below).
+	TransferAcceleration *BucketTransferAcceleration `pulumi:"transferAcceleration"`
 	// A state of versioning (documented below).
 	Versioning *BucketVersioning `pulumi:"versioning"`
 	// A website object(documented below).
@@ -526,6 +556,8 @@ type BucketState struct {
 	StorageClass pulumi.StringPtrInput
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapInput
+	// A transfer acceleration status of a bucket (documented below).
+	TransferAcceleration BucketTransferAccelerationPtrInput
 	// A state of versioning (documented below).
 	Versioning BucketVersioningPtrInput
 	// A website object(documented below).
@@ -564,6 +596,8 @@ type bucketArgs struct {
 	StorageClass *string `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// A transfer acceleration status of a bucket (documented below).
+	TransferAcceleration *BucketTransferAcceleration `pulumi:"transferAcceleration"`
 	// A state of versioning (documented below).
 	Versioning *BucketVersioning `pulumi:"versioning"`
 	// A website object(documented below).
@@ -599,6 +633,8 @@ type BucketArgs struct {
 	StorageClass pulumi.StringPtrInput
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapInput
+	// A transfer acceleration status of a bucket (documented below).
+	TransferAcceleration BucketTransferAccelerationPtrInput
 	// A state of versioning (documented below).
 	Versioning BucketVersioningPtrInput
 	// A website object(documented below).

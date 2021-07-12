@@ -52,7 +52,7 @@ export class ZoneRecord extends pulumi.CustomResource {
     /**
      * The Private Zone Record ID.
      */
-    public /*out*/ readonly recordId!: pulumi.Output<number>;
+    public /*out*/ readonly recordId!: pulumi.Output<string>;
     /**
      * The remark of the Private Zone Record.
      */
@@ -162,7 +162,7 @@ export interface ZoneRecordState {
     /**
      * The Private Zone Record ID.
      */
-    readonly recordId?: pulumi.Input<number>;
+    readonly recordId?: pulumi.Input<string>;
     /**
      * The remark of the Private Zone Record.
      */

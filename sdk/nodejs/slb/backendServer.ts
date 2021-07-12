@@ -58,9 +58,12 @@ import * as utilities from "../utilities";
  *         vswitchId: defaultSwitch.id,
  *     }));
  * }
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {vswitchId: defaultSwitch.id});
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: name,
+ *     vswitchId: defaultSwitch.id,
+ * });
  * const defaultBackendServer = new alicloud.slb.BackendServer("defaultBackendServer", {
- *     loadBalancerId: defaultLoadBalancer.id,
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
  *     backendServers: [
  *         {
  *             serverId: defaultInstance[0].id,

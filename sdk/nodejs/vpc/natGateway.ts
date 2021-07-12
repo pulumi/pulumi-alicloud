@@ -42,6 +42,12 @@ export class NatGateway extends pulumi.CustomResource {
     }
 
     /**
+     * Whether enable the deletion protection or not. Default value: `false`.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -114,6 +120,7 @@ export class NatGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatGatewayState | undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dryRun"] = state ? state.dryRun : undefined;
             inputs["force"] = state ? state.force : undefined;
@@ -136,6 +143,7 @@ export class NatGateway extends pulumi.CustomResource {
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["force"] = args ? args.force : undefined;
@@ -165,6 +173,12 @@ export class NatGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NatGateway resources.
  */
 export interface NatGatewayState {
+    /**
+     * Whether enable the deletion protection or not. Default value: `false`.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
@@ -230,6 +244,12 @@ export interface NatGatewayState {
  * The set of arguments for constructing a NatGateway resource.
  */
 export interface NatGatewayArgs {
+    /**
+     * Whether enable the deletion protection or not. Default value: `false`.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
