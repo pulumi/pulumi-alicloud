@@ -2,6 +2,11 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 3.3.0 (2021-07-12)
 * Upgrade to v1.125.0 of the AliCloud Terraform Provider  
   **PLEASE NOTE:* There are a number of breaking changes in this provider update:
   * `alicloud.cfg.Rule` has had `memberId` `multiAccount` and `scopeComplianceResourceId` input and output properties removed
@@ -9,8 +14,6 @@ CHANGELOG
   * `alicloud.slb.LoadBalancer` has been replaced by `alicloud.slb.ApplicationLoadBalancer` reflecting in missing properties in the old resource
   * `alicloud.slb.getLoadBalancers` has been replaced by `alicloud.slb.getApplicationLoadBalancers` reflecting in missing properties
   * `alicloud.slb.getCaCertificates` has had `createdTime` and `regionId` removed from the Certificate property.
-
----
 
 ## 3.2.0 (2021-05-21)
 * Upgrade to v1.123.0 of the AliCloud Terraform Provider
