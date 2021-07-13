@@ -20,6 +20,8 @@ __all__ = [
     'StoreIndexFieldSearchJsonKey',
     'StoreIndexFullText',
     'StoreShard',
+    'GetProjectsProjectResult',
+    'GetStoresStoreResult',
 ]
 
 @pulumi.output_type
@@ -807,5 +809,118 @@ class StoreShard(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetProjectsProjectResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 id: str,
+                 last_modify_time: str,
+                 owner: str,
+                 project_name: str,
+                 region: str,
+                 status: str):
+        """
+        :param str description: The description of the project.
+        :param str id: The ID of the project.
+        :param str last_modify_time: The last modify time of project.
+        :param str owner: The owner of project.
+        :param str project_name: The name of the project.
+        :param str region: The region of project.
+        :param str status: The status of project.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_modify_time", last_modify_time)
+        pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "project_name", project_name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the project.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the project.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastModifyTime")
+    def last_modify_time(self) -> str:
+        """
+        The last modify time of project.
+        """
+        return pulumi.get(self, "last_modify_time")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> str:
+        """
+        The owner of project.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> str:
+        """
+        The name of the project.
+        """
+        return pulumi.get(self, "project_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region of project.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of project.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetStoresStoreResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 store_name: str):
+        """
+        :param str id: The ID of the store.
+        :param str store_name: The name of the store.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "store_name", store_name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the store.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="storeName")
+    def store_name(self) -> str:
+        """
+        The name of the store.
+        """
+        return pulumi.get(self, "store_name")
 
 

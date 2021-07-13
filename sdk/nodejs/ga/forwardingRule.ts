@@ -47,14 +47,14 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [deBandwidthPackageAttachment],
  * });
- * const exampleEip = new alicloud.ecs.Eip("exampleEip", {
+ * const exampleEipAddress = new alicloud.ecs.EipAddress("exampleEipAddress", {
  *     bandwidth: "10",
  *     internetChargeType: "PayByBandwidth",
  * });
  * const exampleEndpointGroup = new alicloud.ga.EndpointGroup("exampleEndpointGroup", {
  *     acceleratorId: exampleAccelerator.id,
  *     endpointConfigurations: [{
- *         endpoint: exampleEip.ipAddress,
+ *         endpoint: exampleEipAddress.ipAddress,
  *         type: "PublicIp",
  *         weight: "20",
  *     }],

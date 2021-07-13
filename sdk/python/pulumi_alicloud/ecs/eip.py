@@ -13,19 +13,23 @@ __all__ = ['EipArgs', 'Eip']
 @pulumi.input_type
 class EipArgs:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 activity_id: Optional[pulumi.Input[str]] = None,
+                 address_name: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 netmode: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Eip resource.
-        :param pulumi.Input[int] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        :param pulumi.Input[str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -37,6 +41,10 @@ class EipArgs:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        if activity_id is not None:
+            pulumi.set(__self__, "activity_id", activity_id)
+        if address_name is not None:
+            pulumi.set(__self__, "address_name", address_name)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if deletion_protection is not None:
@@ -44,13 +52,23 @@ class EipArgs:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_charge_type is not None:
+            warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
+        if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if isp is not None:
             pulumi.set(__self__, "isp", isp)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if netmode is not None:
+            pulumi.set(__self__, "netmode", netmode)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
@@ -59,15 +77,33 @@ class EipArgs:
             pulumi.set(__self__, "tags", tags)
 
     @property
+    @pulumi.getter(name="activityId")
+    def activity_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "activity_id")
+
+    @activity_id.setter
+    def activity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "activity_id", value)
+
+    @property
+    @pulumi.getter(name="addressName")
+    def address_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "address_name")
+
+    @address_name.setter
+    def address_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_name", value)
+
+    @property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+    def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
         Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+    def bandwidth(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bandwidth", value)
 
     @property
@@ -146,6 +182,24 @@ class EipArgs:
 
     @property
     @pulumi.getter
+    def netmode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "netmode")
+
+    @netmode.setter
+    def netmode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "netmode", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "period")
 
@@ -181,7 +235,9 @@ class EipArgs:
 @pulumi.input_type
 class _EipState:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 activity_id: Optional[pulumi.Input[str]] = None,
+                 address_name: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -189,13 +245,15 @@ class _EipState:
                  ip_address: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 netmode: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Eip resources.
-        :param pulumi.Input[int] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        :param pulumi.Input[str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -209,12 +267,19 @@ class _EipState:
         :param pulumi.Input[str] status: The EIP current status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        if activity_id is not None:
+            pulumi.set(__self__, "activity_id", activity_id)
+        if address_name is not None:
+            pulumi.set(__self__, "address_name", address_name)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if instance_charge_type is not None:
+            warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
@@ -224,7 +289,14 @@ class _EipState:
         if isp is not None:
             pulumi.set(__self__, "isp", isp)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if netmode is not None:
+            pulumi.set(__self__, "netmode", netmode)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
@@ -235,15 +307,33 @@ class _EipState:
             pulumi.set(__self__, "tags", tags)
 
     @property
+    @pulumi.getter(name="activityId")
+    def activity_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "activity_id")
+
+    @activity_id.setter
+    def activity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "activity_id", value)
+
+    @property
+    @pulumi.getter(name="addressName")
+    def address_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "address_name")
+
+    @address_name.setter
+    def address_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_name", value)
+
+    @property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+    def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
         Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+    def bandwidth(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bandwidth", value)
 
     @property
@@ -334,6 +424,24 @@ class _EipState:
 
     @property
     @pulumi.getter
+    def netmode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "netmode")
+
+    @netmode.setter
+    def netmode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "netmode", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "period")
 
@@ -378,18 +486,27 @@ class _EipState:
         pulumi.set(self, "tags", value)
 
 
+warnings.warn("""This resource has been deprecated in favour of the EipAddress resource""", DeprecationWarning)
+
+
 class Eip(pulumi.CustomResource):
+    warnings.warn("""This resource has been deprecated in favour of the EipAddress resource""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 activity_id: Optional[pulumi.Input[str]] = None,
+                 address_name: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 netmode: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -405,7 +522,7 @@ class Eip(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        :param pulumi.Input[str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -447,17 +564,22 @@ class Eip(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 activity_id: Optional[pulumi.Input[str]] = None,
+                 address_name: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 netmode: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
+        pulumi.log.warn("""Eip is deprecated: This resource has been deprecated in favour of the EipAddress resource""")
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -469,13 +591,23 @@ class Eip(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EipArgs.__new__(EipArgs)
 
+            __props__.__dict__["activity_id"] = activity_id
+            __props__.__dict__["address_name"] = address_name
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
+            if instance_charge_type is not None and not opts.urn:
+                warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
+                pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
             __props__.__dict__["isp"] = isp
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
             __props__.__dict__["name"] = name
+            __props__.__dict__["netmode"] = netmode
+            __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
@@ -491,7 +623,9 @@ class Eip(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[int]] = None,
+            activity_id: Optional[pulumi.Input[str]] = None,
+            address_name: Optional[pulumi.Input[str]] = None,
+            bandwidth: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -499,6 +633,8 @@ class Eip(pulumi.CustomResource):
             ip_address: Optional[pulumi.Input[str]] = None,
             isp: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            netmode: Optional[pulumi.Input[str]] = None,
+            payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -510,7 +646,7 @@ class Eip(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        :param pulumi.Input[str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -528,6 +664,8 @@ class Eip(pulumi.CustomResource):
 
         __props__ = _EipState.__new__(_EipState)
 
+        __props__.__dict__["activity_id"] = activity_id
+        __props__.__dict__["address_name"] = address_name
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
@@ -536,6 +674,8 @@ class Eip(pulumi.CustomResource):
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["isp"] = isp
         __props__.__dict__["name"] = name
+        __props__.__dict__["netmode"] = netmode
+        __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
@@ -543,8 +683,18 @@ class Eip(pulumi.CustomResource):
         return Eip(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="activityId")
+    def activity_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "activity_id")
+
+    @property
+    @pulumi.getter(name="addressName")
+    def address_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "address_name")
+
+    @property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[Optional[int]]:
+    def bandwidth(self) -> pulumi.Output[str]:
         """
         Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         """
@@ -570,7 +720,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
+    def instance_charge_type(self) -> pulumi.Output[str]:
         """
         Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
@@ -578,7 +728,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> pulumi.Output[Optional[str]]:
+    def internet_charge_type(self) -> pulumi.Output[str]:
         """
         Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
         """
@@ -607,6 +757,16 @@ class Eip(pulumi.CustomResource):
         The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def netmode(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "netmode")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter

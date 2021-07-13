@@ -46,6 +46,9 @@ __all__ = [
     'GetEcsLaunchTemplatesTemplateSystemDiskResult',
     'GetEcsNetworkInterfacesInterfaceResult',
     'GetEcsSnapshotsSnapshotResult',
+    'GetEipAddressesAddressResult',
+    'GetEipAddressesEipResult',
+    'GetEipsAddressResult',
     'GetEipsEipResult',
     'GetHpcClustersClusterResult',
     'GetImagesImageResult',
@@ -4533,6 +4536,720 @@ class GetEcsSnapshotsSnapshotResult(dict):
         A resource type that has a reference relationship.
         """
         return pulumi.get(self, "usage")
+
+
+@pulumi.output_type
+class GetEipAddressesAddressResult(dict):
+    def __init__(__self__, *,
+                 address_name: str,
+                 allocation_id: str,
+                 available_regions: Sequence[str],
+                 bandwidth: str,
+                 bandwidth_package_bandwidth: str,
+                 bandwidth_package_id: str,
+                 bandwidth_package_type: str,
+                 create_time: str,
+                 deletion_protection: bool,
+                 description: str,
+                 expired_time: str,
+                 has_reservation_data: str,
+                 hd_monitor_status: str,
+                 id: str,
+                 instance_id: str,
+                 instance_region_id: str,
+                 instance_type: str,
+                 internet_charge_type: str,
+                 ip_address: str,
+                 isp: str,
+                 operation_locks: Sequence[str],
+                 payment_type: str,
+                 reservation_active_time: str,
+                 reservation_bandwidth: str,
+                 reservation_internet_charge_type: str,
+                 reservation_order_type: str,
+                 resource_group_id: str,
+                 second_limited: bool,
+                 segment_instance_id: str,
+                 status: str,
+                 tags: Mapping[str, Any]):
+        """
+        :param str address_name: The name of the EIP.
+        :param str allocation_id: The ID of the EIP.
+        :param Sequence[str] available_regions: The ID of the region to which the EIP belongs.
+        :param str bandwidth: The maximum bandwidth of the EIP. Unit: Mbit/s.
+        :param str bandwidth_package_bandwidth: The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
+        :param str bandwidth_package_id: The ID of the EIP bandwidth plan.
+        :param str bandwidth_package_type: The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+        :param str create_time: The time when the EIP was created.
+        :param bool deletion_protection: Indicates whether deletion protection is enabled.
+        :param str description: The description of the EIP.
+        :param str expired_time: The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+        :param str has_reservation_data: Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
+        :param str hd_monitor_status: Indicates whether fine-grained monitoring is enabled for the EIP.
+        :param str id: The ID of the Address.
+        :param str instance_id: The ID of the instance with which the EIP is associated.
+        :param str instance_region_id: The region ID of the associated resource.
+        :param str instance_type: The type of the instance with which the EIP is associated.
+        :param str internet_charge_type: The metering method of the EIP.
+        :param str ip_address: The IP address of the EIP.
+        :param str isp: The Internet service provider (ISP).
+        :param Sequence[str] operation_locks: The details about the locked EIP.
+        :param str payment_type: The billing method of the EIP.
+        :param str reservation_active_time: The time when the renewal takes effect.
+        :param str reservation_bandwidth: The bandwidth after the renewal takes effect.
+        :param str reservation_internet_charge_type: The metering method of the renewal.
+        :param str reservation_order_type: The type of the renewal order.
+        :param str resource_group_id: The ID of the resource group.
+        :param bool second_limited: Indicates whether level-2 throttling is configured.
+        :param str segment_instance_id: The IDs of the contiguous EIPs.
+        :param str status: The status of the EIP.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "address_name", address_name)
+        pulumi.set(__self__, "allocation_id", allocation_id)
+        pulumi.set(__self__, "available_regions", available_regions)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
+        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        pulumi.set(__self__, "bandwidth_package_type", bandwidth_package_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
+        pulumi.set(__self__, "hd_monitor_status", hd_monitor_status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_region_id", instance_region_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "isp", isp)
+        pulumi.set(__self__, "operation_locks", operation_locks)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
+        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "second_limited", second_limited)
+        pulumi.set(__self__, "segment_instance_id", segment_instance_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="addressName")
+    def address_name(self) -> str:
+        """
+        The name of the EIP.
+        """
+        return pulumi.get(self, "address_name")
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> str:
+        """
+        The ID of the EIP.
+        """
+        return pulumi.get(self, "allocation_id")
+
+    @property
+    @pulumi.getter(name="availableRegions")
+    def available_regions(self) -> Sequence[str]:
+        """
+        The ID of the region to which the EIP belongs.
+        """
+        return pulumi.get(self, "available_regions")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> str:
+        """
+        The maximum bandwidth of the EIP. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageBandwidth")
+    def bandwidth_package_bandwidth(self) -> str:
+        """
+        The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
+        """
+        return pulumi.get(self, "bandwidth_package_bandwidth")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageId")
+    def bandwidth_package_id(self) -> str:
+        """
+        The ID of the EIP bandwidth plan.
+        """
+        return pulumi.get(self, "bandwidth_package_id")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageType")
+    def bandwidth_package_type(self) -> str:
+        """
+        The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+        """
+        return pulumi.get(self, "bandwidth_package_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the EIP was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        """
+        Indicates whether deletion protection is enabled.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the EIP.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="hasReservationData")
+    def has_reservation_data(self) -> str:
+        """
+        Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
+        """
+        return pulumi.get(self, "has_reservation_data")
+
+    @property
+    @pulumi.getter(name="hdMonitorStatus")
+    def hd_monitor_status(self) -> str:
+        """
+        Indicates whether fine-grained monitoring is enabled for the EIP.
+        """
+        return pulumi.get(self, "hd_monitor_status")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Address.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance with which the EIP is associated.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceRegionId")
+    def instance_region_id(self) -> str:
+        """
+        The region ID of the associated resource.
+        """
+        return pulumi.get(self, "instance_region_id")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The type of the instance with which the EIP is associated.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        """
+        The metering method of the EIP.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        The IP address of the EIP.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def isp(self) -> str:
+        """
+        The Internet service provider (ISP).
+        """
+        return pulumi.get(self, "isp")
+
+    @property
+    @pulumi.getter(name="operationLocks")
+    def operation_locks(self) -> Sequence[str]:
+        """
+        The details about the locked EIP.
+        """
+        return pulumi.get(self, "operation_locks")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The billing method of the EIP.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="reservationActiveTime")
+    def reservation_active_time(self) -> str:
+        """
+        The time when the renewal takes effect.
+        """
+        return pulumi.get(self, "reservation_active_time")
+
+    @property
+    @pulumi.getter(name="reservationBandwidth")
+    def reservation_bandwidth(self) -> str:
+        """
+        The bandwidth after the renewal takes effect.
+        """
+        return pulumi.get(self, "reservation_bandwidth")
+
+    @property
+    @pulumi.getter(name="reservationInternetChargeType")
+    def reservation_internet_charge_type(self) -> str:
+        """
+        The metering method of the renewal.
+        """
+        return pulumi.get(self, "reservation_internet_charge_type")
+
+    @property
+    @pulumi.getter(name="reservationOrderType")
+    def reservation_order_type(self) -> str:
+        """
+        The type of the renewal order.
+        """
+        return pulumi.get(self, "reservation_order_type")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="secondLimited")
+    def second_limited(self) -> bool:
+        """
+        Indicates whether level-2 throttling is configured.
+        """
+        return pulumi.get(self, "second_limited")
+
+    @property
+    @pulumi.getter(name="segmentInstanceId")
+    def segment_instance_id(self) -> str:
+        """
+        The IDs of the contiguous EIPs.
+        """
+        return pulumi.get(self, "segment_instance_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the EIP.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetEipAddressesEipResult(dict):
+    def __init__(__self__, *,
+                 bandwidth: str,
+                 creation_time: str,
+                 deletion_protection: bool,
+                 id: str,
+                 instance_id: str,
+                 instance_type: str,
+                 internet_charge_type: str,
+                 ip_address: str,
+                 status: str):
+        """
+        :param str bandwidth: The maximum bandwidth of the EIP. Unit: Mbit/s.
+        :param bool deletion_protection: Indicates whether deletion protection is enabled.
+        :param str id: The ID of the Address.
+        :param str instance_id: The ID of the instance with which the EIP is associated.
+        :param str instance_type: The type of the instance with which the EIP is associated.
+        :param str internet_charge_type: The metering method of the EIP.
+        :param str ip_address: The IP address of the EIP.
+        :param str status: The status of the EIP.
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> str:
+        """
+        The maximum bandwidth of the EIP. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> str:
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        """
+        Indicates whether deletion protection is enabled.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Address.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance with which the EIP is associated.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The type of the instance with which the EIP is associated.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        """
+        The metering method of the EIP.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        The IP address of the EIP.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the EIP.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetEipsAddressResult(dict):
+    def __init__(__self__, *,
+                 address_name: str,
+                 allocation_id: str,
+                 available_regions: Sequence[str],
+                 bandwidth: str,
+                 bandwidth_package_bandwidth: str,
+                 bandwidth_package_id: str,
+                 bandwidth_package_type: str,
+                 create_time: str,
+                 deletion_protection: bool,
+                 description: str,
+                 expired_time: str,
+                 has_reservation_data: str,
+                 hd_monitor_status: str,
+                 id: str,
+                 instance_id: str,
+                 instance_region_id: str,
+                 instance_type: str,
+                 internet_charge_type: str,
+                 ip_address: str,
+                 isp: str,
+                 operation_locks: Sequence[str],
+                 payment_type: str,
+                 reservation_active_time: str,
+                 reservation_bandwidth: str,
+                 reservation_internet_charge_type: str,
+                 reservation_order_type: str,
+                 resource_group_id: str,
+                 second_limited: bool,
+                 segment_instance_id: str,
+                 status: str,
+                 tags: Mapping[str, Any]):
+        """
+        :param str bandwidth: EIP internet max bandwidth in Mbps.
+        :param bool deletion_protection: (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+        :param str id: ID of the EIP.
+        :param str instance_id: The ID of the instance that is being bound.
+        :param str instance_type: The instance type of that the EIP is bound.
+        :param str internet_charge_type: EIP internet charge type.
+        :param str ip_address: Public IP Address of the the EIP.
+        :param str resource_group_id: The Id of resource group which the eips belongs.
+        :param str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "address_name", address_name)
+        pulumi.set(__self__, "allocation_id", allocation_id)
+        pulumi.set(__self__, "available_regions", available_regions)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
+        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        pulumi.set(__self__, "bandwidth_package_type", bandwidth_package_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
+        pulumi.set(__self__, "hd_monitor_status", hd_monitor_status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_region_id", instance_region_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "isp", isp)
+        pulumi.set(__self__, "operation_locks", operation_locks)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
+        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "second_limited", second_limited)
+        pulumi.set(__self__, "segment_instance_id", segment_instance_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="addressName")
+    def address_name(self) -> str:
+        return pulumi.get(self, "address_name")
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> str:
+        return pulumi.get(self, "allocation_id")
+
+    @property
+    @pulumi.getter(name="availableRegions")
+    def available_regions(self) -> Sequence[str]:
+        return pulumi.get(self, "available_regions")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> str:
+        """
+        EIP internet max bandwidth in Mbps.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageBandwidth")
+    def bandwidth_package_bandwidth(self) -> str:
+        return pulumi.get(self, "bandwidth_package_bandwidth")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageId")
+    def bandwidth_package_id(self) -> str:
+        return pulumi.get(self, "bandwidth_package_id")
+
+    @property
+    @pulumi.getter(name="bandwidthPackageType")
+    def bandwidth_package_type(self) -> str:
+        return pulumi.get(self, "bandwidth_package_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        """
+        (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="hasReservationData")
+    def has_reservation_data(self) -> str:
+        return pulumi.get(self, "has_reservation_data")
+
+    @property
+    @pulumi.getter(name="hdMonitorStatus")
+    def hd_monitor_status(self) -> str:
+        return pulumi.get(self, "hd_monitor_status")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the EIP.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance that is being bound.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceRegionId")
+    def instance_region_id(self) -> str:
+        return pulumi.get(self, "instance_region_id")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The instance type of that the EIP is bound.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        """
+        EIP internet charge type.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        Public IP Address of the the EIP.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def isp(self) -> str:
+        return pulumi.get(self, "isp")
+
+    @property
+    @pulumi.getter(name="operationLocks")
+    def operation_locks(self) -> Sequence[str]:
+        return pulumi.get(self, "operation_locks")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="reservationActiveTime")
+    def reservation_active_time(self) -> str:
+        return pulumi.get(self, "reservation_active_time")
+
+    @property
+    @pulumi.getter(name="reservationBandwidth")
+    def reservation_bandwidth(self) -> str:
+        return pulumi.get(self, "reservation_bandwidth")
+
+    @property
+    @pulumi.getter(name="reservationInternetChargeType")
+    def reservation_internet_charge_type(self) -> str:
+        return pulumi.get(self, "reservation_internet_charge_type")
+
+    @property
+    @pulumi.getter(name="reservationOrderType")
+    def reservation_order_type(self) -> str:
+        return pulumi.get(self, "reservation_order_type")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The Id of resource group which the eips belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="secondLimited")
+    def second_limited(self) -> bool:
+        return pulumi.get(self, "second_limited")
+
+    @property
+    @pulumi.getter(name="segmentInstanceId")
+    def segment_instance_id(self) -> str:
+        return pulumi.get(self, "segment_instance_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

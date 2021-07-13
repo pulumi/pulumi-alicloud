@@ -18,14 +18,21 @@ namespace Pulumi.AliCloud.Ecs
     ///  $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
     /// ```
     /// </summary>
+    [Obsolete(@"This resource has been deprecated in favour of the EipAddress resource")]
     [AliCloudResourceType("alicloud:ecs/eip:Eip")]
     public partial class Eip : Pulumi.CustomResource
     {
+        [Output("activityId")]
+        public Output<string?> ActivityId { get; private set; } = null!;
+
+        [Output("addressName")]
+        public Output<string> AddressName { get; private set; } = null!;
+
         /// <summary>
         /// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         /// </summary>
         [Output("bandwidth")]
-        public Output<int?> Bandwidth { get; private set; } = null!;
+        public Output<string> Bandwidth { get; private set; } = null!;
 
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
@@ -45,13 +52,13 @@ namespace Pulumi.AliCloud.Ecs
         /// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         /// </summary>
         [Output("instanceChargeType")]
-        public Output<string?> InstanceChargeType { get; private set; } = null!;
+        public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
         /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instance_charge_type` is PrePaid.
         /// </summary>
         [Output("internetChargeType")]
-        public Output<string?> InternetChargeType { get; private set; } = null!;
+        public Output<string> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
         /// The elastic ip address
@@ -70,6 +77,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("netmode")]
+        public Output<string?> Netmode { get; private set; } = null!;
+
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
 
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -138,11 +151,17 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class EipArgs : Pulumi.ResourceArgs
     {
+        [Input("activityId")]
+        public Input<string>? ActivityId { get; set; }
+
+        [Input("addressName")]
+        public Input<string>? AddressName { get; set; }
+
         /// <summary>
         /// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         /// </summary>
         [Input("bandwidth")]
-        public Input<int>? Bandwidth { get; set; }
+        public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
@@ -182,6 +201,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("netmode")]
+        public Input<string>? Netmode { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -210,11 +235,17 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class EipState : Pulumi.ResourceArgs
     {
+        [Input("activityId")]
+        public Input<string>? ActivityId { get; set; }
+
+        [Input("addressName")]
+        public Input<string>? AddressName { get; set; }
+
         /// <summary>
         /// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         /// </summary>
         [Input("bandwidth")]
-        public Input<int>? Bandwidth { get; set; }
+        public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
@@ -259,6 +290,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("netmode")]
+        public Input<string>? Netmode { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         [Input("period")]
         public Input<int>? Period { get; set; }

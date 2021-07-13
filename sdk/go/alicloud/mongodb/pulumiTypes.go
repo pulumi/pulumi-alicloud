@@ -145,6 +145,8 @@ type ShardingInstanceShardList struct {
 	// - Custom storage space; value range: [10, 1,000]
 	// - 10-GB increments. Unit: GB.
 	NodeStorage int `pulumi:"nodeStorage"`
+	// The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+	ReadonlyReplicas *int `pulumi:"readonlyReplicas"`
 }
 
 // ShardingInstanceShardListInput is an input type that accepts ShardingInstanceShardListArgs and ShardingInstanceShardListOutput values.
@@ -166,6 +168,8 @@ type ShardingInstanceShardListArgs struct {
 	// - Custom storage space; value range: [10, 1,000]
 	// - 10-GB increments. Unit: GB.
 	NodeStorage pulumi.IntInput `pulumi:"nodeStorage"`
+	// The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+	ReadonlyReplicas pulumi.IntPtrInput `pulumi:"readonlyReplicas"`
 }
 
 func (ShardingInstanceShardListArgs) ElementType() reflect.Type {
@@ -233,6 +237,11 @@ func (o ShardingInstanceShardListOutput) NodeId() pulumi.StringPtrOutput {
 // - 10-GB increments. Unit: GB.
 func (o ShardingInstanceShardListOutput) NodeStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v ShardingInstanceShardList) int { return v.NodeStorage }).(pulumi.IntOutput)
+}
+
+// The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+func (o ShardingInstanceShardListOutput) ReadonlyReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ShardingInstanceShardList) *int { return v.ReadonlyReplicas }).(pulumi.IntPtrOutput)
 }
 
 type ShardingInstanceShardListArrayOutput struct{ *pulumi.OutputState }

@@ -6860,6 +6860,843 @@ func (o GetEcsSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetEcsSnaps
 	}).(GetEcsSnapshotsSnapshotOutput)
 }
 
+type GetEipAddressesAddress struct {
+	// The name of the EIP.
+	AddressName string `pulumi:"addressName"`
+	// The ID of the EIP.
+	AllocationId string `pulumi:"allocationId"`
+	// The ID of the region to which the EIP belongs.
+	AvailableRegions []string `pulumi:"availableRegions"`
+	// The maximum bandwidth of the EIP. Unit: Mbit/s.
+	Bandwidth string `pulumi:"bandwidth"`
+	// The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
+	BandwidthPackageBandwidth string `pulumi:"bandwidthPackageBandwidth"`
+	// The ID of the EIP bandwidth plan.
+	BandwidthPackageId string `pulumi:"bandwidthPackageId"`
+	// The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+	BandwidthPackageType string `pulumi:"bandwidthPackageType"`
+	// The time when the EIP was created.
+	CreateTime string `pulumi:"createTime"`
+	// Indicates whether deletion protection is enabled.
+	DeletionProtection bool `pulumi:"deletionProtection"`
+	// The description of the EIP.
+	Description string `pulumi:"description"`
+	// The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
+	HasReservationData string `pulumi:"hasReservationData"`
+	// Indicates whether fine-grained monitoring is enabled for the EIP.
+	HdMonitorStatus string `pulumi:"hdMonitorStatus"`
+	// The ID of the Address.
+	Id string `pulumi:"id"`
+	// The ID of the instance with which the EIP is associated.
+	InstanceId string `pulumi:"instanceId"`
+	// The region ID of the associated resource.
+	InstanceRegionId string `pulumi:"instanceRegionId"`
+	// The type of the instance with which the EIP is associated.
+	InstanceType string `pulumi:"instanceType"`
+	// The metering method of the EIP.
+	InternetChargeType string `pulumi:"internetChargeType"`
+	// The IP address of the EIP.
+	IpAddress string `pulumi:"ipAddress"`
+	// The Internet service provider (ISP).
+	Isp string `pulumi:"isp"`
+	// The details about the locked EIP.
+	OperationLocks []string `pulumi:"operationLocks"`
+	// The billing method of the EIP.
+	PaymentType string `pulumi:"paymentType"`
+	// The time when the renewal takes effect.
+	ReservationActiveTime string `pulumi:"reservationActiveTime"`
+	// The bandwidth after the renewal takes effect.
+	ReservationBandwidth string `pulumi:"reservationBandwidth"`
+	// The metering method of the renewal.
+	ReservationInternetChargeType string `pulumi:"reservationInternetChargeType"`
+	// The type of the renewal order.
+	ReservationOrderType string `pulumi:"reservationOrderType"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Indicates whether level-2 throttling is configured.
+	SecondLimited bool `pulumi:"secondLimited"`
+	// The IDs of the contiguous EIPs.
+	SegmentInstanceId string `pulumi:"segmentInstanceId"`
+	// The status of the EIP.
+	Status string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetEipAddressesAddressInput is an input type that accepts GetEipAddressesAddressArgs and GetEipAddressesAddressOutput values.
+// You can construct a concrete instance of `GetEipAddressesAddressInput` via:
+//
+//          GetEipAddressesAddressArgs{...}
+type GetEipAddressesAddressInput interface {
+	pulumi.Input
+
+	ToGetEipAddressesAddressOutput() GetEipAddressesAddressOutput
+	ToGetEipAddressesAddressOutputWithContext(context.Context) GetEipAddressesAddressOutput
+}
+
+type GetEipAddressesAddressArgs struct {
+	// The name of the EIP.
+	AddressName pulumi.StringInput `pulumi:"addressName"`
+	// The ID of the EIP.
+	AllocationId pulumi.StringInput `pulumi:"allocationId"`
+	// The ID of the region to which the EIP belongs.
+	AvailableRegions pulumi.StringArrayInput `pulumi:"availableRegions"`
+	// The maximum bandwidth of the EIP. Unit: Mbit/s.
+	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
+	// The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
+	BandwidthPackageBandwidth pulumi.StringInput `pulumi:"bandwidthPackageBandwidth"`
+	// The ID of the EIP bandwidth plan.
+	BandwidthPackageId pulumi.StringInput `pulumi:"bandwidthPackageId"`
+	// The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+	BandwidthPackageType pulumi.StringInput `pulumi:"bandwidthPackageType"`
+	// The time when the EIP was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Indicates whether deletion protection is enabled.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
+	// The description of the EIP.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
+	HasReservationData pulumi.StringInput `pulumi:"hasReservationData"`
+	// Indicates whether fine-grained monitoring is enabled for the EIP.
+	HdMonitorStatus pulumi.StringInput `pulumi:"hdMonitorStatus"`
+	// The ID of the Address.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance with which the EIP is associated.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The region ID of the associated resource.
+	InstanceRegionId pulumi.StringInput `pulumi:"instanceRegionId"`
+	// The type of the instance with which the EIP is associated.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The metering method of the EIP.
+	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
+	// The IP address of the EIP.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The Internet service provider (ISP).
+	Isp pulumi.StringInput `pulumi:"isp"`
+	// The details about the locked EIP.
+	OperationLocks pulumi.StringArrayInput `pulumi:"operationLocks"`
+	// The billing method of the EIP.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The time when the renewal takes effect.
+	ReservationActiveTime pulumi.StringInput `pulumi:"reservationActiveTime"`
+	// The bandwidth after the renewal takes effect.
+	ReservationBandwidth pulumi.StringInput `pulumi:"reservationBandwidth"`
+	// The metering method of the renewal.
+	ReservationInternetChargeType pulumi.StringInput `pulumi:"reservationInternetChargeType"`
+	// The type of the renewal order.
+	ReservationOrderType pulumi.StringInput `pulumi:"reservationOrderType"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Indicates whether level-2 throttling is configured.
+	SecondLimited pulumi.BoolInput `pulumi:"secondLimited"`
+	// The IDs of the contiguous EIPs.
+	SegmentInstanceId pulumi.StringInput `pulumi:"segmentInstanceId"`
+	// The status of the EIP.
+	Status pulumi.StringInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetEipAddressesAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEipAddressesAddress)(nil)).Elem()
+}
+
+func (i GetEipAddressesAddressArgs) ToGetEipAddressesAddressOutput() GetEipAddressesAddressOutput {
+	return i.ToGetEipAddressesAddressOutputWithContext(context.Background())
+}
+
+func (i GetEipAddressesAddressArgs) ToGetEipAddressesAddressOutputWithContext(ctx context.Context) GetEipAddressesAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEipAddressesAddressOutput)
+}
+
+// GetEipAddressesAddressArrayInput is an input type that accepts GetEipAddressesAddressArray and GetEipAddressesAddressArrayOutput values.
+// You can construct a concrete instance of `GetEipAddressesAddressArrayInput` via:
+//
+//          GetEipAddressesAddressArray{ GetEipAddressesAddressArgs{...} }
+type GetEipAddressesAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetEipAddressesAddressArrayOutput() GetEipAddressesAddressArrayOutput
+	ToGetEipAddressesAddressArrayOutputWithContext(context.Context) GetEipAddressesAddressArrayOutput
+}
+
+type GetEipAddressesAddressArray []GetEipAddressesAddressInput
+
+func (GetEipAddressesAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEipAddressesAddress)(nil)).Elem()
+}
+
+func (i GetEipAddressesAddressArray) ToGetEipAddressesAddressArrayOutput() GetEipAddressesAddressArrayOutput {
+	return i.ToGetEipAddressesAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetEipAddressesAddressArray) ToGetEipAddressesAddressArrayOutputWithContext(ctx context.Context) GetEipAddressesAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEipAddressesAddressArrayOutput)
+}
+
+type GetEipAddressesAddressOutput struct{ *pulumi.OutputState }
+
+func (GetEipAddressesAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEipAddressesAddress)(nil)).Elem()
+}
+
+func (o GetEipAddressesAddressOutput) ToGetEipAddressesAddressOutput() GetEipAddressesAddressOutput {
+	return o
+}
+
+func (o GetEipAddressesAddressOutput) ToGetEipAddressesAddressOutputWithContext(ctx context.Context) GetEipAddressesAddressOutput {
+	return o
+}
+
+// The name of the EIP.
+func (o GetEipAddressesAddressOutput) AddressName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.AddressName }).(pulumi.StringOutput)
+}
+
+// The ID of the EIP.
+func (o GetEipAddressesAddressOutput) AllocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.AllocationId }).(pulumi.StringOutput)
+}
+
+// The ID of the region to which the EIP belongs.
+func (o GetEipAddressesAddressOutput) AvailableRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) []string { return v.AvailableRegions }).(pulumi.StringArrayOutput)
+}
+
+// The maximum bandwidth of the EIP. Unit: Mbit/s.
+func (o GetEipAddressesAddressOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+// The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
+func (o GetEipAddressesAddressOutput) BandwidthPackageBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.BandwidthPackageBandwidth }).(pulumi.StringOutput)
+}
+
+// The ID of the EIP bandwidth plan.
+func (o GetEipAddressesAddressOutput) BandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.BandwidthPackageId }).(pulumi.StringOutput)
+}
+
+// The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+func (o GetEipAddressesAddressOutput) BandwidthPackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.BandwidthPackageType }).(pulumi.StringOutput)
+}
+
+// The time when the EIP was created.
+func (o GetEipAddressesAddressOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether deletion protection is enabled.
+func (o GetEipAddressesAddressOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// The description of the EIP.
+func (o GetEipAddressesAddressOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+func (o GetEipAddressesAddressOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
+func (o GetEipAddressesAddressOutput) HasReservationData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.HasReservationData }).(pulumi.StringOutput)
+}
+
+// Indicates whether fine-grained monitoring is enabled for the EIP.
+func (o GetEipAddressesAddressOutput) HdMonitorStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.HdMonitorStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the Address.
+func (o GetEipAddressesAddressOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance with which the EIP is associated.
+func (o GetEipAddressesAddressOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The region ID of the associated resource.
+func (o GetEipAddressesAddressOutput) InstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.InstanceRegionId }).(pulumi.StringOutput)
+}
+
+// The type of the instance with which the EIP is associated.
+func (o GetEipAddressesAddressOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The metering method of the EIP.
+func (o GetEipAddressesAddressOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The IP address of the EIP.
+func (o GetEipAddressesAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The Internet service provider (ISP).
+func (o GetEipAddressesAddressOutput) Isp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.Isp }).(pulumi.StringOutput)
+}
+
+// The details about the locked EIP.
+func (o GetEipAddressesAddressOutput) OperationLocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) []string { return v.OperationLocks }).(pulumi.StringArrayOutput)
+}
+
+// The billing method of the EIP.
+func (o GetEipAddressesAddressOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The time when the renewal takes effect.
+func (o GetEipAddressesAddressOutput) ReservationActiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.ReservationActiveTime }).(pulumi.StringOutput)
+}
+
+// The bandwidth after the renewal takes effect.
+func (o GetEipAddressesAddressOutput) ReservationBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.ReservationBandwidth }).(pulumi.StringOutput)
+}
+
+// The metering method of the renewal.
+func (o GetEipAddressesAddressOutput) ReservationInternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.ReservationInternetChargeType }).(pulumi.StringOutput)
+}
+
+// The type of the renewal order.
+func (o GetEipAddressesAddressOutput) ReservationOrderType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.ReservationOrderType }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetEipAddressesAddressOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Indicates whether level-2 throttling is configured.
+func (o GetEipAddressesAddressOutput) SecondLimited() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) bool { return v.SecondLimited }).(pulumi.BoolOutput)
+}
+
+// The IDs of the contiguous EIPs.
+func (o GetEipAddressesAddressOutput) SegmentInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.SegmentInstanceId }).(pulumi.StringOutput)
+}
+
+// The status of the EIP.
+func (o GetEipAddressesAddressOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetEipAddressesAddressOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetEipAddressesAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEipAddressesAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEipAddressesAddress)(nil)).Elem()
+}
+
+func (o GetEipAddressesAddressArrayOutput) ToGetEipAddressesAddressArrayOutput() GetEipAddressesAddressArrayOutput {
+	return o
+}
+
+func (o GetEipAddressesAddressArrayOutput) ToGetEipAddressesAddressArrayOutputWithContext(ctx context.Context) GetEipAddressesAddressArrayOutput {
+	return o
+}
+
+func (o GetEipAddressesAddressArrayOutput) Index(i pulumi.IntInput) GetEipAddressesAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEipAddressesAddress {
+		return vs[0].([]GetEipAddressesAddress)[vs[1].(int)]
+	}).(GetEipAddressesAddressOutput)
+}
+
+type GetEipAddressesEip struct {
+	// The maximum bandwidth of the EIP. Unit: Mbit/s.
+	Bandwidth    string `pulumi:"bandwidth"`
+	CreationTime string `pulumi:"creationTime"`
+	// Indicates whether deletion protection is enabled.
+	DeletionProtection bool `pulumi:"deletionProtection"`
+	// The ID of the Address.
+	Id string `pulumi:"id"`
+	// The ID of the instance with which the EIP is associated.
+	InstanceId string `pulumi:"instanceId"`
+	// The type of the instance with which the EIP is associated.
+	InstanceType string `pulumi:"instanceType"`
+	// The metering method of the EIP.
+	InternetChargeType string `pulumi:"internetChargeType"`
+	// The IP address of the EIP.
+	IpAddress string `pulumi:"ipAddress"`
+	// The status of the EIP.
+	Status string `pulumi:"status"`
+}
+
+// GetEipAddressesEipInput is an input type that accepts GetEipAddressesEipArgs and GetEipAddressesEipOutput values.
+// You can construct a concrete instance of `GetEipAddressesEipInput` via:
+//
+//          GetEipAddressesEipArgs{...}
+type GetEipAddressesEipInput interface {
+	pulumi.Input
+
+	ToGetEipAddressesEipOutput() GetEipAddressesEipOutput
+	ToGetEipAddressesEipOutputWithContext(context.Context) GetEipAddressesEipOutput
+}
+
+type GetEipAddressesEipArgs struct {
+	// The maximum bandwidth of the EIP. Unit: Mbit/s.
+	Bandwidth    pulumi.StringInput `pulumi:"bandwidth"`
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// Indicates whether deletion protection is enabled.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
+	// The ID of the Address.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance with which the EIP is associated.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The type of the instance with which the EIP is associated.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The metering method of the EIP.
+	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
+	// The IP address of the EIP.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The status of the EIP.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetEipAddressesEipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEipAddressesEip)(nil)).Elem()
+}
+
+func (i GetEipAddressesEipArgs) ToGetEipAddressesEipOutput() GetEipAddressesEipOutput {
+	return i.ToGetEipAddressesEipOutputWithContext(context.Background())
+}
+
+func (i GetEipAddressesEipArgs) ToGetEipAddressesEipOutputWithContext(ctx context.Context) GetEipAddressesEipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEipAddressesEipOutput)
+}
+
+// GetEipAddressesEipArrayInput is an input type that accepts GetEipAddressesEipArray and GetEipAddressesEipArrayOutput values.
+// You can construct a concrete instance of `GetEipAddressesEipArrayInput` via:
+//
+//          GetEipAddressesEipArray{ GetEipAddressesEipArgs{...} }
+type GetEipAddressesEipArrayInput interface {
+	pulumi.Input
+
+	ToGetEipAddressesEipArrayOutput() GetEipAddressesEipArrayOutput
+	ToGetEipAddressesEipArrayOutputWithContext(context.Context) GetEipAddressesEipArrayOutput
+}
+
+type GetEipAddressesEipArray []GetEipAddressesEipInput
+
+func (GetEipAddressesEipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEipAddressesEip)(nil)).Elem()
+}
+
+func (i GetEipAddressesEipArray) ToGetEipAddressesEipArrayOutput() GetEipAddressesEipArrayOutput {
+	return i.ToGetEipAddressesEipArrayOutputWithContext(context.Background())
+}
+
+func (i GetEipAddressesEipArray) ToGetEipAddressesEipArrayOutputWithContext(ctx context.Context) GetEipAddressesEipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEipAddressesEipArrayOutput)
+}
+
+type GetEipAddressesEipOutput struct{ *pulumi.OutputState }
+
+func (GetEipAddressesEipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEipAddressesEip)(nil)).Elem()
+}
+
+func (o GetEipAddressesEipOutput) ToGetEipAddressesEipOutput() GetEipAddressesEipOutput {
+	return o
+}
+
+func (o GetEipAddressesEipOutput) ToGetEipAddressesEipOutputWithContext(ctx context.Context) GetEipAddressesEipOutput {
+	return o
+}
+
+// The maximum bandwidth of the EIP. Unit: Mbit/s.
+func (o GetEipAddressesEipOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesEip) string { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+func (o GetEipAddressesEipOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesEip) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether deletion protection is enabled.
+func (o GetEipAddressesEipOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEipAddressesEip) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// The ID of the Address.
+func (o GetEipAddressesEipOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesEip) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance with which the EIP is associated.
+func (o GetEipAddressesEipOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesEip) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The type of the instance with which the EIP is associated.
+func (o GetEipAddressesEipOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesEip) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The metering method of the EIP.
+func (o GetEipAddressesEipOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesEip) string { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The IP address of the EIP.
+func (o GetEipAddressesEipOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesEip) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The status of the EIP.
+func (o GetEipAddressesEipOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesEip) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetEipAddressesEipArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEipAddressesEipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEipAddressesEip)(nil)).Elem()
+}
+
+func (o GetEipAddressesEipArrayOutput) ToGetEipAddressesEipArrayOutput() GetEipAddressesEipArrayOutput {
+	return o
+}
+
+func (o GetEipAddressesEipArrayOutput) ToGetEipAddressesEipArrayOutputWithContext(ctx context.Context) GetEipAddressesEipArrayOutput {
+	return o
+}
+
+func (o GetEipAddressesEipArrayOutput) Index(i pulumi.IntInput) GetEipAddressesEipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEipAddressesEip {
+		return vs[0].([]GetEipAddressesEip)[vs[1].(int)]
+	}).(GetEipAddressesEipOutput)
+}
+
+type GetEipsAddress struct {
+	AddressName      string   `pulumi:"addressName"`
+	AllocationId     string   `pulumi:"allocationId"`
+	AvailableRegions []string `pulumi:"availableRegions"`
+	// EIP internet max bandwidth in Mbps.
+	Bandwidth                 string `pulumi:"bandwidth"`
+	BandwidthPackageBandwidth string `pulumi:"bandwidthPackageBandwidth"`
+	BandwidthPackageId        string `pulumi:"bandwidthPackageId"`
+	BandwidthPackageType      string `pulumi:"bandwidthPackageType"`
+	CreateTime                string `pulumi:"createTime"`
+	// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+	DeletionProtection bool   `pulumi:"deletionProtection"`
+	Description        string `pulumi:"description"`
+	ExpiredTime        string `pulumi:"expiredTime"`
+	HasReservationData string `pulumi:"hasReservationData"`
+	HdMonitorStatus    string `pulumi:"hdMonitorStatus"`
+	// ID of the EIP.
+	Id string `pulumi:"id"`
+	// The ID of the instance that is being bound.
+	InstanceId       string `pulumi:"instanceId"`
+	InstanceRegionId string `pulumi:"instanceRegionId"`
+	// The instance type of that the EIP is bound.
+	InstanceType string `pulumi:"instanceType"`
+	// EIP internet charge type.
+	InternetChargeType string `pulumi:"internetChargeType"`
+	// Public IP Address of the the EIP.
+	IpAddress                     string   `pulumi:"ipAddress"`
+	Isp                           string   `pulumi:"isp"`
+	OperationLocks                []string `pulumi:"operationLocks"`
+	PaymentType                   string   `pulumi:"paymentType"`
+	ReservationActiveTime         string   `pulumi:"reservationActiveTime"`
+	ReservationBandwidth          string   `pulumi:"reservationBandwidth"`
+	ReservationInternetChargeType string   `pulumi:"reservationInternetChargeType"`
+	ReservationOrderType          string   `pulumi:"reservationOrderType"`
+	// The Id of resource group which the eips belongs.
+	ResourceGroupId   string `pulumi:"resourceGroupId"`
+	SecondLimited     bool   `pulumi:"secondLimited"`
+	SegmentInstanceId string `pulumi:"segmentInstanceId"`
+	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+	Status string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetEipsAddressInput is an input type that accepts GetEipsAddressArgs and GetEipsAddressOutput values.
+// You can construct a concrete instance of `GetEipsAddressInput` via:
+//
+//          GetEipsAddressArgs{...}
+type GetEipsAddressInput interface {
+	pulumi.Input
+
+	ToGetEipsAddressOutput() GetEipsAddressOutput
+	ToGetEipsAddressOutputWithContext(context.Context) GetEipsAddressOutput
+}
+
+type GetEipsAddressArgs struct {
+	AddressName      pulumi.StringInput      `pulumi:"addressName"`
+	AllocationId     pulumi.StringInput      `pulumi:"allocationId"`
+	AvailableRegions pulumi.StringArrayInput `pulumi:"availableRegions"`
+	// EIP internet max bandwidth in Mbps.
+	Bandwidth                 pulumi.StringInput `pulumi:"bandwidth"`
+	BandwidthPackageBandwidth pulumi.StringInput `pulumi:"bandwidthPackageBandwidth"`
+	BandwidthPackageId        pulumi.StringInput `pulumi:"bandwidthPackageId"`
+	BandwidthPackageType      pulumi.StringInput `pulumi:"bandwidthPackageType"`
+	CreateTime                pulumi.StringInput `pulumi:"createTime"`
+	// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
+	Description        pulumi.StringInput `pulumi:"description"`
+	ExpiredTime        pulumi.StringInput `pulumi:"expiredTime"`
+	HasReservationData pulumi.StringInput `pulumi:"hasReservationData"`
+	HdMonitorStatus    pulumi.StringInput `pulumi:"hdMonitorStatus"`
+	// ID of the EIP.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance that is being bound.
+	InstanceId       pulumi.StringInput `pulumi:"instanceId"`
+	InstanceRegionId pulumi.StringInput `pulumi:"instanceRegionId"`
+	// The instance type of that the EIP is bound.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// EIP internet charge type.
+	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
+	// Public IP Address of the the EIP.
+	IpAddress                     pulumi.StringInput      `pulumi:"ipAddress"`
+	Isp                           pulumi.StringInput      `pulumi:"isp"`
+	OperationLocks                pulumi.StringArrayInput `pulumi:"operationLocks"`
+	PaymentType                   pulumi.StringInput      `pulumi:"paymentType"`
+	ReservationActiveTime         pulumi.StringInput      `pulumi:"reservationActiveTime"`
+	ReservationBandwidth          pulumi.StringInput      `pulumi:"reservationBandwidth"`
+	ReservationInternetChargeType pulumi.StringInput      `pulumi:"reservationInternetChargeType"`
+	ReservationOrderType          pulumi.StringInput      `pulumi:"reservationOrderType"`
+	// The Id of resource group which the eips belongs.
+	ResourceGroupId   pulumi.StringInput `pulumi:"resourceGroupId"`
+	SecondLimited     pulumi.BoolInput   `pulumi:"secondLimited"`
+	SegmentInstanceId pulumi.StringInput `pulumi:"segmentInstanceId"`
+	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetEipsAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEipsAddress)(nil)).Elem()
+}
+
+func (i GetEipsAddressArgs) ToGetEipsAddressOutput() GetEipsAddressOutput {
+	return i.ToGetEipsAddressOutputWithContext(context.Background())
+}
+
+func (i GetEipsAddressArgs) ToGetEipsAddressOutputWithContext(ctx context.Context) GetEipsAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEipsAddressOutput)
+}
+
+// GetEipsAddressArrayInput is an input type that accepts GetEipsAddressArray and GetEipsAddressArrayOutput values.
+// You can construct a concrete instance of `GetEipsAddressArrayInput` via:
+//
+//          GetEipsAddressArray{ GetEipsAddressArgs{...} }
+type GetEipsAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetEipsAddressArrayOutput() GetEipsAddressArrayOutput
+	ToGetEipsAddressArrayOutputWithContext(context.Context) GetEipsAddressArrayOutput
+}
+
+type GetEipsAddressArray []GetEipsAddressInput
+
+func (GetEipsAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEipsAddress)(nil)).Elem()
+}
+
+func (i GetEipsAddressArray) ToGetEipsAddressArrayOutput() GetEipsAddressArrayOutput {
+	return i.ToGetEipsAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetEipsAddressArray) ToGetEipsAddressArrayOutputWithContext(ctx context.Context) GetEipsAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEipsAddressArrayOutput)
+}
+
+type GetEipsAddressOutput struct{ *pulumi.OutputState }
+
+func (GetEipsAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEipsAddress)(nil)).Elem()
+}
+
+func (o GetEipsAddressOutput) ToGetEipsAddressOutput() GetEipsAddressOutput {
+	return o
+}
+
+func (o GetEipsAddressOutput) ToGetEipsAddressOutputWithContext(ctx context.Context) GetEipsAddressOutput {
+	return o
+}
+
+func (o GetEipsAddressOutput) AddressName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.AddressName }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) AllocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.AllocationId }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) AvailableRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEipsAddress) []string { return v.AvailableRegions }).(pulumi.StringArrayOutput)
+}
+
+// EIP internet max bandwidth in Mbps.
+func (o GetEipsAddressOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) BandwidthPackageBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.BandwidthPackageBandwidth }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) BandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.BandwidthPackageId }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) BandwidthPackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.BandwidthPackageType }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+func (o GetEipsAddressOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEipsAddress) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+func (o GetEipsAddressOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) HasReservationData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.HasReservationData }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) HdMonitorStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.HdMonitorStatus }).(pulumi.StringOutput)
+}
+
+// ID of the EIP.
+func (o GetEipsAddressOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance that is being bound.
+func (o GetEipsAddressOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) InstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.InstanceRegionId }).(pulumi.StringOutput)
+}
+
+// The instance type of that the EIP is bound.
+func (o GetEipsAddressOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// EIP internet charge type.
+func (o GetEipsAddressOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// Public IP Address of the the EIP.
+func (o GetEipsAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) Isp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.Isp }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) OperationLocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEipsAddress) []string { return v.OperationLocks }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEipsAddressOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) ReservationActiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.ReservationActiveTime }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) ReservationBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.ReservationBandwidth }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) ReservationInternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.ReservationInternetChargeType }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) ReservationOrderType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.ReservationOrderType }).(pulumi.StringOutput)
+}
+
+// The Id of resource group which the eips belongs.
+func (o GetEipsAddressOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+func (o GetEipsAddressOutput) SecondLimited() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEipsAddress) bool { return v.SecondLimited }).(pulumi.BoolOutput)
+}
+
+func (o GetEipsAddressOutput) SegmentInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.SegmentInstanceId }).(pulumi.StringOutput)
+}
+
+// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+func (o GetEipsAddressOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipsAddress) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetEipsAddressOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEipsAddress) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetEipsAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEipsAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEipsAddress)(nil)).Elem()
+}
+
+func (o GetEipsAddressArrayOutput) ToGetEipsAddressArrayOutput() GetEipsAddressArrayOutput {
+	return o
+}
+
+func (o GetEipsAddressArrayOutput) ToGetEipsAddressArrayOutputWithContext(ctx context.Context) GetEipsAddressArrayOutput {
+	return o
+}
+
+func (o GetEipsAddressArrayOutput) Index(i pulumi.IntInput) GetEipsAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEipsAddress {
+		return vs[0].([]GetEipsAddress)[vs[1].(int)]
+	}).(GetEipsAddressOutput)
+}
+
 type GetEipsEip struct {
 	// EIP internet max bandwidth in Mbps.
 	Bandwidth string `pulumi:"bandwidth"`
@@ -10299,6 +11136,12 @@ func init() {
 	pulumi.RegisterOutputType(GetEcsNetworkInterfacesInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsSnapshotsSnapshotOutput{})
 	pulumi.RegisterOutputType(GetEcsSnapshotsSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(GetEipAddressesAddressOutput{})
+	pulumi.RegisterOutputType(GetEipAddressesAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetEipAddressesEipOutput{})
+	pulumi.RegisterOutputType(GetEipAddressesEipArrayOutput{})
+	pulumi.RegisterOutputType(GetEipsAddressOutput{})
+	pulumi.RegisterOutputType(GetEipsAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetEipsEipOutput{})
 	pulumi.RegisterOutputType(GetEipsEipArrayOutput{})
 	pulumi.RegisterOutputType(GetHpcClustersClusterOutput{})

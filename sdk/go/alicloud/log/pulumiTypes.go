@@ -1469,6 +1469,263 @@ func (o StoreShardArrayOutput) Index(i pulumi.IntInput) StoreShardOutput {
 	}).(StoreShardOutput)
 }
 
+type GetProjectsProject struct {
+	// The description of the project.
+	Description string `pulumi:"description"`
+	// The ID of the project.
+	Id string `pulumi:"id"`
+	// The last modify time of project.
+	LastModifyTime string `pulumi:"lastModifyTime"`
+	// The owner of project.
+	Owner string `pulumi:"owner"`
+	// The name of the project.
+	ProjectName string `pulumi:"projectName"`
+	// The region of project.
+	Region string `pulumi:"region"`
+	// The status of project.
+	Status string `pulumi:"status"`
+}
+
+// GetProjectsProjectInput is an input type that accepts GetProjectsProjectArgs and GetProjectsProjectOutput values.
+// You can construct a concrete instance of `GetProjectsProjectInput` via:
+//
+//          GetProjectsProjectArgs{...}
+type GetProjectsProjectInput interface {
+	pulumi.Input
+
+	ToGetProjectsProjectOutput() GetProjectsProjectOutput
+	ToGetProjectsProjectOutputWithContext(context.Context) GetProjectsProjectOutput
+}
+
+type GetProjectsProjectArgs struct {
+	// The description of the project.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the project.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The last modify time of project.
+	LastModifyTime pulumi.StringInput `pulumi:"lastModifyTime"`
+	// The owner of project.
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// The name of the project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// The region of project.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The status of project.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetProjectsProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
+}
+
+func (i GetProjectsProjectArgs) ToGetProjectsProjectOutput() GetProjectsProjectOutput {
+	return i.ToGetProjectsProjectOutputWithContext(context.Background())
+}
+
+func (i GetProjectsProjectArgs) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectOutput)
+}
+
+// GetProjectsProjectArrayInput is an input type that accepts GetProjectsProjectArray and GetProjectsProjectArrayOutput values.
+// You can construct a concrete instance of `GetProjectsProjectArrayInput` via:
+//
+//          GetProjectsProjectArray{ GetProjectsProjectArgs{...} }
+type GetProjectsProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput
+	ToGetProjectsProjectArrayOutputWithContext(context.Context) GetProjectsProjectArrayOutput
+}
+
+type GetProjectsProjectArray []GetProjectsProjectInput
+
+func (GetProjectsProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
+}
+
+func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput {
+	return i.ToGetProjectsProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutputWithContext(ctx context.Context) GetProjectsProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectArrayOutput)
+}
+
+type GetProjectsProjectOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
+}
+
+func (o GetProjectsProjectOutput) ToGetProjectsProjectOutput() GetProjectsProjectOutput {
+	return o
+}
+
+func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
+	return o
+}
+
+// The description of the project.
+func (o GetProjectsProjectOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the project.
+func (o GetProjectsProjectOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last modify time of project.
+func (o GetProjectsProjectOutput) LastModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.LastModifyTime }).(pulumi.StringOutput)
+}
+
+// The owner of project.
+func (o GetProjectsProjectOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// The name of the project.
+func (o GetProjectsProjectOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// The region of project.
+func (o GetProjectsProjectOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The status of project.
+func (o GetProjectsProjectOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetProjectsProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
+}
+
+func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutputWithContext(ctx context.Context) GetProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsProject {
+		return vs[0].([]GetProjectsProject)[vs[1].(int)]
+	}).(GetProjectsProjectOutput)
+}
+
+type GetStoresStore struct {
+	// The ID of the store.
+	Id string `pulumi:"id"`
+	// The name of the store.
+	StoreName string `pulumi:"storeName"`
+}
+
+// GetStoresStoreInput is an input type that accepts GetStoresStoreArgs and GetStoresStoreOutput values.
+// You can construct a concrete instance of `GetStoresStoreInput` via:
+//
+//          GetStoresStoreArgs{...}
+type GetStoresStoreInput interface {
+	pulumi.Input
+
+	ToGetStoresStoreOutput() GetStoresStoreOutput
+	ToGetStoresStoreOutputWithContext(context.Context) GetStoresStoreOutput
+}
+
+type GetStoresStoreArgs struct {
+	// The ID of the store.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the store.
+	StoreName pulumi.StringInput `pulumi:"storeName"`
+}
+
+func (GetStoresStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoresStore)(nil)).Elem()
+}
+
+func (i GetStoresStoreArgs) ToGetStoresStoreOutput() GetStoresStoreOutput {
+	return i.ToGetStoresStoreOutputWithContext(context.Background())
+}
+
+func (i GetStoresStoreArgs) ToGetStoresStoreOutputWithContext(ctx context.Context) GetStoresStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoresStoreOutput)
+}
+
+// GetStoresStoreArrayInput is an input type that accepts GetStoresStoreArray and GetStoresStoreArrayOutput values.
+// You can construct a concrete instance of `GetStoresStoreArrayInput` via:
+//
+//          GetStoresStoreArray{ GetStoresStoreArgs{...} }
+type GetStoresStoreArrayInput interface {
+	pulumi.Input
+
+	ToGetStoresStoreArrayOutput() GetStoresStoreArrayOutput
+	ToGetStoresStoreArrayOutputWithContext(context.Context) GetStoresStoreArrayOutput
+}
+
+type GetStoresStoreArray []GetStoresStoreInput
+
+func (GetStoresStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoresStore)(nil)).Elem()
+}
+
+func (i GetStoresStoreArray) ToGetStoresStoreArrayOutput() GetStoresStoreArrayOutput {
+	return i.ToGetStoresStoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetStoresStoreArray) ToGetStoresStoreArrayOutputWithContext(ctx context.Context) GetStoresStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoresStoreArrayOutput)
+}
+
+type GetStoresStoreOutput struct{ *pulumi.OutputState }
+
+func (GetStoresStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoresStore)(nil)).Elem()
+}
+
+func (o GetStoresStoreOutput) ToGetStoresStoreOutput() GetStoresStoreOutput {
+	return o
+}
+
+func (o GetStoresStoreOutput) ToGetStoresStoreOutputWithContext(ctx context.Context) GetStoresStoreOutput {
+	return o
+}
+
+// The ID of the store.
+func (o GetStoresStoreOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoresStore) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the store.
+func (o GetStoresStoreOutput) StoreName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoresStore) string { return v.StoreName }).(pulumi.StringOutput)
+}
+
+type GetStoresStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStoresStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoresStore)(nil)).Elem()
+}
+
+func (o GetStoresStoreArrayOutput) ToGetStoresStoreArrayOutput() GetStoresStoreArrayOutput {
+	return o
+}
+
+func (o GetStoresStoreArrayOutput) ToGetStoresStoreArrayOutputWithContext(ctx context.Context) GetStoresStoreArrayOutput {
+	return o
+}
+
+func (o GetStoresStoreArrayOutput) Index(i pulumi.IntInput) GetStoresStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStoresStore {
+		return vs[0].([]GetStoresStore)[vs[1].(int)]
+	}).(GetStoresStoreOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlertNotificationListOutput{})
 	pulumi.RegisterOutputType(AlertNotificationListArrayOutput{})
@@ -1490,4 +1747,8 @@ func init() {
 	pulumi.RegisterOutputType(StoreIndexFullTextPtrOutput{})
 	pulumi.RegisterOutputType(StoreShardOutput{})
 	pulumi.RegisterOutputType(StoreShardArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
+	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetStoresStoreOutput{})
+	pulumi.RegisterOutputType(GetStoresStoreArrayOutput{})
 }

@@ -47,18 +47,19 @@ namespace Pulumi.AliCloud.Vpc
     ///             VpcId = defaultNetwork.Id,
     ///             Specification = "Small",
     ///         });
-    ///         var defaultEip = new AliCloud.Ecs.Eip("defaultEip", new AliCloud.Ecs.EipArgs
+    ///         var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new AliCloud.Ecs.EipAddressArgs
     ///         {
+    ///             AddressName = name,
     ///         });
     ///         var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("defaultEipAssociation", new AliCloud.Ecs.EipAssociationArgs
     ///         {
-    ///             AllocationId = defaultEip.Id,
+    ///             AllocationId = defaultEipAddress.Id,
     ///             InstanceId = defaultNatGateway.Id,
     ///         });
     ///         var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("defaultForwardEntry", new AliCloud.Vpc.ForwardEntryArgs
     ///         {
     ///             ForwardTableId = defaultNatGateway.ForwardTableIds,
-    ///             ExternalIp = defaultEip.IpAddress,
+    ///             ExternalIp = defaultEipAddress.IpAddress,
     ///             ExternalPort = "80",
     ///             IpProtocol = "tcp",
     ///             InternalIp = "172.16.0.3",

@@ -19,6 +19,13 @@ export * from "./getRegionRouteEntries";
 export * from "./getRouteEntries";
 export * from "./getRouteMaps";
 export * from "./getRouteServices";
+export * from "./getTransitRouterRouteEntries";
+export * from "./getTransitRouterRouteTableAssociations";
+export * from "./getTransitRouterRouteTablePropagations";
+export * from "./getTransitRouterRouteTables";
+export * from "./getTransitRouterVbrAttachments";
+export * from "./getTransitRouterVpcAttachments";
+export * from "./getTransitRouters";
 export * from "./getVbrHealthChecks";
 export * from "./instance";
 export * from "./instanceAttachment";
@@ -27,6 +34,13 @@ export * from "./privateZone";
 export * from "./routeEntry";
 export * from "./routeMap";
 export * from "./routeService";
+export * from "./transitRouter";
+export * from "./transitRouterRouteEntry";
+export * from "./transitRouterRouteTable";
+export * from "./transitRouterRouteTableAssociation";
+export * from "./transitRouterRouteTablePropagation";
+export * from "./transitRouterVbrAttachment";
+export * from "./transitRouterVpcAttachment";
 export * from "./vbrHealthCheck";
 
 // Import resources to register:
@@ -41,6 +55,13 @@ import { PrivateZone } from "./privateZone";
 import { RouteEntry } from "./routeEntry";
 import { RouteMap } from "./routeMap";
 import { RouteService } from "./routeService";
+import { TransitRouter } from "./transitRouter";
+import { TransitRouterRouteEntry } from "./transitRouterRouteEntry";
+import { TransitRouterRouteTable } from "./transitRouterRouteTable";
+import { TransitRouterRouteTableAssociation } from "./transitRouterRouteTableAssociation";
+import { TransitRouterRouteTablePropagation } from "./transitRouterRouteTablePropagation";
+import { TransitRouterVbrAttachment } from "./transitRouterVbrAttachment";
+import { TransitRouterVpcAttachment } from "./transitRouterVpcAttachment";
 import { VbrHealthCheck } from "./vbrHealthCheck";
 
 const _module = {
@@ -69,6 +90,20 @@ const _module = {
                 return new RouteMap(name, <any>undefined, { urn })
             case "alicloud:cen/routeService:RouteService":
                 return new RouteService(name, <any>undefined, { urn })
+            case "alicloud:cen/transitRouter:TransitRouter":
+                return new TransitRouter(name, <any>undefined, { urn })
+            case "alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry":
+                return new TransitRouterRouteEntry(name, <any>undefined, { urn })
+            case "alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable":
+                return new TransitRouterRouteTable(name, <any>undefined, { urn })
+            case "alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation":
+                return new TransitRouterRouteTableAssociation(name, <any>undefined, { urn })
+            case "alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation":
+                return new TransitRouterRouteTablePropagation(name, <any>undefined, { urn })
+            case "alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment":
+                return new TransitRouterVbrAttachment(name, <any>undefined, { urn })
+            case "alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment":
+                return new TransitRouterVpcAttachment(name, <any>undefined, { urn })
             case "alicloud:cen/vbrHealthCheck:VbrHealthCheck":
                 return new VbrHealthCheck(name, <any>undefined, { urn })
             default:
@@ -87,4 +122,11 @@ pulumi.runtime.registerResourceModule("alicloud", "cen/privateZone", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/routeEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/routeMap", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/routeService", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouter", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterRouteEntry", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterRouteTable", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterRouteTableAssociation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterRouteTablePropagation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterVbrAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterVpcAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/vbrHealthCheck", _module)

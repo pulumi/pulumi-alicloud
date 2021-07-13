@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     {
         public readonly string AccountId;
         /// <summary>
-        /// (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+        /// (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
         /// </summary>
         public readonly string AccountName;
         public readonly string DisplayName;

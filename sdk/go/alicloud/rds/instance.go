@@ -120,7 +120,8 @@ type Instance struct {
 	// - 0: disables the CRL
 	ClientCrlEnabled pulumi.IntPtrOutput `pulumi:"clientCrlEnabled"`
 	// RDS database connection string.
-	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
+	ConnectionString       pulumi.StringOutput    `pulumi:"connectionString"`
+	ConnectionStringPrefix pulumi.StringPtrOutput `pulumi:"connectionStringPrefix"`
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	DbInstanceIpArrayAttribute pulumi.StringPtrOutput `pulumi:"dbInstanceIpArrayAttribute"`
 	// The name of the IP address whitelist. Default value: Default.
@@ -166,8 +167,7 @@ type Instance struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
 	Period     pulumi.IntPtrOutput          `pulumi:"period"`
-	// RDS database connection port.
-	Port pulumi.StringOutput `pulumi:"port"`
+	Port       pulumi.StringOutput          `pulumi:"port"`
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -202,12 +202,33 @@ type Instance struct {
 	SslAction pulumi.StringOutput `pulumi:"sslAction"`
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
+	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+	SwitchTime pulumi.StringPtrOutput `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+	// - rds: The instance runs RDS Basic or High-availability Edition.
+	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+	TargetMinorVersion pulumi.StringOutput `pulumi:"targetMinorVersion"`
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
+	// Whether to upgrade a minor version of the kernel. Valid values:
+	// - true: upgrade
+	// - false: not to upgrade
+	UpgradeDbInstanceKernelVersion pulumi.BoolPtrOutput `pulumi:"upgradeDbInstanceKernelVersion"`
+	// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+	// - Immediate: The minor engine version is immediately updated.
+	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+	UpgradeTime pulumi.StringPtrOutput `pulumi:"upgradeTime"`
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
@@ -297,7 +318,8 @@ type instanceState struct {
 	// - 0: disables the CRL
 	ClientCrlEnabled *int `pulumi:"clientCrlEnabled"`
 	// RDS database connection string.
-	ConnectionString *string `pulumi:"connectionString"`
+	ConnectionString       *string `pulumi:"connectionString"`
+	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	DbInstanceIpArrayAttribute *string `pulumi:"dbInstanceIpArrayAttribute"`
 	// The name of the IP address whitelist. Default value: Default.
@@ -343,8 +365,7 @@ type instanceState struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	Period     *int                `pulumi:"period"`
-	// RDS database connection port.
-	Port *string `pulumi:"port"`
+	Port       *string             `pulumi:"port"`
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -379,12 +400,33 @@ type instanceState struct {
 	SslAction *string `pulumi:"sslAction"`
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus *string `pulumi:"sslStatus"`
+	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+	SwitchTime *string `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+	// - rds: The instance runs RDS Basic or High-availability Edition.
+	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+	TargetMinorVersion *string `pulumi:"targetMinorVersion"`
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus *string `pulumi:"tdeStatus"`
+	// Whether to upgrade a minor version of the kernel. Valid values:
+	// - true: upgrade
+	// - false: not to upgrade
+	UpgradeDbInstanceKernelVersion *bool `pulumi:"upgradeDbInstanceKernelVersion"`
+	// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+	// - Immediate: The minor engine version is immediately updated.
+	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+	UpgradeTime *string `pulumi:"upgradeTime"`
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
@@ -434,7 +476,8 @@ type InstanceState struct {
 	// - 0: disables the CRL
 	ClientCrlEnabled pulumi.IntPtrInput
 	// RDS database connection string.
-	ConnectionString pulumi.StringPtrInput
+	ConnectionString       pulumi.StringPtrInput
+	ConnectionStringPrefix pulumi.StringPtrInput
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	DbInstanceIpArrayAttribute pulumi.StringPtrInput
 	// The name of the IP address whitelist. Default value: Default.
@@ -480,8 +523,7 @@ type InstanceState struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayInput
 	Period     pulumi.IntPtrInput
-	// RDS database connection port.
-	Port pulumi.StringPtrInput
+	Port       pulumi.StringPtrInput
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -516,12 +558,33 @@ type InstanceState struct {
 	SslAction pulumi.StringPtrInput
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus pulumi.StringPtrInput
+	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+	SwitchTime pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+	// - rds: The instance runs RDS Basic or High-availability Edition.
+	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+	TargetMinorVersion pulumi.StringPtrInput
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrInput
+	// Whether to upgrade a minor version of the kernel. Valid values:
+	// - true: upgrade
+	// - false: not to upgrade
+	UpgradeDbInstanceKernelVersion pulumi.BoolPtrInput
+	// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+	// - Immediate: The minor engine version is immediately updated.
+	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+	UpgradeTime pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrInput
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
@@ -573,7 +636,8 @@ type instanceArgs struct {
 	// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	// - 1: enables the CRL
 	// - 0: disables the CRL
-	ClientCrlEnabled *int `pulumi:"clientCrlEnabled"`
+	ClientCrlEnabled       *int    `pulumi:"clientCrlEnabled"`
+	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	DbInstanceIpArrayAttribute *string `pulumi:"dbInstanceIpArrayAttribute"`
 	// The name of the IP address whitelist. Default value: Default.
@@ -619,6 +683,7 @@ type instanceArgs struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	Period     *int                `pulumi:"period"`
+	Port       *string             `pulumi:"port"`
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -651,12 +716,33 @@ type instanceArgs struct {
 	SqlCollectorStatus *string `pulumi:"sqlCollectorStatus"`
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
 	SslAction *string `pulumi:"sslAction"`
+	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+	SwitchTime *string `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+	// - rds: The instance runs RDS Basic or High-availability Edition.
+	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+	TargetMinorVersion *string `pulumi:"targetMinorVersion"`
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus *string `pulumi:"tdeStatus"`
+	// Whether to upgrade a minor version of the kernel. Valid values:
+	// - true: upgrade
+	// - false: not to upgrade
+	UpgradeDbInstanceKernelVersion *bool `pulumi:"upgradeDbInstanceKernelVersion"`
+	// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+	// - Immediate: The minor engine version is immediately updated.
+	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+	UpgradeTime *string `pulumi:"upgradeTime"`
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
@@ -705,7 +791,8 @@ type InstanceArgs struct {
 	// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	// - 1: enables the CRL
 	// - 0: disables the CRL
-	ClientCrlEnabled pulumi.IntPtrInput
+	ClientCrlEnabled       pulumi.IntPtrInput
+	ConnectionStringPrefix pulumi.StringPtrInput
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	DbInstanceIpArrayAttribute pulumi.StringPtrInput
 	// The name of the IP address whitelist. Default value: Default.
@@ -751,6 +838,7 @@ type InstanceArgs struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayInput
 	Period     pulumi.IntPtrInput
+	Port       pulumi.StringPtrInput
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -783,12 +871,33 @@ type InstanceArgs struct {
 	SqlCollectorStatus pulumi.StringPtrInput
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
 	SslAction pulumi.StringPtrInput
+	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+	SwitchTime pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+	// - rds: The instance runs RDS Basic or High-availability Edition.
+	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+	TargetMinorVersion pulumi.StringPtrInput
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrInput
+	// Whether to upgrade a minor version of the kernel. Valid values:
+	// - true: upgrade
+	// - false: not to upgrade
+	UpgradeDbInstanceKernelVersion pulumi.BoolPtrInput
+	// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+	// - Immediate: The minor engine version is immediately updated.
+	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+	UpgradeTime pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrInput
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:

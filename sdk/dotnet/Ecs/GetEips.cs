@@ -9,34 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    [Obsolete(@"This function has been deprecated in favour of the getEipAddresses function")]
     public static class GetEips
     {
-        /// <summary>
-        /// This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var eipsDs = Output.Create(AliCloud.Ecs.GetEips.InvokeAsync());
-        ///         this.FirstEipId = eipsDs.Apply(eipsDs =&gt; eipsDs.Eips[0].Id);
-        ///     }
-        /// 
-        ///     [Output("firstEipId")]
-        ///     public Output&lt;string&gt; FirstEipId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetEipsResult> InvokeAsync(GetEipsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEipsResult>("alicloud:ecs/getEips:getEips", args ?? new GetEipsArgs(), options.WithVersion());
     }
@@ -44,6 +19,21 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class GetEipsArgs : Pulumi.InvokeArgs
     {
+        [Input("addressName")]
+        public string? AddressName { get; set; }
+
+        [Input("associatedInstanceId")]
+        public string? AssociatedInstanceId { get; set; }
+
+        [Input("associatedInstanceType")]
+        public string? AssociatedInstanceType { get; set; }
+
+        [Input("dryRun")]
+        public bool? DryRun { get; set; }
+
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -56,11 +46,14 @@ namespace Pulumi.AliCloud.Ecs
             set => _ids = value;
         }
 
+        [Input("includeReservationData")]
+        public bool? IncludeReservationData { get; set; }
+
         /// <summary>
-        /// Deprecated since the version 1.8.0 of this provider.
+        /// Public IP Address of the the EIP.
         /// </summary>
-        [Input("inUse")]
-        public bool? InUse { get; set; }
+        [Input("ipAddress")]
+        public string? IpAddress { get; set; }
 
         [Input("ipAddresses")]
         private List<string>? _ipAddresses;
@@ -68,20 +61,42 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// A list of EIP public IP addresses.
         /// </summary>
+        [Obsolete(@"Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.")]
         public List<string> IpAddresses
         {
             get => _ipAddresses ?? (_ipAddresses = new List<string>());
             set => _ipAddresses = value;
         }
 
+        [Input("isp")]
+        public string? Isp { get; set; }
+
+        [Input("lockReason")]
+        public string? LockReason { get; set; }
+
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        [Input("paymentType")]
+        public string? PaymentType { get; set; }
 
         /// <summary>
         /// The Id of resource group which the eips belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
+
+        [Input("segmentInstanceId")]
+        public string? SegmentInstanceId { get; set; }
+
+        /// <summary>
+        /// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        /// </summary>
+        [Input("status")]
+        public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
@@ -104,10 +119,16 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEipsResult
     {
+        public readonly string? AddressName;
+        public readonly ImmutableArray<Outputs.GetEipsAddressResult> Addresses;
+        public readonly string? AssociatedInstanceId;
+        public readonly string? AssociatedInstanceType;
+        public readonly bool? DryRun;
         /// <summary>
         /// A list of EIPs. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEipsEipResult> Eips;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -116,47 +137,99 @@ namespace Pulumi.AliCloud.Ecs
         /// (Optional) A list of EIP IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly bool? InUse;
+        public readonly bool? IncludeReservationData;
+        /// <summary>
+        /// Public IP Address of the the EIP.
+        /// </summary>
+        public readonly string? IpAddress;
         public readonly ImmutableArray<string> IpAddresses;
+        public readonly string? Isp;
+        public readonly string? LockReason;
+        public readonly string? NameRegex;
         /// <summary>
         /// (Optional) A list of EIP names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly string? PaymentType;
         /// <summary>
         /// The Id of resource group which the eips belongs.
         /// </summary>
         public readonly string? ResourceGroupId;
+        public readonly string? SegmentInstanceId;
+        /// <summary>
+        /// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        /// </summary>
+        public readonly string? Status;
         public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]
         private GetEipsResult(
+            string? addressName,
+
+            ImmutableArray<Outputs.GetEipsAddressResult> addresses,
+
+            string? associatedInstanceId,
+
+            string? associatedInstanceType,
+
+            bool? dryRun,
+
             ImmutableArray<Outputs.GetEipsEipResult> eips,
+
+            bool? enableDetails,
 
             string id,
 
             ImmutableArray<string> ids,
 
-            bool? inUse,
+            bool? includeReservationData,
+
+            string? ipAddress,
 
             ImmutableArray<string> ipAddresses,
+
+            string? isp,
+
+            string? lockReason,
+
+            string? nameRegex,
 
             ImmutableArray<string> names,
 
             string? outputFile,
 
+            string? paymentType,
+
             string? resourceGroupId,
+
+            string? segmentInstanceId,
+
+            string? status,
 
             ImmutableDictionary<string, object>? tags)
         {
+            AddressName = addressName;
+            Addresses = addresses;
+            AssociatedInstanceId = associatedInstanceId;
+            AssociatedInstanceType = associatedInstanceType;
+            DryRun = dryRun;
             Eips = eips;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
-            InUse = inUse;
+            IncludeReservationData = includeReservationData;
+            IpAddress = ipAddress;
             IpAddresses = ipAddresses;
+            Isp = isp;
+            LockReason = lockReason;
+            NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            PaymentType = paymentType;
             ResourceGroupId = resourceGroupId;
+            SegmentInstanceId = segmentInstanceId;
+            Status = status;
             Tags = tags;
         }
     }

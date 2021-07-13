@@ -17,6 +17,13 @@ from .get_region_route_entries import *
 from .get_route_entries import *
 from .get_route_maps import *
 from .get_route_services import *
+from .get_transit_router_route_entries import *
+from .get_transit_router_route_table_associations import *
+from .get_transit_router_route_table_propagations import *
+from .get_transit_router_route_tables import *
+from .get_transit_router_vbr_attachments import *
+from .get_transit_router_vpc_attachments import *
+from .get_transit_routers import *
 from .get_vbr_health_checks import *
 from .instance import *
 from .instance_attachment import *
@@ -25,7 +32,15 @@ from .private_zone import *
 from .route_entry import *
 from .route_map import *
 from .route_service import *
+from .transit_router import *
+from .transit_router_route_entry import *
+from .transit_router_route_table import *
+from .transit_router_route_table_association import *
+from .transit_router_route_table_propagation import *
+from .transit_router_vbr_attachment import *
+from .transit_router_vpc_attachment import *
 from .vbr_health_check import *
+from ._inputs import *
 from . import outputs
 
 def _register_module():
@@ -62,6 +77,20 @@ def _register_module():
                 return RouteMap(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cen/routeService:RouteService":
                 return RouteService(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/transitRouter:TransitRouter":
+                return TransitRouter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry":
+                return TransitRouterRouteEntry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable":
+                return TransitRouterRouteTable(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation":
+                return TransitRouterRouteTableAssociation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation":
+                return TransitRouterRouteTablePropagation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment":
+                return TransitRouterVbrAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment":
+                return TransitRouterVpcAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cen/vbrHealthCheck:VbrHealthCheck":
                 return VbrHealthCheck(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -80,6 +109,13 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "cen/routeEntry", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cen/routeMap", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cen/routeService", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/transitRouter", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/transitRouterRouteEntry", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/transitRouterRouteTable", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/transitRouterRouteTableAssociation", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/transitRouterRouteTablePropagation", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/transitRouterVbrAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/transitRouterVpcAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cen/vbrHealthCheck", _module_instance)
 
 _register_module()

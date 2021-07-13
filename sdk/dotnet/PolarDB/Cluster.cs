@@ -89,14 +89,14 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// </summary>
         [Output("dbNodeClass")]
         public Output<string> DbNodeClass { get; private set; } = null!;
 
         /// <summary>
         /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
-        /// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        /// &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Output("dbNodeCount")]
         public Output<int?> DbNodeCount { get; private set; } = null!;
@@ -120,8 +120,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+        /// &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Output("encryptNewTables")]
         public Output<string?> EncryptNewTables { get; private set; } = null!;
@@ -180,15 +180,15 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-        /// **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+        /// &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         /// </summary>
         [Output("tdeStatus")]
         public Output<string?> TdeStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.  
-        /// **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
+        /// The virtual switch ID to launch DB instances in one VPC.
+        /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -259,14 +259,14 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// </summary>
         [Input("dbNodeClass", required: true)]
         public Input<string> DbNodeClass { get; set; } = null!;
 
         /// <summary>
         /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
-        /// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        /// &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Input("dbNodeCount")]
         public Input<int>? DbNodeCount { get; set; }
@@ -290,8 +290,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+        /// &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Input("encryptNewTables")]
         public Input<string>? EncryptNewTables { get; set; }
@@ -368,15 +368,15 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-        /// **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+        /// &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.  
-        /// **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
+        /// The virtual switch ID to launch DB instances in one VPC.
+        /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -414,14 +414,14 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
         /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
-        /// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        /// &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Input("dbNodeCount")]
         public Input<int>? DbNodeCount { get; set; }
@@ -445,8 +445,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+        /// &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Input("encryptNewTables")]
         public Input<string>? EncryptNewTables { get; set; }
@@ -523,15 +523,15 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-        /// **NOTE:** `tde_status` cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+        /// &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.  
-        /// **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
+        /// The virtual switch ID to launch DB instances in one VPC.
+        /// &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

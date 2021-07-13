@@ -43,6 +43,7 @@ export interface ProviderEndpoint {
     elasticsearch?: pulumi.Input<string>;
     emr?: pulumi.Input<string>;
     ess?: pulumi.Input<string>;
+    eventbridge?: pulumi.Input<string>;
     fc?: pulumi.Input<string>;
     fnf?: pulumi.Input<string>;
     ga?: pulumi.Input<string>;
@@ -59,6 +60,7 @@ export interface ProviderEndpoint {
     mse?: pulumi.Input<string>;
     nas?: pulumi.Input<string>;
     ons?: pulumi.Input<string>;
+    onsproxy?: pulumi.Input<string>;
     oos?: pulumi.Input<string>;
     oss?: pulumi.Input<string>;
     ots?: pulumi.Input<string>;
@@ -82,6 +84,9 @@ export namespace actiontrail {
 }
 
 export namespace adb {
+}
+
+export namespace amqp {
 }
 
 export namespace apigateway {
@@ -427,6 +432,16 @@ export namespace cdn {
 }
 
 export namespace cen {
+    export interface TransitRouterVpcAttachmentZoneMapping {
+        /**
+         * The VSwitch id of attachment.
+         */
+        vswitchId?: pulumi.Input<string>;
+        /**
+         * The zone Id of VSwitch.
+         */
+        zoneId?: pulumi.Input<string>;
+    }
 }
 
 export namespace cfg {
@@ -2030,6 +2045,9 @@ export namespace ess {
     }
 }
 
+export namespace eventbridge {
+}
+
 export namespace fc {
     export interface AliasRoutingConfig {
         /**
@@ -2557,6 +2575,10 @@ export namespace mongodb {
          * - 10-GB increments. Unit: GB.
          */
         nodeStorage: pulumi.Input<number>;
+        /**
+         * The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+         */
+        readonlyReplicas?: pulumi.Input<number>;
     }
 }
 

@@ -165,6 +165,7 @@ export class Instance extends pulumi.CustomResource {
      * RDS database connection string.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    public readonly connectionStringPrefix!: pulumi.Output<string | undefined>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
      */
@@ -240,10 +241,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly parameters!: pulumi.Output<outputs.rds.InstanceParameter[]>;
     public readonly period!: pulumi.Output<number | undefined>;
-    /**
-     * RDS database connection port.
-     */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    public readonly port!: pulumi.Output<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
      */
@@ -307,15 +305,44 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly sslStatus!: pulumi.Output<string>;
     /**
+     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+     */
+    public readonly switchTime!: pulumi.Output<string | undefined>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+     * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+     * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+     * - rds: The instance runs RDS Basic or High-availability Edition.
+     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+     */
+    public readonly targetMinorVersion!: pulumi.Output<string>;
+    /**
      * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
+    /**
+     * Whether to upgrade a minor version of the kernel. Valid values:
+     * - true: upgrade
+     * - false: not to upgrade
+     */
+    public readonly upgradeDbInstanceKernelVersion!: pulumi.Output<boolean | undefined>;
+    /**
+     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+     * - Immediate: The minor engine version is immediately updated.
+     * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+     * - SpecifyTime: The minor engine version is updated at the point in time you specify.
+     */
+    public readonly upgradeTime!: pulumi.Output<string | undefined>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
@@ -365,6 +392,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["clientCertRevocationList"] = state ? state.clientCertRevocationList : undefined;
             inputs["clientCrlEnabled"] = state ? state.clientCrlEnabled : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
+            inputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
             inputs["dbInstanceIpArrayAttribute"] = state ? state.dbInstanceIpArrayAttribute : undefined;
             inputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
             inputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
@@ -396,8 +424,12 @@ export class Instance extends pulumi.CustomResource {
             inputs["sqlCollectorStatus"] = state ? state.sqlCollectorStatus : undefined;
             inputs["sslAction"] = state ? state.sslAction : undefined;
             inputs["sslStatus"] = state ? state.sslStatus : undefined;
+            inputs["switchTime"] = state ? state.switchTime : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["targetMinorVersion"] = state ? state.targetMinorVersion : undefined;
             inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
+            inputs["upgradeDbInstanceKernelVersion"] = state ? state.upgradeDbInstanceKernelVersion : undefined;
+            inputs["upgradeTime"] = state ? state.upgradeTime : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["whitelistNetworkType"] = state ? state.whitelistNetworkType : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
@@ -426,6 +458,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
             inputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
             inputs["clientCrlEnabled"] = args ? args.clientCrlEnabled : undefined;
+            inputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
             inputs["dbInstanceIpArrayAttribute"] = args ? args.dbInstanceIpArrayAttribute : undefined;
             inputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
             inputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
@@ -442,6 +475,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["monitoringPeriod"] = args ? args.monitoringPeriod : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["period"] = args ? args.period : undefined;
+            inputs["port"] = args ? args.port : undefined;
             inputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             inputs["replicationAcl"] = args ? args.replicationAcl : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -455,15 +489,18 @@ export class Instance extends pulumi.CustomResource {
             inputs["sqlCollectorConfigValue"] = args ? args.sqlCollectorConfigValue : undefined;
             inputs["sqlCollectorStatus"] = args ? args.sqlCollectorStatus : undefined;
             inputs["sslAction"] = args ? args.sslAction : undefined;
+            inputs["switchTime"] = args ? args.switchTime : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["targetMinorVersion"] = args ? args.targetMinorVersion : undefined;
             inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
+            inputs["upgradeDbInstanceKernelVersion"] = args ? args.upgradeDbInstanceKernelVersion : undefined;
+            inputs["upgradeTime"] = args ? args.upgradeTime : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["whitelistNetworkType"] = args ? args.whitelistNetworkType : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["zoneIdSlaveA"] = args ? args.zoneIdSlaveA : undefined;
             inputs["zoneIdSlaveB"] = args ? args.zoneIdSlaveB : undefined;
             inputs["connectionString"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
             inputs["sslStatus"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -529,6 +566,7 @@ export interface InstanceState {
      * RDS database connection string.
      */
     readonly connectionString?: pulumi.Input<string>;
+    readonly connectionStringPrefix?: pulumi.Input<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
      */
@@ -604,9 +642,6 @@ export interface InstanceState {
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     readonly period?: pulumi.Input<number>;
-    /**
-     * RDS database connection port.
-     */
     readonly port?: pulumi.Input<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
@@ -671,15 +706,44 @@ export interface InstanceState {
      */
     readonly sslStatus?: pulumi.Input<string>;
     /**
+     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+     */
+    readonly switchTime?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
+     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+     * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+     * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+     * - rds: The instance runs RDS Basic or High-availability Edition.
+     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+     */
+    readonly targetMinorVersion?: pulumi.Input<string>;
+    /**
      * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
     readonly tdeStatus?: pulumi.Input<string>;
+    /**
+     * Whether to upgrade a minor version of the kernel. Valid values:
+     * - true: upgrade
+     * - false: not to upgrade
+     */
+    readonly upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
+    /**
+     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+     * - Immediate: The minor engine version is immediately updated.
+     * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+     * - SpecifyTime: The minor engine version is updated at the point in time you specify.
+     */
+    readonly upgradeTime?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
@@ -759,6 +823,7 @@ export interface InstanceArgs {
      * - 0: disables the CRL
      */
     readonly clientCrlEnabled?: pulumi.Input<number>;
+    readonly connectionStringPrefix?: pulumi.Input<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
      */
@@ -834,6 +899,7 @@ export interface InstanceArgs {
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     readonly period?: pulumi.Input<number>;
+    readonly port?: pulumi.Input<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
      */
@@ -893,15 +959,44 @@ export interface InstanceArgs {
      */
     readonly sslAction?: pulumi.Input<string>;
     /**
+     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+     */
+    readonly switchTime?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
+     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+     * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+     * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+     * - rds: The instance runs RDS Basic or High-availability Edition.
+     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+     */
+    readonly targetMinorVersion?: pulumi.Input<string>;
+    /**
      * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
     readonly tdeStatus?: pulumi.Input<string>;
+    /**
+     * Whether to upgrade a minor version of the kernel. Valid values:
+     * - true: upgrade
+     * - false: not to upgrade
+     */
+    readonly upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
+    /**
+     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+     * - Immediate: The minor engine version is immediately updated.
+     * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+     * - SpecifyTime: The minor engine version is updated at the point in time you specify.
+     */
+    readonly upgradeTime?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */

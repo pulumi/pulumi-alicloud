@@ -100,7 +100,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly replicaSetName!: pulumi.Output<string>;
     /**
-     * Number of replica set nodes. Valid values: [3, 5, 7]
+     * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
     public readonly replicationFactor!: pulumi.Output<number>;
     /**
@@ -291,7 +291,7 @@ export interface InstanceState {
      */
     readonly replicaSetName?: pulumi.Input<string>;
     /**
-     * Number of replica set nodes. Valid values: [3, 5, 7]
+     * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
     readonly replicationFactor?: pulumi.Input<number>;
     /**
@@ -397,7 +397,7 @@ export interface InstanceArgs {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Number of replica set nodes. Valid values: [3, 5, 7]
+     * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
     readonly replicationFactor?: pulumi.Input<number>;
     /**

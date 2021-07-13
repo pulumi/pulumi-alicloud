@@ -213,6 +213,7 @@ type ProviderEndpoint struct {
 	Elasticsearch   *string `pulumi:"elasticsearch"`
 	Emr             *string `pulumi:"emr"`
 	Ess             *string `pulumi:"ess"`
+	Eventbridge     *string `pulumi:"eventbridge"`
 	Fc              *string `pulumi:"fc"`
 	Fnf             *string `pulumi:"fnf"`
 	Ga              *string `pulumi:"ga"`
@@ -229,6 +230,7 @@ type ProviderEndpoint struct {
 	Mse             *string `pulumi:"mse"`
 	Nas             *string `pulumi:"nas"`
 	Ons             *string `pulumi:"ons"`
+	Onsproxy        *string `pulumi:"onsproxy"`
 	Oos             *string `pulumi:"oos"`
 	Oss             *string `pulumi:"oss"`
 	Ots             *string `pulumi:"ots"`
@@ -292,6 +294,7 @@ type ProviderEndpointArgs struct {
 	Elasticsearch   pulumi.StringPtrInput `pulumi:"elasticsearch"`
 	Emr             pulumi.StringPtrInput `pulumi:"emr"`
 	Ess             pulumi.StringPtrInput `pulumi:"ess"`
+	Eventbridge     pulumi.StringPtrInput `pulumi:"eventbridge"`
 	Fc              pulumi.StringPtrInput `pulumi:"fc"`
 	Fnf             pulumi.StringPtrInput `pulumi:"fnf"`
 	Ga              pulumi.StringPtrInput `pulumi:"ga"`
@@ -308,6 +311,7 @@ type ProviderEndpointArgs struct {
 	Mse             pulumi.StringPtrInput `pulumi:"mse"`
 	Nas             pulumi.StringPtrInput `pulumi:"nas"`
 	Ons             pulumi.StringPtrInput `pulumi:"ons"`
+	Onsproxy        pulumi.StringPtrInput `pulumi:"onsproxy"`
 	Oos             pulumi.StringPtrInput `pulumi:"oos"`
 	Oss             pulumi.StringPtrInput `pulumi:"oss"`
 	Ots             pulumi.StringPtrInput `pulumi:"ots"`
@@ -503,6 +507,10 @@ func (o ProviderEndpointOutput) Ess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ess }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Eventbridge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eventbridge }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Fc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Fc }).(pulumi.StringPtrOutput)
 }
@@ -565,6 +573,10 @@ func (o ProviderEndpointOutput) Nas() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Ons() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ons }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Onsproxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Onsproxy }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Oos() pulumi.StringPtrOutput {

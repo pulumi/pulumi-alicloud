@@ -51,7 +51,7 @@ type Instance struct {
 	Period pulumi.IntOutput `pulumi:"period"`
 	// The name of the mongo replica set
 	ReplicaSetName pulumi.StringOutput `pulumi:"replicaSetName"`
-	// Number of replica set nodes. Valid values: [3, 5, 7]
+	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
@@ -145,7 +145,7 @@ type instanceState struct {
 	Period *int `pulumi:"period"`
 	// The name of the mongo replica set
 	ReplicaSetName *string `pulumi:"replicaSetName"`
-	// Number of replica set nodes. Valid values: [3, 5, 7]
+	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
@@ -202,7 +202,7 @@ type InstanceState struct {
 	Period pulumi.IntPtrInput
 	// The name of the mongo replica set
 	ReplicaSetName pulumi.StringPtrInput
-	// Number of replica set nodes. Valid values: [3, 5, 7]
+	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor pulumi.IntPtrInput
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod pulumi.IntPtrInput
@@ -261,7 +261,7 @@ type instanceArgs struct {
 	Name *string `pulumi:"name"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
-	// Number of replica set nodes. Valid values: [3, 5, 7]
+	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -313,7 +313,7 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
-	// Number of replica set nodes. Valid values: [3, 5, 7]
+	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor pulumi.IntPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput

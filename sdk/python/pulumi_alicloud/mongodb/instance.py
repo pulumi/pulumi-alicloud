@@ -52,7 +52,7 @@ class InstanceArgs:
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
-        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [3, 5, 7]
+        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
@@ -268,7 +268,7 @@ class InstanceArgs:
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of replica set nodes. Valid values: [3, 5, 7]
+        Number of replica set nodes. Valid values: [1, 3, 5, 7]
         """
         return pulumi.get(self, "replication_factor")
 
@@ -421,7 +421,7 @@ class _InstanceState:
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
-        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [3, 5, 7]
+        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -660,7 +660,7 @@ class _InstanceState:
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of replica set nodes. Valid values: [3, 5, 7]
+        Number of replica set nodes. Valid values: [1, 3, 5, 7]
         """
         return pulumi.get(self, "replication_factor")
 
@@ -845,7 +845,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
-        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [3, 5, 7]
+        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
@@ -1010,7 +1010,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
-        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [3, 5, 7]
+        :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1173,7 +1173,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> pulumi.Output[int]:
         """
-        Number of replica set nodes. Valid values: [3, 5, 7]
+        Number of replica set nodes. Valid values: [1, 3, 5, 7]
         """
         return pulumi.get(self, "replication_factor")
 

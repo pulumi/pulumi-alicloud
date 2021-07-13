@@ -60,12 +60,14 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fooEip, err := ecs.NewEip(ctx, "fooEip", nil)
+// 		fooEipAddress, err := ecs.NewEipAddress(ctx, "fooEipAddress", &ecs.EipAddressArgs{
+// 			AddressName: pulumi.String(name),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = ecs.NewEipAssociation(ctx, "fooEipAssociation", &ecs.EipAssociationArgs{
-// 			AllocationId: fooEip.ID(),
+// 			AllocationId: fooEipAddress.ID(),
 // 			InstanceId:   fooNatGateway.ID(),
 // 		})
 // 		if err != nil {
@@ -74,7 +76,7 @@ import (
 // 		fooSnatEntry, err := vpc.NewSnatEntry(ctx, "fooSnatEntry", &vpc.SnatEntryArgs{
 // 			SnatTableId:     fooNatGateway.SnatTableIds,
 // 			SourceVswitchId: fooSwitch.ID(),
-// 			SnatIp:          fooEip.IpAddress,
+// 			SnatIp:          fooEipAddress.IpAddress,
 // 		})
 // 		if err != nil {
 // 			return err

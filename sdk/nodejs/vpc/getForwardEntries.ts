@@ -36,13 +36,15 @@ import * as utilities from "../utilities";
  *     specification: "Small",
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultEip = new alicloud.ecs.Eip("default", {});
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {
+ *     addressName: name,
+ * });
  * const defaultEipAssociation = new alicloud.ecs.EipAssociation("default", {
- *     allocationId: defaultEip.id,
+ *     allocationId: defaultEipAddress.id,
  *     instanceId: defaultNatGateway.id,
  * });
  * const defaultForwardEntry = new alicloud.vpc.ForwardEntry("default", {
- *     externalIp: defaultEip.ipAddress,
+ *     externalIp: defaultEipAddress.ipAddress,
  *     externalPort: "80",
  *     forwardTableId: defaultNatGateway.forwardTableIds,
  *     internalIp: "172.16.0.3",

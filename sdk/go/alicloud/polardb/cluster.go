@@ -96,10 +96,10 @@ type Cluster struct {
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
-	// **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].\
-	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrOutput `pulumi:"dbNodeCount"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringOutput `pulumi:"dbType"`
@@ -108,7 +108,7 @@ type Cluster struct {
 	// The description of cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables pulumi.StringPtrOutput `pulumi:"encryptNewTables"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
@@ -130,10 +130,10 @@ type Cluster struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
-	// The virtual switch ID to launch DB instances in one VPC.\
-	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
+	// The virtual switch ID to launch DB instances in one VPC.
+	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -184,10 +184,10 @@ type clusterState struct {
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString *string `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
-	// **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	DbNodeClass *string `pulumi:"dbNodeClass"`
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].\
-	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType *string `pulumi:"dbType"`
@@ -196,7 +196,7 @@ type clusterState struct {
 	// The description of cluster.
 	Description *string `pulumi:"description"`
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables *string `pulumi:"encryptNewTables"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
@@ -218,10 +218,10 @@ type clusterState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus *string `pulumi:"tdeStatus"`
-	// The virtual switch ID to launch DB instances in one VPC.\
-	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
+	// The virtual switch ID to launch DB instances in one VPC.
+	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId *string `pulumi:"zoneId"`
@@ -235,10 +235,10 @@ type ClusterState struct {
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
-	// **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	DbNodeClass pulumi.StringPtrInput
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].\
-	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringPtrInput
@@ -247,7 +247,7 @@ type ClusterState struct {
 	// The description of cluster.
 	Description pulumi.StringPtrInput
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
@@ -269,10 +269,10 @@ type ClusterState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus pulumi.StringPtrInput
-	// The virtual switch ID to launch DB instances in one VPC.\
-	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
+	// The virtual switch ID to launch DB instances in one VPC.
+	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId pulumi.StringPtrInput
@@ -288,10 +288,10 @@ type clusterArgs struct {
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus *string `pulumi:"collectorStatus"`
 	// The dbNodeClass of cluster node.
-	// **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	DbNodeClass string `pulumi:"dbNodeClass"`
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].\
-	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType string `pulumi:"dbType"`
@@ -300,7 +300,7 @@ type clusterArgs struct {
 	// The description of cluster.
 	Description *string `pulumi:"description"`
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables *string `pulumi:"encryptNewTables"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
@@ -322,10 +322,10 @@ type clusterArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus *string `pulumi:"tdeStatus"`
-	// The virtual switch ID to launch DB instances in one VPC.\
-	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
+	// The virtual switch ID to launch DB instances in one VPC.
+	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId *string `pulumi:"zoneId"`
@@ -338,10 +338,10 @@ type ClusterArgs struct {
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
-	// **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
 	DbNodeClass pulumi.StringInput
-	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].\
-	// **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
+	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringInput
@@ -350,7 +350,7 @@ type ClusterArgs struct {
 	// The description of cluster.
 	Description pulumi.StringPtrInput
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
@@ -372,10 +372,10 @@ type ClusterArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-	// **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus pulumi.StringPtrInput
-	// The virtual switch ID to launch DB instances in one VPC.\
-	// **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
+	// The virtual switch ID to launch DB instances in one VPC.
+	// > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB cluster. it supports multiple zone.
 	ZoneId pulumi.StringPtrInput

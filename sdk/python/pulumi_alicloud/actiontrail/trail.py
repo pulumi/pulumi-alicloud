@@ -29,6 +29,7 @@ class TrailArgs:
         """
         The set of arguments for constructing a Trail resource.
         :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+        :param pulumi.Input[bool] is_organization_trail: Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
         :param pulumi.Input[str] mns_topic_arn: Field `mns_topic_arn` has been deprecated from version 1.118.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         :param pulumi.Input[str] oss_bucket_name: The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
@@ -92,6 +93,9 @@ class TrailArgs:
     @property
     @pulumi.getter(name="isOrganizationTrail")
     def is_organization_trail(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+        """
         return pulumi.get(self, "is_organization_trail")
 
     @is_organization_trail.setter
@@ -250,6 +254,7 @@ class _TrailState:
         """
         Input properties used for looking up and filtering Trail resources.
         :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+        :param pulumi.Input[bool] is_organization_trail: Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
         :param pulumi.Input[str] mns_topic_arn: Field `mns_topic_arn` has been deprecated from version 1.118.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         :param pulumi.Input[str] oss_bucket_name: The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
@@ -313,6 +318,9 @@ class _TrailState:
     @property
     @pulumi.getter(name="isOrganizationTrail")
     def is_organization_trail(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+        """
         return pulumi.get(self, "is_organization_trail")
 
     @is_organization_trail.setter
@@ -502,6 +510,7 @@ class Trail(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+        :param pulumi.Input[bool] is_organization_trail: Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
         :param pulumi.Input[str] mns_topic_arn: Field `mns_topic_arn` has been deprecated from version 1.118.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         :param pulumi.Input[str] oss_bucket_name: The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
@@ -641,6 +650,7 @@ class Trail(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
+        :param pulumi.Input[bool] is_organization_trail: Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
         :param pulumi.Input[str] mns_topic_arn: Field `mns_topic_arn` has been deprecated from version 1.118.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         :param pulumi.Input[str] oss_bucket_name: The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
@@ -683,6 +693,9 @@ class Trail(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isOrganizationTrail")
     def is_organization_trail(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+        """
         return pulumi.get(self, "is_organization_trail")
 
     @property

@@ -87,6 +87,7 @@ export interface ProviderEndpoint {
     elasticsearch?: string;
     emr?: string;
     ess?: string;
+    eventbridge?: string;
     fc?: string;
     fnf?: string;
     ga?: string;
@@ -103,6 +104,7 @@ export interface ProviderEndpoint {
     mse?: string;
     nas?: string;
     ons?: string;
+    onsproxy?: string;
     oos?: string;
     oss?: string;
     ots?: string;
@@ -682,6 +684,23 @@ export namespace adb {
          * A list of zone ids in which the multi zone.
          */
         multiZoneIds: string[];
+    }
+}
+
+export namespace amqp {
+    export interface GetVirtualHostsHost {
+        /**
+         * The ID of the Virtual Host.
+         */
+        id: string;
+        /**
+         * InstanceId.
+         */
+        instanceId: string;
+        /**
+         * VirtualHostName.
+         */
+        virtualHostName: string;
     }
 }
 
@@ -1884,6 +1903,213 @@ export namespace cen {
         updateInterval: string;
     }
 
+    export interface GetTransitRouterRouteEntriesEntry {
+        id: string;
+        status: string;
+        transitRouterRouteEntryDescription: string;
+        /**
+         * The target network segment of the route entry.
+         */
+        transitRouterRouteEntryDestinationCidrBlock: string;
+        transitRouterRouteEntryId: string;
+        transitRouterRouteEntryName: string;
+        /**
+         * ID of the next hop.
+         */
+        transitRouterRouteEntryNextHopId: string;
+        /**
+         * Type of the next hop.
+         */
+        transitRouterRouteEntryNextHopType: string;
+        /**
+         * Type of the route entry.
+         */
+        transitRouterRouteEntryType: string;
+    }
+
+    export interface GetTransitRouterRouteTableAssociationsAssociation {
+        id: string;
+        /**
+         * ID of the transit router route table association.
+         */
+        resourceId: string;
+        /**
+         * Type of the resource.
+         */
+        resourceType: string;
+        /**
+         * The status of the route table, including `Active`, `Associating`, `Dissociating`.
+         */
+        status: string;
+        /**
+         * ID of the cen transit router attachment.
+         */
+        transitRouterAttachmentId: string;
+    }
+
+    export interface GetTransitRouterRouteTablePropagationsPropagation {
+        id: string;
+        /**
+         * ID of the transit router route table association.
+         */
+        resourceId: string;
+        /**
+         * Type of the resource.
+         */
+        resourceType: string;
+        /**
+         * The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+         */
+        status: string;
+        /**
+         * ID of the cen transit router attachment.
+         */
+        transitRouterAttachmentId: string;
+    }
+
+    export interface GetTransitRouterRouteTablesTable {
+        /**
+         * ID of resource.
+         */
+        id: string;
+        status: string;
+        /**
+         * The description of the transit router route table.
+         */
+        transitRouterRouteTableDescription: string;
+        /**
+         * ID of the trabsit router route table.
+         */
+        transitRouterRouteTableId: string;
+        /**
+         * Name of the transit router route table.
+         */
+        transitRouterRouteTableName: string;
+        /**
+         * The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+         */
+        transitRouterRouteTableType: string;
+    }
+
+    export interface GetTransitRouterVbrAttachmentsAttachment {
+        /**
+         * ID of the region where the conflicted VBR is located.
+         */
+        autoPublishRouteEnabled: boolean;
+        id: string;
+        /**
+         * Type of the resource.
+         */
+        resourceType: string;
+        /**
+         * The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+         */
+        status: string;
+        transitRouterAttachmentDescription: string;
+        /**
+         * ID of the transit router VBR attachment.
+         */
+        transitRouterAttachmentId: string;
+        /**
+         * Name of the transit router attachment.
+         */
+        transitRouterAttachmentName: string;
+        /**
+         * ID of the VBR.
+         */
+        vbrId: string;
+        /**
+         * The Owner ID of the VBR.
+         */
+        vbrOwnerId: string;
+    }
+
+    export interface GetTransitRouterVpcAttachmentsAttachment {
+        /**
+         * The ID of the transit router.
+         */
+        id: string;
+        /**
+         * Type of the resource.
+         */
+        resourceType: string;
+        /**
+         * The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+         */
+        status: string;
+        /**
+         * The description of transit router attachment.
+         */
+        transitRouterAttachmentDescription: string;
+        /**
+         * ID of the transit router VBR attachment.
+         */
+        transitRouterAttachmentId: string;
+        /**
+         * Name of the transit router attachment.
+         */
+        transitRouterAttachmentName: string;
+        /**
+         * ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The Owner ID of the VPC.
+         */
+        vpcOwnerId: string;
+        /**
+         * The mappings of zone
+         */
+        zoneMappings: outputs.cen.GetTransitRouterVpcAttachmentsAttachmentZoneMapping[];
+    }
+
+    export interface GetTransitRouterVpcAttachmentsAttachmentZoneMapping {
+        /**
+         * The VSwitch ID.
+         */
+        vswitchId: string;
+        /**
+         * The zone ID.
+         */
+        zoneId: string;
+    }
+
+    export interface GetTransitRoutersTransitRouter {
+        /**
+         * UID of the Aliyun.
+         */
+        aliUid: string;
+        /**
+         * ID of the CEN instance.
+         */
+        cenId: string;
+        id: string;
+        /**
+         * The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
+         */
+        status: string;
+        /**
+         * The description of the transit router.
+         */
+        transitRouterDescription: string;
+        /**
+         * ID of the transit router.
+         */
+        transitRouterId: string;
+        /**
+         * The name of the transit router.
+         */
+        transitRouterName: string;
+        /**
+         * Type of the transit router.
+         */
+        type: string;
+        /**
+         * The vip of the XGW.
+         */
+        xgwVip: string;
+    }
+
     export interface GetVbrHealthChecksCheck {
         /**
          * The ID of the Cloud Enterprise Network (CEN) instance.
@@ -1917,6 +2143,17 @@ export namespace cen {
          * The ID of the region where the VBR instance is deployed.
          */
         vbrInstanceRegionId: string;
+    }
+
+    export interface TransitRouterVpcAttachmentZoneMapping {
+        /**
+         * The VSwitch id of attachment.
+         */
+        vswitchId?: string;
+        /**
+         * The zone Id of VSwitch.
+         */
+        zoneId?: string;
     }
 }
 
@@ -2957,6 +3194,7 @@ export namespace config {
         elasticsearch?: string;
         emr?: string;
         ess?: string;
+        eventbridge?: string;
         fc?: string;
         fnf?: string;
         ga?: string;
@@ -2973,6 +3211,7 @@ export namespace config {
         mse?: string;
         nas?: string;
         ons?: string;
+        onsproxy?: string;
         oos?: string;
         oss?: string;
         ots?: string;
@@ -7279,6 +7518,233 @@ export namespace ecs {
         usage: string;
     }
 
+    export interface GetEipAddressesAddress {
+        /**
+         * The name of the EIP.
+         */
+        addressName: string;
+        /**
+         * The ID of the EIP.
+         */
+        allocationId: string;
+        /**
+         * The ID of the region to which the EIP belongs.
+         */
+        availableRegions: string[];
+        /**
+         * The maximum bandwidth of the EIP. Unit: Mbit/s.
+         */
+        bandwidth: string;
+        /**
+         * The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
+         */
+        bandwidthPackageBandwidth: string;
+        /**
+         * The ID of the EIP bandwidth plan.
+         */
+        bandwidthPackageId: string;
+        /**
+         * The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+         */
+        bandwidthPackageType: string;
+        /**
+         * The time when the EIP was created.
+         */
+        createTime: string;
+        /**
+         * Indicates whether deletion protection is enabled.
+         */
+        deletionProtection: boolean;
+        /**
+         * The description of the EIP.
+         */
+        description: string;
+        /**
+         * The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+         */
+        expiredTime: string;
+        /**
+         * Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
+         */
+        hasReservationData: string;
+        /**
+         * Indicates whether fine-grained monitoring is enabled for the EIP.
+         */
+        hdMonitorStatus: string;
+        /**
+         * The ID of the Address.
+         */
+        id: string;
+        /**
+         * The ID of the instance with which the EIP is associated.
+         */
+        instanceId: string;
+        /**
+         * The region ID of the associated resource.
+         */
+        instanceRegionId: string;
+        /**
+         * The type of the instance with which the EIP is associated.
+         */
+        instanceType: string;
+        /**
+         * The metering method of the EIP.
+         */
+        internetChargeType: string;
+        /**
+         * The IP address of the EIP.
+         */
+        ipAddress: string;
+        /**
+         * The Internet service provider (ISP).
+         */
+        isp: string;
+        /**
+         * The details about the locked EIP.
+         */
+        operationLocks: string[];
+        /**
+         * The billing method of the EIP.
+         */
+        paymentType: string;
+        /**
+         * The time when the renewal takes effect.
+         */
+        reservationActiveTime: string;
+        /**
+         * The bandwidth after the renewal takes effect.
+         */
+        reservationBandwidth: string;
+        /**
+         * The metering method of the renewal.
+         */
+        reservationInternetChargeType: string;
+        /**
+         * The type of the renewal order.
+         */
+        reservationOrderType: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * Indicates whether level-2 throttling is configured.
+         */
+        secondLimited: boolean;
+        /**
+         * The IDs of the contiguous EIPs.
+         */
+        segmentInstanceId: string;
+        /**
+         * The status of the EIP.
+         */
+        status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+    }
+
+    export interface GetEipAddressesEip {
+        /**
+         * The maximum bandwidth of the EIP. Unit: Mbit/s.
+         */
+        bandwidth: string;
+        creationTime: string;
+        /**
+         * Indicates whether deletion protection is enabled.
+         */
+        deletionProtection: boolean;
+        /**
+         * The ID of the Address.
+         */
+        id: string;
+        /**
+         * The ID of the instance with which the EIP is associated.
+         */
+        instanceId: string;
+        /**
+         * The type of the instance with which the EIP is associated.
+         */
+        instanceType: string;
+        /**
+         * The metering method of the EIP.
+         */
+        internetChargeType: string;
+        /**
+         * The IP address of the EIP.
+         */
+        ipAddress: string;
+        /**
+         * The status of the EIP.
+         */
+        status: string;
+    }
+
+    export interface GetEipsAddress {
+        addressName: string;
+        allocationId: string;
+        availableRegions: string[];
+        /**
+         * EIP internet max bandwidth in Mbps.
+         */
+        bandwidth: string;
+        bandwidthPackageBandwidth: string;
+        bandwidthPackageId: string;
+        bandwidthPackageType: string;
+        createTime: string;
+        /**
+         * (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+         */
+        deletionProtection: boolean;
+        description: string;
+        expiredTime: string;
+        hasReservationData: string;
+        hdMonitorStatus: string;
+        /**
+         * ID of the EIP.
+         */
+        id: string;
+        /**
+         * The ID of the instance that is being bound.
+         */
+        instanceId: string;
+        instanceRegionId: string;
+        /**
+         * The instance type of that the EIP is bound.
+         */
+        instanceType: string;
+        /**
+         * EIP internet charge type.
+         */
+        internetChargeType: string;
+        /**
+         * Public IP Address of the the EIP.
+         */
+        ipAddress: string;
+        isp: string;
+        operationLocks: string[];
+        paymentType: string;
+        reservationActiveTime: string;
+        reservationBandwidth: string;
+        reservationInternetChargeType: string;
+        reservationOrderType: string;
+        /**
+         * The Id of resource group which the eips belongs.
+         */
+        resourceGroupId: string;
+        secondLimited: boolean;
+        segmentInstanceId: string;
+        /**
+         * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+         */
+        status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+    }
+
     export interface GetEipsEip {
         /**
          * EIP internet max bandwidth in Mbps.
@@ -9003,6 +9469,22 @@ export namespace ess {
         metricIntervalLowerBound?: string;
         metricIntervalUpperBound?: string;
         scalingAdjustment?: number;
+    }
+}
+
+export namespace eventbridge {
+    export interface GetEventBusesBus {
+        createTime: string;
+        description: string;
+        eventBusName: string;
+        id: string;
+    }
+
+    export interface GetSchemaGroupsGroup {
+        description: string;
+        format: string;
+        groupId: string;
+        id: string;
     }
 }
 
@@ -10822,6 +11304,48 @@ export namespace log {
         type?: string;
     }
 
+    export interface GetProjectsProject {
+        /**
+         * The description of the project.
+         */
+        description: string;
+        /**
+         * The ID of the project.
+         */
+        id: string;
+        /**
+         * The last modify time of project.
+         */
+        lastModifyTime: string;
+        /**
+         * The owner of project.
+         */
+        owner: string;
+        /**
+         * The name of the project.
+         */
+        projectName: string;
+        /**
+         * The region of project.
+         */
+        region: string;
+        /**
+         * The status of project.
+         */
+        status: string;
+    }
+
+    export interface GetStoresStore {
+        /**
+         * The ID of the store.
+         */
+        id: string;
+        /**
+         * The name of the store.
+         */
+        storeName: string;
+    }
+
     export interface OssShipperParquetConfig {
         name: string;
         type: string;
@@ -11307,6 +11831,10 @@ export namespace mongodb {
          * - 10-GB increments. Unit: GB.
          */
         nodeStorage: number;
+        /**
+         * The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+         */
+        readonlyReplicas: number;
     }
 }
 
@@ -13824,7 +14352,7 @@ export namespace resourcemanager {
     export interface GetAccountsAccount {
         accountId: string;
         /**
-         * (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+         * (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
          */
         accountName: string;
         displayName: string;

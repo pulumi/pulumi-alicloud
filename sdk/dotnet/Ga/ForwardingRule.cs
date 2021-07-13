@@ -67,9 +67,9 @@ namespace Pulumi.AliCloud.Ga
     ///                 deBandwidthPackageAttachment,
     ///             },
     ///         });
-    ///         var exampleEip = new AliCloud.Ecs.Eip("exampleEip", new AliCloud.Ecs.EipArgs
+    ///         var exampleEipAddress = new AliCloud.Ecs.EipAddress("exampleEipAddress", new AliCloud.Ecs.EipAddressArgs
     ///         {
-    ///             Bandwidth = 10,
+    ///             Bandwidth = "10",
     ///             InternetChargeType = "PayByBandwidth",
     ///         });
     ///         var exampleEndpointGroup = new AliCloud.Ga.EndpointGroup("exampleEndpointGroup", new AliCloud.Ga.EndpointGroupArgs
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Ga
     ///             {
     ///                 new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
     ///                 {
-    ///                     Endpoint = exampleEip.IpAddress,
+    ///                     Endpoint = exampleEipAddress.IpAddress,
     ///                     Type = "PublicIp",
     ///                     Weight = 20,
     ///                 },

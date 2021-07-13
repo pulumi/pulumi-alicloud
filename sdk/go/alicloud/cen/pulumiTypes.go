@@ -10,6 +10,112 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type TransitRouterVpcAttachmentZoneMapping struct {
+	// The VSwitch id of attachment.
+	VswitchId *string `pulumi:"vswitchId"`
+	// The zone Id of VSwitch.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// TransitRouterVpcAttachmentZoneMappingInput is an input type that accepts TransitRouterVpcAttachmentZoneMappingArgs and TransitRouterVpcAttachmentZoneMappingOutput values.
+// You can construct a concrete instance of `TransitRouterVpcAttachmentZoneMappingInput` via:
+//
+//          TransitRouterVpcAttachmentZoneMappingArgs{...}
+type TransitRouterVpcAttachmentZoneMappingInput interface {
+	pulumi.Input
+
+	ToTransitRouterVpcAttachmentZoneMappingOutput() TransitRouterVpcAttachmentZoneMappingOutput
+	ToTransitRouterVpcAttachmentZoneMappingOutputWithContext(context.Context) TransitRouterVpcAttachmentZoneMappingOutput
+}
+
+type TransitRouterVpcAttachmentZoneMappingArgs struct {
+	// The VSwitch id of attachment.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+	// The zone Id of VSwitch.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (TransitRouterVpcAttachmentZoneMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitRouterVpcAttachmentZoneMapping)(nil)).Elem()
+}
+
+func (i TransitRouterVpcAttachmentZoneMappingArgs) ToTransitRouterVpcAttachmentZoneMappingOutput() TransitRouterVpcAttachmentZoneMappingOutput {
+	return i.ToTransitRouterVpcAttachmentZoneMappingOutputWithContext(context.Background())
+}
+
+func (i TransitRouterVpcAttachmentZoneMappingArgs) ToTransitRouterVpcAttachmentZoneMappingOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentZoneMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpcAttachmentZoneMappingOutput)
+}
+
+// TransitRouterVpcAttachmentZoneMappingArrayInput is an input type that accepts TransitRouterVpcAttachmentZoneMappingArray and TransitRouterVpcAttachmentZoneMappingArrayOutput values.
+// You can construct a concrete instance of `TransitRouterVpcAttachmentZoneMappingArrayInput` via:
+//
+//          TransitRouterVpcAttachmentZoneMappingArray{ TransitRouterVpcAttachmentZoneMappingArgs{...} }
+type TransitRouterVpcAttachmentZoneMappingArrayInput interface {
+	pulumi.Input
+
+	ToTransitRouterVpcAttachmentZoneMappingArrayOutput() TransitRouterVpcAttachmentZoneMappingArrayOutput
+	ToTransitRouterVpcAttachmentZoneMappingArrayOutputWithContext(context.Context) TransitRouterVpcAttachmentZoneMappingArrayOutput
+}
+
+type TransitRouterVpcAttachmentZoneMappingArray []TransitRouterVpcAttachmentZoneMappingInput
+
+func (TransitRouterVpcAttachmentZoneMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransitRouterVpcAttachmentZoneMapping)(nil)).Elem()
+}
+
+func (i TransitRouterVpcAttachmentZoneMappingArray) ToTransitRouterVpcAttachmentZoneMappingArrayOutput() TransitRouterVpcAttachmentZoneMappingArrayOutput {
+	return i.ToTransitRouterVpcAttachmentZoneMappingArrayOutputWithContext(context.Background())
+}
+
+func (i TransitRouterVpcAttachmentZoneMappingArray) ToTransitRouterVpcAttachmentZoneMappingArrayOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentZoneMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpcAttachmentZoneMappingArrayOutput)
+}
+
+type TransitRouterVpcAttachmentZoneMappingOutput struct{ *pulumi.OutputState }
+
+func (TransitRouterVpcAttachmentZoneMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitRouterVpcAttachmentZoneMapping)(nil)).Elem()
+}
+
+func (o TransitRouterVpcAttachmentZoneMappingOutput) ToTransitRouterVpcAttachmentZoneMappingOutput() TransitRouterVpcAttachmentZoneMappingOutput {
+	return o
+}
+
+func (o TransitRouterVpcAttachmentZoneMappingOutput) ToTransitRouterVpcAttachmentZoneMappingOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentZoneMappingOutput {
+	return o
+}
+
+// The VSwitch id of attachment.
+func (o TransitRouterVpcAttachmentZoneMappingOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransitRouterVpcAttachmentZoneMapping) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The zone Id of VSwitch.
+func (o TransitRouterVpcAttachmentZoneMappingOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransitRouterVpcAttachmentZoneMapping) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type TransitRouterVpcAttachmentZoneMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (TransitRouterVpcAttachmentZoneMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransitRouterVpcAttachmentZoneMapping)(nil)).Elem()
+}
+
+func (o TransitRouterVpcAttachmentZoneMappingArrayOutput) ToTransitRouterVpcAttachmentZoneMappingArrayOutput() TransitRouterVpcAttachmentZoneMappingArrayOutput {
+	return o
+}
+
+func (o TransitRouterVpcAttachmentZoneMappingArrayOutput) ToTransitRouterVpcAttachmentZoneMappingArrayOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentZoneMappingArrayOutput {
+	return o
+}
+
+func (o TransitRouterVpcAttachmentZoneMappingArrayOutput) Index(i pulumi.IntInput) TransitRouterVpcAttachmentZoneMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransitRouterVpcAttachmentZoneMapping {
+		return vs[0].([]TransitRouterVpcAttachmentZoneMapping)[vs[1].(int)]
+	}).(TransitRouterVpcAttachmentZoneMappingOutput)
+}
+
 type GetBandwidthLimitsLimit struct {
 	// The bandwidth limit configured for the interconnected regions communication.
 	BandwidthLimit int `pulumi:"bandwidthLimit"`
@@ -2019,6 +2125,1165 @@ func (o GetRouteServicesServiceArrayOutput) Index(i pulumi.IntInput) GetRouteSer
 	}).(GetRouteServicesServiceOutput)
 }
 
+type GetTransitRouterRouteEntriesEntry struct {
+	Id                                 string `pulumi:"id"`
+	Status                             string `pulumi:"status"`
+	TransitRouterRouteEntryDescription string `pulumi:"transitRouterRouteEntryDescription"`
+	// The target network segment of the route entry.
+	TransitRouterRouteEntryDestinationCidrBlock string `pulumi:"transitRouterRouteEntryDestinationCidrBlock"`
+	TransitRouterRouteEntryId                   string `pulumi:"transitRouterRouteEntryId"`
+	TransitRouterRouteEntryName                 string `pulumi:"transitRouterRouteEntryName"`
+	// ID of the next hop.
+	TransitRouterRouteEntryNextHopId string `pulumi:"transitRouterRouteEntryNextHopId"`
+	// Type of the next hop.
+	TransitRouterRouteEntryNextHopType string `pulumi:"transitRouterRouteEntryNextHopType"`
+	// Type of the route entry.
+	TransitRouterRouteEntryType string `pulumi:"transitRouterRouteEntryType"`
+}
+
+// GetTransitRouterRouteEntriesEntryInput is an input type that accepts GetTransitRouterRouteEntriesEntryArgs and GetTransitRouterRouteEntriesEntryOutput values.
+// You can construct a concrete instance of `GetTransitRouterRouteEntriesEntryInput` via:
+//
+//          GetTransitRouterRouteEntriesEntryArgs{...}
+type GetTransitRouterRouteEntriesEntryInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterRouteEntriesEntryOutput() GetTransitRouterRouteEntriesEntryOutput
+	ToGetTransitRouterRouteEntriesEntryOutputWithContext(context.Context) GetTransitRouterRouteEntriesEntryOutput
+}
+
+type GetTransitRouterRouteEntriesEntryArgs struct {
+	Id                                 pulumi.StringInput `pulumi:"id"`
+	Status                             pulumi.StringInput `pulumi:"status"`
+	TransitRouterRouteEntryDescription pulumi.StringInput `pulumi:"transitRouterRouteEntryDescription"`
+	// The target network segment of the route entry.
+	TransitRouterRouteEntryDestinationCidrBlock pulumi.StringInput `pulumi:"transitRouterRouteEntryDestinationCidrBlock"`
+	TransitRouterRouteEntryId                   pulumi.StringInput `pulumi:"transitRouterRouteEntryId"`
+	TransitRouterRouteEntryName                 pulumi.StringInput `pulumi:"transitRouterRouteEntryName"`
+	// ID of the next hop.
+	TransitRouterRouteEntryNextHopId pulumi.StringInput `pulumi:"transitRouterRouteEntryNextHopId"`
+	// Type of the next hop.
+	TransitRouterRouteEntryNextHopType pulumi.StringInput `pulumi:"transitRouterRouteEntryNextHopType"`
+	// Type of the route entry.
+	TransitRouterRouteEntryType pulumi.StringInput `pulumi:"transitRouterRouteEntryType"`
+}
+
+func (GetTransitRouterRouteEntriesEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterRouteEntriesEntry)(nil)).Elem()
+}
+
+func (i GetTransitRouterRouteEntriesEntryArgs) ToGetTransitRouterRouteEntriesEntryOutput() GetTransitRouterRouteEntriesEntryOutput {
+	return i.ToGetTransitRouterRouteEntriesEntryOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterRouteEntriesEntryArgs) ToGetTransitRouterRouteEntriesEntryOutputWithContext(ctx context.Context) GetTransitRouterRouteEntriesEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteEntriesEntryOutput)
+}
+
+// GetTransitRouterRouteEntriesEntryArrayInput is an input type that accepts GetTransitRouterRouteEntriesEntryArray and GetTransitRouterRouteEntriesEntryArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouterRouteEntriesEntryArrayInput` via:
+//
+//          GetTransitRouterRouteEntriesEntryArray{ GetTransitRouterRouteEntriesEntryArgs{...} }
+type GetTransitRouterRouteEntriesEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterRouteEntriesEntryArrayOutput() GetTransitRouterRouteEntriesEntryArrayOutput
+	ToGetTransitRouterRouteEntriesEntryArrayOutputWithContext(context.Context) GetTransitRouterRouteEntriesEntryArrayOutput
+}
+
+type GetTransitRouterRouteEntriesEntryArray []GetTransitRouterRouteEntriesEntryInput
+
+func (GetTransitRouterRouteEntriesEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterRouteEntriesEntry)(nil)).Elem()
+}
+
+func (i GetTransitRouterRouteEntriesEntryArray) ToGetTransitRouterRouteEntriesEntryArrayOutput() GetTransitRouterRouteEntriesEntryArrayOutput {
+	return i.ToGetTransitRouterRouteEntriesEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterRouteEntriesEntryArray) ToGetTransitRouterRouteEntriesEntryArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteEntriesEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteEntriesEntryArrayOutput)
+}
+
+type GetTransitRouterRouteEntriesEntryOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterRouteEntriesEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterRouteEntriesEntry)(nil)).Elem()
+}
+
+func (o GetTransitRouterRouteEntriesEntryOutput) ToGetTransitRouterRouteEntriesEntryOutput() GetTransitRouterRouteEntriesEntryOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteEntriesEntryOutput) ToGetTransitRouterRouteEntriesEntryOutputWithContext(ctx context.Context) GetTransitRouterRouteEntriesEntryOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteEntriesEntryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTransitRouterRouteEntriesEntryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryDescription }).(pulumi.StringOutput)
+}
+
+// The target network segment of the route entry.
+func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryDestinationCidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryDestinationCidrBlock }).(pulumi.StringOutput)
+}
+
+func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryId }).(pulumi.StringOutput)
+}
+
+func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryName }).(pulumi.StringOutput)
+}
+
+// ID of the next hop.
+func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryNextHopId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryNextHopId }).(pulumi.StringOutput)
+}
+
+// Type of the next hop.
+func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryNextHopType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryNextHopType }).(pulumi.StringOutput)
+}
+
+// Type of the route entry.
+func (o GetTransitRouterRouteEntriesEntryOutput) TransitRouterRouteEntryType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteEntriesEntry) string { return v.TransitRouterRouteEntryType }).(pulumi.StringOutput)
+}
+
+type GetTransitRouterRouteEntriesEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterRouteEntriesEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterRouteEntriesEntry)(nil)).Elem()
+}
+
+func (o GetTransitRouterRouteEntriesEntryArrayOutput) ToGetTransitRouterRouteEntriesEntryArrayOutput() GetTransitRouterRouteEntriesEntryArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteEntriesEntryArrayOutput) ToGetTransitRouterRouteEntriesEntryArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteEntriesEntryArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetTransitRouterRouteEntriesEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterRouteEntriesEntry {
+		return vs[0].([]GetTransitRouterRouteEntriesEntry)[vs[1].(int)]
+	}).(GetTransitRouterRouteEntriesEntryOutput)
+}
+
+type GetTransitRouterRouteTableAssociationsAssociation struct {
+	Id string `pulumi:"id"`
+	// ID of the transit router route table association.
+	ResourceId string `pulumi:"resourceId"`
+	// Type of the resource.
+	ResourceType string `pulumi:"resourceType"`
+	// The status of the route table, including `Active`, `Associating`, `Dissociating`.
+	Status string `pulumi:"status"`
+	// ID of the cen transit router attachment.
+	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
+}
+
+// GetTransitRouterRouteTableAssociationsAssociationInput is an input type that accepts GetTransitRouterRouteTableAssociationsAssociationArgs and GetTransitRouterRouteTableAssociationsAssociationOutput values.
+// You can construct a concrete instance of `GetTransitRouterRouteTableAssociationsAssociationInput` via:
+//
+//          GetTransitRouterRouteTableAssociationsAssociationArgs{...}
+type GetTransitRouterRouteTableAssociationsAssociationInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterRouteTableAssociationsAssociationOutput() GetTransitRouterRouteTableAssociationsAssociationOutput
+	ToGetTransitRouterRouteTableAssociationsAssociationOutputWithContext(context.Context) GetTransitRouterRouteTableAssociationsAssociationOutput
+}
+
+type GetTransitRouterRouteTableAssociationsAssociationArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of the transit router route table association.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// Type of the resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The status of the route table, including `Active`, `Associating`, `Dissociating`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// ID of the cen transit router attachment.
+	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
+}
+
+func (GetTransitRouterRouteTableAssociationsAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterRouteTableAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetTransitRouterRouteTableAssociationsAssociationArgs) ToGetTransitRouterRouteTableAssociationsAssociationOutput() GetTransitRouterRouteTableAssociationsAssociationOutput {
+	return i.ToGetTransitRouterRouteTableAssociationsAssociationOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterRouteTableAssociationsAssociationArgs) ToGetTransitRouterRouteTableAssociationsAssociationOutputWithContext(ctx context.Context) GetTransitRouterRouteTableAssociationsAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTableAssociationsAssociationOutput)
+}
+
+// GetTransitRouterRouteTableAssociationsAssociationArrayInput is an input type that accepts GetTransitRouterRouteTableAssociationsAssociationArray and GetTransitRouterRouteTableAssociationsAssociationArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouterRouteTableAssociationsAssociationArrayInput` via:
+//
+//          GetTransitRouterRouteTableAssociationsAssociationArray{ GetTransitRouterRouteTableAssociationsAssociationArgs{...} }
+type GetTransitRouterRouteTableAssociationsAssociationArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterRouteTableAssociationsAssociationArrayOutput() GetTransitRouterRouteTableAssociationsAssociationArrayOutput
+	ToGetTransitRouterRouteTableAssociationsAssociationArrayOutputWithContext(context.Context) GetTransitRouterRouteTableAssociationsAssociationArrayOutput
+}
+
+type GetTransitRouterRouteTableAssociationsAssociationArray []GetTransitRouterRouteTableAssociationsAssociationInput
+
+func (GetTransitRouterRouteTableAssociationsAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterRouteTableAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetTransitRouterRouteTableAssociationsAssociationArray) ToGetTransitRouterRouteTableAssociationsAssociationArrayOutput() GetTransitRouterRouteTableAssociationsAssociationArrayOutput {
+	return i.ToGetTransitRouterRouteTableAssociationsAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterRouteTableAssociationsAssociationArray) ToGetTransitRouterRouteTableAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteTableAssociationsAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTableAssociationsAssociationArrayOutput)
+}
+
+type GetTransitRouterRouteTableAssociationsAssociationOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterRouteTableAssociationsAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterRouteTableAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetTransitRouterRouteTableAssociationsAssociationOutput) ToGetTransitRouterRouteTableAssociationsAssociationOutput() GetTransitRouterRouteTableAssociationsAssociationOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTableAssociationsAssociationOutput) ToGetTransitRouterRouteTableAssociationsAssociationOutputWithContext(ctx context.Context) GetTransitRouterRouteTableAssociationsAssociationOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTableAssociationsAssociationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsAssociation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of the transit router route table association.
+func (o GetTransitRouterRouteTableAssociationsAssociationOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsAssociation) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// Type of the resource.
+func (o GetTransitRouterRouteTableAssociationsAssociationOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsAssociation) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The status of the route table, including `Active`, `Associating`, `Dissociating`.
+func (o GetTransitRouterRouteTableAssociationsAssociationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsAssociation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// ID of the cen transit router attachment.
+func (o GetTransitRouterRouteTableAssociationsAssociationOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsAssociation) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+type GetTransitRouterRouteTableAssociationsAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterRouteTableAssociationsAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterRouteTableAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetTransitRouterRouteTableAssociationsAssociationArrayOutput) ToGetTransitRouterRouteTableAssociationsAssociationArrayOutput() GetTransitRouterRouteTableAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTableAssociationsAssociationArrayOutput) ToGetTransitRouterRouteTableAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteTableAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTableAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) GetTransitRouterRouteTableAssociationsAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterRouteTableAssociationsAssociation {
+		return vs[0].([]GetTransitRouterRouteTableAssociationsAssociation)[vs[1].(int)]
+	}).(GetTransitRouterRouteTableAssociationsAssociationOutput)
+}
+
+type GetTransitRouterRouteTablePropagationsPropagation struct {
+	Id string `pulumi:"id"`
+	// ID of the transit router route table association.
+	ResourceId string `pulumi:"resourceId"`
+	// Type of the resource.
+	ResourceType string `pulumi:"resourceType"`
+	// The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+	Status string `pulumi:"status"`
+	// ID of the cen transit router attachment.
+	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
+}
+
+// GetTransitRouterRouteTablePropagationsPropagationInput is an input type that accepts GetTransitRouterRouteTablePropagationsPropagationArgs and GetTransitRouterRouteTablePropagationsPropagationOutput values.
+// You can construct a concrete instance of `GetTransitRouterRouteTablePropagationsPropagationInput` via:
+//
+//          GetTransitRouterRouteTablePropagationsPropagationArgs{...}
+type GetTransitRouterRouteTablePropagationsPropagationInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterRouteTablePropagationsPropagationOutput() GetTransitRouterRouteTablePropagationsPropagationOutput
+	ToGetTransitRouterRouteTablePropagationsPropagationOutputWithContext(context.Context) GetTransitRouterRouteTablePropagationsPropagationOutput
+}
+
+type GetTransitRouterRouteTablePropagationsPropagationArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of the transit router route table association.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// Type of the resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// ID of the cen transit router attachment.
+	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
+}
+
+func (GetTransitRouterRouteTablePropagationsPropagationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterRouteTablePropagationsPropagation)(nil)).Elem()
+}
+
+func (i GetTransitRouterRouteTablePropagationsPropagationArgs) ToGetTransitRouterRouteTablePropagationsPropagationOutput() GetTransitRouterRouteTablePropagationsPropagationOutput {
+	return i.ToGetTransitRouterRouteTablePropagationsPropagationOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterRouteTablePropagationsPropagationArgs) ToGetTransitRouterRouteTablePropagationsPropagationOutputWithContext(ctx context.Context) GetTransitRouterRouteTablePropagationsPropagationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTablePropagationsPropagationOutput)
+}
+
+// GetTransitRouterRouteTablePropagationsPropagationArrayInput is an input type that accepts GetTransitRouterRouteTablePropagationsPropagationArray and GetTransitRouterRouteTablePropagationsPropagationArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouterRouteTablePropagationsPropagationArrayInput` via:
+//
+//          GetTransitRouterRouteTablePropagationsPropagationArray{ GetTransitRouterRouteTablePropagationsPropagationArgs{...} }
+type GetTransitRouterRouteTablePropagationsPropagationArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterRouteTablePropagationsPropagationArrayOutput() GetTransitRouterRouteTablePropagationsPropagationArrayOutput
+	ToGetTransitRouterRouteTablePropagationsPropagationArrayOutputWithContext(context.Context) GetTransitRouterRouteTablePropagationsPropagationArrayOutput
+}
+
+type GetTransitRouterRouteTablePropagationsPropagationArray []GetTransitRouterRouteTablePropagationsPropagationInput
+
+func (GetTransitRouterRouteTablePropagationsPropagationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterRouteTablePropagationsPropagation)(nil)).Elem()
+}
+
+func (i GetTransitRouterRouteTablePropagationsPropagationArray) ToGetTransitRouterRouteTablePropagationsPropagationArrayOutput() GetTransitRouterRouteTablePropagationsPropagationArrayOutput {
+	return i.ToGetTransitRouterRouteTablePropagationsPropagationArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterRouteTablePropagationsPropagationArray) ToGetTransitRouterRouteTablePropagationsPropagationArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteTablePropagationsPropagationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTablePropagationsPropagationArrayOutput)
+}
+
+type GetTransitRouterRouteTablePropagationsPropagationOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterRouteTablePropagationsPropagationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterRouteTablePropagationsPropagation)(nil)).Elem()
+}
+
+func (o GetTransitRouterRouteTablePropagationsPropagationOutput) ToGetTransitRouterRouteTablePropagationsPropagationOutput() GetTransitRouterRouteTablePropagationsPropagationOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTablePropagationsPropagationOutput) ToGetTransitRouterRouteTablePropagationsPropagationOutputWithContext(ctx context.Context) GetTransitRouterRouteTablePropagationsPropagationOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTablePropagationsPropagationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of the transit router route table association.
+func (o GetTransitRouterRouteTablePropagationsPropagationOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// Type of the resource.
+func (o GetTransitRouterRouteTablePropagationsPropagationOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+func (o GetTransitRouterRouteTablePropagationsPropagationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// ID of the cen transit router attachment.
+func (o GetTransitRouterRouteTablePropagationsPropagationOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablePropagationsPropagation) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+type GetTransitRouterRouteTablePropagationsPropagationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterRouteTablePropagationsPropagationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterRouteTablePropagationsPropagation)(nil)).Elem()
+}
+
+func (o GetTransitRouterRouteTablePropagationsPropagationArrayOutput) ToGetTransitRouterRouteTablePropagationsPropagationArrayOutput() GetTransitRouterRouteTablePropagationsPropagationArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTablePropagationsPropagationArrayOutput) ToGetTransitRouterRouteTablePropagationsPropagationArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteTablePropagationsPropagationArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTablePropagationsPropagationArrayOutput) Index(i pulumi.IntInput) GetTransitRouterRouteTablePropagationsPropagationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterRouteTablePropagationsPropagation {
+		return vs[0].([]GetTransitRouterRouteTablePropagationsPropagation)[vs[1].(int)]
+	}).(GetTransitRouterRouteTablePropagationsPropagationOutput)
+}
+
+type GetTransitRouterRouteTablesTable struct {
+	// ID of resource.
+	Id     string `pulumi:"id"`
+	Status string `pulumi:"status"`
+	// The description of the transit router route table.
+	TransitRouterRouteTableDescription string `pulumi:"transitRouterRouteTableDescription"`
+	// ID of the trabsit router route table.
+	TransitRouterRouteTableId string `pulumi:"transitRouterRouteTableId"`
+	// Name of the transit router route table.
+	TransitRouterRouteTableName string `pulumi:"transitRouterRouteTableName"`
+	// The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+	TransitRouterRouteTableType string `pulumi:"transitRouterRouteTableType"`
+}
+
+// GetTransitRouterRouteTablesTableInput is an input type that accepts GetTransitRouterRouteTablesTableArgs and GetTransitRouterRouteTablesTableOutput values.
+// You can construct a concrete instance of `GetTransitRouterRouteTablesTableInput` via:
+//
+//          GetTransitRouterRouteTablesTableArgs{...}
+type GetTransitRouterRouteTablesTableInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterRouteTablesTableOutput() GetTransitRouterRouteTablesTableOutput
+	ToGetTransitRouterRouteTablesTableOutputWithContext(context.Context) GetTransitRouterRouteTablesTableOutput
+}
+
+type GetTransitRouterRouteTablesTableArgs struct {
+	// ID of resource.
+	Id     pulumi.StringInput `pulumi:"id"`
+	Status pulumi.StringInput `pulumi:"status"`
+	// The description of the transit router route table.
+	TransitRouterRouteTableDescription pulumi.StringInput `pulumi:"transitRouterRouteTableDescription"`
+	// ID of the trabsit router route table.
+	TransitRouterRouteTableId pulumi.StringInput `pulumi:"transitRouterRouteTableId"`
+	// Name of the transit router route table.
+	TransitRouterRouteTableName pulumi.StringInput `pulumi:"transitRouterRouteTableName"`
+	// The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+	TransitRouterRouteTableType pulumi.StringInput `pulumi:"transitRouterRouteTableType"`
+}
+
+func (GetTransitRouterRouteTablesTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterRouteTablesTable)(nil)).Elem()
+}
+
+func (i GetTransitRouterRouteTablesTableArgs) ToGetTransitRouterRouteTablesTableOutput() GetTransitRouterRouteTablesTableOutput {
+	return i.ToGetTransitRouterRouteTablesTableOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterRouteTablesTableArgs) ToGetTransitRouterRouteTablesTableOutputWithContext(ctx context.Context) GetTransitRouterRouteTablesTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTablesTableOutput)
+}
+
+// GetTransitRouterRouteTablesTableArrayInput is an input type that accepts GetTransitRouterRouteTablesTableArray and GetTransitRouterRouteTablesTableArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouterRouteTablesTableArrayInput` via:
+//
+//          GetTransitRouterRouteTablesTableArray{ GetTransitRouterRouteTablesTableArgs{...} }
+type GetTransitRouterRouteTablesTableArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterRouteTablesTableArrayOutput() GetTransitRouterRouteTablesTableArrayOutput
+	ToGetTransitRouterRouteTablesTableArrayOutputWithContext(context.Context) GetTransitRouterRouteTablesTableArrayOutput
+}
+
+type GetTransitRouterRouteTablesTableArray []GetTransitRouterRouteTablesTableInput
+
+func (GetTransitRouterRouteTablesTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterRouteTablesTable)(nil)).Elem()
+}
+
+func (i GetTransitRouterRouteTablesTableArray) ToGetTransitRouterRouteTablesTableArrayOutput() GetTransitRouterRouteTablesTableArrayOutput {
+	return i.ToGetTransitRouterRouteTablesTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterRouteTablesTableArray) ToGetTransitRouterRouteTablesTableArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteTablesTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterRouteTablesTableArrayOutput)
+}
+
+type GetTransitRouterRouteTablesTableOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterRouteTablesTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterRouteTablesTable)(nil)).Elem()
+}
+
+func (o GetTransitRouterRouteTablesTableOutput) ToGetTransitRouterRouteTablesTableOutput() GetTransitRouterRouteTablesTableOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTablesTableOutput) ToGetTransitRouterRouteTablesTableOutputWithContext(ctx context.Context) GetTransitRouterRouteTablesTableOutput {
+	return o
+}
+
+// ID of resource.
+func (o GetTransitRouterRouteTablesTableOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTransitRouterRouteTablesTableOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The description of the transit router route table.
+func (o GetTransitRouterRouteTablesTableOutput) TransitRouterRouteTableDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.TransitRouterRouteTableDescription }).(pulumi.StringOutput)
+}
+
+// ID of the trabsit router route table.
+func (o GetTransitRouterRouteTablesTableOutput) TransitRouterRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
+}
+
+// Name of the transit router route table.
+func (o GetTransitRouterRouteTablesTableOutput) TransitRouterRouteTableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.TransitRouterRouteTableName }).(pulumi.StringOutput)
+}
+
+// The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+func (o GetTransitRouterRouteTablesTableOutput) TransitRouterRouteTableType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.TransitRouterRouteTableType }).(pulumi.StringOutput)
+}
+
+type GetTransitRouterRouteTablesTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterRouteTablesTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterRouteTablesTable)(nil)).Elem()
+}
+
+func (o GetTransitRouterRouteTablesTableArrayOutput) ToGetTransitRouterRouteTablesTableArrayOutput() GetTransitRouterRouteTablesTableArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTablesTableArrayOutput) ToGetTransitRouterRouteTablesTableArrayOutputWithContext(ctx context.Context) GetTransitRouterRouteTablesTableArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterRouteTablesTableArrayOutput) Index(i pulumi.IntInput) GetTransitRouterRouteTablesTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterRouteTablesTable {
+		return vs[0].([]GetTransitRouterRouteTablesTable)[vs[1].(int)]
+	}).(GetTransitRouterRouteTablesTableOutput)
+}
+
+type GetTransitRouterVbrAttachmentsAttachment struct {
+	// ID of the region where the conflicted VBR is located.
+	AutoPublishRouteEnabled bool   `pulumi:"autoPublishRouteEnabled"`
+	Id                      string `pulumi:"id"`
+	// Type of the resource.
+	ResourceType string `pulumi:"resourceType"`
+	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+	Status                             string `pulumi:"status"`
+	TransitRouterAttachmentDescription string `pulumi:"transitRouterAttachmentDescription"`
+	// ID of the transit router VBR attachment.
+	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
+	// Name of the transit router attachment.
+	TransitRouterAttachmentName string `pulumi:"transitRouterAttachmentName"`
+	// ID of the VBR.
+	VbrId string `pulumi:"vbrId"`
+	// The Owner ID of the VBR.
+	VbrOwnerId string `pulumi:"vbrOwnerId"`
+}
+
+// GetTransitRouterVbrAttachmentsAttachmentInput is an input type that accepts GetTransitRouterVbrAttachmentsAttachmentArgs and GetTransitRouterVbrAttachmentsAttachmentOutput values.
+// You can construct a concrete instance of `GetTransitRouterVbrAttachmentsAttachmentInput` via:
+//
+//          GetTransitRouterVbrAttachmentsAttachmentArgs{...}
+type GetTransitRouterVbrAttachmentsAttachmentInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterVbrAttachmentsAttachmentOutput() GetTransitRouterVbrAttachmentsAttachmentOutput
+	ToGetTransitRouterVbrAttachmentsAttachmentOutputWithContext(context.Context) GetTransitRouterVbrAttachmentsAttachmentOutput
+}
+
+type GetTransitRouterVbrAttachmentsAttachmentArgs struct {
+	// ID of the region where the conflicted VBR is located.
+	AutoPublishRouteEnabled pulumi.BoolInput   `pulumi:"autoPublishRouteEnabled"`
+	Id                      pulumi.StringInput `pulumi:"id"`
+	// Type of the resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+	Status                             pulumi.StringInput `pulumi:"status"`
+	TransitRouterAttachmentDescription pulumi.StringInput `pulumi:"transitRouterAttachmentDescription"`
+	// ID of the transit router VBR attachment.
+	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
+	// Name of the transit router attachment.
+	TransitRouterAttachmentName pulumi.StringInput `pulumi:"transitRouterAttachmentName"`
+	// ID of the VBR.
+	VbrId pulumi.StringInput `pulumi:"vbrId"`
+	// The Owner ID of the VBR.
+	VbrOwnerId pulumi.StringInput `pulumi:"vbrOwnerId"`
+}
+
+func (GetTransitRouterVbrAttachmentsAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterVbrAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetTransitRouterVbrAttachmentsAttachmentArgs) ToGetTransitRouterVbrAttachmentsAttachmentOutput() GetTransitRouterVbrAttachmentsAttachmentOutput {
+	return i.ToGetTransitRouterVbrAttachmentsAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterVbrAttachmentsAttachmentArgs) ToGetTransitRouterVbrAttachmentsAttachmentOutputWithContext(ctx context.Context) GetTransitRouterVbrAttachmentsAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVbrAttachmentsAttachmentOutput)
+}
+
+// GetTransitRouterVbrAttachmentsAttachmentArrayInput is an input type that accepts GetTransitRouterVbrAttachmentsAttachmentArray and GetTransitRouterVbrAttachmentsAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouterVbrAttachmentsAttachmentArrayInput` via:
+//
+//          GetTransitRouterVbrAttachmentsAttachmentArray{ GetTransitRouterVbrAttachmentsAttachmentArgs{...} }
+type GetTransitRouterVbrAttachmentsAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterVbrAttachmentsAttachmentArrayOutput() GetTransitRouterVbrAttachmentsAttachmentArrayOutput
+	ToGetTransitRouterVbrAttachmentsAttachmentArrayOutputWithContext(context.Context) GetTransitRouterVbrAttachmentsAttachmentArrayOutput
+}
+
+type GetTransitRouterVbrAttachmentsAttachmentArray []GetTransitRouterVbrAttachmentsAttachmentInput
+
+func (GetTransitRouterVbrAttachmentsAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterVbrAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetTransitRouterVbrAttachmentsAttachmentArray) ToGetTransitRouterVbrAttachmentsAttachmentArrayOutput() GetTransitRouterVbrAttachmentsAttachmentArrayOutput {
+	return i.ToGetTransitRouterVbrAttachmentsAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterVbrAttachmentsAttachmentArray) ToGetTransitRouterVbrAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetTransitRouterVbrAttachmentsAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVbrAttachmentsAttachmentArrayOutput)
+}
+
+type GetTransitRouterVbrAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterVbrAttachmentsAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterVbrAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) ToGetTransitRouterVbrAttachmentsAttachmentOutput() GetTransitRouterVbrAttachmentsAttachmentOutput {
+	return o
+}
+
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) ToGetTransitRouterVbrAttachmentsAttachmentOutputWithContext(ctx context.Context) GetTransitRouterVbrAttachmentsAttachmentOutput {
+	return o
+}
+
+// ID of the region where the conflicted VBR is located.
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) bool { return v.AutoPublishRouteEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Type of the resource.
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.TransitRouterAttachmentDescription }).(pulumi.StringOutput)
+}
+
+// ID of the transit router VBR attachment.
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// Name of the transit router attachment.
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) TransitRouterAttachmentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.TransitRouterAttachmentName }).(pulumi.StringOutput)
+}
+
+// ID of the VBR.
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) VbrId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.VbrId }).(pulumi.StringOutput)
+}
+
+// The Owner ID of the VBR.
+func (o GetTransitRouterVbrAttachmentsAttachmentOutput) VbrOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVbrAttachmentsAttachment) string { return v.VbrOwnerId }).(pulumi.StringOutput)
+}
+
+type GetTransitRouterVbrAttachmentsAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterVbrAttachmentsAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterVbrAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetTransitRouterVbrAttachmentsAttachmentArrayOutput) ToGetTransitRouterVbrAttachmentsAttachmentArrayOutput() GetTransitRouterVbrAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterVbrAttachmentsAttachmentArrayOutput) ToGetTransitRouterVbrAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetTransitRouterVbrAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterVbrAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetTransitRouterVbrAttachmentsAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterVbrAttachmentsAttachment {
+		return vs[0].([]GetTransitRouterVbrAttachmentsAttachment)[vs[1].(int)]
+	}).(GetTransitRouterVbrAttachmentsAttachmentOutput)
+}
+
+type GetTransitRouterVpcAttachmentsAttachment struct {
+	// The ID of the transit router.
+	Id string `pulumi:"id"`
+	// Type of the resource.
+	ResourceType string `pulumi:"resourceType"`
+	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+	Status string `pulumi:"status"`
+	// The description of transit router attachment.
+	TransitRouterAttachmentDescription string `pulumi:"transitRouterAttachmentDescription"`
+	// ID of the transit router VBR attachment.
+	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
+	// Name of the transit router attachment.
+	TransitRouterAttachmentName string `pulumi:"transitRouterAttachmentName"`
+	// ID of the VPC.
+	VpcId string `pulumi:"vpcId"`
+	// The Owner ID of the VPC.
+	VpcOwnerId string `pulumi:"vpcOwnerId"`
+	// The mappings of zone
+	ZoneMappings []GetTransitRouterVpcAttachmentsAttachmentZoneMapping `pulumi:"zoneMappings"`
+}
+
+// GetTransitRouterVpcAttachmentsAttachmentInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentArgs and GetTransitRouterVpcAttachmentsAttachmentOutput values.
+// You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentInput` via:
+//
+//          GetTransitRouterVpcAttachmentsAttachmentArgs{...}
+type GetTransitRouterVpcAttachmentsAttachmentInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterVpcAttachmentsAttachmentOutput() GetTransitRouterVpcAttachmentsAttachmentOutput
+	ToGetTransitRouterVpcAttachmentsAttachmentOutputWithContext(context.Context) GetTransitRouterVpcAttachmentsAttachmentOutput
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentArgs struct {
+	// The ID of the transit router.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Type of the resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The description of transit router attachment.
+	TransitRouterAttachmentDescription pulumi.StringInput `pulumi:"transitRouterAttachmentDescription"`
+	// ID of the transit router VBR attachment.
+	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
+	// Name of the transit router attachment.
+	TransitRouterAttachmentName pulumi.StringInput `pulumi:"transitRouterAttachmentName"`
+	// ID of the VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The Owner ID of the VPC.
+	VpcOwnerId pulumi.StringInput `pulumi:"vpcOwnerId"`
+	// The mappings of zone
+	ZoneMappings GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput `pulumi:"zoneMappings"`
+}
+
+func (GetTransitRouterVpcAttachmentsAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentArgs) ToGetTransitRouterVpcAttachmentsAttachmentOutput() GetTransitRouterVpcAttachmentsAttachmentOutput {
+	return i.ToGetTransitRouterVpcAttachmentsAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentArgs) ToGetTransitRouterVpcAttachmentsAttachmentOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpcAttachmentsAttachmentOutput)
+}
+
+// GetTransitRouterVpcAttachmentsAttachmentArrayInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentArray and GetTransitRouterVpcAttachmentsAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentArrayInput` via:
+//
+//          GetTransitRouterVpcAttachmentsAttachmentArray{ GetTransitRouterVpcAttachmentsAttachmentArgs{...} }
+type GetTransitRouterVpcAttachmentsAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterVpcAttachmentsAttachmentArrayOutput() GetTransitRouterVpcAttachmentsAttachmentArrayOutput
+	ToGetTransitRouterVpcAttachmentsAttachmentArrayOutputWithContext(context.Context) GetTransitRouterVpcAttachmentsAttachmentArrayOutput
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentArray []GetTransitRouterVpcAttachmentsAttachmentInput
+
+func (GetTransitRouterVpcAttachmentsAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterVpcAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentArray) ToGetTransitRouterVpcAttachmentsAttachmentArrayOutput() GetTransitRouterVpcAttachmentsAttachmentArrayOutput {
+	return i.ToGetTransitRouterVpcAttachmentsAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentArray) ToGetTransitRouterVpcAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpcAttachmentsAttachmentArrayOutput)
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterVpcAttachmentsAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ToGetTransitRouterVpcAttachmentsAttachmentOutput() GetTransitRouterVpcAttachmentsAttachmentOutput {
+	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ToGetTransitRouterVpcAttachmentsAttachmentOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentOutput {
+	return o
+}
+
+// The ID of the transit router.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Type of the resource.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The description of transit router attachment.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.TransitRouterAttachmentDescription }).(pulumi.StringOutput)
+}
+
+// ID of the transit router VBR attachment.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// Name of the transit router attachment.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) TransitRouterAttachmentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.TransitRouterAttachmentName }).(pulumi.StringOutput)
+}
+
+// ID of the VPC.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The Owner ID of the VPC.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) VpcOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.VpcOwnerId }).(pulumi.StringOutput)
+}
+
+// The mappings of zone
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ZoneMappings() GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) []GetTransitRouterVpcAttachmentsAttachmentZoneMapping {
+		return v.ZoneMappings
+	}).(GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput)
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterVpcAttachmentsAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterVpcAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentArrayOutput) ToGetTransitRouterVpcAttachmentsAttachmentArrayOutput() GetTransitRouterVpcAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentArrayOutput) ToGetTransitRouterVpcAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetTransitRouterVpcAttachmentsAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterVpcAttachmentsAttachment {
+		return vs[0].([]GetTransitRouterVpcAttachmentsAttachment)[vs[1].(int)]
+	}).(GetTransitRouterVpcAttachmentsAttachmentOutput)
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentZoneMapping struct {
+	// The VSwitch ID.
+	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetTransitRouterVpcAttachmentsAttachmentZoneMappingInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs and GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput values.
+// You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentZoneMappingInput` via:
+//
+//          GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs{...}
+type GetTransitRouterVpcAttachmentsAttachmentZoneMappingInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput() GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput
+	ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingOutputWithContext(context.Context) GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs struct {
+	// The VSwitch ID.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentZoneMapping)(nil)).Elem()
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs) ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput() GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput {
+	return i.ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs) ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput)
+}
+
+// GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray and GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput` via:
+//
+//          GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray{ GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs{...} }
+type GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput() GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput
+	ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutputWithContext(context.Context) GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray []GetTransitRouterVpcAttachmentsAttachmentZoneMappingInput
+
+func (GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterVpcAttachmentsAttachmentZoneMapping)(nil)).Elem()
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray) ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput() GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput {
+	return i.ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray) ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput)
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentZoneMapping)(nil)).Elem()
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput() GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput {
+	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput {
+	return o
+}
+
+// The VSwitch ID.
+func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachmentZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID.
+func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachmentZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterVpcAttachmentsAttachmentZoneMapping)(nil)).Elem()
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput) ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput() GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput) ToGetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput) Index(i pulumi.IntInput) GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterVpcAttachmentsAttachmentZoneMapping {
+		return vs[0].([]GetTransitRouterVpcAttachmentsAttachmentZoneMapping)[vs[1].(int)]
+	}).(GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput)
+}
+
+type GetTransitRoutersTransitRouter struct {
+	// UID of the Aliyun.
+	AliUid string `pulumi:"aliUid"`
+	// ID of the CEN instance.
+	CenId string `pulumi:"cenId"`
+	Id    string `pulumi:"id"`
+	// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
+	Status string `pulumi:"status"`
+	// The description of the transit router.
+	TransitRouterDescription string `pulumi:"transitRouterDescription"`
+	// ID of the transit router.
+	TransitRouterId string `pulumi:"transitRouterId"`
+	// The name of the transit router.
+	TransitRouterName string `pulumi:"transitRouterName"`
+	// Type of the transit router.
+	Type string `pulumi:"type"`
+	// The vip of the XGW.
+	XgwVip string `pulumi:"xgwVip"`
+}
+
+// GetTransitRoutersTransitRouterInput is an input type that accepts GetTransitRoutersTransitRouterArgs and GetTransitRoutersTransitRouterOutput values.
+// You can construct a concrete instance of `GetTransitRoutersTransitRouterInput` via:
+//
+//          GetTransitRoutersTransitRouterArgs{...}
+type GetTransitRoutersTransitRouterInput interface {
+	pulumi.Input
+
+	ToGetTransitRoutersTransitRouterOutput() GetTransitRoutersTransitRouterOutput
+	ToGetTransitRoutersTransitRouterOutputWithContext(context.Context) GetTransitRoutersTransitRouterOutput
+}
+
+type GetTransitRoutersTransitRouterArgs struct {
+	// UID of the Aliyun.
+	AliUid pulumi.StringInput `pulumi:"aliUid"`
+	// ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	Id    pulumi.StringInput `pulumi:"id"`
+	// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The description of the transit router.
+	TransitRouterDescription pulumi.StringInput `pulumi:"transitRouterDescription"`
+	// ID of the transit router.
+	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
+	// The name of the transit router.
+	TransitRouterName pulumi.StringInput `pulumi:"transitRouterName"`
+	// Type of the transit router.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The vip of the XGW.
+	XgwVip pulumi.StringInput `pulumi:"xgwVip"`
+}
+
+func (GetTransitRoutersTransitRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRoutersTransitRouter)(nil)).Elem()
+}
+
+func (i GetTransitRoutersTransitRouterArgs) ToGetTransitRoutersTransitRouterOutput() GetTransitRoutersTransitRouterOutput {
+	return i.ToGetTransitRoutersTransitRouterOutputWithContext(context.Background())
+}
+
+func (i GetTransitRoutersTransitRouterArgs) ToGetTransitRoutersTransitRouterOutputWithContext(ctx context.Context) GetTransitRoutersTransitRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRoutersTransitRouterOutput)
+}
+
+// GetTransitRoutersTransitRouterArrayInput is an input type that accepts GetTransitRoutersTransitRouterArray and GetTransitRoutersTransitRouterArrayOutput values.
+// You can construct a concrete instance of `GetTransitRoutersTransitRouterArrayInput` via:
+//
+//          GetTransitRoutersTransitRouterArray{ GetTransitRoutersTransitRouterArgs{...} }
+type GetTransitRoutersTransitRouterArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRoutersTransitRouterArrayOutput() GetTransitRoutersTransitRouterArrayOutput
+	ToGetTransitRoutersTransitRouterArrayOutputWithContext(context.Context) GetTransitRoutersTransitRouterArrayOutput
+}
+
+type GetTransitRoutersTransitRouterArray []GetTransitRoutersTransitRouterInput
+
+func (GetTransitRoutersTransitRouterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRoutersTransitRouter)(nil)).Elem()
+}
+
+func (i GetTransitRoutersTransitRouterArray) ToGetTransitRoutersTransitRouterArrayOutput() GetTransitRoutersTransitRouterArrayOutput {
+	return i.ToGetTransitRoutersTransitRouterArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRoutersTransitRouterArray) ToGetTransitRoutersTransitRouterArrayOutputWithContext(ctx context.Context) GetTransitRoutersTransitRouterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRoutersTransitRouterArrayOutput)
+}
+
+type GetTransitRoutersTransitRouterOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRoutersTransitRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRoutersTransitRouter)(nil)).Elem()
+}
+
+func (o GetTransitRoutersTransitRouterOutput) ToGetTransitRoutersTransitRouterOutput() GetTransitRoutersTransitRouterOutput {
+	return o
+}
+
+func (o GetTransitRoutersTransitRouterOutput) ToGetTransitRoutersTransitRouterOutputWithContext(ctx context.Context) GetTransitRoutersTransitRouterOutput {
+	return o
+}
+
+// UID of the Aliyun.
+func (o GetTransitRoutersTransitRouterOutput) AliUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.AliUid }).(pulumi.StringOutput)
+}
+
+// ID of the CEN instance.
+func (o GetTransitRoutersTransitRouterOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+func (o GetTransitRoutersTransitRouterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
+func (o GetTransitRoutersTransitRouterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The description of the transit router.
+func (o GetTransitRoutersTransitRouterOutput) TransitRouterDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.TransitRouterDescription }).(pulumi.StringOutput)
+}
+
+// ID of the transit router.
+func (o GetTransitRoutersTransitRouterOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
+// The name of the transit router.
+func (o GetTransitRoutersTransitRouterOutput) TransitRouterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.TransitRouterName }).(pulumi.StringOutput)
+}
+
+// Type of the transit router.
+func (o GetTransitRoutersTransitRouterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The vip of the XGW.
+func (o GetTransitRoutersTransitRouterOutput) XgwVip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.XgwVip }).(pulumi.StringOutput)
+}
+
+type GetTransitRoutersTransitRouterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRoutersTransitRouterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRoutersTransitRouter)(nil)).Elem()
+}
+
+func (o GetTransitRoutersTransitRouterArrayOutput) ToGetTransitRoutersTransitRouterArrayOutput() GetTransitRoutersTransitRouterArrayOutput {
+	return o
+}
+
+func (o GetTransitRoutersTransitRouterArrayOutput) ToGetTransitRoutersTransitRouterArrayOutputWithContext(ctx context.Context) GetTransitRoutersTransitRouterArrayOutput {
+	return o
+}
+
+func (o GetTransitRoutersTransitRouterArrayOutput) Index(i pulumi.IntInput) GetTransitRoutersTransitRouterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRoutersTransitRouter {
+		return vs[0].([]GetTransitRoutersTransitRouter)[vs[1].(int)]
+	}).(GetTransitRoutersTransitRouterOutput)
+}
+
 type GetVbrHealthChecksCheck struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId string `pulumi:"cenId"`
@@ -2180,6 +3445,8 @@ func (o GetVbrHealthChecksCheckArrayOutput) Index(i pulumi.IntInput) GetVbrHealt
 }
 
 func init() {
+	pulumi.RegisterOutputType(TransitRouterVpcAttachmentZoneMappingOutput{})
+	pulumi.RegisterOutputType(TransitRouterVpcAttachmentZoneMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetBandwidthLimitsLimitOutput{})
 	pulumi.RegisterOutputType(GetBandwidthLimitsLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetBandwidthPackagesPackageOutput{})
@@ -2202,6 +3469,22 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteMapsMapArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteServicesServiceOutput{})
 	pulumi.RegisterOutputType(GetRouteServicesServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterRouteEntriesEntryOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterRouteEntriesEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterRouteTableAssociationsAssociationOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterRouteTableAssociationsAssociationArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterRouteTablePropagationsPropagationOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterRouteTablePropagationsPropagationArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterRouteTablesTableOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterRouteTablesTableArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterVbrAttachmentsAttachmentOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterVbrAttachmentsAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsAttachmentOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRoutersTransitRouterOutput{})
+	pulumi.RegisterOutputType(GetTransitRoutersTransitRouterArrayOutput{})
 	pulumi.RegisterOutputType(GetVbrHealthChecksCheckOutput{})
 	pulumi.RegisterOutputType(GetVbrHealthChecksCheckArrayOutput{})
 }

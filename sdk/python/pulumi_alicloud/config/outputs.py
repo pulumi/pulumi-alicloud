@@ -127,6 +127,7 @@ class Endpoints(dict):
                  elasticsearch: Optional[str] = None,
                  emr: Optional[str] = None,
                  ess: Optional[str] = None,
+                 eventbridge: Optional[str] = None,
                  fc: Optional[str] = None,
                  fnf: Optional[str] = None,
                  ga: Optional[str] = None,
@@ -143,6 +144,7 @@ class Endpoints(dict):
                  mse: Optional[str] = None,
                  nas: Optional[str] = None,
                  ons: Optional[str] = None,
+                 onsproxy: Optional[str] = None,
                  oos: Optional[str] = None,
                  oss: Optional[str] = None,
                  ots: Optional[str] = None,
@@ -223,6 +225,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "emr", emr)
         if ess is not None:
             pulumi.set(__self__, "ess", ess)
+        if eventbridge is not None:
+            pulumi.set(__self__, "eventbridge", eventbridge)
         if fc is not None:
             pulumi.set(__self__, "fc", fc)
         if fnf is not None:
@@ -255,6 +259,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "nas", nas)
         if ons is not None:
             pulumi.set(__self__, "ons", ons)
+        if onsproxy is not None:
+            pulumi.set(__self__, "onsproxy", onsproxy)
         if oos is not None:
             pulumi.set(__self__, "oos", oos)
         if oss is not None:
@@ -449,6 +455,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def eventbridge(self) -> Optional[str]:
+        return pulumi.get(self, "eventbridge")
+
+    @property
+    @pulumi.getter
     def fc(self) -> Optional[str]:
         return pulumi.get(self, "fc")
 
@@ -526,6 +537,11 @@ class Endpoints(dict):
     @pulumi.getter
     def ons(self) -> Optional[str]:
         return pulumi.get(self, "ons")
+
+    @property
+    @pulumi.getter
+    def onsproxy(self) -> Optional[str]:
+        return pulumi.get(self, "onsproxy")
 
     @property
     @pulumi.getter

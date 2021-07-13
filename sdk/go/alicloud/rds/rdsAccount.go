@@ -100,7 +100,7 @@ type RdsAccount struct {
 
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	AccountDescription pulumi.StringOutput `pulumi:"accountDescription"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
+	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
@@ -159,7 +159,7 @@ func GetRdsAccount(ctx *pulumi.Context,
 type rdsAccountState struct {
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	AccountDescription *string `pulumi:"accountDescription"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
+	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
 	AccountName *string `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
@@ -190,7 +190,7 @@ type rdsAccountState struct {
 type RdsAccountState struct {
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	AccountDescription pulumi.StringPtrInput
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
+	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
 	AccountName pulumi.StringPtrInput
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
@@ -225,7 +225,7 @@ func (RdsAccountState) ElementType() reflect.Type {
 type rdsAccountArgs struct {
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	AccountDescription *string `pulumi:"accountDescription"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
+	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
 	AccountName *string `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
@@ -255,7 +255,7 @@ type rdsAccountArgs struct {
 type RdsAccountArgs struct {
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	AccountDescription pulumi.StringPtrInput
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
+	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
 	AccountName pulumi.StringPtrInput
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput

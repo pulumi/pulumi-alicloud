@@ -73,8 +73,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleEip, err := ecs.NewEip(ctx, "exampleEip", &ecs.EipArgs{
-// 			Bandwidth:          pulumi.Int(10),
+// 		exampleEipAddress, err := ecs.NewEipAddress(ctx, "exampleEipAddress", &ecs.EipAddressArgs{
+// 			Bandwidth:          pulumi.String("10"),
 // 			InternetChargeType: pulumi.String("PayByBandwidth"),
 // 		})
 // 		if err != nil {
@@ -84,7 +84,7 @@ import (
 // 			AcceleratorId: exampleAccelerator.ID(),
 // 			EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
 // 				&ga.EndpointGroupEndpointConfigurationArgs{
-// 					Endpoint: exampleEip.IpAddress,
+// 					Endpoint: exampleEipAddress.IpAddress,
 // 					Type:     pulumi.String("PublicIp"),
 // 					Weight:   pulumi.Int(20),
 // 				},
