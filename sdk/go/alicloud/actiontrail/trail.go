@@ -52,8 +52,9 @@ type Trail struct {
 	pulumi.CustomResourceState
 
 	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
-	EventRw             pulumi.StringPtrOutput `pulumi:"eventRw"`
-	IsOrganizationTrail pulumi.BoolPtrOutput   `pulumi:"isOrganizationTrail"`
+	EventRw pulumi.StringPtrOutput `pulumi:"eventRw"`
+	// Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+	IsOrganizationTrail pulumi.BoolPtrOutput `pulumi:"isOrganizationTrail"`
 	// Field `mnsTopicArn` has been deprecated from version 1.118.0.
 	//
 	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
@@ -114,8 +115,9 @@ func GetTrail(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Trail resources.
 type trailState struct {
 	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
-	EventRw             *string `pulumi:"eventRw"`
-	IsOrganizationTrail *bool   `pulumi:"isOrganizationTrail"`
+	EventRw *string `pulumi:"eventRw"`
+	// Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+	IsOrganizationTrail *bool `pulumi:"isOrganizationTrail"`
 	// Field `mnsTopicArn` has been deprecated from version 1.118.0.
 	//
 	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
@@ -148,7 +150,8 @@ type trailState struct {
 
 type TrailState struct {
 	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
-	EventRw             pulumi.StringPtrInput
+	EventRw pulumi.StringPtrInput
+	// Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
 	IsOrganizationTrail pulumi.BoolPtrInput
 	// Field `mnsTopicArn` has been deprecated from version 1.118.0.
 	//
@@ -186,8 +189,9 @@ func (TrailState) ElementType() reflect.Type {
 
 type trailArgs struct {
 	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
-	EventRw             *string `pulumi:"eventRw"`
-	IsOrganizationTrail *bool   `pulumi:"isOrganizationTrail"`
+	EventRw *string `pulumi:"eventRw"`
+	// Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+	IsOrganizationTrail *bool `pulumi:"isOrganizationTrail"`
 	// Field `mnsTopicArn` has been deprecated from version 1.118.0.
 	//
 	// Deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0
@@ -221,7 +225,8 @@ type trailArgs struct {
 // The set of arguments for constructing a Trail resource.
 type TrailArgs struct {
 	// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
-	EventRw             pulumi.StringPtrInput
+	EventRw pulumi.StringPtrInput
+	// Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
 	IsOrganizationTrail pulumi.BoolPtrInput
 	// Field `mnsTopicArn` has been deprecated from version 1.118.0.
 	//

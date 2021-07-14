@@ -43,6 +43,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RouteMap{}
 	case "alicloud:cen/routeService:RouteService":
 		r = &RouteService{}
+	case "alicloud:cen/transitRouter:TransitRouter":
+		r = &TransitRouter{}
+	case "alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry":
+		r = &TransitRouterRouteEntry{}
+	case "alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable":
+		r = &TransitRouterRouteTable{}
+	case "alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation":
+		r = &TransitRouterRouteTableAssociation{}
+	case "alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation":
+		r = &TransitRouterRouteTablePropagation{}
+	case "alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment":
+		r = &TransitRouterVbrAttachment{}
+	case "alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment":
+		r = &TransitRouterVpcAttachment{}
 	case "alicloud:cen/vbrHealthCheck:VbrHealthCheck":
 		r = &VbrHealthCheck{}
 	default:
@@ -111,6 +125,41 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cen/routeService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterRouteEntry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterRouteTable",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterRouteTableAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterRouteTablePropagation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterVbrAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterVpcAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -7,7 +7,9 @@ from .alert import *
 from .audit import *
 from .dashboard import *
 from .etl import *
+from .get_projects import *
 from .get_service import *
+from .get_stores import *
 from .log_tail_attachment import *
 from .log_tail_config import *
 from .machine_group import *

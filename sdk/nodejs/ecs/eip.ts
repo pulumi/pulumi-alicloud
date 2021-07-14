@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * ```sh
  *  $ pulumi import alicloud:ecs/eip:Eip example eip-abc12345678
  * ```
+ *
+ * @deprecated This resource has been deprecated in favour of the EipAddress resource
  */
 export class Eip extends pulumi.CustomResource {
     /**
@@ -24,6 +26,7 @@ export class Eip extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EipState, opts?: pulumi.CustomResourceOptions): Eip {
+        pulumi.log.warn("Eip is deprecated: This resource has been deprecated in favour of the EipAddress resource")
         return new Eip(name, <any>state, { ...opts, id: id });
     }
 
@@ -41,10 +44,12 @@ export class Eip extends pulumi.CustomResource {
         return obj['__pulumiType'] === Eip.__pulumiType;
     }
 
+    public readonly activityId!: pulumi.Output<string | undefined>;
+    public readonly addressName!: pulumi.Output<string>;
     /**
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
      */
-    public readonly bandwidth!: pulumi.Output<number | undefined>;
+    public readonly bandwidth!: pulumi.Output<string>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -57,12 +62,14 @@ export class Eip extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
-    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
+    public readonly instanceChargeType!: pulumi.Output<string>;
     /**
      * Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instanceChargeType` is PrePaid.
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    public readonly internetChargeType!: pulumi.Output<string>;
     /**
      * The elastic ip address
      */
@@ -73,8 +80,12 @@ export class Eip extends pulumi.CustomResource {
     public readonly isp!: pulumi.Output<string>;
     /**
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly netmode!: pulumi.Output<string | undefined>;
+    public readonly paymentType!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The Id of resource group which the eip belongs.
@@ -96,12 +107,17 @@ export class Eip extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated This resource has been deprecated in favour of the EipAddress resource */
     constructor(name: string, args?: EipArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated This resource has been deprecated in favour of the EipAddress resource */
     constructor(name: string, argsOrState?: EipArgs | EipState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Eip is deprecated: This resource has been deprecated in favour of the EipAddress resource")
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipState | undefined;
+            inputs["activityId"] = state ? state.activityId : undefined;
+            inputs["addressName"] = state ? state.addressName : undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -110,12 +126,16 @@ export class Eip extends pulumi.CustomResource {
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["isp"] = state ? state.isp : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["netmode"] = state ? state.netmode : undefined;
+            inputs["paymentType"] = state ? state.paymentType : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as EipArgs | undefined;
+            inputs["activityId"] = args ? args.activityId : undefined;
+            inputs["addressName"] = args ? args.addressName : undefined;
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -123,6 +143,8 @@ export class Eip extends pulumi.CustomResource {
             inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
             inputs["isp"] = args ? args.isp : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["netmode"] = args ? args.netmode : undefined;
+            inputs["paymentType"] = args ? args.paymentType : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -140,10 +162,12 @@ export class Eip extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Eip resources.
  */
 export interface EipState {
+    readonly activityId?: pulumi.Input<string>;
+    readonly addressName?: pulumi.Input<string>;
     /**
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    readonly bandwidth?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -156,6 +180,8 @@ export interface EipState {
     readonly description?: pulumi.Input<string>;
     /**
      * Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -172,8 +198,12 @@ export interface EipState {
     readonly isp?: pulumi.Input<string>;
     /**
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    readonly netmode?: pulumi.Input<string>;
+    readonly paymentType?: pulumi.Input<string>;
     readonly period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the eip belongs.
@@ -193,10 +223,12 @@ export interface EipState {
  * The set of arguments for constructing a Eip resource.
  */
 export interface EipArgs {
+    readonly activityId?: pulumi.Input<string>;
+    readonly addressName?: pulumi.Input<string>;
     /**
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    readonly bandwidth?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -209,6 +241,8 @@ export interface EipArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     *
+     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -221,8 +255,12 @@ export interface EipArgs {
     readonly isp?: pulumi.Input<string>;
     /**
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     *
+     * @deprecated Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
      */
     readonly name?: pulumi.Input<string>;
+    readonly netmode?: pulumi.Input<string>;
+    readonly paymentType?: pulumi.Input<string>;
     readonly period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the eip belongs.

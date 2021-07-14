@@ -5,21 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const eipsDs = pulumi.output(alicloud.ecs.getEips({ async: true }));
- *
- * export const firstEipId = eipsDs.eips[0].id;
- * ```
- */
+/** @deprecated This function has been deprecated in favour of the getEipAddresses function */
 export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promise<GetEipsResult> {
+    pulumi.log.warn("getEips is deprecated: This function has been deprecated in favour of the getEipAddresses function")
     args = args || {};
     if (!opts) {
         opts = {}
@@ -29,11 +17,23 @@ export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promis
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("alicloud:ecs/getEips:getEips", {
+        "addressName": args.addressName,
+        "associatedInstanceId": args.associatedInstanceId,
+        "associatedInstanceType": args.associatedInstanceType,
+        "dryRun": args.dryRun,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
-        "inUse": args.inUse,
+        "includeReservationData": args.includeReservationData,
+        "ipAddress": args.ipAddress,
         "ipAddresses": args.ipAddresses,
+        "isp": args.isp,
+        "lockReason": args.lockReason,
+        "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
         "resourceGroupId": args.resourceGroupId,
+        "segmentInstanceId": args.segmentInstanceId,
+        "status": args.status,
         "tags": args.tags,
     }, opts);
 }
@@ -42,25 +42,40 @@ export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getEips.
  */
 export interface GetEipsArgs {
+    readonly addressName?: string;
+    readonly associatedInstanceId?: string;
+    readonly associatedInstanceType?: string;
+    readonly dryRun?: boolean;
+    readonly enableDetails?: boolean;
     /**
      * A list of EIP IDs.
      */
     readonly ids?: string[];
+    readonly includeReservationData?: boolean;
     /**
-     * Deprecated since the version 1.8.0 of this provider.
-     *
-     * @deprecated Field 'in_use' has been deprecated from provider version 1.8.0.
+     * Public IP Address of the the EIP.
      */
-    readonly inUse?: boolean;
+    readonly ipAddress?: string;
     /**
      * A list of EIP public IP addresses.
+     *
+     * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
      */
     readonly ipAddresses?: string[];
+    readonly isp?: string;
+    readonly lockReason?: string;
+    readonly nameRegex?: string;
     readonly outputFile?: string;
+    readonly paymentType?: string;
     /**
      * The Id of resource group which the eips belongs.
      */
     readonly resourceGroupId?: string;
+    readonly segmentInstanceId?: string;
+    /**
+     * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     */
+    readonly status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -71,10 +86,18 @@ export interface GetEipsArgs {
  * A collection of values returned by getEips.
  */
 export interface GetEipsResult {
+    readonly addressName?: string;
+    readonly addresses: outputs.ecs.GetEipsAddress[];
+    readonly associatedInstanceId?: string;
+    readonly associatedInstanceType?: string;
+    readonly dryRun?: boolean;
     /**
      * A list of EIPs. Each element contains the following attributes:
+     *
+     * @deprecated Field 'eips' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'addresses' instead.
      */
     readonly eips: outputs.ecs.GetEipsEip[];
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -83,19 +106,32 @@ export interface GetEipsResult {
      * (Optional) A list of EIP IDs.
      */
     readonly ids: string[];
+    readonly includeReservationData?: boolean;
     /**
-     * @deprecated Field 'in_use' has been deprecated from provider version 1.8.0.
+     * Public IP Address of the the EIP.
      */
-    readonly inUse?: boolean;
+    readonly ipAddress?: string;
+    /**
+     * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+     */
     readonly ipAddresses?: string[];
+    readonly isp?: string;
+    readonly lockReason?: string;
+    readonly nameRegex?: string;
     /**
      * (Optional) A list of EIP names.
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly paymentType?: string;
     /**
      * The Id of resource group which the eips belongs.
      */
     readonly resourceGroupId?: string;
+    readonly segmentInstanceId?: string;
+    /**
+     * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     */
+    readonly status?: string;
     readonly tags?: {[key: string]: any};
 }

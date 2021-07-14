@@ -7,29 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		eipsDs, err := ecs.GetEips(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("firstEipId", eipsDs.Eips[0].Id)
-// 		return nil
-// 	})
-// }
-// ```
+// Deprecated: This function has been deprecated in favour of the getEipAddresses function
 func GetEips(ctx *pulumi.Context, args *GetEipsArgs, opts ...pulumi.InvokeOption) (*GetEipsResult, error) {
 	var rv GetEipsResult
 	err := ctx.Invoke("alicloud:ecs/getEips:getEips", args, &rv, opts...)
@@ -41,36 +19,66 @@ func GetEips(ctx *pulumi.Context, args *GetEipsArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getEips.
 type GetEipsArgs struct {
+	AddressName            *string `pulumi:"addressName"`
+	AssociatedInstanceId   *string `pulumi:"associatedInstanceId"`
+	AssociatedInstanceType *string `pulumi:"associatedInstanceType"`
+	DryRun                 *bool   `pulumi:"dryRun"`
+	EnableDetails          *bool   `pulumi:"enableDetails"`
 	// A list of EIP IDs.
-	Ids []string `pulumi:"ids"`
-	// Deprecated since the version 1.8.0 of this provider.
-	//
-	// Deprecated: Field 'in_use' has been deprecated from provider version 1.8.0.
-	InUse *bool `pulumi:"inUse"`
+	Ids                    []string `pulumi:"ids"`
+	IncludeReservationData *bool    `pulumi:"includeReservationData"`
+	// Public IP Address of the the EIP.
+	IpAddress *string `pulumi:"ipAddress"`
 	// A list of EIP public IP addresses.
+	//
+	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses []string `pulumi:"ipAddresses"`
+	Isp         *string  `pulumi:"isp"`
+	LockReason  *string  `pulumi:"lockReason"`
+	NameRegex   *string  `pulumi:"nameRegex"`
 	OutputFile  *string  `pulumi:"outputFile"`
+	PaymentType *string  `pulumi:"paymentType"`
 	// The Id of resource group which the eips belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	ResourceGroupId   *string `pulumi:"resourceGroupId"`
+	SegmentInstanceId *string `pulumi:"segmentInstanceId"`
+	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getEips.
 type GetEipsResult struct {
+	AddressName            *string          `pulumi:"addressName"`
+	Addresses              []GetEipsAddress `pulumi:"addresses"`
+	AssociatedInstanceId   *string          `pulumi:"associatedInstanceId"`
+	AssociatedInstanceType *string          `pulumi:"associatedInstanceType"`
+	DryRun                 *bool            `pulumi:"dryRun"`
 	// A list of EIPs. Each element contains the following attributes:
-	Eips []GetEipsEip `pulumi:"eips"`
+	//
+	// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'addresses' instead.
+	Eips          []GetEipsEip `pulumi:"eips"`
+	EnableDetails *bool        `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of EIP IDs.
-	Ids []string `pulumi:"ids"`
-	// Deprecated: Field 'in_use' has been deprecated from provider version 1.8.0.
-	InUse       *bool    `pulumi:"inUse"`
+	Ids                    []string `pulumi:"ids"`
+	IncludeReservationData *bool    `pulumi:"includeReservationData"`
+	// Public IP Address of the the EIP.
+	IpAddress *string `pulumi:"ipAddress"`
+	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses []string `pulumi:"ipAddresses"`
+	Isp         *string  `pulumi:"isp"`
+	LockReason  *string  `pulumi:"lockReason"`
+	NameRegex   *string  `pulumi:"nameRegex"`
 	// (Optional) A list of EIP names.
-	Names      []string `pulumi:"names"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Names       []string `pulumi:"names"`
+	OutputFile  *string  `pulumi:"outputFile"`
+	PaymentType *string  `pulumi:"paymentType"`
 	// The Id of resource group which the eips belongs.
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId   *string `pulumi:"resourceGroupId"`
+	SegmentInstanceId *string `pulumi:"segmentInstanceId"`
+	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
 }

@@ -106,6 +106,8 @@ class ShardingInstanceShardList(dict):
             suggest = "node_storage"
         elif key == "nodeId":
             suggest = "node_id"
+        elif key == "readonlyReplicas":
+            suggest = "readonly_replicas"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ShardingInstanceShardList. Access the value via the '{suggest}' property getter instead.")
@@ -121,17 +123,21 @@ class ShardingInstanceShardList(dict):
     def __init__(__self__, *,
                  node_class: str,
                  node_storage: int,
-                 node_id: Optional[str] = None):
+                 node_id: Optional[str] = None,
+                 readonly_replicas: Optional[int] = None):
         """
         :param str node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param int node_storage: - Custom storage space; value range: [10, 1,000]
                - 10-GB increments. Unit: GB.
         :param str node_id: The ID of the shard-node.
+        :param int readonly_replicas: The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
         """
         pulumi.set(__self__, "node_class", node_class)
         pulumi.set(__self__, "node_storage", node_storage)
         if node_id is not None:
             pulumi.set(__self__, "node_id", node_id)
+        if readonly_replicas is not None:
+            pulumi.set(__self__, "readonly_replicas", readonly_replicas)
 
     @property
     @pulumi.getter(name="nodeClass")
@@ -157,6 +163,14 @@ class ShardingInstanceShardList(dict):
         The ID of the shard-node.
         """
         return pulumi.get(self, "node_id")
+
+    @property
+    @pulumi.getter(name="readonlyReplicas")
+    def readonly_replicas(self) -> Optional[int]:
+        """
+        The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+        """
+        return pulumi.get(self, "readonly_replicas")
 
 
 @pulumi.output_type

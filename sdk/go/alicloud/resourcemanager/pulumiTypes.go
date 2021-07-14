@@ -118,7 +118,7 @@ func (o ResourceGroupRegionStatusArrayOutput) Index(i pulumi.IntInput) ResourceG
 
 type GetAccountsAccount struct {
 	AccountId string `pulumi:"accountId"`
-	// (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+	// (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
 	AccountName string `pulumi:"accountName"`
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the folder.
@@ -156,7 +156,7 @@ type GetAccountsAccountInput interface {
 
 type GetAccountsAccountArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+	// (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The ID of the folder.
@@ -236,7 +236,7 @@ func (o GetAccountsAccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+// (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
 func (o GetAccountsAccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
 }

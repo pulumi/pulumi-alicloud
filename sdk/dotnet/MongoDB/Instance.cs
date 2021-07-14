@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> ReplicaSetName { get; private set; } = null!;
 
         /// <summary>
-        /// Number of replica set nodes. Valid values: [3, 5, 7]
+        /// Number of replica set nodes. Valid values: [1, 3, 5, 7]
         /// </summary>
         [Output("replicationFactor")]
         public Output<int> ReplicationFactor { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Number of replica set nodes. Valid values: [3, 5, 7]
+        /// Number of replica set nodes. Valid values: [1, 3, 5, 7]
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }
@@ -487,7 +487,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? ReplicaSetName { get; set; }
 
         /// <summary>
-        /// Number of replica set nodes. Valid values: [3, 5, 7]
+        /// Number of replica set nodes. Valid values: [1, 3, 5, 7]
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }

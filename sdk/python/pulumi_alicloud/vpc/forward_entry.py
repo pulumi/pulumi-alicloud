@@ -388,13 +388,13 @@ class ForwardEntry(pulumi.CustomResource):
         default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
             vpc_id=default_network.id,
             specification="Small")
-        default_eip = alicloud.ecs.Eip("defaultEip")
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
         default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
-            allocation_id=default_eip.id,
+            allocation_id=default_eip_address.id,
             instance_id=default_nat_gateway.id)
         default_forward_entry = alicloud.vpc.ForwardEntry("defaultForwardEntry",
             forward_table_id=default_nat_gateway.forward_table_ids,
-            external_ip=default_eip.ip_address,
+            external_ip=default_eip_address.ip_address,
             external_port="80",
             ip_protocol="tcp",
             internal_ip="172.16.0.3",
@@ -454,13 +454,13 @@ class ForwardEntry(pulumi.CustomResource):
         default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
             vpc_id=default_network.id,
             specification="Small")
-        default_eip = alicloud.ecs.Eip("defaultEip")
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
         default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
-            allocation_id=default_eip.id,
+            allocation_id=default_eip_address.id,
             instance_id=default_nat_gateway.id)
         default_forward_entry = alicloud.vpc.ForwardEntry("defaultForwardEntry",
             forward_table_id=default_nat_gateway.forward_table_ids,
-            external_ip=default_eip.ip_address,
+            external_ip=default_eip_address.ip_address,
             external_port="80",
             ip_protocol="tcp",
             internal_ip="172.16.0.3",

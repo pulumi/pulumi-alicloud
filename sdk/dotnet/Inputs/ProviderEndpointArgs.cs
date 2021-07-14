@@ -105,6 +105,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("ess")]
         public Input<string>? Ess { get; set; }
 
+        [Input("eventbridge")]
+        public Input<string>? Eventbridge { get; set; }
+
         [Input("fc")]
         public Input<string>? Fc { get; set; }
 
@@ -152,6 +155,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("ons")]
         public Input<string>? Ons { get; set; }
+
+        [Input("onsproxy")]
+        public Input<string>? Onsproxy { get; set; }
 
         [Input("oos")]
         public Input<string>? Oos { get; set; }

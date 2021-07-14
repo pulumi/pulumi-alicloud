@@ -28,6 +28,7 @@ class InstanceArgs:
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,7 @@ class InstanceArgs:
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -53,8 +55,12 @@ class InstanceArgs:
                  sql_collector_config_value: Optional[pulumi.Input[int]] = None,
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
+                 switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_minor_version: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+                 upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -129,10 +135,27 @@ class InstanceArgs:
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+               - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+               - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+               - rds: The instance runs RDS Basic or High-availability Edition.
+               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+               - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
+               - true: upgrade
+               - false: not to upgrade
+        :param pulumi.Input[str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+               - Immediate: The minor engine version is immediately updated.
+               - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+               - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
@@ -166,6 +189,8 @@ class InstanceArgs:
             pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
+        if connection_string_prefix is not None:
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if db_instance_ip_array_attribute is not None:
             pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
@@ -190,6 +215,8 @@ class InstanceArgs:
             pulumi.set(__self__, "parameters", parameters)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if replication_acl is not None:
@@ -219,10 +246,18 @@ class InstanceArgs:
             pulumi.set(__self__, "sql_collector_status", sql_collector_status)
         if ssl_action is not None:
             pulumi.set(__self__, "ssl_action", ssl_action)
+        if switch_time is not None:
+            pulumi.set(__self__, "switch_time", switch_time)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if target_minor_version is not None:
+            pulumi.set(__self__, "target_minor_version", target_minor_version)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
+        if upgrade_db_instance_kernel_version is not None:
+            pulumi.set(__self__, "upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
+        if upgrade_time is not None:
+            pulumi.set(__self__, "upgrade_time", upgrade_time)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if whitelist_network_type is not None:
@@ -409,6 +444,15 @@ class InstanceArgs:
         pulumi.set(self, "client_crl_enabled", value)
 
     @property
+    @pulumi.getter(name="connectionStringPrefix")
+    def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection_string_prefix")
+
+    @connection_string_prefix.setter
+    def connection_string_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string_prefix", value)
+
+    @property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")
     def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[str]]:
         """
@@ -556,6 +600,15 @@ class InstanceArgs:
     @period.setter
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="privateIpAddress")
@@ -718,6 +771,19 @@ class InstanceArgs:
         pulumi.set(self, "ssl_action", value)
 
     @property
+    @pulumi.getter(name="switchTime")
+    def switch_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+        """
+        return pulumi.get(self, "switch_time")
+
+    @switch_time.setter
+    def switch_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "switch_time", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -732,6 +798,25 @@ class InstanceArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="targetMinorVersion")
+    def target_minor_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+        - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+        - rds: The instance runs RDS Basic or High-availability Edition.
+        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+        - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+        """
+        return pulumi.get(self, "target_minor_version")
+
+    @target_minor_version.setter
+    def target_minor_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_minor_version", value)
+
+    @property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -742,6 +827,35 @@ class InstanceArgs:
     @tde_status.setter
     def tde_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tde_status", value)
+
+    @property
+    @pulumi.getter(name="upgradeDbInstanceKernelVersion")
+    def upgrade_db_instance_kernel_version(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to upgrade a minor version of the kernel. Valid values:
+        - true: upgrade
+        - false: not to upgrade
+        """
+        return pulumi.get(self, "upgrade_db_instance_kernel_version")
+
+    @upgrade_db_instance_kernel_version.setter
+    def upgrade_db_instance_kernel_version(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "upgrade_db_instance_kernel_version", value)
+
+    @property
+    @pulumi.getter(name="upgradeTime")
+    def upgrade_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        - Immediate: The minor engine version is immediately updated.
+        - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+        - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        """
+        return pulumi.get(self, "upgrade_time")
+
+    @upgrade_time.setter
+    def upgrade_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upgrade_time", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -822,6 +936,7 @@ class _InstanceState:
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
+                 connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
@@ -853,8 +968,12 @@ class _InstanceState:
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  ssl_status: Optional[pulumi.Input[str]] = None,
+                 switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_minor_version: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+                 upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -913,7 +1032,6 @@ class _InstanceState:
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
-        :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
@@ -932,10 +1050,27 @@ class _InstanceState:
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+        :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+               - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+               - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+               - rds: The instance runs RDS Basic or High-availability Edition.
+               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+               - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
+               - true: upgrade
+               - false: not to upgrade
+        :param pulumi.Input[str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+               - Immediate: The minor engine version is immediately updated.
+               - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+               - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
@@ -967,6 +1102,8 @@ class _InstanceState:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
+        if connection_string_prefix is not None:
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if db_instance_ip_array_attribute is not None:
             pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
@@ -1032,10 +1169,18 @@ class _InstanceState:
             pulumi.set(__self__, "ssl_action", ssl_action)
         if ssl_status is not None:
             pulumi.set(__self__, "ssl_status", ssl_status)
+        if switch_time is not None:
+            pulumi.set(__self__, "switch_time", switch_time)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if target_minor_version is not None:
+            pulumi.set(__self__, "target_minor_version", target_minor_version)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
+        if upgrade_db_instance_kernel_version is not None:
+            pulumi.set(__self__, "upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
+        if upgrade_time is not None:
+            pulumi.set(__self__, "upgrade_time", upgrade_time)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if whitelist_network_type is not None:
@@ -1178,6 +1323,15 @@ class _InstanceState:
     @connection_string.setter
     def connection_string(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_string", value)
+
+    @property
+    @pulumi.getter(name="connectionStringPrefix")
+    def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection_string_prefix")
+
+    @connection_string_prefix.setter
+    def connection_string_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string_prefix", value)
 
     @property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")
@@ -1385,9 +1539,6 @@ class _InstanceState:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
-        """
-        RDS database connection port.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1567,6 +1718,19 @@ class _InstanceState:
         pulumi.set(self, "ssl_status", value)
 
     @property
+    @pulumi.getter(name="switchTime")
+    def switch_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+        """
+        return pulumi.get(self, "switch_time")
+
+    @switch_time.setter
+    def switch_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "switch_time", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -1581,6 +1745,25 @@ class _InstanceState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="targetMinorVersion")
+    def target_minor_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+        - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+        - rds: The instance runs RDS Basic or High-availability Edition.
+        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+        - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+        """
+        return pulumi.get(self, "target_minor_version")
+
+    @target_minor_version.setter
+    def target_minor_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_minor_version", value)
+
+    @property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1591,6 +1774,35 @@ class _InstanceState:
     @tde_status.setter
     def tde_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tde_status", value)
+
+    @property
+    @pulumi.getter(name="upgradeDbInstanceKernelVersion")
+    def upgrade_db_instance_kernel_version(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to upgrade a minor version of the kernel. Valid values:
+        - true: upgrade
+        - false: not to upgrade
+        """
+        return pulumi.get(self, "upgrade_db_instance_kernel_version")
+
+    @upgrade_db_instance_kernel_version.setter
+    def upgrade_db_instance_kernel_version(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "upgrade_db_instance_kernel_version", value)
+
+    @property
+    @pulumi.getter(name="upgradeTime")
+    def upgrade_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        - Immediate: The minor engine version is immediately updated.
+        - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+        - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        """
+        return pulumi.get(self, "upgrade_time")
+
+    @upgrade_time.setter
+    def upgrade_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upgrade_time", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -1672,6 +1884,7 @@ class Instance(pulumi.CustomResource):
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
@@ -1688,6 +1901,7 @@ class Instance(pulumi.CustomResource):
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1701,8 +1915,12 @@ class Instance(pulumi.CustomResource):
                  sql_collector_config_value: Optional[pulumi.Input[int]] = None,
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
+                 switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_minor_version: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+                 upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -1822,10 +2040,27 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+               - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+               - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+               - rds: The instance runs RDS Basic or High-availability Edition.
+               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+               - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
+               - true: upgrade
+               - false: not to upgrade
+        :param pulumi.Input[str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+               - Immediate: The minor engine version is immediately updated.
+               - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+               - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
@@ -1911,6 +2146,7 @@ class Instance(pulumi.CustomResource):
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
@@ -1927,6 +2163,7 @@ class Instance(pulumi.CustomResource):
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1940,8 +2177,12 @@ class Instance(pulumi.CustomResource):
                  sql_collector_config_value: Optional[pulumi.Input[int]] = None,
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
+                 switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_minor_version: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+                 upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -1968,6 +2209,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["client_ca_enabled"] = client_ca_enabled
             __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
             __props__.__dict__["client_crl_enabled"] = client_crl_enabled
+            __props__.__dict__["connection_string_prefix"] = connection_string_prefix
             __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
             __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
             __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
@@ -1992,6 +2234,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["monitoring_period"] = monitoring_period
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["period"] = period
+            __props__.__dict__["port"] = port
             __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["replication_acl"] = replication_acl
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -2008,15 +2251,18 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["sql_collector_config_value"] = sql_collector_config_value
             __props__.__dict__["sql_collector_status"] = sql_collector_status
             __props__.__dict__["ssl_action"] = ssl_action
+            __props__.__dict__["switch_time"] = switch_time
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["target_minor_version"] = target_minor_version
             __props__.__dict__["tde_status"] = tde_status
+            __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
+            __props__.__dict__["upgrade_time"] = upgrade_time
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["whitelist_network_type"] = whitelist_network_type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["zone_id_slave_a"] = zone_id_slave_a
             __props__.__dict__["zone_id_slave_b"] = zone_id_slave_b
             __props__.__dict__["connection_string"] = None
-            __props__.__dict__["port"] = None
             __props__.__dict__["ssl_status"] = None
         super(Instance, __self__).__init__(
             'alicloud:rds/instance:Instance',
@@ -2038,6 +2284,7 @@ class Instance(pulumi.CustomResource):
             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
             client_crl_enabled: Optional[pulumi.Input[int]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
+            connection_string_prefix: Optional[pulumi.Input[str]] = None,
             db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
@@ -2069,8 +2316,12 @@ class Instance(pulumi.CustomResource):
             sql_collector_status: Optional[pulumi.Input[str]] = None,
             ssl_action: Optional[pulumi.Input[str]] = None,
             ssl_status: Optional[pulumi.Input[str]] = None,
+            switch_time: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            target_minor_version: Optional[pulumi.Input[str]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
+            upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+            upgrade_time: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             whitelist_network_type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None,
@@ -2134,7 +2385,6 @@ class Instance(pulumi.CustomResource):
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
-        :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - cert
@@ -2153,10 +2403,27 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+        :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+               - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+               - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+               - rds: The instance runs RDS Basic or High-availability Edition.
+               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+               - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
+        :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
+               - true: upgrade
+               - false: not to upgrade
+        :param pulumi.Input[str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+               - Immediate: The minor engine version is immediately updated.
+               - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+               - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
@@ -2182,6 +2449,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
         __props__.__dict__["client_crl_enabled"] = client_crl_enabled
         __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["connection_string_prefix"] = connection_string_prefix
         __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
         __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
         __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
@@ -2213,8 +2481,12 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["sql_collector_status"] = sql_collector_status
         __props__.__dict__["ssl_action"] = ssl_action
         __props__.__dict__["ssl_status"] = ssl_status
+        __props__.__dict__["switch_time"] = switch_time
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["target_minor_version"] = target_minor_version
         __props__.__dict__["tde_status"] = tde_status
+        __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
+        __props__.__dict__["upgrade_time"] = upgrade_time
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["whitelist_network_type"] = whitelist_network_type
         __props__.__dict__["zone_id"] = zone_id
@@ -2313,6 +2585,11 @@ class Instance(pulumi.CustomResource):
         RDS database connection string.
         """
         return pulumi.get(self, "connection_string")
+
+    @property
+    @pulumi.getter(name="connectionStringPrefix")
+    def connection_string_prefix(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "connection_string_prefix")
 
     @property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")
@@ -2456,9 +2733,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
-        """
-        RDS database connection port.
-        """
         return pulumi.get(self, "port")
 
     @property
@@ -2578,6 +2852,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "ssl_status")
 
     @property
+    @pulumi.getter(name="switchTime")
+    def switch_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+        """
+        return pulumi.get(self, "switch_time")
+
+    @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
@@ -2588,12 +2871,48 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="targetMinorVersion")
+    def target_minor_version(self) -> pulumi.Output[str]:
+        """
+        The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+        - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+        - rds: The instance runs RDS Basic or High-availability Edition.
+        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+        - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+        """
+        return pulumi.get(self, "target_minor_version")
+
+    @property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Output[Optional[str]]:
         """
         The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         """
         return pulumi.get(self, "tde_status")
+
+    @property
+    @pulumi.getter(name="upgradeDbInstanceKernelVersion")
+    def upgrade_db_instance_kernel_version(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to upgrade a minor version of the kernel. Valid values:
+        - true: upgrade
+        - false: not to upgrade
+        """
+        return pulumi.get(self, "upgrade_db_instance_kernel_version")
+
+    @property
+    @pulumi.getter(name="upgradeTime")
+    def upgrade_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        - Immediate: The minor engine version is immediately updated.
+        - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+        - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        """
+        return pulumi.get(self, "upgrade_time")
 
     @property
     @pulumi.getter(name="vswitchId")

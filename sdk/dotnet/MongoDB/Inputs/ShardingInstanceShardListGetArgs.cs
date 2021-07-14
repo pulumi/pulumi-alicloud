@@ -31,6 +31,12 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         [Input("nodeStorage", required: true)]
         public Input<int> NodeStorage { get; set; } = null!;
 
+        /// <summary>
+        /// The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+        /// </summary>
+        [Input("readonlyReplicas")]
+        public Input<int>? ReadonlyReplicas { get; set; }
+
         public ShardingInstanceShardListGetArgs()
         {
         }

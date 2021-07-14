@@ -99,6 +99,7 @@ class ProviderEndpointArgs:
                  elasticsearch: Optional[pulumi.Input[str]] = None,
                  emr: Optional[pulumi.Input[str]] = None,
                  ess: Optional[pulumi.Input[str]] = None,
+                 eventbridge: Optional[pulumi.Input[str]] = None,
                  fc: Optional[pulumi.Input[str]] = None,
                  fnf: Optional[pulumi.Input[str]] = None,
                  ga: Optional[pulumi.Input[str]] = None,
@@ -115,6 +116,7 @@ class ProviderEndpointArgs:
                  mse: Optional[pulumi.Input[str]] = None,
                  nas: Optional[pulumi.Input[str]] = None,
                  ons: Optional[pulumi.Input[str]] = None,
+                 onsproxy: Optional[pulumi.Input[str]] = None,
                  oos: Optional[pulumi.Input[str]] = None,
                  oss: Optional[pulumi.Input[str]] = None,
                  ots: Optional[pulumi.Input[str]] = None,
@@ -195,6 +197,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "emr", emr)
         if ess is not None:
             pulumi.set(__self__, "ess", ess)
+        if eventbridge is not None:
+            pulumi.set(__self__, "eventbridge", eventbridge)
         if fc is not None:
             pulumi.set(__self__, "fc", fc)
         if fnf is not None:
@@ -227,6 +231,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "nas", nas)
         if ons is not None:
             pulumi.set(__self__, "ons", ons)
+        if onsproxy is not None:
+            pulumi.set(__self__, "onsproxy", onsproxy)
         if oos is not None:
             pulumi.set(__self__, "oos", oos)
         if oss is not None:
@@ -545,6 +551,15 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def eventbridge(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "eventbridge")
+
+    @eventbridge.setter
+    def eventbridge(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eventbridge", value)
+
+    @property
+    @pulumi.getter
     def fc(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "fc")
 
@@ -686,6 +701,15 @@ class ProviderEndpointArgs:
     @ons.setter
     def ons(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ons", value)
+
+    @property
+    @pulumi.getter
+    def onsproxy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "onsproxy")
+
+    @onsproxy.setter
+    def onsproxy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "onsproxy", value)
 
     @property
     @pulumi.getter

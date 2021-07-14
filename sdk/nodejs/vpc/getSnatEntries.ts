@@ -32,15 +32,15 @@ import * as utilities from "../utilities";
  *     vpcId: fooNetwork.id,
  *     specification: "Small",
  * });
- * const fooEip = new alicloud.ecs.Eip("fooEip", {});
+ * const fooEipAddress = new alicloud.ecs.EipAddress("fooEipAddress", {addressName: name});
  * const fooEipAssociation = new alicloud.ecs.EipAssociation("fooEipAssociation", {
- *     allocationId: fooEip.id,
+ *     allocationId: fooEipAddress.id,
  *     instanceId: fooNatGateway.id,
  * });
  * const fooSnatEntry = new alicloud.vpc.SnatEntry("fooSnatEntry", {
  *     snatTableId: fooNatGateway.snatTableIds,
  *     sourceVswitchId: fooSwitch.id,
- *     snatIp: fooEip.ipAddress,
+ *     snatIp: fooEipAddress.ipAddress,
  * });
  * const fooSnatEntries = fooSnatEntry.snatTableId.apply(snatTableId => alicloud.vpc.getSnatEntries({
  *     snatTableId: snatTableId,

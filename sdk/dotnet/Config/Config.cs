@@ -137,6 +137,7 @@ namespace Pulumi.AliCloud
                 public string? Elasticsearch { get; set; } = null!;
                 public string? Emr { get; set; } = null!;
                 public string? Ess { get; set; } = null!;
+                public string? Eventbridge { get; set; } = null!;
                 public string? Fc { get; set; } = null!;
                 public string? Fnf { get; set; } = null!;
                 public string? Ga { get; set; } = null!;
@@ -153,6 +154,7 @@ namespace Pulumi.AliCloud
                 public string? Mse { get; set; } = null!;
                 public string? Nas { get; set; } = null!;
                 public string? Ons { get; set; } = null!;
+                public string? Onsproxy { get; set; } = null!;
                 public string? Oos { get; set; } = null!;
                 public string? Oss { get; set; } = null!;
                 public string? Ots { get; set; } = null!;

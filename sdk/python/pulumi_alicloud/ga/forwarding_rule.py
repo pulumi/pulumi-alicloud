@@ -297,13 +297,13 @@ class ForwardingRule(pulumi.CustomResource):
             )],
             protocol="HTTP",
             opts=pulumi.ResourceOptions(depends_on=[de_bandwidth_package_attachment]))
-        example_eip = alicloud.ecs.Eip("exampleEip",
-            bandwidth=10,
+        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
+            bandwidth="10",
             internet_charge_type="PayByBandwidth")
         example_endpoint_group = alicloud.ga.EndpointGroup("exampleEndpointGroup",
             accelerator_id=example_accelerator.id,
             endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=example_eip.ip_address,
+                endpoint=example_eip_address.ip_address,
                 type="PublicIp",
                 weight=20,
             )],
@@ -389,13 +389,13 @@ class ForwardingRule(pulumi.CustomResource):
             )],
             protocol="HTTP",
             opts=pulumi.ResourceOptions(depends_on=[de_bandwidth_package_attachment]))
-        example_eip = alicloud.ecs.Eip("exampleEip",
-            bandwidth=10,
+        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
+            bandwidth="10",
             internet_charge_type="PayByBandwidth")
         example_endpoint_group = alicloud.ga.EndpointGroup("exampleEndpointGroup",
             accelerator_id=example_accelerator.id,
             endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=example_eip.ip_address,
+                endpoint=example_eip_address.ip_address,
                 type="PublicIp",
                 weight=20,
             )],

@@ -44,6 +44,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Elasticsearch;
         public readonly string? Emr;
         public readonly string? Ess;
+        public readonly string? Eventbridge;
         public readonly string? Fc;
         public readonly string? Fnf;
         public readonly string? Ga;
@@ -60,6 +61,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Mse;
         public readonly string? Nas;
         public readonly string? Ons;
+        public readonly string? Onsproxy;
         public readonly string? Oos;
         public readonly string? Oss;
         public readonly string? Ots;
@@ -143,6 +145,8 @@ namespace Pulumi.AliCloud.Outputs
 
             string? ess,
 
+            string? eventbridge,
+
             string? fc,
 
             string? fnf,
@@ -174,6 +178,8 @@ namespace Pulumi.AliCloud.Outputs
             string? nas,
 
             string? ons,
+
+            string? onsproxy,
 
             string? oos,
 
@@ -242,6 +248,7 @@ namespace Pulumi.AliCloud.Outputs
             Elasticsearch = elasticsearch;
             Emr = emr;
             Ess = ess;
+            Eventbridge = eventbridge;
             Fc = fc;
             Fnf = fnf;
             Ga = ga;
@@ -258,6 +265,7 @@ namespace Pulumi.AliCloud.Outputs
             Mse = mse;
             Nas = nas;
             Ons = ons;
+            Onsproxy = onsproxy;
             Oos = oos;
             Oss = oss;
             Ots = ots;

@@ -16,6 +16,7 @@ export * from "./provider";
 import * as actiontrail from "./actiontrail";
 import * as adb from "./adb";
 import * as alikafka from "./alikafka";
+import * as amqp from "./amqp";
 import * as apigateway from "./apigateway";
 import * as brain from "./brain";
 import * as cas from "./cas";
@@ -45,6 +46,7 @@ import * as eipanycast from "./eipanycast";
 import * as elasticsearch from "./elasticsearch";
 import * as emr from "./emr";
 import * as ess from "./ess";
+import * as eventbridge from "./eventbridge";
 import * as fc from "./fc";
 import * as fnf from "./fnf";
 import * as ga from "./ga";
@@ -87,6 +89,7 @@ export {
     actiontrail,
     adb,
     alikafka,
+    amqp,
     apigateway,
     brain,
     cas,
@@ -116,6 +119,7 @@ export {
     elasticsearch,
     emr,
     ess,
+    eventbridge,
     fc,
     fnf,
     ga,

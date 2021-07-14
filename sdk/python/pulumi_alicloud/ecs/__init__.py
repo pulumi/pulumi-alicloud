@@ -20,6 +20,7 @@ from .ecs_network_interface import *
 from .ecs_network_interface_attachment import *
 from .ecs_snapshot import *
 from .eip import *
+from .eip_address import *
 from .eip_association import *
 from .get_auto_snapshot_policies import *
 from .get_commands import *
@@ -30,6 +31,7 @@ from .get_ecs_key_pairs import *
 from .get_ecs_launch_templates import *
 from .get_ecs_network_interfaces import *
 from .get_ecs_snapshots import *
+from .get_eip_addresses import *
 from .get_eips import *
 from .get_hpc_clusters import *
 from .get_images import *
@@ -105,6 +107,8 @@ def _register_module():
                 return EcsSnapshot(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/eip:Eip":
                 return Eip(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:ecs/eipAddress:EipAddress":
+                return EipAddress(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/eipAssociation:EipAssociation":
                 return EipAssociation(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:ecs/hpcCluster:HpcCluster":
@@ -159,6 +163,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "ecs/ecsNetworkInterfaceAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/ecsSnapshot", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/eip", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "ecs/eipAddress", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/eipAssociation", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/hpcCluster", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "ecs/image", _module_instance)

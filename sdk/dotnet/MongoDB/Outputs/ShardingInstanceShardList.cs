@@ -26,6 +26,10 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// - 10-GB increments. Unit: GB.
         /// </summary>
         public readonly int NodeStorage;
+        /// <summary>
+        /// The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
+        /// </summary>
+        public readonly int? ReadonlyReplicas;
 
         [OutputConstructor]
         private ShardingInstanceShardList(
@@ -33,11 +37,14 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
 
             string? nodeId,
 
-            int nodeStorage)
+            int nodeStorage,
+
+            int? readonlyReplicas)
         {
             NodeClass = nodeClass;
             NodeId = nodeId;
             NodeStorage = nodeStorage;
+            ReadonlyReplicas = readonlyReplicas;
         }
     }
 }

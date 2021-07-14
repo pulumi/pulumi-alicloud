@@ -65,12 +65,14 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultEip, err := ecs.NewEip(ctx, "defaultEip", nil)
+// 		defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+// 			AddressName: pulumi.String(name),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = ecs.NewEipAssociation(ctx, "defaultEipAssociation", &ecs.EipAssociationArgs{
-// 			AllocationId: defaultEip.ID(),
+// 			AllocationId: defaultEipAddress.ID(),
 // 			InstanceId:   defaultNatGateway.ID(),
 // 		})
 // 		if err != nil {
@@ -78,7 +80,7 @@ import (
 // 		}
 // 		_, err = vpc.NewForwardEntry(ctx, "defaultForwardEntry", &vpc.ForwardEntryArgs{
 // 			ForwardTableId: defaultNatGateway.ForwardTableIds,
-// 			ExternalIp:     defaultEip.IpAddress,
+// 			ExternalIp:     defaultEipAddress.IpAddress,
 // 			ExternalPort:   pulumi.String("80"),
 // 			IpProtocol:     pulumi.String("tcp"),
 // 			InternalIp:     pulumi.String("172.16.0.3"),

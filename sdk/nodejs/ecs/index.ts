@@ -22,6 +22,7 @@ export * from "./ecsNetworkInterface";
 export * from "./ecsNetworkInterfaceAttachment";
 export * from "./ecsSnapshot";
 export * from "./eip";
+export * from "./eipAddress";
 export * from "./eipAssociation";
 export * from "./getAutoSnapshotPolicies";
 export * from "./getCommands";
@@ -32,6 +33,7 @@ export * from "./getEcsKeyPairs";
 export * from "./getEcsLaunchTemplates";
 export * from "./getEcsNetworkInterfaces";
 export * from "./getEcsSnapshots";
+export * from "./getEipAddresses";
 export * from "./getEips";
 export * from "./getHpcClusters";
 export * from "./getImages";
@@ -77,6 +79,7 @@ import { EcsNetworkInterface } from "./ecsNetworkInterface";
 import { EcsNetworkInterfaceAttachment } from "./ecsNetworkInterfaceAttachment";
 import { EcsSnapshot } from "./ecsSnapshot";
 import { Eip } from "./eip";
+import { EipAddress } from "./eipAddress";
 import { EipAssociation } from "./eipAssociation";
 import { HpcCluster } from "./hpcCluster";
 import { Image } from "./image";
@@ -132,6 +135,8 @@ const _module = {
                 return new EcsSnapshot(name, <any>undefined, { urn })
             case "alicloud:ecs/eip:Eip":
                 return new Eip(name, <any>undefined, { urn })
+            case "alicloud:ecs/eipAddress:EipAddress":
+                return new EipAddress(name, <any>undefined, { urn })
             case "alicloud:ecs/eipAssociation:EipAssociation":
                 return new EipAssociation(name, <any>undefined, { urn })
             case "alicloud:ecs/hpcCluster:HpcCluster":
@@ -186,6 +191,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterface", _mo
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterfaceAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSnapshot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eip", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAssociation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/hpcCluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/image", _module)

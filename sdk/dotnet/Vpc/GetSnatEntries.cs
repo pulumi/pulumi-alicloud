@@ -50,19 +50,20 @@ namespace Pulumi.AliCloud.Vpc
         ///             VpcId = fooNetwork.Id,
         ///             Specification = "Small",
         ///         });
-        ///         var fooEip = new AliCloud.Ecs.Eip("fooEip", new AliCloud.Ecs.EipArgs
+        ///         var fooEipAddress = new AliCloud.Ecs.EipAddress("fooEipAddress", new AliCloud.Ecs.EipAddressArgs
         ///         {
+        ///             AddressName = name,
         ///         });
         ///         var fooEipAssociation = new AliCloud.Ecs.EipAssociation("fooEipAssociation", new AliCloud.Ecs.EipAssociationArgs
         ///         {
-        ///             AllocationId = fooEip.Id,
+        ///             AllocationId = fooEipAddress.Id,
         ///             InstanceId = fooNatGateway.Id,
         ///         });
         ///         var fooSnatEntry = new AliCloud.Vpc.SnatEntry("fooSnatEntry", new AliCloud.Vpc.SnatEntryArgs
         ///         {
         ///             SnatTableId = fooNatGateway.SnatTableIds,
         ///             SourceVswitchId = fooSwitch.Id,
-        ///             SnatIp = fooEip.IpAddress,
+        ///             SnatIp = fooEipAddress.IpAddress,
         ///         });
         ///         var fooSnatEntries = fooSnatEntry.SnatTableId.Apply(snatTableId =&gt; AliCloud.Vpc.GetSnatEntries.InvokeAsync(new AliCloud.Vpc.GetSnatEntriesArgs
         ///         {

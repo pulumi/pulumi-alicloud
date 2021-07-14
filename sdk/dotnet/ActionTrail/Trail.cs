@@ -55,6 +55,9 @@ namespace Pulumi.AliCloud.ActionTrail
         [Output("eventRw")]
         public Output<string?> EventRw { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+        /// </summary>
         [Output("isOrganizationTrail")]
         public Output<bool?> IsOrganizationTrail { get; private set; } = null!;
 
@@ -176,6 +179,9 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("eventRw")]
         public Input<string>? EventRw { get; set; }
 
+        /// <summary>
+        /// Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+        /// </summary>
         [Input("isOrganizationTrail")]
         public Input<bool>? IsOrganizationTrail { get; set; }
 
@@ -258,6 +264,9 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("eventRw")]
         public Input<string>? EventRw { get; set; }
 
+        /// <summary>
+        /// Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+        /// </summary>
         [Input("isOrganizationTrail")]
         public Input<bool>? IsOrganizationTrail { get; set; }
 

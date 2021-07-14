@@ -198,14 +198,14 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
     foo_nat_gateway = alicloud.vpc.NatGateway("fooNatGateway",
         vpc_id=foo_network.id,
         specification="Small")
-    foo_eip = alicloud.ecs.Eip("fooEip")
+    foo_eip_address = alicloud.ecs.EipAddress("fooEipAddress", address_name=name)
     foo_eip_association = alicloud.ecs.EipAssociation("fooEipAssociation",
-        allocation_id=foo_eip.id,
+        allocation_id=foo_eip_address.id,
         instance_id=foo_nat_gateway.id)
     foo_snat_entry = alicloud.vpc.SnatEntry("fooSnatEntry",
         snat_table_id=foo_nat_gateway.snat_table_ids,
         source_vswitch_id=foo_switch.id,
-        snat_ip=foo_eip.ip_address)
+        snat_ip=foo_eip_address.ip_address)
     foo_snat_entries = foo_snat_entry.snat_table_id.apply(lambda snat_table_id: alicloud.vpc.get_snat_entries(snat_table_id=snat_table_id))
     ```
 

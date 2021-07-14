@@ -92,7 +92,7 @@ class GetAccountsAccountResult(dict):
                  status: str,
                  type: str):
         """
-        :param str account_name: (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+        :param str account_name: (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
         :param str folder_id: The ID of the folder.
         :param str id: The ID of the resource.
                * `account_id`- The ID of the account.
@@ -127,7 +127,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter(name="accountName")
     def account_name(self) -> str:
         """
-        (Available in v1.124.5+) The Alibaba Cloud account name of the member account.
+        (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
         """
         return pulumi.get(self, "account_name")
 

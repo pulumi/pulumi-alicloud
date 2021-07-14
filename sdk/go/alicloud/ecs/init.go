@@ -55,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EcsSnapshot{}
 	case "alicloud:ecs/eip:Eip":
 		r = &Eip{}
+	case "alicloud:ecs/eipAddress:EipAddress":
+		r = &EipAddress{}
 	case "alicloud:ecs/eipAssociation:EipAssociation":
 		r = &EipAssociation{}
 	case "alicloud:ecs/hpcCluster:HpcCluster":
@@ -183,6 +185,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/eip",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/eipAddress",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

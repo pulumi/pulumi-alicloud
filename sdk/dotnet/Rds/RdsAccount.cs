@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> AccountDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
+        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
         /// </summary>
         [Output("accountName")]
         public Output<string> AccountName { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
+        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-32 characters.
+        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }

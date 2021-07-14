@@ -91,12 +91,12 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
      * The dbNodeClass of cluster node.
-     * **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      */
     public readonly dbNodeClass!: pulumi.Output<string>;
     /**
      * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
-     * **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+     * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     public readonly dbNodeCount!: pulumi.Output<number | undefined>;
     /**
@@ -112,8 +112,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+     * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     public readonly encryptNewTables!: pulumi.Output<string | undefined>;
     /**
@@ -152,13 +152,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-     * **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+     * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.  
-     * **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
+     * The virtual switch ID to launch DB instances in one VPC.
+     * > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
@@ -258,12 +258,12 @@ export interface ClusterState {
     readonly connectionString?: pulumi.Input<string>;
     /**
      * The dbNodeClass of cluster node.
-     * **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      */
     readonly dbNodeClass?: pulumi.Input<string>;
     /**
      * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
-     * **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+     * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     readonly dbNodeCount?: pulumi.Input<number>;
     /**
@@ -279,8 +279,8 @@ export interface ClusterState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+     * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     readonly encryptNewTables?: pulumi.Input<string>;
     /**
@@ -319,13 +319,13 @@ export interface ClusterState {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-     * **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+     * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      */
     readonly tdeStatus?: pulumi.Input<string>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.  
-     * **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
+     * The virtual switch ID to launch DB instances in one VPC.
+     * > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
@@ -348,12 +348,12 @@ export interface ClusterArgs {
     readonly collectorStatus?: pulumi.Input<string>;
     /**
      * The dbNodeClass of cluster node.
-     * **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      */
     readonly dbNodeClass: pulumi.Input<string>;
     /**
      * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
-     * **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+     * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     readonly dbNodeCount?: pulumi.Input<number>;
     /**
@@ -369,8 +369,8 @@ export interface ClusterArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
-     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+     * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     readonly encryptNewTables?: pulumi.Input<string>;
     /**
@@ -409,13 +409,13 @@ export interface ClusterArgs {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-     * **NOTE:** `tdeStatus` cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+     * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      */
     readonly tdeStatus?: pulumi.Input<string>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.  
-     * **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
+     * The virtual switch ID to launch DB instances in one VPC.
+     * > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**

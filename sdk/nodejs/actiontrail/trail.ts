@@ -65,6 +65,9 @@ export class Trail extends pulumi.CustomResource {
      * Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
      */
     public readonly eventRw!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+     */
     public readonly isOrganizationTrail!: pulumi.Output<boolean | undefined>;
     /**
      * Field `mnsTopicArn` has been deprecated from version 1.118.0.
@@ -174,6 +177,9 @@ export interface TrailState {
      * Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
      */
     readonly eventRw?: pulumi.Input<string>;
+    /**
+     * Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+     */
     readonly isOrganizationTrail?: pulumi.Input<boolean>;
     /**
      * Field `mnsTopicArn` has been deprecated from version 1.118.0.
@@ -235,6 +241,9 @@ export interface TrailArgs {
      * Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
      */
     readonly eventRw?: pulumi.Input<string>;
+    /**
+     * Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
+     */
     readonly isOrganizationTrail?: pulumi.Input<boolean>;
     /**
      * Field `mnsTopicArn` has been deprecated from version 1.118.0.
