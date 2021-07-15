@@ -2,12 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 3.4.0 (2021-07-15)
 * Upgrade to v1.126.0 of the AliCloud Terraform Provider  
   **PLEASE NOTE:* There are a number of breaking changes in this provider update:
   * `alicloud.ecs.Eip` has been replaced by `alicloud.ecs.EipAddress` reflecting in missing properties in the old resource
   * `alicloud.ecs.getEipAddresses` has been replaced by `alicloud.ecs.getEipAddresses` reflecting in missing properties in the old function
-
----
 
 ## 3.3.0 (2021-07-12)
 * Upgrade to v1.125.0 of the AliCloud Terraform Provider  
