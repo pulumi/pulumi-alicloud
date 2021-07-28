@@ -166,6 +166,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// </summary>
+        [Output("securityGroupIds")]
+        public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        /// <summary>
         /// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         /// </summary>
         [Output("securityIps")]
@@ -341,6 +348,19 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// </summary>
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
+
         [Input("securityIps")]
         private InputList<string>? _securityIps;
 
@@ -495,6 +515,19 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+        /// </summary>
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
 
         [Input("securityIps")]
         private InputList<string>? _securityIps;

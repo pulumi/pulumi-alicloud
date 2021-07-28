@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:cs/application:Application":
 		r = &Application{}
+	case "alicloud:cs/autoscalingConfig:AutoscalingConfig":
+		r = &AutoscalingConfig{}
 	case "alicloud:cs/cluster:Cluster":
 		r = &Cluster{}
 	case "alicloud:cs/edgeKubernetes:EdgeKubernetes":
@@ -63,6 +65,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cs/application",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cs/autoscalingConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Rds
         /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         /// </summary>
         [Output("acl")]
-        public Output<string?> Acl { get; private set; } = null!;
+        public Output<string> Acl { get; private set; } = null!;
 
         /// <summary>
         /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Rds
         /// - custom: a custom certificate
         /// </summary>
         [Output("caType")]
-        public Output<string?> CaType { get; private set; } = null!;
+        public Output<string> CaType { get; private set; } = null!;
 
         /// <summary>
         /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
@@ -192,6 +192,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> ForceRestart { get; private set; } = null!;
 
         /// <summary>
+        /// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+        /// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+        /// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+        /// </summary>
+        [Output("haConfig")]
+        public Output<string?> HaConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         /// </summary>
         [Output("instanceChargeType")]
@@ -226,6 +234,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("maintainTime")]
         public Output<string> MaintainTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        /// </summary>
+        [Output("manualHaTime")]
+        public Output<string?> ManualHaTime { get; private set; } = null!;
 
         /// <summary>
         /// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
@@ -268,7 +282,7 @@ namespace Pulumi.AliCloud.Rds
         /// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         /// </summary>
         [Output("replicationAcl")]
-        public Output<string?> ReplicationAcl { get; private set; } = null!;
+        public Output<string> ReplicationAcl { get; private set; } = null!;
 
         /// <summary>
         /// The ID of resource group which the DB instance belongs.
@@ -344,7 +358,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
-        /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
         [Output("switchTime")]
         public Output<string?> SwitchTime { get; private set; } = null!;
@@ -365,7 +378,6 @@ namespace Pulumi.AliCloud.Rds
         /// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         /// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         /// - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
-        /// &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         /// </summary>
         [Output("targetMinorVersion")]
         public Output<string> TargetMinorVersion { get; private set; } = null!;
@@ -591,6 +603,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? ForceRestart { get; set; }
 
         /// <summary>
+        /// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+        /// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+        /// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+        /// </summary>
+        [Input("haConfig")]
+        public Input<string>? HaConfig { get; set; }
+
+        /// <summary>
         /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         /// </summary>
         [Input("instanceChargeType")]
@@ -625,6 +645,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }
+
+        /// <summary>
+        /// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        /// </summary>
+        [Input("manualHaTime")]
+        public Input<string>? ManualHaTime { get; set; }
 
         /// <summary>
         /// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
@@ -755,7 +781,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
-        /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
         [Input("switchTime")]
         public Input<string>? SwitchTime { get; set; }
@@ -782,7 +807,6 @@ namespace Pulumi.AliCloud.Rds
         /// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         /// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         /// - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
-        /// &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         /// </summary>
         [Input("targetMinorVersion")]
         public Input<string>? TargetMinorVersion { get; set; }
@@ -975,6 +999,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? ForceRestart { get; set; }
 
         /// <summary>
+        /// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+        /// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+        /// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+        /// </summary>
+        [Input("haConfig")]
+        public Input<string>? HaConfig { get; set; }
+
+        /// <summary>
         /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         /// </summary>
         [Input("instanceChargeType")]
@@ -1009,6 +1041,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }
+
+        /// <summary>
+        /// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        /// </summary>
+        [Input("manualHaTime")]
+        public Input<string>? ManualHaTime { get; set; }
 
         /// <summary>
         /// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
@@ -1145,7 +1183,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
-        /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
         [Input("switchTime")]
         public Input<string>? SwitchTime { get; set; }
@@ -1172,7 +1209,6 @@ namespace Pulumi.AliCloud.Rds
         /// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         /// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         /// - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
-        /// &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         /// </summary>
         [Input("targetMinorVersion")]
         public Input<string>? TargetMinorVersion { get; set; }

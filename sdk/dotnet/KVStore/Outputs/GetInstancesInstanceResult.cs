@@ -154,6 +154,10 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// The name of the instance.
         /// </summary>
         public readonly string SearchKey;
+        /// <summary>
+        /// (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        /// </summary>
+        public readonly string SecondaryZoneId;
         public readonly string SecurityGroupId;
         public readonly string SecurityIpGroupAttribute;
         public readonly string SecurityIpGroupName;
@@ -269,6 +273,8 @@ namespace Pulumi.AliCloud.KVStore.Outputs
 
             string searchKey,
 
+            string secondaryZoneId,
+
             string securityGroupId,
 
             string securityIpGroupAttribute,
@@ -334,6 +340,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
             ReplacateId = replacateId;
             ResourceGroupId = resourceGroupId;
             SearchKey = searchKey;
+            SecondaryZoneId = secondaryZoneId;
             SecurityGroupId = securityGroupId;
             SecurityIpGroupAttribute = securityIpGroupAttribute;
             SecurityIpGroupName = securityIpGroupName;

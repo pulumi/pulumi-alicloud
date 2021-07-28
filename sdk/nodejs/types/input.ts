@@ -23,7 +23,7 @@ export interface ProviderEndpoint {
     cassandra?: pulumi.Input<string>;
     cbn?: pulumi.Input<string>;
     cdn?: pulumi.Input<string>;
-    cen?: pulumi.Input<string>;
+    cds?: pulumi.Input<string>;
     cms?: pulumi.Input<string>;
     config?: pulumi.Input<string>;
     cr?: pulumi.Input<string>;

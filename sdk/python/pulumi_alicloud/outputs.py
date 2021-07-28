@@ -109,7 +109,7 @@ class ProviderEndpoint(dict):
                  cassandra: Optional[str] = None,
                  cbn: Optional[str] = None,
                  cdn: Optional[str] = None,
-                 cen: Optional[str] = None,
+                 cds: Optional[str] = None,
                  cms: Optional[str] = None,
                  config: Optional[str] = None,
                  cr: Optional[str] = None,
@@ -187,8 +187,8 @@ class ProviderEndpoint(dict):
             pulumi.set(__self__, "cbn", cbn)
         if cdn is not None:
             pulumi.set(__self__, "cdn", cdn)
-        if cen is not None:
-            pulumi.set(__self__, "cen", cen)
+        if cds is not None:
+            pulumi.set(__self__, "cds", cds)
         if cms is not None:
             pulumi.set(__self__, "cms", cms)
         if config is not None:
@@ -357,8 +357,8 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
-    def cen(self) -> Optional[str]:
-        return pulumi.get(self, "cen")
+    def cds(self) -> Optional[str]:
+        return pulumi.get(self, "cds")
 
     @property
     @pulumi.getter

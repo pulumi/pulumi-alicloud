@@ -240,6 +240,14 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> DedicatedHostGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to precheck the request. Valid values:
+        /// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+        /// * false: checks the request. After the request passes the check, an instance is created.
+        /// </summary>
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
         /// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         /// </summary>
         [Output("enableBackupLog")]
@@ -415,6 +423,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Output("restoreTime")]
         public Output<string?> RestoreTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        /// </summary>
+        [Output("secondaryZoneId")]
+        public Output<string?> SecondaryZoneId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of security groups.
@@ -627,6 +641,14 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? DedicatedHostGroupId { get; set; }
 
         /// <summary>
+        /// Specifies whether to precheck the request. Valid values:
+        /// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+        /// * false: checks the request. After the request passes the check, an instance is created.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
         /// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         /// </summary>
         [Input("enableBackupLog")]
@@ -803,6 +825,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("restoreTime")]
         public Input<string>? RestoreTime { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        /// </summary>
+        [Input("secondaryZoneId")]
+        public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
         /// The ID of security groups.
@@ -993,6 +1021,14 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? DedicatedHostGroupId { get; set; }
 
         /// <summary>
+        /// Specifies whether to precheck the request. Valid values:
+        /// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+        /// * false: checks the request. After the request passes the check, an instance is created.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
         /// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         /// </summary>
         [Input("enableBackupLog")]
@@ -1181,6 +1217,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("restoreTime")]
         public Input<string>? RestoreTime { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        /// </summary>
+        [Input("secondaryZoneId")]
+        public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
         /// The ID of security groups.

@@ -34,9 +34,11 @@ class InstanceArgs:
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 ha_config: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 manual_ha_time: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
@@ -109,9 +111,13 @@ class InstanceArgs:
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] ha_config: The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+               - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+               - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] manual_ha_time: The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
@@ -136,7 +142,6 @@ class InstanceArgs:
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
-               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -147,7 +152,6 @@ class InstanceArgs:
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
@@ -201,12 +205,16 @@ class InstanceArgs:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
+        if ha_config is not None:
+            pulumi.set(__self__, "ha_config", ha_config)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
+        if manual_ha_time is not None:
+            pulumi.set(__self__, "manual_ha_time", manual_ha_time)
         if modify_mode is not None:
             pulumi.set(__self__, "modify_mode", modify_mode)
         if monitoring_period is not None:
@@ -518,6 +526,20 @@ class InstanceArgs:
         pulumi.set(self, "force_restart", value)
 
     @property
+    @pulumi.getter(name="haConfig")
+    def ha_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+        - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+        - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+        """
+        return pulumi.get(self, "ha_config")
+
+    @ha_config.setter
+    def ha_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ha_config", value)
+
+    @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -552,6 +574,18 @@ class InstanceArgs:
     @maintain_time.setter
     def maintain_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "maintain_time", value)
+
+    @property
+    @pulumi.getter(name="manualHaTime")
+    def manual_ha_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        """
+        return pulumi.get(self, "manual_ha_time")
+
+    @manual_ha_time.setter
+    def manual_ha_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "manual_ha_time", value)
 
     @property
     @pulumi.getter(name="modifyMode")
@@ -775,7 +809,6 @@ class InstanceArgs:
     def switch_time(self) -> Optional[pulumi.Input[str]]:
         """
         The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
-        > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         """
         return pulumi.get(self, "switch_time")
 
@@ -808,7 +841,6 @@ class InstanceArgs:
         - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-        > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         """
         return pulumi.get(self, "target_minor_version")
 
@@ -944,11 +976,13 @@ class _InstanceState:
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 ha_config: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 manual_ha_time: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
@@ -1015,6 +1049,9 @@ class _InstanceState:
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] ha_config: The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+               - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+               - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range:
@@ -1026,6 +1063,7 @@ class _InstanceState:
                Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] manual_ha_time: The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
@@ -1051,7 +1089,6 @@ class _InstanceState:
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
-               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1062,7 +1099,6 @@ class _InstanceState:
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
@@ -1118,6 +1154,8 @@ class _InstanceState:
             pulumi.set(__self__, "engine_version", engine_version)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
+        if ha_config is not None:
+            pulumi.set(__self__, "ha_config", ha_config)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_name is not None:
@@ -1128,6 +1166,8 @@ class _InstanceState:
             pulumi.set(__self__, "instance_type", instance_type)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
+        if manual_ha_time is not None:
+            pulumi.set(__self__, "manual_ha_time", manual_ha_time)
         if modify_mode is not None:
             pulumi.set(__self__, "modify_mode", modify_mode)
         if monitoring_period is not None:
@@ -1423,6 +1463,20 @@ class _InstanceState:
         pulumi.set(self, "force_restart", value)
 
     @property
+    @pulumi.getter(name="haConfig")
+    def ha_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+        - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+        - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+        """
+        return pulumi.get(self, "ha_config")
+
+    @ha_config.setter
+    def ha_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ha_config", value)
+
+    @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1487,6 +1541,18 @@ class _InstanceState:
     @maintain_time.setter
     def maintain_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "maintain_time", value)
+
+    @property
+    @pulumi.getter(name="manualHaTime")
+    def manual_ha_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        """
+        return pulumi.get(self, "manual_ha_time")
+
+    @manual_ha_time.setter
+    def manual_ha_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "manual_ha_time", value)
 
     @property
     @pulumi.getter(name="modifyMode")
@@ -1722,7 +1788,6 @@ class _InstanceState:
     def switch_time(self) -> Optional[pulumi.Input[str]]:
         """
         The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
-        > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         """
         return pulumi.get(self, "switch_time")
 
@@ -1755,7 +1820,6 @@ class _InstanceState:
         - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-        > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         """
         return pulumi.get(self, "target_minor_version")
 
@@ -1892,11 +1956,13 @@ class Instance(pulumi.CustomResource):
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 ha_config: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 manual_ha_time: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
@@ -2006,6 +2072,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] ha_config: The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+               - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+               - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range:
@@ -2017,6 +2086,7 @@ class Instance(pulumi.CustomResource):
                Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] manual_ha_time: The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
@@ -2041,7 +2111,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
-               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -2052,7 +2121,6 @@ class Instance(pulumi.CustomResource):
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
@@ -2154,11 +2222,13 @@ class Instance(pulumi.CustomResource):
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 ha_config: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
+                 manual_ha_time: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
@@ -2221,6 +2291,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
             __props__.__dict__["force_restart"] = force_restart
+            __props__.__dict__["ha_config"] = ha_config
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["instance_name"] = instance_name
             if instance_storage is None and not opts.urn:
@@ -2230,6 +2301,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["maintain_time"] = maintain_time
+            __props__.__dict__["manual_ha_time"] = manual_ha_time
             __props__.__dict__["modify_mode"] = modify_mode
             __props__.__dict__["monitoring_period"] = monitoring_period
             __props__.__dict__["parameters"] = parameters
@@ -2292,11 +2364,13 @@ class Instance(pulumi.CustomResource):
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             force_restart: Optional[pulumi.Input[bool]] = None,
+            ha_config: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_storage: Optional[pulumi.Input[int]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
+            manual_ha_time: Optional[pulumi.Input[str]] = None,
             modify_mode: Optional[pulumi.Input[str]] = None,
             monitoring_period: Optional[pulumi.Input[int]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
@@ -2368,6 +2442,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] ha_config: The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+               - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+               - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range:
@@ -2379,6 +2456,7 @@ class Instance(pulumi.CustomResource):
                Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instance_storage`.
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] manual_ha_time: The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
@@ -2404,7 +2482,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
-               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -2415,7 +2492,6 @@ class Instance(pulumi.CustomResource):
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
@@ -2457,11 +2533,13 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["force_restart"] = force_restart
+        __props__.__dict__["ha_config"] = ha_config
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_storage"] = instance_storage
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["maintain_time"] = maintain_time
+        __props__.__dict__["manual_ha_time"] = manual_ha_time
         __props__.__dict__["modify_mode"] = modify_mode
         __props__.__dict__["monitoring_period"] = monitoring_period
         __props__.__dict__["parameters"] = parameters
@@ -2496,7 +2574,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acl(self) -> pulumi.Output[Optional[str]]:
+    def acl(self) -> pulumi.Output[str]:
         """
         The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
         - cert
@@ -2534,7 +2612,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="caType")
-    def ca_type(self) -> pulumi.Output[Optional[str]]:
+    def ca_type(self) -> pulumi.Output[str]:
         """
         The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
         - aliyun: a cloud certificate
@@ -2653,6 +2731,16 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "force_restart")
 
     @property
+    @pulumi.getter(name="haConfig")
+    def ha_config(self) -> pulumi.Output[Optional[str]]:
+        """
+        The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+        - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+        - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+        """
+        return pulumi.get(self, "ha_config")
+
+    @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
@@ -2697,6 +2785,14 @@ class Instance(pulumi.CustomResource):
         Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         """
         return pulumi.get(self, "maintain_time")
+
+    @property
+    @pulumi.getter(name="manualHaTime")
+    def manual_ha_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        """
+        return pulumi.get(self, "manual_ha_time")
 
     @property
     @pulumi.getter(name="modifyMode")
@@ -2745,7 +2841,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replicationAcl")
-    def replication_acl(self) -> pulumi.Output[Optional[str]]:
+    def replication_acl(self) -> pulumi.Output[str]:
         """
         The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
         - cert
@@ -2856,7 +2952,6 @@ class Instance(pulumi.CustomResource):
     def switch_time(self) -> pulumi.Output[Optional[str]]:
         """
         The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
-        > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         """
         return pulumi.get(self, "switch_time")
 
@@ -2881,7 +2976,6 @@ class Instance(pulumi.CustomResource):
         - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-        > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         """
         return pulumi.get(self, "target_minor_version")
 

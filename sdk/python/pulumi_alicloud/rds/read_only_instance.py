@@ -33,7 +33,11 @@ class ReadOnlyInstanceArgs:
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
+                 switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_minor_version: Optional[pulumi.Input[str]] = None,
+                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+                 upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -73,9 +77,24 @@ class ReadOnlyInstanceArgs:
         :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
                - 1: enables SSL encryption
                - 0: disables SSL encryption
+        :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+               - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+               - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+               - rds: The instance runs RDS Basic or High-availability Edition.
+               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+               - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
+               - true: upgrade
+               - false: not to upgrade
+        :param pulumi.Input[str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+               - Immediate: The minor engine version is immediately updated.
+               - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+               - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
@@ -111,8 +130,16 @@ class ReadOnlyInstanceArgs:
             pulumi.set(__self__, "server_key", server_key)
         if ssl_enabled is not None:
             pulumi.set(__self__, "ssl_enabled", ssl_enabled)
+        if switch_time is not None:
+            pulumi.set(__self__, "switch_time", switch_time)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if target_minor_version is not None:
+            pulumi.set(__self__, "target_minor_version", target_minor_version)
+        if upgrade_db_instance_kernel_version is not None:
+            pulumi.set(__self__, "upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
+        if upgrade_time is not None:
+            pulumi.set(__self__, "upgrade_time", upgrade_time)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -352,6 +379,18 @@ class ReadOnlyInstanceArgs:
         pulumi.set(self, "ssl_enabled", value)
 
     @property
+    @pulumi.getter(name="switchTime")
+    def switch_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        """
+        return pulumi.get(self, "switch_time")
+
+    @switch_time.setter
+    def switch_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "switch_time", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -364,6 +403,53 @@ class ReadOnlyInstanceArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="targetMinorVersion")
+    def target_minor_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+        - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+        - rds: The instance runs RDS Basic or High-availability Edition.
+        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+        - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        """
+        return pulumi.get(self, "target_minor_version")
+
+    @target_minor_version.setter
+    def target_minor_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_minor_version", value)
+
+    @property
+    @pulumi.getter(name="upgradeDbInstanceKernelVersion")
+    def upgrade_db_instance_kernel_version(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to upgrade a minor version of the kernel. Valid values:
+        - true: upgrade
+        - false: not to upgrade
+        """
+        return pulumi.get(self, "upgrade_db_instance_kernel_version")
+
+    @upgrade_db_instance_kernel_version.setter
+    def upgrade_db_instance_kernel_version(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "upgrade_db_instance_kernel_version", value)
+
+    @property
+    @pulumi.getter(name="upgradeTime")
+    def upgrade_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        - Immediate: The minor engine version is immediately updated.
+        - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+        - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        """
+        return pulumi.get(self, "upgrade_time")
+
+    @upgrade_time.setter
+    def upgrade_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upgrade_time", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -414,7 +500,11 @@ class _ReadOnlyInstanceState:
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
+                 switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_minor_version: Optional[pulumi.Input[str]] = None,
+                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+                 upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -457,9 +547,24 @@ class _ReadOnlyInstanceState:
         :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
                - 1: enables SSL encryption
                - 0: disables SSL encryption
+        :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+               - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+               - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+               - rds: The instance runs RDS Basic or High-availability Edition.
+               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+               - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
+               - true: upgrade
+               - false: not to upgrade
+        :param pulumi.Input[str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+               - Immediate: The minor engine version is immediately updated.
+               - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+               - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
@@ -505,8 +610,16 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "server_key", server_key)
         if ssl_enabled is not None:
             pulumi.set(__self__, "ssl_enabled", ssl_enabled)
+        if switch_time is not None:
+            pulumi.set(__self__, "switch_time", switch_time)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if target_minor_version is not None:
+            pulumi.set(__self__, "target_minor_version", target_minor_version)
+        if upgrade_db_instance_kernel_version is not None:
+            pulumi.set(__self__, "upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
+        if upgrade_time is not None:
+            pulumi.set(__self__, "upgrade_time", upgrade_time)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -782,6 +895,18 @@ class _ReadOnlyInstanceState:
         pulumi.set(self, "ssl_enabled", value)
 
     @property
+    @pulumi.getter(name="switchTime")
+    def switch_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        """
+        return pulumi.get(self, "switch_time")
+
+    @switch_time.setter
+    def switch_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "switch_time", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -794,6 +919,53 @@ class _ReadOnlyInstanceState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="targetMinorVersion")
+    def target_minor_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+        - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+        - rds: The instance runs RDS Basic or High-availability Edition.
+        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+        - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        """
+        return pulumi.get(self, "target_minor_version")
+
+    @target_minor_version.setter
+    def target_minor_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_minor_version", value)
+
+    @property
+    @pulumi.getter(name="upgradeDbInstanceKernelVersion")
+    def upgrade_db_instance_kernel_version(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to upgrade a minor version of the kernel. Valid values:
+        - true: upgrade
+        - false: not to upgrade
+        """
+        return pulumi.get(self, "upgrade_db_instance_kernel_version")
+
+    @upgrade_db_instance_kernel_version.setter
+    def upgrade_db_instance_kernel_version(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "upgrade_db_instance_kernel_version", value)
+
+    @property
+    @pulumi.getter(name="upgradeTime")
+    def upgrade_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        - Immediate: The minor engine version is immediately updated.
+        - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+        - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        """
+        return pulumi.get(self, "upgrade_time")
+
+    @upgrade_time.setter
+    def upgrade_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upgrade_time", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -843,7 +1015,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
+                 switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_minor_version: Optional[pulumi.Input[str]] = None,
+                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+                 upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -937,9 +1113,24 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
                - 1: enables SSL encryption
                - 0: disables SSL encryption
+        :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+               - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+               - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+               - rds: The instance runs RDS Basic or High-availability Edition.
+               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+               - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
+               - true: upgrade
+               - false: not to upgrade
+        :param pulumi.Input[str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+               - Immediate: The minor engine version is immediately updated.
+               - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+               - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
@@ -1035,7 +1226,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
+                 switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 target_minor_version: Optional[pulumi.Input[str]] = None,
+                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+                 upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1076,7 +1271,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
             __props__.__dict__["server_cert"] = server_cert
             __props__.__dict__["server_key"] = server_key
             __props__.__dict__["ssl_enabled"] = ssl_enabled
+            __props__.__dict__["switch_time"] = switch_time
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["target_minor_version"] = target_minor_version
+            __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
+            __props__.__dict__["upgrade_time"] = upgrade_time
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
@@ -1113,7 +1312,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
             server_cert: Optional[pulumi.Input[str]] = None,
             server_key: Optional[pulumi.Input[str]] = None,
             ssl_enabled: Optional[pulumi.Input[int]] = None,
+            switch_time: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            target_minor_version: Optional[pulumi.Input[str]] = None,
+            upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+            upgrade_time: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ReadOnlyInstance':
         """
@@ -1161,9 +1364,24 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
                - 1: enables SSL encryption
                - 0: disables SSL encryption
+        :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+               - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+               - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+               - rds: The instance runs RDS Basic or High-availability Edition.
+               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+               - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
+               - true: upgrade
+               - false: not to upgrade
+        :param pulumi.Input[str] upgrade_time: The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+               - Immediate: The minor engine version is immediately updated.
+               - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+               - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
@@ -1192,7 +1410,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__.__dict__["server_cert"] = server_cert
         __props__.__dict__["server_key"] = server_key
         __props__.__dict__["ssl_enabled"] = ssl_enabled
+        __props__.__dict__["switch_time"] = switch_time
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["target_minor_version"] = target_minor_version
+        __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
+        __props__.__dict__["upgrade_time"] = upgrade_time
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return ReadOnlyInstance(resource_name, opts=opts, __props__=__props__)
@@ -1211,7 +1433,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="caType")
-    def ca_type(self) -> pulumi.Output[Optional[str]]:
+    def ca_type(self) -> pulumi.Output[str]:
         """
         The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
         - aliyun: a cloud certificate
@@ -1383,6 +1605,14 @@ class ReadOnlyInstance(pulumi.CustomResource):
         return pulumi.get(self, "ssl_enabled")
 
     @property
+    @pulumi.getter(name="switchTime")
+    def switch_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+        """
+        return pulumi.get(self, "switch_time")
+
+    @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
@@ -1391,6 +1621,41 @@ class ReadOnlyInstance(pulumi.CustomResource):
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="targetMinorVersion")
+    def target_minor_version(self) -> pulumi.Output[str]:
+        """
+        The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+        - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+        - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+        - rds: The instance runs RDS Basic or High-availability Edition.
+        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+        - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        """
+        return pulumi.get(self, "target_minor_version")
+
+    @property
+    @pulumi.getter(name="upgradeDbInstanceKernelVersion")
+    def upgrade_db_instance_kernel_version(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to upgrade a minor version of the kernel. Valid values:
+        - true: upgrade
+        - false: not to upgrade
+        """
+        return pulumi.get(self, "upgrade_db_instance_kernel_version")
+
+    @property
+    @pulumi.getter(name="upgradeTime")
+    def upgrade_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+        - Immediate: The minor engine version is immediately updated.
+        - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+        - SpecifyTime: The minor engine version is updated at the point in time you specify.
+        """
+        return pulumi.get(self, "upgrade_time")
 
     @property
     @pulumi.getter(name="vswitchId")

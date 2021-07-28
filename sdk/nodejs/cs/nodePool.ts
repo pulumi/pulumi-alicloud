@@ -59,6 +59,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly dataDisks!: pulumi.Output<outputs.cs.NodePoolDataDisk[] | undefined>;
     /**
+     * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+     */
+    public readonly formatDisk!: pulumi.Output<boolean>;
+    /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     public readonly imageId!: pulumi.Output<string>;
@@ -75,6 +79,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly instanceTypes!: pulumi.Output<string[]>;
     /**
+     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
+     */
+    public readonly instances!: pulumi.Output<string[] | undefined>;
+    /**
      * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      */
     public readonly internetChargeType!: pulumi.Output<string>;
@@ -82,6 +90,10 @@ export class NodePool extends pulumi.CustomResource {
      * The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
      */
     public readonly internetMaxBandwidthOut!: pulumi.Output<number>;
+    /**
+     * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+     */
+    public readonly keepInstanceName!: pulumi.Output<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
@@ -123,6 +135,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
+     * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     */
+    public readonly platform!: pulumi.Output<string>;
+    /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
@@ -134,6 +150,10 @@ export class NodePool extends pulumi.CustomResource {
      * (Available in 1.105.0+) Id of the Scaling Group.
      */
     public /*out*/ readonly scalingGroupId!: pulumi.Output<string>;
+    /**
+     * The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+     */
+    public readonly scalingPolicy!: pulumi.Output<string>;
     /**
      * The security group id for worker node.
      */
@@ -194,12 +214,15 @@ export class NodePool extends pulumi.CustomResource {
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["dataDisks"] = state ? state.dataDisks : undefined;
+            inputs["formatDisk"] = state ? state.formatDisk : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
+            inputs["instances"] = state ? state.instances : undefined;
             inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
             inputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
+            inputs["keepInstanceName"] = state ? state.keepInstanceName : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -210,9 +233,11 @@ export class NodePool extends pulumi.CustomResource {
             inputs["password"] = state ? state.password : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["periodUnit"] = state ? state.periodUnit : undefined;
+            inputs["platform"] = state ? state.platform : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["scalingConfig"] = state ? state.scalingConfig : undefined;
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            inputs["scalingPolicy"] = state ? state.scalingPolicy : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["spotPriceLimits"] = state ? state.spotPriceLimits : undefined;
             inputs["spotStrategy"] = state ? state.spotStrategy : undefined;
@@ -240,12 +265,15 @@ export class NodePool extends pulumi.CustomResource {
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["dataDisks"] = args ? args.dataDisks : undefined;
+            inputs["formatDisk"] = args ? args.formatDisk : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
+            inputs["instances"] = args ? args.instances : undefined;
             inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
             inputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
+            inputs["keepInstanceName"] = args ? args.keepInstanceName : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -256,8 +284,10 @@ export class NodePool extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["periodUnit"] = args ? args.periodUnit : undefined;
+            inputs["platform"] = args ? args.platform : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["scalingConfig"] = args ? args.scalingConfig : undefined;
+            inputs["scalingPolicy"] = args ? args.scalingPolicy : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["spotPriceLimits"] = args ? args.spotPriceLimits : undefined;
             inputs["spotStrategy"] = args ? args.spotStrategy : undefined;
@@ -300,6 +330,10 @@ export interface NodePoolState {
      */
     readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolDataDisk>[]>;
     /**
+     * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+     */
+    readonly formatDisk?: pulumi.Input<boolean>;
+    /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     readonly imageId?: pulumi.Input<string>;
@@ -316,6 +350,10 @@ export interface NodePoolState {
      */
     readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
+     */
+    readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      */
     readonly internetChargeType?: pulumi.Input<string>;
@@ -323,6 +361,10 @@ export interface NodePoolState {
      * The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
      */
     readonly internetMaxBandwidthOut?: pulumi.Input<number>;
+    /**
+     * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+     */
+    readonly keepInstanceName?: pulumi.Input<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
@@ -364,6 +406,10 @@ export interface NodePoolState {
      */
     readonly periodUnit?: pulumi.Input<string>;
     /**
+     * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     */
+    readonly platform?: pulumi.Input<string>;
+    /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
@@ -375,6 +421,10 @@ export interface NodePoolState {
      * (Available in 1.105.0+) Id of the Scaling Group.
      */
     readonly scalingGroupId?: pulumi.Input<string>;
+    /**
+     * The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+     */
+    readonly scalingPolicy?: pulumi.Input<string>;
     /**
      * The security group id for worker node.
      */
@@ -440,6 +490,10 @@ export interface NodePoolArgs {
      */
     readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolDataDisk>[]>;
     /**
+     * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
+     */
+    readonly formatDisk?: pulumi.Input<boolean>;
+    /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     readonly imageId?: pulumi.Input<string>;
@@ -456,6 +510,10 @@ export interface NodePoolArgs {
      */
     readonly instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
+     */
+    readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      */
     readonly internetChargeType?: pulumi.Input<string>;
@@ -463,6 +521,10 @@ export interface NodePoolArgs {
      * The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
      */
     readonly internetMaxBandwidthOut?: pulumi.Input<number>;
+    /**
+     * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+     */
+    readonly keepInstanceName?: pulumi.Input<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
@@ -504,6 +566,10 @@ export interface NodePoolArgs {
      */
     readonly periodUnit?: pulumi.Input<string>;
     /**
+     * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     */
+    readonly platform?: pulumi.Input<string>;
+    /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     readonly resourceGroupId?: pulumi.Input<string>;
@@ -511,6 +577,10 @@ export interface NodePoolArgs {
      * Auto scaling node pool configuration. For more details, see `scalingConfig`.
      */
     readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
+    /**
+     * The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+     */
+    readonly scalingPolicy?: pulumi.Input<string>;
     /**
      * The security group id for worker node.
      */

@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud
                 public string? Cassandra { get; set; } = null!;
                 public string? Cbn { get; set; } = null!;
                 public string? Cdn { get; set; } = null!;
-                public string? Cen { get; set; } = null!;
+                public string? Cds { get; set; } = null!;
                 public string? Cms { get; set; } = null!;
                 public string? Config { get; set; } = null!;
                 public string? Cr { get; set; } = null!;

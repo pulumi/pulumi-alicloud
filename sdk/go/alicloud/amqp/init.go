@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:amqp/exchange:Exchange":
+		r = &Exchange{}
+	case "alicloud:amqp/queue:Queue":
+		r = &Queue{}
 	case "alicloud:amqp/virtualHost:VirtualHost":
 		r = &VirtualHost{}
 	default:
@@ -36,6 +40,16 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"amqp/exchange",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"amqp/queue",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"amqp/virtualHost",

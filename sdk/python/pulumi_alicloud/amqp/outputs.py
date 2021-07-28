@@ -9,8 +9,211 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetExchangesExchangeResult',
+    'GetQueuesQueueResult',
     'GetVirtualHostsHostResult',
 ]
+
+@pulumi.output_type
+class GetExchangesExchangeResult(dict):
+    def __init__(__self__, *,
+                 attributes: Mapping[str, Any],
+                 auto_delete_state: bool,
+                 create_time: str,
+                 exchange_name: str,
+                 exchange_type: str,
+                 id: str,
+                 instance_id: str,
+                 virtual_host_name: str):
+        """
+        :param Mapping[str, Any] attributes: The attributes.
+        :param bool auto_delete_state: Indicates whether the Auto Delete attribute is configured.
+        :param str create_time: The creation time.
+        :param str exchange_name: The name of the exchange.
+        :param str exchange_type: The type of the exchange.
+        :param str id: The ID of the Exchange. Its value is same as Queue Name.
+        :param str instance_id: The ID of the instance.
+        :param str virtual_host_name: The name of virtual host where an exchange resides.
+        """
+        pulumi.set(__self__, "attributes", attributes)
+        pulumi.set(__self__, "auto_delete_state", auto_delete_state)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "exchange_name", exchange_name)
+        pulumi.set(__self__, "exchange_type", exchange_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Mapping[str, Any]:
+        """
+        The attributes.
+        """
+        return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter(name="autoDeleteState")
+    def auto_delete_state(self) -> bool:
+        """
+        Indicates whether the Auto Delete attribute is configured.
+        """
+        return pulumi.get(self, "auto_delete_state")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="exchangeName")
+    def exchange_name(self) -> str:
+        """
+        The name of the exchange.
+        """
+        return pulumi.get(self, "exchange_name")
+
+    @property
+    @pulumi.getter(name="exchangeType")
+    def exchange_type(self) -> str:
+        """
+        The type of the exchange.
+        """
+        return pulumi.get(self, "exchange_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Exchange. Its value is same as Queue Name.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="virtualHostName")
+    def virtual_host_name(self) -> str:
+        """
+        The name of virtual host where an exchange resides.
+        """
+        return pulumi.get(self, "virtual_host_name")
+
+
+@pulumi.output_type
+class GetQueuesQueueResult(dict):
+    def __init__(__self__, *,
+                 attributes: Mapping[str, Any],
+                 auto_delete_state: bool,
+                 create_time: str,
+                 exclusive_state: bool,
+                 id: str,
+                 instance_id: str,
+                 last_consume_time: str,
+                 queue_name: str,
+                 virtual_host_name: str):
+        """
+        :param Mapping[str, Any] attributes: The attributes for the Queue.
+        :param bool auto_delete_state: Specifies whether the Auto Delete attribute is configured.
+        :param str create_time: CreateTime.
+        :param bool exclusive_state: Specifies whether the queue is an exclusive queue.
+        :param str id: The ID of the Queue. Its value is same as Queue Name.
+        :param str instance_id: The ID of the instance.
+        :param str last_consume_time: The last consume time.
+        :param str queue_name: The queue name.
+        :param str virtual_host_name: The name of the virtual host.
+        """
+        pulumi.set(__self__, "attributes", attributes)
+        pulumi.set(__self__, "auto_delete_state", auto_delete_state)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "exclusive_state", exclusive_state)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "last_consume_time", last_consume_time)
+        pulumi.set(__self__, "queue_name", queue_name)
+        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Mapping[str, Any]:
+        """
+        The attributes for the Queue.
+        """
+        return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter(name="autoDeleteState")
+    def auto_delete_state(self) -> bool:
+        """
+        Specifies whether the Auto Delete attribute is configured.
+        """
+        return pulumi.get(self, "auto_delete_state")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        CreateTime.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="exclusiveState")
+    def exclusive_state(self) -> bool:
+        """
+        Specifies whether the queue is an exclusive queue.
+        """
+        return pulumi.get(self, "exclusive_state")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Queue. Its value is same as Queue Name.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="lastConsumeTime")
+    def last_consume_time(self) -> str:
+        """
+        The last consume time.
+        """
+        return pulumi.get(self, "last_consume_time")
+
+    @property
+    @pulumi.getter(name="queueName")
+    def queue_name(self) -> str:
+        """
+        The queue name.
+        """
+        return pulumi.get(self, "queue_name")
+
+    @property
+    @pulumi.getter(name="virtualHostName")
+    def virtual_host_name(self) -> str:
+        """
+        The name of the virtual host.
+        """
+        return pulumi.get(self, "virtual_host_name")
+
 
 @pulumi.output_type
 class GetVirtualHostsHostResult(dict):

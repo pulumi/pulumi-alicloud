@@ -9,10 +9,106 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetBackupPlansPlanResult',
     'GetClustersClusterResult',
     'GetDataCentersCenterResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class GetBackupPlansPlanResult(dict):
+    def __init__(__self__, *,
+                 active: bool,
+                 backup_period: str,
+                 backup_time: str,
+                 cluster_id: str,
+                 create_time: str,
+                 data_center_id: str,
+                 id: str,
+                 retention_period: int):
+        """
+        :param bool active: Specifies whether to activate the backup plan.
+        :param str backup_period: The backup cycle. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
+        :param str backup_time: The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
+        :param str cluster_id: The ID of the cluster for the backup.
+        :param str create_time: The time when the backup plan was created.
+        :param str data_center_id: The ID of the data center for the backup in the cluster.
+        :param str id: The ID of the Backup Plan.
+        :param int retention_period: The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "backup_period", backup_period)
+        pulumi.set(__self__, "backup_time", backup_time)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "data_center_id", data_center_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "retention_period", retention_period)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        """
+        Specifies whether to activate the backup plan.
+        """
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter(name="backupPeriod")
+    def backup_period(self) -> str:
+        """
+        The backup cycle. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
+        """
+        return pulumi.get(self, "backup_period")
+
+    @property
+    @pulumi.getter(name="backupTime")
+    def backup_time(self) -> str:
+        """
+        The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
+        """
+        return pulumi.get(self, "backup_time")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the cluster for the backup.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the backup plan was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dataCenterId")
+    def data_center_id(self) -> str:
+        """
+        The ID of the data center for the backup in the cluster.
+        """
+        return pulumi.get(self, "data_center_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Backup Plan.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> int:
+        """
+        The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
+        """
+        return pulumi.get(self, "retention_period")
+
 
 @pulumi.output_type
 class GetClustersClusterResult(dict):

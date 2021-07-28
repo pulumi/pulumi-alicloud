@@ -10,6 +10,166 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetBackupPlansPlan struct {
+	// Specifies whether to activate the backup plan.
+	Active bool `pulumi:"active"`
+	// The backup cycle. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
+	BackupPeriod string `pulumi:"backupPeriod"`
+	// The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
+	BackupTime string `pulumi:"backupTime"`
+	// The ID of the cluster for the backup.
+	ClusterId string `pulumi:"clusterId"`
+	// The time when the backup plan was created.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the data center for the backup in the cluster.
+	DataCenterId string `pulumi:"dataCenterId"`
+	// The ID of the Backup Plan.
+	Id string `pulumi:"id"`
+	// The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
+	RetentionPeriod int `pulumi:"retentionPeriod"`
+}
+
+// GetBackupPlansPlanInput is an input type that accepts GetBackupPlansPlanArgs and GetBackupPlansPlanOutput values.
+// You can construct a concrete instance of `GetBackupPlansPlanInput` via:
+//
+//          GetBackupPlansPlanArgs{...}
+type GetBackupPlansPlanInput interface {
+	pulumi.Input
+
+	ToGetBackupPlansPlanOutput() GetBackupPlansPlanOutput
+	ToGetBackupPlansPlanOutputWithContext(context.Context) GetBackupPlansPlanOutput
+}
+
+type GetBackupPlansPlanArgs struct {
+	// Specifies whether to activate the backup plan.
+	Active pulumi.BoolInput `pulumi:"active"`
+	// The backup cycle. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
+	BackupPeriod pulumi.StringInput `pulumi:"backupPeriod"`
+	// The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
+	BackupTime pulumi.StringInput `pulumi:"backupTime"`
+	// The ID of the cluster for the backup.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The time when the backup plan was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the data center for the backup in the cluster.
+	DataCenterId pulumi.StringInput `pulumi:"dataCenterId"`
+	// The ID of the Backup Plan.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
+	RetentionPeriod pulumi.IntInput `pulumi:"retentionPeriod"`
+}
+
+func (GetBackupPlansPlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlansPlan)(nil)).Elem()
+}
+
+func (i GetBackupPlansPlanArgs) ToGetBackupPlansPlanOutput() GetBackupPlansPlanOutput {
+	return i.ToGetBackupPlansPlanOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlansPlanArgs) ToGetBackupPlansPlanOutputWithContext(ctx context.Context) GetBackupPlansPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlansPlanOutput)
+}
+
+// GetBackupPlansPlanArrayInput is an input type that accepts GetBackupPlansPlanArray and GetBackupPlansPlanArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlansPlanArrayInput` via:
+//
+//          GetBackupPlansPlanArray{ GetBackupPlansPlanArgs{...} }
+type GetBackupPlansPlanArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlansPlanArrayOutput() GetBackupPlansPlanArrayOutput
+	ToGetBackupPlansPlanArrayOutputWithContext(context.Context) GetBackupPlansPlanArrayOutput
+}
+
+type GetBackupPlansPlanArray []GetBackupPlansPlanInput
+
+func (GetBackupPlansPlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlansPlan)(nil)).Elem()
+}
+
+func (i GetBackupPlansPlanArray) ToGetBackupPlansPlanArrayOutput() GetBackupPlansPlanArrayOutput {
+	return i.ToGetBackupPlansPlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlansPlanArray) ToGetBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetBackupPlansPlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlansPlanArrayOutput)
+}
+
+type GetBackupPlansPlanOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlansPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlansPlan)(nil)).Elem()
+}
+
+func (o GetBackupPlansPlanOutput) ToGetBackupPlansPlanOutput() GetBackupPlansPlanOutput {
+	return o
+}
+
+func (o GetBackupPlansPlanOutput) ToGetBackupPlansPlanOutputWithContext(ctx context.Context) GetBackupPlansPlanOutput {
+	return o
+}
+
+// Specifies whether to activate the backup plan.
+func (o GetBackupPlansPlanOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackupPlansPlan) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// The backup cycle. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
+func (o GetBackupPlansPlanOutput) BackupPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlansPlan) string { return v.BackupPeriod }).(pulumi.StringOutput)
+}
+
+// The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
+func (o GetBackupPlansPlanOutput) BackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlansPlan) string { return v.BackupTime }).(pulumi.StringOutput)
+}
+
+// The ID of the cluster for the backup.
+func (o GetBackupPlansPlanOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlansPlan) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The time when the backup plan was created.
+func (o GetBackupPlansPlanOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlansPlan) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the data center for the backup in the cluster.
+func (o GetBackupPlansPlanOutput) DataCenterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlansPlan) string { return v.DataCenterId }).(pulumi.StringOutput)
+}
+
+// The ID of the Backup Plan.
+func (o GetBackupPlansPlanOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlansPlan) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
+func (o GetBackupPlansPlanOutput) RetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackupPlansPlan) int { return v.RetentionPeriod }).(pulumi.IntOutput)
+}
+
+type GetBackupPlansPlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlansPlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlansPlan)(nil)).Elem()
+}
+
+func (o GetBackupPlansPlanArrayOutput) ToGetBackupPlansPlanArrayOutput() GetBackupPlansPlanArrayOutput {
+	return o
+}
+
+func (o GetBackupPlansPlanArrayOutput) ToGetBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetBackupPlansPlanArrayOutput {
+	return o
+}
+
+func (o GetBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetBackupPlansPlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlansPlan {
+		return vs[0].([]GetBackupPlansPlan)[vs[1].(int)]
+	}).(GetBackupPlansPlanOutput)
+}
+
 type GetClustersCluster struct {
 	// The ID of the Cassandra cluster.
 	ClusterId string `pulumi:"clusterId"`
@@ -539,6 +699,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetBackupPlansPlanOutput{})
+	pulumi.RegisterOutputType(GetBackupPlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetDataCentersCenterOutput{})

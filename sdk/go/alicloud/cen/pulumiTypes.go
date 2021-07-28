@@ -2125,6 +2125,220 @@ func (o GetRouteServicesServiceArrayOutput) Index(i pulumi.IntInput) GetRouteSer
 	}).(GetRouteServicesServiceOutput)
 }
 
+type GetTransitRouterPeerAttachmentsAttachment struct {
+	// Auto publish route enabled.
+	AutoPublishRouteEnabled bool `pulumi:"autoPublishRouteEnabled"`
+	// The bandwidth of the bandwidth package.
+	Bandwidth int `pulumi:"bandwidth"`
+	// ID of the CEN bandwidth package.
+	CenBandwidthPackageId string `pulumi:"cenBandwidthPackageId"`
+	// ID of the geographic.
+	GeographicSpanId string `pulumi:"geographicSpanId"`
+	// The ID of CEN Transit Router peer attachments.
+	Id string `pulumi:"id"`
+	// ID of the peer transit router.
+	PeerTransitRouterId string `pulumi:"peerTransitRouterId"`
+	// Owner ID of the peer transit router.
+	PeerTransitRouterOwnerId string `pulumi:"peerTransitRouterOwnerId"`
+	// Region ID of the peer transit router.
+	PeerTransitRouterRegionId string `pulumi:"peerTransitRouterRegionId"`
+	// Type of the resource.
+	ResourceType string `pulumi:"resourceType"`
+	// The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
+	Status string `pulumi:"status"`
+	// The description of CEN Transit Router peer attachments.
+	TransitRouterAttachmentDescription string `pulumi:"transitRouterAttachmentDescription"`
+	// The ID of CEN Transit Router peer attachments.
+	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
+	// Name of the transit router attachment.
+	TransitRouterAttachmentName string `pulumi:"transitRouterAttachmentName"`
+	// The ID of transit router.
+	TransitRouterId string `pulumi:"transitRouterId"`
+}
+
+// GetTransitRouterPeerAttachmentsAttachmentInput is an input type that accepts GetTransitRouterPeerAttachmentsAttachmentArgs and GetTransitRouterPeerAttachmentsAttachmentOutput values.
+// You can construct a concrete instance of `GetTransitRouterPeerAttachmentsAttachmentInput` via:
+//
+//          GetTransitRouterPeerAttachmentsAttachmentArgs{...}
+type GetTransitRouterPeerAttachmentsAttachmentInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterPeerAttachmentsAttachmentOutput() GetTransitRouterPeerAttachmentsAttachmentOutput
+	ToGetTransitRouterPeerAttachmentsAttachmentOutputWithContext(context.Context) GetTransitRouterPeerAttachmentsAttachmentOutput
+}
+
+type GetTransitRouterPeerAttachmentsAttachmentArgs struct {
+	// Auto publish route enabled.
+	AutoPublishRouteEnabled pulumi.BoolInput `pulumi:"autoPublishRouteEnabled"`
+	// The bandwidth of the bandwidth package.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// ID of the CEN bandwidth package.
+	CenBandwidthPackageId pulumi.StringInput `pulumi:"cenBandwidthPackageId"`
+	// ID of the geographic.
+	GeographicSpanId pulumi.StringInput `pulumi:"geographicSpanId"`
+	// The ID of CEN Transit Router peer attachments.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of the peer transit router.
+	PeerTransitRouterId pulumi.StringInput `pulumi:"peerTransitRouterId"`
+	// Owner ID of the peer transit router.
+	PeerTransitRouterOwnerId pulumi.StringInput `pulumi:"peerTransitRouterOwnerId"`
+	// Region ID of the peer transit router.
+	PeerTransitRouterRegionId pulumi.StringInput `pulumi:"peerTransitRouterRegionId"`
+	// Type of the resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The description of CEN Transit Router peer attachments.
+	TransitRouterAttachmentDescription pulumi.StringInput `pulumi:"transitRouterAttachmentDescription"`
+	// The ID of CEN Transit Router peer attachments.
+	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
+	// Name of the transit router attachment.
+	TransitRouterAttachmentName pulumi.StringInput `pulumi:"transitRouterAttachmentName"`
+	// The ID of transit router.
+	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
+}
+
+func (GetTransitRouterPeerAttachmentsAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterPeerAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetTransitRouterPeerAttachmentsAttachmentArgs) ToGetTransitRouterPeerAttachmentsAttachmentOutput() GetTransitRouterPeerAttachmentsAttachmentOutput {
+	return i.ToGetTransitRouterPeerAttachmentsAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterPeerAttachmentsAttachmentArgs) ToGetTransitRouterPeerAttachmentsAttachmentOutputWithContext(ctx context.Context) GetTransitRouterPeerAttachmentsAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterPeerAttachmentsAttachmentOutput)
+}
+
+// GetTransitRouterPeerAttachmentsAttachmentArrayInput is an input type that accepts GetTransitRouterPeerAttachmentsAttachmentArray and GetTransitRouterPeerAttachmentsAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouterPeerAttachmentsAttachmentArrayInput` via:
+//
+//          GetTransitRouterPeerAttachmentsAttachmentArray{ GetTransitRouterPeerAttachmentsAttachmentArgs{...} }
+type GetTransitRouterPeerAttachmentsAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterPeerAttachmentsAttachmentArrayOutput() GetTransitRouterPeerAttachmentsAttachmentArrayOutput
+	ToGetTransitRouterPeerAttachmentsAttachmentArrayOutputWithContext(context.Context) GetTransitRouterPeerAttachmentsAttachmentArrayOutput
+}
+
+type GetTransitRouterPeerAttachmentsAttachmentArray []GetTransitRouterPeerAttachmentsAttachmentInput
+
+func (GetTransitRouterPeerAttachmentsAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterPeerAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetTransitRouterPeerAttachmentsAttachmentArray) ToGetTransitRouterPeerAttachmentsAttachmentArrayOutput() GetTransitRouterPeerAttachmentsAttachmentArrayOutput {
+	return i.ToGetTransitRouterPeerAttachmentsAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterPeerAttachmentsAttachmentArray) ToGetTransitRouterPeerAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetTransitRouterPeerAttachmentsAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterPeerAttachmentsAttachmentArrayOutput)
+}
+
+type GetTransitRouterPeerAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterPeerAttachmentsAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterPeerAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) ToGetTransitRouterPeerAttachmentsAttachmentOutput() GetTransitRouterPeerAttachmentsAttachmentOutput {
+	return o
+}
+
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) ToGetTransitRouterPeerAttachmentsAttachmentOutputWithContext(ctx context.Context) GetTransitRouterPeerAttachmentsAttachmentOutput {
+	return o
+}
+
+// Auto publish route enabled.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) bool { return v.AutoPublishRouteEnabled }).(pulumi.BoolOutput)
+}
+
+// The bandwidth of the bandwidth package.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// ID of the CEN bandwidth package.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) CenBandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.CenBandwidthPackageId }).(pulumi.StringOutput)
+}
+
+// ID of the geographic.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) GeographicSpanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.GeographicSpanId }).(pulumi.StringOutput)
+}
+
+// The ID of CEN Transit Router peer attachments.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of the peer transit router.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) PeerTransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.PeerTransitRouterId }).(pulumi.StringOutput)
+}
+
+// Owner ID of the peer transit router.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) PeerTransitRouterOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.PeerTransitRouterOwnerId }).(pulumi.StringOutput)
+}
+
+// Region ID of the peer transit router.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) PeerTransitRouterRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.PeerTransitRouterRegionId }).(pulumi.StringOutput)
+}
+
+// Type of the resource.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The description of CEN Transit Router peer attachments.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.TransitRouterAttachmentDescription }).(pulumi.StringOutput)
+}
+
+// The ID of CEN Transit Router peer attachments.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// Name of the transit router attachment.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) TransitRouterAttachmentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.TransitRouterAttachmentName }).(pulumi.StringOutput)
+}
+
+// The ID of transit router.
+func (o GetTransitRouterPeerAttachmentsAttachmentOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsAttachment) string { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
+type GetTransitRouterPeerAttachmentsAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterPeerAttachmentsAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterPeerAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetTransitRouterPeerAttachmentsAttachmentArrayOutput) ToGetTransitRouterPeerAttachmentsAttachmentArrayOutput() GetTransitRouterPeerAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterPeerAttachmentsAttachmentArrayOutput) ToGetTransitRouterPeerAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetTransitRouterPeerAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterPeerAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetTransitRouterPeerAttachmentsAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterPeerAttachmentsAttachment {
+		return vs[0].([]GetTransitRouterPeerAttachmentsAttachment)[vs[1].(int)]
+	}).(GetTransitRouterPeerAttachmentsAttachmentOutput)
+}
+
 type GetTransitRouterRouteEntriesEntry struct {
 	Id                                 string `pulumi:"id"`
 	Status                             string `pulumi:"status"`
@@ -3469,6 +3683,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteMapsMapArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteServicesServiceOutput{})
 	pulumi.RegisterOutputType(GetRouteServicesServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterPeerAttachmentsAttachmentOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterPeerAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterRouteEntriesEntryOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterRouteEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterRouteTableAssociationsAssociationOutput{})

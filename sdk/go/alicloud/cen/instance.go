@@ -59,7 +59,7 @@ type Instance struct {
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
-	ProtectionLevel pulumi.StringPtrOutput `pulumi:"protectionLevel"`
+	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
 	// The Cen Instance current status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.

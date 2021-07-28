@@ -193,7 +193,7 @@ type ProviderEndpoint struct {
 	Cassandra       *string `pulumi:"cassandra"`
 	Cbn             *string `pulumi:"cbn"`
 	Cdn             *string `pulumi:"cdn"`
-	Cen             *string `pulumi:"cen"`
+	Cds             *string `pulumi:"cds"`
 	Cms             *string `pulumi:"cms"`
 	Config          *string `pulumi:"config"`
 	Cr              *string `pulumi:"cr"`
@@ -274,7 +274,7 @@ type ProviderEndpointArgs struct {
 	Cassandra       pulumi.StringPtrInput `pulumi:"cassandra"`
 	Cbn             pulumi.StringPtrInput `pulumi:"cbn"`
 	Cdn             pulumi.StringPtrInput `pulumi:"cdn"`
-	Cen             pulumi.StringPtrInput `pulumi:"cen"`
+	Cds             pulumi.StringPtrInput `pulumi:"cds"`
 	Cms             pulumi.StringPtrInput `pulumi:"cms"`
 	Config          pulumi.StringPtrInput `pulumi:"config"`
 	Cr              pulumi.StringPtrInput `pulumi:"cr"`
@@ -427,8 +427,8 @@ func (o ProviderEndpointOutput) Cdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cdn }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderEndpointOutput) Cen() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cen }).(pulumi.StringPtrOutput)
+func (o ProviderEndpointOutput) Cds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cds }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cms() pulumi.StringPtrOutput {

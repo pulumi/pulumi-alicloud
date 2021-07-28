@@ -67,7 +67,7 @@ export interface ProviderEndpoint {
     cassandra?: string;
     cbn?: string;
     cdn?: string;
-    cen?: string;
+    cds?: string;
     cms?: string;
     config?: string;
     cr?: string;
@@ -688,6 +688,80 @@ export namespace adb {
 }
 
 export namespace amqp {
+    export interface GetExchangesExchange {
+        /**
+         * The attributes.
+         */
+        attributes: {[key: string]: any};
+        /**
+         * Indicates whether the Auto Delete attribute is configured.
+         */
+        autoDeleteState: boolean;
+        /**
+         * The creation time.
+         */
+        createTime: string;
+        /**
+         * The name of the exchange.
+         */
+        exchangeName: string;
+        /**
+         * The type of the exchange.
+         */
+        exchangeType: string;
+        /**
+         * The ID of the Exchange. Its value is same as Queue Name.
+         */
+        id: string;
+        /**
+         * The ID of the instance.
+         */
+        instanceId: string;
+        /**
+         * The name of virtual host where an exchange resides.
+         */
+        virtualHostName: string;
+    }
+
+    export interface GetQueuesQueue {
+        /**
+         * The attributes for the Queue.
+         */
+        attributes: {[key: string]: any};
+        /**
+         * Specifies whether the Auto Delete attribute is configured.
+         */
+        autoDeleteState: boolean;
+        /**
+         * CreateTime.
+         */
+        createTime: string;
+        /**
+         * Specifies whether the queue is an exclusive queue.
+         */
+        exclusiveState: boolean;
+        /**
+         * The ID of the Queue. Its value is same as Queue Name.
+         */
+        id: string;
+        /**
+         * The ID of the instance.
+         */
+        instanceId: string;
+        /**
+         * The last consume time.
+         */
+        lastConsumeTime: string;
+        /**
+         * The queue name.
+         */
+        queueName: string;
+        /**
+         * The name of the virtual host.
+         */
+        virtualHostName: string;
+    }
+
     export interface GetVirtualHostsHost {
         /**
          * The ID of the Virtual Host.
@@ -1117,6 +1191,41 @@ export namespace cas {
 }
 
 export namespace cassandra {
+    export interface GetBackupPlansPlan {
+        /**
+         * Specifies whether to activate the backup plan.
+         */
+        active: boolean;
+        /**
+         * The backup cycle. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
+         */
+        backupPeriod: string;
+        /**
+         * The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
+         */
+        backupTime: string;
+        /**
+         * The ID of the cluster for the backup.
+         */
+        clusterId: string;
+        /**
+         * The time when the backup plan was created.
+         */
+        createTime: string;
+        /**
+         * The ID of the data center for the backup in the cluster.
+         */
+        dataCenterId: string;
+        /**
+         * The ID of the Backup Plan.
+         */
+        id: string;
+        /**
+         * The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
+         */
+        retentionPeriod: number;
+    }
+
     export interface GetClustersCluster {
         /**
          * The ID of the Cassandra cluster.
@@ -1901,6 +2010,65 @@ export namespace cen {
          * The update interval. Default value: 5. The value cannot be modified.
          */
         updateInterval: string;
+    }
+
+    export interface GetTransitRouterPeerAttachmentsAttachment {
+        /**
+         * Auto publish route enabled.
+         */
+        autoPublishRouteEnabled: boolean;
+        /**
+         * The bandwidth of the bandwidth package.
+         */
+        bandwidth: number;
+        /**
+         * ID of the CEN bandwidth package.
+         */
+        cenBandwidthPackageId: string;
+        /**
+         * ID of the geographic.
+         */
+        geographicSpanId: string;
+        /**
+         * The ID of CEN Transit Router peer attachments.
+         */
+        id: string;
+        /**
+         * ID of the peer transit router.
+         */
+        peerTransitRouterId: string;
+        /**
+         * Owner ID of the peer transit router.
+         */
+        peerTransitRouterOwnerId: string;
+        /**
+         * Region ID of the peer transit router.
+         */
+        peerTransitRouterRegionId: string;
+        /**
+         * Type of the resource.
+         */
+        resourceType: string;
+        /**
+         * The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
+         */
+        status: string;
+        /**
+         * The description of CEN Transit Router peer attachments.
+         */
+        transitRouterAttachmentDescription: string;
+        /**
+         * The ID of CEN Transit Router peer attachments.
+         */
+        transitRouterAttachmentId: string;
+        /**
+         * Name of the transit router attachment.
+         */
+        transitRouterAttachmentName: string;
+        /**
+         * The ID of transit router.
+         */
+        transitRouterId: string;
     }
 
     export interface GetTransitRouterRouteEntriesEntry {
@@ -3174,7 +3342,7 @@ export namespace config {
         cassandra?: string;
         cbn?: string;
         cdn?: string;
-        cen?: string;
+        cds?: string;
         cms?: string;
         config?: string;
         cr?: string;
@@ -11157,6 +11325,10 @@ export namespace kvstore {
          * The name of the instance.
          */
         searchKey: string;
+        /**
+         * (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+         */
+        secondaryZoneId: string;
         securityGroupId: string;
         securityIpGroupAttribute: string;
         securityIpGroupName: string;

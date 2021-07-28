@@ -195,6 +195,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dedicatedHostGroupId!: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to precheck the request. Valid values:
+     * * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+     * * false: checks the request. After the request passes the check, an instance is created.
+     */
+    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
      */
     public readonly enableBackupLog!: pulumi.Output<number | undefined>;
@@ -322,6 +328,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly restoreTime!: pulumi.Output<string | undefined>;
     /**
+     * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     */
+    public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
+    /**
      * The ID of security groups.
      */
     public readonly securityGroupId!: pulumi.Output<string | undefined>;
@@ -398,6 +408,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["couponNo"] = state ? state.couponNo : undefined;
             inputs["dbInstanceName"] = state ? state.dbInstanceName : undefined;
             inputs["dedicatedHostGroupId"] = state ? state.dedicatedHostGroupId : undefined;
+            inputs["dryRun"] = state ? state.dryRun : undefined;
             inputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
             inputs["enablePublic"] = state ? state.enablePublic : undefined;
             inputs["endTime"] = state ? state.endTime : undefined;
@@ -428,6 +439,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["qps"] = state ? state.qps : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["restoreTime"] = state ? state.restoreTime : undefined;
+            inputs["secondaryZoneId"] = state ? state.secondaryZoneId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["securityIpGroupAttribute"] = state ? state.securityIpGroupAttribute : undefined;
             inputs["securityIpGroupName"] = state ? state.securityIpGroupName : undefined;
@@ -455,6 +467,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["couponNo"] = args ? args.couponNo : undefined;
             inputs["dbInstanceName"] = args ? args.dbInstanceName : undefined;
             inputs["dedicatedHostGroupId"] = args ? args.dedicatedHostGroupId : undefined;
+            inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
             inputs["enablePublic"] = args ? args.enablePublic : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
@@ -483,6 +496,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["privateIp"] = args ? args.privateIp : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["restoreTime"] = args ? args.restoreTime : undefined;
+            inputs["secondaryZoneId"] = args ? args.secondaryZoneId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["securityIpGroupAttribute"] = args ? args.securityIpGroupAttribute : undefined;
             inputs["securityIpGroupName"] = args ? args.securityIpGroupName : undefined;
@@ -580,6 +594,12 @@ export interface InstanceState {
      * The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
      */
     readonly dedicatedHostGroupId?: pulumi.Input<string>;
+    /**
+     * Specifies whether to precheck the request. Valid values:
+     * * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+     * * false: checks the request. After the request passes the check, an instance is created.
+     */
+    readonly dryRun?: pulumi.Input<boolean>;
     /**
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
      */
@@ -708,6 +728,10 @@ export interface InstanceState {
      */
     readonly restoreTime?: pulumi.Input<string>;
     /**
+     * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     */
+    readonly secondaryZoneId?: pulumi.Input<string>;
+    /**
      * The ID of security groups.
      */
     readonly securityGroupId?: pulumi.Input<string>;
@@ -819,6 +843,12 @@ export interface InstanceArgs {
      * The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
      */
     readonly dedicatedHostGroupId?: pulumi.Input<string>;
+    /**
+     * Specifies whether to precheck the request. Valid values:
+     * * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+     * * false: checks the request. After the request passes the check, an instance is created.
+     */
+    readonly dryRun?: pulumi.Input<boolean>;
     /**
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
      */
@@ -938,6 +968,10 @@ export interface InstanceArgs {
      * The point in time of a backup file.
      */
     readonly restoreTime?: pulumi.Input<string>;
+    /**
+     * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     */
+    readonly secondaryZoneId?: pulumi.Input<string>;
     /**
      * The ID of security groups.
      */

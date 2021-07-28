@@ -17,6 +17,7 @@ from .get_region_route_entries import *
 from .get_route_entries import *
 from .get_route_maps import *
 from .get_route_services import *
+from .get_transit_router_peer_attachments import *
 from .get_transit_router_route_entries import *
 from .get_transit_router_route_table_associations import *
 from .get_transit_router_route_table_propagations import *
@@ -33,6 +34,7 @@ from .route_entry import *
 from .route_map import *
 from .route_service import *
 from .transit_router import *
+from .transit_router_peer_attachment import *
 from .transit_router_route_entry import *
 from .transit_router_route_table import *
 from .transit_router_route_table_association import *
@@ -79,6 +81,8 @@ def _register_module():
                 return RouteService(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cen/transitRouter:TransitRouter":
                 return TransitRouter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment":
+                return TransitRouterPeerAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry":
                 return TransitRouterRouteEntry(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable":
@@ -110,6 +114,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("alicloud", "cen/routeMap", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cen/routeService", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cen/transitRouter", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "cen/transitRouterPeerAttachment", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cen/transitRouterRouteEntry", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cen/transitRouterRouteTable", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "cen/transitRouterRouteTableAssociation", _module_instance)

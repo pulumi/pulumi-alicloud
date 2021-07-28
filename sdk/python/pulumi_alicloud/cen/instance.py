@@ -394,7 +394,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="protectionLevel")
-    def protection_level(self) -> pulumi.Output[Optional[str]]:
+    def protection_level(self) -> pulumi.Output[str]:
         """
         Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
         """

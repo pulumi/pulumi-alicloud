@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Cassandra;
         public readonly string? Cbn;
         public readonly string? Cdn;
-        public readonly string? Cen;
+        public readonly string? Cds;
         public readonly string? Cms;
         public readonly string? Config;
         public readonly string? Cr;
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Outputs
 
             string? cdn,
 
-            string? cen,
+            string? cds,
 
             string? cms,
 
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Outputs
             Cassandra = cassandra;
             Cbn = cbn;
             Cdn = cdn;
-            Cen = cen;
+            Cds = cds;
             Cms = cms;
             Config = config;
             Cr = cr;

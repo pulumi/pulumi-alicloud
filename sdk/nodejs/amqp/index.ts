@@ -5,16 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./exchange";
+export * from "./getExchanges";
+export * from "./getQueues";
 export * from "./getVirtualHosts";
+export * from "./queue";
 export * from "./virtualHost";
 
 // Import resources to register:
+import { Exchange } from "./exchange";
+import { Queue } from "./queue";
 import { VirtualHost } from "./virtualHost";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:amqp/exchange:Exchange":
+                return new Exchange(name, <any>undefined, { urn })
+            case "alicloud:amqp/queue:Queue":
+                return new Queue(name, <any>undefined, { urn })
             case "alicloud:amqp/virtualHost:VirtualHost":
                 return new VirtualHost(name, <any>undefined, { urn })
             default:
@@ -22,4 +32,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "amqp/exchange", _module)
+pulumi.runtime.registerResourceModule("alicloud", "amqp/queue", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/virtualHost", _module)

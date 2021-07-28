@@ -11,6 +11,7 @@ from .get_connections import *
 from .get_instance_classes import *
 from .get_instance_engines import *
 from .get_instances import *
+from .get_permission import *
 from .get_zones import *
 from .instance import *
 from ._inputs import *

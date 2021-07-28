@@ -363,6 +363,9 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
 
+        > **NOTE:**  This resource is used to manage a Reserved Storage Mode instance, and creating new reserved storage mode instance is no longer supported since v1.127.0.
+        You can still use this resource to mange the instance which has been already created, but can not create a new one.
+
         ## Example Usage
         ### Create a Gpdb instance
 
@@ -426,6 +429,9 @@ class Instance(pulumi.CustomResource):
         [`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]
 
         > **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
+
+        > **NOTE:**  This resource is used to manage a Reserved Storage Mode instance, and creating new reserved storage mode instance is no longer supported since v1.127.0.
+        You can still use this resource to mange the instance which has been already created, but can not create a new one.
 
         ## Example Usage
         ### Create a Gpdb instance

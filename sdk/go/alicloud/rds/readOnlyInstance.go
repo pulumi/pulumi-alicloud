@@ -113,7 +113,7 @@ type ReadOnlyInstance struct {
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
-	CaType pulumi.StringPtrOutput `pulumi:"caType"`
+	CaType pulumi.StringOutput `pulumi:"caType"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
 	ClientCaCert pulumi.StringPtrOutput `pulumi:"clientCaCert"`
 	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `sslEnabled  = 1`. Valid values:
@@ -163,10 +163,29 @@ type ReadOnlyInstance struct {
 	// - 1: enables SSL encryption
 	// - 0: disables SSL encryption
 	SslEnabled pulumi.IntOutput `pulumi:"sslEnabled"`
+	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+	SwitchTime pulumi.StringPtrOutput `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+	// - rds: The instance runs RDS Basic or High-availability Edition.
+	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+	TargetMinorVersion pulumi.StringOutput `pulumi:"targetMinorVersion"`
+	// Whether to upgrade a minor version of the kernel. Valid values:
+	// - true: upgrade
+	// - false: not to upgrade
+	UpgradeDbInstanceKernelVersion pulumi.BoolPtrOutput `pulumi:"upgradeDbInstanceKernelVersion"`
+	// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+	// - Immediate: The minor engine version is immediately updated.
+	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+	UpgradeTime pulumi.StringPtrOutput `pulumi:"upgradeTime"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance.
@@ -273,10 +292,29 @@ type readOnlyInstanceState struct {
 	// - 1: enables SSL encryption
 	// - 0: disables SSL encryption
 	SslEnabled *int `pulumi:"sslEnabled"`
+	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+	SwitchTime *string `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+	// - rds: The instance runs RDS Basic or High-availability Edition.
+	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+	TargetMinorVersion *string `pulumi:"targetMinorVersion"`
+	// Whether to upgrade a minor version of the kernel. Valid values:
+	// - true: upgrade
+	// - false: not to upgrade
+	UpgradeDbInstanceKernelVersion *bool `pulumi:"upgradeDbInstanceKernelVersion"`
+	// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+	// - Immediate: The minor engine version is immediately updated.
+	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+	UpgradeTime *string `pulumi:"upgradeTime"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance.
@@ -343,10 +381,29 @@ type ReadOnlyInstanceState struct {
 	// - 1: enables SSL encryption
 	// - 0: disables SSL encryption
 	SslEnabled pulumi.IntPtrInput
+	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+	SwitchTime pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+	// - rds: The instance runs RDS Basic or High-availability Edition.
+	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+	TargetMinorVersion pulumi.StringPtrInput
+	// Whether to upgrade a minor version of the kernel. Valid values:
+	// - true: upgrade
+	// - false: not to upgrade
+	UpgradeDbInstanceKernelVersion pulumi.BoolPtrInput
+	// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+	// - Immediate: The minor engine version is immediately updated.
+	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+	UpgradeTime pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance.
@@ -411,10 +468,29 @@ type readOnlyInstanceArgs struct {
 	// - 1: enables SSL encryption
 	// - 0: disables SSL encryption
 	SslEnabled *int `pulumi:"sslEnabled"`
+	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+	SwitchTime *string `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+	// - rds: The instance runs RDS Basic or High-availability Edition.
+	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+	TargetMinorVersion *string `pulumi:"targetMinorVersion"`
+	// Whether to upgrade a minor version of the kernel. Valid values:
+	// - true: upgrade
+	// - false: not to upgrade
+	UpgradeDbInstanceKernelVersion *bool `pulumi:"upgradeDbInstanceKernelVersion"`
+	// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+	// - Immediate: The minor engine version is immediately updated.
+	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+	UpgradeTime *string `pulumi:"upgradeTime"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance.
@@ -476,10 +552,29 @@ type ReadOnlyInstanceArgs struct {
 	// - 1: enables SSL encryption
 	// - 0: disables SSL encryption
 	SslEnabled pulumi.IntPtrInput
+	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+	SwitchTime pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
+	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
+	// - rds: The instance runs RDS Basic or High-availability Edition.
+	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+	TargetMinorVersion pulumi.StringPtrInput
+	// Whether to upgrade a minor version of the kernel. Valid values:
+	// - true: upgrade
+	// - false: not to upgrade
+	UpgradeDbInstanceKernelVersion pulumi.BoolPtrInput
+	// The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+	// - Immediate: The minor engine version is immediately updated.
+	// - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
+	// - SpecifyTime: The minor engine version is updated at the point in time you specify.
+	UpgradeTime pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance.

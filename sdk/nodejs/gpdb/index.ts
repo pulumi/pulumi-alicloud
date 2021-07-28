@@ -6,12 +6,14 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./connection";
+export * from "./elasticInstance";
 export * from "./getInstances";
 export * from "./getZones";
 export * from "./instance";
 
 // Import resources to register:
 import { Connection } from "./connection";
+import { ElasticInstance } from "./elasticInstance";
 import { Instance } from "./instance";
 
 const _module = {
@@ -20,6 +22,8 @@ const _module = {
         switch (type) {
             case "alicloud:gpdb/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "alicloud:gpdb/elasticInstance:ElasticInstance":
+                return new ElasticInstance(name, <any>undefined, { urn })
             case "alicloud:gpdb/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             default:
@@ -28,4 +32,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/connection", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/elasticInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/instance", _module)

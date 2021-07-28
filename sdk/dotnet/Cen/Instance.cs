@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Cen
         /// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
         /// </summary>
         [Output("protectionLevel")]
-        public Output<string?> ProtectionLevel { get; private set; } = null!;
+        public Output<string> ProtectionLevel { get; private set; } = null!;
 
         /// <summary>
         /// The Cen Instance current status.

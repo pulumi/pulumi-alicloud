@@ -94,7 +94,7 @@ type Instance struct {
 	// - perfer
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
-	Acl pulumi.StringPtrOutput `pulumi:"acl"`
+	Acl pulumi.StringOutput `pulumi:"acl"`
 	// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
@@ -106,7 +106,7 @@ type Instance struct {
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
-	CaType pulumi.StringPtrOutput `pulumi:"caType"`
+	CaType pulumi.StringOutput `pulumi:"caType"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert pulumi.StringPtrOutput `pulumi:"clientCaCert"`
 	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
@@ -141,6 +141,10 @@ type Instance struct {
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrOutput `pulumi:"forceRestart"`
+	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+	HaConfig pulumi.StringPtrOutput `pulumi:"haConfig"`
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
@@ -157,6 +161,8 @@ type Instance struct {
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
+	// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	ManualHaTime pulumi.StringPtrOutput `pulumi:"manualHaTime"`
 	// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
 	// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
 	// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
@@ -175,7 +181,7 @@ type Instance struct {
 	// - perfer
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
-	ReplicationAcl pulumi.StringPtrOutput `pulumi:"replicationAcl"`
+	ReplicationAcl pulumi.StringOutput `pulumi:"replicationAcl"`
 	// The ID of resource group which the DB instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
@@ -203,7 +209,6 @@ type Instance struct {
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
 	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
-	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
 	SwitchTime pulumi.StringPtrOutput `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -216,7 +221,6 @@ type Instance struct {
 	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
 	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
 	TargetMinorVersion pulumi.StringOutput `pulumi:"targetMinorVersion"`
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
@@ -339,6 +343,10 @@ type instanceState struct {
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart *bool `pulumi:"forceRestart"`
+	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+	HaConfig *string `pulumi:"haConfig"`
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
@@ -355,6 +363,8 @@ type instanceState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
+	// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	ManualHaTime *string `pulumi:"manualHaTime"`
 	// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
 	// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
 	// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
@@ -401,7 +411,6 @@ type instanceState struct {
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus *string `pulumi:"sslStatus"`
 	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
-	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
 	SwitchTime *string `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -414,7 +423,6 @@ type instanceState struct {
 	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
 	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
 	TargetMinorVersion *string `pulumi:"targetMinorVersion"`
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus *string `pulumi:"tdeStatus"`
@@ -497,6 +505,10 @@ type InstanceState struct {
 	EngineVersion pulumi.StringPtrInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrInput
+	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+	HaConfig pulumi.StringPtrInput
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
@@ -513,6 +525,8 @@ type InstanceState struct {
 	InstanceType pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
+	// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	ManualHaTime pulumi.StringPtrInput
 	// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
 	// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
 	// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
@@ -559,7 +573,6 @@ type InstanceState struct {
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus pulumi.StringPtrInput
 	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
-	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
 	SwitchTime pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -572,7 +585,6 @@ type InstanceState struct {
 	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
 	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
 	TargetMinorVersion pulumi.StringPtrInput
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrInput
@@ -657,6 +669,10 @@ type instanceArgs struct {
 	EngineVersion string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart *bool `pulumi:"forceRestart"`
+	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+	HaConfig *string `pulumi:"haConfig"`
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
@@ -673,6 +689,8 @@ type instanceArgs struct {
 	InstanceType string `pulumi:"instanceType"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
+	// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	ManualHaTime *string `pulumi:"manualHaTime"`
 	// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
 	// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
 	// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
@@ -717,7 +735,6 @@ type instanceArgs struct {
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
 	SslAction *string `pulumi:"sslAction"`
 	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
-	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
 	SwitchTime *string `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -730,7 +747,6 @@ type instanceArgs struct {
 	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
 	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
 	TargetMinorVersion *string `pulumi:"targetMinorVersion"`
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus *string `pulumi:"tdeStatus"`
@@ -812,6 +828,10 @@ type InstanceArgs struct {
 	EngineVersion pulumi.StringInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrInput
+	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
+	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
+	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+	HaConfig pulumi.StringPtrInput
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
@@ -828,6 +848,8 @@ type InstanceArgs struct {
 	InstanceType pulumi.StringInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
+	// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	ManualHaTime pulumi.StringPtrInput
 	// The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
 	// - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
 	// - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
@@ -872,7 +894,6 @@ type InstanceArgs struct {
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
 	SslAction pulumi.StringPtrInput
 	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
-	// > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
 	SwitchTime pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -885,7 +906,6 @@ type InstanceArgs struct {
 	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
 	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
-	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
 	TargetMinorVersion pulumi.StringPtrInput
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrInput

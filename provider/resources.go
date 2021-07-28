@@ -204,6 +204,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// amqp
 			"alicloud_amqp_virtual_host": {Tok: resource(amqpMod, "VirtualHost")},
+			"alicloud_amqp_queue":        {Tok: resource(amqpMod, "Queue")},
+			"alicloud_amqp_instance":     {Tok: resource(amqpMod, "Instance")},
+			"alicloud_amqp_exchange":     {Tok: resource(amqpMod, "Exchange")},
 
 			// Api Gateway
 			"alicloud_api_gateway_group":          {Tok: resource(apiGatewayMod, "Group")},
@@ -223,6 +226,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Cassandra
 			"alicloud_cassandra_cluster":     {Tok: resource(cassandraMod, "Cluster")},
 			"alicloud_cassandra_data_center": {Tok: resource(cassandraMod, "DataCenter")},
+			"alicloud_cassandra_backup_plan": {Tok: resource(cassandraMod, "BackupPlan")},
 
 			//CDN
 			"alicloud_cdn_domain":        {Tok: resource(cdnMod, "Domain")},
@@ -257,9 +261,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_transit_router_route_table_propagation": {
 				Tok: resource(cenMod, "TransitRouterRouteTablePropagation"),
 			},
-			"alicloud_cen_transit_router_route_entry":    {Tok: resource(cenMod, "TransitRouterRouteEntry")},
-			"alicloud_cen_transit_router_vbr_attachment": {Tok: resource(cenMod, "TransitRouterVbrAttachment")},
-			"alicloud_cen_transit_router_vpc_attachment": {Tok: resource(cenMod, "TransitRouterVpcAttachment")},
+			"alicloud_cen_transit_router_route_entry":     {Tok: resource(cenMod, "TransitRouterRouteEntry")},
+			"alicloud_cen_transit_router_vbr_attachment":  {Tok: resource(cenMod, "TransitRouterVbrAttachment")},
+			"alicloud_cen_transit_router_vpc_attachment":  {Tok: resource(cenMod, "TransitRouterVpcAttachment")},
+			"alicloud_cen_transit_router_peer_attachment": {Tok: resource(cenMod, "TransitRouterPeerAttachment")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_network":            {Tok: resource(cloudConnectMod, "Network")},
@@ -311,6 +316,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cs_kubernetes_node_pool":   {Tok: resource(csMod, "NodePool")},
 			"alicloud_cs_edge_kubernetes":        {Tok: resource(csMod, "EdgeKubernetes")},
 			"alicloud_cs_kubernetes_permissions": {Tok: resource(csMod, "KubernetesPermission")},
+			"alicloud_cs_autoscaling_config":     {Tok: resource(csMod, "AutoscalingConfig")},
 
 			// DataHub
 			"alicloud_datahub_project":      {Tok: resource(datahubMod, "Project")},
@@ -484,8 +490,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ga_forwarding_rule":              {Tok: resource(gaMod, "ForwardingRule")},
 
 			// Gpdb
-			"alicloud_gpdb_connection": {Tok: resource(gpdbMod, "Connection")},
-			"alicloud_gpdb_instance":   {Tok: resource(gpdbMod, "Instance")},
+			"alicloud_gpdb_connection":       {Tok: resource(gpdbMod, "Connection")},
+			"alicloud_gpdb_instance":         {Tok: resource(gpdbMod, "Instance")},
+			"alicloud_gpdb_elastic_instance": {Tok: resource(gpdbMod, "ElasticInstance")},
 
 			// Hbase
 			"alicloud_hbase_instance": {Tok: resource(hbaseMod, "Instance")},
@@ -783,6 +790,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// amqp
 			"alicloud_amqp_virtual_hosts": {Tok: dataSource(amqpMod, "getVirtualHosts")},
+			"alicloud_amqp_queues":        {Tok: dataSource(amqpMod, "getQueues")},
+			"alicloud_amqp_instances":     {Tok: dataSource(amqpMod, "getInstances")},
+			"alicloud_amqp_exchanges":     {Tok: dataSource(amqpMod, "getExchanges")},
 
 			// ApiGateway
 			"alicloud_api_gateway_groups":  {Tok: dataSource(apiGatewayMod, "getGroups")},
@@ -803,6 +813,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cassandra_clusters":     {Tok: dataSource(cassandraMod, "getClusters")},
 			"alicloud_cassandra_data_centers": {Tok: dataSource(cassandraMod, "getDataCenters")},
 			"alicloud_cassandra_zones":        {Tok: dataSource(cassandraMod, "getZones")},
+			"alicloud_cassandra_backup_plans": {Tok: dataSource(cassandraMod, "getBackupPlans")},
 
 			// Cdn
 			"alicloud_cdn_service": {Tok: dataSource(cdnMod, "getService")},
@@ -827,9 +838,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_transit_router_route_table_propagations": {
 				Tok: dataSource(cenMod, "getTransitRouterRouteTablePropagations"),
 			},
-			"alicloud_cen_transit_router_route_entries":   {Tok: dataSource(cenMod, "getTransitRouterRouteEntries")},
-			"alicloud_cen_transit_router_vbr_attachments": {Tok: dataSource(cenMod, "getTransitRouterVbrAttachments")},
-			"alicloud_cen_transit_router_vpc_attachments": {Tok: dataSource(cenMod, "getTransitRouterVpcAttachments")},
+			"alicloud_cen_transit_router_route_entries":    {Tok: dataSource(cenMod, "getTransitRouterRouteEntries")},
+			"alicloud_cen_transit_router_vbr_attachments":  {Tok: dataSource(cenMod, "getTransitRouterVbrAttachments")},
+			"alicloud_cen_transit_router_vpc_attachments":  {Tok: dataSource(cenMod, "getTransitRouterVpcAttachments")},
+			"alicloud_cen_transit_router_peer_attachments": {Tok: dataSource(cenMod, "getTransitRouterPeerAttachments")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_networks": {Tok: dataSource(cloudConnectMod, "getNetworks")},
@@ -1029,6 +1041,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kvstore_zones":            {Tok: dataSource(kvstoreMod, "getZones")},
 			"alicloud_kvstore_connections":      {Tok: dataSource(kvstoreMod, "getConnections")},
 			"alicloud_kvstore_accounts":         {Tok: dataSource(kvstoreMod, "getAccounts")},
+			"alicloud_kvstore_permission":       {Tok: dataSource(kvstoreMod, "getPermission")},
 
 			// Log
 			"alicloud_log_service":  {Tok: dataSource(logMod, "getService")},
