@@ -57,6 +57,9 @@ class InstanceArgs:
                  sql_collector_config_value: Optional[pulumi.Input[int]] = None,
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
+                 storage_auto_scale: Optional[pulumi.Input[str]] = None,
+                 storage_threshold: Optional[pulumi.Input[int]] = None,
+                 storage_upper_bound: Optional[pulumi.Input[int]] = None,
                  switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  target_minor_version: Optional[pulumi.Input[str]] = None,
@@ -141,6 +144,16 @@ class InstanceArgs:
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        :param pulumi.Input[str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
+               - Enable
+               - Disable
+        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+               - 10
+               - 20
+               - 30
+               - 40
+               - 50
+        :param pulumi.Input[int] storage_upper_bound: The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -254,6 +267,12 @@ class InstanceArgs:
             pulumi.set(__self__, "sql_collector_status", sql_collector_status)
         if ssl_action is not None:
             pulumi.set(__self__, "ssl_action", ssl_action)
+        if storage_auto_scale is not None:
+            pulumi.set(__self__, "storage_auto_scale", storage_auto_scale)
+        if storage_threshold is not None:
+            pulumi.set(__self__, "storage_threshold", storage_threshold)
+        if storage_upper_bound is not None:
+            pulumi.set(__self__, "storage_upper_bound", storage_upper_bound)
         if switch_time is not None:
             pulumi.set(__self__, "switch_time", switch_time)
         if tags is not None:
@@ -805,6 +824,49 @@ class InstanceArgs:
         pulumi.set(self, "ssl_action", value)
 
     @property
+    @pulumi.getter(name="storageAutoScale")
+    def storage_auto_scale(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatic storage space expansion switch. Valid values:
+        - Enable
+        - Disable
+        """
+        return pulumi.get(self, "storage_auto_scale")
+
+    @storage_auto_scale.setter
+    def storage_auto_scale(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_auto_scale", value)
+
+    @property
+    @pulumi.getter(name="storageThreshold")
+    def storage_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+        - 10
+        - 20
+        - 30
+        - 40
+        - 50
+        """
+        return pulumi.get(self, "storage_threshold")
+
+    @storage_threshold.setter
+    def storage_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_threshold", value)
+
+    @property
+    @pulumi.getter(name="storageUpperBound")
+    def storage_upper_bound(self) -> Optional[pulumi.Input[int]]:
+        """
+        The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+        """
+        return pulumi.get(self, "storage_upper_bound")
+
+    @storage_upper_bound.setter
+    def storage_upper_bound(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_upper_bound", value)
+
+    @property
     @pulumi.getter(name="switchTime")
     def switch_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1002,6 +1064,9 @@ class _InstanceState:
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  ssl_status: Optional[pulumi.Input[str]] = None,
+                 storage_auto_scale: Optional[pulumi.Input[str]] = None,
+                 storage_threshold: Optional[pulumi.Input[int]] = None,
+                 storage_upper_bound: Optional[pulumi.Input[int]] = None,
                  switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  target_minor_version: Optional[pulumi.Input[str]] = None,
@@ -1088,6 +1153,16 @@ class _InstanceState:
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+        :param pulumi.Input[str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
+               - Enable
+               - Disable
+        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+               - 10
+               - 20
+               - 30
+               - 40
+               - 50
+        :param pulumi.Input[int] storage_upper_bound: The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1209,6 +1284,12 @@ class _InstanceState:
             pulumi.set(__self__, "ssl_action", ssl_action)
         if ssl_status is not None:
             pulumi.set(__self__, "ssl_status", ssl_status)
+        if storage_auto_scale is not None:
+            pulumi.set(__self__, "storage_auto_scale", storage_auto_scale)
+        if storage_threshold is not None:
+            pulumi.set(__self__, "storage_threshold", storage_threshold)
+        if storage_upper_bound is not None:
+            pulumi.set(__self__, "storage_upper_bound", storage_upper_bound)
         if switch_time is not None:
             pulumi.set(__self__, "switch_time", switch_time)
         if tags is not None:
@@ -1784,6 +1865,49 @@ class _InstanceState:
         pulumi.set(self, "ssl_status", value)
 
     @property
+    @pulumi.getter(name="storageAutoScale")
+    def storage_auto_scale(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatic storage space expansion switch. Valid values:
+        - Enable
+        - Disable
+        """
+        return pulumi.get(self, "storage_auto_scale")
+
+    @storage_auto_scale.setter
+    def storage_auto_scale(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_auto_scale", value)
+
+    @property
+    @pulumi.getter(name="storageThreshold")
+    def storage_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+        - 10
+        - 20
+        - 30
+        - 40
+        - 50
+        """
+        return pulumi.get(self, "storage_threshold")
+
+    @storage_threshold.setter
+    def storage_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_threshold", value)
+
+    @property
+    @pulumi.getter(name="storageUpperBound")
+    def storage_upper_bound(self) -> Optional[pulumi.Input[int]]:
+        """
+        The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+        """
+        return pulumi.get(self, "storage_upper_bound")
+
+    @storage_upper_bound.setter
+    def storage_upper_bound(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_upper_bound", value)
+
+    @property
     @pulumi.getter(name="switchTime")
     def switch_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1981,6 +2105,9 @@ class Instance(pulumi.CustomResource):
                  sql_collector_config_value: Optional[pulumi.Input[int]] = None,
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
+                 storage_auto_scale: Optional[pulumi.Input[str]] = None,
+                 storage_threshold: Optional[pulumi.Input[int]] = None,
+                 storage_upper_bound: Optional[pulumi.Input[int]] = None,
                  switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  target_minor_version: Optional[pulumi.Input[str]] = None,
@@ -2110,6 +2237,16 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
+        :param pulumi.Input[str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
+               - Enable
+               - Disable
+        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+               - 10
+               - 20
+               - 30
+               - 40
+               - 50
+        :param pulumi.Input[int] storage_upper_bound: The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -2247,6 +2384,9 @@ class Instance(pulumi.CustomResource):
                  sql_collector_config_value: Optional[pulumi.Input[int]] = None,
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
+                 storage_auto_scale: Optional[pulumi.Input[str]] = None,
+                 storage_threshold: Optional[pulumi.Input[int]] = None,
+                 storage_upper_bound: Optional[pulumi.Input[int]] = None,
                  switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  target_minor_version: Optional[pulumi.Input[str]] = None,
@@ -2323,6 +2463,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["sql_collector_config_value"] = sql_collector_config_value
             __props__.__dict__["sql_collector_status"] = sql_collector_status
             __props__.__dict__["ssl_action"] = ssl_action
+            __props__.__dict__["storage_auto_scale"] = storage_auto_scale
+            __props__.__dict__["storage_threshold"] = storage_threshold
+            __props__.__dict__["storage_upper_bound"] = storage_upper_bound
             __props__.__dict__["switch_time"] = switch_time
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target_minor_version"] = target_minor_version
@@ -2390,6 +2533,9 @@ class Instance(pulumi.CustomResource):
             sql_collector_status: Optional[pulumi.Input[str]] = None,
             ssl_action: Optional[pulumi.Input[str]] = None,
             ssl_status: Optional[pulumi.Input[str]] = None,
+            storage_auto_scale: Optional[pulumi.Input[str]] = None,
+            storage_threshold: Optional[pulumi.Input[int]] = None,
+            storage_upper_bound: Optional[pulumi.Input[int]] = None,
             switch_time: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             target_minor_version: Optional[pulumi.Input[str]] = None,
@@ -2481,6 +2627,16 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+        :param pulumi.Input[str] storage_auto_scale: Automatic storage space expansion switch. Valid values:
+               - Enable
+               - Disable
+        :param pulumi.Input[int] storage_threshold: The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+               - 10
+               - 20
+               - 30
+               - 40
+               - 50
+        :param pulumi.Input[int] storage_upper_bound: The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -2559,6 +2715,9 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["sql_collector_status"] = sql_collector_status
         __props__.__dict__["ssl_action"] = ssl_action
         __props__.__dict__["ssl_status"] = ssl_status
+        __props__.__dict__["storage_auto_scale"] = storage_auto_scale
+        __props__.__dict__["storage_threshold"] = storage_threshold
+        __props__.__dict__["storage_upper_bound"] = storage_upper_bound
         __props__.__dict__["switch_time"] = switch_time
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_minor_version"] = target_minor_version
@@ -2946,6 +3105,37 @@ class Instance(pulumi.CustomResource):
         Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
         """
         return pulumi.get(self, "ssl_status")
+
+    @property
+    @pulumi.getter(name="storageAutoScale")
+    def storage_auto_scale(self) -> pulumi.Output[Optional[str]]:
+        """
+        Automatic storage space expansion switch. Valid values:
+        - Enable
+        - Disable
+        """
+        return pulumi.get(self, "storage_auto_scale")
+
+    @property
+    @pulumi.getter(name="storageThreshold")
+    def storage_threshold(self) -> pulumi.Output[Optional[int]]:
+        """
+        The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+        - 10
+        - 20
+        - 30
+        - 40
+        - 50
+        """
+        return pulumi.get(self, "storage_threshold")
+
+    @property
+    @pulumi.getter(name="storageUpperBound")
+    def storage_upper_bound(self) -> pulumi.Output[Optional[int]]:
+        """
+        The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+        """
+        return pulumi.get(self, "storage_upper_bound")
 
     @property
     @pulumi.getter(name="switchTime")

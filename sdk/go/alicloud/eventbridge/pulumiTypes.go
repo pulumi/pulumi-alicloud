@@ -10,11 +10,263 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type RuleTarget struct {
+	// The endpoint of target.
+	Endpoint string `pulumi:"endpoint"`
+	// A list of param.
+	ParamLists []RuleTargetParamList `pulumi:"paramLists"`
+	// The ID of target.
+	TargetId string `pulumi:"targetId"`
+	// The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+	Type string `pulumi:"type"`
+}
+
+// RuleTargetInput is an input type that accepts RuleTargetArgs and RuleTargetOutput values.
+// You can construct a concrete instance of `RuleTargetInput` via:
+//
+//          RuleTargetArgs{...}
+type RuleTargetInput interface {
+	pulumi.Input
+
+	ToRuleTargetOutput() RuleTargetOutput
+	ToRuleTargetOutputWithContext(context.Context) RuleTargetOutput
+}
+
+type RuleTargetArgs struct {
+	// The endpoint of target.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// A list of param.
+	ParamLists RuleTargetParamListArrayInput `pulumi:"paramLists"`
+	// The ID of target.
+	TargetId pulumi.StringInput `pulumi:"targetId"`
+	// The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RuleTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleTarget)(nil)).Elem()
+}
+
+func (i RuleTargetArgs) ToRuleTargetOutput() RuleTargetOutput {
+	return i.ToRuleTargetOutputWithContext(context.Background())
+}
+
+func (i RuleTargetArgs) ToRuleTargetOutputWithContext(ctx context.Context) RuleTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetOutput)
+}
+
+// RuleTargetArrayInput is an input type that accepts RuleTargetArray and RuleTargetArrayOutput values.
+// You can construct a concrete instance of `RuleTargetArrayInput` via:
+//
+//          RuleTargetArray{ RuleTargetArgs{...} }
+type RuleTargetArrayInput interface {
+	pulumi.Input
+
+	ToRuleTargetArrayOutput() RuleTargetArrayOutput
+	ToRuleTargetArrayOutputWithContext(context.Context) RuleTargetArrayOutput
+}
+
+type RuleTargetArray []RuleTargetInput
+
+func (RuleTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleTarget)(nil)).Elem()
+}
+
+func (i RuleTargetArray) ToRuleTargetArrayOutput() RuleTargetArrayOutput {
+	return i.ToRuleTargetArrayOutputWithContext(context.Background())
+}
+
+func (i RuleTargetArray) ToRuleTargetArrayOutputWithContext(ctx context.Context) RuleTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetArrayOutput)
+}
+
+type RuleTargetOutput struct{ *pulumi.OutputState }
+
+func (RuleTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleTarget)(nil)).Elem()
+}
+
+func (o RuleTargetOutput) ToRuleTargetOutput() RuleTargetOutput {
+	return o
+}
+
+func (o RuleTargetOutput) ToRuleTargetOutputWithContext(ctx context.Context) RuleTargetOutput {
+	return o
+}
+
+// The endpoint of target.
+func (o RuleTargetOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleTarget) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// A list of param.
+func (o RuleTargetOutput) ParamLists() RuleTargetParamListArrayOutput {
+	return o.ApplyT(func(v RuleTarget) []RuleTargetParamList { return v.ParamLists }).(RuleTargetParamListArrayOutput)
+}
+
+// The ID of target.
+func (o RuleTargetOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleTarget) string { return v.TargetId }).(pulumi.StringOutput)
+}
+
+// The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+func (o RuleTargetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleTarget) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RuleTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleTarget)(nil)).Elem()
+}
+
+func (o RuleTargetArrayOutput) ToRuleTargetArrayOutput() RuleTargetArrayOutput {
+	return o
+}
+
+func (o RuleTargetArrayOutput) ToRuleTargetArrayOutputWithContext(ctx context.Context) RuleTargetArrayOutput {
+	return o
+}
+
+func (o RuleTargetArrayOutput) Index(i pulumi.IntInput) RuleTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleTarget {
+		return vs[0].([]RuleTarget)[vs[1].(int)]
+	}).(RuleTargetOutput)
+}
+
+type RuleTargetParamList struct {
+	// The format of param.
+	Form string `pulumi:"form"`
+	// The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+	ResourceKey string `pulumi:"resourceKey"`
+	// The template of param.
+	Template *string `pulumi:"template"`
+	// The value of param.
+	Value string `pulumi:"value"`
+}
+
+// RuleTargetParamListInput is an input type that accepts RuleTargetParamListArgs and RuleTargetParamListOutput values.
+// You can construct a concrete instance of `RuleTargetParamListInput` via:
+//
+//          RuleTargetParamListArgs{...}
+type RuleTargetParamListInput interface {
+	pulumi.Input
+
+	ToRuleTargetParamListOutput() RuleTargetParamListOutput
+	ToRuleTargetParamListOutputWithContext(context.Context) RuleTargetParamListOutput
+}
+
+type RuleTargetParamListArgs struct {
+	// The format of param.
+	Form pulumi.StringInput `pulumi:"form"`
+	// The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+	ResourceKey pulumi.StringInput `pulumi:"resourceKey"`
+	// The template of param.
+	Template pulumi.StringPtrInput `pulumi:"template"`
+	// The value of param.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (RuleTargetParamListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleTargetParamList)(nil)).Elem()
+}
+
+func (i RuleTargetParamListArgs) ToRuleTargetParamListOutput() RuleTargetParamListOutput {
+	return i.ToRuleTargetParamListOutputWithContext(context.Background())
+}
+
+func (i RuleTargetParamListArgs) ToRuleTargetParamListOutputWithContext(ctx context.Context) RuleTargetParamListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetParamListOutput)
+}
+
+// RuleTargetParamListArrayInput is an input type that accepts RuleTargetParamListArray and RuleTargetParamListArrayOutput values.
+// You can construct a concrete instance of `RuleTargetParamListArrayInput` via:
+//
+//          RuleTargetParamListArray{ RuleTargetParamListArgs{...} }
+type RuleTargetParamListArrayInput interface {
+	pulumi.Input
+
+	ToRuleTargetParamListArrayOutput() RuleTargetParamListArrayOutput
+	ToRuleTargetParamListArrayOutputWithContext(context.Context) RuleTargetParamListArrayOutput
+}
+
+type RuleTargetParamListArray []RuleTargetParamListInput
+
+func (RuleTargetParamListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleTargetParamList)(nil)).Elem()
+}
+
+func (i RuleTargetParamListArray) ToRuleTargetParamListArrayOutput() RuleTargetParamListArrayOutput {
+	return i.ToRuleTargetParamListArrayOutputWithContext(context.Background())
+}
+
+func (i RuleTargetParamListArray) ToRuleTargetParamListArrayOutputWithContext(ctx context.Context) RuleTargetParamListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetParamListArrayOutput)
+}
+
+type RuleTargetParamListOutput struct{ *pulumi.OutputState }
+
+func (RuleTargetParamListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleTargetParamList)(nil)).Elem()
+}
+
+func (o RuleTargetParamListOutput) ToRuleTargetParamListOutput() RuleTargetParamListOutput {
+	return o
+}
+
+func (o RuleTargetParamListOutput) ToRuleTargetParamListOutputWithContext(ctx context.Context) RuleTargetParamListOutput {
+	return o
+}
+
+// The format of param.
+func (o RuleTargetParamListOutput) Form() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleTargetParamList) string { return v.Form }).(pulumi.StringOutput)
+}
+
+// The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+func (o RuleTargetParamListOutput) ResourceKey() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleTargetParamList) string { return v.ResourceKey }).(pulumi.StringOutput)
+}
+
+// The template of param.
+func (o RuleTargetParamListOutput) Template() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleTargetParamList) *string { return v.Template }).(pulumi.StringPtrOutput)
+}
+
+// The value of param.
+func (o RuleTargetParamListOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleTargetParamList) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type RuleTargetParamListArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleTargetParamListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleTargetParamList)(nil)).Elem()
+}
+
+func (o RuleTargetParamListArrayOutput) ToRuleTargetParamListArrayOutput() RuleTargetParamListArrayOutput {
+	return o
+}
+
+func (o RuleTargetParamListArrayOutput) ToRuleTargetParamListArrayOutputWithContext(ctx context.Context) RuleTargetParamListArrayOutput {
+	return o
+}
+
+func (o RuleTargetParamListArrayOutput) Index(i pulumi.IntInput) RuleTargetParamListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleTargetParamList {
+		return vs[0].([]RuleTargetParamList)[vs[1].(int)]
+	}).(RuleTargetParamListOutput)
+}
+
 type GetEventBusesBus struct {
-	CreateTime   string `pulumi:"createTime"`
-	Description  string `pulumi:"description"`
+	// The time of this bus was created.
+	CreateTime string `pulumi:"createTime"`
+	// The description of event bus.
+	Description string `pulumi:"description"`
+	// The name of event bus.
 	EventBusName string `pulumi:"eventBusName"`
-	Id           string `pulumi:"id"`
+	// The ID of the Event Bus. Its value is same as Queue Name.
+	Id string `pulumi:"id"`
 }
 
 // GetEventBusesBusInput is an input type that accepts GetEventBusesBusArgs and GetEventBusesBusOutput values.
@@ -29,10 +281,14 @@ type GetEventBusesBusInput interface {
 }
 
 type GetEventBusesBusArgs struct {
-	CreateTime   pulumi.StringInput `pulumi:"createTime"`
-	Description  pulumi.StringInput `pulumi:"description"`
+	// The time of this bus was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of event bus.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The name of event bus.
 	EventBusName pulumi.StringInput `pulumi:"eventBusName"`
-	Id           pulumi.StringInput `pulumi:"id"`
+	// The ID of the Event Bus. Its value is same as Queue Name.
+	Id pulumi.StringInput `pulumi:"id"`
 }
 
 func (GetEventBusesBusArgs) ElementType() reflect.Type {
@@ -86,18 +342,22 @@ func (o GetEventBusesBusOutput) ToGetEventBusesBusOutputWithContext(ctx context.
 	return o
 }
 
+// The time of this bus was created.
 func (o GetEventBusesBusOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventBusesBus) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The description of event bus.
 func (o GetEventBusesBusOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventBusesBus) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The name of event bus.
 func (o GetEventBusesBusOutput) EventBusName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventBusesBus) string { return v.EventBusName }).(pulumi.StringOutput)
 }
 
+// The ID of the Event Bus. Its value is same as Queue Name.
 func (o GetEventBusesBusOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventBusesBus) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -122,121 +382,281 @@ func (o GetEventBusesBusArrayOutput) Index(i pulumi.IntInput) GetEventBusesBusOu
 	}).(GetEventBusesBusOutput)
 }
 
-type GetSchemaGroupsGroup struct {
+type GetRulesRule struct {
+	// The description of rule.
 	Description string `pulumi:"description"`
-	Format      string `pulumi:"format"`
-	GroupId     string `pulumi:"groupId"`
-	Id          string `pulumi:"id"`
+	// The name of event bus.
+	EventBusName string `pulumi:"eventBusName"`
+	// The pattern to match interested events.
+	FilterPattern string `pulumi:"filterPattern"`
+	// The ID of the Rule.
+	Id string `pulumi:"id"`
+	// The name of rule.
+	RuleName string `pulumi:"ruleName"`
+	// Rule status, either Enable or Disable.
+	Status string `pulumi:"status"`
+	// The target for rule.
+	Targets []GetRulesRuleTarget `pulumi:"targets"`
 }
 
-// GetSchemaGroupsGroupInput is an input type that accepts GetSchemaGroupsGroupArgs and GetSchemaGroupsGroupOutput values.
-// You can construct a concrete instance of `GetSchemaGroupsGroupInput` via:
+// GetRulesRuleInput is an input type that accepts GetRulesRuleArgs and GetRulesRuleOutput values.
+// You can construct a concrete instance of `GetRulesRuleInput` via:
 //
-//          GetSchemaGroupsGroupArgs{...}
-type GetSchemaGroupsGroupInput interface {
+//          GetRulesRuleArgs{...}
+type GetRulesRuleInput interface {
 	pulumi.Input
 
-	ToGetSchemaGroupsGroupOutput() GetSchemaGroupsGroupOutput
-	ToGetSchemaGroupsGroupOutputWithContext(context.Context) GetSchemaGroupsGroupOutput
+	ToGetRulesRuleOutput() GetRulesRuleOutput
+	ToGetRulesRuleOutputWithContext(context.Context) GetRulesRuleOutput
 }
 
-type GetSchemaGroupsGroupArgs struct {
+type GetRulesRuleArgs struct {
+	// The description of rule.
 	Description pulumi.StringInput `pulumi:"description"`
-	Format      pulumi.StringInput `pulumi:"format"`
-	GroupId     pulumi.StringInput `pulumi:"groupId"`
-	Id          pulumi.StringInput `pulumi:"id"`
+	// The name of event bus.
+	EventBusName pulumi.StringInput `pulumi:"eventBusName"`
+	// The pattern to match interested events.
+	FilterPattern pulumi.StringInput `pulumi:"filterPattern"`
+	// The ID of the Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// Rule status, either Enable or Disable.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The target for rule.
+	Targets GetRulesRuleTargetArrayInput `pulumi:"targets"`
 }
 
-func (GetSchemaGroupsGroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSchemaGroupsGroup)(nil)).Elem()
+func (GetRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRule)(nil)).Elem()
 }
 
-func (i GetSchemaGroupsGroupArgs) ToGetSchemaGroupsGroupOutput() GetSchemaGroupsGroupOutput {
-	return i.ToGetSchemaGroupsGroupOutputWithContext(context.Background())
+func (i GetRulesRuleArgs) ToGetRulesRuleOutput() GetRulesRuleOutput {
+	return i.ToGetRulesRuleOutputWithContext(context.Background())
 }
 
-func (i GetSchemaGroupsGroupArgs) ToGetSchemaGroupsGroupOutputWithContext(ctx context.Context) GetSchemaGroupsGroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaGroupsGroupOutput)
+func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleOutput)
 }
 
-// GetSchemaGroupsGroupArrayInput is an input type that accepts GetSchemaGroupsGroupArray and GetSchemaGroupsGroupArrayOutput values.
-// You can construct a concrete instance of `GetSchemaGroupsGroupArrayInput` via:
+// GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleArrayInput` via:
 //
-//          GetSchemaGroupsGroupArray{ GetSchemaGroupsGroupArgs{...} }
-type GetSchemaGroupsGroupArrayInput interface {
+//          GetRulesRuleArray{ GetRulesRuleArgs{...} }
+type GetRulesRuleArrayInput interface {
 	pulumi.Input
 
-	ToGetSchemaGroupsGroupArrayOutput() GetSchemaGroupsGroupArrayOutput
-	ToGetSchemaGroupsGroupArrayOutputWithContext(context.Context) GetSchemaGroupsGroupArrayOutput
+	ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput
+	ToGetRulesRuleArrayOutputWithContext(context.Context) GetRulesRuleArrayOutput
 }
 
-type GetSchemaGroupsGroupArray []GetSchemaGroupsGroupInput
+type GetRulesRuleArray []GetRulesRuleInput
 
-func (GetSchemaGroupsGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSchemaGroupsGroup)(nil)).Elem()
+func (GetRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRule)(nil)).Elem()
 }
 
-func (i GetSchemaGroupsGroupArray) ToGetSchemaGroupsGroupArrayOutput() GetSchemaGroupsGroupArrayOutput {
-	return i.ToGetSchemaGroupsGroupArrayOutputWithContext(context.Background())
+func (i GetRulesRuleArray) ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput {
+	return i.ToGetRulesRuleArrayOutputWithContext(context.Background())
 }
 
-func (i GetSchemaGroupsGroupArray) ToGetSchemaGroupsGroupArrayOutputWithContext(ctx context.Context) GetSchemaGroupsGroupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaGroupsGroupArrayOutput)
+func (i GetRulesRuleArray) ToGetRulesRuleArrayOutputWithContext(ctx context.Context) GetRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleArrayOutput)
 }
 
-type GetSchemaGroupsGroupOutput struct{ *pulumi.OutputState }
+type GetRulesRuleOutput struct{ *pulumi.OutputState }
 
-func (GetSchemaGroupsGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSchemaGroupsGroup)(nil)).Elem()
+func (GetRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRule)(nil)).Elem()
 }
 
-func (o GetSchemaGroupsGroupOutput) ToGetSchemaGroupsGroupOutput() GetSchemaGroupsGroupOutput {
+func (o GetRulesRuleOutput) ToGetRulesRuleOutput() GetRulesRuleOutput {
 	return o
 }
 
-func (o GetSchemaGroupsGroupOutput) ToGetSchemaGroupsGroupOutputWithContext(ctx context.Context) GetSchemaGroupsGroupOutput {
+func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
 	return o
 }
 
-func (o GetSchemaGroupsGroupOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSchemaGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+// The description of rule.
+func (o GetRulesRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetSchemaGroupsGroupOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSchemaGroupsGroup) string { return v.Format }).(pulumi.StringOutput)
+// The name of event bus.
+func (o GetRulesRuleOutput) EventBusName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.EventBusName }).(pulumi.StringOutput)
 }
 
-func (o GetSchemaGroupsGroupOutput) GroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSchemaGroupsGroup) string { return v.GroupId }).(pulumi.StringOutput)
+// The pattern to match interested events.
+func (o GetRulesRuleOutput) FilterPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.FilterPattern }).(pulumi.StringOutput)
 }
 
-func (o GetSchemaGroupsGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSchemaGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+// The ID of the Rule.
+func (o GetRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
-type GetSchemaGroupsGroupArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSchemaGroupsGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSchemaGroupsGroup)(nil)).Elem()
+// The name of rule.
+func (o GetRulesRuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.RuleName }).(pulumi.StringOutput)
 }
 
-func (o GetSchemaGroupsGroupArrayOutput) ToGetSchemaGroupsGroupArrayOutput() GetSchemaGroupsGroupArrayOutput {
+// Rule status, either Enable or Disable.
+func (o GetRulesRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The target for rule.
+func (o GetRulesRuleOutput) Targets() GetRulesRuleTargetArrayOutput {
+	return o.ApplyT(func(v GetRulesRule) []GetRulesRuleTarget { return v.Targets }).(GetRulesRuleTargetArrayOutput)
+}
+
+type GetRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRule)(nil)).Elem()
+}
+
+func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput {
 	return o
 }
 
-func (o GetSchemaGroupsGroupArrayOutput) ToGetSchemaGroupsGroupArrayOutputWithContext(ctx context.Context) GetSchemaGroupsGroupArrayOutput {
+func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutputWithContext(ctx context.Context) GetRulesRuleArrayOutput {
 	return o
 }
 
-func (o GetSchemaGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetSchemaGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSchemaGroupsGroup {
-		return vs[0].([]GetSchemaGroupsGroup)[vs[1].(int)]
-	}).(GetSchemaGroupsGroupOutput)
+func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRule {
+		return vs[0].([]GetRulesRule)[vs[1].(int)]
+	}).(GetRulesRuleOutput)
+}
+
+type GetRulesRuleTarget struct {
+	// The endpoint.
+	Endpoint string `pulumi:"endpoint"`
+	// The id of target.
+	TargetId string `pulumi:"targetId"`
+	// The type of target.
+	Type string `pulumi:"type"`
+}
+
+// GetRulesRuleTargetInput is an input type that accepts GetRulesRuleTargetArgs and GetRulesRuleTargetOutput values.
+// You can construct a concrete instance of `GetRulesRuleTargetInput` via:
+//
+//          GetRulesRuleTargetArgs{...}
+type GetRulesRuleTargetInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleTargetOutput() GetRulesRuleTargetOutput
+	ToGetRulesRuleTargetOutputWithContext(context.Context) GetRulesRuleTargetOutput
+}
+
+type GetRulesRuleTargetArgs struct {
+	// The endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The id of target.
+	TargetId pulumi.StringInput `pulumi:"targetId"`
+	// The type of target.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRulesRuleTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleTarget)(nil)).Elem()
+}
+
+func (i GetRulesRuleTargetArgs) ToGetRulesRuleTargetOutput() GetRulesRuleTargetOutput {
+	return i.ToGetRulesRuleTargetOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleTargetArgs) ToGetRulesRuleTargetOutputWithContext(ctx context.Context) GetRulesRuleTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleTargetOutput)
+}
+
+// GetRulesRuleTargetArrayInput is an input type that accepts GetRulesRuleTargetArray and GetRulesRuleTargetArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleTargetArrayInput` via:
+//
+//          GetRulesRuleTargetArray{ GetRulesRuleTargetArgs{...} }
+type GetRulesRuleTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleTargetArrayOutput() GetRulesRuleTargetArrayOutput
+	ToGetRulesRuleTargetArrayOutputWithContext(context.Context) GetRulesRuleTargetArrayOutput
+}
+
+type GetRulesRuleTargetArray []GetRulesRuleTargetInput
+
+func (GetRulesRuleTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleTarget)(nil)).Elem()
+}
+
+func (i GetRulesRuleTargetArray) ToGetRulesRuleTargetArrayOutput() GetRulesRuleTargetArrayOutput {
+	return i.ToGetRulesRuleTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleTargetArray) ToGetRulesRuleTargetArrayOutputWithContext(ctx context.Context) GetRulesRuleTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleTargetArrayOutput)
+}
+
+type GetRulesRuleTargetOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleTarget)(nil)).Elem()
+}
+
+func (o GetRulesRuleTargetOutput) ToGetRulesRuleTargetOutput() GetRulesRuleTargetOutput {
+	return o
+}
+
+func (o GetRulesRuleTargetOutput) ToGetRulesRuleTargetOutputWithContext(ctx context.Context) GetRulesRuleTargetOutput {
+	return o
+}
+
+// The endpoint.
+func (o GetRulesRuleTargetOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleTarget) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The id of target.
+func (o GetRulesRuleTargetOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleTarget) string { return v.TargetId }).(pulumi.StringOutput)
+}
+
+// The type of target.
+func (o GetRulesRuleTargetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleTarget) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleTarget)(nil)).Elem()
+}
+
+func (o GetRulesRuleTargetArrayOutput) ToGetRulesRuleTargetArrayOutput() GetRulesRuleTargetArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleTargetArrayOutput) ToGetRulesRuleTargetArrayOutputWithContext(ctx context.Context) GetRulesRuleTargetArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleTargetArrayOutput) Index(i pulumi.IntInput) GetRulesRuleTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleTarget {
+		return vs[0].([]GetRulesRuleTarget)[vs[1].(int)]
+	}).(GetRulesRuleTargetOutput)
 }
 
 func init() {
+	pulumi.RegisterOutputType(RuleTargetOutput{})
+	pulumi.RegisterOutputType(RuleTargetArrayOutput{})
+	pulumi.RegisterOutputType(RuleTargetParamListOutput{})
+	pulumi.RegisterOutputType(RuleTargetParamListArrayOutput{})
 	pulumi.RegisterOutputType(GetEventBusesBusOutput{})
 	pulumi.RegisterOutputType(GetEventBusesBusArrayOutput{})
-	pulumi.RegisterOutputType(GetSchemaGroupsGroupOutput{})
-	pulumi.RegisterOutputType(GetSchemaGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleTargetOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleTargetArrayOutput{})
 }

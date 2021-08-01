@@ -73,6 +73,7 @@ class ProviderEndpointArgs:
                  alidns: Optional[pulumi.Input[str]] = None,
                  alikafka: Optional[pulumi.Input[str]] = None,
                  apigateway: Optional[pulumi.Input[str]] = None,
+                 arms: Optional[pulumi.Input[str]] = None,
                  brain_industrial: Optional[pulumi.Input[str]] = None,
                  bssopenapi: Optional[pulumi.Input[str]] = None,
                  cas: Optional[pulumi.Input[str]] = None,
@@ -104,6 +105,7 @@ class ProviderEndpointArgs:
                  fnf: Optional[pulumi.Input[str]] = None,
                  ga: Optional[pulumi.Input[str]] = None,
                  gpdb: Optional[pulumi.Input[str]] = None,
+                 hbr: Optional[pulumi.Input[str]] = None,
                  hitsdb: Optional[pulumi.Input[str]] = None,
                  ims: Optional[pulumi.Input[str]] = None,
                  kms: Optional[pulumi.Input[str]] = None,
@@ -130,6 +132,7 @@ class ProviderEndpointArgs:
                  resourcemanager: Optional[pulumi.Input[str]] = None,
                  resourcesharing: Optional[pulumi.Input[str]] = None,
                  ros: Optional[pulumi.Input[str]] = None,
+                 serverless: Optional[pulumi.Input[str]] = None,
                  sgw: Optional[pulumi.Input[str]] = None,
                  slb: Optional[pulumi.Input[str]] = None,
                  sts: Optional[pulumi.Input[str]] = None,
@@ -145,6 +148,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "alikafka", alikafka)
         if apigateway is not None:
             pulumi.set(__self__, "apigateway", apigateway)
+        if arms is not None:
+            pulumi.set(__self__, "arms", arms)
         if brain_industrial is not None:
             pulumi.set(__self__, "brain_industrial", brain_industrial)
         if bssopenapi is not None:
@@ -207,6 +212,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "ga", ga)
         if gpdb is not None:
             pulumi.set(__self__, "gpdb", gpdb)
+        if hbr is not None:
+            pulumi.set(__self__, "hbr", hbr)
         if hitsdb is not None:
             pulumi.set(__self__, "hitsdb", hitsdb)
         if ims is not None:
@@ -259,6 +266,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "resourcesharing", resourcesharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
+        if serverless is not None:
+            pulumi.set(__self__, "serverless", serverless)
         if sgw is not None:
             pulumi.set(__self__, "sgw", sgw)
         if slb is not None:
@@ -314,6 +323,15 @@ class ProviderEndpointArgs:
     @apigateway.setter
     def apigateway(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "apigateway", value)
+
+    @property
+    @pulumi.getter
+    def arms(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arms")
+
+    @arms.setter
+    def arms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arms", value)
 
     @property
     @pulumi.getter(name="brainIndustrial")
@@ -596,6 +614,15 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def hbr(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "hbr")
+
+    @hbr.setter
+    def hbr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hbr", value)
+
+    @property
+    @pulumi.getter
     def hitsdb(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "hitsdb")
 
@@ -827,6 +854,15 @@ class ProviderEndpointArgs:
     @ros.setter
     def ros(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ros", value)
+
+    @property
+    @pulumi.getter
+    def serverless(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "serverless")
+
+    @serverless.setter
+    def serverless(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serverless", value)
 
     @property
     @pulumi.getter

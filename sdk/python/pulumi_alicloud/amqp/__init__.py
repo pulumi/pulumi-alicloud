@@ -5,8 +5,10 @@
 # Export this package's modules as members:
 from .exchange import *
 from .get_exchanges import *
+from .get_instances import *
 from .get_queues import *
 from .get_virtual_hosts import *
+from .instance import *
 from .queue import *
 from .virtual_host import *
 from . import outputs
@@ -25,6 +27,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "alicloud:amqp/exchange:Exchange":
                 return Exchange(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "alicloud:amqp/instance:Instance":
+                return Instance(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:amqp/queue:Queue":
                 return Queue(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "alicloud:amqp/virtualHost:VirtualHost":
@@ -35,6 +39,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("alicloud", "amqp/exchange", _module_instance)
+    pulumi.runtime.register_resource_module("alicloud", "amqp/instance", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "amqp/queue", _module_instance)
     pulumi.runtime.register_resource_module("alicloud", "amqp/virtualHost", _module_instance)
 

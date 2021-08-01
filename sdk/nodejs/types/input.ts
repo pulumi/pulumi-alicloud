@@ -17,6 +17,7 @@ export interface ProviderEndpoint {
     alidns?: pulumi.Input<string>;
     alikafka?: pulumi.Input<string>;
     apigateway?: pulumi.Input<string>;
+    arms?: pulumi.Input<string>;
     brainIndustrial?: pulumi.Input<string>;
     bssopenapi?: pulumi.Input<string>;
     cas?: pulumi.Input<string>;
@@ -48,6 +49,7 @@ export interface ProviderEndpoint {
     fnf?: pulumi.Input<string>;
     ga?: pulumi.Input<string>;
     gpdb?: pulumi.Input<string>;
+    hbr?: pulumi.Input<string>;
     hitsdb?: pulumi.Input<string>;
     ims?: pulumi.Input<string>;
     kms?: pulumi.Input<string>;
@@ -74,6 +76,7 @@ export interface ProviderEndpoint {
     resourcemanager?: pulumi.Input<string>;
     resourcesharing?: pulumi.Input<string>;
     ros?: pulumi.Input<string>;
+    serverless?: pulumi.Input<string>;
     sgw?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
     sts?: pulumi.Input<string>;
@@ -253,6 +256,9 @@ export namespace apigateway {
         nameService: pulumi.Input<string>;
     }
 
+}
+
+export namespace arms {
 }
 
 export namespace brain {
@@ -507,6 +513,9 @@ export namespace cfg {
 }
 
 export namespace cloudconnect {
+}
+
+export namespace cloudfirewall {
 }
 
 export namespace cloudstoragegateway {
@@ -2046,6 +2055,43 @@ export namespace ess {
 }
 
 export namespace eventbridge {
+    export interface RuleTarget {
+        /**
+         * The endpoint of target.
+         */
+        endpoint: pulumi.Input<string>;
+        /**
+         * A list of param.
+         */
+        paramLists: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTargetParamList>[]>;
+        /**
+         * The ID of target.
+         */
+        targetId: pulumi.Input<string>;
+        /**
+         * The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface RuleTargetParamList {
+        /**
+         * The format of param.
+         */
+        form: pulumi.Input<string>;
+        /**
+         * The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+         */
+        resourceKey: pulumi.Input<string>;
+        /**
+         * The template of param.
+         */
+        template?: pulumi.Input<string>;
+        /**
+         * The value of param.
+         */
+        value: pulumi.Input<string>;
+    }
 }
 
 export namespace fc {
@@ -2313,6 +2359,9 @@ export namespace hbase {
         connAddrPort?: pulumi.Input<string>;
         netType?: pulumi.Input<string>;
     }
+}
+
+export namespace hbr {
 }
 
 export namespace kms {
@@ -2963,6 +3012,9 @@ export namespace ros {
          */
         parameterValue: pulumi.Input<string>;
     }
+}
+
+export namespace sae {
 }
 
 export namespace sag {

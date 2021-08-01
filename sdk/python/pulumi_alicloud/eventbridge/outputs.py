@@ -7,11 +7,154 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'RuleTarget',
+    'RuleTargetParamList',
     'GetEventBusesBusResult',
-    'GetSchemaGroupsGroupResult',
+    'GetRulesRuleResult',
+    'GetRulesRuleTargetResult',
 ]
+
+@pulumi.output_type
+class RuleTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "paramLists":
+            suggest = "param_lists"
+        elif key == "targetId":
+            suggest = "target_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: str,
+                 param_lists: Sequence['outputs.RuleTargetParamList'],
+                 target_id: str,
+                 type: str):
+        """
+        :param str endpoint: The endpoint of target.
+        :param Sequence['RuleTargetParamListArgs'] param_lists: A list of param.
+        :param str target_id: The ID of target.
+        :param str type: The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "param_lists", param_lists)
+        pulumi.set(__self__, "target_id", target_id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The endpoint of target.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="paramLists")
+    def param_lists(self) -> Sequence['outputs.RuleTargetParamList']:
+        """
+        A list of param.
+        """
+        return pulumi.get(self, "param_lists")
+
+    @property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> str:
+        """
+        The ID of target.
+        """
+        return pulumi.get(self, "target_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RuleTargetParamList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceKey":
+            suggest = "resource_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleTargetParamList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleTargetParamList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleTargetParamList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 form: str,
+                 resource_key: str,
+                 value: str,
+                 template: Optional[str] = None):
+        """
+        :param str form: The format of param.
+        :param str resource_key: The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+        :param str value: The value of param.
+        :param str template: The template of param.
+        """
+        pulumi.set(__self__, "form", form)
+        pulumi.set(__self__, "resource_key", resource_key)
+        pulumi.set(__self__, "value", value)
+        if template is not None:
+            pulumi.set(__self__, "template", template)
+
+    @property
+    @pulumi.getter
+    def form(self) -> str:
+        """
+        The format of param.
+        """
+        return pulumi.get(self, "form")
+
+    @property
+    @pulumi.getter(name="resourceKey")
+    def resource_key(self) -> str:
+        """
+        The resource key of param. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
+        """
+        return pulumi.get(self, "resource_key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of param.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def template(self) -> Optional[str]:
+        """
+        The template of param.
+        """
+        return pulumi.get(self, "template")
+
 
 @pulumi.output_type
 class GetEventBusesBusResult(dict):
@@ -20,6 +163,12 @@ class GetEventBusesBusResult(dict):
                  description: str,
                  event_bus_name: str,
                  id: str):
+        """
+        :param str create_time: The time of this bus was created.
+        :param str description: The description of event bus.
+        :param str event_bus_name: The name of event bus.
+        :param str id: The ID of the Event Bus. Its value is same as Queue Name.
+        """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "event_bus_name", event_bus_name)
@@ -28,54 +177,157 @@ class GetEventBusesBusResult(dict):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        The time of this bus was created.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of event bus.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> str:
+        """
+        The name of event bus.
+        """
         return pulumi.get(self, "event_bus_name")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of the Event Bus. Its value is same as Queue Name.
+        """
         return pulumi.get(self, "id")
 
 
 @pulumi.output_type
-class GetSchemaGroupsGroupResult(dict):
+class GetRulesRuleResult(dict):
     def __init__(__self__, *,
                  description: str,
-                 format: str,
-                 group_id: str,
-                 id: str):
+                 event_bus_name: str,
+                 filter_pattern: str,
+                 id: str,
+                 rule_name: str,
+                 status: str,
+                 targets: Sequence['outputs.GetRulesRuleTargetResult']):
+        """
+        :param str description: The description of rule.
+        :param str event_bus_name: The name of event bus.
+        :param str filter_pattern: The pattern to match interested events.
+        :param str id: The ID of the Rule.
+        :param str rule_name: The name of rule.
+        :param str status: Rule status, either Enable or Disable.
+        :param Sequence['GetRulesRuleTargetArgs'] targets: The target for rule.
+        """
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "format", format)
-        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "event_bus_name", event_bus_name)
+        pulumi.set(__self__, "filter_pattern", filter_pattern)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "targets", targets)
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of rule.
+        """
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter
-    def format(self) -> str:
-        return pulumi.get(self, "format")
+    @pulumi.getter(name="eventBusName")
+    def event_bus_name(self) -> str:
+        """
+        The name of event bus.
+        """
+        return pulumi.get(self, "event_bus_name")
 
     @property
-    @pulumi.getter(name="groupId")
-    def group_id(self) -> str:
-        return pulumi.get(self, "group_id")
+    @pulumi.getter(name="filterPattern")
+    def filter_pattern(self) -> str:
+        """
+        The pattern to match interested events.
+        """
+        return pulumi.get(self, "filter_pattern")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of the Rule.
+        """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> str:
+        """
+        The name of rule.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Rule status, either Enable or Disable.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def targets(self) -> Sequence['outputs.GetRulesRuleTargetResult']:
+        """
+        The target for rule.
+        """
+        return pulumi.get(self, "targets")
+
+
+@pulumi.output_type
+class GetRulesRuleTargetResult(dict):
+    def __init__(__self__, *,
+                 endpoint: str,
+                 target_id: str,
+                 type: str):
+        """
+        :param str endpoint: The endpoint.
+        :param str target_id: The id of target.
+        :param str type: The type of target.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "target_id", target_id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> str:
+        """
+        The id of target.
+        """
+        return pulumi.get(self, "target_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of target.
+        """
+        return pulumi.get(self, "type")
 
 

@@ -17,6 +17,8 @@ class EventBusArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EventBus resource.
+        :param pulumi.Input[str] event_bus_name: The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+        :param pulumi.Input[str] description: The description of event bus.
         """
         pulumi.set(__self__, "event_bus_name", event_bus_name)
         if description is not None:
@@ -25,6 +27,9 @@ class EventBusArgs:
     @property
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> pulumi.Input[str]:
+        """
+        The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+        """
         return pulumi.get(self, "event_bus_name")
 
     @event_bus_name.setter
@@ -34,6 +39,9 @@ class EventBusArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of event bus.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -48,6 +56,8 @@ class _EventBusState:
                  event_bus_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EventBus resources.
+        :param pulumi.Input[str] description: The description of event bus.
+        :param pulumi.Input[str] event_bus_name: The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -57,6 +67,9 @@ class _EventBusState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of event bus.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -66,6 +79,9 @@ class _EventBusState:
     @property
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+        """
         return pulumi.get(self, "event_bus_name")
 
     @event_bus_name.setter
@@ -82,9 +98,35 @@ class EventBus(pulumi.CustomResource):
                  event_bus_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a EventBus resource with the given unique name, props, and options.
+        Provides a Event Bridge Event Bus resource.
+
+        For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://help.aliyun.com/document_detail/167863.html).
+
+        > **NOTE:** Available in v1.129.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.eventbridge.EventBus("example", event_bus_name="my-EventBus")
+        ```
+
+        ## Import
+
+        Event Bridge Event Bus can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of event bus.
+        :param pulumi.Input[str] event_bus_name: The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
         """
         ...
     @overload
@@ -93,7 +135,31 @@ class EventBus(pulumi.CustomResource):
                  args: EventBusArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a EventBus resource with the given unique name, props, and options.
+        Provides a Event Bridge Event Bus resource.
+
+        For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://help.aliyun.com/document_detail/167863.html).
+
+        > **NOTE:** Available in v1.129.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.eventbridge.EventBus("example", event_bus_name="my-EventBus")
+        ```
+
+        ## Import
+
+        Event Bridge Event Bus can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param EventBusArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -146,6 +212,8 @@ class EventBus(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of event bus.
+        :param pulumi.Input[str] event_bus_name: The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -158,10 +226,16 @@ class EventBus(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of event bus.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> pulumi.Output[str]:
+        """
+        The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+        """
         return pulumi.get(self, "event_bus_name")
 

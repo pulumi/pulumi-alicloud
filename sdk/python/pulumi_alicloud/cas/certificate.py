@@ -15,6 +15,8 @@ class CertificateArgs:
     def __init__(__self__, *,
                  cert: pulumi.Input[str],
                  key: pulumi.Input[str],
+                 certificate_name: Optional[pulumi.Input[str]] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
@@ -24,6 +26,13 @@ class CertificateArgs:
         """
         pulumi.set(__self__, "cert", cert)
         pulumi.set(__self__, "key", key)
+        if certificate_name is not None:
+            pulumi.set(__self__, "certificate_name", certificate_name)
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -52,6 +61,24 @@ class CertificateArgs:
         pulumi.set(self, "key", value)
 
     @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "certificate_name")
+
+    @certificate_name.setter
+    def certificate_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_name", value)
+
+    @property
+    @pulumi.getter
+    def lang(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lang", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -68,7 +95,9 @@ class CertificateArgs:
 class _CertificateState:
     def __init__(__self__, *,
                  cert: Optional[pulumi.Input[str]] = None,
+                 certificate_name: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
@@ -78,8 +107,15 @@ class _CertificateState:
         """
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
+        if certificate_name is not None:
+            pulumi.set(__self__, "certificate_name", certificate_name)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -96,6 +132,15 @@ class _CertificateState:
         pulumi.set(self, "cert", value)
 
     @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "certificate_name")
+
+    @certificate_name.setter
+    def certificate_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_name", value)
+
+    @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -106,6 +151,15 @@ class _CertificateState:
     @key.setter
     def key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def lang(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lang", value)
 
     @property
     @pulumi.getter
@@ -120,36 +174,24 @@ class _CertificateState:
         pulumi.set(self, "name", value)
 
 
+warnings.warn("""This resource has been deprecated in favour of ServiceCertificate""", DeprecationWarning)
+
+
 class Certificate(pulumi.CustomResource):
+    warnings.warn("""This resource has been deprecated in favour of ServiceCertificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert: Optional[pulumi.Input[str]] = None,
+                 certificate_name: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CAS Certificate resource.
-
-        > **NOTE:** The Certificate name which you want to add must be already registered and had not added by another account. Every Certificate name can only exist in a unique group.
-
-        > **NOTE:** The Cas Certificate region only support cn-hangzhou, ap-south-1, me-east-1, eu-central-1, ap-northeast-1, ap-southeast-2.
-
-        > **NOTE:** Available in 1.35.0+ .
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Add a new Certificate.
-        cert = alicloud.cas.Certificate("cert",
-            cert=(lambda path: open(path).read())(f"{path['module']}/test.crt"),
-            key=(lambda path: open(path).read())(f"{path['module']}/test.key"))
-        ```
-
+        Create a Certificate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
@@ -163,26 +205,7 @@ class Certificate(pulumi.CustomResource):
                  args: CertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CAS Certificate resource.
-
-        > **NOTE:** The Certificate name which you want to add must be already registered and had not added by another account. Every Certificate name can only exist in a unique group.
-
-        > **NOTE:** The Cas Certificate region only support cn-hangzhou, ap-south-1, me-east-1, eu-central-1, ap-northeast-1, ap-southeast-2.
-
-        > **NOTE:** Available in 1.35.0+ .
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Add a new Certificate.
-        cert = alicloud.cas.Certificate("cert",
-            cert=(lambda path: open(path).read())(f"{path['module']}/test.crt"),
-            key=(lambda path: open(path).read())(f"{path['module']}/test.key"))
-        ```
-
+        Create a Certificate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -199,9 +222,12 @@ class Certificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert: Optional[pulumi.Input[str]] = None,
+                 certificate_name: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""Certificate is deprecated: This resource has been deprecated in favour of ServiceCertificate""")
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -216,9 +242,14 @@ class Certificate(pulumi.CustomResource):
             if cert is None and not opts.urn:
                 raise TypeError("Missing required property 'cert'")
             __props__.__dict__["cert"] = cert
+            __props__.__dict__["certificate_name"] = certificate_name
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
+            __props__.__dict__["lang"] = lang
+            if name is not None and not opts.urn:
+                warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
             __props__.__dict__["name"] = name
         super(Certificate, __self__).__init__(
             'alicloud:cas/certificate:Certificate',
@@ -231,7 +262,9 @@ class Certificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cert: Optional[pulumi.Input[str]] = None,
+            certificate_name: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
+            lang: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
@@ -249,7 +282,9 @@ class Certificate(pulumi.CustomResource):
         __props__ = _CertificateState.__new__(_CertificateState)
 
         __props__.__dict__["cert"] = cert
+        __props__.__dict__["certificate_name"] = certificate_name
         __props__.__dict__["key"] = key
+        __props__.__dict__["lang"] = lang
         __props__.__dict__["name"] = name
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
@@ -262,12 +297,22 @@ class Certificate(pulumi.CustomResource):
         return pulumi.get(self, "cert")
 
     @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "certificate_name")
+
+    @property
     @pulumi.getter
     def key(self) -> pulumi.Output[str]:
         """
         Key of the Certificate in which the Certificate will add.
         """
         return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def lang(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "lang")
 
     @property
     @pulumi.getter

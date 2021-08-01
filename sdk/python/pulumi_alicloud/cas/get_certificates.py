@@ -15,21 +15,29 @@ __all__ = [
     'get_certificates',
 ]
 
+warnings.warn("""This resource has been deprecated in favour of getServiceCertificates""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCertificatesResult:
     """
     A collection of values returned by getCertificates.
     """
-    def __init__(__self__, certificates=None, id=None, ids=None, name_regex=None, names=None, output_file=None):
+    def __init__(__self__, certificates=None, enable_details=None, id=None, ids=None, lang=None, name_regex=None, names=None, output_file=None):
         if certificates and not isinstance(certificates, list):
             raise TypeError("Expected argument 'certificates' to be a list")
         pulumi.set(__self__, "certificates", certificates)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if lang and not isinstance(lang, str):
+            raise TypeError("Expected argument 'lang' to be a str")
+        pulumi.set(__self__, "lang", lang)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         pulumi.set(__self__, "name_regex", name_regex)
@@ -49,6 +57,11 @@ class GetCertificatesResult:
         return pulumi.get(self, "certificates")
 
     @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -63,6 +76,11 @@ class GetCertificatesResult:
         A list of cert IDs.
         """
         return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter
+    def lang(self) -> Optional[str]:
+        return pulumi.get(self, "lang")
 
     @property
     @pulumi.getter(name="nameRegex")
@@ -90,37 +108,32 @@ class AwaitableGetCertificatesResult(GetCertificatesResult):
             yield self
         return GetCertificatesResult(
             certificates=self.certificates,
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
+            lang=self.lang,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file)
 
 
-def get_certificates(ids: Optional[Sequence[str]] = None,
+def get_certificates(enable_details: Optional[bool] = None,
+                     ids: Optional[Sequence[str]] = None,
+                     lang: Optional[str] = None,
                      name_regex: Optional[str] = None,
                      output_file: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificatesResult:
     """
-    This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    certs = alicloud.cas.get_certificates(name_regex="^cas",
-        output_file=f"{path['module']}/cas_certificates.json")
-    pulumi.export("cert", certs.certificates[0].id)
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param Sequence[str] ids: A list of cert IDs.
     :param str name_regex: A regex string to filter results by the certificate name.
     """
+    pulumi.log.warn("""get_certificates is deprecated: This resource has been deprecated in favour of getServiceCertificates""")
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
+    __args__['lang'] = lang
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     if opts is None:
@@ -131,8 +144,10 @@ def get_certificates(ids: Optional[Sequence[str]] = None,
 
     return AwaitableGetCertificatesResult(
         certificates=__ret__.certificates,
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
+        lang=__ret__.lang,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)

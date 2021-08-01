@@ -1752,7 +1752,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def management(self) -> pulumi.Output[Optional['outputs.NodePoolManagement']]:
+    def management(self) -> pulumi.Output['outputs.NodePoolManagement']:
         """
         Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         """

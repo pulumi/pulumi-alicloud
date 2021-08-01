@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.CS
         /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         /// </summary>
         [Output("management")]
-        public Output<Outputs.NodePoolManagement?> Management { get; private set; } = null!;
+        public Output<Outputs.NodePoolManagement> Management { get; private set; } = null!;
 
         /// <summary>
         /// The name of node pool.

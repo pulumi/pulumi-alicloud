@@ -10,20 +10,25 @@ from .. import _utilities
 
 __all__ = [
     'GetCertificatesCertificateResult',
+    'GetServiceCertificatesCertificateResult',
 ]
 
 @pulumi.output_type
 class GetCertificatesCertificateResult(dict):
     def __init__(__self__, *,
                  buy_in_aliyun: bool,
+                 cert: str,
+                 cert_id: str,
+                 certificate_name: str,
                  city: str,
                  common: str,
                  country: str,
                  end_date: str,
                  expired: bool,
-                 finger_print: str,
-                 id: int,
+                 fingerprint: str,
+                 id: str,
                  issuer: str,
+                 key: str,
                  name: str,
                  org_name: str,
                  province: str,
@@ -36,8 +41,7 @@ class GetCertificatesCertificateResult(dict):
         :param str country: The cert's country.
         :param str end_date: The cert's not valid after time.
         :param bool expired: The cert is expired or not.
-        :param str finger_print: The cert's finger.
-        :param int id: The cert's id.
+        :param str id: The cert's id.
         :param str issuer: The cert's .
         :param str name: The cert's name.
         :param str org_name: The cert's organization.
@@ -46,14 +50,18 @@ class GetCertificatesCertificateResult(dict):
         :param str start_date: The cert's not valid before time.
         """
         pulumi.set(__self__, "buy_in_aliyun", buy_in_aliyun)
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "cert_id", cert_id)
+        pulumi.set(__self__, "certificate_name", certificate_name)
         pulumi.set(__self__, "city", city)
         pulumi.set(__self__, "common", common)
         pulumi.set(__self__, "country", country)
         pulumi.set(__self__, "end_date", end_date)
         pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "finger_print", finger_print)
+        pulumi.set(__self__, "fingerprint", fingerprint)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "org_name", org_name)
         pulumi.set(__self__, "province", province)
@@ -67,6 +75,21 @@ class GetCertificatesCertificateResult(dict):
         The cert is buy from aliyun or not.
         """
         return pulumi.get(self, "buy_in_aliyun")
+
+    @property
+    @pulumi.getter
+    def cert(self) -> str:
+        return pulumi.get(self, "cert")
+
+    @property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> str:
+        return pulumi.get(self, "cert_id")
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> str:
+        return pulumi.get(self, "certificate_name")
 
     @property
     @pulumi.getter
@@ -109,16 +132,13 @@ class GetCertificatesCertificateResult(dict):
         return pulumi.get(self, "expired")
 
     @property
-    @pulumi.getter(name="fingerPrint")
-    def finger_print(self) -> str:
-        """
-        The cert's finger.
-        """
-        return pulumi.get(self, "finger_print")
+    @pulumi.getter
+    def fingerprint(self) -> str:
+        return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter
-    def id(self) -> int:
+    def id(self) -> str:
         """
         The cert's id.
         """
@@ -134,10 +154,216 @@ class GetCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The cert's name.
         """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orgName")
+    def org_name(self) -> str:
+        """
+        The cert's organization.
+        """
+        return pulumi.get(self, "org_name")
+
+    @property
+    @pulumi.getter
+    def province(self) -> str:
+        """
+        The cert's province.
+        """
+        return pulumi.get(self, "province")
+
+    @property
+    @pulumi.getter
+    def sans(self) -> str:
+        """
+        The cert's subject alternative name.
+        """
+        return pulumi.get(self, "sans")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> str:
+        """
+        The cert's not valid before time.
+        """
+        return pulumi.get(self, "start_date")
+
+
+@pulumi.output_type
+class GetServiceCertificatesCertificateResult(dict):
+    def __init__(__self__, *,
+                 buy_in_aliyun: bool,
+                 cert: str,
+                 cert_id: str,
+                 certificate_name: str,
+                 city: str,
+                 common: str,
+                 country: str,
+                 end_date: str,
+                 expired: bool,
+                 fingerprint: str,
+                 id: str,
+                 issuer: str,
+                 key: str,
+                 name: str,
+                 org_name: str,
+                 province: str,
+                 sans: str,
+                 start_date: str):
+        """
+        :param bool buy_in_aliyun: The cert is buy from aliyun or not.
+        :param str cert: The cert's Cert.
+        :param str cert_id: The cert's id.
+        :param str certificate_name: The cert's name.
+        :param str city: The cert's city.
+        :param str common: The cert's common name.
+        :param str country: The cert's country.
+        :param str end_date: The cert's not valid after time.
+        :param bool expired: The cert is expired or not.
+        :param str fingerprint: The cert's finger.
+        :param str id: The cert's id.
+        :param str issuer: The cert's Issuer.
+        :param str key: The cert's Keye.
+        :param str org_name: The cert's organization.
+        :param str province: The cert's province.
+        :param str sans: The cert's subject alternative name.
+        :param str start_date: The cert's not valid before time.
+        """
+        pulumi.set(__self__, "buy_in_aliyun", buy_in_aliyun)
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "cert_id", cert_id)
+        pulumi.set(__self__, "certificate_name", certificate_name)
+        pulumi.set(__self__, "city", city)
+        pulumi.set(__self__, "common", common)
+        pulumi.set(__self__, "country", country)
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "org_name", org_name)
+        pulumi.set(__self__, "province", province)
+        pulumi.set(__self__, "sans", sans)
+        pulumi.set(__self__, "start_date", start_date)
+
+    @property
+    @pulumi.getter(name="buyInAliyun")
+    def buy_in_aliyun(self) -> bool:
+        """
+        The cert is buy from aliyun or not.
+        """
+        return pulumi.get(self, "buy_in_aliyun")
+
+    @property
+    @pulumi.getter
+    def cert(self) -> str:
+        """
+        The cert's Cert.
+        """
+        return pulumi.get(self, "cert")
+
+    @property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> str:
+        """
+        The cert's id.
+        """
+        return pulumi.get(self, "cert_id")
+
+    @property
+    @pulumi.getter(name="certificateName")
+    def certificate_name(self) -> str:
+        """
+        The cert's name.
+        """
+        return pulumi.get(self, "certificate_name")
+
+    @property
+    @pulumi.getter
+    def city(self) -> str:
+        """
+        The cert's city.
+        """
+        return pulumi.get(self, "city")
+
+    @property
+    @pulumi.getter
+    def common(self) -> str:
+        """
+        The cert's common name.
+        """
+        return pulumi.get(self, "common")
+
+    @property
+    @pulumi.getter
+    def country(self) -> str:
+        """
+        The cert's country.
+        """
+        return pulumi.get(self, "country")
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> str:
+        """
+        The cert's not valid after time.
+        """
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter
+    def expired(self) -> bool:
+        """
+        The cert is expired or not.
+        """
+        return pulumi.get(self, "expired")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> str:
+        """
+        The cert's finger.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The cert's id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        """
+        The cert's Issuer.
+        """
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The cert's Keye.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         return pulumi.get(self, "name")
 
     @property

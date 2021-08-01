@@ -109,7 +109,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
      */
-    public readonly management!: pulumi.Output<outputs.cs.NodePoolManagement | undefined>;
+    public readonly management!: pulumi.Output<outputs.cs.NodePoolManagement>;
     /**
      * The name of node pool.
      */

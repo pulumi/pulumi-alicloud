@@ -2,7 +2,10 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v1.129.0 of the AliCloud Terraform Provider
+  **PLEASE NOTE:* There are a number of breaking changes in this provider update:
+  * `alicloud.cas.Certificate` has been replaced by `alicloud.cas.ServiceCertificate` reflecting in missing properties in the old resource
+  * `alicloud.cas.getCertificates` has been replaced by `alicloud.cas.getServiceCertificates` reflecting in missing properties in the old function
 
 ---
 

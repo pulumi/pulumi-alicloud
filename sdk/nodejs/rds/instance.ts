@@ -315,6 +315,25 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly sslStatus!: pulumi.Output<string>;
     /**
+     * Automatic storage space expansion switch. Valid values:
+     * - Enable
+     * - Disable
+     */
+    public readonly storageAutoScale!: pulumi.Output<string | undefined>;
+    /**
+     * The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+     * - 10
+     * - 20
+     * - 30
+     * - 40
+     * - 50
+     */
+    public readonly storageThreshold!: pulumi.Output<number | undefined>;
+    /**
+     * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+     */
+    public readonly storageUpperBound!: pulumi.Output<number | undefined>;
+    /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      */
     public readonly switchTime!: pulumi.Output<string | undefined>;
@@ -434,6 +453,9 @@ export class Instance extends pulumi.CustomResource {
             inputs["sqlCollectorStatus"] = state ? state.sqlCollectorStatus : undefined;
             inputs["sslAction"] = state ? state.sslAction : undefined;
             inputs["sslStatus"] = state ? state.sslStatus : undefined;
+            inputs["storageAutoScale"] = state ? state.storageAutoScale : undefined;
+            inputs["storageThreshold"] = state ? state.storageThreshold : undefined;
+            inputs["storageUpperBound"] = state ? state.storageUpperBound : undefined;
             inputs["switchTime"] = state ? state.switchTime : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["targetMinorVersion"] = state ? state.targetMinorVersion : undefined;
@@ -501,6 +523,9 @@ export class Instance extends pulumi.CustomResource {
             inputs["sqlCollectorConfigValue"] = args ? args.sqlCollectorConfigValue : undefined;
             inputs["sqlCollectorStatus"] = args ? args.sqlCollectorStatus : undefined;
             inputs["sslAction"] = args ? args.sslAction : undefined;
+            inputs["storageAutoScale"] = args ? args.storageAutoScale : undefined;
+            inputs["storageThreshold"] = args ? args.storageThreshold : undefined;
+            inputs["storageUpperBound"] = args ? args.storageUpperBound : undefined;
             inputs["switchTime"] = args ? args.switchTime : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["targetMinorVersion"] = args ? args.targetMinorVersion : undefined;
@@ -727,6 +752,25 @@ export interface InstanceState {
      * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
      */
     readonly sslStatus?: pulumi.Input<string>;
+    /**
+     * Automatic storage space expansion switch. Valid values:
+     * - Enable
+     * - Disable
+     */
+    readonly storageAutoScale?: pulumi.Input<string>;
+    /**
+     * The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+     * - 10
+     * - 20
+     * - 30
+     * - 40
+     * - 50
+     */
+    readonly storageThreshold?: pulumi.Input<number>;
+    /**
+     * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+     */
+    readonly storageUpperBound?: pulumi.Input<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      */
@@ -988,6 +1032,25 @@ export interface InstanceArgs {
      * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      */
     readonly sslAction?: pulumi.Input<string>;
+    /**
+     * Automatic storage space expansion switch. Valid values:
+     * - Enable
+     * - Disable
+     */
+    readonly storageAutoScale?: pulumi.Input<string>;
+    /**
+     * The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+     * - 10
+     * - 20
+     * - 30
+     * - 40
+     * - 50
+     */
+    readonly storageThreshold?: pulumi.Input<number>;
+    /**
+     * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+     */
+    readonly storageUpperBound?: pulumi.Input<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      */

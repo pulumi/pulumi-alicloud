@@ -113,7 +113,29 @@ def get_event_buses(event_bus_type: Optional[str] = None,
                     output_file: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEventBusesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.129.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.eventbridge.get_event_buses()
+    pulumi.export("eventBridgeEventBusId1", ids.buses[0].id)
+    name_regex = alicloud.eventbridge.get_event_buses(name_regex="^my-EventBus")
+    pulumi.export("eventBridgeEventBusId2", name_regex.buses[0].id)
+    ```
+
+
+    :param str event_bus_type: The event bus type.
+    :param Sequence[str] ids: A list of Event Bus IDs. Its element value is same as Event Bus Name.
+    :param str name_prefix: The name prefix.
+    :param str name_regex: A regex string to filter results by Event Bus name.
     """
     __args__ = dict()
     __args__['eventBusType'] = event_bus_type

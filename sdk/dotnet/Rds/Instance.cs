@@ -357,6 +357,31 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> SslStatus { get; private set; } = null!;
 
         /// <summary>
+        /// Automatic storage space expansion switch. Valid values:
+        /// - Enable
+        /// - Disable
+        /// </summary>
+        [Output("storageAutoScale")]
+        public Output<string?> StorageAutoScale { get; private set; } = null!;
+
+        /// <summary>
+        /// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+        /// - 10
+        /// - 20
+        /// - 30
+        /// - 40
+        /// - 50
+        /// </summary>
+        [Output("storageThreshold")]
+        public Output<int?> StorageThreshold { get; private set; } = null!;
+
+        /// <summary>
+        /// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+        /// </summary>
+        [Output("storageUpperBound")]
+        public Output<int?> StorageUpperBound { get; private set; } = null!;
+
+        /// <summary>
         /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
         /// </summary>
         [Output("switchTime")]
@@ -780,6 +805,31 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SslAction { get; set; }
 
         /// <summary>
+        /// Automatic storage space expansion switch. Valid values:
+        /// - Enable
+        /// - Disable
+        /// </summary>
+        [Input("storageAutoScale")]
+        public Input<string>? StorageAutoScale { get; set; }
+
+        /// <summary>
+        /// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+        /// - 10
+        /// - 20
+        /// - 30
+        /// - 40
+        /// - 50
+        /// </summary>
+        [Input("storageThreshold")]
+        public Input<int>? StorageThreshold { get; set; }
+
+        /// <summary>
+        /// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+        /// </summary>
+        [Input("storageUpperBound")]
+        public Input<int>? StorageUpperBound { get; set; }
+
+        /// <summary>
         /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
         /// </summary>
         [Input("switchTime")]
@@ -1180,6 +1230,31 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("sslStatus")]
         public Input<string>? SslStatus { get; set; }
+
+        /// <summary>
+        /// Automatic storage space expansion switch. Valid values:
+        /// - Enable
+        /// - Disable
+        /// </summary>
+        [Input("storageAutoScale")]
+        public Input<string>? StorageAutoScale { get; set; }
+
+        /// <summary>
+        /// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+        /// - 10
+        /// - 20
+        /// - 30
+        /// - 40
+        /// - 50
+        /// </summary>
+        [Input("storageThreshold")]
+        public Input<int>? StorageThreshold { get; set; }
+
+        /// <summary>
+        /// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+        /// </summary>
+        [Input("storageUpperBound")]
+        public Input<int>? StorageUpperBound { get; set; }
 
         /// <summary>
         /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.

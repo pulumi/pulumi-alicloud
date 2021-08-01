@@ -4,6 +4,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a Event Bridge Event Bus resource.
+ *
+ * For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://help.aliyun.com/document_detail/167863.html).
+ *
+ * > **NOTE:** Available in v1.129.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.eventbridge.EventBus("example", {
+ *     eventBusName: "my-EventBus",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Event Bridge Event Bus can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import alicloud:eventbridge/eventBus:EventBus example <event_bus_name>
+ * ```
+ */
 export class EventBus extends pulumi.CustomResource {
     /**
      * Get an existing EventBus resource's state with the given name, ID, and optional extra
@@ -32,7 +60,13 @@ export class EventBus extends pulumi.CustomResource {
         return obj['__pulumiType'] === EventBus.__pulumiType;
     }
 
+    /**
+     * The description of event bus.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+     */
     public readonly eventBusName!: pulumi.Output<string>;
 
     /**
@@ -69,7 +103,13 @@ export class EventBus extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EventBus resources.
  */
 export interface EventBusState {
+    /**
+     * The description of event bus.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+     */
     readonly eventBusName?: pulumi.Input<string>;
 }
 
@@ -77,6 +117,12 @@ export interface EventBusState {
  * The set of arguments for constructing a EventBus resource.
  */
 export interface EventBusArgs {
+    /**
+     * The description of event bus.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+     */
     readonly eventBusName: pulumi.Input<string>;
 }

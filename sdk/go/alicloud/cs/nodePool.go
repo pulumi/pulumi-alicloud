@@ -54,7 +54,7 @@ type NodePool struct {
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels NodePoolLabelArrayOutput `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
-	Management NodePoolManagementPtrOutput `pulumi:"management"`
+	Management NodePoolManagementOutput `pulumi:"management"`
 	// The name of node pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.

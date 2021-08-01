@@ -208,6 +208,19 @@ type Instance struct {
 	SslAction pulumi.StringOutput `pulumi:"sslAction"`
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
+	// Automatic storage space expansion switch. Valid values:
+	// - Enable
+	// - Disable
+	StorageAutoScale pulumi.StringPtrOutput `pulumi:"storageAutoScale"`
+	// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+	// - 10
+	// - 20
+	// - 30
+	// - 40
+	// - 50
+	StorageThreshold pulumi.IntPtrOutput `pulumi:"storageThreshold"`
+	// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+	StorageUpperBound pulumi.IntPtrOutput `pulumi:"storageUpperBound"`
 	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
 	SwitchTime pulumi.StringPtrOutput `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
@@ -410,6 +423,19 @@ type instanceState struct {
 	SslAction *string `pulumi:"sslAction"`
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus *string `pulumi:"sslStatus"`
+	// Automatic storage space expansion switch. Valid values:
+	// - Enable
+	// - Disable
+	StorageAutoScale *string `pulumi:"storageAutoScale"`
+	// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+	// - 10
+	// - 20
+	// - 30
+	// - 40
+	// - 50
+	StorageThreshold *int `pulumi:"storageThreshold"`
+	// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+	StorageUpperBound *int `pulumi:"storageUpperBound"`
 	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
 	SwitchTime *string `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
@@ -572,6 +598,19 @@ type InstanceState struct {
 	SslAction pulumi.StringPtrInput
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus pulumi.StringPtrInput
+	// Automatic storage space expansion switch. Valid values:
+	// - Enable
+	// - Disable
+	StorageAutoScale pulumi.StringPtrInput
+	// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+	// - 10
+	// - 20
+	// - 30
+	// - 40
+	// - 50
+	StorageThreshold pulumi.IntPtrInput
+	// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+	StorageUpperBound pulumi.IntPtrInput
 	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
 	SwitchTime pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -734,6 +773,19 @@ type instanceArgs struct {
 	SqlCollectorStatus *string `pulumi:"sqlCollectorStatus"`
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
 	SslAction *string `pulumi:"sslAction"`
+	// Automatic storage space expansion switch. Valid values:
+	// - Enable
+	// - Disable
+	StorageAutoScale *string `pulumi:"storageAutoScale"`
+	// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+	// - 10
+	// - 20
+	// - 30
+	// - 40
+	// - 50
+	StorageThreshold *int `pulumi:"storageThreshold"`
+	// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+	StorageUpperBound *int `pulumi:"storageUpperBound"`
 	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
 	SwitchTime *string `pulumi:"switchTime"`
 	// A mapping of tags to assign to the resource.
@@ -893,6 +945,19 @@ type InstanceArgs struct {
 	SqlCollectorStatus pulumi.StringPtrInput
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
 	SslAction pulumi.StringPtrInput
+	// Automatic storage space expansion switch. Valid values:
+	// - Enable
+	// - Disable
+	StorageAutoScale pulumi.StringPtrInput
+	// The trigger threshold (percentage) for automatic storage space expansion. Valid values:
+	// - 10
+	// - 20
+	// - 30
+	// - 40
+	// - 50
+	StorageThreshold pulumi.IntPtrInput
+	// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+	StorageUpperBound pulumi.IntPtrInput
 	// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
 	SwitchTime pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.

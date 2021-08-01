@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Cas.Outputs
         /// The cert is buy from aliyun or not.
         /// </summary>
         public readonly bool BuyInAliyun;
+        public readonly string Cert;
+        public readonly string CertId;
+        public readonly string CertificateName;
         /// <summary>
         /// The cert's city.
         /// </summary>
@@ -37,18 +40,16 @@ namespace Pulumi.AliCloud.Cas.Outputs
         /// The cert is expired or not.
         /// </summary>
         public readonly bool Expired;
-        /// <summary>
-        /// The cert's finger.
-        /// </summary>
-        public readonly string FingerPrint;
+        public readonly string Fingerprint;
         /// <summary>
         /// The cert's id.
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
         /// The cert's .
         /// </summary>
         public readonly string Issuer;
+        public readonly string Key;
         /// <summary>
         /// The cert's name.
         /// </summary>
@@ -74,6 +75,12 @@ namespace Pulumi.AliCloud.Cas.Outputs
         private GetCertificatesCertificateResult(
             bool buyInAliyun,
 
+            string cert,
+
+            string certId,
+
+            string certificateName,
+
             string city,
 
             string common,
@@ -84,11 +91,13 @@ namespace Pulumi.AliCloud.Cas.Outputs
 
             bool expired,
 
-            string fingerPrint,
+            string fingerprint,
 
-            int id,
+            string id,
 
             string issuer,
+
+            string key,
 
             string name,
 
@@ -101,14 +110,18 @@ namespace Pulumi.AliCloud.Cas.Outputs
             string startDate)
         {
             BuyInAliyun = buyInAliyun;
+            Cert = cert;
+            CertId = certId;
+            CertificateName = certificateName;
             City = city;
             Common = common;
             Country = country;
             EndDate = endDate;
             Expired = expired;
-            FingerPrint = fingerPrint;
+            Fingerprint = fingerprint;
             Id = id;
             Issuer = issuer;
+            Key = key;
             Name = name;
             OrgName = orgName;
             Province = province;

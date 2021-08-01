@@ -7,36 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^cas"
-// 		opt1 := fmt.Sprintf("%v%v", path.Module, "/cas_certificates.json")
-// 		certs, err := cas.GetCertificates(ctx, &cas.GetCertificatesArgs{
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cert", certs.Certificates[0].Id)
-// 		return nil
-// 	})
-// }
-// ```
+// Deprecated: This resource has been deprecated in favour of getServiceCertificates
 func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCertificatesResult, error) {
 	var rv GetCertificatesResult
 	err := ctx.Invoke("alicloud:cas/getCertificates:getCertificates", args, &rv, opts...)
@@ -48,8 +19,10 @@ func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pul
 
 // A collection of arguments for invoking getCertificates.
 type GetCertificatesArgs struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of cert IDs.
-	Ids []string `pulumi:"ids"`
+	Ids  []string `pulumi:"ids"`
+	Lang *string  `pulumi:"lang"`
 	// A regex string to filter results by the certificate name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -58,11 +31,13 @@ type GetCertificatesArgs struct {
 // A collection of values returned by getCertificates.
 type GetCertificatesResult struct {
 	// A list of apis. Each element contains the following attributes:
-	Certificates []GetCertificatesCertificate `pulumi:"certificates"`
+	Certificates  []GetCertificatesCertificate `pulumi:"certificates"`
+	EnableDetails *bool                        `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of cert IDs.
 	Ids       []string `pulumi:"ids"`
+	Lang      *string  `pulumi:"lang"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of cert names.
 	Names      []string `pulumi:"names"`

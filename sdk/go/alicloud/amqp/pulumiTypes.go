@@ -170,6 +170,220 @@ func (o GetExchangesExchangeArrayOutput) Index(i pulumi.IntInput) GetExchangesEx
 	}).(GetExchangesExchangeOutput)
 }
 
+type GetInstancesInstance struct {
+	// OrderCreateTime.
+	CreateTime string `pulumi:"createTime"`
+	// ExpireTime.
+	ExpireTime string `pulumi:"expireTime"`
+	// The ID of the Instance.
+	Id string `pulumi:"id"`
+	// THe instance Id.
+	InstanceId string `pulumi:"instanceId"`
+	// THe instance name.
+	InstanceName string `pulumi:"instanceName"`
+	// The instance type.
+	InstanceType string `pulumi:"instanceType"`
+	// The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+	PaymentType string `pulumi:"paymentType"`
+	// The private endPoint.
+	PrivateEndPoint string `pulumi:"privateEndPoint"`
+	// The public dndpoint.
+	PublicEndpoint string `pulumi:"publicEndpoint"`
+	// Renewal duration.
+	RenewalDuration int `pulumi:"renewalDuration"`
+	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+	RenewalDurationUnit string `pulumi:"renewalDurationUnit"`
+	// Renew status.
+	RenewalStatus string `pulumi:"renewalStatus"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// Whether to support eip.
+	SupportEip bool `pulumi:"supportEip"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+//          GetInstancesInstanceArgs{...}
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// OrderCreateTime.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// ExpireTime.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The ID of the Instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// THe instance Id.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// THe instance name.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The instance type.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The private endPoint.
+	PrivateEndPoint pulumi.StringInput `pulumi:"privateEndPoint"`
+	// The public dndpoint.
+	PublicEndpoint pulumi.StringInput `pulumi:"publicEndpoint"`
+	// Renewal duration.
+	RenewalDuration pulumi.IntInput `pulumi:"renewalDuration"`
+	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+	RenewalDurationUnit pulumi.StringInput `pulumi:"renewalDurationUnit"`
+	// Renew status.
+	RenewalStatus pulumi.StringInput `pulumi:"renewalStatus"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Whether to support eip.
+	SupportEip pulumi.BoolInput `pulumi:"supportEip"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// OrderCreateTime.
+func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// ExpireTime.
+func (o GetInstancesInstanceOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Instance.
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// THe instance Id.
+func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// THe instance name.
+func (o GetInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The instance type.
+func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The private endPoint.
+func (o GetInstancesInstanceOutput) PrivateEndPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PrivateEndPoint }).(pulumi.StringOutput)
+}
+
+// The public dndpoint.
+func (o GetInstancesInstanceOutput) PublicEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PublicEndpoint }).(pulumi.StringOutput)
+}
+
+// Renewal duration.
+func (o GetInstancesInstanceOutput) RenewalDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.RenewalDuration }).(pulumi.IntOutput)
+}
+
+// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+func (o GetInstancesInstanceOutput) RenewalDurationUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RenewalDurationUnit }).(pulumi.StringOutput)
+}
+
+// Renew status.
+func (o GetInstancesInstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether to support eip.
+func (o GetInstancesInstanceOutput) SupportEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.SupportEip }).(pulumi.BoolOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
 type GetQueuesQueue struct {
 	// The attributes for the Queue.
 	Attributes map[string]interface{} `pulumi:"attributes"`
@@ -457,6 +671,8 @@ func (o GetVirtualHostsHostArrayOutput) Index(i pulumi.IntInput) GetVirtualHosts
 func init() {
 	pulumi.RegisterOutputType(GetExchangesExchangeOutput{})
 	pulumi.RegisterOutputType(GetExchangesExchangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetQueuesQueueOutput{})
 	pulumi.RegisterOutputType(GetQueuesQueueArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualHostsHostOutput{})

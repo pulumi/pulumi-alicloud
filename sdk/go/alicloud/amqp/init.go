@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:amqp/exchange:Exchange":
 		r = &Exchange{}
+	case "alicloud:amqp/instance:Instance":
+		r = &Instance{}
 	case "alicloud:amqp/queue:Queue":
 		r = &Queue{}
 	case "alicloud:amqp/virtualHost:VirtualHost":
@@ -43,6 +45,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"amqp/exchange",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"amqp/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

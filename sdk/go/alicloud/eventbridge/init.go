@@ -23,8 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:eventbridge/eventBus:EventBus":
 		r = &EventBus{}
-	case "alicloud:eventbridge/schemaGroup:SchemaGroup":
-		r = &SchemaGroup{}
+	case "alicloud:eventbridge/rule:Rule":
+		r = &Rule{}
+	case "alicloud:eventbridge/slr:Slr":
+		r = &Slr{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -45,7 +47,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
-		"eventbridge/schemaGroup",
+		"eventbridge/rule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eventbridge/slr",
 		&module{version},
 	)
 }

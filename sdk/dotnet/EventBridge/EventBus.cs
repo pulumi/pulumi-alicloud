@@ -9,12 +9,54 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.EventBridge
 {
+    /// <summary>
+    /// Provides a Event Bridge Event Bus resource.
+    /// 
+    /// For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://help.aliyun.com/document_detail/167863.html).
+    /// 
+    /// &gt; **NOTE:** Available in v1.129.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.EventBridge.EventBus("example", new AliCloud.EventBridge.EventBusArgs
+    ///         {
+    ///             EventBusName = "my-EventBus",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Event Bridge Event Bus can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import alicloud:eventbridge/eventBus:EventBus example &lt;event_bus_name&gt;
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:eventbridge/eventBus:EventBus")]
     public partial class EventBus : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of event bus.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+        /// </summary>
         [Output("eventBusName")]
         public Output<string> EventBusName { get; private set; } = null!;
 
@@ -64,9 +106,15 @@ namespace Pulumi.AliCloud.EventBridge
 
     public sealed class EventBusArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of event bus.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+        /// </summary>
         [Input("eventBusName", required: true)]
         public Input<string> EventBusName { get; set; } = null!;
 
@@ -77,9 +125,15 @@ namespace Pulumi.AliCloud.EventBridge
 
     public sealed class EventBusState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of event bus.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
+        /// </summary>
         [Input("eventBusName")]
         public Input<string>? EventBusName { get; set; }
 
